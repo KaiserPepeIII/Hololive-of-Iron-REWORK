@@ -1,0 +1,179 @@
+﻿capital = 330
+
+oob = "LUN_1936"
+set_naval_oob = "LUN_1936_naval_legacy"
+set_stability = 0.8
+set_war_support = 0.1
+set_research_slots = 3
+
+
+add_ideas = {
+	lhs_member
+	asacoco_reliance_low
+	xinjian_baqi
+	steppe_lifestyle_last_legs
+	banditry_asia
+
+}
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	early_fighter = 1
+	CAS1 = 1
+	gwtank = 1
+	tech_support = 1
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_naval_oob = "LUN_1936_naval_mtg"
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_battery = 1
+		basic_secondary_battery = 1
+		basic_cruiser_armor_scheme = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		coastal_defense_ships = 1
+		mtg_transport = 1
+	}
+}
+
+set_convoys = 50
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#doctrines
+		grand_battle_plan = 1
+		trench_warfare = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+}
+set_politics = {
+	ruling_party = reactionary_nationalism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+set_popularities = {
+	reactionary_nationalism = 34
+	communism = 46
+	pro_yagoo_monarchy = 20 
+}
+
+create_country_leader = {
+	name = "Himemori Luna"
+	picture = "gfx/leaders/LUN/luna_neu.dds"
+	expire = "1965.1.1"
+	ideology = reactionary_nationalist
+	traits = {
+		disaster_english_class
+		zero_yo
+	}
+}
+
+create_country_leader = {
+	name = "Himemori Luna"
+	picture = "gfx/leaders/LUN/luna_fas.dds"
+	expire = "1965.1.1"
+	ideology = pro_resistance_revolutionary
+	traits = {
+		disaster_english_class
+		zero_yo
+	}
+}
+
+create_country_leader = {
+	name = "Himemori Luna"
+	picture = "gfx/leaders/LUN/luna_com.dds"
+	expire = "1965.1.1"
+	ideology = pro_yagoo_monarchism
+	traits = {
+		disaster_english_class
+		zero_yo
+	}
+}
+
+create_country_leader = {
+	name = "Himemori Luna"
+	picture = "gfx/leaders/LUN/luna_dem.dds"
+	expire = "1965.1.1"
+	ideology = pro_yagoo_kleptocratic
+	traits = {
+		disaster_english_class
+		zero_yo
+	}
+}
+
+create_corps_commander = {
+	name = "Luna-tan"
+	portrait_path = "gfx/leaders/LUN/luna_fas.dds"
+	traits = { politically_connected trait_reckless }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 2
+}
+
+create_navy_leader = {
+	name = "Luna-tan"
+	portrait_path = "gfx/leaders/LUN/luna_dem.dds"
+	traits = { war_hero bold ironside }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 4
+	maneuvering_skill = 2
+	coordination_skill = 2
+}
+
+
+
+
+

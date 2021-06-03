@@ -1,0 +1,193 @@
+﻿capital = 41
+
+oob = "MIK_1936"
+set_naval_oob = "MIK_1936_naval_legacy"
+set_stability = 0.8
+set_war_support = 0.1
+set_research_slots = 3
+
+
+add_ideas = {
+	lhs_member
+	asacoco_reliance_high
+	great_depression_miko
+	political_divisiveness
+	sleeping_elite
+}
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	early_fighter = 1
+	CAS1 = 1
+	gwtank = 1
+	tech_support = 1
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_naval_oob = "MIK_1936_naval_mtg"
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_battery = 1
+		basic_secondary_battery = 1
+		basic_cruiser_armor_scheme = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		coastal_defense_ships = 1
+		mtg_transport = 1
+	}
+}
+
+set_convoys = 50
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#doctrines
+		grand_battle_plan = 1
+		trench_warfare = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+}
+set_politics = {
+	ruling_party = pro_yagoo_monarchy
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+set_popularities = {
+	pro_yagoo_monarchy = 24
+	pro_resistance_monarchy = 28
+	communism = 18
+	reactionary_nationalism = 10
+	pro_yagoo_kleptocracy = 15 
+	pro_resistance_kleptocracy = 5
+}
+
+create_country_leader = {
+	name = "Sakura Miko"
+	picture = "gfx/leaders/MIK/miko_neu.dds"
+	expire = "1965.1.1"
+	ideology = reactionary_nationalist
+	traits = {
+		elite
+	}
+}
+
+create_country_leader = {
+	name = "Sakura Miko"
+	picture = "gfx/leaders/MIK/miko_fas.dds"
+	expire = "1965.1.1"
+	ideology = pro_resistance_kleptocratic
+	traits = {
+		elite
+	}
+}create_country_leader = {
+	name = "Sakura Miko"
+	picture = "gfx/leaders/MIK/miko_fas.dds"
+	expire = "1965.1.1"
+	ideology = pro_yagoo_kleptocratic
+	traits = {
+		elite
+	}
+}
+create_country_leader = {
+	name = "Sakura Miko"
+	picture = "gfx/leaders/MIK/miko_fas.dds"
+	expire = "1965.1.1"
+	ideology = pro_yagoo_monarchism
+	traits = {
+		elite
+	}
+}
+
+create_country_leader = {
+	name = "Sakura Miko"
+	picture = "gfx/leaders/MIK/miko_com.dds"
+	expire = "1965.1.1"
+	ideology = enlightened_monarchy
+	traits = {
+		elite
+	}
+}
+
+create_country_leader = {
+	name = "Sakura Miko"
+	picture = "gfx/leaders/MIK/miko_dem.dds"
+	expire = "1965.1.1"
+	ideology = pro_yagoo_kleptocratic
+	traits = {
+		elite
+	}
+}
+
+create_corps_commander = {
+	name = "Elite Miko"
+	portrait_path = "gfx/leaders/MIK/miko_fas.dds"
+	traits = { organizer media_personality }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+}
+
+create_navy_leader = {
+	name = "Elite Miko"
+	portrait_path = "gfx/leaders/MIK/miko_com.dds"
+	traits = { superior_tactician ironside  }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	maneuvering_skill = 3
+	coordination_skill = 3
+}
+
+
+
+
+
