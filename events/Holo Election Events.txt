@@ -1,0 +1,86 @@
+add_namespace = holo_elections
+
+#####SUISEI####
+##1936##   #snap elections start
+country_event = {
+		id = holo_elections.1
+		title = holo_elections.1.t
+		desc = holo_elections.1.d
+		picture = GFX_report_event_suisei
+		
+		is_triggered_only = yes
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.1.a
+				
+		}
+}
+
+#Election Day Violence
+country_event = {
+		id = holo_elections.2
+		title = holo_elections.2.t
+		desc = holo_elections.2.d
+		picture = GFX_report_event_suisei
+		
+		is_triggered_only = yes
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.2.a #condemn the conservatives
+			custom_effect_tooltip = "holo_election_2_tooltip"
+			hidden_effect = {
+			add_popularity {
+			ideology = democratic
+			popularity = -0.02
+			add_popularity = {
+			ideology = democratic_revitalisation
+			popularity = 0.02
+			}
+		  }
+		 }
+		}
+		option = {
+			name = holo_elections.2.b #condemn the nationalists
+			custom_effect_tooltip = "holo_election_2_tooltip"
+			hidden_effect = {
+			add_popularity = {
+			ideology = pro_resistance_nationalism
+			popularity = -0.02
+			add_popularity = {
+			ideology = democratic_revitalisation
+			popularity = 0.02
+			}
+		  }
+		 }
+		}
+		option = {
+		custom_effect_tooltip = "holo_election_2c_tooltip"
+			name = holo_elections.2.c #condemn both
+			hidden_effect = {
+			add_popularity = {
+			ideology = pro_resistance_nationalism
+			popularity = -0.01
+			}
+			add_popularity = {
+			ideology = democratic
+			popularity = -0.01
+			}
+			add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.02
+			}
+			add_popularity = {
+			ideology = pro_resistance_monarchy
+			popularity = 0.02
+			}
+			add_popularity = {
+			ideology = democratic_revitalisation
+			popularity = 0.05
+			}
+		}
+	  }
+	}

@@ -1,0 +1,146 @@
+add_namespace = eco_action
+
+##############################
+###########################################
+#Buy CIV
+country_event = {
+	id = eco_action.1
+	title = eco_action.1.t
+	desc = eco_action.1.d
+	picture = GFX_report_event_usada_cons_1
+	
+	is_triggered_only = yes
+
+	major = no
+	
+	option = {
+		name = eco_action.1.a	#Yes
+		ai_chance = { factor = 100 }
+
+		if = {
+			limit = { has_equipment = { hololive_yen_0 < 10000 } }
+			custom_effect_tooltip = CET_eco_action_civ
+		}
+		
+		if = {  
+		limit = {
+			has_equipment = {
+			hololive_yen_0 > 9999
+			}
+		}
+				add_equipment_to_stockpile = {
+				    type = hololive_yen_0
+				    amount = -10000
+				    producer = ROOT
+			    }
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+
+	option = {
+		name = eco_action.1.b	#Next to MIL
+		ai_chance = { factor = 100 }
+		country_event = {id = eco_action.2}
+	}
+
+	option = {
+		name = eco_action.1.c	#Cancel
+		ai_chance = { factor = 100 }
+	}
+}
+
+#Buy MIL
+country_event = {
+	id = eco_action.2
+	title = eco_action.2.t
+	desc = eco_action.2.d
+	picture = GFX_report_event_usada_cons_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = eco_action.2.a	#Yes
+		ai_chance = { factor = 100 }
+
+		if = {
+			limit = { has_equipment = { hololive_yen_0 < 7500 } }
+			custom_effect_tooltip = CET_eco_action_mil
+		}
+
+		if = {  
+		limit = {
+			has_equipment = {
+			hololive_yen_0 > 7499
+			}
+		}
+				add_equipment_to_stockpile = {
+				    type = hololive_yen_0
+				    amount = -7500
+				    producer = ROOT
+			    }
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+
+	option = {
+		name = eco_action.2.b	#Next to Dock
+		ai_chance = { factor = 100 }
+		country_event = {id = eco_action.3}
+		
+	}
+
+	option = {
+		name = eco_action.2.c	#Cancel
+		ai_chance = { factor = 100 }
+		
+	}
+}
+
+#Buy DOC
+country_event = {
+	id = eco_action.3
+	title = eco_action.3.t
+	desc = eco_action.3.d
+	picture = GFX_report_event_usada_cons_3
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = eco_action.3.a	#Yes
+		ai_chance = { factor = 100 }
+
+		if = {
+			limit = { has_equipment = { hololive_yen_0 < 7500 } }
+			custom_effect_tooltip = CET_eco_action_doc
+		}
+
+		if = {  
+		limit = {
+			has_equipment = {
+			hololive_yen_0 > 7499
+			}
+		}
+				add_equipment_to_stockpile = {
+				    type = hololive_yen_0
+				    amount = -7500
+				    producer = ROOT
+			    }
+			add_offsite_building = { type = dockyard level = 1 }
+		}
+	}
+
+	option = {
+		name = eco_action.3.b	#Next to Dock
+		ai_chance = { factor = 100 }
+		country_event = {id = eco_action.1}
+		
+	}
+
+	option = {
+		name = eco_action.3.c	#Cancel
+		ai_chance = { factor = 100 }
+		
+	}
+}
+
+
