@@ -1,0 +1,591 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+### Generic English division and brigade names for Enlgigh-speaking minors (or colonies) and releasable nations 
+	# YAG_xxx = British English (or universal English) naming convention
+	# AMENGL_xxx = American English naming convention
+	
+YAG_INF_01 = 
+{
+	name = "Infantry Division"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Infantry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{   1 = { "%dth Montenegro Infantry " }
+2 = { "%dth Yagooslavian Infantry " }
+3 = { "%dth Taniko Infantry " }
+4 = { "%dth Croatian Infantry " }
+5 = { "%dth Yagooslavian Infantry " }
+6 = { "%dth Taniko Infantry " }
+7 = { "%dth Yagooslavian Infantry " }
+8 = { "%dth Yagooslavian Infantry " }
+9 = { "%dth Yagoo Infantry " }
+10 = { "%dth Croatian Infantry " }
+11 = { "%dth Hololive Infantry " }
+12 = { "%dth Taniko Infantry " }
+13 = { "%dth Taniko Infantry " }
+14 = { "%dth Yagoo Infantry " }
+15 = { "%dth Croatian Infantry " }
+16 = { "%dth Croatian Infantry " }
+17 = { "%dth Bosnian Infantry " }
+18 = { "%dth Croatian Infantry " }
+19 = { "%dth Taniko Infantry " }
+20 = { "%dth Serbian Infantry " }
+21 = { "%dth Yagooslavian Infantry " }
+22 = { "%dth Sora Volunteer Infantry " }
+23 = { "%dth Hololive Infantry " }
+24 = { "%dth Taniko Infantry " }
+25 = { "%dth Yagooslavian Infantry " }
+26 = { "%dth Yagooslavian Infantry " }
+27 = { "%dth Bosnian Infantry " }
+28 = { "%dth Bosnian Infantry " }
+29 = { "%dth Croatian Infantry " }
+30 = { "%dth Montenegro Infantry " }
+31 = { "%dth Sora Volunteer Infantry " }
+32 = { "%dth Hololive Infantry " }
+33 = { "%dth Croatian Infantry " }
+34 = { "%dth Sora Volunteer Infantry " }
+35 = { "%dth Sora Volunteer Infantry " }
+36 = { "%dth Sora Volunteer Infantry " }
+37 = { "%dth Bosnian Infantry " }
+38 = { "%dth Bosnian Infantry " }
+39 = { "%dth Croatian Infantry " }
+40 = { "%dth Croatian Infantry " }
+41 = { "%dth Croatian Infantry " }
+42 = { "%dth Yagoo Infantry " }
+43 = { "%dth Taniko Infantry " }
+44 = { "%dth Macadonia Infantry " }
+45 = { "%dth Yagooslavian Infantry " }
+46 = { "%dth Taniko Infantry " }
+47 = { "%dth Serbian Infantry " }
+48 = { "%dth Taniko Infantry " }
+49 = { "%dth Bosnian Infantry " }
+50 = { "%dth Montenegro Infantry " }
+	}
+}
+
+YAG_INFB_01 = 
+{
+	name = "Infantry Brigade"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Infantry Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Infantry Brigade" }
+		2 = { "%dnd Infantry Brigade" }
+		3 = { "%drd Infantry Brigade" }
+		4 = { "%dth Infantry Brigade" }
+		5 = { "%dth Infantry Brigade" }
+		6 = { "%dth Infantry Brigade" }
+		7 = { "%dth Infantry Brigade" }
+		8 = { "%dth Infantry Brigade" }
+		9 = { "%dth Infantry Brigade" }
+		10 = { "%dth Infantry Brigade" }
+		11 = { "%dth Infantry Brigade" }
+		12 = { "%dth Infantry Brigade" }
+		13 = { "%dth Infantry Brigade" }
+		14 = { "%dth Infantry Brigade" }
+		15 = { "%dth Infantry Brigade" }
+		16 = { "%dth Infantry Brigade" }
+		17 = { "%dst Infantry Brigade" }
+		18 = { "%dnd Infantry Brigade" }
+		19 = { "%drd Infantry Brigade" }
+		20 = { "%dth Infantry Brigade" }
+		21 = { "%dst Infantry Brigade" }
+		22 = { "%dnd Infantry Brigade" }
+		23 = { "%drd Infantry Brigade" }
+	}
+}
+
+YAG_CAV_01 = 
+{
+	name = "Cavalry Division"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Cavalry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{   1 = { "%dth Yagooslavian Cavalry " }
+2 = { "%dth Hololive Cavalry " }
+3 = { "%dth Montenegro Cavalry " }
+4 = { "%dth Croatian Cavalry " }
+5 = { "%dth Bosnian Cavalry " }
+6 = { "%dth Croatian Cavalry " }
+7 = { "%dth Montenegro Cavalry " }
+8 = { "%dth Croatian Cavalry " }
+9 = { "%dth Yagoo Cavalry " }
+10 = { "%dth Montenegro Cavalry " }
+11 = { "%dth Yagoo Cavalry " }
+12 = { "%dth Bosnian Cavalry " }
+13 = { "%dth Bosnian Cavalry " }
+14 = { "%dth Macadonia Cavalry " }
+15 = { "%dth Yagoo Cavalry " }
+16 = { "%dth Serbian Cavalry " }
+17 = { "%dth Yagooslavian Cavalry " }
+18 = { "%dth Bosnian Cavalry " }
+19 = { "%dth Yagoo Cavalry " }
+20 = { "%dth Macadonia Cavalry " }
+21 = { "%dth Macadonia Cavalry " }
+22 = { "%dth Yagooslavian Cavalry " }
+23 = { "%dth Yagoo Cavalry " }
+24 = { "%dth Yagoo Cavalry " }
+25 = { "%dth Yagoo Cavalry " }
+26 = { "%dth Croatian Cavalry " }
+27 = { "%dth Montenegro Cavalry " }
+28 = { "%dth Yagoo Cavalry " }
+29 = { "%dth Croatian Cavalry " }
+30 = { "%dth Yagooslavian Cavalry " }
+31 = { "%dth Yagoo Cavalry " }
+32 = { "%dth Montenegro Cavalry " }
+33 = { "%dth Bosnian Cavalry " }
+34 = { "%dth Serbian Cavalry " }
+35 = { "%dth Yagooslavian Cavalry " }
+36 = { "%dth Croatian Cavalry " }
+37 = { "%dth Bosnian Cavalry " }
+38 = { "%dth Yagooslavian Cavalry " }
+39 = { "%dth Serbian Cavalry " }
+40 = { "%dth Yagooslavian Cavalry " }
+41 = { "%dth Sora Volunteer Cavalry " }
+42 = { "%dth Montenegro Cavalry " }
+43 = { "%dth Sora Volunteer Cavalry " }
+44 = { "%dth Taniko Cavalry " }
+45 = { "%dth Bosnian Cavalry " }
+46 = { "%dth Bosnian Cavalry " }
+47 = { "%dth Yagooslavian Cavalry " }
+48 = { "%dth Serbian Cavalry " }
+49 = { "%dth Hololive Cavalry " }
+50 = { "%dth Yagoo Cavalry " }
+	}
+}
+
+YAG_CAV_02 = 
+{
+	name = "Cavalry Brigade"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Cavalry Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Cavalry Brigade" }
+		2 = { "%dnd Cavalry Brigade" }
+		3 = { "%drd Cavalry Brigade" }
+		4 = { "%dth Cavalry Brigade" }
+		5 = { "%dth Cavalry Brigade" }
+		6 = { "%dth Cavalry Brigade" }
+		7 = { "%dth Cavalry Brigade" }
+		8 = { "%dth Cavalry Brigade" }
+		9 = { "%dth Cavalry Brigade" }
+		10 = { "%dth Cavalry Brigade" }
+	}
+}
+
+YAG_MOT_01 = 
+{
+	name = "Motorised Division"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Motorised Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Motorised Division" }
+		2 = { "%dnd Motorised Division" }
+		3 = { "%drd Motorised Division" }
+		4 = { "%dth Motorised Division" }
+		5 = { "%dth Motorised Division" }
+		6 = { "%dth Motorised Division" }
+		7 = { "%dth Motorised Division" }	
+		8 = { "%dth Motorised Division" }
+		9 = { "%dth Motorised Division" }
+		10 = { "%dth Motorised Division" }
+	}
+}
+
+YAG_MEC_01 = 
+{
+	name = "Mechanised Division"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Mechanised Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Mechanised Division" }
+		2 = { "%dnd Mechanised Division" }
+		3 = { "%drd Mechanised Division" }
+		4 = { "%dth Mechanised Division" }
+		5 = { "%dth Mechanised Division" }
+		6 = { "%dth Mechanised Division" }
+		7 = { "%dth Mechanised Division" }	
+		8 = { "%dth Mechanised Division" }
+		9 = { "%dth Mechanised Division" }
+		10 = { "%dth Mechanised Division" }
+	}
+}
+
+YAG_ARM_01 = 
+{
+	name = "Armoured Division"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Armoured Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dth Hololive Armoured " }
+2 = { "%dth Taniko Armoured " }
+3 = { "%dth Hololive Armoured " }
+4 = { "%dth Hololive Armoured " }
+5 = { "%dth Taniko Armoured " }
+6 = { "%dth Hololive Armoured " }
+7 = { "%dth Bosnian Armoured " }
+8 = { "%dth Hololive Armoured " }
+9 = { "%dth Yagooslavian Armoured " }
+10 = { "%dth Hololive Armoured " }
+11 = { "%dth Macadonia Armoured " }
+12 = { "%dth Croatian Armoured " }
+13 = { "%dth Bosnian Armoured " }
+14 = { "%dth Taniko Armoured " }
+15 = { "%dth Sora Volunteer Armoured " }
+16 = { "%dth Macadonia Armoured " }
+17 = { "%dth Serbian Armoured " }
+18 = { "%dth Taniko Armoured " }
+19 = { "%dth Yagooslavian Armoured " }
+20 = { "%dth Yagoo Armoured " }
+21 = { "%dth Yagoo Armoured " }
+22 = { "%dth Taniko Armoured " }
+23 = { "%dth Sora Volunteer Armoured " }
+24 = { "%dth Croatian Armoured " }
+25 = { "%dth Macadonia Armoured " }
+26 = { "%dth Macadonia Armoured " }
+27 = { "%dth Sora Volunteer Armoured " }
+28 = { "%dth Montenegro Armoured " }
+29 = { "%dth Bosnian Armoured " }
+30 = { "%dth Bosnian Armoured " }
+31 = { "%dth Sora Volunteer Armoured " }
+32 = { "%dth Macadonia Armoured " }
+33 = { "%dth Serbian Armoured " }
+34 = { "%dth Sora Volunteer Armoured " }
+35 = { "%dth Yagoo Armoured " }
+36 = { "%dth Taniko Armoured " }
+37 = { "%dth Bosnian Armoured " }
+38 = { "%dth Croatian Armoured " }
+39 = { "%dth Sora Volunteer Armoured " }
+40 = { "%dth Yagooslavian Armoured " }
+41 = { "%dth Sora Volunteer Armoured " }
+42 = { "%dth Hololive Armoured " }
+43 = { "%dth Taniko Armoured " }
+44 = { "%dth Yagoo Armoured " }
+45 = { "%dth Yagoo Armoured " }
+46 = { "%dth Bosnian Armoured " }
+47 = { "%dth Hololive Armoured " }
+48 = { "%dth Macadonia Armoured " }
+49 = { "%dth Yagoo Armoured " }
+50 = { "%dth Yagoo Armoured " }
+	}
+}
+
+YAG_ARM_02 = 
+{
+	name = "Tank Brigade"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Tank Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Tank Brigade" }
+		2 = { "%dnd Tank Brigade" }
+		3 = { "%drd Tank Brigade" }
+		4 = { "%dth Tank Brigade" }
+		5 = { "%dth Tank Brigade" }
+		6 = { "%dth Tank Brigade" }
+		7 = { "%dth Tank Brigade" }
+		8 = { "%dth Tank Brigade" }
+		9 = { "%dth Tank Brigade" }
+		10 = { "%dth Tank Brigade" }
+	}
+}
+
+YAG_PAR_01 = 
+{
+	name = "Airborne Division"
+
+	for_countries = { YAG } 
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Airborne Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Airborne Division" }
+		2 = { "%dnd Airborne Division" }	
+		3 = { "%drd Airborne Division" }
+		4 = { "%dth Airborne Division" }
+		5 = { "%dth Airborne Division" }
+		6 = { "%dth Airborne Division" }
+		7 = { "%dth Airborne Division" }	
+		8 = { "%dth Airborne Division" }
+		9 = { "%dth Airborne Division" }
+		10 = { "%dth Airborne Division" }
+	}
+}
+
+YAG_MAR_01 = 
+{
+	name = "Marine Division"
+
+	for_countries = { YAG} 
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Marine Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Marine Division" }
+		2 = { "%dnd Marine Division" }
+		3 = { "%drd Marine Division" }
+		4 = { "%dth Marine Division" }
+		5 = { "%dth Marine Division" }
+		6 = { "%dth Marine Division" }
+		7 = { "%dth Marine Division" }
+		8 = { "%dth Marine Division" }
+		9 = { "%dth Marine Division" }
+		10 = { "%dth Marine Division" }
+	}
+}
+
+YAG_MNT_01 = 
+{
+	name = "Mountain Division"
+
+	for_countries = {YAG} 
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Mountain Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dth Taniko Mountain " }
+2 = { "%dth Serbian Mountain " }
+3 = { "%dth Montenegro Mountain " }
+4 = { "%dth Montenegro Mountain " }
+5 = { "%dth Bosnian Mountain " }
+6 = { "%dth Yagooslavian Mountain " }
+7 = { "%dth Taniko Mountain " }
+8 = { "%dth Yagooslavian Mountain " }
+9 = { "%dth Bosnian Mountain " }
+10 = { "%dth Sora Volunteer Mountain " }
+11 = { "%dth Serbian Mountain " }
+12 = { "%dth Bosnian Mountain " }
+13 = { "%dth Bosnian Mountain " }
+14 = { "%dth Bosnian Mountain " }
+15 = { "%dth Montenegro Mountain " }
+16 = { "%dth Sora Volunteer Mountain " }
+17 = { "%dth Montenegro Mountain " }
+18 = { "%dth Hololive Mountain " }
+19 = { "%dth Taniko Mountain " }
+20 = { "%dth Sora Volunteer Mountain " }
+21 = { "%dth Hololive Mountain " }
+22 = { "%dth Serbian Mountain " }
+23 = { "%dth Macadonia Mountain " }
+24 = { "%dth Yagooslavian Mountain " }
+25 = { "%dth Yagoo Mountain " }
+26 = { "%dth Macadonia Mountain " }
+27 = { "%dth Bosnian Mountain " }
+28 = { "%dth Bosnian Mountain " }
+29 = { "%dth Montenegro Mountain " }
+30 = { "%dth Yagooslavian Mountain " }
+31 = { "%dth Bosnian Mountain " }
+32 = { "%dth Croatian Mountain " }
+33 = { "%dth Sora Volunteer Mountain " }
+34 = { "%dth Macadonia Mountain " }
+35 = { "%dth Montenegro Mountain " }
+36 = { "%dth Serbian Mountain " }
+37 = { "%dth Macadonia Mountain " }
+38 = { "%dth Yagooslavian Mountain " }
+39 = { "%dth Bosnian Mountain " }
+40 = { "%dth Sora Volunteer Mountain " }
+41 = { "%dth Hololive Mountain " }
+42 = { "%dth Macadonia Mountain " }
+43 = { "%dth Yagooslavian Mountain " }
+44 = { "%dth Yagooslavian Mountain " }
+45 = { "%dth Taniko Mountain " }
+46 = { "%dth Bosnian Mountain " }
+47 = { "%dth Hololive Mountain " }
+48 = { "%dth Yagoo Mountain " }
+49 = { "%dth Macadonia Mountain " }
+50 = { "%dth Taniko Mountain " }
+	}
+}
+
+YAG_GAR_01 = 
+{
+	name = "Garrison Division"
+
+	for_countries = { YAG} 
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { YAG_INF_01 }
+
+	fallback_name = "%dth Garrison Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Garrison Division" }
+		2 = { "%dnd Garrison Division" }
+		3 = { "%drd Garrison Division" }
+		4 = { "%dth Garrison Division" }
+		5 = { "%dth Garrison Division" }
+		6 = { "%dth Garrison Division" }
+		7 = { "%dth Garrison Division" }
+		8 = { "%dth Garrison Division" }
+		9 = { "%dth Garrison Division" }
+		10 = { "%dth Garrison Division" }
+	}
+}

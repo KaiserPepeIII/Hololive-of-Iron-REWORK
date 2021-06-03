@@ -1,0 +1,59 @@
+exile_government_alo_action_category = {
+
+	budapest_uprising_dec = {
+
+		icon = generic_ignite_civil_war
+
+		#days_re_enable = 10
+
+		allowed = {
+			
+		}
+
+		available = {
+		hidden_trigger = {
+					has_country_flag = ALO_unlock_budapest_uprising
+					NOT = { has_global_flag = budapest_up_done }}
+			NOT = { has_full_control_of_state = 43 }
+			ROOT = { has_war_with = HAT }
+		}
+
+		cost = 25
+
+		visible = {
+		    has_country_flag = ALO_unlock_budapest_uprising
+		    NOT = { has_global_flag = budapest_up_done }
+		}
+
+		complete_effect = {
+
+		hidden_effect = {
+		set_global_flag = budapest_up_done
+		news_event = { id = holo_news.23  hours = 24}
+		}
+
+		add_equipment_to_stockpile = {
+		    type = infantry_equipment
+		    amount = -1000
+		    producer = ALO
+	    }
+
+	    transfer_state = 43
+	    set_capital = 89
+
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	
+
+	
+
+}

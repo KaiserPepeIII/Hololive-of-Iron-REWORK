@@ -1,0 +1,162 @@
+scripted_gui = {
+  lhs_membership_gui = {
+    window_name = "lhs_membership_gui_window"
+    context_type = player_context
+	
+    visible = {
+		has_country_flag = view_membership
+
+    }
+
+    effects = {
+		close_button_click = {
+		clr_country_flag = view_membership
+		}
+		
+    }
+
+	dynamic_lists = {
+			lhs_member_flag_gridbox = {
+		array = global.lhs_member_flag
+		entry_container = lhs_flags_window
+		change_scope = yes
+		}
+			resistance_member_flag_gridbox = {
+		array = global.resistance_member_flag
+		entry_container = resistance_flags_window
+		change_scope = yes
+		}
+			resistance_head_flag_gridbox = {
+		array = global.resistance_head_flag
+		entry_container = resistance_head_flag_window
+		change_scope = yes
+		}
+			lhs_head_flag_gridbox = {
+		array = global.lhs_head_flag
+		entry_container = lhs_head_flag_window
+		change_scope = yes
+		}		
+	}
+	properties = {
+		lhs_flags_button = {
+			image = [THIS.GetFlag]
+		}
+		resistance_flags_button = {
+			image = [THIS.GetFlag]
+		}
+		resistance_head_flag_button = {
+			image = [THIS.GetFlag]
+		}
+		lhs_head_flag_button = {
+			image = [THIS.GetFlag]
+		}
+	}
+  }
+    lhs_member_button_gui = {
+    window_name = "lhs_member_button_window"
+    context_type = player_context
+	parent_window_token = politics_tab
+
+    visible = {
+		has_idea = lhs_member
+    }
+
+    effects = {
+		lhs_member_button_click = {
+		set_country_flag = view_membership
+		}
+    }
+
+  }
+   lhs_neutral_button_gui = {
+    window_name = "lhs_neutral_button_window"
+    context_type = player_context
+	parent_window_token = politics_tab
+
+    visible = {
+			has_idea = neutral_member
+	  }
+
+    effects = {
+		lhs_neutral_button_click = {
+		set_country_flag = view_membership
+		}
+    }
+
+  }
+  lhs_hostile_button_gui = {
+    window_name = "lhs_hostile_button_window"
+    context_type = player_context
+	parent_window_token = politics_tab
+
+
+    visible = {
+		if = {
+		limit = {
+		has_idea = resistance_member
+		}
+		else = {
+		has_idea = anti_member
+		}
+		}
+	  }
+
+    effects = {
+		lhs_hostile_button_click = {
+		set_country_flag = view_membership
+		}
+    }
+  }
+  resistance_member_button_gui = {
+    window_name = "resistance_member_button_window"
+    context_type = player_context
+	parent_window_token = politics_tab
+
+    visible = {
+		has_idea = resistance_member
+    }
+
+    effects = {
+		resistance_member_button_click = {
+		set_country_flag = view_membership
+		}
+    }
+  }
+   resistance_neutral_button_gui = {
+    window_name = "resistance_neutral_button_window"
+    context_type = player_context
+	parent_window_token = politics_tab
+
+    visible = {
+			has_idea = neutral_member
+			}
+    effects = {
+		resistance_neutral_button_click = {
+		set_country_flag = view_membership
+		}
+    }
+
+  }
+  resistance_hostile_button_gui = {
+    window_name = "resistance_hostile_button_window"
+    context_type = player_context
+	parent_window_token = politics_tab
+
+    visible = {
+		if = {
+		limit = {
+		has_idea = lhs_member
+		}
+		else = {
+		has_idea = anti_member
+		}
+		}
+    }
+
+    effects = {
+		resistance_hostile_button_click = {
+		set_country_flag = view_membership
+		}
+    }
+	}
+}

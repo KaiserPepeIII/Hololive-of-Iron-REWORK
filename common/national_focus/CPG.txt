@@ -1,0 +1,879 @@
+focus_tree = {
+	id = CPG
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CPG
+		}
+	}
+	default = no
+	continuous_focus_position = {
+	x = 7 y = 2250
+	}
+
+	focus = {
+		id = CPG_china_fate
+		icon = GFX_focus_CPG_china_fate
+		cost = 0.00
+		x = 7
+		y = 2
+
+	}
+	focus = {
+		id = CPG_prepare_chinese_army
+		icon = GFX_focus_CPG_prepare_chinese_army
+		cost = 0.00
+		x = 27
+		y = 2
+
+	}
+	focus = {
+		id = CPG_industrial_iniatiative
+		icon = GFX_focus_generic_industry_2
+		cost = 0.00
+		x = 27
+		y = 7
+
+	}
+	focus = {
+		id = CPG_conference
+		icon = GFX_focus_CPG_china_conferance
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_china_fate
+		}
+		x = 7
+		y = 3
+
+	}
+	focus = {
+		id = CPG_anti_route
+		icon = GFX_focus_CPG_anti_route
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_conference
+		}
+		mutually_exclusive = {
+			focus = CPG_aqua_route
+			focus = CPG_yagoo_route
+		}
+		x = 3
+		y = 4
+
+	}
+	focus = {
+		id = CPG_maoist_coup
+		icon = GFX_focus_CPG_maoist_coup
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_anti_route
+		}
+		x = 3
+		y = 5
+
+	}
+	focus = {
+		id = CPG_rally_people
+		icon = GFX_focus_CPG_rally_people
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_maoist_coup
+		}
+		x = 3
+		y = 6
+
+	}
+	focus = {
+		id = CPG_prepare_expedition
+		icon = GFX_focus_CPG_prepare_expedition
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_rally_people
+		}
+		x = 2
+		y = 7
+
+	}
+	focus = {
+		id = CPG_destroy_ina
+		icon = GFX_focus_CPG_take_down_ina
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_prepare_expedition
+		}
+		x = 1
+		y = 8
+
+	}
+	focus = {
+		id = CPG_destroy_luna
+		icon = GFX_focus_CPG_ally_luna
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_prepare_expedition
+		}
+		x = 3
+		y = 8
+
+	}
+	focus = {
+		id = CPG_enemy_of_enemy
+		icon = GFX_focus_CPG_enemy_of_enemy
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_rally_people
+		}
+		x = 6
+		y = 7
+
+	}
+	focus = {
+		id = CPG_ally_russia
+		icon = GFX_focus_CPG_ally_russia
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_enemy_of_enemy
+		}
+		x = 5
+		y = 8
+
+	}
+	focus = {
+		id = CPG_ally_japan
+		icon = GFX_focus_CPG_ally_japan
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_enemy_of_enemy
+		}
+		x = 7
+		y = 8
+
+	}
+	focus = {
+		id = CPG_yagoo_route
+		icon = GFX_focus_CPG_yagoo_route
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_conference
+		}
+		mutually_exclusive = {
+			focus = CPG_aqua_route
+			focus = CPG_anti_route
+			focus = CPG_aqua_route
+		}
+		x = 12
+		y = 4
+
+	}
+	focus = {
+		id = CPG_chiang_new_deal
+		icon = GFX_focus_CPG_yagoo_coorperation
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_yagoo_route
+		}
+		x = 12
+		y = 5
+
+	}
+	focus = {
+		id = CPG_qingdao_deal
+		icon = GFX_focus_CPG_qingdao_deal
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_chiang_new_deal
+		}
+		x = 13
+		y = 6
+
+	}
+	focus = {
+		id = CPG_take_down_ina
+		icon = GFX_focus_CPG_take_down_ina
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_qingdao_deal
+		}
+		mutually_exclusive = {
+			focus = CPG_ally_ina
+		}
+		x = 10
+		y = 7
+
+	}
+	focus = {
+		id = CPG_aqua_route
+		icon = GFX_focus_CPG_aqua_route
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_conference
+		}
+		mutually_exclusive = {
+			focus = CPG_yagoo_route
+			focus = CPG_anti_route
+			focus = CPG_yagoo_route
+		}
+		x = 17
+		y = 4
+
+	}
+	focus = {
+		id = CPG_chairman_wang
+		icon = GFX_focus_CPG_chairman_wang
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_aqua_route
+		}
+		x = 17
+		y = 5
+
+	}
+	focus = {
+		id = CPG_aqua_construction
+		icon = GFX_focus_CPG_aqua_construction
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_chairman_wang
+		}
+		x = 16
+		y = 6
+
+	}
+	focus = {
+		id = CPG_ally_ina
+		icon = GFX_focus_CPG_ally_ina
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_qingdao_deal
+			focus = CPG_aqua_construction
+		}
+		mutually_exclusive = {
+			focus = CPG_take_down_ina
+		}
+		x = 13
+		y = 7
+
+	}
+	focus = {
+		id = CPG_ally_luna
+		icon = GFX_focus_CPG_ally_luna
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_aqua_construction
+			focus = CPG_qingdao_deal
+		}
+		mutually_exclusive = {
+			focus = CPG_take_down_luna
+		}
+		x = 17
+		y = 7
+
+	}
+	focus = {
+		id = CPG_take_down_luna
+		icon = GFX_focus_CPG_take_down_luna
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_aqua_construction
+		}
+		mutually_exclusive = {
+			focus = CPG_ally_luna
+		}
+		x = 20
+		y = 7
+
+	}
+	focus = {
+		id = CPG_demand_yagoo_land
+		icon = GFX_focus_CPG_demand_yagooist_land
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_ally_ina
+			focus = CPG_take_down_ina
+			focus = CPG_ally_luna
+			focus = CPG_take_down_luna
+		}
+		x = 15
+		y = 8
+
+	}
+	focus = {
+		id = CPG_take_down_gura
+		icon = GFX_focus_CPG_take_down_gura
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_demand_yagoo_land
+		}
+		mutually_exclusive = {
+			focus = CPG_ally_gura
+		}
+		x = 14
+		y = 9
+
+	}
+	focus = {
+		id = CPG_promote_meritocracy
+		icon = GFX_focus_CPG_promote_meritocracy
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_prepare_chinese_army
+		}
+		x = 24
+		y = 3
+
+	}
+	focus = {
+		id = CPG_invite_japanese_officers
+		icon = GFX_focus_CPG_invite_japanese_officers
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_promote_meritocracy
+		}
+		x = 21
+		y = 4
+
+	}
+	focus = {
+		id = CPG_local_manufacturing
+		icon = GFX_focus_CPG_local_arms
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_promote_meritocracy
+		}
+		x = 24
+		y = 4
+
+	}
+	focus = {
+		id = CPG_scavange_arms
+		icon = GFX_focus_CPG_scavange_arms
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_promote_meritocracy
+		}
+		x = 26
+		y = 4
+
+	}
+	focus = {
+		id = CPG_prepare_for_worst
+		icon = GFX_focus_CPG_prepare_for_worst
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_prepare_chinese_army
+		}
+		x = 31
+		y = 3
+
+	}
+	focus = {
+		id = CPG_border_forts
+		icon = GFX_focus_CPG_border_forts
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_prepare_for_worst
+		}
+		x = 28
+		y = 4
+
+	}
+	focus = {
+		id = CPG_expand_beijing_arsenal
+		icon = GFX_focus_CPG_scavange_arms
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_industrial_iniatiative
+		}
+		x = 29
+		y = 8
+
+	}
+	focus = {
+		id = CPG_local_arms
+		icon = GFX_focus_CPG_local_arms
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_expand_beijing_arsenal
+		}
+		mutually_exclusive = {
+			focus = CPG_japanese_arms_lease
+		}
+		x = 28
+		y = 9
+
+	}
+	focus = {
+		id = CPG_beijing_line
+		icon = GFX_focus_CPG_beijing_line
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_prepare_for_worst
+		}
+		x = 30
+		y = 4
+
+	}
+	focus = {
+		id = CPG_every_man_a_gun
+		icon = GFX_focus_CPG_every_man_a_gun
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_beijing_line
+			focus = CPG_border_forts
+			focus = CPG_scavange_arms
+			focus = CPG_local_manufacturing
+		}
+		x = 29
+		y = 5
+
+	}
+	focus = {
+		id = CPG_slow_push
+		icon = GFX_focus_CPG_slow_push
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_local_manufacturing
+			focus = CPG_scavange_arms
+			focus = CPG_border_forts
+			focus = CPG_beijing_line
+			focus = CPG_border_forts
+		}
+		x = 25
+		y = 5
+
+	}
+	focus = {
+		id = CPG_local_officers_academy
+		icon = GFX_focus_CPG_local_officer_academies
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_slow_push
+			focus = CPG_every_man_a_gun
+			focus = CPG_invite_japanese_officers
+		}
+		x = 27
+		y = 6
+
+	}
+	focus = {
+		id = CPG_japanese_arms_lease
+		icon = GFX_focus_CPG_japanese_arms_lease
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_expand_beijing_arsenal
+		}
+		mutually_exclusive = {
+			focus = CPG_local_arms
+		}
+		x = 30
+		y = 9
+
+	}
+	focus = {
+		id = CPG_guns_for_everyone
+		icon = GFX_focus_CPG_every_man_a_gun
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_japanese_arms_lease
+			focus = CPG_local_arms
+		}
+		x = 29
+		y = 10
+
+	}
+	focus = {
+		id = CPG_repair_beijing_airbase
+		icon = GFX_goal_generic_air_doctrine
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_industrial_iniatiative
+		}
+		x = 32
+		y = 8
+
+	}
+	focus = {
+		id = CPG_local_planes
+		icon = GFX_focus_CPG_local_planes
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_repair_beijing_airbase
+		}
+		mutually_exclusive = {
+			focus = CPG_order_japanese_planes
+		}
+		x = 32
+		y = 9
+
+	}
+	focus = {
+		id = CPG_makeshift_airfields
+		icon = GFX_goal_generic_air_production
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_prepare_for_worst
+		}
+		x = 34
+		y = 4
+
+	}
+	focus = {
+		id = CPG_foreign_pilots
+		icon = GFX_focus_CPG_foreign_pilots
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_prepare_for_worst
+		}
+		x = 37
+		y = 4
+
+	}
+	focus = {
+		id = CPG_request_japan_planes
+		icon = GFX_focus_CPG_order_japanese_planes
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_makeshift_airfields
+		}
+		prerequisite = {
+			focus = CPG_foreign_pilots
+		}
+		x = 34
+		y = 5
+
+	}
+	focus = {
+		id = CPG_order_japanese_planes
+		icon = GFX_focus_CPG_order_japanese_planes
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_repair_beijing_airbase
+		}
+		mutually_exclusive = {
+			focus = CPG_local_planes
+		}
+		x = 34
+		y = 9
+
+	}
+	focus = {
+		id = CPG_ally_gura
+		icon = GFX_focus_CPG_ally_gura
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_demand_yagoo_land
+		}
+		mutually_exclusive = {
+			focus = CPG_take_down_gura
+		}
+		x = 16
+		y = 9
+
+	}
+	focus = {
+		id = CPG_ally_towa
+		icon = GFX_focus_CPG_ally_towa
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_take_down_gura
+			focus = CPG_ally_gura
+		}
+		mutually_exclusive = {
+			focus = CPG_take_down_towa
+		}
+		x = 11
+		y = 10
+
+	}
+	focus = {
+		id = CPG_take_down_towa
+		icon = GFX_focus_CPG_take_down_towa
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_take_down_gura
+			focus = CPG_ally_gura
+		}
+		mutually_exclusive = {
+			focus = CPG_ally_towa
+		}
+		x = 14
+		y = 10
+
+	}
+	focus = {
+		id = CPG_take_down_watame
+		icon = GFX_focus_CPG_take_down_watame
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_ally_gura
+			focus = CPG_take_down_gura
+		}
+		mutually_exclusive = {
+			focus = CPG_ally_watame
+		}
+		x = 16
+		y = 10
+
+	}
+	focus = {
+		id = CPG_ally_watame
+		icon = GFX_focus_CPG_ally_watame
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_ally_gura
+			focus = CPG_take_down_gura
+		}
+		mutually_exclusive = {
+			focus = CPG_take_down_watame
+		}
+		x = 19
+		y = 10
+
+	}
+	focus = {
+		id = CPG_proclaim_one_china
+		icon = GFX_focus_CPG_proclaim_one_china
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_take_down_towa
+		}
+		prerequisite = {
+			focus = CPG_take_down_watame
+		}
+		prerequisite = {
+			focus = CPG_take_down_gura
+		}
+		prerequisite = {
+			focus = CPG_take_down_luna
+		}
+		prerequisite = {
+			focus = CPG_take_down_ina
+		}
+		x = 15
+		y = 11
+
+	}
+	focus = {
+		id = CPG_chinese_federation
+		icon = GFX_focus_CPG_chinese_federation
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_ally_watame
+		}
+		prerequisite = {
+			focus = CPG_ally_towa
+		}
+		prerequisite = {
+			focus = CPG_ally_gura
+		}
+		prerequisite = {
+			focus = CPG_ally_luna
+		}
+		prerequisite = {
+			focus = CPG_ally_ina
+		}
+		x = 18
+		y = 11
+
+	}
+	focus = {
+		id = CPG_destroy_gura
+		icon = GFX_focus_CPG_take_down_gura
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_destroy_luna
+		}
+		prerequisite = {
+			focus = CPG_destroy_ina
+		}
+		x = 2
+		y = 9
+
+	}
+	focus = {
+		id = CPG_demand_yagoist_land
+		icon = GFX_focus_CPG_demand_yagooist_land
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_destroy_gura
+		}
+		x = 2
+		y = 10
+
+	}
+	focus = {
+		id = CPG_destroy_towa
+		icon = GFX_focus_CPG_take_down_towa
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_demand_yagoist_land
+		}
+		x = 1
+		y = 11
+
+	}
+	focus = {
+		id = CPG_destroy_watame
+		icon = GFX_focus_CPG_take_down_watame
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_demand_yagoist_land
+		}
+		x = 3
+		y = 11
+
+	}
+	focus = {
+		id = CPG_destroy_nene
+		icon = GFX_focus_CPG_destroy_nene
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_destroy_towa
+		}
+		prerequisite = {
+			focus = CPG_destroy_watame
+		}
+		x = 2
+		y = 12
+
+	}
+	focus = {
+		id = CPG_proclaim_prc
+		icon = GFX_focus_CPG_proclaim_prc
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_destroy_nene
+		}
+		x = 2
+		y = 13
+
+	}
+	focus = {
+		id = CPG_rapid_industrialization
+		icon = GFX_focus_CPG_rapid_industrialization
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_proclaim_prc
+		}
+		x = 2
+		y = 14
+
+	}
+	focus = {
+		id = CPG_destroy_japan
+		icon = GFX_focus_CPG_destroy_japan
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_proclaim_prc
+		}
+		x = 6
+		y = 14
+
+	}
+	focus = {
+		id = CPG_simplify_language
+		icon = GFX_focus_CPG_simplify_language
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_rapid_industrialization
+		}
+		x = 2
+		y = 15
+
+	}
+	focus = {
+		id = CPG_chinese_science
+		icon = GFX_focus_CPG_chinese_science
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_rapid_industrialization
+		}
+		x = 4
+		y = 15
+
+	}
+	focus = {
+		id = CPG_modernise_agriculture
+		icon = GFX_focus_CPG_modernize_agriculture
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_rapid_industrialization
+		}
+		x = 6
+		y = 15
+
+	}
+	focus = {
+		id = CPG_sino_soviet_union
+		icon = GFX_focus_CPG_sinosoviet_union
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_modernise_agriculture
+		}
+		prerequisite = {
+			focus = CPG_chinese_science
+		}
+		prerequisite = {
+			focus = CPG_simplify_language
+		}
+		x = 4
+		y = 16
+
+	}
+	focus = {
+		id = CPG_end_century_embarassement
+		icon = GFX_focus_CPG_end_century_humiliation
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_proclaim_one_china
+		}
+		x = 15
+		y = 12
+
+	}
+	focus = {
+		id = CPG_a_new_era
+		icon = GFX_focus_CPG_new_era
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_chinese_federation
+		}
+		x = 18
+		y = 12
+
+	}
+	focus = {
+		id = CPG_promote_local_industry
+		icon = GFX_focus_CPG_local_arms
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_industrial_iniatiative
+		}
+		x = 25
+		y = 8
+
+	}
+	focus = {
+		id = CPG_expand_railways
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_promote_local_industry
+		}
+		x = 25
+		y = 9
+
+	}
+	focus = {
+		id = CPG_expand_beijing_university
+		icon = GFX_focus_research
+		cost = 0.00
+		prerequisite = {
+			focus = CPG_expand_railways
+		}
+		x = 25
+		y = 10
+
+	}
+}

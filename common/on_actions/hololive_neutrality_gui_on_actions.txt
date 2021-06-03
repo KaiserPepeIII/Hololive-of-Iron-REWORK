@@ -1,0 +1,80 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					NOT = {
+						has_idea = lhs_member
+						OR = {
+						has_idea = resistance_member
+						}
+						OR = {
+						has_idea = anti_member
+						}
+						OR = {
+						has_idea = resistance_head
+						}
+					}
+				}
+				add_ideas = neutral_member
+			}
+			every_country = {
+				limit = {
+					if = {
+						limit = {
+						has_idea = lhs_member
+						}
+						else_if = {
+						limit = {
+						has_idea = resistance_member
+							}
+						}
+						else = {
+						has_idea = neutral_member
+						}
+						}
+					}
+				add_ideas = hololive_state
+			}
+			every_country = {
+				limit = { 	
+				NOT = {
+					tag = YAG
+				}
+				has_idea = lhs_member
+					}
+				add_to_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			 }
+			 every_country = {
+				limit = { 	
+				has_idea = resistance_member
+					}
+				add_to_array = {
+					array = global.resistance_member_flag
+					value = THIS.id
+				}
+			 }
+			 every_country = {
+				limit = { 	
+				has_idea = resistance_head
+					}
+				add_to_array = {
+					array = global.resistance_head_flag
+					value = THIS.id
+				}
+			 }
+			 every_country = {
+				limit = { 	
+				tag = YAG
+					}
+				add_to_array = {
+					array = global.lhs_head_flag
+					value = THIS.id
+				}
+			 }
+		}
+	}
+}
