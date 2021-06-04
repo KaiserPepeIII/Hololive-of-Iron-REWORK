@@ -18,5 +18,5 @@ tags={
 	"Technologies"
 }
 name="Holove"
-supported_version="1.10.5"
+supported_version="1.10.6"
 path="C:/Users/Benja/OneDrive/Desktop/Documents/Paradox Interactive/Hearts of Iron IV/mod/cocaine"
