@@ -1,0 +1,2088 @@
+focus_tree = {
+	id = SUI
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SUI
+		}
+	}
+	default = no
+	focus = {
+		id = SUI_emergency_measures
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 14
+		y = 2
+
+	}
+	focus = {
+		id = SUI_resistance_diplomacy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 47
+		y = 2
+
+	}
+	focus = {
+		id = SUI_deal_with_france
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 49
+		y = 2
+
+	}
+	focus = {
+		id = SUI_suicopath_military
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 51
+		y = 6
+
+	}
+	focus = {
+		id = SUI_tropical_goods_recover_effort
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 58
+		y = 1
+
+	}
+	focus = {
+		id = SUI_bail_out_colonies
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_emergency_measures
+		}
+		x = 11
+		y = 3
+
+	}
+	focus = {
+		id = SUI_damage_control
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_emergency_measures
+		}
+		x = 13
+		y = 3
+
+	}
+	focus = {
+		id = SUI_organise_soup_kitchens
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_damage_control
+		}
+		prerequisite = {
+			focus = SUI_bail_out_colonies
+		}
+		x = 12
+		y = 4
+
+	}
+	focus = {
+		id = SUI_bail_out_businesses
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_emergency_measures
+		}
+		mutually_exclusive = {
+			focus = SUI_let_them_fail
+		}
+		x = 15
+		y = 3
+
+	}
+	focus = {
+		id = SUI_let_them_fail
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_emergency_measures
+		}
+		mutually_exclusive = {
+			focus = SUI_bail_out_businesses
+		}
+		x = 17
+		y = 3
+
+	}
+	focus = {
+		id = SUI_economic_recovery_plan
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_let_them_fail
+			focus = SUI_bail_out_businesses
+		}
+		x = 16
+		y = 4
+
+	}
+	focus = {
+		id = SUI_new_elections
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_economic_recovery_plan
+		}
+		prerequisite = {
+			focus = SUI_organise_soup_kitchens
+		}
+		x = 14
+		y = 5
+
+	}
+	focus = {
+		id = SUI_pro_yagoo_coalition_wins
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_new_elections
+		}
+		mutually_exclusive = {
+			focus = SUI_pro_resistance_coalition_wins
+			focus = SUI_royalist_coalition_wins
+		}
+		x = 9
+		y = 6
+
+	}
+	focus = {
+		id = SUI_pro_resistance_coalition_wins
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_new_elections
+		}
+		mutually_exclusive = {
+			focus = SUI_pro_yagoo_coalition_wins
+			focus = SUI_royalist_coalition_wins
+		}
+		x = 19
+		y = 6
+
+	}
+	focus = {
+		id = SUI_new_economic_plan
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_pro_resistance_coalition_wins
+		}
+		x = 19
+		y = 7
+
+	}
+	focus = {
+		id = SUI_revolutionary_economics
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_new_economic_plan
+		}
+		mutually_exclusive = {
+			focus = SUI_work_family_fatherland
+		}
+		x = 17
+		y = 8
+
+	}
+	focus = {
+		id = SUI_forty_hour_weekday
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_revolutionary_economics
+		}
+		x = 13
+		y = 9
+
+	}
+	focus = {
+		id = SUI_raise_minimum_wage
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_revolutionary_economics
+		}
+		x = 15
+		y = 9
+
+	}
+	focus = {
+		id = SUI_work_family_fatherland
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_new_economic_plan
+		}
+		mutually_exclusive = {
+			focus = SUI_revolutionary_economics
+		}
+		x = 21
+		y = 8
+
+	}
+	focus = {
+		id = SUI_help_farmers
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_work_family_fatherland
+		}
+		x = 21
+		y = 9
+
+	}
+	focus = {
+		id = SUI_modernization_program_agricultture
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_help_farmers
+		}
+		x = 21
+		y = 10
+
+	}
+	focus = {
+		id = SUI_modern_methods
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_modernization_program_agricultture
+		}
+		x = 21
+		y = 11
+
+	}
+	focus = {
+		id = SUI_let_them_eat_yakiniku
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_help_farmers
+		}
+		x = 23
+		y = 10
+
+	}
+	focus = {
+		id = SUI_public_pensions
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_let_them_eat_yakiniku
+		}
+		x = 23
+		y = 11
+
+	}
+	focus = {
+		id = SUI_consumer_goods_agriculture
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_help_farmers
+		}
+		x = 25
+		y = 10
+
+	}
+	focus = {
+		id = SUI_bread_basket_western_europe
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_consumer_goods_agriculture
+		}
+		x = 25
+		y = 11
+
+	}
+	focus = {
+		id = SUI_export_agriculture
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_consumer_goods_agriculture
+		}
+		x = 27
+		y = 11
+
+	}
+	focus = {
+		id = SUI_ruralisation
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_export_agriculture
+		}
+		prerequisite = {
+			focus = SUI_bread_basket_western_europe
+		}
+		x = 26
+		y = 12
+
+	}
+	focus = {
+		id = SUI_industrialisation
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_work_family_fatherland
+		}
+		x = 29
+		y = 9
+
+	}
+	focus = {
+		id = SUI_light_industrial_ethos
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_industrialisation
+		}
+		x = 29
+		y = 10
+
+	}
+	focus = {
+		id = SUI_work_gacha
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_industrialisation
+		}
+		x = 31
+		y = 10
+
+	}
+	focus = {
+		id = SUI_reduce_urban_unemployment
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_light_industrial_ethos
+		}
+		prerequisite = {
+			focus = SUI_work_gacha
+		}
+		x = 30
+		y = 11
+
+	}
+	focus = {
+		id = SUI_traditional_economics
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_ruralisation
+		}
+		prerequisite = {
+			focus = SUI_public_pensions
+		}
+		prerequisite = {
+			focus = SUI_modern_methods
+		}
+		prerequisite = {
+			focus = SUI_reduce_urban_unemployment
+		}
+		x = 26
+		y = 13
+
+	}
+	focus = {
+		id = SUI_royalist_coalition_wins
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_new_elections
+		}
+		mutually_exclusive = {
+			focus = SUI_pro_yagoo_coalition_wins
+			focus = SUI_pro_resistance_coalition_wins
+		}
+		x = 38
+		y = 6
+
+	}
+	focus = {
+		id = SUI_suisei_mo_kawaii_ne
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_royalist_coalition_wins
+		}
+		x = 37
+		y = 7
+
+	}
+	focus = {
+		id = SUI_suicopath_intimidation
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_royalist_coalition_wins
+		}
+		x = 39
+		y = 7
+
+	}
+	focus = {
+		id = SUI_rally_hoshiyomi
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_intimidation
+		}
+		prerequisite = {
+			focus = SUI_suisei_mo_kawaii_ne
+		}
+		x = 38
+		y = 8
+
+	}
+	focus = {
+		id = SUI_deal_with_depression
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_rally_hoshiyomi
+		}
+		x = 35
+		y = 9
+
+	}
+	focus = {
+		id = SUI_job_gacha_roll
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_deal_with_depression
+		}
+		x = 33
+		y = 10
+
+	}
+	focus = {
+		id = SUI_gacha_economics
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_job_gacha_roll
+		}
+		x = 32
+		y = 11
+
+	}
+	focus = {
+		id = SUI_electronic_goods
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_gacha_economics
+		}
+		x = 31
+		y = 12
+
+	}
+	focus = {
+		id = SUI_concert_recovery
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_deal_with_depression
+		}
+		x = 37
+		y = 10
+
+	}
+	focus = {
+		id = SUI_idol_step
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_concert_recovery
+		}
+		x = 37
+		y = 11
+
+	}
+	focus = {
+		id = SUI_export_music
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_concert_recovery
+		}
+		x = 39
+		y = 11
+
+	}
+	focus = {
+		id = SUI_international_hoshiyomi_migration
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_idol_step
+		}
+		prerequisite = {
+			focus = SUI_export_music
+		}
+		x = 38
+		y = 12
+
+	}
+	focus = {
+		id = SUI_suicopath_policy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_rally_hoshiyomi
+		}
+		x = 41
+		y = 9
+
+	}
+	focus = {
+		id = SUI_public_broadcasting
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_policy
+		}
+		x = 41
+		y = 10
+
+	}
+	focus = {
+		id = SUI_ensemble_fans
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_policy
+		}
+		x = 43
+		y = 10
+
+	}
+	focus = {
+		id = SUI_youth_division
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_public_broadcasting
+		}
+		prerequisite = {
+			focus = SUI_ensemble_fans
+		}
+		x = 42
+		y = 11
+
+	}
+	focus = {
+		id = SUI_radio_personality
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_youth_division
+		}
+		x = 41
+		y = 12
+
+	}
+	focus = {
+		id = SUI_a_few_reasons_we_love_suisei
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_youth_division
+		}
+		x = 43
+		y = 12
+
+	}
+	focus = {
+		id = SUI_orderly_blood_type
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_radio_personality
+		}
+		prerequisite = {
+			focus = SUI_a_few_reasons_we_love_suisei
+		}
+		x = 42
+		y = 13
+
+	}
+	focus = {
+		id = SUI_annex_miko
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_resistance_diplomacy
+		}
+		mutually_exclusive = {
+			focus = SUI_encourage_miko
+		}
+		x = 44
+		y = 3
+
+	}
+	focus = {
+		id = SUI_encourage_miko
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_resistance_diplomacy
+		}
+		mutually_exclusive = {
+			focus = SUI_annex_miko
+		}
+		x = 46
+		y = 3
+
+	}
+	focus = {
+		id = SUI_encourage_pekora
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_resistance_diplomacy
+		}
+		mutually_exclusive = {
+			focus = SUI_annex_usagi
+		}
+		x = 48
+		y = 3
+
+	}
+	focus = {
+		id = SUI_annex_usagi
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_resistance_diplomacy
+		}
+		mutually_exclusive = {
+			focus = SUI_encourage_pekora
+		}
+		x = 50
+		y = 3
+
+	}
+	focus = {
+		id = SUI_anti_yagoo_bulwark
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_encourage_pekora
+			focus = SUI_encourage_miko
+			focus = SUI_annex_usagi
+			focus = SUI_annex_miko
+		}
+		x = 47
+		y = 4
+
+	}
+	focus = {
+		id = SUI_annex_watson
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_anti_yagoo_bulwark
+		}
+		x = 46
+		y = 5
+
+	}
+	focus = {
+		id = SUI_meticulous_training
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_military
+		}
+		x = 50
+		y = 7
+
+	}
+	focus = {
+		id = SUI_absolute_fidelity
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_military
+		}
+		x = 52
+		y = 7
+
+	}
+	focus = {
+		id = SUI_suicopath_army
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_meticulous_training
+		}
+		prerequisite = {
+			focus = SUI_absolute_fidelity
+		}
+		x = 47
+		y = 8
+
+	}
+	focus = {
+		id = SUI_shock_units
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_army
+		}
+		mutually_exclusive = {
+			focus = SUI_shock_and_awe
+		}
+		x = 45
+		y = 9
+
+	}
+	focus = {
+		id = SUI_shock_and_awe
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_army
+		}
+		mutually_exclusive = {
+			focus = SUI_shock_units
+		}
+		x = 49
+		y = 9
+
+	}
+	focus = {
+		id = SUI_land_air_coordination
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_shock_and_awe
+			focus = SUI_shock_units
+		}
+		x = 47
+		y = 10
+
+	}
+	focus = {
+		id = SUI_suicopath_artillery
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_shock_and_awe
+		}
+		x = 49
+		y = 10
+
+	}
+	focus = {
+		id = SUI_suicopath_motorised
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_shock_units
+		}
+		x = 45
+		y = 10
+
+	}
+	focus = {
+		id = SUI_terror_in_foes
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_artillery
+			focus = SUI_suicopath_motorised
+		}
+		x = 47
+		y = 11
+
+	}
+	focus = {
+		id = SUI_annex_subaru
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_anti_yagoo_bulwark
+		}
+		x = 48
+		y = 5
+
+	}
+	focus = {
+		id = SUI_strategic_destruction
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_artillery
+		}
+		x = 49
+		y = 11
+
+	}
+	focus = {
+		id = SUI_meticulous_planning
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_strategic_destruction
+		}
+		x = 49
+		y = 12
+
+	}
+	focus = {
+		id = SUI_suicopath_navy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_absolute_fidelity
+		}
+		prerequisite = {
+			focus = SUI_meticulous_training
+		}
+		x = 54
+		y = 8
+
+	}
+	focus = {
+		id = SUI_nice_port
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_navy
+		}
+		x = 53
+		y = 9
+
+	}
+	focus = {
+		id = SUI_tropical_goods_recovery_europe
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_tropical_goods_recover_effort
+		}
+		x = 56
+		y = 2
+
+	}
+	focus = {
+		id = SUI_chocolate_artisans
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_tropical_goods_recovery_europe
+		}
+		x = 55
+		y = 3
+
+	}
+	focus = {
+		id = SUI_tropical_goods_manufacturing
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_tropical_goods_recovery_europe
+		}
+		x = 57
+		y = 3
+
+	}
+	focus = {
+		id = SUI_expand_port_facilities
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_tropical_goods_manufacturing
+		}
+		prerequisite = {
+			focus = SUI_chocolate_artisans
+		}
+		x = 56
+		y = 4
+
+	}
+	focus = {
+		id = SUI_foreign_demand
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_expand_port_facilities
+		}
+		x = 54
+		y = 5
+
+	}
+	focus = {
+		id = SUI_local_demand
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_expand_port_facilities
+		}
+		x = 56
+		y = 5
+
+	}
+	focus = {
+		id = SUI_renewed_efforts
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_local_demand
+		}
+		prerequisite = {
+			focus = SUI_foreign_demand
+		}
+		x = 55
+		y = 6
+
+	}
+	focus = {
+		id = SUI_expand_port_marseille
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_navy
+		}
+		x = 55
+		y = 9
+
+	}
+	focus = {
+		id = SUI_coastal_defense
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_expand_port_marseille
+		}
+		prerequisite = {
+			focus = SUI_nice_port
+		}
+		x = 56
+		y = 10
+
+	}
+	focus = {
+		id = SUI_convoy_raiding
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_nice_port
+		}
+		prerequisite = {
+			focus = SUI_expand_port_marseille
+		}
+		x = 52
+		y = 10
+
+	}
+	focus = {
+		id = SUI_unrestricted_submarine_warfare
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_convoy_raiding
+		}
+		x = 51
+		y = 11
+
+	}
+	focus = {
+		id = SUI_scourge_of_mediterranean
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_convoy_raiding
+		}
+		x = 53
+		y = 11
+
+	}
+	focus = {
+		id = SUI_coastal_forts
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_coastal_defense
+		}
+		x = 57
+		y = 11
+
+	}
+	focus = {
+		id = SUI_light_ships
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_coastal_defense
+		}
+		x = 55
+		y = 11
+
+	}
+	focus = {
+		id = SUI_expand_coastal_garrisons
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_coastal_forts
+		}
+		prerequisite = {
+			focus = SUI_light_ships
+		}
+		x = 56
+		y = 12
+
+	}
+	focus = {
+		id = SUI_tropical_goods_recovery_africa
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_tropical_goods_recover_effort
+		}
+		x = 60
+		y = 2
+
+	}
+	focus = {
+		id = SUI_bolster_security
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_tropical_goods_recovery_africa
+		}
+		x = 59
+		y = 3
+
+	}
+	focus = {
+		id = SUI_suicopath_airforce
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_absolute_fidelity
+		}
+		prerequisite = {
+			focus = SUI_meticulous_training
+		}
+		x = 61
+		y = 8
+
+	}
+	focus = {
+		id = SUI_suicopath_aces
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_airforce
+		}
+		mutually_exclusive = {
+			focus = SUI_aerial_dominance
+		}
+		x = 59
+		y = 9
+
+	}
+	focus = {
+		id = SUI_ace_focus
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_aces
+		}
+		x = 59
+		y = 10
+
+	}
+	focus = {
+		id = SUI_protect_tade_routes
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_tropical_goods_recovery_africa
+		}
+		x = 61
+		y = 3
+
+	}
+	focus = {
+		id = SUI_modern_methods
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_bolster_security
+		}
+		prerequisite = {
+			focus = SUI_protect_tade_routes
+		}
+		x = 60
+		y = 4
+
+	}
+	focus = {
+		id = SUI_quality_wood
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_modern_methods
+		}
+		x = 58
+		y = 5
+
+	}
+	focus = {
+		id = SUI_palm_oil_plantations
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_modern_methods
+		}
+		x = 60
+		y = 5
+
+	}
+	focus = {
+		id = SUI_quality_rubber
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_modern_methods
+		}
+		x = 62
+		y = 5
+
+	}
+	focus = {
+		id = SUI_support_colonial_ventures
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_palm_oil_plantations
+		}
+		prerequisite = {
+			focus = SUI_quality_rubber
+		}
+		prerequisite = {
+			focus = SUI_quality_wood
+		}
+		x = 60
+		y = 6
+
+	}
+	focus = {
+		id = SUI_aerial_dominance
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_airforce
+		}
+		mutually_exclusive = {
+			focus = SUI_suicopath_aces
+		}
+		x = 63
+		y = 9
+
+	}
+	focus = {
+		id = SUI_cheap_planes
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_aerial_dominance
+		}
+		x = 62
+		y = 10
+
+	}
+	focus = {
+		id = SUI_continue_recovery_plan
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_pro_yagoo_coalition_wins
+		}
+		x = 9
+		y = 7
+
+	}
+	focus = {
+		id = SUI_rejoin_lhs
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_continue_recovery_plan
+		}
+		x = 2
+		y = 8
+
+	}
+	focus = {
+		id = SUI_lhs_loan
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_rejoin_lhs
+		}
+		x = 3
+		y = 9
+
+	}
+	focus = {
+		id = SUI_encourage_lhs_investment
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_rejoin_lhs
+		}
+		x = 1
+		y = 9
+
+	}
+	focus = {
+		id = SUI_tackle_unemployment
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_continue_recovery_plan
+		}
+		x = 5
+		y = 8
+
+	}
+	focus = {
+		id = SUI_deladier_plan
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_tackle_unemployment
+		}
+		x = 5
+		y = 9
+
+	}
+	focus = {
+		id = SUI_national_industry
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_deladier_plan
+		}
+		x = 5
+		y = 10
+
+	}
+	focus = {
+		id = SUI_increase_productivity
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_deladier_plan
+		}
+		x = 7
+		y = 10
+
+	}
+	focus = {
+		id = SUI_marseille_port
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_continue_recovery_plan
+		}
+		x = 10
+		y = 8
+
+	}
+	focus = {
+		id = SUI_support_shipping_industry
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_marseille_port
+		}
+		x = 9
+		y = 9
+
+	}
+	focus = {
+		id = SUI_civilian_factory_investment
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_marseille_port
+		}
+		x = 11
+		y = 9
+
+	}
+	focus = {
+		id = SUI_lhs_recovery_plan
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_lhs_loan
+		}
+		prerequisite = {
+			focus = SUI_encourage_lhs_investment
+		}
+		x = 2
+		y = 10
+
+	}
+	focus = {
+		id = SUI_restart_colonial_trade
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_support_shipping_industry
+		}
+		x = 9
+		y = 10
+
+	}
+	focus = {
+		id = SUI_heavy_industry_invetment
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_civilian_factory_investment
+		}
+		x = 11
+		y = 10
+
+	}
+	focus = {
+		id = SUI_final_civilian_industry_push
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_heavy_industry_invetment
+		}
+		prerequisite = {
+			focus = SUI_restart_colonial_trade
+		}
+		x = 10
+		y = 11
+
+	}
+	focus = {
+		id = SUI_efficiency_ethos
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_increase_productivity
+		}
+		prerequisite = {
+			focus = SUI_national_industry
+		}
+		x = 6
+		y = 11
+
+	}
+	focus = {
+		id = SUI_full_depression_recovery
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_efficiency_ethos
+		}
+		prerequisite = {
+			focus = SUI_final_civilian_industry_push
+		}
+		prerequisite = {
+			focus = SUI_lhs_recovery_plan
+		}
+		x = 7
+		y = 12
+
+	}
+	focus = {
+		id = SUI_formalize_lhs_alliance
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_full_depression_recovery
+		}
+		x = 5
+		y = 13
+
+	}
+	focus = {
+		id = SUI_kyou_mo_kawaii
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_full_depression_recovery
+		}
+		x = 9
+		y = 13
+
+	}
+	focus = {
+		id = SUI_expand_state_industry
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_revolutionary_economics
+		}
+		x = 17
+		y = 9
+
+	}
+	focus = {
+		id = SUI_heavy_industry
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_raise_minimum_wage
+		}
+		prerequisite = {
+			focus = SUI_expand_state_industry
+		}
+		x = 16
+		y = 10
+
+	}
+	focus = {
+		id = SUI_nationalize_failing_businesses
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_expand_state_industry
+		}
+		x = 18
+		y = 10
+
+	}
+	focus = {
+		id = SUI_welfare_hard_times
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_raise_minimum_wage
+		}
+		prerequisite = {
+			focus = SUI_forty_hour_weekday
+		}
+		x = 14
+		y = 10
+
+	}
+	focus = {
+		id = SUI_assist_pensioners
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_welfare_hard_times
+		}
+		x = 14
+		y = 11
+
+	}
+	focus = {
+		id = SUI_nationalize_banks
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_heavy_industry
+		}
+		prerequisite = {
+			focus = SUI_nationalize_failing_businesses
+		}
+		x = 17
+		y = 11
+
+	}
+	focus = {
+		id = SUI_peoples_car
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_nationalize_banks
+		}
+		x = 15
+		y = 12
+
+	}
+	focus = {
+		id = SUI_modernization_investments
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_nationalize_banks
+		}
+		x = 17
+		y = 12
+
+	}
+	focus = {
+		id = SUI_work_lottery
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_nationalize_banks
+		}
+		x = 19
+		y = 12
+
+	}
+	focus = {
+		id = SUI_expand_public_works
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_modernization_investments
+		}
+		prerequisite = {
+			focus = SUI_work_lottery
+		}
+		prerequisite = {
+			focus = SUI_peoples_car
+		}
+		x = 17
+		y = 13
+
+	}
+	focus = {
+		id = SUI_resistance_cooperation
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_expand_public_works
+			focus = SUI_traditional_economics
+		}
+		x = 21
+		y = 14
+
+	}
+	focus = {
+		id = SUI_increase_resistance_trade
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_resistance_cooperation
+		}
+		x = 21
+		y = 15
+
+	}
+	focus = {
+		id = SUI_full_recovery
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_increase_resistance_trade
+		}
+		x = 21
+		y = 16
+
+	}
+	focus = {
+		id = SUI_independent_market
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_deal_with_depression
+		}
+		x = 35
+		y = 10
+
+	}
+	focus = {
+		id = SUI_self_sufficiency
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_independent_market
+		}
+		x = 35
+		y = 11
+
+	}
+	focus = {
+		id = SUI_support_gambling
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_gacha_economics
+		}
+		x = 33
+		y = 12
+
+	}
+	focus = {
+		id = SUI_suisei_many_talents
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_self_sufficiency
+		}
+		x = 35
+		y = 12
+
+	}
+	focus = {
+		id = SUI_full_suisei_recovery
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suisei_many_talents
+		}
+		prerequisite = {
+			focus = SUI_international_hoshiyomi_migration
+		}
+		prerequisite = {
+			focus = SUI_support_gambling
+		}
+		prerequisite = {
+			focus = SUI_electronic_goods
+		}
+		x = 35
+		y = 13
+
+	}
+	focus = {
+		id = SUI_suisei_la_reine
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_orderly_blood_type
+		}
+		prerequisite = {
+			focus = SUI_full_suisei_recovery
+		}
+		x = 39
+		y = 14
+
+	}
+	focus = {
+		id = SUI_war_france
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suisei_la_reine
+		}
+		x = 40
+		y = 15
+
+	}
+	focus = {
+		id = SUI_independent_pact_miko
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suisei_la_reine
+		}
+		x = 38
+		y = 15
+
+	}
+	focus = {
+		id = SUI_peko_suisei_alliance
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_war_france
+		}
+		prerequisite = {
+			focus = SUI_independent_pact_miko
+		}
+		x = 39
+		y = 16
+
+	}
+	focus = {
+		id = SUI_foie_gras
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_peko_suisei_alliance
+		}
+		x = 37
+		y = 17
+
+	}
+	focus = {
+		id = SUI_invade_kiarra
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_peko_suisei_alliance
+		}
+		x = 41
+		y = 17
+
+	}
+	focus = {
+		id = SUI_invade_germany
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_invade_kiarra
+		}
+		prerequisite = {
+			focus = SUI_foie_gras
+		}
+		x = 39
+		y = 18
+
+	}
+	focus = {
+		id = SUI_north_africa_plan
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_peko_suisei_alliance
+		}
+		x = 44
+		y = 17
+
+	}
+	focus = {
+		id = SUI_demand_libya_egypt
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_north_africa_plan
+		}
+		x = 44
+		y = 18
+
+	}
+	focus = {
+		id = SUI_rabbit_stew
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_demand_libya_egypt
+		}
+		x = 44
+		y = 19
+
+	}
+	focus = {
+		id = SUI_install_anemachi_italy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_rabbit_stew
+		}
+		x = 44
+		y = 20
+
+	}
+	focus = {
+		id = SUI_warplan_tspin
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_independent_pact_miko
+		}
+		x = 34
+		y = 16
+
+	}
+	focus = {
+		id = SUI_demand_catalonia
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_warplan_tspin
+		}
+		x = 34
+		y = 17
+
+	}
+	focus = {
+		id = SUI_invade_miko
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_demand_catalonia
+		}
+		x = 34
+		y = 18
+
+	}
+	focus = {
+		id = SUI_invade_portugal
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_invade_miko
+		}
+		x = 34
+		y = 19
+
+	}
+	focus = {
+		id = SUI_german_occupation
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_invade_germany
+		}
+		mutually_exclusive = {
+			focus = SUI_azki_federation
+		}
+		x = 38
+		y = 19
+
+	}
+	focus = {
+		id = SUI_azki_federation
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_invade_germany
+		}
+		mutually_exclusive = {
+			focus = SUI_german_occupation
+		}
+		x = 40
+		y = 19
+
+	}
+	focus = {
+		id = SUI_revenge_knight_cup
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_azki_federation
+			focus = SUI_german_occupation
+		}
+		x = 39
+		y = 20
+
+	}
+	focus = {
+		id = SUI_northern_campaign
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_revenge_knight_cup
+		}
+		x = 34
+		y = 21
+
+	}
+	focus = {
+		id = SUI_revenge_waterloo
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_revenge_knight_cup
+		}
+		x = 37
+		y = 21
+
+	}
+	focus = {
+		id = SUI_bohemian_puppet
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_revenge_knight_cup
+		}
+		prerequisite = {
+			focus = SUI_install_anemachi_italy
+		}
+		x = 44
+		y = 21
+
+	}
+	focus = {
+		id = SUI_suiss_puppet
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_bohemian_puppet
+		}
+		x = 43
+		y = 22
+
+	}
+	focus = {
+		id = SUI_austrian_annex
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_bohemian_puppet
+		}
+		x = 45
+		y = 22
+
+	}
+	focus = {
+		id = SUI_cause_of_all_evils
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_revenge_knight_cup
+		}
+		x = 40
+		y = 21
+
+	}
+	focus = {
+		id = SUI_aloe_proposition
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_cause_of_all_evils
+		}
+		x = 41
+		y = 22
+
+	}
+	focus = {
+		id = SUI_sora_offer
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_cause_of_all_evils
+		}
+		x = 39
+		y = 22
+
+	}
+	focus = {
+		id = SUI_take_british_states
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_revenge_waterloo
+		}
+		x = 37
+		y = 22
+
+	}
+	focus = {
+		id = SUI_puppet_scandinavia
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_northern_campaign
+		}
+		x = 34
+		y = 22
+
+	}
+	focus = {
+		id = SUI_suicopath_empress
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_aloe_proposition
+		}
+		prerequisite = {
+			focus = SUI_sora_offer
+		}
+		prerequisite = {
+			focus = SUI_suiss_puppet
+		}
+		prerequisite = {
+			focus = SUI_austrian_annex
+		}
+		prerequisite = {
+			focus = SUI_take_british_states
+		}
+		prerequisite = {
+			focus = SUI_puppet_scandinavia
+		}
+		x = 40
+		y = 23
+
+	}
+	focus = {
+		id = SUI_suicopath_submarines
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_scourge_of_mediterranean
+		}
+		prerequisite = {
+			focus = SUI_unrestricted_submarine_warfare
+		}
+		x = 52
+		y = 12
+
+	}
+	focus = {
+		id = SUI_shock_tanks
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_suicopath_motorised
+		}
+		x = 45
+		y = 11
+
+	}
+	focus = {
+		id = SUI_blitz_doctrine
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_shock_tanks
+		}
+		x = 45
+		y = 12
+
+	}
+	focus = {
+		id = SUI_most_feared_army
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_meticulous_planning
+			focus = SUI_blitz_doctrine
+		}
+		x = 47
+		y = 13
+
+	}
+	focus = {
+		id = SUI_comet_fighters
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_aerial_dominance
+		}
+		x = 64
+		y = 10
+
+	}
+	focus = {
+		id = SUI_bolster_airfields
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SUI_ace_focus
+			focus = SUI_cheap_planes
+			focus = SUI_comet_fighters
+		}
+		x = 61
+		y = 11
+
+	}
+}
