@@ -9,12 +9,33 @@ focus_tree = {
 	}
 	default = no
 	
-	continuous_focus_position = { x = 5 y = 12 }
+	continuous_focus_position = { x = 60 y = 150 }
 	
 	focus = {
 		id = SUI_emergency_measures
 		icon = GFX_focus_SUI_emergency_measures
-		cost = 0.00
+		cost = 5.00
+		
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		always = yes
+		}
+		
+		available_if_capitulated = yes
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		search_filters = {Political}
+	
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = great_depression_suisei
+				add_idea = great_depression_suisei_one
+			}
+			add_political_power = 75
+		}
+		
 		x = 14
 		y = 2
 
@@ -23,6 +44,9 @@ focus_tree = {
 		id = SUI_resistance_diplomacy
 		icon = GFX_focus_SUI_resistance_diplomacy
 		cost = 0.00
+		allow_branch = {
+		has_country_flag = SUI_resistance_win
+		}
 		x = 47
 		y = 2
 
@@ -31,6 +55,9 @@ focus_tree = {
 		id = SUI_deal_with_france
 		icon = GFX_focus_SUI_deal_with_france
 		cost = 0.00
+		allow_branch = {
+		has_country_flag = SUI_resistance_win
+		}
 		x = 49
 		y = 2
 
@@ -39,6 +66,26 @@ focus_tree = {
 		id = SUI_suicopath_military
 		icon = GFX_focus_SUI_suicopath_military
 		cost = 0.00
+		allow_branch = {
+		has_country_flag = SUI_resistance_win
+		OR = {
+		has_country_flag = SUI_yagooists_win
+		}
+		}
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		x = 51
 		y = 6
 
@@ -46,7 +93,46 @@ focus_tree = {
 	focus = {
 		id = SUI_tropical_goods_recover_effort
 		icon = GFX_focus_SUI_tropical_goods_recover_effort
-		cost = 0.00
+		cost = 8.00
+		allow_branch = {
+		has_country_flag = SUI_resistance_win
+		OR = {
+		has_country_flag = SUI_yagooists_win
+		}
+		}
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		always = yes
+		}
+		
+		available_if_capitulated = yes
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		search_filters = {Industry}
+	
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = sui_extreme_colonial_unrest
+				add_idea = sui_major_colonial_unrest
+			}
+		}
+			
 		x = 58
 		y = 1
 
@@ -54,10 +140,31 @@ focus_tree = {
 	focus = {
 		id = SUI_bail_out_colonies
 		icon = GFX_focus_SUI_bail_out_colonies
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		always = yes
+		}
+		
+		available_if_capitulated = yes
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		search_filters = {Political}
+	
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = sui_extreme_colonial_unrest
+				add_idea = sui_major_colonial_unrest
+			}
+			add_political_power = -125
+			add_stability = 0.05
+		}
+		
 		x = 11
 		y = 3
 
@@ -65,7 +172,7 @@ focus_tree = {
 	focus = {
 		id = SUI_damage_control
 		icon = GFX_focus_SUI_damage_control
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
@@ -76,7 +183,7 @@ focus_tree = {
 	focus = {
 		id = SUI_organise_soup_kitchens
 		icon = GFX_focus_SUI_organize_soup_kitchens
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = SUI_damage_control
 		}
@@ -90,7 +197,7 @@ focus_tree = {
 	focus = {
 		id = SUI_bail_out_businesses
 		icon = GFX_focus_SUI_bail_out_businesses
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
@@ -104,7 +211,7 @@ focus_tree = {
 	focus = {
 		id = SUI_let_them_fail
 		icon = GFX_focus_SUI_let_them_fail
-		cost = 0.00
+		cost = 2.00
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
@@ -118,7 +225,7 @@ focus_tree = {
 	focus = {
 		id = SUI_economic_recovery_plan
 		icon = GFX_focus_SUI_economic_recovery_plan
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = SUI_let_them_fail
 			focus = SUI_bail_out_businesses
@@ -130,7 +237,7 @@ focus_tree = {
 	focus = {
 		id = SUI_new_elections
 		icon = GFX_focus_SUI_new_elections
-		cost = 0.00
+		cost = 7.00
 		prerequisite = {
 			focus = SUI_economic_recovery_plan
 		}
@@ -145,6 +252,10 @@ focus_tree = {
 		id = SUI_pro_yagoo_coalition_wins
 		icon = GFX_focus_SUI_pro_yagoo_coalition_wins
 		cost = 0.00
+		
+		allow_branch = {
+		has_country_flag = SUI_yagooists_win
+		}
 		prerequisite = {
 			focus = SUI_new_elections
 		}
@@ -160,6 +271,9 @@ focus_tree = {
 		id = SUI_pro_resistance_coalition_wins
 		icon = GFX_focus_SUI_pro_resistance_coalition_wins
 		cost = 0.00
+		allow_branch = {
+		has_country_flag = SUI_resistance_win
+		}
 		prerequisite = {
 			focus = SUI_new_elections
 		}
@@ -405,6 +519,9 @@ focus_tree = {
 		id = SUI_royalist_coalition_wins
 		icon = GFX_focus_SUI_royalist_coalition_wins
 		cost = 0.00
+		allow_branch = {
+		has_country_flag = SUI_royalists_win
+		}
 		prerequisite = {
 			focus = SUI_new_elections
 		}
@@ -711,6 +828,20 @@ focus_tree = {
 		id = SUI_meticulous_training
 		icon = GFX_focus_SUI_meticulous_training
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_military
 		}
@@ -722,6 +853,20 @@ focus_tree = {
 		id = SUI_absolute_fidelity
 		icon = GFX_focus_SUI_absolute_fidelity
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_military
 		}
@@ -733,6 +878,20 @@ focus_tree = {
 		id = SUI_suicopath_army
 		icon = GFX_focus_SUI_suicioath_army
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_meticulous_training
 		}
@@ -747,6 +906,20 @@ focus_tree = {
 		id = SUI_shock_units
 		icon = GFX_focus_SUI_shock_units
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_army
 		}
@@ -760,6 +933,20 @@ focus_tree = {
 	focus = {
 		id = SUI_shock_and_awe
 		icon = GFX_focus_SUI_shock_and_awe
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		cost = 0.00
 		prerequisite = {
 			focus = SUI_suicopath_army
@@ -775,6 +962,20 @@ focus_tree = {
 		id = SUI_land_air_coordination
 		icon = GFX_focus_SUI_land_coordination
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_shock_and_awe
 			focus = SUI_shock_units
@@ -787,6 +988,20 @@ focus_tree = {
 		id = SUI_suicopath_artillery
 		icon = GFX_focus_SUI_suiciopath_artillery
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_shock_and_awe
 		}
@@ -798,6 +1013,20 @@ focus_tree = {
 		id = SUI_suicopath_motorised
 		icon = GFX_focus_SUI_suicopath_motorised
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_shock_units
 		}
@@ -809,6 +1038,20 @@ focus_tree = {
 		id = SUI_terror_in_foes
 		icon = GFX_focus_SUI_terror_in_foes
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_artillery
 			focus = SUI_suicopath_motorised
@@ -832,6 +1075,20 @@ focus_tree = {
 		id = SUI_strategic_destruction
 		icon = GFX_focus_SUI_strategic_destruction
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_artillery
 		}
@@ -843,6 +1100,20 @@ focus_tree = {
 		id = SUI_meticulous_planning
 		icon = GFX_focus_SUI_meticulous_planning
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_strategic_destruction
 		}
@@ -854,6 +1125,20 @@ focus_tree = {
 		id = SUI_suicopath_navy
 		icon = GFX_focus_SUI_suicopath_navy
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_absolute_fidelity
 		}
@@ -868,6 +1153,20 @@ focus_tree = {
 		id = SUI_nice_port
 		icon = GFX_focus_SUI_nice_port
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}		
 		prerequisite = {
 			focus = SUI_suicopath_navy
 		}
@@ -879,6 +1178,20 @@ focus_tree = {
 		id = SUI_tropical_goods_recovery_europe
 		icon = GFX_focus_SUI_tropical_goods_recovery_europe
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recover_effort
 		}
@@ -890,6 +1203,20 @@ focus_tree = {
 		id = SUI_chocolate_artisans
 		icon = GFX_focus_SUI_chocolate_artisans
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_europe
 		}
@@ -901,6 +1228,13 @@ focus_tree = {
 		id = SUI_tropical_goods_manufacturing
 		icon = GFX_focus_SUI_tropical_goods_manufacturing
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_europe
 		}
@@ -912,6 +1246,20 @@ focus_tree = {
 		id = SUI_expand_port_facilities
 		icon = GFX_focus_SUI_expand_port_facilities
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_tropical_goods_manufacturing
 		}
@@ -926,6 +1274,20 @@ focus_tree = {
 		id = SUI_foreign_demand
 		icon = GFX_focus_SUI_foreign_demand
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_expand_port_facilities
 		}
@@ -937,6 +1299,20 @@ focus_tree = {
 		id = SUI_local_demand
 		icon = GFX_focus_SUI_local_demand
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_expand_port_facilities
 		}
@@ -948,6 +1324,20 @@ focus_tree = {
 		id = SUI_renewed_efforts
 		icon = GFX_focus_SUI_renewed_efforts
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_local_demand
 		}
@@ -962,6 +1352,20 @@ focus_tree = {
 		id = SUI_expand_port_marseille
 		icon = GFX_focus_SUI_expand_port_marseille
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_navy
 		}
@@ -973,6 +1377,20 @@ focus_tree = {
 		id = SUI_coastal_defense
 		icon = GFX_focus_SUI_coastal_defense
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_expand_port_marseille
 		}
@@ -987,6 +1405,20 @@ focus_tree = {
 		id = SUI_convoy_raiding
 		icon = GFX_focus_SUI_convoy_raiding
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_nice_port
 		}
@@ -1001,6 +1433,20 @@ focus_tree = {
 		id = SUI_unrestricted_submarine_warfare
 		icon = GFX_focus_SUI_unrestricted_submarine_warfare
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_convoy_raiding
 		}
@@ -1012,6 +1458,20 @@ focus_tree = {
 		id = SUI_scourge_of_mediterranean
 		icon = GFX_focus_SUI_scourge_of_mediterranean
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_convoy_raiding
 		}
@@ -1023,6 +1483,20 @@ focus_tree = {
 		id = SUI_coastal_forts
 		icon = GFX_focus_SUI_coastal_forts
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_coastal_defense
 		}
@@ -1034,6 +1508,20 @@ focus_tree = {
 		id = SUI_light_ships
 		icon = GFX_focus_SUI_light_ships
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_coastal_defense
 		}
@@ -1045,6 +1533,20 @@ focus_tree = {
 		id = SUI_expand_coastal_garrisons
 		icon = GFX_focus_SUI_expand_coastal_garrisons
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_coastal_forts
 		}
@@ -1059,6 +1561,20 @@ focus_tree = {
 		id = SUI_tropical_goods_recovery_africa
 		icon = GFX_focus_SUI_tropical_goods_recovery_africa
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recover_effort
 		}
@@ -1070,6 +1586,20 @@ focus_tree = {
 		id = SUI_bolster_security
 		icon = GFX_focus_SUI_bolster_security
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_africa
 		}
@@ -1081,6 +1611,20 @@ focus_tree = {
 		id = SUI_suicopath_airforce
 		icon = GFX_focus_SUI_suicopath_airforce
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_absolute_fidelity
 		}
@@ -1095,6 +1639,20 @@ focus_tree = {
 		id = SUI_suicopath_aces
 		icon = GFX_focus_SUI_suicopath_aces
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_airforce
 		}
@@ -1109,6 +1667,20 @@ focus_tree = {
 		id = SUI_ace_focus
 		icon = GFX_focus_SUI_ace_focus
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_aces
 		}
@@ -1120,6 +1692,20 @@ focus_tree = {
 		id = SUI_protect_tade_routes
 		icon = GFX_focus_SUI_protect_trade_routes
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_africa
 		}
@@ -1128,9 +1714,23 @@ focus_tree = {
 
 	}
 	focus = {
-		id = SUI_modern_methods
+		id = SUI_goods_modern_methods
 		icon = GFX_focus_SUI_modern_methods
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_bolster_security
 		}
@@ -1145,8 +1745,22 @@ focus_tree = {
 		id = SUI_quality_wood
 		icon = GFX_focus_SUI_quality_wood
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
-			focus = SUI_modern_methods
+			focus = SUI_goods_modern_methods
 		}
 		x = 58
 		y = 5
@@ -1156,8 +1770,22 @@ focus_tree = {
 		id = SUI_palm_oil_plantations
 		icon = GFX_focus_SUI_palm_oil_plantations
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
-			focus = SUI_modern_methods
+			focus = SUI_goods_modern_methods
 		}
 		x = 60
 		y = 5
@@ -1167,8 +1795,22 @@ focus_tree = {
 		id = SUI_quality_rubber
 		icon = GFX_focus_SUI_quality_rubber
 		cost = 0.00
+			offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
-			focus = SUI_modern_methods
+			focus = SUI_goods_modern_methods
 		}
 		x = 62
 		y = 5
@@ -1178,6 +1820,20 @@ focus_tree = {
 		id = SUI_support_colonial_ventures
 		icon = GFX_focus_SUI_support_colonial_ventures
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_palm_oil_plantations
 		}
@@ -1195,6 +1851,20 @@ focus_tree = {
 		id = SUI_aerial_dominance
 		icon = GFX_focus_SUI_aerial_dominance
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_airforce
 		}
@@ -1209,6 +1879,20 @@ focus_tree = {
 		id = SUI_cheap_planes
 		icon = GFX_focus_SUI_cheap_planes
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_aerial_dominance
 		}
@@ -2020,6 +2704,20 @@ focus_tree = {
 		id = SUI_suicopath_submarines
 		icon = GFX_focus_SUI_suicopath_submarines
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_scourge_of_mediterranean
 		}
@@ -2034,6 +2732,20 @@ focus_tree = {
 		id = SUI_shock_tanks
 		icon = GFX_focus_SUI_shock_tanks
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_suicopath_motorised
 		}
@@ -2045,6 +2757,20 @@ focus_tree = {
 		id = SUI_blitz_doctrine
 		icon = GFX_focus_SUI_blitz_doctrine
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_shock_tanks
 		}
@@ -2056,6 +2782,20 @@ focus_tree = {
 		id = SUI_most_feared_army
 		icon = GFX_focus_SUI_most_feared_army
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_meticulous_planning
 			focus = SUI_blitz_doctrine
@@ -2068,6 +2808,20 @@ focus_tree = {
 		id = SUI_comet_fighters
 		icon = GFX_focus_SUI_comet_fighters
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}	
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_aerial_dominance
 		}
@@ -2079,6 +2833,20 @@ focus_tree = {
 		id = SUI_bolster_airfields
 		icon = GFX_focus_SUI_bolster_airfields
 		cost = 0.00
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_yagooists_win
+			}
+		}		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_country_flag = SUI_resistance_win
+			}
+		}
 		prerequisite = {
 			focus = SUI_ace_focus
 			focus = SUI_cheap_planes

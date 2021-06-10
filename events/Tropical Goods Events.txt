@@ -1,0 +1,35 @@
+#Tropical Goods Events
+
+add_namespace = tropical
+
+country_event = {
+	id = tropical.1
+	title = tropical.1.t
+	desc = tropical.1.d
+	picture = GFX_report_event_suisei
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		check_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 26
+			compare = more_than
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tropical_goods_market_poor
+			}
+			swap_ideas = {
+				remove_idea = tropical_goods_market_poor
+				add_idea = tropical_goods_market_mediocre
+			}
+		}
+	}
+	option = {
+		name = tropical.1.a
+	}
+}
