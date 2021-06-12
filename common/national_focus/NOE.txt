@@ -12,6 +12,13 @@ focus_tree = {
 		id = NOE_serfdom_debate #automatically done after the end of the council, variable + pp effect
 		icon = GFX_goal_unknown
 		cost = 0.00
+		effect = {
+		add_political_power = 100
+		set_variable = { 
+			var = var_serfdom_debate
+			value = 1
+		}
+	  }
 		x = 13
 		y = 1
 
@@ -20,6 +27,12 @@ focus_tree = {
 		id = NOE_flare_predicament #boost relation
 		icon = GFX_goal_unknown
 		cost = 0.00
+		effect = {
+		reverse_add_opinion_modifier = {
+		target = FLA
+		modifier = Noel_and_Flare
+		}
+	   }
 		x = 55
 		y = 1
 
@@ -28,6 +41,11 @@ focus_tree = {
 		id = NOE_surrounded_by_powers #mild defense bonus 
 		icon = GFX_goal_unknown
 		cost = 0.00
+		effect = {
+		add_ideas = {
+		surrounded_by_powers
+		}
+	  }
 		x = 55
 		y = 6
 
@@ -39,6 +57,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_professional_army
 		}
+		swap_ideas = {
+		remove_idea = NOE_peasant_levees
+		add_idea = NOE_feudal_army
+	  }
 		x = 68
 		y = 1
 
@@ -50,6 +72,11 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_feudal_army
 		}
+		effect = {
+		add_idea = {
+		NOE_professionalization
+		}
+	   }
 		x = 71
 		y = 1
 
