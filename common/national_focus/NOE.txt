@@ -12,12 +12,8 @@ focus_tree = {
 		id = NOE_serfdom_debate #automatically done after the end of the council, variable + pp effect
 		icon = GFX_goal_unknown
 		cost = 0.00
-		effect = {
+		completion_reward = {
 		add_political_power = 100
-		set_variable = { 
-			var = var_serfdom_debate
-			value = 1
-		}
 	  }
 		x = 13
 		y = 1
@@ -27,7 +23,7 @@ focus_tree = {
 		id = NOE_flare_predicament #boost relation
 		icon = GFX_goal_unknown
 		cost = 0.00
-		effect = {
+		completion_reward = {
 		reverse_add_opinion_modifier = {
 		target = FLA
 		modifier = Noel_and_Flare
@@ -41,7 +37,7 @@ focus_tree = {
 		id = NOE_surrounded_by_powers #mild defense bonus 
 		icon = GFX_goal_unknown
 		cost = 0.00
-		effect = {
+		completion_reward = {
 		add_ideas = {
 		surrounded_by_powers
 		}
@@ -72,7 +68,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_feudal_army
 		}
-		effect = {
+		completion_reward = {
 		add_idea = {
 		NOE_professionalization
 		}
@@ -85,6 +81,9 @@ focus_tree = {
 		id = NOE_marine_focus #experience
 		icon = GFX_goal_unknown
 		cost = 0.00
+		completion_reward = {
+		navy_experience = 25
+		}
 		x = 71
 		y = 7
 
@@ -93,6 +92,12 @@ focus_tree = {
 		id = NOE_depression_economics #modify depression idea
 		icon = GFX_goal_unknown
 		cost = 0.00
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = ####Add the idea here when George finishes making it
+		}
+	   }
 		x = 42
 		y = 1
 
@@ -104,6 +109,16 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_bankruptcy_for_them
 		}
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = ####Add the idea here when George finishes making it
+		}
+		add_idea = {
+		bankrupt_noblemen
+		}
+	   }
+		
 		x = 45
 		y = 1
 
@@ -115,6 +130,15 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_bail_out_noblemen
 		}
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = ####Add the idea here when George finishes making it
+		}
+		add_idea = {
+		bail_out_noblemen
+		}
+	   }
 		x = 49
 		y = 1
 
@@ -126,6 +150,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_serfdom_debate
 		}
+		completion_reward = {
+		country_event = {
+		id = NOE_event.12
+		days = 1
+		}
+	   }
 		x = 12
 		y = 2
 
@@ -137,6 +167,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_serfdom_debate
 		}
+		completion_reward = {
+		country_event = {
+		id = NOE_event.13
+		days = 1
+		}
+	   }
 		x = 14
 		y = 2
 
@@ -153,6 +189,9 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = NOE_amelioration_proposals
+		}
+		completion_reward = {
+		#### Yeah i dont know how to do variable help me Kaiser-paisen
 		}
 		x = 13
 		y = 3
@@ -176,6 +215,9 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_work_with_industrialists
 		}
+		completion_reward = {
+		add_political_power = 150
+		}
 		x = 6
 		y = 5
 
@@ -186,6 +228,28 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_increase_executive_power
+		}
+		completion_reward = {
+		add_popularity = {
+    ideology = new nationalism
+    popularity = 0.03
+}
+add_popularity = {
+    ideology = democratic revitalisation
+    popularity = 0.03
+}
+add_popularity = {
+    ideology = pro-yagoo conservatism
+    popularity = 0.03
+}
+add_popularity = {
+    ideology = pro-yagoo progressivism
+    popularity = 0.03
+}
+add_popularity = {
+    ideology = mixed ideology democracy
+    popularity = 0.03
+}
 		}
 		x = 5
 		y = 6
@@ -253,6 +317,9 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_fight_against_serfdom
 		}
+		completion_reward = {
+		add_political_power = 50
+		}
 		x = 15
 		y = 4
 
@@ -308,6 +375,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_work_with_erder_front
 		}
+		completion_reward = {
+		add_political_power = -50
+		stability = -0.1
+		}
 		x = 20
 		y = 5
 
@@ -341,6 +412,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_no_serfs_in_towns
 		}
+		completion_reward = {
+		stability = 0.1
+		country_event = {
+		id = NOE_event.12
+		}
+	   }
 		x = 19
 		y = 7
 
@@ -352,6 +429,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_stricter_nobility_punishments
 		}
+		completion_reward = {
+		stability = 0.05
+		add_idea = {
+		farmers_encouraged
+		}
+	   }
 		x = 22
 		y = 6
 
