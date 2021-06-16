@@ -45,7 +45,7 @@ focus_tree = {
 		icon = GFX_focus_SUI_resistance_diplomacy
 		cost = 0.00
 		allow_branch = {
-		has_country_flag = SUI_resistance_win
+		has_country_flag = SUI_had_elections
 		}
 		x = 47
 		y = 2
@@ -56,7 +56,7 @@ focus_tree = {
 		icon = GFX_focus_SUI_deal_with_france
 		cost = 0.00
 		allow_branch = {
-		has_country_flag = SUI_resistance_win
+		has_country_flag = SUI_had_elections
 		}
 		x = 49
 		y = 2
@@ -67,23 +67,23 @@ focus_tree = {
 		icon = GFX_focus_SUI_suicopath_military
 		cost = 0.00
 		allow_branch = {
-		has_country_flag = SUI_resistance_win
+		has_country_flag = SUI_had_elections
 		OR = {
-		has_country_flag = SUI_yagooists_win
+		has_country_flag = SUI_had_elections
 		}
 		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		x = 51
@@ -95,23 +95,23 @@ focus_tree = {
 		icon = GFX_focus_SUI_tropical_goods_recover_effort
 		cost = 8.00
 		allow_branch = {
-		has_country_flag = SUI_resistance_win
+		has_country_flag = SUI_had_elections
 		OR = {
-		has_country_flag = SUI_yagooists_win
+		has_country_flag = SUI_had_elections
 		}
 		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		ai_will_do = {
@@ -222,6 +222,17 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = SUI_let_them_fail
 		}
+		completion_reward = {
+			add_timed_idea = {
+			idea = sui_businesses_bailed_out
+			days = 180
+			}
+			swap_ideas = {
+			remove_idea = great_depression_suisei_two
+			add_idea = great_depression_suisei_three
+			}
+			add_political_power = -150
+		}
 		x = 15
 		y = 3
 
@@ -236,6 +247,21 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = SUI_bail_out_businesses
 		}
+		completion_reward = {
+			add_timed_idea = {
+			idea = sui_businesses_ignored
+			days = 210
+			}
+			swap_ideas = {
+			remove_idea = great_depression_suisei_two
+			add_idea = great_depression_suisei_four
+			}
+			add_stability = -0.05
+			add_popularity= {
+				ideology = democratic
+				popularity = -0.03
+			}
+		}
 		x = 17
 		y = 3
 
@@ -247,6 +273,12 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_let_them_fail
 			focus = SUI_bail_out_businesses
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.02
+			}
 		}
 		x = 16
 		y = 4
@@ -262,6 +294,12 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_organise_soup_kitchens
 		}
+		completion_reward = {	
+			country_event = {
+				id = holo_elections.1
+				days = 1
+			}
+		}
 		x = 14
 		y = 5
 
@@ -272,7 +310,7 @@ focus_tree = {
 		cost = 0.00
 		
 		allow_branch = {
-		has_country_flag = SUI_yagooists_win
+		has_country_flag = SUI_had_elections
 		}
 		prerequisite = {
 			focus = SUI_new_elections
@@ -290,7 +328,7 @@ focus_tree = {
 		icon = GFX_focus_SUI_pro_resistance_coalition_wins
 		cost = 0.00
 		allow_branch = {
-		has_country_flag = SUI_resistance_win
+		has_country_flag = SUI_had_elections
 		}
 		prerequisite = {
 			focus = SUI_new_elections
@@ -850,14 +888,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -875,14 +913,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -900,14 +938,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -928,14 +966,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -955,14 +993,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		cost = 0.00
@@ -984,14 +1022,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1010,14 +1048,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1035,14 +1073,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1060,14 +1098,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1097,14 +1135,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1122,14 +1160,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1147,14 +1185,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1175,14 +1213,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		prerequisite = {
@@ -1200,14 +1238,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1225,14 +1263,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1250,7 +1288,7 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1268,14 +1306,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1296,14 +1334,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1321,14 +1359,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1346,14 +1384,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1374,14 +1412,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1399,14 +1437,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1427,14 +1465,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1455,14 +1493,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1480,14 +1518,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1505,14 +1543,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1530,14 +1568,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1555,14 +1593,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1583,14 +1621,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1608,14 +1646,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1633,14 +1671,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1661,14 +1699,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1689,14 +1727,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1714,14 +1752,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1739,14 +1777,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1767,14 +1805,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1792,14 +1830,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1817,14 +1855,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1842,14 +1880,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1873,14 +1911,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -1901,14 +1939,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -2726,14 +2764,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -2754,14 +2792,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -2779,14 +2817,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -2804,14 +2842,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -2830,14 +2868,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}	
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {
@@ -2855,14 +2893,14 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				has_country_flag = SUI_yagooists_win
+				has_country_flag = SUI_had_elections
 			}
 		}		
 		offset = {
 			x = -15
 			y = 0
 			trigger = {
-				has_country_flag = SUI_resistance_win
+				has_country_flag = SUI_had_elections
 			}
 		}
 		prerequisite = {

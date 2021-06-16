@@ -14,11 +14,14 @@ country_event = {
 		
 		option = {
 			name = holo_elections.1.a
-				
+			country_event = {
+			id = holo_elections.2
+			days = 3
+			}
 		}
 }
 
-#Election Day Violence
+#Election Violence
 country_event = {
 		id = holo_elections.2
 		title = holo_elections.2.t
@@ -36,13 +39,17 @@ country_event = {
 			add_popularity {
 			ideology = democratic
 			popularity = -0.02
+			}
 			add_popularity = {
 			ideology = democratic_revitalisation
 			popularity = 0.02
 			}
+			country_event = {
+			id = holo_elections.3
+			days = 2
+			}
 		  }
 		 }
-		}
 		option = {
 			name = holo_elections.2.b #condemn the nationalists
 			custom_effect_tooltip = "holo_election_2_tooltip"
@@ -50,13 +57,17 @@ country_event = {
 			add_popularity = {
 			ideology = pro_resistance_nationalism
 			popularity = -0.02
+			}
 			add_popularity = {
 			ideology = democratic_revitalisation
 			popularity = 0.02
 			}
+			country_event = {
+			id = holo_elections.3
+			days = 2
+			}
 		  }
 		 }
-		}
 		option = {
 		custom_effect_tooltip = "holo_election_2c_tooltip"
 			name = holo_elections.2.c #condemn both
@@ -81,6 +92,264 @@ country_event = {
 			ideology = democratic_revitalisation
 			popularity = 0.05
 			}
+			country_event = {
+			id = holo_elections.3
+			days = 2
+			}
+		  }
 		}
-	  }
-	}
+}
+#Election results - Pre-Result event
+country_event = {
+		id = holo_elections.3
+		title = holo_elections.3.t
+		desc = holo_elections.3.d
+		picture = GFX_report_event_suisei
+		
+		is_triggered_only = yes
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.3.a
+			hidden_effect = {
+				set_country_flag = election_time  
+				election_set_variables_effect = yes
+				election_count_yagoo_effect = yes
+				election_count_resistance_effect = yes
+				election_count_neutral_autocrat = yes
+				election_count_monarchists_effect = yes
+			}
+		}
+}
+#Election Results - Conservative landslide
+country_event = {
+		id = holo_elections.4
+		title = holo_elections.4.t
+		desc = holo_elections.4.d
+		picture = GFX_report_event_suisei
+		
+		trigger = {
+			has_country_flag = election_time
+			yagoo_conservative_victory = yes
+		}
+		
+		mean_time_to_happen = {	days = 1}		
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.4.a
+			set_country_flag = SUI_had_elections
+			add_stability = 0.05
+				set_politics = {
+				ruling_party = democratic
+				}
+			hidden_effect = {
+			clear_election_variables = yes
+			}
+			}
+}
+#Election Results - Nationalist landslide
+country_event = {
+		id = holo_elections.5
+		title = holo_elections.5.t
+		desc = holo_elections.5.d
+		picture = GFX_report_event_suisei
+		
+		trigger = {
+			has_country_flag = election_time
+			resistance_nationalist_victory = yes
+		}
+		
+		mean_time_to_happen = {	days = 1}		
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.5.a
+			set_country_flag = SUI_had_elections
+			add_stability = 0.05
+				set_politics = {
+				ruling_party = pro_resistance_nationalism
+				}
+			hidden_effect = {
+			clear_election_variables = yes
+			}
+			}
+}
+#Election Results - Resistance Coalition
+country_event = {
+		id = holo_elections.6
+		title = holo_elections.6.t
+		desc = holo_elections.6.d
+		picture = GFX_report_event_suisei
+		
+		trigger = {
+			has_country_flag = election_time
+			resistance_victory_trigger = yes
+		}
+		
+		mean_time_to_happen = {	days = 1}		
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.6.a
+			set_country_flag = SUI_had_elections
+			add_stability = -0.05
+				country_event = {
+				id = holo_elections.7
+				days = 1
+				}
+			hidden_effect = {
+			clear_election_variables = yes
+			}
+			}
+}
+#Resistance Coalition - Leading Partner?
+country_event = {
+		id = holo_elections.7
+		title = holo_elections.7.t
+		desc = holo_elections.7.d
+		picture = GFX_report_event_suisei
+		
+		is_triggered_only = yes
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.7.a
+			set_politics = {
+			ruling_party = pro_resistance_nationalism
+			}
+			set_country_flag = SUI_revolutionary_compromises
+		}
+		option = {
+			name = holo_elections.7.b
+			set_politics = {
+			ruling_party = communism
+			}
+			set_country_flag = SUI_nationalist_compromises
+		}
+}
+#Election Results - Yagooist Coalition
+country_event = {
+		id = holo_elections.8
+		title = holo_elections.8.t
+		desc = holo_elections.8.d
+		picture = GFX_report_event_suisei
+		
+		trigger = {
+			has_country_flag = election_time
+			yagooist_victory_trigger = yes
+		}
+		
+		mean_time_to_happen = {	days = 1}		
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.8.a
+			set_country_flag = SUI_had_elections
+			add_stability = -0.05
+				country_event = {
+				id = holo_elections.9
+				days = 1
+				}
+			hidden_effect = {
+			clear_election_variables = yes
+			}
+		}
+}
+#Yagooist Coalition - Leading Partner?
+country_event = {
+		id = holo_elections.9
+		title = holo_elections.9.t
+		desc = holo_elections.9.d
+		picture = GFX_report_event_suisei
+		
+		is_triggered_only = yes
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.9.a
+			set_politics = {
+			ruling_party = democratic
+			}
+			set_country_flag = SUI_progressive_compromise
+		}
+		option = {
+			name = holo_elections.9.b
+			set_politics = {
+			ruling_party = pro_yagoo_progressive
+			}
+			set_country_flag = SUI_conservative_compromises
+		}
+}
+#Election Results - Monarchist Coalition
+country_event = {
+		id = holo_elections.10
+		title = holo_elections.10.t
+		desc = holo_elections.10.d
+		picture = GFX_report_event_suisei
+		
+		trigger = {
+			has_country_flag = election_time
+			monarchist_victory_trigger = yes
+		}
+		
+		mean_time_to_happen = {	days = 1}		
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.10.a
+			set_country_flag = SUI_had_elections
+			add_stability = -0.1
+				country_event = {
+				id = holo_elections.11
+				days = 1
+				}
+			hidden_effect = {
+			clear_election_variables = yes
+			}
+		}
+}
+#Monarchist Coalition - Leading Partner?
+country_event = {
+		id = holo_elections.11
+		title = holo_elections.11.t
+		desc = holo_elections.11.d
+		picture = GFX_report_event_suisei
+		
+		is_triggered_only = yes
+		
+		fire_only_once = yes
+		
+		option = {
+			name = holo_elections.11.a
+			set_politics = {
+			ruling_party = pro_yagoo_monarchy
+			}
+			set_country_flag = SUI_resistance_compromise
+		}
+		option = {
+			name = holo_elections.11.b
+			set_politics = {
+			ruling_party = pro_resistance_monarchy
+			}
+			set_country_flag = SUI_lhs_compromises
+		}
+		option = {
+			name = holo_elections.11.c
+			set_politics = {
+			ruling_party = divine_mandate
+			}
+			set_popularities = {
+				divine_mandate = 30
+			}
+			set_country_flag = SUI_quell_resistance
+		}
+}
