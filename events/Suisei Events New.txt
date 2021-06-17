@@ -1,6 +1,6 @@
 add_namespace = suisei
 
- 
+ #Faction Splinters from Conservatives
 country_event = {
 	id = suisei.1
 	title = suisei.1.t
@@ -8,12 +8,21 @@ country_event = {
 	picture = GFX_report_event_suisei
 	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = suisei.1.a
+					add_popularity = {
+			ideology = democratic
+			popularity = -0.04
+			}
+			add_popularity = {
+			ideology = pro_resistance_nationalism
+			popularity = 0.04
+			}
+			add_stability = -0.02
 	}
 }
-
+#Progressive Surge!
 country_event = {
 	id = suisei.2
 	title = suisei.2.t
@@ -22,11 +31,19 @@ country_event = {
 
 	is_triggered_only = yes
 
-	option = {
-		name = suisei.2.a
+		name = suisei.2.a			
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.04
+			}
+			add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.04
+			}
+			add_stability = -0.02
 	}
 }
-
+#Oshi Scandal
 country_event = {
 	id = suisei.3
 	title = suisei.3.t
@@ -34,12 +51,18 @@ country_event = {
 	picture = GFX_report_event_suisei
 
 	is_triggered_only = yes
+	
 
 	option = {
 		name = suisei.3.a
+					add_popularity = {
+			ideology = democratic
+			popularity = -0.01
+			}
+			add_stability = -0.01
 	}
 }
-
+#Royalist surge!
 country_event = {
 	id = suisei.4
 	title = suisei.4.t
@@ -47,12 +70,25 @@ country_event = {
 	picture = GFX_report_event_suisei
 
 	is_triggered_only = yes
-
+	
 	option = {
 		name = suisei.4.a
+					add_popularity = {
+			ideology = democratic
+			popularity = -0.04
+			}
+			add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.04
+			}
+			add_popularity = {
+			ideology = pro_resistance_monarchy
+			popularity = 0.04
+			}
+			add_stability = 0.01
 	}
 }
-
+#Society for Suisei
 country_event = {
 	id = suisei.5
 	title = suisei.5.t
@@ -60,12 +96,16 @@ country_event = {
 	picture = GFX_report_event_suisei
 
 	is_triggered_only = yes
-
+	
 	option = {
 		name = suisei.5.a
+			add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.06
+			}
 	}
 }
-
+#France issues diplomatic protest 
 country_event = {
 	id = suisei.6
 	title = suisei.6.t
@@ -76,9 +116,24 @@ country_event = {
 
 	option = {
 		name = suisei.6.a
+		add_stability = 0.01
+		add_war_support = 0.01
+	}
+	#we need strong leadership
+	option = {
+		name = suisei.6.b
+		add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.03
+			}
+			add_popularity = {
+			ideology = pro_resistance_monarchy
+			popularity = 0.03
+			}
+		add_stability = -0.01
 	}
 }
-
+#Subaru demands withdraw from france
 country_event = {
 	id = suisei.7
 	title = suisei.7.t
@@ -86,12 +141,34 @@ country_event = {
 	picture = GFX_report_event_suisei
 
 	is_triggered_only = yes
-
+#lhs bad
 	option = {
 		name = suisei.7.a
+			add_popularity = {
+			ideology = pro_resistance_monarchy
+			popularity = 0.01
+			}
+			add_popularity = {
+			ideology = pro_resistance_nationalism
+			popularity = 0.02
+			}
+			add_war_support = 0.01
+	}
+#capitulate to demands
+	option = {
+		name = suisei.7.b
+			add_popularity = {
+			ideology = democratic
+			popularity = -0.1
+			}
+			add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = -0.05
+			}
+			add_stability = -0.1
 	}
 }
-
+#Strikes
 country_event = {
 	id = suisei.8
 	title = suisei.8.t
@@ -102,9 +179,10 @@ country_event = {
 
 	option = {
 		name = suisei.8.a
+			add_ideas = suisei_strikes
 	}
 }
-
+#Resistance burn post office
 country_event = {
 	id = suisei.9
 	title = suisei.9.t
@@ -115,9 +193,27 @@ country_event = {
 
 	option = {
 		name = suisei.9.a
+		add_stability = -0.05
+			add_popularity = {
+			ideology = democratic
+			popularity = -0.05
+			}
+		add_ideas = suisei_crackdown
+	}
+	option = {
+		name = suisei.9.b
+		add_stability = 0.01
+			add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+			}
+			add_popularity = {
+			ideology = left_wing_revolutionary
+			popularity = 0.02
+			}
 	}
 }
-
+#LHS investment offer
 country_event = {
 	id = suisei.10
 	title = suisei.10.t
@@ -128,6 +224,22 @@ country_event = {
 
 	option = {
 		name = suisei.10.a
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.03
+			}
+			add_timed_idea = { 
+			idea = suisei_lhs_investment
+			days = 120
+			}
+	}
+	option = {
+		name = suisei.10.b
+		add_popularity = {
+		ideology = pro_resistance_nationalism
+		popularity = 0.05
+		}
+		add_stability = 0.02
 	}
 }
 
