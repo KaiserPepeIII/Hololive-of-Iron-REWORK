@@ -46,6 +46,21 @@ focus_tree = {
 		cost = 0.00
 		allow_branch = {
 		has_country_flag = SUI_had_elections
+		OR = {
+		has_government = pro_resistance_nationalism
+		has_government = communism
+			}
+		}
+		offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
 		}
 		x = 47
 		y = 2
@@ -58,6 +73,29 @@ focus_tree = {
 		allow_branch = {
 		has_country_flag = SUI_had_elections
 		}
+
+		offset = {
+			x = -28
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = democratic
+				has_government = pro_yagoo_progressive
+			}
+		  }
+		}
+		offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
+		}
 		x = 49
 		y = 2
 
@@ -68,19 +106,16 @@ focus_tree = {
 		cost = 0.00
 		allow_branch = {
 		has_country_flag = SUI_had_elections
-		OR = {
-		has_country_flag = SUI_had_elections
-		}
 		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
+						OR = {
 				has_government = democratic
-				OR = {
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -88,6 +123,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
+				OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+				}
 			}
 		}
 		x = 51
@@ -100,19 +139,16 @@ focus_tree = {
 		cost = 8.00
 		allow_branch = {
 		has_country_flag = SUI_had_elections
-		OR = {
-		has_country_flag = SUI_had_elections
-		}
 		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
+						OR = {
 				has_government = democratic
-				OR = {
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -120,7 +156,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-									OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -320,10 +356,16 @@ focus_tree = {
 		id = SUI_pro_yagoo_coalition_wins
 		icon = GFX_focus_SUI_pro_yagoo_coalition_wins
 		cost = 0.00
-		
+				bypass = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = democratic
+				has_government = pro_yagoo_progressive
+			}
+		}
 		allow_branch = {
 		has_country_flag = SUI_had_elections
-			OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
 			}
@@ -345,11 +387,11 @@ focus_tree = {
 		cost = 0.00
 		allow_branch = {
 		has_country_flag = SUI_had_elections
-			OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
+				}
 			}
-		}
 		prerequisite = {
 			focus = SUI_new_elections
 		}
@@ -826,6 +868,17 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_resistance_diplomacy
 		}
+			offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
+		}
 		mutually_exclusive = {
 			focus = SUI_encourage_miko
 		}
@@ -840,6 +893,17 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_resistance_diplomacy
 		}
+			offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
+		}
 		mutually_exclusive = {
 			focus = SUI_annex_miko
 		}
@@ -853,6 +917,17 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = SUI_resistance_diplomacy
+		}		
+		offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
 		}
 		mutually_exclusive = {
 			focus = SUI_annex_usagi
@@ -865,6 +940,17 @@ focus_tree = {
 		id = SUI_annex_usagi
 		icon = GFX_focus_SUI_annex_usagi
 		cost = 0.00
+			offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
+		}
 		prerequisite = {
 			focus = SUI_resistance_diplomacy
 		}
@@ -879,6 +965,17 @@ focus_tree = {
 		id = SUI_anti_yagoo_bulwark
 		icon = GFX_focus_SUI_anti_yagoo_bulwark
 		cost = 0.00
+			offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
+		}
 		prerequisite = {
 			focus = SUI_encourage_pekora
 			focus = SUI_encourage_miko
@@ -893,6 +990,17 @@ focus_tree = {
 		id = SUI_annex_watson
 		icon = GFX_focus_SUI_annex_watson
 		cost = 0.00
+				offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
+		}
 		prerequisite = {
 			focus = SUI_anti_yagoo_bulwark
 		}
@@ -909,10 +1017,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -920,7 +1028,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-									OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -942,10 +1050,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -953,6 +1061,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
+				OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+				}
 			}
 		}
 		prerequisite = {
@@ -971,10 +1083,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -982,7 +1094,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1007,18 +1119,18 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
-				has_country_flag = SUI_had_elections
-													OR = {
+				has_country_flag = SUI_had_elections												
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1042,10 +1154,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1053,7 +1165,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1079,10 +1191,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1090,7 +1202,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1113,10 +1225,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-								OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1124,7 +1236,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1146,10 +1258,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1157,7 +1269,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1179,10 +1291,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+							OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1190,7 +1302,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1208,6 +1320,17 @@ focus_tree = {
 		id = SUI_annex_subaru
 		icon = GFX_focus_SUI_annex_subaru
 		cost = 0.00
+				offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
+		}
 		prerequisite = {
 			focus = SUI_anti_yagoo_bulwark
 		}
@@ -1224,10 +1347,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1235,7 +1358,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1257,10 +1380,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1268,7 +1391,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1290,10 +1413,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1301,7 +1424,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1326,10 +1449,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -1337,7 +1460,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1359,10 +1482,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1370,7 +1493,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1392,10 +1515,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 			has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1403,7 +1526,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1425,11 +1548,22 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-								OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
 			}
+			}
+		}
+				offset = {
+			x = -10
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
+		  }
 		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_europe
@@ -1446,10 +1580,10 @@ focus_tree = {
 			x = -30
 			y = 0
 			trigger = {
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 				has_country_flag = SUI_had_elections
 			}
 		}
@@ -1458,7 +1592,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1483,10 +1617,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -1494,7 +1628,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1516,10 +1650,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -1549,10 +1683,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -1560,7 +1694,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1585,10 +1719,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -1596,7 +1730,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1618,10 +1752,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -1629,7 +1763,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1654,10 +1788,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -1665,7 +1799,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1690,10 +1824,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -1701,7 +1835,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1723,10 +1857,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -1734,7 +1868,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1756,10 +1890,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -1767,7 +1901,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+					OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1789,18 +1923,18 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
-				has_country_flag = SUI_had_elections
-													OR = {
+				has_country_flag = SUI_had_election
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1822,10 +1956,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -1833,7 +1967,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1858,10 +1992,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -1869,7 +2003,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1891,10 +2025,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -1902,7 +2036,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1924,10 +2058,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -1935,7 +2069,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1960,10 +2094,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -1971,7 +2105,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -1996,10 +2130,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -2007,7 +2141,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -2029,10 +2163,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -2040,7 +2174,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -2062,10 +2196,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}
 		offset = {
@@ -2073,7 +2207,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -2098,10 +2232,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -2109,7 +2243,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -2131,10 +2265,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -2164,10 +2298,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -2175,7 +2309,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -2197,10 +2331,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -2208,7 +2342,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -2236,10 +2370,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -2247,7 +2381,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -2272,10 +2406,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -2283,7 +2417,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -3105,10 +3239,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -3116,7 +3250,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -3141,10 +3275,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -3152,7 +3286,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -3174,10 +3308,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -3185,7 +3319,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -3207,6 +3341,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
+										OR = {
+				has_government = democratic
+				has_government = pro_yagoo_progressive
+			}
 			}
 		}	
 		offset = {
@@ -3214,7 +3352,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -3237,10 +3375,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}	
 		offset = {
@@ -3248,7 +3386,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}
@@ -3270,10 +3408,10 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-				OR = {
+						OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
-				}
+			}
 			}
 		}		
 		offset = {
@@ -3281,7 +3419,7 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-													OR = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
 				}

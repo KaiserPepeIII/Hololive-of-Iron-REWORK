@@ -1,0 +1,52 @@
+suisei_deal_with_strikes = {
+	SUI_raise_minimum_wage = {
+			icon = decision_generic_industry
+		available = {
+			has_idea = suisei_strikes
+		}
+		
+		visible = {
+			has_idea = suisei_strikes
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 120
+		
+		complete_effect = { 
+			custom_effect_tooltip = "Results of our efforts will vary...."
+			hidden_effect = {
+				random_list = {
+				25 = {
+					country_event = {
+					id = scavenging.1
+					days = 14
+						}	
+				}
+				25 = {
+					country_event = {
+					id = scavenging.2
+					days = 14
+						}
+				}
+				25 = {
+					country_event = {
+					id = scavenging.3
+					days = 14
+						}
+				}
+				25 = {
+					country_event = {
+					id = scavenging.4
+					days = 14
+						}
+					}
+				}
+			}
+		}
+	}
+}
