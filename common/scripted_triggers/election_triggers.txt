@@ -40,6 +40,7 @@ yagooist_victory_trigger = {
 	compare = greater_than_or_equals
 	}
 	NOT = {
+	monarchist_victory_trigger = yes
 		check_variable = {
 		var = ROOT.party_popularity@democratic
 		value = 0.5
@@ -89,6 +90,7 @@ resistance_victory_trigger = {
 	compare = greater_than_or_equals
 	}
 	NOT = {
+	monarchist_victory_trigger = yes
 		check_variable = {
 		var = ROOT.party_popularity@communism
 		value = 0.5
@@ -117,6 +119,16 @@ monarchist_victory_trigger = {
 	value = ROOT.anti_monarchists
 	compare = greater_than
 	}
+	check_variable = {
+	var = ROOT.election_monarchists
+	value =  ROOT.election_resistance_democrats
+	compare = greater_than
+	}
+	check_variable = {
+	var = ROOT.election_monarchists
+	value =  ROOT.election_yagoo_democrats
+	compare = greater_than
+	}
 	NOT = {
 			check_variable = {
 			var = ROOT.party_popularity@pro_resistance_monarchy
@@ -125,6 +137,11 @@ monarchist_victory_trigger = {
 		}
 			check_variable = {
 			var = ROOT.party_popularity@pro_yagoo_monarchy
+			value = 0.5
+			compare = greater_than
+		}
+			check_variable = {
+			var = ROOT.party_popularity@divine_mandate
 			value = 0.5
 			compare = greater_than
 		}
