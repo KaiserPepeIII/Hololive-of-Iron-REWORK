@@ -4,14 +4,10 @@ on_actions = {
 			every_country = {
 				limit = {
 					NOT = {
+						OR = {
 						has_idea = lhs_member
-						OR = {
 						has_idea = resistance_member
-						}
-						OR = {
 						has_idea = anti_member
-						}
-						OR = {
 						has_idea = resistance_head
 						}
 					}
@@ -19,21 +15,15 @@ on_actions = {
 				add_ideas = neutral_member
 			}
 			every_country = {
-				limit = {
-					if = {
-						limit = {
-						has_idea = lhs_member
-						}
-						else_if = {
-						limit = {
-						has_idea = resistance_member
+					limit = {
+						 NOT = {
+							OR = {
+							has_idea = lhs_member
+							has_idea = resistance_member
+							has_idea = neutral_member
 							}
+						  }
 						}
-						else = {
-						has_idea = neutral_member
-						}
-						}
-					}
 				add_ideas = hololive_state
 			}
 			every_country = {
@@ -76,5 +66,5 @@ on_actions = {
 				}
 			 }
 		}
-	}
+	 }
 }
