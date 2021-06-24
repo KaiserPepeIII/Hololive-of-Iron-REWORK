@@ -105,7 +105,22 @@ set_popularities = {
 	pro_yagoo_monarchy = 23
 	
 }
-
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	### Variants ###
+	# Submarines #
+	create_equipment_variant = {
+		name = "Type II Class"
+		type = ship_hull_submarine_1
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+	}
+}
 create_country_leader = {
 	name = "Watson Amelia"
 	picture = "gfx/leaders/WTS/watson_neu.dds"

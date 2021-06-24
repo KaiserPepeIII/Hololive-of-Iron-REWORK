@@ -69,7 +69,7 @@ focus_tree = {
 	focus = {
 		id = SUI_deal_with_france
 		icon = GFX_focus_SUI_deal_with_france
-		cost = 0.00
+		cost = 7.00
 		allow_branch = {
 		has_country_flag = SUI_had_elections
 		NOT = {
@@ -101,8 +101,10 @@ focus_tree = {
 		}
 		x = 49
 		y = 2
-
-	}
+		completion_reward = {
+		set_country_flag = dealing_with_france
+			 }
+		}
 	focus = {
 		id = SUI_suicopath_military
 		icon = GFX_focus_SUI_suicopath_military
@@ -143,6 +145,11 @@ focus_tree = {
 				has_country_flag = SUI_had_elections
 				has_government = communism
 			}
+		}
+		completion_reward = {
+			army_experience = 20
+			navy_experience = 10
+			air_experience = 10
 		}
 		x = 51
 		y = 6
@@ -219,6 +226,9 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
+		bypass = {
+			has_completed_focus = SUI_let_them_fail
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -251,16 +261,49 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
+		bypass = {
+			has_completed_focus = SUI_let_them_fail
+		}
 		completion_reward = {
+			if = {
+				limit = {
+					has_idea = great_depression_suisei_one
+				}
 			swap_ideas = {
 				remove_idea = great_depression_suisei_one
 				add_idea = great_depression_suisei_two
-			}
+				}
 			add_popularity = {
 			ideology = democratic
 			popularity = 0.01
 			}
 			add_stability = 0.02
+		   }
+		   else_if = {	
+			   limit = {
+				has_idea = great_depression_suisei_two
+			   }
+			   swap_ideas = {
+				remove_idea = great_depression_suisei_two
+				add_idea = great_depression_suisei_four
+				}
+			add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+			}
+			add_stability = 0.02
+		   }
+		   else = {
+			swap_ideas = {
+			 remove_idea = great_depression_suisei_three
+			 add_idea = great_depression_suisei_four
+			 }
+		 	add_popularity = {
+			 ideology = democratic
+			 popularity = 0.01
+			 }
+			 add_stability = 0.02
+			}
 		}
 		x = 13
 		y = 3
@@ -275,6 +318,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_bail_out_colonies
+		}
+		bypass = {
+			has_completed_focus = SUI_let_them_fail
 		}
 		completion_reward = {
 			add_popularity = {
@@ -302,12 +348,23 @@ focus_tree = {
 			idea = sui_businesses_bailed_out
 			days = 180
 			}
-			swap_ideas = {
-			remove_idea = great_depression_suisei_two
-			add_idea = great_depression_suisei_three
+			if = { 
+				limit = {
+					has_idea = great_depression_suisei_two
+				}
+					swap_ideas = {
+					remove_idea = great_depression_suisei_two
+					add_idea = great_depression_suisei_three
+					}
+					add_political_power = -100
+				}
+			else = {
+				swap_ideas = {
+					remove_idea = great_depression_suisei_one
+					add_idea = great_depression_suisei_two
+					}
+				}
 			}
-			add_political_power = -100
-		}
 		x = 15
 		y = 3
 
@@ -323,18 +380,48 @@ focus_tree = {
 			focus = SUI_bail_out_businesses
 		}
 		completion_reward = {
-			add_timed_idea = {
-			idea = sui_businesses_ignored
-			days = 210
+				add_timed_idea = {
+				idea = sui_businesses_ignored
+				days = 210
+				}
+				if = {
+					limit = {
+						has_idea = great_depression_suisei_two
+					}
+				swap_ideas = {
+				remove_idea = great_depression_suisei_two
+				add_idea = great_depression_suisei_four
+				}
+				add_stability = -0.05
+				add_popularity= {
+					ideology = democratic
+					popularity = -0.03
+				}
 			}
-			swap_ideas = {
-			remove_idea = great_depression_suisei_two
-			add_idea = great_depression_suisei_four
+			else_if= {
+				limit = {
+						has_idea = great_depression_suisei_three
+					}
+				swap_ideas = {
+				remove_idea = great_depression_suisei_three
+				add_idea = great_depression_suisei_four
+				}
+				add_stability = -0.05
+				add_popularity= {
+					ideology = democratic
+					popularity = -0.03
+				}
 			}
-			add_stability = -0.05
-			add_popularity= {
-				ideology = democratic
-				popularity = -0.03
+			else= {
+				swap_ideas = {
+				remove_idea = great_depression_suisei_one
+				add_idea = great_depression_suisei_four
+				}
+				add_stability = -0.05
+				add_popularity= {
+					ideology = democratic
+					popularity = -0.05
+				}
 			}
 		}
 		x = 17
@@ -419,6 +506,13 @@ focus_tree = {
 				has_government = pro_resistance_nationalism
 				}
 			}
+			bypass = {
+				has_country_flag = SUI_had_elections
+						OR = {
+				has_government = pro_resistance_nationalism
+				has_government = communism
+			}
+		}
 		prerequisite = {
 			focus = SUI_new_elections
 		}
@@ -3098,9 +3192,13 @@ focus_tree = {
 	focus = {
 		id = SUI_continue_recovery_plan
 		icon = GFX_focus_SUI_continue_recovery_plan
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = SUI_pro_yagoo_coalition_wins
+		}
+		completion_reward = {
+			add_stability = 0.05
+
 		}
 		x = 9
 		y = 7

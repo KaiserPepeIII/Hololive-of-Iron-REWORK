@@ -243,7 +243,7 @@ country_event = {
 		add_stability = 0.02
 	}
 }
-
+#strikes continue 1
 country_event = {
 	id = suisei.11
 	title = suisei.11.t
@@ -252,11 +252,84 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#continue working with them 
 	option = {
 		name = suisei.11.a
+		set_country_flag = strike_remove_1
 	}
+	#end strikes forcefully 
+	option = {
+		name = suisei.11.b
+		set_country_flag = strike_remove_1
+		set_country_flag = strike_remove_2
+		set_country_flag = strike_remove_3
+		remove_ideas = suisei_strikes
+		if = { 
+			limit = {
+				has_government = democratic
+			}
+				add_popularity = {
+				ideology = democratic
+				popularity = -0.1
+				}
+				add_stability = -0.1
+				country_event = suisei.15
+			}
+			else_if = { 
+				limit = {
+					has_government = pro_yagoo_progressive
+				}
+					add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = -0.15
+					}
+					add_stability = -0.15
+					country_event = suisei.15
+				}
+			else_if = { 
+					limit = {
+						has_government = communism
+					}
+						add_popularity = {
+						ideology = communism
+						popularity = -0.15
+						}
+						add_stability = -0.15
+						country_event = suisei.15
+					}
+			else_if = { 
+						limit = {
+							has_government = pro_resistance_nationalism
+						}
+							add_popularity = {
+							ideology = pro_resistance_nationalism
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}
+			else_if = { 
+						limit = {
+							has_government = pro_yagoo_monarchy
+						}
+							add_popularity = {
+							ideology = pro_yagoo_monarchy
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}
+					else = { 
+							add_popularity = {
+							ideology = pro_resistance_monarchy
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}	
+			}	
 }
-
+#strikes continue 2
 country_event = {
 	id = suisei.12
 	title = suisei.12.t
@@ -265,11 +338,85 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#continue working with them 
 	option = {
 		name = suisei.12.a
+		set_country_flag = strike_remove_2
 	}
+	#end strikes forcefully 
+	option = {
+		name = suisei.12.b
+		set_country_flag = strike_remove_1
+		set_country_flag = strike_remove_2
+		set_country_flag = strike_remove_3
+		remove_ideas = suisei_strikes
+		if = { 
+			limit = {
+				has_government = democratic
+			}
+				add_popularity = {
+				ideology = democratic
+				popularity = -0.1
+				}
+				add_stability = -0.1
+				country_event = suisei.15
+			}
+			else_if = { 
+				limit = {
+					has_government = pro_yagoo_progressive
+				}
+					add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = -0.15
+					}
+					add_stability = -0.15
+					country_event = suisei.15
+				}
+			else_if = { 
+					limit = {
+						has_government = communism
+					}
+						add_popularity = {
+						ideology = communism
+						popularity = -0.15
+						}
+						add_stability = -0.15
+						country_event = suisei.15
+					}
+			else_if = { 
+						limit = {
+							has_government = pro_resistance_nationalism
+						}
+							add_popularity = {
+							ideology = pro_resistance_nationalism
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}
+			else_if = { 
+						limit = {
+							has_government = pro_yagoo_monarchy
+						}
+							add_popularity = {
+							ideology = pro_yagoo_monarchy
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}
+					else = { 
+							add_popularity = {
+							ideology = pro_resistance_monarchy
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}
+				}		
 }
 
+#strikes continue 2
 country_event = {
 	id = suisei.13
 	title = suisei.13.t
@@ -278,11 +425,85 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#continue working with them 
 	option = {
 		name = suisei.13.a
+		set_country_flag = strike_remove_3
+		country_event = suisei.14
+	}
+	#end strikes forcefully 
+	option = {
+		name = suisei.13.b
+		set_country_flag = strike_remove_1
+		set_country_flag = strike_remove_2
+		set_country_flag = strike_remove_3
+		remove_ideas = suisei_strikes
+		if = { 
+			limit = {
+				has_government = democratic
+			}
+				add_popularity = {
+				ideology = democratic
+				popularity = -0.1
+				}
+				add_stability = -0.1
+				country_event = suisei.15
+			}
+			else_if = { 
+				limit = {
+					has_government = pro_yagoo_progressive
+				}
+					add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = -0.15
+					}
+					add_stability = -0.15
+					country_event = suisei.15
+				}
+			else_if = { 
+					limit = {
+						has_government = communism
+					}
+						add_popularity = {
+						ideology = communism
+						popularity = -0.15
+						}
+						add_stability = -0.15
+						country_event = suisei.15
+					}
+			else_if = { 
+						limit = {
+							has_government = pro_resistance_nationalism
+						}
+							add_popularity = {
+							ideology = pro_resistance_nationalism
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}
+			else_if = { 
+						limit = {
+							has_government = pro_yagoo_monarchy
+						}
+							add_popularity = {
+							ideology = pro_yagoo_monarchy
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}
+					else = { 
+							add_popularity = {
+							ideology = pro_resistance_monarchy
+							popularity = -0.1
+							}
+							add_stability = -0.1
+							country_event = suisei.15
+						}		
 	}
 }
-
+#results of strike compromise
 country_event = {
 	id = suisei.14
 	title = suisei.14.t
@@ -293,9 +514,10 @@ country_event = {
 
 	option = {
 		name = suisei.14.a
+		add_ideas = suisei_strikes_compromises
 	}
 }
-
+#aftermath of strike busting 
 country_event = {
 	id = suisei.15
 	title = suisei.15.t
@@ -306,48 +528,99 @@ country_event = {
 
 	option = {
 		name = suisei.15.a
+		add_to_variable = {
+		var = SUI.anti_aggression	
+		value = 35
+		}
+		add_timed_idea = {
+			idea = legacy_of_strikes
+			days = 360
+		}
 	}
 }
-
+#looting and rioting
 country_event = {
 	id = suisei.16
 	title = suisei.16.t
 	desc = suisei.16.d
 	picture = GFX_report_event_suisei
 
-	is_triggered_only = yes
+	trigger = {
+		has_country_flag = SUI_had_elections
+		has_idea = suisei_strikes
+		NOT = {
+			has_government = communism
+			has_government = pro_resistance_nationalism
+		}
+	}
+	fire_only_once = yes 
+	mean_time_to_happen = { days = 1 }
 
 	option = {
 		name = suisei.16.a
+		swap_ideas = {
+			remove_idea = suisei_strikes
+			add_idea = looting_and_rioting
+		}
 	}
 }
-
+#states revolution looting and rioting
 country_event = {
 	id = suisei.17
-	title = suisei.17.t
-	desc = suisei.17.d
-	picture = GFX_report_event_suisei
 
-	is_triggered_only = yes
+	hidden = yes
+
+	trigger = {
+		has_country_flag = SUI_had_elections
+		has_idea = looting_and_rioting
+		NOT = {
+			has_government = communism
+			has_government = pro_resistance_nationalism
+		}
+	}
+	fire_only_once = yes 
+	mean_time_to_happen = { days = 75 }
 
 	option = {
 		name = suisei.17.a
+			every_state = {
+				limit = { 
+					is_owned_by = SUI
+					SUI = {
+						divisions_in_state = {
+						size < 2
+						state = PREV
+						}
+					}
+				}
+				set_state_flag = suisei_commie_revolt
+			}
 	}
 }
-
+#Delete Democracy
 country_event = {
 	id = suisei.18
 	title = suisei.18.t
 	desc = suisei.18.d
 	picture = GFX_report_event_suisei
 
-	is_triggered_only = yes
+	trigger = {
+		SUI = {
+		has_civil_war = yes
+		}
+	}
+	fire_only_once = yes 
 
 	option = {
 		name = suisei.18.a
+		country_event = suisei.19
+	}
+	option = {
+		name = suisei.18.b
+		add_stability = 0.01
 	}
 }
-
+#which monarchy 
 country_event = {
 	id = suisei.19
 	title = suisei.19.t
@@ -358,6 +631,27 @@ country_event = {
 
 	option = {
 		name = suisei.19.a
+		set_politics = {
+			ruling_party = pro_yagoo_monarchy
+			elections_allowed = no
+		}
+		set_country_flag = SUI_royalists_win
+	}
+	option = {
+		name = suisei.19.b
+		set_politics = {
+			ruling_party = pro_resistance_monarchy
+			elections_allowed = no
+		}
+		set_country_flag = SUI_royalists_win
+	}
+	option = {
+		name = suisei.19.c
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		set_country_flag = SUI_royalists_win
 	}
 }
 

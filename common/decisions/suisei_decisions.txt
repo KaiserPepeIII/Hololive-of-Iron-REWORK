@@ -1,6 +1,6 @@
 suisei_deal_with_strikes = {
-	SUI_raise_minimum_wage = {
-			icon = decision_generic_industry
+	SUI_put_down_strike = {
+		icon = decision_generic_industry
 		available = {
 			has_idea = suisei_strikes
 		}
@@ -18,35 +18,208 @@ suisei_deal_with_strikes = {
 		cost = 120
 		
 		complete_effect = { 
-			custom_effect_tooltip = "Results of our efforts will vary...."
-			hidden_effect = {
-				random_list = {
-				25 = {
-					country_event = {
-					id = scavenging.1
-					days = 14
-						}	
+			custom_effect_tooltip = suisei_strike_tooltip 
+			remove_ideas = suisei_strikes
+			if = { 
+				limit = {
+					has_government = democratic
 				}
-				25 = {
-					country_event = {
-					id = scavenging.2
-					days = 14
-						}
-				}
-				25 = {
-					country_event = {
-					id = scavenging.3
-					days = 14
-						}
-				}
-				25 = {
-					country_event = {
-					id = scavenging.4
-					days = 14
-						}
+					add_popularity = {
+					ideology = democratic
+					popularity = -0.1
 					}
+					add_stability = -0.1
+					country_event = suisei.15
 				}
+				else_if = { 
+					limit = {
+						has_government = pro_yagoo_progressive
+					}
+						add_popularity = {
+						ideology = pro_yagoo_progressive
+						popularity = -0.15
+						}
+						add_stability = -0.15
+						country_event = suisei.15
+					}
+				else_if = { 
+						limit = {
+							has_government = communism
+						}
+							add_popularity = {
+							ideology = communism
+							popularity = -0.15
+							}
+							add_stability = -0.15
+							country_event = suisei.15
+						}
+				else_if = { 
+							limit = {
+								has_government = pro_resistance_nationalism
+							}
+								add_popularity = {
+								ideology = pro_resistance_nationalism
+								popularity = -0.1
+								}
+								add_stability = -0.1
+								country_event = suisei.15
+							}
+				else_if = { 
+							limit = {
+								has_government = pro_yagoo_monarchy
+							}
+								add_popularity = {
+								ideology = pro_yagoo_monarchy
+								popularity = -0.1
+								}
+								add_stability = -0.1
+								country_event = suisei.15
+							}
+						else = { 
+								add_popularity = {
+								ideology = pro_resistance_monarchy
+								popularity = -0.1
+								}
+								add_stability = -0.1
+								country_event = suisei.15
+							}				
+			}		
+		}
+	SUI_raise_minimum_wage = {
+			icon = decision_generic_industry
+		available = {
+			has_idea = suisei_strikes
+			NOT = {
+				has_country_flag = strike_remove_1
 			}
 		}
+		
+		visible = {
+			has_idea = suisei_strikes
+			NOT = {
+				has_country_flag = strike_remove_1
+			}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 120
+		
+		complete_effect = { 
+			country_event = suisei.11
+		}
+	}
+	SUI_promise_more_stimulous = {
+		icon = decision_generic_industry
+	available = {
+		has_idea = suisei_strikes
+		has_country_flag = strike_remove_1
+		NOT = {
+			has_country_flag = strike_remove_2
+		}
+	}
+	
+	visible = {
+		has_idea = suisei_strikes
+		has_country_flag = strike_remove_1
+		NOT = {
+			has_country_flag = strike_remove_2
+		}
+	}
+	
+	fire_only_once = yes
+	
+	ai_will_do = {
+		factor = 10
+		}
+
+	cost = 120
+	
+	complete_effect = { 
+		country_event = suisei.12
+	}
+}
+SUI_grant_union_protection = {
+		icon = decision_generic_industry
+	available = {
+		has_idea = suisei_strikes
+		has_country_flag = strike_remove_2
+		NOT = {
+			has_country_flag = strike_remove_3
+		}
+	}
+
+	visible = {
+		has_idea = suisei_strikes
+		has_country_flag = strike_remove_2
+		NOT = {
+			has_country_flag = strike_remove_3
+		}
+	}
+
+	fire_only_once = yes
+
+	ai_will_do = {
+		factor = 10
+		}
+
+	cost = 150
+
+	complete_effect = { 
+		country_event = suisei.13
+	}
+}	
+SUI_put_down_looters = {
+		allowed = {
+			tag = SUI
+			has_idea = looting_and_rioting
+		}
+		activation = {
+			tag = SUI
+			has_idea = looting_and_rioting
+		}
+		available = {
+			has_idea = looting_and_rioting
+			has_army_manpower = { size > 150000 }
+			has_manpower = 3000
+			}
+
+		visible = {
+			has_idea = looting_and_rioting
+			}
+
+		selectable_mission = yes
+		days_mission_timeout = 80
+		is_good = no
+
+		ai_will_do = {
+			factor = 50
+			}
+
+		cost = 100
+
+		complete_effect = { 
+			remove_ideas = looting_and_rioting
+		}
+
+			timeout_effect = {
+				set_variable = {
+					var = SUI.anti_aggression
+					value = 0
+				}
+				start_civil_war = {
+					ideology = left_wing_revolutionary
+					size = 0.4
+					keep_political_leader = yes
+					states_filter = {
+						has_state_flag = { flag =  suisei_commie_revolt value > 0 }
+					}
+				}
+				remove_ideas = looting_and_rioting 
+			}
 	}
 }
