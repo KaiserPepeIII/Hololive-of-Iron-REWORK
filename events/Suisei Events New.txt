@@ -255,15 +255,19 @@ country_event = {
 	#continue working with them 
 	option = {
 		name = suisei.11.a
+		SUI = {
 		set_country_flag = strike_remove_1
+		}
 	}
 	#end strikes forcefully 
 	option = {
 		name = suisei.11.b
+		SUI = {
 		set_country_flag = strike_remove_1
 		set_country_flag = strike_remove_2
 		set_country_flag = strike_remove_3
 		remove_ideas = suisei_strikes
+		}
 		if = { 
 			limit = {
 				has_government = democratic
@@ -341,15 +345,19 @@ country_event = {
 	#continue working with them 
 	option = {
 		name = suisei.12.a
+		SUI = {
 		set_country_flag = strike_remove_2
+		}
 	}
 	#end strikes forcefully 
 	option = {
 		name = suisei.12.b
-		set_country_flag = strike_remove_1
-		set_country_flag = strike_remove_2
-		set_country_flag = strike_remove_3
-		remove_ideas = suisei_strikes
+		SUI = {
+			set_country_flag = strike_remove_1
+			set_country_flag = strike_remove_2
+			set_country_flag = strike_remove_3
+			remove_ideas = suisei_strikes
+			}
 		if = { 
 			limit = {
 				has_government = democratic
@@ -428,16 +436,20 @@ country_event = {
 	#continue working with them 
 	option = {
 		name = suisei.13.a
+		SUI = {
 		set_country_flag = strike_remove_3
 		country_event = suisei.14
+		}
 	}
 	#end strikes forcefully 
 	option = {
 		name = suisei.13.b
-		set_country_flag = strike_remove_1
-		set_country_flag = strike_remove_2
-		set_country_flag = strike_remove_3
-		remove_ideas = suisei_strikes
+		SUI = {
+			set_country_flag = strike_remove_1
+			set_country_flag = strike_remove_2
+			set_country_flag = strike_remove_3
+			remove_ideas = suisei_strikes
+			}
 		if = { 
 			limit = {
 				has_government = democratic
@@ -546,11 +558,13 @@ country_event = {
 	picture = GFX_report_event_suisei
 
 	trigger = {
-		has_country_flag = SUI_had_elections
-		has_idea = suisei_strikes
-		NOT = {
-			has_government = communism
-			has_government = pro_resistance_nationalism
+			SUI = {
+			has_country_flag = SUI_had_elections
+			has_idea = suisei_strikes
+			NOT = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
 		}
 	}
 	fire_only_once = yes 
@@ -571,15 +585,17 @@ country_event = {
 	hidden = yes
 
 	trigger = {
-		has_country_flag = SUI_had_elections
-		has_idea = looting_and_rioting
-		NOT = {
-			has_government = communism
-			has_government = pro_resistance_nationalism
+			SUI = {
+			has_country_flag = SUI_had_elections
+			has_idea = looting_and_rioting
+			NOT = {
+				has_government = communism
+				has_government = pro_resistance_nationalism
+			}
 		}
 	}
 	fire_only_once = yes 
-	mean_time_to_happen = { days = 75 }
+	mean_time_to_happen = { days = 25 }
 
 	option = {
 		name = suisei.17.a
@@ -593,6 +609,7 @@ country_event = {
 						}
 					}
 				}
+				set_demilitarized_zone = yes
 				set_state_flag = suisei_commie_revolt
 			}
 	}
@@ -604,12 +621,7 @@ country_event = {
 	desc = suisei.18.d
 	picture = GFX_report_event_suisei
 
-	trigger = {
-		SUI = {
-		has_civil_war = yes
-		}
-	}
-	fire_only_once = yes 
+	is_triggered_only = yes 
 
 	option = {
 		name = suisei.18.a
@@ -654,46 +666,104 @@ country_event = {
 		set_country_flag = SUI_royalists_win
 	}
 }
-
+#commies reunite france
 country_event = {
 	id = suisei.20
 	title = suisei.20.t
 	desc = suisei.20.d
 	picture = GFX_report_event_suisei
 
-	is_triggered_only = yes
+	trigger = {
+		tag = SUS
+			has_government = left_wing_revolutionary
+			NOT = {
+				has_civil_war = yes
+			}
+	}
+	 fire_only_once = yes
 
 	option = {
 		name = suisei.20.a
+		FRA ={
+		country_event = suisei.23
+		}
+	}
+	option = {
+		name = suisei.20.b
+		FRA = {
+		add_opinion_modifier = {
+			target = SUS
+			modifier = abandoned_france
+		}
+	  }
 	}
 }
-
+#Algeria Breaks free
 country_event = {
 	id = suisei.21
 	title = suisei.21.t
 	desc = suisei.21.d
 	picture = GFX_report_event_suisei
 
-	is_triggered_only = yes
+	trigger = {
+		tag = SUI
+		has_civil_war = yes
+	}
+	 fire_only_once = yes
 
 	option = {
 		name = suisei.21.a
+		release = ALG
+		SUI = {
+		add_stability = 0.05
+		set_country_flag = algeria_free
+		}
+	}
+	option = {
+		name = suisei.21.a
+		release = ALG
+		SUI = {
+		add_war_support = 0.05
+		set_country_flag = algeria_free_lolz
+		}
 	}
 }
-
+#Algerian Reprisal
 country_event = {
 	id = suisei.22
 	title = suisei.22.t
 	desc = suisei.22.d
 	picture = GFX_report_event_suisei
 
-	is_triggered_only = yes
+	trigger = {
+		tag = SUI
+		has_civil_war = no
+		SUI = {
+		has_country_flag = algeria_free_lolz
+		}
+	}
+
+	fire_only_once = yes
 
 	option = {
 		name = suisei.22.a
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = ALG
+		}
+	}
+	option = {
+		name = suisei.22.b
+		add_war_support = -0.05
+		SUI = {
+			add_opinion_modifier = {
+			target = ALG
+			modifier = let_free
+			}
+		}
 	}
 }
-
+#France annex commies?
 country_event = {
 	id = suisei.23
 	title = suisei.23.t
@@ -704,9 +774,20 @@ country_event = {
 
 	option = {
 		name = suisei.23.a
+		SUS = {
+			country_event = suisei.24
+		}
+	}
+	option = {
+		name = suisei.23.b
+		SUS = {
+		add_opinion_modifier = {
+			target = FRA
+			modifier = abandoned_france
+		}
 	}
 }
-
+#france say yesh
 country_event = {
 	id = suisei.24
 	title = suisei.24.t
@@ -717,9 +798,25 @@ country_event = {
 
 	option = {
 		name = suisei.24.a
+		FRA = {
+			change_tag_from = SUS
+			}
+			FRA = {
+				annex_country = {
+				target = SUS
+				transfer_troops = yes
+				}
+			}
+			subtract_from_variable = {
+				var = FRA.france_threat
+				value = 0.15
+			}
+			ai_chance = {
+				factor = 20
+			}
 	}
 }
-
+#Monarchism return!??!?!
 country_event = {
 	id = suisei.25
 	title = suisei.25.t
@@ -730,5 +827,12 @@ country_event = {
 
 	option = {
 		name = suisei.25.a
+		add_popularity = {
+			ideology = divine_mandate
+			value = 0.01
+		}
+		SUI = {
+		set_country_flag = SUI_monarchist_interest_grows
+		}
 	}
 }

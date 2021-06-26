@@ -1,0 +1,161 @@
+scripted_gui = {
+	custom_map_container_main = {
+		context_type = player_context
+		# dirty = global.monthly_gui_update_tick
+		window_name = "custom_map_container_main"
+
+		visible = {
+			has_country_flag = custom_map_mode_visible
+		}
+
+		effects = {
+			close_button_click = {
+				clr_country_flag = custom_map_mode_visible
+				clear_array = filter_arrays
+				clear_array = selected_filter_array
+				clear_custom_map_mode_setup = yes
+				add_to_variable = { global.monthly_gui_update_tick = 1 }
+			}
+			filter_entry_button_click = {
+
+				set_country_flag = show_filter_list
+			}
+		}
+		triggers = {
+			flick_entry_button_click_enabled = {
+				NOT = { has_country_flag = no_filter_options }
+			}
+		}
+		dynamic_lists = {
+			selected_filter_gridbox = {
+				array = selected_filter_array
+				entry_container = filter_entry
+			}
+		}
+	}
+	custom_map_entry_window = {
+		context_type = player_context
+		#dirty = global.monthly_gui_update_tick
+		window_name = "custom_map_entry_window"
+		parent_window_name = "map_anchor"
+
+		visible = {
+			always = yes
+		}
+
+		triggers = {
+		}
+	}
+
+	custom_map_container_move_box = {
+		context_type = player_context
+		#dirty = global.monthly_gui_update_tick
+		window_name = "custom_map_container_move_box"
+		parent_window_name = "custom_map_entry_window_instance"
+
+		visible = {
+		}
+
+		effects = {
+			node_map_marker_click = {
+				add_to_variable = { global.monthly_gui_update_tick = 1 }
+			}
+		}
+
+		triggers = {
+			info_text_visible = {
+				ROOT = { has_country_flag = info_text_visible }
+			}
+			map_marker_bg_visible = {
+				has_state_flag = mapmode_state_visible
+			}
+			map_marker_hashed_visible = {
+				has_state_flag = mapmode_state_hashed_visible
+			}
+			map_marker_shield_visible = {
+				ROOT = {
+					has_country_flag = mapmode_shield_visible
+				}
+			}
+			map_marker_icon_visible = {
+				has_state_flag = mapmode_icon_visible
+			}
+		}
+
+		properties = {
+			map_marker_bg = {
+				x = map_x_position
+				y = map_y_position
+				image = "[GetStateImagePlain]"
+				frame = state_frame_number
+			}
+			map_marker_hashed = {
+				x = map_x_position
+				y = map_y_position
+				image = "[GetStateImageMasked]"
+				frame = state_frame_number_hashed
+			}
+			info_text = {
+				x = map_x_position
+				y = map_y_position
+			}
+			map_marker_shield = {
+				x = x_composite
+				y = y_composite
+				image = "[GetStateOwnerFlag]"
+			}
+		}
+		dynamic_lists = {
+			node_marker_placement_gridbox = {
+				array = global.states
+				entry_container = state_marker_entry_box
+				change_scope = yes
+			}
+			node_marker_placement_gridbox_countries = {
+				array = global.countries
+				entry_container = country_marker_entry_box
+				change_scope = yes
+			}
+		}
+	}
+	filter_container_dropdown = {
+		window_name = "filter_container_dropdown"
+		parent_window_name = "filter_conatiner_anchor"
+		#dirty = custom_map_mode_update_tick
+		visible = {
+			has_country_flag = show_filter_list
+		}
+		effects = {
+			filter_entry_button_click = {
+				### Cleanup mapmode
+				set_variable = { selected_filter_array^0 = v }
+				clr_country_flag = show_filter_list
+				clear_custom_map_mode_setup = yes
+				### Execute next mapmode
+				meta_effect = {
+					text = {
+						[FILTER_EFFECT_INDEX] = yes
+					}
+					FILTER_EFFECT_INDEX = "custom_map_mode_filter_initialize_[?v|0]"
+				}
+				add_to_variable = { custom_map_mode_update_tick = 1 }
+			}
+		}
+		dynamic_lists = {
+			filter_dropdown_gridbox = {
+				array = global.filter_arrays
+				entry_container = filter_entry
+			}
+		}
+	}
+	open_map_container = {
+		window_name = "open_map_container"
+		context_type = player_context
+		effects = {
+			button_map_container_click = {
+				set_temp_variable = { temp_filter_to_open = 1 }
+				open_custom_mapmode = yes
+			}
+		}
+	}
+}

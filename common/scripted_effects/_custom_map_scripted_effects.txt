@@ -1,0 +1,282 @@
+generate_global_state_array = {
+	every_state = {
+		limit = {
+			NOT = { area = 1 }
+		}
+		add_to_array = { global.states = THIS.id }
+	}
+}
+
+d_open_custom_mapmode = {
+	clear_array = selected_filter_array
+	add_to_array = { selected_filter_array = 1 }
+	set_country_flag = custom_map_mode_visible
+}
+open_custom_mapmode = {
+	clear_array = selected_filter_array
+	add_to_array = { selected_filter_array = temp_filter_to_open }
+	meta_effect = {
+		text = {
+			[FILTER_EFFECT_INDEX] = yes
+		}
+		FILTER_EFFECT_INDEX = "custom_map_mode_filter_initialize_[?temp_filter_to_open|0]"
+	}
+	add_to_variable = { custom_map_mode_update_tick = 1 }
+	set_country_flag = custom_map_mode_visible
+}
+clear_custom_map_mode_setup = {
+	every_state = {
+		clr_state_flag = mapmode_state_visible
+		clr_state_flag = mapmode_state_hashed_visible
+		clear_variable = state_frame_number_hashed
+		clear_variable = state_frame_number
+	}
+}
+
+my_custom_effect = {
+	log = "EFFECT"
+}
+
+calculate_country_center_point_quick = {
+	set_variable = {
+		x_composite = 0
+	}
+	set_variable = {
+		y_composite = 0
+	}
+	for_each_scope_loop = {
+		array = controlled_states
+		add_to_variable = { PREV.x_composite = THIS.map_x_position }
+		add_to_variable = { PREV.y_composite = THIS.map_y_position }
+	}
+	divide_variable = { x_composite = controlled_states^num }
+	divide_variable = { y_composite = controlled_states^num }
+}
+calculate_country_center_point_quick_all = {
+	every_country = {
+		calculate_country_center_point_quick = yes
+	}
+}
+d_state_country_centers = {
+	every_country = {
+		calculate_country_center_point_quick = yes
+	}
+}
+
+find_color_graph = {
+	clear_variable = global.colors_assigned
+	clear_variable = global.max_color_found
+	every_country = {
+		clear_array = global.temp_neighbor_colors
+		every_neighbor_country = {
+			add_to_array = {
+				global.temp_neighbor_colors = custom_map_color
+			}
+		}
+		set_variable = { custom_map_color = 1 }
+		while_loop_effect = {
+			break = while_break
+			limit = {
+				#check_variable = { custom_map_color < 10}
+			}
+			if = {
+				limit = {
+					is_in_array = {
+						array = global.temp_neighbor_colors
+						value = custom_map_color
+					 }
+				}
+				add_to_variable = { custom_map_color = 1 }
+			}
+			else = {
+				if = {
+					limit = {
+						check_variable = { custom_map_color > global.max_color_found }
+					}
+					set_variable = { global.max_color_found = custom_map_color }
+				}
+				add_to_variable = { global.colors_assigned = 1 }
+				set_temp_variable = { while_break = 1 }
+			}
+		}
+	}
+}
+clear_color_arrays_and_vars = {
+	every_country = {
+		clear_variable = custom_map_color
+	}
+}
+
+### Add these to a scripted effect file in your mod
+
+custom_map_mode_filter_initialize_1 = {
+	### Loop through the states in the array
+	find_color_graph = yes
+	for_each_scope_loop = {
+		array = global.states
+		### skip states we do not want to color with this map mode
+		if = {
+			limit = {
+				area = 1
+			}
+		}
+		else = {
+			### Use criterion to establish the frame used for the state.
+			set_state_flag = mapmode_state_visible
+			OWNER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+		}
+	}
+	calculate_country_center_point_quick_all = yes
+	set_country_flag = mapmode_shield_visible
+}
+
+custom_map_mode_filter_initialize_2 = {
+	### Loop through the states in the array
+	find_color_graph = yes
+	set_variable = { global.max_state_factory = 0 }
+	every_state = {
+		limit = {
+			check_variable = {
+				building_level@arms_factory > global.max_state_factory
+			}
+		}
+		set_variable = {
+			global.max_state_factory = building_level@arms_factory
+		}
+	}
+	set_variable = { global.half_state_factory = global.max_state_factory }
+	divide_variable = { global.half_state_factory = 2 }
+	for_each_scope_loop = {
+		array = global.states
+		### skip states we do not want to color with this map mode
+		if = {
+			limit = {
+				area = 1
+			}
+		}
+		else = {
+			### Use criterion to establish the frame used for the state.
+			set_state_flag = mapmode_state_visible
+			OWNER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+			set_state_flag = mapmode_state_hashed_visible
+			if = {
+				limit = {
+					check_variable = {
+						building_level@arms_factory > global.max_state_factory
+					}
+				}
+				set_variable = { state_frame_number_hashed = 1 }
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						building_level@arms_factory > global.half_state_factory
+					}
+				}
+				set_variable = { state_frame_number_hashed = 2 }
+			}
+			else = {
+				set_variable = { state_frame_number_hashed = 3 }
+			}
+			#OWNER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+		}
+	}
+	calculate_country_center_point_quick_all = yes
+	set_country_flag = mapmode_shield_visible
+}
+
+custom_map_mode_filter_initialize_3 = {
+	### Loop through the states in the array
+	find_color_graph = yes
+	set_variable = { global.max_state_factory = 0 }
+	every_state = {
+		limit = {
+			check_variable = {
+				building_level@arms_factory > global.max_state_factory
+			}
+		}
+		set_variable = {
+			global.max_state_factory = building_level@arms_factory
+		}
+	}
+	set_variable = { global.half_state_factory = global.max_state_factory }
+	divide_variable = { global.half_state_factory = 2 }
+	for_each_scope_loop = {
+		array = global.states
+		### skip states we do not want to color with this map mode
+		if = {
+			limit = {
+				area = 1
+			}
+		}
+		else = {
+			### Use criterion to establish the frame used for the state.
+			#set_state_flag = mapmode_state_visible
+			OWNER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+			set_state_flag = mapmode_state_hashed_visible
+			CONTROLLER = {
+				if = {
+					limit = {
+						has_stability > 0.66
+					}
+					set_variable = { PREV.state_frame_number_hashed = 1 }
+				}
+				else_if = {
+					limit = {
+						has_stability > 0.33
+					}
+					set_variable = { PREV.state_frame_number_hashed = 2 }
+				}
+				else = {
+					set_variable = { PREV.state_frame_number_hashed = 3 }
+				}
+			}
+			#OWNER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+		}
+	}
+	calculate_country_center_point_quick_all = yes
+	set_country_flag = mapmode_shield_visible
+}
+custom_map_mode_filter_initialize_4 = {
+	### Loop through the states in the array
+	find_color_graph = yes
+	for_each_scope_loop = {
+		array = global.states
+		### skip states we do not want to color with this map mode
+		if = {
+			limit = {
+				area = 1
+			}
+		}
+		else = {
+			### Use criterion to establish the frame used for the state.
+			#set_state_flag = mapmode_state_visible
+			OWNER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+			set_state_flag = mapmode_state_hashed_visible
+			CONTROLLER = {
+				if = {
+					limit = {
+						has_war_support > 0.66
+					}
+					set_variable = { PREV.state_frame_number_hashed = 1 }
+				}
+				else_if = {
+					limit = {
+						has_war_support > 0.33
+					}
+					set_variable = { PREV.state_frame_number_hashed = 2 }
+				}
+				else = {
+					set_variable = { PREV.state_frame_number_hashed = 3 }
+				}
+			}
+			#OWNER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+		}
+	}
+	calculate_country_center_point_quick_all = yes
+	set_country_flag = mapmode_shield_visible
+}
+d_clear_state_map = {
+	clear_array = global.states
+	add_to_array = { global.states = 1 }
+}

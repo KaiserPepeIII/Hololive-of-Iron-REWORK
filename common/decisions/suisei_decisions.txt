@@ -1,16 +1,306 @@
+suisei_restoration_attempts = {
+	SUI_renounce_political_neutrality = {
+		allowed = {
+			tag = SUI
+		}
+		activation = {
+			tag = SUI
+				SUI = {
+				has_country_flag = SUI_monarchist_interest_grows
+				}
+		}
+		available = {
+			SUI = {
+			has_country_flag = SUI_monarchist_interest_grows
+			has_political_power > 50 
+				NOT = {
+					has_country_flag = SUI_hah_too_late_lol
+				}
+			}
+		}
+
+		visible = {
+				SUI = {
+				has_country_flag = SUI_monarchist_interest_grows
+				}
+			}
+
+		selectable_mission = yes
+		days_mission_timeout = 30
+		is_good = no
+
+		ai_will_do = {
+			factor = 1
+			}
+
+		cost = 50
+
+		complete_effect = { 
+			set_country_flag = SUI_monarchist_interest_expand
+			clr_country_flag = SUI_monarchist_interest_grows
+			add_to_variable = {
+				var = SUI.anti_aggression
+				value = 5
+			}
+		}
+
+			timeout_effect = {
+				set_country_flag = SUI_hah_too_late_lol
+			}		
+	}
+	SUI_criticise_lhs_guys = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_country_flag = SUI_monarchist_interest_expand
+			SUI = {
+				NOT = {
+					has_country_flag = SUI_resistance_monarchy_aim
+					has_country_flag = SUI_neutral_monarchy_aim
+				}
+			}	
+		}
+		
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_monarchist_interest_expand
+				NOT = {
+					has_country_flag = SUI_resistance_monarchy_aim
+					has_country_flag = SUI_neutral_monarchy_aim
+				}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 25
+		
+		complete_effect = { 
+			set_country_flag = SUI_yagoo_monarchy_aim
+			SUI = {
+				add_opinion_modifier = {
+					target = YAG
+					modifier = critic_lhs
+				}
+			}
+			SUI = {
+			add_popularity = {
+				ideology = democratic 
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = -0.05
+			}
+			}
+		}		
+	}
+	SUI_criticise_resistance_guys = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_country_flag = SUI_monarchist_interest_expand
+			SUI = {
+				NOT = {
+					has_country_flag = SUI_yagoo_monarchy_aim
+					has_country_flag = SUI_neutral_monarchy_aim
+				}
+			}	
+		}
+		
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_monarchist_interest_expand
+			SUI = {
+				NOT = {
+					has_country_flag = SUI_yagoo_monarchy_aim
+					has_country_flag = SUI_neutral_monarchy_aim
+				}
+			}	
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 25
+		
+		complete_effect = { 
+			set_country_flag = SUI_resistance_monarchy_aim
+				SUI = {
+				add_opinion_modifier = {
+					target = AQA
+					modifier = critic_resistance
+				}
+			}
+			SUI = {
+			add_popularity = {
+				ideology = communism 
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.05
+			}
+			}
+		}		
+	}
+	SUI_criticise_both_guys = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_country_flag = SUI_monarchist_interest_expand
+			SUI = {
+				NOT = {
+					has_country_flag = SUI_resistance_monarchy_aim
+					has_country_flag = SUI_yagoo_monarchy_aim
+				}
+			}	
+		}
+		
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_monarchist_interest_expand
+				NOT = {
+					has_country_flag = SUI_resistance_monarchy_aim
+					has_country_flag = SUI_yagoo_monarchy_aim
+				}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 75
+		
+		complete_effect = { 
+			set_country_flag = SUI_neutral_monarchy_aim
+			YAG = {
+				add_opinion_modifier = {
+					target = SUI
+					modifier = critic_lhs
+				}
+			}
+			AQA = {
+				add_opinion_modifier = {
+					target = SUI
+					modifier = critic_resistance
+				}
+			}
+			SUI = {
+				add_popularity = {
+					ideology = democratic 
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = communism 
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = pro_resistance_nationalism
+					popularity = -0.05
+				}
+			}
+			add_to_variable = {
+				var = SUI.anti_aggression
+				value = 0.25
+			}
+		}		
+	}
+	SUI_toulouse_concert = {
+		allowed = {
+			tag = SUI
+		
+		}
+		activation = {
+			tag = SUI
+			OR = {
+				has_country_flag = SUI_resistance_monarchy_aim
+				has_country_flag = SUI_yagoo_monarchy_aim
+				has_country_flag = SUI_neutral_monarchy_aim
+				}
+		}
+		available = {
+			OR = {
+				has_country_flag = SUI_resistance_monarchy_aim
+				has_country_flag = SUI_yagoo_monarchy_aim
+				has_country_flag = SUI_neutral_monarchy_aim
+				}
+			has_political_power > 75 
+				NOT = {
+					has_country_flag = SUI_hah_too_late_lol
+				}
+		}
+
+		visible = {
+				SUI = {
+					OR = {
+						has_country_flag = SUI_resistance_monarchy_aim
+						has_country_flag = SUI_yagoo_monarchy_aim
+						has_country_flag = SUI_neutral_monarchy_aim
+						}
+				}
+			}
+
+		selectable_mission = yes
+		days_mission_timeout = 60
+		is_good = no
+
+		ai_will_do = {
+			factor = 1
+			}
+
+		cost = 75
+
+		complete_effect = { 
+			set_country_flag = SUI_hah_too_late_lol
+			clr_country_flag = SUI_resistance_monarchy_aim
+			clr_country_flag = SUI_yagoo_monarchy_aim
+			clr_country_flag = SUI_neutral_monarchy_aim
+			add_to_variable = {
+				var = SUI.anti_aggression
+				value = 5
+			}
+			add_popularity = {
+				ideology = divine_mandate 
+				popularity = 0.2
+			}
+		}
+
+			timeout_effect = {
+				SUI = {
+					add_stability = -0.01
+					add_to_variable = {
+						var = SUI.anti_aggression
+						value = 15
+					}
+				}
+				set_country_flag = SUI_hah_too_late_lol
+			}		
+	}
+}
+
 suisei_deal_with_strikes = {
 	SUI_put_down_strike = {
 		icon = decision_generic_industry
 		available = {
-			SUI = {
-				has_idea = suisei_strikes
-				}
+			tag = SUI
 		}
 		
 		visible = {
-			SUI = {
+			tag = SUI
 			has_idea = suisei_strikes
-			}
 		}
 		
 		fire_only_once = yes
@@ -24,6 +314,7 @@ suisei_deal_with_strikes = {
 		complete_effect = { 
 			custom_effect_tooltip = suisei_strike_tooltip 
 			remove_ideas = suisei_strikes
+			SUI = {
 			if = { 
 				limit = {
 					has_government = democratic
@@ -33,7 +324,7 @@ suisei_deal_with_strikes = {
 					popularity = -0.1
 					}
 					add_stability = -0.1
-					country_event = suisei.15
+					country_event = { id = suisei.15 }
 				}
 				else_if = { 
 					limit = {
@@ -44,7 +335,7 @@ suisei_deal_with_strikes = {
 						popularity = -0.15
 						}
 						add_stability = -0.15
-						country_event = suisei.15
+						country_event = { id = suisei.15 }
 					}
 				else_if = { 
 						limit = {
@@ -55,7 +346,7 @@ suisei_deal_with_strikes = {
 							popularity = -0.15
 							}
 							add_stability = -0.15
-							country_event = suisei.15
+							country_event = { id = suisei.15 }
 						}
 				else_if = { 
 							limit = {
@@ -66,7 +357,7 @@ suisei_deal_with_strikes = {
 								popularity = -0.1
 								}
 								add_stability = -0.1
-								country_event = suisei.15
+								country_event = { id = suisei.15 }
 							}
 				else_if = { 
 							limit = {
@@ -77,7 +368,7 @@ suisei_deal_with_strikes = {
 								popularity = -0.1
 								}
 								add_stability = -0.1
-								country_event = suisei.15
+								country_event = { id = suisei.15 }
 							}
 						else = { 
 								add_popularity = {
@@ -85,13 +376,15 @@ suisei_deal_with_strikes = {
 								popularity = -0.1
 								}
 								add_stability = -0.1
-								country_event = suisei.15
-							}				
+								country_event = { id = suisei.15 }
+							}		
+					}		
 			}		
 		}
 	SUI_raise_minimum_wage = {
 			icon = decision_generic_industry
 		available = {
+			tag = SUI
 			SUI = {
 			has_idea = suisei_strikes
 			NOT = {
@@ -101,11 +394,10 @@ suisei_deal_with_strikes = {
 		}
 		
 		visible = {
-			SUI = {
-				has_idea = suisei_strikes
+			tag = SUI
+			has_idea = suisei_strikes
 				NOT = {
 					has_country_flag = strike_remove_1
-				}
 				}
 		}
 		
@@ -124,22 +416,20 @@ suisei_deal_with_strikes = {
 	SUI_promise_more_stimulous = {
 		icon = decision_generic_industry
 	available = {
-		SUI = {
+		tag = SUI
 			has_idea = suisei_strikes
 		has_country_flag = strike_remove_1
 		NOT = {
 			has_country_flag = strike_remove_2
-		}
 		}
 	}
 	
 	visible = {
-		SUI = {
+		tag = SUI
 			has_idea = suisei_strikes
 		has_country_flag = strike_remove_1
 		NOT = {
 			has_country_flag = strike_remove_2
-		}
 		}
 	}
 	
@@ -156,18 +446,19 @@ suisei_deal_with_strikes = {
 	}
 }
 SUI_grant_union_protection = {
+	
 		icon = decision_generic_industry
 	available = {
-		SUI = {
+		tag = SUI
 		has_idea = suisei_strikes
 		has_country_flag = strike_remove_2
 		NOT = {
 			has_country_flag = strike_remove_3
 		}
 	}
-	}
 
 	visible = {
+		tag = SUI
 		SUI = {
 			has_idea = suisei_strikes
 			has_country_flag = strike_remove_2
@@ -192,7 +483,6 @@ SUI_grant_union_protection = {
 SUI_put_down_looters = {
 		allowed = {
 			tag = SUI
-			has_idea = looting_and_rioting
 		}
 		activation = {
 			tag = SUI
@@ -201,7 +491,7 @@ SUI_put_down_looters = {
 		available = {
 			has_idea = looting_and_rioting
 			has_army_manpower = { size > 150000 }
-			has_manpower = 3000
+			has_manpower > 3000
 			}
 
 		visible = {
@@ -223,6 +513,7 @@ SUI_put_down_looters = {
 		}
 
 			timeout_effect = {
+				country_event = suisei.18
 				set_variable = {
 					var = SUI.anti_aggression
 					value = 0
@@ -236,6 +527,12 @@ SUI_put_down_looters = {
 					}
 				}
 				remove_ideas = looting_and_rioting 
+				every_owned_state = {
+					limit = {
+						has_state_flag = suisei_commie_revolt
+					}
+					set_demilitarized_zone = no
+				}
 			}
 	}
 }
