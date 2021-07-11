@@ -12,6 +12,16 @@ RSR_scavenging_category = {
 		always = yes
 	}
 }
+
+noe_looming_civil_war = {
+	priority = 10
+	
+	icon = generic_formable_nations
+	
+	picture = GFX_decision_cat_generic_arabia
+	
+}
+
 germany_bad_category = {
 	priority = 9
 
@@ -55,10 +65,6 @@ suisei_deal_with_strikes = {
 	
 	allowed = {
 		tag = SUI
-		OR = {
-		has_idea = suisei_strikes
-		has_idea = looting_and_rioting
-		}
 	}
 	visible = {
 		tag = SUI
@@ -77,21 +83,16 @@ suisei_restoration_attempts = {
 	
 	allowed = {
 		tag = SUI
-		SUI = {
-		has_country_flag = SUI_monarchist_interest_grows
-		NOT = {
-			has_country_flag = SUI_hah_too_late_lol
-			has_country_flag = SUI_had_elections
-		}
-	}
 	}
 	visible = {
 		tag = SUI
 		SUI = {
 		has_country_flag = SUI_monarchist_interest_grows
 		NOT = {
+		OR = {
 			has_country_flag = SUI_hah_too_late_lol
 			has_country_flag = SUI_had_elections
+			}
 		}
 		}
 	}	
@@ -104,15 +105,7 @@ suisei_election_compromises = {
 	visible_when_empty = yes
 	
 	allowed = {
-		OR = {
-			has_country_flag = SUI_quell_resistance
-			has_country_flag = SUI_resistance_compromise
-			has_country_flag = SUI_lhs_compromises
-			has_country_flag = SUI_conservative_compromises
-			has_country_flag = SUI_progressive_compromise
-			has_country_flag = SUI_nationalist_compromises
-			has_country_flag = SUI_revolutionary_compromises
-		}
+		tag = SUI
 	}
 	visible = {
 			OR = {
@@ -404,7 +397,7 @@ tropical_goods_involved_category = {
 	scripted_gui = tropical_goods_window_gui
 	
 	allowed = {
-		has_country_flag = tropical_goods_involved
+		always = yes
 	}
 	visible = {
 		has_country_flag = tropical_goods_involved

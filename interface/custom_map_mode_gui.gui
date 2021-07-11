@@ -4,7 +4,7 @@
 @NODE_MAP_START_POSITION_Y = -570
 
 ### Change the scale for the image maps. Inverse of what the config.yml of the geoparser is set to. Eg. 0.5 hash_scale in the config requires 2.0 HASH_SCALE here
-@HASH_SCALE = 2.0
+@HASH_SCALE = 1.0
 @MAIN_SCALE = 1.0
 guiTypes = {
 	### Scrollbars
@@ -210,7 +210,7 @@ guiTypes = {
 		}
 	}
 	containerWindowType = { #Filter Entry
-		name = "filter_entry"
+		name = "custom_map_filter_entry"
 		position = { x = 0 y = 0 }
 		size = { width = 140 height	 = 24 }
 		background = {
@@ -218,7 +218,7 @@ guiTypes = {
 			quadTextureSprite ="GFX_tiled_window_transparent_transparent"
 		}
 		buttonType = {
-			name = "filter_entry_button"
+			name = "custom_map_filter_entry_button"
 			position = { x = 0 y = 0 }
 			spriteType = "GFX_tiling_sort_button"
 			size = { x = 140 y = 24 }
@@ -246,7 +246,7 @@ guiTypes = {
 			name = "map"
 			spriteType = "GFX_custom_map_background"
 			position = { x = @NODE_MAP_START_POSITION_X y = @NODE_MAP_START_POSITION_Y }
-			scale = 1
+			scale = 2.0
 			alwaystransparent = yes
 		}
 	}
@@ -320,16 +320,18 @@ guiTypes = {
 
 		click_to_front = yes
 
-		iconType = {
+		buttonType = {
 			name = "map_marker_bg"
 			spriteType = "GFX_tiled_window_transparent_transparent"
 			position = { x = 0 y = 0 }
-			alwaystransparent = yes
+			#alwaystransparent = yes
 			centerposition = yes
 			#rotation = 45
 			scale = @MAIN_SCALE
 			orientation = center
 			#origo = center
+			pdx_tooltip = "custom_map_mode_state_entry_tooltip"
+			pdx_tooltip_delayed = "custom_map_mode_state_entry_tooltip_delayed"
 		}
 		iconType = {
 			name = "map_marker_hashed"
@@ -383,13 +385,23 @@ guiTypes = {
 		click_to_front = yes
 		buttonType = {
 			name = "button_map_container"
-			spriteType = "GFX_world_tension_icon_big_strip"
-			frame = 7
-			position = { x = 1555 y = 90 }
+			spriteType = "GFX_button_map"
+			frame = 1
+			position = { x = 1255 y = 17 }
 			pdx_tooltip = "`"
 			centerposition = yes
 			#rotation = 45
-			scale = 1.5
-		}
+			scale = 0.8
+			}
+			instantTextBoxType = {
+				name ="info_text"
+				position = { x= 1185 y = 7 }
+				font = "hoi_18mbs"
+				text = "Map Modes"
+				format = centre
+				maxWidth = 150
+				maxHeight = 24
+				alwaystransparent = yes
+			}
 	}
 }

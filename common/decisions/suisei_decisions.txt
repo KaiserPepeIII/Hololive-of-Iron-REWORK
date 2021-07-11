@@ -7,6 +7,12 @@ suisei_restoration_attempts = {
 			tag = SUI
 				SUI = {
 				has_country_flag = SUI_monarchist_interest_grows
+				NOT = {
+					OR = {
+					has_country_flag = SUI_monarchist_interest_expand
+					has_country_flag = SUI_hah_too_late_lol
+						}
+					}	
 				}
 		}
 		available = {
@@ -26,7 +32,7 @@ suisei_restoration_attempts = {
 			}
 
 		selectable_mission = yes
-		days_mission_timeout = 30
+		days_mission_timeout = 45
 		is_good = no
 
 		ai_will_do = {
@@ -37,7 +43,7 @@ suisei_restoration_attempts = {
 
 		complete_effect = { 
 			set_country_flag = SUI_monarchist_interest_expand
-			clr_country_flag = SUI_monarchist_interest_grows
+			#clr_country_flag = SUI_monarchist_interest_grows
 			add_to_variable = {
 				var = SUI.anti_aggression
 				value = 5
@@ -51,23 +57,18 @@ suisei_restoration_attempts = {
 	SUI_criticise_lhs_guys = {
 		icon = decision_generic_industry
 		available = {
-			tag = SUI
-			has_country_flag = SUI_monarchist_interest_expand
-			SUI = {
-				NOT = {
-					has_country_flag = SUI_resistance_monarchy_aim
-					has_country_flag = SUI_neutral_monarchy_aim
-				}
-			}	
+			tag = SUI	
 		}
 		
 		visible = {
 			tag = SUI
+			SUI = {
 			has_country_flag = SUI_monarchist_interest_expand
 				NOT = {
 					has_country_flag = SUI_resistance_monarchy_aim
 					has_country_flag = SUI_neutral_monarchy_aim
 				}
+			}
 		}
 		
 		fire_only_once = yes
@@ -100,6 +101,7 @@ suisei_restoration_attempts = {
 	}
 	SUI_criticise_resistance_guys = {
 		icon = decision_generic_industry
+		
 		available = {
 			tag = SUI
 			has_country_flag = SUI_monarchist_interest_expand
@@ -165,11 +167,13 @@ suisei_restoration_attempts = {
 		
 		visible = {
 			tag = SUI
+			SUI = {
 			has_country_flag = SUI_monarchist_interest_expand
 				NOT = {
 					has_country_flag = SUI_resistance_monarchy_aim
 					has_country_flag = SUI_yagoo_monarchy_aim
 				}
+			}
 		}
 		
 		fire_only_once = yes
@@ -264,6 +268,7 @@ suisei_restoration_attempts = {
 		cost = 75
 
 		complete_effect = { 
+			news_event = { id = global_holonews.1 }
 			set_country_flag = SUI_hah_too_late_lol
 			clr_country_flag = SUI_resistance_monarchy_aim
 			clr_country_flag = SUI_yagoo_monarchy_aim
@@ -290,7 +295,470 @@ suisei_restoration_attempts = {
 			}		
 	}
 }
+suisei_election_compromises = {
+	#######CONSERVATIVE##########
+	SUI_end_of_depression = {
+		icon = decision_generic_industry
+		allowed = {
+			tag = SUI
+		}
+		available = {
+			always = no
+		}
+		activation = {
+			tag = SUI
+			has_country_flag = SUI_conservative_compromises	
+			NOT = {
+				SUI = {
+					has_idea = suisei_strikes
+				}
+			}
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_conservative_compromises
+		}
 
+		selectable_mission = no
+		days_mission_timeout = 720
+		is_good = yes
+		fire_only_once = yes
+
+		timeout_effect = {
+			SUI = {
+				add_stability = 0.05
+				remove_ideas = great_depression_suisei_three
+				remove_ideas =  great_depression_suisei_four
+				clr_country_flag = SUI_conservative_compromises
+				set_country_flag = coalition_stick
+				country_event = {id = suisei.27}
+			}
+		}	
+		
+	}
+	SUI_progressives_break_coalition = {
+		icon = decision_generic_industry
+		allowed = {
+			tag = SUI
+		}
+		available = {
+			always = no
+		}
+		activation = {
+			tag = SUI
+			has_country_flag = SUI_conservative_compromises	
+			NOT = {
+				OR = {
+					SUI = {has_idea = suisei_progressives_pleased}
+					SUI = {has_country_flag = coalition_stick }
+				}
+			}
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_conservative_compromises
+		}
+
+		selectable_mission = no
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = no
+
+		timeout_effect = {
+			SUI = {
+				country_event = { id = suisei.26}
+			}
+		}	
+		
+	}
+	SUI_rent_control_laws = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_country_flag = SUI_conservative_compromises
+		}
+
+		visible = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_conservative_compromises
+			}
+			NOT = {
+				has_idea = suisei_progressives_pleased
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 150
+
+		complete_effect = { 
+			SUI = {
+				add_timed_idea = {
+					idea = suisei_progressives_pleased
+					days = 150
+				}
+				add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = 0.02
+				}
+			}
+		}
+	}
+	SUI_labour_protection_act = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_country_flag = SUI_conservative_compromises
+		}
+
+		visible = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_conservative_compromises
+			}
+			NOT = {
+				has_idea = suisei_progressives_pleased
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 150
+
+		complete_effect = { 
+			SUI = {
+				add_timed_idea = {
+					idea = suisei_progressives_pleased
+					days = 150
+				}
+				add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = 0.02
+				}
+			}
+		}
+	}	
+	SUI_establish_temporary_stimulous = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_country_flag = SUI_conservative_compromises
+		}
+
+		visible = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_conservative_compromises
+			}
+			NOT = {
+				has_idea = suisei_progressives_pleased
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 150
+
+		complete_effect = { 
+			SUI = {
+				add_timed_idea = {
+					idea = suisei_progressives_pleased
+					days = 150
+				}
+				add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = 0.02
+				}
+			}
+		}
+	}	
+	#######PROGRESSIVE##########
+	SUI_conservatives_break_coalition = {
+		icon = decision_generic_industry
+		allowed = {
+			tag = SUI
+		}
+		available = {
+			tag = SUI
+				SUI = {
+					has_idea = suisei_conservatives_pleased
+				}
+		}
+		activation = {
+			tag = SUI
+			has_country_flag = SUI_progressive_compromise	
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_progressive_compromise
+		}
+		cost = 120
+
+		selectable_mission = yes
+		days_mission_timeout = 360
+		is_good = no
+		fire_only_once = yes
+
+		timeout_effect = {
+			SUI = {
+				country_event = { id = suisei.26}
+			}
+		}	
+		complete_effect = {
+			clr_country_flag = SUI_progressive_compromise
+		}
+	}
+	SUI_negotiate_a_budget = {
+		icon = decision_generic_industry
+		allowed = {
+			tag = SUI
+		}
+		available = {
+			tag = SUI
+		}
+		activation = {
+			tag = SUI
+			has_country_flag = SUI_progressive_compromise	
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_progressive_compromise
+		}
+		cost = 25
+
+		selectable_mission = yes
+		days_mission_timeout = 80
+		is_good = no
+		fire_only_once = yes
+		
+		timeout_effect = {
+			SUI = { 
+				country_event = suisei.26
+			}
+		}
+		complete_effect = {
+			SUI = {
+				country_event = { id = suisei.28}
+			}
+			set_variable = {
+				var = suisei_conservative_anger
+				value = 0
+			}
+		}	
+		
+	}
+	SUI_further_conservative_concessions= {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_country_flag = SUI_progressive_compromise
+		}
+
+		visible = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_progressive_compromise
+			}
+			OR = {
+			has_idea = suisei_medium_spending
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 100
+
+		complete_effect = { 
+			add_ideas = suisei_conservatives_pleased
+			SUI = {
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.05
+				}
+			}
+		}
+	}	
+	#######Divine Mandate##########
+	SUI_the_enlightened_monarch= {
+
+		icon = decision_generic_industry
+		allowed = {
+			tag = SUI
+		}
+		available = {
+			tag = SUI
+		}
+		activation = {
+			tag = SUI
+			has_country_flag = SUI_quell_resistance	
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_quell_resistance
+		}
+
+		selectable_mission = no
+		days_mission_timeout = 80
+		is_good = yes
+		fire_only_once = yes
+		
+		timeout_effect = {
+			SUI = { 
+				country_event = { id = suisei.34}
+			}
+		}	
+		
+	}
+	SUI_shut_down_opposition = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_country_flag = SUI_quell_resistance
+		}
+
+		visible = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_quell_resistance
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 50
+
+		complete_effect = { 
+			SUI = {
+			 set_country_flag = suisei_down_opposition_one
+			 add_stability = -0.05
+			}
+		}
+	}		
+	SUI_close_public_demonstrations = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_country_flag = SUI_quell_resistance
+		}
+
+		visible = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_quell_resistance
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 50
+
+		complete_effect = { 
+			SUI = {
+			 set_country_flag = suisei_down_opposition_two
+			 add_stability = -0.05
+			}
+		}
+	}
+	SUI_close_public_demonstrations = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_country_flag = SUI_quell_resistance
+		}
+
+		visible = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_quell_resistance
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 50
+
+		complete_effect = { 
+			SUI = {
+			 set_country_flag = suisei_down_opposition_two
+			 add_stability = -0.05
+			}
+		}
+	}
+	SUI_expand_the_gendarme = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_country_flag = SUI_quell_resistance
+		}
+
+		visible = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_quell_resistance
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 50
+
+		complete_effect = { 
+			SUI = {
+			 set_country_flag = suisei_down_opposition_three
+			 add_stability = -0.05
+			}
+		}
+	}
+}
 suisei_deal_with_strikes = {
 	SUI_put_down_strike = {
 		icon = decision_generic_industry
@@ -335,7 +803,7 @@ suisei_deal_with_strikes = {
 						popularity = -0.15
 						}
 						add_stability = -0.15
-						country_event = { id = suisei.15 }
+						country_event = suisei.15 
 					}
 				else_if = { 
 						limit = {
@@ -381,6 +849,7 @@ suisei_deal_with_strikes = {
 					}		
 			}		
 		}
+		
 	SUI_raise_minimum_wage = {
 			icon = decision_generic_industry
 		available = {

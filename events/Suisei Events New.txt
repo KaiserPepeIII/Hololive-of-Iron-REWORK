@@ -562,12 +562,14 @@ country_event = {
 			has_country_flag = SUI_had_elections
 			has_idea = suisei_strikes
 			NOT = {
+				OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
+				}
 			}
 		}
 	}
-	fire_only_once = yes 
+	
 	mean_time_to_happen = { days = 1 }
 
 	option = {
@@ -785,6 +787,7 @@ country_event = {
 			target = FRA
 			modifier = abandoned_france
 		}
+	  }
 	}
 }
 #france say yesh
@@ -829,10 +832,310 @@ country_event = {
 		name = suisei.25.a
 		add_popularity = {
 			ideology = divine_mandate
-			value = 0.01
+			popularity = 0.01
 		}
 		SUI = {
 		set_country_flag = SUI_monarchist_interest_grows
+		}
+	}
+}
+#Progressive-Conservative Alliance breaks
+country_event = {
+	id = suisei.26
+	title = suisei.26.t
+	desc = suisei.26.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.26.a
+	}
+}
+#Depression ends
+country_event = {
+	id = suisei.27
+	title = suisei.27.t
+	desc = suisei.27.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.27.a
+	}
+}
+#Budget Proposals 1
+country_event = {
+	id = suisei.28
+	title = suisei.28.t
+	desc = suisei.28.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.28.a #high services spending
+		add_to_variable = {
+			var= suisei_conservative_anger
+			value = 4
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.03
+		}
+		country_event = {id = suisei.29}
+	}
+	option = {
+		name = suisei.28.b #medium services spending
+		add_to_variable = {
+			var = suisei_conservative_anger
+			value = 2
+		}	
+			add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.01
+		}
+		country_event = {id = suisei.29}
+	}
+	option = {
+		name = suisei.28.c #low spending
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = -0.02
+		}
+		country_event = {id = suisei.29}
+	}
+}
+#Budget Proposals 2
+country_event = {
+	id = suisei.29
+	title = suisei.29.t
+	desc = suisei.29.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.29.a #high military spending
+		add_to_variable = {
+			var= suisei_conservative_anger
+			value = 4
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.03
+		}
+		country_event = {id = suisei.30}
+	}
+	option = {
+		name = suisei.29.b #medium military spending
+		add_to_variable = {
+			var = suisei_conservative_anger
+			value = 2
+		}	
+			add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.01
+		}
+		country_event = {id = suisei.30}
+	}
+	option = {
+		name = suisei.29.c #low spending
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = -0.02
+		}
+		country_event = {id = suisei.30}
+	}
+}
+#Budget Proposals 3
+country_event = {
+	id = suisei.30
+	title = suisei.30.t
+	desc = suisei.30.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.30.a #high stimulous spending
+		add_to_variable = {
+			var= suisei_conservative_anger
+			value = 4
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.03
+		}
+		country_event = {id = suisei.31}
+	}
+	option = {
+		name = suisei.30.b #medium stimulous spending
+		add_to_variable = {
+			var = suisei_conservative_anger
+			value = 2
+		}	
+			add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.01
+		}
+		country_event = {id = suisei.31}
+	}
+	option = {
+		name = suisei.30.c #low spending
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = -0.02
+		}
+		country_event = {id = suisei.31}
+	}
+}
+#budget drafted
+country_event = {
+	id = suisei.31
+	title = suisei.31.t
+	desc = suisei.31.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.31.a
+		SUI = {
+			set_country_flag = budget_drafted
+		}
+	}
+}
+#budget drafted mad 
+country_event = {
+	id = suisei.32
+	title = suisei.32.t
+	desc = suisei.32.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		has_country_flag = budget_drafted
+		check_variable = {
+			var = suisei_conservative_anger
+			value = 8
+			compare = greater_than_or_equals
+		}
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	option = {
+		name = suisei.32.a
+		SUI = {
+			clr_country_flag = budget_drafted
+			add_stability = -0.1
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = 0.05
+			}
+		}
+		add_ideas = suisei_high_spending
+	}
+}
+#budget drafted satisfactory
+country_event = {
+	id = suisei.33
+	title = suisei.33.t
+	desc = suisei.33.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		has_country_flag = budget_drafted
+		check_variable = {
+			var = suisei_conservative_anger
+			value = 8
+			compare = less_than
+		}
+		check_variable = {
+			var = suisei_conservative_anger
+			value = 5
+			compare = greater_than
+		}
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	option = {
+		name = suisei.32.a
+		SUI = {
+			clr_country_flag = budget_drafted
+			add_stability = 0.02
+		}
+		add_ideas = suisei_medium_spending
+	}
+}
+#budget drafted liberals mad
+country_event = {
+	id = suisei.33
+	title = suisei.33.t
+	desc = suisei.33.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		has_country_flag = budget_drafted
+		check_variable = {
+			var = suisei_conservative_anger
+			value = 5
+			compare = less_than_or_equals
+		}
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	option = {
+		name = suisei.32.a
+		SUI = {
+			clr_country_flag = budget_drafted
+			add_stability = -0.08
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = -0.05
+			}
+		}
+		add_ideas = suisei_low_spending
+		add_ideas = suisei_conservatives_pleased
+	}
+}
+#enlightened_monarch
+country_event = {
+	id = suisei.34
+	title = suisei.34.t
+	desc = suisei.34.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.32.a
+		add_ideas = suisei_enlightened_monarch
+	}
+}
+#enlightened_monarch
+country_event = {
+	id = suisei.35
+	title = suisei.35.t
+	desc = suisei.35.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		has_country_flag = suisei_down_opposition_one
+		has_country_flag = suisei_down_opposition_three
+		has_country_flag = suisei_down_opposition_two
+	}
+
+	option = {
+		name = suisei.35.a
+		add_ideas = suisei_the_autocrat
+		SUI = {
+		clr_country_flag = suisei_down_opposition_one
+		clr_country_flag = suisei_down_opposition_three
+		clr_country_flag = suisei_down_opposition_two
 		}
 	}
 }

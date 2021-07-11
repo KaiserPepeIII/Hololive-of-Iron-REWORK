@@ -1,0 +1,41 @@
+noe_looming_civil_war = {
+	
+	act_quickly = {
+		days_mission_timeout = 10
+		is_good = no
+		icon = GFX_decision_icon_default
+		
+		
+		available = {
+			always = no
+		}
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = NOE_prepare_putsch
+			}
+			complete_effect = {
+			NOE = {
+				country_event = {
+					id = noel.23
+					}
+				}
+			}
+			timeout_effect = {
+			NOE = {
+				add_stability = -.15
+				}
+			}
+		
+		visible = {
+		original_tag = NOE
+		NOE = {
+		has_country_flag = NOE_putsch_prepared
+			  }
+				  }
+	}
+}
+	
+	
+			

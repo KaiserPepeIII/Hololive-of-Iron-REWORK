@@ -6,6 +6,7 @@ clear_election_variables = {
 	clear_variable = ROOT.anti_monarchists
 	clear_variable = ROOT.election_yagoo_democrats
 	clear_variable = ROOT.election_resistance_democrats
+	clear_variable = ROOT.election_count_antis_effect
 }
 election_counting_effect = {
 	election_set_variables_effect = yes
@@ -16,6 +17,7 @@ election_counting_effect = {
 	election_count_neutral_autocrat_effect = yes
 	election_count_monarchists_effect = yes
 	election_count_anti_monarchist_effect = yes
+	election_count_antis_effect = yes
 }
 election_set_variables_effect = {
 	set_variable = {
@@ -45,6 +47,10 @@ election_set_variables_effect = {
 	set_variable = {
 	var = ROOT.anti_monarchists
 	value = ROOT.party_popularity@mixed_ideology_democracy
+	}
+	set_variable = {
+	var = ROOT.election_count_antis
+	value = ROOT.party_popularity@fascism
 	}
 }
 election_count_yagoo_democrats_effect = {
@@ -119,6 +125,20 @@ election_count_monarchists_effect = {
 	value = ROOT.party_popularity@divine_mandate
 	}
 } 
+election_count_antis_effect = {
+	add_to_variable = {
+	var = ROOT.election_count_antis
+	value = party_popularity@left_wing_revolutionary
+	}
+	add_to_variable = {
+	var = ROOT.election_count_antis
+	value = party_popularity@reactionary_monarchy
+	}
+	add_to_variable = {
+	var = ROOT.election_count_antis
+	value = party_popularity@democratic_revitalisation
+	}
+}
 election_count_anti_monarchist_effect = {
 	add_to_variable = {
 	var = ROOT.anti_monarchists

@@ -16,7 +16,7 @@ scripted_gui = {
 				clear_custom_map_mode_setup = yes
 				add_to_variable = { global.monthly_gui_update_tick = 1 }
 			}
-			filter_entry_button_click = {
+			custom_map_filter_entry_button_click = {
 
 				set_country_flag = show_filter_list
 			}
@@ -29,7 +29,7 @@ scripted_gui = {
 		dynamic_lists = {
 			selected_filter_gridbox = {
 				array = selected_filter_array
-				entry_container = filter_entry
+				entry_container = custom_map_filter_entry
 			}
 		}
 	}
@@ -57,8 +57,20 @@ scripted_gui = {
 		}
 
 		effects = {
-			node_map_marker_click = {
-				add_to_variable = { global.monthly_gui_update_tick = 1 }
+			map_marker_bg_click = {
+				if = {
+					limit = {
+						has_state_flag = custom_map_state_is_button
+					}
+					log = "CLICK"
+					meta_effect = {
+						text = {
+							[FILTER_EFFECT_INDEX] = yes
+						}
+						FILTER_EFFECT_INDEX = "custom_map_mode_filter_click_[?ROOT.selected_filter_array^0|0]"
+					}
+					add_to_variable = { global.monthly_gui_update_tick = 1 }
+				}
 			}
 		}
 
@@ -79,6 +91,12 @@ scripted_gui = {
 			}
 			map_marker_icon_visible = {
 				has_state_flag = mapmode_icon_visible
+			}
+			map_marker_bg_click_enabled = {
+				NOT = { has_state_flag = mapmode_state_click_disabled }
+			}
+			map_marker_hashed_click_enabled = {
+				NOT = { has_state_flag = mapmode_state_click_disabled }
 			}
 		}
 
@@ -126,7 +144,7 @@ scripted_gui = {
 			has_country_flag = show_filter_list
 		}
 		effects = {
-			filter_entry_button_click = {
+			custom_map_filter_entry_button_click = {
 				### Cleanup mapmode
 				set_variable = { selected_filter_array^0 = v }
 				clr_country_flag = show_filter_list
@@ -144,7 +162,7 @@ scripted_gui = {
 		dynamic_lists = {
 			filter_dropdown_gridbox = {
 				array = global.filter_arrays
-				entry_container = filter_entry
+				entry_container = custom_map_filter_entry
 			}
 		}
 	}
