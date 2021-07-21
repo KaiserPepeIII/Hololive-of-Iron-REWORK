@@ -1,3 +1,238 @@
+suisei_colonial_fuel = {
+	SUI_gabon_fuel = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 50
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = suisei_biofuels
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 15
+		}
+		cost = 50
+		days_remove = 90
+		complete_effect = {
+			add_resource = {
+				type = oil
+				amount = 18
+				state = 539
+			}			
+		}
+	}
+	SUI_congo_fuel = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 50
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = suisei_biofuels
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 15
+		}
+		cost = 50
+		days_remove = 90
+		complete_effect = {
+			add_resource = {
+				type = oil
+				amount = 22
+				state = 539
+			}			
+		}
+	}
+	SUI_congo_rubber = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 50
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = suisei_rubber
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 15
+		}
+		cost = 50
+		days_remove = 90
+		complete_effect = {
+			add_resource = {
+				type = rubber
+				amount = 22
+				state = 539
+			}			
+		}
+	}
+}
+suisei_dealing_with_occupation = {
+	SUI_integrate_switzerland_azki = {
+		
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_political_power > 50
+			AZK = {
+				exists = yes
+				is_puppet_of = SUI
+			}
+		}
+
+		visible = {
+			tag = SUI
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 50
+
+		complete_effect = { 
+			AZK = {
+				transfer_state = 151
+				transfer_state = 976
+				country_event = suisei.43
+			}
+		}
+	}
+	SUI_integrate_switzerland_anemachi = {
+		
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_political_power > 50
+			ANE = {
+				exists = yes
+				is_puppet_of = SUI
+			}
+		}
+
+		visible = {
+			tag = SUI
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 25
+		complete_effect = { 
+			ANE = {
+				transfer_state = 946
+				country_event = suisei.44
+			}
+		}
+	}
+}
+suisei_fix_army = {
+	SUI_encourage_reformist_officers = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_political_power > 50
+		}
+
+		visible = {
+			tag = SUI
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 50
+
+		complete_effect = { 
+			army_experience = 5
+			set_country_flag = SUI_reforming
+			swap_ideas = {
+				remove_idea = SUI_decadant_army
+				add_idea = SUI_reforming_army
+			}
+		}
+	}	
+	SUI_reshuffle_high_command = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_political_power > 75
+			has_army_experience > 10
+		}
+
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_reforming
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+		cost = 75
+
+		complete_effect = { 
+			set_country_flag = SUI_last_push
+			swap_ideas = {
+				remove_idea = SUI_reforming_army
+				add_idea = SUI_restructured_army
+			}
+		}
+	}
+	SUI_enact_stricter_training = {
+
+		icon = decision_generic_industry
+
+		available = {
+			tag = SUI
+			has_army_experience > 10
+		}
+
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_last_push
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			}
+
+
+		complete_effect = { 
+			army_experience = -10
+			clr_country_flag = SUI_last_push
+			clr_country_flag = SUI_reforming
+			clr_country_flag = suisei_fix_army
+			swap_ideas = {
+				remove_idea = SUI_restructured_army
+				add_idea = SUI_suicopath_military
+			}
+		}
+	}		
+}
 suisei_restoration_attempts = {
 	SUI_renounce_political_neutrality = {
 		allowed = {
@@ -758,6 +993,47 @@ suisei_election_compromises = {
 			}
 		}
 	}
+	#######Pro Resistance Monarchy##########
+	SUI_cut_ties_with_lhs= {
+
+		icon = decision_generic_industry
+		allowed = {
+			tag = SUI
+		}
+		available = {
+			tag = SUI
+			resistance_monarchist_victory = yes
+		}
+		activation = {
+			tag = SUI
+			has_country_flag = SUI_lhs_compromises	
+		}
+		visible = {
+			tag = SUI
+			has_country_flag = SUI_lhs_compromises
+		}
+
+		selectable_mission = yes
+		days_mission_timeout = 320
+		is_good = yes
+		fire_only_once = yes
+		
+		complete_effect = {
+			clr_country_flag = SUI_lhs_compromises
+			SUI = {
+				add_opinion_modifier = {
+					target = YAG
+					modifier = anti_lhs_policy
+				}
+			}
+		}
+		timeout_effect = {
+			SUI = { 
+				country_event = { id = suisei.36}
+			}
+		}	
+		
+	}
 }
 suisei_deal_with_strikes = {
 	SUI_put_down_strike = {
@@ -838,6 +1114,17 @@ suisei_deal_with_strikes = {
 								add_stability = -0.1
 								country_event = { id = suisei.15 }
 							}
+							else_if = { 
+								limit = {
+									has_government = divine_mandate
+								}
+									add_popularity = {
+									ideology = divine_mandate
+									popularity = -0.15
+									}
+									add_stability = -0.1
+									country_event = { id = suisei.15 }
+								}
 						else = { 
 								add_popularity = {
 								ideology = pro_resistance_monarchy

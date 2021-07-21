@@ -2,7 +2,12 @@
 on_actions = {
     on_startup = {
         effect = {
-
+			if = {
+				limit = {
+					is_ai = no
+				}
+			country_event = misc.1
+			}
 #Germany threat#
 			set_variable = {
 			var = GER.germany_threat
@@ -22,6 +27,14 @@ on_actions = {
 	var = FRA.france_threat
 	min = 0
 	max = 100
+	}
+	set_variable = {
+	var = SUI.france_leave
+	value = 0
+	}
+	set_variable = {
+	var = SUB.france_leave
+	value = 0
 	}
 #NOE - Uradel Faction Happiness
 			set_variable = {

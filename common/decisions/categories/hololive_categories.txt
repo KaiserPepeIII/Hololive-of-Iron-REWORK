@@ -46,14 +46,31 @@ france_bad_category = {
 	allowed = {
 		OR = {
 		tag = FRA
-		has_country_flag = dealing_with_france
+		tag = SUB
+		tag = SUI
 		}
 	}
 	visible = {
 		OR = {
 		tag = FRA
+		tag = SUB
+		tag = SUI
 		has_country_flag = dealing_with_france
 		}
+	}
+}
+suisei_suicopath = {
+	priority = 100
+	
+	icon = generic_economic
+	picture = GFX_decision_cat_generic_arabia
+	visible_when_empty = yes
+	
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		has_idea = suicopath_leader
 	}
 }
 suisei_deal_with_strikes = {
@@ -97,6 +114,26 @@ suisei_restoration_attempts = {
 		}
 	}	
 }
+suisei_dealing_with_occupation = {
+	priority = 20
+	
+	icon = generic_industry
+	picture	= GFX_decision_cat_generic_nordic_league
+	visible_when_empty = yes
+	
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		tag = SUI
+		OR = {
+			has_idea = czech_resistance
+			has_idea = swiss_resistance
+			has_idea = italian_resistance
+			has_idea = german_reistance
+			}
+		}
+	}	
 suisei_election_compromises = {
 	priority = 50
 	
@@ -110,12 +147,93 @@ suisei_election_compromises = {
 	visible = {
 			OR = {
 			has_country_flag = SUI_quell_resistance
-			has_country_flag = SUI_resistance_compromise
 			has_country_flag = SUI_lhs_compromises
 			has_country_flag = SUI_conservative_compromises
 			has_country_flag = SUI_progressive_compromise
 			has_country_flag = SUI_nationalist_compromises
 			has_country_flag = SUI_revolutionary_compromises
+		}
+	}
+}
+suisei_colonial_fuel = {
+	priority = 7
+	
+	icon = generic_industry
+	picture	= GFX_decision_cat_generic_nordic_league
+	visible_when_empty = yes
+	
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		SUI = {
+		has_country_flag = suisei_biofuels
+		}
+	}
+}
+suisei_fix_army = {
+	priority = 10
+	
+	icon = generic_industry
+	picture	= GFX_decision_cat_generic_nordic_league
+	visible_when_empty = yes
+	
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		SUI = {
+		has_country_flag = suisei_fix_army
+		}
+	}
+}
+suisei_revolutionary_economics_decision = {
+	priority = 20
+	
+	icon = generic_industry
+	picture	= GFX_decision_cat_generic_nordic_league
+	visible_when_empty = yes
+	scripted_gui = suisei_revolutionary_gui
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		SUI = {
+		has_idea = suisei_revolutionary_economics
+		has_government = communism
+		}
+	}
+}
+suisei_gacha_economics_decision = {
+	priority = 20
+	
+	icon = generic_industry
+	picture	= GFX_decision_cat_generic_nordic_league
+	visible_when_empty = yes
+	scripted_gui = suisei_gacha_window
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		SUI = {
+		has_idea = suisei_gacha_economics
+		}
+	}
+}
+suisei_nationalist_economics_decision = {
+	priority = 20
+	
+	icon = generic_industry
+	picture	= GFX_decision_cat_generic_nordic_league
+	visible_when_empty = yes
+	scripted_gui = suisei_nationalist_window
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		SUI = {
+		has_idea = suisei_nationalist_economics
+		has_government = pro_resistance_nationalism
 		}
 	}
 }
@@ -368,6 +486,7 @@ raiding_decisions = {
 		original_tag = RSR
 		original_tag = LUN
 		original_tag = TOW
+		original_tag = NIN
 		original_tag = WAT
 		original_tag = MAR
 		original_tag = MRT

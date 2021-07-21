@@ -1,2 +1,55 @@
 raiding_decisions = {
+	prepare_raid = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = { 
+				has_political_power > 100
+				NOT = {
+					has_country_flag = ready_to_raid
+				}
+			}
+		}
+
+		visible = {
+			always = yes
+		}
+
+		days_re_enable = 60
+
+		ai_will_do = {
+			factor = 5
+		}
+
+		days_remove = 30
+
+	complete_effect = {
+			ROOT = {
+				set_country_flag = ready_to_raid
+			}
+		}
+	}
+	raid_state = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = { 
+				has_country_flag = ready_to_raid
+			}
+		}
+
+		visible = {
+			ROOT = { 
+				has_country_flag = ready_to_raid
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+	complete_effect = {
+		ROOT = {
+			clr_country_flag = ready_to_raid
+		}
+	}
+  }
 }

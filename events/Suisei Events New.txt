@@ -918,13 +918,9 @@ country_event = {
 
 	option = {
 		name = suisei.29.a #high military spending
-		add_to_variable = {
-			var= suisei_conservative_anger
-			value = 4
-		}
 		add_popularity = {
 			ideology = pro_yagoo_progressive
-			popularity = 0.03
+			popularity = -0.03
 		}
 		country_event = {id = suisei.30}
 	}
@@ -942,9 +938,13 @@ country_event = {
 	}
 	option = {
 		name = suisei.29.c #low spending
+		add_to_variable = {
+			var= suisei_conservative_anger
+			value = 4
+		}
 		add_popularity = {
 			ideology = pro_yagoo_progressive
-			popularity = -0.02
+			popularity = 0.02
 		}
 		country_event = {id = suisei.30}
 	}
@@ -1072,9 +1072,9 @@ country_event = {
 }
 #budget drafted liberals mad
 country_event = {
-	id = suisei.33
-	title = suisei.33.t
-	desc = suisei.33.d
+	id = suisei.37
+	title = suisei.37.t
+	desc = suisei.37.d
 	picture = GFX_report_event_suisei
 
 	trigger = {
@@ -1114,9 +1114,10 @@ country_event = {
 	option = {
 		name = suisei.32.a
 		add_ideas = suisei_enlightened_monarch
+		clr_country_flag = SUI_quell_resistance
 	}
 }
-#enlightened_monarch
+#rule by force
 country_event = {
 	id = suisei.35
 	title = suisei.35.t
@@ -1136,6 +1137,339 @@ country_event = {
 		clr_country_flag = suisei_down_opposition_one
 		clr_country_flag = suisei_down_opposition_three
 		clr_country_flag = suisei_down_opposition_two
+		clr_country_flag = SUI_quell_resistance
 		}
+	}
+}
+#weak foreign policy
+country_event = {
+	id = suisei.36
+	title = suisei.36.t
+	desc = suisei.36.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.36.a
+		add_ideas = weak_resistance_monarchy
+	}
+}
+#policy with miko
+country_event = {
+	id = suisei.37
+	title = suisei.37.t
+	desc = suisei.37.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.37.a #offer a truce
+		MIK = {
+			country_event = miko.2
+		}
+	}
+	option = {
+		name = suisei.37.b #offer an alliance
+		MIK = {
+			country_event = miko.3
+		}
+	}
+	option = {
+		name = suisei.37.c #we dont need them
+		MIK = {
+			country_event = miko.4
+		}
+	}
+}
+#pekora counteroffers
+country_event = {
+	id = suisei.38
+	title = suisei.38.t
+	desc = suisei.38.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.38.a #offer a truce
+		set_truce = {
+			target = PEK
+			days = 720
+		}
+		SUI = {
+			add_opinion_modifier = {
+				target = PEK
+				modifier = pushing_friendly_relations
+			}
+		}
+		PEK = {
+			country_event = pekora.2
+		}
+	}
+	option = {
+		name = suisei.38.b #We refuse
+		PEK = {
+			country_event = pekora.3
+		}
+		SUI = {
+			add_opinion_modifier = {
+				target = PEK
+				modifier = rejected_friendly_relations
+			}
+		}
+	}
+}
+#pekora refuses
+country_event = {
+	id = suisei.39
+	title = suisei.39.t
+	desc = suisei.39.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.39.a #declare war
+		add_named_threat = {
+			threat = 15
+			name = SUI_being_hostile
+		}
+		create_wargoal = {
+			target = PEK
+			type = puppet_wargoal_focus
+		}
+	}
+	option = {
+		name = suisei.39.b #not yet
+	}
+}
+#miko refuses
+country_event = {
+	id = suisei.40
+	title = suisei.40.t
+	desc = suisei.40.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.40.a #declare war
+		add_named_threat = {
+			threat = 15
+			name = SUI_being_hostile
+		}
+		create_wargoal = {
+			target = MIK
+			type = puppet_wargoal_focus
+		}
+	}
+	option = {
+		name = suisei.40.b #not yet
+	}
+}
+#czech rebels 
+country_event = {
+	id = suisei.40
+	title = suisei.40.t
+	desc = suisei.40.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		NOT = {
+			SUI = {
+				has_idea = czech_resistance
+			}
+		}
+		OR = {
+			SUI = {
+				OR = {
+				owns_state = 9
+				owns_state = 69
+				owns_state = 75
+				owns_state = 74
+				}
+			}
+			any_country = {
+				OR = {
+				is_puppet_of = SUI
+				is_subject_of = SUI
+				}
+				OR = {
+					owns_state = 9
+					owns_state = 69
+					owns_state = 75
+					owns_state = 74
+					}
+			}
+		}
+	}
+
+	option = {
+		name = suisei.40.a
+			add_ideas = czech_resistance
+	}
+
+}
+#italian rebels 
+country_event = {
+	id = suisei.41
+	title = suisei.41.t
+	desc = suisei.41.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		NOT = {
+			SUI = {
+				has_idea = italian_resistance
+			}
+		}
+		OR = {
+			SUI = {
+				OR = {
+				owns_state = 158
+				owns_state = 159
+				owns_state = 114
+				owns_state = 115
+				}
+			}
+			any_country = {
+				OR = {
+				is_puppet_of = SUI
+				is_subject_of = SUI
+				}
+				OR = {
+					owns_state = 158
+					owns_state = 159
+					owns_state = 114
+					owns_state = 115
+					}
+			}
+		}
+	}
+
+	option = {
+		name = suisei.41.a
+			add_ideas = italian_resistance
+	}
+
+}
+#german rebels 
+country_event = {
+	id = suisei.41
+	title = suisei.41.t
+	desc = suisei.41.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		NOT = {
+			SUI = {
+				has_idea = german_resistance
+			}
+		}
+		OR = {
+			SUI = {
+				OR = {
+				owns_state = 42
+				owns_state = 64
+				owns_state = 900
+				owns_state = 909
+				owns_state = 910
+				}
+			}
+				any_country = {
+					OR = {
+					is_puppet_of = SUI
+					is_subject_of = SUI
+					}
+					OR = {
+						owns_state = 42
+						owns_state = 64
+						owns_state = 900
+						owns_state = 909
+						owns_state = 910
+						}
+				}
+		}
+	}
+
+	option = {
+		name = suisei.41.a
+			add_ideas = german_resistance
+	}
+
+}
+#swiss rebels 
+country_event = {
+	id = suisei.42
+	title = suisei.42.t
+	desc = suisei.42.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		NOT = {
+			SUI = {
+				has_idea = german_resistance
+			}
+		}
+		OR = {
+			SUI = {
+				OR = {
+				owns_state = 974
+				owns_state = 3
+				owns_state = 975
+				owns_state = 151
+				owns_state = 946
+				}
+			}
+			any_country = {
+				OR = {
+				is_puppet_of = SUI
+				is_subject_of = SUI
+				}
+				OR = {
+					owns_state = 974
+					owns_state = 3
+					owns_state = 975
+					owns_state = 151
+					owns_state = 946
+					}				
+			}
+		}
+	}
+
+	option = {
+		name = suisei.42.a
+			add_ideas = swiss_resistance
+	}
+
+}
+#AZKI - Suisei transfers land
+country_event = {
+	id = suisei.43
+	title = suisei.43.t
+	desc = suisei.43.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.43.a  
+		add_stability = 0.05
+	}
+}
+#Anemachi - Suisei transfers land
+country_event = {
+	id = suisei.44
+	title = suisei.44.t
+	desc = suisei.44.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+
+	option = {
+		name = suisei.44.a  
+		add_stability = 0.05
 	}
 }

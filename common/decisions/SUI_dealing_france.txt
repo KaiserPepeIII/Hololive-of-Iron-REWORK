@@ -1,0 +1,215 @@
+france_bad_category = {
+	SUI_save_face_france = {
+		allowed = {
+			tag = SUI
+		}
+		activation = {
+			tag = SUI
+			check_variable = {
+				var = SUI.france_leave
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		available = {
+			always = yes
+		}
+
+		visible = {
+			always = yes
+			}
+
+		selectable_mission = yes
+		days_mission_timeout = 45
+		is_good = no
+
+		ai_will_do = {
+			factor = 1
+			}
+
+		cost = 75
+
+		complete_effect = { 
+			subtract_from_variable = {
+			var = SUI.leave_france
+			value = 1
+			}
+		}
+
+			timeout_effect = {
+				add_stability = -0.05
+			}		
+	}
+	SUB_save_face_france = {
+		allowed = {
+			tag = SUB
+		}
+		activation = {
+			tag = SUB
+			check_variable = {
+				var = SUB.france_leave
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		available = {
+			always = yes
+		}
+
+		visible = {
+			always = yes
+			}
+
+		selectable_mission = yes
+		days_mission_timeout = 45
+		is_good = no
+
+		ai_will_do = {
+			factor = 1
+			}
+
+		cost = 75
+
+		complete_effect = { 
+			subtract_from_variable = {
+			var = SUB.leave_france
+			value = 1
+			}
+		}
+
+			timeout_effect = {
+				add_stability = -0.05
+			}		
+	}
+		deal_with_french_menace = {
+			icon = decision_generic_industry
+			available = {
+				check_variable = {
+					var = france_threat
+					value = 0
+					compare = equals
+				}
+				has_country_flag = dealing_with_france
+				NOT = {
+						OR = {
+						SUB = {
+							has_idea = SUB_french_occupation
+						}
+						SUI = {
+							has_idea = SUI_french_occupation
+						}
+					}
+				}
+			}
+			visible = {
+				always = yes
+			}
+			fire_only_once = yes
+			ai_will_do = {
+				factor = 50
+			}
+
+			days_remove = 14
+			war_with_on_complete = FRA
+
+		complete_effect = {
+				ROOT = {
+					declare_war_on = {
+						target = FRA
+						type = annex_everything
+					}
+				}
+			}
+		}
+		undermine_french_legitimacy = {
+		icon = decision_generic_industry
+		available = {
+			SUI = { has_political_power > 120
+					}
+		}
+		
+		visible = {
+			tag = SUI
+			has_country_flag = dealing_with_france
+		}
+		
+		fire_only_once = no
+		
+		ai_will_do = {
+			factor = 5
+			}
+			
+		days_re_enable = 180
+		
+		cost = 120
+		
+		complete_effect = { 
+			add_to_variable = {
+				var = france_threat
+				value = -5
+			}
+		}
+	}
+	undermine_subaru_presence = {
+		icon = decision_generic_industry
+		available = {
+		 has_political_power > 120
+		}
+		
+		visible = {
+			OR = {
+			tag = SUI
+			tag = FRA
+			}
+			SUB = { has_idea = SUB_french_occupation }
+		}
+		
+		fire_only_once = no
+		
+		ai_will_do = {
+			factor = 5
+			}
+			
+		days_re_enable = 180
+		
+		cost = 120
+		
+		complete_effect = { 
+			add_to_variable = {
+				var = SUB.france_leave
+				value = 1
+			}
+		}
+	}
+	undermine_suisei_presence = {
+		icon = decision_generic_industry
+		available = {
+		 has_political_power > 120
+		}
+		
+		visible = {
+			OR = {
+			tag = SUB
+			tag = FRA
+			}
+			SUI = { has_idea = SUI_french_occupation }
+		}
+		
+		fire_only_once = no
+		
+		ai_will_do = {
+			factor = 5
+			}
+			
+		days_re_enable = 180
+		
+		cost = 120
+		
+		complete_effect = { 
+			add_to_variable = {
+				var = SUI.france_leave
+				value = 1
+			}
+		}
+	}
+}
