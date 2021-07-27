@@ -1271,9 +1271,9 @@ country_event = {
 }
 #czech rebels 
 country_event = {
-	id = suisei.40
-	title = suisei.40.t
-	desc = suisei.40.d
+	id = suisei.47
+	title = suisei.47.t
+	desc = suisei.47.d
 	picture = GFX_report_event_suisei
 
 	trigger = {
@@ -1307,7 +1307,7 @@ country_event = {
 	}
 
 	option = {
-		name = suisei.40.a
+		name = suisei.47.a
 			add_ideas = czech_resistance
 	}
 
@@ -1357,9 +1357,9 @@ country_event = {
 }
 #german rebels 
 country_event = {
-	id = suisei.41
-	title = suisei.41.t
-	desc = suisei.41.d
+	id = suisei.46
+	title = suisei.46.t
+	desc = suisei.46.d
 	picture = GFX_report_event_suisei
 
 	trigger = {
@@ -1395,7 +1395,7 @@ country_event = {
 	}
 
 	option = {
-		name = suisei.41.a
+		name = suisei.46.a
 			add_ideas = german_resistance
 	}
 
@@ -1471,5 +1471,30 @@ country_event = {
 	option = {
 		name = suisei.44.a  
 		add_stability = 0.05
+	}
+}
+#Anemachi - Suisei transfers land
+country_event = {
+	id = suisei.45
+	title = suisei.45.t
+	desc = suisei.45.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		has_idea = suisei_urbanisation
+		NOT = {
+			OR = {
+			has_country_flag = suisei_revolutionary_economics_over
+			has_idea = suisei_urbanisation_hol_up
+			}
+		}
+	}
+
+	option = {
+		name = suisei.45.a  
+		subtract_from_variable = {
+		var = SUI.rural_level
+		value = 1
+		}
 	}
 }
