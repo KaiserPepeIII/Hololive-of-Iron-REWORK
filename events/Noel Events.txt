@@ -44,7 +44,7 @@ country_event = {
 		name = noel.2.a
 	}
 }
-#Trial of Karsten SchÃ¶pfer
+#Trial of Karsten Schöpfer
 country_event = {
 	id = noel.3
 	title = noel.3.t
@@ -476,153 +476,96 @@ country_event = {
 #########################
 ##NOEL CIVIL WAR EVENTS##
 #########################
-#civil war no preperation
+#No preperation
 country_event = {
-    id = noel.14
+	id = noel.12
+	title = noel.12.t
+	desc = noel.12.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	trigger = {
+	NOT =  {
+			has_country_flag = NOE_revolution_started
+			has_active_mission = act_quickly
+			has_country_flag = NOE_CivilWar_CitezensArmed
+			has_country_flag = NOE_noelkorps_armed
+			has_country_flag = NOE_serfs_gathered
+			   }
+			  }
+	option = {
+		name = noel.12.a 
+	}
+}
+#Officers rally against noel
+country_event = {
+	id = noel.13
+	title = noel.13.t
+	desc = noel.13.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	trigger = {
+	has_country_flag = NOE_putsch_prepared
+			NOT = {
+			has_active_mission = act_quickly
+			has_country_flag = NOE_disloyal_officers_purged
+			 }
+			}
+	option = {
+		name = noel.13.a 
+		NOR = {
+		oob = NOE_CivilWar_disloyal_officers_not_purged
+		}
+	}
+}
+#Opposition supports joins the rebels
+country_event = {
+	id = noel.14
 	title = noel.14.t
 	desc = noel.14.d
 	picture = GFX_report_event_mori
-    hidden = no
-
-    trigger = {
-		original_tag = NOE
+	
+	is_triggered_only = yes
+		trigger = {
 		has_country_flag = NOE_putsch_prepared
-		NOT =  {
-			has_active_mission = act_quickly
-			has_country_flag = NOE_noelkorps_armed
-			has_country_flag = NOE_citezens_armed
-			has_country_flag = NOE_serfs_gathered
-			   }
-		      }
-	fire_only_once = yes 
-	option = {
-		name = noel.14.a 
-		#add effect
-	}
-}
-#Disloyal Officers Rally against noel
-country_event = {
-    id = noel.15
-	title = noel.15.t
-	desc = noel.15.d
-	picture = GFX_report_event_mori
-    hidden = no
-	
-	mean_time_to_happen = { days = 30 }
-	
-    trigger = {
-		original_tag = NOE
-		has_country_flag = NOE_putsch_prepared
-		NOT =  {
-			has_country_flag = NOE_disloyal_officers_purged
-			has_active_mission = act_quickly
-			   }
-		      }
-	fire_only_once = yes 
-	option = {
-		name = noel.15.a 
-		custom_effect_tooltip = NOE_disloyal_officers_rally
-	}
-	
-			 }
-#Opposition supports the Rebels
-country_event = {
-    id = noel.16
-	title = noel.16.t
-	desc = noel.16.d
-	picture = GFX_report_event_mori
-    hidden = no
-	
-	mean_time_to_happen = { days = 15 }
-
-    trigger = {
-		original_tag = NOE
-		has_country_flag = NOE_putsch_prepared
-		NOT =  {
+			NOT = {
 			has_active_mission = act_quickly
 			has_country_flag = NOE_opposition_raided
-			   }
-		      }
-	
-	fire_only_once = yes 
-	option = {
-		name = noel.16.a 
-		custom_effect_tooltip = NOE_opposition_supports_rebels
-	}
-	
 			 }
-#Civil war, Citezens armed
-country_event = {
-    id = noel.17
-	title = noel.17.t
-	desc = noel.17.d
-	picture = GFX_report_event_mori
-    hidden = no
-
-    trigger = {
-		original_tag = NOE
-		has_country_flag = NOE_putsch_prepared
-		has_country_flag = NOE_citezens_armed
-		NOT =  {
-			has_active_mission = act_quickly
-			has_country_flag = NOE_noelkorps_armed
-			has_country_flag = NOE_serfs_gathered
-			   }
-		      }
-	fire_only_once = yes 
-	option = {
-		name = noel.17.a 
-		#add effect
+			}
+		option = {
+		name = noel.14.a 
+		NOR = {
+		oob = NOE_CivilWar_opposition_not_raided
+		}
 	}
-			 }
-#civil war, Citezens armed and Serfs gathered
+}
+#Citezens armed and noelkorps armed
 country_event = {
-    id = noel.18
-	title = noel.18.t
-	desc = noel.18.d
-	picture = GFX_report_event_mori
-    hidden = no
-
-    trigger = {
-		original_tag = NOE
-		has_country_flag = NOE_putsch_prepared
-		has_country_flag = NOE_serfs_gathered
-		has_country_flag = NOE_citezens_armed
-		NOT =  {
-			has_active_mission = act_quickly
-			has_country_flag = NOE_noelkorps_armed
-			   }
-		      }
-	fire_only_once = yes 
-	option = {
-		name = noel.18.a 
-		#add effect
-	}
-			 }
-#civil war, Citezens and Noelkorp armed			
-country_event = {
-    id = noel.19
+	id = noel.19
 	title = noel.19.t
 	desc = noel.19.d
 	picture = GFX_report_event_mori
-    hidden = no
-
-    trigger = {
-		original_tag = NOE
+	trigger = {
 		has_country_flag = NOE_putsch_prepared
+		has_country_flag = NOE_CivilWar_CitezensArmed
 		has_country_flag = NOE_noelkorps_armed
-		has_country_flag = NOE_citezens_armed
 		NOT =  {
+			has_country_flag = NOE_revolution_started
 			has_active_mission = act_quickly
 			has_country_flag = NOE_serfs_gathered
 			   }
-		      }
+			  }
+		      
 	fire_only_once = yes 
 	option = {
 		name = noel.19.a 
-		#add effect
+		oob = NOE_CivilWar_CitezensArmed
+		oob = NOE_CivilWar_NoelkorpsArmed
 	}
-			 } 
+}
+			  
 #civil war, Noelkorp armed and serfs gathered
 country_event = {
     id = noel.20
@@ -637,14 +580,16 @@ country_event = {
 		has_country_flag = NOE_noelkorps_armed
 		has_country_flag = NOE_serfs_gathered
 		NOT =  {
+			has_country_flag = NOE_revolution_started
 			has_active_mission = act_quickly
 			has_country_flag = NOE_citezens_armed
 			   }
 		      }
 	fire_only_once = yes 
 	option = {
-		name = noel.20.a 
-		#add effect
+		name = noel.20.a
+		oob = NOE_CivilWar_NoelkorpsArmed
+		oob = NOE_CivilWar_SerfsGathered
 	}
 			 }
 #civil war, serfs gathered
@@ -660,6 +605,7 @@ country_event = {
 		has_country_flag = NOE_putsch_prepared
 		has_country_flag = NOE_serfs_gathered
 		NOT =  {
+			has_country_flag = NOE_revolution_started
 			has_active_mission = act_quickly
 			has_country_flag = NOE_noelkorps_armed
 			has_country_flag = NOE_citezens_armed
@@ -668,7 +614,7 @@ country_event = {
 	fire_only_once = yes 
 	option = {
 		name = noel.21.a 
-		#add effect
+		oob = NOE_CivilWar_SerfsGathered
 	}
 			 }		
 #civil war, Noelkorp armed
@@ -684,6 +630,7 @@ country_event = {
 		has_country_flag = NOE_putsch_prepared
 		has_country_flag = NOE_noelkorps_armed
 		NOT =  {
+			has_country_flag = NOE_revolution_started
 			has_active_mission = act_quickly
 			has_country_flag = NOE_citezens_armed
 			has_country_flag = NOE_serfs_gathered
@@ -693,6 +640,7 @@ country_event = {
 	option = {
 		name = noel.22.a 
 		#add effect
+		oob = NOE_CivilWar_NoelkorpsArmed
 	}
 			 }
 #civil war, citezens armed, serfs gathered, and noelkorp armed
@@ -710,13 +658,16 @@ country_event = {
 		has_country_flag = NOE_serfs_gathered
 		has_country_flag = NOE_citezens_armed
 		NOT =  {
+			has_country_flag = NOE_revolution_started
 			has_active_mission = act_quickly
 			   }
 		      }
 	fire_only_once = yes 
 	option = {
 		name = noel.23.a 
-		#add effect
+		oob = NOE_CivilWar_NoelkorpsArmed
+		oob = NOE_CivilWar_SerfsGathered
+		oob = NOE_CivilWar_CitezensArmed
 	}
 			 }
 #Start the revolution
@@ -726,10 +677,24 @@ country_event = {
 	desc = noel.24.d
 	picture = GFX_report_event_mori
     hidden = no
-
+	
+	trigger = {
+	original_tag = NOE
+	has_country_flag = NOE_putsch_prepared
+		has_country_flag = NOE_noelkorps_armed
+		has_country_flag = NOE_serfs_gathered
+		has_country_flag = NOE_citezens_armed
+		has_country_flag = NOE_revolution_started
+		NOT = {
+			has_active_mission = act_quickly
+			}
+		   }
 	fire_only_once = yes 
 	option = {
 		name = noel.24.a 
 		#add effect
+		oob = NOE_CivilWar_NoelkorpsArmed
+		oob = NOE_CivilWar_SerfsGathered
+		oob = NOE_CivilWar_CitezensArmed
 	}
-			 }			 
+			 }
