@@ -615,12 +615,12 @@ focus_tree = {
 				}
 				set_variable = {
 					var = SUI.unemployment_level
-					value = 9
+					value = 90
 				}
 				clamp_variable = {
 					var = SUI.unemployment_level
 					min = 0
-					max = 100
+					max = 1000
 				}
 				set_variable = {
 					var = SUI.urbanisation_level
@@ -656,7 +656,14 @@ focus_tree = {
 			focus = SUI_revolutionary_economics
 		}
 		completion_reward = {
-			
+			add_popularity = {
+				ideology = communism
+				popularity = 0.02
+			}
+			add_to_variable = {
+				var = SUI.industrialisation_level
+				value = 3
+			}
 		}
 		x = 13
 		y = 9
@@ -668,6 +675,24 @@ focus_tree = {
 		cost = 7.00
 		prerequisite = {
 			focus = SUI_revolutionary_economics
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.01
+			}
+			subtract_from_variable = {
+				var = SUI.unemployment_level
+				value = 5
+			}
+			add_to_variable = {
+				var = SUI.standard_of_living_rev
+				value = 20
+			}
+			add_to_variable = {
+				var = SUI.urbanisation_level
+				value = 2
+			}
 		}
 		x = 15
 		y = 9
@@ -916,6 +941,19 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = suisei_industrial
+			SUI = {
+				random_state = {
+					add_building_construction = {
+						type = industrial_complex 
+						level = 1
+					}
+					add_building_construction = {
+						type = arms_factory 
+						level = 1
+					}
+					add_extra_state_shared_building_slots = 2
+				}
+			}
 		}
 		x = 29
 		y = 9
@@ -932,10 +970,15 @@ focus_tree = {
 			SUI = {
 				random_state = {
 					add_building_construction = {
-						type = facto
-						level = x
+						type = industrial_complex 
+						level = 3
 					}
+					add_extra_state_shared_building_slots = 3
 				}
+			}
+			subtract_from_variable = {
+				var = SUI.rural_level
+				value = 24
 			}
 		}
 		x = 29
@@ -948,6 +991,21 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_industrialisation
+		}
+		completion_reward = {
+			subtract_from_variable = {
+				var = SUI.rural_level
+				value = 20
+			}			
+			add_to_variable = {
+				var = SUI_standard_of_living_nat
+				value = 30
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.05
+			}
+			add_stability = -0.05
 		}
 		x = 31
 		y = 10
@@ -962,6 +1020,34 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_work_gacha
+		}
+		completion_reward = {
+			SUI = {
+				random_state = {
+					add_building_construction = {
+						type = industrial_complex 
+						level = 1
+					}
+					add_building_construction = {
+						type = infrastructure 
+						level = 2
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+			subtract_from_variable = {
+				var = SUI.rural_level
+				value = 10
+			}			
+			add_to_variable = {
+				var = SUI_standard_of_living_nat
+				value = 35
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.05
+			}
+			add_stability = -0.05			
 		}
 		x = 30
 		y = 11
@@ -982,6 +1068,18 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_reduce_urban_unemployment
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.03
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+			add_stability = -0.02
+			add_ideas = SUI_traditional_economics
 		}
 		x = 26
 		y = 13
@@ -1008,6 +1106,9 @@ focus_tree = {
 			focus = SUI_pro_yagoo_coalition_wins
 			focus = SUI_pro_resistance_coalition_wins
 		}
+		completion_reward = {
+			add_stability = 0.05
+		}
 		x = 38
 		y = 6
 
@@ -1025,6 +1126,18 @@ focus_tree = {
 		  }
 		prerequisite = {
 			focus = SUI_royalist_coalition_wins
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.02
+			}
+			subtract_from_variable = {
+				var = SUI.anti_aggression
+				value = 10
+			}
 		}
 		x = 37
 		y = 7
@@ -1211,6 +1324,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_export_music
+		}
+		completion_reward = {
+			add_ideas = SUI_hoshiyomi_migration
 		}
 		x = 38
 		y = 12
@@ -3484,6 +3600,18 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_africa
 		}
+		completion_reward = {
+			add_to_variable = {
+				var = GLOBAL.tropical_goods_market
+				value = 5
+			}
+			add_stability = 0.01
+			add_political_power = 25
+			add_timed_idea = {
+				idea = SUI_protect_tade_routes_ideas
+				days = 720
+			}
+		}
 		x = 61
 		y = 3
 
@@ -3531,6 +3659,20 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_protect_tade_routes
+		}
+		completion_reward = {
+			add_ideas = SUI_modernization_methods
+			add_to_variable = {
+				var = GLOBAL.tropical_goods_market 
+				value = 5
+			}
+			973 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
 		}
 		x = 60
 		y = 4

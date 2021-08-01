@@ -1,5 +1,5 @@
 version="1.5"
-picture = "thumbnail.png"
+picture="thumbnail.png"
 replace_path="common/countries"
 replace_path="common/bookmarks"
 replace_path="common/ideologies"
@@ -20,3 +20,4 @@ tags={
 name="Holove"
 supported_version="1.10.6"
 path="C:/Users/Benja/OneDrive/Desktop/Documents/Paradox Interactive/Hearts of Iron IV/mod/cocaine"
+remote_file_id="2543407011"
