@@ -14,6 +14,10 @@ technologies = {
 
 	infantry_weapons = {
 
+		sub_technologies = {
+			infantry_weapons_emergency
+		}
+
 		enable_equipments = {
 			infantry_equipment_0
 		}
@@ -42,13 +46,36 @@ technologies = {
 			factor = 1
 		}
 	}
-	
+	infantry_weapons_emergency = {
+
+		enable_equipments = {
+			infantry_equipment_0_emergency
+		}
+		research_cost = 1
+		start_year = 1918
+		folder = {
+			name = infantry_folder
+			position = { x = 0 y = -1 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+		
 	infantry_weapons1 = {
 
 		enable_equipments = {
 			infantry_equipment_1
 		}
-				
+		sub_technologies = {
+			infantry_weapons1_emergency
+		}
+		
 		path = {
 			leads_to_tech = infantry_weapons2
 			research_cost_coeff = 1
@@ -84,7 +111,43 @@ technologies = {
 			}
 		}
 	}	
-	
+	infantry_weapons1_emergency = {
+
+		enable_equipments = {
+			infantry_equipment_1_emergency
+		}
+
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = { x = 0 y = @1936 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 10
+				tag = CHI
+				
+				OR = {
+					date > "1937.1.1"
+					JAP = { is_ai = no }
+				}
+			}
+			
+			modifier = {
+				factor = 10
+				date > "1936.1.3"
+			}
+		}
+	}	
+		
 	infantry_weapons2 = {
 
 		category_light_infantry = {
@@ -151,7 +214,10 @@ technologies = {
 		enable_equipments = {
 			infantry_equipment_2
 		}
-		
+		sub_technologies = {
+			improved_infantry_weapons_emergency 
+		}
+
 		path = {
 			leads_to_tech = improved_infantry_weapons_2
 			research_cost_coeff = 1
@@ -162,6 +228,47 @@ technologies = {
 		}		
 
 		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = 0 y = @1939 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 3
+						
+			modifier = {
+				factor = 10
+				date > "1939.1.1"
+			}
+			modifier = {
+				num_of_military_factories < 50
+				factor = 0.5
+			}
+			modifier = {
+				factor = 0
+				tag = SOV
+				OR = {
+					date < "1944.1.1" # stock up on lots of rifles, we got the manpower
+					AND = {
+						date > "1943.1.1"
+						surrender_progress < 0.1 # if we arent losing badly its ok
+					}
+				}				
+			}			
+		}
+	}
+	improved_infantry_weapons_emergency = {
+
+		enable_equipments = {
+			infantry_equipment_2_emergency
+		}
+
+		research_cost = 1
 		start_year = 1939
 		folder = {
 			name = infantry_folder
@@ -339,7 +446,9 @@ technologies = {
 		enable_equipments = {
 			infantry_equipment_3
 		}	
-		
+		sub_technologies = {
+			advanced_infantry_weapons_emergency
+		}
 		path = {
 			leads_to_tech = advanced_infantry_weapons2
 			research_cost_coeff = 1
@@ -375,7 +484,42 @@ technologies = {
 			}
 		}
 	}
-	
+	advanced_infantry_weapons_emergency = {
+
+		enable_equipments = {
+			infantry_equipment_3_emergency
+		}	
+
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = 0 y = @1942 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0.8
+			
+			
+			modifier = {
+				tag = GER
+				factor = 2.5
+			}
+			modifier = {
+				num_of_military_factories > 150
+				factor = 2.5
+			}
+			
+			modifier = {
+				num_of_military_factories < 50
+				factor = 0.5
+			}
+		}
+	}	
 	advanced_infantry_weapons2 = {
 		path = {
 			leads_to_tech = modern_infantry_weapons
@@ -435,13 +579,51 @@ technologies = {
 		enable_equipments = {
 			infantry_equipment_4
 		}	
-		
+		sub_technologies = {
+			modern_infantry_weapons_emergency
+		}
+
 		path = {
 			leads_to_tech = modern_infantry_weapons2
 			research_cost_coeff = 1
 		}
 
 		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = infantry_folder
+			position = { x = 0 y = @1945 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0.8
+			
+			
+			modifier = {
+				tag = GER
+				factor = 2.5
+			}
+			modifier = {
+				num_of_military_factories > 150
+				factor = 2.5
+			}
+			
+			modifier = {
+				num_of_military_factories < 50
+				factor = 0.5
+			}
+		}
+	}
+	modern_infantry_weapons_emergency = {
+		enable_equipments = {
+			infantry_equipment_4_emergency
+		}	
+
+		research_cost = 1
 		start_year = 1945
 		folder = {
 			name = infantry_folder
