@@ -495,6 +495,7 @@ country_event = {
 			  }
 	option = {
 		name = noel.12.a 
+		set_country_flag = NOE_civilwar_start
 	}
 }
 #Officers rally against noel
@@ -560,7 +561,8 @@ country_event = {
 		      
 	fire_only_once = yes 
 	option = {
-		name = noel.19.a 
+		name = noel.19.a
+		set_country_flag = NOE_civilwar_start		
 		oob = NOE_CivilWar_CitezensArmed
 		oob = NOE_CivilWar_NoelkorpsArmed
 	}
@@ -588,6 +590,7 @@ country_event = {
 	fire_only_once = yes 
 	option = {
 		name = noel.20.a
+		set_country_flag = NOE_civilwar_start
 		oob = NOE_CivilWar_NoelkorpsArmed
 		oob = NOE_CivilWar_SerfsGathered
 	}
@@ -614,6 +617,7 @@ country_event = {
 	fire_only_once = yes 
 	option = {
 		name = noel.21.a 
+		set_country_flag = NOE_civilwar_start
 		oob = NOE_CivilWar_SerfsGathered
 	}
 			 }		
@@ -639,7 +643,7 @@ country_event = {
 	fire_only_once = yes 
 	option = {
 		name = noel.22.a 
-		#add effect
+		set_country_flag = NOE_civilwar_start
 		oob = NOE_CivilWar_NoelkorpsArmed
 	}
 			 }
@@ -665,6 +669,7 @@ country_event = {
 	fire_only_once = yes 
 	option = {
 		name = noel.23.a 
+		set_country_flag = NOE_civilwar_start
 		oob = NOE_CivilWar_NoelkorpsArmed
 		oob = NOE_CivilWar_SerfsGathered
 		oob = NOE_CivilWar_CitezensArmed
@@ -692,9 +697,84 @@ country_event = {
 	fire_only_once = yes 
 	option = {
 		name = noel.24.a 
-		#add effect
+		set_country_flag = NOE_civilwar_start
 		oob = NOE_CivilWar_NoelkorpsArmed
 		oob = NOE_CivilWar_SerfsGathered
 		oob = NOE_CivilWar_CitezensArmed
 	}
 			 }
+#Rebel Generals Trial
+country_event = {
+    id = noel.25
+	title = noel.25.t
+	desc = noel.25.d
+	picture = GFX_report_event_mori
+    hidden = no
+	
+	trigger = {
+	original_tag = NOE
+	has_country_flag = NOE_putsch_prepared
+	has_country_flag = NOE_civilwar_over
+		NOT = {
+			has_active_mission = act_quickly
+			}
+		   }
+	fire_only_once = yes 
+	option = {
+		name = noel.25.a 
+		add_stability = 0.1
+		add_political_power = 75
+		
+	}
+	option = {
+		name = noel.25.b 
+		add_stability = -0.05
+		add_political_power = -25
+		NOR = { every_unit_leader = { set_nationality = NOE } }
+	
+	}
+			 }
+#End of the civil war
+country_event = {
+    id = noel.24
+	title = noel.24.t
+	desc = noel.24.d
+	picture = GFX_report_event_mori
+    hidden = no
+	
+	trigger = {
+	original_tag = NOE
+	has_country_flag = NOE_civilwar_start
+		NOT = {
+			country_exists = NOR
+			}
+		   }
+	fire_only_once = yes 
+	option = {
+		name = noel.26.a
+		add_stability = 0.05
+		set_country_flag = NOE_civilwar_over
+	}
+			 }
+##################################
+###END OF NOEL CIVIL WAR EVENTS###
+##################################
+#luttwitz proposals
+country_event = {
+    id = noel.27
+	title = noel.27.t
+	desc = noel.27.d
+	picture = GFX_report_event_mori
+	hidden = no
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+	name = noel.27.a
+	
+	}
+	
+	option = {
+	name = noel.27.b
+	
+	}
