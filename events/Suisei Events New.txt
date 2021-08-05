@@ -1276,6 +1276,9 @@ country_event = {
 	desc = suisei.47.d
 	picture = GFX_report_event_suisei
 
+	mean_time_to_happen = {
+		days = 1
+	}	
 	trigger = {
 		NOT = {
 			SUI = {
@@ -1319,6 +1322,9 @@ country_event = {
 	desc = suisei.41.d
 	picture = GFX_report_event_suisei
 
+	mean_time_to_happen = {
+		days = 1
+	}	
 	trigger = {
 		NOT = {
 			SUI = {
@@ -1362,6 +1368,9 @@ country_event = {
 	desc = suisei.46.d
 	picture = GFX_report_event_suisei
 
+	mean_time_to_happen = {
+		days = 1
+	}	
 	trigger = {
 		NOT = {
 			SUI = {
@@ -1407,6 +1416,9 @@ country_event = {
 	desc = suisei.42.d
 	picture = GFX_report_event_suisei
 
+	mean_time_to_happen = {
+		days = 1
+	}	
 	trigger = {
 		NOT = {
 			SUI = {
@@ -1480,16 +1492,8 @@ country_event = {
 	desc = suisei.45.d
 	picture = GFX_report_event_suisei
 
-	trigger = {
-		has_idea = suisei_urbanisation
-		NOT = {
-			OR = {
-			has_country_flag = suisei_revolutionary_economics_over
-			has_idea = suisei_urbanisation_hol_up
-			}
-		}
-	}
-
+	is_triggered_only = yes
+	
 	option = {
 		name = suisei.45.a  
 		subtract_from_variable = {
@@ -1498,3 +1502,218 @@ country_event = {
 		}
 	}
 }
+#Sudden Snap Elections
+country_event = {
+	id = suisei.48
+	title = suisei.48.t
+	desc = suisei.48.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		democratic < 5
+		NOT = {
+		has_country_flag = suisei_sudden_snap_elections
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}	
+	option = {
+		name = suisei.48.a  
+		set_country_flag = suisei_sudden_snap_elections
+		country_event = holo_elections.1
+	}
+}
+#nationalist reforms succeed? 
+country_event = {
+	id = suisei.49
+	title = suisei.49.t
+	desc = suisei.49.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		check_variable = {
+			var = SUI.efficiency_level
+			value = 300
+			compare = greater_than_or_equals
+		}
+		check_variable = {
+			var = SUI.rural_level
+			value = 400
+			compare = greater_than_or_equals
+		}
+		check_variable = {
+			var = SUI.government_level
+			value = 500
+			compare = greater_than_or_equals
+		}
+		check_variable = {
+			var = SUI.standard_of_living_nat
+			value = 600
+			compare = greater_than_or_equals
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}	
+	option = {
+		name = suisei.49.a  
+		remove_ideas = {suisei_urbanisation suisei_urbanisation_two SUI_modernization_methods SUI_public_pensions SUI_consumer_agri SUI_breadbasket suisei_industrial}
+		add_ideas = sui_national_reforms_complete
+		clear_variable = SUI.efficiency_level
+		clear_variable = SUI.rural_level
+		clear_variable = SUI.government_level
+		clear_variable = standard_of_living_nat
+	}
+}
+#revolutionary reforms succeed? 
+country_event = {
+	id = suisei.50
+	title = suisei.50.t
+	desc = suisei.50.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		check_variable = {
+			var = SUI.industrialisation_level
+			value = 60
+			compare = greater_than_or_equals
+		}
+		check_variable = {
+			var = SUI.unemployment_level
+			value = 50
+			compare = less_than_or_equals
+		}
+		check_variable = {
+			var = SUI.urbanisation_level
+			value = 75
+			compare = greater_than_or_equals
+		}
+		check_variable = {
+			var = SUI.standard_of_living_rev
+			value = 600
+			compare = greater_than_or_equals
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}	
+	option = {
+		name = suisei.50.a  
+		remove_ideas = { suisei_revolutionary_economics }
+		add_ideas = sui_revolutionary_reforms_complete
+		clear_variable = SUI.industrialisation_level
+		clear_variable = SUI.unemployment_level
+		clear_variable = SUI.urbanisation_level
+		clear_variable = SUI.standard_of_living_rev
+	}
+}
+#colonial revolt
+country_event = {
+	id = suisei.51
+	title = suisei.51.t
+	desc = suisei.51.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+		OR = {
+				AND = {
+					check_variable = {
+						var = SUI.anti_aggression
+						value = 60
+						compare = greater_than_or_equals
+					}
+					has_stability < 0.2
+				}
+				AND = {
+				check_variable = {
+					var = SUI.anti_aggression
+					value = 40
+					compare = greater_than_or_equals
+				}
+				has_civil_war = yes
+			}	
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}	
+	option = {
+		name = suisei.51.a  
+		release = COG
+		add_war_support = 0.05
+		SUI = {
+			declare_war_on = {
+				target = COG
+				type = annex_everything
+			}
+		}
+	}
+	option = {
+		name = suisei.51.b  
+		release = COG
+		COG = {
+			country_event = africa.1
+		}
+	}
+}
+#Congo accepts
+country_event = {
+	id = suisei.52
+	title = suisei.52.t
+	desc = suisei.52.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.52.a  
+		SUI = {
+			white_peace = {
+				tag = COG
+				message = congo_suisei_treaty
+			}
+		}
+		COG = {
+			country_event = africa.2
+		}
+	}
+}
+#We lose to congo 
+country_event = {
+	id = suisei.53
+	title = suisei.53.t
+	desc = suisei.53.d
+	picture = GFX_report_event_suisei
+
+	trigger = {
+			COG = {
+				controls_state = 973
+		}
+	}
+	
+	mean_time_to_happen = {
+	days = 200
+	}
+	
+	option = {
+		name = suisei.53.a  
+		SUI = {
+			white_peace = {
+				tag = COG
+				message = congo_suisei_treaty_2
+			}
+		}
+		COG = {
+			country_event = africa.3
+			add_state_core = 973
+			set_state_owner = 973
+		}
+	}
+}
+
+

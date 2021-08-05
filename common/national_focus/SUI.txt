@@ -16,6 +16,9 @@ focus_tree = {
 		icon = GFX_focus_SUI_emergency_measures
 		cost = 5.00
 		
+		bypass = {
+		has_country_flag = suisei_sudden_snap_elections
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -258,6 +261,7 @@ focus_tree = {
 		}
 		bypass = {
 			has_completed_focus = SUI_let_them_fail
+			has_country_flag = suisei_sudden_snap_elections
 		}
 		ai_will_do = {
 			factor = 1
@@ -343,6 +347,7 @@ focus_tree = {
 		id = SUI_organise_soup_kitchens
 		icon = GFX_focus_SUI_organize_soup_kitchens
 		cost = 5.00
+		
 		prerequisite = {
 			focus = SUI_damage_control
 		}
@@ -351,6 +356,8 @@ focus_tree = {
 		}
 		bypass = {
 			has_completed_focus = SUI_let_them_fail
+			has_country_flag = suisei_sudden_snap_elections
+
 		}
 		completion_reward = {
 			add_popularity = {
@@ -366,7 +373,11 @@ focus_tree = {
 	focus = {
 		id = SUI_bail_out_businesses
 		icon = GFX_focus_SUI_bail_out_businesses
-		cost = 5.00
+		cost = 5.00	
+
+		bypass = {
+				has_country_flag = suisei_sudden_snap_elections
+		}
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
@@ -408,6 +419,10 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = SUI_bail_out_businesses
+		}
+		bypass = {
+				has_country_flag = suisei_sudden_snap_elections
+
 		}
 		completion_reward = {
 				add_timed_idea = {
@@ -481,6 +496,10 @@ focus_tree = {
 			focus = SUI_let_them_fail
 			focus = SUI_bail_out_businesses
 		}
+		bypass = {
+				has_country_flag = suisei_sudden_snap_elections
+
+		}
 		completion_reward = {
 			add_popularity = {
 				ideology = democratic
@@ -495,6 +514,10 @@ focus_tree = {
 		id = SUI_new_elections
 		icon = GFX_focus_SUI_new_elections
 		cost = 7.00
+		bypass = {
+			has_country_flag = suisei_sudden_snap_elections
+
+		}
 		prerequisite = {
 			focus = SUI_economic_recovery_plan
 		}
@@ -627,7 +650,7 @@ focus_tree = {
 					value = 43
 				}
 				clamp_variable = {
-					var = SUI.unemployment_level
+					var = SUI.urbanisation_level
 					min = 0
 					max = 100
 				}
