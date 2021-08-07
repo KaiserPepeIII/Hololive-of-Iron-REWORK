@@ -1627,6 +1627,11 @@ country_event = {
 						compare = greater_than_or_equals
 					}
 					has_stability < 0.2
+					OR = {
+						has_idea = sui_extreme_colonial_unrest
+						has_idea = sui_major_colonial_unrest
+						has_idea = sui_minor_colonial_unrest
+					}
 				}
 				AND = {
 				check_variable = {
@@ -1634,8 +1639,13 @@ country_event = {
 					value = 40
 					compare = greater_than_or_equals
 				}
+				OR = {
+					has_idea = sui_extreme_colonial_unrest
+					has_idea = sui_major_colonial_unrest
+					has_idea = sui_minor_colonial_unrest
+				}
 				has_civil_war = yes
-			}	
+				}	
 		}
 	}
 
@@ -1715,5 +1725,197 @@ country_event = {
 		}
 	}
 }
+#Shipping Companies Start
+country_event = {
+	id = suisei.54
+	title = suisei.54.t
+	desc = suisei.54.d
+	picture = GFX_report_event_suisei
 
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.54.a  
+		set_variable = {
+			var = SUI.shipping_effective
+			value = 0
+		}
+	}
+}
+#Labour laws
+country_event = {
+	id = suisei.55
+	title = suisei.55.t
+	desc = suisei.55.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	#No exceptions shall be made
+	option = {
+		name = suisei.55.a  
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.01
+		}
+		SUI = {
+		country_event = suisei.56
+		}
+	}
+	#Make Compromises
+	option = {
+		name = suisei.55.b
+		add_to_variable = {
+			var = SUI.shipping_effective
+			value = 1
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = -0.01
+		}
+		SUI = {
+			country_event = suisei.56
+			}
+	}
+}
+#Taxes
+country_event = {
+	id = suisei.56
+	title = suisei.56.t
+	desc = suisei.56.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	#No exceptions shall be made
+	option = {
+		name = suisei.56.a  
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.01
+		}
+		SUI = {
+			country_event = suisei.57
+			}
+	}
+	#Make Compromises
+	option = {
+		name = suisei.56.b
+		add_to_variable = {
+			var = SUI.shipping_effective
+			value = 1
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = -0.01
+		}
+		SUI = {
+			country_event = suisei.57
+			}
+	}
+}
+#regulations
+country_event = {
+	id = suisei.57
+	title = suisei.57.t
+	desc = suisei.57.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	#No exceptions shall be made
+	option = {
+		name = suisei.57.a  
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.01
+		}
+		set_country_flag = SUI_dockyard_result
+	}
+	#Make Compromises
+	option = {
+		name = suisei.57.b
+		add_to_variable = {
+			var = SUI.shipping_effective
+			value = 1
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = -0.01
+		}
+		set_country_flag = SUI_dockyard_result
+	}
+}
+#Results
+country_event = {
+	id = suisei.58
+	title = suisei.58.t
+	desc = suisei.58.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	#No exceptions shall be made
+	option = {
+		name = suisei.58.a  
+		trigger = {
+			check_variable = {
+				var = SUI.shipping_effective
+				value = 0
+				compare = equals
+			}
+		}
+		add_ideas = SUI_failing_shipping_industry
+		clr_country_flag =  SUI_dockyard_result
+		clear_variable = SUI.shipping_effective
+	}
+	#Make Compromises
+	option = {
+		name = suisei.58.b
+		trigger = {
+			check_variable = {
+				var = SUI.shipping_effective
+				value = 1
+				compare = equals
+			}
+		}
+		add_ideas = SUI_meh_shipping_industry
+		clr_country_flag =  SUI_dockyard_result
+		clear_variable = SUI.shipping_effective
+	}
+	option = {
+		name = suisei.58.c
+		trigger = {
+			check_variable = {
+				var = SUI.shipping_effective
+				value = 2
+				compare = equals
+			}
+		}
+		add_ideas = SUI_good_shipping_industry
+		add_to_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 1
+		}
+		clr_country_flag =  SUI_dockyard_result
+		clear_variable = SUI.shipping_effective
+	}
+	option = {
+		name = suisei.58.e
+		trigger = {
+			check_variable = {
+				var = SUI.shipping_effective
+				value = 3
+				compare = equals
+			}
+		}
+		add_ideas = SUI_superb_shipping_industry
+		add_to_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 2
+		}
+		clr_country_flag =  SUI_dockyard_result
+		clear_variable = SUI.shipping_effective
+	}
+}
 

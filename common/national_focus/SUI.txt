@@ -1180,6 +1180,12 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_royalist_coalition_wins
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_suicopath_intimidation_idea
+				days = 720
+			}
+		}
 		x = 39
 		y = 7
 
@@ -1272,6 +1278,14 @@ focus_tree = {
 		  }
 		prerequisite = {
 			focus = SUI_gacha_economics
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = electronic_goods
+				bonus = 0.5
+				uses = 2
+				category = electronics
+			}
 		}
 		x = 31
 		y = 12
@@ -1387,6 +1401,13 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_suicopath_policy
 		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.05
+			}
+		}
 		x = 41
 		y = 10
 
@@ -1405,6 +1426,12 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_suicopath_policy
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_ensemble_fans
+				days = 365
+				}
+			}
 		x = 43
 		y = 10
 
@@ -1426,6 +1453,13 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_ensemble_fans
 		}
+		completion_reward = {
+			add_ideas = SUI_youth_division
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.05
+			}
+		}
 		x = 42
 		y = 11
 
@@ -1443,6 +1477,12 @@ focus_tree = {
 		  }
 		prerequisite = {
 			focus = SUI_youth_division
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_radio_personality
+				days = 720
+			}
 		}
 		x = 41
 		y = 12
@@ -1642,6 +1682,9 @@ focus_tree = {
 			focus = SUI_encourage_miko
 			focus = SUI_annex_usagi
 			focus = SUI_annex_miko
+		}
+		completion_reward = {
+			add_ideas = SUI_anti_yagoo_bulwark
 		}
 		x = 47
 		y = 4
@@ -4050,6 +4093,19 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_continue_recovery_plan
 		}
+		completion_reward = {
+			add_ideas = lhs_member
+			add_opinion_modifier = {
+				target = YAG
+				modifier = pushing_friendly_relations
+			}
+			YAG = {
+				add_opinion_modifier = {
+					target = SUI
+					modifier = pushing_friendly_relations
+				}
+			}
+		}
 		x = 2
 		y = 8
 
@@ -4060,6 +4116,12 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_rejoin_lhs
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = suisei_lhs_investment
+				days = 720
+			}
 		}
 		x = 3
 		y = 9
@@ -4072,6 +4134,20 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_rejoin_lhs
 		}
+		completion_reward = {
+			YAG = {
+				add_opinion_modifier = {
+					target = SUI
+					modifier = pushing_friendly_relations
+				}
+			}
+			SUI = {
+				add_offsite_building = {
+					type = industrial_complex 
+					level = 3
+				}
+			}
+		}
 		x = 1
 		y = 9
 
@@ -4082,6 +4158,27 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_continue_recovery_plan
+		}
+		completion_reward = {
+			SUI = {
+				random_owned_state = {
+					add_building_construction = {
+						type = infrastructure     
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex     
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = dockyard                
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 		}
 		x = 5
 		y = 8
@@ -4094,6 +4191,12 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_tackle_unemployment
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_deladier_plan
+				days = 360
+			} 
+		}
 		x = 5
 		y = 9
 
@@ -4104,6 +4207,22 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_deladier_plan
+		}
+		completion_reward = {
+			SUI = {
+				random_owned_state = {
+					add_building_construction = {
+						type = arms_factory     
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex     
+						level = 1
+						instant_build = yes
+					}
+				}
+			}			
 		}
 		x = 5
 		y = 10
@@ -4116,6 +4235,9 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_deladier_plan
 		}
+		completion_reward = {
+			add_ideas = SUI_increase_productivity
+		}
 		x = 7
 		y = 10
 
@@ -4126,6 +4248,23 @@ focus_tree = {
 		cost = 10.00
 		prerequisite = {
 			focus = SUI_continue_recovery_plan
+		}
+		completion_reward = {
+			859 = {
+				add_building_construction = {
+					type = dockyard     
+					level = 3
+					instant_build = yes
+				}
+				set_building_level = {
+					type = naval_base     
+					level = 2
+					province = {
+						limit_to_coastal = yes
+						level < 1
+					}
+				}
+			}
 		}
 		x = 10
 		y = 8
@@ -4138,6 +4277,11 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_marseille_port
 		}
+		completion_reward = {
+			SUI = {
+				country_event = suisei.54
+			}
+		}
 		x = 9
 		y = 9
 
@@ -4148,6 +4292,19 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_marseille_port
+		}
+		completion_reward = {
+			859 = {
+				add_building_construction = {
+					type = industrial_complex     
+					level = 3
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+				idea = suisei_civilian_factory
+				days = 260
+			}
 		}
 		x = 11
 		y = 9
@@ -4163,6 +4320,9 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_encourage_lhs_investment
 		}
+		completion_reward = {
+			set_country_flag = SUI_lhs_recovery_plan
+		}
 		x = 2
 		y = 10
 
@@ -4174,6 +4334,17 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_support_shipping_industry
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_colonial_boom
+				days = 180
+			}
+			add_stability = 0.05
+			add_to_variable = {
+				var = GLOBAL.tropical_goods_market
+				value = 2
+			}
+		}
 		x = 9
 		y = 10
 
@@ -4184,6 +4355,22 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_civilian_factory_investment
+		}
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 4
+			}
 		}
 		x = 11
 		y = 10
@@ -4199,6 +4386,22 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_restart_colonial_trade
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_final_industrial_push
+				days = 180
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
 		x = 10
 		y = 11
 
@@ -4212,6 +4415,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_national_industry
+		}
+		completion_reward = {
+			add_idea = SUI_efficiency_ethos_idea
 		}
 		x = 6
 		y = 11
@@ -4230,6 +4436,14 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_lhs_recovery_plan
 		}
+		completion_reward = {
+			remove_ideas = { great_depression_suisei
+			 great_depression_suisei_one 
+			 great_depression_suisei_two
+			 great_depression_suisei_three
+			 great_depression_suisei_four}
+			 add_stability = 0.05
+		}
 		x = 7
 		y = 12
 
@@ -4240,6 +4454,12 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_full_depression_recovery
+		}
+		completion_reward = {
+			add_to_array = {
+				array = lhs_defense_pact
+				value = SUI
+			}
 		}
 		x = 5
 		y = 13
@@ -4252,6 +4472,9 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_full_depression_recovery
 		}
+		completion_reward = {
+			add_ideas = SUI_kyou_mo_kawaii
+		}
 		x = 9
 		y = 13
 
@@ -4262,6 +4485,22 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_revolutionary_economics
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = SUI.urbanisation_level
+				value = 4
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
 		}
 		x = 17
 		y = 9
@@ -4277,6 +4516,26 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_expand_state_industry
 		}
+		completion_reward = {
+			add_to_variable = {
+				var = SUI.urbanisation_level
+				value = 5
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+		}
 		x = 16
 		y = 10
 
@@ -4287,6 +4546,13 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_expand_state_industry
+		}
+		completion_reward = {
+			add_ideas = SUI.nationalized_businesses
+			subtract_from_variable = {
+				var = SUI.unemployment_level
+				value = 2
+			}
 		}
 		x = 18
 		y = 10
@@ -4302,6 +4568,16 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_forty_hour_weekday
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_to_variable = {
+				var = SUI.standard_of_living_rev
+				value = 45
+			}
+		}
 		x = 14
 		y = 10
 
@@ -4312,6 +4588,17 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_welfare_hard_times
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.03
+			}
+			add_stability = 0.05
+			add_to_variable = {
+				var = SUI.standard_of_living_rev
+				value = 35
+			}		
 		}
 		x = 14
 		y = 11
@@ -4327,6 +4614,21 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_nationalize_failing_businesses
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_banks_nationalize
+				days = 360
+			}
+			add_stability = -0.05
+			subtract_from_variable = {
+				var = SUI.unemployment_level
+				value = 10
+			}
+			add_to_variable = {
+				var = SUI.urbanisation_level
+				value = 2
+			}
+		}
 		x = 17
 		y = 11
 
@@ -4337,6 +4639,16 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_nationalize_banks
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_timed_idea = {
+				idea = SUI_peoples_car
+				days = 360
+			}
 		}
 		x = 15
 		y = 12
@@ -4349,6 +4661,22 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_nationalize_banks
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_modernization_investments
+				days = 360
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
 		x = 17
 		y = 12
 
@@ -4359,6 +4687,27 @@ focus_tree = {
 		cost = 8.00
 		prerequisite = {
 			focus = SUI_nationalize_banks
+		}
+		completion_reward = {
+			add_ideas = SUI_work_lottery
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			subtract_from_variable = {
+				var = SUI.unemployment_level
+				value = 30
+			}
 		}
 		x = 19
 		y = 12
@@ -4377,6 +4726,26 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_peoples_car
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_expand_public_works
+				days = 360
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+				}
+				add_extra_state_shared_building_slots = 2
+			}			
+		}
 		x = 17
 		y = 13
 
@@ -4389,6 +4758,12 @@ focus_tree = {
 			focus = SUI_expand_public_works
 			focus = SUI_traditional_economics
 		}
+		completion_reward = {
+			add_to_array = {
+				array = resistance_defensive_alliance
+				value = SUI
+			}
+		}
 		x = 21
 		y = 14
 
@@ -4396,9 +4771,17 @@ focus_tree = {
 	focus = {
 		id = SUI_increase_resistance_trade
 		icon = GFX_focus_SUI_increase_resistance_trade
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = SUI_resistance_cooperation
+		}
+		completion_reward = {
+			YAG = {
+				add_opinion_modifier = {
+					target = SUI
+					modifier = anti_lhs_policy
+				}
+			}
 		}
 		x = 21
 		y = 15
@@ -4407,9 +4790,17 @@ focus_tree = {
 	focus = {
 		id = SUI_full_recovery
 		icon = GFX_focus_SUI_full_recovery
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = SUI_increase_resistance_trade
+		}
+		completion_reward = {
+			remove_ideas = { great_depression_suisei
+			 great_depression_suisei_one 
+			 great_depression_suisei_two
+			 great_depression_suisei_three
+			 great_depression_suisei_four}
+			 add_stability = 0.05
 		}
 		x = 21
 		y = 16
@@ -4418,7 +4809,7 @@ focus_tree = {
 	focus = {
 		id = SUI_independent_market
 		icon = GFX_focus_SUI_independent_market
-		cost = 0.00
+		cost = 10.00
 		offset = {
 			x = -22
 			y = 0
@@ -4429,6 +4820,10 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_deal_with_depression
 		}
+		completion_reward = {
+			remove_ideas = { export_focus free_trade  }
+			add_ideas = limited_exports
+		}
 		x = 35
 		y = 10
 
@@ -4436,7 +4831,7 @@ focus_tree = {
 	focus = {
 		id = SUI_self_sufficiency
 		icon = GFX_focus_SUI_self_sufficiency
-		cost = 0.00
+		cost = 8.00
 		offset = {
 			x = -22
 			y = 0
@@ -4447,6 +4842,9 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_independent_market
 		}
+		completion_reward = {
+			add_ideas = SUI_self_sufficiency
+		}
 		x = 35
 		y = 11
 
@@ -4454,7 +4852,7 @@ focus_tree = {
 	focus = {
 		id = SUI_support_gambling
 		icon = GFX_focus_SUI_support_gambling
-		cost = 0.00
+		cost = 8.00
 		offset = {
 			x = -22
 			y = 0
@@ -4465,6 +4863,21 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_gacha_economics
 		}
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_yagoo_kleptocracy
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = pro_resistance_kleptocracy
+				popularity = 0.05
+			}
+		}
 		x = 33
 		y = 12
 
@@ -4472,7 +4885,7 @@ focus_tree = {
 	focus = {
 		id = SUI_suisei_many_talents
 		icon = GFX_focus_SUI_suisei_many_talents
-		cost = 0.00
+		cost = 8.00
 		offset = {
 			x = -22
 			y = 0
@@ -4483,6 +4896,12 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_self_sufficiency
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_suisei_of_many_talents
+				days = 365
+			}
+		}
 		x = 35
 		y = 12
 
@@ -4490,7 +4909,7 @@ focus_tree = {
 	focus = {
 		id = SUI_full_suisei_recovery
 		icon = GFX_focus_SUI_full_suisei_recovery
-		cost = 0.00
+		cost = 10.00
 		offset = {
 			x = -22
 			y = 0
@@ -4509,6 +4928,14 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_electronic_goods
+		}
+		completion_reward = {
+			remove_ideas = { great_depression_suisei
+			great_depression_suisei_one 
+			great_depression_suisei_two
+			great_depression_suisei_three
+			great_depression_suisei_four}
+			add_stability = 0.05
 		}
 		x = 35
 		y = 13
@@ -4992,6 +5419,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = SUI_azki_federation
 		}
+		completion_reward = {
+			replace_ideas = {
+				add_idea = SUI_german_occupation_two
+				remove_idea = SUI_german_occupation
+			}
+		}
 		x = 38
 		y = 19
 
@@ -5333,7 +5766,7 @@ focus_tree = {
 	focus = {
 		id = SUI_suicopath_empress
 		icon = GFX_focus_SUI_suicopath_empress
-		cost = 0.00
+		cost = 8.00
 		offset = {
 			x = -22
 			y = 0
@@ -5358,6 +5791,11 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_puppet_scandinavia
+		}
+		completion_reward = {
+			set_cosmetic_tag = SUZ
+			add_stability = 0.1
+			add_war_support = 0.1
 		}
 		x = 40
 		y = 23
@@ -5409,7 +5847,7 @@ focus_tree = {
 				category = ss_tech
 			}
 			add_tech_bonus = {
-				name = suicopath_subsb
+				name = suicopath_subs
 				bonus = 0.6
 				uses = 3
 				category = naval_equipment
@@ -5635,7 +6073,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			create_equipment_variant = {
-				name = "Comet Fighters"
+				name = comet_fighters
 				type = fighter_equipment_2 
 				upgrades = {
 				  plane_gun_upgrade = 2
