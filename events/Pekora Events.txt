@@ -1,0 +1,105 @@
+add_namespace = pekora
+
+#peko suisei alliance
+country_event = {
+	id = pekora.1
+	title = pekora.1.t
+	desc = pekora.1.d
+	picture = GFX_report_event_mio
+	
+	is_triggered_only = yes
+	#accept
+	option = {
+		name = pekora.1.a
+		SUI = {
+			add_to_faction = PEK
+			country_event = suisei.68
+		}
+	}
+	option = {
+		name = pekora.1.b
+		SUI = {
+			country_event = suisei.38
+		}
+	}
+	option = {
+		name = pekora.1.c
+		SUI = {
+			add_opinion_modifier = {
+				target = PEK
+				modifier = rejected_friendly_relations
+			}
+			country_event = suisei.69
+		}
+	}
+}
+#Suisei Truce accepted
+country_event = {
+	id = pekora.2
+	title = pekora.2.t
+	desc = pekora.2.d
+	picture = GFX_report_event_mio
+	
+	is_triggered_only = yes
+	#accept
+	option = {
+		name = pekora.2.a
+	}
+}
+#Suisei Truce rejected
+country_event = {
+	id = pekora.3
+	title = pekora.3.t
+	desc = pekora.3.d
+	picture = GFX_report_event_mio
+	
+	is_triggered_only = yes
+	#accept
+	option = {
+		name = pekora.3.a
+	}
+}
+#Suisei demands our African lands
+country_event = {
+	id = pekora.4
+	title = pekora.4.t
+	desc = pekora.4.d
+	picture = GFX_report_event_mio
+	
+	is_triggered_only = yes
+	#accept
+	option = {
+		name = pekora.4.a
+		add_war_support = -0.15
+		add_stability = -0.15
+		add_to_variable = {
+			var = PEK.anti_aggression
+			value = 30
+		}
+		SUI = {
+			transfer_state = 458
+			transfer_state = 665
+			transfer_state = 448
+			transfer_state = 661
+			transfer_state = 273
+			transfer_state = 663
+			transfer_state = 449
+			transfer_state = 450
+			transfer_state = 458
+			transfer_state = 451
+			transfer_state = 447
+			transfer_state = 446
+			transfer_state = 456
+			transfer_state = 467
+			transfer_state = 452
+		}
+	}
+	#reject
+	option = {
+		name = pekora.4.b
+		leave_faction = yes
+		SUI = {
+			country_event = suisei.39
+		}
+	}
+}

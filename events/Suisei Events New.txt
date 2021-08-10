@@ -1853,9 +1853,16 @@ country_event = {
 	desc = suisei.58.d
 	picture = GFX_report_event_suisei
 
-	is_triggered_only = yes
+
+	trigger = {
+		SUI = {
+			has_country_flag = SUI_dockyard_result
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
 	
-	#No exceptions shall be made
 	option = {
 		name = suisei.58.a  
 		trigger = {
@@ -1869,7 +1876,6 @@ country_event = {
 		clr_country_flag =  SUI_dockyard_result
 		clear_variable = SUI.shipping_effective
 	}
-	#Make Compromises
 	option = {
 		name = suisei.58.b
 		trigger = {
@@ -1918,4 +1924,337 @@ country_event = {
 		clear_variable = SUI.shipping_effective
 	}
 }
+#Aloe says yes - independent
+country_event = {
+	id = suisei.60
+	title = suisei.60.t
+	desc = suisei.60.d
+	picture = GFX_report_event_suisei
 
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.60.a  
+		puppet = ALO
+	}
+}
+#aloe proposition - yes - not independent
+country_event = {
+	id = suisei.61
+	title = suisei.61.t
+	desc = suisei.61.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.61.a  
+		if = {
+			limit = {
+				has_dlc = "Together For Victory"
+			}
+			release_autonomy = {
+				target = ALO
+				autonomy_state = autonomy_dominion
+				freedom_level = 0.4
+			}
+			else = {
+				release_puppet = ALO
+			}
+		}
+	}
+}
+#Aloe proposition - no - not independent
+country_event = {
+	id = suisei.62
+	title = suisei.62.t
+	desc = suisei.62.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.62.a  
+	}
+}
+#sora proposition - yes - independent
+country_event = {
+	id = suisei.63
+	title = suisei.63.t
+	desc = suisei.63.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.63.a  
+		puppet = SOR
+	}
+}
+#sora proposition - yes - not independent
+country_event = {
+	id = suisei.64
+	title = suisei.64.t
+	desc = suisei.64.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.64.a  
+		if = {
+			limit = {
+				has_dlc = "Together For Victory"
+			}
+			release_autonomy = {
+				target = SOR
+				autonomy_state = autonomy_dominion
+				freedom_level = 0.4
+			}
+			else = {
+				release_puppet = SOR
+			}
+		}
+	}
+}
+#sora proposition - no - not independent
+country_event = {
+	id = suisei.65
+	title = suisei.65.t
+	desc = suisei.65.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.65.a  
+	}
+}
+#sora proposition - no - independent
+country_event = {
+	id = suisei.66
+	title = suisei.66.t
+	desc = suisei.66.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.66.a  
+		create_wargoal = {
+			target = SOR
+			type = puppet_wargoal_focus
+		}
+	}
+	option = {
+		name = suisei.66.b 
+		SOR = {
+			add_opinion_modifier = {
+				target = SUI
+				modifier = pushing_friendly_relations
+			}
+		}
+	}
+}
+#Aloe proposition - no - independent
+country_event = {
+	id = suisei.67
+	title = suisei.67.t
+	desc = suisei.67.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.67.a  
+		create_wargoal = {
+			target = ALO
+			type = puppet_wargoal_focus
+		}
+	}
+	option = {
+		name = suisei.67.b 
+		ALO = {
+			add_opinion_modifier = {
+				target = SUI
+				modifier = pushing_friendly_relations
+			}
+		}
+	}
+}
+#Tropical Goods Manufacturings
+country_event = {
+	id = suisei.67
+	title = suisei.67.t
+	desc = suisei.67.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	#in the colonies?
+	option = {
+		name = suisei.67.a  
+		add_ideas = SUI.colonial_business
+		subtract_from_variable = {
+			var = SUI.anti_aggression
+			value = 10
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_on_continent = africa
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}			
+		}
+	}
+	#in metropole
+	option = {
+		name = suisei.67.b 
+		if = {
+			limit = {
+				has_idea = suisei_revolutionary_economics
+			}
+			subtract_from_variable = {
+				var = SUI.unemployment_level
+				value = 5
+			}
+			add_to_variable = {
+				var = SUI.urbanisation_level
+				value = 1
+			}
+			add_to_variable = {
+				var = SUI_standard_of_living_rev
+				value = 10
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_on_continent = europe
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+		}
+	}
+}
+#Pekora accepts alliance
+country_event = {
+	id = suisei.68
+	title = suisei.68.t
+	desc = suisei.68.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.68.a  
+	}
+}
+#Pekora rejects alliance
+country_event = {
+	id = suisei.69
+	title = suisei.69.t
+	desc = suisei.69.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.69.a  
+	}
+}
+#March 22nd Day 1913 - Jour début 
+country_event = {
+	id = suisei.70
+	title = suisei.70.t
+	desc = suisei.70.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.70.a  
+		add_stability = 0.005
+	}
+}
+#Mort à Crèdit
+news_event = {
+	id = suisei.71
+	title = suisei.71.t
+	desc = suisei.71.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.71.a  
+	}
+}
+#The surrealists
+news_event = {
+	id = suisei.72
+	title = suisei.72.t
+	desc = suisei.72.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.72.a  
+	}
+}
+#The Rise of the Left
+news_event = {
+	id = suisei.73
+	title = suisei.73.t
+	desc = suisei.73.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.73.a  
+	}
+}
+#The Collapse of the Front Blanc
+news_event = {
+	id = suisei.74
+	title = suisei.74.t
+	desc = suisei.74.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.74.a  
+	}
+}
+#Acéphale
+news_event = {
+	id = suisei.75
+	title = suisei.75.t
+	desc = suisei.75.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.75.a  
+	}
+}
+#Death of Millerand
+news_event = {
+	id = suisei.76
+	title = suisei.76.t
+	desc = suisei.76.d
+	picture = GFX_report_event_suisei
+
+	is_triggered_only = yes
+	
+	option = {
+		name = suisei.76.a  
+	}
+}
