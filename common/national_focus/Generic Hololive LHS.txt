@@ -2,7 +2,7 @@ focus_tree = {
 	id = FocusTree_0
 
 	country = {
-		factor = 1
+		factor = 0
 		modifier = {
 			add = 10
 			OR = {
@@ -26,7 +26,6 @@ focus_tree = {
 			}
 		}
 	}
-	default = yes
 	continuous_focus_position = { x = 2 y = 2 }
 	focus = {
 		id = GEN_rearmemants_program
@@ -1929,7 +1928,7 @@ focus_tree = {
 			focus = GEN_monarchist_rule
 		}
 		completion_reward = {
-			add_stability = 0.1
+			add_stability = 0.05
 			add_ideas = GEN_bastion_of_democracy_idea
 		}
 		x = 70
@@ -2862,12 +2861,19 @@ focus_tree = {
 	focus = {
 		id = GEN_authoritarian_rule
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = GEN_establish_paramilitaries
 		}
 		prerequisite = {
 			focus = GEN_ensure_favorable_conditions
+		}
+		completion_reward = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = current_party_ideology_group@ROOT
+				elections_allowed = no
+			}
 		}
 		x = 64
 		y = 8
