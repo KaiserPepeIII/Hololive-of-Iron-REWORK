@@ -563,6 +563,9 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_amelioration_proposals
 		}
+		completion_reward = {
+		add_idea = darre_plan_1
+		}
 		x = 34
 		y = 4
 
@@ -574,21 +577,90 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_darre_plan
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		NOT = {
+		has_idea = darre_plan_2mechanization
+			  }
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_1
+		add_idea = darre_plan_2mechanization
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_3quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_3quantity
+		add_idea = darre_plan_4quantity-mechanization
+		 }
+	   }
+	  }
 		x = 33
 		y = 5
 
 	}
+	
 	focus = {
 		id = NOE_work_safety_laws #stability buff, consumer goods more
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
+			focus = NOE_quality_over_quantity		
+		}
+		prerequisite = {
 			focus = NOE_mechanization_ethos
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_4quantity-mechanization
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_4quantity-mechanization
+		add_idea = darre_plan_6quantity-mechanization-safetylaw
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_5mechanization-quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_5mechanization-quantity	
+		add_idea = darre_plan_7mechanization-quantity-safetylaw
+		 }
+	   }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_8quantity-mechanization-workweek
+	  }
+	  swap_ideas = {
+	  add_idea = darre_plan_10quantity-mechanization-workweek-safetylaw
+	  remove_idea = darre_plan_8quantity-mechanization-workweek
+	  }
+	 }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_9mechanization-quantity-workweek
+	   }
+	   swap_ideas = {
+	   add_idea = darre_plan_10mechanization-quantity-workweek-safetylaw
+	   remove_idea = darre_plan_9mechanization-quantity-workweek
+	}
+   }
+  }
 		x = 27
 		y = 6
 
-	}
+ }
+
 	focus = {
 		id = NOE_quality_over_quantity #modify said idea
 		icon = GFX_goal_unknown
@@ -596,6 +668,30 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_darre_plan
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		NOT = {
+		has_idea = darre_plan_3quantity
+			  }
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_1
+		add_idea = darre_plan_3quantity
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_2mechanization 
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_2mechanization
+		add_idea = darre_plan_5mechanization-quantity
+		 }
+	   }
+	  }
 		x = 35
 		y = 5
 
@@ -605,8 +701,52 @@ add_popularity = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_quality_over_quantity
+			focus = NOE_quality_over_quantity		
 		}
+		prerequisite = {
+			focus = NOE_mechanization_ethos
+		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_4quantity-mechanization
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_4quantity-mechanization
+		add_idea = darre_plan_11quantity-mechanization-workweek
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_5mechanization-quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_5mechanization-quantity	
+		add_idea = darre_plan_12mechanization-quantity-workweek
+		 }
+	   }
+	   ####HERE
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_6quantity-mechanization-safetylaw
+	  }
+	  swap_ideas = {
+	  add_idea = darre_plan_13quantity-mechanization-safetylaw-workweek
+	  remove_idea = darre_plan_6quantity-mechanization-safetylaw
+	  }
+	 }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_7mechanization-quantity-safetylaw
+	   }
+	   swap_ideas = {
+	   add_idea = darre_plan_14mechanization-quantity-safetylaw-workweek
+	   remove_idea = darre_plan_7mechanization-quantity-safetylaw
+	}
+   }
+  }
 		x = 30
 		y = 6
 
@@ -1747,6 +1887,9 @@ add_popularity = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_quality_over_quantity
+		}
+		add_timed_idea = {
+		add_idea = education_reform
 		}
 		x = 33
 		y = 6
