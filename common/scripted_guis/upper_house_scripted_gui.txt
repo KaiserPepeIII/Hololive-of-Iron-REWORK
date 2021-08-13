@@ -1,0 +1,37 @@
+scripted_gui = {
+   hololive_upper_house_button_gui = {
+	window_name = "hololive_upper_house_button_gui_window"
+	context_type = player_context
+	parent_window_token = politics_tab
+		
+	visible = {
+		always = yes
+	}
+	
+	effects = {
+		holo_parliament_button_click = {
+			set_country_flag = view_upper_house
+		}
+		holo_parliament_button_right_click = {
+			clr_country_flag = view_upper_house
+		}
+	}
+	
+  }
+    hololive_upper_house_view_gui = {
+	window_name = "hololive_upper_house_view_gui_window"
+	context_type = player_context
+
+		
+	visible = {
+		has_country_flag = view_upper_house
+	}
+	
+	effects = {
+		close_button_upper_click = {
+			clr_country_flag = view_upper_house
+		}
+	}
+	
+  }
+}
