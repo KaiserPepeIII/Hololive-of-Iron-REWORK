@@ -727,7 +727,6 @@ add_popularity = {
 		add_idea = darre_plan_12mechanization-quantity-workweek
 		 }
 	   }
-	   ####HERE
 	   else_if = {
 	   limit = {
 	   has_idea = darre_plan_6quantity-mechanization-safetylaw
@@ -800,6 +799,9 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_mechanization_ethos
 		}
+		completion_reward = {
+		add_idea = prussian_chivalry_1
+		}
 		x = 36
 		y = 6
 
@@ -811,6 +813,26 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_prussian_chivalry
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_1
+		   }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_1
+		add_idea = NOE_prussian_chivalry_2mace
+		  }
+		 }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_3gyudon
+		 }
+		 swap_ideas = {
+		 remove_idea = NOE_prussian_chivalry_3gyudon
+		 add_idea = NOE_prussian_chivalry_4gyudon-mace
+		}
+	   }
+	  }
 		x = 35
 		y = 7
 
@@ -822,6 +844,26 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_prussian_chivalry
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_1
+		   }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_1
+		add_idea = NOE_prussian_chivalry_3gyudon
+		  }
+		 }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_2mace
+		 }
+		 swap_ideas = {
+		 remove_idea = NOE_prussian_chivalry_2mace
+		 add_idea = NOE_prussian_chivalry_5mace-gyudon
+		}
+	   }
+	  }
 		x = 37
 		y = 7
 
@@ -1877,6 +1919,26 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_mace_and_mic
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_4gyudon-mace
+		}
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_4gyudon-mace
+		add_idea = NOE_prussian_chivalry_6
+		   }
+		  }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_5mace-gyudon
+		 }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_5mace-gyudon
+		add_idea = NOE_prussian_chivalry_6
+		}
+	   }
+	  }
 		x = 36
 		y = 8
 
