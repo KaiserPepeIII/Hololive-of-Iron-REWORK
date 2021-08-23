@@ -158,11 +158,11 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "lhs_membership_gui_window"
-		position = { x = 0 y = -215}	
-		size = { width = 800 height= 650 }
+		position = { x = 155 y = 70}	
+		size = { width = 1100 height= 1000 }
 		orientation = center
 		origo = center
-		fade_time = 100
+		fade_time = 300
 		moveable = no
 		fade_type = linear
 		click_to_front = no
@@ -170,188 +170,790 @@ guiTypes = {
 		
 		background = {
 			name = "Background"		
-			quadTextureSprite ="GFX_scripted_gui_window_background"
+			quadTextureSprite ="GFX_alignment_background"
 		}
 
 		buttonType ={
 			name ="close_button"
 			spriteType = "GFX_close_button"
-			position = { x= 40 y = 45 }
+			position = { x= 10 y = 10 }
 			Orientation = "UPPER_LEFT"
 			pdx_tooltip = close_window_lhs
 		}	
-				
-			gridboxType = {
-				name = "lhs_member_flag_gridbox"
-				position = { x = 0 y = -230}
-				size = { width = 0 height = 0}
-				slotsize = {width = 95 height = 50 }
-				max_slots = { x = 5 y = 14 }
-				add_horizontal = no
-			}
-			gridboxType = {
-				name = "resistance_member_flag_gridbox"
-				position = { x = 0 y = -230}
-				size = { width = 0 height = 0}
-				slotsize = {width = 95 height = 50 }
-				max_slots = { x = 5 y = 14 }
-				add_horizontal = no
-			}
-			gridboxType = {
-				name = "resistance_head_flag_gridbox"
-				position = { x = 0 y = -230}
-				size = { width = 0 height = 0}
-				slotsize = {width = 95 height = 50 }
-				max_slots = { x = 5 y = 14 }
-				add_horizontal = no
-			}	
-			gridboxType = {
-				name = "lhs_head_flag_gridbox"
-				position = { x = 0 y = -230}
-				size = { width = 0 height = 0}
-				slotsize = {width = 95 height = 50 }
-				max_slots = { x = 5 y = 14 }
-				add_horizontal = no
-			}			
-	}
-		containerWindowType = {
-		name = "country_buttons_window"
-		position = { x = 0 y = -240}
-		size = { width = 200 height = 200 }
-		orientation = center
-		show_animation_type = decelerated
-		hide_animation_type = accelerated
-		animation_time = 300	
-			
-		background = {
-			name = "small_background"		
-			quadTextureSprite ="GFX_scripted_gui_window_background"
+		instantTextboxType = {
+			name = "lhs_head"
+			position = { x= 70 y = 55 }
+			orientation = upper_left
+			text = "lhs_head_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
 		}
-			buttonType = {
-				name = "investments_button"
-				spriteType = "GFX_resistance_hostile"
-				position = { x = -350 y = -100  }
-				size = { x = 105 y = 105 }
-				orientation = center
-				}
+		instantTextboxType = {
+			name = "lhs_security_bloc"
+			position = { x= 45 y = 165 }
+			orientation = upper_left
+			text = "lhs_security_bloc_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}
+		instantTextboxType = {
+			name = "lhs_defense_alliance"
+			position = { x= 250 y = 10 }
+			orientation = upper_left
+			text = "lhs_defense_alliance_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}
+		instantTextboxType = {
+			name = "lhs_economic_bloc"
+			position = { x= 250 y = 180}
+			orientation = upper_left
+			text = "lhs_economic_bloc_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}
+				
+		instantTextboxType = {
+			name = "lhs_customs_union"
+			position = { x= 250 y = 365 }
+			orientation = upper_left
+			text = "lhs_customs_union_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "lhs_faith_in_lhs"
+			position = { x= 50 y = 405 }
+			orientation = upper_left
+			text = "lhs_faith_in_lhs_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}					
+		gridboxType = {
+			name = "lhs_customs_union_gui_gridbox"
+			position = { x = 110 y = 385}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}	
+		gridboxType = {
+			name = "lhs_head_gui_gridbox"
+			position = { x = -48 y = 85}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}	
+		gridboxType = {
+			name = "lhs_security_council_one_gui_gridbox"
+			position = { x = -105 y = 190}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}	
+		gridboxType = {
+			name = "lhs_security_council_two_gui_gridbox"
+			position = { x = 0 y = 190}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}			
+		gridboxType = {
+			name = "lhs_security_council_three_gui_gridbox"
+			position = { x = -105 y = 265}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}		
+		gridboxType = {
+			name = "lhs_security_council_four_gui_gridbox"
+			position = { x = 0 y = 265}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}			
+		gridboxType = {
+			name = "lhs_security_council_five_gui_gridbox"
+			position = { x = -105 y = 340}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}			
+		gridboxType = {
+			name = "lhs_security_council_six_gui_gridbox"
+			position = { x = 0 y = 340}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}			
 
+		gridboxType = {
+			name = "lhs_economic_development_gui_gridbox"
+			position = { x = 110 y = 145}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}	
+		gridboxType = {
+			name = "lhs_defensive_union_gui_gridbox"
+			position = { x = 110 y = -25}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}
+	}	
+	containerWindowType = { 
+		name = "lhs_permanent_buttons_container"
+		position = {x = 1020 y = 117}
+		orientation = upper_left
+		size = {width = 300 height = 1100}
+		
+		buttonType = {
+			name = "join_lhs_button"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 3}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = join_lhs_button_loc
+			}
+		instantTextboxType = {
+			name = "join_lhs_button_text"
+			position = { x= 15 y = 10 }
+			orientation = upper_left
+			text = "join_lhs_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "leave_lhs_button"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 42}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = leave_lhs_button_loc
+			}
+		instantTextboxType = {
+			name = "leave_lhs_button_text"
+			position = { x= 15 y = 50 }
+			orientation = upper_left
+			text = "leave_lhs_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		}
+	containerWindowType = { 
+		name = "lhs_military_buttons_container"
+		position = {x = 1020 y = 195}
+		orientation = upper_left
+		size = {width = 300 height = 1100}
+		
+		buttonType = {
+			name = "lhs_request_aid"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 3}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = join_lhs_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_request_aid_button_text"
+			position = { x= 15 y = 10 }
+			orientation = upper_left
+			text = "lhs_request_aid_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_request_intervention"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 42}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = leave_lhs_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_request_intervention_text"
+			position = { x= 10 y = 50 }
+			orientation = upper_left
+			text = "lhs_request_intervention_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		}
+	containerWindowType = { 
+		name = "lhs_head_buttons_container"
+		position = {x = 1020 y = 273}
+		orientation = upper_left
+		size = {width = 300 height = 1100}
+		
+		buttonType = {
+			name = "lhs_support_status_quo"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 3}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = support_status_quo_loc
+			}
+		instantTextboxType = {
+			name = "lhs_support_status_quo_button_text"
+			position = { x= 15 y = 10 }
+			orientation = upper_left
+			text = "support_status_quo_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_send_technical_expertise"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 42}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = send_technical_expertise_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_send_technical_expertise_button_text"
+			position = { x= 15 y = 50 }
+			orientation = upper_left
+			text = "lhs_send_technical_expertise_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_encourge_investment"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 81}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = send_technical_expertise_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_encourge_investment_button_text"
+			position = { x= 15 y = 91}
+			orientation = upper_left
+			text = "lhs_encourge_investment_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_military_drills"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 120}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = send_technical_expertise_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_military_drills_button_text"
+			position = { x= 15 y = 131 }
+			orientation = upper_left
+			text = "lhs_military_drills_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_begin_the_crusade"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 159}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = lhs_begin_the_crusade_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_begin_the_crusade_button_text"
+			position = { x= 15 y = 170 }
+			orientation = upper_left
+			text = "lhs_begin_the_crusade_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		}
+		containerWindowType = { 
+		name = "lhs_generic_buttons_container"
+		position = {x = 1020 y = 468}
+		orientation = upper_left
+		size = {width = 300 height = 1100}
+		
+		buttonType = {
+			name = "lhs_boost_lhs_parties"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 3}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = support_status_quo_loc
+			}
+		instantTextboxType = {
+			name = "lhs_boost_lhs_parties_button_text"
+			position = { x= 15 y = 10 }
+			orientation = upper_left
+			text = "lhs_boost_lhs_parties_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_peacekeeping_missions"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 42}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = send_technical_expertise_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_peacekeeping_missions_button_text"
+			position = { x= 15 y = 50 }
+			orientation = upper_left
+			text = "lhs_peacekeeping_missions_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_rally_for_war"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 81}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = send_technical_expertise_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_rally_for_war_button_text"
+			position = { x= 15 y = 91}
+			orientation = upper_left
+			text = "lhs_rally_for_war_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_investments"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 120}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = send_technical_expertise_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_investments_button_text"
+			position = { x= 15 y = 131 }
+			orientation = upper_left
+			text = "lhs_investments_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_send_military_support"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 159}
+			orientation = upper_left
+			scale = 1.2
+			pdx_tooltip = lhs_begin_the_crusade_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_send_military_support_button_text"
+			position = { x= 15 y = 170 }
+			orientation = upper_left
+			text = "lhs_send_military_support_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		}
+	containerWindowType = { 
+		name = "lhs_head_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		
+		buttonType = {
+			name = "lhs_head_large_flag"
+			quadTextureSprite = "GFX_shield_medium"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "lhs_head_large_flag_outline"
+			quadTextureSprite = "GFX_large_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+		}
+	}	
+	containerWindowType = { 
+		name = "lhs_security_council_one_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		
+		buttonType = {
+			name = "lhs_security_council_one_flag"
+			quadTextureSprite = "GFX_shield_medium"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+			
+		}
+		iconType = {
+			name = "lhs_security_council_one_flag_outline"
+			quadTextureSprite = "GFX_large_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+		}
+	}	
+	containerWindowType = { 
+		name = "lhs_security_council_two_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		
+		buttonType = {
+			name = "lhs_security_council_two_large_flag"
+			quadTextureSprite = "GFX_shield_medium"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "lhs_security_council_two_flag_outline"
+			quadTextureSprite = "GFX_large_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+		}
+	}	
+	containerWindowType = { 
+		name = "lhs_security_council_three_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		
+		buttonType = {
+			name = "lhs_security_council_three_large_flag"
+			quadTextureSprite = "GFX_shield_medium"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+
+		}
+		iconType = {
+			name = "lhs_security_council_three_flag_outline"
+			quadTextureSprite = "GFX_large_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+		}
+	}	
+	containerWindowType = { 
+		name = "lhs_security_council_four_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		
+		buttonType = {
+			name = "lhs_security_council_four_large_flag"
+			quadTextureSprite = "GFX_shield_medium"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+			
+		}
+		iconType = {
+			name = "lhs_security_council_four_flag_outline"
+			quadTextureSprite = "GFX_large_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+		}
+	}	
+	containerWindowType = { 
+		name = "lhs_security_council_five_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		
+		buttonType = {
+			name = "lhs_security_council_five_large_flag"
+			quadTextureSprite = "GFX_shield_medium"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "lhs_security_council_five_flag_outline"
+			quadTextureSprite = "GFX_large_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			
+		}
+	}	
+	containerWindowType = { 
+		name = "lhs_security_council_six_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		
+		buttonType = {
+			name = "lhs_security_council_six_large_flag"
+			quadTextureSprite = "GFX_shield_medium"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "lhs_security_council_six_large_flag_outline"
+			quadTextureSprite = "GFX_large_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			
+		}
+	}		
+	containerWindowType = { 
+		name = "lhs_customs_union_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		
+		buttonType = {
+			name = "lhs_customs_union_country_flag"
+			quadTextureSprite = "GFX_flag_small2"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "lhs_customs_union_country_flag_border"
+			quadTextureSprite = "GFX_diplo_countrylist_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			
+		}
+	}	
+	containerWindowType = { 
+		name = "lhs_economic_development_gui_list_entry"
+		position = {x = 0 y = 50}
+		size = {width = 300 height = 300}
+		verticalScrollbar = "right_vertical_slider"
+		margin = {top = 5 bottom = 5}
+		
+		buttonType = {
+			name = "lhs_economic_development_gui_country_flag"
+			quadTextureSprite = "GFX_flag_small2"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "lhs_economic_development_gui_country_flag_border"
+			quadTextureSprite = "GFX_diplo_countrylist_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			
+
+		}
 	}
-
-		containerWindowType = {
-		name = "lhs_flags_window"
-		position = { x = -821 y = 25 }
-		size = { width = 200 height = 1000 }
+	containerWindowType = { 
+		name = "lhs_defensive_union_gui_list_entry"
+		position = {x = 0 y = 50}
+		size = {width = 300 height = 300}
+		verticalScrollbar = "right_vertical_slider"
+		margin = {top = 5 bottom = 5}
+		
+		
+		buttonType = {
+			name = "lhs_defensive_union_gui_country_flag"
+			quadTextureSprite = "GFX_flag_small2"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "lhs_defensive_union_gui_country_flag_border"
+			quadTextureSprite = "GFX_diplo_countrylist_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			
+		}
+	}
+	containerWindowType = {
+		name = "resistance_membership_gui_window"
+		position = { x = 155 y = 70 }	
+		size = { width = 1100 height= 1000 }
 		orientation = center
+		origo = center
+		fade_time = 300
+		moveable = no
+		fade_type = linear
+		click_to_front = no
+		clipping = no
+		
+		background = {
+			name = "Background"		
+			quadTextureSprite ="GFX_alignment_background"
+		}
 
-			buttonType = {
-				name = "lhs_flags_button"
-				quadTextureSprite = "GFX_flag_small2"
-				position = { x = 0 y = 0 }
-				hint_tag = "COUNTRYNAME"
-				}
-			iconType = {
-				name = "lhs_flags_border"
-				quadTextureSprite = "GFX_diplo_countrylist_flag_frame"
-				position = { x = -3 y = -2 }
-				alwaystransparent = yes
-			}
-		#	instantTextboxType = {
-		#		name = "lhs_flags_text"
-		#		position = { x = 0 y = -13 }
-		#		font = "hoi_18mbs"
-		#		borderSize = {x = 0 y = 0}
-		#		text = "[THIS.GetName]"
-		#		maxWidth = 200
-		#		maxHeight = 100
-		#		fixedsize = yes				
-		#	}
+		buttonType ={
+			name ="close_button"
+			spriteType = "GFX_close_button"
+			position = { x= 5 y = 5 }
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = close_window_resistance
+		}	
+		instantTextboxType = {
+			name = "resistance_head"
+			position = { x= 40 y = 55 }
+			size = {width = 200 height = 200} 
+			orientation = upper_left
+			text = "resistance_head_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}
+		
+		instantTextboxType = {
+			name = "resistance_aqua_bloc"
+			position = { x= 250 y = 15 }
+			orientation = upper_left
+			text = "resistance_aqua_bloc_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}
+		instantTextboxType = {
+			name = "resistance_neutral_bloc"
+			position = { x= 250 y = 175 }
+			orientation = upper_left
+			text = "resistance_neutral_bloc_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}
+				
+		instantTextboxType = {
+			name = "resistance_coco_bloc"
+			position = { x= 250 y = 355 }
+			orientation = upper_left
+			text = "resistance_coco_bloc_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "resistance_friendly_decisions_header"
+			position = { x= 456 y = 15 }
+			orientation = upper_left
+			maxWidth = 300
+			text = "resistance_friendly_decisions_header_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}	
+		instantTextboxType = {
+			name = "resistance_hostile_decisions_header"
+			position = { x= 456 y = 15 }
+			orientation = upper_left
+			maxWidth = 300
+			text = "resistance_hostile_decisions_header_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "resistance_neutral_decisions_header"
+			position ={ x= 456 y = 15 }
+			orientation = upper_left
+			maxWidth = 300
+			text = "resistance_neutral_decisions_header_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+		}
+		gridboxType = {
+			name = "resistance_head_gui_gridbox"
+			position = { x = -55 y = 100}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}	
+		gridboxType = {
+			name = "coco_resistance_member_gui_gridbox"
+			position = { x = 110 y = 380}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}	
+		gridboxType = {
+			name = "aqua_resistance_member_gui_gridbox"
+			position = { x = 110 y = -10}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}	
+		gridboxType = {
+			name = "neutral_resistance_member_gui_gridbox"
+			position = { x = 110 y = 150}
+			size = { width = 300 height = 300}
+			slotsize = { width = 50 height = 40 }
+			max_slots_horizontal = 4
+			add_horizontal = yes
+		}		
 	}
-		containerWindowType = {
-		name = "resistance_flags_window"
-		position = { x = -251 y = 25 }
-		size = { width = 200 height = 1000 }
-		orientation = center
-
-			buttonType = {
-				name = "resistance_flags_button"
-				quadTextureSprite = "GFX_flag_small2"
-				position = { x = 0 y = 0 }
-				hint_tag = "COUNTRYNAME"
-				}
-			iconType = {
-				name = "resistance_flags_border"
-				quadTextureSprite = "GFX_diplo_countrylist_flag_frame"
-				position = {  x = -3 y = -2 }
-				alwaystransparent = yes
-			}
-		#	instantTextboxType = {
-		#		name = "lhs_flags_text"
-		#		position = { x = 0 y = -13 }
-		#		font = "hoi_18mbs"
-		#		borderSize = {x = 0 y = 0}
-		#		text = "[THIS.GetName]"
-		#		maxWidth = 200
-		#		maxHeight = 100
-		#		fixedsize = yes				
-		#	}
+	containerWindowType = { 
+		name = "coco_resistance_member_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 300 height = 300}
+		verticalScrollbar = "right_vertical_slider"
+		margin = {top = 5 bottom = 5}
+		
+		buttonType = {
+			name = "coco_resistance_member_gui_country_flag"
+			quadTextureSprite = "GFX_flag_small2"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "coco_resistance_member_gui_flag_border"
+			quadTextureSprite = "GFX_diplo_countrylist_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			
+		}
+	}	
+	containerWindowType = { 
+		name = "resistance_head_gui_list_entry"
+		position = {x = 0 y = 0}
+		size = {width = 200 height = 300}
+		
+		buttonType = {
+			name = "resistance_head_gui_country_flag"
+			quadTextureSprite = "GFX_shield_medium"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "resistance_head_gui_flag_border"
+			quadTextureSprite = "GFX_large_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			
+		}
+	}	
+	containerWindowType = { 
+		name = "aqua_resistance_member_gui_list_entry"
+		position = {x = 0 y = 50}
+		size = {width = 300 height = 300}
+		verticalScrollbar = "right_vertical_slider"
+		margin = {top = 5 bottom = 5}		
+		buttonType = {
+			name = "aqua_resistance_member_gui_country_flag"
+			quadTextureSprite = "GFX_flag_small2"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "aqua_resistance_member_gui_country_flag_border"
+			quadTextureSprite = "GFX_diplo_countrylist_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			
+		}
 	}
-		containerWindowType = {
-		name = "resistance_head_flag_window"
-		position = { x = -385 y = 50 }
-		size = { width = 200 height = 1000 }
-		orientation = center
-
-			buttonType = {
-				name = "resistance_head_flag_button"
-				quadTextureSprite = "GFX_shield_medium"
-				position = { x = 2 y = 0 }
-				hint_tag = "COUNTRYNAME"
-				}
-			iconType = {
-				name = "resistance_head_flags_border"
-				quadTextureSprite = "GFX_large_flag_frame"
-				position = { x = -2 y = 0 }
-				alwaystransparent = yes
-			}
-	    	instantTextboxType = {
-	    		name = "resistance_head_text"
-	    		position = { x = 10 y = -18 }
-	    		font = "hoi_18mbs"
-	    		borderSize = {x = -50 y = -15}
-	    		text = "Leader of the Resistance"
-	    		maxWidth = 200
-	    		maxHeight = 100
-	    		fixedsize = yes				
-	    	}
+	containerWindowType = { 
+		name = "neutral_resistance_member_gui_list_entry"
+		position = {x = 0 y = 50}
+		size = {width = 300 height = 300}
+		verticalScrollbar = "right_vertical_slider"
+		margin = {top = 5 bottom = 5}		
+		buttonType = {
+			name = "neutral_resistance_member_gui_country_flag"
+			quadTextureSprite = "GFX_flag_small2"
+			position = {x = 0 y = 3}
+			pdx_tooltip = member_category_get_name
+		}
+		iconType = {
+			name = "neutral_resistance_member_gui_country_flag_border"
+			quadTextureSprite = "GFX_diplo_countrylist_flag_frame"
+			position = {x = -4 y = 0}
+			alwaystransparent = yes
+			pdx_tooltip = member_category_get_name
+		}
 	}
-			containerWindowType = {
-		name = "lhs_head_flag_window"
-		position = { x = -535 y = 50 }
-		size = { width = 200 height = 1000 }
-		orientation = center
-
-			buttonType = {
-				name = "lhs_head_flag_button"
-				quadTextureSprite = "GFX_shield_medium"
-				position = { x = 2 y = 0 }
-				hint_tag = "COUNTRYNAME"
-				}
-			iconType = {
-				name = "lhs_head_flags_border"
-				quadTextureSprite = "GFX_large_flag_frame"
-				position = { x = -2 y = 0 }
-				alwaystransparent = yes
-			}
-			instantTextboxType = {
-				name = "lhs_head_text"
-				position = { x = -19 y = -33 }
-				font = "hoi_18mbs"
-				borderSize = {x = 0 y = 0}
-				text = "Leader of the LHS"
-				maxWidth = 200
-				maxHeight = 100
-				fixedsize = yes				
-			}
-	}
-
 }

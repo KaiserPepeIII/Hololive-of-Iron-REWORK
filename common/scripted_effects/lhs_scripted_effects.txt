@@ -1,0 +1,217 @@
+lhs_clear_all_voting = {
+	clr_global_flag = lhs_is_counting
+	clr_global_flag = lhs_voting
+	clear_array = global.lhs_entry_list
+	clear_variable = lhs_count_yes
+	clear_variable = lhs_count_no
+	clear_array = global.lhs_voted_yes 
+	clear_array = global.lhs_voted_no
+	every_country = {	
+		limit = {
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+		}
+		remove_ideas = lhs_voted
+	}
+}
+lhs_calculating = {
+	set_variable = { lhs_count_yes = lhs_voted_yes^num }
+	set_variable = { lhs_count_no = lhs_voted_no^num }
+}
+lhs_calculating_with_specials = {
+	if = {
+		limit = {
+			has_global_flag = lhs_security_council_one_yes
+		}
+		add_to_variable = {
+			var = lhs_count_yes
+			value = 2
+		}
+		else = {
+			add_to_variable = {
+				var = lhs_count_no
+				value = 2
+			}
+		}
+		clr_global_flag = lhs_security_council_one_yes
+		clr_global_flag = lhs_security_council_one_no
+	}	
+	if = {
+		limit = {
+			has_global_flag = lhs_security_council_two_yes
+		}
+		add_to_variable = {
+			var = lhs_count_yes
+			value = 2
+		}
+		else = {
+			add_to_variable = {
+				var = lhs_count_no
+				value = 2
+			}
+		}
+		clr_global_flag = lhs_security_council_two_yes
+		clr_global_flag = lhs_security_council_two_no
+	}
+	if = {
+		limit = {
+			has_global_flag = lhs_security_council_three_yes
+		}
+		add_to_variable = {
+			var = lhs_count_yes
+			value = 2
+		}
+		else = {
+			add_to_variable = {
+				var = lhs_count_no
+				value = 2
+			}
+		}
+		clr_global_flag = lhs_security_council_three_yes
+		clr_global_flag = lhs_security_council_three_no
+	}
+	if = {
+		limit = {
+			has_global_flag = lhs_security_council_four_yes
+		}
+		add_to_variable = {
+			var = lhs_count_yes
+			value = 2
+		}
+		else = {
+			add_to_variable = {
+				var = lhs_count_no
+				value = 2
+			}
+		}
+		clr_global_flag = lhs_security_council_four_yes
+		clr_global_flag = lhs_security_council_four_no
+	}
+	if = {
+		limit = {
+			has_global_flag = lhs_security_council_five_yes
+		}
+		add_to_variable = {
+			var = lhs_count_yes
+			value = 2
+		}
+		else = {
+			add_to_variable = {
+				var = lhs_count_no
+				value = 2
+			}
+		}
+		clr_global_flag = lhs_security_council_five_yes
+		clr_global_flag = lhs_security_council_five_no
+	}
+	if = {
+		limit = {
+			has_global_flag = lhs_security_council_six_yes
+		}
+		add_to_variable = {
+			var = lhs_count_yes
+			value = 2
+		}
+		else = {
+			add_to_variable = {
+				var = lhs_count_no
+				value = 2
+			}
+		}
+		clr_global_flag = lhs_security_council_six_yes
+		clr_global_flag = lhs_security_council_six_no
+	}
+	if = {
+		limit = {
+			has_global_flag = lhs_head_voted_yes
+		}
+		add_to_variable = {
+			var = lhs_count_yes
+			value = 4
+		}
+		else = {
+			add_to_variable = {
+				var = lhs_count_no
+				value = 4
+			}
+		}
+		clr_global_flag = lhs_head_voted_yes
+		clr_global_flag = lhs_head_voted_no			
+	}
+}
+lhs_security_council_voting_yes = {
+		add_to_array = {global.lhs_voted_yes = THIS.id}
+		add_ideas = lhs_voted
+			if = {
+			limit = {
+				has_idea = lhs_security_council_one
+			}
+			set_global_flag = lhs_security_council_one_yes
+			else_if = {
+				limit = {
+					has_idea = lhs_security_council_two
+				}
+				set_global_flag = lhs_security_council_two_yes
+			}
+			else_if = {
+				limit = {
+					has_idea = lhs_security_council_three
+				}
+				set_global_flag = lhs_security_council_three_yes
+			}
+			else_if = {
+				limit = {
+					has_idea = lhs_security_council_four
+				}
+				set_global_flag = lhs_security_council_four_yes
+			}
+			else_if = {
+				limit = {
+					has_idea = lhs_security_council_five
+				}
+				set_global_flag = lhs_security_council_five_yes
+			}
+			else= {
+				set_global_flag = lhs_security_council_six_yes
+			}
+		}
+}
+lhs_security_council_voting_no = {
+		add_to_array = {global.lhs_voted_no = THIS.id}
+		add_ideas = lhs_voted
+			if = {
+			limit = {
+				has_idea = lhs_security_council_one
+			}
+			set_global_flag = lhs_security_council_one_no
+			else_if = {
+				limit = {
+					has_idea = lhs_security_council_two
+				}
+				set_global_flag = lhs_security_council_two_no
+			}
+			else_if = {
+				limit = {
+					has_idea = lhs_security_council_three
+				}
+				set_global_flag = lhs_security_council_three_no
+			}
+			else_if = {
+				limit = {
+					has_idea = lhs_security_council_four
+				}
+				set_global_flag = lhs_security_council_four_no
+			}
+			else_if = {
+				limit = {
+					has_idea = lhs_security_council_five
+				}
+				set_global_flag = lhs_security_council_five_no
+			}
+			else= {
+				set_global_flag = lhs_security_council_six_no
+			}
+		}
+}

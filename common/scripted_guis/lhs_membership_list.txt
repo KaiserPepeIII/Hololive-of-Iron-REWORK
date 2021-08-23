@@ -4,54 +4,479 @@ scripted_gui = {
     context_type = player_context
 	
     visible = {
-		has_country_flag = view_membership
+		has_country_flag = view_lhs_membership
 
     }
 
     effects = {
 		close_button_click = {
-		clr_country_flag = view_membership
+			clr_country_flag = view_lhs_membership
 		}
-		
-    }
-
-	dynamic_lists = {
-			lhs_member_flag_gridbox = {
-		array = global.lhs_member_flag
-		entry_container = lhs_flags_window
-		change_scope = yes
+		lhs_head_large_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
 		}
-			resistance_member_flag_gridbox = {
-		array = global.resistance_member_flag
-		entry_container = resistance_flags_window
-		change_scope = yes
+		lhs_head_large_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}	
+		lhs_customs_union_country_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
 		}
-			resistance_head_flag_gridbox = {
-		array = global.resistance_head_flag
-		entry_container = resistance_head_flag_window
-		change_scope = yes
+		lhs_customs_union_country_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}	
+		lhs_economic_development_gui_country_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
 		}
-			lhs_head_flag_gridbox = {
-		array = global.lhs_head_flag
-		entry_container = lhs_head_flag_window
-		change_scope = yes
+		lhs_economic_development_gui_country_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}	
+		lhs_defensive_union_gui_country_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
+		}
+		lhs_defensive_union_gui_country_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}
+		lhs_security_council_one_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
+		}
+		lhs_security_council_one_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}	
+		lhs_security_council_two_large_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
+		}
+		lhs_security_council_two_large_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}	
+		lhs_security_council_three_large_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
+		}
+		lhs_security_council_three_large_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
 		}		
+		lhs_security_council_four_large_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
+		}
+		lhs_security_council_four_large_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}	
+		lhs_security_council_five_large_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
+		}
+		lhs_security_council_five_large_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}	
+		lhs_security_council_six_large_flag_click = {
+			ROOT = {
+				set_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+			add_to_array = {
+				array = lhs_action_array
+				value = THIS.id
+			}
+		}
+		lhs_security_council_six_large_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_lhs_friendly_decisions
+			}
+			clear_array = lhs_action_array
+		}
+    }
+	triggers = {
+		lhs_hostile_decisions_header_visible = {
+			OR = {
+			has_government = communism
+			has_government = pro_resistance_nationalism
+			has_government = pro_resistance_monarchy
+			has_government = pro_resistance_kleptocracy
+			has_government = fascism
+			has_government = left_wing_revolutionary
+			has_government = democratic_revitalisation
+			has_government = reactionary_monarchy
+			}
+		}
+		lhs_friendly_decisions_header_visible = {
+			OR = {
+			has_government = democratic
+			has_government = pro_yagoo_progressive
+			has_government = pro_yagoo_kleptocracy
+			has_government = pro_yagoo_monarchy
+			}
+		}
+		lhs_neutral_decisions_header_visible = {
+			OR = {
+			has_government = neutrality
+			has_government = reactionary_nationalism
+			has_government = pirate_republic
+			has_government = mixed_ideology_democracy
+			has_government = divine_mandate
+			}
+		}
+	}
+	dynamic_lists = {
+		lhs_head_gui_gridbox = {
+			array = global.lhs_head_flag
+			entry_container = lhs_head_gui_list_entry
+			change_scope = yes
+		}		
+		lhs_security_council_one_gui_gridbox = {
+			array = global.lhs_security_council_one
+			entry_container = lhs_security_council_one_gui_list_entry
+			change_scope = yes
+		}		
+		lhs_security_council_two_gui_gridbox = {
+			array = global.lhs_security_council_two
+			entry_container = lhs_security_council_two_gui_list_entry
+			change_scope = yes
+		}		
+		lhs_security_council_three_gui_gridbox = {
+			array = global.lhs_security_council_three
+			entry_container = lhs_security_council_three_gui_list_entry
+			change_scope = yes
+		}		
+		lhs_security_council_four_gui_gridbox = {
+			array = global.lhs_security_council_four
+			entry_container = lhs_security_council_four_gui_list_entry
+			change_scope = yes
+		}		
+		lhs_security_council_five_gui_gridbox = {
+			array = global.lhs_security_council_five
+			entry_container = lhs_security_council_five_gui_list_entry
+			change_scope = yes
+		}		
+		lhs_security_council_six_gui_gridbox = {
+			array = global.lhs_security_council_six
+			entry_container = lhs_security_council_six_gui_list_entry
+			change_scope = yes
+		}
+		lhs_customs_union_gui_gridbox = {
+			array = global.lhs_customs_union_flag
+			entry_container = lhs_customs_union_gui_list_entry
+			change_scope = yes
+		}
+		lhs_economic_development_gui_gridbox = {
+			array = global.lhs_economic_development_flag
+			entry_container = lhs_economic_development_gui_list_entry
+			change_scope = yes
+		}		
+		lhs_defensive_union_gui_gridbox = {
+			array = global.lhs_defensive_union_flag
+			entry_container = lhs_defensive_union_gui_list_entry
+			change_scope = yes
+		}
 	}
 	properties = {
-		lhs_flags_button = {
+		lhs_security_council_one_flag = {
+			image = [THIS.GetFlag]
+		}		
+		lhs_security_council_two_large_flag = {
+			image = [THIS.GetFlag]
+		}		
+		lhs_security_council_three_large_flag = {
+			image = [THIS.GetFlag]
+		}		
+		lhs_security_council_four_large_flag = {
+			image = [THIS.GetFlag]
+		}		
+		lhs_security_council_five_flag_outline = {
+			image = [THIS.GetFlag]
+		}		
+		lhs_security_council_six_large_flag = {
+			image = [THIS.GetFlag]
+		}		
+		lhs_head_large_flag = {
 			image = [THIS.GetFlag]
 		}
-		resistance_flags_button = {
+		lhs_customs_union_country_flag = {
 			image = [THIS.GetFlag]
-		}
-		resistance_head_flag_button = {
+		}		
+		lhs_defensive_union_gui_country_flag = {
 			image = [THIS.GetFlag]
-		}
-		lhs_head_flag_button = {
+		}		
+		lhs_economic_development_gui_country_flag = {
 			image = [THIS.GetFlag]
 		}
 	}
   }
+   lhs_permanent_buttons_gui = {
+    window_name = "lhs_permanent_buttons_container"
+    context_type = player_context
+
+	effects = {
+		join_lhs_button_click = {
+			ROOT = {
+				add_to_array = {
+					array = global.lhs_entry_list
+					value = THIS.id
+				}
+			}
+			every_country = {
+					limit = {
+						is_in_array = {
+							array = global.lhs_head_flag
+							value = THIS.id
+						}
+					}				
+					country_event = lhs.1
+				}
+		}
+	}
+    visible = {
+		has_country_flag = view_lhs_membership
+		}
+	triggers = {
+		join_lhs_button_click_enabled = {
+			NOT = {
+				has_global_flag = lhs_voting
+				has_global_flag = lhs_is_counting 
+			}
+			ROOT = {
+				has_political_power > 100
+				NOT = {
+					OR = {
+					has_idea = lhs_member
+					has_idea = lhs_head
+					has_idea = resistance_member
+					has_idea = anti_member
+					}
+				}
+			}
+		}
+		leave_lhs_button_click_enabled = {
+			ROOT = {
+				has_political_power > 100
+				has_idea = lhs_member
+				NOT = {
+					OR = {
+					has_idea = lhs_head
+					}
+				}
+			}
+		}
+	}
+  }  
+  lhs_head_buttons_gui = {
+    window_name = "lhs_head_buttons_container"
+    context_type = player_context
+
+    visible = {
+		has_idea = lhs_head
+		has_country_flag = view_lhs_membership
+		has_country_flag = view_lhs_friendly_decisions
+		}
+	triggers = {
+		
+	}
+  }
+   lhs_military_buttons_gui = {
+    window_name = "lhs_military_buttons_container"
+    context_type = player_context
+
+    visible = {
+		has_country_flag = view_lhs_membership
+		}
+	triggers = {
+		lhs_request_aid_click_enabled = {
+			ROOT = {
+				has_war = yes
+			}
+		}
+		lhs_request_intervention_click_enabled = {
+			ROOT = {
+				has_war = yes
+			}
+		}
+	}
+  }
+    lhs_generic_buttons_gui = {
+    window_name = "lhs_generic_buttons_container"
+    context_type = player_context
+
+    visible = {
+		has_idea = lhs_member
+		has_country_flag = view_lhs_membership
+		has_country_flag = view_lhs_friendly_decisions
+		}
+	triggers = {
+		
+	}
+  }
+  resistance_membership_gui = {
+    window_name = "resistance_membership_gui_window"
+    context_type = player_context
+	
+    visible = {
+		has_country_flag = view_resistance_membership
+
+    }
+
+    effects = {
+		close_button_click = {
+			clr_country_flag = view_resistance_membership
+		}
+		
+    }
+	triggers = {
+		resistance_friendly_decisions_header_visible = {
+			OR = {
+			has_government = communism
+			has_government = pro_resistance_nationalism
+			has_government = pro_resistance_monarchy
+			has_government = pro_resistance_kleptocracy
+
+			}
+		}
+		resistance_hostile_decisions_header = {
+			OR = {
+			has_government = democratic
+			has_government = pro_yagoo_progressive
+			has_government = pro_yagoo_kleptocracy
+			has_government = pro_yagoo_monarchy
+			has_government = fascism
+			has_government = left_wing_revolutionary
+			has_government = democratic_revitalisation
+			has_government = reactionary_monarchy
+			}
+		}
+		resistance_neutral_decisions_header= {
+			OR = {
+			has_government = neutrality
+			has_government = reactionary_nationalism
+			has_government = pirate_republic
+			has_government = mixed_ideology_democracy
+			has_government = divine_mandate
+			}
+		}
+	}
+	dynamic_lists = {
+		resistance_head_gui_gridbox = {
+			array = global.resistance_head_flag
+			entry_container = resistance_head_gui_list_entry
+			change_scope = yes
+		}
+		coco_resistance_member_gui_gridbox = {
+			array = global.coco_resistance_member_flag
+			entry_container = coco_resistance_member_gui_list_entry
+			change_scope = yes
+		}
+		aqua_resistance_member_gui_gridbox = {
+			array = global.aqua_resistance_member_flag
+			entry_container = aqua_resistance_member_gui_list_entry
+			change_scope = yes
+		}		
+		neutral_resistance_member_gui_gridbox = {
+			array = global.neutral_resistance_member_flag
+			entry_container = neutral_resistance_member_gui_list_entry
+			change_scope = yes
+		}
+	}
+	properties = {
+		resistance_head_gui_country_flag = {
+			image = [THIS.GetFlag]
+		}
+		coco_resistance_member_gui_country_flag = {
+			image = [THIS.GetFlag]
+		}		
+		aqua_resistance_member_gui_country_flag = {
+			image = [THIS.GetFlag]
+		}		
+		neutral_resistance_member_gui_country_flag = {
+			image = [THIS.GetFlag]
+		}
+	}
+  }
+  
     lhs_member_button_gui = {
     window_name = "lhs_member_button_window"
     context_type = player_context
@@ -63,7 +488,12 @@ scripted_gui = {
 
     effects = {
 		lhs_member_button_click = {
-		set_country_flag = view_membership
+		set_country_flag = view_lhs_membership
+		clr_country_flag = view_resistance_membership
+		}
+		lhs_member_button_right_click = {
+		clr_country_flag = view_lhs_membership
+		clr_country_flag = view_resistance_membership
 		}
     }
 
@@ -79,7 +509,12 @@ scripted_gui = {
 
     effects = {
 		lhs_neutral_button_click = {
-		set_country_flag = view_membership
+		set_country_flag = view_lhs_membership
+		clr_country_flag = view_resistance_membership
+		}
+		lhs_neutral_button_right_click = {
+		clr_country_flag = view_lhs_membership
+		clr_country_flag = view_resistance_membership
 		}
     }
 
@@ -103,7 +538,12 @@ scripted_gui = {
 
     effects = {
 		lhs_hostile_button_click = {
-		set_country_flag = view_membership
+		set_country_flag = view_lhs_membership
+		clr_country_flag = view_resistance_membership
+		}
+		lhs_hostile_button_right_click = {
+		clr_country_flag = view_lhs_membership
+		clr_country_flag = view_resistance_membership
 		}
     }
   }
@@ -118,7 +558,12 @@ scripted_gui = {
 
     effects = {
 		resistance_member_button_click = {
-		set_country_flag = view_membership
+		set_country_flag = view_resistance_membership
+		clr_country_flag = view_lhs_membership
+		}
+		resistance_member_button_right_click = {
+		clr_country_flag = view_resistance_membership
+		clr_country_flag = view_lhs_membership
 		}
     }
   }
@@ -132,7 +577,12 @@ scripted_gui = {
 			}
     effects = {
 		resistance_neutral_button_click = {
-		set_country_flag = view_membership
+		set_country_flag = view_resistance_membership
+		clr_country_flag = view_lhs_membership
+		}
+		resistance_neutral_button_right_click = {
+		clr_country_flag = view_resistance_membership
+		clr_country_flag = view_lhs_membership
 		}
     }
 
@@ -155,7 +605,12 @@ scripted_gui = {
 
     effects = {
 		resistance_hostile_button_click = {
-		set_country_flag = view_membership
+		set_country_flag = view_resistance_membership
+		clr_country_flag = view_lhs_membership
+		}
+		resistance_hostile_button_right_click = {
+		clr_country_flag = view_resistance_membership
+		clr_country_flag = view_lhs_membership
 		}
     }
 	}
