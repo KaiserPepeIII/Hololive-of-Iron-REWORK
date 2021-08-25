@@ -93,11 +93,36 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
 		swap_ideas = {
 		remove_idea = great_depression_noel
-		add_idea = ####Add the idea here when George finishes making it
-		}
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
 	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+	 }
 		x = 42
 		y = 1
 
@@ -110,12 +135,37 @@ focus_tree = {
 			focus = NOE_bankruptcy_for_them
 		}
 		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
 		swap_ideas = {
 		remove_idea = great_depression_noel
-		add_idea = ####Add the idea here when George finishes making it
-		}
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
 		add_idea = {
-		bankrupt_noblemen
+		bail_out_noblemen
 		}
 	   }
 		
@@ -131,14 +181,39 @@ focus_tree = {
 			focus = NOE_bail_out_noblemen
 		}
 		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
 		swap_ideas = {
 		remove_idea = great_depression_noel
-		add_idea = ####Add the idea here when George finishes making it
-		}
-		add_idea = {
-		bail_out_noblemen
-		}
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
 	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+		add_idea = {
+		bankrupt_noblemen
+		}
+	}
 		x = 49
 		y = 1
 
@@ -563,6 +638,9 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_amelioration_proposals
 		}
+		completion_reward = {
+		add_idea = darre_plan_1
+		}
 		x = 34
 		y = 4
 
@@ -574,21 +652,90 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_darre_plan
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		NOT = {
+		has_idea = darre_plan_2mechanization
+			  }
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_1
+		add_idea = darre_plan_2mechanization
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_3quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_3quantity
+		add_idea = darre_plan_4quantity-mechanization
+		 }
+	   }
+	  }
 		x = 33
 		y = 5
 
 	}
+	
 	focus = {
 		id = NOE_work_safety_laws #stability buff, consumer goods more
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
+			focus = NOE_quality_over_quantity		
+		}
+		prerequisite = {
 			focus = NOE_mechanization_ethos
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_4quantity-mechanization
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_4quantity-mechanization
+		add_idea = darre_plan_6quantity-mechanization-safetylaw
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_5mechanization-quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_5mechanization-quantity	
+		add_idea = darre_plan_7mechanization-quantity-safetylaw
+		 }
+	   }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_8quantity-mechanization-workweek
+	  }
+	  swap_ideas = {
+	  add_idea = darre_plan_10quantity-mechanization-workweek-safetylaw
+	  remove_idea = darre_plan_8quantity-mechanization-workweek
+	  }
+	 }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_9mechanization-quantity-workweek
+	   }
+	   swap_ideas = {
+	   add_idea = darre_plan_10mechanization-quantity-workweek-safetylaw
+	   remove_idea = darre_plan_9mechanization-quantity-workweek
+	}
+   }
+  }
 		x = 27
 		y = 6
 
-	}
+ }
+
 	focus = {
 		id = NOE_quality_over_quantity #modify said idea
 		icon = GFX_goal_unknown
@@ -596,6 +743,30 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_darre_plan
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		NOT = {
+		has_idea = darre_plan_3quantity
+			  }
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_1
+		add_idea = darre_plan_3quantity
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_2mechanization 
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_2mechanization
+		add_idea = darre_plan_5mechanization-quantity
+		 }
+	   }
+	  }
 		x = 35
 		y = 5
 
@@ -605,8 +776,51 @@ add_popularity = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_quality_over_quantity
+			focus = NOE_quality_over_quantity		
 		}
+		prerequisite = {
+			focus = NOE_mechanization_ethos
+		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_4quantity-mechanization
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_4quantity-mechanization
+		add_idea = darre_plan_11quantity-mechanization-workweek
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_5mechanization-quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_5mechanization-quantity	
+		add_idea = darre_plan_12mechanization-quantity-workweek
+		 }
+	   }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_6quantity-mechanization-safetylaw
+	  }
+	  swap_ideas = {
+	  add_idea = darre_plan_13quantity-mechanization-safetylaw-workweek
+	  remove_idea = darre_plan_6quantity-mechanization-safetylaw
+	  }
+	 }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_7mechanization-quantity-safetylaw
+	   }
+	   swap_ideas = {
+	   add_idea = darre_plan_14mechanization-quantity-safetylaw-workweek
+	   remove_idea = darre_plan_7mechanization-quantity-safetylaw
+	}
+   }
+  }
 		x = 30
 		y = 6
 
@@ -660,6 +874,9 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_mechanization_ethos
 		}
+		completion_reward = {
+		add_idea = prussian_chivalry_1
+		}
 		x = 36
 		y = 6
 
@@ -671,6 +888,26 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_prussian_chivalry
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_1
+		   }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_1
+		add_idea = NOE_prussian_chivalry_2mace
+		  }
+		 }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_3gyudon
+		 }
+		 swap_ideas = {
+		 remove_idea = NOE_prussian_chivalry_3gyudon
+		 add_idea = NOE_prussian_chivalry_4gyudon-mace
+		}
+	   }
+	  }
 		x = 35
 		y = 7
 
@@ -682,6 +919,26 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_prussian_chivalry
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_1
+		   }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_1
+		add_idea = NOE_prussian_chivalry_3gyudon
+		  }
+		 }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_2mace
+		 }
+		 swap_ideas = {
+		 remove_idea = NOE_prussian_chivalry_2mace
+		 add_idea = NOE_prussian_chivalry_5mace-gyudon
+		}
+	   }
+	  }
 		x = 37
 		y = 7
 
@@ -693,6 +950,11 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_danzig_conference
 		}
+		completion_reward = {
+		add_ideas = {
+		idea = modern_serfdom
+		}
+	   }
 		x = 40
 		y = 6
 
@@ -704,6 +966,37 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_depression_economics
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+	 }
 		x = 42
 		y = 2
 
@@ -715,6 +1008,41 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_spending_plan
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+	  add_timed_idea = {
+	  idea = inflation_dealt_NOE
+	  days = 120
+	  }
+	 }
 		x = 41
 		y = 3
 
@@ -859,6 +1187,11 @@ add_popularity = {
 		}
 		prerequisite = {
 			focus = NOE_deal_with_inflation
+		}
+		completion_reward = {
+		remove_idea = {
+		idea = great_depression_noel_3
+     	 }
 		}
 		x = 47
 		y = 4
@@ -1737,6 +2070,26 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_mace_and_mic
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_4gyudon-mace
+		}
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_4gyudon-mace
+		add_idea = NOE_prussian_chivalry_6
+		   }
+		  }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_5mace-gyudon
+		 }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_5mace-gyudon
+		add_idea = NOE_prussian_chivalry_6
+		}
+	   }
+	  }
 		x = 36
 		y = 8
 
@@ -1747,6 +2100,9 @@ add_popularity = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_quality_over_quantity
+		}
+		add_timed_idea = {
+		add_idea = education_reform
 		}
 		x = 33
 		y = 6
