@@ -8,11 +8,28 @@ lhs_security_council_trigger = {
 		has_idea = lhs_security_council_six
 		}
 }
+lhs_not_voting_in_progress = {
+	NOT = {
+		has_global_flag = lhs_voting_state
+		has_global_flag = lhs_sanctions_vote
+		has_global_flag = lhs_join_vote
+		has_global_flag = lhs_remove_sanctions_vote
+		has_global_flag = lhs_resistance_war_voting
+		has_global_flag = lhs_resistance_war_voting_security
+	}
+}
 lhs_calculating_trigger_yes = {	
 	check_variable = {
-		var = lhs_count_yes
-		value = lhs_count_no
+		var = global.lhs_count_yes
+		value = global.lhs_count_no
 		compare = greater_than
+	}
+}
+lhs_calculating_trigger_no = {
+		check_variable = {
+		var = global.lhs_count_no
+		value = global.lhs_count_yes
+		compare = greater_than_or_equals
 	}
 }
 lhs_has_war_with_negative = {
@@ -23,5 +40,23 @@ lhs_has_war_with_negative = {
 		has_offensive_war_with = pro_yagoo_kleptocracy
 		has_offensive_war_with = neutrality
 		has_offensive_war_with = mixed_ideology_democracy
+	}
+}
+lhs_are_you_part_of_lhs = {
+	is_in_array = {
+		array = global.lhs_member_flag
+		value = ROOT.id
+	}
+}
+lhs_not_ideologies = {
+	NOT = {
+		has_government = communism
+		has_government = pro_resistance_kleptocracy
+		has_government = pro_resistance_monarchy
+		has_government = pro_resistance_nationalism
+		has_government = fascism
+		has_government = left_wing_revolutionary
+		has_government = reactionary_monarchy
+		has_government = democratic_revitalisation
 	}
 }
