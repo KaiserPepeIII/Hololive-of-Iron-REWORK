@@ -223,7 +223,7 @@ guiTypes = {
 		}		
 		instantTextboxType = {
 			name = "lhs_faith_in_lhs"
-			position = { x= 50 y = 405 }
+			position = { x= 38 y = 405 }
 			orientation = upper_left
 			text = "lhs_faith_in_lhs_loc"
 			font = hoi_18mbs
@@ -310,10 +310,190 @@ guiTypes = {
 			max_slots_horizontal = 4
 			add_horizontal = yes
 		}
+		gridboxType = {
+			name = "lhs_instigator_gridbox"
+			position = { x = -200 y = -50}
+			size = { width = 300 height = 300}
+			slotsize = { width = 140 height = 40 }
+			max_slots_horizontal = 2
+			add_horizontal = yes
+		}
+		gridboxType = {
+			name = "lhs_voting_states_claim_gridbox"
+			position = { x = 45 y = -210}
+			size = { width = 300 height = 100}
+			slotsize = { width = 60 height = 15 }
+			max_slots_horizontal = 1
+			add_horizontal = no
+		}
+		instantTextboxType = {
+			name = "voting_text_title"
+			position = { x= 10 y = 565 }
+			orientation = upper_left
+			text = "voting_text_loc"
+			font = hoi_24header
+			maxHeight = 30
+			maxWidth = 700
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "voting_support_count"
+			position = { x= 480 y = 590 }
+			orientation = upper_left
+			text = "voting_support_loc"
+			font = hoi_36header
+			maxHeight = 30
+			maxWidth = 300
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "voting_reject_count"
+			position = { x= 600 y = 590 }
+			orientation = upper_left
+			text = "voting_reject_loc"
+			font = hoi_36header
+			maxHeight = 30
+			maxWidth = 300
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "voting_abstain_count"
+			position = { x= 480 y = 715 }
+			orientation = upper_left
+			text = "voting_abstain_loc"
+			font = hoi_36header
+			maxHeight = 30
+			maxWidth = 300
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "voting_veto_count"
+			position = { x= 600 y = 715 }
+			orientation = upper_left
+			text = "voting_veto_loc"
+			font = hoi_36header
+			maxHeight = 30
+			maxWidth = 300
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "voting_round"
+			position = { x= 10 y = 590 }
+			orientation = upper_left
+			text = "voting_round_loc"
+			font = hoi_24header
+			maxHeight = 30
+			maxWidth = 300
+			alwaystransparent = yes
+		}			
+		instantTextboxType = {
+			name = "voting_prompt"
+			position = { x= 15 y = 730 }
+			orientation = upper_left
+			text = "voting_prompt_loc"
+			font = hoi_18mbs
+			maxHeight = 30
+			maxWidth = 300
+			alwaystransparent = yes
+		}		
+		instantTextboxType = {
+			name = "vs_text"
+			position = { x= 130 y = 640 }
+			orientation = upper_left
+			text = "vs_text_loc"
+			font = hoi_24header
+			maxHeight = 30
+			maxWidth = 300
+			alwaystransparent = yes
+		}
+		buttonType = {
+			name = "lhs_voting_support"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 428 y = 659}
+			orientation = upper_left
+			scale = 0.684
+			}	
+		instantTextboxType = {
+			name = "lhs_voting_support_button_text"
+			position = { x= 462 y = 660 }
+			orientation = upper_left
+			text = "lhs_voting_support_button_text_loc"
+			font = hoi_16mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_voting_reject"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 548 y = 659}
+			orientation = upper_left
+			scale = 0.684
+			}
+		instantTextboxType = {
+			name = "lhs_voting_reject_text"
+			position = { x= 587 y = 660 }
+			orientation = upper_left
+			text = "lhs_voting_reject_button_text_loc"
+			font = hoi_16mbs
+			maxWidth = 181
+			maxHeight = 10
+			alwaystransparent = yes
+			}
+
+		buttonType = {
+			name = "lhs_voting_veto"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 549 y = 781}
+			orientation = upper_left
+			scale = 0.684
+			}
+		instantTextboxType = {
+			name = "lhs_voting_veto_button_text"
+			position = { x= 588 y = 782 }
+			orientation = upper_left
+			text = "lhs_voting_veto_button_text_loc"
+			font = hoi_16mbs
+			maxWidth = 181
+			maxHeight = 10
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_vote_abstain"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 429 y = 781}
+			orientation = upper_left
+			scale = 0.684
+			}
+		instantTextboxType = {
+			name = "lhs_vote_abstain_button_text"
+			position = { x= 461 y = 782 }
+			orientation = upper_left
+			text = "lhs_vote_abstain_button_text_loc"
+			font = hoi_16mbs
+			alwaystransparent = yes
+			}
 	}	
+	containerWindowType = {
+		name = "lhs_voting_buttons_container"
+		position = {x = 477 y = 556}
+		orientation = upper_left
+		size = { width = 192 height = 192}
+		origo = upper_left
+		fade_time = 300
+		moveable = no
+		fade_type = linear
+		click_to_front = yes
+		clipping = no
+		
+		background = {
+			name = "Background2"	
+			quadTextureSprite ="GFX_secondary_bg"
+		}
+
+		
+		}
 	containerWindowType = { 
 		name = "lhs_permanent_buttons_container"
-		position = {x = 1020 y = 117}
+		position = {x = 1022 y = 116}
 		orientation = upper_left
 		size = {width = 300 height = 1100}
 		
@@ -322,7 +502,7 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 3}
 			orientation = upper_left
-			scale = 1.2
+			scale = 1.21313
 			pdx_tooltip = join_lhs_button_loc
 			}
 		instantTextboxType = {
@@ -338,7 +518,7 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 42}
 			orientation = upper_left
-			scale = 1.2
+			scale = 1.21313
 			pdx_tooltip = leave_lhs_button_loc
 			}
 		instantTextboxType = {
@@ -352,7 +532,7 @@ guiTypes = {
 		}
 	containerWindowType = { 
 		name = "lhs_military_buttons_container"
-		position = {x = 1020 y = 195}
+		position = {x = 1022 y = 195}
 		orientation = upper_left
 		size = {width = 300 height = 1100}
 		
@@ -361,8 +541,8 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 3}
 			orientation = upper_left
-			scale = 1.2
-			pdx_tooltip = join_lhs_button_loc
+			scale = 1.21313
+			pdx_tooltip = request_military_aid_locs
 			}
 		instantTextboxType = {
 			name = "lhs_request_aid_button_text"
@@ -377,12 +557,12 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 42}
 			orientation = upper_left
-			scale = 1.2
-			pdx_tooltip = leave_lhs_button_loc
+			scale = 1.21313
+			pdx_tooltip = request_military_intervention_locs
 			}
 		instantTextboxType = {
 			name = "lhs_request_intervention_text"
-			position = { x= 10 y = 50 }
+			position = { x= 15 y = 50 }
 			orientation = upper_left
 			text = "lhs_request_intervention_text_loc"
 			font = hoi_18mbs
@@ -391,48 +571,64 @@ guiTypes = {
 		}
 	containerWindowType = { 
 		name = "lhs_head_buttons_container"
-		position = {x = 1020 y = 273}
+		position = {x = 1022 y = 273}
 		orientation = upper_left
 		size = {width = 300 height = 1100}
 		
 		buttonType = {
-			name = "lhs_support_status_quo"
+			name = "lhs_raid_antis"
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 3}
 			orientation = upper_left
-			scale = 1.2
-			pdx_tooltip = support_status_quo_loc
+			scale = 1.213
+			pdx_tooltip = lhs_raid_antis_loc
 			}
 		instantTextboxType = {
 			name = "lhs_support_status_quo_button_text"
 			position = { x= 15 y = 10 }
 			orientation = upper_left
-			text = "support_status_quo_text_loc"
+			text = "lhs_raid_antis_text_loc"
 			font = hoi_18mbs
 			alwaystransparent = yes
 			}
 		buttonType = {
-			name = "lhs_send_technical_expertise"
+			name = "lhs_vote_sanctions"
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 42}
 			orientation = upper_left
-			scale = 1.2
-			pdx_tooltip = send_technical_expertise_button_loc
+			scale = 1.213
+			pdx_tooltip = lhs_vote_sanctions_button_loc
 			}
 		instantTextboxType = {
-			name = "lhs_send_technical_expertise_button_text"
+			name = "lhs_vote_sanctions_button_text"
 			position = { x= 15 y = 50 }
 			orientation = upper_left
-			text = "lhs_send_technical_expertise_button_text_loc"
+			text = "lhs_vote_sanctions_button_text_loc"
 			font = hoi_18mbs
 			alwaystransparent = yes
 			}		
+		buttonType = {
+			name = "lhs_vote_remove_sanctions"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 0 y = 42}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = lhs_vote_remove_sanctions_button_loc
+			}
+		#instantTextboxType = {
+		#	name = "lhs_vote_remove_sanctions_button_text"
+		#	position = { x= 15 y = 50 }
+		#	orientation = upper_left
+		#	text = "lhs_vote_remove_sanctions_button_text_loc"
+		#	font = hoi_18mbs
+		#	alwaystransparent = yes
+		#	}		
 		buttonType = {
 			name = "lhs_encourge_investment"
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 81}
 			orientation = upper_left
-			scale = 1.2
+			scale = 1.213
 			pdx_tooltip = send_technical_expertise_button_loc
 			}
 		instantTextboxType = {
@@ -444,18 +640,18 @@ guiTypes = {
 			alwaystransparent = yes
 			}		
 		buttonType = {
-			name = "lhs_military_drills"
+			name = "lhs_call_lhs_council"
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 120}
 			orientation = upper_left
-			scale = 1.2
-			pdx_tooltip = send_technical_expertise_button_loc
+			scale = 1.213
+			pdx_tooltip = lhs_call_lhs_council_button_loc
 			}
 		instantTextboxType = {
-			name = "lhs_military_drills_button_text"
+			name = "lhs_call_lhs_council_button_text"
 			position = { x= 15 y = 131 }
 			orientation = upper_left
-			text = "lhs_military_drills_button_text_loc"
+			text = "lhs_call_lhs_council_button_text_loc"
 			font = hoi_18mbs
 			alwaystransparent = yes
 			}		
@@ -464,7 +660,7 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 159}
 			orientation = upper_left
-			scale = 1.2
+			scale = 1.213
 			pdx_tooltip = lhs_begin_the_crusade_button_loc
 			}
 		instantTextboxType = {
@@ -478,7 +674,7 @@ guiTypes = {
 		}
 		containerWindowType = { 
 		name = "lhs_generic_buttons_container"
-		position = {x = 1020 y = 468}
+		position = {x = 1022 y = 468}
 		orientation = upper_left
 		size = {width = 300 height = 1100}
 		
@@ -487,8 +683,8 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 3}
 			orientation = upper_left
-			scale = 1.2
-			pdx_tooltip = support_status_quo_loc
+			scale = 1.213
+			pdx_tooltip = lhs_boost_parties_loc_tooltip
 			}
 		instantTextboxType = {
 			name = "lhs_boost_lhs_parties_button_text"
@@ -503,8 +699,8 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 42}
 			orientation = upper_left
-			scale = 1.2
-			pdx_tooltip = send_technical_expertise_button_loc
+			scale = 1.213
+			pdx_tooltip = lhs_peacekeeping_text_loc_tooltip
 			}
 		instantTextboxType = {
 			name = "lhs_peacekeeping_missions_button_text"
@@ -519,8 +715,8 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 81}
 			orientation = upper_left
-			scale = 1.2
-			pdx_tooltip = send_technical_expertise_button_loc
+			scale = 1.213
+			pdx_tooltip = lhs_rally_for_war_loc_tooltip
 			}
 		instantTextboxType = {
 			name = "lhs_rally_for_war_button_text"
@@ -535,7 +731,7 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 120}
 			orientation = upper_left
-			scale = 1.2
+			scale = 1.213
 			pdx_tooltip = send_technical_expertise_button_loc
 			}
 		instantTextboxType = {
@@ -551,7 +747,7 @@ guiTypes = {
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 0 y = 159}
 			orientation = upper_left
-			scale = 1.2
+			scale = 1.213
 			pdx_tooltip = lhs_begin_the_crusade_button_loc
 			}
 		instantTextboxType = {
@@ -563,7 +759,87 @@ guiTypes = {
 			alwaystransparent = yes
 			}
 		}
-	containerWindowType = { 
+	containerWindowType = {
+		name = "lhs_security_buttons_container"
+		position = {x = 1232 y = 106}
+		orientation = upper_left
+		size = { width = 192 height = 192}
+		origo = upper_left
+		fade_time = 300
+		moveable = no
+		fade_type = linear
+		click_to_front = yes
+		clipping = no
+		
+		background = {
+			name = "Background2"	
+			quadTextureSprite ="GFX_secondary_bg"
+		}
+		buttonType = {
+			name = "lhs_leave_security"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 12 y = 54}
+			orientation = upper_left
+			scale = 0.979
+			}	
+		instantTextboxType = {
+			name = "lhs_leave_security_button_text"
+			position = { x= 17 y = 58 }
+			orientation = upper_left
+			text = "lhs_leave_security_button_text_loc"
+			font = hoi_16mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_vote_against_security"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 12 y = 86}
+			orientation = upper_left
+			scale = 0.979
+			}
+		instantTextboxType = {
+			name = "lhs_vote_against_security_button_text"
+			position = { x= 17 y = 92 }
+			orientation = upper_left
+			text = "lhs_vote_against_security_button_text_loc"
+			font = hoi_16mbs
+			maxWidth = 181
+			maxHeight = 10
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_vote_kick"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 12 y = 118}
+			orientation = upper_left
+			scale = 0.979
+			}
+		instantTextboxType = {
+			name = "lhs_vote_kick_button_text"
+			position = { x= 17 y = 123 }
+			orientation = upper_left
+			text = "lhs_vote_kick_button_text_loc"
+			font = hoi_16mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_call_emergency_council"
+			quadTextureSprite = "GFX_decision_gui_button"
+			position = {x = 12 y = 150}
+			orientation = upper_left
+			scale = 0.979
+			}
+		instantTextboxType = {
+			name = "lhs_call_emergency_council_button_text"
+			position = { x= 17 y = 155 }
+			orientation = upper_left
+			text = "lhs_call_emergency_council_button_text_loc"
+			font = hoi_16mbs
+			alwaystransparent = yes
+			}
+		
+		}
+	containerWindowType = {
 		name = "lhs_head_gui_list_entry"
 		position = {x = 0 y = 0}
 		size = {width = 300 height = 300}
@@ -735,6 +1011,57 @@ guiTypes = {
 
 		}
 	}
+	containerWindowType = { 
+		name = "lhs_instigator_list_entry"
+		position = {x = 150 y = 670}
+		size = {width = 300 height = 300}
+			
+	    	buttonType = {
+	    		name = "lhs_instigator_flag"
+	    		quadTextureSprite = "GFX_shield_medium"
+	    		position = {x = 0 y = 3}
+	    		pdx_tooltip = member_category_get_name
+	    		
+	    	}
+	    	iconType = {
+	    		name = "lhs_instigator_flag_outline"
+	    		quadTextureSprite = "GFX_large_flag_frame"
+	    		position = {x = -4 y = 0}
+	    		alwaystransparent = yes
+	    	}
+			instantTextboxType = {
+				name = "lhs_instigator_text"
+				position = { x= 0 y = 70 }
+				orientation = upper_left
+				text = "lhs_instigator_text_loc"
+				font = hoi_16mbs
+				maxWidth = 100
+				maxHeight = 10
+				alwaystransparent = yes
+			}
+	}	
+	containerWindowType = { 
+		name = "lhs_voting_states_claim_entry_list"
+		position = {x = 150 y = 750}
+		size = {width = 300 height = 300}
+		verticalScrollbar = "right_vertical_slider"
+		
+         margin = { top = 0 bottom = 0 }
+         Orientation = UPPER_LEFT
+
+ 
+			instantTextboxType = {
+				name = "lhs_states_text"
+				position = { x= 0 y = 70 }
+				orientation = upper_left
+				text = "lhs_states_text_loc"
+				font = hoi_16mbs
+				maxWidth = 130
+				maxHeight = 10
+				alwaystransparent = no
+				pdx_tooltip = lhs_states_text_loc
+			}
+	}	
 	containerWindowType = { 
 		name = "lhs_defensive_union_gui_list_entry"
 		position = {x = 0 y = 50}

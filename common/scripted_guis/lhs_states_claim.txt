@@ -1,0 +1,103 @@
+scripted_gui = {
+  lhs_states_claim_gui = {
+	window_name = "lhs_states_claim_window"
+	context_type = selected_state_context
+	parent_window_token = selected_state_view 
+	
+		visible = {
+			ROOT = {
+			has_idea = lhs_member
+			}
+		}
+		properties = {
+		}
+		effects = {
+			lhs_states_claim_button_click = {
+				THIS = {
+					add_to_array = {	
+						array = ROOT.lhs_claim_state
+						value = THIS.id
+					}
+				}
+				set_variable = {
+					var = ROOT.lhs_claim_state_count
+					value = ROOT.lhs_claim_state^num
+				}
+			}
+			lhs_states_remove_claim_click = {
+				THIS = {
+					remove_from_array = {
+						array = ROOT.lhs_claim_state
+						value = THIS.id
+					}
+				}
+				set_variable = {
+					var = ROOT.lhs_claim_state_count
+					value = ROOT.lhs_claim_state^num
+				}
+			}
+			lhs_states_remove_all_claim_click = {
+				clear_array = ROOT.lhs_claim_state
+				clear_variable = ROOT.lhs_claim_state_count
+			}
+			lhs_bring_incident_with_lhs_click = {	
+				set_global_flag = lhs_voting_state
+				every_state = {
+					limit = {
+						is_in_array = {	
+							array = ROOT.lhs_claim_state
+							value = THIS.id 
+						}
+					}
+					add_to_array = {	
+						array = global.lhs_voting_states_claim
+						value = THIS.id
+					}
+				}
+				clear_array = ROOT.lhs_claim_state
+				clear_variable = ROOT.lhs_claim_state_count
+				ROOT = {
+					add_to_array = {
+						array = global.lhs_vote_instigator
+						value = THIS.id
+					}
+					set_variable = {
+						var = global.lhs_instigator_var
+						value = THIS.id
+					}
+				}
+				THIS = {
+					OWNER = {
+						add_to_array = {
+							array = global.lhs_vote_instigator
+							value = THIS.id
+						}						
+					}
+				}
+			}
+		}
+			triggers = {
+			
+			lhs_states_claim_button_click_enabled = {
+				lhs_not_voting_in_progress = yes
+				NOT = {
+					THIS = {
+						OWNER ={
+							tag = ROOT
+							has_civil_war = yes
+							has_idea = lhs_head
+						}
+					}
+					check_variable = {
+						var = ROOT.lhs_claim_state_count
+						value = 12
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			lhs_bring_incident_with_lhs_click_enabled = {
+				lhs_not_voting_in_progress = yes
+			}
+		  }
+	 }
+}

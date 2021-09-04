@@ -45,9 +45,8 @@ country_event = {
 				}
 			}
 			country_event = lhs.3
-			clear_array = global.lhs_entry_list
 		}
-		
+			clear_array = global.lhs_entry_list		
 	}
 	#call vote
 	option = {
@@ -122,13 +121,17 @@ country_event = {
 				lhs_security_council_trigger = yes
 			}
 		}
+		ROOT = {
 		add_ideas = lhs_voted
 		add_to_array = {global.lhs_voted_yes = THIS.id}
+		}
 		ai_chance = {
 			base = 10
 			
 			modifier = {
 			factor = 100 
+				OR = {
+					is_debug = yes
 					all_of = {
 							array = global.lhs_entry_list
 							value = THIS.id
@@ -195,6 +198,7 @@ country_event = {
 								}
 							}
 						}
+					}
 			}
 			modifier = {
 			factor = 25
@@ -390,67 +394,70 @@ country_event = {
 			
 			modifier = {
 			factor = 100 
-			all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						is_puppet_of = YAG
-						is_in_faction_with = YAG
-						AND = {
-							OR = {
-								has_government = democratic
-								has_government = pro_yagoo_progressive
-							}
-							has_war = no
-							has_elections = yes
-							has_stability > 0.75
-							OR = {
-								AND = {
+			OR = {
+				is_debug = yes
+				all_of = {
+					array = global.lhs_entry_list
+					value = THIS.id
+						OR = {
+							is_puppet_of = YAG
+							is_in_faction_with = YAG
+							AND = {
+								OR = {
+									has_government = democratic
+									has_government = pro_yagoo_progressive
+								}
+								has_war = no
+								has_elections = yes
+								has_stability > 0.75
+								OR = {
+									AND = {
+										NOT = {
+										has_global_flag = lhs_idealism
+										}
+										has_added_tension_amount < 10
+									}
+									AND = {
+										has_global_flag = lhs_idealism
+										has_army_manpower = {
+											size < 150000
+										}
+										threat < 25
+									}
+									AND = {
+										has_global_flag = lhs_idealism
+										has_army_manpower = {
+											size < 300000
+										}
+										threat < 35
+										threat > 25
+									}
+									AND = {
+										has_global_flag = lhs_idealism
+										has_army_manpower = {
+											size < 500000
+										}
+										threat < 50
+										threat > 35
+									}
+									AND = {
+										has_global_flag = lhs_idealism
+										has_army_manpower = {
+											size < 1000000
+										}
+										threat < 100
+										threat > 50
+									}
+								}
+								OR = {
+									AND = {
+										has_global_flag = lhs_idealism
+										has_war_support < 0.5
+									}
 									NOT = {
-									has_global_flag = lhs_idealism
+										has_global_flag = lhs_idealism
+										has_war_support < 0.75							
 									}
-									has_added_tension_amount < 10
-								}
-								AND = {
-									has_global_flag = lhs_idealism
-									has_army_manpower = {
-										size < 150000
-									}
-									threat < 25
-								}
-								AND = {
-									has_global_flag = lhs_idealism
-									has_army_manpower = {
-										size < 300000
-									}
-									threat < 35
-									threat > 25
-								}
-								AND = {
-									has_global_flag = lhs_idealism
-									has_army_manpower = {
-										size < 500000
-									}
-									threat < 50
-									threat > 35
-								}
-								AND = {
-									has_global_flag = lhs_idealism
-									has_army_manpower = {
-										size < 1000000
-									}
-									threat < 100
-									threat > 50
-								}
-							}
-							OR = {
-								AND = {
-									has_global_flag = lhs_idealism
-									has_war_support < 0.5
-								}
-								NOT = {
-									has_global_flag = lhs_idealism
-									has_war_support < 0.75							
 								}
 							}
 						}
@@ -649,68 +656,70 @@ country_event = {
 			
 			modifier = {
 			factor = 100 
+				OR = {
 				is_debug = yes
-					all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-					OR = {
-						is_puppet_of = YAG
-						is_in_faction_with = YAG
-						AND = {
-							OR = {
-								has_government = democratic
-								has_government = pro_yagoo_progressive
-							}
-							has_war = no
-							has_elections = yes
-							has_stability > 0.75
-							OR = {
-								AND = {
+						all_of = {
+						array = global.lhs_entry_list
+						value = THIS.id
+						OR = {
+							is_puppet_of = YAG
+							is_in_faction_with = YAG
+							AND = {
+								OR = {
+									has_government = democratic
+									has_government = pro_yagoo_progressive
+								}
+								has_war = no
+								has_elections = yes
+								has_stability > 0.75
+								OR = {
+									AND = {
+										NOT = {
+										has_global_flag = lhs_idealism
+										}
+										has_added_tension_amount < 10
+									}
+									AND = {
+										has_global_flag = lhs_idealism
+										has_army_manpower = {
+											size < 150000
+										}
+										threat < 25
+									}
+									AND = {
+										has_global_flag = lhs_idealism
+										has_army_manpower = {
+											size < 300000
+										}
+										threat < 35
+										threat > 25
+									}
+									AND = {
+										has_global_flag = lhs_idealism
+										has_army_manpower = {
+											size < 500000
+										}
+										threat < 50
+										threat > 35
+									}
+									AND = {
+										has_global_flag = lhs_idealism
+										has_army_manpower = {
+											size < 1000000
+										}
+										threat < 100
+										threat > 50
+									}
+								}
+								OR = {
+									AND = {
+										has_global_flag = lhs_idealism
+										has_war_support < 0.5
+									}
 									NOT = {
-									has_global_flag = lhs_idealism
+										has_global_flag = lhs_idealism
+										has_war_support < 0.75							
 									}
-									has_added_tension_amount < 10
-								}
-								AND = {
-									has_global_flag = lhs_idealism
-									has_army_manpower = {
-										size < 150000
-									}
-									threat < 25
-								}
-								AND = {
-									has_global_flag = lhs_idealism
-									has_army_manpower = {
-										size < 300000
-									}
-									threat < 35
-									threat > 25
-								}
-								AND = {
-									has_global_flag = lhs_idealism
-									has_army_manpower = {
-										size < 500000
-									}
-									threat < 50
-									threat > 35
-								}
-								AND = {
-									has_global_flag = lhs_idealism
-									has_army_manpower = {
-										size < 1000000
-									}
-									threat < 100
-									threat > 50
-								}
-							}
-							OR = {
-								AND = {
-									has_global_flag = lhs_idealism
-									has_war_support < 0.5
-								}
-								NOT = {
-									has_global_flag = lhs_idealism
-									has_war_support < 0.75							
 								}
 							}
 						}
@@ -914,9 +923,11 @@ country_event = {
 			has_global_flag = lhs_is_counting
 		}
 		all_of = {
-			array = global.lhs_entry_list
+			array = global.lhs_member_flag
 			value = THIS.id
-			has_idea = lhs_voted
+				PREV = {
+				has_idea = lhs_voted
+				}
 			}
 	}
 	immediate = {
@@ -941,9 +952,11 @@ news_event = {
 	trigger = {
 		has_global_flag = lhs_is_counting
 		lhs_calculating_trigger_yes = yes
+		has_global_flag = lhs_join_vote
 	}
 	immediate = {
 		hidden_effect = {
+		clr_global_flag = lhs_join_vote
 		every_country = {	
 			limit = {
 				is_in_array = {
@@ -983,10 +996,12 @@ news_event = {
 	}
 	trigger = {
 		has_global_flag = lhs_is_counting
-		lhs_calculating_trigger_yes = no
+		lhs_calculating_trigger_no = no
+		has_global_flag = lhs_join_vote
 	}
 	immediate = {
 		hidden_effect = {
+		clr_global_flag = lhs_join_vote
 		lhs_clear_all_voting = yes
 		}
 	}
@@ -995,7 +1010,7 @@ news_event = {
 	}
 
 }
-
+#are you sure you want to leave
 country_event = {
 	id = lhs.8
 	title = lhs.8.t
@@ -1003,13 +1018,38 @@ country_event = {
 	picture = GFX_report_event_lhs
 
 	is_triggered_only = yes
+	
+	immediate = {
+		election_counting_effect = yes
+	}
 
+	#yes
 	option = {
 		name = lhs.8.a
+		ROOT = {
+			add_stability = ROOT.election_yagoo
+			remove_ideas = lhs_member
+			add_ideas = neutral_member
+			}
+		remove_from_array = {
+			array = global.lhs_customs_union_flag
+			value = ROOT.id
+		}
+		remove_from_array = {
+			array = global.lhs_member_flag
+			value = ROOT.id
+		}
+		clear_election_variables = yes
+	}
+	#no 
+	option = {
+		name = lhs.8.b
+		clear_election_variables = yes
+		
 	}
 
 }
-
+#request aid event
 country_event = {
 	id = lhs.9
 	title = lhs.9.t
@@ -1018,12 +1058,73 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#we will send aid
 	option = {
 		name = lhs.9.a
+		ROOT = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+				producer = ROOT
+			}
+			add_ideas = lhs_aid_decided
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_aid_list
+					value = THIS.id
+				}
+			}
+			country_event = lhs.11
+		}
 	}
-
+	#we cant afford
+	option = {
+		name = lhs.9.b
+		ROOT = {
+			add_ideas = lhs_aid_decided
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_aid_list
+					value = THIS.id
+				}				
+			}
+			country_event = lhs.12
+		}
+	}
+	#we will send extra
+	option = {
+		name = lhs.9.c
+		trigger = {
+			ROOT = {
+				has_equipment = {
+					infantry_equipment > 2000
+				}
+			}
+		}
+		ROOT = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = ROOT
+			}
+			add_ideas = lhs_aid_decided
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_aid_list
+					value = THIS.id
+				}				
+			}
+			country_event = lhs.13
+		}		
+	}
 }
-
+#request intervention
 country_event = {
 	id = lhs.10
 	title = lhs.10.t
@@ -1032,12 +1133,33 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#we will join 
 	option = {
 		name = lhs.10.a
+		ROOT = {
+			declare_war_on = {
+			target = global.this_nation_at_war
+			type = topple_government 
+			}
+			add_ideas = lhs_intervention_decided
+		}
 	}
-
+	#we refuse 
+	option = {
+		name = lhs.10.b
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_intervention_receive_list
+					value = THIS.id
+				}
+			}
+			add_ideas = lhs_intervention_decided
+			country_event = lhs.15
+		}
+	}
 }
-
+#they sent aid
 country_event = {
 	id = lhs.11
 	title = lhs.11.t
@@ -1045,13 +1167,21 @@ country_event = {
 	picture = GFX_report_event_lhs
 
 	is_triggered_only = yes
-
+	
+	#we accept it
 	option = {
 		name = lhs.11.a
+		ROOT = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 100
+				producer = ROOT
+			}
+		}
 	}
 
 }
-
+#they refused aid
 country_event = {
 	id = lhs.12
 	title = lhs.12.t
@@ -1065,7 +1195,7 @@ country_event = {
 	}
 
 }
-
+#send extra aid
 country_event = {
 	id = lhs.13
 	title = lhs.13.t
@@ -1076,38 +1206,91 @@ country_event = {
 
 	option = {
 		name = lhs.13.a
+		ROOT = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 500
+				producer = ROOT
+			}
+		}
 	}
 
 }
-
+#intervention decision cleanup
 country_event = {
 	id = lhs.14
-	title = lhs.14.t
-	desc = lhs.14.d
-	picture = GFX_report_event_lhs
-
-	is_triggered_only = yes
-
-	option = {
-		name = lhs.14.a
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	trigger = {
+		has_global_flag = lhs_intervention_request_deciding
+		all_of = {
+			array = global.lhs_member
+			value = THIS.id
+				PREV = {
+				has_idea = lhs_intervention_decided
+				}
+			}		
+	}
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_in_array = {
+						array = global.lhs_member_flag
+						value = THIS.id
+					}
+				}
+				remove_ideas = lhs_intervention_decided
+			}
+			clr_global_flag = lhs_intervention_request_deciding
+			clear_array = global.lhs_intervention_receive_list
+			clear_variable = global.request_support_receiver 
+			clear_variable = global.this_nation_at_war
+		}
 	}
 
 }
-
+#aid decision cleanup
 country_event = {
 	id = lhs.15
-	title = lhs.15.t
-	desc = lhs.15.d
-	picture = GFX_report_event_lhs
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	trigger = {
+		has_global_flag = lhs_aid_request_deciding
+		all_of = {
+			array = global.lhs_member_flag
+			value = THIS.id
+				PREV = {
+				has_idea = lhs_aid_decided
+				}
+			}		
+	}
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_in_array = {
+						array = global.lhs_member_flag
+						value = THIS.id
+					}
+				}
+				remove_ideas = lhs_aid_decided
+			}
+			clr_global_flag = lhs_aid_request_deciding
+			clear_array = global.lhs_aid_list
 
-	is_triggered_only = yes
-
-	option = {
-		name = lhs.15.a
+		}
 	}
 
 }
-
+#what kind of purge do you want?
 country_event = {
 	id = lhs.16
 	title = lhs.16.t
@@ -1115,13 +1298,93 @@ country_event = {
 	picture = GFX_report_event_lhs
 
 	is_triggered_only = yes
-
+	
+	#minor raid
 	option = {
 		name = lhs.16.a
+		ROOT = {
+			set_country_flag = {
+				flag = clearing_antis_minor
+				days = 90
+				value = 1
+			}
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_action_array
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = PREV.anti_aggression
+				value = 10
+			}
+			add_timed_idea = {
+				idea = minor_anti_clearing
+				days = 90
+			}
+		}
+	}
+	
+	#medium raid
+	option = {
+		name = lhs.16.b
+		ROOT = {
+			set_country_flag = {
+				flag = clearing_antis_medium
+				days = 180
+				value = 1
+			}
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_action_array
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = PREV.anti_aggression
+				value = 20
+			}
+			add_timed_idea = {
+				idea = medium_anti_clearing
+				days = 180
+			}
+		}
+	}
+	
+	#major raid
+	option = {
+		name = lhs.16.c
+		ROOT = {
+			set_country_flag = {
+				flag = clearing_antis_large
+				days = 360
+				value = 1
+			}
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_action_array
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = PREV.anti_aggression
+				value = 30
+			}
+			add_timed_idea = {
+				idea = major_anti_clearing
+				days = 360
+			}
+		}
 	}
 
 }
-
+#sanction voting
 country_event = {
 	id = lhs.17
 	title = lhs.17.t
@@ -1130,40 +1393,152 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#yes we will sanction - base
 	option = {
 		name = lhs.17.a
+		trigger = {
+			NOT = {
+				has_idea = lhs_head
+				lhs_security_council_trigger = yes
+			}
+		}
+		ROOT = {
+			add_to_array = {
+				array = global.lhs_count_yes
+				value = THIS.id
+			}
+			add_ideas = lhs_voted
+		}
 	}
-
+	#no we will not sanction - base
+	option = {
+		trigger = {	
+			NOT = {
+				has_idea = lhs_head
+				lhs_security_council_trigger = yes
+			}
+		}
+		name = lhs.17.b 
+		ROOT = {
+			add_to_array = {
+				array = global.lhs_count_no
+				value = THIS.id
+			}
+			add_ideas = lhs_voted
+		}		
+	}
+	#yes we will sanction - security council
+	option = {
+		name = lhs.17.c
+		trigger = {
+			lhs_security_council_trigger = yes
+		}
+		lhs_security_council_voting_yes = yes
+	}
+	#no we will not sanction - security council
+	option = {
+		name = lhs.17.e
+		trigger = {
+			lhs_security_council_trigger = yes
+		}
+		ROOT = {
+			lhs_security_council_voting_no = yes
+		}		
+	}	
+	#yes we will sanction - head
+	option = {
+		name = lhs.17.f
+		trigger = {
+			has_idea = lhs_head
+		}
+		add_to_array = {global.lhs_voted_yes = THIS.id}
+		set_global_flag = lhs_head_voted_yes
+		add_ideas = lhs_voted
+	}
+	#no we will not sanction - security council
+	option = {
+		name = lhs.17.g
+		trigger = {
+			has_idea = lhs_head
+		}
+		add_to_array = {global.lhs_voted_no = THIS.id}
+		set_global_flag = lhs_head_voted_no
+		add_ideas = lhs_voted
+	}
 }
-
+#LHS Vote Passes - sanctions
 country_event = {
 	id = lhs.18
 	title = lhs.18.t
 	desc = lhs.18.d
 	picture = GFX_report_event_lhs
 
-	is_triggered_only = yes
-
+	major = yes
+	mean_time_to_happen = {
+	days = 1
+	}
+	trigger = {
+		has_global_flag = lhs_is_counting
+		lhs_calculating_trigger_yes = yes
+		has_global_flag = lhs_sanctions_vote
+	}
+	immediate = {
+		hidden_effect = {
+		clr_global_flag = lhs_sanctions_vote
+		every_country = {	
+			limit = {
+				has_country_flag = marked_for_sanction
+			}
+			add_relation_modifier = {
+				target = PREV
+				modifier = lhs_embargo_modifier
+			}
+			clr_country_flag = marked_for_sanction
+			set_country_flag = lhs_sanctioned
+		}
+		lhs_clear_all_voting = yes
+		}
+	}
 	option = {
 		name = lhs.18.a
 	}
 
 }
-
+#LHS vote fails - sanctions
 country_event = {
 	id = lhs.19
 	title = lhs.19.t
 	desc = lhs.19.d
 	picture = GFX_report_event_lhs
 
-	is_triggered_only = yes
 
+	major = yes
+	mean_time_to_happen = {
+	days = 1
+	}
+	trigger = {
+		has_global_flag = lhs_is_counting
+		lhs_calculating_trigger_no = no
+		has_global_flag = lhs_sanctions_vote
+	}
+	immediate = {
+		hidden_effect = {
+		clr_global_flag = lhs_is_counting
+		lhs_clear_all_voting = yes
+			every_country = {
+				limit = {
+					has_country_flag = marked_for_sanction
+				}
+				clr_country_flag = marked_for_sanction
+			}
+		}
+	}
 	option = {
 		name = lhs.19.a
 	}
 
 }
-
+#vote relieve sanctions
 country_event = {
 	id = lhs.20
 	title = lhs.20.t
@@ -1172,40 +1547,153 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#yes we will sanction - base
 	option = {
-		name = lhs.20.as
+		name = lhs.20.a
+		trigger = {
+			NOT = {
+				has_idea = lhs_head
+				lhs_security_council_trigger = yes
+			}
+		}
+		ROOT = {
+			add_to_array = {
+				array = global.lhs_count_yes
+				value = THIS.id
+			}
+			add_ideas = lhs_voted
+		}
+	}
+	#no we will not sanction - base
+	option = {
+		trigger = {	
+			NOT = {
+				has_idea = lhs_head
+				lhs_security_council_trigger = yes
+			}
+		}
+		name = lhs.20.b 
+		ROOT = {
+			add_to_array = {
+				array = global.lhs_count_no
+				value = THIS.id
+			}
+			add_ideas = lhs_voted
+		}		
+	}
+	#yes we will sanction - security council
+	option = {
+		name = lhs.20.c
+		trigger = {
+			lhs_security_council_trigger = yes
+		}
+		lhs_security_council_voting_yes = yes
+	}
+	#no we will not sanction - security council
+	option = {
+		name = lhs.20.e
+		trigger = {
+			lhs_security_council_trigger = yes
+		}
+		ROOT = {
+			lhs_security_council_voting_no = yes
+		}		
+	}	
+	#yes we will sanction - head
+	option = {
+		name = lhs.20.f
+		trigger = {
+			has_idea = lhs_head
+		}
+		add_to_array = {global.lhs_voted_yes = THIS.id}
+		set_global_flag = lhs_head_voted_yes
+		add_ideas = lhs_voted
+	}
+	#no we will not sanction - security council
+	option = {
+		name = lhs.20.g
+		trigger = {
+			has_idea = lhs_head
+		}
+		add_to_array = {global.lhs_voted_no = THIS.id}
+		set_global_flag = lhs_head_voted_no
+		add_ideas = lhs_voted
 	}
 
 }
-
+#LHS remove sanctions pass
 country_event = {
 	id = lhs.21
 	title = lhs.21.t
 	desc = lhs.21.d
 	picture = GFX_report_event_lhs
 
-	is_triggered_only = yes
-
+	major = yes
+	mean_time_to_happen = {
+	days = 1
+	}
+	trigger = {
+		has_global_flag = lhs_is_counting
+		lhs_calculating_trigger_yes = yes
+		has_global_flag = lhs_remove_sanctions_vote
+	}
+	immediate = {
+		hidden_effect = {
+		clr_global_flag = lhs_remove_sanctions_vote
+		every_country = {	
+			limit = {
+				has_country_flag = marked_for_remove_sanction
+			}
+			remove_relation_modifier = {
+				target = PREV
+				modifier = lhs_embargo_modifier
+			}
+			clr_country_flag = lhs_sanctioned
+			clr_country_flag = marked_for_remove_sanction
+			
+		}
+		lhs_clear_all_voting = yes
+		}
+	}
 	option = {
 		name = lhs.21.a
 	}
 
 }
-
+#lhs remove sanction fail
 country_event = {
 	id = lhs.22
 	title = lhs.22.t
 	desc = lhs.22.d
 	picture = GFX_report_event_lhs
 
-	is_triggered_only = yes
-
+	major = yes
+	mean_time_to_happen = {
+	days = 1
+	}
+	trigger = {
+		has_global_flag = lhs_is_counting
+		lhs_calculating_trigger_no = no
+		has_global_flag = lhs_remove_sanctions_vote
+	}
+	immediate = {
+		hidden_effect = {
+		clr_global_flag = lhs_is_counting
+		lhs_clear_all_voting = yes
+			every_country = {
+				limit = {
+					has_country_flag = marked_for_remove_sanction
+				}
+				clr_country_flag = marked_for_remove_sanction
+			}
+		}
+	}
 	option = {
 		name = lhs.22.a
 	}
 
 }
-
+#change country investment focus?
 country_event = {
 	id = lhs.23
 	title = lhs.23.t
@@ -1214,12 +1702,33 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#no
 	option = {
 		name = lhs.23.a
+		every_country = {
+			limit = {
+				has_idea = lhs_investment_focus
+			}
+            set_country_flag = {
+            	flag = lhs_investment_focus_set
+            	days = 180
+            	value = 1
+            }
+		}
+	}
+	#yes 
+	option = {
+		name = lhs.13.base
+		every_country = {
+			limit = {
+				has_idea = lhs_investment_focus
+			}
+			remove_ideas = lhs_investment_focus
+		}
 	}
 
 }
-
+#choice to remove resistance
 country_event = {
 	id = lhs.24
 	title = lhs.24.t
@@ -1228,12 +1737,84 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#no vote needed 
 	option = {
+		trigger = {
+			has_idea = lhs_head
+		}
 		name = lhs.24.a
+		ROOT = {	
+			declare_war_on = {
+				target = AQA
+				type = topple_government
+			}
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+				country_event = lhs.25
+			}
+		}
+		set_global_flag = resistance_lhs_war
 	}
-
+	#run a vote security council
+	option = {
+		name = lhs.24.b 
+		every_country = {	
+			limit = {
+				lhs_security_council_trigger = yes
+			}
+			country_event = lhs.26		
+		}
+		if = {
+			limit = {
+				ROOT = {
+					NOT = {
+						has_idea = lhs_head
+					}
+				}
+			}
+			set_global_flag = lhs_resistance_war_voting_security
+			else = {
+				set_global_flag = lhs_resistance_war_voting
+			}
+		}
+	}
+	#run a general vote
+	option = {
+		name = lhs.24.c
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+			country_event = lhs.26
+		}
+		if = {
+			limit = {
+				ROOT = {
+					NOT = {
+						has_idea = lhs_head
+					}
+				}
+			}
+			set_global_flag = lhs_resistance_war_voting_security
+			else = {
+				set_global_flag = lhs_resistance_war_voting
+			}
+		}
+	}
+	#on second thought, no
+	option = {
+		name = lhs.24.e
+	}
 }
-
+#yagoo calls crusade without vote
 country_event = {
 	id = lhs.25
 	title = lhs.25.t
@@ -1242,7 +1823,320 @@ country_event = {
 
 	is_triggered_only = yes
 
+	#we will join
 	option = {
 		name = lhs.25.a
+		ROOT = {
+			declare_war_on = {
+				target = AQA
+				type = topple_government
+			}
+		}
+	}
+	#we wont join
+	option = {
+		name = lhs.25.b
+		
 	}
 }
+#LHS vote for the crusade
+country_event = {
+	id = lhs.26
+	title = lhs.26.t
+	desc = lhs.26.d
+	picture = GFX_report_event_lhs
+
+	is_triggered_only = yes
+	
+	#yes we support - base
+	option = {
+		name = lhs.26.a
+		trigger = {
+			NOT = {
+				has_idea = lhs_head
+				lhs_security_council_trigger = yes
+			}
+		}
+		ROOT = {
+			add_to_array = {
+				array = global.lhs_count_yes
+				value = THIS.id
+			}
+			add_ideas = lhs_voted
+		}
+	}
+	#no we will not support - base
+	option = {
+		trigger = {	
+			NOT = {
+				has_idea = lhs_head
+				lhs_security_council_trigger = yes
+			}
+		}
+		name = lhs.26.b 
+		ROOT = {
+			add_to_array = {
+				array = global.lhs_count_no
+				value = THIS.id
+			}
+			add_ideas = lhs_voted
+		}		
+	}
+	#yes we will support - security council
+	option = {
+		name = lhs.26.c
+		trigger = {
+			lhs_security_council_trigger = yes
+		}
+		lhs_security_council_voting_yes = yes
+	}
+	#no we will not support - security council
+	option = {
+		name = lhs.26.e
+		trigger = {
+			lhs_security_council_trigger = yes
+		}
+		ROOT = {
+			lhs_security_council_voting_no = yes
+		}		
+	}	
+	#yes we will support - head
+	option = {
+		name = lhs.26.f
+		trigger = {
+			has_idea = lhs_head
+		}
+		add_to_array = {global.lhs_voted_yes = THIS.id}
+		set_global_flag = lhs_head_voted_yes
+		add_ideas = lhs_voted
+	}
+	#no we will not support - security council
+	option = {
+		name = lhs.26.g
+		trigger = {
+			has_idea = lhs_head
+		}
+		add_to_array = {global.lhs_voted_no = THIS.id}
+		set_global_flag = lhs_head_voted_no
+		add_ideas = lhs_voted
+	}
+
+}
+
+#Crusade vote passes
+country_event = {
+	id = lhs.27
+	title = lhs.27.t
+	desc = lhs.27.d
+	picture = GFX_report_event_lhs
+
+	major = yes
+	mean_time_to_happen = {
+	days = 1
+	}
+	trigger = {
+		has_global_flag = lhs_is_counting
+		lhs_calculating_trigger_yes = yes
+		OR = {
+		has_global_flag = lhs_resistance_war_voting
+		has_global_flag = lhs_resistance_war_voting_security
+		}
+	}
+	immediate = {
+		hidden_effect = {
+		clr_global_flag = lhs_resistance_war_voting
+		clr_global_flag = lhs_resistance_war_voting_security
+		set_global_flag = resistance_lhs_war
+		every_country = {	
+			limit = {
+				is_in_array = {
+					array = global.lhs_voted_yes
+					value = THIS.id
+				}
+			}
+			declare_war_on = {
+				target = AQA
+				type = topple_government
+			}	
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_voted_no
+					value = THIS.id
+				}
+			}
+			country_event = lhs.29
+		}
+		lhs_clear_all_voting = yes
+		}
+	}
+	option = {
+		name = lhs.27.a
+	}
+
+}
+
+#Crusade vote fails
+country_event = {
+	id = lhs.28
+	title = lhs.28.t
+	desc = lhs.28.d
+	picture = GFX_report_event_lhs
+
+		major = yes
+		mean_time_to_happen = {
+		days = 1
+		}
+		trigger = {
+			has_global_flag = lhs_is_counting
+			lhs_calculating_trigger_no = no
+			OR = {
+			has_global_flag = lhs_resistance_war_voting
+			has_global_flag = lhs_resistance_war_voting_security
+			}
+		}
+		immediate = {
+			hidden_effect = {
+			clr_global_flag = lhs_resistance_war_voting
+			clr_global_flag = lhs_resistance_war_voting_security
+				every_country = {
+					limit = {
+						is_in_array = global.lhs_voted_yes
+					}
+					country_event = lhs.30
+				}
+				lhs_clear_all_voting = yes
+			}
+		}
+		option = {
+			name = lhs.28.a
+		}
+	}
+}
+#will we join the war anyways?
+country_event = {
+	id = lhs.29
+	title = lhs.29.t
+	desc = lhs.29.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#fine
+	option= {
+		name = lhs.29.a
+		ROOT = {
+			declare_war_on = {
+				target = AQA
+				type = topple_government
+			}
+		}
+	}
+	#noo
+	option = {
+		name = lhs.29.b
+	}
+}
+
+#will we declare war anyways?
+country_event = {
+	id = lhs.30
+	title = lhs.30.t
+	desc = lhs.30.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#YES!!!!
+	option= {
+		name = lhs.30.a
+		ROOT = {
+			declare_war_on = {
+				target = AQA
+				type = topple_government
+			}
+		}
+	}
+	#noo
+	option = {
+		name = lhs.30.b
+	}
+}
+
+#LHS Council
+country_event = {
+	id = lhs.31
+	title = lhs.31.t
+	desc = lhs.31.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.31.a
+		if = {
+			limit = {
+				date < 1937.1.1
+			}
+			ROOT = {
+				country_event = lhs.32
+			}
+		}
+	}
+}
+#LHS Council - Action on the Depression?
+country_event = {
+	id = lhs.31
+	title = lhs.31.t
+	desc = lhs.31.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#International action is needed
+	option= {
+		name = lhs.31.a
+		ROOT = {
+			add_to_array = {
+				array = global.international_action_yes
+				value = THIS.id
+			}
+		}
+	}
+	#national action works
+	option = {
+		name = lhs.31.b 
+		ROOT = {
+			add_to_array = {
+				array = global.international_action_no
+				value = THIS.id
+			}
+		}
+	}
+}
+
+#LHS Council
+country_event = {
+	id = lhs.31
+	title = lhs.31.t
+	desc = lhs.31.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.31.a
+		if = {
+			limit = {
+				date < 1937.1.1
+			}
+			ROOT = {
+				country_event = lhs.32
+			}
+		}
+	}
+}
+
