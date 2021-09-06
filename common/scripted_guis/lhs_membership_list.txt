@@ -12,6 +12,80 @@ scripted_gui = {
 		close_button_click = {
 			clr_country_flag = view_lhs_membership
 		}
+		lhs_voting_support_click = {
+			ROOT = {
+				add_to_array = {
+					array = global.lhs_voted_support
+					value = THIS.id
+				}
+				add_ideas = lhs_voted
+			}
+			set_variable = {
+				var = global.lhs_count_support
+				value = global.lhs_voted_support^num
+			}
+		}
+		lhs_voting_reject_click = {
+			ROOT = {
+				add_to_array = {
+					array = global.lhs_voted_reject
+					value = THIS.id
+				}
+				add_ideas = lhs_voted
+			}
+			if = {
+				limit = {
+					has_global_flag = lhs_third_round_vote
+				}
+				add_to_variable = {
+					var= global.lhs_third_round_vote_anti_count
+					value = 1
+				}
+				else = {
+						set_variable = {
+						var = global.lhs_count_reject
+						value = global.lhs_voted_reject^num
+					}
+				}
+			}
+		}
+		lhs_voting_veto_click = {
+			ROOT = {
+				add_to_array = {
+					array = global.lhs_voted_veto
+					value = THIS.id
+				}
+				add_ideas = lhs_voted
+			}
+			set_variable = {
+				var = global.lhs_count_veto
+				value = global.lhs_count_veto^num
+			}
+		}
+		lhs_vote_abstain_click = {
+			ROOT = {
+				add_to_array = {
+					array = global.lhs_voted_abstain
+					value = THIS.id
+				}
+				add_ideas = lhs_voted
+			}
+			if = {
+				limit = {
+					has_global_flag = lhs_third_round_vote
+				}
+				add_to_variable = {
+					var= global.lhs_third_round_vote_anti_count
+					value = 1
+				}
+				else = {
+						set_variable = {
+						var = global.lhs_count_abstain
+						value = global.lhs_voted_abstain^num
+					}
+				}
+			}
+		}
 		lhs_head_large_flag_click = {
 			ROOT = {
 				set_country_flag = view_lhs_friendly_decisions
@@ -193,33 +267,224 @@ scripted_gui = {
 		}
     }
 	triggers = {
-		lhs_hostile_decisions_header_visible = {
+		lhs_voting_support_click_enabled = {
 			OR = {
-			has_government = communism
-			has_government = pro_resistance_nationalism
-			has_government = pro_resistance_monarchy
-			has_government = pro_resistance_kleptocracy
-			has_government = fascism
-			has_government = left_wing_revolutionary
-			has_government = democratic_revitalisation
-			has_government = reactionary_monarchy
+				AND = {
+					has_global_flag = lhs_first_round_vote
+					ROOT = {
+						is_in_array = {
+							array = global.lhs_normal_voting
+							value = THIS.id
+						}
+						lhs_security_council_trigger = no
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
+				AND = {
+					has_global_flag = lhs_third_round_vote
+					ROOT = {
+						is_in_array = {
+						array = global.lhs_normal_voting
+						value = THIS.id
+						}
+						lhs_security_council_trigger = no
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
+				AND = {
+					has_global_flag = lhs_second_round_vote
+					ROOT = {
+						lhs_security_council_trigger = yes
+						is_in_array = {
+						array = global.lhs_security_council
+						value = THIS.id
+						}
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
 			}
 		}
-		lhs_friendly_decisions_header_visible = {
+		lhs_voting_reject_click_enabled = {
 			OR = {
-			has_government = democratic
-			has_government = pro_yagoo_progressive
-			has_government = pro_yagoo_kleptocracy
-			has_government = pro_yagoo_monarchy
+				AND = {
+					has_global_flag = lhs_first_round_vote
+					ROOT = {
+					is_in_array = {
+						array = global.lhs_normal_voting
+						value = THIS.id
+					}
+					lhs_security_council_trigger = no
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}					
+					}
+				}
+				AND = {
+					has_global_flag = lhs_third_round_vote
+					ROOT = {
+					is_in_array = {
+						array = global.lhs_normal_voting
+						value = THIS.id
+					}
+					lhs_security_council_trigger = no
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
+				AND = {
+					has_global_flag = lhs_second_round_vote
+					ROOT = {
+						is_in_array = {
+						array = global.lhs_security_council
+						value = THIS.id
+						}
+					lhs_security_council_trigger = yes
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
 			}
 		}
-		lhs_neutral_decisions_header_visible = {
+		lhs_voting_veto_click_enabled = {
 			OR = {
-			has_government = neutrality
-			has_government = reactionary_nationalism
-			has_government = pirate_republic
-			has_government = mixed_ideology_democracy
-			has_government = divine_mandate
+				AND = {
+					has_global_flag = lhs_first_round_vote
+					ROOT = {
+					is_in_array = {
+						array = global.lhs_normal_voting
+						value = THIS.id
+					}
+					lhs_security_council_trigger = no
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
+				AND = {
+					has_global_flag = lhs_third_round_vote
+					ROOT = {
+						is_in_array = {
+						array = global.lhs_normal_voting
+						value = THIS.id
+						}
+					lhs_security_council_trigger = no
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
+				AND = {
+					has_global_flag = lhs_second_round_vote
+					ROOT = {
+						is_in_array = {
+						array = global.lhs_security_council
+						value = THIS.id
+						}
+					lhs_security_council_trigger = yes
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
+			}
+		}
+		lhs_vote_abstain_click_enabled = {
+			OR = {
+				AND = {
+					has_global_flag = lhs_first_round_vote
+					ROOT = {
+					is_in_array = {
+						array = global.lhs_normal_voting
+						value = THIS.id
+						}
+					lhs_security_council_trigger = no
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
+				AND = {
+					has_global_flag = lhs_third_round_vote
+					ROOT = {
+					is_in_array = {
+						array = global.lhs_normal_voting
+						value = THIS.id
+						}
+					lhs_security_council_trigger = no
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
+				AND = {
+					has_global_flag = lhs_second_round_vote
+					ROOT = {
+					is_in_array = {
+						array = global.lhs_security_council
+						value = THIS.id
+						}
+					lhs_security_council_trigger = yes
+						NOT = {
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+							has_idea = lhs_voted
+						}
+					}
+				}
 			}
 		}
 	}
@@ -286,6 +551,12 @@ scripted_gui = {
 		}
 	}
 	properties = {
+		lhs_trust_progress_bar = {
+			frame = var:global.lhs_faith
+		}
+		brugg_legitimacy_progress_bar = {
+			frame = var:global.brugg_legitimacy
+		}
 		lhs_instigator_flag = {
 			image = [this.GetFlag]
 		}
@@ -320,6 +591,181 @@ scripted_gui = {
 			image = [THIS.GetFlag]
 		}
 	}
+	ai_enabled = {
+		always = yes
+	}
+	ai_test_interval = 180
+	ai_test_variance = 0.8
+	
+	ai_check = {
+		OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+		}
+	}
+	ai_weights = {
+		lhs_voting_support_click = {
+			ai_will_do = {
+				base = 0
+			modifier = {
+				add = 5
+				OR = {
+					has_global_flag = lhs_first_round_vote
+					has_global_flag = lhs_second_round_vote
+					has_global_flag = lhs_third_round_vote
+				}
+			}	
+			modifier = {
+			add = 50 
+			is_debug = yes
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+			}
+				modifier = {
+					add = 10
+					voting_good_ideology = yes
+				}
+				modifier = {
+					add = 5
+					voting_kleptocracy = yes
+				}
+				modifier = {
+					add = 10
+					voting_same_ideology = yes
+				}
+				modifier = {
+					add = 5
+					voting_stable_and_peaceful = yes
+				}
+				modifier = {
+					add = 20
+					voting_lhs_goodboy = yes
+				}
+				modifier = {	
+					add = 10 
+					voting_good_relations = yes
+				}
+			}
+		}
+		lhs_voting_reject_click = {
+			ai_will_do = {
+				base = 0
+			modifier = {
+				add = 5
+				OR = {
+					has_global_flag = lhs_first_round_vote
+					has_global_flag = lhs_second_round_vote
+					has_global_flag = lhs_third_round_vote
+				}
+			}
+			modifier = {
+			add = 50 
+			is_debug = yes
+			has_global_flag = lhs_second_round_vote
+			}
+			modifier = {
+				add = 10
+				voting_badboy = yes
+			}
+			modifier = {
+				add = 10
+				voting_too_jingoist = yes
+			}
+			modifier = {
+				add = 15
+				voting_way_too_jingoist = yes
+			}
+			modifier = {
+				add = 10
+				voting_unstable = yes
+			}
+			modifier = {
+				add = 15
+				voting_very_badboy = yes
+			}
+			modifier = {
+				add = 10
+				voting_bad_relations = yes
+			}
+			modifier = {
+				add = 10
+				voting_not_lhs = yes
+			}
+			}
+		}
+		lhs_voting_veto_click = {
+			ai_will_do = {
+				base = 0
+			modifier = {
+				add = 5
+				OR = {
+					has_global_flag = lhs_first_round_vote
+					has_global_flag = lhs_second_round_vote
+					has_global_flag = lhs_third_round_vote
+				}
+			}
+			modifier = {
+				add = 5
+				voting_badboy = yes
+			}
+			modifier = {
+				add = 5
+				voting_too_jingoist = yes
+			}
+			modifier = {
+				add = 7
+				voting_way_too_jingoist = yes
+			}
+			modifier = {
+				add = 5
+				voting_unstable = yes
+			}
+			modifier = {
+				add = 7
+				voting_very_badboy = yes
+			}
+			modifier = {
+				add = 5
+				voting_bad_relations = yes
+			}
+			modifier = {
+				add = 5
+				voting_not_lhs = yes
+			}
+			}
+		}
+		lhs_vote_abstain_click = {	
+			ai_will_do = {	
+				base = 0
+			
+			modifier = {
+				add = 5
+				OR = {
+					has_global_flag = lhs_first_round_vote
+					has_global_flag = lhs_second_round_vote
+					has_global_flag = lhs_third_round_vote
+				}
+			}
+			}
+		}
+		close_button_click = {	
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 15 
+					has_country_flag = view_lhs_membership
+					NOT = {
+					has_global_flag = lhs_first_round_vote
+					has_global_flag = lhs_second_round_vote
+					has_global_flag = lhs_third_round_vote
+					}
+				}
+			}
+		}
+	}
   }
    lhs_permanent_buttons_gui = {
     window_name = "lhs_permanent_buttons_container"
@@ -334,6 +780,10 @@ scripted_gui = {
 					value = THIS.id
 				}
 				add_political_power = -100
+				set_variable = {
+					var = global.lhs_gui_get_name_function
+					value = THIS.id
+				}
 			}
 			every_country = {
 					limit = {
@@ -588,9 +1038,10 @@ scripted_gui = {
 		context_type = player_context
 		
 		visible = {
-			has_idea = lhs_member
-			has_country_flag = view_lhs_membership
-			has_country_flag = view_lhs_friendly_decisions
+			always = no
+			#has_idea = lhs_member
+			#has_country_flag = view_lhs_membership
+			#has_country_flag = view_lhs_friendly_decisions
 		}
 	}
    lhs_military_buttons_gui = {
@@ -927,7 +1378,35 @@ scripted_gui = {
 		clr_country_flag = view_resistance_membership
 		}
     }
-
+	ai_enabled = {
+		always = yes
+	}
+	ai_test_interval = 100
+	ai_test_variance = 0.8
+	ai_max_weight_taken_per_test =1
+	ai_check = {
+		OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+		}
+	}
+	ai_weights = {
+		lhs_member_button_click = {
+			ai_will_do = {
+				base = 0
+				
+				modifier = {
+					add = 500
+					OR = {
+						has_global_flag = lhs_first_round_vote
+						has_global_flag = lhs_second_round_vote
+						has_global_flag = lhs_third_round_vote
+					}
+				}
+			}
+		}
+	}	
   }
    lhs_neutral_button_gui = {
     window_name = "lhs_neutral_button_window"

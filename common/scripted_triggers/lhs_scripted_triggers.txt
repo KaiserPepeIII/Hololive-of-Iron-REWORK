@@ -32,6 +32,94 @@ lhs_calculating_trigger_no = {
 		compare = greater_than_or_equals
 	}
 }
+lhs_vote_normal_round_pass = {
+	check_variable = {
+		var = global.lhs_count_support
+		value = global.lhs_count_reject
+		compare = greater_than
+	}
+	check_variable = {
+		var = global.lhs_count_support
+		value = global.lhs_count_abstain
+		compare = greater_than
+	}
+}
+lhs_vote_normal_round_fails = {
+	OR = {
+	check_variable = {
+		var = global.lhs_count_support
+		value = global.lhs_count_reject
+		compare = less_than
+	}
+	check_variable = {
+		var = global.lhs_count_support
+		value = global.lhs_count_abstain
+		compare = less_than
+	}
+	check_variable = {
+		var = global.lhs_count_abstain
+		value =global.lhs_count_support
+		compare = greater_than
+	}
+	}
+}
+lhs_vote_second_round_pass = {
+	check_variable = {
+		var = global.lhs_count_support
+		value = global.lhs_count_reject
+		compare = greater_than
+	}
+	check_variable = {
+		var = global.lhs_count_support
+		value = global.lhs_count_abstain
+		compare = greater_than
+	}
+	NOT = {
+		check_variable = {
+			var = global.lhs_count_veto
+			value = 2
+			compare = greater_than_or_equals
+		}
+	}
+}
+lhs_vote_second_round_fails = {
+	OR = {
+		check_variable = {
+			var = global.lhs_count_support
+			value = global.lhs_count_reject
+			compare = less_than
+		}
+		check_variable = {
+			var = global.lhs_count_support
+			value = global.lhs_count_abstain
+			compare = less_than
+		}
+		check_variable = {
+			var = global.lhs_count_veto
+			value = 2
+			compare = greater_than_or_equals
+		}
+		check_variable = {
+			var = global.lhs_count_abstain
+			value =global.lhs_count_support
+			compare = greater_than
+		}
+	}
+}
+lhs_vote_third_round_passes = {
+	check_variable = {
+		var = global.lhs_count_support
+		value = global.lhs_third_round_vote_anti_count
+		compare = greater_than
+	}
+}
+lhs_vote_third_round_fails = {
+	check_variable = {
+		var = global.lhs_count_support
+		value = global.lhs_third_round_vote_anti_count
+		compare = less_than
+	}
+}
 lhs_has_war_with_negative = {
 	OR = {
 		has_offensive_war_with = democratic

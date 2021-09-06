@@ -1,0 +1,210 @@
+
+voting_good_relations = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_opinion = {
+				target = ROOT
+				value > 50
+			}
+		}
+	}
+}
+voting_too_jingoist = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_war_support > 0.4
+		}
+	}
+}
+voting_way_too_jingoist = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_war_support > 0.6
+		}
+	}
+}
+voting_unstable = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_stability < 0.4
+		}
+	}
+}
+voting_bad_relations = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_opinion = {
+				target = ROOT
+				value < 50
+			}
+		}
+	}
+}
+voting_badboy = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_added_tension_amount > 5
+		}
+	}
+}
+voting_very_badboy = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_added_tension_amount > 10
+		}
+	}
+}
+voting_not_lhs = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			NOT = {
+				has_government = democratic
+				has_government = pro_yagoo_kleptocracy
+				has_government = pro_yagoo_progressive
+				has_government = pro_yagoo_monarchy
+			}
+		}
+	}
+}
+voting_kleptocracy = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			OR = {
+				has_government = pro_yagoo_kleptocracy
+				has_government = pro_resistance_kleptocracy
+				has_government = neutrality
+			}
+		}
+	}
+}
+voting_good_ideology = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			OR = {
+				has_government = democratic
+				has_government = pro_yagoo_progressive
+			}
+		}
+	}
+}
+voting_same_ideology = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_government = ROOT
+		}
+	}
+}
+voting_stable_and_peaceful = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		
+		THIS = {
+			has_stability > 0.55
+			has_war_support < 0.45
+		}
+	}	
+}
+voting_lhs_goodboy = {
+	any_of = {
+		array = global.lhs_instigator_var
+		value = THIS.id
+		THIS = {
+			OR = {
+				is_puppet_of = YAG
+				is_in_faction_with = YAG
+				AND = {
+					OR = {
+						has_government = democratic
+						has_government = pro_yagoo_progressive
+					}
+					has_war = no
+					has_elections = yes
+					has_stability > 0.75
+					OR = {
+						AND = {
+							NOT = {
+							has_global_flag = lhs_idealism
+							}
+							has_added_tension_amount < 10
+						}
+						AND = {
+							has_global_flag = lhs_idealism
+							has_army_manpower = {
+								size < 150000
+							}
+							threat < 25
+						}
+						AND = {
+							has_global_flag = lhs_idealism
+							has_army_manpower = {
+								size < 300000
+							}
+							threat < 35
+							threat > 25
+						}
+						AND = {
+							has_global_flag = lhs_idealism
+							has_army_manpower = {
+								size < 500000
+							}
+							threat < 50
+							threat > 35
+						}
+						AND = {
+							has_global_flag = lhs_idealism
+							has_army_manpower = {
+								size < 1000000
+							}
+							threat < 100
+							threat > 50
+						}
+					}
+					OR = {
+						AND = {
+							has_global_flag = lhs_idealism
+							has_war_support < 0.5
+						}
+						NOT = {
+							has_global_flag = lhs_idealism
+							has_war_support < 0.75							
+						}
+					}
+				}
+			}
+		}
+	}
+}

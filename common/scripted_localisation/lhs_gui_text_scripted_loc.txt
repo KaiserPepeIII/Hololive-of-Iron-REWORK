@@ -1,4 +1,279 @@
 defined_text = {
+	name = get_state_claim_loc_script
+	
+	text = {
+		trigger = {
+			lhs_not_voting_in_progress = yes
+		}
+		localization_key = state_claim_loc_vote_underway
+	}	
+	text = {
+		trigger = {
+			OR = {
+				NOT = {
+					AND = {
+						ROOT = {	
+							has_country_flag = lhs_state_selected_first_country
+						}
+						THIS = {
+							OWNER = {
+								NOT = {
+									is_in_array = {
+										array = ROOT.lhs_states_selected_country
+										value = THIS.id
+									}
+								}
+							}
+						}
+					}
+				}
+				NOT = {
+					THIS = {
+						is_in_array = {
+							array = ROOT.lhs_claim_state
+							value = THIS.id
+						}
+					}
+					THIS = {
+						OWNER ={
+							OR = {
+							has_country_flag = lhs_vote_insitigate_cooldown
+							tag = ROOT
+							has_civil_war = yes
+							has_idea = lhs_head
+							}
+						}
+					}
+				}
+			}
+		}
+		localization_key = state_claim_loc_cant_claim
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = ROOT.lhs_claim_state_count
+				value = 12
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = state_claim_loc_twelve_max
+	}
+	text = {
+	localization_key = state_claim_loc
+	}
+}
+defined_text = {
+	name = get_remove_claim_loc_script
+	
+	text = {
+		trigger = {
+			lhs_not_voting_in_progress = yes
+		}
+		localization_key = remove_claim_loc_vote_underway
+	}
+	text = {
+		trigger = {
+				check_variable = {
+					var = ROOT.lhs_claim_state_count
+					value = 1
+					compare = less_than
+				}
+		}
+		localization_key = remove_claim_loc_empty_scope
+	}
+	text = {
+	localization_key = remove_claim_loc
+	}
+}
+defined_text = {
+	name = get_remove_all_claim_loc_script
+	
+	text = {
+		trigger = {
+			lhs_not_voting_in_progress = yes
+		}
+		localization_key = remove_all_claim_loc_vote_underway
+	}
+	text = {
+		trigger = {
+				check_variable = {
+					var = ROOT.lhs_claim_state_count
+					value = 1
+					compare = less_than
+				}
+		}
+		localization_key = remove_all_claim_loc_empty_scope
+	}
+	text = {
+	localization_key = remove_all_claim_loc
+	}
+}
+defined_text = {
+	name = get_bring_incident_with_lhs_script
+	
+	text = {
+		trigger = {
+			lhs_not_voting_in_progress = yes
+		}
+		localization_key = bring_incident_with_lhs_vote_underway
+	}
+	text = {
+		trigger = {
+				check_variable = {
+					var = ROOT.lhs_claim_state_count
+					value = 1
+					compare = less_than
+				}
+		}
+		localization_key = bring_incident_with_lhs_empty_scope
+	}
+	text = {
+	localization_key = bring_incident_with_lhs
+	}
+}
+defined_text = {
+	name = get_lhs_brugg_legitimacy
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 20
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_brugg_legitimacy_one
+				}
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 20
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 40
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_brugg_legitimacy_two
+				}	
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 40
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 60
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_brugg_legitimacy_three
+				}		
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 60
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 80
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_brugg_legitimacy_four
+				}
+			text = {
+			localization_key = lhs_brugg_legitimacy_five
+			}
+}
+defined_text = {
+	name = lhs_voting_get_support
+	text = {	
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_voting_support_count_text
+	}
+	text = {
+		localization_key = lhs_voting_get_support_no_vote
+	}
+}
+defined_text = {
+	name = lhs_voting_get_reject
+	text = {	
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_voting_reject_count_text
+	}
+	text = {
+		localization_key = lhs_voting_get_reject_no_vote
+	}
+}
+defined_text = {
+	name = get_voting_prompt_loc
+	text = {
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = voting_prompt_states_loc
+	}
+	text = {
+		localization_key = blank
+	}
+}
+defined_text = {
+	name = lhs_voting_get_abstain
+	text = {	
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_voting_abstain_count_text
+	}
+	text = {
+		localization_key = lhs_voting_get_abstain_no_vote
+	}
+}
+defined_text = {
+	name = lhs_voting_get_veto
+	text = {	
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_voting_veto_count_text
+	}
+	text = {
+		localization_key = lhs_voting_get_veto_no_vote
+	}
+}
+defined_text = {
 	name = get_voting_text_loc
 	
 	text = {

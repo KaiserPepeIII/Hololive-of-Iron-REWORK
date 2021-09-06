@@ -2,6 +2,22 @@ on_actions = {
 	on_startup = {
 		effect = {
 		#LHS
+			set_variable = {
+				var = global.lhs_count_support
+				value = 0
+			}
+			set_variable = {
+				var = global.lhs_count_reject
+				value = 0
+			}
+			set_variable = {
+				var = global.lhs_count_abstain
+				value = 0
+			}
+			set_variable = {
+				var = global.lhs_count_veto
+				value = 0
+			}
 			set_global_flag = lhs_idealism
 			set_variable = {
 				var = global.lhs_faith
@@ -9,6 +25,15 @@ on_actions = {
 				}
 			clamp_variable = {
 				var = global.lhs_faith
+				min = 0
+				max = 100
+				}		
+				set_variable = {
+				var = global.brugg_legitimacy
+				value = 85
+				}
+			clamp_variable = {
+				var = global.brugg_legitimacy
 				min = 0
 				max = 100
 				}
@@ -102,7 +127,7 @@ on_actions = {
 					array = global.lhs_security_council_six
 					value = THIS.id
 				}
-			 }
+			 }		
 			every_country = {
 				limit = {
 				has_idea = lhs_customs_union_gui

@@ -15,7 +15,7 @@ guiTypes = {
 			position = {x = 12 y = 12}
 			orientation = upper_left
 			scale = 0.979
-			pdx_tooltip = state_claim_loc
+			pdx_tooltip = state_claim_loc_script
 			}	
 		instantTextboxType = {
 			name = "lhs_states_claim_button_text"
@@ -31,7 +31,7 @@ guiTypes = {
 			position = {x = 12 y = 43}
 			orientation = upper_left
 			scale = 0.979
-			pdx_tooltip = remove_claim_loc
+			pdx_tooltip = remove_claim_loc_script
 
 			}
 		instantTextboxType = {
@@ -50,7 +50,7 @@ guiTypes = {
 			position = {x = 12 y = 74}
 			orientation = upper_left
 			scale = 0.979
-			pdx_tooltip = remove_all_claim_loc
+			pdx_tooltip = remove_all_claim_loc_script
 
 			}
 		instantTextboxType = {
@@ -69,7 +69,7 @@ guiTypes = {
 			position = {x = 12 y = 105}
 			orientation = upper_left
 			scale = 0.979
-			pdx_tooltip = bring_incident_with_lhs
+			pdx_tooltip = bring_incident_with_lhs_script
 
 			}
 		instantTextboxType = {
@@ -82,5 +82,39 @@ guiTypes = {
 			maxHeight = 10
 			alwaystransparent = yes
 			}
+	
 		}
+		containerWindowType = {
+			name = "lhs_claimed_country_gui"
+			position = {x = 0 y = 0}
+			size = {width = 300 height = 300}
+			
+			gridboxType = {
+				name = "lhs_claimed_country_gridbox"
+				position = { x = -110 y = -232}
+				size = { width = 300 height = 300}
+				slotsize = { width = 50 height = 40 }
+				max_slots_horizontal = 4
+				add_horizontal = yes
+				}
+			}
+			
+		containerWindowType = {
+			name = "lhs_claimed_country_list_entry"
+			position = {x = 0 y = 0}
+			size = {width = 300 height = 300}
+			
+			buttonType = {
+				name = "lhs_claimed_country_large_flag"
+				quadTextureSprite = "GFX_shield_medium"
+				position = {x = 0 y = 3}
+				pdx_tooltip = member_category_get_name
+			}
+			iconType = {
+				name = "lhs_claimed_country_flag_outline"
+				quadTextureSprite = "GFX_large_flag_frame"
+				position = {x = -4 y = 0}
+				alwaystransparent = yes
+			}
+		}	
 	}

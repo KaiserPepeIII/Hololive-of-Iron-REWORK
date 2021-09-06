@@ -1,4 +1,22 @@
 scripted_gui = {
+	lhs_claimed_country_gui_Window = {
+		window_name = "lhs_claimed_country_gui"
+		context_type = selected_state_context
+		parent_window_token = selected_state_view 
+		
+		properties = {
+			lhs_claimed_country_large_flag = {
+				image = [THIS.GetFlag]
+			}
+		}
+		dynamic_lists = {
+			lhs_claimed_country_gridbox = {
+			array = ROOT.lhs_states_selected_country
+			entry_container = lhs_claimed_country_list_entry
+			change_scope = yes
+			}
+		}
+	}
   lhs_states_claim_gui = {
 	window_name = "lhs_states_claim_window"
 	context_type = selected_state_context
@@ -9,14 +27,36 @@ scripted_gui = {
 			has_idea = lhs_member
 			}
 		}
-		properties = {
-		}
+
 		effects = {
 			lhs_states_claim_button_click = {
+				ROOT = {
+					set_country_flag = lhs_state_selected_first_country
+				}
 				THIS = {
-					add_to_array = {	
+					add_to_array = {
 						array = ROOT.lhs_claim_state
 						value = THIS.id
+					}
+					if = {
+						limit = {
+							THIS = {
+								OWNER = {
+									NOT = {
+										is_in_array = {
+											array = ROOT.lhs_states_selected_country
+											value = THIS.id
+										}
+									}
+								}
+							}
+						}
+						OWNER = {
+							add_to_array = {
+							array = ROOT.lhs_states_selected_country
+							value = THIS.id
+							}
+						}	
 					}
 				}
 				set_variable = {
@@ -35,13 +75,40 @@ scripted_gui = {
 					var = ROOT.lhs_claim_state_count
 					value = ROOT.lhs_claim_state^num
 				}
+				if = {
+					limit = {
+						check_variable = {
+						var = ROOT.lhs_claim_state_count
+						value = 1
+						compare = less_than
+						}
+					}
+					clear_array = ROOT.lhs_states_selected_country
+					ROOT = {
+					clr_country_flag = lhs_state_selected_first_country
+					}
+				}
 			}
 			lhs_states_remove_all_claim_click = {
 				clear_array = ROOT.lhs_claim_state
 				clear_variable = ROOT.lhs_claim_state_count
+				clear_array = ROOT.lhs_states_selected_country
+				ROOT = {
+					clr_country_flag = lhs_state_selected_first_country
+					}
 			}
 			lhs_bring_incident_with_lhs_click = {	
+				
+				set_variable = {
+					var = global.instigator_variable_states
+					value = ROOT.id
+				}
 				set_global_flag = lhs_voting_state
+				set_global_flag = lhs_first_round_vote
+				set_variable = {
+					var = global.lhs_claim_counter
+					value = ROOT.lhs_claim_state_count
+				}
 				every_state = {
 					limit = {
 						is_in_array = {	
@@ -55,13 +122,15 @@ scripted_gui = {
 					}
 				}
 				clear_array = ROOT.lhs_claim_state
+				clear_array = ROOT.lhs_states_selected_country
 				clear_variable = ROOT.lhs_claim_state_count
 				ROOT = {
+				set_country_flag = lhs_instigate_flag
 					add_to_array = {
 						array = global.lhs_vote_instigator
 						value = THIS.id
 					}
-					set_variable = {
+					add_to_array = {
 						var = global.lhs_instigator_var
 						value = THIS.id
 					}
@@ -74,18 +143,89 @@ scripted_gui = {
 						}						
 					}
 				}
+				every_country = {
+					limit = {
+						has_idea = lhs_member
+						NOT = {
+							has_idea = lhs_head
+							lhs_security_council_trigger = yes
+							is_in_array = {	
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+						}
+					}
+					add_to_array = {
+						array = global.lhs_normal_voting
+						value = THIS.id
+					}
+				}
+				every_country = {
+					limit = { 	
+							OR = {
+							lhs_security_council_trigger = yes
+							has_idea = lhs_head
+							}
+						}
+					add_to_array = {
+						array = global.lhs_security_council
+						value = THIS.id
+					}
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = global.lhs_member_flag
+							value = THIS.id
+						}
+						NOT = {
+							is_in_array = {
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+						}
+					}
+					country_event = lhs.35
+				}
 			}
 		}
 			triggers = {
 			
 			lhs_states_claim_button_click_enabled = {
 				lhs_not_voting_in_progress = yes
+
+				NOT = {
+					AND = {
+						ROOT = {	
+							has_country_flag = lhs_state_selected_first_country
+						}
+						THIS = {
+							OWNER = {
+								NOT = {
+									is_in_array = {
+										array = ROOT.lhs_states_selected_country
+										value = THIS.id
+									}
+								}
+							}
+						}
+					}
+				}
 				NOT = {
 					THIS = {
+						is_in_array = {
+							array = ROOT.lhs_claim_state
+							value = THIS.id
+						}
+					}
+					THIS = {
 						OWNER ={
+							OR = {
+							has_country_flag = lhs_vote_insitigate_cooldown
 							tag = ROOT
 							has_civil_war = yes
 							has_idea = lhs_head
+							}
 						}
 					}
 					check_variable = {
@@ -95,9 +235,36 @@ scripted_gui = {
 					}
 				}
 			}
+			lhs_states_remove_claim_click_enabled = {
+				THIS = {
+					is_in_array = {
+						array = ROOT.lhs_claim_state
+						value = THIS.id
+					}
+				}
+			}
+			lhs_states_remove_all_claim_click_enabled = {
+				lhs_not_voting_in_progress = yes
+
+				NOT = {
+					check_variable = {
+						var = ROOT.lhs_claim_state_count
+						value = 1
+						compare = less_than
+					}
+				}
+			}
 			lhs_bring_incident_with_lhs_click_enabled = {
 				lhs_not_voting_in_progress = yes
+				NOT = {
+					check_variable = {
+						var = ROOT.lhs_claim_state_count
+						value = 1
+						compare = less_than
+					}
+				}
 			}
 		  }
+		 
 	 }
 }

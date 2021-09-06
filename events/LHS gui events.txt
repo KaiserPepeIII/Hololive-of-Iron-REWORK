@@ -47,6 +47,7 @@ country_event = {
 			country_event = lhs.3
 		}
 			clear_array = global.lhs_entry_list		
+			clear_variable = global.lhs_gui_get_name_function
 	}
 	#call vote
 	option = {
@@ -84,6 +85,7 @@ news_event = {
 	
 	option = {
 		name = lhs.2.a
+		clear_variable = global.lhs_gui_get_name_function
 	}
 
 }
@@ -99,6 +101,8 @@ country_event = {
 	
 	option = {
 		name = lhs.3.a
+		clear_variable = global.lhs_gui_get_name_function
+
 	}
 
 }
@@ -1754,12 +1758,12 @@ country_event = {
 				is_in_array = {
 					array = global.lhs_member_flag
 					value = THIS.id
+					}
 				}
 				country_event = lhs.25
 			}
-		}
 		set_global_flag = resistance_lhs_war
-	}
+		}
 	#run a vote security council
 	option = {
 		name = lhs.24.b 
@@ -2002,7 +2006,10 @@ country_event = {
 			clr_global_flag = lhs_resistance_war_voting_security
 				every_country = {
 					limit = {
-						is_in_array = global.lhs_voted_yes
+						is_in_array = {
+						array =	global.lhs_voted_yes
+						value = THIS.id
+						}
 					}
 					country_event = lhs.30
 				}
@@ -2012,7 +2019,6 @@ country_event = {
 		option = {
 			name = lhs.28.a
 		}
-	}
 }
 #will we join the war anyways?
 country_event = {
@@ -2088,16 +2094,16 @@ country_event = {
 }
 #LHS Council - Action on the Depression?
 country_event = {
-	id = lhs.31
-	title = lhs.31.t
-	desc = lhs.31.d
+	id = lhs.32
+	title = lhs.32.t
+	desc = lhs.32.d
 	picture = GFX_report_event_lhs
 	
 	is_triggered_only = yes
 	
 	#International action is needed
 	option= {
-		name = lhs.31.a
+		name = lhs.32.a
 		ROOT = {
 			add_to_array = {
 				array = global.international_action_yes
@@ -2107,7 +2113,7 @@ country_event = {
 	}
 	#national action works
 	option = {
-		name = lhs.31.b 
+		name = lhs.32.b 
 		ROOT = {
 			add_to_array = {
 				array = global.international_action_no
@@ -2119,16 +2125,16 @@ country_event = {
 
 #LHS Council
 country_event = {
-	id = lhs.31
-	title = lhs.31.t
-	desc = lhs.31.d
+	id = lhs.34
+	title = lhs.34.t
+	desc = lhs.34.d
 	picture = GFX_report_event_lhs
 	
 	is_triggered_only = yes
 	
 	#Let's gooo
 	option= {
-		name = lhs.31.a
+		name = lhs.34.a
 		if = {
 			limit = {
 				date < 1937.1.1
@@ -2140,3 +2146,447 @@ country_event = {
 	}
 }
 
+
+#There is a vote
+country_event = {
+	id = lhs.35
+	title = lhs.35.t
+	desc = lhs.35.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.35.a
+	}
+}
+#lhs first round passes
+country_event = {
+	id = lhs.36
+	title = lhs.36.t
+	desc = lhs.36.d
+	picture = GFX_report_event_lhs
+	
+	trigger = {
+		all_of = {
+			array = global.lhs_normal_voting
+			value = THIS.id
+				
+				has_idea = lhs_voted
+				
+			}		
+		lhs_vote_normal_round_pass = yes
+		has_global_flag = lhs_first_round_vote
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	immediate = {
+		hidden_effect = {
+		every_country = {
+			limit = {
+				is_in_array = {	
+					array = global.lhs_normal_voting
+					value = THIS.id 
+				}
+			}
+			remove_ideas = lhs_voted
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+			country_event = lhs.42
+		}
+			lhs_clear_all_voting = yes
+			set_global_flag = lhs_second_round_vote
+			clr_global_flag = lhs_first_round_vote
+		}
+	}
+	#Let's gooo
+	option= {
+		name = lhs.36.a
+		
+	}
+}
+#lhs first round vote fails
+country_event = {
+	id = lhs.37
+	title = lhs.37.t
+	desc = lhs.37.d
+	picture = GFX_report_event_lhs
+	
+	trigger = {
+		all_of = {
+			array = global.lhs_normal_voting
+			value = THIS.id
+				PREV = {
+				has_idea = lhs_voted
+				}
+			}		
+		lhs_vote_normal_round_fails = yes
+		has_global_flag = lhs_first_round_vote
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	immediate = {
+			hidden_effect = {
+			every_country = {
+				limit = {
+					is_in_array = {	
+						array = global.lhs_normal_voting
+						value = THIS.id 
+					}
+				}
+				remove_ideas = lhs_voted
+			}
+			every_country = {
+				limit = {
+					is_in_array = {
+						array = global.lhs_member_flag
+						value = THIS.id
+					}
+				}
+				country_event = lhs.43
+			}
+			every_country = {
+				limit = {
+					is_in_array = {
+					array = global.lhs_instigator_var
+					value = THIS.id
+					}
+					
+				}
+				set_country_flag = {
+					flag = lhs_vote_insitigate_cooldown
+					days = 120
+				}
+			}
+			lhs_clear_all_voting = yes
+			clear_array = global.lhs_vote_instigator
+			clear_array = global.lhs_instigator_var
+			clear_array = global.lhs_voting_states_claim
+			clear_array = global.lhs_normal_voting
+			clr_global_flag = lhs_first_round_vote
+		}
+	}
+	#Let's gooo
+	option= {
+		name = lhs.37.a
+		
+	}
+}
+#LHS second round vote passes
+country_event = {
+	id = lhs.38
+	title = lhs.38.t
+	desc = lhs.38.d
+	picture = GFX_report_event_lhs
+	
+	trigger = {
+		all_of = {
+			array = global.lhs_security_council
+			value = THIS.id
+				PREV = {
+				has_idea = lhs_voted
+				}
+			}		
+		lhs_vote_second_round_pass = yes
+		has_global_flag = lhs_second_round_vote
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	immediate = {
+		hidden_effect = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+			country_event = lhs.44
+		}
+		every_country = {
+			limit = {
+				is_in_array = {	
+					array = global.lhs_security_council
+					value = THIS.id 
+				}
+			}
+			remove_ideas = lhs_voted
+		}
+			lhs_hand_over_land = yes
+			lhs_clear_all_voting = yes
+			clear_array = global.lhs_vote_instigator
+			clear_array = global.lhs_instigator_var
+			clr_global_flag = lhs_second_round_vote
+		}
+	}
+	#Let's gooo
+	option= {
+		name = lhs.38.a
+		
+	}
+}
+#LHS second vote fails
+country_event = {
+	id = lhs.39
+	title = lhs.39.t
+	desc = lhs.39.d
+	picture = GFX_report_event_lhs
+	
+	trigger = {
+		all_of = {
+			array = global.lhs_security_council
+			value = THIS.id
+				PREV = {
+				has_idea = lhs_voted
+				}
+			}		
+		lhs_vote_second_round_fails = yes
+		has_global_flag = lhs_second_round_vote
+
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	immediate = {
+		hidden_effect = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+			country_event = lhs.45
+		}
+		every_country = {
+			limit = {
+				is_in_array = {	
+					array = global.lhs_security_council
+					value = THIS.id 
+				}
+			}
+			remove_ideas = lhs_voted
+		}
+
+			lhs_clear_all_voting = yes
+			clr_global_flag = lhs_second_round_vote
+			set_global_flag = lhs_third_round_vote
+			clear_array = global.lhs_security_council
+			set_variable = {
+				var = global.lhs_third_round_vote_anti_count
+				value = 0
+			}
+		}
+	}
+	#Let's gooo
+	option= {
+		name = lhs.39.a
+		
+	}
+}
+#lhs third vote passes
+country_event = {
+		id = lhs.40
+	title = lhs.40.t
+	desc = lhs.40.d
+	picture = GFX_report_event_lhs
+	
+	trigger = {
+		all_of = {
+			array = global.lhs_normal_voting
+			value = THIS.id
+				PREV = {
+				has_idea = lhs_voted
+				}
+			}		
+		lhs_vote_third_round_passes = yes
+		has_global_flag  =lhs_third_round_vote
+
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	immediate = {
+		hidden_effect = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+			country_event = lhs.46
+		}
+		every_country = {
+			limit = {
+				is_in_array = {	
+					array = global.lhs_normal_voting
+					value = THIS.id 
+				}
+			}
+			remove_ideas = lhs_voted
+		}
+			lhs_hand_over_land = yes
+			lhs_clear_all_voting = yes
+			clr_global_flag = lhs_third_round_vote
+			clear_array = global.lhs_vote_instigator
+			clear_array = global.lhs_instigator_var
+			clear_array = global.lhs_normal_voting
+		}
+	}
+	#Let's gooo
+	option= {
+		name = lhs.40.a
+		
+	}
+}
+#lhs third vote fails
+country_event = {
+		id = lhs.41
+	title = lhs.41.t
+	desc = lhs.41.d
+	picture = GFX_report_event_lhs
+	
+	trigger = {
+		all_of = {
+			array = global.lhs_normal_voting
+			value = THIS.id
+				PREV = {
+				has_idea = lhs_voted
+				}
+			}		
+		lhs_vote_third_round_fails = yes
+		has_global_flag = lhs_third_round_vote
+	}
+	mean_time_to_happen = {
+	days = 1
+	}
+	immediate = {
+		hidden_effect = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+			country_event = lhs.47
+		}
+		every_country = {
+			limit = {
+				is_in_array = {	
+					array = global.lhs_normal_voting
+					value = THIS.id 
+				}
+			}
+			remove_ideas = lhs_voted
+		}
+			lhs_clear_all_voting = yes
+			clear_array = global.lhs_vote_instigator
+			clear_array = global.lhs_instigator_var
+			clear_array = global.lhs_voting_states_claim
+			clear_array = global.lhs_normal_voting
+			clear_array = global.lhs_security_council
+			clr_global_flag = lhs_third_round_vote
+		}
+	}
+	#Let's gooo
+	option= {
+		name = lhs.41.a
+		
+	}
+}
+#There is a vote
+country_event = {
+	id = lhs.42
+	title = lhs.42.t
+	desc = lhs.42.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.42.a
+	}
+}
+#There is a vote
+country_event = {
+	id = lhs.43
+	title = lhs.43.t
+	desc = lhs.43.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.43.a
+	}
+}
+#There is a vote
+country_event = {
+	id = lhs.44
+	title = lhs.44.t
+	desc = lhs.44.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.44.a
+	}
+}
+#There is a vote
+country_event = {
+	id = lhs.45
+	title = lhs.45.t
+	desc = lhs.45.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.45.a
+	}
+}
+#There is a vote
+country_event = {
+	id = lhs.46
+	title = lhs.46.t
+	desc = lhs.46.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.46.a
+	}
+}
+#There is a vote
+country_event = {
+	id = lhs.47
+	title = lhs.47.t
+	desc = lhs.47.d
+	picture = GFX_report_event_lhs
+	
+	is_triggered_only = yes
+	
+	#Let's gooo
+	option= {
+		name = lhs.47.a
+	}
+}
