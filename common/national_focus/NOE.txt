@@ -53,10 +53,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_professional_army
 		}
-		swap_ideas = {
-		remove_idea = NOE_peasant_levees
-		add_idea = NOE_feudal_army
-	  }
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = NOE_peasant_levees
+			add_idea = NOE_feudal_army
+		  }
+		}
 		x = 68
 		y = 1
 
@@ -69,7 +71,7 @@ focus_tree = {
 			focus = NOE_feudal_army
 		}
 		completion_reward = {
-		add_idea = {
+		add_ideas = {
 		NOE_professionalization
 		}
 	   }
@@ -164,7 +166,7 @@ focus_tree = {
 		add_idea = great_depression_noel_3
 		 }
 	  }
-		add_idea = {
+		add_ideas = {
 		bail_out_noblemen
 		}
 	   }
@@ -210,7 +212,7 @@ focus_tree = {
 		add_idea = great_depression_noel_3
 		 }
 	  }
-		add_idea = {
+		add_ideas = {
 		bankrupt_noblemen
 		}
 	}
@@ -266,7 +268,7 @@ focus_tree = {
 			focus = NOE_amelioration_proposals
 		}
 		completion_reward = {
-		#### Yeah i dont know how to do variable help me Kaiser-paisen
+		#### Yeah i dont know how to do variable help me Kaiser_paisen
 		}
 		x = 13
 		y = 3
@@ -305,22 +307,26 @@ focus_tree = {
 			focus = NOE_increase_executive_power
 		}
 		completion_reward = {
-add_popularity = {
-    ideology = democratic_revitalisation
-    popularity = 0.03
-}
-add_popularity = {
-    ideology = democratic
-    popularity = 0.03
-}
-add_popularity = {
-    ideology = pro-yagoo_progressivism
-    popularity = 0.03
-}
-add_popularity = {
-    ideology = mixed_ideology_democracy
-    popularity = 0.03
-}
+		add_popularity = {
+				ideology = fascism
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = democratic_revitalisation
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology =democratic
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = mixed_ideology_democracy
+				popularity = 0.03
+			}
 		}
 		x = 5
 		y = 6
@@ -332,24 +338,6 @@ add_popularity = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_weighted_voting
-		}
-		completion_reward = {
-add_popularity = {
-    ideology = democratic_revitalisation
-    popularity = 0.05
-}
-add_popularity = {
-    ideology = democratic
-    popularity = 0.05
-}
-add_popularity = {
-    ideology = pro-yagoo_progressivism
-    popularity = 0.05
-}
-add_popularity = {
-    ideology = mixed_ideology_democracy
-    popularity = 0.05
-}
 		}
 		x = 3
 		y = 7
@@ -367,30 +355,12 @@ add_popularity = {
 
 	}
 	focus = {
-		id = NOE_allow_political_parties #collapse non-democratic parties
+		id = NOE_allow_political_parties #collapse non_democratic parties
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_manumission_laws
 		}
-		completion_reward = {
-		add_popularity = {
-    ideology = democratic_revitalisation
-    popularity = 0.2
-	}
-	add_popularity = {
-    ideology = democratic
-    popularity = 0.2
-	}
-	add_popularity = {
-    ideology = pro_yagoo_progressive
-    popularity = 0.2
-	}
-	add_popularity = {
-    ideology = mixed_ideology_democracy
-    popularity = 0.2
-	}
- }
 		x = 9
 		y = 7
 
@@ -413,24 +383,6 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_weighted_voting
 		}
-		completion_reward = {
-		add_popularity = {
-    ideology = democratic_revitalisation
-    popularity = 0.02
-}
-add_popularity = {
-    ideology = democratic
-    popularity = 0.02
-}
-add_popularity = {
-    ideology = pro_yagoo_progressive
-    popularity = 0.02
-}
-add_popularity = {
-    ideology = mixed_ideology_democracy
-    popularity = 0.02
-}
- }
 		x = 5
 		y = 7
 
@@ -478,9 +430,6 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_abolitionist_society
 		}
-		completion_reward = {
-		add_political_power = 50
-		}
 		x = 15
 		y = 7
 
@@ -491,11 +440,6 @@ add_popularity = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_abolitionist_society
-		}
-		completion_reward = {
-		add_ideas = {
-		economic_cause
-		 }
 		}
 		x = 16
 		y = 6
@@ -509,8 +453,8 @@ add_popularity = {
 			focus = NOE_work_with_erder_front
 		}
 		completion_reward = {
-		add_political_power = -50
-		stability = -0.1
+		add_political_power = _50
+		add_stability = _0.1
 		}
 		x = 20
 		y = 5
@@ -523,11 +467,6 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_stricter_nobility_punishments
 		}
-		completion_reward = {
-		add_ideas = {
-		no_town_serfs
-		 }
-		}
 		x = 19
 		y = 6
 
@@ -538,25 +477,6 @@ add_popularity = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_no_serfs_in_towns
-		}
-		completion_reward = {
-		add_political_power = 50
-		add_popularity = {
-		ideology = pro_yagoo_monarchy
-		popularity = -0.03
-						}
-	    add_popularity = {
-		ideology = pro_resistance_monarchy
-		popularity = -0.03
-						}
-		add_popularity = {
-		ideology = neutrality
-		popularity = -0.03
-						}
-		add_popularity = {
-		ideology = reactionary_nationalism
-		popularity = -0.03
-						}
 		}
 		x = 17
 		y = 7
@@ -570,9 +490,9 @@ add_popularity = {
 			focus = NOE_no_serfs_in_towns
 		}
 		completion_reward = {
-		stability = 0.1
+		add_stability = 0.1
 		country_event = {
-		id = noel.12
+		id = NOE_event.12
 		}
 	   }
 		x = 19
@@ -587,8 +507,8 @@ add_popularity = {
 			focus = NOE_stricter_nobility_punishments
 		}
 		completion_reward = {
-		stability = 0.05
-		add_idea = {
+		add_stability = 0.05
+		add_ideas = {
 		farmers_encouraged
 		}
 	   }
@@ -603,24 +523,6 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_encourage_free_farmers
 		}
-		completion_reward = {
-		add_popularity = {
-    ideology = democratic_revitalisation
-    popularity = 0.02
-}
-add_popularity = {
-    ideology = democratic
-    popularity = 0.02
-}
-add_popularity = {
-    ideology = pro_yagoo_progressive
-    popularity = 0.02
-}
-add_popularity = {
-    ideology = mixed_ideology_democracy
-    popularity = 0.02
-}
- }
 		x = 21
 		y = 7
 
@@ -631,12 +533,6 @@ add_popularity = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_encourage_free_farmers
-		}
-		completion_reward = {
-		add_political_power = -50
-		add_ideas = {
-		idea = NOE_lesspp
-		}
 		}
 		x = 23
 		y = 7
@@ -656,11 +552,6 @@ add_popularity = {
 			focus = NOE_develop_middle_class
 			focus = NOE_rent_laws
 		}
-		completion_reward = {
-		country_event = {
-		id = noel.28
-		 }
-		}
 		x = 13
 		y = 8
 
@@ -674,9 +565,6 @@ add_popularity = {
 		}
 		mutually_exclusive = {
 			focus = NOE_prepare_putsch
-		}
-		completion_reward = {
-		set_country_flag = serfdom_abolished
 		}
 		x = 8
 		y = 9
@@ -753,7 +641,7 @@ add_popularity = {
 			focus = NOE_amelioration_proposals
 		}
 		completion_reward = {
-		add_idea = darre_plan_1
+		add_ideas = darre_plan_1
 		}
 		x = 34
 		y = 4
@@ -786,7 +674,7 @@ add_popularity = {
 		}
 		swap_ideas = {
 		remove_idea = darre_plan_3quantity
-		add_idea = darre_plan_4quantity-mechanization
+		add_idea = darre_plan_4quantity_mechanization
 		 }
 	   }
 	  }
@@ -809,39 +697,39 @@ add_popularity = {
 		if = {
 		limit = {
 		has_completed_focus	= NOE_darre_plan
-		has_idea = darre_plan_4quantity-mechanization
+		has_idea = darre_plan_4quantity_mechanization
 		}
 		swap_ideas = {
-		remove_idea = darre_plan_4quantity-mechanization
-		add_idea = darre_plan_6quantity-mechanization-safetylaw
+		remove_idea = darre_plan_4quantity_mechanization
+		add_idea = darre_plan_6quantity_mechanization_safetylaw
 		 }
 		}
 		else_if = {
 		limit = {
 		has_completed_focus	= NOE_darre_plan
-		has_idea = darre_plan_5mechanization-quantity	  
+		has_idea = darre_plan_5mechanization_quantity	  
 		}
 		swap_ideas = {
-		remove_idea = darre_plan_5mechanization-quantity	
-		add_idea = darre_plan_7mechanization-quantity-safetylaw
+		remove_idea = darre_plan_5mechanization_quantity	
+		add_idea = darre_plan_7mechanization_quantity_safetylaw
 		 }
 	   }
 	   else_if = {
 	   limit = {
-	   has_idea = darre_plan_8quantity-mechanization-workweek
+	   has_idea = darre_plan_8quantity_mechanization_workweek
 	  }
 	  swap_ideas = {
-	  add_idea = darre_plan_10quantity-mechanization-workweek-safetylaw
-	  remove_idea = darre_plan_8quantity-mechanization-workweek
+	  add_idea = darre_plan_10quantity_mechanization_workweek_safetylaw
+	  remove_idea = darre_plan_8quantity_mechanization_workweek
 	  }
 	 }
 	   else_if = {
 	   limit = {
-	   has_idea = darre_plan_9mechanization-quantity-workweek
+	   has_idea = darre_plan_9mechanization_quantity_workweek
 	   }
 	   swap_ideas = {
-	   add_idea = darre_plan_10mechanization-quantity-workweek-safetylaw
-	   remove_idea = darre_plan_9mechanization-quantity-workweek
+	   add_idea = darre_plan_10mechanization_quantity_workweek_safetylaw
+	   remove_idea = darre_plan_9mechanization_quantity_workweek
 	}
    }
   }
@@ -877,7 +765,7 @@ add_popularity = {
 		}
 		swap_ideas = {
 		remove_idea = darre_plan_2mechanization
-		add_idea = darre_plan_5mechanization-quantity
+		add_idea = darre_plan_5mechanization_quantity
 		 }
 	   }
 	  }
@@ -899,39 +787,39 @@ add_popularity = {
 		if = {
 		limit = {
 		has_completed_focus	= NOE_darre_plan
-		has_idea = darre_plan_4quantity-mechanization
+		has_idea = darre_plan_4quantity_mechanization
 		}
 		swap_ideas = {
-		remove_idea = darre_plan_4quantity-mechanization
-		add_idea = darre_plan_11quantity-mechanization-workweek
+		remove_idea = darre_plan_4quantity_mechanization
+		add_idea = darre_plan_11quantity_mechanization_workweek
 		 }
 		}
 		else_if = {
 		limit = {
 		has_completed_focus	= NOE_darre_plan
-		has_idea = darre_plan_5mechanization-quantity	  
+		has_idea = darre_plan_5mechanization_quantity	  
 		}
 		swap_ideas = {
-		remove_idea = darre_plan_5mechanization-quantity	
-		add_idea = darre_plan_12mechanization-quantity-workweek
+		remove_idea = darre_plan_5mechanization_quantity	
+		add_idea = darre_plan_12mechanization_quantity_workweek
 		 }
 	   }
 	   else_if = {
 	   limit = {
-	   has_idea = darre_plan_6quantity-mechanization-safetylaw
+	   has_idea = darre_plan_6quantity_mechanization_safetylaw
 	  }
 	  swap_ideas = {
-	  add_idea = darre_plan_13quantity-mechanization-safetylaw-workweek
-	  remove_idea = darre_plan_6quantity-mechanization-safetylaw
+	  add_idea = darre_plan_13quantity_mechanization_safetylaw_workweek
+	  remove_idea = darre_plan_6quantity_mechanization_safetylaw
 	  }
 	 }
 	   else_if = {
 	   limit = {
-	   has_idea = darre_plan_7mechanization-quantity-safetylaw
+	   has_idea = darre_plan_7mechanization_quantity_safetylaw
 	   }
 	   swap_ideas = {
-	   add_idea = darre_plan_14mechanization-quantity-safetylaw-workweek
-	   remove_idea = darre_plan_7mechanization-quantity-safetylaw
+	   add_idea = darre_plan_14mechanization_quantity_safetylaw_workweek
+	   remove_idea = darre_plan_7mechanization_quantity_safetylaw
 	}
    }
   }
@@ -977,7 +865,7 @@ add_popularity = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_enforce_current_laws
+			focus = NOE_reform_current_laws
 		}
 		prerequisite = {
 			focus = NOE_danzig_conference
@@ -989,7 +877,7 @@ add_popularity = {
 			focus = NOE_mechanization_ethos
 		}
 		completion_reward = {
-		add_idea = prussian_chivalry_1
+		add_ideas = prussian_chivalry_1
 		}
 		x = 36
 		y = 6
@@ -1018,7 +906,7 @@ add_popularity = {
 		 }
 		 swap_ideas = {
 		 remove_idea = NOE_prussian_chivalry_3gyudon
-		 add_idea = NOE_prussian_chivalry_4gyudon-mace
+		 add_idea = NOE_prussian_chivalry_4gyudon_mace
 		}
 	   }
 	  }
@@ -1049,7 +937,7 @@ add_popularity = {
 		 }
 		 swap_ideas = {
 		 remove_idea = NOE_prussian_chivalry_2mace
-		 add_idea = NOE_prussian_chivalry_5mace-gyudon
+		 add_idea = NOE_prussian_chivalry_5mace_gyudon
 		}
 	   }
 	  }
@@ -1066,7 +954,7 @@ add_popularity = {
 		}
 		completion_reward = {
 		add_ideas = {
-		idea = modern_serfdom
+		imodern_serfdom
 		}
 	   }
 		x = 40
@@ -1219,7 +1107,7 @@ add_popularity = {
 			focus = NOE_establish_internal_kingdoms
 		}
 		prerequisite = {
-			focus = NOE_modern_serdom
+			focus = NOE_modern_serfdom
 		}
 		x = 43
 		y = 7
@@ -1303,8 +1191,8 @@ add_popularity = {
 			focus = NOE_deal_with_inflation
 		}
 		completion_reward = {
-		remove_idea = {
-		idea = great_depression_noel_3
+		remove_ideas = {
+		great_depression_noel_3
      	 }
 		}
 		x = 47
@@ -1548,7 +1436,7 @@ add_popularity = {
 			focus = NOE_clear_marshes
 		}
 		prerequisite = {
-			focus = NOE_guarantee_independence
+			focus = NOE_flare_military_mission
 		}
 		prerequisite = {
 			focus = NOE_tee_tee_flare
@@ -2187,19 +2075,19 @@ add_popularity = {
 		completion_reward = {
 		if = {
 		limit = {
-		has_idea = NOE_prussian_chivalry_4gyudon-mace
+		has_idea = NOE_prussian_chivalry_4gyudon_mace
 		}
 		swap_ideas = {
-		remove_idea = NOE_prussian_chivalry_4gyudon-mace
+		remove_idea = NOE_prussian_chivalry_4gyudon_mace
 		add_idea = NOE_prussian_chivalry_6
 		   }
 		  }
 		else_if = {
 		limit = {
-		has_idea = NOE_prussian_chivalry_5mace-gyudon
+		has_idea = NOE_prussian_chivalry_5mace_gyudon
 		 }
 		swap_ideas = {
-		remove_idea = NOE_prussian_chivalry_5mace-gyudon
+		remove_idea = NOE_prussian_chivalry_5mace_gyudon
 		add_idea = NOE_prussian_chivalry_6
 		}
 	   }
@@ -2215,8 +2103,11 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_quality_over_quantity
 		}
-		add_timed_idea = {
-		add_idea = education_reform
+		completion_reward = {
+			add_timed_idea = {
+			idea = education_reform
+			days = 180
+			}
 		}
 		x = 33
 		y = 6
@@ -2311,7 +2202,7 @@ add_popularity = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_protestant_vs_catholic
+			focus = NOE_new_way_forward
 		}
 		prerequisite = {
 			focus = NOE_polish_german_harmony
@@ -2574,7 +2465,7 @@ add_popularity = {
 
 	}
 	focus = {
-		id = NOE_neofeudal_economy #make idea fro feudal economy gut-er
+		id = NOE_neofeudal_economy #make idea fro feudal economy gut_er
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -3137,7 +3028,7 @@ add_popularity = {
 		prerequisite = {
 			focus = NOE_ally_pekora
 			focus = NOE_ally_suisei
-			focus = NOE_form_european_union
+			focus = NOE_form_hololive_union
 		}
 		mutually_exclusive = {
 			focus = NOE_resistance_values
@@ -3151,7 +3042,7 @@ add_popularity = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_form_european_union
+			focus = NOE_form_hololive_union
 			focus = NOE_ally_pekora
 			focus = NOE_ally_suisei
 		}
