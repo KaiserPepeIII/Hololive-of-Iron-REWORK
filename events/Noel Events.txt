@@ -1026,6 +1026,7 @@ country_event = {
 	option = {
 		name = noel.29.a
 		create_faction = "Empire Of Noel"
+		add_to_faction = FLA
 	   }
 }
 #Flare says no to make faction (pretty sus)
@@ -1042,4 +1043,43 @@ country_event = {
 		name = noel.30.a
 		add_political_power = -25
 	   }
+}
+#flare says no to puppet
+country_event = {
+    id = noel.31
+	title = noel.31.t
+	desc = noel.31.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.31.a
+		
+	  }
+	 option = {
+		name = noel.31.b
+		trigger = {
+			NOT = {
+			has_completed_focus = NOE_fight_against_serfdom
+			}
+		declare_war_on = FLA
+		}
+	   }
+}
+#Flare says yes to puppet
+country_event = {
+    id = noel.32
+	title = noel.32.t
+	desc = noel.32.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.32.a
+		puppet = FLA
+	  }
 }
