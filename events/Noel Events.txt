@@ -494,6 +494,11 @@ country_event = {
 			has_country_flag = NOE_serfs_gathered
 			   }
 			  }
+			  
+			  mean_time_to_happen = {
+				days = 1
+			}
+			  
 	option = {
 		name = noel.12.a
 		NOL = {
@@ -534,6 +539,11 @@ country_event = {
 			has_country_flag = NOE_disloyal_officers_purged
 			 }
 			}
+			
+			mean_time_to_happen = {
+				days = 1
+			}
+			
 	option = {
 		name = noel.13.a 
 		NOL = {
@@ -557,6 +567,11 @@ country_event = {
 			has_country_flag = NOE_opposition_raided
 			 }
 			}
+			
+			mean_time_to_happen = {
+				days = 1
+			}
+			
 		option = {
 		name = noel.14.a 
 		NOL = {
@@ -576,6 +591,11 @@ country_event = {
 		has_country_flag = NOE_putsch_prepared
 		has_country_flag = act_quickly
 		}
+		
+		mean_time_to_happen = {
+				days = 1
+			}
+		
 		option = {
 		name = noel.15.a
 		88 = {
@@ -728,23 +748,23 @@ country_event = {
 		set_country_flag = NOE_civilwar_start
 		load_oob = NOE_CivilWar_SerfsGathered
 		NOL = {
-    transfer_state = 88
-	add_state_core = 88 
-    add_state_core = 762
-	transfer_state = 762
-	add_state_core = 67
-	transfer_state = 67
-	add_state_core = 66
-	transfer_state = 66
-	add_state_core = 90
-	transfer_state = 90
-	declare_war_on = {
-    target = NOE
-    type = annex_everything
-   }
-   load_oob = NOE_CivilWar_RevoltArmy
-  }
+			transfer_state = 88
+			add_state_core = 88 
+			add_state_core = 762
+			transfer_state = 762
+			add_state_core = 67
+			transfer_state = 67
+			add_state_core = 66
+			transfer_state = 66
+			add_state_core = 90
+			transfer_state = 90
+				declare_war_on = {
+				target = NOE
+				type = annex_everything
+		}
+		load_oob = NOE_CivilWar_RevoltArmy
 	}
+   }
 }		
 #civil war, Noelkorp armed
 country_event = {
@@ -771,24 +791,24 @@ country_event = {
 		set_country_flag = NOE_civilwar_start
 		load_oob = NOE_CivilWar_NoelkorpsArmed
 		NOL = {
-    transfer_state = 88
-	add_state_core = 88 
-    add_state_core = 762
-	transfer_state = 762
-	add_state_core = 67
-	transfer_state = 67
-	add_state_core = 66
-	transfer_state = 66
-	add_state_core = 90
-	transfer_state = 90
-	declare_war_on = {
-    target = NOE
-    type = annex_everything
-   }
+			transfer_state = 88
+			add_state_core = 88 
+			add_state_core = 762
+			transfer_state = 762
+			add_state_core = 67
+			transfer_state = 67
+			add_state_core = 66
+			transfer_state = 66
+			add_state_core = 90
+			transfer_state = 90
+				declare_war_on = {
+				target = NOE
+			type = annex_everything
+			}
    load_oob = NOE_CivilWar_RevoltArmy
   }
-	}
-			 }
+ }
+}
 #civil war, citezens armed, serfs gathered, and noelkorp armed
 country_event = {
     id = noel.23
@@ -816,24 +836,24 @@ country_event = {
 		load_oob = NOE_CivilWar_SerfsGathered
 		load_oob = NOE_CivilWar_CitezensArmed
 		NOL = {
-    transfer_state = 88
-	add_state_core = 88 
-    add_state_core = 762
-	transfer_state = 762
-	add_state_core = 67
-	transfer_state = 67
-	add_state_core = 66
-	transfer_state = 66
-	add_state_core = 90
-	transfer_state = 90
-	declare_war_on = {
-    target = NOE
-    type = annex_everything
-   }
+			transfer_state = 88
+			add_state_core = 88 
+			add_state_core = 762
+			transfer_state = 762
+			add_state_core = 67
+			transfer_state = 67
+			add_state_core = 66
+			transfer_state = 66
+			add_state_core = 90
+			transfer_state = 90
+				declare_war_on = {
+					target = NOE
+				type = annex_everything
+				}
    load_oob = NOE_CivilWar_RevoltArmy
   }
-	}
-			 }
+ }
+}
 #Start the revolution
 country_event = {
     id = noel.24
@@ -861,23 +881,23 @@ country_event = {
 		load_oob = NOE_CivilWar_SerfsGathered
 		load_oob = NOE_CivilWar_CitezensArmed
 		NOL = {
-    transfer_state = 88
-	add_state_core = 88 
-    add_state_core = 762
-	transfer_state = 762
-	add_state_core = 67
-	transfer_state = 67
-	add_state_core = 66
-	transfer_state = 66
-	declare_war_on = {
-    target = NOE
-    type = annex_everything
-   }
+			transfer_state = 88
+			add_state_core = 88 
+			add_state_core = 762
+			transfer_state = 762
+			add_state_core = 67
+			transfer_state = 67
+			add_state_core = 66
+			transfer_state = 66
+				declare_war_on = {
+				target = NOE
+				type = annex_everything
+				}
    load_oob = NOE_CivilWar_RevoltArmy_weaker
   }
 		
-	}
-			 }
+ }
+}
 #Rebel Generals Trial
 #DONT FORGET TO TRANSFER GENERALS TO NOL TAG FROM NOE AT BEGGINING OF WAR FUTURE ME#
 #!!!!
@@ -934,15 +954,15 @@ country_event = {
 		set_country_flag = NOE_civilwar_over
 		hidden_effect = {
 		NOL = {
-		remove_state_core = 762
-		remove_state_core = 67
-		remove_state_core = 66
-		remove_state_core = 88
-		remove_state_core = 90
-		}
-	   }
+			remove_state_core = 762
+			remove_state_core = 67
+			remove_state_core = 66
+			remove_state_core = 88
+			remove_state_core = 90
+			}
+	    }
 	}
-			 }
+}
 ##################################
 ###END OF NOEL CIVIL WAR EVENTS###
 ##################################
@@ -954,6 +974,7 @@ country_event = {
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
+	is_triggered_only = yes
 	
 	option = {
 	name = noel.27.a
@@ -973,6 +994,7 @@ country_event = {
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
+	is_triggered_only = yes
 	
 	option = {
 	trigger = {
@@ -990,4 +1012,34 @@ country_event = {
 	original_tag = NOE
 	 }
 	}
+}
+#flare accepts to make faction
+country_event = {
+    id = noel.29
+	title = noel.29.t
+	desc = noel.29.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.29.a
+		create_faction = "your mom Gaming"
+	   }
+}
+#Flare says no to make faction (pretty sus)
+country_event = {
+    id = noel.30
+	title = noel.30.t
+	desc = noel.30.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.30.a
+		add_political_power = -25
+	   }
 }
