@@ -773,27 +773,19 @@ scripted_gui = {
 
 	effects = {
 		join_lhs_button_click = {
-			set_global_flag = lhs_join_vote
+			set_global_flag = lhs_voting_join
+			set_global_flag = lhs_voting
+			set_global_flag = lhs_first_round_vote
+			lhs_normal_voting_country_set = yes
+			lhs_security_council_country_set = yes
+			lhs_instigate_set = yes
 			ROOT = {
 				add_to_array = {
 					array = global.lhs_entry_list
 					value = THIS.id
 				}
 				add_political_power = -100
-				set_variable = {
-					var = global.lhs_gui_get_name_function
-					value = THIS.id
-				}
 			}
-			every_country = {
-					limit = {
-						is_in_array = {
-							array = global.lhs_head_flag
-							value = THIS.id
-						}
-					}				
-					country_event = lhs.1
-				}
 		}
 		leave_lhs_button_click = {
 			ROOT = {
@@ -830,6 +822,8 @@ scripted_gui = {
 				has_idea = lhs_member
 				NOT = {
 					has_idea = lhs_head
+					has_idea = lhs_economic_development_gui
+					has_idea = lhs_defensive_union_gui
 					has_idea = lhs_security_council_one
 					has_idea = lhs_security_council_two
 					has_idea = lhs_security_council_three
@@ -1054,6 +1048,11 @@ scripted_gui = {
 	effects = {
 		lhs_request_aid_click = {
 			set_global_flag = lhs_aid_request_deciding
+			set_global_flag = lhs_voting
+			set_global_flag = lhs_first_round_vote
+			lhs_normal_voting_country_set = yes
+			lhs_security_council_country_set = yes
+			lhs_instigate_set = yes
 			ROOT = {
 				add_political_power = -100
 				add_to_array = {
@@ -1062,23 +1061,16 @@ scripted_gui = {
 				}
 				add_ideas = lhs_aid_decided
 			}
-			every_country = {
-				limit = {
-					NOT = {
-						has_idea = lhs_aid_decided
-					}
-					is_in_array = {
-						array = global.lhs_member_flag
-						value = THIS.id
-					}
-				}
-				country_event = lhs.9
-			}
 		}
 		lhs_request_intervention_click = {
 			set_global_flag = lhs_intervention_request_deciding
+			set_global_flag = lhs_voting
+			set_global_flag = lhs_first_round_vote
+			lhs_normal_voting_country_set = yes
+			lhs_security_council_country_set = yes
+			lhs_instigate_set = yes
+			
 			ROOT = {
-				add_ideas = lhs_intervention_decided
 				add_political_power = -100
 				add_to_array = {
 					array = global.lhs_intervention_receive_list
@@ -1091,22 +1083,6 @@ scripted_gui = {
 					has_war_with = global.request_support_receiver
 				}
 				set_variable = { global.this_nation_at_war = THIS.id }
-			}
-			every_country = {
-				limit = {
-					is_in_array = {
-						array = global.lhs_member_flag
-						value = THIS.id
-					}
-					NOT = {
-					is_puppet = yes
-					is_subject = yes
-					has_civil_war = yes
-					has_war_with = global.this_nation_at_war
-					has_idea = lhs_intervention_decided
-					}
-				}
-				country_event = lhs.10
 			}
 		}
 	}

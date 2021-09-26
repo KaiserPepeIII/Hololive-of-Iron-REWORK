@@ -1,1023 +1,7 @@
 add_namespace = lhs
 
-#nation requests to join
-country_event = {
-	id = lhs.1
-	title = lhs.1.t
-	desc = lhs.1.d
-	picture = GFX_report_event_mio
-	
-	timeout_days = 20
-		
-	is_triggered_only = yes
-	
-	#yes - yagoo only
-	option = {
-		name = lhs.1.a
-		every_country = {	
-			limit = {
-				is_in_array = {
-					array = global.lhs_entry_list
-					value = THIS.id
-			
-						}
-					}
-					add_ideas = {lhs_member lhs_customs_union_gui}
-					remove_ideas = { neutral_member anti_member resistance_member }
-					add_to_array = {
-						array = global.lhs_customs_union_flag
-						value = THIS.id
-					}
-					add_to_array = {
-						array = global.lhs_member_flag
-						value = THIS.id
-					}
-					news_event = lhs.2
-				}
-		}
-	#no
-	option = {
-		name = lhs.1.b
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = global.lhs_entry_list
-					value = THIS.id
-				}
-			}
-			country_event = lhs.3
-		}
-			clear_array = global.lhs_entry_list		
-			clear_variable = global.lhs_gui_get_name_function
-	}
-	#call vote
-	option = {
-		name = lhs.1.c
-		set_global_flag = lhs_voting
-		every_country = {
-			limit = {
-				OR = {
-				has_idea = lhs_member
-				has_idea = lhs_head
-				}
-			}
-			country_event = lhs.4
-		}
-		ai_chance = {
-			factor = 15
-		}
-	}
-}
-#when nation accepted
-news_event = {
-	id = lhs.2
-	title = lhs.2.t
-	desc = lhs.2.d
-	picture = GFX_report_event_mio
+#Original Events 1-7 made obsolete by gui
 
-	is_triggered_only = yes
-	major = yes
-	
-	immediate = {
-		hidden_effect = {
-		clear_array = global.lhs_entry_list
-		}
-	}
-	
-	option = {
-		name = lhs.2.a
-		clear_variable = global.lhs_gui_get_name_function
-	}
-
-}
-#when nation rejected
-country_event = {
-	id = lhs.3
-	title = lhs.3.t
-	desc = lhs.3.d
-	picture = GFX_report_event_mio
-
-	is_triggered_only = yes
-	timeout_days = 20
-	
-	option = {
-		name = lhs.3.a
-		clear_variable = global.lhs_gui_get_name_function
-
-	}
-
-}
-#country voting lhs entry
-country_event = {
-	id = lhs.4
-	title = lhs.4.t
-	desc = lhs.4.d
-	picture = GFX_report_event_mio
-
-	is_triggered_only = yes
-	timeout_days = 20
-
-	#regular yes
-	option = {
-		name = lhs.4.a
-		trigger = {
-			NOT = {
-				has_idea = lhs_head
-				lhs_security_council_trigger = yes
-			}
-		}
-		ROOT = {
-		add_ideas = lhs_voted
-		add_to_array = {global.lhs_voted_yes = THIS.id}
-		}
-		ai_chance = {
-			base = 10
-			
-			modifier = {
-			factor = 100 
-				OR = {
-					is_debug = yes
-					all_of = {
-							array = global.lhs_entry_list
-							value = THIS.id
-							OR = {
-								is_puppet_of = YAG
-								is_in_faction_with = YAG
-								AND = {
-									OR = {
-										has_government = democratic
-										has_government = pro_yagoo_progressive
-									}
-									has_war = no
-									has_elections = yes
-									has_stability > 0.75
-									OR = {
-										AND = {
-											NOT = {
-											has_global_flag = lhs_idealism
-											}
-											has_added_tension_amount < 10
-										}
-										AND = {
-											has_global_flag = lhs_idealism
-											has_army_manpower = {
-												size < 150000
-											}
-											threat < 25
-										}
-										AND = {
-											has_global_flag = lhs_idealism
-											has_army_manpower = {
-												size < 300000
-											}
-											threat < 35
-											threat > 25
-										}
-										AND = {
-											has_global_flag = lhs_idealism
-											has_army_manpower = {
-												size < 500000
-											}
-											threat < 50
-											threat > 35
-										}
-										AND = {
-											has_global_flag = lhs_idealism
-											has_army_manpower = {
-												size < 1000000
-											}
-											threat < 100
-											threat > 50
-										}
-									}
-									OR = {
-										AND = {
-											has_global_flag = lhs_idealism
-											has_war_support < 0.5
-										}
-										NOT = {
-											has_global_flag = lhs_idealism
-											has_war_support < 0.75							
-										}
-									}
-								}
-							}
-						}
-					}
-			}
-			modifier = {
-			factor = 25
-			all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 75
-						}
-						has_government = pro_yagoo_kleptocracy
-						AND = {
-							has_stability > 0.6
-							has_war_support < 0.5
-						}
-						AND = {
-							num_of_controlled_states < 5
-							OR = {
-								has_army_manpower = {
-									size < 100000
-								}
-								has_government = democratic
-								has_government = pro_yagoo_progressive
-								has_government = pro_yagoo_monarchy
-							}
-						}
-					}
-				}
-			}
-			modifier = {
-			factor = 20
-			all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 50
-						}
-						has_government = democratic
-						has_government = pro_yagoo_progressive
-						has_government = pro_yagoo_monarchy
-					}
-				}
-			}
-			modifier = {
-				factor = 5
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 25
-						}
-						has_elections = yes
-						has_added_tension_amount < 5
-					}
-				}
-			}
-			modifier = {
-			factor = 2.5
-				has_global_flag = lhs_idealism
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-					OR = {
-						has_added_tension_amount < 10
-					}
-				}
-			}
-		}
-	}
-	#regular no
-	option = {
-		name = lhs.4.b
-		trigger = {
-			NOT = {
-				has_idea = lhs_head
-				lhs_security_council_trigger = yes
-			}
-		}
-		add_ideas = lhs_voted
-		add_to_array = {global.lhs_voted_no = THIS.id}
-		ai_chance = {
-			base = 10
-			
-			modifier = {
-			factor = 100
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value < -50
-						}
-						has_government = fascism
-						has_government = left_wing_revolutionary
-						has_government = democratic_revitalisation
-						has_government = reactionary_monarchy
-						has_border_war = yes
-						has_added_tension_amount > 20
-						lhs_has_war_with_negative = yes
-						strength_ratio = {
-							tag = YAG
-							ratio > 5
-						}
-						is_staging_coup = yes
-					}
-				}
-			}
-			modifier = {
-			factor = 20
-			all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value < -25
-						}
-						has_government = communism
-						has_government = pro_resistance_nationalism
-						has_government = pro_resistance_monarchy
-						has_stability < 0.1
-						has_war_support > 0.8
-						AND = {
-							NOT = {
-								has_global_flag = lhs_idealism
-							}
-							has_army_manpower = {
-								size > 1000000
-							}
-							threat <50
-						}
-						AND = {
-							NOT = {
-								has_global_flag = lhs_idealism
-							}
-							has_army_manpower = {
-								size > 500000
-							}
-							threat <25
-						}
-						strength_ratio = {
-							tag = YAG
-							ratio > 2.5
-						}
-						has_added_tension_amount > 15
-					}
-				}				
-			}
-			modifier = {
-			factor = 5
-			all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-					has_government = pro_resistance_kleptocracy
-					has_elections = no
-					is_puppet = yes
-					is_subject = yes
-					num_subjects > 3
-					has_added_tension_amount > 10
-					}
-				}				
-			}
-			modifier = {
-			factor = 2.5
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-					OR = {
-					has_offensive_war = yes
-					num_subjects > 0
-					has_added_tension_amount > 5
-					}
-				}		
-			}
-		}
-	}
-	#security council yes
-	option = {
-		name = lhs.4.c
-		trigger = {	
-			lhs_security_council_trigger = yes
-		}
-		lhs_security_council_voting_yes = yes
-		ai_chance = {
-			base = 10
-			
-			modifier = {
-			factor = 100 
-			OR = {
-				is_debug = yes
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-						OR = {
-							is_puppet_of = YAG
-							is_in_faction_with = YAG
-							AND = {
-								OR = {
-									has_government = democratic
-									has_government = pro_yagoo_progressive
-								}
-								has_war = no
-								has_elections = yes
-								has_stability > 0.75
-								OR = {
-									AND = {
-										NOT = {
-										has_global_flag = lhs_idealism
-										}
-										has_added_tension_amount < 10
-									}
-									AND = {
-										has_global_flag = lhs_idealism
-										has_army_manpower = {
-											size < 150000
-										}
-										threat < 25
-									}
-									AND = {
-										has_global_flag = lhs_idealism
-										has_army_manpower = {
-											size < 300000
-										}
-										threat < 35
-										threat > 25
-									}
-									AND = {
-										has_global_flag = lhs_idealism
-										has_army_manpower = {
-											size < 500000
-										}
-										threat < 50
-										threat > 35
-									}
-									AND = {
-										has_global_flag = lhs_idealism
-										has_army_manpower = {
-											size < 1000000
-										}
-										threat < 100
-										threat > 50
-									}
-								}
-								OR = {
-									AND = {
-										has_global_flag = lhs_idealism
-										has_war_support < 0.5
-									}
-									NOT = {
-										has_global_flag = lhs_idealism
-										has_war_support < 0.75							
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			modifier = {
-			factor = 25
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 75
-						}
-						has_government = pro_yagoo_kleptocracy
-						AND = {
-							has_stability > 0.6
-							has_war_support < 0.5
-						}
-						AND = {
-							num_of_controlled_states < 5
-							OR = {
-								has_army_manpower = {
-									size < 100000
-								}
-								has_government = democratic
-								has_government = pro_yagoo_progressive
-								has_government = pro_yagoo_monarchy
-							}
-						}
-					}
-				}
-			}
-			modifier = {
-			factor = 20
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 50
-						}
-						has_government = democratic
-						has_government = pro_yagoo_progressive
-						has_government = pro_yagoo_monarchy
-					}
-				}
-			}
-			modifier = {
-				factor = 5
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 25
-						}
-						has_elections = yes
-						has_added_tension_amount < 5
-					}
-				}
-			}
-			modifier = {
-			factor = 2.5
-				has_global_flag = lhs_idealism
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id
-					OR = {
-						has_added_tension_amount < 10
-					}
-				}
-			}
-		}
-	}
-	#security council no
-	option = {
-		name = lhs.4.e
-		trigger = {	
-			lhs_security_council_trigger = yes
-		}
-		lhs_security_council_voting_no = yes
-		ai_chance = {
-			base = 10
-			
-			modifier = {
-			factor = 100
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value < -50
-						}
-						has_government = fascism
-						has_government = left_wing_revolutionary
-						has_government = democratic_revitalisation
-						has_government = reactionary_monarchy
-						has_border_war = yes
-						has_added_tension_amount > 20
-						lhs_has_war_with_negative = yes
-						strength_ratio = {
-							tag = YAG
-							ratio > 5
-						}
-						is_staging_coup = yes
-					}
-				}
-			}
-			modifier = {
-			factor = 20
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value < -25
-						}
-						has_government = communism
-						has_government = pro_resistance_nationalism
-						has_government = pro_resistance_monarchy
-						has_stability < 0.1
-						has_war_support > 0.8
-						AND = {
-							NOT = {
-								has_global_flag = lhs_idealism
-							}
-							has_army_manpower = {
-								size > 1000000
-							}
-							threat <50
-						}
-						AND = {
-							NOT = {
-								has_global_flag = lhs_idealism
-							}
-							has_army_manpower = {
-								size > 500000
-							}
-							threat <25
-						}
-						strength_ratio = {
-							tag = YAG
-							ratio > 2.5
-						}
-						has_added_tension_amount > 15
-					}
-				}				
-			}
-			modifier = {
-			factor = 5
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-					has_government = pro_resistance_kleptocracy
-					has_elections = no
-					is_puppet = yes
-					is_subject = yes
-					num_subjects > 3
-					has_added_tension_amount > 10
-					}
-				}				
-			}
-			modifier = {
-			factor = 2.5
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id	
-					OR = {
-					has_offensive_war = yes
-					num_subjects > 0
-					has_added_tension_amount > 5
-					}
-				}		
-			}
-		}
-	}
-	#lhs head yes 
-	option = {
-		name = lhs.4.f 
-		trigger = {
-			has_idea = lhs_head
-		}
-		add_to_array = {global.lhs_voted_yes = THIS.id}
-		set_global_flag = lhs_head_voted_yes
-		add_ideas = lhs_voted
-		ai_chance = {
-			base = 10
-			
-			modifier = {
-			factor = 100 
-				OR = {
-				is_debug = yes
-						all_of = {
-						array = global.lhs_entry_list
-						value = THIS.id
-						OR = {
-							is_puppet_of = YAG
-							is_in_faction_with = YAG
-							AND = {
-								OR = {
-									has_government = democratic
-									has_government = pro_yagoo_progressive
-								}
-								has_war = no
-								has_elections = yes
-								has_stability > 0.75
-								OR = {
-									AND = {
-										NOT = {
-										has_global_flag = lhs_idealism
-										}
-										has_added_tension_amount < 10
-									}
-									AND = {
-										has_global_flag = lhs_idealism
-										has_army_manpower = {
-											size < 150000
-										}
-										threat < 25
-									}
-									AND = {
-										has_global_flag = lhs_idealism
-										has_army_manpower = {
-											size < 300000
-										}
-										threat < 35
-										threat > 25
-									}
-									AND = {
-										has_global_flag = lhs_idealism
-										has_army_manpower = {
-											size < 500000
-										}
-										threat < 50
-										threat > 35
-									}
-									AND = {
-										has_global_flag = lhs_idealism
-										has_army_manpower = {
-											size < 1000000
-										}
-										threat < 100
-										threat > 50
-									}
-								}
-								OR = {
-									AND = {
-										has_global_flag = lhs_idealism
-										has_war_support < 0.5
-									}
-									NOT = {
-										has_global_flag = lhs_idealism
-										has_war_support < 0.75							
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			modifier = {
-			factor = 25
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 75
-						}
-						has_government = pro_yagoo_kleptocracy
-						AND = {
-							has_stability > 0.6
-							has_war_support < 0.5
-						}
-						AND = {
-							num_of_controlled_states < 5
-							OR = {
-								has_army_manpower = {
-									size < 100000
-								}
-								has_government = democratic
-								has_government = pro_yagoo_progressive
-								has_government = pro_yagoo_monarchy
-							}
-						}
-					}
-				}
-			}
-			modifier = {
-			factor = 20
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 50
-						}
-						has_government = democratic
-						has_government = pro_yagoo_progressive
-						has_government = pro_yagoo_monarchy
-					}
-				}
-			}
-			modifier = {
-				factor = 5
-					all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id		
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value > 25
-						}
-						has_elections = yes
-						has_added_tension_amount < 5
-					}
-				}
-			}
-			modifier = {
-			factor = 2.5
-				has_global_flag = lhs_idealism
-				all_of = {
-					array = global.lhs_entry_list
-					value = THIS.id	
-					OR = {
-						has_added_tension_amount < 10
-					}
-				}
-			}
-		}
-	}
-	#lhs head no
-	option = {
-		name = lhs.4.g
-		trigger = {
-			has_idea = lhs_head
-		}
-		add_to_array = {global.lhs_voted_no = THIS.id}
-		set_global_flag = lhs_head_voted_no
-		add_ideas = lhs_voted
-		ai_chance = {
-			base = 10
-			
-			modifier = {
-			factor = 100
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					THIS = {
-						OR = {
-							has_opinion = {
-								target = ROOT
-								value < -50
-							}
-							has_government = fascism
-							has_government = left_wing_revolutionary
-							has_government = democratic_revitalisation
-							has_government = reactionary_monarchy
-							has_border_war = yes
-							has_added_tension_amount > 20
-							lhs_has_war_with_negative = yes
-							strength_ratio = {
-								tag = YAG
-								ratio > 5
-							}
-							is_staging_coup = yes
-						}
-					}
-				}
-			}
-			modifier = {
-			factor = 20
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-						has_opinion = {
-							target = ROOT
-							value < -25
-						}
-						has_government = communism
-						has_government = pro_resistance_nationalism
-						has_government = pro_resistance_monarchy
-						has_stability < 0.1
-						has_war_support > 0.8
-						AND = {
-							NOT = {
-								has_global_flag = lhs_idealism
-							}
-							has_army_manpower = {
-								size > 1000000
-							}
-							threat <50
-						}
-						AND = {
-							NOT = {
-								has_global_flag = lhs_idealism
-							}
-							has_army_manpower = {
-								size > 500000
-							}
-							threat <25
-						}
-						strength_ratio = {
-							tag = YAG
-							ratio > 2.5
-						}
-						has_added_tension_amount > 15
-					}
-				}				
-			}
-			modifier = {
-			factor = 5
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-					has_government = pro_resistance_kleptocracy
-					has_elections = no
-					is_puppet = yes
-					is_subject = yes
-					num_subjects > 3
-					has_added_tension_amount > 10
-					}
-				}				
-			}
-			modifier = {
-			factor = 2.5
-				all_of = {
-				array = global.lhs_entry_list
-				value = THIS.id
-					OR = {
-					has_offensive_war = yes
-					num_subjects > 0
-					has_added_tension_amount > 5
-					}
-				}		
-			}
-		}
-	}
-
-}
-#LHS vote do the counting
-country_event = {
-	id = lhs.5
-	
-	hidden = yes
-	fire_only_once = no
-	mean_time_to_happen = {
-		days = 1
-	}
-	trigger = {
-		NOT = {
-			has_global_flag = lhs_is_counting
-		}
-		all_of = {
-			array = global.lhs_member_flag
-			value = THIS.id
-				PREV = {
-				has_idea = lhs_voted
-				}
-			}
-	}
-	immediate = {
-		hidden_effect = {
-		set_global_flag = lhs_is_counting
-		lhs_calculating = yes
-		lhs_calculating_with_specials = yes
-		}
-	}
-}
-#LHS Vote Passes - lhs entry
-news_event = {
-	id = lhs.6
-	title = lhs.6.t
-	desc = lhs.6.d
-	picture = GFX_report_event_mio
-
-	major = yes
-	fire_only_once = no
-	mean_time_to_happen = {
-	days = 1
-	}
-	trigger = {
-		has_global_flag = lhs_is_counting
-		lhs_calculating_trigger_yes = yes
-		has_global_flag = lhs_join_vote
-	}
-	immediate = {
-		hidden_effect = {
-		clr_global_flag = lhs_join_vote
-		every_country = {	
-			limit = {
-				is_in_array = {
-				array = global.lhs_entry_list
-				value = THIS.id
-				}
-			}
-			remove_ideas = { neutral_member anti_member resistance_member }
-			add_ideas = {lhs_member lhs_customs_union_gui}
-			add_to_array = {
-				array = global.lhs_customs_union_flag
-				value = THIS.id
-			}
-			add_to_array = {
-				array = global.lhs_member_flag
-				value = THIS.id
-			}
-		}
-		lhs_clear_all_voting = yes
-		}
-	}
-	option = {
-		name = lhs.6.a
-	}
-
-}
-#LHS vote fails - lhs_entry
-news_event = {
-	id = lhs.7
-	title = lhs.7.t
-	desc = lhs.7.d
-	picture = GFX_report_event_mio
-
-	major = yes
-	fire_only_once = no
-	mean_time_to_happen = {
-	days = 1
-	}
-	trigger = {
-		has_global_flag = lhs_is_counting
-		lhs_calculating_trigger_no = no
-		has_global_flag = lhs_join_vote
-	}
-	immediate = {
-		hidden_effect = {
-		clr_global_flag = lhs_join_vote
-		lhs_clear_all_voting = yes
-		}
-	}
-	option = {
-		name = lhs.7.a
-	}
-
-}
 #are you sure you want to leave
 country_event = {
 	id = lhs.8
@@ -1027,15 +11,10 @@ country_event = {
 
 	is_triggered_only = yes
 	
-	immediate = {
-		election_counting_effect = yes
-	}
-
 	#yes
 	option = {
 		name = lhs.8.a
 		ROOT = {
-			add_stability = ROOT.election_yagoo
 			remove_ideas = lhs_member
 			add_ideas = neutral_member
 			}
@@ -1047,12 +26,11 @@ country_event = {
 			array = global.lhs_member_flag
 			value = ROOT.id
 		}
-		clear_election_variables = yes
 	}
 	#no 
 	option = {
 		name = lhs.8.b
-		clear_election_variables = yes
+		add_political_power = 100
 		
 	}
 
@@ -1069,22 +47,21 @@ country_event = {
 	#we will send aid
 	option = {
 		name = lhs.9.a
+		trigger = {
+			has_equipment{
+				infantry_equipment > 100
+			}
+		}
+		add_to_variable = {
+			var = global.lhs_aid_pile 
+			value = 100
+		}
 		ROOT = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = -100
-				producer = ROOT
 			}
 			add_ideas = lhs_aid_decided
-		}
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = global.lhs_aid_list
-					value = THIS.id
-				}
-			}
-			country_event = lhs.11
 		}
 	}
 	#we cant afford
@@ -1093,43 +70,26 @@ country_event = {
 		ROOT = {
 			add_ideas = lhs_aid_decided
 		}
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = global.lhs_aid_list
-					value = THIS.id
-				}				
-			}
-			country_event = lhs.12
-		}
 	}
 	#we will send extra
 	option = {
 		name = lhs.9.c
 		trigger = {
-			ROOT = {
-				has_equipment = {
-					infantry_equipment > 2000
-				}
+			has_equipment{
+				infantry_equipment > 500
 			}
+		}
+		add_to_variable = {
+			var = global.lhs_aid_pile 
+			value = 500
 		}
 		ROOT = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = -500
-				producer = ROOT
 			}
 			add_ideas = lhs_aid_decided
 		}
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = global.lhs_aid_list
-					value = THIS.id
-				}				
-			}
-			country_event = lhs.13
-		}		
 	}
 }
 #request intervention
@@ -1155,74 +115,10 @@ country_event = {
 	#we refuse 
 	option = {
 		name = lhs.10.b
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = global.lhs_intervention_receive_list
-					value = THIS.id
-				}
-			}
+		ROOT = {
 			add_ideas = lhs_intervention_decided
-			country_event = lhs.15
 		}
 	}
-}
-#they sent aid
-country_event = {
-	id = lhs.11
-	title = lhs.11.t
-	desc = lhs.11.d
-	picture = GFX_report_event_mio
-
-	is_triggered_only = yes
-	
-	#we accept it
-	option = {
-		name = lhs.11.a
-		ROOT = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 100
-				producer = ROOT
-			}
-		}
-	}
-
-}
-#they refused aid
-country_event = {
-	id = lhs.12
-	title = lhs.12.t
-	desc = lhs.12.d
-	picture = GFX_report_event_mio
-
-	is_triggered_only = yes
-
-	option = {
-		name = lhs.12.a
-	}
-
-}
-#send extra aid
-country_event = {
-	id = lhs.13
-	title = lhs.13.t
-	desc = lhs.13.d
-	picture = GFX_report_event_mio
-
-	is_triggered_only = yes
-
-	option = {
-		name = lhs.13.a
-		ROOT = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 500
-				producer = ROOT
-			}
-		}
-	}
-
 }
 #intervention decision cleanup
 country_event = {
@@ -1234,9 +130,8 @@ country_event = {
 		days = 1
 	}
 	trigger = {
-		has_global_flag = lhs_intervention_request_deciding
 		all_of = {
-			array = global.lhs_member
+			array = global.lhs_anti_interventionists
 			value = THIS.id
 				PREV = {
 				has_idea = lhs_intervention_decided
@@ -1265,8 +160,10 @@ country_event = {
 #aid decision cleanup
 country_event = {
 	id = lhs.15
-	hidden = yes
-	
+	title = lhs.15.t
+	desc = lhs.15.d
+	picture = GFX_report_event_mio
+
 	mean_time_to_happen = {
 		days = 1
 	}
@@ -1292,9 +189,22 @@ country_event = {
 				}
 				remove_ideas = lhs_aid_decided
 			}
+			every_country = {
+				limit = {
+					is_in_array = {
+						array = global.lhs_aid_list
+						value = THIS.id
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = var: global.lhs_aid_pile 
+					producer = YAG
+				}
+			}
 			clr_global_flag = lhs_aid_request_deciding
 			clear_array = global.lhs_aid_list
-
+			clear_variable = global.lhs_aid_pile 
 		}
 	}
 
@@ -1311,6 +221,11 @@ country_event = {
 	#minor raid
 	option = {
 		name = lhs.16.a
+		trigger = {
+			ROOT = {
+				has_political_power > 100
+			}
+		}
 		ROOT = {
 			set_country_flag = {
 				flag = clearing_antis_minor
@@ -1339,6 +254,11 @@ country_event = {
 	#medium raid
 	option = {
 		name = lhs.16.b
+		trigger = {
+			ROOT = {
+				has_political_power > 200
+			}
+		}
 		ROOT = {
 			set_country_flag = {
 				flag = clearing_antis_medium
@@ -1367,6 +287,11 @@ country_event = {
 	#major raid
 	option = {
 		name = lhs.16.c
+		trigger = {
+			ROOT = {
+				has_political_power > 300
+			}
+		}
 		ROOT = {
 			set_country_flag = {
 				flag = clearing_antis_large
@@ -1390,6 +315,10 @@ country_event = {
 				days = 360
 			}
 		}
+	}
+	#nvm
+	option = {
+		name = lhs.16.d	
 	}
 
 }
@@ -2212,6 +1141,7 @@ country_event = {
 			}
 			country_event = lhs.42
 		}
+			lhs_intervention_yes_no = yes
 			lhs_clear_all_voting = yes
 			set_global_flag = lhs_second_round_vote
 			clr_global_flag = lhs_first_round_vote
@@ -2279,6 +1209,8 @@ country_event = {
 				}
 			}
 			lhs_clear_all_voting = yes
+			lhs_aid_vote_fails = yes
+			lhs_intervention_vote_fails = yes
 			clear_array = global.lhs_vote_instigator
 			clear_array = global.lhs_instigator_var
 			clear_array = global.lhs_voting_states_claim
@@ -2333,9 +1265,13 @@ country_event = {
 				}
 			}
 			remove_ideas = lhs_voted
-		}
+		}	
+			
+			lhs_aid_success = yes
 			lhs_hand_over_land = yes
+			lhs_join_success = yes
 			lhs_clear_all_voting = yes
+			lhs_intervention_begin_war = yes
 			clear_array = global.lhs_vote_instigator
 			clear_array = global.lhs_instigator_var
 			clr_global_flag = lhs_second_round_vote
@@ -2390,7 +1326,7 @@ country_event = {
 			}
 			remove_ideas = lhs_voted
 		}
-
+			lhs_intervention_clear = yes
 			lhs_clear_all_voting = yes
 			clr_global_flag = lhs_second_round_vote
 			set_global_flag = lhs_third_round_vote
@@ -2423,7 +1359,7 @@ country_event = {
 				}
 			}		
 		lhs_vote_third_round_passes = yes
-		has_global_flag  =lhs_third_round_vote
+		has_global_flag = lhs_third_round_vote
 
 	}
 	fire_only_once = no
@@ -2450,8 +1386,12 @@ country_event = {
 			}
 			remove_ideas = lhs_voted
 		}
+			lhs_intervention_yes_no = yes
+			lhs_aid_success = yes
 			lhs_hand_over_land = yes
+			lhs_join_success = yes
 			lhs_clear_all_voting = yes
+			lhs_intervention_begin_war = yes
 			clr_global_flag = lhs_third_round_vote
 			clear_array = global.lhs_vote_instigator
 			clear_array = global.lhs_instigator_var
@@ -2506,7 +1446,10 @@ country_event = {
 			}
 			remove_ideas = lhs_voted
 		}
+			lhs_intervention_clear = yes
 			lhs_clear_all_voting = yes
+			lhs_aid_vote_fails = yes
+			lhs_intervention_vote_fails = yes
 			clear_array = global.lhs_vote_instigator
 			clear_array = global.lhs_instigator_var
 			clear_array = global.lhs_voting_states_claim
