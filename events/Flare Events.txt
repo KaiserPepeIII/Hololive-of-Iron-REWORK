@@ -142,10 +142,13 @@ country_event = {
 	name = flare.7.a
 		army_experience = 25
 		set_country_flag = FLA_noel_military_mission
-		every_unit_leader = {
-		limit = { has_id = 28372197392187398127398217398213 }
-		set_nationality = FLA
-		}
+		NOE = {
+			set_country_flag = NOE_military_mission
+			every_unit_leader = {
+			limit = { has_id = 105 }
+			set_nationality = FLA
+			}
+	   }
 	}
 }
 
@@ -186,28 +189,14 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 	name = flare.9.a
-	every_unit_leader = {
-		limit = { has_id = 28372197392187398127398217398213 }
+		every_unit_leader = {
+			limit = { has_id = 105 }
 		set_nationality = NOE
 		}
-	}
-   }
-#noel military mission begins
-country_event = {
-    id = flare.9
-	title = flare.9.t
-	desc = flare.9.d
-	picture = GFX_report_event_mori
-	hidden = no
-	fire_only_once = yes
-	is_triggered_only = yes
-	option = {
-	name = flare.9.a
-	every_unit_leader = {
-		limit = { has_id = 96 }
-		set_nationality = FLA
+		NOE = {
+			clr_country_flag = NOE_military_mission
 		}
-	}
+   }
   }
 #Noel asks to puppet flare
 country_event = {

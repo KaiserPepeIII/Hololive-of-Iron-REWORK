@@ -1083,3 +1083,59 @@ country_event = {
 		puppet = FLA
 	  }
 }
+#Erwin comes home from military mission due to Being at war with flare
+country_event = {
+    id = noel.33
+	title = noel.33.t
+	desc = noel.33.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	mean_time_to_happen = {
+			days = 20
+	}
+	trigger = {
+	original_tag = NOE
+	has_war_with = FLA
+	}
+	
+	option = {
+		name = noel.33.a
+		FLA = {
+		every_unit_leader = {
+			limit = { has_id = 105 }
+			set_nationality = NOE
+		  }
+		 }
+			clr_country_flag = NOE_military_mission
+		}
+}
+#Erwin comes home from military mission due to flare capitulating
+country_event = {
+    id = noel.34
+	title = noel.34.t
+	desc = noel.34.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	mean_time_to_happen = {
+			days = 20
+	}
+	trigger = {
+		original_tag = NOE
+		FLA = {
+			has_capitulated = yes
+		}
+	}
+	
+	option = {
+		name = noel.34.a
+			FLA = {
+		every_unit_leader = {
+			limit = { has_id = 105 }
+			set_nationality = NOE
+		  }
+		 }
+			clr_country_flag = NOE_military_mission
+	   }
+}
