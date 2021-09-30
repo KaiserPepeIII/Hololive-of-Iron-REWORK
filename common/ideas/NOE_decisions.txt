@@ -3,8 +3,9 @@ noe_warplan = {
 		icon = GFX_decision_icon_default
 		
 		complete_effect = {
-				add_ideas = {
-				NOE_warplan_Yakineko
+				add_timed_idea = {
+				idea = NOE_warplan_yakineko
+				days = 180
 			   }
 		}
 		
@@ -20,13 +21,61 @@ noe_warplan = {
 			has_war_with = FBK
 		}
 	}
+	
+	warplan_pettan = {
+		icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+				idea = NOE_warplan_Pettan
+				days = 180
+			   }
+		}
+		
+		fire_only_once = yes
+		
+		visible = {
+		original_tag = NOE
+		NOE = {
+		has_country_flag = NOE_warplan_flat
+			  }
+				  }
+	    available = {
+			has_war_with = RUS
+		}
+	}
+}
 
 
 
-
-
-
-
-
-
+noe_flare_military_mission = {
+				withdraw_Erwin = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				FLA = {
+				country_event = {
+					id = flare.9
+					days = 1
+				 }
+				
+			   }
+			  }
+		
+		
+		fire_only_once = yes
+		
+		visible = {
+		original_tag = NOE
+		has_country_flag = NOE_military_mission
+			  }
+	    available = {
+			FLA = {
+			has_country_flag = {
+			flag = FLA_noel_military_mission
+			days > 340
+			 }
+			}
+		}
+	}
 }
