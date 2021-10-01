@@ -39,7 +39,7 @@ focus_tree = {
 		cost = 0.00
 		completion_reward = {
 		add_ideas = {
-		NOE_surrounded_by_powers
+		NOE_surrounded_by_powers # this would be a flat defense bonus of id say 5%
 		}
 	  }
 		x = 55
@@ -56,7 +56,7 @@ focus_tree = {
 		completion_reward = {
 			swap_ideas = {
 			remove_idea = NOE_peasant_levees
-			add_idea = NOE_feudal_army
+			add_idea = NOE_feudal_army #just make the army better in a way that it scales up to the point where there are no more penalty
 		  }
 		}
 		x = 68
@@ -72,7 +72,7 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_ideas = {
-		NOE_professionalization
+		NOE_professionalization #this national spirit should straight up be worse then feudal army
 		}
 	   }
 		x = 71
@@ -166,8 +166,9 @@ focus_tree = {
 		add_idea = great_depression_noel_3
 		 }
 	  }
-		add_ideas = {
-		bail_out_noblemen
+		add_timed_idea = {
+		idea = bail_out_noblemen # this idea should be more consumer goods(bad)
+		days = 360
 		}
 	   }
 		
@@ -212,8 +213,9 @@ focus_tree = {
 		add_idea = great_depression_noel_3
 		 }
 	  }
-		add_ideas = {
-		bankrupt_noblemen
+		add_timed_idea = {
+		idea = bankrupt_noblemen # this should be be a bonus to construction 
+		days = 360
 		}
 	}
 		x = 49
@@ -441,6 +443,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_abolitionist_society
 		}
+		completion_reward = {
+		add_ideas = {
+			economic_cause #small buff to economy 
+		 }
+		}
 		x = 16
 		y = 6
 
@@ -466,6 +473,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_stricter_nobility_punishments
+		}
+		completion_reward = {
+		add_ideas = {
+			no_town_serfs # another economy buff, it shouldnt be same as economic_cause
+			}
 		}
 		x = 19
 		y = 6
@@ -509,7 +521,7 @@ focus_tree = {
 		completion_reward = {
 		add_stability = 0.05
 		add_ideas = {
-		farmers_encouraged
+		farmers_encouraged # this should be less consumer goods
 		}
 	   }
 		x = 22
@@ -603,7 +615,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_arm_citizens # spawn units on start of civil war + add idea
+		id = NOE_arm_citizens # spawn units on start of civil war
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -877,7 +889,7 @@ focus_tree = {
 			focus = NOE_mechanization_ethos
 		}
 		completion_reward = {
-		add_ideas = prussian_chivalry_1
+		add_ideas = prussian_chivalry_1 #Military idea starts weakish but gets stronger with each focus that swaps
 		}
 		x = 36
 		y = 6
