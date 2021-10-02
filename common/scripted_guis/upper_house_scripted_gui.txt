@@ -1,0 +1,112 @@
+scripted_gui = {
+   hololive_upper_house_button_gui = {
+	window_name = "hololive_upper_house_button_gui_window"
+	context_type = player_context
+	parent_window_token = politics_tab
+		
+	visible = {
+		always = yes
+	}
+	
+	effects = {
+		holo_parliament_button_click = {
+			set_country_flag = view_upper_house
+		}
+		holo_parliament_button_right_click = {
+			clr_country_flag = view_upper_house
+		}
+	}
+	
+  }
+    hololive_upper_house_view_gui = {
+	window_name = "hololive_upper_house_view_gui_window"
+	context_type = player_context
+
+		
+	visible = {
+		has_country_flag = view_upper_house
+	}
+	effects = {
+		first_minister_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.1
+			}
+		}
+		minister_interior_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.2
+			}
+		}
+		minister_finance_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.3
+			}
+		}
+		chief_army_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.4
+			}
+		}
+		chief_navy_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.5
+			}
+		}
+		minister_foreign_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.6
+			}
+		}
+		minister_armaments_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.7
+			}
+		}
+		minister_economy_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.8
+			}
+		}
+		minister_alignment_portrait_outline_click = {
+			ROOT = {
+				country_event = cabinet.9
+			}
+		}
+		close_button_upper_click = {
+			clr_country_flag = view_upper_house
+		}
+	}
+	
+	properties = {
+		head_of_state_portrait = {
+			image = "[get_head_of_state_texture]"
+		}
+		first_minister_portrait = {
+			image = "[get_first_minister_texture]"
+		}
+		minister_interior_portrait = {
+			image = "[get_minister_interior_texture]"
+		}
+		minister_finance_portrait = {
+			image = "[get_minister_finance_texture]"
+		}
+		chief_army_portrait = {
+			image = "[get_chief_army_texture]"
+		}
+		chief_navy_portrait = {
+			image = "[get_chief_navy_texture]"
+		}
+		minister_foreign_portrait = {
+			image = "[get_minister_foreign_texture]"
+		}
+		minister_armaments_portrait = {
+			image = "[get_minister_armaments_texture]"
+		}
+		minister_economy_portrait = {
+			image = "[get_minister_economy_texture]"
+		}
+		minister_alignment_portrait = {
+			image = "[get_minister_alignment_texture]"
+		}
+	}
+}

@@ -1,0 +1,251 @@
+##################################################################
+##################################################################
+##     set_country_flag = election_time                         ## 
+##                                                              ##
+##                                                              ##
+##                                                              ##
+##                                                              ##
+##                                                              ##
+##                                                              ##
+##                                                              ##
+##                                                              ##
+##                                                              ##
+##################################################################
+##################################################################
+
+yagooist_victory_trigger = {
+	check_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.election_resistance
+	compare = greater_than_or_equals
+	}
+	check_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.election_monarchists
+	compare = greater_than_or_equals
+	}
+	check_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.election_neutral_autocrat
+	compare = greater_than_or_equals
+	}
+	check_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.party_popularity@mixed_ideology_democracy
+	compare = greater_than_or_equals
+	}
+	NOT = {
+	monarchist_victory_trigger = yes
+		check_variable = {
+		var = ROOT.party_popularity@democratic
+		value = 0.5
+		compare = greater_than
+		}
+		check_variable = {
+		var = ROOT.party_popularity@pro_yagoo_progressive
+		value = 0.5
+		compare = greater_than
+		}
+		check_variable = {
+		var = ROOT.party_popularity@pro_yagoo_monarchy
+		value = 0.5
+		compare = greater_than
+		}
+		check_variable = {
+		var = ROOT.party_popularity@pro_yagoo_kleptocracy
+		value = 0.5
+		compare = greater_than
+		}
+	}
+}
+resistance_victory_trigger = {
+	check_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.election_yagoo
+	compare = greater_than
+	}
+	check_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.election_monarchists
+	compare = greater_than_or_equals
+	}
+	check_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.election_neutral_autocrat
+	compare = greater_than_or_equals
+	}
+	check_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.party_popularity@mixed_ideology_democracy
+	compare = greater_than_or_equals
+	}
+	NOT = {
+	monarchist_victory_trigger = yes
+		check_variable = {
+		var = ROOT.party_popularity@communism
+		value = 0.5
+		compare = greater_than
+		}
+		check_variable = {
+		var = ROOT.party_popularity@pro_resistance_nationalism
+		value = 0.5
+		compare = greater_than
+		}
+		check_variable = {
+		var = ROOT.party_popularity@pro_resistance_kleptocracy
+		value = 0.5
+		compare = greater_than
+		}
+		check_variable = {
+		var = ROOT.party_popularity@pro_resistance_monarchy
+		value = 0.5
+		compare = greater_than
+		}
+	}
+}
+monarchist_victory_trigger = {
+	check_variable = {
+	var = ROOT.election_monarchists
+	value = ROOT.anti_monarchists
+	compare = greater_than
+	}
+	check_variable = {
+	var = ROOT.election_monarchists
+	value =  ROOT.election_resistance_democrats
+	compare = greater_than
+	}
+	check_variable = {
+	var = ROOT.election_monarchists
+	value =  ROOT.election_yagoo_democrats
+	compare = greater_than
+	}
+	NOT = {
+			check_variable = {
+			var = ROOT.party_popularity@pro_resistance_monarchy
+			value = 0.5
+			compare = greater_than
+		}
+			check_variable = {
+			var = ROOT.party_popularity@pro_yagoo_monarchy
+			value = 0.5
+			compare = greater_than
+		}
+			check_variable = {
+			var = ROOT.party_popularity@divine_mandate
+			value = 0.5
+			compare = greater_than
+		}
+	}
+}
+yagoo_conservative_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@democratic
+	value = 0.5
+	compare = greater_than
+	}
+}
+yagoo_progressive_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@pro_yagoo_progressive
+	value = 0.5
+	compare = greater_than
+	}
+}
+yagoo_monarchist_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@pro_yagoo_monarchy
+	value = 0.5
+	compare = greater_than
+	}
+}
+yagoo_kleptocratic_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@pro_yagoo_kleptocracy
+	value = 0.5
+	compare = greater_than
+	}
+}
+resistance_revolutionary_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@communism
+	value = 0.5
+	compare = greater_than
+	}
+}
+resistance_nationalist_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@pro_resistance_nationalism
+	value = 0.5
+	compare = greater_than
+	}
+}
+resistance_monarchist_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@pro_resistance_monarchy
+	value = 0.5
+	compare = greater_than
+	}
+}
+resistance_kleptocracy_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@pro_resistance_kleptocracy
+	value = 0.5
+	compare = greater_than
+	}
+}
+new_nationalist_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@fascism
+	value = 0.5
+	compare = greater_than
+	}
+}
+left_wing_revolutionary_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@left_wing_revolutionary
+	value = 0.5
+	compare = greater_than
+	}
+}
+democratic_revitalisation_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@democratic_revitalisation
+	value = 0.5
+	compare = greater_than
+	}
+}
+reactionary_monarchy_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@reactionary_monarchy
+	value = 0.5
+	compare = greater_than
+	}
+}
+kleptocratic_dictatorship_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@neutrality
+	value = 0.5
+	compare = greater_than
+	}
+}
+reactionary_nationalism_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@reactionary_nationalism
+	value = 0.5
+	compare = greater_than
+	}
+}
+mixed_ideology_democracy_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@mixed_ideology_democracy
+	value = 0.5
+	compare = greater_than
+	}
+}
+divine_mandate_victory = {
+	check_variable = {
+	var = ROOT.party_popularity@divine_mandate
+	value = 0.5
+	compare = greater_than
+	}
+}

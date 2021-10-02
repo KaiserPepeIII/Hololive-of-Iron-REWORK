@@ -1,0 +1,237 @@
+#Tropical Goods Events
+
+add_namespace = tropical
+
+country_event = {
+	id = tropical.1
+	title = tropical.1.t
+	desc = tropical.1.d
+	picture = GFX_report_event_mio
+	
+	mean_time_to_happen = {
+	days = 1 
+	}
+	
+	trigger = {
+		check_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 26
+			compare = greater_than
+		}
+		has_idea = tropical_goods_market_poor
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tropical_goods_market_poor
+			}
+			swap_ideas = {
+				remove_idea = tropical_goods_market_poor
+				add_idea = tropical_goods_market_mediocre
+			}
+		}
+	}
+	option = {
+		name = tropical.1.a
+	}
+}
+
+country_event = {
+	id = tropical.2
+	title = tropical.2.t
+	desc = tropical.2.d
+	picture = GFX_report_event_mio
+	
+	mean_time_to_happen = {
+	days = 1
+	}
+	
+	trigger = {
+		check_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 51
+			compare = greater_than
+		}
+		has_idea = tropical_goods_market_mediocre
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tropical_goods_market_mediocre
+			}
+			swap_ideas = {
+				remove_idea = tropical_goods_market_mediocre
+				add_idea = tropical_goods_market_good
+			}
+		}
+	}
+	option = {
+		name = tropical.2.a
+	}
+}
+country_event = {
+	id = tropical.3
+	title = tropical.3.t
+	desc = tropical.3.d
+	picture = GFX_report_event_mio
+	
+	mean_time_to_happen = {
+	days = 1
+	}
+	
+	trigger = {
+		check_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 76
+			compare = greater_than
+		}
+		has_idea = tropical_goods_market_good
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tropical_goods_market_good
+			}
+			swap_ideas = {
+				remove_idea = tropical_goods_market_good
+				add_idea = tropical_goods_market_booming
+			}
+		}
+	}
+	option = {
+		name = tropical.3.a
+	}
+}
+country_event = {
+	id = tropical.4
+	title = tropical.4.t
+	desc = tropical.4.d
+	picture = GFX_report_event_mio
+	
+	mean_time_to_happen = {
+	days = 1 
+	}
+	
+	trigger = {
+		check_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 26
+			compare = less_than 
+		}
+		has_idea = tropical_goods_market_mediocre
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tropical_goods_market_mediocre
+			}
+			swap_ideas = {
+				remove_idea = tropical_goods_market_mediocre
+				add_idea = tropical_goods_market_poor
+			}
+		}
+	}
+	option = {
+		name = tropical.4.a
+	}
+}
+country_event = {
+	id = tropical.5
+	title = tropical.5.t
+	desc = tropical.5.d
+	picture = GFX_report_event_mio
+	
+	mean_time_to_happen = {
+	days = 1 
+	}
+	
+	trigger = {
+		check_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 51
+			compare = less_than 
+		}
+		has_idea = tropical_goods_market_good
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tropical_goods_market_good
+			}
+			swap_ideas = {
+				remove_idea = tropical_goods_market_good
+				add_idea = tropical_goods_market_mediocre
+			}
+		}
+	}
+	option = {
+		name = tropical.5.a
+	}
+}
+country_event = {
+	id = tropical.6
+	title = tropical.6.t
+	desc = tropical.6.d
+	picture = GFX_report_event_mio
+	
+	mean_time_to_happen = {
+	days = 1 
+	}
+	
+	trigger = {
+		check_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 76
+			compare = less_than 
+		}
+		has_idea = tropical_goods_market_booming
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tropical_goods_market_booming
+			}
+			swap_ideas = {
+				remove_idea = tropical_goods_market_booming
+				add_idea = tropical_goods_market_good
+			}
+		}
+	}
+	option = {
+		name = tropical.6.a
+	}
+}
+#country_event = {
+#	id = tropical.7
+#	
+#	hidden = yes
+#	
+#	mean_time_to_happen = {
+#	days = 300
+#	}
+#	
+#	trigger = {
+#		if = {
+#			limit = {
+#			has_country_flag = tropical_goods_involved
+#			has_war = yes
+#			}
+#		}
+#	}
+#	
+#	immediate = {
+#		subtract_from_variable = {
+#			var = GLOBAL.tropical_goods_market
+#			value = 15
+#		}
+#	}
+#	option = {
+#		name = tropical.7.a
+#	}
+#}

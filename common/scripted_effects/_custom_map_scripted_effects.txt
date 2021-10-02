@@ -1,0 +1,735 @@
+generate_global_state_array = {
+	every_state = {
+		limit = {
+			#### Add any conditions here to exclude states from ever appearing on the map. Eg: forbidden strat region or overlapping states
+			always = yes
+		}
+		add_to_array = { global.states = THIS.id }
+	}
+}
+
+d_open_custom_mapmode = {
+	clear_array = selected_filter_array
+	add_to_array = { selected_filter_array = 1 }
+	set_country_flag = custom_map_mode_visible
+}
+open_custom_mapmode = {
+	clear_array = selected_filter_array
+	add_to_array = { selected_filter_array = temp_filter_to_open }
+	meta_effect = {
+		text = {
+			[FILTER_EFFECT_INDEX] = yes
+		}
+		FILTER_EFFECT_INDEX = "custom_map_mode_filter_initialize_[?temp_filter_to_open|0]"
+	}
+	add_to_variable = { custom_map_mode_update_tick = 1 }
+	set_country_flag = custom_map_mode_visible
+}
+clear_custom_map_mode_setup = {
+	every_state = {
+		clr_state_flag = mapmode_state_visible
+		clr_state_flag = mapmode_state_hashed_visible
+		clear_variable = state_frame_number_hashed
+		clear_variable = state_frame_number
+		clr_state_flag = custom_map_state_is_button
+		clr_state_flag = mapmode_state_click_disabled
+		clr_state_flag = custom_mapmode_tooltip
+		clr_state_flag = custom_mapmode_tooltip_delayed
+	}
+	every_country = {
+		clr_country_flag = mapmode_shield_visible
+	}
+}
+
+my_custom_effect = {
+	log = "EFFECT"
+}
+
+calculate_country_center_point_quick = {
+	set_variable = {
+		x_composite = 0
+	}
+	set_variable = {
+		y_composite = 0
+	}
+	for_each_scope_loop = {
+		array = controlled_states
+		add_to_variable = { PREV.x_composite = THIS.map_x_position }
+		add_to_variable = { PREV.y_composite = THIS.map_y_position }
+	}
+	divide_variable = { x_composite = controlled_states^num }
+	divide_variable = { y_composite = controlled_states^num }
+}
+calculate_country_shield_capital = {
+	capital_scope = {
+		CONTROLLER = {
+			set_variable = {
+				x_composite = PREV.map_x_position
+			}
+			set_variable = {
+				y_composite = PREV.map_y_position
+			}
+		}
+		log = "[THIS.GetName], [?CONTROLLER.y_composite], [?map_y_position]"
+	}
+	log = "[THIS.GetName]"
+}
+calculate_country_shield_capital_all = {
+	every_country = {
+		calculate_country_shield_capital = yes
+	}
+}
+calculate_country_center_point_quick_all = {
+	every_country = {
+		calculate_country_center_point_quick = yes
+	}
+}
+d_state_country_centers = {
+	every_country = {
+		calculate_country_center_point_quick = yes
+	}
+}
+
+find_color_graph = {
+	clear_variable = global.colors_assigned
+	clear_variable = global.max_color_found
+	every_country = {
+		clear_array = global.temp_neighbor_colors
+		every_neighbor_country = {
+			add_to_array = {
+				global.temp_neighbor_colors = custom_map_color
+			}
+		}
+		set_variable = { custom_map_color = 1 }
+		while_loop_effect = {
+			break = while_break
+			limit = {
+				check_variable = { custom_map_color < 12 }
+			}
+			if = {
+				limit = {
+					is_in_array = {
+						array = global.temp_neighbor_colors
+						value = custom_map_color
+					 }
+				}
+				add_to_variable = { custom_map_color = 1 }
+			}
+			else = {
+				if = {
+					limit = {
+						check_variable = { custom_map_color > global.max_color_found }
+					}
+					set_variable = { global.max_color_found = custom_map_color }
+				}
+				add_to_variable = { global.colors_assigned = 1 }
+				set_temp_variable = { while_break = 1 }
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_global_flag = debug_colors }
+		}
+		log = "[?global.colors_assigned|0] colors assigned, max color: [?global.max_color_found|0]. Please make sure you have the the the same, or more than the 'max colors' defined in the HOI4 Geoparser"
+		set_global_flag = debug_colors
+	}
+
+}
+clear_color_arrays_and_vars = {
+	every_country = {
+		clear_variable = custom_map_color
+	}
+}
+assign_owner_color_to_state = {
+	OWNER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+}
+assign_controller_color_to_state = {
+	CONTROLLER = { set_variable = { PREV.state_frame_number = custom_map_color } }
+}
+enable_custom_mapmode_state_buttons = {
+	for_each_scope_loop = {
+		array = global.states
+		set_state_flag = custom_map_state_is_button
+	}
+}
+
+disable_custom_mapmode_state_buttons = {
+	for_each_scope_loop = {
+		array = global.states
+		clr_state_flag = custom_map_state_is_button
+	}
+}
+
+### Add these to a scripted effect file in your mod
+
+custom_map_mode_filter_initialize_1 = {
+	### Color each country so no two adjacent neighbors are the same color
+	find_color_graph = yes
+	### Here we check state-level criteria.
+	for_each_scope_loop = {
+		array = global.states
+		### We want every state visible
+		set_state_flag = mapmode_state_visible
+
+		### Set the state color to be the same color as the owner is assigned. All countries were given a color using find_color_graph
+		assign_owner_color_to_state = yes
+	}
+	### Put the country flag shield in the centerpoint of the nation's states
+	calculate_country_shield_capital_all = yes
+	### Enable shields
+	set_country_flag = mapmode_shield_visible
+}
+
+custom_map_mode_filter_initialize_2 = {
+	### Loop through the states in the array
+	for_each_scope_loop = {
+		array = global.states
+		### We want every state visible
+		set_state_flag = mapmode_state_visible
+
+		### Set the state color to be the same color as the owner is assigned. All countries were given a color using find_color_graph
+		assign_owner_color_to_state = yes
+		OWNER = {
+			if = {
+				limit = {
+					tag = YAG
+				}
+				set_variable = { PREV.state_frame_number = 1 }
+			}
+			else_if = {
+				limit = {
+					has_idea = lhs_member
+				}
+				set_variable = { PREV.state_frame_number = 2 }
+			}
+			else_if = {
+				limit = {
+					NOT ={
+						has_idea = lhs_member
+					}
+					OR = {
+						has_government = democratic
+						has_government = pro_yagoo_progressive
+						has_government = pro_yagoo_monarchy
+						has_government = pro_yagoo_kleptocracy
+					}
+				}
+				set_variable = { PREV.state_frame_number = 3 }
+			}
+			else_if = {
+				limit = {
+					has_idea = resistance_head
+				}
+				set_variable = { PREV.state_frame_number = 4 }
+			}
+			else_if = {
+				limit = {
+					has_idea = resistance_member
+				}
+				set_variable = { PREV.state_frame_number = 5 }
+			}
+			else_if = {
+				limit = {
+					NOT ={
+						has_idea = resistance_member
+					}
+					OR = {
+						has_government = communism
+						has_government = pro_resistance_nationalism
+						has_government = pro_resistance_monarchy
+						has_government = pro_resistance_kleptocracy
+					}
+				}
+				set_variable = { PREV.state_frame_number = 6 }
+			}
+			else = {
+				set_variable = { PREV.state_frame_number = 8 }
+			}
+		}
+	}
+	#Find the shield positions so they are on capital states
+	calculate_country_shield_capital_all = yes
+	# Enable shields for countries
+	set_country_flag = mapmode_shield_visible
+}
+custom_map_mode_filter_initialize_3 = {
+	### Loop through the states in the array
+	for_each_scope_loop = {
+		array = global.states
+		### We want every state visible
+		set_state_flag = mapmode_state_visible
+
+		### Set the state color to be the same color as the owner is assigned. All countries were given a color using find_color_graph
+		assign_owner_color_to_state = yes
+		OWNER = {
+			if = {
+				limit = {
+				PREV = {
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 10
+						compare = less_than_or_equals
+					}
+				}
+					NOT = {	
+					  OR = {
+						has_government = fascism
+						has_government = left_wing_revolutionary
+						has_government = reactionary_monarchy
+						has_government = democratic_revitalisation
+					  }
+					}
+				}
+				set_variable = { PREV.state_frame_number = 9 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 30
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 10
+						compare = greater_than
+					}
+					}
+					NOT = {	
+						OR = {
+						  has_government = fascism
+						  has_government = left_wing_revolutionary
+						  has_government = reactionary_monarchy
+						  has_government = democratic_revitalisation
+						}
+					  }
+				}
+				set_variable = { PREV.state_frame_number = 10 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 45
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 30
+						compare = greater_than
+					}
+					}
+					NOT = {	
+						OR = {
+						  has_government = fascism
+						  has_government = left_wing_revolutionary
+						  has_government = reactionary_monarchy
+						  has_government = democratic_revitalisation
+						}
+					  }
+
+				}
+				set_variable = { PREV.state_frame_number = 11 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 60
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 45
+						compare = greater_than
+					}
+					}
+					NOT = {	
+						OR = {
+						  has_government = fascism
+						  has_government = left_wing_revolutionary
+						  has_government = reactionary_monarchy
+						  has_government = democratic_revitalisation
+						}
+					  }
+				}
+				set_variable = { PREV.state_frame_number = 12 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 75
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 60
+						compare = greater_than
+					}
+					}
+					NOT = {	
+						OR = {
+						  has_government = fascism
+						  has_government = left_wing_revolutionary
+						  has_government = reactionary_monarchy
+						  has_government = democratic_revitalisation
+						}
+					  }
+				}
+				set_variable = { PREV.state_frame_number = 13 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 90
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.anti_aggression 
+						value = 75
+						compare = greater_than
+					}
+					}
+					NOT = {	
+						OR = {
+						  has_government = fascism
+						  has_government = left_wing_revolutionary
+						  has_government = reactionary_monarchy
+						  has_government = democratic_revitalisation
+						}
+					  }
+				}
+				set_variable = { PREV.state_frame_number = 14 }
+			}
+			else_if = {
+				limit = {	
+					  OR = {
+						has_government = fascism
+						has_government = left_wing_revolutionary
+						has_government = reactionary_monarchy
+						has_government = democratic_revitalisation
+					  }
+					}
+				set_variable = { PREV.state_frame_number = 15 }
+				}
+			else = {
+				set_variable = { PREV.state_frame_number = 8 }
+			}
+		}
+	}
+	#Find the shield positions so they are on capital states
+	calculate_country_shield_capital_all = yes
+	# Enable shields for countries
+	set_country_flag = mapmode_shield_visible
+}
+custom_map_mode_filter_initialize_4 = {
+	### Loop through the states in the array
+	for_each_scope_loop = {
+		array = global.states
+		### We want every state visible
+		set_state_flag = mapmode_state_visible
+
+		### Set the state color to be the same color as the owner is assigned. All countries were given a color using find_color_graph
+		assign_owner_color_to_state = yes
+		OWNER = {
+			if = {
+				limit = {
+				PREV = {
+						check_variable = {
+							var = PREV.election_count_antis
+							value = 10
+							compare = less_than_or_equals
+						}
+					}
+				}
+				set_variable = { PREV.state_frame_number = 9 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+						check_variable = {
+							var = PREV.election_count_antis 
+							value = 30
+							compare = less_than_or_equals
+						}
+						check_variable = {
+							var = PREV.election_count_antis 
+							value = 10
+							compare = greater_than
+						}
+					}
+				}
+				set_variable = { PREV.state_frame_number = 10 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.election_count_antis 
+						value = 45
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.election_count_antis 
+						value = 30
+						compare = greater_than
+					}
+					}
+				}
+				set_variable = { PREV.state_frame_number = 11 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.election_count_antis 
+						value = 60
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.election_count_antis 
+						value = 45
+						compare = greater_than
+					}
+					}
+				}
+				set_variable = { PREV.state_frame_number = 12 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.election_count_antis 
+						value = 75
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.election_count_antis 
+						value = 60
+						compare = greater_than
+					}
+					}
+				}
+				set_variable = { PREV.state_frame_number = 13 }
+			}
+			else_if = {
+				limit = {
+					PREV = { 
+					check_variable = {
+						var = PREV.election_count_antis 
+						value = 90
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = PREV.election_count_antis 
+						value = 75
+						compare = greater_than
+					}
+					}
+				}
+				set_variable = { PREV.state_frame_number = 14 }
+			}
+			else = {
+				set_variable = { PREV.state_frame_number = 8 }
+			}
+		}
+	}
+	#Find the shield positions so they are on capital states
+	calculate_country_shield_capital_all = yes
+	# Enable shields for countries
+	set_country_flag = mapmode_shield_visible
+}
+
+#custom_map_mode_filter_initialize_2 = {
+#	### Loop through the states in the array
+#	find_color_graph = yes
+#	### Set a global max factory variable, this will be used to calculate the color
+#	set_variable = { global.max_state_factory = 0 }
+#	### Find the highest factory level on map
+#	every_state = {
+#		limit = {
+#			check_variable = {
+#				building_level@arms_factory > global.max_state_factory
+#			}
+#		}
+#		set_variable = {
+#			global.max_state_factory = building_level@arms_factory
+#		}
+#	}
+#	### Now we want to find the thirds of this. The top 33% will be green, the middle 33% yellow, the bottom 33% green
+#	divide_variable = { global.max_state_factory = 3 }
+#	set_variable = { global.half_state_factory = global.max_state_factory }
+#	add_to_variable = { global.half_state_factory = global.max_state_factory }
+#	for_each_scope_loop = {
+#		array = global.states
+#		### Use criterion to establish the frame used for the state.
+#		set_state_flag = mapmode_state_visible
+#		assign_owner_color_to_state = yes
+#		set_state_flag = mapmode_state_hashed_visible
+#		if = {
+#			limit = {
+#				check_variable = {
+#					### Half state factory max is 2/3rds of max
+#					building_level@arms_factory > global.half_state_factory
+#				}
+#			}
+#			set_variable = { state_frame_number_hashed = 1 }
+#		}
+#		else_if = {
+#			limit = {
+#				check_variable = {
+#					### State factory max is now 1/3rd of the max. This just saves a variable
+#					building_level@arms_factory > global.max_state_factory
+#				}
+#			}
+#			set_variable = { state_frame_number_hashed = 2 }
+#		}
+#		else = {
+#			### If they aren't above 1/3rd, or 2/3rd, then they must be bottom 3rd
+#			set_variable = { state_frame_number_hashed = 3 }
+#		}
+#		### Enable tooltips. Refer to the localization file
+#		set_state_flag = custom_mapmode_tooltip
+#	}
+#	#Find the shield positions so they are on capital states
+#	calculate_country_shield_capital_all = yes
+#	# Enable shields for countries
+#	set_country_flag = mapmode_shield_visible
+#}
+#
+#custom_map_mode_filter_initialize_3 = {
+#
+#	find_color_graph = yes
+#	for_each_scope_loop = {
+#		array = global.states
+#		assign_owner_color_to_state = yes
+#		set_state_flag = mapmode_state_hashed_visible
+#		CONTROLLER = {
+#			if = {
+#				limit = {
+#					has_stability > 0.66
+#				}
+#				set_variable = { PREV.state_frame_number_hashed = 1 }
+#			}
+#			else_if = {
+#				limit = {
+#					has_stability > 0.33
+#				}
+#				set_variable = { PREV.state_frame_number_hashed = 2 }
+#			}
+#			else = {
+#				set_variable = { PREV.state_frame_number_hashed = 3 }
+#			}
+#		}
+#	}
+#	calculate_country_shield_capital_all = yes
+#	set_country_flag = mapmode_shield_visible
+#}
+#custom_map_mode_filter_initialize_4 = {
+#	find_color_graph = yes
+#	for_each_scope_loop = {
+#		array = global.states
+#
+#		assign_owner_color_to_state = yes
+#		set_state_flag = mapmode_state_hashed_visible
+#		CONTROLLER = {
+#			if = {
+#				limit = {
+#					has_war_support > 0.66
+#				}
+#				set_variable = { PREV.state_frame_number_hashed = 1 }
+#			}
+#			else_if = {
+#				limit = {
+#					has_war_support > 0.33
+#				}
+#				set_variable = { PREV.state_frame_number_hashed = 2 }
+#			}
+#			else = {
+#				set_variable = { PREV.state_frame_number_hashed = 3 }
+#			}
+#		}
+#	}
+#	calculate_country_shield_capital_all = yes
+#	set_country_flag = mapmode_shield_visible
+#}
+#
+#custom_map_mode_filter_initialize_5 = {
+#	### Loop through the states in the array
+#	find_color_graph = yes
+#	for_each_scope_loop = {
+#		array = global.states
+#		set_state_flag = mapmode_state_visible
+#		set_state_flag = mapmode_state_hashed_visible
+#		assign_controller_color_to_state = yes
+#		if = {
+#			limit = {
+#				resistance > 0.66
+#			}
+#			set_variable = { PREV.state_frame_number_hashed = 1 }
+#		}
+#		else_if = {
+#			limit = {
+#				resistance > 0.33
+#			}
+#			set_variable = { PREV.state_frame_number_hashed = 2 }
+#		}
+#		else = {
+#			set_variable = { PREV.state_frame_number_hashed = 3 }
+#		}
+#		### We want to disable 'resistance suppression' for states of nations we do not ally
+#		if = {
+#			limit = {
+#				CONTROLLER = {
+#					NOT = { is_ally_with = ROOT }
+#				}
+#			}
+#			### This isn't the same as not turning on the button. This will gray-out the state so it can not be clicked.
+#			set_state_flag = mapmode_state_click_disabled
+#		}
+#		else = {
+#			set_state_flag = custom_mapmode_tooltip
+#			set_state_flag = custom_mapmode_tooltip_delayed
+#		}
+#	}
+#	### Find country flag shield position using capital state
+#	calculate_country_shield_capital_all = yes
+#	### Enable country flag shield
+#	set_country_flag = mapmode_shield_visible
+#
+#
+#
+	#####################################################
+	############## VERY IMPORTANT PLEASE READ ###########
+	#####################################################
+
+	### If we want to use states as buttons, this option must be present and the click effect defined
+#	enable_custom_mapmode_state_buttons = yes
+#}
+### Define a 'click' option for this button. State Scope
+custom_map_mode_filter_click_5 = {
+	### Root is the country using the gui
+	ROOT = {
+		launch_nuke = {
+			state = PREV
+			controller = ROOT
+			use_nuke = no
+		}
+		add_stability = 0.01
+	}
+	add_resistance = -10
+	goto_state = THIS
+	log = "[THIS.GetName] CLICK"
+}
+d_clear_state_map = {
+	clear_array = global.states
+	add_to_array = { global.states = 1 }
+}

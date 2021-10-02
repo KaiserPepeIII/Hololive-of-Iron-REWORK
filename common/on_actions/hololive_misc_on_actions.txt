@@ -2,12 +2,60 @@
 on_actions = {
     on_startup = {
         effect = {
-
+				if = {
+					limit = {
+						is_ai = no
+					}
+				country_event = {
+				id = misc.1
+				days = 2
+				}
+			}
+#LHS Defensive Alliance
+		add_to_array = {
+			array = lhs_defense_pact
+			value = YAG
+		}
+		add_to_array = {
+			array = lhs_defense_pact
+			value = ALO
+		}
+		add_to_array = {
+			array = lhs_defense_pact
+			value = SOR
+		}
+		add_to_array = {
+			array = lhs_defense_pact
+			value = SUB
+		}
 #Germany threat#
 			set_variable = {
 			var = GER.germany_threat
 			value = 0
 			}
+			clamp_variable = {
+			var = GER.germany_threat
+			min = 0
+			max = 100
+			}
+#France Threat #
+	set_variable = {
+	var = FRA.france_threat
+	value = 20
+	}
+	clamp_variable = {
+	var = FRA.france_threat
+	min = 0
+	max = 100
+	}
+	set_variable = {
+	var = SUI.france_leave
+	value = 0
+	}
+	set_variable = {
+	var = SUB.france_leave
+	value = 0
+	}
 #NOE - Uradel Faction Happiness
 			set_variable = {
 			var = NOE.uradel_faction_happiness

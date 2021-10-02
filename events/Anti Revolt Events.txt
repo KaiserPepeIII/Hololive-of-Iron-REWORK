@@ -1,0 +1,72 @@
+add_namespace = antis
+
+
+country_event = {
+	id = antis.1
+	title = antis.1.t
+	desc = antis.1.d
+	picture = GFX_report_event_mio
+	fire_only_once = no
+	
+	trigger = {
+		SUI = {
+			check_variable = {
+				var = SUI.anti_aggression
+				value = 100
+			}
+		}
+	}
+	
+	option = {
+		name = antis.1.a
+		trigger = {
+			left_wing_revolutionary_revolt = yes
+		}
+		SUI = {
+			start_civil_war = {
+				ideology = left_wing_revolutionary
+				size = 0.6
+				keep_political_leader = yes
+			}
+		}
+	}
+	option = {
+		name = antis.1.b
+		trigger = {
+			new_nationalist_revolt = yes
+		}
+		SUI = {
+			start_civil_war = {
+				ideology = fascism
+				size = 0.6
+				keep_political_leader = yes
+			}
+		}
+	}
+	option = {
+		name = antis.1.c
+		trigger = {
+			reactionary_monarchy_revolt = yes
+		}
+		SUI = {
+			start_civil_war = {
+				ideology = reactionary_monarchy
+				size = 0.6
+				keep_political_leader = yes
+			}
+		}
+	}
+	option = {
+		name = antis.1.e
+		trigger = {
+			democratic_revitalisation_revolt = yes
+		}
+		SUI = {
+			start_civil_war = {
+				ideology = democratic_revitalisation
+				size = 0.6
+				keep_political_leader = yes
+			}
+		}
+	}
+}

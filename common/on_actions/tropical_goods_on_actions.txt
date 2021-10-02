@@ -1,0 +1,25 @@
+on_actions = {
+	on_startup = {
+		effect = {
+#tropical goods market
+			set_variable = {
+			var = GLOBAL.tropical_goods_market
+			value = 5
+			}
+			clamp_variable = {
+			var = GLOBAL.tropical_goods_market
+			min = 0
+			max = 100
+			}
+			every_country = {
+				limit = {
+				has_idea = tropical_goods_market_poor
+				}
+				set_country_flag = {
+					flag = tropical_goods_involved
+					value = 1
+				}
+            }
+		}
+	}
+}

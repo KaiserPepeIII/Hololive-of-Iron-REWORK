@@ -1,0 +1,155 @@
+clear_election_variables = {
+	clear_variable = ROOT.election_yagoo
+	clear_variable = ROOT.election_resistance
+	clear_variable = ROOT.election_neutral_autocrat
+	clear_variable = ROOT.election_monarchists
+	clear_variable = ROOT.anti_monarchists
+	clear_variable = ROOT.election_yagoo_democrats
+	clear_variable = ROOT.election_resistance_democrats
+	clear_variable = ROOT.election_count_antis_effect
+}
+election_counting_effect = {
+	election_set_variables_effect = yes
+	election_count_yagoo_democrats_effect = yes
+	election_count_resistance_democrats_effect = yes
+	election_count_yagoo_effect = yes
+	election_count_resistance_effect = yes
+	election_count_neutral_autocrat_effect = yes
+	election_count_monarchists_effect = yes
+	election_count_anti_monarchist_effect = yes
+	election_count_antis_effect = yes
+}
+election_set_variables_effect = {
+	set_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.party_popularity@democratic
+	}
+	set_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.party_popularity@communism
+	}
+	set_variable = {
+	var = ROOT.election_neutral_autocrat
+	value = ROOT.party_popularity@neutrality
+	}
+	set_variable = {
+	var = ROOT.election_monarchists
+	value = ROOT.party_popularity@pro_resistance_monarchy
+	}
+	set_variable = {
+	var = ROOT.election_yagoo_democrats
+	value = ROOT.party_popularity@democratic
+	}
+	set_variable = {
+	var = ROOT.election_resistance_democrats
+	value = ROOT.party_popularity@communism
+	}
+	set_variable = {
+	var = ROOT.anti_monarchists
+	value = ROOT.party_popularity@mixed_ideology_democracy
+	}
+	set_variable = {
+	var = ROOT.election_count_antis
+	value = ROOT.party_popularity@fascism
+	}
+}
+election_count_yagoo_democrats_effect = {
+	add_to_variable = {
+	var = ROOT.election_yagoo_democrats
+	value = party_popularity@pro_yagoo_progressive
+	}
+	add_to_variable = {
+	var = ROOT.election_yagoo_democrats
+	value = party_popularity@pro_yagoo_kleptocracy
+	}
+}
+election_count_resistance_democrats_effect = {
+	add_to_variable = {
+	var = ROOT.election_resistance_democrats
+	value = party_popularity@pro_yagoo_progressive
+	}
+	add_to_variable = {
+	var = ROOT.election_resistance_democrats
+	value = party_popularity@pro_yagoo_kleptocracy
+	}
+}
+election_count_yagoo_effect = {
+	add_to_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.party_popularity@pro_yagoo_progressive
+	}
+	add_to_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.party_popularity@pro_yagoo_monarchy
+	}
+	add_to_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.party_popularity@pro_yagoo_kleptocracy
+	}
+	add_to_variable = {
+	var = ROOT.election_yagoo
+	value = ROOT.party_popularity@mixed_ideology_democracy
+	}
+}
+election_count_resistance_effect = {
+	add_to_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.party_popularity@pro_resistance_nationalism
+	}
+	add_to_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.party_popularity@pro_resistance_monarchy
+	}
+	add_to_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.party_popularity@pro_resistance_kleptocracy
+	}
+	add_to_variable = {
+	var = ROOT.election_resistance
+	value = ROOT.party_popularity@mixed_ideology_democracy
+	}
+}
+election_count_neutral_autocrat_effect = {
+	add_to_variable = {
+	var = ROOT.election_neutral_autocrat
+	value = ROOT.party_popularity@reactionary_nationalism
+	}
+}
+election_count_monarchists_effect = {
+	add_to_variable = {
+	var = ROOT.election_monarchists
+	value = ROOT.party_popularity@pro_yagoo_monarchy
+	}
+	add_to_variable = {
+	var = ROOT.election_monarchists
+	value = ROOT.party_popularity@divine_mandate
+	}
+} 
+election_count_antis_effect = {
+	add_to_variable = {
+	var = ROOT.election_count_antis
+	value = party_popularity@left_wing_revolutionary
+	}
+	add_to_variable = {
+	var = ROOT.election_count_antis
+	value = party_popularity@reactionary_monarchy
+	}
+	add_to_variable = {
+	var = ROOT.election_count_antis
+	value = party_popularity@democratic_revitalisation
+	}
+}
+election_count_anti_monarchist_effect = {
+	add_to_variable = {
+	var = ROOT.anti_monarchists
+	value = ROOT.election_neutral_autocrat
+	}
+	add_to_variable = {
+	var = ROOT.anti_monarchists
+	value = ROOT.election_count_yagoo_democrats
+	}
+	add_to_variable = {
+	var = ROOT.anti_monarchists
+	value = ROOT.election_count_resistance_democrats
+	}
+}

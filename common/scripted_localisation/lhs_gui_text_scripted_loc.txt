@@ -1,0 +1,716 @@
+defined_text = {
+	name = get_state_claim_loc_script
+	
+	text = {
+		trigger = {
+			lhs_not_voting_in_progress = yes
+		}
+		localization_key = state_claim_loc_vote_underway
+	}	
+	text = {
+		trigger = {
+			OR = {
+				NOT = {
+					AND = {
+						ROOT = {	
+							has_country_flag = lhs_state_selected_first_country
+						}
+						THIS = {
+							OWNER = {
+								NOT = {
+									is_in_array = {
+										array = ROOT.lhs_states_selected_country
+										value = THIS.id
+									}
+								}
+							}
+						}
+					}
+				}
+				NOT = {
+					THIS = {
+						is_in_array = {
+							array = ROOT.lhs_claim_state
+							value = THIS.id
+						}
+					}
+					THIS = {
+						OWNER ={
+							OR = {
+							has_country_flag = lhs_vote_insitigate_cooldown
+							tag = ROOT
+							has_civil_war = yes
+							has_idea = lhs_head
+							}
+						}
+					}
+				}
+			}
+		}
+		localization_key = state_claim_loc_cant_claim
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = ROOT.lhs_claim_state_count
+				value = 12
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = state_claim_loc_twelve_max
+	}
+	text = {
+	localization_key = state_claim_loc
+	}
+}
+defined_text = {
+	name = get_remove_claim_loc_script
+	
+	text = {
+		trigger = {
+			lhs_not_voting_in_progress = yes
+		}
+		localization_key = remove_claim_loc_vote_underway
+	}
+	text = {
+		trigger = {
+				check_variable = {
+					var = ROOT.lhs_claim_state_count
+					value = 1
+					compare = less_than
+				}
+		}
+		localization_key = remove_claim_loc_empty_scope
+	}
+	text = {
+	localization_key = remove_claim_loc
+	}
+}
+defined_text = {
+	name = get_remove_all_claim_loc_script
+	
+	text = {
+		trigger = {
+			lhs_not_voting_in_progress = yes
+		}
+		localization_key = remove_all_claim_loc_vote_underway
+	}
+	text = {
+		trigger = {
+				check_variable = {
+					var = ROOT.lhs_claim_state_count
+					value = 1
+					compare = less_than
+				}
+		}
+		localization_key = remove_all_claim_loc_empty_scope
+	}
+	text = {
+	localization_key = remove_all_claim_loc
+	}
+}
+defined_text = {
+	name = get_bring_incident_with_lhs_script
+	
+	text = {
+		trigger = {
+			lhs_not_voting_in_progress = yes
+		}
+		localization_key = bring_incident_with_lhs_vote_underway
+	}
+	text = {
+		trigger = {
+				check_variable = {
+					var = ROOT.lhs_claim_state_count
+					value = 1
+					compare = less_than
+				}
+		}
+		localization_key = bring_incident_with_lhs_empty_scope
+	}
+	text = {
+	localization_key = bring_incident_with_lhs
+	}
+}
+defined_text = {
+	name = get_lhs_brugg_legitimacy
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 20
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_brugg_legitimacy_one
+				}
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 20
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 40
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_brugg_legitimacy_two
+				}	
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 40
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 60
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_brugg_legitimacy_three
+				}		
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 60
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.brugg_legitimacy
+						value = 80
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_brugg_legitimacy_four
+				}
+			text = {
+			localization_key = lhs_brugg_legitimacy_five
+			}
+}
+defined_text = {
+	name = lhs_voting_get_support
+	text = {	
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_voting_support_count_text
+	}
+	text = {
+		localization_key = lhs_voting_get_support_no_vote
+	}
+}
+defined_text = {
+	name = lhs_voting_get_reject
+	text = {	
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_voting_reject_count_text
+	}
+	text = {
+		localization_key = lhs_voting_get_reject_no_vote
+	}
+}
+defined_text = {
+	name = get_voting_prompt_loc
+	text = {
+		trigger = {
+			OR = {
+			has_global_flag = lhs_voting_state
+			}
+		}
+		localization_key = voting_prompt_states_loc
+	}
+	text = {
+		trigger = {
+			has_global_flag = lhs_voting_join
+		}
+		localization_key = voting_prompt_join_loc
+	}
+	text = {
+		trigger = {
+			has_global_flag = lhs_aid_request_deciding
+		}
+		localization_key = voting_prompt_request_aid_loc
+	}
+	text = {
+		trigger = {
+			has_global_flag = lhs_intervention_request_deciding
+		}
+		localization_key = voting_prompt_intervention_request_loc
+	}
+	text = {
+		localization_key = blank
+	}
+}
+defined_text = {
+	name = lhs_voting_get_abstain
+	text = {	
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_voting_abstain_count_text
+	}
+	text = {
+		localization_key = lhs_voting_get_abstain_no_vote
+	}
+}
+defined_text = {
+	name = lhs_voting_get_veto
+	text = {	
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_voting_veto_count_text
+	}
+	text = {
+		localization_key = lhs_voting_get_veto_no_vote
+	}
+}
+defined_text = {
+	name = get_voting_text_loc
+	
+	text = {
+		trigger = {
+			has_global_flag = lhs_generic_state_vote
+		}
+		localization_key = lhs_generic_state_vote_text
+	}
+	text = {
+	localization_key = lhs_no_current_voting
+	}
+}
+defined_text = {
+	name = get_dispute_name
+	text = {
+		localization_key = lhs_states_dispute
+	}
+}
+defined_text = {
+	name = get_state_claim_loc
+	text = {
+		trigger = {
+		}
+		localization_key = 
+	}
+}
+defined_text = {
+	name = get_voting_round_loc
+	text = {
+		trigger = {
+			has_global_flag = lhs_first_round_vote
+		}
+		localization_key = lhs_first_round_vote_loc
+	}	
+	text = {
+		trigger = {
+			has_global_flag = lhs_second_round_vote
+		}
+		localization_key = lhs_second_round_vote_loc
+	}
+	text = {
+		trigger = {
+			has_global_flag = lhs_third_round_vote
+		}
+		localization_key = lhs_third_round_vote_loc
+	}
+	
+	text = {
+		localization_key = blank
+	}
+}
+defined_text = {
+	name = get_vs_text
+	text = {
+		trigger = {
+			OR = {
+			has_global_flag = lhs_first_round_vote
+			has_global_flag = lhs_second_round_vote
+			has_global_flag = lhs_third_round_vote
+			}
+		}
+		localization_key = lhs_vs_text
+	}	
+	
+	text = {
+		localization_key = blank
+	}
+}
+defined_text = {
+	name = get_lhs_faith_number
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.lhs_faith
+						value = 20
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_faith_one
+				}
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.lhs_faith
+						value = 20
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.lhs_faith
+						value = 40
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_faith_two
+				}	
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.lhs_faith
+						value = 40
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.lhs_faith
+						value = 60
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_faith_three
+				}		
+		text = {
+			trigger = {
+					check_variable = {
+						var = global.lhs_faith
+						value = 60
+						compare = greater_than
+					}
+					check_variable = {
+						var = global.lhs_faith
+						value = 80
+						compare = less_than_or_equals
+					}
+				}
+				localization_key = lhs_faith_four
+				}
+			text = {
+			localization_key = lhs_faith_five
+			}
+		}
+defined_text = {
+	name = join_lhs_locs
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power < 100
+					lhs_not_ideologies = yes
+					lhs_are_you_part_of_lhs = no
+				}
+			}
+			localization_key = join_lhs_not_enough_pp
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+					lhs_not_ideologies = yes
+					lhs_are_you_part_of_lhs = no
+				}
+			}
+			localization_key = join_lhs_can_join
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					lhs_not_ideologies = no
+					lhs_are_you_part_of_lhs = no
+				}
+			}
+			localization_key = join_lhs_not_eligeable
+		}
+		text = {
+			localization_key = join_lhs_locs_already_part
+		}
+}
+defined_text = {
+	name = leave_lhs_locs
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power < 100
+					lhs_are_you_part_of_lhs = yes
+				}
+			}
+			localization_key = leave_lhs_not_enough_pp
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+					lhs_are_you_part_of_lhs = yes
+				}
+			}
+			localization_key = leave_lhs_can
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					lhs_are_you_part_of_lhs = no
+				}
+			}
+			localization_key = leave_lhs_not_part
+		}
+		text = {
+			localization_key = leave_lhs_major_player
+		}
+}
+defined_text = {
+	name = get_request_military_aid_locs
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power < 100
+					has_war = yes
+				}
+			}
+			localization_key = military_aid_not_enough_pp
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+					has_war = yes
+				}
+			}
+			localization_key = military_aid_can_request
+		}		
+		text = {
+			localization_key = military_aid_not_at_war
+		}
+}
+defined_text = {
+	name = get_request_military_intervention_locs
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power < 100
+					has_war = yes
+				}
+			}
+			localization_key = military_intervention_not_enough_pp
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+					has_war = yes
+				}
+			}
+			localization_key = military_intervention_can_request
+		}		
+		text = {
+			localization_key = military_intervention_not_at_war
+		}
+}
+defined_text = {
+	name = boost_lhs_parties_loc
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+						NOT = {
+							has_country_flag = lhs_supported_lhs_party
+						}
+					}
+			}
+			localization_key = lhs_boost_parties_you_can
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = lhs_supported_lhs_party
+				}
+			}
+			localization_key = lhs_boost_parties_you_must_wait
+		}		
+		text = {
+			trigger = {	
+				all_of = {
+					array = global.lhs_action_array
+					value = THIS.id
+					
+					has_idea = lhs_boost_parties_decision
+				}
+			}
+			localization_key = lhs_boost_parties_nation_cooldown
+		}
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power < 100
+					}
+			}
+			localization_key = military_intervention_not_enough_pp
+		}	
+		text = {
+			localization_key = military_intervention_not_at_war
+		}
+}
+defined_text = {
+	name = lhs_peacekeeping_loc
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+						NOT = {
+							has_country_flag = lhs_supported_peacekeeping_mission
+						}
+					}
+			}
+			localization_key = lhs_peacekeeping_you_can
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = lhs_supported_peacekeeping_mission
+				}
+			}
+			localization_key = lhs_peacekeeping_you_must_wait
+		}		
+		text = {
+			trigger = {	
+				all_of = {
+					array = global.lhs_action_array
+					value = THIS.id
+					
+					has_idea = lhs_peacekeeping_mission
+				}
+			}
+			localization_key = lhs_peacekeeping_cooldown
+		}
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power < 100
+					}
+			}
+			localization_key = military_intervention_not_enough_pp
+		}	
+		text = {
+			localization_key = military_intervention_not_at_war
+		}
+}
+defined_text = {
+	name = lhs_rally_for_war_doc
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+						NOT = {
+							has_country_flag = lhs_rallied_for_war_mission
+						}
+					}
+			}
+			localization_key = lhs_rally_you_can
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = lhs_rallied_for_war_mission
+				}
+			}
+			localization_key = lhs_rally_you_must_wait
+		}		
+		text = {
+			trigger = {	
+				all_of = {
+					array = global.lhs_action_array
+					value = THIS.id
+					
+					has_idea = lhs_rallied_for_war
+				}
+			}
+			localization_key = lhs_rally_cooldown
+		}
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power < 100
+					}
+			}
+			localization_key = military_intervention_not_enough_pp
+		}	
+		text = {
+			localization_key = military_intervention_not_at_war
+		}
+}
+defined_text = {
+	name = lhs_military_support_loc
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+						NOT = {
+							has_country_flag = lhs_sent_military_support
+						}
+					}
+			}
+			localization_key = lhs_military_support_you_can
+		}		
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = lhs_sent_military_support
+				}
+			}
+			localization_key = lhs_military_support_you_must_wait
+		}		
+		text = {
+			trigger = {	
+				all_of = {
+					array = global.lhs_action_array
+					value = THIS.id
+					
+					has_idea = lhs_received_military_support
+				}
+			}
+			localization_key = lhs_military_support_cooldown
+		}
+		text = {
+			trigger = {
+				ROOT = {
+					has_political_power < 100
+					}
+			}
+			localization_key = military_intervention_not_enough_pp
+		}	
+		text = {
+			localization_key = military_intervention_not_at_war
+		}
+}

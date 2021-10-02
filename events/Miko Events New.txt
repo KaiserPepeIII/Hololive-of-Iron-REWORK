@@ -1,6 +1,6 @@
 
 add_namespace = miko
-
+#suisei is intervening in politic
 country_event = {
 	id = miko.1
 	title = miko.1.t
@@ -10,10 +10,14 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-
+		name = miko.1.a
+		add_timed_idea = {
+			idea = resistance_boost
+			days = 360
+		}
 	}
 }
-
+#suisei offers nap
 country_event = {
 	id = miko.2
 	title = miko.2.t
@@ -23,10 +27,25 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
-
+		name = miko.2.a
+		MIK = {
+			set_truce = {
+				target = SUI
+				days = 720
+			}
+		}
+	}
+	option = {
+		name = miko.2.a
+			SUI = {
+			add_opinion_modifier = {
+				target = MIK
+				modifier = rejected_friendly_relations
+			}
+		}
 	}
 }
-
+#suisei offers alliance
 country_event = {
 	id = miko.3
 	title = miko.3.t
@@ -34,12 +53,23 @@ country_event = {
 	picture = GFX_report_event_miko
 
 	is_triggered_only = yes
-
 	option = {
-
+		name = miko.3.a
+		SUI = {
+			add_to_faction = MIK
+		}
+	}
+	option = {
+		name = miko.3.a
+			SUI = {
+			add_opinion_modifier = {
+				target = MIK
+				modifier = rejected_friendly_relations
+			}
+		}
 	}
 }
-
+#we dont need them
 country_event = {
 	id = miko.4
 	title = miko.4.t
@@ -49,10 +79,33 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
-
+		name = miko.4.a
+		SUI = {
+			add_opinion_modifier = {
+				target = MIK
+				modifier = rejected_friendly_relations
+			}
+		}
+		MIK = {
+			add_opinion_modifier = {
+				target = SUI
+				modifier = rejected_friendly_relations
+			}
+		}		
+	}
+	option = {
+		name = miko.4.b 
+		create_wargoal = {
+			target = SUI
+			type = puppet_wargoal_focus
+		}
+		add_named_threat = { 
+			threat = 7.5 
+			name = MIK_responds_with_war
+		}
 	}
 }
-
+#Suisei demands land
 country_event = {
 	id = miko.5
 	title = miko.5.t
@@ -62,7 +115,28 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
-
+		name = miko.5.a
+		SUI = {
+			transfer_state = 165
+		}
+	}
+	option = {
+		name = miko.5.b
+		if = {
+			limit = {
+				MIK = {
+					is_in_faction_with = SUI
+				}
+			}
+			leave_faction = yes
+		}
+		SUI = {
+			add_opinion_modifier = {
+				target = MIK
+				modifier = despise
+			}
+			country_event = suisei.40
+		}
 	}
 }
 

@@ -13,17 +13,11 @@ hololive_investment_construction_wars = {
 			NOT = {
 				original_tag = MRT
 				has_government = fascism
-			OR = {
-				original_tag = MRT
-				exists = no
-				}
 			}
 		}
 	visible = {
 		original_tag = AQA
-			if = {
-			country_exists = MRT
-		}
+		country_exists = MRT
 	}
 	target_trigger = {
       FROM = {
@@ -140,9 +134,7 @@ hololive_investment_construction_wars = {
 		}
 	visible = {
 		original_tag = AQA
-			if = {
-			country_exists = MRT
-		}
+		country_exists = MRT
 	}
 	target_trigger = {
       FROM = {
@@ -259,9 +251,7 @@ hololive_investment_construction_wars = {
 		}
 	visible = {
 		original_tag = PEK
-			if = {
-			country_exists = MRT
-		}
+		country_exists = MRT
 	}
 	target_trigger = {
       FROM = {
@@ -378,9 +368,7 @@ hololive_investment_construction_wars = {
 		}
 	visible = {
 		original_tag = SUB
-			if = {
-			country_exists = MRT
-		}
+		country_exists = MRT
 	}
 	target_trigger = {
       FROM = {
@@ -486,19 +474,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = MRT
-				has_government = fascism
 			OR = {
-				original_tag = MRT
-				exists = no
+				MRT = {
+				has_government = left_wing_revolutionary
 				}
+				MRT = {
+				has_government = fascism
+				}
+				MRT = {
+				has_government = democratic_revitalisation
+				}
+				MRT = {
+				has_government = reactionary_monarchy
+				}
+			  }
 			}
 		}
 	visible = {
 		original_tag = AQA
-			if = {
-			country_exists = MRT
-		}
+		country_exists = MRT
 	}
 	target_trigger = {
       FROM = {
@@ -605,19 +599,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = CAR
-				has_government = fascism
-			OR = {
-				original_tag = CAR
-				exists = no
+				OR = {
+					CAR = {
+					has_government = left_wing_revolutionary
+					}
+					CAR = {
+					has_government = fascism
+					}
+					CAR = {
+					has_government = democratic_revitalisation
+					}
+					CAR = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = CAR
-		}
+		country_exists = CAR
 	}
 	target_trigger = {
       FROM = {
@@ -726,19 +726,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = ZIM
-				has_government = fascism
-			OR = {
-				original_tag = ZIM
-				exists = no
+				OR = {
+					ZIM = {
+					has_government = left_wing_revolutionary
+					}
+					ZIM = {
+					has_government = fascism
+					}
+					ZIM = {
+					has_government = democratic_revitalisation
+					}
+					ZIM = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = ZIM
-		}
+		country_exists = ZIM
 	}
 	target_trigger = {
       FROM = {
@@ -847,19 +853,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = ZAM	
-				has_government = fascism
 				OR = {
-					original_tag = ZAM	
-					exists = no
+					ZAM = {
+					has_government = left_wing_revolutionary
 					}
-			}
+					ZAM = {
+					has_government = fascism
+					}
+					ZAM = {
+					has_government = democratic_revitalisation
+					}
+					ZAM = {
+					has_government = reactionary_monarchy
+					}
+				  }
+				}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = ZAM
-		}
+		country_exists = ZAM
 	}
 	target_trigger = {
       FROM = {
@@ -965,19 +977,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-			original_tag = BOT			
-			has_government = fascism
-			OR = {
-				original_tag = BOT
-				exists = no
+				OR = {
+					BOT = {
+					has_government = left_wing_revolutionary
+					}
+					BOT = {
+					has_government = fascism
+					}
+					BOT = {
+					has_government = democratic_revitalisation
+					}
+					BOT = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
 			country_exists = BOT
-		}
 	}
 	target_trigger = {
       FROM = {
@@ -998,6 +1016,7 @@ hololive_investment_construction_wars = {
 			var = GLOBAL.hololive_investment_BOT_AQA
 			value = 1
 			}
+		}
 		random_list = {
 			25 = {	 
 			BOT = {
@@ -1078,27 +1097,32 @@ hololive_investment_construction_wars = {
 						}
 				}
 			}
-		}
-	  }
 	}
+}
 ########### 	MLW        ########################
 	aqa_invest_mlw = {	
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = MLW
-				has_government = fascism
-			OR = {
-				original_tag = MLW
-				exists = no
+				OR = {
+					MLW = {
+					has_government = left_wing_revolutionary
+					}
+					MLW = {
+					has_government = fascism
+					}
+					MLW = {
+					has_government = democratic_revitalisation
+					}
+					MLW = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = MLW
-		}
+		country_exists = MLW
 	}
 	target_trigger = {
       FROM = {
@@ -1207,19 +1231,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = SUD
-				has_government = fascism
-			OR = {
-				original_tag = SUD
-				exists = no
+				OR = {
+					SUD = {
+					has_government = left_wing_revolutionary
+					}
+					SUD = {
+					has_government = fascism
+					}
+					SUD = {
+					has_government = democratic_revitalisation
+					}
+					SUD = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = SUD
-		}
+		country_exists = SUD
 	}
 	target_trigger = {
       FROM = {
@@ -1288,19 +1318,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = CHA
-				has_government = fascism
-			OR = {
-				original_tag = CHA
-				exists = no
+				OR = {
+					CHA = {
+					has_government = left_wing_revolutionary
+					}
+					CHA = {
+					has_government = fascism
+					}
+					CHA = {
+					has_government = democratic_revitalisation
+					}
+					CHA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = CHA
-		}
+		country_exists = CHA
 	}
 	target_trigger = {
       FROM = {
@@ -1369,19 +1405,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = ALG
-				has_government = fascism
-			OR = {
-				original_tag = ALG
-				exists = no
+				OR = {
+					ALG = {
+					has_government = left_wing_revolutionary
+					}
+					ALG = {
+					has_government = fascism
+					}
+					ALG = {
+					has_government = democratic_revitalisation
+					}
+					ALG = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = ALG
-		}
+		country_exists = ALG
 	}
 	target_trigger = {
       FROM = {
@@ -1450,19 +1492,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = VOL
-				has_government = fascism
-			OR = {
-				original_tag = VOL
-				exists = no
+				OR = {
+					VOL = {
+					has_government = left_wing_revolutionary
+					}
+					VOL = {
+					has_government = fascism
+					}
+					VOL = {
+					has_government = democratic_revitalisation
+					}
+					VOL = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = VOL
-		}
+		country_exists = VOL
 	}
 	target_trigger = {
       FROM = {
@@ -1532,19 +1580,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = COL
-				has_government = fascism
-			OR = {
-				original_tag = COL
-				exists = no
+				OR = {
+					COL = {
+					has_government = left_wing_revolutionary
+					}
+					COL = {
+					has_government = fascism
+					}
+					COL = {
+					has_government = democratic_revitalisation
+					}
+					COL = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = COL
-		}
+		country_exists = COL
 	}
 	target_trigger = {
       FROM = {
@@ -1613,19 +1667,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = ECU
-				has_government = fascism
-			OR = {
-				original_tag = ECU
-				exists = no
+				OR = {
+					ECU = {
+					has_government = left_wing_revolutionary
+					}
+					ECU = {
+					has_government = fascism
+					}
+					ECU = {
+					has_government = democratic_revitalisation
+					}
+					ECU = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = ECU
-		}
+		country_exists = ECU
 	}
 	target_trigger = {
       FROM = {
@@ -1694,19 +1754,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = PRU
-				has_government = fascism
-			OR = {
-				original_tag = PRU
-				exists = no
+				OR = {
+					PRU = {
+					has_government = left_wing_revolutionary
+					}
+					PRU = {
+					has_government = fascism
+					}
+					PRU = {
+					has_government = democratic_revitalisation
+					}
+					PRU = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = PRU
-		}
+		country_exists = PRU
 	}
 	target_trigger = {
       FROM = {
@@ -1775,19 +1841,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = GYA
-				has_government = fascism
-			OR = {
-				original_tag = GYA
-				exists = no
+				OR = {
+					GYA = {
+					has_government = left_wing_revolutionary
+					}
+					GYA = {
+					has_government = fascism
+					}
+					GYA = {
+					has_government = democratic_revitalisation
+					}
+					GYA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = GYA
-		}
+		country_exists = GYA
 	}
 	target_trigger = {
       FROM = {
@@ -1856,19 +1928,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = VEN
-				has_government = fascism
-			OR = {
-				original_tag = VEN
-				exists = no
+				OR = {
+					VEN = {
+					has_government = left_wing_revolutionary
+					}
+					VEN = {
+					has_government = fascism
+					}
+					VEN = {
+					has_government = democratic_revitalisation
+					}
+					VEN = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = VEN
-		}
+		country_exists = VEN
 	}
 	target_trigger = {
       FROM = {
@@ -1938,19 +2016,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = BRM
-				has_government = fascism
-			OR = {
-				original_tag = BRM
-				exists = no
+				OR = {
+					BRM = {
+					has_government = left_wing_revolutionary
+					}
+					BRM = {
+					has_government = fascism
+					}
+					BRM = {
+					has_government = democratic_revitalisation
+					}
+					BRM = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = BRM
-		}
+		country_exists = BRM
 	}
 	target_trigger = {
       FROM = {
@@ -2019,19 +2103,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = aqua_construction
 			NOT = {
-				original_tag = SIA
-				has_government = fascism
-			OR = {
-				original_tag = SIA
-				exists = no
+				OR = {
+					SIA = {
+					has_government = left_wing_revolutionary
+					}
+					SIA = {
+					has_government = fascism
+					}
+					SIA = {
+					has_government = democratic_revitalisation
+					}
+					SIA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = AQA
-		if = {
-			country_exists = SIA
-		}
+		country_exists = SIA
 	}
 	target_trigger = {
       FROM = {
@@ -2103,19 +2193,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = MRT
-				has_government = fascism
-			OR = {
-				original_tag = MRT
-				exists = no
+				OR = {
+					MRT = {
+					has_government = left_wing_revolutionary
+					}
+					MRT = {
+					has_government = fascism
+					}
+					MRT = {
+					has_government = democratic_revitalisation
+					}
+					MRT = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = MRT
-		}
+		country_exists = MRT
 	}
 	target_trigger = {
       FROM = {
@@ -2184,19 +2280,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = CAR
-				has_government = fascism
-			OR = {
-				original_tag = CAR
-				exists = no
+				OR = {
+					CAR = {
+					has_government = left_wing_revolutionary
+					}
+					CAR = {
+					has_government = fascism
+					}
+					CAR = {
+					has_government = democratic_revitalisation
+					}
+					CAR = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = CAR
-		}
+		country_exists = CAR
 	}
 	target_trigger = {
       FROM = {
@@ -2265,19 +2367,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = ZIM
-				has_government = fascism
-			OR = {
-				original_tag = ZIM
-				exists = no
+				OR = {
+					ZIM = {
+					has_government = left_wing_revolutionary
+					}
+					ZIM = {
+					has_government = fascism
+					}
+					ZIM = {
+					has_government = democratic_revitalisation
+					}
+					ZIM = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
-		}
+		    }
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = ZIM
-		}
+		country_exists = ZIM
 	}
 	target_trigger = {
       FROM = {
@@ -2346,19 +2454,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = ZAM		
-				has_government = fascism
 				OR = {
-					original_tag = ZAM	
-					exists = no
+					ZAM = {
+					has_government = left_wing_revolutionary
 					}
-			}
+					ZAM = {
+					has_government = fascism
+					}
+					ZAM = {
+					has_government = democratic_revitalisation
+					}
+					ZAM = {
+					has_government = reactionary_monarchy
+					}
+				  }
+				}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = ZAM
-		}
+		country_exists = ZAM
 	}
 	target_trigger = {
       FROM = {
@@ -2428,19 +2542,25 @@ hololive_investment_construction_wars = {
 			original_tag = PEK
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = BOT			
-				has_government = fascism
 				OR = {
-					original_tag = BOT
-					exists = no
+					BOT = {
+					has_government = left_wing_revolutionary
 					}
-			}
+					BOT = {
+					has_government = fascism
+					}
+					BOT = {
+					has_government = democratic_revitalisation
+					}
+					BOT = {
+					has_government = reactionary_monarchy
+					}
+				  }
+				}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = BOT
-		}
+		country_exists = BOT
 	}
 	target_trigger = {
       FROM = {
@@ -2509,19 +2629,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = MLW
-				has_government = fascism
-			OR = {
-				original_tag = MLW
-				exists = no
+				OR = {
+					MLW = {
+					has_government = left_wing_revolutionary
+					}
+					MLW = {
+					has_government = fascism
+					}
+					MLW = {
+					has_government = democratic_revitalisation
+					}
+					MLW = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = MLW
-		}
+		country_exists = MLW
 	}
 	target_trigger = {
       FROM = {
@@ -2590,19 +2716,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = SUD
-				has_government = fascism
-			OR = {
-				original_tag = SUD
-				exists = no
+				OR = {
+					SUD = {
+					has_government = left_wing_revolutionary
+					}
+					SUD = {
+					has_government = fascism
+					}
+					SUD = {
+					has_government = democratic_revitalisation
+					}
+					SUD = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = SUD
-		}
+		country_exists = SUD
 	}
 	target_trigger = {
       FROM = {
@@ -2671,19 +2803,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = CHA
-				has_government = fascism
-			OR = {
-				original_tag = CHA
-				exists = no
+				OR = {
+					CHA = {
+					has_government = left_wing_revolutionary
+					}
+					CHA = {
+					has_government = fascism
+					}
+					CHA = {
+					has_government = democratic_revitalisation
+					}
+					CHA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = CHA
-		}
+		country_exists = CHA
 	}
 	target_trigger = {
       FROM = {
@@ -2752,19 +2890,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = ALG
-				has_government = fascism
-			OR = {
-				original_tag = ALG
-				exists = no
+				OR = {
+					ALG = {
+					has_government = left_wing_revolutionary
+					}
+					ALG = {
+					has_government = fascism
+					}
+					ALG = {
+					has_government = democratic_revitalisation
+					}
+					ALG = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = ALG
-		}
+		country_exists = ALG
 	}
 	target_trigger = {
       FROM = {
@@ -2833,19 +2977,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = VOL
-				has_government = fascism
-			OR = {
-				original_tag = VOL
-				exists = no
+				OR = {
+					VOL = {
+					has_government = left_wing_revolutionary
+					}
+					VOL = {
+					has_government = fascism
+					}
+					VOL = {
+					has_government = democratic_revitalisation
+					}
+					VOL = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = VOL
-		}
+		country_exists = VOL
 	}
 	target_trigger = {
       FROM = {
@@ -2915,19 +3065,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = COL
-				has_government = fascism
-			OR = {
-				original_tag = COL
-				exists = no
+				OR = {
+					COL = {
+					has_government = left_wing_revolutionary
+					}
+					COL = {
+					has_government = fascism
+					}
+					COL = {
+					has_government = democratic_revitalisation
+					}
+					COL = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = COL
-		}
+		country_exists = COL
 	}
 	target_trigger = {
       FROM = {
@@ -2996,19 +3152,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = ECU
-				has_government = fascism
-			OR = {
-				original_tag = ECU
-				exists = no
+				OR = {
+					ECU = {
+					has_government = left_wing_revolutionary
+					}
+					ECU = {
+					has_government = fascism
+					}
+					ECU = {
+					has_government = democratic_revitalisation
+					}
+					ECU = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = ECU
-		}
+		country_exists = ECU
 	}
 	target_trigger = {
       FROM = {
@@ -3077,19 +3239,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = PRU
-				has_government = fascism
-			OR = {
-				original_tag = PRU
-				exists = no
+				OR = {
+					PRU = {
+					has_government = left_wing_revolutionary
+					}
+					PRU = {
+					has_government = fascism
+					}
+					PRU = {
+					has_government = democratic_revitalisation
+					}
+					PRU = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = PRU
-		}
+		country_exists = PRU
 	}
 	target_trigger = {
       FROM = {
@@ -3158,19 +3326,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = GYA
-				has_government = fascism
-			OR = {
-				original_tag = GYA
-				exists = no
+				OR = {
+					GYA = {
+					has_government = left_wing_revolutionary
+					}
+					GYA = {
+					has_government = fascism
+					}
+					GYA = {
+					has_government = democratic_revitalisation
+					}
+					GYA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = GYA
-		}
+		country_exists = GYA
 	}
 	target_trigger = {
       FROM = {
@@ -3239,19 +3413,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = VEN
-				has_government = fascism
-			OR = {
-				original_tag = VEN
-				exists = no
+				OR = {
+					VEN = {
+					has_government = left_wing_revolutionary
+					}
+					VEN = {
+					has_government = fascism
+					}
+					VEN = {
+					has_government = democratic_revitalisation
+					}
+					VEN = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = VEN
-		}
+		country_exists = VEN
 	}
 	target_trigger = {
       FROM = {
@@ -3321,19 +3501,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = BRM
-				has_government = fascism
-			OR = {
-				original_tag = BRM
-				exists = no
+				OR = {
+					BRM = {
+					has_government = left_wing_revolutionary
+					}
+					BRM = {
+					has_government = fascism
+					}
+					BRM = {
+					has_government = democratic_revitalisation
+					}
+					BRM = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = BRM
-		}
+		country_exists = BRM
 	}
 	target_trigger = {
       FROM = {
@@ -3402,19 +3588,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = pekora_construction
 			NOT = {
-				original_tag = SIA
-				has_government = fascism
-			OR = {
-				original_tag = SIA
-				exists = no
+				OR = {
+					SIA = {
+					has_government = left_wing_revolutionary
+					}
+					SIA = {
+					has_government = fascism
+					}
+					SIA = {
+					has_government = democratic_revitalisation
+					}
+					SIA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = PEK
-		if = {
-			country_exists = SIA
-		}
+		country_exists = SIA
 	}
 	target_trigger = {
       FROM = {
@@ -3486,19 +3678,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = MRT
-				has_government = fascism
-			OR = {
-				original_tag = MRT
-				exists = no
+				OR = {
+					MRT = {
+					has_government = left_wing_revolutionary
+					}
+					MRT = {
+					has_government = fascism
+					}
+					MRT = {
+					has_government = democratic_revitalisation
+					}
+					MRT = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = MRT
-		}
+		country_exists = MRT
 	}
 	target_trigger = {
       FROM = {
@@ -3523,7 +3721,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = MRT
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -3587,7 +3785,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+		}
+	else = {
 		random_list = {
 			50 =  {	
 			MRT = {
@@ -3633,26 +3832,31 @@ hololive_investment_construction_wars = {
 	}
   }
 }
-}
 
 ########### 	CAR        ########################
 	sub_invest_car = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = CAR
-				has_government = fascism
-			OR = {
-				original_tag = CAR
-				exists = no
+				OR = {
+					CAR = {
+					has_government = left_wing_revolutionary
+					}
+					CAR = {
+					has_government = fascism
+					}
+					CAR = {
+					has_government = democratic_revitalisation
+					}
+					CAR = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = CAR
-		}
+		country_exists = CAR
 	}
 	target_trigger = {
       FROM = {
@@ -3677,7 +3881,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = CAR
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -3741,7 +3945,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+		}
+	else = {
 		random_list = {
 			50 =  {	
 			CAR = {
@@ -3786,26 +3991,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	ZIM        ########################
 	sub_invest_zim = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = ZIM
-				has_government = fascism
-			OR = {
-				original_tag = ZIM
-				exists = no
+				OR = {
+					ZIM = {
+					has_government = left_wing_revolutionary
+					}
+					ZIM = {
+					has_government = fascism
+					}
+					ZIM = {
+					has_government = democratic_revitalisation
+					}
+					ZIM = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = ZIM
-		}
+		country_exists = ZIM
 	}
 	target_trigger = {
       FROM = {
@@ -3830,7 +4040,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = ZIM
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -3894,7 +4104,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else  = {
 		random_list = {
 			50 =  {	
 			ZIM = {
@@ -3939,26 +4150,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	ZAM        ########################
 	sub_invest_zam = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = ZAM		
-				has_government = fascism
 				OR = {
-					exists = no
+					ZAM = {
+					has_government = left_wing_revolutionary
 					}
-			}
+					ZAM = {
+					has_government = fascism
+					}
+					ZAM = {
+					has_government = democratic_revitalisation
+					}
+					ZAM = {
+					has_government = reactionary_monarchy
+					}
+				  }
+				}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			original_tag = ZAM	
-			country_exists = no
-		}
+		original_tag = ZAM	
 	}
 	target_trigger = {
       FROM = {
@@ -3983,7 +4199,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = ZAM
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -4047,7 +4263,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else = {
 		random_list = {
 			50 =  {	
 			ZAM = {
@@ -4092,26 +4309,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	BOT        ########################
 	sub_invest_bot = {	
 		available = {
 			has_idea = subaru_construction
-			NOT =	{
-					original_tag = BOT		
+			NOT = {
+				OR = {
+					BOT = {
+					has_government = left_wing_revolutionary
+					}
+					BOT = {
 					has_government = fascism
-					OR = {
-						original_tag = BOT
-						exists = no
-						}
-			}
+					}
+					BOT = {
+					has_government = democratic_revitalisation
+					}
+					BOT = {
+					has_government = reactionary_monarchy
+					}
+				  }
+				}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = BOT
-		}
+		country_exists = BOT
 	}
 	target_trigger = {
       FROM = {
@@ -4136,7 +4358,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = BOT
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -4200,7 +4422,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else  = {
 		random_list = {
 			50 =  {	
 			BOT = {
@@ -4245,26 +4468,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	MLW        ########################
 	sub_invest_mlw = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = MLW
-				has_government = fascism
-			OR = {
-				original_tag = MLW
-				exists = no
+				OR = {
+					MLW = {
+					has_government = left_wing_revolutionary
+					}
+					MLW = {
+					has_government = fascism
+					}
+					MLW = {
+					has_government = democratic_revitalisation
+					}
+					MLW = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = MLW
-		}
+		country_exists = MLW
 	}
 	target_trigger = {
       FROM = {
@@ -4289,7 +4517,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = MLW
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -4353,7 +4581,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else = {
 		random_list = {
 			50 =  {	
 			MLW = {
@@ -4398,26 +4627,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	SUD        ########################
 	sub_invest_sud = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = SUD
-				has_government = fascism
-			OR = {
-				original_tag = SUD
-				exists = no
+				OR = {
+					SUD = {
+					has_government = left_wing_revolutionary
+					}
+					SUD = {
+					has_government = fascism
+					}
+					SUD = {
+					has_government = democratic_revitalisation
+					}
+					SUD = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = SUD
-		}
+		country_exists = SUD
 	}
 	target_trigger = {
       FROM = {
@@ -4442,7 +4676,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = SUD
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -4506,7 +4740,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else   = {
 		random_list = {
 			50 =  {	
 			SUD = {
@@ -4551,26 +4786,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	CHA        ########################
 	sub_invest_cha = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = CHA
-				has_government = fascism
-			OR = {
-				original_tag = CHA
-				exists = no
+				OR = {
+					CHA = {
+					has_government = left_wing_revolutionary
+					}
+					CHA = {
+					has_government = fascism
+					}
+					CHA = {
+					has_government = democratic_revitalisation
+					}
+					CHA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = CHA
-		}
+		country_exists = CHA
 	}
 	target_trigger = {
       FROM = {
@@ -4595,7 +4835,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = CHA
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -4660,7 +4900,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else  = {
 		random_list = {
 			50 =  {	
 			CHA = {
@@ -4705,26 +4946,31 @@ hololive_investment_construction_wars = {
 		}		  
 	  }
 	}
-  }
- }
+}
 ########### 	ALG        ########################
 	sub_invest_alg = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = ALG
-				has_government = fascism
-			OR = {
-				original_tag = ALG
-				exists = no
+				OR = {
+					ALG = {
+					has_government = left_wing_revolutionary
+					}
+					ALG = {
+					has_government = fascism
+					}
+					ALG = {
+					has_government = democratic_revitalisation
+					}
+					ALG = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = ALG
-		}
+		country_exists = ALG
 	}
 	target_trigger = {
       FROM = {
@@ -4749,7 +4995,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = ALG
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -4779,7 +5025,7 @@ hololive_investment_construction_wars = {
 			ALG = {
 					 random_owned_controlled_state  = {
 					 add_building_construction = {
-						type = arms_factory¨
+						type = arms_factory
 						level = 1 
 						instant_build = yes
 						}
@@ -4813,7 +5059,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else = {
 		random_list = {
 			50 =  {	
 			ALG = {
@@ -4858,26 +5105,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	VOL        ########################
 	sub_invest_vol = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = VOL
-				has_government = fascism
-			OR = {
-				original_tag = VOL
-				exists = no
+				OR = {
+					VOL = {
+					has_government = left_wing_revolutionary
+					}
+					VOL = {
+					has_government = fascism
+					}
+					VOL = {
+					has_government = democratic_revitalisation
+					}
+					VOL = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = VOL
-		}
+		country_exists = VOL
 	}
 	target_trigger = {
       FROM = {
@@ -4902,7 +5154,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = VOL
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -4966,7 +5218,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else = {
 		random_list = {
 			50 =  {	
 			VOL = {
@@ -5011,7 +5264,6 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	COL        ########################
 ########### SOUTH AMERICA  ########################
@@ -5019,19 +5271,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = COL
-				has_government = fascism
-			OR = {
-				original_tag = COL
-				exists = no
+				OR = {
+					COL = {
+					has_government = left_wing_revolutionary
+					}
+					COL = {
+					has_government = fascism
+					}
+					COL = {
+					has_government = democratic_revitalisation
+					}
+					COL = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = COL
-		}
+		country_exists = COL
 	}
 	target_trigger = {
       FROM = {
@@ -5056,7 +5314,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = COL
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -5120,7 +5378,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else = {
 		random_list = {
 			50 =  {	
 			COL = {
@@ -5165,26 +5424,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	ECU        ########################
 	sub_invest_ecu = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = ECU
-				has_government = fascism
-			OR = {
-				original_tag = ECU
-				exists = no
+				OR = {
+					ECU = {
+					has_government = left_wing_revolutionary
+					}
+					ECU = {
+					has_government = fascism
+					}
+					ECU = {
+					has_government = democratic_revitalisation
+					}
+					ECU = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = ECU
-		}
+		country_exists = ECU
 	}
 	target_trigger = {
       FROM = {
@@ -5209,7 +5473,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = ECU
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -5273,7 +5537,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else = {
 		random_list = {
 			50 =  {	
 			ECU = {
@@ -5318,26 +5583,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	PRU        ########################
 	sub_invest_pru = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = PRU
-				has_government = fascism
-			OR = {
-				original_tag = PRU
-				exists = no
+				OR = {
+					PRU = {
+					has_government = left_wing_revolutionary
+					}
+					PRU = {
+					has_government = fascism
+					}
+					PRU = {
+					has_government = democratic_revitalisation
+					}
+					PRU = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = PRU
-		}
+		country_exists = PRU
 	}
 	target_trigger = {
       FROM = {
@@ -5426,7 +5696,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else  = {
 		random_list = {
 			50 =  {	
 			PRU = {
@@ -5471,26 +5742,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	GYA        ########################
 	sub_invest_gya = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = GYA
-				has_government = fascism
-			OR = {
-				original_tag = GYA
-				exists = no
+				OR = {
+					GYA = {
+					has_government = left_wing_revolutionary
+					}
+					GYA = {
+					has_government = fascism
+					}
+					GYA = {
+					has_government = democratic_revitalisation
+					}
+					GYA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = GYA
-		}
+		country_exists = GYA
 	}
 	target_trigger = {
       FROM = {
@@ -5515,7 +5791,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = GYA
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -5579,7 +5855,9 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+		}
+	else  = {
 		random_list = {
 			50 =  {	
 			GYA = {
@@ -5607,7 +5885,7 @@ hololive_investment_construction_wars = {
 			GYA = {
 					 random_owned_controlled_state  = {
 					 add_building_construction = {
-						type = arms_factory¨
+						type = arms_factory
 						level = 1 
 						instant_build = yes
 						}
@@ -5623,27 +5901,31 @@ hololive_investment_construction_wars = {
 		  }
 		}				
 	  }
-	}
-  }
 }
 ########### 	VEN        ########################
 	sub_invest_ven = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = VEN
-				has_government = fascism
-			OR = {
-				original_tag = VEN
-				exists = no
+				OR = {
+					VEN = {
+					has_government = left_wing_revolutionary
+					}
+					VEN = {
+					has_government = fascism
+					}
+					VEN = {
+					has_government = democratic_revitalisation
+					}
+					VEN = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = VEN
-		}
+		country_exists = VEN
 	}
 	target_trigger = {
       FROM = {
@@ -5668,7 +5950,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = VEN
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -5732,7 +6014,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else = {
 		random_list = {
 			50 =  {	
 			VEN = {
@@ -5777,7 +6060,6 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	BRM        ########################
 ###########     SE ASIA       #####################
@@ -5785,19 +6067,25 @@ hololive_investment_construction_wars = {
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = BRM
-				has_government = fascism
-			OR = {
-				original_tag = BRM
-				exists = no
+				OR = {
+					BRM = {
+					has_government = left_wing_revolutionary
+					}
+					BRM = {
+					has_government = fascism
+					}
+					BRM = {
+					has_government = democratic_revitalisation
+					}
+					BRM = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = BRM
-		}
+		country_exists = BRM
 	}
 	target_trigger = {
       FROM = {
@@ -5822,7 +6110,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = BRM
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -5863,7 +6151,7 @@ hololive_investment_construction_wars = {
 			BRM = {
 					 random_owned_controlled_state  = {
 					 add_building_construction = {
-						type = ¨dockyard
+						type = dockyard
 						level = 1 
 						instant_build = yes
 						}
@@ -5886,7 +6174,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else  = {
 		random_list = {
 			50 =  {	
 			BRM = {
@@ -5931,26 +6220,31 @@ hololive_investment_construction_wars = {
 		}				
 	  }
 	}
-  }
 }
 ########### 	SIA        ########################
 	sub_invest_sia = {	
 		available = {
 			has_idea = subaru_construction
 			NOT = {
-				original_tag = SIA
-				has_government = fascism
-			OR = {
-				original_tag = SIA
-				exists = no
+				OR = {
+					SIA = {
+					has_government = left_wing_revolutionary
+					}
+					SIA = {
+					has_government = fascism
+					}
+					SIA = {
+					has_government = democratic_revitalisation
+					}
+					SIA = {
+					has_government = reactionary_monarchy
+					}
+				  }
 				}
-			}
 		}
 	visible = {
 		original_tag = SUB
-		if = {
-			country_exists = SIA
-		}
+		country_exists = SIA
 	}
 	target_trigger = {
       FROM = {
@@ -5975,7 +6269,7 @@ hololive_investment_construction_wars = {
 		limit = {
 			any_state = {
         			is_owned_by = SIA
-       				
+					is_coastal = yes
     			}
 			}
 		random_list = {
@@ -6039,7 +6333,8 @@ hololive_investment_construction_wars = {
 					id = investment.1
 						}
 				}
-	else_if = {
+			}
+	else = {
 		random_list = {
 			50 =  {	
 			SIA = {
@@ -6085,5 +6380,4 @@ hololive_investment_construction_wars = {
 	  }
 	}
   }
-}
 }

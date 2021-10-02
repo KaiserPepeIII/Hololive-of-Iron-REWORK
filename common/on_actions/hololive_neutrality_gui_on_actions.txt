@@ -1,17 +1,49 @@
 on_actions = {
 	on_startup = {
 		effect = {
+		#LHS
+			set_variable = {
+				var = global.lhs_count_support
+				value = 0
+			}
+			set_variable = {
+				var = global.lhs_count_reject
+				value = 0
+			}
+			set_variable = {
+				var = global.lhs_count_abstain
+				value = 0
+			}
+			set_variable = {
+				var = global.lhs_count_veto
+				value = 0
+			}
+			set_global_flag = lhs_idealism
+			set_variable = {
+				var = global.lhs_faith
+				value = 65
+				}
+			clamp_variable = {
+				var = global.lhs_faith
+				min = 0
+				max = 100
+				}		
+				set_variable = {
+				var = global.brugg_legitimacy
+				value = 85
+				}
+			clamp_variable = {
+				var = global.brugg_legitimacy
+				min = 0
+				max = 100
+				}
 			every_country = {
 				limit = {
 					NOT = {
+						OR = {
 						has_idea = lhs_member
-						OR = {
 						has_idea = resistance_member
-						}
-						OR = {
 						has_idea = anti_member
-						}
-						OR = {
 						has_idea = resistance_head
 						}
 					}
@@ -19,21 +51,15 @@ on_actions = {
 				add_ideas = neutral_member
 			}
 			every_country = {
-				limit = {
-					if = {
-						limit = {
-						has_idea = lhs_member
-						}
-						else_if = {
-						limit = {
-						has_idea = resistance_member
+					limit = {
+						 NOT = {
+							OR = {
+							has_idea = lhs_member
+							has_idea = resistance_member
+							has_idea = neutral_member
 							}
+						  }
 						}
-						else = {
-						has_idea = neutral_member
-						}
-						}
-					}
 				add_ideas = hololive_state
 			}
 			every_country = {
@@ -48,12 +74,120 @@ on_actions = {
 					value = THIS.id
 				}
 			 }
+			every_country = {
+				limit = { 	
+				has_idea = lhs_security_council_one
+					}
+				add_to_array = {
+					array = global.lhs_security_council_one
+					value = THIS.id
+				}
+			 }	
+			 every_country = {
+				limit = { 	
+				has_idea = lhs_security_council_two
+					}
+				add_to_array = {
+					array = global.lhs_security_council_two
+					value = THIS.id
+				}
+			 }			
+			 every_country = {
+				limit = { 	
+				has_idea = lhs_security_council_three
+					}
+				add_to_array = {
+					array = global.lhs_security_council_three
+					value = THIS.id
+				}
+			 }		
+			 every_country = {
+				limit = { 	
+				has_idea = lhs_security_council_four
+					}
+				add_to_array = {
+					array = global.lhs_security_council_four
+					value = THIS.id
+				}
+			 }	
+			 every_country = {
+				limit = { 	
+				has_idea = lhs_security_council_five
+					}
+				add_to_array = {
+					array = global.lhs_security_council_five
+					value = THIS.id
+				}
+			 }		
+			 every_country = {
+				limit = { 	
+				has_idea = lhs_security_council_six
+					}
+				add_to_array = {
+					array = global.lhs_security_council_six
+					value = THIS.id
+				}
+			 }		
+			every_country = {
+				limit = {
+				has_idea = lhs_customs_union_gui
+					}
+				add_to_array = {
+					array = global.lhs_customs_union_flag
+					value = THIS.id
+				}
+			 }			
+			 every_country = {
+				limit = {
+				has_idea = lhs_economic_development_gui
+					}
+				add_to_array = {
+					array = global.lhs_economic_development_flag
+					value = THIS.id
+				}
+			 }			
+			 every_country = {
+				limit = {
+				has_idea = lhs_defensive_union_gui
+					}
+				add_to_array = {
+					array = global.lhs_defensive_union_flag
+					value = THIS.id
+				}
+			 }			 
 			 every_country = {
 				limit = { 	
 				has_idea = resistance_member
 					}
 				add_to_array = {
 					array = global.resistance_member_flag
+					value = THIS.id
+				}
+			 }
+			 every_country = {
+				limit = { 	
+				has_idea = coco_resistance_member
+					}
+				add_to_array = {
+					array = global.coco_resistance_member_flag
+					value = THIS.id
+				}
+			 }			
+			 every_country = {
+				limit = { 	
+				has_idea = aqua_resistance_member
+					}
+				add_to_array = {
+					array = global.aqua_resistance_member_flag
+					value = THIS.id
+				}
+			 }			
+			 every_country = {
+				limit = { 	
+				has_idea = neutral_resistance_member
+					}
+				add_to_array = {
+					array = global.neutral_resistance_member_flag
 					value = THIS.id
 				}
 			 }
@@ -68,7 +202,7 @@ on_actions = {
 			 }
 			 every_country = {
 				limit = { 	
-				tag = YAG
+				has_idea = lhs_head
 					}
 				add_to_array = {
 					array = global.lhs_head_flag
@@ -76,5 +210,5 @@ on_actions = {
 				}
 			 }
 		}
-	}
+	 }
 }

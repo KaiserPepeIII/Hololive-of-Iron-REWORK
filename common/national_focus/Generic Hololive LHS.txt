@@ -1,0 +1,3095 @@
+focus_tree = {
+	id = FocusTree_0
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			OR = {
+			tag = FLA
+			tag = SOR
+			tag = MIK
+			tag = FBK
+			tag = WTS
+			tag = SUB			
+			tag = WFA
+			tag = TOW
+			tag = NIN
+			tag = MEL
+			tag = ROB
+			tag = MIO
+			tag = MRI
+			tag = BTN
+			tag = PLK
+			tag = MAR
+			tag = KRN
+			tag = OKA
+			tag = ROS
+			}
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 2 y = 2 }
+	focus = {
+		id = GEN_rearmemants_program
+		icon = GFX_focus_GEN_rearmemants_program
+		cost = 8.00
+		x = 15
+		y = 1
+
+		completion_reward = {
+			army_experience = 10
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	focus = {
+		id = GEN_naval_rearming
+		icon = GFX_focus_GEN_naval_rearming
+		cost = 8.00
+		x = 34
+		y = 1
+		completion_reward = {
+			navy_experience = 10
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes 
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 3
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
+	}
+	focus = {
+		id = GEN_aircraft_rearming
+		icon = GFX_focus_GEN_aircraft_rearming
+		cost = 8.00
+		completion_reward = {
+			air_experience = 10
+			add_timed_idea = {
+				idea = GEN_aircraft_rearming_idea
+				days = 180
+			} 
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		x = 45
+		y = 1
+
+	}
+	focus = {
+		id = GEN_economic_development
+		icon = GFX_focus_GEN_economic_development
+		cost = 8.00
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_economic_development_idea
+				days = 180
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		x = 56
+		y = 1
+
+	}
+	focus = {
+		id = GEN_stick_with_lhs
+		icon = GFX_focus_GEN_stick_with_lhs
+		cost = 5.00
+		mutually_exclusive = {
+			focus = GEN_follow_resistance
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_stick_with_lhs_idea
+				days = 360
+			}
+		}
+		x = 70
+		y = 1
+
+	}
+	focus = {
+		id = GEN_follow_resistance
+		icon = GFX_focus_GEN_follow_resistance
+		cost = 8.00
+		mutually_exclusive = {
+			focus = GEN_stick_with_lhs
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_follow_resistance_idea
+				days = 360
+			}
+		}
+		x = 80
+		y = 1
+
+	}
+	focus = {
+		id = GEN_establish_military_academy
+		icon = GFX_focus_GEN_establish_military_academy
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_rearmemants_program
+		}
+		completion_reward = {
+			add_ideas = GEN_military_academy
+		}
+		x = 8
+		y = 2
+
+	}
+	focus = {
+		id = GEN_defensive_ethos
+		icon = GFX_focus_GEN_defensive_ethos
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_establish_military_academy
+		}
+		mutually_exclusive = {
+			focus = GEN_expansion_ethos
+		}
+		completion_reward = {
+			add_ideas = GEN_defensive_ethos_idea
+		}
+		x = 7
+		y = 3
+
+	}
+	focus = {
+		id = GEN_expansion_ethos
+		icon = GFX_focus_GEN_expansion_ethos
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_establish_military_academy
+		}
+		mutually_exclusive = {
+			focus = GEN_defensive_ethos
+		}
+		completion_reward = {
+			add_ideas = GEN_expansion_ethos_idea
+		}
+		x = 9
+		y = 3
+
+	}
+	focus = {
+		id = GEN_shock_and_awe
+		icon = GFX_focus_GEN_shock_and_awe
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_defensive_ethos
+			focus = GEN_expansion_ethos
+		}
+		mutually_exclusive = {
+			focus = GEN_blitz_experiment
+			focus = GEN_strengthen_high_command
+			focus = GEN_mass_assault
+		}
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = GEN_shock_and_awe
+				bonus = 0.8
+				uses = 1
+				category = cat_superior_firepower
+			}
+		}
+		x = 3
+		y = 4
+
+	}
+	focus = {
+		id = GEN_strengthen_high_command
+		icon = GFX_focus_GEN_strengthen_high_command
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_defensive_ethos
+			focus = GEN_expansion_ethos
+		}
+		mutually_exclusive = {
+			focus = GEN_blitz_experiment
+			focus = GEN_shock_and_awe
+			focus = GEN_mass_assault
+		}
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = GEN_grand_battle_plan
+				bonus = 1
+				uses = 1
+				category = cat_grand_battle_plan
+			}			
+		}
+		x = 6
+		y = 4
+
+	}
+	focus = {
+		id = GEN_the_soldiers_spirit
+		icon = GFX_focus_GEN_the_soldiers_spirit
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_strengthen_high_command
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = GEN_soldiers_spirit
+		}
+		x = 5
+		y = 5
+
+	}
+	focus = {
+		id = GEN_lessons_from_wwone
+		icon = GFX_focus_GEN_lessons_from_wwone
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_strengthen_high_command
+		}
+		completion_reward = {
+			army_experience = 10
+			air_experience = 10
+			add_tech_bonus = {
+				name = GEN_grand_battle_plan
+				bonus = 0.5
+				uses = 1
+				category = cat_grand_battle_plan
+			}	
+		}
+		x = 7
+		y = 5
+
+	}
+	focus = {
+		id = GEN_blitz_experiment
+		icon = GFX_focus_GEN_blitz_experiment
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_expansion_ethos
+		}
+		mutually_exclusive = {
+			focus = GEN_mass_assault
+			focus = GEN_strengthen_high_command
+			focus = GEN_shock_and_awe
+		}
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = GEN_blitz
+				bonus = 0.5
+				uses = 1
+				category = cat_mobile_warfare
+			}				
+		}
+		x = 9
+		y = 4
+
+	}
+	focus = {
+		id = GEN_motorised_mechanized_push
+		icon = GFX_focus_GEN_motorised_mechanized_push
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_blitz_experiment
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_motorisation_push
+				days = 365
+			}
+		}
+		x = 9
+		y = 5
+
+	}
+	focus = {
+		id = GEN_focus_on_speed
+		icon = GFX_focus_GEN_focus_on_speed
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_motorised_mechanized_push
+		}
+		completion_reward = {
+			add_ideas = GEN_speed_focus
+		}
+		x = 8
+		y = 6
+
+	}
+	focus = {
+		id = GEN_armoured_spearhead
+		icon = GFX_focus_GEN_armoured_spearhead
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_motorised_mechanized_push
+		}
+		completion_reward = {
+			add_ideas = GEN_armoured_spearhead
+		}
+		x = 10
+		y = 6
+
+	}
+	focus = {
+		id = GEN_modern_blitz
+		icon = GFX_focus_GEN_modern_blitz
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_armoured_spearhead
+		}
+		prerequisite = {
+			focus = GEN_focus_on_speed
+		}
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = GEN_blitz
+				bonus = 0.5
+				uses = 3
+				category = cat_mobile_warfare
+			}	
+		}
+		x = 9
+		y = 7
+
+	}
+	focus = {
+		id = GEN_mass_assault
+		icon = GFX_focus_GEN_mass_assault
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_expansion_ethos
+		}
+		mutually_exclusive = {
+			focus = GEN_blitz_experiment
+			focus = GEN_shock_and_awe
+			focus = GEN_strengthen_high_command
+		}
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = GEN_mass_assault
+				bonus = 0.8
+				uses = 1
+				category = cat_mass_assault
+			}	
+		}
+		x = 12
+		y = 4
+
+	}
+	focus = {
+		id = GEN_guns_for_everyone
+		icon = GFX_focus_GEN_guns_for_everyone
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_mass_assault
+		}
+		completion_reward = {
+			add_ideas = GEN_guns_for_everyone_idea
+		}
+		x = 11
+		y = 5
+
+	}
+	focus = {
+		id = GEN_mass_mobilisation
+		icon = GFX_focus_GEN_mass_mobilization
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_mass_assault
+		}
+		completion_reward = {
+			add_ideas = GEN_mass_mobilisation_idea
+		}
+		x = 13
+		y = 5
+
+	}
+	focus = {
+		id = GEN_efficient_conscription
+		icon = GFX_focus_GEN_efficient_conscription
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_guns_for_everyone
+		}
+		prerequisite = {
+			focus = GEN_mass_mobilisation
+		}
+		completion_reward = {
+			add_ideas = GEN_efficient_conscription_idea
+		}
+		x = 12
+		y = 6
+
+	}
+	focus = {
+		id = GEN_modern_mass_assault
+		icon = GFX_focus_GEN_modern_mass_assault
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_efficient_conscription
+		}
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = GEN_mass_assault
+				bonus = 0.8
+				uses = 3
+				category = cat_mass_assault
+			}			
+		}
+		x = 12
+		y = 7
+
+	}
+	focus = {
+		id = GEN_invite_lhs_advisors
+		icon = GFX_focus_GEN_invite_lhs_advisors
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_rearmemants_program
+		}
+		mutually_exclusive = {
+			focus = GEN_invite_resistance_advisors
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_invite_lhs_advisors_idea
+				days = 1080
+			}
+			YAG = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = pushing_friendly_relations
+				}
+			}
+		}
+		x = 14
+		y = 2
+
+	}
+	focus = {
+		id = GEN_study_resistance_tactics
+		icon = GFX_focus_GEN_study_resistance_tactics
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_invite_lhs_advisors
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_study_resistance_tactics_idea
+				days = 720
+			}
+		}
+		x = 13
+		y = 3
+
+	}
+	focus = {
+		id = GEN_invite_resistance_advisors
+		icon = GFX_goal_unknown
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_rearmemants_program
+		}
+		mutually_exclusive = {
+			focus = GEN_invite_lhs_advisors
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_invite_resistance_advisors_idea
+				days = 1080
+			}
+			AQA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = pushing_friendly_relations
+				}
+			}
+			COC = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = pushing_friendly_relations
+				}
+			}
+		}
+		x = 16
+		y = 2
+
+	}
+	focus = {
+		id = GEN_army_exercises
+		icon = GFX_focus_GEN_army_exercises
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_invite_resistance_advisors
+			focus = GEN_invite_lhs_advisors
+		}
+		completion_reward = {
+			set_country_flag = GEN_army_exercises
+		}
+		x = 15
+		y = 3
+
+	}
+	focus = {
+		id = GEN_study_lhs_tactics
+		icon = GFX_focus_GEN_study_lhs_tactics
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_invite_resistance_advisors
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_study_lhs_tactics_idea
+				days = 720
+			}
+		}
+		x = 17
+		y = 3
+
+	}
+	focus = {
+		id = GEN_guns_modernisation_program
+		icon = GFX_focus_GEN_guns_modernisation_program
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_rearmemants_program
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_guns_modernisation_program_idea
+				days = 360
+			}
+		}
+		x = 22
+		y = 2
+
+	}
+	focus = {
+		id = GEN_weapons_factories
+		icon = GFX_focus_GEN_weapons_factories
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_guns_modernisation_program
+		}
+		mutually_exclusive = {
+			focus = GEN_strengthen_military_industrial_complex
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+				}
+				add_extra_state_shared_building_slots = 4
+			}	
+		}
+		x = 21
+		y = 3
+
+	}
+	focus = {
+		id = GEN_strengthen_military_industrial_complex
+		icon = GFX_focus_GEN_strengthen_military_industrial_complex
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_guns_modernisation_program
+		}
+		mutually_exclusive = {
+			focus = GEN_weapons_factories
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_strengthen_military_industrial_complex_idea
+				days = 360
+			}
+		}
+		x = 23
+		y = 3
+
+	}
+	focus = {
+		id = GEN_tank_innovations
+		icon = GFX_focus_GEN_tank_innovations
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_weapons_factories
+			focus = GEN_strengthen_military_industrial_complex
+		}
+		mutually_exclusive = {
+			focus = GEN_modern_artillery
+			focus = GEN_further_infantry_development
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_tank_innovations
+				bonus = 0.4
+				uses = 2
+				category = armor
+			}	
+		}
+		x = 22
+		y = 4
+
+	}
+	focus = {
+		id = GEN_modern_artillery
+		icon = GFX_focus_GEN_modern_artillery
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_strengthen_military_industrial_complex
+			focus = GEN_weapons_factories
+		}
+		mutually_exclusive = {
+			focus = GEN_tank_innovations
+			focus = GEN_further_infantry_development
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_modern_artillery_name
+				bonus = 0.4
+				uses = 3
+				category = artillery
+			}				
+		}
+		x = 18
+		y = 4
+
+	}
+	focus = {
+		id = GEN_further_artillery_upgrades
+		icon = GFX_focus_GEN_further_artillery_upgrades
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_modern_artillery
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_modern_artillery_name
+				bonus = 0.8
+				uses = 1
+				category = artillery
+			}				
+		}
+		x = 17
+		y = 5
+
+	}
+	focus = {
+		id = GEN_anti_tank_guns
+		icon = GFX_focus_GEN_anti_tank_guns
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_tank_innovations
+			focus = GEN_modern_artillery
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_anti_tank_guns
+				bonus = 0.8
+				uses = 2
+				category = cat_anti_tank
+			}				
+		}
+		x = 19
+		y = 5
+
+	}
+	focus = {
+		id = GEN_further_tank_innovations
+		icon = GFX_focus_GEN_further_tank_innovations
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_tank_innovations
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_further_tank_innovations_name
+				bonus = 0.6
+				uses = 2
+				category = armor
+			}				
+		}
+		x = 22
+		y = 5
+
+	}
+	focus = {
+		id = GEN_rocket_artillery
+		icon = GFX_focus_GEN_rocket_artillery
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_anti_tank_guns
+		}
+		prerequisite = {
+			focus = GEN_further_artillery_upgrades
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_rocket_artillery_name
+				bonus = 0.6
+				uses = 2
+				category = mot_rockets
+			}				
+		}
+		x = 18
+		y = 6
+
+	}
+	focus = {
+		id = GEN_further_infantry_development
+		icon = GFX_focus_GEN_further_infantry_development
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_strengthen_military_industrial_complex
+			focus = GEN_weapons_factories
+		}
+		mutually_exclusive = {
+			focus = GEN_tank_innovations
+			focus = GEN_modern_artillery
+			}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_further_infantry_development_name
+				bonus = 0.6
+				uses = 2
+				category = infantry_weapons
+			}				
+		}
+		x = 26
+		y = 4
+
+	}
+	focus = {
+		id = GEN_infantry_tanks
+		icon = GFX_focus_GEN_infantry_tanks
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_tank_innovations
+			focus = GEN_further_infantry_development
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_infantry_tanks
+				bonus = 0.6
+				uses = 1
+				category = cat_light_armor
+			}				
+		}
+		x = 25
+		y = 5
+
+	}
+	focus = {
+		id = GEN_medium_tanks
+		icon = GFX_focus_GEN_medium_tanks
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_further_tank_innovations
+		}
+		prerequisite = {
+			focus = GEN_infantry_tanks
+		}
+		prerequisite = {
+			focus = GEN_anti_tank_guns
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_medium_tanks_name
+				bonus = 0.6
+				uses = 1
+				category = cat_medium_armor
+			}				
+		}
+		x = 22
+		y = 6
+
+	}
+	focus = {
+		id = GEN_special_forces
+		icon = GFX_focus_GEN_special_forces
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_further_infantry_development
+		}
+		completion_reward = {
+			add_ideas = GEN_special_forces_idea
+			add_tech_bonus = {
+				name = GEN_special_forces_name
+				bonus = 0.6
+				uses = 2
+				category = infantry_tech
+			}				
+		}
+		x = 27
+		y = 5
+
+	}
+	focus = {
+		id = GEN_infantry_ethos
+		icon = GFX_focus_GEN_infantry_ethos
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_special_forces
+		}
+		prerequisite = {
+			focus = GEN_infantry_tanks
+		}
+		completion_reward = {
+			add_ideas = GEN_infantry_ethos_idea
+		}
+		x = 26
+		y = 6
+
+	}
+	focus = {
+		id = GEN_cheap_production
+		icon = GFX_focus_GEN_cheap_production
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_rocket_artillery
+			focus = GEN_medium_tanks
+			focus = GEN_infantry_ethos
+		}
+		mutually_exclusive = {
+			focus = GEN_quality_production
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_cheap_production_idea
+				days = 720
+			}
+		}
+		x = 21
+		y = 7
+
+	}
+	focus = {
+		id = GEN_quality_production
+		icon = GFX_focus_GEN_quality_production
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_medium_tanks
+			focus = GEN_infantry_ethos
+			focus = GEN_rocket_artillery
+		}
+		mutually_exclusive = {
+			focus = GEN_cheap_production
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_quality_production_idea
+				days = 720
+			}
+		}
+		x = 23
+		y = 7
+
+	}
+	focus = {
+		id = GEN_capital_ship_focus
+		icon = GFX_focus_GEN_capital_ship_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_naval_rearming
+		}
+		mutually_exclusive = {
+			focus = GEN_submarine_focus
+			focus = GEN_light_ship_focus
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_capital_ship_focus_name
+				bonus = 0.6
+				uses = 2
+				category = bb_tech
+			}	
+		}
+		x = 30
+		y = 2
+
+	}
+	focus = {
+		id = GEN_heavy_ships_focus
+		icon = GFX_focus_GEN_heavy_ship_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_capital_ship_focus
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_capital_ship_focus_name
+				bonus = 0.3
+				uses = 2
+				category = bb_tech
+			}	
+			add_tech_bonus = {
+				name = GEN_carrier_ship_focus_name
+				bonus = 0.5
+				uses = 2
+				category = ca_tech
+			}
+		}
+		x = 30
+		y = 3
+
+	}
+	focus = {
+		id = GEN_carrier_focus
+		icon = GFX_focus_GEN_carrier_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_heavy_ships_focus
+		}
+		mutually_exclusive = {
+			focus = GEN_battleship_focus
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_carrier_focus_idea
+				days = 360
+			}
+			add_tech_bonus = {
+				name = GEN_carrier_ship_focus_name
+				bonus = 0.5
+				uses = 2
+				category = ca_tech
+			}
+		}
+		x = 29
+		y = 4
+
+	}
+	focus = {
+		id = GEN_battleship_focus
+		icon = GFX_focus_GEN_battleship_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_heavy_ships_focus
+		}
+		mutually_exclusive = {
+			focus = GEN_carrier_focus
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_capital_ship_focus_name
+				bonus = 0.3
+				uses = 2
+				category = bb_tech
+			}	
+			add_ideas = GEN_battleship_focus_idea
+		}
+		x = 31
+		y = 4
+
+	}
+	focus = {
+		id = GEN_pride_of_fleet
+		icon = GFX_focus_GEN_pride_of_fleet
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_battleship_focus
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = GEN_pride_of_fleet_idea
+		}
+		x = 31
+		y = 5
+
+	}
+	focus = {
+		id = GEN_light_ship_focus
+		icon = GFX_focus_SUI_light_ships
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_naval_rearming
+		}
+		mutually_exclusive = {
+			focus = GEN_submarine_focus
+			focus = GEN_capital_ship_focus
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_capital_ship_focus_name
+				bonus = 0.8
+				uses = 2
+				category = dd_tech
+			}	
+		}
+		x = 34
+		y = 2
+
+	}
+	focus = {
+		id = GEN_destroyer_development
+		icon = GFX_focus_GEN_destroyer_development
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_light_ship_focus
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_destroyer_development_idea
+				days = 420
+			}
+			add_tech_bonus = {
+				name = GEN_capital_ship_focus_name
+				bonus = 0.8
+				uses = 2
+				category = dd_tech
+			}	
+		}
+		x = 33
+		y = 3
+
+	}
+	focus = {
+		id = GEN_convoy_protection
+		icon = GFX_focus_GEN_convoy_protection
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_destroyer_development
+		}
+		completion_reward = {
+			add_ideas = GEN_convoy_protection_idea
+		}
+		x = 33
+		y = 4
+
+	}
+	focus = {
+		id = GEN_cruiser_development
+		icon = GFX_focus_GEN_cruiser_development
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_light_ship_focus
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_cruiser_development_idea
+				days = 420
+			}
+			add_tech_bonus = {
+				name = GEN_cruiser_development_name
+				bonus = 0.8
+				uses = 2
+				category = cl_tech
+			}	
+		}
+		x = 35
+		y = 3
+
+	}
+	focus = {
+		id = GEN_naval_supremacy
+		icon = GFX_focus_GEN_naval_supremacy
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_cruiser_development
+		}
+		completion_reward = {
+			add_ideas = GEN_naval_supremacy_idea
+		}
+		x = 35
+		y = 4
+
+	}
+	focus = {
+		id = GEN_merchant_marine_focus
+		icon = GFX_focus_GEN_merchant_marine_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_naval_supremacy
+		}
+		prerequisite = {
+			focus = GEN_convoy_protection
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_merchant_marine_focus_idea
+				days = 360
+			} 
+		}
+		x = 34
+		y = 5
+
+	}
+	focus = {
+		id = GEN_submarine_focus
+		icon = GFX_focus_GEN_submarine_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_naval_rearming
+		}
+		mutually_exclusive = {
+			focus = GEN_light_ship_focus
+			focus = GEN_capital_ship_focus
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_submarine_focus_name
+				bonus = 0.8
+				uses = 2
+				category = ss_tech
+			}				
+		}	
+		x = 38
+		y = 2
+
+	}
+	focus = {
+		id = GEN_rapid_sub_development
+		icon = GFX_focus_GEN_rapid_sub_development
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_submarine_focus
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_rapid_sub_development_idea
+				days = 360
+			}
+		}
+		x = 38
+		y = 3
+
+	}
+	focus = {
+		id = GEN_wolfpacks
+		icon = GFX_focus_GEN_wolfpacks
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_rapid_sub_development
+		}
+		prerequisite = {
+			focus = GEN_rapid_sub_development
+		}
+		completion_reward = {
+			add_ideas = GEN_wolfpacks_idea
+		}
+		x = 37
+		y = 4
+
+	}
+	focus = {
+		id = GEN_convoy_raiding
+		icon = GFX_focus_GEN_convoy_raiding
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_rapid_sub_development
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_quick_attacks_focus_name
+				bonus = 0.7
+				uses = 2
+				category = trade_interdiction_tree
+			}				
+		}	
+		x = 39
+		y = 4
+
+	}
+	focus = {
+		id = GEN_quick_attacks
+		icon = GFX_focus_GEN_quick_attacks
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_convoy_raiding
+		}
+		completion_reward = {
+			add_ideas = GEN_quick_attacks_idea
+			add_tech_bonus = {
+				name = GEN_quick_attacks_focus_name
+				bonus = 0.4
+				uses = 1
+				category = trade_interdiction_tree
+			}				
+		}
+		x = 39
+		y = 5
+
+	}
+	focus = {
+		id = GEN_aerial_support
+		icon = GFX_focus_GEN_aerial_support
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_aircraft_rearming
+		}
+		mutually_exclusive = {
+			focus = GEN_strategic_bombers
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_air_doctrine_focus_name
+				bonus = 0.7
+				uses = 2
+				category = air_doctrine
+			}				
+		}
+		x = 42
+		y = 2
+
+	}
+	focus = {
+		id = GEN_cas_focus
+		icon = GFX_focus_GEN_cas_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_aerial_support
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_cas_focus_name
+				bonus = 0.7
+				uses = 2
+				category = cas_bomber
+			}				
+		}
+		x = 42
+		y = 3
+
+	}
+	focus = {
+		id = GEN_strategic_bombers
+		icon = GFX_focus_GEN_strategic_bombers
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_aircraft_rearming
+		}
+		mutually_exclusive = {
+			focus = GEN_aerial_support
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_bombers_focus_name
+				bonus = 0.7
+				uses = 2
+				category = cat_strategic_bomber
+			}		
+		}
+		x = 44
+		y = 2
+
+	}
+	focus = {
+		id = GEN_bombers_focus
+		icon = GFX_focus_GEN_bombers_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_strategic_bombers
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_bombers_focus_name
+				bonus = 0.7
+				uses = 2
+				category = tactical_bomber
+			}		
+		}
+		x = 44
+		y = 3
+
+	}
+	focus = {
+		id = GEN_aerial_diversity
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_bombers_focus
+			focus = GEN_cas_focus
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_aerial_diversity_idea
+				days = 720
+			}
+		}
+		x = 43
+		y = 4
+
+	}
+	focus = {
+		id = GEN_fighter_development
+		icon = GFX_focus_GEN_fighter_development
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_aircraft_rearming
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_fighter_development_name
+				bonus = 0.5
+				uses = 2
+				category = cat_grand_battle_plan
+			}	
+		}
+		x = 48
+		y = 2
+
+	}
+	focus = {
+		id = GEN_group_training
+		icon = GFX_focus_GEN_group_training
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_fighter_development
+		}
+		mutually_exclusive = {
+			focus = GEN_ace_training
+		}
+		completion_reward = {
+			add_ideas = GEN_group_training_idea
+		}
+		x = 47
+		y = 3
+
+	}
+	focus = {
+		id = GEN_quantity_planes
+		icon = GFX_focus_GEN_quantity_planes
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_group_training
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_quantity_planes_idea
+				days = 520
+			}
+		}
+		x = 47
+		y = 4
+
+	}
+	focus = {
+		id = GEN_ace_training
+		icon = GFX_focus_GEN_ace_training
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_fighter_development
+		}
+		mutually_exclusive = {
+			focus = GEN_group_training
+		}
+		completion_reward = {
+			add_ideas = GEN_ace_training_idea
+		}
+		x = 49
+		y = 3
+
+	}
+	focus = {
+		id = GEN_quality_planes
+		icon = GFX_focus_GEN_quality_planes
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_ace_training
+		}
+		completion_reward = {
+			add_ideas = GEN_quality_planes_idea
+		}
+		x = 49
+		y = 4
+
+	}
+	focus = {
+		id = GEN_airbase_expansion
+		icon = GFX_focus_GEN_airbase_expansion
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_aerial_diversity
+			focus = GEN_quantity_planes
+			focus = GEN_quality_planes
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					air_base > 1
+				}
+				add_building_construction = {
+					type = air_base
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}		
+		}
+		x = 45
+		y = 5
+
+	}
+	focus = {
+		id = GEN_military_factories_one
+		icon = GFX_focus_GEN_military_factories
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_economic_development
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}		
+		}
+		x = 53
+		y = 2
+
+	}
+	focus = {
+		id = GEN_cheaper_production
+		icon = GFX_focus_GEN_cheaper_production
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_military_factories_one
+		}
+		mutually_exclusive = {
+			focus = GEN_streamlined_production
+		}
+		completion_reward = {
+			add_ideas = GEN_cheap_production_idea
+		}
+		x = 52
+		y = 3
+
+	}
+	focus = {
+		id = GEN_streamlined_production
+		icon = GFX_focus_GEN_streamlined_production
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_military_factories_one
+		}
+		mutually_exclusive = {
+			focus = GEN_cheaper_production
+		}
+		completion_reward = {
+			add_ideas = GEN_streamlined_production_idea
+		}
+		x = 54
+		y = 3
+
+	}
+	focus = {
+		id = GEN_military_industrial_complex
+		icon = GFX_focus_GEN_military_industrial_complex
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_streamlined_production
+			focus = GEN_cheaper_production
+		}
+		completion_reward = {
+			add_ideas = GEN_military_industrial_complex_idea
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+				}
+				add_extra_state_shared_building_slots = 3
+			}				
+		}
+		x = 53
+		y = 4
+
+	}
+	focus = {
+		id = GEN_dig_resources
+		icon = GFX_focus_GEN_dig_resources
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_economic_development
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+				add_resource = {
+					type = aluminium
+					amount = 8
+				}
+			}
+		}
+		x = 56
+		y = 2
+
+	}
+	focus = {
+		id = GEN_dig_resources_two
+		icon = GFX_focus_GEN_dig_resources_two
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_dig_resources
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 12
+				}
+				add_resource = {
+					type = aluminium
+					amount = 8
+				}
+			}
+		}
+		x = 56
+		y = 3
+
+	}
+	focus = {
+		id = GEN_civilian_factories
+		icon = GFX_focus_GEN_civilian_factories
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_economic_development
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+			}			
+		}
+		x = 59
+		y = 2
+
+	}
+	focus = {
+		id = GEN_agricultural_focus
+		icon = GFX_focus_GEN_agricultural_focus
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_civilian_factories
+		}
+		mutually_exclusive = {
+			focus = GEN_encourage_urbanisation
+		}
+		completion_reward = {
+			add_ideas = GEN_agricultural_focus_idea
+		}
+		x = 58
+		y = 3
+
+	}
+	focus = {
+		id = GEN_encourage_urbanisation
+		icon = GFX_focus_GEN_encourage_urbanisation
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_civilian_factories
+		}
+		mutually_exclusive = {
+			focus = GEN_agricultural_focus
+		}
+		completion_reward = {
+			add_ideas = GEN_encourage_urbanisation_idea
+		}
+		x = 60
+		y = 3
+
+	}
+	focus = {
+		id = GEN_consumer_goods
+		icon = GFX_focus_GEN_consumer_goods
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_agricultural_focus
+			focus = GEN_encourage_urbanisation
+		}
+		completion_reward = {
+			add_ideas = GEN_consumer_goods_idea
+		}
+		x = 59
+		y = 4
+
+	}
+	focus = {
+		id = GEN_massive_infastructure_projects
+		icon = GFX_focus_GEN_massive_infrastructure_projects
+		cost = 12.00
+		prerequisite = {
+			focus = GEN_dig_resources_two
+			focus = GEN_agricultural_focus
+			focus = GEN_encourage_urbanisation
+			focus = GEN_streamlined_production
+			focus = GEN_cheaper_production
+		}
+		completion_reward = {
+			every_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+		}
+		x = 56
+		y = 4
+
+	}
+	focus = {
+		id = GEN_lhs_customs_union_one
+		icon = GFX_focus_GEN_lhs_customs_union
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_stick_with_lhs
+		}
+		mutually_exclusive = {
+			focus = GEN_reaffirm_geneva_protocols
+		}
+		completion_reward = {
+			add_ideas = GEN_lhs_custom_union_idea
+		}
+		x = 64
+		y = 2
+
+	}
+	focus = {
+		id = GEN_win_support_public
+		icon = GFX_focus_GEN_win_support_public
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_lhs_customs_union_one
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+		x = 62
+		y = 3
+
+	}
+	focus = {
+		id = GEN_win_support_government
+		icon = GFX_focus_GEN_win_support_government
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_lhs_customs_union_one
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+		x = 64
+		y = 3
+
+	}
+	focus = {
+		id = GEN_support_monarchist_organisations
+		icon = GFX_focus_GEN_support_monarchist_organisations
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_win_support_government
+		}
+		prerequisite = {
+			focus = GEN_win_support_public
+		}
+		completion_reward = {
+			add_ideas = GEN_supported_monarchists
+			add_popularity = {
+				ideology = pro_yagoo_monarchy
+				popularity = 0.01
+			}
+		}
+		x = 64
+		y = 4
+
+	}
+	focus = {
+		id = GEN_reaffirm_geneva_protocols
+		icon = GFX_focus_GEN_reaffirm_geneva_protocols
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_stick_with_lhs
+		}
+		mutually_exclusive = {
+			focus = GEN_lhs_customs_union_one
+		}
+		completion_reward = {
+			add_ideas = GEN_geneva_protocals
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.01
+			}
+		}
+		x = 70
+		y = 2
+
+	}
+	focus = {
+		id = GEN_slam_resistance_parties
+		icon = GFX_focus_GEN_slam_resistance_parties
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_reaffirm_geneva_protocols
+			focus = GEN_lhs_customs_union_one
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = pro_resistance_kleptocracy
+				popularity = -0.02
+			}
+		}
+		x = 66
+		y = 3
+
+	}
+	focus = {
+		id = GEN_slam_neutral_parties
+		icon = GFX_focus_GEN_slam_neutral_parties
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_reaffirm_geneva_protocols
+			focus = GEN_lhs_customs_union_one
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = reactionary_nationalism
+				popularity = -0.02
+			}
+		}
+		x = 68
+		y = 3
+
+	}
+	focus = {
+		id = GEN_ban_resistance_parties
+		icon = GFX_focus_GEN_ban_resistance_parties
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_slam_neutral_parties
+			focus = GEN_slam_resistance_parties
+		}
+		completion_reward = {
+			add_ideas = GEN_resistance_suppressed
+		}
+		x = 67
+		y = 4
+
+	}
+	focus = {
+		id = GEN_reaffirm_right_of_parliament
+		icon = GFX_focus_GEN_reaffirm_right_of_parliament
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_reaffirm_geneva_protocols
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = pro_yagoo_monarchy
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = -0.05
+			}
+		}
+		x = 70
+		y = 3
+
+	}
+	focus = {
+		id = GEN_support_democratic_organisations
+		icon = GFX_focus_GEN_support_democratic_organisations
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_reaffirm_right_of_parliament
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_ideas = GEN_democratic_organisations_supported
+		}
+		x = 70
+		y = 4
+
+	}
+	focus = {
+		id = GEN_call_snap_elections
+		icon = GFX_focus_GEN_call_snap_elections
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_support_democratic_organisations
+			focus = GEN_support_monarchist_organisations
+		}
+		completion_reward = {
+			add_stability = -0.1
+		}
+		x = 67
+		y = 5
+
+	}
+	focus = {
+		id = GEN_monarchist_rule
+		icon = GFX_focus_GEN_monarchist_rule
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_call_snap_elections
+		}
+		mutually_exclusive = {
+			focus = GEN_bastion_of_democracy
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+		x = 64
+		y = 6
+
+	}
+	focus = {
+		id = GEN_ensure_favorable_conditions
+		icon = GFX_focus_GEN_ensure_favorable_conditions
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_monarchist_rule
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_war_support = -0.05
+		}
+		x = 63
+		y = 7
+
+	}
+	focus = {
+		id = GEN_establish_paramilitaries
+		icon = GFX_focus_GEN_establish_paramilitaries
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_monarchist_rule
+		}
+		completion_reward = {
+			set_country_flag = GEN_paramilitaries
+		}
+		x = 65
+		y = 7
+
+	}
+	focus = {
+		id = GEN_bastion_of_democracy
+		icon = GFX_focus_GEN_support_democratic_organisations
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_call_snap_elections
+		}
+		mutually_exclusive = {
+			focus = GEN_monarchist_rule
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_ideas = GEN_bastion_of_democracy_idea
+		}
+		x = 70
+		y = 6
+
+	}
+	focus = {
+		id = GEN_progressive_reform
+		icon = GFX_focus_GEN_progressive_reform
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_bastion_of_democracy
+		}
+		mutually_exclusive = {
+			focus = GEN_staunch_conservatism
+		}
+		completion_reward = {
+			set_country_flag = GEN_reforming_progressive
+		}
+		x = 68
+		y = 7
+
+	}
+	focus = {
+		id = GEN_encourage_free_thinking
+		icon = GFX_focus_GEN_encourage_free_thinking
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_progressive_reform
+		}
+		completion_reward = {
+			add_ideas = GEN_free_thinking
+		}
+		x = 69
+		y = 8
+
+	}
+	focus = {
+		id = GEN_staunch_conservatism
+		icon = GFX_focus_GEN_staunch_conservatism
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_bastion_of_democracy
+		}
+		mutually_exclusive = {
+			focus = GEN_progressive_reform
+		}
+		completion_reward = {
+			set_country_flag = GEN_conservatism
+		}
+		x = 72
+		y = 7
+
+	}
+	focus = {
+		id = GEN_ensure_law_and_order
+		icon = GFX_focus_GEN_ensure_law_and_order
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_staunch_conservatism
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_lawful
+				days = 180
+			}
+		}
+		x = 71
+		y = 8
+
+	}
+	focus = {
+		id = GEN_promote_militarism
+		icon = GFX_focus_GEN_promote_militarism
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_ensure_law_and_order
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_timed_idea = {
+				idea = GEN_military_fervor
+				days = 180
+			}
+		}
+		x = 71
+		y = 9
+
+	}
+	focus = {
+		id = GEN_strengthen_constitution
+		icon = GFX_focus_GEN_strengthen_constitution
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_reaffirm_geneva_protocols
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+		x = 72
+		y = 3
+
+	}
+	focus = {
+		id = GEN_promote_laissez_faire
+		icon = GFX_focus_GEN_promote_laissez_faire
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_staunch_conservatism
+		}
+		completion_reward = {
+			add_ideas = GEN_laissez_faire
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+		}
+		x = 73
+		y = 8
+
+	}
+	focus = {
+		id = GEN_consumer_economy
+		icon = GFX_focus_GEN_consumer_economy
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_promote_laissez_faire
+		}
+		completion_reward = {
+			add_ideas = GEN_consumer_economy_idea
+		}
+		x = 73
+		y = 9
+
+	}
+	focus = {
+		id = GEN_suppress_anti_groups
+		icon = GFX_focus_GEN_suppress_anti_groups
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_follow_resistance
+			focus = GEN_stick_with_lhs
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = left_wing_revolutionary
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = reactionary_monarchy
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = democratic_revitalisation
+				popularity = -0.02
+			}
+		}
+		x = 75
+		y = 2
+
+	}
+	focus = {
+		id = GEN_push_holo_propaganda
+		icon = GFX_focus_GEN_push_holo_propaganda
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_suppress_anti_groups
+		}
+		completion_reward = {
+			set_country_flag = GEN_propaganda
+		}
+		x = 75
+		y = 3
+
+	}
+	focus = {
+		id = GEN_crush_internal_threat
+		icon = GFX_focus_GEN_crush_internal_threat
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_push_holo_propaganda
+		}
+		mutually_exclusive = {
+			focus = GEN_the_foreign_foes
+		}
+		completion_reward = {
+			set_country_flag = GEN_dealing_internally
+		}
+		x = 74
+		y = 4
+
+	}
+	focus = {
+		id = GEN_the_foreign_foes
+		icon = GFX_focus_GEN_the_foreign_foes
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_push_holo_propaganda
+		}
+		mutually_exclusive = {
+			focus = GEN_crush_internal_threat
+		}
+		completion_reward = {
+			set_country_flag = GEN_dealing_externally
+		}
+		x = 76
+		y = 4
+
+	}
+	focus = {
+		id = GEN_faith_in_the_idol
+		icon = GFX_focus_GEN_faith_in_the_idol
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_follow_resistance
+		}
+		mutually_exclusive = {
+			focus = GEN_populist_rhetoric
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = 0.08
+			}
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.08
+			}
+		}
+		x = 80
+		y = 2
+
+	}
+	focus = {
+		id = GEN_stir_up_anti_parliamentarianism
+		icon = GFX_focus_GEN_stir_up_anti_parliamentarianism
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_faith_in_the_idol
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = -0.05
+			}
+		}
+		x = 78
+		y = 3
+
+	}
+	focus = {
+		id = GEN_radicalize_supporters
+		icon = GFX_focus_GEN_radicalize_supporters
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_faith_in_the_idol
+		}
+		x = 80
+		y = 3
+
+	}
+	focus = {
+		id = GEN_enlightened_rulership
+		icon = GFX_focus_GEN_enlightened_rulership
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_faith_in_the_idol
+		}
+		x = 82
+		y = 3
+
+	}
+	focus = {
+		id = GEN_abolish_parliament
+		icon = GFX_focus_GEN_abolish_parliament
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_radicalize_supporters
+		}
+		prerequisite = {
+			focus = GEN_enlightened_rulership
+		}
+		prerequisite = {
+			focus = GEN_stir_up_anti_parliamentarianism
+		}
+		mutually_exclusive = {
+			focus = GEN_the_silent_revolution
+			focus = GEN_promote_remilitarisation
+		}
+		x = 79
+		y = 4
+
+	}
+	focus = {
+		id = GEN_appoint_new_advisors
+		icon = GFX_focus_GEN_appoint_new_advisors
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_abolish_parliament
+		}
+		x = 79
+		y = 5
+
+	}
+	focus = {
+		id = GEN_the_silent_revolution
+		icon = GFX_focus_GEN_the_silent_revolution
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_enlightened_rulership
+		}
+		prerequisite = {
+			focus = GEN_radicalize_supporters
+		}
+		prerequisite = {
+			focus = GEN_stir_up_anti_parliamentarianism
+		}
+		mutually_exclusive = {
+			focus = GEN_abolish_parliament
+			focus = GEN_promote_remilitarisation
+		}
+		x = 81
+		y = 4
+
+	}
+	focus = {
+		id = GEN_propaganda_campaigns
+		icon = GFX_focus_GEN_propaganda_campaign
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_the_silent_revolution
+		}
+		x = 81
+		y = 5
+
+	}
+	focus = {
+		id = GEN_consolidate_power
+		icon = GFX_focus_GEN_consolidate_power
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_appoint_new_advisors
+			focus = GEN_propaganda_campaigns
+		}
+		x = 80
+		y = 6
+
+	}
+	focus = {
+		id = GEN_populist_rhetoric
+		icon = GFX_focus_GEN_populist_rhetoric
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_follow_resistance
+		}
+		mutually_exclusive = {
+			focus = GEN_faith_in_the_idol
+		}
+		x = 86
+		y = 2
+
+	}
+	focus = {
+		id = GEN_stir_nationalist_fervor
+		icon = GFX_focus_GEN_stir_nationalist_fervor
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_populist_rhetoric
+		}
+		mutually_exclusive = {
+			focus = GEN_revolutionary_fervor
+		}
+		x = 84
+		y = 3
+
+	}
+	focus = {
+		id = GEN_promote_remilitarisation
+		icon = GFX_focus_GEN_promote_remilitarisation
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_stir_nationalist_fervor
+			focus = GEN_enlightened_rulership
+		}
+		mutually_exclusive = {
+			focus = GEN_abolish_parliament
+			focus = GEN_the_silent_revolution
+			focus = GEN_the_popular_uprising
+		}
+		x = 84
+		y = 4
+
+	}
+	focus = {
+		id = GEN_undermine_security_forces
+		icon = GFX_focus_GEN_undermine_security_forces
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_promote_remilitarisation
+		}
+		x = 83
+		y = 5
+
+	}
+	focus = {
+		id = GEN_win_suport_army
+		icon = GFX_focus_GEN_win_support_army
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_promote_remilitarisation
+		}
+		x = 85
+		y = 5
+
+	}
+	focus = {
+		id = GEN_coup_detat
+		icon = GFX_focus_GEN_coup_detat
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_undermine_security_forces
+		}
+		prerequisite = {
+			focus = GEN_win_suport_army
+		}
+		x = 84
+		y = 6
+
+	}
+	focus = {
+		id = GEN_establish_full_support_resistance
+		icon = GFX_focus_GEN_officially_join_resistance_alliance
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_coup_detat
+			focus = GEN_consolidate_power
+		}
+		x = 81
+		y = 7
+
+	}
+	focus = {
+		id = GEN_revolutionary_fervor
+		icon = GFX_focus_GEN_revolutionary_fervor
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_populist_rhetoric
+		}
+		mutually_exclusive = {
+			focus = GEN_stir_nationalist_fervor
+		}
+		x = 88
+		y = 3
+
+	}
+	focus = {
+		id = GEN_the_popular_uprising
+		icon = GFX_focus_GEN_the_popular_uprising
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_revolutionary_fervor
+			focus = GEN_stir_nationalist_fervor
+		}
+		mutually_exclusive = {
+			focus = GEN_promote_remilitarisation
+		}
+		x = 88
+		y = 4
+
+	}
+	focus = {
+		id = GEN_gather_supporters
+		icon = GFX_focus_GEN_gather_supporters
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_the_popular_uprising
+		}
+		x = 87
+		y = 5
+
+	}
+	focus = {
+		id = GEN_gather_arms
+		icon = GFX_focus_GEN_gather_arms
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_the_popular_uprising
+		}
+		x = 89
+		y = 5
+
+	}
+	focus = {
+		id = GEN_begin_the_revolution
+		icon = GFX_focus_GEN_begin_the_revolution
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_gather_supporters
+		}
+		prerequisite = {
+			focus = GEN_gather_arms
+		}
+		x = 88
+		y = 6
+
+	}
+	focus = {
+		id = GEN_reign_of_terror
+		icon = GFX_focus_GEN_reign_of_terror
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_begin_the_revolution
+		}
+		x = 88
+		y = 7
+
+	}
+	focus = {
+		id = GEN_lean_towards_coco
+		icon = GFX_focus_GEN_lean_towards_coco
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_reign_of_terror
+			focus = GEN_establish_full_support_resistance
+		}
+		mutually_exclusive = {
+			focus = GEN_lean_towards_aqua
+		}
+		x = 84
+		y = 8
+
+	}
+	focus = {
+		id = GEN_lean_towards_aqua
+		icon = GFX_focus_GEN_lean_towards_aqua
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_reign_of_terror
+			focus = GEN_establish_full_support_resistance
+		}
+		mutually_exclusive = {
+			focus = GEN_lean_towards_coco
+		}
+		x = 86
+		y = 8
+
+	}
+	focus = {
+		id = GEN_nationalize_the_unions
+		icon = GFX_focus_GEN_nationalize_the_unions
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_lean_towards_aqua
+			focus = GEN_lean_towards_coco
+		}
+		x = 85
+		y = 9
+
+	}
+	focus = {
+		id = GEN_state_industry
+		icon = GFX_focus_GEN_state_industry
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_lean_towards_aqua
+		}
+		x = 89
+		y = 9
+
+	}
+	focus = {
+		id = GEN_red_guard
+		icon = GFX_focus_GEN_red_guard
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_state_industry
+		}
+		x = 88
+		y = 10
+
+	}
+	focus = {
+		id = GEN_revolutionary_education
+		icon = GFX_focus_GEN_revolutionary_education
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_state_industry
+		}
+		x = 90
+		y = 10
+
+	}
+	focus = {
+		id = GEN_support_aqua_rule
+		icon = GFX_focus_GEN_support_aqua_rule
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_red_guard
+		}
+		prerequisite = {
+			focus = GEN_revolutionary_education
+		}
+		x = 89
+		y = 11
+
+	}
+	focus = {
+		id = GEN_modern_trench_warfare
+		icon = GFX_focus_GEN_modern_trench_warfare
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_lessons_from_wwone
+		}
+		prerequisite = {
+			focus = GEN_the_soldiers_spirit
+		}
+		completion_reward = {
+			add_ideas = GEN_modern_trench_idea
+		}
+		x = 6
+		y = 6
+
+	}
+	focus = {
+		id = GEN_strategic_bombing
+		icon = GFX_focus_GEN_strategic_bombing
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_shock_and_awe
+		}
+		completion_reward = {
+			add_ideas = GEN_strategic_bombing_idea
+			add_timed_idea = {
+				idea = GEN_bomber_investment_idea
+				days = 180
+			}
+		}
+		x = 3
+		y = 5
+
+	}
+	focus = {
+		id = GEN_support_batallions
+		icon = GFX_focus_GEN_support_batallions
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_strategic_bombing
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_support_batallions
+				bonus = 0.6
+				uses = 3
+				category = support_tech
+			}		
+		}
+		x = 4
+		y = 6
+
+	}
+	focus = {
+		id = GEN_improved_artillery_tatics
+		icon = GFX_focus_GEN_improved_artillery_tactics
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_strategic_bombing
+		}
+		completion_reward = {
+			add_ideas = GEN_improved_artillery_idea
+			add_timed_idea = {
+				idea = GEN_artillery_manufacturing_idea
+				days = 180
+			}
+		}
+		x = 2
+		y = 6
+
+	}
+	focus = {
+		id = GEN_superior_planning
+		icon = GFX_focus_GEN_superior_planning
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_modern_trench_warfare
+		}
+		completion_reward = {
+			add_ideas = GEN_superior_planning_idea
+			add_tech_bonus = {
+				name = GEN_grand_battle_plan
+				bonus = 1
+				uses = 3
+				category = cat_grand_battle_plan
+			}					
+		}
+		x = 6
+		y = 7
+
+	}
+	focus = {
+		id = GEN_shock_and_owe_doctrine
+		icon = GFX_focus_GEN_shock_and_awe_doctrine
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_support_batallions
+		}
+		prerequisite = {
+			focus = GEN_improved_artillery_tatics
+		}
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = GEN_shock_and_awe
+				bonus = 0.8
+				uses = 3
+				category = cat_superior_firepower
+			}			
+		}
+		x = 3
+		y = 7
+
+	}
+	focus = {
+		id = GEN_superweapons
+		icon = GFX_focus_GEN_superweapons
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_modern_mass_assault
+			focus = GEN_modern_blitz
+			focus = GEN_superior_planning
+			focus = GEN_shock_and_owe_doctrine
+			focus = GEN_cheap_production
+			focus = GEN_quality_production
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_tech_bonus = {
+				name = GEN_superweapons
+				bonus = 0.6
+				uses = 1
+				category = nuclear
+			}				
+		}
+		x = 15
+		y = 8
+
+	}
+	focus = {
+		id = GEN_rocketry_advancements
+		icon = GFX_focus_GEN_rocketry_advancements
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_superweapons
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_rocketry
+				bonus = 0.6
+				uses = 2
+				category = rocketry
+			}				
+		}
+		x = 12
+		y = 9
+
+	}
+	focus = {
+		id = GEN_nuclear_advancements
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_superweapons
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_nuclear_advancements
+				bonus = 0.6
+				uses = 2
+				category = nuclear
+			}				
+		}
+		x = 18
+		y = 9
+
+	}
+	focus = {
+		id = GEN_superheavy_tanks
+		icon = GFX_focus_GEN_super_heavy_tanks
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_superweapons
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_superheavy_tanks
+				bonus = 0.6
+				uses = 2
+				category = cat_heavy_armor
+			}				
+		}
+		x = 15
+		y = 9
+
+	}
+	focus = {
+		id = GEN_atomic_weaponry
+		icon = GFX_focus_GEN_atomic_weaponry
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_rocketry_advancements
+		}
+		prerequisite = {
+			focus = GEN_nuclear_advancements
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_nuclear_advancements
+				bonus = 0.6
+				uses = 2
+				category = nuclear
+			}		
+			add_tech_bonus = {
+				name = GEN_rocketry
+				bonus = 0.6
+				uses = 2
+				category = rocketry
+			}			
+		}
+		x = 15
+		y = 10
+
+	}
+	focus = {
+		id = GEN_naval_bombers
+		icon = GFX_focus_GEN_naval_bombers
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_carrier_focus
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_naval_bombers
+				bonus = 0.6
+				uses = 2
+				category = naval_bomber
+			}	
+		}
+		x = 29
+		y = 5
+
+	}
+	focus = {
+		id = GEN_improved_designs
+		icon = GFX_focus_GEN_improved_designs
+		cost = 8.00
+		prerequisite = {
+			focus = GEN_wolfpacks
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_submarine_focus_name
+				bonus = 0.4
+				uses = 2
+				category = ss_tech
+			}				
+		}
+		x = 37
+		y = 5
+
+	}
+	focus = {
+		id = GEN_expand_naval_academy
+		icon = GFX_focus_GEN_expand_naval_academy
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_merchant_marine_focus
+			focus = GEN_improved_designs
+			focus = GEN_quick_attacks
+			focus = GEN_pride_of_fleet
+			focus = GEN_naval_bombers
+		}
+		completion_reward = {
+			add_ideas = GEN_expand_naval_academy_idea
+		}
+		x = 34
+		y = 6
+
+	}
+	focus = {
+		id = GEN_encourage_research
+		icon = GFX_focus_GEN_encourage_research
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_massive_infastructure_projects
+		}
+		prerequisite = {
+			focus = GEN_military_industrial_complex
+		}
+		prerequisite = {
+			focus = GEN_consumer_goods
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+		x = 56
+		y = 5
+
+	}
+	focus = {
+		id = GEN_corporate_research
+		icon = GFX_focus_GEN_corporate_research
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_encourage_research
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+		x = 56
+		y = 6
+
+	}
+	focus = {
+		id = GEN_authoritarian_rule
+		icon = GFX_focus_GEN_authoritarian_rule
+		cost = 10.00
+		prerequisite = {
+			focus = GEN_establish_paramilitaries
+		}
+		prerequisite = {
+			focus = GEN_ensure_favorable_conditions
+		}
+		completion_reward = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = var:current_party_ideology_group@ROOT
+				elections_allowed = no
+			}
+		}
+		x = 64
+		y = 8
+
+	}
+	focus = {
+		id = GEN_provide_social_welfare
+		icon = GFX_focus_GEN_provide_social_welfare
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_progressive_reform
+		}
+		x = 67
+		y = 8
+
+	}
+	focus = {
+		id = GEN_empower_minorites
+		icon = GFX_focus_GEN_empower_minorities
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_provide_social_welfare
+		}
+		x = 67
+		y = 9
+
+	}
+	focus = {
+		id = GEN_organize_labour
+		icon = GFX_focus_GEN_organize_labour
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_encourage_free_thinking
+		}
+		x = 69
+		y = 9
+
+	}
+	focus = {
+		id = GEN_create_youth_organisations
+		icon = GFX_focus_GEN_create_youth_organisations
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_authoritarian_rule
+		}
+		x = 65
+		y = 9
+
+	}
+	focus = {
+		id = GEN_promote_fervor
+		icon = GFX_focus_GEN_promote_fervor
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_authoritarian_rule
+		}
+		x = 63
+		y = 9
+
+	}
+	focus = {
+		id = GEN_lhs_policing
+		icon = GFX_focus_GEN_lhs_policing
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_create_youth_organisations
+			focus = GEN_promote_fervor
+			focus = GEN_empower_minorites
+			focus = GEN_organize_labour
+			focus = GEN_promote_militarism
+			focus = GEN_consumer_economy
+		}
+		x = 67
+		y = 10
+
+	}
+	focus = {
+		id = GEN_join_defensive_lhs
+		icon = GFX_focus_GEN_join_defensive_lhs
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_lhs_policing
+		}
+		x = 64
+		y = 11
+
+	}
+	focus = {
+		id = GEN_lhs_military_intervention
+		icon = GFX_focus_GEN_lhs_military_intervention
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_lhs_policing
+		}
+		x = 70
+		y = 11
+
+	}
+	focus = {
+		id = GEN_establish_corporations
+		icon = GFX_focus_GEN_establish_corporations
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_lean_towards_coco
+		}
+		x = 81
+		y = 9
+
+	}
+	focus = {
+		id = GEN_condemn_the_bourgeois
+		icon = GFX_focus_GEN_condemn_the_bourgeois
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_nationalize_the_unions
+		}
+		x = 84
+		y = 10
+
+	}
+	focus = {
+		id = GEN_seize_production
+		icon = GFX_focus_GEN_seize_production
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_nationalize_the_unions
+		}
+		x = 86
+		y = 10
+
+	}
+	focus = {
+		id = GEN_nationalistic_education
+		icon = GFX_focus_GEN_nationalistic_education
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_establish_corporations
+		}
+		x = 82
+		y = 10
+
+	}
+	focus = {
+		id = GEN_global_crusade
+		icon = GFX_focus_GEN_global_crusade
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_establish_corporations
+		}
+		x = 80
+		y = 10
+
+	}
+	focus = {
+		id = GEN_invite_resistance_advisorz
+		icon = GFX_focus_GEN_invite_resistance_advisors
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_seize_production
+		}
+		prerequisite = {
+			focus = GEN_condemn_the_bourgeois
+		}
+		x = 85
+		y = 11
+
+	}
+	focus = {
+		id = GEN_support_coco_rule
+		icon = GFX_focus_GEN_support_coco_rule
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_global_crusade
+		}
+		prerequisite = {
+			focus = GEN_nationalistic_education
+		}
+		x = 81
+		y = 11
+
+	}
+	focus = {
+		id = GEN_resistance_activities_abroad
+		icon = GFX_focus_GEN_resistance_activities_abroad
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_support_aqua_rule
+		}
+		prerequisite = {
+			focus = GEN_invite_resistance_advisorz
+		}
+		x = 87
+		y = 12
+
+	}
+	focus = {
+		id = GEN_build_up_strength
+		icon = GFX_focus_GEN_build_up_strength
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_invite_resistance_advisorz
+		}
+		prerequisite = {
+			focus = GEN_support_coco_rule
+		}
+		x = 83
+		y = 12
+
+	}
+	focus = {
+		id = GEN_officially_join_resistance_alliance
+		icon = GFX_focus_GEN_officially_join_resistance_alliance
+		cost = 0.00
+		prerequisite = {
+			focus = GEN_invite_resistance_advisorz
+		}
+		x = 85
+		y = 13
+
+	}
+}

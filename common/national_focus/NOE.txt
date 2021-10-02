@@ -9,113 +9,255 @@ focus_tree = {
 	}
 	default = no
 	focus = {
-		id = NOE_serfdom_debate
+		id = NOE_serfdom_debate #automatically done after the end of the council, variable + pp effect
 		icon = GFX_goal_unknown
 		cost = 0.00
+		completion_reward = {
+		add_political_power = 100
+	  }
 		x = 13
 		y = 1
 
 	}
 	focus = {
-		id = NOE_flare_predicament
+		id = NOE_flare_predicament #boost relation
 		icon = GFX_goal_unknown
 		cost = 0.00
+		completion_reward = {
+		reverse_add_opinion_modifier = {
+		target = FLA
+		modifier = Noel_and_Flare
+		}
+	   }
 		x = 55
 		y = 1
 
 	}
 	focus = {
-		id = NOE_surrounded_by_powers
+		id = NOE_surrounded_by_powers #mild defense bonus 
 		icon = GFX_goal_unknown
 		cost = 0.00
+		completion_reward = {
+		add_ideas = {
+		NOE_surrounded_by_powers # this would be a flat defense bonus of id say 5%
+		}
+	  }
 		x = 55
 		y = 6
 
 	}
 	focus = {
-		id = NOE_feudal_army
+		id = NOE_feudal_army # improve army idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
 			focus = NOE_professional_army
+		}
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = NOE_peasant_levees
+			add_idea = NOE_feudal_army #just make the army better in a way that it scales up to the point where there are no more penalty
+		  }
 		}
 		x = 68
 		y = 1
 
 	}
 	focus = {
-		id = NOE_professional_army
+		id = NOE_professional_army# replace feudal army with terrible idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
 			focus = NOE_feudal_army
 		}
+		completion_reward = {
+		add_ideas = {
+		NOE_professionalization #this national spirit should straight up be worse then feudal army
+		}
+	   }
 		x = 71
 		y = 1
 
 	}
 	focus = {
-		id = NOE_marine_focus
+		id = NOE_marine_focus #experience
 		icon = GFX_goal_unknown
 		cost = 0.00
+		completion_reward = {
+		navy_experience = 25
+		}
 		x = 71
 		y = 7
 
 	}
 	focus = {
-		id = NOE_depression_economics
+		id = NOE_depression_economics #modify depression idea
 		icon = GFX_goal_unknown
 		cost = 0.00
+		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+	 }
 		x = 42
 		y = 1
 
 	}
 	focus = {
-		id = NOE_bail_out_noblemen
+		id = NOE_bail_out_noblemen # reduce depression idea, add long timed idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
 			focus = NOE_bankruptcy_for_them
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+		add_timed_idea = {
+		idea = bail_out_noblemen # this idea should be more consumer goods(bad)
+		days = 360
+		}
+	   }
+		
 		x = 45
 		y = 1
 
 	}
 	focus = {
-		id = NOE_bankruptcy_for_them
+		id = NOE_bankruptcy_for_them #greatly reduce depression idea, add timed idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
 			focus = NOE_bail_out_noblemen
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+		add_timed_idea = {
+		idea = bankrupt_noblemen # this should be be a bonus to construction 
+		days = 360
+		}
+	}
 		x = 49
 		y = 1
 
 	}
 	focus = {
-		id = NOE_warsaw_convention
+		id = NOE_warsaw_convention #trigger event
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_serfdom_debate
 		}
+		completion_reward = {
+		country_event = {
+		id = noel.11
+		days = 1
+		}
+	   }
 		x = 12
 		y = 2
 
 	}
 	focus = {
-		id = NOE_luttwiz_proposals
+		id = NOE_luttwiz_proposals #trigger event
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_serfdom_debate
 		}
+		completion_reward = {
+		country_event = {
+		id = noel.25
+		days = 1
+		}
+	   }
 		x = 14
 		y = 2
 
 	}
 	focus = {
-		id = NOE_fight_against_serfdom
+		id = NOE_fight_against_serfdom #anger variable, make new variable abolition
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -127,12 +269,15 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_amelioration_proposals
 		}
+		completion_reward = {
+		#### Yeah i dont know how to do variable help me Kaiser_paisen
+		}
 		x = 13
 		y = 3
 
 	}
 	focus = {
-		id = NOE_work_with_industrialists
+		id = NOE_work_with_industrialists #reduce anger 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -143,29 +288,54 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_increase_executive_power
+		id = NOE_increase_executive_power #add pp, anger everyone
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_work_with_industrialists
+		}
+		completion_reward = {
+		add_political_power = 150
 		}
 		x = 6
 		y = 5
 
 	}
 	focus = {
-		id = NOE_weighted_voting
+		id = NOE_weighted_voting #increase democratic ideologies
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_increase_executive_power
+		}
+		completion_reward = {
+		add_popularity = {
+				ideology = fascism
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = democratic_revitalisation
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology =democratic
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = mixed_ideology_democracy
+				popularity = 0.03
+			}
 		}
 		x = 5
 		y = 6
 
 	}
 	focus = {
-		id = NOE_common_elections
+		id = NOE_common_elections #increase democratic ideologies, reduce stability, anger variable
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -176,7 +346,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_create_lower_house
+		id = NOE_expand_lower_house #anger variable, 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -187,29 +357,29 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_allow_political_parties
+		id = NOE_allow_political_parties #collapse non_democratic parties
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_create_lower_house
+			focus = NOE_manumission_laws
 		}
 		x = 9
 		y = 7
 
 	}
 	focus = {
-		id = NOE_establish_noelkorps 
+		id = NOE_establish_noelkorps #lower stability, increase monarchy ideology, gain pp growth
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_create_lower_house
+			focus = NOE_expand_lower_house
 		}
 		x = 7
 		y = 7
 
 	}
 	focus = {
-		id = NOE_add_term_limits
+		id = NOE_add_term_limits #democratic ideologies, reduce pp gain, reduce non democratic party
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -220,18 +390,21 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_work_with_erder_front
+		id = NOE_work_with_erder_front #gain pp 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_fight_against_serfdom
+		}
+		completion_reward = {
+		add_political_power = 50
 		}
 		x = 15
 		y = 4
 
 	}
 	focus = {
-		id = NOE_abolitionist_society
+		id = NOE_abolitionist_society #gain abolitionist support
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -242,7 +415,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_ethical_cause
+		id = NOE_ethical_cause #gain abolitionist support, reduce uradel support, reduce anti anger
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -253,7 +426,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_religious_cause
+		id = NOE_religious_cause #gain abolitionist support, reduce uradel support, gain pp
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -264,40 +437,54 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_economic_cause
+		id = NOE_economic_cause #gain abolitionist support, reduce uradel support, add idea buff economy
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_abolitionist_society
+		}
+		completion_reward = {
+		add_ideas = {
+			economic_cause #small buff to economy 
+		 }
 		}
 		x = 16
 		y = 6
 
 	}
 	focus = {
-		id = NOE_stricter_nobility_punishments
+		id = NOE_stricter_nobility_punishments #lose stability, lose pp, gain anti anger
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_work_with_erder_front
+		}
+		completion_reward = {
+		add_political_power = _50
+		add_stability = _0.1
 		}
 		x = 20
 		y = 5
 
 	}
 	focus = {
-		id = NOE_no_serfs_in_towns
+		id = NOE_no_serfs_in_towns #anger uradel, gain anti anger, add idea buff economy
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_stricter_nobility_punishments
+		}
+		completion_reward = {
+		add_ideas = {
+			no_town_serfs # another economy buff, it shouldnt be same as economic_cause
+			}
 		}
 		x = 19
 		y = 6
 
 	}
 	focus = {
-		id = NOE_lower_nobility_hurdle
+		id = NOE_lower_nobility_hurdle # anger uradel, reduce non democratic ideologies, gain pp
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -308,29 +495,41 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_elbing_proposals
+		id = NOE_elbing_proposals # stability buff, launches event
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_no_serfs_in_towns
 		}
+		completion_reward = {
+		add_stability = 0.1
+		country_event = {
+		id = NOE_event.12
+		}
+	   }
 		x = 19
 		y = 7
 
 	}
 	focus = {
-		id = NOE_encourage_free_farmers
+		id = NOE_encourage_free_farmers # stability buff, add idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_stricter_nobility_punishments
 		}
+		completion_reward = {
+		add_stability = 0.05
+		add_ideas = {
+		farmers_encouraged # this should be less consumer goods
+		}
+	   }
 		x = 22
 		y = 6
 
 	}
 	focus = {
-		id = NOE_develop_middle_class
+		id = NOE_develop_middle_class #reduce anti anger, gain democratic support
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -341,7 +540,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_rent_laws
+		id = NOE_rent_laws #reduce pp, reduce pp gain, 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -352,7 +551,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_motke_vs_muller
+		id = NOE_motke_vs_muller #launches event,add anti anger like a shit lot
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -370,7 +569,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_serfdom_abolished
+		id = NOE_serfdom_abolished #remove anger variables,add anti anger, add flag 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -384,7 +583,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_prepare_putsch
+		id = NOE_prepare_putsch #completely lower anti anger,
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -393,34 +592,44 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_serfdom_abolished
 		}
+		completion_reward = {
+		set_country_flag = NOE_putsch_prepared
+		set_country_flag = act_quickly
+		}
 		x = 18
 		y = 9
 
 	}
 	focus = {
-		id = NOE_arm_noelkorps
+		id = NOE_arm_noelkorps # spawn units on start of civil war
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_prepare_putsch
+		}
+		completion_reward = {
+		set_country_flag = NOE_noelkorps_armed
 		}
 		x = 16
 		y = 10
 
 	}
 	focus = {
-		id = NOE_arm_citizens
+		id = NOE_arm_citizens # spawn units on start of civil war
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_prepare_putsch
+		}
+		completion_reward = {
+		set_country_flag = NOE_citezens_armed
 		}
 		x = 20
 		y = 10
 
 	}
 	focus = {
-		id = NOE_amelioration_proposals
+		id = NOE_amelioration_proposals # gain anti anger, commie support rise
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -437,62 +646,201 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_darre_plan
+		id = NOE_darre_plan #add idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_amelioration_proposals
+		}
+		completion_reward = {
+		add_ideas = darre_plan_1
 		}
 		x = 34
 		y = 4
 
 	}
 	focus = {
-		id = NOE_mechanization_ethos
+		id = NOE_mechanization_ethos #modify said idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_darre_plan
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		NOT = {
+		has_idea = darre_plan_2mechanization
+			  }
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_1
+		add_idea = darre_plan_2mechanization
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_3quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_3quantity
+		add_idea = darre_plan_4quantity_mechanization
+		 }
+	   }
+	  }
 		x = 33
 		y = 5
 
 	}
+	
 	focus = {
-		id = NOE_work_safety_laws
+		id = NOE_work_safety_laws #stability buff, consumer goods more
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
+			focus = NOE_quality_over_quantity		
+		}
+		prerequisite = {
 			focus = NOE_mechanization_ethos
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_4quantity_mechanization
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_4quantity_mechanization
+		add_idea = darre_plan_6quantity_mechanization_safetylaw
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_5mechanization_quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_5mechanization_quantity	
+		add_idea = darre_plan_7mechanization_quantity_safetylaw
+		 }
+	   }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_8quantity_mechanization_workweek
+	  }
+	  swap_ideas = {
+	  add_idea = darre_plan_10quantity_mechanization_workweek_safetylaw
+	  remove_idea = darre_plan_8quantity_mechanization_workweek
+	  }
+	 }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_9mechanization_quantity_workweek
+	   }
+	   swap_ideas = {
+	   add_idea = darre_plan_10mechanization_quantity_workweek_safetylaw
+	   remove_idea = darre_plan_9mechanization_quantity_workweek
+	}
+   }
+  }
 		x = 27
 		y = 6
 
-	}
+ }
+
 	focus = {
-		id = NOE_quality_over_quantity
+		id = NOE_quality_over_quantity #modify said idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_darre_plan
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		NOT = {
+		has_idea = darre_plan_3quantity
+			  }
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_1
+		add_idea = darre_plan_3quantity
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_2mechanization 
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_2mechanization
+		add_idea = darre_plan_5mechanization_quantity
+		 }
+	   }
+	  }
 		x = 35
 		y = 5
 
 	}
 	focus = {
-		id = NOE_establish_working_week
+		id = NOE_establish_working_week#stability buff, consumer goods more, reduce anti anger, make uradel mad!!
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_quality_over_quantity
+			focus = NOE_quality_over_quantity		
 		}
+		prerequisite = {
+			focus = NOE_mechanization_ethos
+		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_4quantity_mechanization
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_4quantity_mechanization
+		add_idea = darre_plan_11quantity_mechanization_workweek
+		 }
+		}
+		else_if = {
+		limit = {
+		has_completed_focus	= NOE_darre_plan
+		has_idea = darre_plan_5mechanization_quantity	  
+		}
+		swap_ideas = {
+		remove_idea = darre_plan_5mechanization_quantity	
+		add_idea = darre_plan_12mechanization_quantity_workweek
+		 }
+	   }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_6quantity_mechanization_safetylaw
+	  }
+	  swap_ideas = {
+	  add_idea = darre_plan_13quantity_mechanization_safetylaw_workweek
+	  remove_idea = darre_plan_6quantity_mechanization_safetylaw
+	  }
+	 }
+	   else_if = {
+	   limit = {
+	   has_idea = darre_plan_7mechanization_quantity_safetylaw
+	   }
+	   swap_ideas = {
+	   add_idea = darre_plan_14mechanization_quantity_safetylaw_workweek
+	   remove_idea = darre_plan_7mechanization_quantity_safetylaw
+	}
+   }
+  }
 		x = 30
 		y = 6
 
 	}
 	focus = {
-		id = NOE_fourteen_demands
+		id = NOE_fourteen_demands #piss off antis, gain uradel support, antis win BIG, 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -503,7 +851,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_enforce_current_laws
+		id = NOE_reform_current_laws #make uradel happy, uradel support up, modify uradel idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -514,7 +862,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_danzig_conference
+		id = NOE_danzig_conference #make uradel happy, uradel support up, modify uradel idea, add pp
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -525,11 +873,11 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_prussian_chivalry
+		id = NOE_prussian_chivalry #add idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_enforce_current_laws
+			focus = NOE_reform_current_laws
 		}
 		prerequisite = {
 			focus = NOE_danzig_conference
@@ -540,78 +888,197 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_mechanization_ethos
 		}
+		completion_reward = {
+		add_ideas = prussian_chivalry_1 #Military idea starts weakish but gets stronger with each focus that swaps
+		}
 		x = 36
 		y = 6
 
 	}
 	focus = {
-		id = NOE_mace_and_mic
+		id = NOE_mace_and_mic #modify idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_prussian_chivalry
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_1
+		   }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_1
+		add_idea = NOE_prussian_chivalry_2mace
+		  }
+		 }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_3gyudon
+		 }
+		 swap_ideas = {
+		 remove_idea = NOE_prussian_chivalry_3gyudon
+		 add_idea = NOE_prussian_chivalry_4gyudon_mace
+		}
+	   }
+	  }
 		x = 35
 		y = 7
 
 	}
 	focus = {
-		id = NOE_let_them_eat_gyudon
+		id = NOE_let_them_eat_gyudon #modify idea, make anti less mad
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_prussian_chivalry
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_1
+		   }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_1
+		add_idea = NOE_prussian_chivalry_3gyudon
+		  }
+		 }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_2mace
+		 }
+		 swap_ideas = {
+		 remove_idea = NOE_prussian_chivalry_2mace
+		 add_idea = NOE_prussian_chivalry_5mace_gyudon
+		}
+	   }
+	  }
 		x = 37
 		y = 7
 
 	}
 	focus = {
-		id = NOE_modern_serdom
+		id = NOE_modern_serfdom #make anti less mad, add idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_danzig_conference
 		}
+		completion_reward = {
+		add_ideas = {
+		imodern_serfdom
+		}
+	   }
 		x = 40
 		y = 6
 
 	}
 	focus = {
-		id = NOE_spending_plan
+		id = NOE_spending_plan #reduce depression kinda, add infrastructure and civs
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_depression_economics
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+	 }
 		x = 42
 		y = 2
 
 	}
 	focus = {
-		id = NOE_deal_with_inflation
+		id = NOE_deal_with_inflation #greatly reduce depression, temporary consumer goods bonus
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_spending_plan
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		NOT = {
+		has_idea = great_depression_noel_1
+		}
+		}
+		swap_ideas = {
+		remove_idea = great_depression_noel
+		add_idea = great_depression_noel_1
+		 } 
+	  }
+	  else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_1
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_1
+		add_idea = great_depression_noel_2
+		 }
+	  }
+	   else_if = {
+	  limit = {
+	  has_idea = great_depression_noel_2
+	   }
+	   swap_ideas = {
+		remove_idea = great_depression_noel_2
+		add_idea = great_depression_noel_3
+		 }
+	  }
+	  add_timed_idea = {
+	  idea = inflation_dealt_NOE
+	  days = 120
+	  }
+	 }
 		x = 41
 		y = 3
 
 	}
 	focus = {
-		id = NOE_modernize_mining_methods
+		id = NOE_modernize_mining_methods #add idea, 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_bail_out_noblemen
 		}
+		completion_reward = {
+		add_ideas = {
+	    industrialized_mining
+		}
+	}
 		x = 44
 		y = 2
 
 	}
 	focus = {
-		id = NOE_large_scale_coal_mining
+		id = NOE_large_scale_coal_mining #add idea, add synthetic oil stuff idk
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -620,23 +1087,43 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_spending_plan
 		}
+		completion_reward = {
+		add_ideas = {
+		industrialized_coal_methods
+		}
+		807 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+    type = synthetic_refinery
+    level = 2
+    instant_build = yes
+		 }
+		
+		}
+	  }
 		x = 43
 		y = 3
 
 	}
 	focus = {
-		id = NOE_carrot_stick_approach
+		id = NOE_carrot_stick_approach #minus a lot of pp and pp gain, make uradel happy
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_danzig_conference
+		}
+		completion_reward = {
+		add_political_power = -150
+		add_ideas = {
+		the_carrot
+		 }
 		}
 		x = 43
 		y = 6
 
 	}
 	focus = {
-		id = NOE_establish_internal_kingdoms
+		id = NOE_establish_internal_kingdoms #make uradel happy, make peasants mad, add stability, make antis less mad
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -647,7 +1134,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_nobility_conferences
+		id = NOE_nobility_conferences #peasants very mad, up commies 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -657,25 +1144,30 @@ focus_tree = {
 			focus = NOE_establish_internal_kingdoms
 		}
 		prerequisite = {
-			focus = NOE_modern_serdom
+			focus = NOE_modern_serfdom
 		}
 		x = 43
 		y = 7
 
 	}
 	focus = {
-		id = NOE_ritter_romanticize
+		id = NOE_ritter_romanticize #
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_nobility_conferences
 		}
+		completion_reward = {
+		add_ideas = {
+		days_of_the_ritter
+		}
+	   }
 		x = 42
 		y = 8
 
 	}
 	focus = {
-		id = NOE_reform_uradel_faction
+		id = NOE_reform_uradel_faction #remove all uradel debuffs
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -686,51 +1178,127 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_industrial_agriculture_coorperation
+		id = NOE_royal_industries #add civs, temp construction boom
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_bail_out_noblemen
 		}
+		completion_reward = {
+		add_timed_idea = {
+		idea = Royal_industries
+		days = 180
+		}
+		85 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+		instant_build = yes
+		level = 2
+		type = industrial_complex
+		 }
+		}
+		763 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+		instant_build = yes
+		level = 2
+		type = industrial_complex
+		 }
+		}
+	   }
 		x = 46
 		y = 2
 
 	}
 	focus = {
-		id = NOE_noblemen_alcohol
+		id = NOE_noblemen_alcohol #adds civs, increase stability
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_industrial_agriculture_coorperation
+			focus = NOE_royal_industries
 		}
+		completion_reward = {
+		763 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+		instant_build = yes
+		level = 2
+		type = industrial_complex
+		 }
+		}
+		add_stability = 0.1
+	   }
 		x = 46
 		y = 3
 
 	}
 	focus = {
-		id = NOE_job_programs_freemen
+		id = NOE_job_programs_freemen #add civs, large construction boom
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_bankruptcy_for_them
 		}
+		completion_reward = {
+		88 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+		instant_build = yes
+		level = 2
+		type = industrial_complex
+		 }
+		}
+		762 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+		instant_build = yes
+		level = 2
+		type = industrial_complex
+		 }
+		}
+		add_timed_idea = {
+		idea = industrial_boom
+		days = 100
+		}
+	   }
 		x = 48
 		y = 2
 
 	}
 	focus = {
-		id = NOE_industrieller_assistance
+		id = NOE_industrieller_assistance #add shit ton of civs, add construction idea perm.
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_job_programs_freemen
 		}
+		completion_reward = {
+		85 = {
+		add_building_construction = {
+		instant_build = yes
+		level = 2
+		type = industrial_complex
+		add_extra_state_shared_building_slots = 2
+		 }
+		}
+		10 = {
+		add_building_construction = {
+		instant_build = yes
+		level = 4
+		type = industrial_complex
+		add_extra_state_shared_building_slots = 4
+		 }
+		}
+		add_ideas = {
+		industrieller_assistance
+		}
+	   }
 		x = 48
 		y = 3
 
 	}
 	focus = {
-		id = NOE_deal_with_debt
+		id = NOE_deal_with_debt #remove depression
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -740,12 +1308,17 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_deal_with_inflation
 		}
+		completion_reward = {
+		remove_ideas = {
+		great_depression_noel_3
+     	 }
+		}
 		x = 47
 		y = 4
 
 	}
 	focus = {
-		id = NOE_free_their_serfs
+		id = NOE_free_their_serfs #antis happy
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -756,117 +1329,284 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_brest_conference
+		id = NOE_brest_conference #guaranty flare
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_flare_predicament
 		}
+		completion_reward = {
+		give_guarantee = FLA
+	}
 		x = 54
 		y = 2
 
 	}
 	focus = {
-		id = NOE_import_spirits
+		id = NOE_import_spirits #make flare better economy
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_brest_conference
 		}
+		completion_reward = {
+		country_event = {
+		id = noel.28
+		days = 0
+		}
+	   }
 		x = 50
 		y = 3
 
 	}
 	focus = {
-		id = NOE_fight_the_fox
+		id = NOE_fight_the_fox #army xp, amphibious landings research buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_surrounded_by_powers
+		}
+		completion_reward = {
+		army_experience = 25
+		add_tech_bonus = {
+		bonus = 1
+		uses = 2
+		category = tp_tech
+		 }
 		}
 		x = 51
 		y = 7
 
 	}
 	focus = {
-		id = NOE_sea_wall
+		id = NOE_sea_wall #add a great big wall
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_fight_the_fox
 		}
+		completion_reward = {
+		hidden_effect = {
+		763 = {
+		add_building_construction = {
+			type = coastal_bunker
+			level = 3
+			instant_build = yes
+			province = 6332
+		  }
+		add_building_construction = {
+			type = coastal_bunker
+			level = 2
+			instant_build = yes
+			province = 11265
+		  }
+		 }
+		 63 = {
+		add_building_construction = {
+			type = coastal_bunker
+			level = 2
+			instant_build = yes
+			province = 6402
+		  }
+		add_building_construction = {
+			type = coastal_bunker
+			level = 3
+			instant_build = yes
+			province = 6282
+		  }
+		add_building_construction = {
+			type = coastal_bunker
+			level = 2
+			instant_build = yes
+			province = 6390
+		  }
+		add_building_construction = {
+			type = coastal_bunker
+			level = 2
+			instant_build = yes
+			province = 6334
+		  }
+		add_building_construction = {
+			type = coastal_bunker
+			level = 3
+			instant_build = yes
+			province = 11372
+		  }
+		  add_building_construction = {
+			type = coastal_bunker
+			level = 2
+			instant_build = yes
+			province = 11343
+		  }
+		add_building_construction = {
+			type = coastal_bunker
+			level = 2
+			instant_build = yes
+			province = 9361
+		   }
+		  }
+		 }
+		custom_effect_tooltip = sea_wall
+	    }
 		x = 50
 		y = 8
 
 	}
 	focus = {
-		id = NOE_konigsberg_ports
+		id = NOE_konigsberg_ports # add ports
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_sea_wall
+		}
+		completion_reward = {
+			63 = {
+				add_building_construction = {
+				type = naval_base
+				level = 3
+				instant_build = yes
+				province = 6402
+				}
+			
+				add_building_construction = {
+				type = naval_base
+				level = 3
+				instant_build = yes
+				province = 6282
+				}
+			}	
 		}
 		x = 48
 		y = 9
 
 	}
 	focus = {
-		id = NOE_danzig_ports
+		id = NOE_danzig_ports # add ports
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_sea_wall
 		}
+		completion_reward = {
+			916 = {
+				 add_building_construction = {
+				 type = naval_base
+				 level = 3
+				 instant_build = yes
+				 province = 362
+				}
+			}	
+		}	 
 		x = 50
 		y = 9
 
 	}
 	focus = {
-		id = NOE_consumer_goods_focus
+		id = NOE_consumer_goods_focus #minus consumer goods modifier smol
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_bankruptcy_for_them
+		}
+		completion_reward = {
+		add_ideas = {
+		  consumer_economics
+		 }
 		}
 		x = 52
 		y = 2
 
 	}
 	focus = {
-		id = NOE_tee_tee_flare
+		id = NOE_tee_tee_flare #aly flare
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_brest_conference
 		}
+		completion_reward = {
+		FLA = {
+			country_event = {
+			id = flare.1
+			days = 1
+			 }
+		}
+	   }
 		x = 52
 		y = 3
 
 	}
 	focus = {
-		id = NOE_lithuania_defense
+		id = NOE_lithuania_defense #wall
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_fight_the_fox
+		}
+		completion_reward = {
+		
+		 custom_effect_tooltip = NOE_lithuania_wall_tooltip
+		 
+		  hidden_effect = {
+			862 = {
+			 add_building_construction = {
+				 type = bunker
+				 level = 3
+				 instant_build = yes
+				 province = 348
+				}
+			 add_building_construction = {
+				 type = bunker
+				 level = 3
+				 instant_build = yes
+				 province = 281
+				}
+			}
+			
+			807 = {
+			 add_building_construction = {
+				 type = bunker
+				 level = 3
+				 instant_build = yes
+				 province = 6407
+				}
+			 add_building_construction = {
+				 type = bunker
+				 level = 3
+				 instant_build = yes
+				 province = 3272
+				}
+			 add_building_construction = {
+				 type = bunker
+				 level = 3
+				 instant_build = yes
+				 province = 6281
+				}
+			}
+		 }
 		}
 		x = 52
 		y = 8
 
 	}
 	focus = {
-		id = NOE_expand_levees
+		id = NOE_expand_levees #manpower gain 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_lithuania_defense
+		}
+		completion_reward = {
+			add_ideas = {
+			 expand_the_levees
+			}
 		}
 		x = 52
 		y = 9
 
 	}
 	focus = {
-		id = NOE_warplan_yakineko
+		id = NOE_warplan_yakineko #bonuses against Ikubuf
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -875,100 +1615,169 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_danzig_ports
 		}
+		
+		completion_reward = {
+		 custom_effect_tooltip = NOE_unlock_fubuki_warplan
+		 set_country_flag = NOE_warplan_Yakineko
+		}
 		x = 51
 		y = 10
 
 	}
 	focus = {
-		id = NOE_guarantee_independence
+		id = NOE_flare_mission #make flare military better
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_brest_conference
+		}
+		completion_reward = {
+		custom_effect_tooltip = NOE_invest_flare_military_tooltip
+			FLA = {
+				 country_event = {
+				 id = flare.2
+				 days = 1
+				}
+		   }
 		}
 		x = 54
 		y = 3
 
 	}
 	focus = {
-		id = NOE_improve_flare_conditions
+		id = NOE_improve_flare_conditions #make economy goodish
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_flare_predicament
+		}
+		completion_reward = {
+			custom_effect_tooltip = NOE_improve_flare_conditions_tooltip
+			  FLA = {
+			  country_event = {
+			   id = flare.4
+			   days = 1
+			   }
+			 }
 		}
 		x = 56
 		y = 2
 
 	}
 	focus = {
-		id = NOE_modernize_flare_agriculture
+		id = NOE_modernize_flare_agriculture#make economy goodish
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_improve_flare_conditions
+		}
+		completion_reward = {
+			 FLA = {
+			  country_event = {
+			  id = flare.5
+			  days = 1
+			 }
+			}
 		}
 		x = 56
 		y = 3
 
 	}
 	focus = {
-		id = NOE_invest_flare_industry
+		id = NOE_invest_flare_industry #add flare factories
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_improve_flare_conditions
+		}
+		completion_reward = {
+		custom_effect_tooltip = NOE_invest_in_flare_economy
+			 FLA = {
+				 country_event = {
+				 id = flare.3
+				 days = 1
+				}
+			}
 		}
 		x = 58
 		y = 3
 
 	}
 	focus = {
-		id = NOE_board_vs_boing
+		id = NOE_board_vs_boing #add army xp 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_surrounded_by_powers
 		}
+		
+		completion_reward = {
+			army_experience = 25
+		  }
 		x = 59
 		y = 7
 
 	}
 	focus = {
-		id = NOE_flare_alliance
+		id = NOE_arm_flare #give flare guns, and nap/guarantee her
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_board_vs_boing
+		}
+		completion_reward = {
+			FLA = {
+				country_event = {
+				id = flare.6
+				days = 1
+				}
+		 }
 		}
 		x = 58
 		y = 8
 
 	}
 	focus = {
-		id = NOE_flare_military_mission
+		id = NOE_flare_military_mission #add xp for both flare and noel, lose a general temporarily 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_flare_alliance
+			focus = NOE_arm_flare
 		}
+		completion_reward = {
+		army_experience = 25
+		FLA = {
+		country_event = {
+		 id = flare.7
+		 days = 1
+		  }
+		 }
+	    }
 		x = 58
 		y = 9
 
 	}
 	focus = {
-		id = NOE_clear_marshes
+		id = NOE_clear_marshes #improve flare infrastructure
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_improve_flare_conditions
 		}
+		completion_reward = {
+		FLA = {
+		country_event = {
+		 id = flare.8
+		 days = 1
+		  }
+		 }
+		}
 		x = 60
 		y = 3
-
+		
 	}
 	focus = {
-		id = NOE_part_of_empire
+		id = NOE_part_of_empire #puppet flare
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -981,7 +1790,7 @@ focus_tree = {
 			focus = NOE_clear_marshes
 		}
 		prerequisite = {
-			focus = NOE_guarantee_independence
+			focus = NOE_flare_military_mission
 		}
 		prerequisite = {
 			focus = NOE_tee_tee_flare
@@ -989,12 +1798,21 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_import_spirits
 		}
+		
+		completion_reward = {
+		FLA = {
+			country_event = {
+			id = flare.13
+			days = 1
+			}
+		 }
+		}
 		x = 55
 		y = 4
 
 	}
 	focus = {
-		id = NOE_expand_serfdom
+		id = NOE_expand_serfdom #modify idea, make more commies
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1003,12 +1821,18 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_jobs_flare
 		}
+		
+		completion_reward = {
+		add_ideas = {
+			flarean_serfdom #manpower modifier NOT FLAT BUT A PERCENT MODIFIER
+		 }
+		}
 		x = 54
 		y = 5
 
 	}
 	focus = {
-		id = NOE_jobs_flare
+		id = NOE_jobs_flare#modify idea,more stability
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1017,34 +1841,125 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_expand_serfdom
 		}
+		
+		completion_reward = {
+		add_ideas = {
+			flarean_job_program #
+		 }
+		}
 		x = 56
 		y = 5
 
 	}
 	focus = {
-		id = NOE_east_wall
+		id = NOE_set_up_munition_factories #flare factories
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_board_vs_boing
+		}
+		
+			completion_reward = {
+		custom_effect_tooltip = NOE_invest_flare_military_tooltip
+			FLA = {
+				 country_event = {
+				 id = flare.2
+				 days = 1
+				}
+		   }
 		}
 		x = 60
 		y = 8
 
 	}
 	focus = {
-		id = NOE_kiev_fortress
+		id = NOE_kiev_fortress #great big wall
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_east_wall
+			focus = NOE_set_up_munition_factories
+		}
+		
+		completion_reward = {
+		
+		 custom_effect_tooltip = NOE_great_east_wall
+		 
+		  hidden_effect = {
+			FLA = {
+				867 = {
+			 add_building_construction = {
+				 type = bunker
+				 level = 6
+				 instant_build = yes
+				 province = 525
+				}
+			 add_building_construction = {
+				 type = bunker
+				 level = 2
+				 instant_build = yes
+				 province = 3494
+				}
+			add_building_construction = {
+				 type = bunker
+				 level = 2
+				 instant_build = yes
+				 province = 504
+				}
+			}
+			
+				868 = {
+			 add_building_construction = {
+				 type = bunker
+				 level = 2
+				 instant_build = yes
+				 province = 489
+				}
+			 add_building_construction = {
+				 type = bunker
+				 level = 2
+				 instant_build = yes
+				 province = 3543
+				}
+			 add_building_construction = {
+				 type = bunker
+				 level = 2
+				 instant_build = yes
+				 province = 9568
+				}
+			}
+				202 = {
+			 add_building_construction = {
+				 type = bunker
+				 level = 2
+				 instant_build = yes
+				 province = 11557
+				}
+			 add_building_construction = {
+				 type = bunker
+				 level = 2
+				 instant_build = yes
+				 province = 9543
+				}
+			 add_building_construction = {
+				 type = bunker
+				 level = 2
+				 instant_build = yes
+				 province = 582
+				}
+			}
+			country_event = {
+			id = flare.14
+			days = 1
+			}
+		  }
+		 }
 		}
 		x = 60
 		y = 9
 
 	}
 	focus = {
-		id = NOE_warplan_pettan
+		id = NOE_warplan_pettan #bonuses against cutting board
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1053,23 +1968,14 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_flare_military_mission
 		}
+		custom_effect_tooltip = NOE_warplan_pettan_tooltip
+		set_country_flag = NOE_warplan_flat
 		x = 59
 		y = 10
 
 	}
 	focus = {
-		id = NOE_brest_defensives
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_east_wall
-		}
-		x = 62
-		y = 9
-
-	}
-	focus = {
-		id = NOE_guard_infantry
+		id = NOE_guard_infantry #add idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1078,67 +1984,117 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_catch_draft_dodgers
 		}
+		
+		completion_reward = {
+		add_ideas = {
+		NOE_guard_infantry #add increased special forces cap and a small buff to guard attack and defense
+		}
+	   }
 		x = 64
 		y = 2
 
 	}
 	focus = {
-		id = NOE_promote_ritter_bundis
+		id = NOE_promote_ritter_bundis #modify idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_guard_infantry
 		}
+		
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = NOE_guard_infantry
+		add_idea = NOE_guard_infantry2 # even more special forces cap and a bit bigger of a buff to guard attack and defense
+		}
+	   }
 		x = 64
 		y = 3
 
-	}
+	}    
 	focus = {
-		id = NOE_imperial_regiments
+		id = NOE_imperial_regiments #create new unmodifiable better guards
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_promote_ritter_bundis
 		}
+		completion_reward = {
+			division_template = {
+			name = "Elite Guards"
+			is_locked = yes
+			division_names_group = USA_INF_01
+					regiments = {
+						guard_infantry = { x = 0 y = 0 }
+						guard_infantry = { x = 0 y = 1 }
+						guard_infantry = { x = 0 y = 2 }
+						guard_infantry = { x = 0 y = 3 }
+						guard_infantry = { x = 0 y = 4 }
+						guard_infantry = { x = 0 y = 5 }
+						guard_infantry = { x = 1 y = 0 }
+						artillery_brigade = { x = 1 y = 1 }
+						artillery_brigade = { x = 1 y = 2 }
+					   }
+								support = { 
+									artillery = { x = 0 y = 0 }
+									engineer = { x = 0 y = 1}
+									recon = { x = 0 y = 1 }
+							   } 
+			}
+	}
 		x = 63
 		y = 4
 
 	}
 	focus = {
-		id = NOE_ritter_infantry
+		id = NOE_ritter_infantry #modify idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_imperial_regiments
 		}
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = NOE_guard_infantry2
+		add_idea = NOE_guard_infantry3 # even even more special forces cap and a bit big buff to guard attack and defense 20% id say
+		}
+	   }
 		x = 63
 		y = 5
 
 	}
 	focus = {
-		id = NOE_royal_engineers
+		id = NOE_royal_engineers #add idea for support equipment
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_promote_ritter_bundis
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_royal_sappers #Decreased production cost for support equipment
+		 }
 		}
 		x = 65
 		y = 4
 
 	}
 	focus = {
-		id = NOE_ritter_tactics
+		id = NOE_ritter_tactics #bomb the shit out of people tactics 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_royal_engineers
+		}
+		add_ideas = {
+		ritter_tactics # artillery production is cheaper
 		}
 		x = 65
 		y = 5
 
 	}
 	focus = {
-		id = NOE_noble_officers
+		id = NOE_noble_officers #modify ideas,bomb the shit out of people tactics 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1146,6 +2102,15 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_ritter_infantry
+		}
+		completion_reward = {
+		remove_ideas = {
+			ritter_tactics
+			NOE_guard_infantry3
+		}
+		add_ideas = {
+			NOE_noble_officers #Combine both of the removed idea buffs and increase the bonus to ritter tactics
+		 }
 		}
 		x = 64
 		y = 6
@@ -1177,7 +2142,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_catch_draft_dodgers
+		id = NOE_catch_draft_dodgers #lower stability, modify feudal army idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1191,7 +2156,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_reduce_levee_standards
+		id = NOE_reduce_levee_standards #more manpower idea wao
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1202,7 +2167,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_serf_comissars
+		id = NOE_serf_comissars #modify idea for better
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1238,7 +2203,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_gun_for_every_peasant
+		id = NOE_gun_for_every_peasant #make gun cheaper
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1249,7 +2214,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_expand_draft_time
+		id = NOE_expand_draft_time #modify manpower idea wao
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1260,7 +2225,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_yakiniku_for_everyone
+		id = NOE_yakiniku_for_everyone #supply modifier
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1296,7 +2261,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_mechanized_push
+		id = NOE_mechanized_push #jaa we are the germans
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1307,7 +2272,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_manteuffel_plan
+		id = NOE_manteuffel_plan #he like tank and motorised
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1318,7 +2283,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_trucks_logistics
+		id = NOE_trucks_logistics #more trucks, supply buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1329,7 +2294,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_panzer_plan_one
+		id = NOE_panzer_plan_one #tank research buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1340,7 +2305,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_panzer_plan_two
+		id = NOE_panzer_plan_two #tank research,production buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1351,7 +2316,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_cavalry_modernization
+		id = NOE_cavalry_modernization #cavalry buff, add hussars
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1362,7 +2327,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_army_coordination
+		id = NOE_army_coordination #add blitz research budd
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1379,7 +2344,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_aerial_dominance
+		id = NOE_aerial_dominance #idk air xp
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1390,7 +2355,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_fighter_dominance
+		id = NOE_fighter_dominance #cheap, better fighters
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1401,7 +2366,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_fast_bombers
+		id = NOE_fast_bombers #faster bombers
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1412,7 +2377,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_public_works
+		id = NOE_public_works #civsnshit
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1423,7 +2388,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_manumission_laws
+		id = NOE_manumission_laws #stability buff, make uradel maad
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1434,7 +2399,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_encourage_freedom_organisations
+		id = NOE_encourage_freedom_organisations #uradel mad, make antis less angry
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1445,7 +2410,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_workers_not_serfs
+		id = NOE_workers_not_serfs #stability buff, add idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1456,18 +2421,21 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_gather_serfs
+		id = NOE_gather_serfs #manpower once civil war
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_prepare_putsch
+		}
+		completion_reward = {
+		set_country_flag = NOE_serfs_gathered
 		}
 		x = 18
 		y = 10
 
 	}
 	focus = {
-		id = NOE_purge_disloyal_officers
+		id = NOE_purge_disloyal_officers #when civil war starts, give them debuff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1479,34 +2447,43 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_arm_citizens
 		}
+		completion_reward = {
+		set_country_flag = NOE_disloyal_officers_purged
+		}
 		x = 18
 		y = 11
 
 	}
 	focus = {
-		id = NOE_raid_opposition_factions
+		id = NOE_raid_opposition_factions #make opposition lesspopular
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_purge_disloyal_officers
+		}
+		completion_reward = {
+		set_country_flag = NOE_opposition_raided
 		}
 		x = 18
 		y = 12
 
 	}
 	focus = {
-		id = NOE_begin_revolution
+		id = NOE_begin_revolution #civil war start
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_raid_opposition_factions
+		}
+		completion_reward = {
+		set_country_flag = NOE_revolution_started
 		}
 		x = 18
 		y = 13
 
 	}
 	focus = {
-		id = NOE_comensation_acts
+		id = NOE_comensation_acts #stability, antis less mad 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1520,7 +2497,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_krakow_proclamation
+		id = NOE_krakow_proclamation #stability fall, antis fucking batshit apeshit nuts 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1534,7 +2511,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_polish_solidarity
+		id = NOE_polish_solidarity #recover stability if proclamation, removes commie/democratboos popularity
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1546,7 +2523,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_federalism
+		id = NOE_federalism #makes conservatives run country, 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1557,7 +2534,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_parlimentary_system
+		id = NOE_parlimentary_system #stability, more conservative happi
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1568,7 +2545,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_spare_opposition_factions
+		id = NOE_spare_opposition_factions #stability minus, pp minus
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1582,7 +2559,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_great_purge
+		id = NOE_great_purge #kill a lot of generals, make uradel go brrr
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1596,7 +2573,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_knightdom_ubermensch
+		id = NOE_knightdom_ubermensch #modify knight idea, more generals
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1605,23 +2582,49 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_mace_and_mic
 		}
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_4gyudon_mace
+		}
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_4gyudon_mace
+		add_idea = NOE_prussian_chivalry_6
+		   }
+		  }
+		else_if = {
+		limit = {
+		has_idea = NOE_prussian_chivalry_5mace_gyudon
+		 }
+		swap_ideas = {
+		remove_idea = NOE_prussian_chivalry_5mace_gyudon
+		add_idea = NOE_prussian_chivalry_6
+		}
+	   }
+	  }
 		x = 36
 		y = 8
 
 	}
 	focus = {
-		id = NOE_education_proposals
+		id = NOE_education_proposals #stability buff, makes people happy, it cost money reeeeee
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_quality_over_quantity
+		}
+		completion_reward = {
+			add_timed_idea = {
+			idea = education_reform
+			days = 180
+			}
 		}
 		x = 33
 		y = 6
 
 	}
 	focus = {
-		id = NOE_popularize_guilds
+		id = NOE_popularize_guilds #add guild idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1638,7 +2641,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_industrieller_compromise
+		id = NOE_industrieller_compromise #civs,remove all anger
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1649,7 +2652,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_erder_compromise
+		id = NOE_erder_compromise #mills, remove all anger
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1660,7 +2663,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_big_brother_system
+		id = NOE_big_brother_system #pisses off polish, removes anger system for everyone but peasants, PISSES OFF ANTIS REEE
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1683,7 +2686,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_polish_german_harmony
+		id = NOE_polish_german_harmony #UNAVAILABLE UNTIL CIVIL WAR AFTER ABOVE FOCUS
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1694,7 +2697,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_protestant_vs_catholic
+		id = NOE_new_way_forward #stability buff, pp buff, monarchy popularity stonks 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1705,11 +2708,11 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_new_step_feudalism
+		id = NOE_new_step_feudalism #combine all feudal(not army) ideas into one powerranger style 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_protestant_vs_catholic
+			focus = NOE_new_way_forward
 		}
 		prerequisite = {
 			focus = NOE_polish_german_harmony
@@ -1734,14 +2737,14 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_flare_alliance
+			focus = NOE_arm_flare
 		}
 		x = 56
 		y = 9
 
 	}
 	focus = {
-		id = NOE_revenge_for_northern_war
+		id = NOE_revenge_for_northern_war #get justification
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1752,7 +2755,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_brute_vs_magic
+		id = NOE_brute_vs_magic #get justification
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1763,7 +2766,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_seek_lhs_support
+		id = NOE_seek_lhs_support #set flag or something 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1777,7 +2780,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_seek_resistance_support
+		id = NOE_seek_resistance_support #set flag or something 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1802,7 +2805,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_establish_pzl
+		id = NOE_establish_pzl #polish planes, enable design company
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1880,7 +2883,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_course_de_guerre
+		id = NOE_course_de_guerre #convoy raiding buff idk
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1916,7 +2919,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_danzig_naval_academy
+		id = NOE_danzig_naval_academy #naval xp gain constant
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1928,7 +2931,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_ritter_marines
+		id = NOE_ritter_marines #add marine divison and template
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1939,7 +2942,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_marsh_warfare
+		id = NOE_marsh_warfare #supply buff 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1950,7 +2953,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_amphibious_assault
+		id = NOE_amphibious_assault 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1961,7 +2964,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_dream_of_empire
+		id = NOE_dream_of_empire #pp gain a lot, gain war support
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1972,7 +2975,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_neofeudal_economy
+		id = NOE_neofeudal_economy #make idea fro feudal economy gut_er
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1983,7 +2986,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_chicken_vs_beef
+		id = NOE_chicken_vs_beef #event trigger
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1994,7 +2997,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_german_question
+		id = NOE_german_question #gain event, automatically do end rogue state
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2005,7 +3008,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_agrarian_roots
+		id = NOE_agrarian_roots #consumer goods buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2016,7 +3019,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_end_the_rogue_state
+		id = NOE_end_the_rogue_state #justification on moustache man
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2027,7 +3030,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_agricultural_chemistry
+		id = NOE_agricultural_chemistry #research slot
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2038,7 +3041,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_breadbasket_of_world
+		id = NOE_breadbasket_of_world #consumer good modify, population growth buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2049,7 +3052,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_request_incorporation
+		id = NOE_request_incorporation #event to annex kiara
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2063,7 +3066,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_seize_south_germany
+		id = NOE_seize_south_germany #justification on chicken
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2077,7 +3080,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_munich_conference
+		id = NOE_munich_conference #pp buff, stability, war support buff, 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2090,7 +3093,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_establish_kingdom_bohemia
+		id = NOE_establish_kingdom_bohemia #justify czech
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2101,7 +3104,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_establish_south_german_kingdoms
+		id = NOE_establish_south_german_kingdoms #stability, idea recovery 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2112,7 +3115,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_establish_brandenberg_kingdom
+		id = NOE_establish_brandenberg_kingdom #stability, idea recovery
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2123,7 +3126,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_invade_slovakia
+		id = NOE_invade_slovakia #will automatically pass or do according to event
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2167,7 +3170,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_german_wine
+		id = NOE_german_wine #consumer goods, stability gain, 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2178,7 +3181,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_biofueles
+		id = NOE_biofueles #fuel facilities
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2189,7 +3192,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_improve_village_infrastructure
+		id = NOE_improve_village_infrastructure #infrastructure max 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2203,7 +3206,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_king_of_germans
+		id = NOE_king_of_germans #gain fancy new name and colour, pp gain alot, new idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2248,7 +3251,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_form_holy_noel_empire
+		id = NOE_form_holy_noel_empire #WOAH IS THAT THE HRE WOAH, new name and colour, replace german idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2262,7 +3265,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_democratic_future
+		id = NOE_democratic_future #conservative, progressive more
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2273,7 +3276,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_emperess_noel
+		id = NOE_emperess_noel #make monarchy parties more popular
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2330,7 +3333,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_volkswagen
+		id = NOE_volkswagen #more motorised bonus
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2344,7 +3347,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_heavy_industrial_focus
+		id = NOE_heavy_industrial_focus 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2366,7 +3369,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_cheap_trucks
+		id = NOE_cheap_trucks #modify volkswagen
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2424,7 +3427,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_noel_expansionism
+		id = NOE_noel_expansionism #war goal modify
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2452,7 +3455,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_hannover_agreement
+		id = NOE_hannover_agreement #make suisei hand over hanover for nap
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2518,7 +3521,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_form_european_union
+		id = NOE_form_hololive_union
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2535,7 +3538,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_ally_pekora
 			focus = NOE_ally_suisei
-			focus = NOE_form_european_union
+			focus = NOE_form_hololive_union
+		}
+		mutually_exclusive = {
+			focus = NOE_resistance_values
 		}
 		x = 3
 		y = 20
@@ -2546,9 +3552,12 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_form_european_union
+			focus = NOE_form_hololive_union
 			focus = NOE_ally_pekora
 			focus = NOE_ally_suisei
+		}
+		mutually_exclusive = {
+			focus = NOE_lhs_values
 		}
 		x = 7
 		y = 20
