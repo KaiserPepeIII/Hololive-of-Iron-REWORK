@@ -1,0 +1,36 @@
+scripted_gui = {
+  subaru_parliament_entry_gui = {
+	window_name = "subaru_parliament_entry_window"
+	context_type = player_context
+		
+	visible = {
+		always = yes
+	}
+	triggers = {
+
+	}	
+	effects = {	
+		subaru_parliament_entry_button_click = {
+			set_country_flag = view_subaru_parliament
+		}
+		subaru_parliament_entry_button_right_click = {
+			clr_country_flag = view_subaru_parliament
+		}
+	}
+  }
+  subaru_parliament_window_gui = {
+	window_name = "subaru_parliament_window"
+	context_type = player_context
+		
+	visible = {
+		ROOT = {
+			has_country_flag = view_subaru_parliament
+		}
+	}
+	triggers = {
+
+	}	
+	effects = {	
+	}
+  }
+}
