@@ -1,0 +1,33 @@
+scripted_gui = {
+  tutorial_entry_gui = {
+	window_name = "tutorial_gui_entry_window"
+	context_type = player_context
+	parent_window_token = politics_tab
+		
+	visible = {
+		always = yes
+	}
+	effects = {
+		tutorial_entry_btn_click = {
+			set_country_flag = view_tutorial
+		}
+		tutorial_entry_btn_right_click = {
+			clr_country_flag = view_tutorial
+		}
+	}
+  }
+  tutorial_proper_gui = {
+  	window_name = "tutorial_gui_window"
+	context_type = player_context
+	
+	visible = {
+		has_country_flag = view_tutorial
+	}
+	
+	effects = {
+		tutorial_close_button_click = {
+			clr_country_flag = view_tutorial
+		}
+	}
+  }
+}
