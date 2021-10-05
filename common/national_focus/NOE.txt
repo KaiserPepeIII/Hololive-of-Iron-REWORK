@@ -966,7 +966,7 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_ideas = {
-		imodern_serfdom
+		modern_serfdom # buff to efficiency
 		}
 	   }
 		x = 40
@@ -2021,7 +2021,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			division_template = {
-			name = "Elite Guards"
+			name = "Imperial Gaurd"
 			is_locked = yes
 			division_names_group = USA_INF_01
 					regiments = {
@@ -2126,6 +2126,13 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_beneath_the_seas
 		}
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = fleet_in_being_tree
+			}
+		}
 		x = 68
 		y = 8
 
@@ -2136,6 +2143,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_capital_ship_doctrine
+		}
+		completion_reward = {
+		add_ideas = {
+		NOE_imperial_ships #cheaper capital ships
+		 }
 		}
 		x = 66
 		y = 9
@@ -2151,6 +2163,14 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_guard_infantry
 		}
+		completion_reward = {
+		add_stability = -0.05
+		swap_ideas = {
+			remove_idea = NOE_feudal_army
+			add_idea = NOE_feudal_army2
+		
+		 }
+		}
 		x = 68
 		y = 2
 
@@ -2162,6 +2182,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_catch_draft_dodgers
 		}
+		completion_reward = {
+		add_idea = {
+		reduced_levee_standards # small debuff to organization but a increase to manpower (flat percent)
+		}
+		
+		}
 		x = 67
 		y = 3
 
@@ -2171,9 +2197,18 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_reduce_levee_standards
+			focus = NOE_gun_for_every_peasant
 		}
-		x = 67
+		completion_reward = {
+		add_stability = -0.05
+		swap_ideas = {
+			remove_idea = NOE_feudal_army2
+			add_idea = NOE_feudal_army3
+		
+		 }
+		}
+		
+		x = 69
 		y = 4
 
 	}
@@ -2184,6 +2219,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_capital_ship_doctrine
 		}
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = fleet_in_being_tree
+			}
+			 }
 		x = 68
 		y = 9
 
@@ -2198,6 +2240,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_cheaper_capital_ship_manufacturing
 		}
+		completion_reward = {
+		swap_ideas = {
+			remove_idea = NOE_imperial_ships 
+			add_idea = NOE_imperial_ships2 # keep previous buffs but add an equal buff for carriers
+		
+		 }
+		}
 		x = 67
 		y = 10
 
@@ -2209,6 +2258,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_catch_draft_dodgers
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_a_gun_for_every_peasant_idea
+		 }
+		}
 		x = 69
 		y = 3
 
@@ -2218,9 +2272,17 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_gun_for_every_peasant
+			focus = NOE_reduce_levee_standards
 		}
-		x = 69
+		
+		completion_reward = {
+		swap_ideas = {
+			remove_idea = reduced_levee_standards
+			add_idea = expand_draft_time # more of the same
+		
+		 }
+		}
+		x = 67
 		y = 4
 
 	}
@@ -2234,6 +2296,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_serf_comissars
 		}
+		
+		completion_reward = {
+		add_ideas = {
+			NOE_yakiniku_for_all
+		 }
+		}
 		x = 68
 		y = 5
 
@@ -2244,6 +2312,17 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_marine_focus
+		}
+		completion_reward = {
+		63 = {
+		 add_building_construction = {
+				type = naval_base
+				level = 2
+				instant_build = yes
+				province = 6282
+					}
+		 
+		 }
 		}
 		x = 71
 		y = 9
@@ -2256,6 +2335,17 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_expand_stettin_port
 		}
+		completion_reward = {
+		916 = {
+		 add_building_construction = {
+				type = naval_base
+				level = 4
+				instant_build = yes
+				province = 362
+					}
+		 
+		 }
+		}
 		x = 70
 		y = 10
 
@@ -2267,6 +2357,19 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_professional_army
 		}
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = cat_mobile_warfare
+			}
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = motorized_equipment
+			category = cat_mechanized_equipment
+			}
+		 }
 		x = 71
 		y = 2
 
@@ -2554,6 +2657,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_great_purge
 		}
+		completion_reward = {
+		add_stability = -0.2
+		add_political_power = -100
+		}
 		x = 17
 		y = 14
 
@@ -2618,6 +2725,7 @@ focus_tree = {
 			idea = education_reform
 			days = 180
 			}
+		add_stability = 0.1
 		}
 		x = 33
 		y = 6
@@ -2635,6 +2743,11 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_work_safety_laws
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_guilds # efficiency speed and efficiency max increase
+		 }
 		}
 		x = 30
 		y = 7
