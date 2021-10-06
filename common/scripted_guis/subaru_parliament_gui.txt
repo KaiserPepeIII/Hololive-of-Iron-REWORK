@@ -4,7 +4,9 @@ scripted_gui = {
 	context_type = player_context
 		
 	visible = {
-		always = yes
+		ROOT = {
+			tag = SUB
+		}
 	}
 	triggers = {
 
@@ -27,10 +29,26 @@ scripted_gui = {
 			has_country_flag = view_subaru_parliament
 		}
 	}
-	triggers = {
+	dynamic_lists = {
+		subaru_parliament = {
+			array = SUB.x_array
+			change_scope = no
+			entry_container = seat_container
+			index = var:seat_idx
+		}
+	}
 
-	}	
+	properties = {
+		subaru_parliament_gui = {
+			x = SUB.x_array^seat_idx
+			y = SUB.y_array^seat_idx
+			frame = SUB.frame_array^seat_idx
+		}
+	}
 	effects = {	
+		parliament_close_button_click = {
+			clr_country_flag = view_subaru_parliament
+		}
 	}
   }
 }
