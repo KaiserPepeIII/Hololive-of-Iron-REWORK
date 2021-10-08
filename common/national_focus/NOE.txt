@@ -1844,7 +1844,7 @@ focus_tree = {
 		
 		completion_reward = {
 		add_ideas = {
-			flarean_job_program #
+			flarean_job_program # efficiency gain and max
 		 }
 		}
 		x = 56
@@ -1968,8 +1968,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_flare_military_mission
 		}
-		custom_effect_tooltip = NOE_warplan_pettan_tooltip
-		set_country_flag = NOE_warplan_flat
+		completion_reward = {
+		 custom_effect_tooltip = NOE_warplan_pettan_tooltip
+		 set_country_flag = NOE_warplan_flat
+		}
 		x = 59
 		y = 10
 
@@ -1987,7 +1989,7 @@ focus_tree = {
 		
 		completion_reward = {
 		add_ideas = {
-		NOE_guard_infantry #add increased special forces cap and a small buff to guard attack and defense
+			NOE_guard_infantry #add increased special forces cap and a small buff to guard attack and defense
 		}
 	   }
 		x = 64
@@ -2004,8 +2006,8 @@ focus_tree = {
 		
 		completion_reward = {
 		swap_ideas = {
-		remove_idea = NOE_guard_infantry
-		add_idea = NOE_guard_infantry2 # even more special forces cap and a bit bigger of a buff to guard attack and defense
+			remove_idea = NOE_guard_infantry
+			add_idea = NOE_guard_infantry2 # even more special forces cap and a bit bigger of a buff to guard attack and defense
 		}
 	   }
 		x = 64
@@ -2023,7 +2025,7 @@ focus_tree = {
 			division_template = {
 			name = "Imperial Gaurd"
 			is_locked = yes
-			division_names_group = USA_INF_01
+			division_names_group = USA_INF_01 #placeholder fix later
 					regiments = {
 						guard_infantry = { x = 0 y = 0 }
 						guard_infantry = { x = 0 y = 1 }
@@ -2055,8 +2057,8 @@ focus_tree = {
 		}
 		completion_reward = {
 		swap_ideas = {
-		remove_idea = NOE_guard_infantry2
-		add_idea = NOE_guard_infantry3 # even even more special forces cap and a bit big buff to guard attack and defense 20% id say
+			remove_idea = NOE_guard_infantry2
+			add_idea = NOE_guard_infantry3 # even even more special forces cap and a bit big buff to guard attack and defense 20% id say
 		}
 	   }
 		x = 63
@@ -2128,10 +2130,10 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_tech_bonus = {
-			bonus = 1
-			uses = 1
-			category = fleet_in_being_tree
-			}
+					bonus = 1
+					uses = 1
+					category = fleet_in_being_tree
+				   }
 		}
 		x = 68
 		y = 8
@@ -2184,7 +2186,7 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_idea = {
-		reduced_levee_standards # small debuff to organization but a increase to manpower (flat percent)
+			reduced_levee_standards # small debuff to organization but a increase to manpower (flat percent)
 		}
 		
 		}
@@ -2205,7 +2207,7 @@ focus_tree = {
 			remove_idea = NOE_feudal_army2
 			add_idea = NOE_feudal_army3
 		
-		 }
+		   }
 		}
 		
 		x = 69
@@ -2220,12 +2222,12 @@ focus_tree = {
 			focus = NOE_capital_ship_doctrine
 		}
 		completion_reward = {
-		add_tech_bonus = {
-			bonus = 1
-			uses = 1
-			category = fleet_in_being_tree
-			}
-			 }
+		 add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = fleet_in_being_tree
+	    }
+	   }
 		x = 68
 		y = 9
 
@@ -2316,10 +2318,10 @@ focus_tree = {
 		completion_reward = {
 		63 = {
 		 add_building_construction = {
-				type = naval_base
-				level = 2
-				instant_build = yes
-				province = 6282
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 6282
 					}
 		 
 		 }
@@ -2338,10 +2340,10 @@ focus_tree = {
 		completion_reward = {
 		916 = {
 		 add_building_construction = {
-				type = naval_base
-				level = 4
-				instant_build = yes
-				province = 362
+					type = naval_base
+					level = 4
+					instant_build = yes
+					province = 362
 					}
 		 
 		 }
@@ -2359,15 +2361,15 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_tech_bonus = {
-			bonus = 1
-			uses = 1
-			category = cat_mobile_warfare
+					bonus = 1
+					uses = 1
+					category = cat_mobile_warfare
 			}
 		add_tech_bonus = {
-			bonus = 1
-			uses = 1
-			category = motorized_equipment
-			category = cat_mechanized_equipment
+					bonus = 1
+					uses = 1
+					category = motorized_equipment
+					category = cat_mechanized_equipment
 			}
 		 }
 		x = 71
@@ -2380,6 +2382,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_mechanized_push
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_manteuffel_plan_idea #Armor attack and defense
+		 }
 		}
 		x = 71
 		y = 3
@@ -2403,6 +2410,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_mechanized_push
 		}
+		completion_reward = {
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = armor
+			}
+		 }
 		x = 74
 		y = 3
 
@@ -2414,6 +2428,16 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_panzer_plan_one
 		}
+		completion_reward = {
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = armor
+			}
+			add_ideas = {
+				NOE_panzer_plan_two_idea #cheaper armor
+			}
+		 }
 		x = 73
 		y = 4
 
@@ -2424,6 +2448,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_panzer_plan_one
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_modern_cavalry_idea #give cavalry a big stupid buff
+		 }
+		 
 		}
 		x = 75
 		y = 4
@@ -2442,6 +2472,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_cavalry_modernization
 		}
+		completion_reward = {
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = cat_mobile_warfare
+			}
+		}
 		x = 72
 		y = 5
 
@@ -2453,6 +2490,9 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_professional_army
 		}
+		completion_reward = {
+			air_experience = 25
+		 }
 		x = 78
 		y = 2
 
@@ -2463,6 +2503,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_aerial_dominance
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_air_dominance_idea # fighter agility and maker them cheaper
+		 }
 		}
 		x = 77
 		y = 3
@@ -2475,6 +2520,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_fighter_dominance
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_fast_bombers_idea # bomber speed
+		 }
+		}
 		x = 77
 		y = 4
 
@@ -2486,6 +2536,17 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_work_with_industrialists
 		}
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					instant_build = yes
+					level = 2
+				   }
+		   }
+			
+	   }
 		x = 11
 		y = 5
 
