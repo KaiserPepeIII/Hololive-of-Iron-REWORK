@@ -2558,6 +2558,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_public_works
 		}
+		completion_reward = {
+		add_stability = 0.1
+		
+		 }
 		x = 10
 		y = 6
 
@@ -2569,16 +2573,24 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_public_works
 		}
+		completion_reward = {
+		#later when figure out or kaiser bails my ass out
+		}
 		x = 11
 		y = 7
 
 	}
 	focus = {
-		id = NOE_workers_not_serfs #stability buff, add idea
+		id = NOE_workers_not_serfs #add idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_public_works
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_workers_not_serfs_idea
+		 }
 		}
 		x = 12
 		y = 6
@@ -2656,6 +2668,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_krakow_proclamation
 		}
+		completion_reward = {
+			add_stability = 0.05
+			#variable needed 
+		 }
 		x = 7
 		y = 10
 
@@ -2670,6 +2686,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_comensation_acts
 		}
+		completion_reward = {
+		add_stability = -0.5
+		#variable needed
+		}
 		x = 9
 		y = 10
 
@@ -2682,6 +2702,18 @@ focus_tree = {
 			focus = NOE_krakow_proclamation
 			focus = NOE_comensation_acts
 		}
+		
+		completion_reward = {
+		add_stability = 0.5
+		add_popularity = {
+			ideology = democratic_revitalisation
+			popularity = -0.5
+		 }
+		 add_popularity = {
+			ideology = left_wing_revolutionary
+			popularity = -0.5
+		 }
+		}
 		x = 8
 		y = 11
 
@@ -2693,6 +2725,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_polish_solidarity
 		}
+		completion_reward = {
+			add_ideas = {
+					NOE_federalism_idea
+		}
+	   }
 		x = 8
 		y = 12
 
@@ -2703,6 +2740,9 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_federalism
+		}
+		completion_reward = {
+		#faction GUI?!?!?!!?!?!?!?!?
 		}
 		x = 8
 		y = 13
@@ -2768,6 +2808,28 @@ focus_tree = {
 		remove_idea = NOE_prussian_chivalry_5mace_gyudon
 		add_idea = NOE_prussian_chivalry_6
 		}
+		create_corps_commander = {
+			name = "Ubermensch Knight Guy"
+			picture = "Portrait_USA_Lucian_Truscott.dds"
+			traits = {}
+			skill = 3
+
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+		   }
+		create_corps_commander = {
+			name = "Ubermensch Knight Guy2"
+			picture = "Portrait_USA_Lucian_Truscott.dds"
+			traits = {}
+			skill = 3
+
+			attack_skill = 5
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 2
+		   }
 	   }
 	  }
 		x = 36
@@ -2821,6 +2883,16 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_popularize_guilds
 		}
+		completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		  }
+		 }
+		}
 		x = 29
 		y = 8
 
@@ -2831,6 +2903,16 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_popularize_guilds
+		}
+		completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		  }
+		 }
 		}
 		x = 31
 		y = 8
