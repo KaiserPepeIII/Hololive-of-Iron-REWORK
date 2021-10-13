@@ -1790,7 +1790,7 @@ focus_tree = {
 			focus = NOE_clear_marshes
 		}
 		prerequisite = {
-			focus = NOE_flare_military_mission
+			focus = NOE_flare_mission
 		}
 		prerequisite = {
 			focus = NOE_tee_tee_flare
@@ -1812,7 +1812,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_expand_serfdom #modify idea, make more commies
+		id = NOE_expand_serfdom #modify idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2348,7 +2348,7 @@ focus_tree = {
 		 
 		 }
 		}
-		x = 70
+		x = 71
 		y = 10
 
 	}
@@ -2808,7 +2808,8 @@ focus_tree = {
 		remove_idea = NOE_prussian_chivalry_5mace_gyudon
 		add_idea = NOE_prussian_chivalry_6
 		}
-		create_corps_commander = {
+	   }
+	   create_corps_commander = {
 			name = "Ubermensch Knight Guy"
 			picture = "Portrait_USA_Lucian_Truscott.dds"
 			traits = {}
@@ -2830,7 +2831,6 @@ focus_tree = {
 			planning_skill = 3
 			logistics_skill = 2
 		   }
-	   }
 	  }
 		x = 36
 		y = 8
@@ -2845,7 +2845,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_timed_idea = {
-			idea = education_reform
+			idea = education_reform # Consumer goods
 			days = 180
 			}
 		add_stability = 0.1
@@ -2948,6 +2948,7 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_big_brother_system
 		}
+		
 		x = 35
 		y = 10
 
@@ -2958,6 +2959,14 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_big_brother_system
+		}
+		completion_reward = {
+		add_popularity = {
+			ideology = pro_resistance_monarchy
+			popularity = 2.5
+		 }
+		 add_political_power = 100
+		 stability = 0.1
 		}
 		x = 37
 		y = 10
@@ -2984,18 +2993,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_lithuania_defense
 		}
-		x = 54
-		y = 9
-
-	}
-	focus = {
-		id = NOE_black_sea_fleet
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_arm_flare
+		completion_reward = {
+			add_ideas = {
+				NOE_winter_combat_idea # winter atrition down
+			 }
 		}
-		x = 56
+		x = 54
 		y = 9
 
 	}
@@ -3005,6 +3008,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_warplan_yakineko
+		}
+		completion_reward = {
+				create_wargoal = {
+					type = annex_everything
+					target = FBK
+			   }
 		}
 		x = 51
 		y = 11
@@ -3016,6 +3025,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_warplan_pettan
+		}
+		completion_reward = {
+				create_wargoal = {
+					type = annex_everything
+					target = RUS
+			   }
 		}
 		x = 59
 		y = 11
@@ -3031,6 +3046,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_seek_resistance_support
 		}
+		completion_reward = {
+		set_country_flag = NOE_seek_lhs_support_flag
+		custom_effect_tooltip = NOE_seek_lhs_support_tooltip
+		}
 		x = 54
 		y = 8
 
@@ -3045,6 +3064,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_seek_lhs_support
 		}
+		completion_reward = {
+		set_country_flag = NOE_seek_resistance_support_flag
+		custom_effect_tooltip = NOE_seek_resistance_support_tooltip
+		}
 		x = 56
 		y = 8
 
@@ -3055,6 +3078,13 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_yakiniku_for_everyone
+		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1
+		uses = 2
+		category = cat_mass_assault
+		 }
 		}
 		x = 68
 		y = 6
@@ -3067,6 +3097,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_aerial_dominance
 		}
+		completion_reward = {
+		air_experience = 15
+		custom_effect_tooltip = NOE_establish_pzl_tooltip
+		}
 		x = 79
 		y = 3
 
@@ -3077,6 +3111,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_establish_pzl
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_cheaper_planes_idea #cheaper production for fighters
+		 }
 		}
 		x = 79
 		y = 4
@@ -3095,6 +3134,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_trucks_logistics
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_air_ground_coordination_idea # small buff to both bombers and ground attack from planes
+		 }
+		}
 		x = 76
 		y = 5
 
@@ -3108,6 +3152,13 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_army_coordination
+		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1
+		uses = 2
+		category = cat_mobile_warfare
+		 }
 		}
 		x = 74
 		y = 6
@@ -3123,19 +3174,15 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_capital_ship_doctrine
 		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1
+		uses = 1
+		category = cat_trade_interdiction
+		 }
+		}
 		x = 74
 		y = 8
-
-	}
-	focus = {
-		id = NOE_expand_konigsberg_port
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_expand_stettin_port
-		}
-		x = 72
-		y = 10
 
 	}
 	focus = {
@@ -3144,6 +3191,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_beneath_the_seas
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_course_de_guerre_idea #Torpedo attack
+		 }
 		}
 		x = 74
 		y = 9
@@ -3155,6 +3207,13 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_beneath_the_seas
+		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1
+		uses = 1
+		category = cat_trade_interdiction
+		 }
 		}
 		x = 76
 		y = 9
@@ -3170,6 +3229,16 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_convoy_raiding_focus
 		}
+		completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+			type = dockyard
+			level = 5
+			instant_build = yes
+		  }
+		 }
+		}
 		x = 75
 		y = 10
 
@@ -3182,6 +3251,11 @@ focus_tree = {
 			focus = NOE_submarine_assembly_line
 			focus = NOE_balanced_navy_plan
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_danzig_naval_academy_idea # experience_gain_navy = 0.15
+		 }
+		}
 		x = 71
 		y = 11
 
@@ -3192,6 +3266,10 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_danzig_naval_academy
+		}
+		completion_reward = {
+		custom_effect_tooltip = NOE_ritter_marines #Unlock great marine guy in high command
+		navy_experience = 25
 		}
 		x = 71
 		y = 12
@@ -3204,6 +3282,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_ritter_marines
 		}
+		completion_reward = {
+			add_ideas = {
+					NOE_marsh_warfare_idea # give marines some terrain reduction but not too much
+		  }
+		 }
 		x = 70
 		y = 13
 
@@ -3215,6 +3298,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_ritter_marines
 		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1.5
+		uses = 2
+		category = cat_trade_interdiction
+		 }
+		}
 		x = 72
 		y = 13
 
@@ -3225,6 +3315,10 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_new_step_feudalism
+		}
+		completion_reward = {
+			add_war_support = 0.15
+			add_country_leader_trait = NOE_imperial_dreams # pp gain
 		}
 		x = 36
 		y = 12
