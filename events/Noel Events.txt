@@ -1139,3 +1139,123 @@ country_event = {
 			clr_country_flag = NOE_military_mission
 	   }
 }
+#chicken or beef?
+country_event = {
+    id = noel.35
+	title = noel.35.t
+	desc = noel.35.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.35.a
+		complete_national_focus = NOE_request_incorporation
+	   }
+	option = {
+		name = noel.35.b
+		complete_national_focus = NOE_seize_south_germany
+	   }
+}
+#the german question
+country_event = {
+    id = noel.36
+	title = noel.36.t
+	desc = noel.36.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.36.a
+		hidden_effect = {
+				complete_national_focus	= NOE_end_the_rogue_state
+		 }
+	   }
+}
+#Kiara says no to incorporation
+country_event = {
+    id = noel.37
+	title = noel.37.t
+	desc = noel.37.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.37.a
+		add_stability = 0.5
+	   }
+	option = {
+		name = noel.37.a
+		create_wargoal = {
+			type = annex_everything
+			target = KIA
+	    }
+		add_stability = -0.5
+	   }
+}
+#Kiara says yes to incorporation
+country_event = {
+    id = noel.38
+	title = noel.38.t
+	desc = noel.38.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.38.a
+			annex_country = {
+				target = KIA
+				transfer_troops = yes
+			}
+			
+			custom_effect_tooltip = NOE_kiara_integration
+			hidden_effect = {
+				add_state_core = 912
+				add_state_core = 53
+				add_state_core = 52
+				add_state_core = 900
+				add_state_core = 901
+				add_state_core = 54
+				add_state_core = 50
+				add_state_core = 910
+				add_state_core = 28
+				add_state_core = 909
+				add_state_core = 42
+				add_state_core = 55
+				add_state_core = 913
+				add_state_core = 911
+				set_country_flag = NOE_kiara_integrated
+			}
+	   }
+}
+#Munich Conference
+country_event = {
+    id = noel.39
+	title = noel.39.t
+	desc = noel.39.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.39.a
+		add_political_power = 100
+		add_stability = 0.15
+		add_war_support = 0.15
+	   }
+}
