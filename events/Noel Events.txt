@@ -1215,11 +1215,6 @@ country_event = {
 	
 	option = {
 		name = noel.38.a
-			annex_country = {
-				target = KIA
-				transfer_troops = yes
-			}
-			
 			custom_effect_tooltip = NOE_kiara_integration
 			hidden_effect = {
 				add_state_core = 912
@@ -1237,6 +1232,30 @@ country_event = {
 				add_state_core = 913
 				add_state_core = 911
 				set_country_flag = NOE_kiara_integrated
+					 if = {
+						limit = {
+							KIA = {
+								owns_state = 1066 
+								owns_state = 153
+								owns_state = 1065
+								owns_state = 1064
+								owns_state = 1063
+								owns_state = 4
+								owns_state = 152
+						   }
+					   }
+						add_state_core = 152
+						add_state_core = 4
+						add_state_core = 1063
+						add_state_core = 1064
+						add_state_core = 1065
+						add_state_core = 153
+						add_state_core = 1066
+					 }
+			}
+			annex_country = {
+				target = KIA
+				transfer_troops = yes
 			}
 	   }
 }
@@ -1257,5 +1276,43 @@ country_event = {
 		add_political_power = 100
 		add_stability = 0.15
 		add_war_support = 0.15
+	   }
+}
+#Austria says yes to anschluss
+country_event = {
+    id = noel.40
+	title = noel.40.t
+	desc = noel.40.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	
+	
+	is_triggered_only = yes
+	
+	option = {
+		create_wargoal = {
+			type = annex_everything
+			target = AUS
+		 }
+	   }
+}
+#Austria says no to ancshluss
+country_event = {
+    id = noel.41
+	title = noel.41.t
+	desc = noel.41.d
+	picture = GFX_report_event_mori
+	hidden = no
+	fire_only_once = yes
+	
+	
+	is_triggered_only = yes
+	
+	option = {
+		annex_country = {
+		target = AUS
+		transfer_troops = yes
+		}
 	   }
 }
