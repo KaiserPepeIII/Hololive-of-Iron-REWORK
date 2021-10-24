@@ -270,7 +270,7 @@ focus_tree = {
 			focus = NOE_amelioration_proposals
 		}
 		completion_reward = {
-		  set_variable = {
+				  set_variable = {
 		  	var = NOE.abolitionist_anger
 			value = 0
 		  }
@@ -300,7 +300,7 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_fight_against_serfdom
 		}
-		completion_reward = {
+			completion_reward = {
 		####add whatever bonus idk
 			add_to_variable = {
 				var = NOE.slavers_anger
@@ -319,7 +319,7 @@ focus_tree = {
 			focus = NOE_work_with_industrialists
 		}
 		completion_reward = {
-			add_political_power = 150
+					add_political_power = 150
 			add_to_variable = {
 				var = NOE.slavers_anger
 				value = 2
@@ -375,7 +375,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 7
-		completion_reward = {
+	completion_reward = {
 			add_to_variable = {
 				var = NOE.slavers_anger
 				value = 1
@@ -389,7 +389,7 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_increase_executive_power
 		}
-		completion_reward = {
+				completion_reward = {
 			add_to_variable = {
 				var = NOE.slavers_anger
 				value = 1
@@ -416,6 +416,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_expand_lower_house
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = NOE.slavers_anger
+				value = 1
+			}
 		}
 		x = 7
 		y = 7
@@ -3497,6 +3503,14 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_seize_south_germany
 		}
+		completion_reward = {
+		KIA = {
+			country_event = {
+			id = kiara.1
+			days = 1
+			}
+		 }
+		}
 		x = 40
 		y = 14
 
@@ -3703,22 +3717,35 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_hanover_or_war
+		id = NOE_demands_for_the_duck
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_establish_brandenberg_kingdom
+		}
+		completion_reward = {
+			SUB = {
+				country_event = {
+				id = subaru.2
+				days = 1
+				}
+			}
 		}
 		x = 41
 		y = 17
 
 	}
 	focus = {
-		id = NOE_german_wine #consumer goods, stability gain, 
+		id = NOE_german_wine #consumer goods
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_breadbasket_of_world
+		}
+		completion_reward = {
+			add_ideas = {
+				NOE_german_wine # it is as it says, consumer goods buff
+			}
 		}
 		x = 32
 		y = 16
@@ -3731,6 +3758,17 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_agricultural_chemistry
 		}
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = synthetic_refinery
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+	  }
 		x = 30
 		y = 16
 
@@ -3744,6 +3782,69 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_biofueles
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_autobahn_tt
+				available = {
+				OR = {
+					has_full_control_of_state = 64
+					has_full_control_of_state = 59
+					has_full_control_of_state = 60
+					has_full_control_of_state = 54
+				}
+				
+			}
+			hidden_effect = {
+				64 = {
+					if = {
+						limit = { 
+							is_controlled_by = ROOT 
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 10
+							instant_build = yes
+						}
+					}
+				}
+				59 = {
+					if = {
+						limit = {
+						is_controlled_by = ROOT
+						}
+
+						add_building_construction = {
+							type = infrastructure
+							level = 10
+							instant_build = yes
+						}
+					}
+				}
+				60 = {
+					if = {
+						limit = {
+						is_controlled_by = ROOT 
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 10
+							instant_build = yes
+						}
+					}
+				}
+				54 = {
+					if = {
+						limit = { 
+						is_controlled_by = ROOT 
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 10
+							instant_build = yes
+						}
+					}
+				}
+			}		
 		}
 		x = 31
 		y = 17
@@ -3760,13 +3861,20 @@ focus_tree = {
 			focus = NOE_swiss_conquest
 		}
 		prerequisite = {
-			focus = NOE_hanover_or_war
+			focus = NOE_demands_for_the_duck
 		}
 		prerequisite = {
 			focus = NOE_invade_slovakia
 		}
 		prerequisite = {
 			focus = NOE_improve_village_infrastructure
+		}
+		completion_reward = {
+		create_wargoal = {
+				type = annex_everything
+				target = PEK
+		 }
+		
 		}
 		x = 36
 		y = 18
@@ -3783,13 +3891,20 @@ focus_tree = {
 			focus = NOE_swiss_conquest
 		}
 		prerequisite = {
-			focus = NOE_hanover_or_war
+			focus = NOE_demands_for_the_duck
 		}
 		prerequisite = {
 			focus = NOE_invade_slovakia
 		}
 		prerequisite = {
 			focus = NOE_improve_village_infrastructure
+		}
+		completion_reward = {
+		create_wargoal = {
+				type = annex_everything
+				target = SUI
+		 }
+		
 		}
 		x = 40
 		y = 18
@@ -3804,6 +3919,174 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_crush_pekora
+		}
+		available = {
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_germany #Noel needs all of germany to form HRE besides poznan,konigsberg,pommern, elsab-lothringen,and danzig
+			owns_state = 68
+			owns_state = 63
+			owns_state = 66
+			owns_state = 65
+			owns_state = 906
+			owns_state = 64
+			owns_state = 62
+			owns_state = 912
+			owns_state = 53
+			owns_state = 52
+			owns_state = 900
+			owns_state = 901
+			owns_state = 54
+			owns_state = 50
+			owns_state = 910
+			owns_state = 28
+			owns_state = 909
+			owns_state = 42
+			owns_state = 55
+			owns_state = 913
+			owns_state = 911
+			owns_state = 59
+			owns_state = 60
+			owns_state = 904
+			owns_state = 907
+			owns_state = 908
+			owns_state = 61
+			owns_state = 905
+			}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_subaru_germany #Noel needs all of Subarus German land 
+			owns_state = 51
+			owns_state = 57
+			owns_state = 914
+			owns_state = 56
+			owns_state = 915
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_france #Noel needs the alpes, Franche-compte,savoy,provence, and marsailes
+			owns_state = 735
+			owns_state = 21
+			owns_state = 859
+			owns_state = 32
+			owns_state = 17
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_austria #Noel needs all of austria
+			owns_state = 4
+			owns_state = 1063
+			owns_state = 1064
+			owns_state = 1065
+			owns_state = 152
+			owns_state = 153
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_switzerland #Noel needs all of switzerland
+			owns_state = 975
+			owns_state = 974
+			owns_state = 3
+			owns_state = 151
+			owns_state = 976
+			owns_state = 946
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_italy #Noel needs venice,south tyrol, lombardy,piedmont, emilia romagna, tuscany, and rome
+			owns_state = 160
+			owns_state = 39
+			owns_state = 161
+			owns_state = 159
+			owns_state = 158
+			owns_state = 162
+			owns_state = 860
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_czech #noel needs all of czechoslovakia
+			owns_state = 762
+			owns_state = 67
+			owns_state = 72
+			owns_state = 74
+			owns_state = 69
+			owns_state = 75
+			owns_state = 9
+		}
+		
+	}
+		completion_reward = {
+		custom_effect_tooltip = NOE_HRE_form
+		custom_effect_tooltip = NOE_HRE_other_cores
+		hidden_effect = {
+			add_state_core = 35
+			add_state_core = 7
+			add_state_core = 8
+			add_state_core = 34
+			add_state_core = 58
+			add_state_core = 736
+			add_state_core = 102
+			add_state_core = 947
+			add_state_core = 762
+			add_state_core = 67
+			add_state_core = 72
+			add_state_core = 74
+			add_state_core = 69
+			add_state_core = 75
+			add_state_core = 9
+			add_state_core = 160
+			add_state_core = 39
+			add_state_core = 161
+			add_state_core = 159
+			add_state_core = 158
+			add_state_core = 162
+			add_state_core = 860
+			add_state_core = 975
+			add_state_core = 974
+			add_state_core = 3
+			add_state_core = 151
+			add_state_core = 976
+			add_state_core = 946
+			add_state_core = 4
+			add_state_core = 1063
+			add_state_core = 1064
+			add_state_core = 1065
+			add_state_core = 1066
+			add_state_core = 152
+			add_state_core = 153
+			add_state_core = 735
+			add_state_core = 21
+			add_state_core = 859
+			add_state_core = 32
+			add_state_core = 17
+			add_state_core = 51
+			add_state_core = 57
+			add_state_core = 914
+			add_state_core = 56
+			add_state_core = 915
+			add_state_core = 68
+			add_state_core = 63
+			add_state_core = 66
+			add_state_core = 65
+			add_state_core = 906
+			add_state_core = 64
+			add_state_core = 62
+			add_state_core = 912
+			add_state_core = 53
+			add_state_core = 52
+			add_state_core = 900
+			add_state_core = 901
+			add_state_core = 54
+			add_state_core = 50
+			add_state_core = 910
+			add_state_core = 28
+			add_state_core = 909
+			add_state_core = 42
+			add_state_core = 55
+			add_state_core = 913
+			add_state_core = 911
+			add_state_core = 59
+			add_state_core = 60
+			add_state_core = 904
+			add_state_core = 907
+			add_state_core = 908
+			add_state_core = 61
+			add_state_core = 905
+		 }
+		 set_cosmetic_tag = HRE
 		}
 		x = 38
 		y = 19
