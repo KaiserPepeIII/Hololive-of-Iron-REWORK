@@ -2757,14 +2757,19 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-		add_stability = 0.5
+			if = {
+			limit = {
+				has_completed_focus = NOE_krakow_proclamation
+			}
+		add_stability = 0.05
+		}
 		add_popularity = {
 			ideology = democratic_revitalisation
-			popularity = -0.5
+			popularity = -0.05
 		 }
 		 add_popularity = {
 			ideology = left_wing_revolutionary
-			popularity = -0.5
+			popularity = -0.05
 		 }
 		}
 		x = 8
@@ -3019,7 +3024,7 @@ focus_tree = {
 			popularity = 0.25
 		 }
 		 add_political_power = 100
-		 stability = 0.1
+		 add_stability = 0.1
 		}
 		x = 37
 		y = 10
@@ -4673,12 +4678,14 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_capitulate_germany
 		}
+		completion_reward = {
 		SUB = {
 		country_event = {
 			id = subaru.4
 			days = 1
 		 }
 		}
+	   }
 		x = 3
 		y = 17
 
@@ -4788,6 +4795,36 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_hololive_unionism
 		}
+		completion_reward = {
+			every_country = {
+						limit = {
+						capital_scope = {
+							is_on_continent = europe
+						}
+						is_in_faction_with = NOE
+						}
+				add_to_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+		     }
+		   }
+		   set_global_flag = hololive_union
+		   set_country_flag = hololive_union_leader
+		   create_variable = { hololive_union_political_power_stockpile = 0  }
+				clamp_variable = {
+					var = GLOBAL.hololive_union_political_power_stockpile
+					min = 0
+					max = 9999
+				
+				}
+			create_variable = { hololive_union_political_power_investment = 0 }
+			clamp_variable = {
+					var = GLOBAL.hololive_union_political_power_investment
+					min = 0
+					max = 9999
+				
+				}
+		 }
 		x = 8
 		y = 19
 
