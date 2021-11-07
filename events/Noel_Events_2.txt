@@ -1,0 +1,253 @@
+add_namespace = noel
+
+
+#Duck says yes to giving german lands
+country_event = {
+    id = noel.43
+	title = noel.43.t
+	desc = noel.43.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	option = {
+	name = noel.43.a
+		NOE = {
+			add_state_core = 51
+			add_state_core = 57
+			add_state_core = 914
+			add_state_core = 56
+			add_state_core = 915
+			transfer_state = 51
+			transfer_state = 57
+			transfer_state = 914
+			transfer_state = 56
+			transfer_state = 915
+			}
+	   }
+	option = { 
+	name = noel.43.b
+		SUB = {
+		country_event = {
+			id = subaru.3
+			days = 1
+		 }
+		}
+	}
+	
+}
+#Duck gives luxemburg aswell
+country_event = {
+    id = noel.44
+	title = noel.44.t
+	desc = noel.44.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	option = {
+	name = noel.44.a
+			NOE = {
+				add_state_core = 51
+				add_state_core = 57
+				add_state_core = 914
+				add_state_core = 56
+				add_state_core = 915
+				add_state_core = 8
+				
+				transfer_state = 51
+				transfer_state = 57
+				transfer_state = 914
+				transfer_state = 56
+				transfer_state = 915
+				transfer_state = 8
+			}
+	   }
+}
+# Subaru denies luxemburg and denies german land transfer
+country_event = {
+    id = noel.45
+	title = noel.45.t
+	desc = noel.45.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.45.a
+			ROOT = {
+			  create_wargoal = {
+				  type = puppet_wargoal_focus
+				  target = SUB
+			 }
+				add_state_core = 51
+				add_state_core = 57
+				add_state_core = 914
+				add_state_core = 56
+				add_state_core = 915
+				add_state_core = 8
+			}
+	   }
+}
+#Subaru gives german land for concessions
+country_event = {
+    id = noel.46
+	title = noel.46.t
+	desc = noel.46.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	option = {
+	name = noel.46.a
+	
+	   }
+}
+#Subaru Denies german land for concessions
+country_event = {
+    id = noel.47
+	title = noel.47.t
+	desc = noel.47.d
+	picture = GFX_report_event_mori
+
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.47.a
+		create_wargoal = {
+			type = annex_everything
+			target = SUB
+		 }
+		 add_stability = -0.2
+		 add_war_support = -0.2
+		 custom_effect_tooltip = NOE_explanation_for_stability_and_support_loss # Such a drastic step away from our current politics would shock and abhore the public
+			hidden_effect = {
+				NOE = {
+					add_state_core = 51
+					add_state_core = 57
+					add_state_core = 914
+					add_state_core = 56
+					add_state_core = 915
+				}
+		   }
+	   }
+	option = {
+		name = noel.47.b
+		add_opinion_modifier = {
+		target = SUB
+		modifier = NOE_german_land_denied
+		}
+		reverse_add_opinion_modifier = {
+		target = SUB
+		modifier = NOE_german_land_denied_modifier
+		}
+		set_country_flag = NOE_german_land_denied_flag
+	}
+}
+#Duck says yes to join faction
+country_event = {
+    id = noel.48
+	title = noel.48.t
+	desc = noel.48.d
+	picture = GFX_report_event_mori
+
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.48.a
+		
+	   }
+}
+
+#Duck says no to join faction
+country_event = {
+    id = noel.49
+	title = noel.49.t
+	desc = noel.49.d
+	picture = GFX_report_event_mori
+
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.49.a
+		
+	   }
+}
+#Comet says yes to join faction
+country_event = {
+    id = noel.50
+	title = noel.50.t
+	desc = noel.50.d
+	picture = GFX_report_event_mori
+
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.50.a
+		
+	   }
+}
+
+#Comet says no to join faction
+country_event = {
+    id = noel.51
+	title = noel.51.t
+	desc = noel.51.d
+	picture = GFX_report_event_mori
+
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.51.a
+		
+	   }
+}
+#Rabbit says yes to join faction
+country_event = {
+    id = noel.52
+	title = noel.52.t
+	desc = noel.52.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.52.a
+		
+	   }
+}
+
+#Shitty Rabbit says no to join faction
+country_event = {
+    id = noel.53
+	title = noel.53.t
+	desc = noel.53.d
+	picture = GFX_report_event_mori
+
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.53.a
+		
+	   }
+}
+#All possible hololive Union leaders are dead or puppeted 
+country_event = {
+    id = noel.53
+	title = noel.53.t
+	desc = noel.53.d
+	picture = GFX_report_event_mori
+
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = noel.53.a
+		clr_global_flag = hololive_union
+	   }
+}
