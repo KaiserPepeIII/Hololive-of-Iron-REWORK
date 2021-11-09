@@ -1,0 +1,309 @@
+scripted_gui = {
+  subaru_parliament_entry_gui = {
+	window_name = "subaru_parliament_entry_window"
+	context_type = player_context
+		
+	visible = {
+		ROOT = {
+			tag = SUB
+		}
+	}
+	triggers = {
+
+	}	
+	effects = {	
+		subaru_parliament_entry_button_click = {
+			set_country_flag = view_subaru_parliament
+		}
+		subaru_parliament_entry_button_right_click = {
+			clr_country_flag = view_subaru_parliament
+		}
+	}
+  }
+  subaru_parliament_window_gui = {
+	window_name = "subaru_parliament_window"
+	context_type = player_context
+		
+	visible = {
+		ROOT = {
+			has_country_flag = view_subaru_parliament
+		}
+	}
+	dynamic_lists = {
+		subaru_parliament = {
+			array = SUB.x_array
+			change_scope = no
+			entry_container = seat_container
+			index = var:seat_idx
+		}
+	}
+
+	properties = {
+		head_governor_portrait = {
+			image = "[head_governor_texture]"
+		}
+		governor_netherlands_portrait = {
+			image = "[governor_netherlands_texture]"
+		}
+		governor_wallonia_portrait = {
+			image = "[governor_wallonia_texture]"
+		}
+		governor_calais_portrait = {
+			image = "[governor_calais_texture]"
+		}
+		governor_luxembourg_portrait = {
+			image = "[governor_luxembourg_texture]"
+		}
+		governor_rhineland_portrait = {
+			image = "[governor_rhineland_texture]"
+		}
+		subaru_parliament_gui = {
+			x = SUB.x_array^seat_idx
+			y = SUB.y_array^seat_idx
+			frame = SUB.frame_array^seat_idx
+		}
+	}
+	effects = {	
+		parliament_close_button_click = {
+			clr_country_flag = view_subaru_parliament
+		}
+	}
+  }
+  subaru_parliament_map_gui = {
+  	window_name = "subaru_parliament_map"
+	context_type = player_context
+	parent_window_name = "subaru_parliament_window"
+	
+	
+	visible = {
+		always = yes
+	}
+	properties = {
+		subaru_electoral_region_one = {
+			image = "[get_electoral_region_one]"
+		}
+		subaru_electoral_region_two = {
+			image = "[get_electoral_region_two]"
+		}
+		subaru_electoral_region_three = {
+			image = "[get_electoral_region_three]"
+		}
+		subaru_electoral_region_four = {
+			image = "[get_electoral_region_four]"
+		}
+		subaru_electoral_region_five = {
+			image = "[get_electoral_region_five]"
+		}
+		subaru_electoral_region_six = {
+			image = "[get_electoral_region_six]"
+		}
+		subaru_electoral_region_seven = {
+			image = "[get_electoral_region_seven]"
+		}
+		subaru_electoral_region_eight = {
+			image = "[get_electoral_region_eight]"
+		}
+		subaru_electoral_region_nine = {
+			image = "[get_electoral_region_nine]"
+		}
+		subaru_electoral_region_ten = {
+			image = "[get_electoral_region_ten]"
+		}
+		subaru_electoral_region_eleven = {
+			image = "[get_electoral_region_eleven]"
+		}
+		subaru_electoral_region_twelve = {
+			image = "[get_electoral_region_twelve]"
+		}
+		subaru_electoral_region_thirteen = {
+			image = "[get_electoral_region_thirteen]"
+		}
+		subaru_electoral_region_fourteen = {
+			image = "[get_electoral_region_fourteen]"
+		}
+		subaru_electoral_region_fifteen = {
+			image = "[get_electoral_region_fifteen]"
+		}
+		subaru_electoral_region_sixteen = {
+			image = "[get_electoral_region_sixteen]"
+		}
+		subaru_electoral_region_seventeen = {
+			image = "[get_electoral_region_seventeen]"
+		}
+		subaru_electoral_region_eighteen = {
+			image = "[get_electoral_region_eighteen]"
+		}
+		subaru_electoral_region_nineteen = {
+			image = "[get_electoral_region_nineteen]"
+		}
+		subaru_electoral_region_twenty = {
+			image = "[get_electoral_region_twenty]"
+		}
+		subaru_electoral_region_twenty_one = {
+			image = "[get_electoral_region_twenty_one]"
+		}
+		subaru_electoral_region_twenty_two = {
+			image = "[get_electoral_region_twenty_two]"
+		}
+		subaru_electoral_region_twenty_three = {
+			image = "[get_electoral_region_twenty_three]"
+		}
+		subaru_electoral_region_twenty_four = {
+			image = "[get_electoral_region_twenty_four]"
+		}
+		subaru_electoral_region_twenty_five = {
+			image = "[get_electoral_region_twenty_five]"
+		}
+		subaru_electoral_region_twenty_six = {
+			image = "[get_electoral_region_twenty_six]"
+		}
+		subaru_electoral_region_twenty_seven = {
+			image = "[get_electoral_region_twenty_seven]"
+		}
+		subaru_electoral_region_twenty_eight = {
+			image = "[get_electoral_region_twenty_eight]"
+		}
+		subaru_electoral_region_twenty_nine = {
+			image = "[get_electoral_region_twenty_nine]"
+		}
+		subaru_electoral_region_thirty = {
+			image = "[get_electoral_region_thirty]"
+		}
+		subaru_electoral_region_thirty_one = {
+			image = "[get_electoral_region_thirty_one]"
+		}
+		subaru_electoral_region_thirty_two = {
+			image = "[get_electoral_region_thirty_two]"
+		}
+		subaru_electoral_region_thirty_three = {
+			image = "[get_electoral_region_thirty_three]"
+		}
+		subaru_electoral_region_thirty_four = {
+			image = "[get_electoral_region_thirty_four]"
+		}
+		subaru_electoral_region_thirty_five = {
+			image = "[get_electoral_region_thirty_five]"
+		}
+		subaru_electoral_region_thirty_six = {
+			image = "[get_electoral_region_thirty_six]"
+		}
+		subaru_electoral_region_thirty_seven = {
+			image = "[get_electoral_region_thirty_seven]"
+		}
+		subaru_electoral_region_thirty_eight = {
+			image = "[get_electoral_region_thirty_eight]"
+		}
+		subaru_electoral_region_thirty_nine = {
+			image = "[get_electoral_region_thirty_nine]"
+		}
+		subaru_electoral_region_forty = {
+			image = "[get_electoral_region_forty]"
+		}
+		subaru_electoral_region_forty_one = {
+			image = "[get_electoral_region_forty_one]"
+		}
+		subaru_electoral_region_forty_two = {
+			image = "[get_electoral_region_forty_two]"
+		}
+		subaru_electoral_region_forty_three = {
+			image = "[get_electoral_region_forty_three]"
+		}
+		subaru_electoral_region_forty_four = {
+			image = "[get_electoral_region_forty_four]"
+		}
+		subaru_electoral_region_forty_five = {
+			image = "[get_electoral_region_forty_five]"
+		}
+		subaru_electoral_region_forty_six = {
+			image = "[get_electoral_region_forty_six]"
+		}
+		subaru_electoral_region_forty_seven = {
+			image = "[get_electoral_region_forty_seven]"
+		}
+		subaru_electoral_region_forty_eight = {
+			image = "[get_electoral_region_forty_eight]"
+		}
+		subaru_electoral_region_forty_nine = {
+			image = "[get_electoral_region_forty_nine]"
+		}
+		subaru_electoral_region_fifty = {
+			image = "[get_electoral_region_fifty]"
+		}
+		subaru_electoral_region_fifty_one = {
+			image = "[get_electoral_region_fifty_one]"
+		}
+		subaru_electoral_region_fifty_two = {
+			image = "[get_electoral_region_fifty_two]"
+		}
+		subaru_electoral_region_fifty_three = {
+			image = "[get_electoral_region_fifty_three]"
+		}
+		subaru_electoral_region_fifty_four = {
+			image = "[get_electoral_region_fifty_four]"
+		}
+		subaru_electoral_region_fifty_five = {
+			image = "[get_electoral_region_fifty_five]"
+		}
+		subaru_electoral_region_fifty_six = {
+			image = "[get_electoral_region_fifty_six]"
+		}
+		subaru_electoral_region_fifty_seven= {
+			image = "[get_electoral_region_fifty_seven]"
+		}
+		subaru_electoral_region_fifty_eight = {
+			image = "[get_electoral_region_fifty_eight]"
+		}
+		subaru_electoral_region_fifty_nine = {
+			image = "[get_electoral_region_fifty_nine]"
+		}
+		subaru_electoral_region_sixty = {
+			image = "[get_electoral_region_sixty]"
+		}
+		subaru_electoral_region_sixty_one = {
+			image = "[get_electoral_region_sixty_one]"
+		}
+		subaru_electoral_region_sixty_two= {
+			image = "[get_electoral_region_sixty_two]"
+		}
+		subaru_electoral_region_sixty_three = {
+			image = "[get_electoral_region_sixty_three]"
+		}
+		subaru_electoral_region_sixty_four = {
+			image = "[get_electoral_region_sixty_four]"
+		}
+		subaru_electoral_region_sixty_five = {
+			image = "[get_electoral_region_sixty_five]"
+		}
+		subaru_electoral_region_sixty_six = {
+			image = "[get_electoral_region_sixty_six]"
+		}
+		subaru_electoral_region_sixty_seven= {
+			image = "[get_electoral_region_sixty_seven]"
+		}
+		subaru_electoral_region_sixty_eight = {
+			image = "[get_electoral_region_sixty_eight]"
+		}
+		subaru_electoral_region_sixty_nine = {
+			image = "[get_electoral_region_sixty_nine]"
+		}
+		subaru_electoral_region_seventy= {
+			image = "[get_electoral_region_seventy]"
+		}
+		subaru_electoral_region_seventy_one = {
+			image = "[get_electoral_region_seventy_one]"
+		}
+		subaru_electoral_region_seventy_two = {
+			image = "[get_electoral_region_seventy_two]"
+		}
+		subaru_electoral_region_seventy_three= {
+			image = "[get_electoral_region_seventy_three]"
+		}
+		subaru_electoral_region_seventy_four = {
+			image = "[get_electoral_region_seventy_four]"
+		}
+		subaru_electoral_region_seventy_five = {
+			image = "[get_electoral_region_seventy_five]"
+		}
+	}
+  }
+}

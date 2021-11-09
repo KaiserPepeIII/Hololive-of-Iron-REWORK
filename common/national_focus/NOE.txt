@@ -270,7 +270,24 @@ focus_tree = {
 			focus = NOE_amelioration_proposals
 		}
 		completion_reward = {
-		#### Yeah i dont know how to do variable help me Kaiser_paisen
+				  set_variable = {
+		  	var = NOE.abolitionist_anger
+			value = 0
+		  }
+		  set_variable = {
+		  	var = NOE.slavers_anger
+			value = 1
+		  }
+		  clamp_variable = {
+		  	var = NOE.abolitionist_anger
+			min = 0
+			max = 10
+		  }
+		  clamp_variable = {
+		  	var = NOE.slavers_anger
+			min = 0
+			max = 10
+		  }
 		}
 		x = 13
 		y = 3
@@ -282,6 +299,13 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_fight_against_serfdom
+		}
+			completion_reward = {
+		####add whatever bonus idk
+			add_to_variable = {
+				var = NOE.slavers_anger
+				value = 1
+			}
 		}
 		x = 11
 		y = 4
@@ -295,7 +319,15 @@ focus_tree = {
 			focus = NOE_work_with_industrialists
 		}
 		completion_reward = {
-		add_political_power = 150
+					add_political_power = 150
+			add_to_variable = {
+				var = NOE.slavers_anger
+				value = 2
+			}
+			add_to_variable = {
+				var = NOE.abolitionist_anger
+				value = 1
+			}
 		}
 		x = 6
 		y = 5
@@ -323,7 +355,7 @@ focus_tree = {
 			}
 			add_popularity = {
 				ideology = pro_yagoo_progressive
-				popularity = 0.03
+				popularity = 0.09
 			}
 			add_popularity = {
 				ideology = mixed_ideology_democracy
@@ -343,7 +375,12 @@ focus_tree = {
 		}
 		x = 3
 		y = 7
-
+	completion_reward = {
+			add_to_variable = {
+				var = NOE.slavers_anger
+				value = 1
+			}
+		}
 	}
 	focus = {
 		id = NOE_expand_lower_house #anger variable, 
@@ -351,6 +388,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_increase_executive_power
+		}
+				completion_reward = {
+			add_to_variable = {
+				var = NOE.slavers_anger
+				value = 1
+			}
 		}
 		x = 7
 		y = 6
@@ -373,6 +416,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_expand_lower_house
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = NOE.slavers_anger
+				value = 1
+			}
 		}
 		x = 7
 		y = 7
@@ -564,6 +613,7 @@ focus_tree = {
 			focus = NOE_develop_middle_class
 			focus = NOE_rent_laws
 		}
+		
 		x = 13
 		y = 8
 
@@ -966,7 +1016,7 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_ideas = {
-		imodern_serfdom
+		modern_serfdom # buff to efficiency
 		}
 	   }
 		x = 40
@@ -1790,7 +1840,7 @@ focus_tree = {
 			focus = NOE_clear_marshes
 		}
 		prerequisite = {
-			focus = NOE_flare_military_mission
+			focus = NOE_flare_mission
 		}
 		prerequisite = {
 			focus = NOE_tee_tee_flare
@@ -1812,7 +1862,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_expand_serfdom #modify idea, make more commies
+		id = NOE_expand_serfdom #modify idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1844,7 +1894,7 @@ focus_tree = {
 		
 		completion_reward = {
 		add_ideas = {
-			flarean_job_program #
+			flarean_job_program # efficiency gain and max
 		 }
 		}
 		x = 56
@@ -1968,8 +2018,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_flare_military_mission
 		}
-		custom_effect_tooltip = NOE_warplan_pettan_tooltip
-		set_country_flag = NOE_warplan_flat
+		completion_reward = {
+		 custom_effect_tooltip = NOE_warplan_pettan_tooltip
+		 set_country_flag = NOE_warplan_flat
+		}
 		x = 59
 		y = 10
 
@@ -1987,7 +2039,7 @@ focus_tree = {
 		
 		completion_reward = {
 		add_ideas = {
-		NOE_guard_infantry #add increased special forces cap and a small buff to guard attack and defense
+			NOE_guard_infantry #add increased special forces cap and a small buff to guard attack and defense
 		}
 	   }
 		x = 64
@@ -2004,8 +2056,8 @@ focus_tree = {
 		
 		completion_reward = {
 		swap_ideas = {
-		remove_idea = NOE_guard_infantry
-		add_idea = NOE_guard_infantry2 # even more special forces cap and a bit bigger of a buff to guard attack and defense
+			remove_idea = NOE_guard_infantry
+			add_idea = NOE_guard_infantry2 # even more special forces cap and a bit bigger of a buff to guard attack and defense
 		}
 	   }
 		x = 64
@@ -2021,9 +2073,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			division_template = {
-			name = "Elite Guards"
+			name = "Imperial Gaurd"
 			is_locked = yes
-			division_names_group = USA_INF_01
+			division_names_group = USA_INF_01 #placeholder fix later
 					regiments = {
 						guard_infantry = { x = 0 y = 0 }
 						guard_infantry = { x = 0 y = 1 }
@@ -2055,8 +2107,8 @@ focus_tree = {
 		}
 		completion_reward = {
 		swap_ideas = {
-		remove_idea = NOE_guard_infantry2
-		add_idea = NOE_guard_infantry3 # even even more special forces cap and a bit big buff to guard attack and defense 20% id say
+			remove_idea = NOE_guard_infantry2
+			add_idea = NOE_guard_infantry3 # even even more special forces cap and a bit big buff to guard attack and defense 20% id say
 		}
 	   }
 		x = 63
@@ -2126,6 +2178,13 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_beneath_the_seas
 		}
+		completion_reward = {
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = fleet_in_being_tree
+				   }
+		}
 		x = 68
 		y = 8
 
@@ -2136,6 +2195,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_capital_ship_doctrine
+		}
+		completion_reward = {
+		add_ideas = {
+		NOE_imperial_ships #cheaper capital ships
+		 }
 		}
 		x = 66
 		y = 9
@@ -2151,6 +2215,14 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_guard_infantry
 		}
+		completion_reward = {
+		add_stability = -0.05
+		swap_ideas = {
+			remove_idea = NOE_feudal_army
+			add_idea = NOE_feudal_army2
+		
+		 }
+		}
 		x = 68
 		y = 2
 
@@ -2162,6 +2234,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_catch_draft_dodgers
 		}
+		completion_reward = {
+		add_idea = {
+			reduced_levee_standards # small debuff to organization but a increase to manpower (flat percent)
+		}
+		
+		}
 		x = 67
 		y = 3
 
@@ -2171,9 +2249,18 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_reduce_levee_standards
+			focus = NOE_gun_for_every_peasant
 		}
-		x = 67
+		completion_reward = {
+		add_stability = -0.05
+		swap_ideas = {
+			remove_idea = NOE_feudal_army2
+			add_idea = NOE_feudal_army3
+		
+		   }
+		}
+		
+		x = 69
 		y = 4
 
 	}
@@ -2184,6 +2271,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_capital_ship_doctrine
 		}
+		completion_reward = {
+		 add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = fleet_in_being_tree
+	    }
+	   }
 		x = 68
 		y = 9
 
@@ -2198,6 +2292,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_cheaper_capital_ship_manufacturing
 		}
+		completion_reward = {
+		swap_ideas = {
+			remove_idea = NOE_imperial_ships 
+			add_idea = NOE_imperial_ships2 # keep previous buffs but add an equal buff for carriers
+		
+		 }
+		}
 		x = 67
 		y = 10
 
@@ -2209,6 +2310,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_catch_draft_dodgers
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_a_gun_for_every_peasant_idea
+		 }
+		}
 		x = 69
 		y = 3
 
@@ -2218,9 +2324,17 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_gun_for_every_peasant
+			focus = NOE_reduce_levee_standards
 		}
-		x = 69
+		
+		completion_reward = {
+		swap_ideas = {
+			remove_idea = reduced_levee_standards
+			add_idea = expand_draft_time # more of the same
+		
+		 }
+		}
+		x = 67
 		y = 4
 
 	}
@@ -2234,6 +2348,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_serf_comissars
 		}
+		
+		completion_reward = {
+		add_ideas = {
+			NOE_yakiniku_for_all
+		 }
+		}
 		x = 68
 		y = 5
 
@@ -2244,6 +2364,17 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_marine_focus
+		}
+		completion_reward = {
+		63 = {
+		 add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 6282
+					}
+		 
+		 }
 		}
 		x = 71
 		y = 9
@@ -2256,7 +2387,18 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_expand_stettin_port
 		}
-		x = 70
+		completion_reward = {
+		916 = {
+		 add_building_construction = {
+					type = naval_base
+					level = 4
+					instant_build = yes
+					province = 362
+					}
+		 
+		 }
+		}
+		x = 71
 		y = 10
 
 	}
@@ -2267,6 +2409,19 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_professional_army
 		}
+		completion_reward = {
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = cat_mobile_warfare
+			}
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = motorized_equipment
+					category = cat_mechanized_equipment
+			}
+		 }
 		x = 71
 		y = 2
 
@@ -2277,6 +2432,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_mechanized_push
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_manteuffel_plan_idea #Armor attack and defense
+		 }
 		}
 		x = 71
 		y = 3
@@ -2300,6 +2460,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_mechanized_push
 		}
+		completion_reward = {
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = armor
+			}
+		 }
 		x = 74
 		y = 3
 
@@ -2311,6 +2478,16 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_panzer_plan_one
 		}
+		completion_reward = {
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = armor
+			}
+			add_ideas = {
+				NOE_panzer_plan_two_idea #cheaper armor
+			}
+		 }
 		x = 73
 		y = 4
 
@@ -2321,6 +2498,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_panzer_plan_one
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_modern_cavalry_idea #give cavalry a big stupid buff
+		 }
+		 
 		}
 		x = 75
 		y = 4
@@ -2339,6 +2522,16 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_cavalry_modernization
 		}
+		completion_reward = {
+		add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					category = cat_mobile_warfare
+			}
+		remove_ideas = {
+			NOE_peasant_levees
+		 }
+		}
 		x = 72
 		y = 5
 
@@ -2350,6 +2543,9 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_professional_army
 		}
+		completion_reward = {
+			air_experience = 25
+		 }
 		x = 78
 		y = 2
 
@@ -2360,6 +2556,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_aerial_dominance
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_air_dominance_idea # fighter agility and maker them cheaper
+		 }
 		}
 		x = 77
 		y = 3
@@ -2372,6 +2573,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_fighter_dominance
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_fast_bombers_idea # bomber speed
+		 }
+		}
 		x = 77
 		y = 4
 
@@ -2383,6 +2589,17 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_work_with_industrialists
 		}
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					instant_build = yes
+					level = 2
+				   }
+		   }
+			
+	   }
 		x = 11
 		y = 5
 
@@ -2394,6 +2611,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_public_works
 		}
+		completion_reward = {
+		add_stability = 0.1
+		
+		 }
 		x = 10
 		y = 6
 
@@ -2405,16 +2626,24 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_public_works
 		}
+		completion_reward = {
+		#later when figure out or kaiser bails my ass out
+		}
 		x = 11
 		y = 7
 
 	}
 	focus = {
-		id = NOE_workers_not_serfs #stability buff, add idea
+		id = NOE_workers_not_serfs #add idea
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_public_works
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_workers_not_serfs_idea
+		 }
 		}
 		x = 12
 		y = 6
@@ -2492,6 +2721,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_krakow_proclamation
 		}
+		completion_reward = {
+			add_stability = 0.05
+			#variable needed 
+		 }
 		x = 7
 		y = 10
 
@@ -2506,6 +2739,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_comensation_acts
 		}
+		completion_reward = {
+		add_stability = -0.5
+		#variable needed
+		}
 		x = 9
 		y = 10
 
@@ -2518,6 +2755,23 @@ focus_tree = {
 			focus = NOE_krakow_proclamation
 			focus = NOE_comensation_acts
 		}
+		
+		completion_reward = {
+			if = {
+			limit = {
+				has_completed_focus = NOE_krakow_proclamation
+			}
+		add_stability = 0.05
+		}
+		add_popularity = {
+			ideology = democratic_revitalisation
+			popularity = -0.05
+		 }
+		 add_popularity = {
+			ideology = left_wing_revolutionary
+			popularity = -0.05
+		 }
+		}
 		x = 8
 		y = 11
 
@@ -2529,6 +2783,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_polish_solidarity
 		}
+		completion_reward = {
+			add_ideas = {
+					NOE_federalism_idea
+		}
+	   }
 		x = 8
 		y = 12
 
@@ -2539,6 +2798,9 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_federalism
+		}
+		completion_reward = {
+		#faction GUI?!?!?!!?!?!?!?!?
 		}
 		x = 8
 		y = 13
@@ -2553,6 +2815,10 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = NOE_great_purge
+		}
+		completion_reward = {
+		add_stability = -0.2
+		add_political_power = -100
 		}
 		x = 17
 		y = 14
@@ -2601,6 +2867,28 @@ focus_tree = {
 		add_idea = NOE_prussian_chivalry_6
 		}
 	   }
+	   create_corps_commander = {
+			name = "Ubermensch Knight Guy"
+			picture = "Portrait_USA_Lucian_Truscott.dds"
+			traits = {}
+			skill = 3
+
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+		   }
+		create_corps_commander = {
+			name = "Ubermensch Knight Guy2"
+			picture = "Portrait_USA_Lucian_Truscott.dds"
+			traits = {}
+			skill = 3
+
+			attack_skill = 5
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 2
+		   }
 	  }
 		x = 36
 		y = 8
@@ -2615,9 +2903,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_timed_idea = {
-			idea = education_reform
+			idea = education_reform # Consumer goods
 			days = 180
 			}
+		add_stability = 0.1
 		}
 		x = 33
 		y = 6
@@ -2636,6 +2925,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_work_safety_laws
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_guilds # efficiency speed and efficiency max increase
+		 }
+		}
 		x = 30
 		y = 7
 
@@ -2647,6 +2941,16 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_popularize_guilds
 		}
+		completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		  }
+		 }
+		}
 		x = 29
 		y = 8
 
@@ -2657,6 +2961,16 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_popularize_guilds
+		}
+		completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		  }
+		 }
 		}
 		x = 31
 		y = 8
@@ -2692,6 +3006,7 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_big_brother_system
 		}
+		
 		x = 35
 		y = 10
 
@@ -2703,12 +3018,20 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_big_brother_system
 		}
+		completion_reward = {
+		add_popularity = {
+			ideology = pro_resistance_monarchy
+			popularity = 0.25
+		 }
+		 add_political_power = 100
+		 add_stability = 0.1
+		}
 		x = 37
 		y = 10
 
 	}
 	focus = {
-		id = NOE_new_step_feudalism #combine all feudal(not army) ideas into one powerranger style 
+		id = NOE_new_step_feudalism 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -2716,6 +3039,12 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_polish_german_harmony
+		}
+		completion_reward = {
+			swap_ideas = {
+			add_idea = robber_barons2
+			remove_idea = robber_barons
+			}
 		}
 		x = 36
 		y = 11
@@ -2728,18 +3057,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_lithuania_defense
 		}
-		x = 54
-		y = 9
-
-	}
-	focus = {
-		id = NOE_black_sea_fleet
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_arm_flare
+		completion_reward = {
+			add_ideas = {
+				NOE_winter_combat_idea # winter atrition down
+			 }
 		}
-		x = 56
+		x = 54
 		y = 9
 
 	}
@@ -2749,6 +3072,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_warplan_yakineko
+		}
+		completion_reward = {
+				create_wargoal = {
+					type = annex_everything
+					target = FBK
+			   }
 		}
 		x = 51
 		y = 11
@@ -2760,6 +3089,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_warplan_pettan
+		}
+		completion_reward = {
+				create_wargoal = {
+					type = annex_everything
+					target = RUS
+			   }
 		}
 		x = 59
 		y = 11
@@ -2775,6 +3110,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_seek_resistance_support
 		}
+		completion_reward = {
+		set_country_flag = NOE_seek_lhs_support_flag
+		custom_effect_tooltip = NOE_seek_lhs_support_tooltip
+		}
 		x = 54
 		y = 8
 
@@ -2789,6 +3128,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_seek_lhs_support
 		}
+		completion_reward = {
+		set_country_flag = NOE_seek_resistance_support_flag
+		custom_effect_tooltip = NOE_seek_resistance_support_tooltip
+		}
 		x = 56
 		y = 8
 
@@ -2799,6 +3142,13 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_yakiniku_for_everyone
+		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1
+		uses = 2
+		category = cat_mass_assault
+		 }
 		}
 		x = 68
 		y = 6
@@ -2811,6 +3161,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_aerial_dominance
 		}
+		completion_reward = {
+		air_experience = 15
+		custom_effect_tooltip = NOE_establish_pzl_tooltip
+		}
 		x = 79
 		y = 3
 
@@ -2821,6 +3175,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_establish_pzl
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_cheaper_planes_idea #cheaper production for fighters
+		 }
 		}
 		x = 79
 		y = 4
@@ -2839,6 +3198,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_trucks_logistics
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_air_ground_coordination_idea # small buff to both bombers and ground attack from planes
+		 }
+		}
 		x = 76
 		y = 5
 
@@ -2852,6 +3216,13 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_army_coordination
+		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1
+		uses = 2
+		category = cat_mobile_warfare
+		 }
 		}
 		x = 74
 		y = 6
@@ -2867,19 +3238,15 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_capital_ship_doctrine
 		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1
+		uses = 1
+		category = cat_trade_interdiction
+		 }
+		}
 		x = 74
 		y = 8
-
-	}
-	focus = {
-		id = NOE_expand_konigsberg_port
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_expand_stettin_port
-		}
-		x = 72
-		y = 10
 
 	}
 	focus = {
@@ -2888,6 +3255,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_beneath_the_seas
+		}
+		completion_reward = {
+		add_ideas = {
+			NOE_course_de_guerre_idea #Torpedo attack
+		 }
 		}
 		x = 74
 		y = 9
@@ -2899,6 +3271,13 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_beneath_the_seas
+		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1
+		uses = 1
+		category = cat_trade_interdiction
+		 }
 		}
 		x = 76
 		y = 9
@@ -2914,6 +3293,16 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_convoy_raiding_focus
 		}
+		completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+			type = dockyard
+			level = 5
+			instant_build = yes
+		  }
+		 }
+		}
 		x = 75
 		y = 10
 
@@ -2926,6 +3315,11 @@ focus_tree = {
 			focus = NOE_submarine_assembly_line
 			focus = NOE_balanced_navy_plan
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_danzig_naval_academy_idea # experience_gain_navy = 0.15
+		 }
+		}
 		x = 71
 		y = 11
 
@@ -2936,6 +3330,10 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_danzig_naval_academy
+		}
+		completion_reward = {
+		custom_effect_tooltip = NOE_ritter_marines #Unlock great marine guy in high command
+		navy_experience = 25
 		}
 		x = 71
 		y = 12
@@ -2948,16 +3346,28 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_ritter_marines
 		}
+		completion_reward = {
+			add_ideas = {
+					NOE_marsh_warfare_idea # give marines some terrain reduction but not too much
+		  }
+		 }
 		x = 70
 		y = 13
 
 	}
 	focus = {
-		id = NOE_amphibious_assault 
+		id = NOE_amphibious_assault
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_ritter_marines
+		}
+		completion_reward = {
+		add_tech_bonus = {
+		bonus = 1.5
+		uses = 2
+		category = naval_doctrine
+		 }
 		}
 		x = 72
 		y = 13
@@ -2970,6 +3380,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_new_step_feudalism
 		}
+		completion_reward = {
+			add_war_support = 0.15
+			add_country_leader_trait = imperial_dreams # pp gain
+		}
 		x = 36
 		y = 12
 
@@ -2980,6 +3394,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_dream_of_empire
+		}
+		completion_reward = {
+		remove_ideas = {
+			robber_barons2
+		 }
 		}
 		x = 31
 		y = 13
@@ -2992,6 +3411,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_dream_of_empire
 		}
+		completion_reward = {
+			country_event = {
+			id = noel.35
+			days = 1
+		   }
+		}
 		x = 41
 		y = 13
 
@@ -3002,6 +3427,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_dream_of_empire
+		}
+		completion_reward = {
+		country_event = {
+			id = noel.36
+			days = 1 
+		 }
 		}
 		x = 36
 		y = 13
@@ -3014,6 +3445,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_neofeudal_economy
 		}
+		completion_reward = {
+			  add_ideas = {
+			   NOE_agrarian_roots_idea
+			 }
+		 }
 		x = 31
 		y = 14
 
@@ -3024,6 +3460,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_german_question
+		}
+		completion_reward = {
+			create_wargoal = {
+			type = annex_everything
+			target = GER
+			}
 		}
 		x = 36
 		y = 14
@@ -3036,6 +3478,9 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_agrarian_roots
 		}
+		completion_reward = {
+			add_research_slot = 1
+		 }
 		x = 30
 		y = 15
 
@@ -3046,6 +3491,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_agrarian_roots
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = breadbasket_of_europe
+				add_idea = breadbasket_of_world
+			   }
 		}
 		x = 32
 		y = 15
@@ -3061,6 +3512,14 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_seize_south_germany
 		}
+		completion_reward = {
+		KIA = {
+			country_event = {
+			id = kiara.1
+			days = 1
+			}
+		 }
+		}
 		x = 40
 		y = 14
 
@@ -3075,6 +3534,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = NOE_request_incorporation
 		}
+		completion_reward = {
+		create_wargoal = {
+			type = annex_everything
+			target = KIA
+		 }
+		}
 		x = 42
 		y = 14
 
@@ -3088,6 +3553,27 @@ focus_tree = {
 			focus = NOE_request_incorporation
 			focus = NOE_seize_south_germany
 		}
+		available = {
+			OR = {
+			GER = {
+				is_puppet_of = NOE
+				exists = no
+			 }
+			}
+		 }
+		 available = {
+			OR = {
+			KIA = {
+				is_puppet_of = NOE
+				exists = no
+			 }
+			}
+		 }
+		completion_reward = {
+		country_event = {
+			id = noel.39
+		 }
+		}
 		x = 38
 		y = 15
 
@@ -3099,28 +3585,73 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_munich_conference
 		}
+		completion_reward = {
+		 create_wargoal = {
+			type = annex_everything
+			target = CZE
+		 }
+		}
 		x = 36
 		y = 16
 
 	}
 	focus = {
-		id = NOE_establish_south_german_kingdoms #stability, idea recovery 
+		id = NOE_establish_south_german_kingdoms 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_munich_conference
 		}
+		completion_reward = {
+				custom_effect_tooltip = NOE_establish_south_german_kingdoms_tooltip
+				hidden_effect = {
+					add_state_core = 912
+					add_state_core = 53
+					add_state_core = 52
+					add_state_core = 900
+					add_state_core = 901
+					add_state_core = 54
+					add_state_core = 50
+					add_state_core = 910
+					add_state_core = 28
+					add_state_core = 909
+					add_state_core = 42
+					add_state_core = 55
+					add_state_core = 913
+					add_state_core = 911
+			   }
+	   }
+	   
+	   bypass = {
+		has_country_flag = NOE_kiara_integrated
+	   }
 		x = 38
 		y = 16
 
 	}
 	focus = {
-		id = NOE_establish_brandenberg_kingdom #stability, idea recovery
+		id = NOE_establish_brandenberg_kingdom 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_munich_conference
 		}
+		completion_reward = {
+				custom_effect_tooltip = NOE_establish_brandenberg_kingdom_tooltip
+				hidden_effect = {
+					add_state_core = 65
+					add_state_core = 906
+					add_state_core = 62
+					add_state_core = 64
+					add_state_core = 61
+					add_state_core = 905
+					add_state_core = 904
+					add_state_core = 60
+					add_state_core = 59
+					add_state_core = 907
+					add_state_core = 908
+			   }
+	   }
 		x = 40
 		y = 16
 
@@ -3131,6 +3662,19 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_establish_kingdom_bohemia
+		}
+		completion_reward = {
+		create_wargoal = {
+			type = annex_everything
+			target = SLO
+		 }
+		}
+		bypass = {
+			hidden_condition = {
+			SLO = {
+				exists = no
+			 }
+			}
 		}
 		x = 35
 		y = 17
@@ -3143,6 +3687,23 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_establish_south_german_kingdoms
 		}
+		bypass = {
+			owns_state = 1066 
+			owns_state = 153
+			owns_state = 1065
+			owns_state = 1064
+			owns_state = 1063
+			owns_state = 4
+			owns_state = 152
+		}
+		completion_reward = {
+		AUS = {
+			country_event = {
+				id = austria.1
+				days = 1
+		  }
+		 }
+		}
 		x = 37
 		y = 17
 
@@ -3154,27 +3715,46 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_establish_south_german_kingdoms
 		}
+		completion_reward = {
+		create_wargoal = {
+			type = annex_everything
+			target = SWI
+		 }
+		}
 		x = 39
 		y = 17
 
 	}
 	focus = {
-		id = NOE_hanover_or_war
+		id = NOE_demands_for_the_duck
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_establish_brandenberg_kingdom
+		}
+		completion_reward = {
+			SUB = {
+				country_event = {
+				id = subaru.2
+				days = 1
+				}
+			}
 		}
 		x = 41
 		y = 17
 
 	}
 	focus = {
-		id = NOE_german_wine #consumer goods, stability gain, 
+		id = NOE_german_wine #consumer goods
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_breadbasket_of_world
+		}
+		completion_reward = {
+			add_ideas = {
+				NOE_german_wine # it is as it says, consumer goods buff
+			}
 		}
 		x = 32
 		y = 16
@@ -3187,6 +3767,17 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_agricultural_chemistry
 		}
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = synthetic_refinery
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+	  }
 		x = 30
 		y = 16
 
@@ -3201,12 +3792,75 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_biofueles
 		}
+		completion_reward = {
+			custom_effect_tooltip = GER_autobahn_tt
+				available = {
+				OR = {
+					has_full_control_of_state = 64
+					has_full_control_of_state = 59
+					has_full_control_of_state = 60
+					has_full_control_of_state = 54
+				}
+				
+			}
+			hidden_effect = {
+				64 = {
+					if = {
+						limit = { 
+							is_controlled_by = ROOT 
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 10
+							instant_build = yes
+						}
+					}
+				}
+				59 = {
+					if = {
+						limit = {
+						is_controlled_by = ROOT
+						}
+
+						add_building_construction = {
+							type = infrastructure
+							level = 10
+							instant_build = yes
+						}
+					}
+				}
+				60 = {
+					if = {
+						limit = {
+						is_controlled_by = ROOT 
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 10
+							instant_build = yes
+						}
+					}
+				}
+				54 = {
+					if = {
+						limit = { 
+						is_controlled_by = ROOT 
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 10
+							instant_build = yes
+						}
+					}
+				}
+			}		
+		}
 		x = 31
 		y = 17
 
 	}
 	focus = {
-		id = NOE_king_of_germans #gain fancy new name and colour, pp gain alot, new idea
+		id = NOE_crush_pekora
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -3216,7 +3870,7 @@ focus_tree = {
 			focus = NOE_swiss_conquest
 		}
 		prerequisite = {
-			focus = NOE_hanover_or_war
+			focus = NOE_demands_for_the_duck
 		}
 		prerequisite = {
 			focus = NOE_invade_slovakia
@@ -3224,19 +3878,15 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_improve_village_infrastructure
 		}
+		completion_reward = {
+		create_wargoal = {
+				type = annex_everything
+				target = PEK
+		 }
+		
+		}
 		x = 36
 		y = 18
-
-	}
-	focus = {
-		id = NOE_crush_pekora
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_king_of_germans
-		}
-		x = 34
-		y = 19
 
 	}
 	focus = {
@@ -3244,10 +3894,29 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_king_of_germans
+			focus = NOE_anschluss_or_war
 		}
-		x = 38
-		y = 19
+		prerequisite = {
+			focus = NOE_swiss_conquest
+		}
+		prerequisite = {
+			focus = NOE_demands_for_the_duck
+		}
+		prerequisite = {
+			focus = NOE_invade_slovakia
+		}
+		prerequisite = {
+			focus = NOE_improve_village_infrastructure
+		}
+		completion_reward = {
+		create_wargoal = {
+				type = annex_everything
+				target = SUI
+		 }
+		
+		}
+		x = 40
+		y = 18
 
 	}
 	focus = {
@@ -3260,8 +3929,176 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_crush_pekora
 		}
-		x = 36
-		y = 20
+		available = {
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_germany #Noel needs all of germany to form HRE besides poznan,konigsberg,pommern, elsab-lothringen,and danzig
+			owns_state = 68
+			owns_state = 63
+			owns_state = 66
+			owns_state = 65
+			owns_state = 906
+			owns_state = 64
+			owns_state = 62
+			owns_state = 912
+			owns_state = 53
+			owns_state = 52
+			owns_state = 900
+			owns_state = 901
+			owns_state = 54
+			owns_state = 50
+			owns_state = 910
+			owns_state = 28
+			owns_state = 909
+			owns_state = 42
+			owns_state = 55
+			owns_state = 913
+			owns_state = 911
+			owns_state = 59
+			owns_state = 60
+			owns_state = 904
+			owns_state = 907
+			owns_state = 908
+			owns_state = 61
+			owns_state = 905
+			}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_subaru_germany #Noel needs all of Subarus German land 
+			owns_state = 51
+			owns_state = 57
+			owns_state = 914
+			owns_state = 56
+			owns_state = 915
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_france #Noel needs the alpes, Franche-compte,savoy,provence, and marsailes
+			owns_state = 735
+			owns_state = 21
+			owns_state = 859
+			owns_state = 32
+			owns_state = 17
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_austria #Noel needs all of austria
+			owns_state = 4
+			owns_state = 1063
+			owns_state = 1064
+			owns_state = 1065
+			owns_state = 152
+			owns_state = 153
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_switzerland #Noel needs all of switzerland
+			owns_state = 975
+			owns_state = 974
+			owns_state = 3
+			owns_state = 151
+			owns_state = 976
+			owns_state = 946
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_italy #Noel needs venice,south tyrol, lombardy,piedmont, emilia romagna, tuscany, and rome
+			owns_state = 160
+			owns_state = 39
+			owns_state = 161
+			owns_state = 159
+			owns_state = 158
+			owns_state = 162
+			owns_state = 860
+		}
+		custom_trigger_tooltip = {
+			tooltip = NOE_HRE_czech #noel needs all of czechoslovakia
+			owns_state = 762
+			owns_state = 67
+			owns_state = 72
+			owns_state = 74
+			owns_state = 69
+			owns_state = 75
+			owns_state = 9
+		}
+		
+	}
+		completion_reward = {
+		custom_effect_tooltip = NOE_HRE_form
+		custom_effect_tooltip = NOE_HRE_other_cores
+		hidden_effect = {
+			add_state_core = 35
+			add_state_core = 7
+			add_state_core = 8
+			add_state_core = 34
+			add_state_core = 58
+			add_state_core = 736
+			add_state_core = 102
+			add_state_core = 947
+			add_state_core = 762
+			add_state_core = 67
+			add_state_core = 72
+			add_state_core = 74
+			add_state_core = 69
+			add_state_core = 75
+			add_state_core = 9
+			add_state_core = 160
+			add_state_core = 39
+			add_state_core = 161
+			add_state_core = 159
+			add_state_core = 158
+			add_state_core = 162
+			add_state_core = 860
+			add_state_core = 975
+			add_state_core = 974
+			add_state_core = 3
+			add_state_core = 151
+			add_state_core = 976
+			add_state_core = 946
+			add_state_core = 4
+			add_state_core = 1063
+			add_state_core = 1064
+			add_state_core = 1065
+			add_state_core = 1066
+			add_state_core = 152
+			add_state_core = 153
+			add_state_core = 735
+			add_state_core = 21
+			add_state_core = 859
+			add_state_core = 32
+			add_state_core = 17
+			add_state_core = 51
+			add_state_core = 57
+			add_state_core = 914
+			add_state_core = 56
+			add_state_core = 915
+			add_state_core = 68
+			add_state_core = 63
+			add_state_core = 66
+			add_state_core = 65
+			add_state_core = 906
+			add_state_core = 64
+			add_state_core = 62
+			add_state_core = 912
+			add_state_core = 53
+			add_state_core = 52
+			add_state_core = 900
+			add_state_core = 901
+			add_state_core = 54
+			add_state_core = 50
+			add_state_core = 910
+			add_state_core = 28
+			add_state_core = 909
+			add_state_core = 42
+			add_state_core = 55
+			add_state_core = 913
+			add_state_core = 911
+			add_state_core = 59
+			add_state_core = 60
+			add_state_core = 904
+			add_state_core = 907
+			add_state_core = 908
+			add_state_core = 61
+			add_state_core = 905
+		 }
+		 set_cosmetic_tag = HRE
+		}
+		x = 38
+		y = 19
 
 	}
 	focus = {
@@ -3270,6 +4107,14 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_parlimentary_system
+		}
+		completion_reward = {
+		set_politics = {
+			ruling_party = pro_yagoo_progressive
+			elections_allowed = no
+
+		   }
+		 #ADD FLAVOR EVENT LATER
 		}
 		x = 8
 		y = 15
@@ -3283,6 +4128,20 @@ focus_tree = {
 			focus = NOE_great_purge
 			focus = NOE_spare_opposition_factions
 		}
+		completion_reward = {
+		add_popularity = {
+			ideology = pro_resistance_monarchy
+			popularity = 0.15
+		 }
+		 add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.10
+		 }
+		 add_popularity = {
+			ideology = reactionary_monarchy
+			popularity = 0.10
+		 }
+		}
 		x = 18
 		y = 15
 
@@ -3295,6 +4154,174 @@ focus_tree = {
 			focus = NOE_emperess_noel
 			focus = NOE_democratic_future
 		}
+		completion_reward = {
+		custom_effect_tooltip = NOE_industrial_expansion_tooltip # For every state that you own that was previously owned by the german reich will have 2 civs added (not op :trollface:)
+		if = {
+			limit = {
+			owns_state = 60
+			}
+			60 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 59
+			}
+			59 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 908
+			}
+			908 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 907
+			}
+			907 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 904
+			}
+			904 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 905
+			}
+			905 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 61
+			}
+			61 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 62
+			}
+			62 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 64
+			}
+			64 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 65
+			}
+			65 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 906
+			}
+			906 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		}
 		x = 13
 		y = 16
 
@@ -3305,6 +4332,167 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_industrial_expansion
+		}
+		completion_reward = {
+		custom_effect_tooltip = NOE_industrial_expansion_tooltip # For every state that you own that was previously owned by the german reich will have 1 infastructure added
+		if = {
+			limit = {
+			owns_state = 60
+			}
+			60 = {
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 59
+			}
+			59 = {
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 908
+			}
+			908 = {
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 907
+			}
+			907 = {
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 904
+			}
+			904 = {
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 905
+			}
+			905 = {
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 61
+			}
+			61 = {
+				add_building_construction = {
+						type = infrastructure     
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 62
+			}
+			62 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 64
+			}
+			64 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 65
+			}
+			65 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
+		 if = {
+			limit = {
+			owns_state = 906
+			}
+			906 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+					instant_build = yes
+		 	   }
+		
+		   }
+			
+		 }
 		}
 		x = 11
 		y = 17
@@ -3389,6 +4577,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_claim_throne_germany
 		}
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = GER
+			}
+		 }
 		x = 17
 		y = 17
 
@@ -3411,6 +4605,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_claim_throne_germany
 		}
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = SUB
+			}
+		 }
 		x = 19
 		y = 17
 
@@ -3422,6 +4622,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_claim_throne_germany
 		}
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = KIA
+			}
+		 }
 		x = 21
 		y = 17
 
@@ -3439,6 +4645,11 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_deal_with_germany
 		}
+		completion_reward = {
+		add_ideas = {
+			NOE_noel_expansionism_idea #faster justification
+		 }
+		}
 		x = 19
 		y = 18
 
@@ -3450,6 +4661,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_democratic_future
 		}
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = GER
+			}
+		 }
 		x = 8
 		y = 16
 
@@ -3461,6 +4678,14 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_capitulate_germany
 		}
+		completion_reward = {
+		SUB = {
+		country_event = {
+			id = subaru.4
+			days = 1
+		 }
+		}
+	   }
 		x = 3
 		y = 17
 
@@ -3483,6 +4708,18 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_hannover_agreement
 		}
+		bypass = {
+		has_country_flag = NOE_german_land_denied_flag
+		}
+		completion_reward = {
+		SUB = {
+			country_event = {
+			id = subaru.5
+			days = 1
+			}
+		 }
+		}
+		
 		x = 3
 		y = 18
 
@@ -3493,6 +4730,21 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_merge_with_kiarrareich
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_faction_leader = yes
+				}
+				set_faction_name = Hololive_union
+			else_if = {
+				limit = {
+					is_faction_leader = no
+				 }
+				create_faction = Hololive_union
+			 }
+			
+			}
 		}
 		x = 8
 		y = 18
@@ -3505,6 +4757,14 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_ally_subaru
 		}
+		completion_reward = {
+		SUI = {
+			country_event = {
+			id = suisei.77
+			days = 1
+			}
+		 }
+		}
 		x = 2
 		y = 19
 
@@ -3515,6 +4775,14 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_ally_subaru
+		}
+		completion_reward = {
+		PEK = {
+			country_event = {
+			id = pekora.5
+			days = 1
+			}
+		 }
 		}
 		x = 4
 		y = 19
@@ -3527,6 +4795,36 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_hololive_unionism
 		}
+		completion_reward = {
+			every_country = {
+						limit = {
+						capital_scope = {
+							is_on_continent = europe
+						}
+						is_in_faction_with = NOE
+						}
+				add_to_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+		     }
+		   }
+		   set_global_flag = hololive_union
+		   set_country_flag = hololive_union_leader
+		   create_variable = { hololive_union_political_power_stockpile = 0  }
+				clamp_variable = {
+					var = GLOBAL.hololive_union_political_power_stockpile
+					min = 0
+					max = 9999
+				
+				}
+			create_variable = { hololive_union_political_power_investment = 0 }
+			clamp_variable = {
+					var = GLOBAL.hololive_union_political_power_investment
+					min = 0
+					max = 9999
+				
+				}
+		 }
 		x = 8
 		y = 19
 
