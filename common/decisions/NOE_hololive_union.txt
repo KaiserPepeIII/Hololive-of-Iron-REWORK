@@ -1,0 +1,600 @@
+noe_hololive_union = {
+				join_hololive_union = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				every_country = {
+							limit = {
+								is_in_array = {
+								array = NOE.hololive_union
+								value = THIS.id
+						}
+					country_event = {
+						id = hololive_union.1	#event given to leader who can deny or approve the applicant
+						days = 1
+					}
+				}
+			  }
+		
+		
+		fire_only_once = yes
+	    available = {
+				capital_scope = {
+					is_on_continent = europe
+				}
+				has_opinion = {
+					target = {
+					every_country = {
+						limit = {
+							has_country_flag = hololive_union_leader
+						 }
+					 }
+					}
+					value > 50
+				   }
+				 NOT = {
+				 is_in_array = {
+					array = NOE.hololive_union
+					value = THIS.id
+				 }
+		}
+	
+	}
+	visible = {
+	NOT = {
+				 is_in_array = {
+					array = NOE.hololive_union
+					value = THIS.id
+				 }
+		}
+	}
+}
+		leave_hololive_union = {
+				icon = GFX_decision_icon_default
+				
+			  complete_effect = {
+				every_country = {
+						limit = {
+							is_in_array = NOE.hololive_union
+						}
+					country_event = {
+						id = hololive_union.2	#event given to all members of the HU to inform them that a member has left
+						days = 1
+					}
+				}
+				remove_from_array = { NOE.hololive_union = ROOT.id 	 }
+			  }
+		
+		
+		fire_only_once = yes
+	    available = {
+				capital_scope = {
+					is_on_continent = europe
+				}
+			is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+			}
+			has_capitulated = no
+			
+		}
+}
+
+invest_50_political_power = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = 50
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = 50
+				}
+			  }
+		
+		visible = {
+		is_in_array = {
+		array = NOE.hololive_union
+		value = THIS.id
+		 }
+		}
+	    available = {
+		has_political_power > 50
+	}
+}
+invest_150_political_power = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = 150
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = 150
+				}
+			  }
+		
+		visible = {
+		is_in_array = {
+		array = hololive_union
+		value = THIS.id
+		 }
+		}
+	    available = {
+		has_political_power > 150
+	}
+}
+invest_300_political_power = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = 300
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = 300
+				}
+			  }
+		
+		visible = {
+		is_in_array = {
+		array = hololive_union
+		value = THIS.id
+		 }
+		}
+	    available = {
+		has_political_power > 300
+	}
+}
+
+factory_assistance_big = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_factory_assistance_big
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -200
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -300
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 300
+			compare = greater_than_or_equals
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 200
+			compare = greater_than_or_equals
+			}
+	}
+}
+
+factory_assistance_medium = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_factory_assistance_medium
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -100
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -150
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 150
+			compare = greater_than_or_equals
+			}
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 300
+			compare = less_than
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 100
+			compare = greater_than_or_equals
+			}
+	}
+}
+
+factory_assistance_small = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_factory_assistance_small
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -20
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -50
+				}
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 50
+			compare = greater_than_or_equals
+			}
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 150
+			compare = less_than
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 20
+			compare = greater_than_or_equals
+			}
+	}
+}
+
+construction_assistance_small = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_construction_assistance_small
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -20
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -50
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 50
+			compare = greater_than_or_equals
+			}
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 150
+			compare = less_than
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 20
+			compare = greater_than_or_equals
+			}
+	}
+}
+construction_assistance_medium = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_construction_assistance_medium
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -100
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -150
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 150
+			compare = greater_than_or_equals
+			}
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 300
+			compare = less_than
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 100
+			compare = greater_than_or_equals
+			}
+	}
+}
+construction_assistance_big = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_construction_assistance_big
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -200
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -300
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 300
+			compare = greater_than_or_equals
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 200
+			compare = greater_than_or_equals
+			}
+	}
+}
+research_assistance_small = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_research_assistance_small
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -20
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -50
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 50
+			compare = greater_than_or_equals
+			}
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 150
+			compare = less_than
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 20
+			compare = greater_than_or_equals
+			}
+	}
+}
+research_assistance_medium = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_research_assistance_medium
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -100
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -150
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 150
+			compare = greater_than_or_equals
+			}
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 300
+			compare = less_than
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 100
+			compare = greater_than_or_equals
+			}
+	}
+}
+research_assistance_big = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				add_timed_idea = {
+					idea = hololive_union_research_assistance_big
+					days = 365
+				}
+				add_to_variable = {
+				var = GLOBAL.hololive_union_political_power_stockpile
+				value = -200
+				}
+				add_to_variable = {
+				var = ROOT.hololive_union_political_power_investment
+				value = -300
+				}
+			  }
+		
+		visible = {
+		check_variable = {
+			var = ROOT.hololive_union_political_power_investment
+			value = 300
+			compare = greater_than_or_equals
+			}
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 200
+			compare = greater_than_or_equals
+			}
+	}
+}
+medium_tank_research_project = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = NOE.hololive_union
+							value = THIS.id
+					}
+				
+				}
+				country_event = {
+					id = hololive_union.3 # Event that gives all members of the hololive union medium tank 1 research
+					days = 1
+			  }
+			 }
+				add_to_variable = {
+					var = GLOBAL.hololive_union_political_power_stockpile
+					value = -300
+				}
+				set_global_flag = NOE_hololive_union_medium_research # flag that will fire off an event to give new members medium tank research
+			  }
+		
+		visible = {
+		is_in_array = {
+			array = NOE.hololive_union
+			value = THIS.id
+		 }
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 300
+			compare = greater_than_or_equals
+			}
+	}
+}
+fighter_2_research_project = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = NOE.hololive_union
+							value = THIS.id
+					}
+				
+				}
+				country_event = {
+					id = hololive_union.5 # Event that gives all members of the hololive union medium tank 1 research
+					days = 1
+			  }
+			 }
+				add_to_variable = {
+					var = GLOBAL.hololive_union_political_power_stockpile
+					value = -400
+				}
+				set_global_flag = NOE_hololive_union_fighter_research # flag that will fire off an event to give new members medium tank research
+			  }
+		
+		visible = {
+		is_in_array = {
+			array = NOE.hololive_union
+			value = THIS.id
+		 }
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 400
+			compare = greater_than_or_equals
+			}
+	}
+}
+heavy_2_research_project = {
+				icon = GFX_decision_icon_default
+		
+		complete_effect = {
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = NOE.hololive_union
+							value = THIS.id
+					}
+				
+				}
+				country_event = {
+					id = hololive_union.6 # Event that gives all members of the hololive union medium tank 1 research
+					days = 1
+			  }
+			 }
+				add_to_variable = {
+					var = GLOBAL.hololive_union_political_power_stockpile
+					value = -500
+				}
+				set_global_flag = NOE_hololive_union_heavy_research # flag that will fire off an event to give new members medium tank research
+			  }
+		
+		visible = {
+		is_in_array = {
+			array = NOE.hololive_union
+			value = THIS.id
+		 }
+		}
+	    available = {
+		check_variable = {
+			var = GLOBAL.hololive_union_political_power_stockpile
+			value = 500
+			compare = greater_than_or_equals
+			}
+		}
+	}
+}
