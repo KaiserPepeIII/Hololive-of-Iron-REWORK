@@ -1,0 +1,105 @@
+add_namespace = hololive_union
+
+
+#Country asks to join union
+country_event = {
+	id = hololive_union.1
+	title = hololive_union.1.t
+	desc = hololive_union.1.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	#Another Nation for our Cause
+	option = {
+		name = hololive_union.1.a
+		ai_chance = {base = 90} 
+		FROM = {
+			add_to_array = {
+				array = NOE.hololive_union
+				value = FROM.id
+				}
+		}
+		FROM = {
+		country_event = {
+			id = hololive_union.3
+			days = 1
+		}
+	  }
+	}
+	#No
+	option = {
+		name = hololive_union.1.b
+		FROM = {
+		country_event = {
+			id = hololive_union.4
+			days = 1
+		}
+	  }
+	}
+
+}
+# A country has left the Union
+country_event = {
+	id = hololive_union.2
+	title = hololive_union.2.t
+	desc = hololive_union.2.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	#bye
+	option = {
+		name = hololive_union.2.a
+	}
+}
+#the leader of the Union has accepted a countries application
+country_event = {
+	id = hololive_union.3
+	title = hololive_union.3.t
+	desc = hololive_union.3.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	#airy got toe
+	option = {
+		name = hololive_union.3.a
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = NOE.hololive_union
+					value = THIS.id
+				}
+			}
+			country_event = {
+				id = hololive_union.5
+				days = 1
+			}
+		
+		}
+	}
+}
+#The leader of the Union has declined a countries application
+country_event = {
+	id = hololive_union.4
+	title = hololive_union.4.t
+	desc = hololive_union.4.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	#The nerve
+	option = {
+		name = hololive_union.4.a
+	}
+}
+#All Union nations are informed of the new member
+country_event = {
+	id = hololive_union.5
+	title = hololive_union.5.t
+	desc = hololive_union.5.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	#welcome
+	option = {
+		name = hololive_union.5.a
+	}
+}

@@ -5,47 +5,57 @@ noe_hololive_union = {
 		complete_effect = {
 				every_country = {
 							limit = {
-								is_in_array = {
-								array = NOE.hololive_union
-								value = THIS.id
-						}
-					country_event = {
-						id = hololive_union.1	#event given to leader who can deny or approve the applicant
-						days = 1
-					}
+								has_country_flag = hololive_union_leader
+							}
+							country_event = {
+								id = hololive_union.1	#event given to leader who can deny or approve the applicant
+								days = 1
+							}
 				}
-			  }
+					set_country_flag = {
+						flag = joined_hololive_union
+						days = 365
+						value = 1
+					}
+				
+					set_temp_variable = {  pupp = THIS.id  }
+
+					every_country = {
+					   limit = {
+						  is_puppet_of = pupp
+					   }
+					   add_to_array = { 
+							array = NOE.hololive_union 
+							value = THIS.id			
+						}
+					}
+		}
 		
 		
-		fire_only_once = yes
 	    available = {
 				capital_scope = {
 					is_on_continent = europe
 				}
 				has_opinion = {
-					target = {
-					every_country = {
-						limit = {
-							has_country_flag = hololive_union_leader
-						 }
-					 }
+					target = NOE
+					value > 49
 					}
-					value > 50
-				   }
 				 NOT = {
 				 is_in_array = {
 					array = NOE.hololive_union
 					value = THIS.id
 				 }
-		}
+				 is_puppet = yes
+				}
 	
-	}
+		}
 	visible = {
-	NOT = {
+			NOT = {
 				 is_in_array = {
 					array = NOE.hololive_union
 					value = THIS.id
 				 }
+				has_country_flag = left_hololive_union
 		}
 	}
 }
@@ -55,28 +65,61 @@ noe_hololive_union = {
 			  complete_effect = {
 				every_country = {
 						limit = {
-							is_in_array = NOE.hololive_union
+							is_in_array = {
+								array = NOE.hololive_union 
+								value = THIS.id
+							
+							}
 						}
 					country_event = {
 						id = hololive_union.2	#event given to all members of the HU to inform them that a member has left
 						days = 1
 					}
+					
 				}
-				remove_from_array = { NOE.hololive_union = ROOT.id 	 }
+				remove_from_array = { NOE.hololive_union = ROOT.id }
+				set_country_flag = {
+					flag = left_hololive_union
+					days = 180
+					value = 1
+				}
+				set_temp_variable = {  home = THIS.id  }
+
+					every_country = {
+					   limit = {
+						  is_puppet_of = home
+					   }
+					   remove_from_array = { 
+							array = NOE.hololive_union 
+							value = THIS.id			
+						}
+					}
 			  }
-		
-		
-		fire_only_once = yes
+			  
 	    available = {
 				capital_scope = {
 					is_on_continent = europe
 				}
 			is_in_array = {
 				array = NOE.hololive_union
-				value = THIS.id
+				value = ROOT.id
 			}
 			has_capitulated = no
+				NOT = {
+			has_country_flag = hololive_union_leader
+				is_puppet = yes
+			}
 			
+		}
+		visible = {
+		NOT = {
+			has_country_flag = hololive_union_leader
+			}
+			is_in_array = {
+					array = NOE.hololive_union 
+					value = THIS.id
+			}
+			has_country_flag = joined_hololive_union
 		}
 }
 
@@ -120,7 +163,7 @@ invest_150_political_power = {
 		
 		visible = {
 		is_in_array = {
-		array = hololive_union
+		array = NOE.hololive_union
 		value = THIS.id
 		 }
 		}
@@ -144,7 +187,7 @@ invest_300_political_power = {
 		
 		visible = {
 		is_in_array = {
-		array = hololive_union
+		array = NOE.hololive_union
 		value = THIS.id
 		 }
 		}
@@ -169,6 +212,11 @@ factory_assistance_big = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -300
 				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
+				}
 			  }
 		
 		visible = {
@@ -184,6 +232,9 @@ factory_assistance_big = {
 			value = 200
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 
@@ -203,6 +254,11 @@ factory_assistance_medium = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -150
 				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
+				}
 			  }
 		
 		visible = {
@@ -223,6 +279,9 @@ factory_assistance_medium = {
 			value = 100
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 
@@ -237,21 +296,26 @@ factory_assistance_small = {
 				add_to_variable = {
 				var = GLOBAL.hololive_union_political_power_stockpile
 				value = -20
+				}
 				add_to_variable = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -50
 				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
 				}
 			  }
 		
 		visible = {
 		check_variable = {
-			var = GLOBAL.hololive_union_political_power_stockpile
+			var = ROOT.hololive_union_political_power_investment
 			value = 50
 			compare = greater_than_or_equals
 			}
 		check_variable = {
-			var = GLOBAL.hololive_union_political_power_stockpile
+			var = ROOT.hololive_union_political_power_investment
 			value = 150
 			compare = less_than
 			}
@@ -262,6 +326,9 @@ factory_assistance_small = {
 			value = 20
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 
@@ -281,6 +348,11 @@ construction_assistance_small = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -50
 				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
+				}
 			  }
 		
 		visible = {
@@ -301,6 +373,9 @@ construction_assistance_small = {
 			value = 20
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 construction_assistance_medium = {
@@ -319,6 +394,11 @@ construction_assistance_medium = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -150
 				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
+				}
 			  }
 		
 		visible = {
@@ -339,6 +419,9 @@ construction_assistance_medium = {
 			value = 100
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 construction_assistance_big = {
@@ -357,6 +440,11 @@ construction_assistance_big = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -300
 				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
+				}
 			  }
 		
 		visible = {
@@ -372,6 +460,9 @@ construction_assistance_big = {
 			value = 200
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 research_assistance_small = {
@@ -389,6 +480,11 @@ research_assistance_small = {
 				add_to_variable = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -50
+				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
 				}
 			  }
 		
@@ -410,6 +506,9 @@ research_assistance_small = {
 			value = 20
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 research_assistance_medium = {
@@ -427,6 +526,11 @@ research_assistance_medium = {
 				add_to_variable = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -150
+				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
 				}
 			  }
 		
@@ -448,6 +552,9 @@ research_assistance_medium = {
 			value = 100
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 research_assistance_big = {
@@ -466,6 +573,11 @@ research_assistance_big = {
 				var = ROOT.hololive_union_political_power_investment
 				value = -300
 				}
+				set_country_flag = {
+					flag = union_funds_used
+					days = 365
+					value = 1
+				}
 			  }
 		
 		visible = {
@@ -481,6 +593,9 @@ research_assistance_big = {
 			value = 200
 			compare = greater_than_or_equals
 			}
+		NOT = {
+		has_country_flag = union_funds_used
+		}
 	}
 }
 medium_tank_research_project = {
@@ -519,6 +634,7 @@ medium_tank_research_project = {
 			value = 300
 			compare = greater_than_or_equals
 			}
+		has_country_flag = hololive_union_leader
 	}
 }
 fighter_2_research_project = {
@@ -557,6 +673,7 @@ fighter_2_research_project = {
 			value = 400
 			compare = greater_than_or_equals
 			}
+		has_country_flag = hololive_union_leader
 	}
 }
 heavy_2_research_project = {
@@ -595,6 +712,7 @@ heavy_2_research_project = {
 			value = 500
 			compare = greater_than_or_equals
 			}
+			has_country_flag = hololive_union_leader
 		}
 	}
 }
