@@ -1059,14 +1059,18 @@ country_event = {
 		add_political_power = 4
 	  }
 	 option = {
-		name = noel.31.b
 		trigger = {
 			NOT = {
 			has_completed_focus = NOE_fight_against_serfdom
 			}
 		}
+		name = noel.31.b
 		NOE = {
-			declare_war_on = FLA
+			declare_war_on = {
+				target = FLA
+				type = annex_everything
+			}
+			
 		}
 	   }
 }
