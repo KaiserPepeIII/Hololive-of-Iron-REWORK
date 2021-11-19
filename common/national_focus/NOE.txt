@@ -343,23 +343,23 @@ focus_tree = {
 		completion_reward = {
 		add_popularity = {
 				ideology = fascism
-				popularity = 0.03
+				popularity = -0.1
 			}
 			add_popularity = {
 				ideology = democratic_revitalisation
-				popularity = 0.03
+				popularity = -0.1
 			}
 			add_popularity = {
-				ideology =democratic
-				popularity = 0.03
+				ideology = democratic
+				popularity = 0.1
 			}
 			add_popularity = {
 				ideology = pro_yagoo_progressive
-				popularity = 0.09
+				popularity = 0.3
 			}
 			add_popularity = {
 				ideology = mixed_ideology_democracy
-				popularity = 0.03
+				popularity = 0.5
 			}
 		}
 		x = 5
@@ -406,6 +406,28 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_manumission_laws
 		}
+		completion_reward = {
+		add_popularity = {
+				ideology = fascism
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = democratic_revitalisation
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = 0.09
+			}
+			add_popularity = {
+				ideology = mixed_ideology_democracy
+				popularity = 0.03
+			}
+		}
 		x = 9
 		y = 7
 
@@ -434,6 +456,7 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_weighted_voting
 		}
+		
 		x = 5
 		y = 7
 
@@ -4110,9 +4133,8 @@ focus_tree = {
 		}
 		completion_reward = {
 		set_politics = {
-			ruling_party = pro_yagoo_progressive
+			ruling_party = mixed_ideology_democracy
 			elections_allowed = no
-
 		   }
 		 #ADD FLAVOR EVENT LATER
 		}
@@ -4818,16 +4840,16 @@ focus_tree = {
 		   }
 		   set_global_flag = hololive_union
 		   set_country_flag = hololive_union_leader
-		   create_variable = { hololive_union_political_power_stockpile = 0  }
+		   set_variable = { GLOBAL.hololive_union_political_power_stockpile = 0  }
 				clamp_variable = {
 					var = GLOBAL.hololive_union_political_power_stockpile
 					min = 0
 					max = 9999
 				
 				}
-			create_variable = { hololive_union_political_power_investment = 0 }
+			set_variable = { ROOT.hololive_union_political_power_investment = 0 }
 			clamp_variable = {
-					var = GLOBAL.hololive_union_political_power_investment
+					var = ROOT.hololive_union_political_power_investment
 					min = 0
 					max = 9999
 				
@@ -4838,22 +4860,6 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_lhs_values
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_ally_pekora
-			focus = NOE_ally_suisei
-			focus = NOE_form_hololive_union
-		}
-		mutually_exclusive = {
-			focus = NOE_resistance_values
-		}
-		x = 3
-		y = 20
-
-	}
-	focus = {
 		id = NOE_resistance_values
 		icon = GFX_goal_unknown
 		cost = 0.00
@@ -4861,9 +4867,6 @@ focus_tree = {
 			focus = NOE_form_hololive_union
 			focus = NOE_ally_pekora
 			focus = NOE_ally_suisei
-		}
-		mutually_exclusive = {
-			focus = NOE_lhs_values
 		}
 		x = 7
 		y = 20
