@@ -11,7 +11,7 @@ focus_tree = {
 	
 	default = no
 	focus = {
-		id = WFA_status_quo
+		id = WFA_status_quo #path to be continue to serve fubuki
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
@@ -23,37 +23,47 @@ focus_tree = {
 
 	}
 	focus = {
-		id = WFA_norwegian_independence 
+		id = WFA_norwegian_independence#norwegian nationalism and eventual independence
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
 			focus = WFA_status_quo
+			focus = WFA_norwegian_independence 
 		}
 		x = 16
 		y = 2
 
 	}
 	focus = {
-		id = WFA_brigadier_plot
+		id = WFA_brigadier_plot#wfa tries to take over Fubuki's land
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
 			focus = WFA_status_quo
+			focus = WFA_norwegian_independence 
 		}
 		x = 10
 		y = 2
 
 	}
 	focus = {
-		id = WFA_expand_industrial_base
+		id = WFA_expand_industrial_base#industrial tech and foctory 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		x = 34
-		y = 2
-
+		y = 2	
+		
+		completion_reward = {
+			two_random_civilian_factory = yes
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
 	}
 	focus = {
-		id = WFA_wfa_reliance
+		id = WFA_wfa_reliance#+ to nationalism, bonus to wfa focus
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
@@ -64,7 +74,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = WFA_local_defense
+		id = WFA_local_defense# 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		mutually_exclusive = {
@@ -540,6 +550,9 @@ focus_tree = {
 		prerequisite = {
 			focus = WFA_expand_industrial_base
 		}
+		completion_reward = {
+			two_random_arms_factory = yes
+		}
 		x = 37
 		y = 3
 
@@ -553,7 +566,26 @@ focus_tree = {
 		}
 		x = 36
 		y = 4
-
+		completion_reward = {
+			110 {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 2
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				category = artillery
+			}
+		}
 	}
 	focus = {
 		id = WFA_narvik_arsenals
@@ -564,7 +596,34 @@ focus_tree = {
 		}
 		x = 38
 		y = 4
-
+		completion_reward = {
+			144 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			999 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				category = marine_tech
+			}
+		}
 	}
 	focus = {
 		id = WFA_expand_dockyards
@@ -575,6 +634,11 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = WFA_narvik_arsenals
+		}
+		completion_reward = {
+			two_random_dockyards = yes
+			two_random_dockyards = yes
+			two_random_dockyards = yes
 		}
 		x = 35
 		y = 5
@@ -603,7 +667,12 @@ focus_tree = {
 		}
 		x = 39
 		y = 5
-
+		
+		completion_reward = {
+			add_ideas = {
+				WFA_cheap_ships
+			}
+		}
 	}
 	focus = {
 		id = WFA_colonial_ports
@@ -617,7 +686,9 @@ focus_tree = {
 		}
 		x = 38
 		y = 6
-
+		
+		completion_reward = {
+		}
 	}
 	focus = {
 		id = WFA_efficient_industry
@@ -631,7 +702,12 @@ focus_tree = {
 		}
 		x = 37
 		y = 7
-
+		
+		completion_reward = {
+			add_ideas = {
+			WFA_efficient_industry
+			}
+		}
 	}
 	focus = {
 		id = WFA_colonial_troops
