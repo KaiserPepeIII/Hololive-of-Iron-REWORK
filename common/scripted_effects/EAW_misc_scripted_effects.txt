@@ -1,0 +1,787 @@
+﻿#THIS is target - useful for removing puppet status without requiring the overlord's tag
+end_puppet_this = {
+	if = {
+		limit = { is_subject = yes }
+		overlord = { end_puppet = PREV }
+	}
+}
+
+#Preserve government type and autonomy when puppeted
+
+#THIS is target - RUN BEFORE PUPPETING
+get_current_government_type = {
+	clr_country_flag = was_neutral
+	clr_country_flag = was_communist
+	clr_country_flag = was_democratic
+	clr_country_flag = was_fascist
+	set_variable = { var = last_neutrality_pop value = party_popularity@neutrality }
+	set_variable = { var = last_communism_pop value = party_popularity@communism }
+	set_variable = { var = last_democratic_pop value = party_popularity@democratic }
+	set_variable = { var = last_fascism_pop value = party_popularity@fascism }
+	if = {
+		limit = { has_government = neutrality }
+		set_country_flag = was_neutral
+	}
+	else_if = {
+		limit = { has_government = communism }
+		set_country_flag = was_communist
+	}
+	else_if = {
+		limit = { has_government = democratic }
+		set_country_flag = was_democratic
+	}
+	else_if = {
+		limit = { has_government = fascism }
+		set_country_flag = was_fascist
+	}
+}
+
+#THIS is target - RUN AFTER PUPPETING having ran get_current_government_type before
+restore_previous_government_type = {
+	hidden_effect = {
+		subtract_from_variable = {
+			var = last_neutrality_pop
+			value = party_popularity@neutrality
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = last_neutrality_pop
+		}
+		clear_variable = last_neutrality_pop
+		subtract_from_variable = {
+			var = last_communism_pop
+			value = party_popularity@communism
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = last_communism_pop
+		}
+		clear_variable = last_communism_pop
+		subtract_from_variable = {
+			var = last_democratic_pop
+			value = party_popularity@democratic
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = last_democratic_pop
+		}
+		clear_variable = last_democratic_pop
+		subtract_from_variable = {
+			var = last_fascism_pop
+			value = party_popularity@fascism
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = last_fascism_pop
+		}
+		clear_variable = last_fascism_pop
+		if = {
+			limit = { has_country_flag = was_neutral }
+			set_politics = { ruling_party = neutrality }
+		}
+		else_if = {
+			limit = { has_country_flag = was_communist }
+			set_politics = { ruling_party = communism }
+		}
+		else_if = {
+			limit = { has_country_flag = was_democratic }
+			set_politics = { ruling_party = democratic }
+		}
+		else_if = {
+			limit = { has_country_flag = was_fascist }
+			set_politics = { ruling_party = fascism }
+		}
+	}
+}
+
+#THIS is target - this allows to restore the current autonomy level after the overlord gets changed
+get_current_autonomy_level = {
+	hidden_effect = {
+		#Regular puppets
+		clr_country_flag = former_integrated_puppet
+		clr_country_flag = former_puppet
+		clr_country_flag = former_colony
+		clr_country_flag = former_dominion
+		#Fascist puppets
+		clr_country_flag = former_reichskommissariat
+		clr_country_flag = former_reichsprotectorate
+		clr_country_flag = former_satellite
+		if = {
+			limit = { has_autonomy_state = autonomy_integrated_puppet }
+			set_country_flag = former_integrated_puppet
+		}
+		else_if = {
+			limit = { has_autonomy_state = autonomy_puppet }
+			set_country_flag = former_puppet
+		}
+		else_if = {
+			limit = { has_autonomy_state = autonomy_colony }
+			set_country_flag = former_colony
+		}
+		else_if = {
+			limit = { has_autonomy_state = autonomy_dominion }
+			set_country_flag = former_dominion
+		}
+		else_if = {
+			limit = { has_autonomy_state = autonomy_reichskommissariat }
+			set_country_flag = former_reichskommissariat
+		}
+		else_if = {
+			limit = { has_autonomy_state = autonomy_reichsprotectorate }
+			set_country_flag = former_reichsprotectorate
+		}
+		else_if = {
+			limit = { has_autonomy_state = autonomy_satellite }
+			set_country_flag = former_satellite
+		}
+	}
+}
+
+#THIS is target - RUN AFTER PUPPETING having ran set_previous_autonomy_level before
+set_previous_autonomy_level = {
+	hidden_effect = {
+		if = {
+			limit = { is_subject = yes OR = { has_dlc = "Together for Victory" has_dlc = "Death or Dishonor" } }
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = former_integrated_puppet
+						has_country_flag = former_reichskommissariat
+					}
+				}
+				overlord = {
+					if = {
+						limit = { autonomy_states_fascist = yes }
+						overlord = { set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat } }
+						else = {
+							overlord = { set_autonomy = { target = PREV autonomy_state = autonomy_integrated_puppet } }
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							OR = {
+								has_country_flag = former_puppet
+								has_country_flag = former_reichsprotectorate
+							}
+						}
+						overlord = {
+							if = {
+								limit = { autonomy_states_fascist = yes }
+								overlord = { set_autonomy = { target = PREV autonomy_state = autonomy_reichsprotectorate } }
+								else = {
+									overlord = { set_autonomy = { target = PREV autonomy_state = autonomy_puppet } }
+								}
+							}
+						}
+						else = {
+							if = {
+								limit = {
+									has_country_flag = former_colony
+								}
+								overlord = {
+									if = {
+										limit = { autonomy_states_fascist = yes }
+										overlord = { set_autonomy = { target = PREV autonomy_state = autonomy_reichsprotectorate } }
+										else = {
+											overlord = { set_autonomy = { target = PREV autonomy_state = autonomy_colony } }
+										}
+									}
+								}
+								else = {
+									if = {
+										limit = {
+											OR = {
+												has_country_flag = former_dominion
+												has_country_flag = former_satellite
+											}
+										}
+										overlord = {
+											if = {
+												limit = { autonomy_states_fascist = yes }
+												overlord = { set_autonomy = { target = PREV autonomy_state = autonomy_satellite } }
+												else = {
+													overlord = { set_autonomy = { target = PREV autonomy_state = autonomy_dominion } }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+one_random_arms_factory = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+}
+two_random_arms_factory = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+	}
+}
+three_random_arms_factory = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+	}
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+}
+four_random_arms_factory = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+	}
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+	}
+}
+one_random_industrial_complex = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+}
+two_random_industrial_complex = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+	}
+}
+three_random_industrial_complex = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 3
+		add_building_construction = {
+			type = industrial_complex
+			level = 3
+			instant_build = yes
+		}
+	}
+}
+four_random_industrial_complex = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+	}
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+	}
+}
+one_random_infrastructure = {
+	random_owned_controlled_state = {
+		limit = {
+			free_building_slots = {
+				building = infrastructure
+				size > 0
+				include_locked = yes
+			}
+			OR = {
+				is_in_home_area = yes
+				NOT = {
+					owner = {
+						any_owned_state = {
+							free_building_slots = {
+								building = infrastructure
+								size > 0
+								include_locked = yes
+							}
+							is_in_home_area = yes
+						}
+					}
+				}
+			}
+		}
+		add_building_construction = {
+			type = infrastructure
+			level = 2
+			instant_build = yes
+		}
+	}
+}
+one_random_dockyard = {
+	if = {
+		limit = {
+			NOT = {
+				any_owned_state = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_coastal = yes
+				free_building_slots = {
+					building = dockyard
+					size > 2
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_country_flag = naval_effort_built }
+			any_owned_state = {
+				dockyard > 0
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = yes
+				}
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				dockyard > 0
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_country_flag = naval_effort_built }
+			NOT = {
+				any_owned_state = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+		random_state = {
+			limit = {
+				controller = { tag = ROOT }
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+two_random_dockyards = {
+	if = {
+		limit = {
+			NOT = {
+				any_owned_state = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_coastal = yes
+				free_building_slots = {
+					building = dockyard
+					size > 2
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+		set_country_flag = naval_effort_built
+	}
+	if = {
+		limit = {
+			NOT = { has_country_flag = naval_effort_built }
+			any_owned_state = {
+				dockyard > 0
+				free_building_slots = {
+					building = dockyard
+					size > 2
+					include_locked = yes
+				}
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				dockyard > 0
+				free_building_slots = {
+					building = dockyard
+					size > 2
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+		set_country_flag = naval_effort_built
+	}
+	if = {
+		limit = {
+			NOT = { has_country_flag = naval_effort_built }
+			NOT = {
+				any_owned_state = {
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+			}
+		}
+		random_state = {
+			limit = {
+				controller = { tag = ROOT }
+				free_building_slots = {
+					building = dockyard
+					size > 2
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
