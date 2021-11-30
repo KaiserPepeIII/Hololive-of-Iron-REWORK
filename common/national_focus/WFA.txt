@@ -69,6 +69,14 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = WFA_local_defense
 		}
+
+		completion_reward = {
+			add_popularity = {
+    			ideology = reactionary_nationalism
+    			popularity = 0.15
+			}
+		}
+
 		x = 33
 		y = 8
 
@@ -79,6 +87,9 @@ focus_tree = {
 		cost = 0.00
 		mutually_exclusive = {
 			focus = WFA_wfa_reliance
+		}
+		completion_reward = {
+			add_ideas ={WFA_local_defense_focus}
 		}
 		x = 37
 		y = 8
@@ -503,6 +514,11 @@ focus_tree = {
 		prerequisite = {
 			focus = WFA_wfa_reliance
 		}
+
+		completion_reward = {
+			add_ideas = {WFA_higher_training_standards}
+		}
+
 		x = 32
 		y = 9
 
@@ -524,6 +540,9 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = WFA_wfa_reliance
+		}
+		completion_reward = {
+			add_ideas = {WFA_winter_warfare}
 		}
 		x = 34
 		y = 9
@@ -757,7 +776,7 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = WFA_colonial_troops
+		id = WFA_colonial_troops #load oob to spawn overseas garrisons
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -774,6 +793,12 @@ focus_tree = {
 		prerequisite = {
 			focus = WFA_local_defense
 		}
+		
+		completion_reward = {
+			ai_focus_defense_factor = 0.25
+			add_ideas = {WFA_defense_ethos}
+		}
+
 		x = 39
 		y = 9
 
@@ -785,12 +810,17 @@ focus_tree = {
 		prerequisite = {
 			focus = WFA_local_defense
 		}
+
+		completion_reward = {
+			add_ideas = {WFA_civilian_guard}
+		}
+
 		x = 41
 		y = 9
 
 	}
 	focus = {
-		id = WFA_expand_garrisons
+		id = WFA_expand_garrisons #spawn local guard/garrisons
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -816,6 +846,11 @@ focus_tree = {
 		prerequisite = {
 			focus = WFA_colonial_troops
 		}
+
+		completion_reward = {
+			add_ideas = {WFA_defensive_doctrine}
+		}
+
 		x = 40
 		y = 10
 
@@ -829,6 +864,10 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = WFA_defense_doctrine
+		}
+
+		completion_reward = {
+			add_ideas = {WFA_expanded_conscription}
 		}
 		x = 39
 		y = 11
@@ -845,6 +884,15 @@ focus_tree = {
 			focus = WFA_light_infantry_focus
 			focus = WFA_motorized_focus
 		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 2
+				uses = 2
+				category = marine_tech
+			}
+		}
+
 		x = 35
 		y = 11
 
@@ -860,6 +908,15 @@ focus_tree = {
 			focus = WFA_light_infantry_focus
 			focus = WFA_amphibious_focus
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 2
+				uses = 2
+				category = motorized_equipment
+			}
+		}
+
 		x = 33
 		y = 11
 
@@ -874,6 +931,14 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = WFA_motorized_focus
 			focus = WFA_amphibious_focus
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 3
+				category = infantry_weapons
+			}
 		}
 		x = 31
 		y = 11
