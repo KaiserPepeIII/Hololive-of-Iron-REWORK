@@ -74,6 +74,11 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_depoliticize_army
 		}
+
+		completion_reward = {
+			add_ideas = {FBK_strengthen_wfa}
+		}
+
 		x = 41
 		y = 9
 
@@ -82,6 +87,11 @@ focus_tree = {
 		id = FBK_depoliticize_the_navy
 		icon = GFX_goal_unknown
 		cost = 0.00
+
+		completion_reward = {
+			navy_experience = 50
+		}
+
 		x = 54
 		y = 9
 
@@ -90,6 +100,10 @@ focus_tree = {
 		id = FBK_expand_the_airforce
 		icon = GFX_goal_unknown
 		cost = 0.00
+
+		completion_reward = {
+			air_experience = 50
+		}
 		x = 63
 		y = 9
 
@@ -812,6 +826,11 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_professional_army
 		}
+
+		completion_reward = {
+			add_ideas = {FBK_low_standards}
+		}
+
 		x = 37
 		y = 11
 
@@ -837,6 +856,11 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_lessen_recruitment_standards
 		}
+
+		completion_reward = {
+			add_ideas = {FBK_low_standards}
+		}
+
 		x = 39
 		y = 11
 
@@ -849,6 +873,11 @@ focus_tree = {
 			focus = FBK_lessen_recruitment_standards
 			focus = FBK_professional_army
 		}
+
+		completion_reward = {
+			add_ideas = {FBK_stormtroopers}
+		}
+
 		x = 38
 		y = 12
 
@@ -947,12 +976,22 @@ focus_tree = {
 
 	}
 	focus = {
-		id = FBK_infantry_lessons
+		id = FBK_infantry_lessons # inf eqpt, support cos
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_memories_of_konigsberg
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 3
+				category = infantry_weapons
+				category = support_tech
+				}
+			}
+
 		x = 41
 		y = 11
 
@@ -980,12 +1019,18 @@ focus_tree = {
 			focus = FBK_memories_of_konigsberg
 			focus = FBK_memories_of_baltics
 		}
+
+		completion_reward = {
+			army_experience = 20
+			add_ideas = {FBK_field_officers}
+		}
+
 		x = 43
 		y = 11
 
 	}
 	focus = {
-		id = FBK_special_forces
+		id = FBK_special_forces #sf cap und training
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -993,6 +1038,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = FBK_infantry_lessons
+		}
+		completion_reward = {
+			add_ideas = {FBK_special_operations_command}
 		}
 		x = 41
 		y = 12
@@ -1005,12 +1053,22 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_tactical_innovation
 		}
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.25
+				uses = 3
+				category = land_doctrine
+			}
+		}
+
 		x = 43
 		y = 12
 
 	}
 	focus = {
-		id = FBK_infantry_support
+		id = FBK_infantry_support #leg infantry buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1018,6 +1076,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = FBK_special_forces
+		}
+		comletion_reward = {	
+			add_ideas = {FBK_light_infantry_focus}
 		}
 		x = 42
 		y = 13
@@ -1035,18 +1096,27 @@ focus_tree = {
 
 	}
 	focus = {
-		id = FBK_artillery_lessons
+		id = FBK_artillery_lessons #arty tech
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_memories_of_baltics
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = artillery
+				}
+			}
+
 		x = 45
 		y = 11
 
 	}
 	focus = {
-		id = FBK_tank_lessons
+		id = FBK_tank_lessons #tank tech and design cost reduction
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1058,9 +1128,17 @@ focus_tree = {
 		x = 45
 		y = 12
 
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 2.5
+				uses = 1
+				category = armor
+				}
+			}
+
 	}
 	focus = {
-		id = FBK_motorized_warfare
+		id = FBK_motorized_warfare #mot mech buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1068,6 +1146,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = FBK_operational_innovation
+		}
+		comletion_reward = {	
+			add_ideas = {FBK_mobile_infantry_focus}
 		}
 		x = 44
 		y = 13
@@ -1096,7 +1177,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = FBK_rework_conscription
+		id = FBK_rework_conscription # increased conscription and mobilization speed
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1246,6 +1327,7 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
 		}
+
 		x = 52
 		y = 10
 
@@ -1257,6 +1339,15 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_plan_hler 
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 3
+				category = naval_equipment
+				}
+			}
+
 		x = 51
 		y = 11
 
@@ -1268,6 +1359,15 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_modern_designs
 		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 3
+				uses = 1
+				category = ss_tech
+				}
+			}
+
 		x = 51
 		y = 12
 
@@ -1308,12 +1408,17 @@ focus_tree = {
 
 	}
 	focus = {
-		id = FBK_naval_expansion_one
+		id = FBK_naval_expansion_one 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_plan_hler 
 		}
+
+		completion_reward {
+			add_ideas = {FBK_escort_fleet_expansion}
+		}
+
 		x = 53
 		y = 11
 
@@ -1325,12 +1430,17 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_naval_expansion_one
 		}
+
+		completion_reward {
+			add_ideas = {FBK_battle_fleet_expansion}
+		}
+
 		x = 53
 		y = 12
 
 	}
 	focus = {
-		id = FBK_legacy_of_northern_war
+		id = FBK_legacy_of_northern_war #xp gain? / amphib/nav buffs
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1347,6 +1457,10 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_legacy_of_northern_war
 		}
+		completion_reward ={
+			add_ideas ={FBK_independent_marines}
+		}
+
 		x = 55
 		y = 11
 
@@ -1361,6 +1475,8 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_baltic_sea_focus
 		}
+
+
 		x = 55
 		y = 12
 
@@ -1372,12 +1488,21 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_legacy_of_northern_war
 		}
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = nav_doctrine_boost
+				cost_reduction = 0.25
+				uses = 3
+				category = naval_doctrine
+			}
+		}
 		x = 57
 		y = 11
 
 	}
 	focus = {
-		id = FBK_baltic_sea_focus
+		id = FBK_baltic_sea_focus #baltic naval bases and forts?
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
@@ -1400,6 +1525,7 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
+
 		x = 61
 		y = 10
 
@@ -1411,6 +1537,15 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_plan_thor
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 2
+				uses = 1
+				category = cat_strategic_bomber
+			}
+		}
+
 		x = 59
 		y = 11
 
@@ -1422,17 +1557,27 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_plan_thor
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.5
+				uses = 1
+				category = tactical_bomber
+			}
+		}
+
 		x = 61
 		y = 11
 
 	}
 	focus = {
-		id = FBK_general_expansion
+		id = FBK_general_expansion # unlocks design co 
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
+
 		x = 63
 		y = 10
 
@@ -1444,6 +1589,16 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_general_expansion
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.5
+				uses = 2
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
+
 		x = 63
 		y = 11
 
@@ -1466,6 +1621,15 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_plan_valkyrie
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.5
+				uses = 1
+				category = naval_bomber
+			}
+		}
+
 		x = 65
 		y = 11
 
@@ -1477,6 +1641,15 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_plan_valkyrie
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.5
+				uses = 1
+				category = cas_bomber
+			}
+		}
+
 		x = 67
 		y = 11
 
@@ -1495,6 +1668,11 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_home_defense
 		}
+		
+		completion_reward = {
+			add_ideas = {FBK_air_superiority}
+		}
+
 		x = 65
 		y = 12
 
@@ -1513,18 +1691,32 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_on_the_frontline
 		}
+
+		completion_reward = {
+			add_ideas = {FBK_interception}
+		}
+
 		x = 61
 		y = 12
 
 	}
 	focus = {
-		id = FBK_heavy_water
+		id = FBK_heavy_water # nuke tech
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_on_the_frontline
 			focus = FBK_home_defense
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 2
+				uses = 1
+				category = nuclear
+			}
+		}
+
 		x = 63
 		y = 13
 
@@ -1625,12 +1817,15 @@ focus_tree = {
 
 	}
 	focus = {
-		id = FBK_combined_arms_warfare
+		id = FBK_combined_arms_warfare # tank cas buff
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_infantry_support
 			focus = FBK_motorized_warfare
+		}
+		comletion_reward = {	
+			add_ideas = {FBK_air_land_battle}
 		}
 		x = 43
 		y = 14
@@ -1670,28 +1865,47 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_naval_expansion_two
 		}
+
+		completion_reward = {
+			
+		}
+
 		x = 52
 		y = 13
 
 	}
 	focus = {
-		id = FBK_rocketry
+		id = FBK_rocketry # rocket tech
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_heavy_water
 		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.5
+				uses = 2
+				category = rocketry
+			}
+		}
+
 		x = 62
 		y = 14
 
 	}
 	focus = {
-		id = FBK_the_bomb
+		id = FBK_the_bomb # nuke production
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_heavy_water
 		}
+
+		completion_reward = {
+			add_ideas = {FBK_atomic_warfare}
+		}
+
 		x = 64
 		y = 14
 
