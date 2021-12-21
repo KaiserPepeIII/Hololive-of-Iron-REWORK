@@ -4702,24 +4702,23 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_industrieller_front_concessions
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_industrial_expansion
-		}
-		x = 13
-		y = 17
-
-	}
-	focus = {
 		id = NOE_state_arms_industry
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_industrial_expansion
 		}
-		x = 15
+		completion_reward = {
+			random_owned_state = {
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+			type = arms_factory
+			level = 5
+			instant_build = yes
+		  }
+		 }
+		}
+		x = 14
 		y = 17
 
 	}
@@ -4733,6 +4732,12 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_expand_town_infrastructure
 		}
+		completion_reward = {
+			add_ideas = {
+				volkswagen
+			}
+		
+		}
 		x = 12
 		y = 18
 
@@ -4743,6 +4748,16 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_volkswagen
+		}
+		completion_reward = {
+			random_owned_state = {
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+			type = industrial_complex
+			level = 5
+			instant_build = yes
+		  }
+		 }
 		}
 		x = 10
 		y = 19
@@ -4755,6 +4770,54 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_volkswagen
 		}
+		completion_reward = {
+		random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+		random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+		 random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+		 random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+		 random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 2
+					instant_build = yes
+		 	   }
+		
+		   }
+		}
+		
 		x = 12
 		y = 19
 
@@ -4768,6 +4831,13 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_volkswagen
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = volkswagen
+				add_idea = volkswagen2
+			}
+		
 		}
 		x = 15
 		y = 19
