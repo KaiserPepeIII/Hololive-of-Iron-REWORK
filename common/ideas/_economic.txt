@@ -1,17 +1,17 @@
 ideas = {
 
-	economy = { 
+	economy = {
 		law = yes
 		use_list_view = yes
-		
+
 		undisturbed_isolation = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
 			removal_cost = -1
-		
+
 			modifier = {
 				consumer_goods_factor = 0.50
 				production_speed_industrial_complex_factor = -0.5
@@ -28,25 +28,24 @@ ideas = {
 				fuel_gain_factor = -0.6
 				agency_upgrade_time = 1.0
 			}
-			
+
 			allowed_to_remove = {
 				OR = {
 					has_war_support > 0.5
 					has_war = yes
-					has_completed_focus = USA_limited_intervention
 				}
 			}
-			
+
 			cancel_if_invalid = no
 		}
-		
+
 		isolation = {
-						
+
 			allowed = {
 				always = no
 			}
 			removal_cost = -1
-			
+
 			modifier = {
 				consumer_goods_factor = 0.4
 				production_speed_industrial_complex_factor = -0.4
@@ -66,19 +65,18 @@ ideas = {
 				OR = {
 					has_war_support > 0.75
 					has_war = yes
-					has_completed_focus = USA_limited_intervention					
 				}
 			}
-			
+
 			cancel_if_invalid = no
 		}
-		
+
 		civilian_economy = {
-			
-		
+
+
 			cost = 150
 			removal_cost = -1
-			
+
 			modifier = {
 				consumer_goods_factor = 0.35
 				production_speed_industrial_complex_factor = -0.3
@@ -88,66 +86,27 @@ ideas = {
 				max_fuel_factor = -0.25
 				fuel_gain_factor = -0.4
 			}
-			
+
 			default = yes
-			
+
 			cancel_if_invalid = no
 		}
-		
+
 		low_economic_mobilisation = {
-			
+
 			available = {
 				has_war_support > 0.15
-				if = {
-					limit = {
-						original_tag = HUN
-						has_dlc = "Death or Dishonor"
-					}
-					NOT = { has_idea = HUN_treaty_of_triannon }
-				}
-				if = {
-					limit = {
-						has_completed_focus = USA_limited_intervention
-						has_defensive_war = no
-					}
-					has_war_support > 0.3
-					congress_high_support_trigger = yes
-				}	
-				if = {
-					limit = {
-						original_tag = TUR
-						has_dlc = "Battle for the Bosporus" 
-					}
-					NOT = { 
-						OR = {
-							has_active_mission = TUR_etatism_crisis_2
-							has_active_mission = TUR_etatism_crisis_3
-							has_active_mission = TUR_etatism_crisis_4
-						}
-					}
-				}
 			}
-			on_add = {
-				if = {
-					limit = {
-						tag = USA
-						has_completed_focus = USA_limited_intervention
-						has_defensive_war = no
-					}
-					USA_congress_large_opposition = yes
-				}
-			}
-			
 			cost = 150
 			removal_cost = -1
-			
+
 			modifier = {
 				consumer_goods_factor = 0.3
 				production_speed_industrial_complex_factor = -0.1
 				production_speed_arms_factory_factor = -0.1
 				fuel_gain_factor = -0.25
 			}
-			
+
 			cancel_if_invalid = no
 
 			ai_will_do = {
@@ -155,63 +114,25 @@ ideas = {
 
    				modifier = {
 					factor = 20
-					
+
 					is_major = yes
 				}
 				modifier = {
 					has_war_support > 0.25
 					factor = 0 #don't even look at it if you could be taking partial mob
 				}
-				modifier = {
-					tag = ENG
-					has_war = no
-					date < 1937.6.1
-					factor = 0
-				}
    			}
 		}
-		
+
 		partial_economic_mobilisation = {
-			
+
 			available = {
 				has_war_support > 0.25
-
-				if = {
-					limit = {
-						original_tag = HUN
-						has_dlc = "Death or Dishonor"
-					}
-					OR = {
-						has_completed_focus = HUN_secret_rearmament
-						NOT = { has_idea = HUN_treaty_of_triannon }
-					}
-				}
-				if = {
-					limit = {
-						has_completed_focus = USA_limited_intervention
-						has_defensive_war = no
-					}
-					has_war_support > 0.5
-					congress_high_support_trigger = yes
-				}
-				if = {
-					limit = {
-						original_tag = TUR
-						has_dlc = "Battle for the Bosporus" 
-					}
-					NOT = { 
-						OR = {
-							has_active_mission = TUR_etatism_crisis_1
-							has_active_mission = TUR_etatism_crisis_3
-							has_active_mission = TUR_etatism_crisis_4
-						}
-					}
-				}
 			}
 
 			cost = 150
 			removal_cost = -1
-			
+
 			modifier = {
 				consumer_goods_factor = 0.25
 				production_speed_arms_factory_factor = 0.1
@@ -219,7 +140,7 @@ ideas = {
 				conversion_cost_mil_to_civ_factor = -0.1
 				fuel_gain_factor = -0.1
 			}
-			
+
 			cancel_if_invalid = no
 			on_add = {
 				if = {
@@ -236,15 +157,15 @@ ideas = {
 
    				modifier = {
 					factor = 20
-					
+
 					is_major = yes
 				}
    			}
 		}
-		
+
 		war_economy = {
-			
-			
+
+
 			available = {
 				has_war_support > 0.5
 				OR = {
@@ -254,136 +175,76 @@ ideas = {
 					AND = {
 						has_war = yes
 						any_enemy_country = {
-							ic_ratio = { 
-								tag = ROOT 
+							ic_ratio = {
+								tag = ROOT
 								ratio > 0.4
 							}
 						}
 					}
 				}
-
-				if = {
-					limit = {
-						original_tag = HUN
-						has_dlc = "Death or Dishonor"
-					}
-					NOT = { has_idea = HUN_treaty_of_triannon }
-				}
-				if = {
-					limit = {
-						has_completed_focus = USA_limited_intervention
-						has_defensive_war = no
-					}
-					has_war_support > 0.75
-					congress_high_support_trigger = yes
-				}		
-				if = {
-					limit = {
-						original_tag = TUR
-						has_dlc = "Battle for the Bosporus" 
-					}
-					NOT = { 
-						OR = {
-							has_active_mission = TUR_etatism_crisis_1
-							has_active_mission = TUR_etatism_crisis_2
-							has_active_mission = TUR_etatism_crisis_4
-						}
-					}
-				}
 			}
-		
+
 			cost = 150
 			removal_cost = -1
-			
+
 			modifier = {
 				consumer_goods_factor = 0.2
 				production_speed_arms_factory_factor = 0.2
 				conversion_cost_civ_to_mil_factor= -0.2
 				conversion_cost_mil_to_civ_factor = -0.2
 			}
-			
+
 			cancel_if_invalid = no
-			on_add = {
-				if = {
-					limit = {
-						tag = USA
-						has_completed_focus = USA_limited_intervention
-						has_defensive_war = no
-					}
-					USA_congress_large_opposition = yes
-				}
-			}
+
 			ai_will_do = {
-   				factor = 5
+   				factor = 3
 
 				modifier = {
 					#High prio on production
 					factor = 20
 					manpower_per_military_factory >  1000
 				}
-				
+
+				modifier = {
+					# If we CAN go for total mobilization and have enough manpower for it, skip war economy, it's only a waste of PP
+					factor = 0
+
+					manpower_per_military_factory > 15000
+					has_war = yes
+					has_war_support > 0.8
+					any_enemy_country = {
+						ic_ratio = {
+							tag = ROOT
+							ratio > 0.5
+						}
+					}
+				}
+
 				modifier = {
 					add = 1800
-					
+
 					# revert from closed_economy if we have large allies
 					has_idea = closed_economy
 					has_large_ally_not_pick_closed_economy = yes
 				}
    			}
 		}
-		
+
 		tot_economic_mobilisation = {
-			
-			
+
+
 			available = {
 				has_war = yes
 				has_war_support > 0.8
 				any_enemy_country = {
-					ic_ratio = { 
-						tag = ROOT 
+					ic_ratio = {
+						tag = ROOT
 						ratio > 0.5
 					}
 				}
 
-				if = {
-					limit = {
-						original_tag = HUN
-						has_dlc = "Death or Dishonor"
-					}
-					NOT = { has_idea = HUN_treaty_of_triannon }
-				}
-				if = {
-					limit = {
-						has_completed_focus = USA_limited_intervention
-						has_defensive_war = no
-					}
-					has_war_support > 0.9
-					congress_high_support_trigger = yes
-				}
-				if = {
-					limit = {
-						original_tag = TUR
-						has_dlc = "Battle for the Bosporus" 
-					}
-					NOT = { 
-						OR = {
-							has_active_mission = TUR_etatism_crisis_1
-							has_active_mission = TUR_etatism_crisis_2
-							has_active_mission = TUR_etatism_crisis_3
-						}
-					}
-				}
 			}
-			on_add = {
-				if = {
-					limit = {
-						tag = USA
-						has_completed_focus = USA_limited_intervention
-						has_defensive_war = no
-					}
-					USA_congress_large_opposition = yes
-				}
-			}
+
 			ai_will_do = {
    				factor = 1
 
@@ -396,10 +257,10 @@ ideas = {
 				modifier = {
 					#Block  unless nation has a lot of manpower
 					factor = 0
-					manpower_per_military_factory <  7000
+					manpower_per_military_factory <  10000
 				}
 
-				
+
 				modifier = {
 					# never take this if we are on low conscription laws for safety
 					factor = 0
@@ -431,13 +292,13 @@ ideas = {
 								has_idea = service_by_requirement
 							}
 						}
-					}									
+					}
 				}
    			}
-			
+
 			cost = 150
 			removal_cost = -1
-			
+
 			modifier = {
 				consumer_goods_factor = 0.10
 				conscription = -0.03
@@ -445,30 +306,102 @@ ideas = {
 				conversion_cost_civ_to_mil_factor= -0.3
 				conversion_cost_mil_to_civ_factor = -0.3
 			}
-			
+
 			cancel_if_invalid = no
 		}
+
+		new_economic_policy = {
+
+			picture = new_economic_policy
+
+			allowed = {
+				always = no
+			}
+			allowed_to_remove = {
+				OR = {
+					surrender_progress > 0.75
+					NOT = { has_government = communism }
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = -0.15
+
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 0
+   			}
+		}
+		new_economic_policy_2 = {
+			name = new_economic_policy
+
+			picture = new_economic_policy
+
+			allowed = {
+				always = no
+			}
+			allowed_to_remove = {
+				OR = {
+					surrender_progress > 0.75
+					NOT = { has_government = communism }
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.10
+				production_speed_buildings_factor = -0.2
+				global_building_slots_factor = 0.1
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 0
+   			}
+		}
 	}
-	
-	trade_laws = { 
+
+	trade_laws = {
 		law = yes
 		use_list_view = yes
-		
+
+		uncontrolled_exports = {
+
+
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = isolation
+
+			modifier = {
+				min_export = 0.25
+				consumer_goods_factor = 0.05
+				civilian_intel_to_others = 40.0
+				navy_intel_to_others = 40.0
+				agency_upgrade_time = 0.15
+			}
+
+			cancel_if_invalid = no
+		}
+
 		free_trade = {
 
 			available = {
-				if = {
-					limit = {
-						original_tag = SPR
-						has_dlc = "La Resistance"
-					}
-					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
-				}
+				always = yes
 			}
-						
+
 			cost = 150
 			removal_cost = -1
-			
+
 			modifier = {
 				min_export = 0.8
 				industrial_capacity_factory = 0.15
@@ -478,7 +411,7 @@ ideas = {
 				civilian_intel_to_others = 40.0
 				navy_intel_to_others = 20.0
 			}
-			
+
 			cancel_if_invalid = no
 
 			ai_will_do = {
@@ -486,54 +419,21 @@ ideas = {
 
    				modifier = {
 					factor = 300
-
-					OR = {
-						tag = PER
-						tag = IRQ
-					}
 					is_in_faction = no
-				}
-
-				modifier = {
-					factor = 300
-
-					tag = BRA
-					date > 1943.1.1 # at this point we can probably cash in on rubber lack in the world
-				}
-
-				# Oil for hitlers oil throne!
-				modifier = {
-					factor = 600
-					tag = ROM
-					is_in_faction_with = GER
 				}
    			}
 		}
-		
-		export_focus = {
-			
-			available = {
 
-				if = {
-					limit = {
-						original_tag = CHI
-						has_dlc = "Waking the Tiger"
-					}
-					NOT = { has_idea = CHI_nine_power_treaty }
-				}
-				if = {
-					limit = {
-						original_tag = SPR
-						has_dlc = "La Resistance"
-					}
-					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
-				}
+		export_focus = {
+
+			available = {
+				always = yes
 			}
-			
-			
+
+
 			cost = 150
 			removal_cost = -1
-			
+
 			modifier = {
 				min_export = 0.5
 				industrial_capacity_factory = 0.1
@@ -543,9 +443,9 @@ ideas = {
 				civilian_intel_to_others = 20.0
 				navy_intel_to_others = 10.0
 			}
-			
+
 			default = yes
-			
+
 			cancel_if_invalid = no
 
 			ai_will_do = {
@@ -553,7 +453,7 @@ ideas = {
 
 				modifier = {
 					factor = 0
-					
+
 					is_major = no
 					has_war = no
 					is_in_faction = no
@@ -567,9 +467,13 @@ ideas = {
 						tag = IRQ
 					}
 				}
+				modifier = {
+					factor = 1000
+					has_idea = uncontrolled_exports #Poland should try and escape this as soon as they can
+				}
    			}
 		}
-		
+
 		limited_exports = {
 			available = {
 				OR = {
@@ -577,8 +481,8 @@ ideas = {
 						has_government = democratic
 						has_war = yes
 						any_enemy_country = {
-							ic_ratio = { 
-								tag = ROOT 
+							ic_ratio = {
+								tag = ROOT
 								ratio > 0.2
 							}
 						}
@@ -592,27 +496,11 @@ ideas = {
 						}
 					}
 				}
-
-
-				if = {
-					limit = {
-						original_tag = CHI
-						has_dlc = "Waking the Tiger"
-					}
-					NOT = { has_idea = CHI_nine_power_treaty }
-				}
-				if = {
-					limit = {
-						original_tag = SPR
-						has_dlc = "La Resistance"
-					}
-					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
-				}
 			}
-		
+
 			cost = 150
 			removal_cost = -1
-			
+
 			modifier = {
 				min_export = 0.25
 				industrial_capacity_factory = 0.05
@@ -622,7 +510,7 @@ ideas = {
 				civilian_intel_to_others = 10.0
 				navy_intel_to_others = 5
 			}
-			
+
 			cancel_if_invalid = no
 
 			ai_will_do = {
@@ -630,7 +518,7 @@ ideas = {
 
    				modifier = {
 					add = -1
-					
+
 					is_major = no
 					is_in_faction = yes
 					has_war = yes
@@ -639,27 +527,27 @@ ideas = {
 				# minors not at war should want to get the bonuses from free trade
 				modifier = {
 					add = -1
-					
+
 					is_major = no
 					has_war = no
 				}
-				
+
 				modifier = {
 					add = 1500
-					
+
 					# revert from closed_economy if we have large allies
 					has_idea = closed_economy
 					has_large_ally_not_pick_closed_economy = yes
 				}
    			}
 		}
-		
+
 		closed_economy = {
-			
-			
+
+
 			available = {
 				has_war = yes
-				OR = { 
+				OR = {
 					has_government = fascism
 					has_government = communism
 				}
@@ -667,33 +555,20 @@ ideas = {
 					has_idea = war_economy
 					has_idea = tot_economic_mobilisation
 				}
-				OR = {
-					NOT = {	tag = SOV }
-					NOT = { has_opinion_modifier = MR_pact }
-				}
-
-				if = {
-					limit = {
-						original_tag = CHI
-						has_dlc = "Waking the Tiger"
-					}
-					NOT = { has_idea = CHI_nine_power_treaty }
-				}
 			}
-			
+
 			cost = 150
 			removal_cost = -1
-			
-			
+
 			modifier = {
 				min_export = 0
 				#civilian_intel_to_others = 0.0
 			}
-			
+
 			on_add = {
 				custom_effect_tooltip = closed_economy_TT
 			}
-			
+
 			cancel_if_invalid = no
 
 			ai_will_do = {
@@ -701,7 +576,7 @@ ideas = {
 
    				modifier = {
 					factor = 0
-					
+
 					is_major = no
 					is_in_faction = yes
 					has_war = yes
@@ -710,109 +585,19 @@ ideas = {
 				# minors not at war should want to get the bonuses from free trade
 				modifier = {
 					factor = 0
-					
+
 					is_major = no
 					has_war = no
 				}
-				
+
 				modifier = {
 					factor = 0
-					
+
 					# don't take if we have a reasonable sized ally
 					# since they will require our trades
 					has_large_ally_not_pick_closed_economy = yes
 				}
    			}
-		}
-		
-		peko_total_autarky = {
-			picture = peko_autarky
-			cost = 150
-			removal_cost = -1
-			level = 6
-			allowed = {
-				original_tag = PEK
-			}
-			visible = {
-				original_tag = PEK
-			}
-			allowed_to_remove = {
-				hidden_trigger = {
-					always = no
-				}
-			}
-			cost = 100
-			removal_cost = -1
-			modifier = {
-				min_export = 0
-				conversion_cost_civ_to_mil_factor = -0.75
-				production_factory_max_efficiency_factor = 0.15
-				production_lack_of_resource_penalty_factor = -0.2
-				consumer_goods_factor = 0.15
-				generate_wargoal_tension = 0.15
-				join_faction_tension = 1.15
-				guarantee_tension = 0.75
-				stability_factor = 0.05
-			}
-			cancel_if_invalid = no
-		}
-		FBK_immense_military_spending = {
-			picture = generic_closed_economy
-			cost = 150
-			removal_cost = -1
-			level = 6
-			allowed = {
-				original_tag = FBK
-				original_tag = WFA
-			}
-			visible = {
-				original_tag = FBK
-				original_tag = WFA
-			}
-			allowed_to_remove = {
-				hidden_trigger = {
-					always = no
-				}
-			}
-			cost = 100
-			removal_cost = -1
-			modifier = {
-				conversion_cost_civ_to_mil_factor = -0.75
-				industrial_capacity_factory = 0.15
-				industrial_capacity_dockyard = 0.15
-				min_export = 0.1
-				consumer_goods_factor = 0.2
-				stability_factor = -0.1
-			}
-			cancel_if_invalid = no
-		}		
-		plantation_and_mines_economy = {
-			picture = peko_autarky
-			cost = 150
-			removal_cost = -1
-			level = 6
-			allowed = {
-				always = no
-				}
-			visible = {
-				always = no
-				}
-			allowed_to_remove = {
-				hidden_trigger = {
-					always = no
-				}
-			}
-			cost = 100
-			removal_cost = -1
-			modifier = {
-				min_export = 0.8
-				consumer_goods_factor = -0.15
-				production_speed_buildings_factor = 0.1
-				local_resources_factor = 0.6
-				stability_factor = -0.05
-				
-			}
-			cancel_if_invalid = no
 		}
 	}
 }
