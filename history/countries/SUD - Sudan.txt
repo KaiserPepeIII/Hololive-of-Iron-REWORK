@@ -8,16 +8,28 @@ set_technology = {
 set_convoys = 20
 
 set_politics = {
-	ruling_party = neutrality
+	ruling_party = reactionary_nationalism
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
 set_popularities = {
-	democratic = 25
-	fascism = 20
-	democratic = 5
-	neutrality = 50
+	reactionary_nationalism = 100
+}
+
+PEK = {
+	if = {
+		limit = {
+			has_dlc = "Together for Victory"
+		}
+		set_autonomy = {
+			target = SUD
+			autonomy_state = autonomy_integrated_puppet
+		}
+		else = {
+			puppet = SUD
+		}
+	}
 }
 recruit_character  = SUD_generic_suit_democratic 
 recruit_character  = SUD_generic_suit_progressive  
