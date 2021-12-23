@@ -142,16 +142,7 @@ ideas = {
 			}
 
 			cancel_if_invalid = no
-			on_add = {
-				if = {
-					limit = {
-						tag = USA
-						has_completed_focus = USA_limited_intervention
-						has_defensive_war = no
-					}
-					USA_congress_large_opposition = yes
-				}
-			}
+
 			ai_will_do = {
    				factor = 2
 
@@ -267,31 +258,6 @@ ideas = {
 					OR = {
 						has_idea = volunteer_only
 						has_idea = limited_conscription
-					}
-				}
-
-				# Germany needs to be careful
-				modifier = {
-					factor = 0
-
-					tag = GER
-					NOT = { has_tech = volkssturm }
-					has_war = yes
-					date < 1944.01.01
-				}
-				modifier = {
-					factor = 0
-
-					tag = SOV
-					has_war = yes
-					OR = {
-						has_manpower < 2000000
-						NOT = {
-							OR = {
-								has_idea = all_adults_serve
-								has_idea = service_by_requirement
-							}
-						}
 					}
 				}
    			}
@@ -448,30 +414,6 @@ ideas = {
 
 			cancel_if_invalid = no
 
-			ai_will_do = {
-   				factor = 1
-
-				modifier = {
-					factor = 0
-
-					is_major = no
-					has_war = no
-					is_in_faction = no
-					OR = {
-						# portugal and sweden are special tungsten snowflakes
-						tag = POR
-						tag = SWE
-
-						# Iraq & Iran are special oil snowflakes
-						tag = PER
-						tag = IRQ
-					}
-				}
-				modifier = {
-					factor = 1000
-					has_idea = uncontrolled_exports #Poland should try and escape this as soon as they can
-				}
-   			}
 		}
 
 		limited_exports = {
