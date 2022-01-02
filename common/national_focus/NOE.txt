@@ -280,6 +280,7 @@ focus_tree = {
 			min = 0
 			max = 10
 		  }
+		  custom_effect_tooltip = abolitionists_established
 		}
 		x = 13
 		y = 3
@@ -840,6 +841,7 @@ focus_tree = {
 				var = NOE.anti_aggression
 				value = 10
 			}
+			custom_effect_tooltip = anti_anger_1
 		}
 		x = 36
 		y = 3
@@ -2324,8 +2326,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_royal_engineers
 		}
+		completion_reward = {
 		add_ideas = {
-		ritter_tactics # artillery production is cheaper
+			ritter_tactics # artillery production is cheaper
+		 }
 		}
 		x = 65
 		y = 5
@@ -2421,7 +2425,7 @@ focus_tree = {
 			focus = NOE_catch_draft_dodgers
 		}
 		completion_reward = {
-		add_idea = {
+		add_ideas = {
 			reduced_levee_standards # small debuff to organization but a increase to manpower (flat percent)
 		}
 		
@@ -4923,9 +4927,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_hannover_agreement
 		}
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 		has_country_flag = NOE_german_land_denied_flag
 		}
+		
 		completion_reward = {
 		SUB = {
 			country_event = {
@@ -5045,13 +5053,168 @@ focus_tree = {
 
 	}
 	focus = {
-		id = NOE_resistance_values
+		id = NOE_form_german_polish_federation
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_form_hololive_union
 			focus = NOE_ally_pekora
 			focus = NOE_ally_suisei
+		}
+		available = {
+			custom_trigger_tooltip = {
+			tooltip = NOE_germany #Noel needs all of germany to form HRE besides poznan,konigsberg,pommern, elsab-lothringen,and danzig
+				owns_state = 68
+				owns_state = 63
+				owns_state = 66
+				owns_state = 65
+				owns_state = 906
+				owns_state = 64
+				owns_state = 62
+				owns_state = 912
+				owns_state = 53
+				owns_state = 52
+				owns_state = 900
+				owns_state = 901
+				owns_state = 54
+				owns_state = 50
+				owns_state = 910
+				owns_state = 28
+				owns_state = 909
+				owns_state = 42
+				owns_state = 55
+				owns_state = 913
+				owns_state = 911
+				owns_state = 59
+				owns_state = 60
+				owns_state = 904
+				owns_state = 907
+				owns_state = 908
+				owns_state = 61
+				owns_state = 905
+			}
+			or = {
+			custom_trigger_tooltip = {
+			tooltip = noe_flares_poland
+							owns_state = 91
+							owns_state = 89
+							owns_state = 866
+							owns_state = 199
+							owns_state = 93
+							owns_state = 94
+							owns_state = 95
+							owns_state = 204
+							owns_state = 194
+							owns_state = 201
+							owns_state = 198
+							owns_state = 199
+							owns_state = 867
+							owns_state = 202
+							owns_state = 868
+			}
+			FLA = {
+				is_puppet_of = NOE
+			 }
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {FLA = { is_puppet_of = NOE } }
+			annex_country = {
+				target = FLA
+				transfer_troops = yes
+			}
+					add_state_core = 91
+					add_state_core = 89
+					add_state_core = 866
+					add_state_core = 199
+					add_state_core = 93
+					add_state_core = 94
+					add_state_core = 95
+					add_state_core = 204
+					add_state_core = 194
+					add_state_core = 201
+					add_state_core = 198
+					add_state_core = 199
+					add_state_core = 867
+					add_state_core = 202
+					add_state_core = 868
+					add_state_core = 68
+					add_state_core = 63
+					add_state_core = 66
+					add_state_core = 65
+					add_state_core = 906
+					add_state_core = 64
+					add_state_core = 62
+					add_state_core = 912
+					add_state_core = 53
+					add_state_core = 52
+					add_state_core = 900
+					add_state_core = 901
+					add_state_core = 54
+					add_state_core = 50
+					add_state_core = 910
+					add_state_core = 28
+					add_state_core = 909
+					add_state_core = 42
+					add_state_core = 55
+					add_state_core = 913
+					add_state_core = 911
+					add_state_core = 59
+					add_state_core = 60
+					add_state_core = 904
+					add_state_core = 907
+					add_state_core = 908
+					add_state_core = 61
+					add_state_core = 905
+					add_state_core = 80
+					}
+					else_if = {
+					add_state_core = 91
+					add_state_core = 89
+					add_state_core = 866
+					add_state_core = 199
+					add_state_core = 93
+					add_state_core = 94
+					add_state_core = 95
+					add_state_core = 204
+					add_state_core = 194
+					add_state_core = 201
+					add_state_core = 198
+					add_state_core = 199
+					add_state_core = 867
+					add_state_core = 202
+					add_state_core = 868
+					add_state_core = 68
+					add_state_core = 63
+					add_state_core = 66
+					add_state_core = 65
+					add_state_core = 906
+					add_state_core = 64
+					add_state_core = 62
+					add_state_core = 912
+					add_state_core = 53
+					add_state_core = 52
+					add_state_core = 900
+					add_state_core = 901
+					add_state_core = 54
+					add_state_core = 50
+					add_state_core = 910
+					add_state_core = 28
+					add_state_core = 909
+					add_state_core = 42
+					add_state_core = 55
+					add_state_core = 913
+					add_state_core = 911
+					add_state_core = 59
+					add_state_core = 60
+					add_state_core = 904
+					add_state_core = 907
+					add_state_core = 908
+					add_state_core = 61
+					add_state_core = 905
+					add_state_core = 80
+			}
 		}
 		x = 7
 		y = 20
