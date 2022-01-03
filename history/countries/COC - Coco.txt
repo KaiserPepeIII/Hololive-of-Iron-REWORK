@@ -1,10 +1,9 @@
 ﻿capital = 365
 
 oob = "COC_1936"
-set_naval_oob = "COC_1936_naval_legacy"
 set_stability = 0.45
 set_war_support = 0.25
-set_research_slots = 3
+set_research_slots = 4
 
 
 add_ideas = {
@@ -36,20 +35,7 @@ set_technology = {
 	tactical_bomber1 = 1
 	CAS1 = 1
 }
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-			early_destroyer = 1
-			basic_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battlecruiser = 1
-			early_battleship = 1
-			transport = 1
-			early_submarine = 1
-			basic_submarine = 1
-	}
-}
+
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_naval_oob = "COC_1936_naval_mtg"
@@ -69,6 +55,20 @@ if = {
 		basic_torpedo = 1
 		basic_depth_charges = 1		
 		
+	}
+	else = {
+		set_technology = {
+			early_destroyer = 1
+			basic_destroyer = 1
+			early_light_cruiser = 1
+			early_heavy_cruiser = 1
+			early_battlecruiser = 1
+			early_battleship = 1
+			transport = 1
+			early_submarine = 1
+			basic_submarine = 1
+		}
+		set_naval_oob = "COC_1936_naval_legacy"
 	}
 }
 
