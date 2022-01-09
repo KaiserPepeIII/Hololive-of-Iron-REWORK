@@ -1025,9 +1025,14 @@ country_event = {
 	
 	option = {
 		name = noel.29.a
-		create_faction = "Empire Of Noel"
+		if = {
+			limit = { NOE = { is_faction_leader = yes } }
 		add_to_faction = FLA
 	   }
+	   else_if = {
+	   create_faction = "Empire Of Noel"
+	   }
+}
 }
 #Flare says no to make faction (pretty sus)
 country_event = {

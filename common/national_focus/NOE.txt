@@ -1348,9 +1348,9 @@ focus_tree = {
 			focus = NOE_danzig_conference
 		}
 		completion_reward = {
-		add_political_power = -150
-		add_ideas = {
-		the_carrot # small debuff to pp and consumer but higher efficiency
+			add_political_power = -150
+			add_ideas = {
+				the_carrot # small debuff to pp gain and consumer but higher efficiency in factories
 		 }
 		}
 		x = 43
@@ -1365,27 +1365,19 @@ focus_tree = {
 			focus = NOE_danzig_conference
 		}
 		completion_reward = {
-		
+			add_to_variable = {
+			var = NOE.anti_aggression
+			value = -10
+			}
+			add_to_variable = {
+			var = NOE.uradel_faction
+			value = -2
+			}
+			custom_effect_tooltip = uradel_anger_-2
+			custom_effect_tooltip = anti_anger_-1
 		}
 		x = 46
 		y = 6
-
-	}
-	focus = {
-		id = NOE_nobility_conferences #peasants very mad, up commies 
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_carrot_stick_approach
-		}
-		prerequisite = {
-			focus = NOE_establish_internal_kingdoms
-		}
-		prerequisite = {
-			focus = NOE_modern_serfdom
-		}
-		x = 43
-		y = 7
 
 	}
 	focus = {
@@ -1393,7 +1385,9 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_nobility_conferences
+			focus = NOE_modern_serfdom
+			focus = NOE_carrot_stick_approach
+			focus = NOE_establish_internal_kingdoms
 		}
 		completion_reward = {
 		add_ideas = {
@@ -1409,7 +1403,30 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_nobility_conferences
+			focus = NOE_modern_serfdom
+			focus = NOE_carrot_stick_approach
+			focus = NOE_establish_internal_kingdoms
+		}
+		available = {
+			custom_trigger_tooltip = {
+			tooltip = uradel_reform_anger
+			check_variable = {
+				var = uradel_faction
+				value = = 4
+				compare = less_than_or_equals
+			}
+		 }
+		}
+		completion_reward = {
+			clamp_variable = {
+				variable = uradel_faction
+				min = 0
+				max = 0
+			}
+			add_to_variable = {
+			variable = uradel_faction
+			value = -10
+			}
 		}
 		x = 44
 		y = 8
@@ -2638,6 +2655,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = NOE_manteuffel_plan
+		}
+		completion_reward = {
+			add_ideas = {
+				truck_logistics
+			}
 		}
 		x = 71
 		y = 4
@@ -4366,16 +4388,16 @@ focus_tree = {
 			focus = NOE_democratic_future
 		}
 		completion_reward = {
-		custom_effect_tooltip = NOE_industrial_expansion_tooltip # For every state that you own that was previously owned by the german reich will have 2 civs added (not op :trollface:)
+		custom_effect_tooltip = NOE_industrial_expansion_tooltip # For every state that you own that was previously owned by the german reich will have 1 civs added (not op :trollface:)
 		if = {
 			limit = {
 			owns_state = 60
 			}
 			60 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4387,10 +4409,10 @@ focus_tree = {
 			owns_state = 59
 			}
 			59 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4402,10 +4424,10 @@ focus_tree = {
 			owns_state = 908
 			}
 			908 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4417,10 +4439,10 @@ focus_tree = {
 			owns_state = 907
 			}
 			907 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4432,10 +4454,10 @@ focus_tree = {
 			owns_state = 904
 			}
 			904 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4447,10 +4469,10 @@ focus_tree = {
 			owns_state = 905
 			}
 			905 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4462,10 +4484,10 @@ focus_tree = {
 			owns_state = 61
 			}
 			61 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4474,13 +4496,13 @@ focus_tree = {
 		 }
 		 if = {
 			limit = {
-			owns_state = 62
+			owns_state = 61
 			}
-			62 = {
-				add_extra_state_shared_building_slots = 2
+			61 = {
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4492,10 +4514,10 @@ focus_tree = {
 			owns_state = 64
 			}
 			64 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4507,10 +4529,10 @@ focus_tree = {
 			owns_state = 65
 			}
 			65 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4522,10 +4544,10 @@ focus_tree = {
 			owns_state = 906
 			}
 			906 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 1
 					instant_build = yes
 		 	   }
 		
@@ -4533,7 +4555,7 @@ focus_tree = {
 			
 		 }
 		}
-		x = 13
+		x = 11
 		y = 16
 
 	}
@@ -4542,7 +4564,8 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_industrial_expansion
+			focus = NOE_emperess_noel
+			focus = NOE_democratic_future
 		}
 		completion_reward = {
 		custom_effect_tooltip = NOE_industrial_expansion_tooltip # For every state that you own that was previously owned by the german reich will have 1 infastructure added
@@ -4705,80 +4728,8 @@ focus_tree = {
 			
 		 }
 		}
-		x = 11
-		y = 17
-
-	}
-	focus = {
-		id = NOE_industrieller_front_concessions
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_industrial_expansion
-		}
-		x = 13
-		y = 17
-
-	}
-	focus = {
-		id = NOE_state_arms_industry
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_industrial_expansion
-		}
 		x = 15
-		y = 17
-
-	}
-	focus = {
-		id = NOE_volkswagen #more motorised bonus
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_industrieller_front_concessions
-		}
-		prerequisite = {
-			focus = NOE_expand_town_infrastructure
-		}
-		x = 12
-		y = 18
-
-	}
-	focus = {
-		id = NOE_heavy_industrial_focus 
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_volkswagen
-		}
-		x = 10
-		y = 19
-
-	}
-	focus = {
-		id = NOE_rapid_infrastructure_expansion
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_volkswagen
-		}
-		x = 12
-		y = 19
-
-	}
-	focus = {
-		id = NOE_cheap_trucks #modify volkswagen
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = NOE_state_arms_industry
-		}
-		prerequisite = {
-			focus = NOE_volkswagen
-		}
-		x = 15
-		y = 19
+		y = 16
 
 	}
 	focus = {
@@ -5051,6 +5002,7 @@ focus_tree = {
 					max = 9999
 				
 				}
+			custom_effect_tooltip = NOE_hololive_union_tooltip
 		 }
 		x = 8
 		y = 19
