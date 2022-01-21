@@ -1,29 +1,34 @@
 ﻿division_template = {
-	name = "Fandeado"		
+	name = "Svodnaya Gvardeyskaya Diviziya"		
 
 	division_names_group = RUS_INF_01
 
 	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
+		guards = { x = 0 y = 0 }
+		guards = { x = 0 y = 1 }
+		guards = { x = 0 y = 2 }
+		guards = { x = 0 y = 3 }
 
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
+		cavalry = { x = 2 y = 0 }
+		cavalry = { x = 2 y = 1 }
 
-		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-
-		infantry = { x = 3 y = 0 }
-		infantry = { x = 3 y = 1 }
-
-		infantry = { x = 4 y = 0 }
-		infantry = { x = 4 y = 1 }
-		
+		artillery_brigade = { x = 3 y = 0 }
+		artillery_brigade = { x = 3 y = 1 }
+	}
+	support = {	
+		recon = {	
+			x = 0
+			y = 0
+		}
+		artillery = {	
+			x = 0
+			y = 1
+		}
 	}
 }
 
 division_template = {
-	name = "Rushifer"		
+	name = "Pekhotnaya Diviziya"		
 
 	division_names_group = RUS_INFB_01
 
@@ -35,6 +40,802 @@ division_template = {
 		infantry = { x = 1 y = 0 }
 		infantry = { x = 1 y = 1 }
 		infantry = { x = 1 y = 2 }
+		
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		artillery_brigade = { x = 2 y = 2 }		
+	}
+	support = {
+		recon = {	
+			x = 0
+			y = 0
+		}
+		artillery = {	
+			x = 0
+			y = 1
+		}
+	}
+}
+division_template = {
+	name = "Kavaleriiskaya Diviziya"		
+
+	division_names_group = RUS_INFB_01
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+	}
+}
+division_template = {
+	name = "Mobilnaya Pekhotnaya Diviziya"		
+
+	division_names_group = RUS_INFB_01
+
+	regiments = {
+		bicycle_battalion = { x = 0 y = 0 }
+		bicycle_battalion = { x = 0 y = 1 }
+		bicycle_battalion = { x = 0 y = 2 }
+
+		bicycle_battalion = { x = 1 y = 0 }
+		bicycle_battalion = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+	}
+	support = {
+		recon = {	
+			x = 0
+			y = 0
+		}
+	}
+}
+division_template = {
+	name = "Tankovaya Diviziya"		
+
+	division_names_group = RUS_INFB_01
+
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+		light_armor = { x = 0 y = 2 }
 	}
 }
 
+division_template = {
+	name = "Motostrelkovaya Diviziya"		
+
+	division_names_group = RUS_INFB_01
+
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		motorized = { x = 0 y = 3 }
+		
+		light_armor = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	#Army Group West 14 Infantry Divisions, 1 cavalry, 3 mobile divisions, 1 tank, 2 motorized 
+	#Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 488
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 3568
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 9288
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 11561
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 9371
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.65
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 306
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 9566
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.55
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 398
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.55
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 11504
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.56
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 418
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 11437
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 11405
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 11683
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.65
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 3580
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.75
+	}
+	#Cavalry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 3520
+		division_template = "Kavaleriiskaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.65
+	}
+	#Mobile
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11230
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6597
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.65
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 721
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.6
+	}
+	#Tank 
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 559
+		division_template = "Tankovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.9
+	}
+	#Motorized
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11489
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.9
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6589
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.95
+	}
+	#Army Group South, 4 infantry, 6 mobile, 1 guards, 3 motorized, 2 tank, 2 cavalry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 9417
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 16
+		}
+		location = 9753
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 17
+		}
+		location = 11724
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 18
+		}
+		location = 775
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	#mobile
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 9442
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 9581
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 11706
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 6486
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 6541
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 9504
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	#Guard
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 3529
+		division_template = "Svodnaya Gvardeyskaya Diviziya"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.95
+	}
+	#Motorized
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 11434
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.9
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 3726
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.85
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 3774
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.75
+	}
+	#Tank
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 3417
+		division_template = "Tankovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.75
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 6490
+		division_template = "Tankovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.7
+	}
+	#Cavalry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6796
+		division_template = "Kavaleriiskaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 3746
+		division_template = "Kavaleriiskaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	#Army Group North #5 Motorized, 6 mobile, 2 tank, 4 cavalry, 3 infantry *on the strategic points
+	#Motorized
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 3176
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 11349
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.55
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 6413
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 9389
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 6338
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	#Mobile
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 6278
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 11375
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 6269
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 6245
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 11250
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 3235
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	#Tank
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 3215
+		division_template = "Tankovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 9122
+		division_template = "Tankovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.4
+	}
+	#Cavalry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 9368
+		division_template = "Kavaleriiskaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 260
+		division_template = "Kavaleriiskaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	#Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 19
+		}
+		location = 3251
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 20
+		}
+		location = 6278
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 21
+		}
+		location = 3220
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	#Army Group Ura-Guryev 5 Infantry, 3 mobile
+	#Infantry
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 22
+		}
+		location = 10136
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 23
+		}
+		location = 10142
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 24
+		}
+		location = 4354
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 25
+		}
+		location = 1278
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	#Mobile
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 11225
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.35
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 3578
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 12128
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	#Army Group Moscow - 3 Guards, 1 tank, 1 mobile
+	#Guard
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6380
+		division_template = "Svodnaya Gvardeyskaya Diviziya"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.95
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 6414
+		division_template = "Svodnaya Gvardeyskaya Diviziya"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.95
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 301
+		division_template = "Svodnaya Gvardeyskaya Diviziya"
+		start_experience_factor = 0.75
+		start_equipment_factor = 1
+	}
+	#Tank
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 3358
+		division_template = "Tankovaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.8
+	}
+	#Mobile
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 16
+		}
+		location = 6396
+		division_template = "Mobilnaya Pekhotnaya Diviziya"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.85
+	}
+}

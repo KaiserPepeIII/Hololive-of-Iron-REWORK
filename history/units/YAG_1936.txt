@@ -1,5 +1,5 @@
 ﻿division_template = {
-	name = "Hololiver"		
+	name = "Poluostrvska Pešadijske Divizije"		
 
 	division_names_group = YAG_INF_01
 
@@ -7,44 +7,101 @@
 		infantry = { x = 0 y = 0 }
 		infantry = { x = 0 y = 1 }
 		infantry = { x = 0 y = 2 }
+        
 		infantry = { x = 1 y = 0 }
 		infantry = { x = 1 y = 1 }
 		infantry = { x = 1 y = 2 }
+        
 		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-		infantry = { x = 2 y = 2 }
+		artillery_brigade = { x = 2 y = 1 }
+		artillery_brigade = { x = 2 y = 2 }
 	}
+    support = {
+		engineer = {
+			x = 0
+			y = 0
+		}
+		recon = {
+			x = 0
+			y = 1
+		}
+    }
 }
 
 division_template = {
-	name = "Yagoo Gang"		
+	name = "Ekspediciona Pešadijske Divizija"		
 
 	division_names_group = YAG_ARM_01
 
 	regiments = {
-		light_armor = { x = 0 y = 0 }
-		light_armor = { x = 0 y = 1 }
-		light_armor = { x = 1 y = 0 }
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		motorized = { x = 0 y = 3 }
+        
+		motorized = { x = 1 y = 0 }
 		light_armor = { x = 1 y = 1 }
-		light_armor = { x = 0 y = 2 }
+		motorized_artillery = { x = 1 y = 1 }
+		motorized_artillery = { x = 0 y = 2 }
 	}
+    
+    support = {
+		engineer = {
+			x = 0
+			y = 0
+		}
+		recon = {
+			x = 0
+			y = 1
+		}
+		signal_company = {
+			x = 0
+			y = 2
+		}
+    }
 }
 
 division_template = {
-	name = "Sora Volunteer"		
+	name = "Ekspediciona Tenkovska Dvizija"		
 
 	division_names_group = YAG_CAV_01
 
 	regiments = {
-		cavalry = { x = 0 y = 0 }
-		cavalry = { x = 0 y = 1 }
-		cavalry = { x = 1 y = 0 }
-		cavalry = { x = 1 y = 1 }
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+        
+		light_armor = { x = 1 y = 0 }
+		light_armor = { x = 1 y = 1 }
 	}
 }
 
 division_template = {
-	name = "Mountain Idol"		
+	name = "Tvrđavska Pesadija"		
+
+	division_names_group = YAG_MNT_01
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+        
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+    support = {
+		engineer = {
+			x = 0
+			y = 0
+		} 
+		logistics_company = {
+			x = 0
+			y = 1
+		} 
+    }
+}
+division_template = {
+	name = "Gorska Pesadija"		
 
 	division_names_group = YAG_MNT_01
 
@@ -52,460 +109,623 @@ division_template = {
 		mountaineers = { x = 0 y = 0 }
 		mountaineers = { x = 0 y = 1 }
 		mountaineers = { x = 0 y = 2 }
+        
 		mountaineers = { x = 1 y = 0 }
 		mountaineers = { x = 1 y = 1 }
-		mountaineers = { x = 1 y = 2 }
+		artillery_brigade = { x = 1 y = 2 }
 	}
+    support = {
+		engineer = {
+			x = 0
+			y = 0
+		} 
+		logistics_company = {
+			x = 0
+			y = 1
+		} 
+    }
 }
+division_template = {
+	name = "Mornarička Pesadija"		
+
+	division_names_group = YAG_MNT_01
+
+	regiments = {
+		marine = { x = 0 y = 0 }
+		marine = { x = 0 y = 1 }
+		marine = { x = 0 y = 2 }
+        
+		marine = { x = 1 y = 0 }
+		marine = { x = 1 y = 1 }
+		marine = { x = 1 y = 2 }
+	}
+    support = {
+		engineer = {
+			x = 0
+			y = 0
+		} 
+		logistics_company = {
+			x = 0
+			y = 1
+		} 
+		signal_company = {
+			x = 0
+			y = 2
+		} 
+    }
+}
+
 units = {
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Balkans, 18 Peninsula Divisions, 2 Expeditionary Infantry, 1 exppeditionary Tank, 1 marine, 2 Mountaineer
+    #Peninsula Divisions
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11586
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 619
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 3614
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 9606
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 9602
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 6940
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 9914
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 11767
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 9849
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 6983
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 11581
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
     }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 11564
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 9627
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 6626
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 949
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 16
+		}
+		location = 11597
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 17
+		}
+		location = 9902
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 18
+		}
+		location = 3796
+		division_template = "Poluostrvska Pešadijske Divizije"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Expeditionary Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9660
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.55
+		start_equipment_factor = 1
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 4109
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.5
+		start_equipment_factor = 1
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Expeditionary Tank
+
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11583
+		division_template = "Ekspediciona Tenkovska Dvizija"
+		start_experience_factor = 0.55
+		start_equipment_factor = 1
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Mountaineer
+    division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9922
+		division_template = "Gorska Pesadija"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.7
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 867
+		division_template = "Gorska Pesadija"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.7
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Washington DC, 1 Garrison, 1 Expeditionary Infantry
+    #Garrison
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6984
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.65
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Expeditionary Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 3957
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.75
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Greek Isles, 2 Garrison, 1 marine
+    #Garrison
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 4170
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.65
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 11984
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.65
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Marines
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 12058
+		division_template = "Mornarička Pesadija"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.7
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Israel/Egypt, 3 Garrison, 3 Expeditionary Infantry, 2 Expeditionary Tank
+    #Garrison
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 4206
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.65
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 792
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.65
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 1065
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.65
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Expeditionary Infantry
+    
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 4073
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.95
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 12049
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.85
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Expeditionary Tank
+    
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1086
+		division_template = "Ekspediciona Tenkovska Dvizija"
+		start_experience_factor = 0.85
+		start_equipment_factor = 0.9
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 4088
+		division_template = "Ekspediciona Tenkovska Dvizija"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.85
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Newfoundland and Nova Scotia, 2 garrisons, 
+    #Garrisons
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 9907
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.45
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 9907
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.55
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Baja California - 1 Expeditionary Infantry, 1 Marines
+    #Expeditionary Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 13216
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.95
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Marines
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 12736
+		division_template = "Mornarička Pesadija"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.9
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+    #Indian Ocean - 7 garrison, 4 expeditionary infantry, 1 marine
+    #Garrison
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 5222
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 7260
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 12299
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 10297
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 10149
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 4321
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
 	}
-division = {
-    division_name = {
-        is_name_ordered = yes
-        name_order = 1
-    }
-    location = 11586
-    division_template = "Hololiver"
-    start_experience_factor = 0.3
-    start_equipment_factor = 1
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 1349
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
 	}
+    #Expeditionary Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 10019
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.45
+		start_equipment_factor = 0.85
+	}
+    
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 10756
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.75
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 4985
+		division_template = "Ekspediciona Pešadijske Divizija"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.75
+	}
+    #Marines
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 4967
+		division_template = "Mornarička Pesadija"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.9
+	} 
+    #East Asia, 3 Garrison, 1 Marine
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 7014
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 10000
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 10068
+		division_template = "Tvrđavska Pesadija"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.75
+	}
+    #Marine
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 13025
+		division_template = "Mornarička Pesadija"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.9
+	} 
 }
