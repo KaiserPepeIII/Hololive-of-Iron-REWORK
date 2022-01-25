@@ -1,5 +1,5 @@
 ﻿division_template = {
-	name = "Infantry Division"			# 1st - 5th divisions = fully equipped, others = reserve divisions
+	name = "Infantry Division"			#
 	division_names_group = ENG_INF_01
 
 	regiments = {
@@ -33,27 +33,132 @@ division_template = {
 	}
 }
 division_template = {
-	name = "Tank Brigade"
-	division_names_group = ENG_ARM_02
-	regiments = {
-		light_armor = { x = 0 y = 0 }
-		light_armor = { x = 0 y = 1 }
-		light_armor = { x = 0 y = 2 }
-	}
-}
-division_template = {
-	name = "Colonial Garrison"
-	division_names_group = ENG_COL_01
-	
+	name = "National Protection Division"			
+	division_names_group = ENG_INF_01
+
 	regiments = {
 		infantry = { x = 0 y = 0 }
 		infantry = { x = 0 y = 1 }
 		infantry = { x = 0 y = 2 }
-		infantry = { x = 1 y = 0 }
+		
+        infantry = { x = 1 y = 0 }
 		infantry = { x = 1 y = 1 }
 		infantry = { x = 1 y = 2 }
 	}
-	priority = 0
 }
-
-
+units = {
+	#England - 2 Infantry Divisions, 1 Cavalry Division, 8 National Protection
+	#Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 351
+		division_template = "Infantry Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6384
+		division_template = "Infantry Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.9
+	}
+	#Cavalry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9379
+		division_template = "Cavalry Brigade"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.7
+	}
+	#National Protection
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6318
+		division_template = "National Protection Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 9315
+		division_template = "National Protection Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.7
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 11382
+		division_template = "National Protection Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 9269
+		division_template = "National Protection Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.65
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 11297
+		division_template = "National Protection Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 6335
+		division_template = "National Protection Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.44
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 11332
+		division_template = "National Protection Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.55
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 219
+		division_template = "National Protection Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.6
+	}
+}

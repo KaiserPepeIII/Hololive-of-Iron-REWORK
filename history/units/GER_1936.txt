@@ -7,12 +7,14 @@
 		infantry = { x = 0 y = 0 }
 		infantry = { x = 0 y = 1 }
 		infantry = { x = 0 y = 2 }
+		
         infantry = { x = 1 y = 0 }
 		infantry = { x = 1 y = 1 }
 		infantry = { x = 1 y = 2 }
+		
         infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-		infantry = { x = 2 y = 2 }
+		artillery_brigade = { x = 2 y = 1 }
+		artillery_brigade = { x = 2 y = 2 }
 	}
 	
 	support = {
@@ -21,60 +23,15 @@
 	}
 }
 division_template = {
-	name = "Panzer-Division"
-
-	division_names_group = GER_Arm_01
-
-	regiments = {
-		light_armor = { x = 0 y = 0 }
-		light_armor = { x = 0 y = 1 }
-        light_armor = { x = 1 y = 0 }
-		light_armor = { x = 1 y = 1 }
-		motorized = { x = 2 y = 0 }
-        motorized = { x = 2 y = 1 }
-	}
-	support = {
-        mot_recon = { x = 0 y = 0 }
-        engineer = { x = 0 y = 1 }
-        artillery = { x = 0 y = 2 }
-	}
-}
-division_template = {
-	name = "Infanterie-Division (mot.)" 			# Used to be SS division -> New system for SS. Also messed up the civil war by refusing to move to the fascists, and immersion-breaking to have them around as royalists
-
-	division_names_group = GER_MOT_02
-
-	regiments = {
-		motorized = { x = 0 y = 0 }
-	    motorized = { x = 0 y = 1 }
-		motorized = { x = 0 y = 2 }
-		
-		motorized = { x = 1 y = 0 }
-		motorized = { x = 1 y = 1 }
-		motorized = { x = 1 y = 2 }
-		
-		motorized = { x = 2 y = 0 }
-	    motorized = { x = 2 y = 1 }
-		motorized = { x = 2 y = 2 }
-	}
-	support = {
-        mot_recon = { x = 0 y = 0 }
-	 	engineer = { x = 0 y = 1 }
-        artillery = { x = 0 y = 2 }
-	}
-}
-division_template = {
-	name = "Gebirgs-Brigade"		# Gebirgsbrigade
-	#Note: precursor to Gebirgs-Divisions
+	name = "Gebirgs-Brigade"		
 	division_names_group = GER_Mnt_01
 
 	regiments = {
 		mountaineers = { x = 0 y = 0 }
 	    mountaineers = { x = 0 y = 1 }
-		mountaineers = { x = 0 y = 2 }
+		
 		mountaineers = { x = 1 y = 0 }
 		mountaineers = { x = 1 y = 1 }
-		mountaineers = { x = 1 y = 2 }
 	}
 }
 division_template = {
@@ -90,7 +47,116 @@ division_template = {
 	}
 	support = {
 	    recon = { x = 0 y = 0 }
-	    artillery = { x = 0 y = 1 }
 	}
 }
 
+division_template = {
+	name = "Panzer-Brigade"		
+	division_names_group = GER_Mnt_01
+
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+	    light_armor = { x = 0 y = 1 }
+	    light_armor = { x = 0 y = 2 }
+		
+		motorized = { x = 1 y = 0 }
+		artillery_brigade = { x = 1 y = 1 }
+	}
+}
+units = {
+#Germany, 5 Infantry divisions, 1 Mountaineer Brigade, 2 Cavalry Brigade, 1 Panzer
+#Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 514
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.7
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 3535
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.75
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 3561
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 6377
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.85
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 11305
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.65
+	}
+	#Mountaineer
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6298
+		division_template = "Gebirgs-Brigade"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.9
+	}
+	#Cavalry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6325
+		division_template = "Kavallerie-Brigade"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.9
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 3326
+		division_template = "Kavallerie-Brigade"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.9
+	}
+	#Panzer	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6521
+		division_template = "Panzer-Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.9
+	}
+}
