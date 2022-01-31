@@ -1,6 +1,6 @@
 ﻿
 division_template = {
-	name = "Bodan"		
+	name = "Infantry Division"		
 
 	division_names_group = BTN_INF_01
 
@@ -14,24 +14,232 @@ division_template = {
 		infantry = { x = 1 y = 2 }
 
 		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-		infantry = { x = 2 y = 2 }
+		artillery = { x = 2 y = 1 }
+		artillery = { x = 2 y = 2 }
+	}
+	support = {
+		artillery = {
+			x = 0
+			y = 0
+		}
+		recon = {
+			x = 0
+			y = 1
+		}
 	}
 }
 
 division_template = {
-	name = "Lion Gang"		
+	name = "Long Range Recon Brigade"		
 
 	division_names_group = BTN_CAV_01
 
 	regiments = {
-		cavalry = { x = 0 y = 0 }
-		cavalry = { x = 0 y = 1 }
-		cavalry = { x = 1 y = 0 }
-		cavalry = { x = 1 y = 1 }
-		cavalry = { x = 0 y = 2 }
-		cavalry = { x = 1 y = 2 }
+		light_armor = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+	}
+	support = {
+		recon = {
+			x = 0
+			y = 0
+		}
 	}
 }
 
+division_template = {
+	name = "Light Armoured Regiment"		
 
+	division_names_group = BTN_CAV_01
+
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+	}
+	support = {
+		recon = {
+			x = 0
+			y = 0
+		}
+	}
+}
+division_template = {
+	name = "Long Range Light Infantry Brigade"		
+
+	division_names_group = BTN_CAV_01
+
+	regiments = {
+		mountaineers = { x = 0 y = 0 }
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+	}
+	support = {
+		recon = {
+			x = 0
+			y = 0
+		}
+		artillery = {
+			x = 0
+			y = 1
+		}
+	}
+}
+division_template = {
+	name = "Regal Guards Regiment"		
+
+	division_names_group = BTN_CAV_01
+
+	regiments = {
+		guards = { x = 0 y = 0 }
+		guards = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+	}
+	support = {
+		artillery = {
+			x = 0
+			y = 0
+		}
+	}
+}
+units = {
+	#BC - 2 regal guards
+	#Guards
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 7259
+		division_template = "Regal Guards Regiment"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1408
+		division_template = "Regal Guards Regiment"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+	}
+	#Alaska - 2 mountaineers
+	#LRLI
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 13091
+		division_template = "Long Range Light Infantry Brigade"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1799
+		division_template = "Long Range Light Infantry Brigade"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+	}
+	#Washington - 3 infantry, 1 motorized
+	#Infantry
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 1690
+		division_template = "Infantry Division"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.85
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 10271
+		division_template = "Infantry Division"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 12673
+		division_template = "Infantry Division"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.85
+	}
+	#motorized
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 7315
+		division_template = "Long Range Recon Brigade"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.85
+	}
+	#Eastern Border #3 motorized, 1 tank
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1788
+		division_template = "Long Range Recon Brigade"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.95
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 12593
+		division_template = "Long Range Recon Brigade"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.9
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 12682
+		division_template = "Long Range Recon Brigade"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.9
+	}
+	#tank
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 7315
+		division_template = "Light Armoured Regiment"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.85
+	}
+}
