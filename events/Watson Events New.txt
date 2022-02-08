@@ -32,5 +32,49 @@ country_event = {
 	option = { #Who?
 		name = watson.1.c
 		}
+}
 
+#Graham Antarctic Expedition
+country_event = {
+	id = watson.2
+	title = watson.2.t
+	desc = watson.2.d
+	picture = GFX_Graham_Explorers
+	
+	is_triggered_only = yes
+	
+	option = { #Proud of the Explorers!
+		name = watson.2.a
+		air_experience = +10
+	}
+}
+
+#Holditch Colliery Disaster
+country_event = {
+	id = watson.3
+	title = watson.3.t
+	desc = watson.3.d
+	picture = GFX_Holditch_Colliery
+	
+	is_triggered_only = yes
+	
+	option = { #let us aid in the cleanup efforts
+		name = watson.3.a
+			add_popularity = {
+				ideology = democratic
+				popularity = +.08
+			}
+			
+			add_stability = +.05
+	}
+		
+	option = { #reprimand management 
+		name = watson.3.b
+		#this option will use the populist vs establishment system, pro establishment
+	}
+		
+	option = { #the workers should have been careful
+		name = watson.3.c
+		#this option will use the populist vs establishment system, pro populist
+	}
 }
