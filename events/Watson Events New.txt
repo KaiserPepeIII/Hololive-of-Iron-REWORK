@@ -122,6 +122,7 @@ country_event ={
 			add_manpower = 25000 #placeholder, might get changed later to fit possible WVS mechanics
 		}
 	}
+}
 
 #funni freud man
 country_event ={
@@ -142,5 +143,78 @@ country_event ={
 		name = watson.12.a
 			add_manpower = 1
 			add_political_power = 5
+	}
+}
+
+#Nobel Prize Award Ceremony
+country_event = {
+	id = watson.4
+	title = watson.4.t
+	desc = watson.4.d
+	picture = GFX_Nobel_Prize
+	
+	is_triggered_only = yes
+	
+	option = { #Congratulate
+		name = watson.4.a
+		add_stability = .05
+	}
+	
+	option = { #Peace
+		name = watson.4.b
+		add_stability = -.05
+		add_war_support = .05
+	}
+	
+	option = { #Physics
+		name = watson.4.c
+		add_political_power = 25
+	}
+	
+	option = { #Chemistry
+		name = watson.4.e
+		add_manpower = 1000
+	}
+}
+
+#Death of Sir Arthur Conan Doyle
+country_event = {
+	id = watson.5
+	title = watson.5.t
+	desc = watson.5.d
+	picture = GFX_Conan_Doyle
+	
+	is_triggered_only = yes
+	
+	option = { #Praise
+		name = watson.5.a
+		add_stability = .05
+	}
+	
+	option = { #Ridicule
+		name = watson.5.b
+		add_political_power = 25
+	}
+}
+
+#London Bus Strike
+country_event = {
+	id = watson.6
+	title = watson.6.t
+	desc = watson.6.d
+	picture = GFX_London_Strike
+	
+	is_triggered_only = yes
+	
+	option = { #Support
+		name = watson.6.a
+		add_stability = .05
+		add_political_power = -25
+	}
+	
+	option = { #Suppress
+		name = watson.6.b
+		add_political_power = 10
+		add_stability = -.05
 	}
 }
