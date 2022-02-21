@@ -287,9 +287,27 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			country_event = {
-				id = watson.16
-				days = 1
+			if = {
+				limit = {
+					country_exists = FAU
+				}
+				FAU = {
+					country_event = {
+						id = watson.22
+						days = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					country_exists = IRE
+				}
+				IRE = {
+					country_event = {
+						id = watson.21
+						days = 1
+					}
+				}
 			}
 		}
 		x = 20

@@ -329,10 +329,12 @@ country_event = {
 	option = { #Northern ireland shall be a puppet
 		name = watson.14.a
 		release_puppet = ULS
+		set_country_flag = ira_dealt_with
 	}
 	option = { #Northern ireland shall be free
 		name = watson.14.b
 		release = ULS
+		set_country_flag = ira_dealt_with
 	}
 	option = { #Northern ireland shall be a returned to ireland
 		name = watson.14.c
@@ -359,6 +361,7 @@ country_event = {
 				119 = {
 					transfer_state_to = FAU
 				}
+				set_country_flag = ira_dealt_with
 		}
 		else_if = {
 			limit = {
@@ -367,6 +370,7 @@ country_event = {
 			119 = {
 					transfer_state_to = IRE
 				}
+			set_country_flag = ira_dealt_with
 		}
 	}
 }
@@ -516,4 +520,133 @@ country_event = {
 		name = watson.20.a
 		set_country_flag = ira_established
 	}
+#Watson offers concessions to stop Anti Ireland from funding the fucking IRA
+country_event = {
+	id = watson.21
+	title = watson.21.t
+	desc = watson.21.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #sure lmao
+		name = watson.21.a
+		WTS = {
+				country_event = {
+				id = watson.23
+				days = 1
+				}
+			}
+	}
+	option = { #fuck you
+		name = watson.21.b
+		
+	}
+ }
+#Watson offers concessions to have soft UWU fauna Ireland help end the IRA
+country_event = {
+	id = watson.22
+	title = watson.22.t
+	desc = watson.22.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #I mean why not ig
+		name = watson.22.a
+			WTS = {
+				country_event = {
+				id = watson.24
+				days = 1
+				}
+			}
+	}
+ }
+#Anti Ireland says sure
+country_event = {
+	id = watson.23
+	title = watson.23.t
+	desc = watson.23.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #atleast its over
+		name = watson.23.a
+		set_country_flag = ira_dealt_with
+	}
+ }
+ #fauna Ireland says sure
+country_event = {
+	id = watson.24
+	title = watson.24.t
+	desc = watson.24.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Thank you nature woman
+		name = watson.24.a
+		set_country_flag = ira_dealt_with
+	}
+ }
+  #Anti Ireland says no
+country_event = {
+	id = watson.25
+	title = watson.25.t
+	desc = watson.25.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Execute Operation Pound Grounder
+		name = watson.25.a
+		create_wargoal = {
+			target = IRE
+			type = puppet
+		}
+	}
+ }
+  #Ireland pacified
+country_event = {
+	id = watson.25
+	title = watson.25.t
+	desc = watson.25.d
+	picture = GFX_King_George_V
+	
+	trigger_only_once = yes
+	trigger = {
+		tag = WTS
+		OR = {
+			AND = {
+				WTS = {
+					owns_state = 1004
+					owns_state = 816
+					owns_state = 1003
+					owns_state = 119
+					owns_state = 1006
+					owns_state = 113
+					owns_state = 1011
+					owns_state = 1012
+					owns_state = 1014
+					owns_state = 1009
+					owns_state = 1007
+					owns_state = 134
+					owns_state = 1008
+					owns_state = 1010
+					owns_state = 1013
+					owns_state = 135
+				}
+			}
+			IRE = {
+				is_puppet_of = WTS
+			}
+		}
+	}
+	
+	option = { #Execute Operation Pound Grounder
+		name = watson.25.a
+		set_country_flag = ira_dealt_with
+	}
+ }
 }
