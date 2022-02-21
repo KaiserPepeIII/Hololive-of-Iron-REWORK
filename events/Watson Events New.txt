@@ -218,3 +218,302 @@ country_event = {
 		add_stability = -.05
 	}
 }
+#our place in the world
+country_event = {
+	id = watson.7
+	title = watson.7.t
+	desc = watson.7.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #what now?
+		name = watson.7.a
+		
+	}
+}
+#london conference
+country_event = {
+	id = watson.8
+	title = watson.8.t
+	desc = watson.8.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Concluded
+		name = watson.8.a
+		
+	}
+}
+#The ashes of Empire
+country_event = {
+	id = watson.9
+	title = watson.9.t
+	desc = watson.9.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #the embers
+		name = watson.9.a
+		
+	}
+}
+#Splendid Isolation
+country_event = {
+	id = watson.10
+	title = watson.10.t
+	desc = watson.10.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #we do whats best for our people
+		name = watson.10.a
+		add_stability = 0.1
+		
+	}
+}
+#look to belgrade
+country_event = {
+	id = watson.11
+	title = watson.11.t
+	desc = watson.11.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #LHS Dominance
+		name = watson.11.a
+		
+	}
+}
+#Bastion of resistance
+country_event = {
+	id = watson.12
+	title = watson.12.t
+	desc = watson.12.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Aquas Resistance
+		name = watson.12.a
+		
+	}
+}
+#Antis Question
+country_event = {
+	id = watson.13
+	title = watson.13.t
+	desc = watson.13.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Antis are bad or somthing ig
+		name = watson.13.a
+		
+	}
+}
+#Northern ireland solution
+country_event = {
+	id = watson.14
+	title = watson.14.t
+	desc = watson.14.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Northern ireland shall be a puppet
+		name = watson.14.a
+		release_puppet = ULS
+	}
+	option = { #Northern ireland shall be free
+		name = watson.14.b
+		release = ULS
+	}
+	option = { #Northern ireland shall be a returned to ireland
+		name = watson.14.c
+		trigger = {
+			OR = {
+				AND = {
+					country_exists = FAU
+					NOT = {
+						country_exists = IRE
+					}
+				}
+				AND = {
+					country_exists = IRE
+					NOT = {
+						country_exists = FAU
+					}
+				}
+			}
+		}
+				if = {
+			limit = {
+				country_exists = FAU
+			}   
+				119 = {
+					transfer_state_to = FAU
+				}
+		}
+		else_if = {
+			limit = {
+				country_exists = IRE
+			}
+			119 = {
+					transfer_state_to = IRE
+				}
+		}
+	}
+}
+#Pressure on the emerald Isles
+country_event = {
+	id = watson.15
+	title = watson.15.t
+	desc = watson.15.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Intervene in the civil war
+		name = watson.15.a
+		trigger = {
+				AND = {
+					country_exists = FAU
+					country_exists = IRE
+				}
+			}
+					declare_war_on = {
+			target = IRE
+			type = annex_everything
+		}
+		give_military_access = FAU
+		FAU = {
+		give_military_access = WTS
+		}
+
+	}
+	option = { #pressure them towards LHS
+		name = watson.15.b
+		
+	}
+	option = { #pressure them towards resistance
+		name = watson.15.c
+		
+	}
+	option = { #pressure them towards neutrality
+		name = watson.15.d
+		
+	}
+}
+#never another lost battle
+country_event = {
+	id = watson.16
+	title = watson.16.t
+	desc = watson.16.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #they are unfriendly because anti
+		name = watson.16.a
+		trigger = {
+			country_exists = IRE
+		}
+	}
+	option = { #they are soft fauna nature woman
+		name = watson.16.b
+		trigger = {
+			country_exists = FAU
+		}
+
+	}
+}
+#IRA Bombs infrastructure
+country_event = {
+	id = watson.17
+	title = watson.17.t
+	desc = watson.17.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #they are unfriendly because anti
+		name = watson.17.a
+		add_stability = -0.03
+			random_list = {
+					50 = {
+						119 = {
+								damage_building = {
+						type = infrastructure
+						damage = 1
+							}
+						}
+					 }
+					 50 = {
+						1006 = {
+								damage_building = {
+						type = infrastructure
+						damage = 1
+							}	
+						}
+					 }
+				}
+			}
+					
+}
+#IRA kills local garrison
+country_event = {
+	id = watson.18
+	title = watson.18.t
+	desc = watson.18.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #they are unfriendly because anti
+		name = watson.18.a
+		manpower = -100
+		add_stability = -0.03
+	}
+}
+#IRA plot Discovered
+country_event = {
+	id = watson.19
+	title = watson.19.t
+	desc = watson.19.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #they are unfriendly because anti
+		name = watson.19.a
+		
+	}
+}
+#IRA establishes themselves
+country_event = {
+	id = watson.20
+	title = watson.20.t
+	desc = watson.20.d
+	picture = GFX_King_George_V
+	
+	trigger_only_once = yes
+	
+	trigger = {
+		original_tag = WTS
+	}
+	
+	mean_time_to_happen = {
+		
+	}
+	
+	option = { #they are unfriendly because anti
+		name = watson.20.a
+		set_country_flag = ira_established
+	}
+}

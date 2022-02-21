@@ -3,7 +3,7 @@ focus_tree = {
 	country = {
 		factor = 0
 		modifier = {
-			add = 10
+			add = 100
 			tag = WTS
 		}
 	}
@@ -231,6 +231,12 @@ focus_tree = {
 			focus = WTS_never_another_battle
 			focus = WTS_invade_ireland
 		}
+		completion_reward = {
+			country_event = {
+				id = watson.15
+				days = 1
+			}
+		}
 		x = 18
 		y = 3
 
@@ -248,6 +254,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = WTS_northern_ireland_pacified
 		}
+		completion_reward = {
+			country_event = {
+				id = watson.14
+				days = 1
+			}
+		}
 		x = 22
 		y = 2
 
@@ -264,6 +276,22 @@ focus_tree = {
 			focus = WTS_pressure_on_the_emerald_isle
 			focus = WTS_invade_ireland
 		}
+		available = {
+			OR = {
+				NOT = {
+				country_exists = FAU
+				}
+				NOT = {
+				country_exists = IRE
+				}
+			}
+		}
+		completion_reward = {
+			country_event = {
+				id = watson.16
+				days = 1
+			}
+		}
 		x = 20
 		y = 3
 
@@ -278,6 +306,40 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = WTS_pressure_on_the_emerald_isle
 			focus = WTS_never_another_battle
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					country_exists = FAU
+					country_exists = IRE
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = FAU
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = IRE
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+				country_exists = IRE
+				}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = FAU
+				}
+			}
+			else = {
+				create_wargoal = {
+					type = annex_everything
+					target = IRE
+				}
+			}
+		
 		}
 		x = 22
 		y = 3
@@ -918,6 +980,12 @@ focus_tree = {
 		prerequisite = {
 			focus = WTS_the_sun_never_sets
 		}
+		completion_reward = {
+			country_event = {
+				id = watson.7
+				days = 1
+			}
+		}
 		x = 21
 		y = 6
 
@@ -968,6 +1036,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = WTS_look_to_the_seas
 		}
+		completion_reward = {
+			country_event = {
+				id = watson.8
+				days = 1
+			}
+		}
 		x = 19
 		y = 7
 
@@ -981,6 +1055,12 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = WTS_london_conference
+		}
+		completion_reward = {
+			country_event = {
+				id = watson.9
+				days = 1
+			}
 		}
 		x = 21
 		y = 7
@@ -1014,6 +1094,17 @@ focus_tree = {
 			focus = WTS_splendid_isolation
 			focus = WTS_bastion_of_resistance
 		}
+		completion_reward = {
+			add_ideas = {
+				lhs_defensive_union_gui
+				looking_to_belgrade
+			 }
+			 set_global_flag = watson_lhs_defense
+			 country_event = {
+				id = watson.10
+				days = 1
+			 }
+			}
 		x = 14
 		y = 9
 
@@ -1029,6 +1120,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = WTS_look_to_belgrade
 			focus = WTS_splendid_isolation
+		}
+		completion_reward = {
+			custom_effect_tooltip = wts_join_resistance
+			add_ideas = {
+			aqua_resistance_member
+			}
 		}
 		x = 18
 		y = 9
@@ -1113,6 +1210,10 @@ focus_tree = {
 		prerequisite = {
 			focus = WTS_look_to_belgrade
 		}
+		completion_reward = {
+			custom_effect_tooltip = watson_lhs_intervention
+			set_country_flag = wts_lhs_bobby
+		}
 		x = 13
 		y = 10
 
@@ -1123,6 +1224,10 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = WTS_splendid_isolation
+		}
+		completion_reward = {
+			custom_effect_tooltip = watson_colonies
+			set_country_flag = wts_neo_colonialism
 		}
 		x = 16
 		y = 10
@@ -1135,6 +1240,10 @@ focus_tree = {
 		prerequisite = {
 			focus = WTS_bastion_of_resistance
 		}
+		completion_reward = {
+			custom_effect_tooltip = watson_home_defense
+			set_country_flag = wts_total_defense
+		}
 		x = 19
 		y = 10
 
@@ -1145,6 +1254,10 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = WTS_examining_our_position
+		}
+		completion_reward = {
+			set_country_flag = WTS_global_crusade
+			add_war_support = 0.1
 		}
 		x = 23
 		y = 7
