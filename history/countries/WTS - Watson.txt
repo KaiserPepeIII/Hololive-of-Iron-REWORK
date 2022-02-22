@@ -1,21 +1,19 @@
 ﻿capital = 126
-
 oob = "WTS_1936"
 set_stability = 0.35
 set_war_support = 0.1
 set_research_slots = 4
-
-
 add_ideas = {
 	lhs_member
 	asacoco_reliance_crippling
 	watson_secret_service
-    lhs_defensive_union_gui
+	lhs_defensive_union_gui
 }
 
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
+	motorised_infantry = 1
 	tech_mountaineers = 1
 	gw_artillery = 1
 	interwar_antiair = 1
@@ -26,8 +24,10 @@ set_technology = {
 	basic_train = 1
 }
 
-if={
-	limit = { has_dlc = "Man the Guns" }
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "WTS_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
@@ -59,41 +59,42 @@ if={
 }
 
 set_convoys = 50
-
 #LEADER GENERATION - WATSON 
-recruit_character  = WTS_amelia_watson_democratic 
-recruit_character  = WTS_amelia_watson_progressive  
-recruit_character  = WTS_amelia_watson_yagoo_monarchy  
-recruit_character  = WTS_amelia_watson_yagoo_kleptocratic  
-recruit_character  = WTS_amelia_watson_revolutionary  
-recruit_character  = WTS_amelia_watson_nationalism  
-recruit_character  = WTS_amelia_watson_resistance_monarchy  
-recruit_character  = WTS_amelia_watson_resistance_kleptocracy  
-recruit_character  = WTS_amelia_watson_neutral_kleptocratic  
-recruit_character  = WTS_amelia_watson_reactionary_nationalism  
-recruit_character  = WTS_amelia_watson_neutral_democracy   
-recruit_character  = WTS_amelia_watson_divine_mandate   
-recruit_character  = WTS_generic_suit_new_nationalist
-recruit_character  = WTS_generic_suit_left_wing_revolutionary  
-recruit_character  = WTS_generic_suit_reactionary_monarchy
-recruit_character  = WTS_generic_suit_democratic_anti
-
+recruit_character = WTS_amelia_watson_democratic
+recruit_character = WTS_amelia_watson_progressive
+recruit_character = WTS_amelia_watson_yagoo_monarchy
+recruit_character = WTS_amelia_watson_yagoo_kleptocratic
+recruit_character = WTS_amelia_watson_revolutionary
+recruit_character = WTS_amelia_watson_nationalism
+recruit_character = WTS_amelia_watson_resistance_monarchy
+recruit_character = WTS_amelia_watson_resistance_kleptocracy
+recruit_character = WTS_amelia_watson_neutral_kleptocratic
+recruit_character = WTS_amelia_watson_reactionary_nationalism
+recruit_character = WTS_amelia_watson_neutral_democracy
+recruit_character = WTS_amelia_watson_divine_mandate
+recruit_character = WTS_generic_suit_new_nationalist
+recruit_character = WTS_generic_suit_left_wing_revolutionary
+recruit_character = WTS_generic_suit_reactionary_monarchy
+recruit_character = WTS_generic_suit_democratic_anti
 set_politics = {
 	ruling_party = democratic
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
 	democratic = 30
 	pro_yagoo_progressive = 24
 	pro_resistance_monarchy = 14
 	communism = 17
 	pro_yagoo_monarchy = 15
-	
 }
+
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	### Variants ###
 	# Submarines #
 	create_equipment_variant = {
@@ -109,3 +110,91 @@ if = {
 	}
 }
 
+#State Modifiers
+#bgc
+918 = {
+	add_dynamic_modifier = {
+		modifier = WTS_bgc_presence
+	}
+}
+
+122 = {
+	add_dynamic_modifier = {
+		modifier = WTS_bgc_presence
+	}
+}
+
+126 = {
+	add_dynamic_modifier = {
+		modifier = WTS_bgc_presence
+	}
+}
+
+338 = {
+	add_dynamic_modifier = {
+		modifier = WTS_bgc_presence
+	}
+}
+
+#ira
+119 = {
+	add_dynamic_modifier = {
+		modifier = WTS_ira_presence
+	}
+}
+
+1006 = {
+	add_dynamic_modifier = {
+		modifier = WTS_ira_presence
+	}
+}
+
+126 = {
+	add_dynamic_modifier = {
+		modifier = WTS_ira_presence
+	}
+}
+
+#English Antis
+126 = {
+	add_dynamic_modifier = {
+		modifier = WTS_english_antis_presence
+	}
+}
+
+338 = {
+	add_dynamic_modifier = {
+		modifier = WTS_english_antis_presence
+	}
+}
+
+848 = {
+	add_dynamic_modifier = {
+		modifier = WTS_english_antis_presence
+	}
+}
+
+849 = {
+	add_dynamic_modifier = {
+		modifier = WTS_english_antis_presence
+	}
+}
+
+129 = {
+	add_dynamic_modifier = {
+		modifier = WTS_english_antis_presence
+	}
+}
+#Teammates 
+126 = {
+	add_dynamic_modifier = {
+		modifier = WTS_national_protection_league
+	}
+}
+
+#Watch Wars
+126 = {
+	add_dynamic_modifier = {
+		modifier = WTS_the_watch_wars
+	}
+}

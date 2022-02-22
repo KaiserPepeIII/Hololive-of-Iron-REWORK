@@ -746,6 +746,13 @@ technologies = {
 			leads_to_tech = tank_landing_craft 
 			research_cost_coeff = 1
 		}
+
+		enable_equipments = {
+			floating_harbor_equipment_1
+		}
+
+		force_use_small_tech_layout = yes
+		show_equipment_icon = yes
 		
 		research_cost = 2
 		start_year = 1940
@@ -778,6 +785,13 @@ technologies = {
 				tag = JAP
 				OR = {
 					has_war_with = USA
+					CHI = {  
+						OR = { 
+							has_capitulated = yes 
+							exists = no
+		                    is_subject_of = JAP
+						}
+					}
 				}
 			}
 			
@@ -797,6 +811,7 @@ technologies = {
 					tag = USA
 				}
 				has_war_with = GER
+				GER = { has_war_with = SOV }
 			}
 		}
 		
