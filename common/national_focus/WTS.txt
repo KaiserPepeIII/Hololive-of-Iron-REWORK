@@ -11,9 +11,22 @@ focus_tree = {
 	focus = {
 		id = WTS_the_easter_crisis
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 1.00
 		x = 13
 		y = 1
+		
+		available = {
+			NOT = {
+				has_country_flag = WTS_pre_easter_crisis
+			}
+		}
+		completion_reward = {
+			add_political_power = 5
+			add_stability = 0.05
+			remove_ideas = WTS_easter_crisis
+		}
+	}
+
 
 	}
 	focus = {
@@ -40,7 +53,7 @@ focus_tree = {
 	focus = {
 		id = WTS_a_new_government
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 12.00
 		prerequisite = {
 			focus = WTS_the_easter_crisis
 		}
@@ -49,12 +62,12 @@ focus_tree = {
 		}
 		x = 11
 		y = 2
-
+		custom_effect_tooltip = WTS_a_new_government_tooltip
 	}
 	focus = {
 		id = WTS_the_westminster_constitution
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 12.00
 		prerequisite = {
 			focus = WTS_the_easter_crisis
 		}
@@ -63,7 +76,7 @@ focus_tree = {
 		}
 		x = 15
 		y = 2
-
+		custom_effect_tooltip = WTS_the_westminster_constitution_tooltip
 	}
 	focus = {
 		id = WTS_the_budget
@@ -1303,7 +1316,9 @@ focus_tree = {
 		}
 		x = 19
 		y = 11
-
+		completion_reward = {
+			set_cosmetic_tag = WTS_ABSOLUTIST
+		}
 	}
 	focus = {
 		id = WTS_president_watson
@@ -1319,6 +1334,9 @@ focus_tree = {
 		x = 13
 		y = 11
 
+		completion_reward = {
+			set_cosmetic_tag = WTS_REPUBLIC
+		}
 	}
 	focus = {
 		id = WTS_constitutional_queen
@@ -1334,5 +1352,8 @@ focus_tree = {
 		x = 16
 		y = 11
 
+		completion_reward = {
+			set_cosmetic_tag = WTS_CONSTITUTIONAL
+		}
 	}
 }
