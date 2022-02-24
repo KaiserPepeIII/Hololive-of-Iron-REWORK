@@ -359,19 +359,130 @@ country_event = {
 		FAU = {
 		give_military_access = WTS
 		}
-
+		set_country_flag = wts_intervened_ireland
 	}
 	option = { #pressure them towards LHS
 		name = watson.15.b
-		
+		trigger = {
+			OR = {
+				NOT = {
+					country_exists = FAU
+					country_exists = IRE
+				}
+				
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					country_exists = FAU
+				}
+			}
+			IRE = {
+				country_event = {
+					id = watson.32
+					days = 1
+				}
+				set_country_flag = watson_pressure_lhs
+			}
+
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					country_exists = IRE
+				}
+			}
+			FAU = {
+				country_event = {
+					id = watson.31
+					days = 1
+				}
+				set_country_flag = watson_pressure_lhs
+			}
+		}
 	}
 	option = { #pressure them towards resistance
 		name = watson.15.c
-		
+		trigger = {
+			OR = {
+				NOT = {
+					country_exists = FAU
+					country_exists = IRE
+				}
+				
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					country_exists = FAU
+				}
+			}
+			IRE = {
+				country_event = {
+					id = watson.31
+					days = 1
+				}
+				set_country_flag = watson_pressure_res
+			}
+
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					country_exists = IRE
+				}
+			}
+			FAU = {
+				country_event = {
+					id = watson.31
+					days = 1
+				}
+				set_country_flag = watson_pressure_res
+			}
+		}
 	}
 	option = { #pressure them towards neutrality
 		name = watson.15.d
-		
+		trigger = {
+			OR = {
+				NOT = {
+					country_exists = FAU
+					country_exists = IRE
+				}
+				
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					country_exists = FAU
+				}
+			}
+			IRE = {
+				country_event = {
+					id = watson.31
+					days = 1
+				}
+				set_country_flag = watson_pressure_neu
+			}
+
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					country_exists = IRE
+				}
+			}
+			FAU = {
+				country_event = {
+					id = watson.31
+					days = 1
+				}
+				set_country_flag = watson_pressure_neu
+			}
+		}
 	}
 }
 #never another lost battle
@@ -388,13 +499,20 @@ country_event = {
 		trigger = {
 			country_exists = IRE
 		}
+		country_event = {
+			id = watson.21
+			days = 1
+		}
 	}
 	option = { #they are soft fauna nature woman
 		name = watson.16.b
 		trigger = {
 			country_exists = FAU
 		}
-
+		country_event = {
+			id = watson.22
+			days = 1
+		}
 	}
 }
 #IRA Bombs infrastructure
@@ -666,4 +784,114 @@ country_event = {
 		clr_country_flag = WTS_pre_easter_crisis
 		add_ideas = WTS_easter_crisis
 	}
+	country_event = {
+		id = watson.30
+		title = watson.30.t
+		desc = watson.30.d
+		picture = GFX_King_George_V
+		
+		is_triggered_only = yes
+
+		option = { #Execute Operation Pound Grounder
+			name = watson.30.a
+			set_country_flag = ira_dealt_with
+			119 = {
+				add_core_of = WTS
+			}
+			1006 = {
+				add_core_of = WTS
+			}
+		}
+	 }
+	 #watson is influencing our politics
+	 country_event = {
+		id = watson.31
+		title = watson.31.t
+		desc = watson.31.d
+		picture = GFX_King_George_V
+		
+		is_triggered_only = yes
+		
+		option = { #sure lmao
+			name = watson.31.a
+			if = {
+				limit = {
+					has_country_flag = watson_pressure_lhs
+				}
+				add_ideas = {
+					wts_lhs_pressure_idea
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = watson_pressure_res
+				}
+				add_ideas = {
+					wts_res_pressure_idea
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = watson_pressure_neu
+				}
+				add_ideas = {
+					wts_neu_pressure_idea
+				}
+			}
+		}
+
+	 }
+	 #Pressure Fauna after intervening in the civil war
+	 country_event = {
+		id = watson.32
+		title = watson.32.t
+		desc = watson.32.d
+		picture = GFX_King_George_V
+		
+		trigger_only_once = yes
+
+		trigger = {
+			WTS = {
+				has_country_flag = wts_intervened_ireland
+			}
+			IRE = {
+				country_exists = no
+			}
+		}
+
+		mean_time_to_happen = {
+			days = 10
+		}
+		
+		option = { #pressure them towards LHS
+		name = watson.32.b
+			FAU = {
+				country_event = {
+					id = watson.31
+					days = 1
+				}
+				set_country_flag = watson_pressure_lhs
+			}
+	}
+	option = { #pressure them towards resistance
+		name = watson.32.c
+			FAU = {
+				country_event = {
+					id = watson.31
+					days = 1
+				}
+				set_country_flag = watson_pressure_res
+			}
+	}
+	option = { #pressure them towards neutrality
+		name = watson.32.d
+			FAU = {
+				country_event = {
+					id = watson.31
+					days = 1
+				}
+				set_country_flag = watson_pressure_neu
+			}
+	}
+  }
 }
