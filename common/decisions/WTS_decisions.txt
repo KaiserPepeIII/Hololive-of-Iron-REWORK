@@ -24,3 +24,102 @@ WTS_class_factions = {
 		}         
 	}
 }
+wts_ira = {
+	WTS_test = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 120
+			}
+		}
+        
+		visible = {
+			always = yes
+		}
+		
+		fire_only_once = no
+		
+		ai_will_do = {
+			factor = 5
+			}
+			
+		days_re_enable = 30
+		
+		cost = 120
+		
+		complete_effect = { 
+		}
+	}
+	ira_attacks = {
+		days_mission_timeout = 30
+		is_good = no
+		icon = GFX_decision_icon_default
+
+		days_remove = 7
+
+		available = {
+			has_country_flag = ira_dealt_with
+		}
+		
+		fire_only_once = no
+		
+		activation = {
+			has_country_flag = ira_established
+				
+			}
+		visible = {
+			always = yes
+		}
+			complete_effect = {
+			add_stability = .15
+			}
+			timeout_effect = {
+				random_list = {
+					33 = {
+						country_event = {
+							id = watson.17
+							days = 1
+						}
+					}
+					33 = {
+					country_event = {
+							id = watson.18
+							days = 1
+						}
+					}
+					33 = {
+					country_event = {
+							id = watson.19
+							days = 1
+						}
+					}
+				}
+			}
+	}
+	WTS_test2 = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 120
+			}
+		}
+        
+		visible = {
+			always = yes
+		}
+		
+		fire_only_once = no
+		
+		ai_will_do = {
+			factor = 5
+			}
+			
+		days_re_enable = 30
+		
+		cost = 120
+		
+		complete_effect = { 
+		}
+	}
+
+
+
+}
