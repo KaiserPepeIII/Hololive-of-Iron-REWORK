@@ -395,6 +395,81 @@ focus_tree = {
 			focus = WTS_pressure_on_the_emerald_isle
 			focus = WTS_invade_ireland
 		}
+		completion_reward = {
+			if = {
+				limit = {
+					any_state = {
+						is_controlled_by = WTS
+						OR = {
+							is_core_of = FAU
+							is_core_of = IRE
+						}
+					}
+				}
+				random_controlled_state = {
+					limit = {
+						OR = {
+							is_core_of = IRE
+							is_core_of = FAU
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				random_controlled_state = {
+					limit = {
+						OR = {
+							is_core_of = IRE
+							is_core_of = FAU
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				119 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							country_exists = FAU
+							country_exists = IRE
+						}
+					}
+					119 = {
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = {
+							type = industrial_complex
+							level = 2
+						}
+					}
+					random_state = {
+						limit = {
+							OR = {
+								is_core_of = IRE
+								is_core_of = FAU
+							}
+						}
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = {
+							type = industrial_complex
+							level = 2
+						}
+					}
+
+				}
+			}
+		}
 		x = 20
 		y = 4
 
