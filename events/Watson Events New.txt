@@ -359,130 +359,19 @@ country_event = {
 		FAU = {
 		give_military_access = WTS
 		}
-		set_country_flag = wts_intervened_ireland
+
 	}
 	option = { #pressure them towards LHS
 		name = watson.15.b
-		trigger = {
-			OR = {
-				NOT = {
-					country_exists = FAU
-					country_exists = IRE
-				}
-				
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					country_exists = FAU
-				}
-			}
-			IRE = {
-				country_event = {
-					id = watson.32
-					days = 1
-				}
-				set_country_flag = watson_pressure_lhs
-			}
-
-		}
-		else_if = {
-			limit = {
-				NOT = {
-					country_exists = IRE
-				}
-			}
-			FAU = {
-				country_event = {
-					id = watson.31
-					days = 1
-				}
-				set_country_flag = watson_pressure_lhs
-			}
-		}
+		
 	}
 	option = { #pressure them towards resistance
 		name = watson.15.c
-		trigger = {
-			OR = {
-				NOT = {
-					country_exists = FAU
-					country_exists = IRE
-				}
-				
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					country_exists = FAU
-				}
-			}
-			IRE = {
-				country_event = {
-					id = watson.31
-					days = 1
-				}
-				set_country_flag = watson_pressure_res
-			}
-
-		}
-		else_if = {
-			limit = {
-				NOT = {
-					country_exists = IRE
-				}
-			}
-			FAU = {
-				country_event = {
-					id = watson.31
-					days = 1
-				}
-				set_country_flag = watson_pressure_res
-			}
-		}
+		
 	}
 	option = { #pressure them towards neutrality
 		name = watson.15.d
-		trigger = {
-			OR = {
-				NOT = {
-					country_exists = FAU
-					country_exists = IRE
-				}
-				
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					country_exists = FAU
-				}
-			}
-			IRE = {
-				country_event = {
-					id = watson.31
-					days = 1
-				}
-				set_country_flag = watson_pressure_neu
-			}
-
-		}
-		else_if = {
-			limit = {
-				NOT = {
-					country_exists = IRE
-				}
-			}
-			FAU = {
-				country_event = {
-					id = watson.31
-					days = 1
-				}
-				set_country_flag = watson_pressure_neu
-			}
-		}
+		
 	}
 }
 #never another lost battle
@@ -499,20 +388,13 @@ country_event = {
 		trigger = {
 			country_exists = IRE
 		}
-		country_event = {
-			id = watson.21
-			days = 1
-		}
 	}
 	option = { #they are soft fauna nature woman
 		name = watson.16.b
 		trigger = {
 			country_exists = FAU
 		}
-		country_event = {
-			id = watson.22
-			days = 1
-		}
+
 	}
 }
 #IRA Bombs infrastructure
@@ -784,72 +666,73 @@ country_event = {
 		clr_country_flag = WTS_pre_easter_crisis
 		add_ideas = WTS_easter_crisis
 	}
-	country_event = {
-		id = watson.30
-		title = watson.30.t
-		desc = watson.30.d
-		picture = GFX_King_George_V
-		
-		is_triggered_only = yes
+}
+country_event = {
+	id = watson.30
+	title = watson.30.t
+	desc = watson.30.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
 
-		option = { #Execute Operation Pound Grounder
-			name = watson.30.a
-			set_country_flag = ira_dealt_with
-			119 = {
-				add_core_of = WTS
+	option = { #Execute Operation Pound Grounder
+		name = watson.30.a
+		set_country_flag = ira_dealt_with
+		119 = {
+			add_core_of = WTS
+		}
+		1006 = {
+			add_core_of = WTS
+		}
+	}
+ }
+ #watson is influencing our politics
+ country_event = {
+	id = watson.31
+	title = watson.31.t
+	desc = watson.31.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #sure lmao
+		name = watson.31.a
+		if = {
+			limit = {
+				has_country_flag = watson_pressure_lhs
 			}
-			1006 = {
-				add_core_of = WTS
+			add_ideas = {
+				wts_lhs_pressure_idea
 			}
 		}
-	 }
-	 #watson is influencing our politics
-	 country_event = {
-		id = watson.31
-		title = watson.31.t
-		desc = watson.31.d
-		picture = GFX_King_George_V
-		
-		is_triggered_only = yes
-		
-		option = { #sure lmao
-			name = watson.31.a
-			if = {
-				limit = {
-					has_country_flag = watson_pressure_lhs
-				}
-				add_ideas = {
-					wts_lhs_pressure_idea
-				}
+		else_if = {
+			limit = {
+				has_country_flag = watson_pressure_res
 			}
-			else_if = {
-				limit = {
-					has_country_flag = watson_pressure_res
-				}
-				add_ideas = {
-					wts_res_pressure_idea
-				}
-			}
-			else_if = {
-				limit = {
-					has_country_flag = watson_pressure_neu
-				}
-				add_ideas = {
-					wts_neu_pressure_idea
-				}
+			add_ideas = {
+				wts_res_pressure_idea
 			}
 		}
+		else_if = {
+			limit = {
+				has_country_flag = watson_pressure_neu
+			}
+			add_ideas = {
+				wts_neu_pressure_idea
+			}
+		}
+	}
 
-	 }
-	 #Pressure Fauna after intervening in the civil war
-	 country_event = {
-		id = watson.32
-		title = watson.32.t
-		desc = watson.32.d
-		picture = GFX_King_George_V
-		
+ }
+ #Pressure Fauna after intervening in the civil war
+ country_event = {
+	id = watson.32
+	title = watson.32.t
+	desc = watson.32.d
+	picture = GFX_King_George_V
+	
 		trigger_only_once = yes
-
+	
 		trigger = {
 			WTS = {
 				has_country_flag = wts_intervened_ireland
@@ -858,7 +741,7 @@ country_event = {
 				country_exists = no
 			}
 		}
-
+	
 		mean_time_to_happen = {
 			days = 10
 		}
@@ -893,5 +776,177 @@ country_event = {
 				set_country_flag = watson_pressure_neu
 			}
 	}
-  }
+}
+#The Westminster Constitution
+country_event = {
+	id = watson.46
+	title = watson.46.t
+	desc = watson.46.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #ogey
+		name = watson.46.a
+		add_ideas = {
+		 WTS_easter_crisis_long
+		}
+		set_country_flag = WTS_westminster_constitution_events
+		set_variable = {
+			var = WTS.executive_influence
+			value = 0 
+		}
+	}
+}
+#New Government
+country_event = {
+	id = watson.33
+	title = watson.33.t
+	desc = watson.33.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #ogey
+		name = watson.33.a
+		add_ideas = {
+		 WTS_easter_crisis_long
+		}
+		set_country_flag = WTS_new_government_events
+		set_variable = {
+			var = WTS.socialist_control
+			value = 0 
+		}		
+		set_variable = {
+			var = WTS.conservative_control
+			value = 0 
+		}
+	}
+}
+#Results of Westminster Const. Calc
+country_event = {
+	id = watson.34
+	title = watson.34.t
+	desc = watson.34.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #ogey
+		name = watson.34.a
+		set_country_flag = WTS_westminster_constitution_calc
+	}
+}
+#Results of Westminster Const. - Strong Executive
+country_event = {
+	id = watson.35
+	title = watson.35.t
+	desc = watson.35.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #ogey
+		name = watson.35.a
+		clr_country_flag = WTS_westminster_constitution_calc
+		set_politics = {
+			ruling_party = pro_yagoo_progressive
+		}
+		complete_national_focus = WTS_socialist_budget
+		add_stability - 0.1
+	}
+}
+#Results of Westminster Const. - wishy washy
+country_event = {
+	id = watson.36
+	title = watson.36.t
+	desc = watson.36.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #ogey
+		name = watson.36.a
+		clr_country_flag = WTS_westminster_constitution_calc
+		add_stability = -0.1
+	}
+}
+#Results of Westminster Const. - wishy washy
+country_event = {
+	id = watson.37
+	title = watson.37.t
+	desc = watson.37.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #ogey
+		name = watson.37.a
+		clr_country_flag = WTS_westminster_constitution_calc
+		add_stability = 0.15
+	}
+}
+
+#The Budget event 
+country_event = {
+	id = watson.38
+	title = watson.38.t
+	desc = watson.38.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Prior socialist support and budget
+		name = watson.38.a
+		trigger = {
+			has_country_flag = WTS_socialist_budget_flag
+		}
+		add_stability = 0.05
+	}
+}
+#ELECTION RESULTS
+country_event = {
+	id = watson.40
+	title = watson.40.t
+	desc = watson.40.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Conservative Budget
+		name = watson.40.a
+		set_country_flag = WTS_conservative_budget_flag
+	}
+}
+country_event = {
+	id = watson.41
+	title = watson.41.t
+	desc = watson.41.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Socialist Budget
+		name = watson.41.a
+		set_country_flag = WTS_socialist_budget_flag
+	}
+}
+country_event = {
+	id = watson.42
+	title = watson.42.t
+	desc = watson.42.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Budget almost fails! conservative
+		name = watson.42.a
+		add_stability = -0.1
+		set_country_flag = WTS_conservative_budget_flag
+	}
+	option = { #Budget almost fails! socialist
+		name = watson.42.b
+		add_stability = -0.1
+		set_country_flag = WTS_socialist_budget_flag
+	}
 }
