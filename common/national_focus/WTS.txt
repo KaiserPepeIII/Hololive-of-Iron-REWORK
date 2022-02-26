@@ -51,52 +51,73 @@ focus_tree = {
 	focus = {
 		id = WTS_a_new_government
 		icon = GFX_goal_unknown
-		cost = 12.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_the_easter_crisis
 		}
 		mutually_exclusive = {
 			focus = WTS_the_westminster_constitution
 		}
+		select_effect = {	
+			country_event = {
+			id = watson.33
+			}
+		}
 		x = 11
 		y = 2
-		custom_effect_tooltip = WTS_a_new_government_tooltip
+		completion_reward = {
+			custom_effect_tooltip = WTS_a_new_government_tooltip
+		}
 	}
 	focus = {
 		id = WTS_the_westminster_constitution
 		icon = GFX_goal_unknown
-		cost = 12.00
+		cost = 15.00
 		prerequisite = {
 			focus = WTS_the_easter_crisis
 		}
 		mutually_exclusive = {
 			focus = WTS_a_new_government
 		}
+		select_effect = {	
+			country_event = {
+			id = watson.32
+			}
+		}
 		x = 15
 		y = 2
-		custom_effect_tooltip = WTS_the_westminster_constitution_tooltip
+		completion_reward = {
+			custom_effect_tooltip = WTS_the_westminster_constitution_tooltip
+			country_event = { id = watson.34 }
+		
+		}
 	}
 	focus = {
 		id = WTS_the_budget
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_the_westminster_constitution
 			focus = WTS_a_new_government
 		}
 		x = 13
 		y = 3
-
+		completion_reward = {
+			
+		}
 	}
 	focus = {
 		id = WTS_socialist_budget
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_the_budget
 		}
 		mutually_exclusive = {
 			focus = WTS_conservative_budget
+		}
+		available = {
+			has_country_flag = WTS_socialist_budget_flag
 		}
 		x = 11
 		y = 4
@@ -127,12 +148,16 @@ focus_tree = {
 	focus = {
 		id = WTS_conservative_budget
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_the_budget
 		}
 		mutually_exclusive = {
 			focus = WTS_socialist_budget
+		}
+
+		available = {
+			has_country_flag = WTS_conservative_budget_flag
 		}
 		x = 15
 		y = 4
@@ -141,36 +166,51 @@ focus_tree = {
 	focus = {
 		id = WTS_reverse_brain_drain
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = WTS_socialist_budget
 			focus = WTS_conservative_budget
 		}
 		x = 13
 		y = 5
-
+		available = {
+			has_stability > 0.6
+		}
+		completion_reward = {
+			add_research_slot = 1
+			custom_effect_tooltip = WTS_reverse_brain_drain_tooltip
+		}
 	}
 	focus = {
 		id = WTS_british_science
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = WTS_reverse_brain_drain
 		}
 		x = 12
 		y = 6
-
+		completion_reward = {
+			set_country_flag = WTS_british_science
+			custom_effect_tooltip = WTS_british_science_tooltip
+		}
 	}
 	focus = {
 		id = WTS_scholarships_and_grants
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = WTS_reverse_brain_drain
 		}
 		x = 14
 		y = 6
-
+		available = {
+			has_stability > 0.6
+			num_of_factories > 100
+		}
+		completion_reward = {	
+			add_research_slot = 1
+		}
 	}
 	focus = {
 		id = WTS_privitisation_act

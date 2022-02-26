@@ -1,3 +1,4 @@
+
 WTS_class_factions = {
 	WTS_template_decision = {
 		icon = decision_generic_industry
@@ -7,7 +8,7 @@ WTS_class_factions = {
 		}
         
 		visible = {
-			always = yes
+			is_debug = yes
 		}
 		
 		fire_only_once = no
@@ -24,6 +25,152 @@ WTS_class_factions = {
 		}         
 	}
 }
+WTS_restore_faith_in_government = {
+	WTS_snap_election_results = {
+		days_mission_timeout = 30
+		is_good = no
+		icon = GFX_decision_icon_default
+
+		activation = { 
+			has_idea = WTS_easter_crisis_long 
+			has_country_flag = WTS_new_government_events
+			}
+		allowed = { tag = WTS }
+        
+		visible = {
+			has_country_flag = WTS_new_government_events
+		}
+		
+		
+		cost = 120
+		
+		timeout_effect = { 
+		#Results
+			country_event = { id = watson.40 }
+		}         
+	}
+	WTS_push_for_extension = {
+
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 50
+			}
+		}
+        
+		visible = {
+			has_country_flag = WTS_new_government_events
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+	
+		cost = 25
+		
+		complete_effect = { 
+		}       		
+	}
+	WTS_stance_on_stability = {
+
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 25
+			}
+		}
+        
+		visible = {
+			has_country_flag = WTS_new_government_events
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+	
+		cost = 25
+		
+		complete_effect = { 
+		}       		
+	}
+
+	WTS_stance_on_regents_authority = {
+
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 25
+			}
+		}
+        
+		visible = {
+			has_country_flag = WTS_new_government_events
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+	
+		cost = 25
+		
+		complete_effect = { 
+		}       
+		
+	}
+
+	WTS_stance_on_budget = {
+
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 25
+			}
+		}
+        
+		visible = {
+			has_country_flag = WTS_new_government_events
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+	
+		cost = 25
+		
+		complete_effect = { 
+		}       
+		
+	}
+
+	WTS_stance_on_rebels = {
+
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 25
+			}
+		}
+        
+		visible = {
+			has_country_flag = WTS_new_government_events
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+	
+		cost = 25
+		
+		complete_effect = { 
+		}       
+		
+	}
+}
 wts_ira = {
 	WTS_test = {
 		icon = decision_generic_industry
@@ -33,7 +180,7 @@ wts_ira = {
 		}
         
 		visible = {
-			always = yes
+			is_debug = yes
 		}
 		
 		fire_only_once = no
