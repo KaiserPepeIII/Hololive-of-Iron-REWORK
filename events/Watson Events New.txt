@@ -853,7 +853,7 @@ country_event = {
 			ruling_party = pro_yagoo_progressive
 		}
 		complete_national_focus = WTS_socialist_budget
-		add_stability - 0.1
+		add_stability = 0.1
 	}
 }
 #Results of Westminster Const. - wishy washy
@@ -948,5 +948,379 @@ country_event = {
 		name = watson.42.b
 		add_stability = -0.1
 		set_country_flag = WTS_socialist_budget_flag
+	}
+}
+#British Science - Infantry Weapons 
+country_event = {
+	id = watson.47
+	title = watson.47.t
+	desc = watson.47.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.47.a
+		add_tech_bonus = {
+			name = WTS_british_science_infantry_tech_loc
+			bonus = 1
+			uses = 1
+			category = infantry_weapons
+		}
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - Support Weapons
+country_event = {
+	id = watson.48
+	title = watson.48.t
+	desc = watson.48.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.48.a
+		
+		add_tech_bonus = {
+		    name = WTS_british_science_support_tech_loc
+			bonus = 1
+			uses = 1
+			category = support_tech
+		}
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - Armour
+country_event = {
+	id = watson.49
+	title = watson.49.t
+	desc = watson.49.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #light armour
+		name = watson.49.a
+		trigger = {	
+			NOT = {
+				has_country_flag = WTS_researched_light_armour
+			}
+		}
+		country_event = {
+			id = watson.52
+		}
+		set_country_flag = WTS_researched_light_armour
+
+	}
+	option = { #medium armour
+		name = watson.49.b
+		trigger = {	
+			NOT = {
+				has_country_flag = WTS_researched_medium_armour
+			}
+		}
+		country_event = {
+			id = watson.56
+		}
+		set_country_flag = WTS_researched_medium_armour
+
+	}
+	option = { #heavy armour
+		name = watson.49.a
+		trigger = {	
+			NOT = {
+				has_country_flag = WTS_researched_heavy_armour
+			}
+		}
+		country_event = {
+			id = watson.57
+		}
+		set_country_flag = WTS_researched_heavy_armour
+
+	}
+}
+#British Science - Aircraft 
+country_event = {
+	id = watson.50
+	title = watson.50.t
+	desc = watson.50.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Fighters
+		name = watson.50.a
+		trigger = {	
+			NOT = {
+				has_country_flag = WTS_researched_fighters
+			}
+		}
+		country_event = {
+			id = watson.53
+		}
+		set_country_flag = WTS_researched_fighters
+
+	}
+	option = { #Bombers
+		name = watson.50.b
+		trigger = {	
+			NOT = {
+				has_country_flag = WTS_researched_bombers
+			}
+		}
+		country_event = {
+			id = watson.54
+		}
+		set_country_flag = WTS_researched_bombers
+
+	}
+	option = { #Strat Bombers
+		name = watson.50.c
+		trigger = {	
+			NOT = {
+				has_country_flag = WTS_researched_strat_bombers
+			}
+		}
+		country_event = {
+			id = watson.55
+		}
+		set_country_flag = WTS_researched_strat_bombers
+
+	}
+}
+#British Science - RADAR
+country_event = {
+	id = watson.51
+	title = watson.51.t
+	desc = watson.51.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.51.a
+
+		add_tech_bonus = {
+		    name = WTS_british_science_radar_tech_loc
+			bonus = 1
+			uses = 1
+			category = radar_tech
+		}
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - Light armour
+country_event = {
+	id = watson.52
+	title = watson.52.t
+	desc = watson.52.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.52.a
+
+		add_tech_bonus = {
+			name = WTS_british_science_light_armour_tech_loc
+			bonus = 1
+			uses = 1
+			category = cat_light_armor
+		}
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - Fighters
+country_event = {
+	id = watson.53
+	title = watson.53.t
+	desc = watson.53.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.53.a
+		add_tech_bonus = {
+			name = WTS_british_science_fighter_tech_loc
+			bonus = 1
+			uses = 1
+			category = light_fighter
+		}
+
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - Bombers
+country_event = {
+	id = watson.54
+	title = watson.54.t
+	desc = watson.54.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.54.a
+		add_tech_bonus = {
+			name = WTS_british_science_bomber_tech_loc
+			bonus = 1
+			uses = 1
+			category = tactical_bomber
+		}
+
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - strat bombers
+country_event = {
+	id = watson.55
+	title = watson.55.t
+	desc = watson.55.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.55.a
+		add_tech_bonus = {
+			name = WTS_british_science_strat_bomber_tech_loc
+			bonus = 1
+			uses = 1
+			category = cat_strategic_bomber
+		}
+
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - medium armour
+country_event = {
+	id = watson.56
+	title = watson.56.t
+	desc = watson.56.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.56.a
+		add_tech_bonus = {
+			name = WTS_british_science_medium_armour_tech_loc
+			bonus = 1
+			uses = 1
+			category = cat_medium_armor
+		}
+
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - #heavy armour
+country_event = {
+	id = watson.57
+	title = watson.57.t
+	desc = watson.57.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.57.a
+		add_tech_bonus = {
+			name = WTS_british_science_heavy_armour_tech_loc
+			bonus = 1
+			uses = 1
+			category = cat_heavy_armor
+		}
+
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - nukes
+country_event = {
+	id = watson.58
+	title = watson.58.t
+	desc = watson.58.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.58.a
+		add_tech_bonus = {
+			name = WTS_british_science_nuke_tech_loc
+			bonus = 1
+			uses = 1
+			category = nuclear
+		}
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - rocketry 
+country_event = {
+	id = watson.59
+	title = watson.59.t
+	desc = watson.59.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.59.a
+		add_tech_bonus = {
+			name = WTS_british_science_rocketry_tech_loc
+			bonus = 1
+			uses = 1
+			category = rocketry
+		}
+		add_to_variable = {
+			var = WTS.british_science_points
+			value = 1
+		}
+	}
+}
+#British Science - one more focus slot
+country_event = {
+	id = watson.60
+	title = watson.60.t
+	desc = watson.60.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = watson.60.a
+		add_stability = 0.05
+		add_researh_slot = 1
 	}
 }

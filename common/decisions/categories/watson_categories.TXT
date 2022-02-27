@@ -39,7 +39,7 @@ WTS_westminster_constitution = {
 	}
 }
 wts_ira = {
-	priority = 10
+	priority = 11
 	
 	icon = generic_formable_nations
 	
@@ -49,7 +49,7 @@ wts_ira = {
 		tag = WTS
 	}
 	visible = {
-		tag = WTS
+		has_country_flag = ira_established
 	}
 }
 WTS_british_science = {
@@ -64,5 +64,23 @@ WTS_british_science = {
 	}
 	visible = {
 		has_country_flag = WTS_british_science
+	}
+}
+
+wts_home_defense = {
+	priority = 11
+	
+	icon = generic_formable_nations
+	
+	picture = GFX_decision_cat_generic_arabia
+	
+	allowed = {
+		tag = WTS
+	}
+	visible = {
+		has_country_flag = wts_total_defense
+		NOT = {
+			has_country_flag = WTS_impenetrable
+		}
 	}
 }

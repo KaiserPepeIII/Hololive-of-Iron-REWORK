@@ -1,4 +1,232 @@
+WTS_british_science = {	
+	WTS_infantry_weapon_research = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 120
+					}		
+		}
+		
+		visible = {	
+			always = yes
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
 
+		fire_only_once = yes
+
+		cost = 120
+
+		complete_effect = {
+			country_event = {
+				id = watson.47
+			}
+		}			
+		
+	}
+	WTS_support_weapon_research = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 120
+					}		
+		}
+		
+		visible = {	
+			always = yes
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+
+		fire_only_once = yes
+
+		cost = 120
+
+		complete_effect = {
+			country_event = {
+				id = watson.48
+			}
+		}			
+		
+	}
+	WTS_armour_research = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 120
+					}		
+		}
+		
+		visible = {	
+			NOT = {
+				AND = {
+					has_country_flag = WTS_researched_light_armour
+					has_country_flag = WTS_researched_medium_armour
+					has_country_flag = WTS_researched_heavy_armour
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+
+		fire_only_once = no
+		days_re_enable = 30
+
+		cost = 120
+
+		complete_effect = {
+			country_event = {
+				id = watson.49
+			}
+		}			
+		
+	}
+	WTS_aircraft_research = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 120
+					}		
+		}
+		
+		visible = {	
+
+			NOT = {
+				AND = {
+					has_country_flag = WTS_researched_fighters
+					has_country_flag = WTS_researched_bombers
+					has_country_flag = WTS_researched_strat_bombers
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+
+		fire_only_once = no
+		days_re_enable = 30
+
+		cost = 120
+
+		complete_effect = {
+			country_event = {
+				id = watson.50
+			}
+		}			
+		
+	}
+	WTS_radar_research = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 120
+					}		
+		}
+		
+		visible = {	
+			always = yes
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+
+		fire_only_once = yes
+
+		cost = 120
+
+		complete_effect = {
+			country_event = {
+				id = watson.51
+			}
+		}			
+		
+	}
+	WTS_rocketry_research = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 150
+					}		
+		}
+		
+		visible = {	
+			date > 1940.1.1 
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+
+		fire_only_once = yes
+
+		cost = 120
+
+		complete_effect = {
+			country_event = {
+				id = watson.59
+			}
+		}			
+		
+	}
+	WTS_nuclear_research = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 150
+					}		
+		}
+		
+		visible = {	
+			date > 1940.1.1 
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+
+		fire_only_once = yes
+
+		cost = 120
+
+		complete_effect = {
+			country_event = {
+				id = watson.58
+			}
+		}			
+		
+	}
+	WTS_one_more_research_slot = {
+		icon = decision_generic_industry
+		available = {
+			WTS = { has_political_power > 150
+					}		
+		}
+		
+		visible = {	
+			check_variable = {
+				var = WTS.british_science_points
+				value = 11
+				compare = greater_than_or_equals
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+
+		fire_only_once = yes
+
+		cost = 120
+
+		complete_effect = {
+			country_event = {
+				id = watson.60
+			}
+		}			
+		
+	}
+}
 WTS_class_factions = {
 	WTS_template_decision = {
 		icon = decision_generic_industry
@@ -22,6 +250,7 @@ WTS_class_factions = {
 		cost = 120
 		
 		complete_effect = { 
+			add_stability = 0.1
 		}         
 	}
 }
@@ -266,7 +495,1615 @@ wts_ira = {
 		complete_effect = { 
 		}
 	}
+}
+wts_home_defense = {
+	wts_air_defence_dover_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 127
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
 
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
 
+		complete_effect = { 
+			set_country_flag = wts_dover_air_defence1
+			127 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_air_defence_dover_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 127
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_dover_air_defence1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
 
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_dover_air_defence2
+			127 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_air_defence_cornwall_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 123
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		complete_effect = { 
+			set_country_flag = wts_cornwall_air_defence1
+			123 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_air_defence_cornwall_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 123
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_cornwall_air_defence1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_cornwall_air_defence2
+			123 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_air_defence_norwich_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 125
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		complete_effect = { 
+			set_country_flag = wts_norwich_air_defence1
+			125 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_air_defence_norwich_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 125
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_norwich_air_defence1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_norwich_air_defence2
+			125 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_oil_refinery_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 128
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_oil_refinery_1
+			128 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_oil_refinery_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 128
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_oil_refinery_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_oil_refinery_2
+			128 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_military_construction_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 126
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_military_construction_1
+			126 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_military_construction_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 126
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_military_construction_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_military_construction_2
+			126 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_london_fortifications_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 126
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_london_fortifications_1
+			126 = {
+				add_building_construction = { type = bunker province = 6103 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 11333 level = 3 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_london_fortifications_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 126
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_london_fortifications_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_london_fortifications_2
+			126 = {
+				add_building_construction = { type = bunker province = 6103 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 11333 level = 2 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_birmingham_fortifications_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 126
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_birmingham_fortifications_1
+			126 = {
+				add_building_construction = { type = bunker province = 9297 level = 3 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_birmingham_fortifications_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 126
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_birmingham_fortifications_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_birmingham_fortifications_2
+			126 = {
+				add_building_construction = { type = bunker province = 9297 level = 2 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_dover_fortifications_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 127
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_dover_fortifications_1
+			127 = {
+				add_building_construction = { type = coastal_bunker province = 3501 level = 3 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_dover_fortifications_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 127
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_dover_fortifications_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_dover_fortifications_2
+			127 = {
+				add_building_construction = { type = coastal_bunker province = 3501 level = 2 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_portsmouth_fortifications_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 127
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_portsmouth_fortifications_1
+			127 = {
+				add_building_construction = { type = coastal_bunker province = 9458 level = 3 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_portsmouth_fortifications_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 127
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_portsmouth_fortifications_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_portsmouth_fortifications_2
+			127 = {
+				add_building_construction = { type = coastal_bunker province = 9458 level = 2 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_plymouth_fortifications_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 123
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_plymouth_fortifications_1
+			123 = {
+				add_building_construction = { type = coastal_bunker province = 540 level = 3 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_plymouth_fortifications_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 123
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_plymouth_fortifications_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_plymouth_fortifications_2
+			123 = {
+				add_building_construction = { type = coastal_bunker province = 540 level = 2 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_bristol_fortifications_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 338
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_bristol_fortifications_1
+			338 = {
+				add_building_construction = { type = coastal_bunker province = 3369 level = 3 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_bristol_fortifications_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 338
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_bristol_fortifications_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = { 
+			set_country_flag = wts_bristol_fortifications_2
+			338 = {
+				add_building_construction = { type = coastal_bunker province = 3369 level = 2 instant_build = yes }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_airfield_extension_1 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 338
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_airfield_extension_1
+			338 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_airfield_extension_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 338
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_airfield_extension_1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+
+		days_remove = 45
+		
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = { 
+			set_country_flag = wts_airfield_extension_2
+			338 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = wts_total_defense_1_decision
+					}
+				}
+				set_country_flag = wts_total_defense_1_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				set_country_flag = wts_total_defense_2_decision
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+						has_country_flag = wts_total_defense_2_decision
+				}
+				clr_country_flag = wts_total_defense_2_decision
+			}
+			else_if = {
+				limit = {
+					has_country_flag = wts_total_defense_1_decision
+				}
+				clr_country_flag = wts_total_defense_1_decision
+			}
+	   }
+	}
+	wts_airfield_extension_2 = {
+		icon = decision_generic_industry
+		available = {
+			owns_state = 338
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = not_taking_3
+					has_country_flag = wts_total_defense_2_decision
+				}
+			}
+		}
+        
+		visible = {
+			has_country_flag = wts_total_defense
+			has_country_flag = wts_airfield_extension_2
+			has_country_flag = wts_air_defence_cornwall_2
+			has_country_flag = wts_air_defence_dover_2
+			has_country_flag = wts_air_defence_norwich_2
+			has_country_flag = wts_birmingham_fortifications_2
+			has_country_flag = wts_bristol_fortifications_2
+			has_country_flag = wts_cornwall_air_defence2
+			has_country_flag = wts_oil_refinery_2
+			has_country_flag = wts_portsmouth_fortifications_2
+			has_country_flag = wts_london_fortifications_2
+			has_country_flag = wts_military_construction_2
+			has_country_flag = wts_dover_fortifications_2
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 5
+			}
+		complete_effect = { 
+			country_event = {
+				id = watson.61
+				days = 1
+			}
+		}
+	}
 }
