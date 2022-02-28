@@ -1,10 +1,43 @@
 scripted_gui = {
-  wts_counter_insurgency = {
-	window_name = "wts_counter_insurgency_window"
+  wts_counter_insurgency = { 
+	window_name = "wts_counter_insurgency_open_button"
 	context_type = player_context
+	parent_window_token = top_bar
 	
 	visible = {
-		always = yes
+		tag = WTS
 	}
+	
+	effects = {
+		WTS_counter_insurgency_button_click = {
+			set_country_flag = WTS_view_counter_insurgency
+		}
+		WTS_counter_insurgency_button_right_click = {
+			clr_country_flag = WTS_view_counter_insurgency
+		}
+	}
+	
+	
+	}
+	
+	WTS_counter_insurgency_view_window_gui = {
+	window_name = "WTS_counter_insurgency_view_window"
+	context_type = player_context
+
+		
+	visible = {
+		has_country_flag = WTS_view_counter_insurgency
+	}
+	
+  }
+	WTS_ireland_view_gui = {
+	window_name = "WTS_ireland_view"
+	context_type = player_context
+
+		
+	visible = {
+		has_country_flag = WTS_view_counter_insurgency
+	}
+	
   }
 }
