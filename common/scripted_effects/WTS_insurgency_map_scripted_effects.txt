@@ -1,0 +1,609 @@
+
+WTS_all_regions_calculate_effect = {	
+	WTS_south_england_frame_effect = yes
+	WTS_london_frame_effect = yes
+	WTS_west_midlands_frame_effect = yes
+	WTS_east_england_frame_effect = yes
+	WTS_north_england_frame_effect = yes
+	WTS_wales_frame_effect = yes
+	WTS_scotland_frame_effect = yes
+	WTS_northern_ireland_frame_effect = yes
+	WTS_dublin_frame_effect = yes
+	WTS_southwest_ireland_frame_effect = yes
+	WTS_northwest_ireland_frame_effect = yes
+}
+
+WTS_south_england_frame_effect = {
+	if = {
+			limit = {
+				WTS_south_england_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_south_england_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_south_england_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_south_england_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_south_england_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 6
+			}
+		}	
+	}
+}
+WTS_london_frame_effect = {
+	if = {
+			limit = {
+				WTS_london_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_london_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_london_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_london_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_london_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_london_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_london_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_london_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_london_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_london_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_london_frame
+				value = 6
+			}
+		}	
+	}
+}
+WTS_west_midlands_frame_effect = {
+	if = {
+			limit = {
+				WTS_west_midlands_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_west_midlands_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_west_midlands_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_west_midlands_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_west_midlands_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_west_midlands_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_west_midlands_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_west_midlands_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_west_midlands_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_west_midlands_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_west_midlands_frame
+				value = 6
+			}
+		}	
+	}
+}
+WTS_east_england_frame_effect = {
+	if = {
+			limit = {
+				WTS_east_england_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_east_england_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_east_england_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_east_england_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_east_england_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_east_england_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_east_england_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_east_england_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_east_england_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_east_england_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_east_england_frame
+				value = 6
+			}
+		}
+	}
+}
+WTS_north_england_frame_effect = {
+	if = {
+			limit = {
+				WTS_south_england_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_south_england_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_south_england_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_south_england_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_south_england_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_south_england_frame
+				value = 6
+			}
+		}
+	}
+}
+WTS_wales_frame_effect = {
+	if = {
+			limit = {
+				WTS_wales_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_wales_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				counter_insurgency_wales_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_wales_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				counter_insurgency_wales_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_wales_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_wales_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_wales_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				counter_insurgency_wales_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_wales_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_wales_frame
+				value = 6
+			}
+		}	
+	}
+}
+WTS_scotland_frame_effect = {
+	if = {
+			limit = {
+				WTS_scotland_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_scotland_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_scotland_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_scotland_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_scotland_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_scotland_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_scotland_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_scotland_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_scotland_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_scotland_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_scotland_frame
+				value = 6
+			}
+		}	
+	}
+}
+WTS_northern_ireland_frame_effect = {
+	if = {
+			limit = {
+				WTS_northern_ireland_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_northern_ireland_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_northern_ireland_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_northern_ireland_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_northern_ireland_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_northern_ireland_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_northern_ireland_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_northern_ireland_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_northern_ireland_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_northern_ireland_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_northern_ireland_frame
+				value = 6
+			}
+		}
+	}
+}
+WTS_dublin_frame_effect = {
+	if = {
+			limit = {
+				WTS_dublin_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_dublin_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_dublin_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_dublin_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_dublin_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_dublin_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_dublin_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_dublin_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_dublin_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_dublin_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_dublin_frame
+				value = 6
+			}
+		}
+	}
+}
+WTS_southwest_ireland_frame_effect = {
+	if = {
+			limit = {
+				WTS_southwest_ireland_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_southwest_ireland_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_southwest_ireland_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_southwest_ireland_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_southwest_ireland_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_southwest_ireland_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_southwest_ireland_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_southwest_ireland_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_southwest_ireland_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_southwest_ireland_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_southwest_ireland_frame
+				value = 6
+			}
+		}
+	}
+}
+WTS_northwest_ireland_frame_effect = {
+	if = {
+			limit = {
+				WTS_northwest_government_frame_trigger = yes
+			}   
+			set_variable = {
+				var = WTS.counter_insurgency_northwest_frame
+				value = 1
+			}
+			
+		else_if = {
+			limit = {
+				WTS_northwest_antis_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_northwest_frame
+				value = 2
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_northwest_irish_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_northwest_frame
+				value = 3
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_counter_insurgency_northwest_teammates = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_northwest_frame
+				value = 4
+			}
+		}	
+		else_if = {
+			limit = {
+				WTS_northwest_welsh_frame_trigger = yes
+			}
+			set_variable = {
+				var = WTS.counter_insurgency_northwest_frame
+				value = 5
+			}
+		}	
+		else = {
+			set_variable = {
+				var = WTS.counter_insurgency_northwest_frame
+				value = 6
+			}
+		}
+	}
+}
