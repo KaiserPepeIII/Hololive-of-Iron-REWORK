@@ -1,4 +1,16 @@
-
+WTS_all_buttons_clicked_clear = {	
+	clr_country_flag = WTS_northwest_ireland_region_clicked
+	clr_country_flag = WTS_southwest_ireland_region_clicked
+	clr_country_flag = WTS_northern_ireland_region_clicked
+	clr_country_flag = WTS_dublin_region_clicked
+	clr_country_flag = WTS_east_england_region_clicked
+	clr_country_flag = WTS_london_region_clicked
+	clr_country_flag = WTS_north_england_region_clicked
+	clr_country_flag = WTS_south_england_region_clicked
+	clr_country_flag = WTS_wales_region_clicked
+	clr_country_flag = WTS_midlands_region_clicked
+	clr_country_flag = WTS_scotland_region_clicked
+}
 WTS_all_regions_calculate_effect = {	
 	WTS_south_england_frame_effect = yes
 	WTS_london_frame_effect = yes
@@ -43,7 +55,7 @@ WTS_south_england_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_south_england_teammates = yes
+				WTS_south_england_teammates_trigger = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_south_england_frame
@@ -97,7 +109,7 @@ WTS_london_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_london_teammates = yes
+				WTS_london_teammates_trigger = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_london_frame
@@ -151,7 +163,7 @@ WTS_west_midlands_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_west_midlands_teammates = yes
+				WTS_west_midlands_teammates_trigger = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_west_midlands_frame
@@ -205,7 +217,7 @@ WTS_east_england_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_east_england_teammates = yes
+				WTS_east_england_teammates_trigger = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_east_england_frame
@@ -259,7 +271,7 @@ WTS_north_england_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_south_england_teammates = yes
+				WTS_south_england_teammates_trigger = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_south_england_frame
@@ -289,49 +301,49 @@ WTS_wales_frame_effect = {
 				WTS_wales_government_frame_trigger = yes
 			}   
 			set_variable = {
-				var = WTS.counter_insurgency_wales_frame
+				var = WTS.WTS_wales_frame
 				value = 1
 			}
 			
 		else_if = {
 			limit = {
-				counter_insurgency_wales_teammates = yes
+				WTS_wales_teammates_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_wales_frame
+				var = WTS.WTS_wales_frame
 				value = 2
 			}
 		}	
 		else_if = {
 			limit = {
-				counter_insurgency_wales_teammates = yes
+				WTS_wales_teammates_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_wales_frame
+				var = WTS.WTS_wales_frame
 				value = 3
 			}
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_wales_teammates = yes
+				WTS_wales_teammates = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_wales_frame
+				var = WTS.WTS_wales_frame
 				value = 4
 			}
 		}	
 		else_if = {
 			limit = {
-				counter_insurgency_wales_teammates = yes
+				WTS_wales_teammates = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_wales_frame
+				var = WTS.WTS_wales_frame
 				value = 5
 			}
 		}	
 		else = {
 			set_variable = {
-				var = WTS.counter_insurgency_wales_frame
+				var = WTS.WTS_wales_frame
 				value = 6
 			}
 		}	
@@ -367,7 +379,7 @@ WTS_scotland_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_scotland_teammates = yes
+				WTS_scotland_teammates = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_scotland_frame
@@ -421,7 +433,7 @@ WTS_northern_ireland_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_northern_ireland_teammates = yes
+				WTS_northern_ireland_teammates = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_northern_ireland_frame
@@ -475,7 +487,7 @@ WTS_dublin_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_dublin_teammates = yes
+				WTS_dublin_teammates = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_dublin_frame
@@ -529,7 +541,7 @@ WTS_southwest_ireland_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_southwest_ireland_teammates = yes
+				WTS_southwest_ireland_teammates = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_southwest_ireland_frame
@@ -556,7 +568,7 @@ WTS_southwest_ireland_frame_effect = {
 WTS_northwest_ireland_frame_effect = {
 	if = {
 			limit = {
-				WTS_northwest_government_frame_trigger = yes
+				WTS_northwest_ireland_government_frame_trigger = yes
 			}   
 			set_variable = {
 				var = WTS.counter_insurgency_northwest_frame
@@ -565,7 +577,7 @@ WTS_northwest_ireland_frame_effect = {
 			
 		else_if = {
 			limit = {
-				WTS_northwest_antis_frame_trigger = yes
+				WTS_northwest_ireland_antis_frame_trigger = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_northwest_frame
@@ -574,7 +586,7 @@ WTS_northwest_ireland_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_northwest_irish_frame_trigger = yes
+				WTS_northwest_ireland_frame_trigger = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_northwest_frame
@@ -583,7 +595,7 @@ WTS_northwest_ireland_frame_effect = {
 		}	
 		else_if = {
 			limit = {
-				WTS_counter_insurgency_northwest_teammates = yes
+				WTS_northwest_teammates = yes
 			}
 			set_variable = {
 				var = WTS.counter_insurgency_northwest_frame

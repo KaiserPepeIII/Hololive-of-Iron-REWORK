@@ -28,7 +28,16 @@ scripted_gui = {
 	visible = {
 		has_country_flag = WTS_view_counter_insurgency
 	}
-	
+	triggers = {	
+		WTS_counter_insurgency_region_text_visible = {	
+			WTS_region_clicked_scripted_trigger = yes
+		}
+	}
+	effects = {
+		close_button_click = {
+			clr_country_flag = WTS_view_counter_insurgency
+		}
+	}
   }
 	WTS_ireland_view_gui = {
 	window_name = "WTS_ireland_view"
@@ -54,15 +63,19 @@ scripted_gui = {
 	}
 	effects = {	
 		north_west_ireland_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_northwest_ireland_region_clicked
 		}
 		south_west_ireland_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_southwest_ireland_region_clicked
 		}
 		northern_ireland_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_northern_ireland_region_clicked
 		}
 		dublin_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_dublin_region_clicked
 		}
 		north_west_ireland_region_button_right_click = {
@@ -115,24 +128,31 @@ scripted_gui = {
 	effects = {
 
 		east_england_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_east_england_region_clicked
 		}
 		london_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_london_region_clicked
 		}
 		north_england_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_north_england_region_clicked
 		}
 		south_england_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_south_england_region_clicked
 		}
 		wales_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_wales_region_clicked
 		}
 		west_midlands_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_midlands_region_clicked
 		}
 		scotland_region_button_click = {
+			WTS_all_buttons_clicked_clear = yes
 			set_country_flag = WTS_scotland_region_clicked
 		}
 		east_england_region_button_right_click = {
@@ -158,4 +178,241 @@ scripted_gui = {
 		}
 	}
   }
+  
+	pie_chart_south_england_sg = {
+		window_name = "pie_container_south_england"
+		context_type = player_context
+		
+		visible = {
+			has_country_flag = WTS_south_england_region_clicked
+		}
+
+		ai_enabled = {
+			always = no
+		}
+
+		dirty = pie_chart_south_england_dirty
+
+		properties = {
+			pie_south_england0 = { frame = pie_chart_south_england^0 }
+			pie_south_england1 = { frame = pie_chart_south_england^1 }
+			pie_south_england2 = { frame = pie_chart_south_england^2 }
+			pie_south_england3 = { frame = pie_chart_south_england^3 }
+			pie_south_england4 = { frame = pie_chart_south_england^4 }
+			pie_south_england5 = { frame = pie_chart_south_england^5 }
+			pie_south_england6 = { frame = pie_chart_south_england^6 }
+			pie_south_england7 = { frame = pie_chart_south_england^7 }
+			pie_south_england8 = { frame = pie_chart_south_england^8 }
+			pie_south_england9 = { frame = pie_chart_south_england^9 }
+			pie_south_england10 = { frame = pie_chart_south_england^10 }
+			pie_south_england11 = { frame = pie_chart_south_england^11 }
+			pie_south_england12 = { frame = pie_chart_south_england^12 }
+			pie_south_england13 = { frame = pie_chart_south_england^13 }
+			pie_south_england14 = { frame = pie_chart_south_england^14 }
+			pie_south_england15 = { frame = pie_chart_south_england^15 }
+			pie_south_england16 = { frame = pie_chart_south_england^16 }
+			pie_south_england17 = { frame = pie_chart_south_england^17 }
+			pie_south_england18 = { frame = pie_chart_south_england^18 }
+			pie_south_england19 = { frame = pie_chart_south_england^19 }
+			pie_south_england20 = { frame = pie_chart_south_england^20 }
+			pie_south_england21 = { frame = pie_chart_south_england^21 }
+			pie_south_england22 = { frame = pie_chart_south_england^22 }
+			pie_south_england23 = { frame = pie_chart_south_england^23 }
+			pie_south_england24 = { frame = pie_chart_south_england^24 }
+			pie_south_england25 = { frame = pie_chart_south_england^25 }
+			pie_south_england26 = { frame = pie_chart_south_england^26 }
+			pie_south_england27 = { frame = pie_chart_south_england^27 }
+			pie_south_england28 = { frame = pie_chart_south_england^28 }
+			pie_south_england29 = { frame = pie_chart_south_england^29 }
+			pie_south_england30 = { frame = pie_chart_south_england^30 }
+			pie_south_england31 = { frame = pie_chart_south_england^31 }
+			pie_south_england32 = { frame = pie_chart_south_england^32 }
+			pie_south_england33 = { frame = pie_chart_south_england^33 }
+			pie_south_england34 = { frame = pie_chart_south_england^34 }
+			pie_south_england35 = { frame = pie_chart_south_england^35 }
+			pie_south_england36 = { frame = pie_chart_south_england^36 }
+			pie_south_england37 = { frame = pie_chart_south_england^37 }
+			pie_south_england38 = { frame = pie_chart_south_england^38 }
+			pie_south_england39 = { frame = pie_chart_south_england^39 }
+			pie_south_england40 = { frame = pie_chart_south_england^40 }
+			pie_south_england41 = { frame = pie_chart_south_england^41 }
+			pie_south_england42 = { frame = pie_chart_south_england^42 }
+			pie_south_england43 = { frame = pie_chart_south_england^43 }
+			pie_south_england44 = { frame = pie_chart_south_england^44 }
+			pie_south_england45 = { frame = pie_chart_south_england^45 }
+			pie_south_england46 = { frame = pie_chart_south_england^46 }
+			pie_south_england47 = { frame = pie_chart_south_england^47 }
+			pie_south_england48 = { frame = pie_chart_south_england^48 }
+			pie_south_england49 = { frame = pie_chart_south_england^49 }
+			pie_south_england50 = { frame = pie_chart_south_england^50 }
+			pie_south_england51 = { frame = pie_chart_south_england^51 }
+			pie_south_england52 = { frame = pie_chart_south_england^52 }
+			pie_south_england53 = { frame = pie_chart_south_england^53 }
+			pie_south_england54 = { frame = pie_chart_south_england^54 }
+			pie_south_england55 = { frame = pie_chart_south_england^55 }
+			pie_south_england56 = { frame = pie_chart_south_england^56 }
+			pie_south_england57 = { frame = pie_chart_south_england^57 }
+			pie_south_england58 = { frame = pie_chart_south_england^58 }
+			pie_south_england59 = { frame = pie_chart_south_england^59 }
+			pie_south_england60 = { frame = pie_chart_south_england^60 }
+			pie_south_england61 = { frame = pie_chart_south_england^61 }
+			pie_south_england62 = { frame = pie_chart_south_england^62 }
+			pie_south_england63 = { frame = pie_chart_south_england^63 }
+			pie_south_england64 = { frame = pie_chart_south_england^64 }
+			pie_south_england65 = { frame = pie_chart_south_england^65 }
+			pie_south_england66 = { frame = pie_chart_south_england^66 }
+			pie_south_england67 = { frame = pie_chart_south_england^67 }
+			pie_south_england68 = { frame = pie_chart_south_england^68 }
+			pie_south_england69 = { frame = pie_chart_south_england^69 }
+			pie_south_england70 = { frame = pie_chart_south_england^70 }
+			pie_south_england71 = { frame = pie_chart_south_england^71 }
+			pie_south_england72 = { frame = pie_chart_south_england^72 }
+			pie_south_england73 = { frame = pie_chart_south_england^73 }
+			pie_south_england74 = { frame = pie_chart_south_england^74 }
+			pie_south_england75 = { frame = pie_chart_south_england^75 }
+			pie_south_england76 = { frame = pie_chart_south_england^76 }
+			pie_south_england77 = { frame = pie_chart_south_england^77 }
+			pie_south_england78 = { frame = pie_chart_south_england^78 }
+			pie_south_england79 = { frame = pie_chart_south_england^79 }
+			pie_south_england80 = { frame = pie_chart_south_england^80 }
+			pie_south_england81 = { frame = pie_chart_south_england^81 }
+			pie_south_england82 = { frame = pie_chart_south_england^82 }
+			pie_south_england83 = { frame = pie_chart_south_england^83 }
+			pie_south_england84 = { frame = pie_chart_south_england^84 }
+			pie_south_england85 = { frame = pie_chart_south_england^85 }
+			pie_south_england86 = { frame = pie_chart_south_england^86 }
+			pie_south_england87 = { frame = pie_chart_south_england^87 }
+			pie_south_england88 = { frame = pie_chart_south_england^88 }
+			pie_south_england89 = { frame = pie_chart_south_england^89 }
+			pie_south_england90 = { frame = pie_chart_south_england^90 }
+			pie_south_england91 = { frame = pie_chart_south_england^91 }
+			pie_south_england92 = { frame = pie_chart_south_england^92 }
+			pie_south_england93 = { frame = pie_chart_south_england^93 }
+			pie_south_england94 = { frame = pie_chart_south_england^94 }
+			pie_south_england95 = { frame = pie_chart_south_england^95 }
+			pie_south_england96 = { frame = pie_chart_south_england^96 }
+			pie_south_england97 = { frame = pie_chart_south_england^97 }
+			pie_south_england98 = { frame = pie_chart_south_england^98 }
+			pie_south_england99 = { frame = pie_chart_south_england^99 }
+		}
+
+	}
+	pie_chart_wales_sg = {
+		window_name = "pie_container_wales"
+		context_type = player_context
+		
+		visible = {
+			has_country_flag = WTS_wales_region_clicked
+		}
+
+		ai_enabled = {
+			always = no
+		}
+
+		dirty = pie_chart_wales_dirty
+
+		properties = {
+			pie_wales0 = { frame = pie_chart_wales^0 }
+			pie_wales1 = { frame = pie_chart_wales^1 }
+			pie_wales2 = { frame = pie_chart_wales^2 }
+			pie_wales3 = { frame = pie_chart_wales^3 }
+			pie_wales4 = { frame = pie_chart_wales^4 }
+			pie_wales5 = { frame = pie_chart_wales^5 }
+			pie_wales6 = { frame = pie_chart_wales^6 }
+			pie_wales7 = { frame = pie_chart_wales^7 }
+			pie_wales8 = { frame = pie_chart_wales^8 }
+			pie_wales9 = { frame = pie_chart_wales^9 }
+			pie_wales10 = { frame = pie_chart_wales^10 }
+			pie_wales11 = { frame = pie_chart_wales^11 }
+			pie_wales12 = { frame = pie_chart_wales^12 }
+			pie_wales13 = { frame = pie_chart_wales^13 }
+			pie_wales14 = { frame = pie_chart_wales^14 }
+			pie_wales15 = { frame = pie_chart_wales^15 }
+			pie_wales16 = { frame = pie_chart_wales^16 }
+			pie_wales17 = { frame = pie_chart_wales^17 }
+			pie_wales18 = { frame = pie_chart_wales^18 }
+			pie_wales19 = { frame = pie_chart_wales^19 }
+			pie_wales20 = { frame = pie_chart_wales^20 }
+			pie_wales21 = { frame = pie_chart_wales^21 }
+			pie_wales22 = { frame = pie_chart_wales^22 }
+			pie_wales23 = { frame = pie_chart_wales^23 }
+			pie_wales24 = { frame = pie_chart_wales^24 }
+			pie_wales25 = { frame = pie_chart_wales^25 }
+			pie_wales26 = { frame = pie_chart_wales^26 }
+			pie_wales27 = { frame = pie_chart_wales^27 }
+			pie_wales28 = { frame = pie_chart_wales^28 }
+			pie_wales29 = { frame = pie_chart_wales^29 }
+			pie_wales30 = { frame = pie_chart_wales^30 }
+			pie_wales31 = { frame = pie_chart_wales^31 }
+			pie_wales32 = { frame = pie_chart_wales^32 }
+			pie_wales33 = { frame = pie_chart_wales^33 }
+			pie_wales34 = { frame = pie_chart_wales^34 }
+			pie_wales35 = { frame = pie_chart_wales^35 }
+			pie_wales36 = { frame = pie_chart_wales^36 }
+			pie_wales37 = { frame = pie_chart_wales^37 }
+			pie_wales38 = { frame = pie_chart_wales^38 }
+			pie_wales39 = { frame = pie_chart_wales^39 }
+			pie_wales40 = { frame = pie_chart_wales^40 }
+			pie_wales41 = { frame = pie_chart_wales^41 }
+			pie_wales42 = { frame = pie_chart_wales^42 }
+			pie_wales43 = { frame = pie_chart_wales^43 }
+			pie_wales44 = { frame = pie_chart_wales^44 }
+			pie_wales45 = { frame = pie_chart_wales^45 }
+			pie_wales46 = { frame = pie_chart_wales^46 }
+			pie_wales47 = { frame = pie_chart_wales^47 }
+			pie_wales48 = { frame = pie_chart_wales^48 }
+			pie_wales49 = { frame = pie_chart_wales^49 }
+			pie_wales50 = { frame = pie_chart_wales^50 }
+			pie_wales51 = { frame = pie_chart_wales^51 }
+			pie_wales52 = { frame = pie_chart_wales^52 }
+			pie_wales53 = { frame = pie_chart_wales^53 }
+			pie_wales54 = { frame = pie_chart_wales^54 }
+			pie_wales55 = { frame = pie_chart_wales^55 }
+			pie_wales56 = { frame = pie_chart_wales^56 }
+			pie_wales57 = { frame = pie_chart_wales^57 }
+			pie_wales58 = { frame = pie_chart_wales^58 }
+			pie_wales59 = { frame = pie_chart_wales^59 }
+			pie_wales60 = { frame = pie_chart_wales^60 }
+			pie_wales61 = { frame = pie_chart_wales^61 }
+			pie_wales62 = { frame = pie_chart_wales^62 }
+			pie_wales63 = { frame = pie_chart_wales^63 }
+			pie_wales64 = { frame = pie_chart_wales^64 }
+			pie_wales65 = { frame = pie_chart_wales^65 }
+			pie_wales66 = { frame = pie_chart_wales^66 }
+			pie_wales67 = { frame = pie_chart_wales^67 }
+			pie_wales68 = { frame = pie_chart_wales^68 }
+			pie_wales69 = { frame = pie_chart_wales^69 }
+			pie_wales70 = { frame = pie_chart_wales^70 }
+			pie_wales71 = { frame = pie_chart_wales^71 }
+			pie_wales72 = { frame = pie_chart_wales^72 }
+			pie_wales73 = { frame = pie_chart_wales^73 }
+			pie_wales74 = { frame = pie_chart_wales^74 }
+			pie_wales75 = { frame = pie_chart_wales^75 }
+			pie_wales76 = { frame = pie_chart_wales^76 }
+			pie_wales77 = { frame = pie_chart_wales^77 }
+			pie_wales78 = { frame = pie_chart_wales^78 }
+			pie_wales79 = { frame = pie_chart_wales^79 }
+			pie_wales80 = { frame = pie_chart_wales^80 }
+			pie_wales81 = { frame = pie_chart_wales^81 }
+			pie_wales82 = { frame = pie_chart_wales^82 }
+			pie_wales83 = { frame = pie_chart_wales^83 }
+			pie_wales84 = { frame = pie_chart_wales^84 }
+			pie_wales85 = { frame = pie_chart_wales^85 }
+			pie_wales86 = { frame = pie_chart_wales^86 }
+			pie_wales87 = { frame = pie_chart_wales^87 }
+			pie_wales88 = { frame = pie_chart_wales^88 }
+			pie_wales89 = { frame = pie_chart_wales^89 }
+			pie_wales90 = { frame = pie_chart_wales^90 }
+			pie_wales91 = { frame = pie_chart_wales^91 }
+			pie_wales92 = { frame = pie_chart_wales^92 }
+			pie_wales93 = { frame = pie_chart_wales^93 }
+			pie_wales94 = { frame = pie_chart_wales^94 }
+			pie_wales95 = { frame = pie_chart_wales^95 }
+			pie_wales96 = { frame = pie_chart_wales^96 }
+			pie_wales97 = { frame = pie_chart_wales^97 }
+			pie_wales98 = { frame = pie_chart_wales^98 }
+			pie_wales99 = { frame = pie_chart_wales^99 }
+		}
+
+	}
 }

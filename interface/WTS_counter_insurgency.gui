@@ -24,51 +24,51 @@ guiTypes = {
 			fixedsize = yes	
 			alwaystransparent = yes
 		}
-	}
+	} 
 
 	containerWindowType = {
 		name = "WTS_counter_insurgency_view_window"
 		position = {   x = 539 y = 80}
-		size = { width = 1400 height= 1000 }
+		size = { width = 2100 height= 1000 }
 		orientation = upper_left
 		origo = upper_left
 		fade_time = 100
 		moveable = no
 		fade_type = linear
-		click_to_front = yes
+		click_to_front = no
 		clipping = yes
 		
 		background = {
 			name = "Background"		
 			spriteType = "GFX_holo_parliament_win"
 		}
-				instantTextboxType = {
+		instantTextboxType = {
 				name = "WTS_counter_insurgency_header"
 				position = {  x =336 y = 30 }
 				font = "hoi_36header"
 				borderSize = {x = 0 y = 0}
 				text = "WTS_counter_insurgency_header_loc"
 				maxWidth = 600
-				maxHeight = 151
+				maxHeight = 101
 				fixedsize = yes	
 				alwaystransparent = yes
 			}
-				instantTextboxType = {
-				name = "WTS_counter_insurgency_region_text"
-				position = {  x =336 y = 100 }
-				font = "hoi_36header"
-				borderSize = {x = 0 y = 0}
-				text = "WTS_counter_insurgency_region_text_loc"
-				maxWidth = 600
-				maxHeight = 151
-				fixedsize = yes	
-				alwaystransparent = yes
-			}
+			
+			
+		buttonType ={
+			name ="close_button"
+			spriteType = "GFX_close_button"
+			position = { x= 10 y = 10 }
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = close_window_lhs
+		}	
+		
+  }
 
 	containerWindowType = {
-		name = "WTS_ireland_view"
-		position = {   x = -122 y = 123}
-		size = { width = 500 height= 1800 }
+		name = "WTS_britain_view"
+		position = {   x = 550 y = 0}
+		size = { width = 1800 height= 1800 }
 		orientation = upper_left
 		origo = upper_left
 		fade_time = 100
@@ -77,46 +77,17 @@ guiTypes = {
 		click_to_front = yes
 		clipping = yes
 			
-			buttonType = {
-				name = "dublin_region_button"
-					spriteType = "GFX_WTS_dublin_region"
-					position = { x = 268 y = 411 }
-					Orientation = "UPPER_LEFT"
-					
-			}	
-			buttonType = {
-				name = "northern_ireland_region_button"
-					spriteType = "GFX_WTS_northern_ireland_region"
-					position = { x = 262 y = 358 }
-					Orientation = "UPPER_LEFT"
-					
-			}	
-			buttonType = {
-				name = "south_west_ireland_region_button"
-					spriteType = "GFX_WTS_south_west_ireland_region"
-					position = { x = 150 y = 491 }
-					Orientation = "UPPER_LEFT"
-					
+		instantTextboxType = {
+				name = "WTS_counter_insurgency_region_text"
+				position = {  x =701 y = 230 }
+				font = "hoi_36header"
+				borderSize = {x = 0 y = 0}
+				text = "WTS_counter_insurgency_region_text_loc"
+				maxWidth = 600
+				maxHeight = 101
+				fixedsize = yes	
+				alwaystransparent = yes
 			}
-			buttonType = {
-				name = "north_west_ireland_region_button"
-					spriteType = "GFX_WTS_north_west_region"
-					position = { x = 163 y = 347 }
-					Orientation = "UPPER_LEFT"
-					
-			}
-		}
-	containerWindowType = {
-		name = "WTS_britain_view"
-		position = {   x = 0 y = 0}
-		size = { width = 800 height= 1800 }
-		orientation = upper_left
-		origo = upper_left
-		fade_time = 100
-		moveable = no
-		fade_type = linear
-		click_to_front = yes
-		clipping = yes
 			
 		buttonType = {
 			name = "east_england_region_button"
@@ -174,6 +145,2074 @@ guiTypes = {
 				Orientation = "UPPER_LEFT"
 				
 		 }			
+	} 
+	containerWindowType = {
+		name = "WTS_ireland_view"
+		position = {   x = 455 y = 123}
+		size = { width = 500 height= 1800 }
+		orientation = upper_left
+		origo = upper_left
+		fade_time = 100
+		moveable = no
+		fade_type = linear
+		click_to_front = yes
+		clipping = yes
+			
+			buttonType = {
+				name = "dublin_region_button"
+					spriteType = "GFX_WTS_dublin_region"
+					position = { x = 268 y = 411 }
+					Orientation = "UPPER_LEFT"
+					
+			}	
+			buttonType = {
+				name = "northern_ireland_region_button"
+					spriteType = "GFX_WTS_northern_ireland_region"
+					position = { x = 262 y = 358 }
+					Orientation = "UPPER_LEFT"
+					
+			}	
+			buttonType = {
+				name = "south_west_ireland_region_button"
+					spriteType = "GFX_WTS_south_west_ireland_region"
+					position = { x = 150 y = 491 }
+					Orientation = "UPPER_LEFT"
+					
+			}
+			buttonType = {
+				name = "north_west_ireland_region_button"
+					spriteType = "GFX_WTS_north_west_region"
+					position = { x = 163 y = 347 }
+					Orientation = "UPPER_LEFT"
+					
+			}
+		} 
+	containerWindowType = {
+		name = "pie_container_south_england"
+		position = { x=415 y =-120 }
+		clipping = no
+		Orientation = center
+		origo = center
+		scale = 0.24 # scale = 1 = 1024px x 1024px
+		
+
+		iconType = {
+			name = "wts_pie_chart_overlay"
+			quadTextureSprite = "GFX_WTS_pol_piechart_overlay"
+			position = { x=415 y =-120 }
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+		
+		iconType = {
+			name = "pie_south_england0"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+		iconType = {
+			name = "pie_south_england1"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.0628318531
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england2"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.1256637061
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england3"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.1884955592
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england4"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.2513274123
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england5"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.3141592654
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england6"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.3769911184
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england7"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.4398229715
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england8"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.5026548246
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england9"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.5654866776
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england10"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.6283185307
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england11"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.6911503838
+		}
+
+
+		iconType = {
+			name = "pie_south_england12"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.7539822369
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england13"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.8168140899
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england14"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.8796459430
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england15"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.9424777961
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england16"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.0053096491
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england17"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.0681415022
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england18"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.1309733553
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england19"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.1938052084
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england20"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.2566370614
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england21"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.3194689145
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england22"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.3823007676
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england23"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.4451326207
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england24"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.5079644737
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england25"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.5707963268
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england26"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.6336281799
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england27"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.6964600329
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england28"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.7592918860
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england29"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.8221237391
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england30"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.8849555922
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england31"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.9477874452
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england32"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.0106192983
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england33"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.0734511514
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england34"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.1362830044
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england35"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.1991148575
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england36"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.2619467106
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england37"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.3247785637
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england38"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.3876104167
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england39"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.4504422698
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england40"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.5132741229
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england41"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.5761059759
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england42"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.6389378290
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england43"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.7017696821
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england44"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.7646015352
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england45"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.8274333882
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england46"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.8902652413
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england47"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.9530970944
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england48"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.0159289474
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england49"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.0787608005
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england50"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.1415926536
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england51"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.2044245067
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england52"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.2672563597
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england53"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.3300882128
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england54"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.3929200659
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england55"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.4557519189
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england56"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.5185837720
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england57"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.5814156251
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england58"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.6442474782
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england59"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.7070793312
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england60"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.7699111843
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england61"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.8327430374
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england62"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.8955748905
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england63"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.9584067435
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england64"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.0212385966
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england65"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.0840704497
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england66"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.1469023027
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england67"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.2097341558
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england68"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.2725660089
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england69"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.3353978620
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england70"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.3982297150
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england71"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.4610615681
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england72"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.5238934212
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england73"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.5867252742
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england74"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.6495571273
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england75"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.7123889804
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england76"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.7752208335
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england77"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.8380526865
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england78"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.9008845396
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england79"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.9637163927
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england80"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.0265482457
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england81"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.0893800988
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england82"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.1522119519
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england83"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.2150438050
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england84"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.2778756580
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england85"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.3407075111
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england86"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.4035393642
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england87"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.4663712172
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england88"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.5292030703
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england89"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.5920349234
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england90"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.6548667765
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england91"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.7176986295
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england92"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.7805304826
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england93"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.8433623357
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england94"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.9061941887
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england95"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.9690260418
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england96"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 6.0318578949
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england97"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 6.0946897480
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england98"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 6.1575216010
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_south_england99"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 6.2203534541
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
 	}
-  }
+	containerWindowType = {
+		name = "pie_container_wales"
+		position = { x=415 y =-120 }
+		clipping = no
+		Orientation = center
+		origo = center
+		scale = 0.24 # scale = 1 = 1024px x 1024px
+		
+
+		iconType = {
+			name = "wts_pie_chart_overlay"
+			quadTextureSprite = "GFX_WTS_pol_piechart_overlay"
+			position = { x=415 y =-120 }
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+		
+		iconType = {
+			name = "pie_wales0"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+		iconType = {
+			name = "pie_wales1"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.0628318531
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales2"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.1256637061
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales3"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.1884955592
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales4"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.2513274123
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales5"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.3141592654
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales6"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.3769911184
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales7"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.4398229715
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales8"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.5026548246
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales9"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.5654866776
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales10"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.6283185307
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales11"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.6911503838
+		}
+
+
+		iconType = {
+			name = "pie_wales12"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.7539822369
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales13"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.8168140899
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales14"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.8796459430
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales15"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 0.9424777961
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales16"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.0053096491
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales17"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.0681415022
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales18"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.1309733553
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales19"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.1938052084
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales20"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.2566370614
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales21"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.3194689145
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales22"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.3823007676
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales23"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.4451326207
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales24"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.5079644737
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales25"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.5707963268
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales26"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.6336281799
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales27"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.6964600329
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales28"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.7592918860
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales29"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.8221237391
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales30"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.8849555922
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales31"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 1.9477874452
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales32"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.0106192983
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales33"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.0734511514
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales34"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.1362830044
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales35"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.1991148575
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales36"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.2619467106
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales37"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.3247785637
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales38"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.3876104167
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales39"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.4504422698
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales40"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.5132741229
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales41"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.5761059759
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales42"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.6389378290
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales43"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.7017696821
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales44"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.7646015352
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales45"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.8274333882
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales46"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.8902652413
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales47"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 2.9530970944
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales48"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.0159289474
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales49"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.0787608005
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales50"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.1415926536
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales51"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.2044245067
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales52"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.2672563597
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales53"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.3300882128
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales54"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.3929200659
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales55"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.4557519189
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales56"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.5185837720
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales57"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.5814156251
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales58"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.6442474782
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales59"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.7070793312
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales60"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.7699111843
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales61"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.8327430374
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales62"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.8955748905
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales63"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 3.9584067435
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales64"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.0212385966
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales65"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.0840704497
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales66"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.1469023027
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales67"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.2097341558
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales68"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.2725660089
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales69"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.3353978620
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales70"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.3982297150
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales71"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.4610615681
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales72"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.5238934212
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales73"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.5867252742
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales74"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.6495571273
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales75"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.7123889804
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales76"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.7752208335
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales77"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.8380526865
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales78"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.9008845396
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales79"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 4.9637163927
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales80"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.0265482457
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales81"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.0893800988
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales82"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.1522119519
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales83"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.2150438050
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales84"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.2778756580
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales85"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.3407075111
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales86"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.4035393642
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales87"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.4663712172
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales88"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.5292030703
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales89"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.5920349234
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales90"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.6548667765
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales91"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.7176986295
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales92"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.7805304826
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales93"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.8433623357
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales94"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.9061941887
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales95"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 5.9690260418
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales96"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 6.0318578949
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales97"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 6.0946897480
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales98"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 6.1575216010
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+
+		iconType = {
+			name = "pie_wales99"
+			quadTextureSprite = "GFX_pie_chart_segment"
+			centerPosition = yes
+			alwaystransparent = yes
+			rotation = 6.2203534541
+			pdx_tooltip = WTS_pie_chart_makeup
+		}
+
+	}
 }
