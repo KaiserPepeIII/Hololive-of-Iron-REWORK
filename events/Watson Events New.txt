@@ -214,7 +214,7 @@ country_event = {
 	option = { #Suppress
 		name = watson.6.b
 		add_political_power = 10
-		add_stability = -.05
+		add_stability = -0.05
 	}
 }
 
@@ -821,6 +821,36 @@ country_event = {
 			var = WTS.conservative_control
 			value = 0 
 		}
+		hidden_effect = {
+			country_event = {	
+				id = watson.106
+				days = 1
+			}
+			country_event = {	
+				id = watson.100
+				days = 4
+			}
+			country_event = {	
+				id = watson.101
+				days = 8
+			}
+			country_event = {	
+				id = watson.102
+				days = 16
+			}
+			country_event = {	
+				id = watson.103
+				days = 17
+			}
+			country_event = {	
+				id = watson.104
+				days = 25
+			}
+			country_event = {	
+				id = watson.105
+				days = 30
+			}
+		}
 	}
 }
 #Results of Westminster Const. Calc
@@ -1369,7 +1399,7 @@ country_event = {
 			}
 		}
 		#idk rushias tag so ill fix later
-		RSH = {
+		RUS = {
 			country_event = {
 				id = watson.79
 				days = 1
@@ -1665,3 +1695,1045 @@ country_event = {
 		add_stability = -0.15
 	}
 }
+##############################
+##		Counter Insurgency  ##
+##		  State Flipping	##
+##############################
+##
+## London
+##
+country_event = {
+	id = watson.85
+	title = watson.85.t
+	desc = watson.85.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.85.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.85.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.85.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## South England
+##
+country_event = {
+	id = watson.86
+	title = watson.86.t
+	desc = watson.86.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.86.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.86.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.86.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## West Midlands
+##
+country_event = {
+	id = watson.87
+	title = watson.87.t
+	desc = watson.87.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.87.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.87.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.87.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## East England
+##
+country_event = {
+	id = watson.88
+	title = watson.88.t
+	desc = watson.88.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.88.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.88.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.88.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## North England
+##
+country_event = {
+	id = watson.89
+	title = watson.89.t
+	desc = watson.89.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.89.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.89.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.89.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## Wales
+##
+country_event = {
+	id = watson.90
+	title = watson.90.t
+	desc = watson.90.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.90.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.90.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.90.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## Scotland
+##
+country_event = {
+	id = watson.91
+	title = watson.91.t
+	desc = watson.91.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.91.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.91.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.91.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## Northern Ireland
+##
+country_event = {
+	id = watson.92
+	title = watson.92.t
+	desc = watson.92.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.92.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.92.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.92.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## Dublin
+##
+country_event = {
+	id = watson.93
+	title = watson.93.t
+	desc = watson.93.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.93.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.93.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.93.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## Southwest ireland
+##
+country_event = {
+	id = watson.94
+	title = watson.94.t
+	desc = watson.94.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.94.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.94.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.94.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+##
+## Northwest ireland
+##
+country_event = {
+	id = watson.95
+	title = watson.95.t
+	desc = watson.95.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		OR = {
+			WTS_london_welsh_takeover_trigger = yes
+			WTS_london_antis_takeover_trigger = yes
+			WTS_london_irish_takeover_trigger = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.95.a
+		trigger = {	
+			WTS_london_welsh_takeover_trigger = yes 
+		}
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = { 
+		name = watson.95.b
+		trigger = {	
+			WTS_london_antis_takeover_trigger = yes 
+		}
+		ENG = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = ENG
+			}
+		}
+	}
+	option = { 
+		name = watson.95.c
+		trigger = {	
+			WTS_london_irish_takeover_trigger = yes 
+		}
+		IRE = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+##
+## Anti Aggression
+##
+country_event = {
+	id = watson.96
+	title = watson.96.t
+	desc = watson.96.d
+	picture = GFX_King_George_V
+	
+	trigger = {
+		check_variable = {
+			var = WTS.anti_aggression 
+			value = 100
+			compare = equals
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}	
+	
+	is_triggered_only = no
+	fire_only_once = no
+	
+	option = { 
+		name = watson.96.a
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {	
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+}
+####################################
+####  Forming a New Government  #### 
+####################################
+######  Policy Trade Unions
+country_event = {
+	id = watson.100
+	title = watson.100.t
+	desc = watson.100.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {  #hindering growth
+		name = watson.100.a
+	}
+	option = { #essential part of society
+		name = watson.100.b
+	}
+}
+######  deindustrialization
+country_event = {
+	id = watson.101
+	title = watson.101.t
+	desc = watson.101.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { #save the factories
+		name = watson.101.a
+	}
+	option = { #things break, 
+		name = watson.101.b
+	}
+	option = { #perhaps multinationals might find a use
+		name = watson.101.c
+	}
+}
+######  Foreign Policy
+country_event = {
+	id = watson.102
+	title = watson.102.t
+	desc = watson.102.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { #Home front
+		name = watson.102.a
+	}
+	option = { #Regional
+		name = watson.102.b
+	}
+	option = { #Global
+		name = watson.102.c
+	}
+}
+######  Budget
+country_event = {
+	id = watson.103
+	title = watson.103.t
+	desc = watson.103.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { #progressive budget
+		name = watson.103.a
+	}
+	option = { #conservative budget
+		name = watson.103.b
+	}
+	option = { #criticize the opposition
+		name = watson.103.c
+	}
+}
+######  Intenernal Defence
+country_event = {
+	id = watson.104
+	title = watson.104.t
+	desc = watson.104.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { #tough measures
+		name = watson.104.a
+	}
+	option = { #Light measures
+		name = watson.104.b
+	}
+	option = { #Condolensces to the victims
+		name = watson.104.c
+	}
+}
+######  Final Speech
+country_event = {
+	id = watson.105
+	title = watson.105.t
+	desc = watson.105.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { #Aristocratic Boost
+		name = watson.105.a
+	}
+	option = { #Lower Class Boost
+		name = watson.105.b
+	}
+	option = { #Ulster Boost
+		name = watson.105.c
+		
+	}
+}
+######  Results!
+country_event = {
+	id = watson.105
+	title = watson.105.t
+	desc = watson.105.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { #Conservative government
+		name = watson.105.a
+	}
+	option = { #Socialist government
+		name = watson.105.b
+	}
+	option = { #teammate government
+		name = watson.105.b
+	}
+}
+######  Which faction fo you favour?
+country_event = {
+	id = watson.106
+	title = watson.106.t
+	desc = watson.106.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { #Conservative faction
+		name = watson.106.a
+	}
+	option = { #Socialist faction
+		name = watson.106.b
+	}
+	option = { #teammate loyalist
+		name = watson.106.b
+	}
+}
+####################################
+#### Westminster Constitution   ####
+####################################
