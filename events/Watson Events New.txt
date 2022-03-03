@@ -1324,3 +1324,344 @@ country_event = {
 		add_researh_slot = 1
 	}
 }
+
+#Uniting the 2 crowns - Flavor
+country_event = {
+	id = watson.67
+	title = watson.67.t
+	desc = watson.67.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #soon
+		name = watson.67.a
+		add_war_support = 0.1
+	}
+}
+#Seek alternative funding to the LHS
+country_event = {
+	id = watson.68
+	title = watson.68.t
+	desc = watson.68.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Seek help from the despots of Europe
+		name = watson.68.a
+		NOE = {
+			country_event = {
+				id = watson.79
+				days = 1
+			}
+		}
+		FBK = {
+			country_event = {
+				id = watson.79
+				days = 1
+			}
+		}
+		PEK = {
+			country_event = {
+				id = watson.79
+				days = 1
+			}
+		}
+		#idk rushias tag so ill fix later
+		RSH = {
+			country_event = {
+				id = watson.79
+				days = 1
+			}
+		}
+		MIK = {
+			country_event = {
+				id = watson.79
+				days = 1
+			}
+		}
+		FLA = {
+			country_event = {
+				id = watson.79
+				days = 1
+			}
+		}
+	}
+	option = { #Seek aid from the Coco
+		name = watson.68.b
+		COC = {
+			country_event = {
+				id = watson.75
+				days = 1
+			}
+		}
+	}
+	option = { #Seek Aid from Aqua and Shion
+		name = watson.68.c
+		AQA = {
+			country_event = {
+				id = watson.72
+				days = 1
+			}
+		}
+		SHI = {
+			country_event = {
+				id = watson.72
+				days = 1
+			}
+		}
+	}
+	option = { #tax the poor bastards you call citezens
+		name = watson.68.d
+		country_event = {
+			id = watson.81
+			days = 1
+		}
+	}
+	
+}
+#Yagoo| Watson comes to us for funding
+country_event = {
+	id = watson.69
+	title = watson.69.t
+	desc = watson.69.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #yes
+		name = watson.69.a
+		WTS ={
+			country_event = {
+				id = watson.70
+			}
+		}
+	}
+	option = { #No
+		name = watson.69.b
+		WTS ={
+			country_event = {
+				id = watson.71
+			}
+		}
+	}
+}
+#Yagoo agrees to fund us
+country_event = {
+	id = watson.70
+	title = watson.70.t
+	desc = watson.70.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #thank you Yagoo-senpai
+		name = watson.70.a
+		custom_effect_tooltip = wts_yagoo_funded
+		add_war_support = 0.05
+	}
+}
+#Yagoo declines funding for us
+country_event = {
+	id = watson.71
+	title = watson.71.t
+	desc = watson.71.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #what the fuck is wrong with you
+		name = watson.71.a
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = democracy
+			popularity = -0.05
+		}
+	}
+
+}
+#Aqua&Shion|Watson asks for support from the Aqua Resistance
+country_event = {
+	id = watson.72
+	title = watson.72.t
+	desc = watson.72.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #yes
+		name = watson.72.a
+		WTS ={
+			country_event = {
+				id = watson.73
+			}
+		}
+	}
+	option = { #No
+		name = watson.72.b
+		WTS ={
+			country_event = {
+				id = watson.74
+			}
+		}
+	}
+
+}
+#Resistance agrees to fund us
+country_event = {
+	id = watson.73
+	title = watson.73.t
+	desc = watson.73.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #thank you, Aqua And/Or Shion!
+		name = watson.73.a
+		custom_effect_tooltip = wts_resistance_funded
+		add_war_support = 0.05
+	}
+}
+#Resistance declines funding for us
+country_event = {
+	id = watson.74
+	title = watson.74.t
+	desc = watson.74.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #What is fucking wrong with you 2 bitches, oh my fucking god im gonna pop a blood vessel
+		name = watson.74.a
+		add_political_power = -50
+	}
+
+}
+#Coco|Watson asks for funding
+country_event = {
+	id = watson.75
+	title = watson.75.t
+	desc = watson.75.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #yes
+		name = watson.75.a
+		WTS ={
+			country_event = {
+				id = watson.76
+			}
+		}
+	}
+	option = { #No
+		name = watson.75.b
+		WTS ={
+			country_event = {
+				id = watson.77
+			}
+		}
+	}
+}
+#Coco agrees to fund us
+country_event = {
+	id = watson.76
+	title = watson.76.t
+	desc = watson.76.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #thank you Coco!
+		name = watson.76.a
+		custom_effect_tooltip = wts_coco_funded
+		add_war_support = 0.05
+	}
+}
+#Coco declines funding for us
+country_event = {
+	id = watson.77
+	title = watson.77.t
+	desc = watson.77.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #Ok thats perfectly fine Coco-Senpai, much love towards you and your nation!
+		name = watson.77.a
+		add_political_power = -50
+	}
+
+}
+#Despots|Watson asks for funding
+country_event = {
+	id = watson.79
+	title = watson.79.t
+	desc = watson.79.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #yes
+		name = watson.79.a
+		WTS ={
+			country_event = {
+				id = watson.78
+			}
+		}
+	}
+	option = { #No
+		name = watson.79.b
+		WTS ={
+			country_event = {
+				id = watson.80
+			}
+		}
+	}
+}
+#Despot agrees to fund us
+country_event = {
+	id = watson.78
+	title = watson.78.t
+	desc = watson.78.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #thank you, Totalitarian-Authoritarian-Kleptocratic Dictator!
+		name = watson.78.a
+		custom_effect_tooltip = wts_despot_funded
+	}
+}
+#Despot declines funding for us
+country_event = {
+	id = watson.80
+	title = watson.80.t
+	desc = watson.80.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #I am going to destroy your pathetic nation one day and leave you groveling in its ashes
+		name = watson.80.a
+		add_political_power = -25
+	}
+
+}
+#We must tax our citezens
+country_event = {
+	id = watson.81
+	title = watson.81.t
+	desc = watson.81.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #We will do what we must
+		name = watson.81.a
+		custom_effect_tooltip = wts_tax_funded
+		add_war_support = -0.05
+		add_stability = -0.15
+	}
+}
