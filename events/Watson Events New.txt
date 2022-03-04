@@ -1343,6 +1343,11 @@ country_event = {
 	
 	option = { #Seek help from the despots of Europe
 		name = watson.68.a
+		trigger = {
+			NOT = {
+				has_country_flag = 3_despots_declined
+			}
+		}
 		NOE = {
 			country_event = {
 				id = watson.79
@@ -1361,7 +1366,6 @@ country_event = {
 				days = 1
 			}
 		}
-		#idk rushias tag so ill fix later
 		RUS = {
 			country_event = {
 				id = watson.79
@@ -1383,6 +1387,11 @@ country_event = {
 	}
 	option = { #Seek aid from the Coco
 		name = watson.68.b
+		trigger = {
+			NOT = {
+				has_country_flag = coco_declined_funding
+			}
+		}
 		COC = {
 			country_event = {
 				id = watson.75
@@ -1392,6 +1401,11 @@ country_event = {
 	}
 	option = { #Seek Aid from Aqua and Shion
 		name = watson.68.c
+		trigger = {
+			NOT = {
+				has_country_flag = resistance_declined2
+			}
+		}
 		AQA = {
 			country_event = {
 				id = watson.72
@@ -1471,6 +1485,10 @@ country_event = {
 			ideology = democracy
 			popularity = -0.05
 		}
+		country_event = {
+			id = watson.81
+			days = 1
+		}
 	}
 
 }
@@ -1496,6 +1514,21 @@ country_event = {
 		WTS ={
 			country_event = {
 				id = watson.74
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = resistance_declined1
+					}
+				}
+				set_country_flag = resistance_declined1
+			}
+			else_if = {
+				limit = {
+					has_country_flag = resistance_declined1
+				}
+				clr_country_flag = resistance_declined1
+				set_country_flag = resistance_declined2
 			}
 		}
 	}
@@ -1528,6 +1561,10 @@ country_event = {
 	option = { #What is fucking wrong with you 2 bitches, oh my fucking god im gonna pop a blood vessel
 		name = watson.74.a
 		add_political_power = -50
+		country_event = {
+			id = watson.68
+			days = 1
+		}
 	}
 
 }
@@ -1554,6 +1591,7 @@ country_event = {
 			country_event = {
 				id = watson.77
 			}
+			set_country_flag = coco_declined_funding
 		}
 	}
 }
@@ -1584,6 +1622,10 @@ country_event = {
 	option = { #Ok thats perfectly fine Coco-Senpai, much love towards you and your nation!
 		name = watson.77.a
 		add_political_power = -50
+		country_event = {
+			id = watson.68
+			days = 1
+		}
 	}
 
 }
@@ -1609,6 +1651,28 @@ country_event = {
 		WTS ={
 			country_event = {
 				id = watson.80
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = 1_despots_declined
+					}
+				}
+				set_country_flag = 1_despots_declined
+			}
+			else_if = {
+				limit = {
+					has_country_flag = 1_despots_declined
+				}
+				clr_country_flag = 1_despots_declined
+				set_country_flag = 2_despots_declined
+			}
+			else_if = {
+				limit = {
+					has_country_flag = 2_despots_declined
+				}
+				clr_country_flag = 2_despots_declined
+				set_country_flag = 3_despots_declined
 			}
 		}
 	}
