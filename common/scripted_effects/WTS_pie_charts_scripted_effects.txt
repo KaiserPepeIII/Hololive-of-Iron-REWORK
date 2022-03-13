@@ -116,3 +116,516 @@ create_pie_chart_wales = {
 	clear_variable = ROOT.last_idx_wales
 	add_to_variable = { pie_chart_wales_dirty = 1 }
 }
+create_pie_chart_north_england = {
+	clear_array = WTS.pie_chart_north_england
+	resize_array = {
+		array = WTS.pie_chart_north_england
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_north_england = WTS.counter_insurgency_north_england_government }
+	multiply_temp_variable = { WTS.government_control_north_england = 100 }
+	round_temp_variable = WTS.government_control_north_england
+
+	set_temp_variable = { WTS.antis_control_north_england =  WTS.counter_insurgency_north_england_antis }
+	multiply_temp_variable = { WTS.antis_control_north_england = 100 }
+	round_temp_variable = WTS.antis_control_north_england 
+	set_variable = { ROOT.last_idx_north_england = WTS.government_control_north_england }
+	add_to_temp_variable = { WTS.antis_control_north_england = ROOT.last_idx_north_england }
+	for_loop_effect = {
+		start = ROOT.last_idx_north_england
+		end = WTS.antis_control_north_england
+		set_variable = { WTS.pie_chart_north_england^v = 2 }
+		add_to_variable = { ROOT.last_idx_north_england = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_north_england = WTS.counter_insurgency_north_england_irish }
+	multiply_temp_variable = { WTS.irish_control_north_england = 100 }
+	round_temp_variable = WTS.irish_control_north_england
+	add_to_temp_variable = { WTS.irish_control_north_england = ROOT.last_idx_north_england }
+	for_loop_effect = {
+		start = ROOT.last_idx_north_england
+		end = WTS.irish_control_north_england
+		set_variable = { WTS.pie_chart_north_england^v = 3 }
+		add_to_variable = { ROOT.last_idx_north_england = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_north_england = WTS.counter_insurgency_north_england_teammates }
+	multiply_temp_variable = { WTS.teammates_control_north_england = 100 }
+	round_temp_variable = WTS.teammates_control_north_england 
+	add_to_temp_variable = { WTS.teammates_control_north_england = ROOT.last_idx_north_england }
+	for_loop_effect = {
+		start = ROOT.last_idx_north_england
+		end = WTS.teammates_control_north_england
+		set_variable = { WTS.pie_chart_north_england^v = 4 }
+		add_to_variable = { ROOT.last_idx_north_england = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_north_england = WTS.counter_insurgency_north_england_welsh }
+	multiply_temp_variable = { WTS.welsh_control_north_england = 100 }
+	round_temp_variable = WTS.welsh_control_north_england 
+	add_to_temp_variable = { WTS.welsh_control_north_england = ROOT.last_idx_north_england }
+	for_loop_effect = {
+		start = ROOT.last_idx_north_england
+		end = WTS.welsh_control_north_england
+		set_variable = { pie_chart_north_england^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_north_england
+	add_to_variable = { pie_chart_north_england_dirty = 1 }
+}
+create_pie_chart_east_england = {
+	clear_array = WTS.pie_chart_east_england
+	resize_array = {
+		array = WTS.pie_chart_east_england
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_east_england = WTS.counter_insurgency_east_england_government }
+	multiply_temp_variable = { WTS.government_control_east_england = 100 }
+	round_temp_variable = WTS.government_control_east_england
+
+	set_temp_variable = { WTS.antis_control_east_england =  WTS.counter_insurgency_east_england_antis }
+	multiply_temp_variable = { WTS.antis_control_east_england = 100 }
+	round_temp_variable = WTS.antis_control_east_england 
+	set_variable = { ROOT.last_idx_east_england = WTS.government_control_east_england }
+	add_to_temp_variable = { WTS.antis_control_east_england = ROOT.last_idx_east_england }
+	for_loop_effect = {
+		start = ROOT.last_idx_east_england
+		end = WTS.antis_control_east_england
+		set_variable = { WTS.pie_chart_east_england^v = 2 }
+		add_to_variable = { ROOT.last_idx_east_england = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_east_england = WTS.counter_insurgency_east_england_irish }
+	multiply_temp_variable = { WTS.irish_control_east_england = 100 }
+	round_temp_variable = WTS.irish_control_east_england
+	add_to_temp_variable = { WTS.irish_control_east_england = ROOT.last_idx_east_england }
+	for_loop_effect = {
+		start = ROOT.last_idx_east_england
+		end = WTS.irish_control_east_england
+		set_variable = { WTS.pie_chart_east_england^v = 3 }
+		add_to_variable = { ROOT.last_idx_east_england = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_east_england = WTS.counter_insurgency_east_england_teammates }
+	multiply_temp_variable = { WTS.teammates_control_east_england = 100 }
+	round_temp_variable = WTS.teammates_control_east_england 
+	add_to_temp_variable = { WTS.teammates_control_east_england = ROOT.last_idx_east_england }
+	for_loop_effect = {
+		start = ROOT.last_idx_east_england
+		end = WTS.teammates_control_east_england
+		set_variable = { WTS.pie_chart_east_england^v = 4 }
+		add_to_variable = { ROOT.last_idx_east_england = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_east_england = WTS.counter_insurgency_east_england_welsh }
+	multiply_temp_variable = { WTS.welsh_control_east_england = 100 }
+	round_temp_variable = WTS.welsh_control_east_england 
+	add_to_temp_variable = { WTS.welsh_control_east_england = ROOT.last_idx_east_england }
+	for_loop_effect = {
+		start = ROOT.last_idx_east_england
+		end = WTS.welsh_control_east_england
+		set_variable = { pie_chart_east_england^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_east_england
+	add_to_variable = { pie_chart_east_england_dirty = 1 }
+}
+create_pie_chart_west_midlands = {
+	clear_array = WTS.pie_chart_west_midlands
+	resize_array = {
+		array = WTS.pie_chart_west_midlands
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_west_midlands = WTS.counter_insurgency_west_midlands_government }
+	multiply_temp_variable = { WTS.government_control_west_midlands = 100 }
+	round_temp_variable = WTS.government_control_west_midlands
+
+	set_temp_variable = { WTS.antis_control_west_midlands =  WTS.counter_insurgency_west_midlands_antis }
+	multiply_temp_variable = { WTS.antis_control_west_midlands = 100 }
+	round_temp_variable = WTS.antis_control_west_midlands 
+	set_variable = { ROOT.last_idx_west_midlands = WTS.government_control_west_midlands }
+	add_to_temp_variable = { WTS.antis_control_west_midlands = ROOT.last_idx_west_midlands }
+	for_loop_effect = {
+		start = ROOT.last_idx_west_midlands
+		end = WTS.antis_control_west_midlands
+		set_variable = { WTS.pie_chart_west_midlands^v = 2 }
+		add_to_variable = { ROOT.last_idx_west_midlands = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_west_midlands = WTS.counter_insurgency_west_midlands_irish }
+	multiply_temp_variable = { WTS.irish_control_west_midlands = 100 }
+	round_temp_variable = WTS.irish_control_west_midlands
+	add_to_temp_variable = { WTS.irish_control_west_midlands = ROOT.last_idx_west_midlands }
+	for_loop_effect = {
+		start = ROOT.last_idx_west_midlands
+		end = WTS.irish_control_west_midlands
+		set_variable = { WTS.pie_chart_west_midlands^v = 3 }
+		add_to_variable = { ROOT.last_idx_west_midlands = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_west_midlands = WTS.counter_insurgency_west_midlands_teammates }
+	multiply_temp_variable = { WTS.teammates_control_west_midlands = 100 }
+	round_temp_variable = WTS.teammates_control_west_midlands 
+	add_to_temp_variable = { WTS.teammates_control_west_midlands = ROOT.last_idx_west_midlands }
+	for_loop_effect = {
+		start = ROOT.last_idx_west_midlands
+		end = WTS.teammates_control_west_midlands
+		set_variable = { WTS.pie_chart_west_midlands^v = 4 }
+		add_to_variable = { ROOT.last_idx_west_midlands = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_west_midlands = WTS.counter_insurgency_west_midlands_welsh }
+	multiply_temp_variable = { WTS.welsh_control_west_midlands = 100 }
+	round_temp_variable = WTS.welsh_control_west_midlands 
+	add_to_temp_variable = { WTS.welsh_control_west_midlands = ROOT.last_idx_west_midlands }
+	for_loop_effect = {
+		start = ROOT.last_idx_west_midlands
+		end = WTS.welsh_control_west_midlands
+		set_variable = { pie_chart_west_midlands^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_west_midlands
+	add_to_variable = { pie_chart_west_midlands_dirty = 1 }
+}
+create_pie_chart_scotland = {
+	clear_array = WTS.pie_chart_scotland
+	resize_array = {
+		array = WTS.pie_chart_scotland
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_scotland = WTS.counter_insurgency_scotland_government }
+	multiply_temp_variable = { WTS.government_control_scotland = 100 }
+	round_temp_variable = WTS.government_control_scotland
+
+	set_temp_variable = { WTS.antis_control_scotland =  WTS.counter_insurgency_scotland_antis }
+	multiply_temp_variable = { WTS.antis_control_scotland = 100 }
+	round_temp_variable = WTS.antis_control_scotland 
+	set_variable = { ROOT.last_idx_scotland = WTS.government_control_scotland }
+	add_to_temp_variable = { WTS.antis_control_scotland = ROOT.last_idx_scotland }
+	for_loop_effect = {
+		start = ROOT.last_idx_scotland
+		end = WTS.antis_control_scotland
+		set_variable = { WTS.pie_chart_scotland^v = 2 }
+		add_to_variable = { ROOT.last_idx_scotland = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_scotland = WTS.counter_insurgency_scotland_irish }
+	multiply_temp_variable = { WTS.irish_control_scotland = 100 }
+	round_temp_variable = WTS.irish_control_scotland
+	add_to_temp_variable = { WTS.irish_control_scotland = ROOT.last_idx_scotland }
+	for_loop_effect = {
+		start = ROOT.last_idx_scotland
+		end = WTS.irish_control_scotland
+		set_variable = { WTS.pie_chart_scotland^v = 3 }
+		add_to_variable = { ROOT.last_idx_scotland = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_scotland = WTS.counter_insurgency_scotland_teammates }
+	multiply_temp_variable = { WTS.teammates_control_scotland = 100 }
+	round_temp_variable = WTS.teammates_control_scotland 
+	add_to_temp_variable = { WTS.teammates_control_scotland = ROOT.last_idx_scotland }
+	for_loop_effect = {
+		start = ROOT.last_idx_scotland
+		end = WTS.teammates_control_scotland
+		set_variable = { WTS.pie_chart_scotland^v = 4 }
+		add_to_variable = { ROOT.last_idx_scotland = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_scotland = WTS.counter_insurgency_scotland_welsh }
+	multiply_temp_variable = { WTS.welsh_control_scotland = 100 }
+	round_temp_variable = WTS.welsh_control_scotland 
+	add_to_temp_variable = { WTS.welsh_control_scotland = ROOT.last_idx_scotland }
+	for_loop_effect = {
+		start = ROOT.last_idx_scotland
+		end = WTS.welsh_control_scotland
+		set_variable = { pie_chart_scotland^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_scotland
+	add_to_variable = { pie_chart_scotland_dirty = 1 }
+}
+create_pie_chart_northern_ireland = {
+	clear_array = WTS.pie_chart_northern_ireland
+	resize_array = {
+		array = WTS.pie_chart_northern_ireland
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_northern_ireland = WTS.counter_insurgency_northern_ireland_government }
+	multiply_temp_variable = { WTS.government_control_northern_ireland = 100 }
+	round_temp_variable = WTS.government_control_northern_ireland
+
+	set_temp_variable = { WTS.antis_control_northern_ireland =  WTS.counter_insurgency_northern_ireland_antis }
+	multiply_temp_variable = { WTS.antis_control_northern_ireland = 100 }
+	round_temp_variable = WTS.antis_control_northern_ireland 
+	set_variable = { ROOT.last_idx_northern_ireland = WTS.government_control_northern_ireland }
+	add_to_temp_variable = { WTS.antis_control_northern_ireland = ROOT.last_idx_northern_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_northern_ireland
+		end = WTS.antis_control_northern_ireland
+		set_variable = { WTS.pie_chart_northern_ireland^v = 2 }
+		add_to_variable = { ROOT.last_idx_northern_ireland = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_northern_ireland = WTS.counter_insurgency_northern_ireland_irish }
+	multiply_temp_variable = { WTS.irish_control_northern_ireland = 100 }
+	round_temp_variable = WTS.irish_control_northern_ireland
+	add_to_temp_variable = { WTS.irish_control_northern_ireland = ROOT.last_idx_northern_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_northern_ireland
+		end = WTS.irish_control_northern_ireland
+		set_variable = { WTS.pie_chart_northern_ireland^v = 3 }
+		add_to_variable = { ROOT.last_idx_northern_ireland = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_northern_ireland = WTS.counter_insurgency_northern_ireland_teammates }
+	multiply_temp_variable = { WTS.teammates_control_northern_ireland = 100 }
+	round_temp_variable = WTS.teammates_control_northern_ireland 
+	add_to_temp_variable = { WTS.teammates_control_northern_ireland = ROOT.last_idx_northern_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_northern_ireland
+		end = WTS.teammates_control_northern_ireland
+		set_variable = { WTS.pie_chart_northern_ireland^v = 4 }
+		add_to_variable = { ROOT.last_idx_northern_ireland = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_northern_ireland = WTS.counter_insurgency_northern_ireland_welsh }
+	multiply_temp_variable = { WTS.welsh_control_northern_ireland = 100 }
+	round_temp_variable = WTS.welsh_control_northern_ireland 
+	add_to_temp_variable = { WTS.welsh_control_northern_ireland = ROOT.last_idx_northern_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_northern_ireland
+		end = WTS.welsh_control_northern_ireland
+		set_variable = { pie_chart_northern_ireland^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_northern_ireland
+	add_to_variable = { pie_chart_northern_ireland_dirty = 1 }
+}
+create_pie_chart_dublin = {
+	clear_array = WTS.pie_chart_dublin
+	resize_array = {
+		array = WTS.pie_chart_dublin
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_dublin = WTS.counter_insurgency_dublin_government }
+	multiply_temp_variable = { WTS.government_control_dublin = 100 }
+	round_temp_variable = WTS.government_control_dublin
+
+	set_temp_variable = { WTS.antis_control_dublin =  WTS.counter_insurgency_dublin_antis }
+	multiply_temp_variable = { WTS.antis_control_dublin = 100 }
+	round_temp_variable = WTS.antis_control_dublin 
+	set_variable = { ROOT.last_idx_dublin = WTS.government_control_dublin }
+	add_to_temp_variable = { WTS.antis_control_dublin = ROOT.last_idx_dublin }
+	for_loop_effect = {
+		start = ROOT.last_idx_dublin
+		end = WTS.antis_control_dublin
+		set_variable = { WTS.pie_chart_dublin^v = 2 }
+		add_to_variable = { ROOT.last_idx_dublin = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_dublin = WTS.counter_insurgency_dublin_irish }
+	multiply_temp_variable = { WTS.irish_control_dublin = 100 }
+	round_temp_variable = WTS.irish_control_dublin
+	add_to_temp_variable = { WTS.irish_control_dublin = ROOT.last_idx_dublin }
+	for_loop_effect = {
+		start = ROOT.last_idx_dublin
+		end = WTS.irish_control_dublin
+		set_variable = { WTS.pie_chart_dublin^v = 3 }
+		add_to_variable = { ROOT.last_idx_dublin = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_dublin = WTS.counter_insurgency_dublin_teammates }
+	multiply_temp_variable = { WTS.teammates_control_dublin = 100 }
+	round_temp_variable = WTS.teammates_control_dublin 
+	add_to_temp_variable = { WTS.teammates_control_dublin = ROOT.last_idx_dublin }
+	for_loop_effect = {
+		start = ROOT.last_idx_dublin
+		end = WTS.teammates_control_dublin
+		set_variable = { WTS.pie_chart_dublin^v = 4 }
+		add_to_variable = { ROOT.last_idx_dublin = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_dublin = WTS.counter_insurgency_dublin_welsh }
+	multiply_temp_variable = { WTS.welsh_control_dublin = 100 }
+	round_temp_variable = WTS.welsh_control_dublin 
+	add_to_temp_variable = { WTS.welsh_control_dublin = ROOT.last_idx_dublin }
+	for_loop_effect = {
+		start = ROOT.last_idx_dublin
+		end = WTS.welsh_control_dublin
+		set_variable = { pie_chart_dublin^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_dublin
+	add_to_variable = { pie_chart_dublin_dirty = 1 }
+}
+create_pie_chart_northwest_ireland = {
+	clear_array = WTS.pie_chart_northwest_ireland
+	resize_array = {
+		array = WTS.pie_chart_northwest_ireland
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_northwest_ireland = WTS.counter_insurgency_northwest_ireland_government }
+	multiply_temp_variable = { WTS.government_control_northwest_ireland = 100 }
+	round_temp_variable = WTS.government_control_northwest_ireland
+
+	set_temp_variable = { WTS.antis_control_northwest_ireland =  WTS.counter_insurgency_northwest_ireland_antis }
+	multiply_temp_variable = { WTS.antis_control_northwest_ireland = 100 }
+	round_temp_variable = WTS.antis_control_northwest_ireland 
+	set_variable = { ROOT.last_idx_northwest_ireland = WTS.government_control_northwest_ireland }
+	add_to_temp_variable = { WTS.antis_control_northwest_ireland = ROOT.last_idx_northwest_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_northwest_ireland
+		end = WTS.antis_control_northwest_ireland
+		set_variable = { WTS.pie_chart_northwest_ireland^v = 2 }
+		add_to_variable = { ROOT.last_idx_northwest_ireland = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_northwest_ireland = WTS.counter_insurgency_northwest_ireland_irish }
+	multiply_temp_variable = { WTS.irish_control_northwest_ireland = 100 }
+	round_temp_variable = WTS.irish_control_northwest_ireland
+	add_to_temp_variable = { WTS.irish_control_northwest_ireland = ROOT.last_idx_northwest_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_northwest_ireland
+		end = WTS.irish_control_northwest_ireland
+		set_variable = { WTS.pie_chart_northwest_ireland^v = 3 }
+		add_to_variable = { ROOT.last_idx_northwest_ireland = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_northwest_ireland = WTS.counter_insurgency_northwest_ireland_teammates }
+	multiply_temp_variable = { WTS.teammates_control_northwest_ireland = 100 }
+	round_temp_variable = WTS.teammates_control_northwest_ireland 
+	add_to_temp_variable = { WTS.teammates_control_northwest_ireland = ROOT.last_idx_northwest_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_northwest_ireland
+		end = WTS.teammates_control_northwest_ireland
+		set_variable = { WTS.pie_chart_northwest_ireland^v = 4 }
+		add_to_variable = { ROOT.last_idx_northwest_ireland = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_northwest_ireland = WTS.counter_insurgency_northwest_ireland_welsh }
+	multiply_temp_variable = { WTS.welsh_control_northwest_ireland = 100 }
+	round_temp_variable = WTS.welsh_control_northwest_ireland 
+	add_to_temp_variable = { WTS.welsh_control_northwest_ireland = ROOT.last_idx_northwest_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_northwest_ireland
+		end = WTS.welsh_control_northwest_ireland
+		set_variable = { pie_chart_northwest_ireland^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_northwest_ireland
+	add_to_variable = { pie_chart_northwest_ireland_dirty = 1 }
+}
+create_pie_chart_southwest_ireland = {
+	clear_array = WTS.pie_chart_southwest_ireland
+	resize_array = {
+		array = WTS.pie_chart_southwest_ireland
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_southwest_ireland = WTS.counter_insurgency_southwest_ireland_government }
+	multiply_temp_variable = { WTS.government_control_southwest_ireland = 100 }
+	round_temp_variable = WTS.government_control_southwest_ireland
+
+	set_temp_variable = { WTS.antis_control_southwest_ireland =  WTS.counter_insurgency_southwest_ireland_antis }
+	multiply_temp_variable = { WTS.antis_control_southwest_ireland = 100 }
+	round_temp_variable = WTS.antis_control_southwest_ireland 
+	set_variable = { ROOT.last_idx_southwest_ireland = WTS.government_control_southwest_ireland }
+	add_to_temp_variable = { WTS.antis_control_southwest_ireland = ROOT.last_idx_southwest_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_southwest_ireland
+		end = WTS.antis_control_southwest_ireland
+		set_variable = { WTS.pie_chart_southwest_ireland^v = 2 }
+		add_to_variable = { ROOT.last_idx_southwest_ireland = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_southwest_ireland = WTS.counter_insurgency_southwest_ireland_irish }
+	multiply_temp_variable = { WTS.irish_control_southwest_ireland = 100 }
+	round_temp_variable = WTS.irish_control_southwest_ireland
+	add_to_temp_variable = { WTS.irish_control_southwest_ireland = ROOT.last_idx_southwest_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_southwest_ireland
+		end = WTS.irish_control_southwest_ireland
+		set_variable = { WTS.pie_chart_southwest_ireland^v = 3 }
+		add_to_variable = { ROOT.last_idx_southwest_ireland = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_southwest_ireland = WTS.counter_insurgency_southwest_ireland_teammates }
+	multiply_temp_variable = { WTS.teammates_control_southwest_ireland = 100 }
+	round_temp_variable = WTS.teammates_control_southwest_ireland 
+	add_to_temp_variable = { WTS.teammates_control_southwest_ireland = ROOT.last_idx_southwest_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_southwest_ireland
+		end = WTS.teammates_control_southwest_ireland
+		set_variable = { WTS.pie_chart_southwest_ireland^v = 4 }
+		add_to_variable = { ROOT.last_idx_southwest_ireland = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_southwest_ireland = WTS.counter_insurgency_southwest_ireland_welsh }
+	multiply_temp_variable = { WTS.welsh_control_southwest_ireland = 100 }
+	round_temp_variable = WTS.welsh_control_southwest_ireland 
+	add_to_temp_variable = { WTS.welsh_control_southwest_ireland = ROOT.last_idx_southwest_ireland }
+	for_loop_effect = {
+		start = ROOT.last_idx_southwest_ireland
+		end = WTS.welsh_control_southwest_ireland
+		set_variable = { pie_chart_southwest_ireland^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_southwest_ireland
+	add_to_variable = { pie_chart_southwest_ireland_dirty = 1 }
+}
+create_pie_chart_london = {
+	clear_array = WTS.pie_chart_london
+	resize_array = {
+		array = WTS.pie_chart_london
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	set_temp_variable = { WTS.government_control_london = WTS.counter_insurgency_london_government }
+	multiply_temp_variable = { WTS.government_control_london = 100 }
+	round_temp_variable = WTS.government_control_london
+
+	set_temp_variable = { WTS.antis_control_london =  WTS.counter_insurgency_london_antis }
+	multiply_temp_variable = { WTS.antis_control_london = 100 }
+	round_temp_variable = WTS.antis_control_london 
+	set_variable = { ROOT.last_idx_london = WTS.government_control_london }
+	add_to_temp_variable = { WTS.antis_control_london = ROOT.last_idx_london }
+	for_loop_effect = {
+		start = ROOT.last_idx_london
+		end = WTS.antis_control_london
+		set_variable = { WTS.pie_chart_london^v = 2 }
+		add_to_variable = { ROOT.last_idx_london = 1 }
+	}
+
+	set_temp_variable = { WTS.irish_control_london = WTS.counter_insurgency_london_irish }
+	multiply_temp_variable = { WTS.irish_control_london = 100 }
+	round_temp_variable = WTS.irish_control_london
+	add_to_temp_variable = { WTS.irish_control_london = ROOT.last_idx_london }
+	for_loop_effect = {
+		start = ROOT.last_idx_london
+		end = WTS.irish_control_london
+		set_variable = { WTS.pie_chart_london^v = 3 }
+		add_to_variable = { ROOT.last_idx_london = 1 }
+	}
+
+	set_temp_variable = { WTS.teammates_control_london = WTS.counter_insurgency_london_teammates }
+	multiply_temp_variable = { WTS.teammates_control_london = 100 }
+	round_temp_variable = WTS.teammates_control_london 
+	add_to_temp_variable = { WTS.teammates_control_london = ROOT.last_idx_london }
+	for_loop_effect = {
+		start = ROOT.last_idx_london
+		end = WTS.teammates_control_london
+		set_variable = { WTS.pie_chart_london^v = 4 }
+		add_to_variable = { ROOT.last_idx_london = 1 }
+	}
+	set_temp_variable = { WTS.welsh_control_london = WTS.counter_insurgency_london_welsh }
+	multiply_temp_variable = { WTS.welsh_control_london = 100 }
+	round_temp_variable = WTS.welsh_control_london 
+	add_to_temp_variable = { WTS.welsh_control_london = ROOT.last_idx_london }
+	for_loop_effect = {
+		start = ROOT.last_idx_london
+		end = WTS.welsh_control_london
+		set_variable = { pie_chart_london^v = 5 }
+	}
+
+	clear_variable = ROOT.last_idx_london
+	add_to_variable = { pie_chart_london_dirty = 1 }
+}

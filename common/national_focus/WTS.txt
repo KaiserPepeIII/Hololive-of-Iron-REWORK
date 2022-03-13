@@ -68,6 +68,7 @@ focus_tree = {
 		x = 11
 		y = 2
 		completion_reward = {
+			country_event = { id = watson.106 }
 			custom_effect_tooltip = WTS_a_new_government_tooltip
 		}
 	}
@@ -83,15 +84,14 @@ focus_tree = {
 		}
 		select_effect = {	
 			country_event = {
-			id = watson.46
+			id = watson.34
 			}
 		}
 		x = 15
 		y = 2
 		completion_reward = {
 			custom_effect_tooltip = WTS_the_westminster_constitution_tooltip
-			country_event = { id = watson.34 }
-		
+			country_event = { id = watson.120 }
 		}
 	}
 	focus = {
@@ -270,9 +270,6 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = WTS_the_easter_crisis
-		}
-		prerequisite = {
 			focus = WTS_the_antis_question
 		}
 		mutually_exclusive = {
@@ -314,9 +311,6 @@ focus_tree = {
 		id = WTS_another_northern_irish_solution
 		icon = GFX_goal_unknown
 		cost = 0.00
-		prerequisite = {
-			focus = WTS_the_easter_crisis
-		}
 		prerequisite = {
 			focus = WTS_the_antis_question
 		}
@@ -607,9 +601,6 @@ focus_tree = {
 		prerequisite = {
 			focus = WTS_the_antis_question
 		}
-		prerequisite = {
-			focus = WTS_the_easter_crisis
-		}
 		completion_reward = {
 			country_event = {
 				id = watson.67
@@ -670,6 +661,20 @@ focus_tree = {
 			focus = WTS_seek_lhs_military_support
 			focus = WTS_seek_alternative_sources
 		}
+		completion_reward = {
+			declare_war_on = {
+				target = SCO
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = ENG
+				type = annex_everything
+			}
+			add_timed_idea = {
+				days = 45
+				idea = operation_ground_pounder
+			}
+		}
 		x = 24
 		y = 4
 
@@ -678,11 +683,48 @@ focus_tree = {
 		id = WTS_the_sun_never_sets
 		icon = GFX_goal_unknown
 		cost = 0.00
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wts_owns_eng
+				132 = { is_controlled_by = WTS }
+				131 = { is_controlled_by = WTS }
+				130 = { is_controlled_by = WTS }
+            }
+			custom_trigger_tooltip = {
+				tooltip = wts_owns_sco
+				121 = { is_controlled_by = WTS }
+				133 = { is_controlled_by = WTS }
+				120 = { is_controlled_by = WTS }
+				136 = { is_controlled_by = WTS }
+            }
+			custom_trigger_tooltip = {
+				tooltip = wts_owns_sco
+				WTS = {
+					all_state = {
+						is_owned_by = WTS
+						is_core_of = WTS
+					}
+            	}
+			}
+		}
 		prerequisite = {
 			focus = WTS_irish_nation_building
 		}
 		prerequisite = {
 			focus = WTS_operation_ground_pound
+		}
+		completion_reward = {
+			121 = { add_core_of = WTS }
+			133 = { add_core_of = WTS }
+			120 = { add_core_of = WTS }
+			136 = { add_core_of = WTS }
+			132 = { add_core_of = WTS }
+			131 = { add_core_of = WTS }
+			130 = { add_core_of = WTS }
+			country_event = {
+				id = watson.82
+				days = 1
+			}
 		}
 		x = 21
 		y = 5
@@ -1534,7 +1576,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = {
-				id = watson.7
+				id = watson.83
 				days = 1
 			}
 		}
