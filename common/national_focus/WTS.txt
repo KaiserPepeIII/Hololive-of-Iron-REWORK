@@ -757,7 +757,7 @@ focus_tree = {
 	focus = {
 		id = WTS_harts_reforms
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = WTS_examine_the_army
 		}
@@ -780,13 +780,20 @@ focus_tree = {
 	focus = {
 		id = WTS_combined_arms_doctrine
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = WTS_harts_reforms
 		}
 		x = 28
 		y = 4
-
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = WTS_combined_arms_doctrine
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
 	}
 	focus = {
 		id = WTS_artillery_investments
