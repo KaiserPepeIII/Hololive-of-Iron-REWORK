@@ -43,10 +43,12 @@ focus_tree = {
 	focus = {
 		id = WTS_the_military_inspection
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		x = 47
 		y = 1
-
+		completion_reward = {
+			country_event = watson.61
+		}
 	}
 	focus = {
 		id = WTS_a_new_government
@@ -689,18 +691,20 @@ focus_tree = {
 	focus = {
 		id = WTS_examine_the_army
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_the_military_inspection
 		}
 		x = 46
 		y = 2
-
+		completion_reward = {
+			country_event = watson.62
+		}
 	}
 	focus = {
 		id = WTS_examine_the_navy
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_the_military_inspection
 		}
@@ -920,7 +924,7 @@ focus_tree = {
 	focus = {
 		id = WTS_revive_the_fleet
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_examine_the_army
 		}
@@ -929,12 +933,14 @@ focus_tree = {
 		}
 		x = 47
 		y = 3
-
+		completion_reward = {
+			navy_experience = 10.0
+		}
 	}
 	focus = {
 		id = WTS_a_smaller_revival
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_revive_the_fleet
 		}
@@ -943,23 +949,39 @@ focus_tree = {
 		}
 		x = 41
 		y = 4
-
+		completion_reward = {
+			navy_experience = 15.0
+		}
 	}
 	focus = {
 		id = WTS_submarine_investment
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_a_smaller_revival
 		}
 		x = 41
 		y = 5
-
+		completion_reward = {
+			navy_experience = 5.0
+			add_tech_bonus = {
+				name = WTS_submarine_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = ss_tech
+			}
+			add_tech_bonus = {
+				name = WTS_submarine_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = ship_modules_tech
+			}
+		}
 	}
 	focus = {
 		id = WTS_revive_the_grand_fleet
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_revive_the_fleet
 		}
@@ -967,20 +989,42 @@ focus_tree = {
 			focus = WTS_a_smaller_revival
 		}
 		x = 45
-		y = 4
-
+		y = 4 #add gui
+		completion_reward = {
+			navy_experience = 5.0
+		}
 	}
 	focus = {
 		id = WTS_cruiser_investments
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_a_smaller_revival
 			focus = WTS_revive_the_grand_fleet
 		}
 		x = 43
 		y = 5
-
+		completion_reward = {
+			navy_experience = 5.0
+			add_tech_bonus = {
+				name = WTS_light_cruiser_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = cl_tech
+			}
+			add_tech_bonus = {
+				name = WTS_heavy_cruiser_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = ca_tech
+			}
+			add_tech_bonus = {
+				name = WTS_battle_cruiser_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = bc_tech
+			}
+		}
 	}
 	focus = {
 		id = WTS_new_battleship_technology
@@ -991,7 +1035,21 @@ focus_tree = {
 		}
 		x = 45
 		y = 5
-
+		completion_reward = {
+			navy_experience = 5.0
+			add_tech_bonus = {
+				name = WTS_battle_ship_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = bb_tech
+			}
+			add_tech_bonus = {
+				name = WTS_heavy_battle_ship_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = shbb_tech
+			}
+		}
 	}
 	focus = {
 		id = WTS_screening_emphasis
@@ -1004,18 +1062,42 @@ focus_tree = {
 		}
 		x = 43
 		y = 6
-
+		completion_reward = {
+			add_tech_bonus = {
+				name = WTS_naval_doctrine_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = naval_doctrine
+			}
+		}
 	}
 	focus = {
 		id = WTS_royal_marines
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_revive_the_fleet
 		}
 		x = 47
 		y = 4
+		completion_reward = {
+			add_tech_bonus = {
+				name = WTS_landing_craft_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = tp_tech
+			}
 
+			load_oob = "WTS_1936_royal_marines"
+			271 = {
+				create_unit = { 
+					division = "name = \"Royal Marines\" division_template = \"Royal Marines\" start_experience_factor = 0.5"
+					owner = WTS
+					prioritize_location = 271
+				}
+			}
+			
+		}
 	}
 	focus = {
 		id = WTS_study_battle_of_athens
@@ -1026,7 +1108,23 @@ focus_tree = {
 		}
 		x = 47
 		y = 5
-
+		completion_reward = {
+			navy_experience = 15.0
+			add_tech_bonus = {
+				name = WTS_landing_craft_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = tp_tech
+			}
+			
+			add_tech_bonus = {
+				name = WTS_marines_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = marine_tech
+			}
+		}
+		
 	}
 	focus = {
 		id = WTS_expand_the_shipyards
@@ -1037,7 +1135,58 @@ focus_tree = {
 		}
 		x = 50
 		y = 4
-
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = WTS
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+					
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = WTS
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = WTS
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}	
+		}	
+		
 	}
 	focus = {
 		id = WTS_escort_focus
@@ -1048,17 +1197,30 @@ focus_tree = {
 		}
 		x = 49
 		y = 5
+		completion_reward = {
+			add_tech_bonus = {
+				name = WTS_landing_craft_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = convoy_defense_tree
+			}
+		}
 
 	}
 	focus = {
 		id = WTS_anti_submarine_book
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_expand_the_shipyards
 		}
 		x = 51
 		y = 5
+		completion_reward = {
+			add_ideas = {
+				anti_submarine_book_buff
+			}
+		}
 
 	}
 	focus = {
@@ -1073,7 +1235,9 @@ focus_tree = {
 		}
 		x = 50
 		y = 6
-
+		completion_reward = {
+			
+		}
 	}
 	focus = {
 		id = WTS_expand_the_raf
@@ -1087,7 +1251,10 @@ focus_tree = {
 		}
 		x = 56
 		y = 3
-
+		completion_reward = {
+			air_experience = 15.0
+			country_event = watson.64
+		}
 	}
 	focus = {
 		id = WTS_airbase_expansion
@@ -1098,18 +1265,86 @@ focus_tree = {
 		}
 		x = 54
 		y = 4
-
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = WTS
+					free_building_slots = {
+						building = air_base
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = WTS
+					free_building_slots = {
+						building = air_base
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
 	}
 	focus = {
 		id = WTS_static_anti_air
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 5.00
 		prerequisite = {
 			focus = WTS_airbase_expansion
 		}
 		x = 54
 		y = 5
-
+		completion_reward = {
+			random_owned_controlled_state = {
+				if = {
+					limit = {
+						is_core_of = WTS
+					}
+					add_building_construction = {
+						type = anti_air_building
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				if = {
+					limit = {
+						is_core_of = WTS
+					}
+					add_building_construction = {
+						type = anti_air_building
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				if = {
+					limit = {
+						is_core_of = WTS
+					}
+					add_building_construction = {
+						type = anti_air_building
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
 	}
 	focus = {
 		id = WTS_bomber_investments
@@ -1120,7 +1355,20 @@ focus_tree = {
 		}
 		x = 54
 		y = 6
-
+		completion_reward = {
+			add_tech_bonus = {
+				name = WTS_landing_craft_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = cas_bomber
+			}
+			add_tech_bonus = {
+				name = WTS_landing_craft_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = tactical_bomber
+			}
+		}
 	}
 	focus = {
 		id = WTS_royal_paratroopers
@@ -1131,7 +1379,23 @@ focus_tree = {
 		}
 		x = 56
 		y = 4
-
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = WTS_paratroopers_tech_loc
+				bonus = 1.0
+				uses = 1
+				category = para_tech
+			}
+			load_oob = "WTS_1936_royal_marines"
+			271 = {
+				create_unit = { 
+					division = "name = \"Royal Paratroopers\" division_template = \"Royal Paratroopers\" start_experience_factor = 0.5"
+					owner = WTS
+					prioritize_location = 271
+				}
+			}
+		}
 	}
 	focus = {
 		id = WTS_pilot_training
@@ -1142,7 +1406,11 @@ focus_tree = {
 		}
 		x = 58
 		y = 4
-
+		completion_reward = {
+			add_ideas = {
+				pilot_training_buff
+			}
+		}
 	}
 	focus = {
 		id = WTS_night_interception
@@ -1153,7 +1421,11 @@ focus_tree = {
 		}
 		x = 57
 		y = 5
-
+		completion_reward = {
+			add_ideas = {
+				night_intercept_buff
+			}
+		}
 	}
 	focus = {
 		id = WTS_bombing_training
@@ -1164,7 +1436,11 @@ focus_tree = {
 		}
 		x = 59
 		y = 5
-
+		completion_reward = {
+			add_ideas = {
+				bombing_training_buff
+			}
+		}
 	}
 	focus = {
 		id = WTS_fighter_bonus
@@ -1178,7 +1454,11 @@ focus_tree = {
 		}
 		x = 58
 		y = 6
-
+		completion_reward = {
+			add_ideas = {
+				figther_bonus_buff
+			}
+		}
 	}
 	focus = {
 		id = WTS_ground_pounders
@@ -1192,7 +1472,20 @@ focus_tree = {
 		}
 		x = 56
 		y = 7
-
+		completion_reward = {
+			create_equipment_variant = {
+				name = "The Ground Pounder"
+				type = strat_bomber_equipment_3
+				upgrades = {
+					plane_tac_bomb_upgrade = 3
+					plane_range_upgrade = 3
+					plane_engine_upgrade = 3
+					plane_reliability_upgrade = 3
+				}
+				obsolete = yes
+			}
+			country_event = watson.65
+		}
 	}
 	focus = {
 		id = WTS_anti_tank_methods
@@ -1206,7 +1499,6 @@ focus_tree = {
 		}
 		x = 28
 		y = 6
-
 	}
 	focus = {
 		id = WTS_employment_focus
