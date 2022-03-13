@@ -835,13 +835,22 @@ focus_tree = {
 	focus = {
 		id = WTS_war_of_manouvre
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = WTS_harts_reforms
 		}
 		x = 30
 		y = 4
 
+		completion_reward = {
+			add_ideas = speed_movement_bonus_buff
+			add_doctrine_cost_reduction = {
+				name = WTS_combined_arms_doctrine
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
 	}
 	focus = {
 		id = WTS_watson_concoction_x
