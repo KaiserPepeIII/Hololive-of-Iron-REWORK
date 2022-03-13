@@ -1178,16 +1178,17 @@ focus_tree = {
 				uses = 1
 				category = tp_tech
 			}
-
-			load_oob = "WTS_1936_royal_marines"
-			271 = {
-				create_unit = { 
-					division = "name = \"Royal Marines\" division_template = \"Royal Marines\" start_experience_factor = 0.5"
-					owner = WTS
-					prioritize_location = 271
+			hidden_effect = {
+				load_oob = "WTS_1936_royal_marines"
+				271 = {
+					create_unit = { 
+						division = "name = \"Royal Marines\" division_template = \"Royal Marines\" start_experience_factor = 0.5"
+						owner = WTS
+						prioritize_location = 271
+					}
 				}
 			}
-			
+			custom_effect_tooltip = WTS_royal_marines_focus
 		}
 	}
 	focus = {
@@ -1231,13 +1232,8 @@ focus_tree = {
 				limit = {
 					is_core_of = WTS
 					is_coastal = yes
-					free_building_slots = {
-						building = dockyard
-						size > 2
-						include_locked = yes
-					}
-					
 				}
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard
 					level = 2
@@ -1248,12 +1244,8 @@ focus_tree = {
 				limit = {
 					is_core_of = WTS
 					is_coastal = yes
-					free_building_slots = {
-						building = dockyard
-						size > 2
-						include_locked = yes
-					}
 				}
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard
 					level = 2
@@ -1264,12 +1256,8 @@ focus_tree = {
 				limit = {
 					is_core_of = WTS
 					is_coastal = yes
-					free_building_slots = {
-						building = dockyard
-						size > 2
-						include_locked = yes
-					}
 				}
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard
 					level = 2
@@ -1327,7 +1315,8 @@ focus_tree = {
 		x = 50
 		y = 6
 		completion_reward = {
-			
+			unlock_decision_tooltip = WTS_more_naval_bases
+			unlock_decision_tooltip = WTS_more_coastal_forts
 		}
 	}
 	focus = {
@@ -1400,7 +1389,6 @@ focus_tree = {
 		y = 5
 		completion_reward = {
 			random_owned_controlled_state = {
-				if = {
 					limit = {
 						is_core_of = WTS
 					}
@@ -1409,10 +1397,8 @@ focus_tree = {
 						level = 2
 						instant_build = yes
 					}
-				}
 			}
 			random_owned_controlled_state = {
-				if = {
 					limit = {
 						is_core_of = WTS
 					}
@@ -1421,10 +1407,8 @@ focus_tree = {
 						level = 2
 						instant_build = yes
 					}
-				}
 			}
 			random_owned_controlled_state = {
-				if = {
 					limit = {
 						is_core_of = WTS
 					}
@@ -1433,14 +1417,13 @@ focus_tree = {
 						level = 2
 						instant_build = yes
 					}
-				}
 			}
 		}
 	}
 	focus = {
 		id = WTS_bomber_investments
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = WTS_static_anti_air
 		}
@@ -1478,14 +1461,17 @@ focus_tree = {
 				uses = 1
 				category = para_tech
 			}
-			load_oob = "WTS_1936_royal_marines"
-			271 = {
-				create_unit = { 
-					division = "name = \"Royal Paratroopers\" division_template = \"Royal Paratroopers\" start_experience_factor = 0.5"
-					owner = WTS
-					prioritize_location = 271
+			hidden_effect = {
+				load_oob = "WTS_1936_royal_marines"
+				271 = {
+					create_unit = { 
+						division = "name = \"Royal Paratroopers\" division_template = \"Royal Paratroopers\" start_experience_factor = 0.5"
+						owner = WTS
+						prioritize_location = 271
+					}
 				}
 			}
+			custom_effect_tooltip = WTS_royal_paratroopers_focus
 		}
 	}
 	focus = {
@@ -1564,17 +1550,20 @@ focus_tree = {
 		x = 56
 		y = 7
 		completion_reward = {
-			create_equipment_variant = {
-				name = "The Ground Pounder"
-				type = strat_bomber_equipment_3
-				upgrades = {
-					plane_tac_bomb_upgrade = 3
-					plane_range_upgrade = 3
-					plane_engine_upgrade = 3
-					plane_reliability_upgrade = 3
+			hidden_effect = {
+				create_equipment_variant = {
+					name = "The Ground Pounder"
+					type = strat_bomber_equipment_3
+					upgrades = {
+						plane_tac_bomb_upgrade = 3
+						plane_range_upgrade = 3
+						plane_engine_upgrade = 3
+						plane_reliability_upgrade = 3
+					}
+					obsolete = yes
 				}
-				obsolete = yes
 			}
+			custom_effect_tooltip = WTS_ground_pounders_focus
 			country_event = watson.65
 		}
 	}
