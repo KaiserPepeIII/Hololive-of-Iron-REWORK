@@ -2107,3 +2107,63 @@ wts_home_defense = {
 		}
 	}
 }
+WTS_bases_and_batteries_decisions = {
+	WTS_more_naval_bases = {
+		available = {
+			
+		}
+		visible = {
+			
+		}
+		cost = 0
+		days_re_enable = 1
+		complete_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					OR = {
+						naval_base > 1
+						naval_base < 10
+					}
+				}
+				add_building_construction = {
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+						limit_to_coastal = yes
+					}
+					type = naval_base
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	WTS_more_coastal_forts = {
+		available = {
+			
+		}
+		visible = {
+			
+		}
+		cost = 200
+		days_re_enable = 180
+		complete_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					coastal_bunker < 10
+				}
+				add_building_construction = {
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					type = coastal_bunker
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
