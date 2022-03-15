@@ -1026,13 +1026,53 @@ focus_tree = {
 	focus = {
 		id = WTS_quality_tanks
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = WTS_tank_specialization
 		}
+		available = {
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+		}
 		x = 37
 		y = 5
-
+		completion_reward ={
+			if = {
+				limit = { 
+					has_dlc = "No Step Back"
+				}
+				create_equipment_variant = {
+					name = "AME A. TNK"
+					type = medium_tank_chassis_1
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_high_velocity_cannon
+						turret_type_slot = tank_medium_three_man_tank_turret
+						suspension_type_slot = tank_bogie_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = tank_radio_1
+						special_type_slot_2 = smoke_launchers
+						special_type_slot_3 = wet_ammo_storage
+					}
+					upgrades = {
+						tank_nsb_engine_upgrade = 6
+						tank_nsb_armor_upgrade = 6
+					}
+					icon = "GFX_ENG_basic_medium_tank_medium"
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = med_armor_bonus
+					ahead_reduction = 1
+					bonus = 1
+					category = cat_medium_armor
+				}
+			}
+		}
 	}
 	focus = {
 		id = WTS_medium_tanks_investment
