@@ -708,13 +708,52 @@ on_actions = {
 				create_pie_chart_southwest_ireland = yes
 				create_pie_chart_dublin = yes
 			}
-			####################################################
-			#                   NAvy Dial                      #
-			####################################################
-			WTS = {
-                set_variable = { WTS.navy_investment_var = 0 }
-                clamp_variable = { var = WTS.navy_investment_var min = 0 max = 100 }
-            }
+		}
+	}
+	on_declare_war = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { has_anti_ideology = yes }
+					FROM = { has_anti_ideology = no }
+					WTS = {
+						has_completed_focus = wts_another_lhs_bobby
+					}
+				}
+				ROOT = {
+					set_country_flag = wts_police_anti
+				}
+				FROM = {
+					set_country_flag = wts_police_not_anti
+				}
+				WTS = {
+					country_event = {
+						id = watson.84
+						days = 10
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = { has_anti_ideology = no }
+					FROM = { has_anti_ideology = yes }
+					WTS = {
+						has_completed_focus = wts_another_lhs_bobby
+					}
+				}
+				FROM = {
+					set_country_flag = wts_police_anti
+				}
+				ROOT = {
+					set_country_flag = wts_police_not_anti
+				}
+				WTS = {
+					country_event = {
+						id = watson.84
+						days = 10
+					}
+				}
+			}
 		}
 	}
 }

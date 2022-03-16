@@ -1868,6 +1868,54 @@ country_event = {
 		#more shit here
 	}
 }
+#Help the new anti fighters
+country_event = {
+	id = watson.84
+	title = watson.84.t
+	desc = watson.84.d
+	picture = GFX_King_George_V
+	
+	is_triggered_only = yes
+	
+	option = { #help them
+		name = watson.84.a
+			any_country = {
+				limit = {
+					has_country_flag = wts_police_not_anti
+					NOT = {
+						has_country_flag = has_recieved_wts_help
+					}
+				}
+				add_equipment_to_stockpile = {
+					equipment = infantry_equipment
+					amount = 5000
+					producer = WTS
+				}
+				add_timed_idea = {
+					idea = wts_advisors
+					days = 120
+				}
+				set_country_flag = has_recieved_wts_help
+			}
+			any_country = {
+				limit = {
+					has_country_flag = wts_police_anti
+					NOT = {
+						has_country_flag = has_recieved_wts_help
+					}
+				}
+				add_timed_idea = {
+					idea = wts_demoralization
+					days = 120
+				}
+				set_country_flag = has_recieved_wts_help
+			}
+	}
+	option = { #dont help them
+		name = watson.84.b
+		#more shit here
+	}
+}
 ##############################
 ##		Counter Insurgency  ##
 ##		  State Flipping	##
