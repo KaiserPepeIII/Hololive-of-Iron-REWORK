@@ -11,3 +11,194 @@ WTS_get_da_bois = {
 	recruit_character = WTS_Charles_Forbes
 	recruit_character = WTS_Roger_Keyes
 }
+WTS_investment_reward = {
+	if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 0
+					compare = equals
+				}
+			}
+			
+		}
+		add_ideas = {
+			WTS_navy_investment_level_0h
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_1h
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 25
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_1h
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_2h
+			WTS_navy_investment_level_0h
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 50
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_2h
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_1h
+			WTS_navy_investment_level_3h
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 75
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_3h
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_4h
+			WTS_navy_investment_level_2h
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 100
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_4h
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_3h
+		}
+		
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_a_smaller_revival
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 0
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_0s
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_1s
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_a_smaller_revival
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 25
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_1s
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_2s
+			WTS_navy_investment_level_0s
+			
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_a_smaller_revival
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 50
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_2s
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_1s
+			WTS_navy_investment_level_3s
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_a_smaller_revival
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 75
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_3s
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_4s
+			WTS_navy_investment_level_2s
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				has_completed_focus = WTS_a_smaller_revival
+				check_variable = {
+					var = WTS.navy_investment_var
+					value = 100
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			WTS_navy_investment_level_4s
+		}
+		remove_ideas = {
+			WTS_navy_investment_level_3s
+		}
+	}
+}
