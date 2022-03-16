@@ -99,5 +99,23 @@ WTS_bases_and_batteries_decisions = {
 		has_completed_focus = WTS_bases_and_batteries
 		tag = WTS
 	}
+}
+WTS_navy_dial_gui_categories = {
+	icon = generic_formable_nations
 
+	visible_when_empty = yes
+	priority = 10
+	scripted_gui = WTS_navy_dial_scripted_gui
+	
+	allowed = {
+		tag = WTS
+	}
+	
+	visible = {
+		tag = WTS
+		OR = {
+			has_completed_focus = WTS_a_smaller_revival
+			has_completed_focus = WTS_revive_the_grand_fleet
+		}
+	}
 }
