@@ -7,9 +7,59 @@ scripted_gui = {
 	visible = {
 		always = yes
 	}
-	triggers = {
+	effects = {
+		cooperation_efficiency_box_click = {
+			add_political_power = -100
+			add_to_variable = {
+				SUI.efficiency_level = 25
+			}
+			country_event = {
+				id = suisei.78
+			}
+		}
+		rural_population_box_click = {
+			add_political_power = -100
+			add_to_variable = {
+				SUI.rural_level = 25
+			}
+			country_event = {
+				id = suisei.79
+			}
+		}
+		government_employment_box_click = {
+			add_political_power = -100
+			add_to_variable = {
+				SUI.rural_level = 25
+			}
+			country_event = {
+				id = suisei.79
+			}
+		}
 
-	}	
+	}
+	triggers = {
+		cooperation_efficiency_box_click_enabled = {
+			has_political_power > 100
+			NOT = {
+				check_variable = {
+					var = SUI.efficiency_level
+					value = 0
+					compare = less_than_or_equals
+				}
+			}
+		}
+		rural_population_box_click_enabled = {
+			has_political_power > 100
+			NOT = {
+				check_variable = {
+					var = SUI.rural_level
+					value = 0
+					compare = less_than_or_equals
+				}
+			}
+		}
+	}
+
 	properties = {
 		cooperation_efficiency_bar = {
 		frame = var:SUI.efficiency_level
