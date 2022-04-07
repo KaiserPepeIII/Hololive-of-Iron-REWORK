@@ -1,0 +1,97 @@
+MIO_workers_strike_dial_gui_init = {
+	if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = MIO.workers_strike_var
+					value = 0
+					compare = equals
+				}
+			}
+			
+		}
+		add_ideas = {
+			MIO_workers_strike_level_0
+		}
+		remove_ideas = {
+			MIO_workers_strike_level_1
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = MIO.workers_strike_var
+					value = 25
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			MIO_workers_strike_level_1
+		}
+		remove_ideas = {
+			MIO_workers_strike_level_2
+			MIO_workers_strike_level_0
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = MIO.workers_strike_var
+					value = 50
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			MIO_workers_strike_level_2
+		}
+		remove_ideas = {
+			MIO_workers_strike_level_1
+			MIO_workers_strike_level_3
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = MIO.workers_strike_var
+					value = 75
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			MIO_workers_strike_level_3
+		}
+		remove_ideas = {
+			MIO_workers_strike_level_4
+			MIO_workers_strike_level_2
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = MIO.workers_strike_var
+					value = 100
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			MIO_workers_strike_level_4
+		}
+		remove_ideas = {
+			MIO_workers_strike_level_3
+		}
+		
+	}
+}

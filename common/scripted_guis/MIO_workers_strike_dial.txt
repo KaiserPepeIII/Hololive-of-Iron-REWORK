@@ -1,0 +1,94 @@
+scripted_gui = {
+	MIO_workers_strike_scripted_dial_gui = {
+		window_name = "MIO_workers_strike_dial_gui_window"
+		context_type = decision_category
+		parent_window_name = "MIO_workers_strike_scripted_dial_gui"
+
+		visible = {
+			always = yes
+		}
+		#TODO
+		#Run idea switches
+		# effects = {
+		# 	investment_down_btn_click = {
+		# 		subtract_from_variable = {
+		# 			MIO.workers_strike_var = 25
+
+		# 		}
+		# 		clamp_variable = { var = MIO.workers_strike_var min = 0 max = 100 }
+		# 		MIO_workers_strike_dial_gui_init = yes
+		# 		add_political_power = -100
+		# 	}
+		# 	investment_up_btn_click = {
+		# 		add_to_variable = {
+		# 			MIO.workers_strike_var = 25
+		# 		}
+		# 		clamp_variable = { var = MIO.workers_strike_var min = 0 max = 100 }
+		# 		MIO_workers_strike_dial_gui_init = yes
+		# 		add_political_power = -100
+		# 	}
+		# }
+		# triggers = {
+		# 	investment_down_btn_click_enabled = {
+		# 		has_political_power > 100
+		# 		NOT = {
+		# 			check_variable = {
+		# 				var = MIO.workers_strike_var
+		# 				value = 0
+		# 				compare = less_than_or_equals
+		# 			}
+		# 		}
+		# 	}
+		# 	investment_up_btn_click_enabled = {
+		# 		has_political_power > 100
+		# 		NOT = {
+		# 			check_variable = {
+		# 				var = MIO.workers_strike_var
+		# 				value = 100
+		# 				compare = greater_than_or_equals
+		# 			}
+		# 		}
+		# 	}
+		# }
+		properties = {
+			half_dial_hand = {
+				frame = MIO.workers_strike_var
+			}
+		}
+		ai_enabled = {
+			always = yes
+		}
+		ai_test_interval = 100
+        ai_test_variance = 0.1
+
+		# ai_weights = {
+		# 	investment_up_btn_click = {
+		# 		ai_will_do = {
+		# 			factor = 50
+		# 			modifier = {
+		# 				check_variable = {
+		# 					var = MIO.workers_strike_var
+		# 					value = 50
+		# 					compare = greater_than_or_equals
+		# 				}
+		# 				factor = 20
+        #             }
+		# 		}
+		# 	}
+		# 	investment_down_btn_click = {
+		# 		ai_will_do = {
+		# 			factor = 10
+		# 			modifier = {
+		# 				check_variable = {
+		# 					var = MIO.workers_strike_var
+		# 					value = 50
+		# 					compare = greater_than_or_equals
+		# 				}
+		# 				factor = 40
+        #             }
+					
+		# 		}
+		# 	}
+		# }
+	}
+}
