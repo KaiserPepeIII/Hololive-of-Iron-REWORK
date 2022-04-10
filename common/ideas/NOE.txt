@@ -1436,7 +1436,7 @@ ideas = {
 				production_factory_max_efficiency_factor = 0.5
 				production_factory_efficiency_gain_factor = 0.5
 			}
-			
+		
 		}
 		NOE_winter_combat = {
 			#winter attrition down
@@ -1557,7 +1557,7 @@ ideas = {
 				extra_marine_supply_grace = 100
 			}
 			
-		}
+		}		
 		NOE_neofeudal_economy = {
 			#economy buff idk
 			picture = generic_war_preparation
@@ -1781,7 +1781,7 @@ ideas = {
 			
 		}
 	#not referenced in ...\national_focus\NOE.txt as ideas
-		NOE_fight_against_serfdom = {
+	NOE_fight_against_serfdom = {
 			picture = generic_war_preparation
 			
 			allowed = {
@@ -2247,6 +2247,280 @@ ideas = {
 			removal_cost = -1
 			
 		}
+	#Previously missing ideas
+		NOE_noel_expansionism_idea = {
+			picture = generic_war_preparation
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				justify_war_goal_time = 0.5
+			}
+
+		}
+		NOE_german_wine = {
+			picture = generic_war_preparation
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		NOE_agrarian_roots_idea = {
+			picture = generic_war_preparation
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		NOE_marsh_warfare_idea = {
+			#slight marine terrain reduction or supply grace
+			#Duplicated NOE_marsh_warfare
+			picture = generic_war_preparation
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				extra_marine_supply_grace = 100
+			}
+			
+		}
+		robber_barons2 = {
+			picture = generic_war_preparation
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = -0.2
+				war_support_factor = -0.15
+				consumer_goods_factor = 0.2
+				production_factory_max_efficiency_factor = -0.25
+				industrial_capacity_factory = -0.25
+			}	
+		}
+		NOE_winter_combat_idea = {
+			#winter attrition down
+			#Duplicated NOE_winter_combat
+			picture = generic_war_preparation
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				winter_attrition_factor = -0.5
+			}
+		}
+		NOE_course_de_guerre_idea = {
+			#torpedo buff
+			#Duplicated NOE_course_de_guerre
+			picture = generic_war_preparation
+
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				naval_torpedo_cooldown_factor = 0.3
+				naval_torpedo_hit_chance_factor = 0.3
+				naval_torpedo_screen_penetration_factor = 0.3
+			}
+		}
+		#Different than darre_plan_8quantity_mechanization?
+		darre_plan_8quantity_mechanization_workweek = {
+			#Duplicated darre_plan_8quantity_mechanization
+			picture = generic_war_preparation
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.04
+				production_factory_efficiency_gain_factor = 0.2
+				production_factory_max_efficiency_factor = 0.2
+				army_org_factor = 0.2
+			}
+		}
+		NOE_workers_not_serfs_idea = {
+			#less stabity less consumer goods?
+			#Duplicated NOE_workers_not_serfs
+			picture = generic_war_preparation
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = 0.3
+				consumer_goods_factor = -0.1
+			}
+		}
+		truck_logistics = {
+			picture = generic_war_preparation
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			equipment_bonus = {
+				motorized_equipment = {
+					build_cost_ic = -0.15 instant = yes
+				}
+			}
+
+			modifier ={
+				supply_consumption_factor = -0.1
+			}
+
+		}
+		NOE_fast_bombers_idea = {
+			#up bomber speed
+			#Duplicated NOE_fast_bombers
+			picture = generic_war_preparation
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				air_strategic_bomber_agility_factor = 0.5
+			}
+		}
+		reduced_levee_standards = {
+			#org debuff with manpower increase
+			#Duplicated NOE_reduced_levee_standards
+			picture = generic_war_preparation
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+				
+			modifier = {
+				army_org_factor = -0.3
+				recruitable_population_factor = 0.5
+			}
+		}
+		NOE_a_gun_for_every_peasant_idea = {
+			#increase gun production
+			#Duplicated NOE_a_gun_for_every_peasant
+			picture = generic_war_preparation
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				license_infantry_eq_production_speed_factor = 0.5
+				minimum_training_level = 0.3
+			}
+		}
+		NOE_manteuffel_plan_idea = {
+			#armor attack and defence bonus
+			#Duplicated NOE_manteuffel_plan
+			picture = generic_war_preparation
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				army_armor_attack_factor  = 0.5
+				army_armor_defence_factor  = 0.5
+			}
+		}
+		NOE_air_dominance_idea = {
+			#cheap and more agile fighters
+			#Duplicated NOE_air_dominance
+			picture = generic_war_preparation
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				air_attack_factor = 0.5
+				air_air_superiority_agility_factor = 0.5
+			}
+		}	
 	}
 	#laws
 		naval_manufacturer = {
