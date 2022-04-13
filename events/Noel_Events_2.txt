@@ -301,8 +301,32 @@ country_event = {
 	
 	is_triggered_only = yes
 	
-	option = {
+	option = { #"Liberty, Freedom! Tyranny is dead!"
 		name = noel.55.a
-		
+		trigger = {
+			check_variable = {
+				var = NOE.abolitionist_anger
+				less_than_or_equals = 5
+			}
+			check_variable = {
+				var = NOE.anti_aggression
+				less_than_or_equals = 50
+			}
+		}
+		complete_national_focus = NOE_serfdom_abolished
+	   }
+	   option = { # Anger bubbles as tension begins to boil over and the Nation prepares for an oh, so uncivil of wars
+		name = noel.55.b
+		trigger = {
+			check_variable = {
+				var = NOE.abolitionist_anger
+				greater_than_or_equals = 6
+			}
+			check_variable = {
+				var = NOE.anti_aggression
+				greater_than_or_equals = 50
+			}
+		}
+		complete_national_focus = NOE_prepare_putsch
 	   }
 }

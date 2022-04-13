@@ -290,6 +290,7 @@ focus_tree = {
 			max = 10
 		  }
 		  custom_effect_tooltip = abolitionists_established
+		  set_country_flag = abolitionists_not_integrated
 		}
 		cost = 5
 		x = 13
@@ -798,6 +799,7 @@ focus_tree = {
 				value = -10
 			}
 			custom_effect_tooltip = NOE_abolitionists_integrated_tooltip
+			clr_country_flag = NOE_abolitionists_not_integrated
 		}
 		cost = 5
 		x = 8
@@ -1159,7 +1161,7 @@ focus_tree = {
 			focus = NOE_mechanization_ethos
 		}
 		completion_reward = {
-		add_ideas = prussian_chivalry_1 #Military idea starts weakish but gets stronger with each focus that swaps
+		add_ideas = NOE_prussian_chivalry_1 #Military idea starts weakish but gets stronger with each focus that swaps
 		}
 		cost = 5
 		x = 36
@@ -1258,7 +1260,7 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = NOE_depression_economics
+			focus = NOE_depression_economic
 		}
 		completion_reward = {
 		if = {
@@ -1479,6 +1481,7 @@ focus_tree = {
 			variable = uradel_faction
 			value = -10
 			}
+			custom_effect_tooltip = permanently_control_uradel
 		}
 		cost = 5
 		x = 44
@@ -1637,6 +1640,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_bankruptcy_for_them
 		}
+		completion_reward = {
+		custom_effect_tooltip = anti_anger_-2
+		add_to_variable = {
+			var = NOE.anti_aggression
+			value = -20
+		}
+	}
 		cost = 5
 		x = 50
 		y = 2
@@ -2938,7 +2948,29 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_stability = 0.1
-		
+		add_to_variable = {
+			variable = uradel_faction
+			value = 1
+			}
+			custom_effect_tooltip = uradel_anger_1
+			if = {
+				limit = {
+					NOE = {
+						has_idea =	robber_barons
+					}
+				}
+				swap_ideas = {
+					add_idea = robber_barons2
+					remove_idea = robber_barons
+				}
+			}
+			else = {
+				NOE = {
+				remove_ideas = {
+					robber_barons2
+				}
+			}
+			}
 		 }
 		 cost = 5
 		x = 10
