@@ -103,3 +103,270 @@ country_event = {
 		name = hololive_union.5.a
 	}
 }
+#Tank Research/Variant
+country_event = {
+	id = hololive_union.6
+	title = hololive_union.6.t
+	desc = hololive_union.6.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = NOE.hololive_union
+					value = THIS.id
+				}
+				NOT = {
+				OR = {
+					has_tech = improved_medium_tank
+					has_country_flag = has_noel_union_tank1
+				}
+			}
+			}
+		}
+		has_global_flag = NOE_hololive_union_medium_research
+	}
+	mean_time_to_happen = {
+		days = 30
+	}
+	#welcome
+	option = {
+		name = hololive_union.6.a
+		if = {
+			limit = {
+					has_dlc = "No Step Back"
+				}
+					create_equipment_variant = {
+						name = "U1 Shiranui"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon_2
+							turret_type_slot = tank_heavy_three_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = tank_radio_1
+							special_type_slot_2 = sloped_armor
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 4
+							tank_nsb_armor_upgrade = 5
+						}
+						icon = "GFX_SOV_advanced_heavy_tank_medium"
+					}
+			}
+			else = {
+				set_technology = {
+					improved_medium_tank = 1
+				}
+			}
+			set_country_flag = has_noel_union_tank1
+	}
+
+}
+#Fighter 3
+country_event = {
+	id = hololive_union.7
+	title = hololive_union.7.t
+	desc = hololive_union.7.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = NOE.hololive_union
+					value = THIS.id
+				}
+				NOT = {
+				OR = {
+					has_tech = fighter_3
+				}
+			}
+			}
+		}
+		has_global_flag = NOE_hololive_union_fighter_research
+	}
+	mean_time_to_happen = {
+		days = 30
+	}
+	#epic
+	option = {
+		name = hololive_union.7.a
+			set_country_flag = has_noel_union_fighter
+			set_technology = {
+				fighter_3 = 1
+			}
+	}
+
+}
+#Tank Research/Variant2
+country_event = {
+	id = hololive_union.8
+	title = hololive_union.8.t
+	desc = hololive_union.8.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = NOE.hololive_union
+					value = THIS.id
+				}
+				NOT = {
+				OR = {
+					has_tech = advanced_heavy_tank
+					has_country_flag = has_noel_union_tank2
+				}
+			}
+			}
+		}
+		has_global_flag = NOE_hololive_union_heavy_research
+	}
+	mean_time_to_happen = {
+		days = 30
+	}
+	#epic
+	option = {
+		name = hololive_union.8.a
+		if = {
+			limit = {
+					has_dlc = "No Step Back"
+				}
+				create_equipment_variant = {
+						name = "NS-3"
+						type = heavy_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_3
+							turret_type_slot = tank_heavy_three_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = sloped_armor
+							special_type_slot_3 = smoke_launchers
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 8
+							tank_nsb_armor_upgrade = 6
+						}
+						icon = "GFX_SOV_advanced_heavy_tank_medium"
+					}
+			}
+			else = {
+				set_technology = {
+					advanced_heavy_tank = 1
+				}
+			}
+			set_country_flag = has_noel_union_tank2
+	}
+
+}
+#new leader LONG LIVE
+country_event = {
+	id = hololive_union.9
+	title = hololive_union.9.t
+	desc = hololive_union.9.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = NOE.hololive_union
+					value = THIS.id
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_country_flag = hololive_union_leader
+				has_capitulated = yes
+			}
+		}
+		
+	}
+	mean_time_to_happen = {
+		days = 30
+	}
+	#dark times
+	option = {
+		name = hololive_union.9.a
+		if = {
+			limit = {
+				FLA = {
+				is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+				}
+				has_capitulated = no
+			}
+			}
+			FLA = {
+				set_country_flag = hololive_union_leader
+			}
+		}
+		else_if = {
+			limit = {
+				SUB = {
+				is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+				}
+				has_capitulated = no
+			}
+			}
+			SUB = {
+				set_country_flag = hololive_union_leader
+			}
+		}
+		else_if = {
+			limit = {
+				PEK = {
+				is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+				}
+				has_capitulated = no
+			}
+			}
+			PEK = {
+				set_country_flag = hololive_union_leader
+			}
+		}
+		else_if = {
+			limit = {
+				SUI = {
+				is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+				}
+				has_capitulated = no
+			}
+			}
+			SUI = {
+				set_country_flag = hololive_union_leader
+			}
+		}
+		else_if = {
+			limit = {
+				YAG = {
+				is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+				}
+				has_capitulated = no
+			}
+			}
+			YAG = {
+				set_country_flag = hololive_union_leader
+			}
+		}
+		
+	}
+
+}

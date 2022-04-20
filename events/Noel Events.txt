@@ -44,7 +44,7 @@ country_event = {
 		name = noel.2.a
 	}
 }
-#Trial of Karsten Schöpfer
+#Trial of Karsten Schï¿½pfer
 country_event = {
 	id = noel.3
 	title = noel.3.t
@@ -1114,12 +1114,13 @@ country_event = {
 	
 	option = {
 		name = noel.33.a
-		FLA = {
-		every_unit_leader = {
-			limit = { has_id = 105 }
-			set_nationality = NOE
-		  }
-		 }
+		every_possible_country = {
+			limit = { has_character = NOE_guy }
+			random_character = {
+				limit = { is_character = NOE_guy }
+				set_nationality = NOE
+			}
+		}
 			clr_country_flag = NOE_military_mission
 		}
 }
@@ -1143,11 +1144,13 @@ country_event = {
 	
 	option = {
 		name = noel.34.a
-			FLA = {
-		every_unit_leader = {
-			limit = { has_id = 105 }
-			set_nationality = NOE
-		  }
+
+		every_possible_country = {
+			limit = { has_character = NOE_guy }
+			random_character = {
+				limit = { is_character = NOE_guy }
+				set_nationality = NOE
+			}
 		 }
 			clr_country_flag = NOE_military_mission
 	   }

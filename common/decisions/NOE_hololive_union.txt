@@ -36,18 +36,27 @@ noe_hololive_union = {
 				capital_scope = {
 					is_on_continent = europe
 				}
-				has_opinion = {
-					target = NOE
-					value > 49
-					}
 				 NOT = {
+					 OR = {
 				 is_in_array = {
 					array = NOE.hololive_union
 					value = THIS.id
 				 }
+				 ROOT = {
+                        any_country = {
+                            limit = {
+                                is_in_array = {
+                                    array = NOE.hololive_union
+                                    value = THIS.id
+                                }
+                            }
+              has_war_with = PREV.id
+                        }
+                }
 				 is_puppet = yes
 				}
-	
+				}
+				is_anti_ideology = no
 		}
 	visible = {
 			NOT = {
@@ -106,8 +115,10 @@ noe_hololive_union = {
 			}
 			has_capitulated = no
 				NOT = {
-			has_country_flag = hololive_union_leader
+					OR = {
+				has_country_flag = hololive_union_leader
 				is_puppet = yes
+					}
 			}
 			
 		}
@@ -119,7 +130,9 @@ noe_hololive_union = {
 					array = NOE.hololive_union 
 					value = THIS.id
 			}
-			has_country_flag = joined_hololive_union
+		}
+		ai_will_do = {
+			factor = -1
 		}
 }
 
@@ -611,16 +624,16 @@ medium_tank_research_project = {
 				
 				}
 				country_event = {
-					id = hololive_union.3 # Event that gives all members of the hololive union medium tank 1 research
+					id = hololive_union.6 # Event that gives all members of the hololive union medium tank 1 research
 					days = 1
 			  }
 			 }
 				add_to_variable = {
 					var = GLOBAL.hololive_union_political_power_stockpile
-					value = -300
+					value = -500
 				}
 				set_global_flag = NOE_hololive_union_medium_research # flag that will fire off an event to give new members medium tank research
-			  }
+			}
 		
 		visible = {
 		is_in_array = {
@@ -631,13 +644,13 @@ medium_tank_research_project = {
 	    available = {
 		check_variable = {
 			var = GLOBAL.hololive_union_political_power_stockpile
-			value = 300
+			value = 500
 			compare = greater_than_or_equals
 			}
 		has_country_flag = hololive_union_leader
 	}
 }
-fighter_2_research_project = {
+fighter_3_research_project = {
 				icon = GFX_decision_icon_default
 		
 		complete_effect = {
@@ -650,13 +663,13 @@ fighter_2_research_project = {
 				
 				}
 				country_event = {
-					id = hololive_union.5 # Event that gives all members of the hololive union medium tank 1 research
+					id = hololive_union.7 # Event that gives all members of the hololive union medium tank 1 research
 					days = 1
 			  }
 			 }
 				add_to_variable = {
 					var = GLOBAL.hololive_union_political_power_stockpile
-					value = -400
+					value = -600
 				}
 				set_global_flag = NOE_hololive_union_fighter_research # flag that will fire off an event to give new members medium tank research
 			  }
@@ -670,7 +683,7 @@ fighter_2_research_project = {
 	    available = {
 		check_variable = {
 			var = GLOBAL.hololive_union_political_power_stockpile
-			value = 400
+			value = 600
 			compare = greater_than_or_equals
 			}
 		has_country_flag = hololive_union_leader
@@ -689,13 +702,13 @@ heavy_2_research_project = {
 				
 				}
 				country_event = {
-					id = hololive_union.6 # Event that gives all members of the hololive union medium tank 1 research
+					id = hololive_union.8 # Event that gives all members of the hololive union medium tank 1 research
 					days = 1
 			  }
 			 }
 				add_to_variable = {
 					var = GLOBAL.hololive_union_political_power_stockpile
-					value = -500
+					value = -1200
 				}
 				set_global_flag = NOE_hololive_union_heavy_research # flag that will fire off an event to give new members medium tank research
 			  }
@@ -709,7 +722,7 @@ heavy_2_research_project = {
 	    available = {
 		check_variable = {
 			var = GLOBAL.hololive_union_political_power_stockpile
-			value = 500
+			value = 1200
 			compare = greater_than_or_equals
 			}
 			has_country_flag = hololive_union_leader
