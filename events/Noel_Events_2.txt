@@ -265,8 +265,16 @@ country_event = {
 	picture = GFX_report_event_mori
 
 	
-	is_triggered_only = yes
-	
+	trigger = {
+			NOT = {
+			any_country = {
+				has_country_flag = hololive_union_leader
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
 	option = {
 		name = noel.53.a
 		clr_global_flag = hololive_union
@@ -301,8 +309,38 @@ country_event = {
 	
 	is_triggered_only = yes
 	
-	option = {
+	option = { #"Liberty, Freedom! Tyranny is dead!"
 		name = noel.55.a
-		
+		trigger = {
+			check_variable = {
+				var = NOE.uradel_faction
+				less_than_or_equals = 5
+			}
+			check_variable = {
+				var = NOE.anti_aggression
+				less_than_or_equals = 50
+			}
+		}
+		complete_national_focus = NOE_serfdom_abolished
+	   }
+	   option = { # Civil war lol
+		name = noel.55.b
+		trigger = {
+			OR = {
+			check_variable = {
+				var = NOE.uradel_faction
+				greater_than_or_equals = 6
+			}
+			check_variable = {
+				var = NOE.anti_aggression
+				greater_than_or_equals = 50
+			}
+		}
+		check_variable = {
+				var = NOE.abolitionist_anger
+				greater_than_or_equals = 6
+			}
+		}
+		complete_national_focus = NOE_prepare_putsch
 	   }
 }
