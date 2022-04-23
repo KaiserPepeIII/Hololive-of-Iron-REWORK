@@ -7,8 +7,86 @@ scripted_gui = {
 	visible = {
 		always = yes
 	}
+	effects = {
+		industrialization_box_click = {
+			add_political_power = -100
+			add_to_variable = {
+				SUI.industrialisation_level = 25
+			}
+			country_event = {
+				id = suisei.83
+			}
+		}
+		unemployment_box_click = {
+			add_political_power = -100
+			add_to_variable = {
+				SUI.unemployment_level = 25
+			}
+			country_event = {
+				id = suisei.84
+			}
+		}
+		urbanisation_box_click = {
+			add_political_power = -100
+			add_to_variable = {
+				SUI.urbanisation_level = 25
+			}
+			country_event = {
+				id = suisei.85
+			}
+		}
+		standard_of_living_box2_click = {
+			add_political_power = -100
+			add_to_variable = {
+				SUI_standard_of_living_rev = 25
+			}
+			country_event = {
+				id = suisei.86
+			}
+		}
+	}
 	triggers = {
-
+		industrialization_box_click_enabled = {
+			has_political_power > 100
+			NOT = {
+				check_variable = {
+					var = SUI.industrialisation_level
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		unemployment_box_click_enabled = {
+			has_political_power > 100
+			NOT = {
+				check_variable = {
+					var = SUI.unemployment_level
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+			
+		}
+		urbanisation_box_click_enabled = {
+			has_political_power > 100
+			NOT = {
+				check_variable = {
+					var = SUI.urbanisation_level
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		standard_of_living_box2_click_enabled = {
+			has_political_power > 100
+			NOT = {
+				check_variable = {
+					var = SUI_standard_of_living_rev
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+		}
 	}	
 	properties = {
 		industrialisation_bar = {

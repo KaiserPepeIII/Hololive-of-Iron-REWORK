@@ -14,7 +14,7 @@ scripted_gui = {
 				SUI.efficiency_level = 25
 			}
 			country_event = {
-				id = suisei.78
+				id = suisei.79
 			}
 		}
 		rural_population_box_click = {
@@ -23,19 +23,27 @@ scripted_gui = {
 				SUI.rural_level = 25
 			}
 			country_event = {
-				id = suisei.79
+				id = suisei.80
 			}
 		}
 		government_employment_box_click = {
 			add_political_power = -100
 			add_to_variable = {
-				SUI.rural_level = 25
+				SUI.government_level = 25
 			}
 			country_event = {
-				id = suisei.79
+				id = suisei.81
 			}
 		}
-
+		standard_of_living_box_click = {
+			add_political_power = -100
+			add_to_variable = {
+				SUI.standard_of_living_nat = 25
+			}
+			country_event = {
+				id = suisei.82
+			}
+		}
 	}
 	triggers = {
 		cooperation_efficiency_box_click_enabled = {
@@ -43,8 +51,8 @@ scripted_gui = {
 			NOT = {
 				check_variable = {
 					var = SUI.efficiency_level
-					value = 0
-					compare = less_than_or_equals
+					value = 100
+					compare = greater_than_or_equals
 				}
 			}
 		}
@@ -53,8 +61,29 @@ scripted_gui = {
 			NOT = {
 				check_variable = {
 					var = SUI.rural_level
-					value = 0
-					compare = less_than_or_equals
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+			
+		}
+		government_employment_box_click_enabled = {
+			has_political_power > 100
+			NOT = {
+				check_variable = {
+					var = SUI.government_level
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		standard_of_living_box_click_enabled = {
+			has_political_power > 100
+			NOT = {
+				check_variable = {
+					var = SUI.standard_of_living_nat
+					value = 100
+					compare = greater_than_or_equals
 				}
 			}
 		}
@@ -71,7 +100,7 @@ scripted_gui = {
 		frame = var:SUI.government_level
 		}
 		standard_of_living_bar = {
-		frame = var:SUI_standard_of_living_nat
+		frame = var:SUI.standard_of_living_nat
 		}
 	}
   }
