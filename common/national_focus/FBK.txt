@@ -8,7 +8,7 @@ focus_tree = {
 		}
 	}
 	default = no
-	continuous_focus_position = { x = 10 y = 20 }
+	continuous_focus_position = { x = 50 y = 20 }
 	
 	focus = {
 		id = FBK_unification_day
@@ -24,15 +24,40 @@ focus_tree = {
 		cost = 0.00
 		x = 42
 		y = 4
-
-	}
+		completion_reward = {
+			every_country = {
+				limit = {
+					capital_scope = {
+						is_on_continent = europe
+					}
+					NOT = {
+						OR = {
+							tag = RUS
+							tag = NOE
+							tag = FLA
+						}
+					}
+				}
+				reverse_add_opinion_modifier = {
+					target = FBK
+					modifier = fbk_diplo
+				}
+				add_opinion_modifier = {
+					target = FBK
+					modifier = fbk_diplo
+				}
+			}
+		}
+	}	
 	focus = {
 		id = FBK_restart_great_northern_war
 		icon = GFX_focus_FBK_restart_great_northern_war
 		cost = 0.00
 		x = 40
 		y = 4
-
+		completion_reward = {
+			set_country_flag = restart_northern_war
+		}
 	}
 	focus = {
 		id = FBK_regionalism
@@ -842,6 +867,12 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_make_friends
 		}
+		completion_reward = {
+			country_event = {
+				days = 1
+				id = fubuki.
+			}
+		}
 		x = 38
 		y = 5
 
@@ -917,6 +948,12 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_make_friends
 		}
+		completion_reward = {
+			country_event = {
+				days = 1
+				id = fubuki.
+			}
+		}
 		x = 40
 		y = 5
 
@@ -927,6 +964,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_make_friends
+		}
+		completion_reward = {
+			country_event = {
+				days = 1
+				id = fubuki.
+			}
 		}
 		x = 42
 		y = 5
@@ -945,6 +988,9 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_suisei_friendship
 		}
+		completion_reward = {
+			set_country_flag = FBK_open_trade
+		}
 		x = 40
 		y = 6
 
@@ -955,6 +1001,53 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_open_trade
+		}
+		completion_reward = {
+			set_variable = {
+				var = fbk_black_alliance_votes
+				value = 0
+			}
+			NOE = {
+				country_event = {
+					days = 1
+					id = fubuki.
+				}
+			}
+
+			RUS = {
+				country_event = {
+					days = 1
+					id = fubuki.
+				}
+			}
+
+			FLA = {
+				country_event = {
+					days = 1
+					id = fubuki.
+				}
+			}
+
+			SUI = {
+				country_event = {
+					days = 1
+					id = fubuki.
+				}
+			}
+
+			MIK = {
+				country_event = {
+					days = 1
+					id = fubuki.
+				}
+			}
+
+			PEK = {
+				country_event = {
+					days = 1
+					id = fubuki.
+				}
+			}
 		}
 		x = 40
 		y = 7
@@ -1090,6 +1183,14 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_make_friends
+		}
+		completion_reward = {
+			RUS = {
+				country_event = {
+					days = 1
+					id = fubuki.  #event asking for NAP lmao
+				}
+			}
 		}
 		x = 44
 		y = 5
