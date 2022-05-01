@@ -1,0 +1,319 @@
+add_namespace = fubuki
+
+
+#Friendship event for pekora
+country_event = {
+    id = fubuki.1
+	title = fubuki.1.t
+	desc = fubuki.1.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#Send a division as an act of goodwill
+	option = {
+	name = fubuki.1.a
+		
+    }
+	#Promise aid if Fubuki goes to war
+	option = {
+	name = fubuki.1.b
+	
+	}
+    #Thats cool, we chillin but im not sending jack shit to you
+	option = {
+	name = fubuki.1.c
+		
+	}
+	#Fuck you
+	option = {
+		name = fubuki.1.d
+		
+	}
+	
+}
+#BLACK ALLIANCE - UBER UNLIKELY TO GO THROUGH
+country_event = {
+    id = fubuki.2
+	title = fubuki.2.t
+	desc = fubuki.2.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#A Unifying Initiative!
+	option = {
+	name = fubuki.2.a
+		add_to_var = {
+			var = fbk_black_alliance_votes
+			value = 1
+		}
+		FBK = {
+			country_event = {
+				days = 1 
+				id = fubuki.7
+			}
+		}
+		IF = {
+			ROOT = {
+				tag = KRO
+			}
+			set_country_flag = voted_for_black_alliance_kro
+		}
+    }
+	#Ah Hell Naw, not my son
+	option = {
+	name = fubuki.2.b
+	FBK = {
+		country_event = {
+			days = 1 
+			id = fubuki.6
+		}
+	}
+		ai_chance = {
+			modifier = 90
+		}
+	}
+}
+#Rushia and fubuki NAP treaty - sent by Fubuki to rushia
+country_event = {
+    id = fubuki.3
+	title = fubuki.3.t
+	desc = fubuki.3.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#yes
+	option = {
+	name = fubuki.3.a
+		set_global_flag = rushia_fubuki_NAP
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.4
+			}
+		}
+		diplomatic_relation = {
+			country = FBK
+			relation = non_aggression_pact
+			active = no
+		}
+    }
+	#No
+	option = {
+	name = fubuki.3.b
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.5
+			}
+		}
+	}
+}
+#Rushia and fubuki NAP treaty - success
+country_event = {
+    id = fubuki.4
+	title = fubuki.4.t
+	desc = fubuki.4.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#hurray
+	option = {
+	name = fubuki.4.a
+		diplomatic_relation = {
+			country = RUS
+			relation = guarantee
+			active = no
+		}
+		reverse_add_opinion_modifier = {
+			target = RUS
+			modifier = fbk_rus_nap
+		}
+		add_opinion_modifier = {
+			target = RUS
+			modifier = fbk_rus_nap
+		}
+		add_political_power = 100
+    }
+}
+#Rushia and fubuki NAP treaty - failure
+country_event = {
+    id = fubuki.5
+	title = fubuki.5.t
+	desc = fubuki.5.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#Sadness
+	option = {
+	name = fubuki.5.a
+	reverse_add_opinion_modifier = {
+		target = RUS
+		modifier = fbk_rus_nap_fail
+	}
+	add_opinion_modifier = {
+		target = RUS
+		modifier = fbk_rus_nap_fail
+	}
+		add_political_power = -50
+    }
+}
+#BLACK ALLIANCE - COUNTRY VOTES AGAINST ALLIANCE
+country_event = {
+    id = fubuki.6
+	title = fubuki.6.t
+	desc = fubuki.6.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#nooooo
+	option = {
+	name = fubuki.6.a
+		custom_effect_tooltip = FBK_country_voted_against
+    }
+}
+#BLACK ALLIANCE CONFERENCE - COUNTRY VOTES FOR ALLIANCE
+country_event = {
+    id = fubuki.7
+	title = fubuki.7.t
+	desc = fubuki.7.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#A Unifying Initiative!
+	option = {
+	name = fubuki.7.a
+	custom_effect_tooltip = FBK_country_voted_for
+    }
+}
+#BLACK ALLIANCE CONFERENCE - FAILS LMAO WHAT DID YOU EXPECT WWWWWWW
+country_event = {
+    id = fubuki.8
+	title = fubuki.8.t
+	desc = fubuki.8.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		check_variable = {
+			variable = fbk_black_alliance_votes
+			less_than_or_equals = 5
+		}
+
+	}
+	mean_time_to_happen = {
+		days = 15
+	}
+
+	fire_only_once = yes
+
+	#tears
+	option = {
+	name = fubuki.8.a
+		
+    }
+}
+#BLACK ALLIANCE CONFERENCE - SUCCESS, EUROPE WILL NOW BE FUCKED BALANCE WISE LOL
+country_event = {
+    id = fubuki.9
+	title = fubuki.9.t
+	desc = fubuki.9.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		check_variable = {
+			variable = fbk_black_alliance_votes
+			greater_than_or_equals = 6
+		}
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 15
+	}
+	#THREE CHEERS
+	option = {
+	name = fubuki.9.a
+			create_faction = "The Black League"
+			FUB = { add_to_faction = RUS }
+			FUB = { add_to_faction = FLA }
+			FUB = { add_to_faction = NOE }
+			FUB = { add_to_faction = PEK }
+			FUB = { add_to_faction = SUI }
+			FUB = { add_to_faction = MIK }
+			if = {
+				limit = {
+					KRO = {
+						has_country_flag = voted_for_black_alliance_kro
+					}
+				}
+				FUB = { add_to_faction = KRO }
+			}
+    }
+}
+#Friendship event for Suisei
+country_event = {
+    id = fubuki.10
+	title = fubuki.10.t
+	desc = fubuki.10.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#Send a division as an act of goodwill
+	option = {
+	name = fubuki.10.a
+		
+    }
+	#Promise aid if Fubuki goes to war
+	option = {
+	name = fubuki.10.b
+	
+	}
+    #Thats cool, we chillin but im not sending jack shit to you
+	option = {
+	name = fubuki.10.c
+		
+	}
+	#Fuck you
+	option = {
+		name = fubuki.10.d
+		
+	}
+	
+}
+#Friendship event for Miko
+country_event = {
+    id = fubuki.11
+	title = fubuki.11.t
+	desc = fubuki.11.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+	
+	#Send a division as an act of goodwill
+	option = {
+	name = fubuki.11.a
+		
+    }
+	#Promise aid if Fubuki goes to war
+	option = {
+	name = fubuki.11.b
+	
+	}
+    #Thats cool, we chillin but im not sending jack shit to you
+	option = {
+	name = fubuki.11.c
+		
+	}
+	#Fuck you
+	option = {
+		name = fubuki.11.d
+		
+	}
+	
+}
