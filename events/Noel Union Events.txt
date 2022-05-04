@@ -111,21 +111,16 @@ country_event = {
 	picture = GFX_report_event_mori
 	
 	trigger = {
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = NOE.hololive_union
-					value = THIS.id
-				}
-				NOT = {
-				OR = {
-					has_tech = improved_medium_tank
-					has_country_flag = has_noel_union_tank1
-				}
+		all_of = {
+			array = NOE.hololive_union
+			value = THIS.id
+			
+			NOT = {
+				has_tech = improved_medium_tank
+				has_country_flag = has_noel_union_tank1
 			}
-			}
+			has_global_flag = NOE_hololive_union_medium_research
 		}
-		has_global_flag = NOE_hololive_union_medium_research
 	}
 	mean_time_to_happen = {
 		days = 30
@@ -174,20 +169,15 @@ country_event = {
 	picture = GFX_report_event_mori
 	
 	trigger = {
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = NOE.hololive_union
-					value = THIS.id
-				}
-				NOT = {
-				OR = {
-					has_tech = fighter_3
-				}
+		all_of = {
+			array = NOE.hololive_union
+			value = THIS.id
+			
+			NOT = {
+				has_tech = fighter_3
 			}
-			}
+			has_global_flag = NOE_hololive_union_fighter_research
 		}
-		has_global_flag = NOE_hololive_union_fighter_research
 	}
 	mean_time_to_happen = {
 		days = 30
@@ -210,21 +200,16 @@ country_event = {
 	picture = GFX_report_event_mori
 	
 	trigger = {
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = NOE.hololive_union
-					value = THIS.id
-				}
-				NOT = {
-				OR = {
-					has_tech = advanced_heavy_tank
-					has_country_flag = has_noel_union_tank2
-				}
+		all_of = {
+			array = NOE.hololive_union
+			value = THIS.id
+			
+			NOT = {
+				has_tech = advanced_heavy_tank
+				has_country_flag = has_noel_union_tank2
 			}
-			}
+			has_global_flag = NOE_hololive_union_heavy_research
 		}
-		has_global_flag = NOE_hololive_union_heavy_research
 	}
 	mean_time_to_happen = {
 		days = 30
@@ -274,21 +259,14 @@ country_event = {
 	picture = GFX_report_event_mori
 	
 	trigger = {
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = NOE.hololive_union
-					value = THIS.id
-				}
+		any_country = {
+			is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
 			}
+			has_country_flag = hololive_union_leader
+			has_capitulated = yes
 		}
-		every_country = {
-			limit = {
-				has_country_flag = hololive_union_leader
-				has_capitulated = yes
-			}
-		}
-		
 	}
 	mean_time_to_happen = {
 		days = 30

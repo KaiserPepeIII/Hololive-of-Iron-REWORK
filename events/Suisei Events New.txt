@@ -1622,119 +1622,119 @@ country_event = {
 	}
 }
 #colonial revolt
-country_event = {
-	id = suisei.51
-	title = suisei.51.t
-	desc = suisei.51.d
-	picture = GFX_report_event_mio
-
-	trigger = {
-		OR = {
-				AND = {
-					check_variable = {
-						var = SUI.anti_aggression
-						value = 60
-						compare = greater_than_or_equals
-					}
-					has_stability < 0.2
-					OR = {
-						has_idea = sui_extreme_colonial_unrest
-						has_idea = sui_major_colonial_unrest
-						has_idea = sui_minor_colonial_unrest
-					}
-				}
-				AND = {
-				check_variable = {
-					var = SUI.anti_aggression
-					value = 40
-					compare = greater_than_or_equals
-				}
-				OR = {
-					has_idea = sui_extreme_colonial_unrest
-					has_idea = sui_major_colonial_unrest
-					has_idea = sui_minor_colonial_unrest
-				}
-				has_civil_war = yes
-				}	
-		}
-	}
-
-	mean_time_to_happen = {
-		days = 1
-	}	
-	option = {
-		name = suisei.51.a  
-		release = COG
-		add_war_support = 0.05
-		SUI = {
-			declare_war_on = {
-				target = COG
-				type = annex_everything
-			}
-		}
-	}
-	option = {
-		name = suisei.51.b  
-		release = COG
-		COG = {
-			country_event = africa.1
-		}
-	}
-}
-#Congo accepts
-country_event = {
-	id = suisei.52
-	title = suisei.52.t
-	desc = suisei.52.d
-	picture = GFX_report_event_mio
-
-	is_triggered_only = yes
-	
-	option = {
-		name = suisei.52.a  
-		SUI = {
-			white_peace = {
-				tag = COG
-				message = congo_suisei_treaty
-			}
-		}
-		COG = {
-			country_event = africa.2
-		}
-	}
-}
-#We lose to congo 
-country_event = {
-	id = suisei.53
-	title = suisei.53.t
-	desc = suisei.53.d
-	picture = GFX_report_event_mio
-
-	trigger = {
-			COG = {
-				controls_state = 973
-		}
-	}
-	
-	mean_time_to_happen = {
-	days = 200
-	}
-	
-	option = {
-		name = suisei.53.a  
-		SUI = {
-			white_peace = {
-				tag = COG
-				message = congo_suisei_treaty_2
-			}
-		}
-		COG = {
-			country_event = africa.3
-			add_state_core = 973
-			set_state_owner = 973
-		}
-	}
-}
+#country_event = {
+#	id = suisei.51
+#	title = suisei.51.t
+#	desc = suisei.51.d
+#	picture = GFX_report_event_mio
+#
+#	trigger = {
+#		OR = {
+#				AND = {
+#					check_variable = {
+#						var = SUI.anti_aggression
+#						value = 60
+#						compare = greater_than_or_equals
+#					}
+#					has_stability < 0.2
+#					OR = {
+#						has_idea = sui_extreme_colonial_unrest
+#						has_idea = sui_major_colonial_unrest
+#						has_idea = sui_minor_colonial_unrest
+#					}
+#				}
+#				AND = {
+#				check_variable = {
+#					var = SUI.anti_aggression
+#					value = 40
+#					compare = greater_than_or_equals
+#				}
+#				OR = {
+#					has_idea = sui_extreme_colonial_unrest
+#					has_idea = sui_major_colonial_unrest
+#					has_idea = sui_minor_colonial_unrest
+#				}
+#				has_civil_war = yes
+#				}	
+#		}
+#	}
+#
+#	mean_time_to_happen = {
+#		days = 1
+#	}	
+#	option = {
+#		name = suisei.51.a  
+#		release = COG
+#		add_war_support = 0.05
+#		SUI = {
+#			declare_war_on = {
+#				target = COG
+#				type = annex_everything
+#			}
+#		}
+#	}
+#	option = {
+#		name = suisei.51.b  
+#		release = COG
+#		COG = {
+#			country_event = africa.1
+#		}
+#	}
+#}
+##Congo accepts
+#country_event = {
+#	id = suisei.52
+#	title = suisei.52.t
+#	desc = suisei.52.d
+#	picture = GFX_report_event_mio
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = suisei.52.a  
+#		SUI = {
+#			white_peace = {
+#				tag = COG
+#				message = congo_suisei_treaty
+#			}
+#		}
+#		COG = {
+#			country_event = africa.2
+#		}
+#	}
+#}
+##We lose to congo 
+#country_event = {
+#	id = suisei.53
+#	title = suisei.53.t
+#	desc = suisei.53.d
+#	picture = GFX_report_event_mio
+#
+#	trigger = {
+#			COG = {
+#				controls_state = 973
+#		}
+#	}
+#	
+#	mean_time_to_happen = {
+#	days = 200
+#	}
+#	
+#	option = {
+#		name = suisei.53.a  
+#		SUI = {
+#			white_peace = {
+#				tag = COG
+#				message = congo_suisei_treaty_2
+#			}
+#		}
+#		COG = {
+#			country_event = africa.3
+#			add_state_core = 973
+#			set_state_owner = 973
+#		}
+#	}
+#}
 #Shipping Companies Start
 country_event = {
 	id = suisei.54
@@ -2299,7 +2299,6 @@ country_event = {
 		 }
 		}
 	}
-<<<<<<< HEAD
 }
 country_event = {
 	id = suisei.79
@@ -2859,6 +2858,4 @@ country_event = {
 	}
 }
 
-=======
 }
->>>>>>> 4aed64b0b8126e174642651146d096d94cb458c9
