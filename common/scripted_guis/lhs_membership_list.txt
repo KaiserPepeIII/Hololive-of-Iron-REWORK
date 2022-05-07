@@ -1474,30 +1474,30 @@ scripted_gui = {
 
   }
   resistance_hostile_button_gui = {
-    window_name = "resistance_hostile_button_window"
-    context_type = player_context
-	parent_window_token = politics_tab
+		window_name = "resistance_hostile_button_window"
+		context_type = player_context
+		parent_window_token = politics_tab
 
-    visible = {
-		if = {
-		limit = {
-		has_idea = lhs_member
+		visible = {
+			if = {
+			limit = {
+			has_idea = lhs_member
+			}
+			else = {
+			has_idea = anti_member
+			}
+			}
 		}
-		else = {
-		has_idea = anti_member
-		}
-		}
-    }
 
-    effects = {
-		resistance_hostile_button_click = {
-		set_country_flag = view_resistance_membership
-		clr_country_flag = view_lhs_membership
+		effects = {
+			resistance_hostile_button_click = {
+			set_country_flag = view_resistance_membership
+			clr_country_flag = view_lhs_membership
+			}
+			resistance_hostile_button_right_click = {
+			clr_country_flag = view_resistance_membership
+			clr_country_flag = view_lhs_membership
+			}
 		}
-		resistance_hostile_button_right_click = {
-		clr_country_flag = view_resistance_membership
-		clr_country_flag = view_lhs_membership
-		}
-    }
 	}
 }
