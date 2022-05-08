@@ -120,8 +120,8 @@ country_event = {
 	#A Unifying Initiative!
 	option = {
 	name = fubuki.2.a
-		add_to_var = {
-			var = fbk_black_alliance_votes
+		add_to_variable = {
+			var = global.fbk_black_alliance_votes
 			value = 1
 		}
 		FBK = {
@@ -280,10 +280,10 @@ country_event = {
 	
 	trigger = {
 		check_variable = {
-			variable = fbk_black_alliance_votes
-			less_than_or_equals = 5
+			var = Global.fbk_black_alliance_votes
+			value = 5
+			compare = less_than_or_equals
 		}
-
 	}
 	mean_time_to_happen = {
 		days = 15
@@ -306,8 +306,9 @@ country_event = {
 	
 	trigger = {
 		check_variable = {
-			variable = fbk_black_alliance_votes
-			greater_than_or_equals = 6
+			var = Global.fbk_black_alliance_votes
+			value = 6
+			compare = less_than_or_equals
 		}
 	}
 	fire_only_once = yes
@@ -317,20 +318,22 @@ country_event = {
 	#THREE CHEERS
 	option = {
 	name = fubuki.9.a
-			create_faction = "The Black League"
-			FUB = { add_to_faction = RUS }
-			FUB = { add_to_faction = FLA }
-			FUB = { add_to_faction = NOE }
-			FUB = { add_to_faction = PEK }
-			FUB = { add_to_faction = SUI }
-			FUB = { add_to_faction = MIK }
+			create_faction = the_black_league
+			FBK = {	
+				add_to_faction = MIK
+				add_to_faction = SUI
+				add_to_faction = PEK
+				add_to_faction = NOE
+				add_to_faction = FLA
+				add_to_faction = RUS
+			}
 			if = {
 				limit = {
 					KRO = {
 						has_country_flag = voted_for_black_alliance_kro
 					}
 				}
-				FUB = { add_to_faction = KRO }
+				FBK = { add_to_faction = KRO }
 			}
     }
 }
