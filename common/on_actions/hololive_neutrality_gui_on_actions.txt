@@ -1,7 +1,7 @@
 on_actions = {
 	on_startup = {
 		effect = {
-		#LHS
+		#LHS GUI
 			set_variable = {
 				var = global.lhs_count_support
 				value = 0
@@ -157,6 +157,18 @@ on_actions = {
 			 }			 
 			 every_country = {
 				limit = { 	
+				has_idea = lhs_head
+					}
+				add_to_array = {
+					array = global.lhs_head_flag
+					value = THIS.id
+				}
+			 }
+			 
+			#Resistance Gui
+			
+			 every_country = {
+				limit = { 	
 				has_idea = resistance_member
 					}
 				add_to_array = {
@@ -199,16 +211,35 @@ on_actions = {
 					array = global.resistance_head_flag
 					value = THIS.id
 				}
-			 }
+			 }		
 			 every_country = {
 				limit = { 	
-				has_idea = lhs_head
+				has_idea = resistance_runner_up
 					}
 				add_to_array = {
-					array = global.lhs_head_flag
+					array = global.resistance_runner_up
 					value = THIS.id
 				}
-			 }
+			 }			
+			 set_variable = {
+				var = global.resistance_faith
+				value = 85
+				}
+			clamp_variable = {
+				var = global.resistance_faith
+				min = 0
+				max = 100
+				}		
+				set_variable = {
+				var = global.resistance_solidarity
+				value = 15
+				}
+			clamp_variable = {
+				var = global.resistance_solidarity
+				min = 0
+				max = 100
+				}
+			
 		}
 	 }
 }
