@@ -111,7 +111,7 @@ focus_tree = {
 	focus = {
 		id = FBK_depoliticize_the_navy
 		icon = GFX_focus_FBK_depoliticize_the_navy
-		cost = 0.00
+		cost = 10.00
 
 		completion_reward = {
 			navy_experience = 50
@@ -1424,7 +1424,7 @@ focus_tree = {
 	focus = {
 		id = FBK_plan_hler 
 		icon = GFX_focus_FBK_carrier_design
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
 		}
@@ -1432,11 +1432,18 @@ focus_tree = {
 		x = 52
 		y = 10
 
+		completion_reward = {
+			add_timed_idea = {
+				idea = FBK_plan_hler
+				days = 2190
+			}
+		}
+
 	}
 	focus = {
 		id = FBK_modern_designs
 		icon = GFX_focus_FBK_modern_designs
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_plan_hler 
 		}
@@ -1456,7 +1463,7 @@ focus_tree = {
 	focus = {
 		id = FBK_submarine_designs
 		icon = GFX_focus_FBK_submarine_designs
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_modern_designs
 		}
@@ -1511,13 +1518,16 @@ focus_tree = {
 	focus = {
 		id = FBK_naval_expansion_one 
 		icon = GFX_focus_FBK_battleshp_design
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_plan_hler 
 		}
-
+		
 		completion_reward = {
-			add_ideas = {FBK_escort_fleet_expansion}
+			add_timed_idea = {
+				idea = FBK_escort_fleet_expansion
+				days = 2920
+			}
 		}
 
 		x = 53
@@ -1527,13 +1537,16 @@ focus_tree = {
 	focus = {
 		id = FBK_naval_expansion_two
 		icon = GFX_focus_FBK_naval_expansion_two
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_naval_expansion_one
 		}
-
+		
 		completion_reward = {
-			add_ideas = {FBK_battle_fleet_expansion}
+			add_timed_idea = {
+				idea = FBK_battle_fleet_expansion
+				days = 2190
+			} 
 		}
 
 		x = 53
@@ -1543,18 +1556,22 @@ focus_tree = {
 	focus = {
 		id = FBK_legacy_of_northern_war #xp gain? / amphib/nav buffs
 		icon = GFX_focus_FBK_legacy_of_northern_war
-		cost = 0.00
+		cost = 3.00
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
 		}
 		x = 56
 		y = 10
+		
+		completion_reward = {
+		    navy_experience = 15
+		}
 
 	}
 	focus = {
 		id = FBK_separate_the_marines
 		icon = GFX_focus_FBK_separate_the_marines
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_legacy_of_northern_war
 		}
@@ -1569,23 +1586,29 @@ focus_tree = {
 	focus = {
 		id = FBK_grand_fleet
 		icon = GFX_focus_FBK_fleet_in_being
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_separate_the_marines
 		}
 		mutually_exclusive = {
 			focus = FBK_baltic_sea_focus
 		}
-
-
 		x = 55
 		y = 12
+		
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = cat_fleet_in_being
+			}	
+		}
 
 	}
 	focus = {
 		id = FBK_revitalize_doctrine
 		icon = GFX_focus_FBK_experimental_doctrines
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_legacy_of_northern_war
 		}
@@ -1605,7 +1628,7 @@ focus_tree = {
 	focus = {
 		id = FBK_baltic_sea_focus #baltic naval bases and forts?
 		icon = GFX_focus_FBK_baltic_sea_focus
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_revitalize_doctrine
 		}
@@ -1617,6 +1640,14 @@ focus_tree = {
 		}
 		x = 57
 		y = 12
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = submarine_doctrine
+			}	
+		}
 
 	}
 	focus = {
@@ -1959,7 +1990,7 @@ focus_tree = {
 	focus = {
 		id = FBK_end_plan_hler
 		icon = GFX_focus_FBK_end_plan_hler
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_submarine_designs
 		}
@@ -1967,8 +1998,14 @@ focus_tree = {
 			focus = FBK_naval_expansion_two
 		}
 
+		available = {
+			NOT = {
+				has_idea = FBK_plan_hler
+			}
+		}
+
 		completion_reward = {
-			
+			add_ideas =FBK_plan_hler_results
 		}
 
 		x = 52
