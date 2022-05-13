@@ -1293,6 +1293,96 @@ scripted_gui = {
 		close_button_click = {
 			clr_country_flag = view_resistance_membership
 		}
+		resistance_head_gui_country_flag_click = {
+			ROOT = {
+				set_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+			THIS = {
+				add_to_array = {
+					array = global.resistance_action_array
+					value = THIS.id
+				}
+			}
+		}
+		resistance_head_gui_country_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+		}	
+		resistance_runner_up_country_flag_click = {
+			ROOT = {
+				set_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+			THIS = {
+				add_to_array = {
+					array = global.resistance_action_array
+					value = THIS.id
+				}
+			}
+		}
+		resistance_runner_up_country_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+		}	
+		aqua_resistance_member_gui_country_flag_click = {
+			ROOT = {
+				set_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+			THIS = {
+				add_to_array = {
+					array = global.resistance_action_array
+					value = THIS.id
+				}
+			}
+		}
+		aqua_resistance_member_gui_country_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+		}	
+		neutral_resistance_member_gui_country_flag_click = {
+			ROOT = {
+				set_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+			THIS = {
+				add_to_array = {
+					array = global.resistance_action_array
+					value = THIS.id
+				}
+			}
+		}
+		neutral_resistance_member_gui_country_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+		}	
+		coco_resistance_member_gui_country_flag_click = {
+			ROOT = {
+				set_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+			THIS = {
+				add_to_array = {
+					array = global.resistance_action_array
+					value = THIS.id
+				}
+			}
+		}
+		coco_resistance_member_gui_country_flag_right_click = {
+			ROOT = {
+				clr_country_flag = view_resistance_friendly_decisions
+			}
+			clear_array = global.resistance_action_array
+		}
 		
     }
 	triggers = {
@@ -1301,6 +1391,11 @@ scripted_gui = {
 		resistance_head_gui_gridbox = {
 			array = global.resistance_head_flag
 			entry_container = resistance_head_gui_list_entry
+			change_scope = yes
+		}
+		resistance_runner_up_gui_gridbox = {
+			array = global.resistance_runner_up
+			entry_container = resistance_runner_up_gui_gridbox_entry
 			change_scope = yes
 		}
 		coco_resistance_member_gui_gridbox = {
@@ -1323,6 +1418,9 @@ scripted_gui = {
 		resistance_head_gui_country_flag = {
 			image = [THIS.GetFlag]
 		}
+		resistance_runner_up_country_flag = {
+			image = [THIS.GetFlag]
+		}
 		coco_resistance_member_gui_country_flag = {
 			image = [THIS.GetFlag]
 		}		
@@ -1332,9 +1430,58 @@ scripted_gui = {
 		neutral_resistance_member_gui_country_flag = {
 			image = [THIS.GetFlag]
 		}
+		resistance_trust_progress_bar = {
+			frame = var:global.resistance_faith
+		}
+		resistance_solidarity_progress_bar = {
+			frame = var:global.resistance_solidarity
+		}
 	}
   }
   
+  resistance_permanent_buttons_gui = {
+    window_name = "resistance_permanent_buttons_container"
+    context_type = player_context	
+	
+		visible = {
+			has_country_flag = view_resistance_membership
+
+		}
+	
+	}
+    resistance_generic_buttons_gui = {
+    window_name = "resistance_generic_buttons_container"
+    context_type = player_context
+
+    visible = {
+		has_idea = resistance_member
+		has_country_flag = view_resistance_membership
+		has_country_flag = view_resistance_friendly_decisions
+		}
+	}		
+   resistance_military_buttons_gui = {
+    window_name = "resistance_military_buttons_container"
+    context_type = player_context
+
+    visible = {
+		has_idea = resistance_member
+		has_country_flag = view_resistance_membership
+		has_country_flag = view_resistance_friendly_decisions
+		}
+	}
+  resistance_head_buttons_gui = {
+    window_name = "resistance_head_buttons_container"
+    context_type = player_context
+
+    visible = {
+		OR = {
+		has_idea = resistance_head
+		has_idea = resistance_runner_up
+		}
+		has_country_flag = view_resistance_membership
+		has_country_flag = view_resistance_friendly_decisions
+		}
+	}
     lhs_member_button_gui = {
     window_name = "lhs_member_button_window"
     context_type = player_context
@@ -1383,7 +1530,7 @@ scripted_gui = {
 			}
 		}
 	}	
-  }
+  } 
    lhs_neutral_button_gui = {
     window_name = "lhs_neutral_button_window"
     context_type = player_context
