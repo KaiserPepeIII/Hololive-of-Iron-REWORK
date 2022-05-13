@@ -124,10 +124,45 @@ focus_tree = {
 	focus = {
 		id = FBK_expand_the_airforce
 		icon = GFX_focus_FBK_expand_airfields
-		cost = 0.00
+		cost = 10.00
 
 		completion_reward = {
 			air_experience = 50
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
 		}
 		x = 63
 		y = 9
@@ -1653,11 +1688,14 @@ focus_tree = {
 	focus = {
 		id = FBK_plan_thor
 		icon = GFX_focus_FBK_plan_thor
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
-
+		completion_reward = {
+			air_experience = 10
+			custom_effect_tooltip = FBK_plan_thor_tooltip
+		}
 		x = 61
 		y = 10
 
@@ -1665,7 +1703,7 @@ focus_tree = {
 	focus = {
 		id = FBK_strategic_bombers
 		icon = GFX_focus_FBK_strategic_destruction
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_plan_thor
 		}
@@ -1685,7 +1723,7 @@ focus_tree = {
 	focus = {
 		id = FBK_tactical_bombers
 		icon = GFX_focus_FBK_bombers_focus
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_plan_thor
 		}
@@ -1705,11 +1743,60 @@ focus_tree = {
 	focus = {
 		id = FBK_general_expansion # unlocks design co 
 		icon = GFX_focus_FBK_general_expansion
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 250
+				producer = ROOT
+			}
 
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			add_tech_bonus ={
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
 		x = 63
 		y = 10
 
@@ -1717,7 +1804,7 @@ focus_tree = {
 	focus = {
 		id = FBK_fighter_modernisation
 		icon = GFX_focus_FBK_fighter_modernisation
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_general_expansion
 		}
@@ -1738,10 +1825,16 @@ focus_tree = {
 	focus = {
 		id = FBK_plan_valkyrie
 		icon = GFX_focus_FBK_plan_valkyrie
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
+		
+		completion_reward={
+			air_experience = 10
+			custom_effect_tooltip = FBK_plan_valkyrie_tooltip
+		}
+
 		x = 65
 		y = 10
 
@@ -1749,7 +1842,7 @@ focus_tree = {
 	focus = {
 		id = FBK_naval_bombers
 		icon = GFX_focus_FBK_naval_bombers
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_plan_valkyrie
 		}
@@ -1769,7 +1862,7 @@ focus_tree = {
 	focus = {
 		id = FBK_cas
 		icon = GFX_focus_FBK_cas_focus
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_plan_valkyrie
 		}
@@ -1789,7 +1882,7 @@ focus_tree = {
 	focus = {
 		id = FBK_on_the_frontline
 		icon = GFX_focus_FBK_behind_the_line_destruction
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_fighter_modernisation
 			focus = FBK_naval_bombers
@@ -1812,7 +1905,7 @@ focus_tree = {
 	focus = {
 		id = FBK_home_defense
 		icon = GFX_focus_FBK_home_defense
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_tactical_bombers
 			focus = FBK_strategic_bombers
@@ -1835,7 +1928,7 @@ focus_tree = {
 	focus = {
 		id = FBK_heavy_water # nuke tech
 		icon = GFX_focus_FBK_heavy_water
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_on_the_frontline
 			focus = FBK_home_defense
@@ -2015,7 +2108,7 @@ focus_tree = {
 	focus = {
 		id = FBK_rocketry # rocket tech
 		icon = GFX_focus_FBK_rocketry
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_heavy_water
 		}
@@ -2035,7 +2128,7 @@ focus_tree = {
 	focus = {
 		id = FBK_the_bomb # nuke production
 		icon = GFX_focus_FBK_the_bomb
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_heavy_water
 		}
