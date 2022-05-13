@@ -779,6 +779,93 @@ guiTypes = {
 			alwaystransparent = yes
 			}
 		}
+		containerWindowType = { 
+		name = "lhs_hostile_buttons_container" #for resistance memebrs
+		position = {x = 1024 y = 273}
+		orientation = upper_left
+		size = {width = 300 height = 1100}
+		
+		buttonType = {
+			name = "lhs_boost_resistance_parties"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 3}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = lhs_boost_parties_loc_tooltip
+			}
+		instantTextboxType = {
+			name = "lhs_boost_resistance_parties_button_text"
+			position = { x= 15 y = 10 }
+			orientation = upper_left
+			text = "lhs_boost_resistance_parties_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "lhs_instigate_protests"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 42}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = lhs_peacekeeping_text_loc_tooltip
+			}
+		instantTextboxType = {
+			name = "lhs_instigate_protests_button_text"
+			position = { x= 15 y = 50 }
+			orientation = upper_left
+			text = "lhs_instigate_protests_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_support_anti_groups"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 81}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = lhs_rally_for_war_loc_tooltip
+			}
+		instantTextboxType = {
+			name = "lhs_support_anti_groups_button_text"
+			position = { x= 15 y = 91}
+			orientation = upper_left
+			text = "lhs_support_anti_groups_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_infiltrate_country"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 120}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = send_technical_expertise_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_infiltrate_country_text"
+			position = { x= 15 y = 131 }
+			orientation = upper_left
+			text = "lhs_infiltrate_country_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "lhs_instigate_revolution"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 159}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = lhs_begin_the_crusade_button_loc
+			}
+		instantTextboxType = {
+			name = "lhs_instigate_revolution_text"
+			position = { x= 15 y = 170 }
+			orientation = upper_left
+			text = "lhs_instigate_revolution_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		}
 	containerWindowType = {
 		name = "lhs_security_buttons_container"
 		position = {x = 1232 y = 106}
@@ -1296,14 +1383,14 @@ guiTypes = {
 			alwaystransparent = yes
 		}
 		buttonType = {
-			name = "lhs_voting_support"
+			name = "resistance_voting_support"
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 428 y = 659}
 			orientation = upper_left
 			scale = 0.684
 			}	
 		instantTextboxType = {
-			name = "lhs_voting_support_button_text"
+			name = "resistance_voting_support_button_text"
 			position = { x= 462 y = 660 }
 			orientation = upper_left
 			text = "lhs_voting_support_button_text_loc"
@@ -1311,14 +1398,14 @@ guiTypes = {
 			alwaystransparent = yes
 			}
 		buttonType = {
-			name = "lhs_voting_reject"
+			name = "resistance_voting_reject"
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 548 y = 659}
 			orientation = upper_left
 			scale = 0.684
 			}
 		instantTextboxType = {
-			name = "lhs_voting_reject_text"
+			name = "resistance_voting_reject_text"
 			position = { x= 587 y = 660 }
 			orientation = upper_left
 			text = "lhs_voting_reject_button_text_loc"
@@ -1329,14 +1416,14 @@ guiTypes = {
 			}
 
 		buttonType = {
-			name = "lhs_voting_veto"
+			name = "resistance_voting_veto"
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 549 y = 781}
 			orientation = upper_left
 			scale = 0.684
 			}
 		instantTextboxType = {
-			name = "lhs_voting_veto_button_text"
+			name = "resistance_voting_veto_button_text"
 			position = { x= 588 y = 782 }
 			orientation = upper_left
 			text = "lhs_voting_veto_button_text_loc"
@@ -1346,14 +1433,14 @@ guiTypes = {
 			alwaystransparent = yes
 			}
 		buttonType = {
-			name = "lhs_vote_abstain"
+			name = "resistance_vote_abstain"
 			quadTextureSprite = "GFX_decision_gui_button"
 			position = {x = 429 y = 781}
 			orientation = upper_left
 			scale = 0.684
 			}
 		instantTextboxType = {
-			name = "lhs_vote_abstain_button_text"
+			name = "resistance_vote_abstain_button_text"
 			position = { x= 461 y = 782 }
 			orientation = upper_left
 			text = "lhs_vote_abstain_button_text_loc"
@@ -1580,7 +1667,7 @@ guiTypes = {
 		}
 	containerWindowType = { 
 		name = "resistance_head_buttons_container"
-		position = {x = 1022 y = 273}
+		position = {x = 1024 y = 273}
 		orientation = upper_left
 		size = {width = 300 height = 1100}
 		
@@ -1647,13 +1734,10 @@ guiTypes = {
 			text = "resistance_debate_lhs_text_loc"
 			font = hoi_18mbs
 			alwaystransparent = yes
-			}		
-			#####
-			########
-			#####
+			}	
 		buttonType = {
 			name = "resistance_call_resistance_council"
-			quadTextureSprite = "GFX_decision_gui_button"
+			quadTextureSprite = "GFX_decision_gui_button_debate"
 			position = {x = 0 y = 120}
 			orientation = upper_left
 			scale = 1.213
@@ -1667,9 +1751,12 @@ guiTypes = {
 			font = hoi_18mbs
 			alwaystransparent = yes
 			}		
+			#####
+			########
+			#####	
 		buttonType = {
 			name = "resistance_begin_the_crusade"
-			quadTextureSprite = "GFX_decision_gui_button"
+			quadTextureSprite = "GFX_decision_gui_button_debate"
 			position = {x = 0 y = 159}
 			orientation = upper_left
 			scale = 1.213
@@ -1767,6 +1854,93 @@ guiTypes = {
 			position = { x= 15 y = 170 }
 			orientation = upper_left
 			text = "resistance_send_military_support_button_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		}
+		containerWindowType = { 
+		name = "resistance_hostile_buttons_container" #for LHS memebrs
+		position = {x = 1024 y = 273}
+		orientation = upper_left
+		size = {width = 300 height = 1100}
+		
+		buttonType = {
+			name = "resistance_boost_resistance_parties"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 3}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = resistance_boost_parties_loc_tooltip
+			}
+		instantTextboxType = {
+			name = "resistance_boost_resistance_parties_button_text"
+			position = { x= 15 y = 10 }
+			orientation = upper_left
+			text = "resistance_boost_lhs_parties_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}
+		buttonType = {
+			name = "resistance_instigate_protests"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 42}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = resistance_peacekeeping_text_loc_tooltip
+			}
+		instantTextboxType = {
+			name = "resistance_instigate_protests_button_text"
+			position = { x= 15 y = 50 }
+			orientation = upper_left
+			text = "lhs_instigate_protests_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "resistance_support_anti_groups"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 81}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = resistance_rally_for_war_loc_tooltip
+			}
+		instantTextboxType = {
+			name = "resistance_support_anti_groups_button_text"
+			position = { x= 15 y = 91}
+			orientation = upper_left
+			text = "lhs_support_anti_groups_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "resistance_infiltrate_country"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 120}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = send_technical_expertise_button_loc
+			}
+		instantTextboxType = {
+			name = "resistance_infiltrate_country_text"
+			position = { x= 15 y = 131 }
+			orientation = upper_left
+			text = "lhs_infiltrate_country_text_loc"
+			font = hoi_18mbs
+			alwaystransparent = yes
+			}		
+		buttonType = {
+			name = "resistance_instigate_revolution"
+			quadTextureSprite = "GFX_decision_gui_button_hostile"
+			position = {x = 0 y = 159}
+			orientation = upper_left
+			scale = 1.213
+			pdx_tooltip = resistance_begin_the_crusade_button_loc
+			}
+		instantTextboxType = {
+			name = "resistance_instigate_revolution_text"
+			position = { x= 15 y = 170 }
+			orientation = upper_left
+			text = "lhs_instigate_revolution_text_loc"
 			font = hoi_18mbs
 			alwaystransparent = yes
 			}
