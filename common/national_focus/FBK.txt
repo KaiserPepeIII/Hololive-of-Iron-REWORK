@@ -117,7 +117,7 @@ focus_tree = {
 	focus = {
 		id = FBK_depoliticize_the_navy
 		icon = GFX_focus_FBK_depoliticize_the_navy
-		cost = 0.00
+		cost = 10.00
 
 		completion_reward = {
 			navy_experience = 50
@@ -130,10 +130,45 @@ focus_tree = {
 	focus = {
 		id = FBK_expand_the_airforce
 		icon = GFX_focus_FBK_expand_airfields
-		cost = 0.00
+		cost = 10.00
 
 		completion_reward = {
 			air_experience = 50
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
 		}
 		x = 63
 		y = 9
@@ -1070,6 +1105,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_memories_of_baltics
 		}
+		completion_reward = {
+			add_ideas = FBK_memories_of_konigsberg
+		}
 		x = 42
 		y = 10
 
@@ -1290,6 +1328,11 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_depoliticize_army
 		}
+
+		completion_reward = {
+			add_ideas = FBK_rework_conscription
+		}
+
 		x = 48
 		y = 10
 
@@ -1445,7 +1488,7 @@ focus_tree = {
 	focus = {
 		id = FBK_plan_hler 
 		icon = GFX_focus_FBK_carrier_design
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
 		}
@@ -1453,11 +1496,18 @@ focus_tree = {
 		x = 52
 		y = 10
 
+		completion_reward = {
+			add_timed_idea = {
+				idea = FBK_plan_hler
+				days = 2190
+			}
+		}
+
 	}
 	focus = {
 		id = FBK_modern_designs
 		icon = GFX_focus_FBK_modern_designs
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_plan_hler 
 		}
@@ -1477,7 +1527,7 @@ focus_tree = {
 	focus = {
 		id = FBK_submarine_designs
 		icon = GFX_focus_FBK_submarine_designs
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_modern_designs
 		}
@@ -1549,13 +1599,16 @@ focus_tree = {
 	focus = {
 		id = FBK_naval_expansion_one 
 		icon = GFX_focus_FBK_battleshp_design
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_plan_hler 
 		}
-
+		
 		completion_reward = {
-			add_ideas = {FBK_escort_fleet_expansion}
+			add_timed_idea = {
+				idea = FBK_escort_fleet_expansion
+				days = 2920
+			}
 		}
 
 		x = 53
@@ -1565,13 +1618,16 @@ focus_tree = {
 	focus = {
 		id = FBK_naval_expansion_two
 		icon = GFX_focus_FBK_naval_expansion_two
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_naval_expansion_one
 		}
-
+		
 		completion_reward = {
-			add_ideas = {FBK_battle_fleet_expansion}
+			add_timed_idea = {
+				idea = FBK_battle_fleet_expansion
+				days = 2190
+			} 
 		}
 
 		x = 53
@@ -1581,18 +1637,22 @@ focus_tree = {
 	focus = {
 		id = FBK_legacy_of_northern_war #xp gain? / amphib/nav buffs
 		icon = GFX_focus_FBK_legacy_of_northern_war
-		cost = 0.00
+		cost = 3.00
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
 		}
 		x = 56
 		y = 10
+		
+		completion_reward = {
+		    navy_experience = 15
+		}
 
 	}
 	focus = {
 		id = FBK_separate_the_marines
 		icon = GFX_focus_FBK_separate_the_marines
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_legacy_of_northern_war
 		}
@@ -1607,23 +1667,29 @@ focus_tree = {
 	focus = {
 		id = FBK_grand_fleet
 		icon = GFX_focus_FBK_fleet_in_being
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_separate_the_marines
 		}
 		mutually_exclusive = {
 			focus = FBK_baltic_sea_focus
 		}
-
-
 		x = 55
 		y = 12
+		
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = cat_fleet_in_being
+			}	
+		}
 
 	}
 	focus = {
 		id = FBK_revitalize_doctrine
 		icon = GFX_focus_FBK_experimental_doctrines
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_legacy_of_northern_war
 		}
@@ -1643,7 +1709,7 @@ focus_tree = {
 	focus = {
 		id = FBK_baltic_sea_focus #baltic naval bases and forts?
 		icon = GFX_focus_FBK_baltic_sea_focus
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_revitalize_doctrine
 		}
@@ -1656,15 +1722,26 @@ focus_tree = {
 		x = 57
 		y = 12
 
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = submarine_doctrine
+			}	
+		}
+
 	}
 	focus = {
 		id = FBK_plan_thor
 		icon = GFX_focus_FBK_plan_thor
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
-
+		completion_reward = {
+			air_experience = 10
+			custom_effect_tooltip = FBK_plan_thor_tooltip
+		}
 		x = 61
 		y = 10
 
@@ -1672,7 +1749,7 @@ focus_tree = {
 	focus = {
 		id = FBK_strategic_bombers
 		icon = GFX_focus_FBK_strategic_destruction
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_plan_thor
 		}
@@ -1692,7 +1769,7 @@ focus_tree = {
 	focus = {
 		id = FBK_tactical_bombers
 		icon = GFX_focus_FBK_bombers_focus
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_plan_thor
 		}
@@ -1712,11 +1789,60 @@ focus_tree = {
 	focus = {
 		id = FBK_general_expansion # unlocks design co 
 		icon = GFX_focus_FBK_general_expansion
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 250
+				producer = ROOT
+			}
 
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			add_tech_bonus ={
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
 		x = 63
 		y = 10
 
@@ -1724,7 +1850,7 @@ focus_tree = {
 	focus = {
 		id = FBK_fighter_modernisation
 		icon = GFX_focus_FBK_fighter_modernisation
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_general_expansion
 		}
@@ -1745,10 +1871,16 @@ focus_tree = {
 	focus = {
 		id = FBK_plan_valkyrie
 		icon = GFX_focus_FBK_plan_valkyrie
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
+		
+		completion_reward={
+			air_experience = 10
+			custom_effect_tooltip = FBK_plan_valkyrie_tooltip
+		}
+
 		x = 65
 		y = 10
 
@@ -1756,7 +1888,7 @@ focus_tree = {
 	focus = {
 		id = FBK_naval_bombers
 		icon = GFX_focus_FBK_naval_bombers
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_plan_valkyrie
 		}
@@ -1776,7 +1908,7 @@ focus_tree = {
 	focus = {
 		id = FBK_cas
 		icon = GFX_focus_FBK_cas_focus
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_plan_valkyrie
 		}
@@ -1796,7 +1928,7 @@ focus_tree = {
 	focus = {
 		id = FBK_on_the_frontline
 		icon = GFX_focus_FBK_behind_the_line_destruction
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_fighter_modernisation
 			focus = FBK_naval_bombers
@@ -1819,7 +1951,7 @@ focus_tree = {
 	focus = {
 		id = FBK_home_defense
 		icon = GFX_focus_FBK_home_defense
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_tactical_bombers
 			focus = FBK_strategic_bombers
@@ -1842,7 +1974,7 @@ focus_tree = {
 	focus = {
 		id = FBK_heavy_water # nuke tech
 		icon = GFX_focus_FBK_heavy_water
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_on_the_frontline
 			focus = FBK_home_defense
@@ -1997,7 +2129,7 @@ focus_tree = {
 	focus = {
 		id = FBK_end_plan_hler
 		icon = GFX_focus_FBK_end_plan_hler
-		cost = 0.00
+		cost = 10.00
 		prerequisite = {
 			focus = FBK_submarine_designs
 		}
@@ -2005,8 +2137,14 @@ focus_tree = {
 			focus = FBK_naval_expansion_two
 		}
 
+		available = {
+			NOT = {
+				has_idea = FBK_plan_hler
+			}
+		}
+
 		completion_reward = {
-			
+			add_ideas =FBK_plan_hler_results
 		}
 
 		x = 52
@@ -2016,7 +2154,7 @@ focus_tree = {
 	focus = {
 		id = FBK_rocketry # rocket tech
 		icon = GFX_focus_FBK_rocketry
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_heavy_water
 		}
@@ -2036,7 +2174,7 @@ focus_tree = {
 	focus = {
 		id = FBK_the_bomb # nuke production
 		icon = GFX_focus_FBK_the_bomb
-		cost = 0.00
+		cost = 8.00
 		prerequisite = {
 			focus = FBK_heavy_water
 		}

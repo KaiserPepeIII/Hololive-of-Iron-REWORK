@@ -7,10 +7,11 @@ scripted_gui = {
 	visible = {
 		always = yes
 	}
-	
+	 
 	effects = {
 		holo_parliament_button_click = {
 			set_country_flag = view_upper_house
+			seiso_refresh = yes
 		}
 		holo_parliament_button_right_click = {
 			clr_country_flag = view_upper_house
@@ -21,92 +22,276 @@ scripted_gui = {
     hololive_upper_house_view_gui = {
 	window_name = "hololive_upper_house_view_gui_window"
 	context_type = player_context
-
 		
-	visible = {
-		has_country_flag = view_upper_house
-	}
-	effects = {
-		first_minister_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.1
+		visible = {
+			has_country_flag = view_upper_house
+		}
+		
+		triggers = {
+			
+			seiso_not_saeiso_button_minus_click_enabled = {
+				ROOT = {
+					check_variable = {
+						var = ROOT.seiso_alignment
+						value = 1
+						compare = greater_than
+					}
+					government_alignment_cooldown = yes
+					seiso_government_alignment_limits = yes
+				}
+			}
+			seiso_not_saeiso_button_plus_click_enabled = {
+				ROOT = {
+					check_variable = {
+						var = ROOT.seiso_alignment
+						value = 5
+						compare = less_than
+					}
+					government_alignment_cooldown = yes
+					seiso_government_alignment_limits = yes
+				}
+			}
+			authoritarian_democracy_button_minus_click_enabled = {
+				ROOT = {
+					check_variable = {
+						var = ROOT.authoritarianism_alignment
+						value = 1
+						compare = greater_than
+					}
+					government_alignment_cooldown = yes
+				}
+			}
+			authoritarian_democracy_button_plus_click_enabled = {
+					ROOT = {
+						check_variable = {
+							var = ROOT.authoritarianism_alignment
+							value = 5
+							compare = less_than
+						}
+						government_alignment_cooldown = yes
+					}
+			}
+			reactionary_reformist_button_minus_click_enabled = {
+					ROOT = {
+						check_variable = {
+							var = ROOT.reactionary_alignment
+							value = 1
+							compare = greater_than
+						}
+						government_alignment_cooldown = yes
+					}
+			}
+			reactionary_reformist_button_plus_click_enabled = {
+					ROOT = {
+						check_variable = {
+							var = ROOT.reactionary_alignment
+							value = 5
+							compare = less_than
+						}
+						government_alignment_cooldown = yes
+					}
+			}
+			capitalism_socialism_button_minus_click_enabled = {
+					ROOT = {
+						check_variable = {
+							var = ROOT.capitalism_alignment
+							value = 1
+							compare = greater_than
+						}
+						government_alignment_cooldown = yes
+					}
+			}
+			capitalism_socialism_button_plus_click_enabled = {
+					ROOT = {
+						check_variable = {
+							var = ROOT.capitalism_alignment
+							value = 5
+							compare = less_than
+						}
+						government_alignment_cooldown = yes
+					}
+			}
+			isolationism_interventionism_button_minus_click_enabled = {
+					ROOT = {
+						check_variable = {
+							var = ROOT.isolationism_alignment
+							value = 1
+							compare = greater_than
+						}
+						government_alignment_cooldown = yes
+					}
+			}
+			isolationism_interventionism_button_plus_click_enabled = {
+					ROOT = {
+						check_variable = {
+							var = ROOT.isolationism_alignment
+							value = 5
+							compare = less_than
+						}
+						government_alignment_cooldown = yes
+					}
+				}
+		}
+		
+		effects = {
+			#scripted effects/government_alignment_scripted_effects
+				seiso_not_saeiso_button_minus_click = {
+					ROOT = {
+					seiso_minus_bar_scripted_effect = yes
+					seiso_refresh = yes
+					}
+				}
+				seiso_not_saeiso_button_plus_click = {
+					ROOT = {
+					seiso_plus_bar_scripted_effect = yes
+					seiso_refresh = yes
+					}
+				}
+				authoritarian_democracy_button_minus_click = {
+					ROOT = {
+					authoritarianism_minus_bar_scripted_effect = yes
+					authoritarianism_refresh = yes
+					}
+				}
+				authoritarian_democracy_button_plus_click = {
+					ROOT = {
+					authoritarianism_plus_bar_scripted_effect = yes
+					authoritarianism_refresh = yes
+					}
+				}
+				reactionary_reformist_button_minus_click = {
+					ROOT = {
+					reactionary_minus_bar_scripted_effect = yes
+					reactionary_refresh = yes
+					}
+				}
+				reactionary_reformist_button_plus_click = {
+					ROOT = {
+					reactionary_plus_bar_scripted_effect = yes
+					reactionary_refresh = yes
+					}
+				}
+				capitalism_socialism_button_minus_click = {
+					ROOT = {
+					capitalism_minus_bar_scripted_effect = yes
+					capitalism_refresh = yes
+					}
+				}
+				capitalism_socialism_button_plus_click = {
+					ROOT = {
+					capitalism_plus_bar_scripted_effect = yes
+					capitalism_refresh = yes
+					}
+				}
+				isolationism_interventionism_button_minus_click = {
+					ROOT = {
+					isolationism_minus_bar_scripted_effect = yes
+					isolationism_refresh = yes
+					}
+				}
+				isolationism_interventionism_button_plus_click = {
+					ROOT = {
+					isolationism_plus_bar_scripted_effect = yes
+					isolationism_refresh = yes
+					}
+				}
+			first_minister_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.1
+				}
+			}
+			minister_interior_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.2
+				}
+			}
+			minister_finance_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.3
+				}
+			}
+			chief_army_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.4
+				}
+			}
+			chief_navy_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.5
+				}
+			}
+			minister_foreign_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.6
+				}
+			}
+			minister_armaments_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.7
+				}
+			}
+			minister_economy_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.8
+				}
+			}
+			minister_alignment_portrait_outline_click = {
+				ROOT = {
+					country_event = cabinet.9
+				}
+			}
+			close_button_upper_click = {
+				clr_country_flag = view_upper_house
 			}
 		}
-		minister_interior_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.2
+		
+		
+		properties = {
+			seiso_not_saeiso_bar = {
+				image = "[get_seiso_bar]"
 			}
-		}
-		minister_finance_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.3
+			authoritarian_democracy_bar = {
+				image = "[get_authoritarian_bar]"
 			}
-		}
-		chief_army_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.4
+			reactionary_reformist_bar = {
+				image = "[get_reformist_bar]"
 			}
-		}
-		chief_navy_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.5
+			capitalism_socialism_bar = {
+				image = "[get_capitalism_bar]"
 			}
-		}
-		minister_foreign_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.6
+			isolationism_interventionism_bar = {
+				image = "[get_isolationism_bar]"
 			}
-		}
-		minister_armaments_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.7
+			head_of_state_portrait = {
+				image = "[get_head_of_state_texture]"
 			}
-		}
-		minister_economy_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.8
+			first_minister_portrait = {
+				image = "[get_first_minister_texture]"
 			}
-		}
-		minister_alignment_portrait_outline_click = {
-			ROOT = {
-				country_event = cabinet.9
+			minister_interior_portrait = {
+				image = "[get_minister_interior_texture]"
 			}
-		}
-		close_button_upper_click = {
-			clr_country_flag = view_upper_house
-		}
-	}
-	
-	properties = {
-		head_of_state_portrait = {
-			image = "[get_head_of_state_texture]"
-		}
-		first_minister_portrait = {
-			image = "[get_first_minister_texture]"
-		}
-		minister_interior_portrait = {
-			image = "[get_minister_interior_texture]"
-		}
-		minister_finance_portrait = {
-			image = "[get_minister_finance_texture]"
-		}
-		chief_army_portrait = {
-			image = "[get_chief_army_texture]"
-		}
-		chief_navy_portrait = {
-			image = "[get_chief_navy_texture]"
-		}
-		minister_foreign_portrait = {
-			image = "[get_minister_foreign_texture]"
-		}
-		minister_armaments_portrait = {
-			image = "[get_minister_armaments_texture]"
-		}
-		minister_economy_portrait = {
-			image = "[get_minister_economy_texture]"
-		}
-		minister_alignment_portrait = {
-			image = "[get_minister_alignment_texture]"
+			minister_finance_portrait = {
+				image = "[get_minister_finance_texture]"
+			}
+			chief_army_portrait = {
+				image = "[get_chief_army_texture]"
+			}
+			chief_navy_portrait = {
+				image = "[get_chief_navy_texture]"
+			}
+			minister_foreign_portrait = {
+				image = "[get_minister_foreign_texture]"
+			}
+			minister_armaments_portrait = {
+				image = "[get_minister_armaments_texture]"
+			}
+			minister_economy_portrait = {
+				image = "[get_minister_economy_texture]"
+			}
+			minister_alignment_portrait = {
+				image = "[get_minister_alignment_texture]"
+			}
 		}
 	}
 }

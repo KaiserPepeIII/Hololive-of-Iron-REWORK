@@ -1,194 +1,507 @@
-capitalism_plus_bar_scripted_effect = {
-	ROOT = {
-		if = {
+seiso_clear = {
+
+		remove_ideas = {
+			seiso_value_1
+			seiso_value_2
+			seiso_value_3
+			seiso_value_4
+			seiso_value_5
+		}
+}
+authoritarianism_clear = {
+
+		remove_ideas = {
+			democratic_value_1
+			democratic_value_2
+			democratic_value_3
+			democratic_value_4
+			democratic_value_5
+		}
+}
+reactionary_clear = {
+		remove_ideas = {
+			reactionary_value_1
+			reactionary_value_2
+			reactionary_value_3
+			reactionary_value_4
+			reactionary_value_5
+		}
+}
+capitalism_clear = {
+		remove_ideas = {
+			capitalism_value_1
+			capitalism_value_2
+			capitalism_value_3
+			capitalism_value_4
+			capitalism_value_5
+		}
+}
+isolationism_clear = {
+		remove_ideas = {
+			isolationism_value_1
+			isolationism_value_2
+			isolationism_value_3
+			isolationism_value_4
+			isolationism_value_5
+		}
+}
+seiso_refresh = {
+		if = {	
 			limit = {
-				has_elections = yes
+				check_variable = {
+					var = ROOT.seiso_alignment
+					value = 1
+				}
 			}
-			add_to_variable = {
-				var = ROOT.capitalism_alignment
-				value = 1
+			seiso_clear = yes
+			add_ideas = seiso_value_1
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.seiso_alignment
+					value = 2
+				}
 			}
-			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
+			seiso_clear = yes
+			add_ideas = seiso_value_2
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.seiso_alignment
+					value = 3
+				}
 			}
-			else = {
+			seiso_clear = yes
+			add_ideas = seiso_value_3
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.seiso_alignment
+					value = 4
+				}
+			}
+			seiso_clear = yes
+			add_ideas = seiso_value_4
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.seiso_alignment
+					value = 5
+				}
+			}
+			seiso_clear = yes
+			add_ideas = seiso_value_5
+		}
+}
+authoritarianism_refresh = {
+		if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 1
+				}
+			}
+			authoritarianism_clear = yes
+			add_ideas = democratic_value_1
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 2
+				}
+			}
+			authoritarianism_clear = yes
+			add_ideas = democratic_value_2
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 3
+				}
+			}
+			authoritarianism_clear = yes
+			add_ideas = democratic_value_3
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 4
+				}
+			}
+			authoritarianism_clear = yes
+			add_ideas = democratic_value_4
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 5
+				}
+			}
+			authoritarianism_clear = yes
+			add_ideas = democratic_value_5
+		}
+}
+reactionary_refresh = {
+		if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 1
+				}
+			}
+			reactionary_clear = yes
+			add_ideas = reactionary_value_1
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 2
+				}
+			}
+			reactionary_clear = yes
+			add_ideas = reactionary_value_2
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 3
+				}
+			}
+			reactionary_clear = yes
+			add_ideas = reactionary_value_3
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 4
+				}
+			}
+			reactionary_clear = yes
+			add_ideas = reactionary_value_4
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 5
+				}
+			}
+			reactionary_clear = yes
+			add_ideas = reactionary_value_5
+		}
+}
+capitalism_refresh = {
+		if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 1
+				}
+			}
+			capitalism_clear = yes
+			add_ideas = capitalism_value_1
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 2
+				}
+			}
+			capitalism_clear = yes
+			add_ideas = capitalism_value_2
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 3
+				}
+			}
+			capitalism_clear = yes
+			add_ideas = capitalism_value_3
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 4
+				}
+			}
+			capitalism_clear = yes
+			add_ideas = capitalism_value_4
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 5
+				}
+			}
+			capitalism_clear = yes
+			add_ideas = capitalism_value_5
+		}
+}
+isolationism_refresh = {
+		if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 1
+				}
+			}
+			isolationism_clear = yes
+			add_ideas = isolationism_value_1
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 2
+				}
+			}
+			isolationism_clear = yes
+			add_ideas = isolationism_value_2
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 3
+				}
+			}
+			isolationism_clear = yes
+			add_ideas = isolationism_value_3
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 4
+				}
+			}
+			isolationism_clear = yes
+			add_ideas = isolationism_value_4
+		}
+		else_if = {	
+			limit = {
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 5
+				}
+			}
+			isolationism_clear = yes
+			add_ideas = isolationism_value_5
+		}
+}
+capitalism_plus_bar_scripted_effect = {
+			if = {
+				limit = {
+					has_elections = yes
+				}
 				add_to_variable = {
 					var = ROOT.capitalism_alignment
 					value = 1
 				}
 				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
 				}
-			}						
-		}
-	}
+			}
+		else_if = {
+			add_to_variable = {
+				var = ROOT.capitalism_alignment
+				value = 1
+			}
+			set_country_flag = {
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
+			}
+		}						
+}
+government_alignment_initiate = {
+		seiso_refresh = yes
+		authoritarianism_refresh = yes
+		reactionary_refresh = yes
+		capitalism_refresh = yes
+		isolationism_refresh = yes
 }
 capitalism_minus_bar_scripted_effect = {
-	ROOT = {
-		if = {
-			limit = {
-				has_elections = yes
+			if = {
+				limit = {
+					has_elections = yes
+				}
+				subtract_from_variable = {
+					var = ROOT.capitalism_alignment
+					value = 1
+					}
+				set_country_flag = {
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
+				}
 			}
+		else_if = {
 			subtract_from_variable = {
 				var = ROOT.capitalism_alignment
 				value = 1
 			}
 			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
 			}
-			else = {
-				subtract_from_variable = {
-					var = ROOT.capitalism_alignment
-					value = 1
-				}
-				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
-				}
-			}						
-		}
-	}
+		}						
 }
 reactionary_plus_bar_scripted_effect = {
-	ROOT = {
 		if = {
 			limit = {
 				has_elections = yes
-			}
-			add_to_variable = {
-				var = ROOT.reactionary_alignment
-				value = 1
-			}
-			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
-			}
-			else = {
+				}
 				add_to_variable = {
 					var = ROOT.reactionary_alignment
 					value = 1
 				}
 				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
 				}
-			}						
-		}
-	}
+			}
+		else_if = {
+			add_to_variable = {
+				var = ROOT.reactionary_alignment
+				value = 1
+			}
+			set_country_flag = {
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
+			}
+		}						
 }
 reactionary_minus_bar_scripted_effect = {
-	ROOT = {
 		if = {
 			limit = {
 				has_elections = yes
-			}
-			subtract_from_variable = {
-				var = ROOT.reactionary_alignment
-				value = 1
-			}
-			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
-			}
-			else = {
+				}
 				subtract_from_variable = {
 					var = ROOT.reactionary_alignment
 					value = 1
 				}
 				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
 				}
-			}						
-		}
-	}
+			}
+		else_if = {
+			subtract_from_variable = {
+				var = ROOT.reactionary_alignment
+				value = 1
+			}
+			set_country_flag = {
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
+			}
+		}						
 }
 authoritarianism_plus_bar_scripted_effect = {
-	ROOT = {
 		if = {
 			limit = {
 				has_elections = yes
-			}
-			add_to_variable = {
-				var = ROOT.authoritarianism_alignment
-				value = 1
-			}
-			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
-			}
-			else = {
+				}
 				add_to_variable = {
 					var = ROOT.authoritarianism_alignment
 					value = 1
 				}
 				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
 				}
-			}						
-		}
-	}
+			}
+		else_if = {
+			add_to_variable = {
+				var = ROOT.authoritarianism_alignment
+				value = 1
+			}
+			set_country_flag = {
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
+			}
+		}						
 }
 authoritarianism_minus_bar_scripted_effect = {
-	ROOT = {
-		if = {
-			limit = {
-				has_elections = yes
-			}
-			subtract_from_variable = {
-				var = ROOT.authoritarianism_alignment
-				value = 1
-			}
-			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
-			}
-			else = {
+			if = {
+				limit = {
+					has_elections = yes
+				}
 				subtract_from_variable = {
 					var = ROOT.authoritarianism_alignment
 					value = 1
 				}
 				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
 				}
-			}						
-		}
-	}
+			}
+		else_if = {
+			subtract_from_variable = {
+				var = ROOT.authoritarianism_alignment
+				value = 1
+			}
+			set_country_flag = {
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
+			}
+		}						
 }
 seiso_plus_bar_scripted_effect = {
-	ROOT = {
-		if = {
-			limit = {
-				has_elections = yes
-			}
-			add_to_variable = {
-				var = ROOT.seiso_alignment
-				value = 1
-			}
-			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
-			}
-			else = {
+			if = {
+				limit = {
+					has_elections = yes
+				}
 				add_to_variable = {
 					var = ROOT.seiso_alignment
 					value = 1
 				}
 				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
 				}
-			}						
-		}
-	}
+			}
+		else_if = {
+			add_to_variable = {
+				var = ROOT.seiso_alignment
+				value = 1
+			}
+			set_country_flag = {
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
+			}
+		}						
 }
 seiso_minus_bar_scripted_effect = {
-	ROOT = {
 		if = {
 			limit = {
 				has_elections = yes
@@ -200,71 +513,72 @@ seiso_minus_bar_scripted_effect = {
 			set_country_flag = {
 				flag = democratic_government_change_cooldown
 				days = 120
+				value = 1
 			}
-			else = {
-				subtract_from_variable = {
-					var = ROOT.seiso_alignment
-					value = 1
-				}
-				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
-				}
-			}						
 		}
-	}
-}
-isolationism_plus_bar_scripted_effect = {
-	ROOT = {
-		if = {
-			limit = {
-				has_elections = yes
-			}
-			add_to_variable = {
-				var = ROOT.isolationism_alignment
+		else_if = {
+			subtract_from_variable = {
+				var = ROOT.seiso_alignment
 				value = 1
 			}
 			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
 			}
-			else = {
+		}						
+}
+isolationism_plus_bar_scripted_effect = {
+		if = {
+			limit = {
+				has_elections = yes
+				}
 				add_to_variable = {
 					var = ROOT.isolationism_alignment
 					value = 1
 				}
 				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
 				}
-			}						
-		}
-	}
-}
-isolationism_minus_bar_scripted_effect = {
-	ROOT = {
-		if = {
-			limit = {
-				has_elections = yes
 			}
-			subtract_from_variable = {
+		else_if = {
+			add_to_variable = {
 				var = ROOT.isolationism_alignment
 				value = 1
 			}
 			set_country_flag = {
-				flag = democratic_government_change_cooldown
-				days = 120
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
 			}
-			else = {
+		}						
+}
+isolationism_minus_bar_scripted_effect = {
+		if = {
+			limit = {
+				has_elections = yes
+				}
 				subtract_from_variable = {
 					var = ROOT.isolationism_alignment
 					value = 1
 				}
 				set_country_flag = {
-					flag = autocratic_government_change_cooldown
-					days = 60
+					flag = democratic_government_change_cooldown
+					days = 120
+					value = 1
 				}
-			}						
-		}
-	}
+			}
+		else_if = {
+			subtract_from_variable = {
+				var = ROOT.isolationism_alignment
+				value = 1
+			}
+			set_country_flag = {
+				flag = autocratic_government_change_cooldown
+				days = 60
+				value = 1
+			}
+		}						
 }
