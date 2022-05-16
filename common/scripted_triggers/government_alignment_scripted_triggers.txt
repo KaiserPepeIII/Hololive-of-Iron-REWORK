@@ -1,0 +1,65 @@
+government_alignment_cooldown = {
+	NOT = {
+	has_country_flag = democratic_government_change_cooldown
+	has_country_flag = autocratic_government_change_cooldown
+	}
+}
+conservative_seiso_limits = {
+	has_government = democratic
+	NOT = {	
+		check_variable = {
+			var = ROOT.seiso_alignment
+			value = 3
+			compare = greater_than
+		}
+	}
+}
+yagoo_monarchy_seiso_limits = {
+	has_government = pro_yagoo_progressive
+	NOT = {	
+		check_variable = {
+			var = ROOT.seiso_alignment
+			value = 3
+			compare = greater_than
+		}
+	}
+}
+resistance_revolutionary_seiso_limits = {
+	has_government = communism
+	NOT = {	
+		check_variable = {
+			var = ROOT.seiso_alignment
+			value = 2
+			compare = less_than
+		}
+	}
+}
+resistance_nationalism_seiso_limits = {
+	has_government = pro_resistance_nationalism
+	NOT = {	
+		check_variable = {
+			var = ROOT.seiso_alignment
+			value = 3
+			compare = less_than
+		}
+	}
+}
+resistance_monarchy_seiso_limits = {
+	has_government = pro_resistance_monarchy
+	NOT = {	
+		check_variable = {
+			var = ROOT.seiso_alignment
+			value = 3
+			compare = less_than
+		}
+	}
+}
+seiso_government_alignment_limits = {	
+	OR = {
+	conservative_seiso_limits = yes
+	yagoo_monarchy_seiso_limits = yes
+	resistance_revolutionary_seiso_limits = yes
+	resistance_nationalism_seiso_limits = yes
+	resistance_monarchy_seiso_limits = yes
+	}
+}

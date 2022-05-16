@@ -77,6 +77,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_regionalism
 		}
+
+		completion_reward = {
+			add_ideas = {
+				fbk_internationalism_idea
+			}
+		}
 		x = 52
 		y = 4
 
@@ -1313,6 +1319,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_yagooist_principles
 		}
+		available = {
+			has_completed_focus = FBK_organs_of_the_state
+		}
 		x = 49
 		y = 5
 
@@ -1393,6 +1402,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_resistance_principles
 		}
+		available = {
+			OR = {
+				has_completed_focus = FBK_end_state_emergency
+				has_completed_focus = FBK_rule_from_stockholm
+			}
+		}
 		x = 51
 		y = 5
 
@@ -1404,12 +1419,18 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_yagooist_principles
 		}
+		completion_reward = {
+			add_ideas = {
+				lhs_defensive_union_gui
+			}
+			custom_effect_tooltip = fbk_join_lhs
+		}
 		x = 51
 		y = 6
 
 	}
 	focus = {
-		id = FBK_mission_to_liberate
+		id = FBK_mission_to_uphold
 		icon = GFX_focus_FBK_mission_to_liberate
 		cost = 0.00
 		prerequisite = {
@@ -1480,6 +1501,12 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_internationalism
 		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = fbk_internationalism_idea
+				add_idea = fbk_volunteer_ethos
+			}
+		}
 		x = 53
 		y = 5
 
@@ -1490,6 +1517,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_volunteers_ethos
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = fbk_internationalism_idea
+				add_idea = FBK_a_shining_beacon
+			}
 		}
 		x = 53
 		y = 6
@@ -1503,6 +1536,11 @@ focus_tree = {
 			focus = FBK_reconciliation_with_lhs
 			focus = FBK_a_shining_beacon
 			focus = FBK_european_stronghold
+		}
+		completion_reward = {
+			add_ideas = {
+				FBK_containment_idea
+			}
 		}
 		x = 52
 		y = 7

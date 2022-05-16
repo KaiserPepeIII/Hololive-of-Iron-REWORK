@@ -13,22 +13,98 @@ country_event = {
 	#Send a division as an act of goodwill
 	option = {
 	name = fubuki.1.a
-		
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.12
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -4000
+			producer = THIS
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = -250
+			producer = THIS
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment 
+			amount = -100
+			producer = THIS
+		}
+
+		add_manpower = -10000
+
+		ai_chance = {
+			modifier = 10
+		}
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_great
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_great
+		}
     }
 	#Promise aid if Fubuki goes to war
 	option = {
 	name = fubuki.1.b
-	
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.13
+			}
+		}
+		set_country_flag = promised_fbk_war_aid
+		ai_chance = {
+			modifier = 10
+		}
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_good
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_good
+		}
+		custom_effect_tooltip = despot_aid_tooltip # 2000 rifles, 500 artillery
 	}
-    #Thats cool, we chillin but im not sending jack shit to you
+    #Thats cool, we chillin
 	option = {
 	name = fubuki.1.c
 		
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend
+		}
+
+		ai_chance = {
+			modifier = 10
+		}
 	}
 	#Fuck you
 	option = {
 		name = fubuki.1.d
-		
+
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_enemy
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_enemy
+		}
+
+		ai_chance = {
+			modifier = 70
+		}
 	}
 	
 }
@@ -60,16 +136,19 @@ country_event = {
 			}
 			set_country_flag = voted_for_black_alliance_kro
 		}
+		ai_chance = {
+			modifier = 10
+		}
     }
 	#Ah Hell Naw, not my son
 	option = {
 	name = fubuki.2.b
-	FBK = {
-		country_event = {
-			days = 1 
-			id = fubuki.6
+		FBK = {
+			country_event = {
+				days = 1 
+				id = fubuki.6
+			}
 		}
-	}
 		ai_chance = {
 			modifier = 90
 		}
@@ -267,22 +346,103 @@ country_event = {
 	#Send a division as an act of goodwill
 	option = {
 	name = fubuki.10.a
-		
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.12
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -4000
+			producer = THIS
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = -250
+			producer = THIS
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment 
+			amount = -100
+			producer = THIS
+		}
+
+		add_manpower = -10000
+
+		ai_chance = {
+			modifier = 5
+		}
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_great
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_great
+		}
+		ai_chance = {
+			modifier = 10
+		}
     }
 	#Promise aid if Fubuki goes to war
 	option = {
 	name = fubuki.10.b
-	
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.13
+			}
+		}
+		set_country_flag = promised_fbk_war_aid
+		ai_chance = {
+			modifier = 10
+		}
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_good
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_good
+		}
+		custom_effect_tooltip = despot_aid_tooltip # 2000 rifles, 500 artillery
+
+		ai_chance = {
+			modifier = 15
+		}
 	}
     #Thats cool, we chillin but im not sending jack shit to you
 	option = {
 	name = fubuki.10.c
-		
+			
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend
+		}
+
+		ai_chance = {
+			modifier = 70
+		}
 	}
 	#Fuck you
 	option = {
 		name = fubuki.10.d
-		
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_enemy
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_enemy
+		}
+		ai_chance = {
+			modifier = 5
+		}
 	}
 	
 }
@@ -298,22 +458,296 @@ country_event = {
 	#Send a division as an act of goodwill
 	option = {
 	name = fubuki.11.a
-		
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.12
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -4000
+			producer = THIS
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = -250
+			producer = THIS
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment 
+			amount = -100
+			producer = THIS
+		}
+
+		add_manpower = -10000
+
+		ai_chance = {
+			modifier = 5
+		}
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_great
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_great
+		}
+		ai_chance = {
+			modifier = 10
+		}
     }
 	#Promise aid if Fubuki goes to war
 	option = {
 	name = fubuki.11.b
-	
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.13
+			}
+		}
+		set_country_flag = promised_fbk_war_aid
+		ai_chance = {
+			modifier = 10
+		}
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_good
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend_good
+		}
+		custom_effect_tooltip = despot_aid_tooltip # 2000 rifles, 500 artillery
+
+		ai_chance = {
+			modifier = 15
+		}
 	}
     #Thats cool, we chillin but im not sending jack shit to you
 	option = {
 	name = fubuki.11.c
-		
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.14
+			}
+		}
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_friend
+		}
+
+		ai_chance = {
+			modifier = 70
+		}
 	}
 	#Fuck you
 	option = {
-		name = fubuki.11.d
-		
+	name = fubuki.11.d
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.15
+			}
+		}
+		reverse_add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_enemy
+		}
+		add_opinion_modifier = {
+			target = FBK
+			modifier = FBK_despot_enemy
+		}
+		ai_chance = {
+			modifier = 5
+		}
 	}
 	
+}
+#Despot Sends a division! - Friendship events
+country_event = {
+    id = fubuki.12
+	title = fubuki.12.t
+	desc = fubuki.12.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#Yeeeeeeee
+	option = {
+	name = fubuki.12.a
+		if = {
+			limit = {
+				FROM = {
+					tag = PEK
+				}
+			}
+			load_oob = PEK_FBK_volunteer
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					tag = SUI
+				}
+			}
+			load_oob = SUI_FBK_volunteer
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					tag = MIK
+				}
+			}
+			load_oob = MIK_FBK_volunteer
+		}
+    }
+}
+#Despot promises aid if we go to war
+country_event = {
+    id = fubuki.13
+	title = fubuki.13.t
+	desc = fubuki.13.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#Hurray
+	option = {
+	name = fubuki.13.a
+		custom_effect_tooltip = despot_aid_tooltip #Confirms that you will recieve aid apon war declaration
+    }
+}
+#Despot agrees to diplomacy
+country_event = {
+    id = fubuki.14
+	title = fubuki.14.t
+	desc = fubuki.14.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#good
+	option = {
+	name = fubuki.14.a
+		custom_effect_tooltip = increased_relation_with_despot
+    }
+}
+#Despot HATES us
+country_event = {
+    id = fubuki.15
+	title = fubuki.15.t
+	desc = fubuki.15.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#Bad
+	option = {
+	name = fubuki.15.a
+		custom_effect_tooltip = decreased_relation_with_despot
+    }
+}
+#Trade opens!
+country_event = {
+    id = fubuki.16
+	title = fubuki.16.t
+	desc = fubuki.16.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		has_country_flag = FBK_open_trade
+		NOT = {
+			has_idea = FBK_open_trade_idea
+			is_at_war = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	#Let trade flow!
+	option = {
+	name = fubuki.16.a
+		custom_effect_tooltip = open_trade_tooltip
+		add_ideas = {
+			FBK_open_trade_idea
+		}
+    }
+}
+#Trade closes
+country_event = {
+    id = fubuki.17
+	title = fubuki.17.t
+	desc = fubuki.17.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		has_country_flag = FBK_open_trade
+		has_idea = FBK_open_trade_idea
+		is_at_war = yes
+
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	#Unfortunate
+	option = {
+	name = fubuki.17.a
+		custom_effect_tooltip = open_trade_ends_tooltip
+		remove_ideas = {
+			FBK_open_trade_idea
+		}
+    }
+}
+#Despot is told of war between fubuki and another after promising aid
+country_event = {
+    id = fubuki.18
+	title = fubuki.18.t
+	desc = fubuki.18.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#We promised and now we deliver
+	option = {
+	name = fubuki.18.a
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 2000
+			target = FBK
+		}
+		send_equipment = {
+			equipment = artillery_equipment
+			amount = 500
+			target = FBK
+		}
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.19
+			}
+		}
+    }
+}
+#despot sends war aid
+country_event = {
+    id = fubuki.19
+	title = fubuki.19.t
+	desc = fubuki.19.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#Great to have friends!
+	option = {
+	name = fubuki.19.a
+		custom_effect_tooltip = FBK_despot_aid_count # tells you what you got from the aid
+    }
+
 }

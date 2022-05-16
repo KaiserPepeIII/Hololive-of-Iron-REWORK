@@ -8,4 +8,40 @@ on_actions = {
 			}
 		}
 	}
+	on_declare_war = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { tag = FBK }
+					FROM = { NOT = { tag = FBK } }
+				}
+				every_country = {
+					limit = {
+						has_country_flag = promised_fbk_war_aid
+					}
+					country_event = {
+						id = fubuki.18
+						days = 1
+					}
+					clr_country_flag = promised_fbk_war_aid
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = { NOT = { tag = FBK } }
+					FROM = { tag = FBK  }
+				}
+				every_country = {
+					limit = {
+						has_country_flag = promised_fbk_war_aid
+					}
+					country_event = {
+						id = fubuki.18
+						days = 1
+					}
+					clr_country_flag = promised_fbk_war_aid
+				}
+			}
+		}
+	}
 }
