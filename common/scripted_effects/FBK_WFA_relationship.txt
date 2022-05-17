@@ -1,0 +1,97 @@
+FBK_WFA_relationship_dial_gui_init = {
+	if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 0
+					compare = equals
+				}
+			}
+			
+		}
+		add_ideas = {
+			FBK_WFA_relationship_level_0
+		}
+		remove_ideas = {
+			FBK_WFA_relationship_level_1
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 25
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			FBK_WFA_relationship_level_1
+		}
+		remove_ideas = {
+			FBK_WFA_relationship_level_2
+			FBK_WFA_relationship_level_0
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 50
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			FBK_WFA_relationship_level_2
+		}
+		remove_ideas = {
+			FBK_WFA_relationship_level_1
+			FBK_WFA_relationship_level_3
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 75
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			FBK_WFA_relationship_level_3
+		}
+		remove_ideas = {
+			FBK_WFA_relationship_level_4
+			FBK_WFA_relationship_level_2
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				# has_completed_focus = WTS_revive_the_grand_fleet
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 100
+					compare = equals
+				}
+			}
+		}
+		add_ideas = {
+			FBK_WFA_relationship_level_4
+		}
+		remove_ideas = {
+			FBK_WFA_relationship_level_3
+		}
+		
+	}
+}
