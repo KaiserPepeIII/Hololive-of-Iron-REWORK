@@ -7,14 +7,21 @@ on_actions = {
 				clamp_variable = { var = WFA.loyalty_meter min = 0 max = 100 }
 			}
 			FBK = {
-				 
-				set_variable = { FBK.WFA_relationship_flat_var = 0 }	# Relationship value pre modifier - Use this for events
-				set_variable = { FBK.WFA_relationship_var = 0 }  		# Current Relationship value - Calculated and Updated everyday 
-				set_variable = { FBK.army_balance_modifier = 0 } 		# Army Ratio modifier
+
+				# Relationship value pre modifier - Use this for increase / decrease relationship events  
+				set_variable = { FBK.WFA_relationship_flat_var = 50 }	
+
+				# Current Relationship value - Calculated and Updated everyday - Use this for comparing value events
+				set_variable = { FBK.WFA_relationship_var = 50 }  		
+				
+				# Army Ratio modifier
+				set_variable = { FBK.army_balance_modifier = 0 } 		
                 
                 clamp_variable = { var = FBK.WFA_relationship_var min = 0 max = 100 }
-				clamp_variable = { var = FBK.army_balance_modifier min = 0 max = 100 }
-			
+				clamp_variable = { var = FBK.WFA_relationship_flat_var min = 0 max = 100 }
+				
+				FBK_army_variables = yes	
+			}
 		}
 	}
 	on_declare_war = {
@@ -53,16 +60,9 @@ on_actions = {
 			}
 		}
 	}
-}
-on_daily_FBK ={
-	effect = {
-		set_temp_variable = { army_balance_modifier_value = FBK.WFA_relationship_flat_var }
-		set_temp_variable = { relationship_original_value = FBK.WFA_relationship_flat_var }
-
-		multiply_temp_variable = {army_balance_modifier_value = FBK.army_balance_modifier }		
-		add_to_temp_variable = { relationship_original_value = army_balance_modifier_value }
-
-		set_variable = { FBK.WFA_relationship_var = relationship_original_value }	
+	on_daily_FBK ={
+		effect = {
+			FBK_army_variables = yes
+		}
 	}
-}
 }

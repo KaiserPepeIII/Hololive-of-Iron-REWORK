@@ -95,3 +95,83 @@ defined_text = {
         localization_key = FBK_WFA_relationship_very_bad
     }
 }
+
+############################
+###### Army Ratios ######
+############################
+
+defined_text = {
+    name = FBK_army_ratio_description_textbox_loc
+    text = {
+        trigger = {
+            AND ={
+                check_variable = {
+                    var = FBK.army_balance_modifier_value
+                    value = 0.8
+                    compare = greater_than_or_equals
+                }
+            }
+        }
+        localization_key = FBK_army_ratio_description_WFA_critic_textbox_loc
+    }
+    text = {
+        trigger = {
+            check_variable = {
+			var = FBK.army_balance_modifier_value
+			value = 0.5
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = FBK_army_ratio_description_WFA_high_textbox_loc
+    }
+    text = {
+        trigger = {
+            check_variable = {
+			var = FBK.army_balance_modifier_value
+			value = 0.01 
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = FBK_army_ratio_description_WFA_low_textbox_loc
+    }
+    text = {
+        trigger = {
+            check_variable = {
+			var = FBK.army_balance_modifier_value
+			value = -0.01
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = FBK_army_ratio_description_balanced_textbox_loc
+    }
+    text = {
+        trigger = {
+            check_variable = {
+			var = FBK.army_balance_modifier_value
+			value = -0.25
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = FBK_army_ratio_description_NA_low_textbox_loc
+    }
+    text = {
+        trigger = {
+            check_variable = {
+			var = FBK.army_balance_modifier_value
+			value = -0.8
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = FBK_army_ratio_description_NA_high_textbox_loc
+    }
+    text = {
+        trigger = {
+            check_variable = {
+			var = FBK.army_balance_modifier_value
+			value = -1
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = FBK_army_ratio_description_NA_critic_textbox_loc
+    }
+}
