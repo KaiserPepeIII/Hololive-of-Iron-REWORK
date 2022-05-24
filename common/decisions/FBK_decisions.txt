@@ -88,7 +88,18 @@ FBK_army_balance_categories ={
 	##WFA Division
 	#MP - 8800
 	#art - 72
-	#
+	#guns - 750
+	#supp eq - 40
+
+	##NA division
+	#MP - 5800
+	#art - 12
+	#guns - 540
+	#supp eq - 10
+
+	#Conditions might need an adjustment
+	#Currently one decision /w
+	#Currently player must not have guns deficit to not overspam unequiped armies
 
 	FBK_recruit_a_wfa = {
 		#days_re_enable = 30
@@ -97,17 +108,32 @@ FBK_army_balance_categories ={
 		cost = 0
 		
 		available = {
-			check_variable = {
-				var = FBK.manpower_k
-				value = 8.8
-				compare = greater_than_or_equals
+			AND={
+				check_variable = {
+					var = FBK.manpower_k
+					value = 8.8
+					compare = greater_than_or_equals
+				}
+				NOT = {
+					check_variable = {
+						var = FBK.num_equipment@infantry_equipment
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+				
+				NOT = {
+					has_country_flag =  FBK_army_units_raised_flag
+				}
 			}
 		}
 		
 		complete_effect = {
 			add_manpower = -8800
-			load_oob = "FBK_recruit_a_wfa"
+			set_variable = { FBK.number_armies_selected = 1 }
+			FBK_spawn_wfa_divisions_effect = yes
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
 
@@ -118,17 +144,32 @@ FBK_army_balance_categories ={
 		cost = 0
 		
 		available = {
-			check_variable = {
-				var = FBK.manpower_k
-				value = 44
-				compare = greater_than_or_equals
+			AND={
+				check_variable = {
+					var = FBK.manpower_k
+					value = 44
+					compare = greater_than_or_equals
+				}
+				NOT = {
+					check_variable = {
+						var = FBK.num_equipment@infantry_equipment
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+				
+				NOT = {
+					has_country_flag =  FBK_army_units_raised_flag
+				}
 			}
 		}
 		
 		complete_effect = {
 			add_manpower = -44000
-			load_oob = "FBK_recruit_five_wfa"
+			set_variable = { FBK.number_armies_selected = 5 }
+			FBK_spawn_wfa_divisions_effect = yes
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
 
@@ -139,17 +180,32 @@ FBK_army_balance_categories ={
 		cost = 0
 		
 		available = {
-			check_variable = {
-				var = FBK.manpower_k
-				value = 88
-				compare = greater_than_or_equals
+			AND={
+				check_variable = {
+					var = FBK.manpower_k
+					value = 88
+					compare = greater_than_or_equals
+				}
+				NOT = {
+					check_variable = {
+						var = FBK.num_equipment@infantry_equipment
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+				
+				NOT = {
+					has_country_flag =  FBK_army_units_raised_flag
+				}
 			}
 		}
 		
 		complete_effect = {
 			add_manpower = -88000
-			load_oob = "FBK_recruit_ten_wfa"
+			set_variable = { FBK.number_armies_selected = 10 }
+			FBK_spawn_wfa_divisions_effect = yes
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
 	FBK_recruit_a_na = {
@@ -159,17 +215,32 @@ FBK_army_balance_categories ={
 		cost = 0
 		
 		available = {
-			check_variable = {
-				var = FBK.manpower_k
-				value = 5.8
-				compare = greater_than_or_equals
+			AND={
+				check_variable = {
+					var = FBK.manpower_k
+					value = 5.8
+					compare = greater_than_or_equals
+				}
+				NOT = {
+					check_variable = {
+						var = FBK.num_equipment@infantry_equipment
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+				
+				NOT = {
+					has_country_flag =  FBK_army_units_raised_flag
+				}
 			}
 		}
 		
 		complete_effect = {
 			add_manpower = -5800
-			load_oob = "FBK_recruit_a_na"
+			set_variable = { FBK.number_armies_selected = 1 }
+			FBK_spawn_na_divisions_effect = yes
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
 	FBK_recruit_five_na = {
@@ -179,17 +250,32 @@ FBK_army_balance_categories ={
 		cost = 0
 		
 		available = {
-			check_variable = {
-				var = FBK.manpower_k
-				value = 29.5
-				compare = greater_than_or_equals
+			AND={
+				check_variable = {
+					var = FBK.manpower_k
+					value = 29.5
+					compare = greater_than_or_equals
+				}
+				NOT = {
+					check_variable = {
+						var = FBK.num_equipment@infantry_equipment
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+				
+				NOT = {
+					has_country_flag =  FBK_army_units_raised_flag
+				}
 			}
 		}
 		
 		complete_effect = {
 			add_manpower = -29500
-			load_oob = "FBK_recruit_five_na"
+			set_variable = { FBK.number_armies_selected = 5 }
+			FBK_spawn_na_divisions_effect = yes
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
 	FBK_recruit_ten_na = {
@@ -199,17 +285,33 @@ FBK_army_balance_categories ={
 		cost = 0
 		
 		available = {
-			check_variable = {
-				var = FBK.manpower_k
-				value = 58
-				compare = greater_than_or_equals
+			AND={
+				check_variable = {
+					var = FBK.manpower_k
+					value = 58
+					compare = greater_than_or_equals
+				}
+				NOT = {
+					check_variable = {
+						var = FBK.num_equipment@infantry_equipment
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+				
+				NOT = {
+					has_country_flag =  FBK_army_units_raised_flag
+				}
 			}
+			
 		}
 		
 		complete_effect = {
 			add_manpower = -58000
-			load_oob = "FBK_recruit_ten_na"
+			set_variable = { FBK.number_armies_selected = 10 }
+			FBK_spawn_na_divisions_effect = yes
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
 }	

@@ -27,3 +27,29 @@ FBK_army_variables = {
 	add_to_temp_variable = { WFA_relationship_temp_var = WFA_relationship_balance_temp_var }
 	set_variable = { FBK.WFA_relationship_var = WFA_relationship_temp_var }	
 }
+
+FBK_spawn_wfa_divisions_effect = {
+	hidden_effect = {
+		capital_scope = {
+			create_unit = {
+				division = "division_template = \"WFA Division\" start_experience_factor = 0 start_equipment_factor = 0.01"
+				owner = FBK
+				count = FBK.number_armies_selected
+			}
+		}
+		set_country_flag = FBK_army_units_raised_flag
+	}
+}
+
+FBK_spawn_na_divisions_effect = {
+	hidden_effect = {
+		capital_scope = {
+			create_unit = {
+				division = "division_template = \"National Division\" start_experience_factor = 0 start_equipment_factor = 0.01"
+				owner = ROOT
+				count = ROOT.number_armies_selected
+			}
+		}
+		set_country_flag = FBK_army_units_raised_flag
+	}
+}
