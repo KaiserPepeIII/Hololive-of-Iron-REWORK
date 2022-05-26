@@ -94,6 +94,22 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_reinforce_wfa
 		}
+
+		completion_reward = {
+			subtract_from_variable = { FBK.WFA_relationship_flat_var = -40}
+			add_political_power = -100
+			#add_popularity = {
+			#	ideology = authoritarism? 
+			#	popularity = -0.5
+			#}
+			add_war_support = 0.15
+			add_stability = 0.15
+			#TODO: 
+			# Lose generals
+			# Remove Army chief
+			FBK_army_variables = yes
+		}
+
 		x = 45
 		y = 9
 
@@ -108,6 +124,10 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = {FBK_strengthen_wfa}
+			add_to_variable = {FBK.WFA_relationship_flat_var = 15}
+			FBK_army_variables = yes
+			#TODO: 
+			#Enable generals , theorists,  advisors, etc.
 		}
 
 		x = 41
@@ -1290,6 +1310,13 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_depoliticize_army
 		}
+		completion_reward = {
+			remove_ideas = FBK_starting_conscription_penalty
+			subtract_from_variable ={ FBK.WFA_relationship_flat_var = 10}
+			FBK_army_variables = yes
+		}
+		
+		
 		x = 48
 		y = 10
 
@@ -1304,6 +1331,19 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_states_army
 		}
+		available = {
+			OR={
+				has_completed_focus = FBK_coco_principles
+				has_completed_focus = FBK_aqua_principles
+			}
+		}
+
+		completion_reward ={
+			subtract_from_variable = { FBK.WFA_relationship_flat_var = 15 }
+			FBK_army_variables = yes
+			add_ideas = FBK_peoples_army
+		}
+
 		x = 47
 		y = 11
 
@@ -1347,6 +1387,13 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_peoples_army
 		}
+
+		completion_reward ={
+			subtract_from_variable = { FBK.WFA_relationship_flat_var = 50 }
+			FBK_army_variables = yes
+			remove_ideas = FBK_politizied_army
+		}
+
 		x = 49
 		y = 11
 
@@ -1359,6 +1406,10 @@ focus_tree = {
 			focus = FBK_peoples_army
 			focus = FBK_states_army
 		}
+		completion_reward={
+			add_ideas = FBK_revitalized_national_army
+		}
+
 		x = 48
 		y = 12
 
@@ -1373,6 +1424,16 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_wfa_integration
 		}
+
+		completion_reward ={
+			delete_unit_template_and_units ={
+				division_template = "WFA Division"
+				disband = yes
+			}
+			#TODO:
+			#Events to keep generals
+		}
+
 		x = 49
 		y = 13
 
@@ -1989,6 +2050,11 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_wfa_integration
 			focus = FBK_pick_up_scraps
+		}
+		completion_reward = {	
+			add_war_support = 0.15
+			add_stability = 0.15
+			add_popularity = { ideology = PREV  popularity = 0.15 }
 		}
 		x = 48
 		y = 14
