@@ -318,6 +318,7 @@ country_event = {
 	#THREE CHEERS
 	option = {
 	name = fubuki.9.a
+<<<<<<< Updated upstream
 			create_faction = the_black_league
 			FBK = {	
 				add_to_faction = MIK
@@ -327,6 +328,15 @@ country_event = {
 				add_to_faction = FLA
 				add_to_faction = RUS
 			}
+=======
+			create_faction = "The Black League"
+			FBK = { add_to_faction = RUS }
+			FBK = { add_to_faction = FLA }
+			FBK = { add_to_faction = NOE }
+			FBK = { add_to_faction = PEK }
+			FBK = { add_to_faction = SUI }
+			FBK = { add_to_faction = MIK }
+>>>>>>> Stashed changes
 			if = {
 				limit = {
 					KRO = {
@@ -569,8 +579,130 @@ country_event = {
 		ai_chance = {
 			modifier = 5
 		}
+<<<<<<< Updated upstream
+=======
 	}
 	
+}
+#Despot Sends a division! - Friendship events
+country_event = {
+    id = fubuki.12
+	title = fubuki.12.t
+	desc = fubuki.12.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#Yeeeeeeee
+	option = {
+	name = fubuki.12.a
+		if = {
+			limit = {
+				FROM = {
+					tag = PEK
+				}
+			}
+			load_oob = PEK_FBK_volunteer
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					tag = SUI
+				}
+			}
+			load_oob = SUI_FBK_volunteer
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					tag = MIK
+				}
+			}
+			load_oob = MIK_FBK_volunteer
+		}
+    }
+}
+#Despot promises aid if we go to war
+country_event = {
+    id = fubuki.13
+	title = fubuki.13.t
+	desc = fubuki.13.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#Hurray
+	option = {
+	name = fubuki.13.a
+		custom_effect_tooltip = despot_aid_tooltip #Confirms that you will recieve aid apon war declaration
+    }
+}
+#Despot agrees to diplomacy
+country_event = {
+    id = fubuki.14
+	title = fubuki.14.t
+	desc = fubuki.14.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#good
+	option = {
+	name = fubuki.14.a
+		custom_effect_tooltip = increased_relation_with_despot
+    }
+}
+#Despot HATES us
+country_event = {
+    id = fubuki.15
+	title = fubuki.15.t
+	desc = fubuki.15.d
+	picture = GFX_report_event_mori
+	
+	is_triggered_only = yes
+
+	#Bad
+	option = {
+	name = fubuki.15.a
+		custom_effect_tooltip = decreased_relation_with_despot
+    }
+}
+#Trade opens!
+country_event = {
+    id = fubuki.16
+	title = fubuki.16.t
+	desc = fubuki.16.d
+	picture = GFX_report_event_mori
+	
+	trigger = {
+		has_country_flag = FBK_open_trade
+		NOT = {
+			has_idea = FBK_open_trade_idea
+			is_at_war = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 10
+>>>>>>> Stashed changes
+	}
+
+	#Let trade flow!
+	option = {
+	name = fubuki.16.a
+		custom_effect_tooltip = open_trade_tooltip
+		add_ideas = {
+			FBK_open_trade_idea
+		}
+    }
+}
+#Trade closes
+country_event = {
+    id = fubuki.17
+	title = fubuki.17.t
+	desc = fubuki.17.d
+	picture = GFX_report_event_mori
+	
+<<<<<<< Updated upstream
 }
 #Despot Sends a division! - Friendship events
 country_event = {
@@ -689,6 +821,8 @@ country_event = {
 	desc = fubuki.17.d
 	picture = GFX_report_event_mori
 	
+=======
+>>>>>>> Stashed changes
 	trigger = {
 		has_country_flag = FBK_open_trade
 		has_idea = FBK_open_trade_idea
