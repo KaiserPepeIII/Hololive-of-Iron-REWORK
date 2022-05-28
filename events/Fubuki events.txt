@@ -1,22 +1,22 @@
 add_namespace = fubuki
-
-
 #Friendship event for pekora
 country_event = {
-    id = fubuki.1
+	id = fubuki.1
 	title = fubuki.1.t
 	desc = fubuki.1.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-	
 	#Send a division as an act of goodwill
 	option = {
-	name = fubuki.1.a
+		name = fubuki.1.a
 		FBK = {
 			country_event = {
 				days = 1
 				id = fubuki.12
+			}
+			reverse_add_opinion_modifier = {
+				target = PEK
+				modifier = FBK_despot_friend_great
 			}
 		}
 		add_equipment_to_stockpile = {
@@ -30,28 +30,24 @@ country_event = {
 			producer = THIS
 		}
 		add_equipment_to_stockpile = {
-			type = artillery_equipment 
+			type = artillery_equipment
 			amount = -100
 			producer = THIS
 		}
-
 		add_manpower = -10000
-
+		PEK = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_great
+			}
+		}
 		ai_chance = {
-			modifier = 10
+			base = 10
 		}
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_great
-		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_great
-		}
-    }
+	}
 	#Promise aid if Fubuki goes to war
 	option = {
-	name = fubuki.1.b
+		name = fubuki.1.b
 		FBK = {
 			country_event = {
 				days = 1
@@ -60,112 +56,119 @@ country_event = {
 		}
 		set_country_flag = promised_fbk_war_aid
 		ai_chance = {
-			modifier = 10
+			base = 10
 		}
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_good
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = PEK
+				modifier = FBK_despot_friend_good
+			}
 		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_good
+		PEK = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_good
+			}
 		}
-		custom_effect_tooltip = despot_aid_tooltip # 2000 rifles, 500 artillery
+		custom_effect_tooltip = despot_aid_tooltip		# 2000 rifles, 500 artillery
 	}
-    #Thats cool, we chillin
+	#Thats cool, we chillin
 	option = {
-	name = fubuki.1.c
-		
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend
+		name = fubuki.1.c
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = PEK
+				modifier = FBK_despot_friend
+			}
 		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend
+		PEK = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend
+			}
 		}
-
 		ai_chance = {
-			modifier = 10
+			base = 10
 		}
 	}
 	#Fuck you
 	option = {
-		name = fubuki.1.d
-
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_enemy
+		name = fubuki.1.e
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = PEK
+				modifier = FBK_despot_friend_enemy
+			}
 		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_enemy
+		PEK = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_enemy
+			}
 		}
-
 		ai_chance = {
-			modifier = 70
+			base = 70
 		}
 	}
-	
 }
+
 #BLACK ALLIANCE - UBER UNLIKELY TO GO THROUGH
 country_event = {
-    id = fubuki.2
+	id = fubuki.2
 	title = fubuki.2.t
 	desc = fubuki.2.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-	
 	#A Unifying Initiative!
 	option = {
-	name = fubuki.2.a
-		add_to_var = {
+		name = fubuki.2.a
+		add_to_variable = {
 			var = fbk_black_alliance_votes
 			value = 1
 		}
 		FBK = {
 			country_event = {
-				days = 1 
+				days = 1
 				id = fubuki.7
 			}
 		}
-		IF = {
-			ROOT = {
-				tag = KRO
+		if = {
+			limit = {
+				ROOT = {
+					tag = KRO
+				}
 			}
 			set_country_flag = voted_for_black_alliance_kro
 		}
 		ai_chance = {
-			modifier = 10
+			base = 10
 		}
-    }
+	}
 	#Ah Hell Naw, not my son
 	option = {
-	name = fubuki.2.b
+		name = fubuki.2.b
 		FBK = {
 			country_event = {
-				days = 1 
+				days = 1
 				id = fubuki.6
 			}
 		}
 		ai_chance = {
-			modifier = 90
+			base = 90
 		}
 	}
 }
+
 #Rushia and fubuki NAP treaty - sent by Fubuki to rushia
 country_event = {
-    id = fubuki.3
+	id = fubuki.3
 	title = fubuki.3.t
 	desc = fubuki.3.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-	
 	#yes
 	option = {
-	name = fubuki.3.a
+		name = fubuki.3.a
 		set_global_flag = rushia_fubuki_NAP
 		FBK = {
 			country_event = {
@@ -178,10 +181,10 @@ country_event = {
 			relation = non_aggression_pact
 			active = no
 		}
-    }
+	}
 	#No
 	option = {
-	name = fubuki.3.b
+		name = fubuki.3.b
 		FBK = {
 			country_event = {
 				days = 1
@@ -190,124 +193,127 @@ country_event = {
 		}
 	}
 }
+
 #Rushia and fubuki NAP treaty - success
 country_event = {
-    id = fubuki.4
+	id = fubuki.4
 	title = fubuki.4.t
 	desc = fubuki.4.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-	
 	#hurray
 	option = {
-	name = fubuki.4.a
+		name = fubuki.4.a
 		diplomatic_relation = {
 			country = RUS
 			relation = guarantee
 			active = no
 		}
-		reverse_add_opinion_modifier = {
-			target = RUS
-			modifier = fbk_rus_nap
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = RUS
+				modifier = fbk_rus_nap
+			}
 		}
-		add_opinion_modifier = {
-			target = RUS
-			modifier = fbk_rus_nap
+		RUS = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = fbk_rus_nap
+			}
 		}
 		add_political_power = 100
-    }
+	}
 }
+
 #Rushia and fubuki NAP treaty - failure
 country_event = {
-    id = fubuki.5
+	id = fubuki.5
 	title = fubuki.5.t
 	desc = fubuki.5.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-	
 	#Sadness
 	option = {
-	name = fubuki.5.a
-	reverse_add_opinion_modifier = {
-		target = RUS
-		modifier = fbk_rus_nap_fail
-	}
-	add_opinion_modifier = {
-		target = RUS
-		modifier = fbk_rus_nap_fail
-	}
+		name = fubuki.5.a
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = RUS
+				modifier = fbk_rus_nap_fail
+			}
+		}
+		RUS = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = fbk_rus_nap_fail
+			}
+		}
 		add_political_power = -50
-    }
+	}
 }
+
 #BLACK ALLIANCE - COUNTRY VOTES AGAINST ALLIANCE
 country_event = {
-    id = fubuki.6
+	id = fubuki.6
 	title = fubuki.6.t
 	desc = fubuki.6.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-	
 	#nooooo
 	option = {
-	name = fubuki.6.a
+		name = fubuki.6.a
 		custom_effect_tooltip = FBK_country_voted_against
-    }
+	}
 }
+
 #BLACK ALLIANCE CONFERENCE - COUNTRY VOTES FOR ALLIANCE
 country_event = {
-    id = fubuki.7
+	id = fubuki.7
 	title = fubuki.7.t
 	desc = fubuki.7.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-	
 	#A Unifying Initiative!
 	option = {
-	name = fubuki.7.a
-	custom_effect_tooltip = FBK_country_voted_for
-    }
+		name = fubuki.7.a
+		custom_effect_tooltip = FBK_country_voted_for
+	}
 }
+
 #BLACK ALLIANCE CONFERENCE - FAILS LMAO WHAT DID YOU EXPECT WWWWWWW
 country_event = {
-    id = fubuki.8
+	id = fubuki.8
 	title = fubuki.8.t
 	desc = fubuki.8.d
 	picture = GFX_report_event_mori
-	
 	trigger = {
 		check_variable = {
-			variable = fbk_black_alliance_votes
-			less_than_or_equals = 5
+			var = global.fbk_black_alliance_votes
+			value = 5
+			compare = less_than_or_equals
 		}
-
 	}
 	mean_time_to_happen = {
 		days = 15
 	}
-
 	fire_only_once = yes
-
 	#tears
 	option = {
-	name = fubuki.8.a
-		
-    }
+		name = fubuki.8.a
+		clear_variable = global.fbk_black_alliance_votes
+	}
 }
+
 #BLACK ALLIANCE CONFERENCE - SUCCESS, EUROPE WILL NOW BE FUCKED BALANCE WISE LOL
 country_event = {
-    id = fubuki.9
+	id = fubuki.9
 	title = fubuki.9.t
 	desc = fubuki.9.d
 	picture = GFX_report_event_mori
-	
 	trigger = {
 		check_variable = {
-			variable = fbk_black_alliance_votes
-			greater_than_or_equals = 6
+			var = global.fbk_black_alliance_votes
+			value = 6
+			compare = greater_than_or_equals
 		}
 	}
 	fire_only_once = yes
@@ -316,42 +322,48 @@ country_event = {
 	}
 	#THREE CHEERS
 	option = {
-	name = fubuki.9.a
-			create_faction = "The Black League"
-			FBK = {	
-				add_to_faction = MIK
-				add_to_faction = SUI
-				add_to_faction = PEK
-				add_to_faction = NOE
-				add_to_faction = FLA
-				add_to_faction = RUS
-			}
-			if = {
-				limit = {
-					KRO = {
-						has_country_flag = voted_for_black_alliance_kro
-					}
+		name = fubuki.9.a
+		create_faction = "The Black League"
+		clear_variable = global.fbk_black_alliance_votes
+		FBK = {
+			add_to_faction = MIK
+			add_to_faction = SUI
+			add_to_faction = PEK
+			add_to_faction = NOE
+			add_to_faction = FLA
+			add_to_faction = RUS
+		}
+		if = {
+			limit = {
+				KRO = {
+					has_country_flag = voted_for_black_alliance_kro
 				}
-				FBK = { add_to_faction = KRO }
 			}
-    }
+			FBK = {
+				add_to_faction = KRO
+			}
+		}
+	}
 }
+
 #Friendship event for Suisei
 country_event = {
-    id = fubuki.10
+	id = fubuki.10
 	title = fubuki.10.t
 	desc = fubuki.10.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-	
 	#Send a division as an act of goodwill
 	option = {
-	name = fubuki.10.a
+		name = fubuki.10.a
 		FBK = {
 			country_event = {
 				days = 1
 				id = fubuki.12
+			}
+			reverse_add_opinion_modifier = {
+				target = SUI
+				modifier = FBK_despot_friend_great
 			}
 		}
 		add_equipment_to_stockpile = {
@@ -365,224 +377,213 @@ country_event = {
 			producer = THIS
 		}
 		add_equipment_to_stockpile = {
-			type = artillery_equipment 
+			type = artillery_equipment
 			amount = -100
 			producer = THIS
 		}
-
 		add_manpower = -10000
-
 		ai_chance = {
-			modifier = 5
+			base = 10
 		}
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_great
+		SUI = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_great
+			}
 		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_great
-		}
-		ai_chance = {
-			modifier = 10
-		}
-    }
+	}
 	#Promise aid if Fubuki goes to war
 	option = {
-	name = fubuki.10.b
+		name = fubuki.10.b
 		FBK = {
 			country_event = {
 				days = 1
 				id = fubuki.13
 			}
+			reverse_add_opinion_modifier = {
+				target = SUI
+				modifier = FBK_despot_friend_good
+			}
 		}
 		set_country_flag = promised_fbk_war_aid
+		SUI = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_good
+			}
+		}
 		ai_chance = {
-			modifier = 10
+			base = 10
 		}
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_good
-		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_good
-		}
-		custom_effect_tooltip = despot_aid_tooltip # 2000 rifles, 500 artillery
-
+		custom_effect_tooltip = despot_aid_tooltip		# 2000 rifles, 500 artillery
 		ai_chance = {
-			modifier = 15
+			base = 15
 		}
 	}
-    #Thats cool, we chillin but im not sending jack shit to you
+	#Thats cool, we chillin but im not sending jack shit to you
 	option = {
-	name = fubuki.10.c
-			
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend
+		name = fubuki.10.c
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = SUI
+				modifier = FBK_despot_friend
+			}
 		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend
+		SUI = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend
+			}
 		}
-
 		ai_chance = {
-			modifier = 70
+			base = 70
+		}
+	}
+	#Fuck you
+	option = {
+		name = fubuki.10.e
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = SUI
+				modifier = FBK_despot_friend_enemy
+			}
+		}
+		SUI = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_enemy
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+#Friendship event for Miko
+country_event = {
+	id = fubuki.11
+	title = fubuki.11.t
+	desc = fubuki.11.d
+	picture = GFX_report_event_mori
+	is_triggered_only = yes
+	#Send a division as an act of goodwill
+	option = {
+		name = fubuki.11.a
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.12
+			}
+			reverse_add_opinion_modifier = {
+				target = MIK
+				modifier = FBK_despot_friend_great
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -4000
+			producer = THIS
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = -250
+			producer = THIS
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = -100
+			producer = THIS
+		}
+		add_manpower = -10000
+		ai_chance = {
+			base = 10
+		}
+		MIK = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_great
+			}
+		}
+	}
+	#Promise aid if Fubuki goes to war
+	option = {
+		name = fubuki.11.b
+		FBK = {
+			country_event = {
+				days = 1
+				id = fubuki.13
+			}
+			reverse_add_opinion_modifier = {
+				target = MIK
+				modifier = FBK_despot_friend_good
+			}
+		}
+		set_country_flag = promised_fbk_war_aid
+		MIK = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_good
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+		custom_effect_tooltip = despot_aid_tooltip		# 2000 rifles, 500 artillery
+		ai_chance = {
+			base = 15
+		}
+	}
+	#Thats cool, we chillin but im not sending jack shit to you
+	option = {
+		name = fubuki.11.c
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = MIK
+				modifier = FBK_despot_friend
+			}
+		}
+		MIK = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend
+			}
+		}
+		ai_chance = {
+			base = 70
 		}
 	}
 	#Fuck you
 	option = {
 		name = fubuki.10.d
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_enemy
+		FBK = {
+			reverse_add_opinion_modifier = {
+				target = MIK
+				modifier = FBK_despot_friend_enemy
+			}
 		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_enemy
+		MIK = {
+			reverse_add_opinion_modifier = {
+				target = FBK
+				modifier = FBK_despot_friend_enemy
+			}
 		}
 		ai_chance = {
-			modifier = 5
+			base = 5
 		}
 	}
-	
 }
-#Friendship event for Miko
-country_event = {
-    id = fubuki.11
-	title = fubuki.11.t
-	desc = fubuki.11.d
-	picture = GFX_report_event_mori
-	
-	is_triggered_only = yes
-	
-	#Send a division as an act of goodwill
-	option = {
-	name = fubuki.11.a
-		FBK = {
-			country_event = {
-				days = 1
-				id = fubuki.12
-			}
-		}
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = -4000
-			producer = THIS
-		}
-		add_equipment_to_stockpile = {
-			type = support_equipment
-			amount = -250
-			producer = THIS
-		}
-		add_equipment_to_stockpile = {
-			type = artillery_equipment 
-			amount = -100
-			producer = THIS
-		}
 
-		add_manpower = -10000
-
-		ai_chance = {
-			modifier = 5
-		}
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_great
-		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_great
-		}
-		ai_chance = {
-			modifier = 10
-		}
-    }
-	#Promise aid if Fubuki goes to war
-	option = {
-	name = fubuki.11.b
-		FBK = {
-			country_event = {
-				days = 1
-				id = fubuki.13
-			}
-		}
-		set_country_flag = promised_fbk_war_aid
-		ai_chance = {
-			modifier = 10
-		}
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_good
-		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend_good
-		}
-		custom_effect_tooltip = despot_aid_tooltip # 2000 rifles, 500 artillery
-
-		ai_chance = {
-			modifier = 15
-		}
-	}
-    #Thats cool, we chillin but im not sending jack shit to you
-	option = {
-	name = fubuki.11.c
-		FBK = {
-			country_event = {
-				days = 1
-				id = fubuki.14
-			}
-		}
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend
-		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_friend
-		}
-
-		ai_chance = {
-			modifier = 70
-		}
-	}
-	#Fuck you
-	option = {
-	name = fubuki.11.d
-		FBK = {
-			country_event = {
-				days = 1
-				id = fubuki.15
-			}
-		}
-		reverse_add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_enemy
-		}
-		add_opinion_modifier = {
-			target = FBK
-			modifier = FBK_despot_enemy
-		}
-		ai_chance = {
-			modifier = 5
-		}
-	}
-	
-}
 #Despot Sends a division! - Friendship events
 country_event = {
-    id = fubuki.12
+	id = fubuki.12
 	title = fubuki.12.t
 	desc = fubuki.12.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-
 	#Yeeeeeeee
 	option = {
-	name = fubuki.12.a
+		name = fubuki.12.a
 		if = {
 			limit = {
 				FROM = {
@@ -607,60 +608,57 @@ country_event = {
 			}
 			load_oob = MIK_FBK_volunteer
 		}
-    }
+	}
 }
+
 #Despot promises aid if we go to war
 country_event = {
-    id = fubuki.13
+	id = fubuki.13
 	title = fubuki.13.t
 	desc = fubuki.13.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-
 	#Hurray
 	option = {
-	name = fubuki.13.a
-		custom_effect_tooltip = despot_aid_tooltip #Confirms that you will recieve aid apon war declaration
-    }
+		name = fubuki.13.a
+		custom_effect_tooltip = despot_aid_tooltip		#Confirms that you will recieve aid apon war declaration
+	}
 }
+
 #Despot agrees to diplomacy
 country_event = {
-    id = fubuki.14
+	id = fubuki.14
 	title = fubuki.14.t
 	desc = fubuki.14.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-
 	#good
 	option = {
-	name = fubuki.14.a
+		name = fubuki.14.a
 		custom_effect_tooltip = increased_relation_with_despot
-    }
+	}
 }
+
 #Despot HATES us
 country_event = {
-    id = fubuki.15
+	id = fubuki.15
 	title = fubuki.15.t
 	desc = fubuki.15.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-
 	#Bad
 	option = {
-	name = fubuki.15.a
+		name = fubuki.15.a
 		custom_effect_tooltip = decreased_relation_with_despot
-    }
+	}
 }
+
 #Trade opens!
 country_event = {
-    id = fubuki.16
+	id = fubuki.16
 	title = fubuki.16.t
 	desc = fubuki.16.d
 	picture = GFX_report_event_mori
-	
 	trigger = {
 		has_country_flag = FBK_open_trade
 		NOT = {
@@ -671,54 +669,50 @@ country_event = {
 	mean_time_to_happen = {
 		days = 10
 	}
-
 	#Let trade flow!
 	option = {
-	name = fubuki.16.a
+		name = fubuki.16.a
 		custom_effect_tooltip = open_trade_tooltip
 		add_ideas = {
 			FBK_open_trade_idea
 		}
-    }
+	}
 }
+
 #Trade closes
 country_event = {
-    id = fubuki.17
+	id = fubuki.17
 	title = fubuki.17.t
 	desc = fubuki.17.d
 	picture = GFX_report_event_mori
-	
 	trigger = {
 		has_country_flag = FBK_open_trade
 		has_idea = FBK_open_trade_idea
 		is_at_war = yes
-
 	}
 	mean_time_to_happen = {
 		days = 10
 	}
-
 	#Unfortunate
 	option = {
-	name = fubuki.17.a
+		name = fubuki.17.a
 		custom_effect_tooltip = open_trade_ends_tooltip
 		remove_ideas = {
 			FBK_open_trade_idea
 		}
-    }
+	}
 }
+
 #Despot is told of war between fubuki and another after promising aid
 country_event = {
-    id = fubuki.18
+	id = fubuki.18
 	title = fubuki.18.t
 	desc = fubuki.18.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-
 	#We promised and now we deliver
 	option = {
-	name = fubuki.18.a
+		name = fubuki.18.a
 		send_equipment = {
 			equipment = infantry_equipment
 			amount = 2000
@@ -735,21 +729,19 @@ country_event = {
 				id = fubuki.19
 			}
 		}
-    }
+	}
 }
+
 #despot sends war aid
 country_event = {
-    id = fubuki.19
+	id = fubuki.19
 	title = fubuki.19.t
 	desc = fubuki.19.d
 	picture = GFX_report_event_mori
-	
 	is_triggered_only = yes
-
 	#Great to have friends!
 	option = {
-	name = fubuki.19.a
-		custom_effect_tooltip = FBK_despot_aid_count # tells you what you got from the aid
-    }
-
+		name = fubuki.19.a
+		custom_effect_tooltip = FBK_despot_aid_count		# tells you what you got from the aid
+	}
 }

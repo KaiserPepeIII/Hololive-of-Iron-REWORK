@@ -1,156 +1,159 @@
 add_namespace = flare
 #Noel invites flare to faction
 country_event = {
-    id = flare.1
+	id = flare.1
 	title = flare.1.t
 	desc = flare.1.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	name = flare.1.a
-	  NOE = {
-	  country_event = {
-	    id = noel.29
-	   }
-	  }
-	  ai_chance = { factor = 100 }
+		name = flare.1.a
+		NOE = {
+			country_event = {
+				id = noel.29
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
 	}
-	
 	option = {
-	name = flare.1.b
-	NOE = {
-	  country_event = {
-	    id = noel.30
-	   }
-	  }
-	ai_chance = { factor = 0 }
+		name = flare.1.b
+		NOE = {
+			country_event = {
+				id = noel.30
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
+
 #noel builds mils
 country_event = {
-    id = flare.2
+	id = flare.2
 	title = flare.2.t
 	desc = flare.2.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	name = flare.2.a
-	 random_owned_state = {
-		add_extra_state_shared_building_slots = 4
-		add_building_construction = {
-			type = arms_factory
-			instant_build = yes
-			level = 4
+		name = flare.2.a
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = arms_factory
+				instant_build = yes
+				level = 4
+			}
 		}
-	 
-	 }
 	}
 }
+
 #noel builds civs
 country_event = {
-    id = flare.3
+	id = flare.3
 	title = flare.3.t
 	desc = flare.3.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	name = flare.3.a
-	 random_owned_state = {
-		add_extra_state_shared_building_slots = 4
-		add_building_construction = {
-			type = industrial_complex
-			instant_build = yes
-			level = 4
+		name = flare.3.a
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = industrial_complex
+				instant_build = yes
+				level = 4
+			}
 		}
-	 
-	 }
 	}
 }
+
 #Noel Improves conditions
 country_event = {
-    id = flare.4
+	id = flare.4
 	title = flare.4.t
 	desc = flare.4.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	name = flare.4.a
-	add_ideas = {
-		FLA_noel_improves_economy
-	 }
+		name = flare.4.a
+		add_ideas = {
+			FLA_noel_improves_economy
+		}
 	}
 }
+
 #Noel further improves the economy
 country_event = {
-    id = flare.5
+	id = flare.5
 	title = flare.5.t
 	desc = flare.5.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	name = flare.5.a
-	swap_ideas = {
-		remove_idea = FLA_noel_improves_economy
-		add_idea = FLA_noel_improves_economy2
-	 }
+		name = flare.5.a
+		swap_ideas = {
+			remove_idea = FLA_noel_improves_economy
+			add_idea = FLA_noel_improves_economy2
+		}
 	}
 }
+
 #Noel sends guns
 country_event = {
-    id = flare.6
+	id = flare.6
 	title = flare.6.t
 	desc = flare.6.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	name = flare.6.a
-	add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 5000
-				producer = NOE
-			}
+		name = flare.6.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 5000
+			producer = NOE
+		}
 	}
 }
 
 #noel military mission
 country_event = {
-    id = flare.7
+	id = flare.7
 	title = flare.7.t
 	desc = flare.7.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	name = flare.7.a
+		name = flare.7.a
 		army_experience = 25
 		set_country_flag = FLA_noel_military_mission
 		NOE = {
 			set_country_flag = NOE_military_mission
-	   }
-		every_possible_country = {
-			limit = { has_character = NOE_guy }
+		}
+		every_country = {
+			limit = {
+				has_character = NOE_guy
+			}
 			random_character = {
-				limit = { is_character = NOE_guy }
+				limit = {
+					is_character = NOE_guy
+				}
 				set_nationality = FLA
 			}
 		}
@@ -159,33 +162,33 @@ country_event = {
 
 #noel builds roads
 country_event = {
-    id = flare.8
+	id = flare.8
 	title = flare.8.t
 	desc = flare.8.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	name = flare.8.a
-	random_owned_state = {
+		name = flare.8.a
+		random_owned_state = {
 			add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				   }
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
 			add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				   }
-		}	
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 }
+
 #noels military mission expires
 country_event = {
-    id = flare.9
+	id = flare.9
 	title = flare.9.t
 	desc = flare.9.d
 	picture = GFX_report_event_mori
@@ -193,77 +196,81 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	name = flare.9.a
-		every_possible_country = {
-			limit = { has_character = NOE_guy }
+		name = flare.9.a
+		every_country = {
+			limit = {
+				has_character = NOE_guy
+			}
 			random_character = {
-				limit = { is_character = NOE_guy }
+				limit = {
+					is_character = NOE_guy
+				}
 				set_nationality = FLA
 			}
 		}
 		NOE = {
 			clr_country_flag = NOE_military_mission
 		}
-   }
-  }
+	}
+}
+
 #Noel asks to puppet flare
 country_event = {
-    id = flare.13
+	id = flare.13
 	title = flare.13.t
 	desc = flare.13.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
 		name = flare.13.a
 		leave_faction = yes
 		NOE = {
 			country_event = {
-			 id = noel.31
-			 days = 1
+				id = noel.31
+				days = 1
 			}
 		}
 	}
 	option = {
 		name = flare.13.b
-		ai_chance = {base = 90 }
+		ai_chance = {
+			base = 90
+		}
 		NOE = {
 			country_event = {
-			 id = noel.32
-			 days = 1
+				id = noel.32
+				days = 1
 			}
 		}
 	}
 }
+
 #Noel builds defense in kiev
 country_event = {
-    id = flare.14
+	id = flare.14
 	title = flare.14.t
 	desc = flare.14.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
 		name = flare.14.a
-		
 	}
 }
+
 #add event later 
 country_event = {
-    id = flare.15
+	id = flare.15
 	title = flare.15.t
 	desc = flare.15.d
 	picture = GFX_report_event_mori
 	hidden = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
 		name = flare.15.a
-		
 	}
 }
