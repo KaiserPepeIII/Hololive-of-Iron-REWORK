@@ -1,11 +1,8 @@
 ﻿capital = 525
-
 oob = "NIN_1936"
 set_stability = 0.8
 set_war_support = 0.5
 set_research_slots = 3
-
-
 add_ideas = {
 	lhs_member
 	asacoco_reliance_puritan
@@ -20,52 +17,58 @@ set_technology = {
 	tech_support = 1
 }
 
-if={
-	limit = { has_dlc = "Man the Guns" }
-	set_naval_oob = "NIN_1936_naval_mtg"
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_technology = {
 		early_ship_hull_light = 1
 		early_ship_hull_cruiser = 1
+		early_ship_hull_submarine = 1
 		basic_battery = 1
 		basic_light_battery = 1
 		basic_torpedo = 1
-		basic_depth_charges = 1	
+		basic_fire_control_system = 1
+		basic_depth_charges = 1
 	}
+	#set_naval_oob = "NIN_1936_naval_mtg"
 	else = {
 		set_technology = {
 			early_destroyer = 1
 			early_light_cruiser = 1
+			early_heavy_cruiser = 1
+			transport = 1
+			early_submarine = 1
 		}
-		set_naval_oob = "NIN_1936_naval_legacy"
+		#set_naval_oob = "NIN_1936_naval_legacy"
 	}
 }
 
 set_convoys = 50
-
 #LEADER GENERATION - NINOMAE 
-recruit_character  = NIN_inanis_ninomae_democratic 
-recruit_character  = NIN_inanis_ninomae_progressive  
-recruit_character  = NIN_inanis_ninomae_yagoo_monarchy  
-recruit_character  = NIN_inanis_ninomae_yagoo_kleptocratic  
-recruit_character  = NIN_inanis_ninomae_revolutionary  
-recruit_character  = NIN_inanis_ninomae_nationalism  
-recruit_character  = NIN_inanis_ninomae_resistance_monarchy  
-recruit_character  = NIN_inanis_ninomae_resistance_kleptocracy  
-recruit_character  = NIN_inanis_ninomae_neutral_kleptocratic  
-recruit_character  = NIN_inanis_ninomae_reactionary_nationalism  
-recruit_character  = NIN_inanis_ninomae_neutral_democracy   
-recruit_character  = NIN_inanis_ninomae_divine_mandate     
-recruit_character  = NIN_generic_suit_new_nationalist
-recruit_character  = NIN_generic_suit_left_wing_revolutionary  
-recruit_character  = NIN_generic_suit_reactionary_monarchy
-recruit_character  = NIN_generic_suit_democratic_anti
-
+recruit_character = NIN_inanis_ninomae_democratic
+recruit_character = NIN_inanis_ninomae_progressive
+recruit_character = NIN_inanis_ninomae_yagoo_monarchy
+recruit_character = NIN_inanis_ninomae_yagoo_kleptocratic
+recruit_character = NIN_inanis_ninomae_revolutionary
+recruit_character = NIN_inanis_ninomae_nationalism
+recruit_character = NIN_inanis_ninomae_resistance_monarchy
+recruit_character = NIN_inanis_ninomae_resistance_kleptocracy
+recruit_character = NIN_inanis_ninomae_neutral_kleptocratic
+recruit_character = NIN_inanis_ninomae_reactionary_nationalism
+recruit_character = NIN_inanis_ninomae_neutral_democracy
+recruit_character = NIN_inanis_ninomae_divine_mandate
+recruit_character = NIN_generic_suit_new_nationalist
+recruit_character = NIN_generic_suit_left_wing_revolutionary
+recruit_character = NIN_generic_suit_reactionary_monarchy
+recruit_character = NIN_generic_suit_democratic_anti
 set_politics = {
 	ruling_party = divine_mandate
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	divine_mandate = 100
 }
