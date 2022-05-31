@@ -9,6 +9,7 @@ set_technology = {
 	tech_recon = 1
 	gw_artillery = 1
 	interwar_antiair = 1
+	electronic_mechanical_engineering = 1
 	early_fighter = 1
 	early_bomber = 1
 	basic_train = 1
@@ -18,7 +19,6 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
-	set_naval_oob = "GER_1936_naval_mtg"
 	set_technology = {
 		early_ship_hull_light = 1
 		early_ship_hull_cruiser = 1
@@ -29,8 +29,8 @@ if = {
 		basic_fire_control_system = 1
 		basic_depth_charges = 1
 	}
+	set_naval_oob = "GER_1936_naval_mtg"
 	else = {
-		set_naval_oob = "GER_1936_naval_legacy"
 		set_technology = {
 			early_destroyer = 1
 			early_light_cruiser = 1
@@ -38,6 +38,7 @@ if = {
 			transport = 1
 			early_submarine = 1
 		}
+		set_naval_oob = "GER_1936_naval_legacy"
 	}
 }
 
@@ -93,24 +94,24 @@ if = {
 	create_equipment_variant = {
 		name = "U-Boot Klasse II"
 		type = submarine_1
+		#parent_version = 0
 		upgrades = {
 			ship_reliability_upgrade = 1
 			sub_engine_upgrade = 1
 			sub_stealth_upgrade = 1
 			sub_torpedo_upgrade = 1
 		}
-		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Leberecht Maass Class"
 		type = destroyer_1
+		#parent_version = 0
 		upgrades = {
 			ship_torpedo_upgrade = 1
 			destroyer_engine_upgrade = 1
 			ship_ASW_upgrade = 1
 			ship_anti_air_upgrade = 1
 		}
-		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Konigsberg Class"
@@ -122,7 +123,6 @@ if = {
 			ship_gun_upgrade = 2
 			ship_anti_air_upgrade = 2
 		}
-		obsolete = yes
 	}
 }
 
@@ -140,7 +140,6 @@ if = {
 			fixed_ship_engine_slot = sub_ship_engine_1
 			rear_1_custom_slot = empty
 		}
-		obsolete = no
 	}
 	# Destroyers #
 	create_equipment_variant = {
@@ -158,7 +157,6 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = empty
 		}
-		obsolete = no
 	}
 	# Light Cruisers #
 	create_equipment_variant = {
@@ -176,6 +174,5 @@ if = {
 			mid_2_custom_slot = ship_light_medium_battery_1
 			rear_1_custom_slot = ship_airplane_launcher_1
 		}
-		obsolete = no
 	}
 }
