@@ -1,145 +1,161 @@
 debug_decisions = {
 	sui_reload_focus_test = {
-
 		icon = generic_research
-
 		available = {
 			always = yes
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
-		SUI = {
-			mark_focus_tree_layout_dirty = yes
+			SUI = {
+				mark_focus_tree_layout_dirty = yes
 			}
 		}
-
+		ai_will_do = {
+			base = 0
+		}
+	}
+	WTS_security_state_flip_test = {
+		icon = generic_research
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		cost = 0
+		complete_effect = {
+			add_to_variable = {
+				var = WTS.counter_insurgency_london_antis
+				value = var:WTS.counter_insurgency_london_government
+			}
+			subtract_from_variable = {
+				var = WTS.counter_insurgency_london_government
+				value = var:WTS.counter_insurgency_london_government
+			}
+			add_to_variable = {
+				var = WTS.counter_insurgency_london_antis
+				value = var:WTS.counter_insurgency_london_teammates
+			}
+			subtract_from_variable = {
+				var = WTS.counter_insurgency_london_teammates
+				value = var:WTS.counter_insurgency_london_teammates
+			}
+			add_to_variable = {
+				var = WTS.counter_insurgency_london_antis
+				value = var:WTS.counter_insurgency_london_irish
+			}
+			subtract_from_variable = {
+				var = WTS.counter_insurgency_london_irish
+				value = var:WTS.counter_insurgency_london_irish
+			}
+			add_to_variable = {
+				var = WTS.counter_insurgency_london_antis
+				value = var:WTS.counter_insurgency_london_welsh
+			}
+			subtract_from_variable = {
+				var = WTS.counter_insurgency_london_welsh
+				value = var:WTS.counter_insurgency_london_welsh
+			}
+			WTS_create_insurgency_pie_charts = yes
+		}
 		ai_will_do = {
 			base = 0
 		}
 	}
 	test_immediate = {
-
 		icon = generic_research
-
 		available = {
 			always = yes
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
 			ROOT = {
 				country_event = misc.2
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
 	}
 	create_operative_debug = {
-
 		icon = generic_research
-
 		available = {
 			always = yes
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
 			create_operative_leader = {
 				bypass_recruitment = yes
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
 	}
-
 	create_recruitable_operative_not_to_spy_master_debug = {
 		icon = generic_research
-
 		available = {
 			always = yes
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
 			create_operative_leader = {
 				bypass_recruitment = no
 				available_to_spy_master = no
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
 	}
-
 	create_recruitable_operative_debug = {
 		icon = generic_research
-
 		available = {
 			always = yes
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
 			create_operative_leader = {
 				bypass_recruitment = no
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
 	}
-
-
 	FRA_capture_operative_debug = {
 		available = {
-			NOT = { TAG = FRA }
+			NOT = {
+				TAG = FRA
+			}
 			num_of_operatives > 0
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
 			random_operative = {
 				limit = {
@@ -150,26 +166,22 @@ debug_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
-
 	}
-
 	FRA_turn_operative_debug = {
 		available = {
-			NOT = { TAG = FRA }
+			NOT = {
+				TAG = FRA
+			}
 			num_of_operatives > 0
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
 			random_operative = {
 				limit = {
@@ -177,30 +189,24 @@ debug_decisions = {
 				}
 				set_nationality = FRA
 				operative_leader_event = {
-               		id = lar_operative_event.5
-					set_from_from = GER #tells the event which nationality to add
-            	}
+					id = lar_operative_event.5
+					set_from_from = GER					#tells the event which nationality to add
+				}
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
-
 	}
-
 	harm_operative_debug = {
 		available = {
 			num_of_operatives > 0
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
 			random_operative = {
 				harm_operative_leader = 1
@@ -210,29 +216,25 @@ debug_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
-
 	}
-
 	add_random_nationality = {
 		available = {
 			num_of_operatives > 0
 		}
-
 		visible = {
 			always = yes
 		}
-
 		fire_only_once = no
 		cost = 0
-
 		complete_effect = {
 			random_country = {
 				limit = {
-					NOT = { tag = FROM }
+					NOT = {
+						tag = FROM
+					}
 				}
 				FROM = {
 					random_operative = {
@@ -241,69 +243,57 @@ debug_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
-
 	}
-
-	slot_machine = { # we pegi 18 now
+	slot_machine = {
+		# we pegi 18 now
 		available = {
 			always = yes
 		}
-
 		visible = {
 			always = yes
 		}
-
 		days_remove = 777
-
 		modifier = {
 			operative_slot = 99
 		}
 	}
-
 	decryption_tech_1 = {
 		days_remove = 100
 		modifier = {
 			decryption = 1
 		}
 	}
-
 	decryption_tech_2 = {
 		days_remove = 100
 		modifier = {
 			decryption = 1
 		}
 	}
-
 	decryption_tech_3 = {
 		days_remove = 100
 		modifier = {
 			decryption = 1
 		}
 	}
-
 	encryption_tech_1 = {
 		days_remove = 100
 		modifier = {
 			encryption = 1
 		}
 	}
-
 	encryption_tech_2 = {
 		days_remove = 100
 		modifier = {
 			encryption = 1
 		}
 	}
-
 	encryption_tech_3 = {
 		days_remove = 100
 		modifier = {
 			encryption = 1
 		}
 	}
-
 }

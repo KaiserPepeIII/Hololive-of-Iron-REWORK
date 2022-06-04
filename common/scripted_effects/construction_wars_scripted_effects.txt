@@ -1,0 +1,509 @@
+construction_war_investment_event_pekora = {
+	random_list = {
+		50 = {
+			FROM = {
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		10 = {
+			FROM = {
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+		}
+		20 = {
+			FROM = {
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+		}
+		20 = {
+			PEK = {
+				country_event = {
+					id = investment.1
+				}
+			}
+		}
+	}
+}
+
+construction_war_investment_event_subaru = {
+	if = {
+		limit = {
+			any_state = {
+				is_owned_by = FROM
+				is_coastal = yes
+			}
+		}
+		random_list = {
+			50 = {
+				FROM = {
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+			5 = {
+				FROM = {
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+							instant_build = yes
+						}
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+			}
+			5 = {
+				FROM = {
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = arms_factory
+							level = 1
+							instant_build = yes
+						}
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+			}
+			20 = {
+				FROM = {
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = dockyard
+							level = 1
+							instant_build = yes
+						}
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+			}
+			20 = {
+				SUB = {
+					country_event = {
+						id = investment.1
+					}
+				}
+			}
+		}
+		else = {
+			random_list = {
+				50 = {
+					FROM = {
+						random_owned_controlled_state = {
+							add_building_construction = {
+								type = infrastructure
+								level = 1
+								instant_build = yes
+							}
+						}
+					}
+				}
+				10 = {
+					FROM = {
+						random_owned_controlled_state = {
+							add_building_construction = {
+								type = industrial_complex
+								level = 1
+								instant_build = yes
+							}
+							add_extra_state_shared_building_slots = 1
+						}
+					}
+				}
+				20 = {
+					FROM = {
+						random_owned_controlled_state = {
+							add_building_construction = {
+								type = arms_factory
+								level = 1
+								instant_build = yes
+							}
+							add_extra_state_shared_building_slots = 1
+						}
+					}
+				}
+				20 = {
+					SUB = {
+						country_event = {
+							id = investment.1
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+construction_war_investment_event_aqua = {
+	random_list = {
+		50 = {
+			from = {
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		20 = {
+			from = {
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		10 = {
+			from = {
+				random_owned_controlled_state = {
+					limit = {
+						is_controlled_by = FROM
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		20 = {
+			AQA = {
+				country_event = {
+					id = investment.1
+				}
+			}
+		}
+	}
+}
+
+construction_war_annex_country_pek = {
+	if = {
+		limit = {
+			THIS = {
+				check_variable = {
+					var = THIS.hololive_investment_pek
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		PEK = {
+			annex_country = {
+				target = PREV
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+construction_war_annex_country_sub = {
+	if = {
+		limit = {
+			THIS = {
+				check_variable = {
+					var = THIS.hololive_investment_sub
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		OSK = {
+			annex_country = {
+				target = PREV
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+construction_war_annex_country_aqa = {
+	if = {
+		limit = {
+			THIS = {
+				check_variable = {
+					var = THIS.hololive_investment_aqa
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		AQA = {
+			annex_country = {
+				target = PREV
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+check_for_construction_war = {
+	construction_war_pek_sub = yes
+	construction_war_aqa_sub = yes
+	construction_war_aqa_pek = yes
+}
+
+construction_war_pek_sub = {
+	if = {
+		limit = {
+			THIS = {
+				check_variable = {
+					var = THIS.hololive_investment_pek
+					value = 10
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = THIS.hololive_investment_sub
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		add_to_array = {
+			array = global.construction_war_escalator
+			value = THIS.id
+		}
+		PEK = {
+			country_event = investment.2
+		}
+		SUB = {
+			country_event = investment.2
+		}
+	}
+}
+
+construction_war_aqa_sub = {
+	if = {
+		limit = {
+			THIS = {
+				check_variable = {
+					var = THIS.hololive_investment_aqa
+					value = 10
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = THIS.hololive_investment_sub
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		add_to_array = {
+			array = global.construction_war_escalator
+			value = THIS.id
+		}
+		AQA = {
+			country_event = investment.4
+		}
+		SUB = {
+			country_event = investment.4
+		}
+	}
+}
+
+construction_war_aqa_pek = {
+	if = {
+		limit = {
+			THIS = {
+				check_variable = {
+					var = THIS.hololive_investment_aqa
+					value = 10
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = THIS.hololive_investment_pek
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		add_to_array = {
+			array = global.construction_war_escalator
+			value = THIS.id
+		}
+		PEK = {
+			country_event = investment.5
+		}
+		AQA = {
+			country_event = investment.5
+		}
+	}
+}
+
+construction_war_battle_royal = {
+	if = {
+		limit = {
+			check_variable = {
+				var = THIS.hololive_investment_aqa
+				value = 10
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = THIS.hololive_investment_pek
+				value = 10
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = THIS.hololive_investment_sub
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		PEK = {
+			declare_war_on = {
+				target = AQA
+			}
+			declare_war_on = {
+				target = SUB
+			}
+		}
+		AQA = {
+			declare_war_on = {
+				target = SUB
+			}
+		}
+		set_global_flag = Construction_wars_have_begun
+		news_event = investment.3
+	}
+}
+
+construction_wars_peko_subaru_cool_tension = {
+	if = {
+		limit = {
+			tag = PEK
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.construction_war_escalator
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = prev.hololive_investment_pek
+				value = 5
+			}
+		}
+	}
+	if = {
+		limit = {
+			tag = SUB
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.construction_war_escalator
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = prev.hololive_investment_sub
+				value = 5
+			}
+		}
+	}
+}
+
+construction_wars_aqua_subaru_cool_tension = {
+	if = {
+		limit = {
+			tag = AQA
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.construction_war_escalator
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = prev.hololive_investment_aqa
+				value = 5
+			}
+		}
+	}
+	if = {
+		limit = {
+			tag = SUB
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.construction_war_escalator
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = prev.hololive_investment_sub
+				value = 5
+			}
+		}
+	}
+}
+
+construction_wars_aqua_pekora_cool_tension = {
+	if = {
+		limit = {
+			tag = AQA
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.construction_war_escalator
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = prev.hololive_investment_aqa
+				value = 5
+			}
+		}
+	}
+	if = {
+		limit = {
+			tag = PEK
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.construction_war_escalator
+					value = THIS.id
+				}
+			}
+			subtract_from_variable = {
+				var = prev.hololive_investment_pek
+				value = 5
+			}
+		}
+	}
+}

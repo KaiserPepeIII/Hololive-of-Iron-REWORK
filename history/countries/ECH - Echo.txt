@@ -1,13 +1,8 @@
 ﻿capital = 328
-
 oob = "ECH_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 2
-
-add_ideas = {
-}
-
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
@@ -19,12 +14,19 @@ set_technology = {
 	gwtank = 1
 	tech_support = 1
 }
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
 
-}
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "ECH_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
@@ -56,24 +58,23 @@ if = {
 }
 
 set_convoys = 50
-
 #LEADER GENERATION - ECHO 
-recruit_character  = ECH_spade_echo_democratic 
-recruit_character  = ECH_spade_echo_progressive  
-recruit_character  = ECH_spade_echo_yagoo_monarchy  
-recruit_character  = ECH_spade_echo_yagoo_kleptocratic  
-recruit_character  = ECH_spade_echo_revolutionary  
-recruit_character  = ECH_spade_echo_nationalism  
-recruit_character  = ECH_spade_echo_resistance_monarchy  
-recruit_character  = ECH_spade_echo_resistance_kleptocracy  
-recruit_character  = ECH_spade_echo_neutral_kleptocratic  
-recruit_character  = ECH_spade_echo_reactionary_nationalism  
-recruit_character  = ECH_spade_echo_neutral_democracy   
-recruit_character  = ECH_spade_echo_divine_mandate   
-recruit_character  = ECH_spade_echo_new_nationalist
-recruit_character  = ECH_spade_echo_left_wing_revolutionary  
-recruit_character  = ECH_spade_echo_reactionary_monarchy
-recruit_character  = ECH_spade_echo_democratic_anti
+recruit_character = ECH_spade_echo_democratic
+recruit_character = ECH_spade_echo_progressive
+recruit_character = ECH_spade_echo_yagoo_monarchy
+recruit_character = ECH_spade_echo_yagoo_kleptocratic
+recruit_character = ECH_spade_echo_revolutionary
+recruit_character = ECH_spade_echo_nationalism
+recruit_character = ECH_spade_echo_resistance_monarchy
+recruit_character = ECH_spade_echo_resistance_kleptocracy
+recruit_character = ECH_spade_echo_neutral_kleptocratic
+recruit_character = ECH_spade_echo_reactionary_nationalism
+recruit_character = ECH_spade_echo_neutral_democracy
+recruit_character = ECH_spade_echo_divine_mandate
+recruit_character = ECH_spade_echo_new_nationalist
+recruit_character = ECH_spade_echo_left_wing_revolutionary
+recruit_character = ECH_spade_echo_reactionary_monarchy
+recruit_character = ECH_spade_echo_democratic_anti
 recruit_character = ECH_xu_shuzheng
 recruit_character = ECH_li_jishen
 recruit_character = ECH_jiang_guangnai
@@ -91,16 +92,13 @@ recruit_character = ECH_zhou_yinren
 recruit_character = ECH_zhang_wensheng
 recruit_character = ECH_shangguan_yunxiang
 recruit_character = ECH_zeng_yiding
-
 set_politics = {
 	ruling_party = neutrality
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	neutrality = 100
 }
-
-
-

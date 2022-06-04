@@ -1,0 +1,1598 @@
+add_namespace = watson_security
+##############################
+##		Counter Insurgency  ##
+##		  State Flipping	##
+##############################
+##
+## London
+##
+country_event = {
+	id = watson_security.1
+	title = watson_security.1.t
+	desc = watson_security.1.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_london_welsh_takeover_trigger = yes
+				WTS_london_antis_takeover_trigger = yes
+				WTS_london_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.1.a
+		trigger = {
+			WTS_london_welsh_takeover_trigger = yes
+		}
+		LON = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+			set_country_flag = LON_welsh_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = LON
+			}
+		}
+	}
+	option = {
+		name = watson_security.1.b
+		trigger = {
+			WTS_london_antis_takeover_trigger = yes
+		}
+		LON = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+			set_country_flag = LON_english_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = LON
+			}
+		}
+	}
+	option = {
+		name = watson_security.1.c
+		trigger = {
+			WTS_london_irish_takeover_trigger = yes
+		}
+		LON = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+			set_country_flag = LON_irish_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = LON
+			}
+		}
+	}
+}
+
+##
+## South England
+##
+country_event = {
+	id = watson_security.2
+	title = watson_security.2.t
+	desc = watson_security.2.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_south_england_welsh_takeover_trigger = yes
+				WTS_south_england_antis_takeover_trigger = yes
+				WTS_south_england_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.2.a
+		trigger = {
+			WTS_south_england_welsh_takeover_trigger = yes
+		}
+		WES = {
+			transfer_state = 338
+			transfer_state = 123
+			transfer_state = 127
+			set_country_flag = WES_welsh_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WES
+			}
+		}
+	}
+	option = {
+		name = watson_security.2.b
+		trigger = {
+			WTS_south_england_antis_takeover_trigger = yes
+		}
+		WES = {
+			transfer_state = 338
+			transfer_state = 123
+			transfer_state = 127
+			set_country_flag = WES_english_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WES
+			}
+		}
+	}
+	option = {
+		name = watson_security.2.c
+		trigger = {
+			WTS_south_england_irish_takeover_trigger = yes
+		}
+		WES = {
+			transfer_state = 338
+			transfer_state = 123
+			transfer_state = 127
+			set_country_flag = WES_irish_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WES
+			}
+		}
+	}
+}
+
+##
+## West Midlands
+##
+country_event = {
+	id = watson_security.3
+	title = watson_security.3.t
+	desc = watson_security.3.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_west_midlands_welsh_takeover_trigger = yes
+				WTS_west_midlands_antis_takeover_trigger = yes
+				WTS_west_midlands_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.3.a
+		trigger = {
+			WTS_west_midlands_welsh_takeover_trigger = yes
+		}
+		WEM = {
+			transfer_state = 847
+			transfer_state = 848
+			transfer_state = 128
+			set_country_flag = WEM_welsh_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WEM
+			}
+		}
+	}
+	option = {
+		name = watson_security.3.b
+		trigger = {
+			WTS_west_midlands_antis_takeover_trigger = yes
+		}
+		WEM = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+			set_country_flag = WEM_english_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WEM
+			}
+		}
+	}
+	option = {
+		name = watson_security.3.c
+		trigger = {
+			WTS_west_midlands_irish_takeover_trigger = yes
+		}
+		WEM = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+			set_country_flag = WEM_irish_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WEM
+			}
+		}
+	}
+}
+
+##
+## East England
+##
+country_event = {
+	id = watson_security.4
+	title = watson_security.4.t
+	desc = watson_security.4.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_east_england_welsh_takeover_trigger = yes
+				WTS_east_england_antis_takeover_trigger = yes
+				WTS_east_england_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.4.a
+		trigger = {
+			WTS_east_england_welsh_takeover_trigger = yes
+		}
+		EAN = {
+			transfer_state = 125
+			transfer_state = 129
+			transfer_state = 849
+			set_country_flag = EAN_welsh_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = EAN
+			}
+		}
+	}
+	option = {
+		name = watson_security.4.b
+		trigger = {
+			WTS_east_england_antis_takeover_trigger = yes
+		}
+		EAN = {
+			transfer_state = 125
+			transfer_state = 129
+			transfer_state = 849
+			set_country_flag = EAN_english_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = EAN
+			}
+		}
+	}
+	option = {
+		name = watson_security.4.c
+		trigger = {
+			WTS_east_england_irish_takeover_trigger = yes
+		}
+		EAN = {
+			transfer_state = 125
+			transfer_state = 129
+			transfer_state = 849
+			set_country_flag = EAN_irish_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = EAN
+			}
+		}
+	}
+}
+
+##
+## North England
+##
+country_event = {
+	id = watson_security.5
+	title = watson_security.5.t
+	desc = watson_security.5.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_north_england_welsh_takeover_trigger = yes
+				WTS_north_england_antis_takeover_trigger = yes
+				WTS_north_england_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.5.a
+		trigger = {
+			WTS_london_welsh_takeover_trigger = yes
+		}
+		NOR = {
+			transfer_state = 131
+			transfer_state = 132
+			transfer_state = 130
+			set_country_flag = NOR_welsh_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = NOR
+			}
+		}
+	}
+	option = {
+		name = watson_security.5.b
+		trigger = {
+			WTS_london_antis_takeover_trigger = yes
+		}
+		NOR = {
+			transfer_state = 131
+			transfer_state = 132
+			transfer_state = 130
+			set_country_flag = NOR_english_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = NOR
+			}
+		}
+	}
+	option = {
+		name = watson_security.5.c
+		trigger = {
+			WTS_london_irish_takeover_trigger = yes
+		}
+		NOR = {
+			transfer_state = 131
+			transfer_state = 132
+			transfer_state = 130
+			set_country_flag = NOR_irish_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = NOR
+			}
+		}
+	}
+}
+
+##
+## Wales
+##
+country_event = {
+	id = watson_security.6
+	title = watson_security.6.t
+	desc = watson_security.6.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_wales_welsh_takeover_trigger = yes
+				WTS_wales_antis_takeover_trigger = yes
+				WTS_wales_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.6.a
+		trigger = {
+			WTS_wales_welsh_takeover_trigger = yes
+		}
+		WLS = {
+			transfer_state = 918
+			transfer_state = 122
+			transfer_state = 846
+			set_country_flag = WLS_welsh_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = {
+		name = watson_security.6.b
+		trigger = {
+			WTS_wales_antis_takeover_trigger = yes
+		}
+		WLS = {
+			transfer_state = 918
+			transfer_state = 122
+			transfer_state = 846
+			set_country_flag = WLS_english_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+	option = {
+		name = watson_security.6.c
+		trigger = {
+			WTS_wales_irish_takeover_trigger = yes
+		}
+		WLS = {
+			transfer_state = 918
+			transfer_state = 122
+			transfer_state = 846
+			set_country_flag = WLS_irish_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+}
+
+##
+## Scotland
+##
+country_event = {
+	id = watson_security.7
+	title = watson_security.7.t
+	desc = watson_security.7.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_scotland_welsh_takeover_trigger = yes
+				WTS_scotland_antis_takeover_trigger = yes
+				WTS_scotland_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.7.a
+		trigger = {
+			WTS_scotland_welsh_takeover_trigger = yes
+		}
+		SCO = {
+			transfer_state = 120
+			transfer_state = 136
+			transfer_state = 121
+			transfer_state = 133
+			set_country_flag = SCO_welsh_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = SCO
+			}
+		}
+	}
+	option = {
+		name = watson_security.7.b
+		trigger = {
+			WTS_scotland_antis_takeover_trigger = yes
+		}
+		SCO = {
+			transfer_state = 120
+			transfer_state = 136
+			transfer_state = 121
+			transfer_state = 133
+			set_country_flag = SCO_english_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = SCO
+			}
+		}
+	}
+	option = {
+		name = watson_security.7.c
+		trigger = {
+			WTS_scotland_irish_takeover_trigger = yes
+		}
+		SCO = {
+			transfer_state = 120
+			transfer_state = 136
+			transfer_state = 121
+			transfer_state = 133
+			set_country_flag = SCO_irish_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = SCO
+			}
+		}
+	}
+}
+
+##
+## Northern Ireland
+##
+country_event = {
+	id = watson_security.8
+	title = watson_security.8.t
+	desc = watson_security.8.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_northern_ireland_welsh_takeover_trigger = yes
+				WTS_northern_ireland_antis_takeover_trigger = yes
+				WTS_northern_ireland_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.8.a
+		trigger = {
+			WTS_northern_ireland_welsh_takeover_trigger = yes
+		}
+		ULS = {
+			transfer_state = 119
+			transfer_state = 1006
+			set_country_flag = ULS_welsh_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = ULS
+			}
+		}
+	}
+	option = {
+		name = watson_security.8.b
+		trigger = {
+			WTS_northern_ireland_antis_takeover_trigger = yes
+		}
+		ULS = {
+			transfer_state = 119
+			transfer_state = 1006
+			set_country_flag = ULS_english_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = ULS
+			}
+		}
+	}
+	option = {
+		name = watson_security.8.c
+		trigger = {
+			WTS_northern_ireland_irish_takeover_trigger = yes
+		}
+		ULS = {
+			transfer_state = 119
+			transfer_state = 1006
+			set_country_flag = ULS_irish_insurrection
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = ULS
+			}
+		}
+	}
+}
+
+##
+## Dublin
+##
+country_event = {
+	id = watson_security.9
+	title = watson_security.9.t
+	desc = watson_security.9.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_dublin_welsh_takeover_trigger = yes
+				WTS_dublin_antis_takeover_trigger = yes
+				WTS_dublin_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.9.a
+		trigger = {
+			WTS_dublin_welsh_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 816
+			transfer_state = 1064
+			transfer_state = 1005
+			transfer_state = 113
+			transfer_state = 1003
+			transfer_state = 1014
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+	option = {
+		name = watson_security.9.b
+		trigger = {
+			WTS_dublin_antis_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 816
+			transfer_state = 1064
+			transfer_state = 1005
+			transfer_state = 113
+			transfer_state = 1003
+			transfer_state = 1014
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+	option = {
+		name = watson_security.9.c
+		trigger = {
+			WTS_dublin_irish_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 816
+			transfer_state = 1064
+			transfer_state = 1005
+			transfer_state = 113
+			transfer_state = 1003
+			transfer_state = 1014
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+
+##
+## Southwest ireland
+##
+country_event = {
+	id = watson_security.10
+	title = watson_security.10.t
+	desc = watson_security.10.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_southwest_ireland_welsh_takeover_trigger = yes
+				WTS_southwest_ireland_antis_takeover_trigger = yes
+				WTS_southwest_ireland_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.10.a
+		trigger = {
+			WTS_southwest_ireland_welsh_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 816
+			transfer_state = 1064
+			transfer_state = 1005
+			transfer_state = 113
+			transfer_state = 1003
+			transfer_state = 1014
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+	option = {
+		name = watson_security.10.b
+		trigger = {
+			WTS_southwest_ireland_antis_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 816
+			transfer_state = 1064
+			transfer_state = 1005
+			transfer_state = 113
+			transfer_state = 1003
+			transfer_state = 1014
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+	option = {
+		name = watson_security.10.c
+		trigger = {
+			WTS_southwest_ireland_irish_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 816
+			transfer_state = 1064
+			transfer_state = 1005
+			transfer_state = 113
+			transfer_state = 1003
+			transfer_state = 1014
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+
+##
+## Northwest ireland
+##
+country_event = {
+	id = watson_security.11
+	title = watson_security.11.t
+	desc = watson_security.11.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			OR = {
+				WTS_northwest_ireland_welsh_takeover_trigger = yes
+				WTS_northwest_ireland_antis_takeover_trigger = yes
+				WTS_northwest_ireland_irish_takeover_trigger = yes
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.11.a
+		trigger = {
+			WTS_northwest_ireland_welsh_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 1007
+			transfer_state = 134
+			transfer_state = 1009
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+	option = {
+		name = watson_security.11.b
+		trigger = {
+			WTS_northwest_ireland_antis_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 1007
+			transfer_state = 134
+			transfer_state = 1009
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+	option = {
+		name = watson_security.11.c
+		trigger = {
+			WTS_northwest_ireland_irish_takeover_trigger = yes
+		}
+		IRE = {
+			transfer_state = 1007
+			transfer_state = 134
+			transfer_state = 1009
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+			}
+		}
+	}
+}
+
+##
+## Anti Aggression
+##
+country_event = {
+	id = watson_security.12
+	title = watson_security.12.t
+	desc = watson_security.12.d
+	picture = GFX_King_George_V
+	trigger = {
+		check_variable = {
+			var = WTS.anti_aggression
+			value = 100
+			compare = equals
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	option = {
+		name = watson_security.12.a
+		WLS = {
+			transfer_state = 126
+			transfer_state = 844
+			transfer_state = 845
+		}
+		WTS = {
+			create_wargoal = {
+				type = annex_everything
+				target = WLS
+			}
+		}
+	}
+}
+
+##############################
+##		Counter Insurgency  ##
+##		  Watch Wars		##
+##############################
+#
+#The Watch Wars - Initiate
+#
+country_event = {
+	id = watson_security.13
+	title = watson_security.13.t
+	desc = watson_security.13.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			WTS_watch_wars_initiation_trigger = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	#South England
+	option = {
+		name = watson_security.13.a
+		trigger = {
+			WTS_watch_wars_south_england_trigger = yes
+		}
+		set_country_flag = WTS_south_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_south_england_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#East England
+	option = {
+		name = watson_security.13.b
+		trigger = {
+			WTS_watch_wars_east_england_trigger = yes
+		}
+		set_country_flag = WTS_east_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_east_england_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#London 
+	option = {
+		name = watson_security.13.c
+		trigger = {
+			WTS_watch_wars_london_trigger = yes
+		}
+		set_country_flag = WTS_london_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_london_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#West Midlands 
+	option = {
+		name = watson_security.13.e
+		trigger = {
+			WTS_watch_wars_west_midlands_trigger = yes
+		}
+		set_country_flag = WTS_west_midlands_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_west_midlands_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#North England 
+	option = {
+		name = watson_security.13.f
+		trigger = {
+			WTS_watch_wars_north_england_trigger = yes
+		}
+		set_country_flag = WTS_north_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_north_england_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Wales 
+	option = {
+		name = watson_security.13.g
+		trigger = {
+			WTS_watch_wars_wales_trigger = yes
+		}
+		set_country_flag = WTS_wales_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_wales_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Scotland 
+	option = {
+		name = watson_security.13.h
+		trigger = {
+			WTS_watch_wars_scotland_trigger = yes
+		}
+		set_country_flag = WTS_scotland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_scotland_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#N. Ireland 
+	option = {
+		name = watson_security.13.i
+		trigger = {
+			WTS_watch_wars_northern_ireland_trigger = yes
+		}
+		set_country_flag = WTS_northern_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northern_ireland_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#NW Ireland 
+	option = {
+		name = watson_security.13.j
+		trigger = {
+			WTS_watch_wars_northwest_ireland_trigger = yes
+		}
+		set_country_flag = WTS_northwest_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northwest_ireland_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Southwest Ireland 
+	option = {
+		name = watson_security.13.k
+		trigger = {
+			WTS_watch_wars_southwest_ireland_trigger = yes
+		}
+		set_country_flag = WTS_southwest_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_southwest_ireland_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Dublin 
+	option = {
+		name = watson_security.13.l
+		trigger = {
+			WTS_watch_wars_dublin_trigger = yes
+		}
+		set_country_flag = WTS_dublin_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_dublin_array
+					value = THIS.id
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+}
+
+#
+#The Watch Wars - Removal due to Pie Chart
+#
+country_event = {
+	id = watson_security.14
+	title = watson_security.14.t
+	desc = watson_security.14.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			WTS_watch_wars_initiation_trigger_removal = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	#South England
+	option = {
+		name = watson_security.14.a
+		trigger = {
+			WTS_watch_wars_south_england_trigger_removal = yes
+		}
+		clr_country_flag = WTS_south_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_south_england_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#East England
+	option = {
+		name = watson_security.14.b
+		trigger = {
+			WTS_watch_wars_east_england_trigger_removal = yes
+		}
+		clr_country_flag = WTS_east_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_east_england_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#London 
+	option = {
+		name = watson_security.14.c
+		trigger = {
+			WTS_watch_wars_london_trigger_removal = yes
+		}
+		clr_country_flag = WTS_london_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_london_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#West Midlands 
+	option = {
+		name = watson_security.14.e
+		trigger = {
+			WTS_watch_wars_west_midlands_trigger_removal = yes
+		}
+		clr_country_flag = WTS_west_midlands_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_west_midlands_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#North England 
+	option = {
+		name = watson_security.14.f
+		trigger = {
+			WTS_watch_wars_north_england_trigger_removal = yes
+		}
+		clr_country_flag = WTS_north_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_north_england_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Wales 
+	option = {
+		name = watson_security.14.g
+		trigger = {
+			WTS_watch_wars_wales_trigger_removal = yes
+		}
+		clr_country_flag = WTS_wales_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_wales_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Scotland 
+	option = {
+		name = watson_security.14.h
+		trigger = {
+			WTS_watch_wars_scotland_trigger_removal = yes
+		}
+		clr_country_flag = WTS_scotland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_scotland_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#N. Ireland 
+	option = {
+		name = watson_security.14.i
+		trigger = {
+			WTS_watch_wars_northern_ireland_trigger_removal = yes
+		}
+		clr_country_flag = WTS_northern_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northern_ireland_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#NW Ireland 
+	option = {
+		name = watson_security.14.j
+		trigger = {
+			WTS_watch_wars_northwest_ireland_trigger_removal = yes
+		}
+		clr_country_flag = WTS_northwest_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northwest_ireland_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Southwest Ireland 
+	option = {
+		name = watson_security.14.k
+		trigger = {
+			WTS_watch_wars_southwest_ireland_trigger_removal = yes
+		}
+		clr_country_flag = WTS_southwest_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_southwest_ireland_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Dublin 
+	option = {
+		name = watson_security.14.l
+		trigger = {
+			WTS_watch_wars_dublin_trigger_removal = yes
+		}
+		clr_country_flag = WTS_dublin_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_dublin_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+}
+
+#
+#The Watch Wars - Removal due to Watson not owning it
+#
+country_event = {
+	id = watson_security.15
+	title = watson_security.15.t
+	desc = watson_security.15.d
+	picture = GFX_King_George_V
+	trigger = {
+		WTS = {
+			WTS_watch_wars_initiation_trigger_removal_lost_land = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	is_triggered_only = no
+	fire_only_once = no
+	#South England
+	option = {
+		name = watson_security.15.a
+		trigger = {
+			WTS_watch_wars_south_england_trigger_removal = yes
+		}
+		clr_country_flag = WTS_south_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_south_england_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#East England
+	option = {
+		name = watson_security.15.b
+		trigger = {
+			WTS_watch_wars_east_england_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_east_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_east_england_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#London 
+	option = {
+		name = watson_security.15.c
+		trigger = {
+			WTS_watch_wars_london_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_london_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_london_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#West Midlands 
+	option = {
+		name = watson_security.15.e
+		trigger = {
+			WTS_watch_wars_west_midlands_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_west_midlands_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_west_midlands_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#North England 
+	option = {
+		name = watson_security.15.f
+		trigger = {
+			WTS_watch_wars_north_england_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_north_england_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_north_england_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Wales 
+	option = {
+		name = watson_security.15.g
+		trigger = {
+			WTS_watch_wars_wales_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_wales_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_wales_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Scotland 
+	option = {
+		name = watson_security.15.h
+		trigger = {
+			WTS_watch_wars_scotland_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_scotland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_scotland_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#N. Ireland 
+	option = {
+		name = watson_security.15.i
+		trigger = {
+			WTS_watch_wars_northern_ireland_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_northern_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northern_ireland_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#NW Ireland 
+	option = {
+		name = watson_security.15.j
+		trigger = {
+			WTS_watch_wars_northwest_ireland_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_northwest_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northwest_ireland_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Southwest Ireland 
+	option = {
+		name = watson_security.15.k
+		trigger = {
+			WTS_watch_wars_southwest_ireland_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_southwest_ireland_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_southwest_ireland_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+	#Dublin 
+	option = {
+		name = watson_security.15.l
+		trigger = {
+			WTS_watch_wars_dublin_trigger_removal_lost_land = yes
+		}
+		clr_country_flag = WTS_dublin_watch_wars
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_dublin_array
+					value = THIS.id
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = WTS_the_watch_wars
+			}
+		}
+	}
+}

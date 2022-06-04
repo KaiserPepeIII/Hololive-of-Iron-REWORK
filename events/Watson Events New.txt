@@ -643,15 +643,57 @@ country_event = {
 	desc = watson.29.d
 	picture = GFX_King_George_V
 	is_triggered_only = yes
+	#A New Government 
 	option = {
 		name = watson.29.a
 		clr_country_flag = WTS_pre_easter_crisis
 		add_ideas = WTS_easter_crisis
+		complete_national_focus = WTS_the_easter_crisis
+		custom_effect_tooltip = WTS_easter_crisis_event_effect_tooltip1
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = 5
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -15
+			}
+		}
 	}
+	#Westminster Constitution 
 	option = {
 		name = watson.29.b
 		clr_country_flag = WTS_pre_easter_crisis
 		add_ideas = WTS_easter_crisis
+		complete_national_focus = WTS_the_easter_crisis
+		custom_effect_tooltip = WTS_easter_crisis_event_effect_tooltip2
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = -15
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = -5
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = 10
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = 10
+			}
+		}
 	}
 }
 
@@ -1882,892 +1924,6 @@ country_event = {
 		#more shit here
 	}
 }
-
-##############################
-##		Counter Insurgency  ##
-##		  State Flipping	##
-##############################
-##
-## London
-##
-country_event = {
-	id = watson.85
-	title = watson.85.t
-	desc = watson.85.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_london_welsh_takeover_trigger = yes
-			WTS_london_antis_takeover_trigger = yes
-			WTS_london_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.85.a
-		trigger = {
-			WTS_london_welsh_takeover_trigger = yes
-		}
-		LON = {
-			transfer_state = 126
-			transfer_state = 844
-			transfer_state = 845
-			set_country_flag = LON_welsh_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = LON
-			}
-		}
-	}
-	option = {
-		name = watson.85.b
-		trigger = {
-			WTS_london_antis_takeover_trigger = yes
-		}
-		LON = {
-			transfer_state = 126
-			transfer_state = 844
-			transfer_state = 845
-			set_country_flag = LON_english_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = LON
-			}
-		}
-	}
-	option = {
-		name = watson.85.c
-		trigger = {
-			WTS_london_irish_takeover_trigger = yes
-		}
-		LON = {
-			transfer_state = 126
-			transfer_state = 844
-			transfer_state = 845
-			set_country_flag = LON_irish_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = LON
-			}
-		}
-	}
-}
-
-##
-## South England
-##
-country_event = {
-	id = watson.86
-	title = watson.86.t
-	desc = watson.86.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_south_england_welsh_takeover_trigger = yes
-			WTS_south_england_antis_takeover_trigger = yes
-			WTS_south_england_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.86.a
-		trigger = {
-			WTS_south_england_welsh_takeover_trigger = yes
-		}
-		WES = {
-			transfer_state = 338
-			transfer_state = 123
-			transfer_state = 127
-			set_country_flag = WES_welsh_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WES
-			}
-		}
-	}
-	option = {
-		name = watson.86.b
-		trigger = {
-			WTS_south_england_antis_takeover_trigger = yes
-		}
-		WES = {
-			transfer_state = 338
-			transfer_state = 123
-			transfer_state = 127
-			set_country_flag = WES_english_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WES
-			}
-		}
-	}
-	option = {
-		name = watson.86.c
-		trigger = {
-			WTS_south_england_irish_takeover_trigger = yes
-		}
-		WES = {
-			transfer_state = 338
-			transfer_state = 123
-			transfer_state = 127
-			set_country_flag = WES_irish_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WES
-			}
-		}
-	}
-}
-
-##
-## West Midlands
-##
-country_event = {
-	id = watson.87
-	title = watson.87.t
-	desc = watson.87.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_west_midlands_welsh_takeover_trigger = yes
-			WTS_west_midlands_antis_takeover_trigger = yes
-			WTS_west_midlands_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.87.a
-		trigger = {
-			WTS_west_midlands_welsh_takeover_trigger = yes
-		}
-		WEM = {
-			transfer_state = 847
-			transfer_state = 848
-			transfer_state = 128
-			set_country_flag = WEM_welsh_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WEM
-			}
-		}
-	}
-	option = {
-		name = watson.87.b
-		trigger = {
-			WTS_west_midlands_antis_takeover_trigger = yes
-		}
-		WEM = {
-			transfer_state = 126
-			transfer_state = 844
-			transfer_state = 845
-			set_country_flag = WEM_english_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WEM
-			}
-		}
-	}
-	option = {
-		name = watson.87.c
-		trigger = {
-			WTS_west_midlands_irish_takeover_trigger = yes
-		}
-		WEM = {
-			transfer_state = 126
-			transfer_state = 844
-			transfer_state = 845
-			set_country_flag = WEM_irish_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WEM
-			}
-		}
-	}
-}
-
-##
-## East England
-##
-country_event = {
-	id = watson.88
-	title = watson.88.t
-	desc = watson.88.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_east_england_welsh_takeover_trigger = yes
-			WTS_east_england_antis_takeover_trigger = yes
-			WTS_east_england_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.88.a
-		trigger = {
-			WTS_east_england_welsh_takeover_trigger = yes
-		}
-		EAN = {
-			transfer_state = 125
-			transfer_state = 129
-			transfer_state = 849
-			set_country_flag = EAN_welsh_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = EAN
-			}
-		}
-	}
-	option = {
-		name = watson.88.b
-		trigger = {
-			WTS_east_england_antis_takeover_trigger = yes
-		}
-		EAN = {
-			transfer_state = 125
-			transfer_state = 129
-			transfer_state = 849
-			set_country_flag = EAN_english_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = EAN
-			}
-		}
-	}
-	option = {
-		name = watson.88.c
-		trigger = {
-			WTS_east_england_irish_takeover_trigger = yes
-		}
-		EAN = {
-			transfer_state = 125
-			transfer_state = 129
-			transfer_state = 849
-			set_country_flag = EAN_irish_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = EAN
-			}
-		}
-	}
-}
-
-##
-## North England
-##
-country_event = {
-	id = watson.89
-	title = watson.89.t
-	desc = watson.89.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_north_england_welsh_takeover_trigger = yes
-			WTS_north_england_antis_takeover_trigger = yes
-			WTS_north_england_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.89.a
-		trigger = {
-			WTS_london_welsh_takeover_trigger = yes
-		}
-		NOR = {
-			transfer_state = 131
-			transfer_state = 132
-			transfer_state = 130
-			set_country_flag = NOR_welsh_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = NOR
-			}
-		}
-	}
-	option = {
-		name = watson.89.b
-		trigger = {
-			WTS_london_antis_takeover_trigger = yes
-		}
-		NOR = {
-			transfer_state = 131
-			transfer_state = 132
-			transfer_state = 130
-			set_country_flag = NOR_english_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = NOR
-			}
-		}
-	}
-	option = {
-		name = watson.89.c
-		trigger = {
-			WTS_london_irish_takeover_trigger = yes
-		}
-		NOR = {
-			transfer_state = 131
-			transfer_state = 132
-			transfer_state = 130
-			set_country_flag = NOR_irish_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = NOR
-			}
-		}
-	}
-}
-
-##
-## Wales
-##
-country_event = {
-	id = watson.90
-	title = watson.90.t
-	desc = watson.90.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_wales_welsh_takeover_trigger = yes
-			WTS_wales_antis_takeover_trigger = yes
-			WTS_wales_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.90.a
-		trigger = {
-			WTS_wales_welsh_takeover_trigger = yes
-		}
-		WLS = {
-			transfer_state = 918
-			transfer_state = 122
-			transfer_state = 846
-			set_country_flag = WLS_welsh_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WLS
-			}
-		}
-	}
-	option = {
-		name = watson.90.b
-		trigger = {
-			WTS_wales_antis_takeover_trigger = yes
-		}
-		WLS = {
-			transfer_state = 918
-			transfer_state = 122
-			transfer_state = 846
-			set_country_flag = WLS_english_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WLS
-			}
-		}
-	}
-	option = {
-		name = watson.90.c
-		trigger = {
-			WTS_wales_irish_takeover_trigger = yes
-		}
-		WLS = {
-			transfer_state = 918
-			transfer_state = 122
-			transfer_state = 846
-			set_country_flag = WLS_irish_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WLS
-			}
-		}
-	}
-}
-
-##
-## Scotland
-##
-country_event = {
-	id = watson.91
-	title = watson.91.t
-	desc = watson.91.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_scotland_welsh_takeover_trigger = yes
-			WTS_scotland_antis_takeover_trigger = yes
-			WTS_scotland_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.91.a
-		trigger = {
-			WTS_scotland_welsh_takeover_trigger = yes
-		}
-		SCO = {
-			transfer_state = 120
-			transfer_state = 136
-			transfer_state = 121
-			transfer_state = 133
-			set_country_flag = SCO_welsh_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = SCO
-			}
-		}
-	}
-	option = {
-		name = watson.91.b
-		trigger = {
-			WTS_scotland_antis_takeover_trigger = yes
-		}
-		SCO = {
-			transfer_state = 120
-			transfer_state = 136
-			transfer_state = 121
-			transfer_state = 133
-			set_country_flag = SCO_english_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = SCO
-			}
-		}
-	}
-	option = {
-		name = watson.91.c
-		trigger = {
-			WTS_scotland_irish_takeover_trigger = yes
-		}
-		SCO = {
-			transfer_state = 120
-			transfer_state = 136
-			transfer_state = 121
-			transfer_state = 133
-			set_country_flag = SCO_irish_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = SCO
-			}
-		}
-	}
-}
-
-##
-## Northern Ireland
-##
-country_event = {
-	id = watson.92
-	title = watson.92.t
-	desc = watson.92.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_northern_ireland_welsh_takeover_trigger = yes
-			WTS_northern_ireland_antis_takeover_trigger = yes
-			WTS_northern_ireland_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.92.a
-		trigger = {
-			WTS_northern_ireland_welsh_takeover_trigger = yes
-		}
-		ULS = {
-			transfer_state = 119
-			transfer_state = 1006
-			set_country_flag = ULS_welsh_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = ULS
-			}
-		}
-	}
-	option = {
-		name = watson.92.b
-		trigger = {
-			WTS_northern_ireland_antis_takeover_trigger = yes
-		}
-		ULS = {
-			transfer_state = 119
-			transfer_state = 1006
-			set_country_flag = ULS_english_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = ULS
-			}
-		}
-	}
-	option = {
-		name = watson.92.c
-		trigger = {
-			WTS_northern_ireland_irish_takeover_trigger = yes
-		}
-		ULS = {
-			transfer_state = 119
-			transfer_state = 1006
-			set_country_flag = ULS_irish_insurrection
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = ULS
-			}
-		}
-	}
-}
-
-##
-## Dublin
-##
-country_event = {
-	id = watson.93
-	title = watson.93.t
-	desc = watson.93.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_dublin_welsh_takeover_trigger = yes
-			WTS_dublin_antis_takeover_trigger = yes
-			WTS_dublin_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.93.a
-		trigger = {
-			WTS_dublin_welsh_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 816
-			transfer_state = 1064
-			transfer_state = 1005
-			transfer_state = 113
-			transfer_state = 1003
-			transfer_state = 1014
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-	option = {
-		name = watson.93.b
-		trigger = {
-			WTS_dublin_antis_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 816
-			transfer_state = 1064
-			transfer_state = 1005
-			transfer_state = 113
-			transfer_state = 1003
-			transfer_state = 1014
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-	option = {
-		name = watson.93.c
-		trigger = {
-			WTS_dublin_irish_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 816
-			transfer_state = 1064
-			transfer_state = 1005
-			transfer_state = 113
-			transfer_state = 1003
-			transfer_state = 1014
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-}
-
-##
-## Southwest ireland
-##
-country_event = {
-	id = watson.94
-	title = watson.94.t
-	desc = watson.94.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_southwest_ireland_welsh_takeover_trigger = yes
-			WTS_southwest_ireland_antis_takeover_trigger = yes
-			WTS_southwest_ireland_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.94.a
-		trigger = {
-			WTS_southwest_ireland_welsh_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 816
-			transfer_state = 1064
-			transfer_state = 1005
-			transfer_state = 113
-			transfer_state = 1003
-			transfer_state = 1014
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-	option = {
-		name = watson.94.b
-		trigger = {
-			WTS_southwest_ireland_antis_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 816
-			transfer_state = 1064
-			transfer_state = 1005
-			transfer_state = 113
-			transfer_state = 1003
-			transfer_state = 1014
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-	option = {
-		name = watson.94.c
-		trigger = {
-			WTS_southwest_ireland_irish_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 816
-			transfer_state = 1064
-			transfer_state = 1005
-			transfer_state = 113
-			transfer_state = 1003
-			transfer_state = 1014
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-}
-
-##
-## Northwest ireland
-##
-country_event = {
-	id = watson.95
-	title = watson.95.t
-	desc = watson.95.d
-	picture = GFX_King_George_V
-	trigger = {
-		OR = {
-			WTS_northwest_ireland_welsh_takeover_trigger = yes
-			WTS_northwest_ireland_antis_takeover_trigger = yes
-			WTS_northwest_ireland_irish_takeover_trigger = yes
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.95.a
-		trigger = {
-			WTS_northwest_ireland_welsh_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 1007
-			transfer_state = 134
-			transfer_state = 1009
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-	option = {
-		name = watson.95.b
-		trigger = {
-			WTS_northwest_ireland_antis_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 1007
-			transfer_state = 134
-			transfer_state = 1009
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-	option = {
-		name = watson.95.c
-		trigger = {
-			WTS_northwest_ireland_irish_takeover_trigger = yes
-		}
-		IRE = {
-			transfer_state = 1007
-			transfer_state = 134
-			transfer_state = 1009
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = IRE
-			}
-		}
-	}
-}
-
-##
-## Anti Aggression
-##
-country_event = {
-	id = watson.96
-	title = watson.96.t
-	desc = watson.96.d
-	picture = GFX_King_George_V
-	trigger = {
-		check_variable = {
-			var = WTS.anti_aggression
-			value = 100
-			compare = equals
-		}
-	}
-	mean_time_to_happen = {
-		days = 1
-	}
-	is_triggered_only = no
-	fire_only_once = no
-	option = {
-		name = watson.96.a
-		WLS = {
-			transfer_state = 126
-			transfer_state = 844
-			transfer_state = 845
-		}
-		WTS = {
-			create_wargoal = {
-				type = annex_everything
-				target = WLS
-			}
-		}
-	}
-}
-
 ####################################
 ####  Forming a New Government  #### 
 ####################################
@@ -2837,10 +1993,53 @@ country_event = {
 	option = {
 		#hindering growth
 		name = watson.100.a
+		custom_effect_tooltip = WTS_easter_crisis_event_effect_tooltip3
+		add_stability = -0.05
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = 5
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = 5
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = 5
+			}
+		}
 	}
 	option = {
 		#essential part of society
 		name = watson.100.b
+		custom_effect_tooltip = WTS_easter_crisis_event_effect_tooltip4
+		add_popularity = {
+			ideology = var:party_popularity@ruling_party
+			popularity = 0.05
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = -5
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = -5
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -5
+			}
+		}
 	}
 }
 
@@ -2855,14 +2054,91 @@ country_event = {
 	option = {
 		#save the factories
 		name = watson.101.a
+		trigger = {
+			has_political_power > 50
+		}
+		add_popularity = {
+			ideology = var:party_popularity@ruling_party
+			popularity = 0.05
+		}
+		add_political_power = -50
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = -15
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = 15
+			}
+		}
 	}
 	option = {
 		#things break, 
 		name = watson.101.b
+		add_popularity = {
+			ideology = var:party_popularity@ruling_party
+			popularity = -0.05
+		}
+		WTS = {
+			random_state = {
+				limit = {
+					industrial_complex > 2
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -15
+			}
+		}
 	}
 	option = {
 		#perhaps multinationals might find a use
 		name = watson.101.c
+		add_popularity = {
+			ideology = var:party_popularity@ruling_party
+			popularity = -0.05
+		}
+		add_political_power = 25
+		WTS = {
+			random_state = {
+				limit = {
+					industrial_complex > 2
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -15
+			}
+		}
 	}
 }
 
@@ -2875,16 +2151,55 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
-		#Home front
+		#Home front *integrate something with the gui here
 		name = watson.102.a
+		add_stability = 0.1
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = 15
+			}
+		}
+		set_country_flag = WTS_promised_isolationism
 	}
 	option = {
-		#Regional
+		#Regional *something something, Fauna if still alive
 		name = watson.102.b
+		add_stability = 0.05
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = 5
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = 15
+			}
+		}
 	}
 	option = {
 		#Global
 		name = watson.102.c
+		add_stability = -0.05
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -15
+			}
+		}
+		set_country_flag = WTS_intervene_in_south_africa_prev
 	}
 }
 
@@ -2899,18 +2214,86 @@ country_event = {
 	option = {
 		#progressive budget
 		name = watson.103.a
+		add_popularity = {
+			ideology = var:party_popularity@ruling_party
+			popularity = 0.05
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = -20
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = -20
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = 15
+			}
+		}
+		set_country_flag = WTS_promised_progressive_budget
 	}
 	option = {
 		#conservative budget
 		name = watson.103.b
+		add_popularity = {
+			ideology = var:party_popularity@ruling_party
+			popularity = -0.05
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = 15
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -20
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -20
+			}
+		}
+		set_country_flag = WTS_promised_conservative_budget
 	}
 	option = {
 		#criticize the opposition
 		name = watson.103.c
+		add_popularity = {
+			ideology = var:highest_party_ideology@exclude_ruling_party
+			popularity = -0.05
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = -5
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = -5
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -5
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -5
+			}
+		}
 	}
 }
 
-######  Intenernal Defence
+######  Internal Defence
 country_event = {
 	id = watson.104
 	title = watson.104.t
@@ -2919,16 +2302,75 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
-		#tough measures
+		#tough measures *add something to do with the gui here
 		name = watson.104.a
+		add_stability = 0.1
+		add_manpower = -2500
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = 10
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = 10
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -15
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -25
+			}
+		}
 	}
 	option = {
 		#Light measures
 		name = watson.104.b
+		add_stability = 0.05
+		add_manpower = -1250
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = 5
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = 5
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -10
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -15
+			}
+		}
 	}
 	option = {
 		#Condolensces to the victims
 		name = watson.104.c
+		add_political_power = -5
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = -5
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = -5
+			}
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = -10
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = -5
+			}
+		}
 	}
 }
 
@@ -2943,14 +2385,44 @@ country_event = {
 	option = {
 		#Aristocratic Boost
 		name = watson.105.a
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.upper_class_support
+				value = 10
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = 10
+			}
+		}
 	}
 	option = {
 		#Lower Class Boost
 		name = watson.105.b
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = 10
+			}
+			add_to_variable = {
+				var = WTS.middle_class_support
+				value = 10
+			}
+		}
 	}
 	option = {
 		#Ulster Boost
 		name = watson.105.c
+		hidden_effect = {
+			add_to_variable = {
+				var = WTS.lower_class_support
+				value = 5
+			}
+			add_to_variable = {
+				var = WTS.ulster_teammates_support
+				value = 15
+			}
+		}
 	}
 }
 
@@ -2963,16 +2435,59 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
-		#Conservative government
+		#Conservative government BIG WIN
 		name = watson.121.a
+		trigger = {
+			WTS_conservative_big_win = yes
+		}
+		add_political_power = 25
+		add_stability = 0.05
 	}
 	option = {
-		#Socialist government
+		#Conservative government small WIN
 		name = watson.121.b
+		add_stability = -0.05
+		trigger = {
+			WTS_conservative_small_win = yes
+		}
+		add_political_power = -25
+		add_stability = -0.05
 	}
 	option = {
-		#teammate government
-		name = watson.121.b
+		#socialist government BIG WIN
+		name = watson.121.e
+		trigger = {
+			WTS_socialist_big_win = yes
+		}
+		add_political_power = 25
+		add_stability = 0.05
+	}
+	option = {
+		#socialist government small WIN
+		name = watson.121.f
+		trigger = {
+			WTS_socialist_small_win = yes
+		}
+		add_political_power = -25
+		add_stability = -0.05
+	}
+	option = {
+		#Teammate government BIG WIN
+		name = watson.121.g
+		trigger = {
+			WTS_teammate_government_big_win = yes
+		}
+		add_political_power = 25
+		add_stability = 0.05
+	}
+	option = {
+		#Teammate government small WIN
+		name = watson.121.h
+		trigger = {
+			WTS_teammate_government_small_win = yes
+		}
+		add_political_power = -25
+		add_stability = -0.05
 	}
 }
 
@@ -2987,14 +2502,50 @@ country_event = {
 	option = {
 		#Conservative faction
 		name = watson.106.a
+		custom_effect_tooltip = WTS_leading_conservatives
+		set_country_flag = WTS_leading_conservatives		#For conservatives you need to win 80 Upper class, 60 Middle class, 20 lower class, 30 Ulster
+		set_politics = {
+			ruling_party = democratic
+		}
+		set_popularities = {
+			pro_yagoo_progressive = 0
+			pro_resistance_monarchy = 0
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = var:party_popularity@pro_yagoo_progressive
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = var:party_popularity@pro_yagoo_monarchy
+		}
 	}
 	option = {
 		#Socialist faction
 		name = watson.106.b
+		custom_effect_tooltip = WTS_leading_socialists
+		set_country_flag = WTS_leading_socialists		# for progressives you need to win 80 lower class, 40 middle class, 20 upper class, 50 ulster
+		set_politics = {
+			ruling_party = pro_yagoo_progressive
+		}
+		set_popularities = {
+			democratic = 0
+			pro_resistance_monarchy = 0
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = var:party_popularity@democratic
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = var:party_popularity@pro_yagoo_monarchy
+		}
 	}
 	option = {
 		#teammate loyalist
 		name = watson.106.b
+		custom_effect_tooltip = WTS_leading_loyalists
+		set_country_flag = WTS_leading_loyalists		# For Loyalists you need to win 60 lower class, 50 middle class, 30 Ulster, 30 Upper Class
 	}
 }
 

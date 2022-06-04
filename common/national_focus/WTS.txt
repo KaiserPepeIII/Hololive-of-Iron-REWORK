@@ -22,7 +22,6 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 5
 			add_stability = 0.05
-			remove_ideas = WTS_easter_crisis
 		}
 	}
 	focus = {
@@ -2013,6 +2012,13 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = watson_colonies
 			set_country_flag = wts_neo_colonialism
+			if = {
+				limit = {
+					has_country_flag = WTS_intervene_in_south_africa_prev
+				}
+				clr_country_flag = WTS_intervene_in_south_africa_prev
+				set_country_flag = WTS_intervene_in_south_africa
+			}
 		}
 		x = 16
 		y = 10
