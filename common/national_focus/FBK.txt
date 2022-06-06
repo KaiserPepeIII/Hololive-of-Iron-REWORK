@@ -108,6 +108,7 @@ focus_tree = {
 			# Lose generals
 			# Remove Army chief
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_make_wfa_lot_angry_tooltip
 		}
 
 		x = 45
@@ -126,6 +127,7 @@ focus_tree = {
 			add_ideas = {FBK_strengthen_wfa}
 			add_to_variable = {FBK.WFA_relationship_flat_var = 15}
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_make_wfa_bit_pleased_tooltip
 			#TODO: 
 			#Enable generals , theorists,  advisors, etc.
 		}
@@ -141,6 +143,17 @@ focus_tree = {
 
 		completion_reward = {
 			navy_experience = 50
+			add_political_power = -100
+			subtract_from_variable = {FBK.WFA_relationship_flat_var = 15}
+			ROOT = {
+				every_character = { 
+				limit= {
+					is_navy_chief = yes
+					}	
+					retire = yes
+				}
+			}
+			custom_effect_tooltip = FBK_make_wfa_bit_angry_tooltip	
 		}
 
 		x = 54
@@ -154,6 +167,41 @@ focus_tree = {
 
 		completion_reward = {
 			air_experience = 50
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
 		}
 		x = 63
 		y = 9
@@ -863,6 +911,23 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_reinforce_wfa
 		}
+		available = {
+				check_variable = {
+					FBK.manpower_k > 10
+				}
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = FBK_expand_wfa_transfer_requirement_text
+			FBK = {
+				add_manpower= -10000
+			}
+			WFA = {
+				add_manpower = 10000
+			}
+			#TODO:
+			#Increase WFA limit?
+		}
 		x = 38
 		y = 10
 
@@ -949,6 +1014,14 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_unite_national_and_wfa
 		}
+		completion_reward = {
+			FBK_delete_na_divisions_effect = yes
+			remove_ideas = FBK_politizied_army
+			add_to_variable = { FBK.WFA_relationship_flat_var = 50 } 
+			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_make_wfa_lot_pleased_tooltip
+		}
+		
 		x = 37
 		y = 13
 
@@ -1089,6 +1162,9 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = FBK_memories_of_baltics
+		}
+		completion_reward = {
+			add_ideas = { FBK_memories_of_konigsberg }
 		}
 		x = 42
 		y = 10
@@ -1314,6 +1390,7 @@ focus_tree = {
 			remove_ideas = FBK_starting_conscription_penalty
 			subtract_from_variable ={ FBK.WFA_relationship_flat_var = 10}
 			FBK_army_variables = yes
+			custom_effect_tooltip = FBK_make_wfa_bit_angry_tooltip
 		}
 		
 		
@@ -1342,6 +1419,7 @@ focus_tree = {
 			subtract_from_variable = { FBK.WFA_relationship_flat_var = 15 }
 			FBK_army_variables = yes
 			add_ideas = FBK_peoples_army
+			custom_effect_tooltip = FBK_make_wfa_bit_angry_tooltip
 		}
 
 		x = 47
@@ -1392,6 +1470,7 @@ focus_tree = {
 			subtract_from_variable = { FBK.WFA_relationship_flat_var = 50 }
 			FBK_army_variables = yes
 			remove_ideas = FBK_politizied_army
+			custom_effect_tooltip = FBK_make_wfa_lot_angry_tooltip
 		}
 
 		x = 49
@@ -1510,7 +1589,12 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
 		}
-
+		completion_reward = {
+			add_timed_idea = {
+				idea = FBK_plan_hler
+				days = 2190
+			}
+		}
 		x = 52
 		y = 10
 
@@ -1614,9 +1698,11 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_plan_hler 
 		}
-
 		completion_reward = {
-			add_ideas = {FBK_escort_fleet_expansion}
+			add_timed_idea = {
+				idea = FBK_escort_fleet_expansion
+				days = 2920
+			}	
 		}
 
 		x = 53
@@ -1630,11 +1716,13 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_naval_expansion_one
 		}
-
 		completion_reward = {
-			add_ideas = {FBK_battle_fleet_expansion}
+			add_timed_idea = {
+				idea = FBK_battle_fleet_expansion
+				days = 2190
+			}	
 		}
-
+		
 		x = 53
 		y = 12
 
@@ -1645,6 +1733,9 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
+		}
+		completion_reward = {
+		    navy_experience = 15
 		}
 		x = 56
 		y = 10
@@ -1675,7 +1766,13 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_baltic_sea_focus
 		}
-
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = cat_fleet_in_being
+			}	
+		}
 
 		x = 55
 		y = 12
@@ -1714,6 +1811,15 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_grand_fleet
 		}
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = submarine_doctrine
+			}	
+		}
+
 		x = 57
 		y = 12
 
@@ -1724,6 +1830,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
+		}
+
+		completion_reward = {
+			air_experience = 10
+			custom_effect_tooltip = FBK_plan_thor_tooltip
 		}
 
 		x = 61
@@ -1778,6 +1889,57 @@ focus_tree = {
 			focus = FBK_expand_the_airforce
 		}
 
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 250
+				producer = ROOT
+			}
+
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			add_tech_bonus ={
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
+
 		x = 63
 		y = 10
 
@@ -1809,6 +1971,10 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = FBK_expand_the_airforce
+		}
+		completion_reward={
+			air_experience = 10
+			custom_effect_tooltip = FBK_plan_valkyrie_tooltip
 		}
 		x = 65
 		y = 10
@@ -2071,8 +2237,14 @@ focus_tree = {
 			focus = FBK_naval_expansion_two
 		}
 
+		available = {
+			NOT = {
+				has_idea = FBK_plan_hler
+			}
+		}
+
 		completion_reward = {
-			
+			add_ideas = FBK_plan_hler_results
 		}
 
 		x = 52
