@@ -8,7 +8,6 @@ add_ideas = {
 	asacoco_reliance_crippling
 	watson_secret_service
 	lhs_defensive_union_gui
-	
 	WTS_ernest_brown
 	WTS_donald_somervall
 	WTS_anthony_eden
@@ -88,8 +87,6 @@ recruit_character = WTS_generic_suit_reactionary_monarchy
 recruit_character = WTS_generic_suit_democratic_anti
 recruit_character = WTS_B_H_Linddell_Hart
 recruit_character = WTS_JFC_Fuller
-
-
 recruit_character = WTS_Claude_Auchinleck
 recruit_character = WTS_William_Slim
 recruit_character = WTS_George_Giffard
@@ -101,7 +98,6 @@ recruit_character = WTS_Algernon_Willis
 recruit_character = WTS_William_Boyle
 recruit_character = WTS_Charles_Forbes
 recruit_character = WTS_Roger_Keyes
-	
 set_politics = {
 	ruling_party = democratic
 	last_election = "1936.1.1"
@@ -135,11 +131,13 @@ if = {
 		}
 	}
 }
+
 #Country Flags 
 WTS = {
 	set_country_flag = WTS_pre_easter_crisis
 	set_country_flag = government_alignment_set
 }
+
 #Government Alignment 
 WTS = {
 	set_variable = {
@@ -188,98 +186,118 @@ WTS = {
 		max = 5
 	}
 }
-#State Modifiers
-#bgc
-918 = {
-	add_dynamic_modifier = {
-		modifier = WTS_bgc_presence
-	}
-}
 
-122 = {
-	add_dynamic_modifier = {
-		modifier = WTS_bgc_presence
+##State Modifiers
+every_state = {
+	##
+	## London
+	##
+	limit = {
+		is_in_array = {
+			array = WTS.counter_insurgency_london_array
+			value = THIS.id
+		}
 	}
-}
-
-126 = {
-	add_dynamic_modifier = {
-		modifier = WTS_bgc_presence
-	}
-}
-
-338 = {
-	add_dynamic_modifier = {
-		modifier = WTS_bgc_presence
-	}
-}
-
-#ira
-119 = {
-	add_dynamic_modifier = {
-		modifier = WTS_ira_presence
-	}
-}
-
-1006 = {
-	add_dynamic_modifier = {
-		modifier = WTS_ira_presence
-	}
-}
-
-126 = {
-	add_dynamic_modifier = {
-		modifier = WTS_ira_presence
-	}
-}
-
-#English Antis
-126 = {
 	add_dynamic_modifier = {
 		modifier = WTS_english_antis_presence
 	}
-}
-
-338 = {
-	add_dynamic_modifier = {
-		modifier = WTS_english_antis_presence
-	}
-}
-
-848 = {
-	add_dynamic_modifier = {
-		modifier = WTS_english_antis_presence
-	}
-}
-
-849 = {
-	add_dynamic_modifier = {
-		modifier = WTS_english_antis_presence
-	}
-}
-
-129 = {
-	add_dynamic_modifier = {
-		modifier = WTS_english_antis_presence
-	}
-}
-#Teammates 
-126 = {
 	add_dynamic_modifier = {
 		modifier = WTS_national_protection_league
 	}
-}
-
-#Watch Wars
-126 = {
 	add_dynamic_modifier = {
 		modifier = WTS_the_watch_wars
+	}
+	##
+	## South England
+	##
+	else_if = {
+		limit = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_english_antis_presence
+		}
+	}
+	##
+	## West Midlands
+	##
+	else_if = {
+		limit = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_english_antis_presence
+		}
+	}
+	##
+	## East England
+	##
+	else_if = {
+		limit = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_english_antis_presence
+		}
+	}
+	##
+	## Wales
+	##
+	else_if = {
+		limit = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_bgc_presence
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_national_protection_league
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_the_watch_wars
+		}
+	}
+	##
+	## Northern Ireland
+	##
+	else_if = {
+		limit = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_ira_presence
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_national_protection_league
+		}
+		add_dynamic_modifier = {
+			modifier = WTS_the_watch_wars
+		}
 	}
 }
 
 #Naval variants
 if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
 	### Variants ###
 	# Submarines #
 	create_equipment_variant = {
@@ -388,4 +406,3 @@ if = {
 		}
 	}
 }
-
