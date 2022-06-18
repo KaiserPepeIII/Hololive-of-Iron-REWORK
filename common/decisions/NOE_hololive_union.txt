@@ -585,16 +585,41 @@ noe_hololive_union = {
 						value = THIS.id
 					}
 				}
-				country_event = {
-					id = hololive_union.6					# Event that gives all members of the hololive union medium tank 1 research
-					days = 1
+				if = {
+					limit = {
+						has_dlc = "No Step Back"
+					}
+					create_equipment_variant = {
+						name = "U1 Shiranui"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon_2
+							turret_type_slot = tank_heavy_three_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = tank_radio_1
+							special_type_slot_2 = sloped_armor
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 4
+							tank_nsb_armor_upgrade = 5
+						}
+						icon = "GFX_SOV_advanced_heavy_tank_medium"
+					}
 				}
+				else = {
+					set_technology = {
+						improved_medium_tank = 1
+					}
+				}
+				set_country_flag = NOE_UNION_has_medium_tanks
 			}
 			add_to_variable = {
 				var = GLOBAL.hololive_union_political_power_stockpile
 				value = -500
 			}
-			set_global_flag = NOE_hololive_union_medium_research			# flag that will fire off an event to give new members medium tank research
 		}
 		visible = {
 			is_in_array = {
@@ -621,16 +646,15 @@ noe_hololive_union = {
 						value = THIS.id
 					}
 				}
-				country_event = {
-					id = hololive_union.7					# Event that gives all members of the hololive union medium tank 1 research
-					days = 1
+				set_technology = {
+					fighter3 = 1
 				}
+				set_country_flag = NOE_UNION_has_fighters
 			}
 			add_to_variable = {
 				var = GLOBAL.hololive_union_political_power_stockpile
 				value = -600
 			}
-			set_global_flag = NOE_hololive_union_fighter_research			# flag that will fire off an event to give new members medium tank research
 		}
 		visible = {
 			is_in_array = {
@@ -657,16 +681,42 @@ noe_hololive_union = {
 						value = THIS.id
 					}
 				}
-				country_event = {
-					id = hololive_union.8					# Event that gives all members of the hololive union medium tank 1 research
-					days = 1
+				if = {
+					limit = {
+						has_dlc = "No Step Back"
+					}
+					create_equipment_variant = {
+						name = "NS-3"
+						type = heavy_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_3
+							turret_type_slot = tank_heavy_three_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = sloped_armor
+							special_type_slot_3 = smoke_launchers
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 8
+							tank_nsb_armor_upgrade = 6
+						}
+						icon = "GFX_SOV_advanced_heavy_tank_medium"
+					}
 				}
+				else = {
+					set_technology = {
+						advanced_heavy_tank = 1
+					}
+				}
+				set_country_flag = NOE_UNION_has_heavy_tanks
 			}
 			add_to_variable = {
 				var = GLOBAL.hololive_union_political_power_stockpile
 				value = -1200
 			}
-			set_global_flag = NOE_hololive_union_heavy_research			# flag that will fire off an event to give new members medium tank research
 		}
 		visible = {
 			is_in_array = {
@@ -681,6 +731,114 @@ noe_hololive_union = {
 				compare = greater_than_or_equals
 			}
 			has_country_flag = hololive_union_leader
+		}
+	}
+	NOE_UNION_get_up_to_date_with_tech = {
+		icon = GFX_decision_icon_default
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = NOE_UNION_has_fighters
+					}
+				}
+				set_technology = {
+					fighter3 = 1
+				}
+				set_country_flag = NOE_UNION_has_fighters
+				else_if = {
+					limit = {
+						NOT = {
+							has_country_flag = NOE_UNION_has_medium_tanks
+						}
+					}
+					if = {
+						limit = {
+							has_dlc = "No Step Back"
+						}
+						create_equipment_variant = {
+							name = "U1 Shiranui"
+							type = medium_tank_chassis_2
+							parent_version = 0
+							modules = {
+								main_armament_slot = tank_high_velocity_cannon_2
+								turret_type_slot = tank_heavy_three_man_tank_turret
+								suspension_type_slot = tank_torsion_bar_suspension
+								armor_type_slot = tank_welded_armor
+								engine_type_slot = tank_diesel_engine
+								special_type_slot_1 = tank_radio_1
+								special_type_slot_2 = sloped_armor
+							}
+							upgrades = {
+								tank_nsb_engine_upgrade = 4
+								tank_nsb_armor_upgrade = 5
+							}
+							icon = "GFX_SOV_advanced_heavy_tank_medium"
+						}
+						else = {
+							set_technology = {
+								improved_medium_tank = 1
+							}
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							has_country_flag = NOE_UNION_has_heavy_tanks
+						}
+					}
+					if = {
+						limit = {
+							has_dlc = "No Step Back"
+						}
+						create_equipment_variant = {
+							name = "NS-3"
+							type = heavy_tank_chassis_3
+							parent_version = 0
+							modules = {
+								main_armament_slot = tank_heavy_cannon_3
+								turret_type_slot = tank_heavy_three_man_tank_turret
+								suspension_type_slot = tank_torsion_bar_suspension
+								armor_type_slot = tank_welded_armor
+								engine_type_slot = tank_diesel_engine
+								special_type_slot_1 = tank_radio_2
+								special_type_slot_2 = sloped_armor
+								special_type_slot_3 = smoke_launchers
+							}
+							upgrades = {
+								tank_nsb_engine_upgrade = 8
+								tank_nsb_armor_upgrade = 6
+							}
+							icon = "GFX_SOV_advanced_heavy_tank_medium"
+						}
+						else = {
+							set_technology = {
+								advanced_heavy_tank = 1
+							}
+						}
+					}
+				}
+			}
+		}
+		visible = {
+			is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+			}
+			NOT = {
+				OR = {
+					has_country_flag = NOE_UNION_has_fighters
+					has_country_flag = NOE_UNION_has_medium_tanks
+					has_country_flag = NOE_UNION_has_heavy_tanks
+				}
+			}
+		}
+		available = {
+			is_in_array = {
+				array = NOE.hololive_union
+				value = THIS.id
+			}
 		}
 	}
 }
