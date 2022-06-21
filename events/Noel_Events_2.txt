@@ -238,11 +238,18 @@ country_event = {
 	desc = noel.53.d
 	picture = GFX_report_event_mori
 	trigger = {
-		NOT = {
-			any_country = {
-				has_country_flag = hololive_union_leader
+			OR = {
+				any_country = {
+					has_country_flag = hololive_union_leader
+					is_puppet = yes
+				}
+				NOT = {
+					any_country = {
+						has_country_flag = hololive_union_leader
+					}
+				}
 			}
-		}
+		has_global_flag = hololive_union
 	}
 	mean_time_to_happen = {
 		days = 60
@@ -250,6 +257,7 @@ country_event = {
 	option = {
 		name = noel.53.a
 		clr_global_flag = hololive_union
+		add_stability = -0.05
 	}
 }
 

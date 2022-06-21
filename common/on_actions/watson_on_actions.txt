@@ -165,7 +165,7 @@ on_actions = {
 				WTS.counter_insurgency_wales_array = 122.id
 			}
 			add_to_array = {
-				WTS.counter_insurgency_wales_array = 848.id
+				WTS.counter_insurgency_wales_array = 846.id
 			}
 			add_to_array = {
 				WTS.counter_insurgency_wales_array = 918.id
@@ -229,7 +229,7 @@ on_actions = {
 				WTS.counter_insurgency_southwest_ireland_array = 1012.id
 			}
 			add_to_array = {
-				WTS.counter_insurgency_southwest_ireland_array = 1011v
+				WTS.counter_insurgency_southwest_ireland_array = 1011.id
 			}
 			######################################################
 			#	Dublin
@@ -884,6 +884,123 @@ on_actions = {
 				var = WTS.counter_insurgency_northwest_ireland_antis
 				min = 0
 				max = 1
+			}
+			WTS = {
+				set_country_flag = WTS_london_english_antis
+				set_country_flag = WTS_london_teammates
+				set_country_flag = WTS_london_watch_wars
+				set_country_flag = WTS_south_england_english_antis
+				set_country_flag = WTS_west_midlands_english_antis
+				set_country_flag = WTS_east_england_english_antis
+				set_country_flag = WTS_wales_welsh
+				set_country_flag = WTS_wales_teammates
+				set_country_flag = WTS_wales_watch_wars
+				set_country_flag = WTS_northern_ireland_irish
+				set_country_flag = WTS_northern_ireland_teammates
+				set_country_flag = WTS_northern_ireland_watch_wars
+			}
+			##State Modifiers
+			##
+			## London
+			##
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_london_array
+						value = THIS.id
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_english_antis_presence
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_national_protection_league
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_the_watch_wars
+				}
+			}
+			##
+			## South England
+			##
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_south_england_array
+						value = THIS.id
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_english_antis_presence
+				}
+			}
+			##
+			## West Midlands
+			##
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_west_midlands_array
+						value = THIS.id
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_english_antis_presence
+				}
+			}
+			##
+			## East England
+			##
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_east_england_array
+						value = THIS.id
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_english_antis_presence
+				}
+			}
+			##
+			## Wales
+			##
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_wales_array
+						value = THIS.id
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_bgc_presence
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_national_protection_league
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_the_watch_wars
+				}
+			}
+			##
+			## Northern Ireland
+			##
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_northern_ireland_array
+						value = THIS.id
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_ira_presence
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_national_protection_league
+				}
+				add_dynamic_modifier = {
+					modifier = WTS_the_watch_wars
+				}
 			}
 			####################################################
 			#                   Piecharts                      #
