@@ -1,33 +1,218 @@
 scripted_gui = {
-  tutorial_entry_gui = {
-	window_name = "tutorial_gui_entry_window"
-	context_type = player_context
-	parent_window_token = politics_tab
-		
-	visible = {
-		always = yes
-	}
-	effects = {
-		tutorial_entry_btn_click = {
-			set_country_flag = view_tutorial
+	tutorial_entry_gui = {
+		window_name = "tutorial_gui_entry_window"
+		context_type = player_context
+		parent_window_token = politics_tab
+		visible = {
+			always = yes
 		}
-		tutorial_entry_btn_right_click = {
-			clr_country_flag = view_tutorial
-		}
-	}
-  }
-  tutorial_proper_gui = {
-  	window_name = "tutorial_gui_window"
-	context_type = player_context
-	
-	visible = {
-		has_country_flag = view_tutorial
-	}
-	
-	effects = {
-		tutorial_close_button_click = {
-			clr_country_flag = view_tutorial
+		effects = {
+			tutorial_entry_btn_click = {
+				set_country_flag = view_tutorial
+			}
+			tutorial_entry_btn_right_click = {
+				clr_country_flag = view_tutorial
+			}
 		}
 	}
-  }
+	tutorial_proper_gui = {
+		window_name = "tutorial_gui_window"
+		context_type = player_context
+		visible = {
+			has_country_flag = view_tutorial
+		}
+		effects = {
+			tutorial_close_button_click = {
+				tutorial_gui_clear_all_exit = yes
+			}
+			#
+			#	GENERAL VIEW
+			#
+			lore_summary_button_click = {
+				tutorial_gui_lore_summary = yes
+			}
+			lore_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			lhs_resistance_summary_button_click = {
+				tutorial_gui_lhs_summary = yes
+			}
+			lhs_resistance_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			ideology_summary_button_click = {
+				tutorial_gui_ideology_summary = yes
+			}
+			ideology_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			cabinet_gui_summary_button_click = {
+				tutorial_gui_cabinet_summary = yes
+			}
+			cabinet_gui_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			#
+			#	SPECIFIC VIEW
+			#
+			position1_lore_summary_button_click = {
+				tutorial_gui_pos1 = yes
+			}
+			position1_lore_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			position2_paths_summary_button_click = {
+				tutorial_gui_pos2 = yes
+			}
+			position2_paths_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			position3_gui_summary_button_click = {
+				tutorial_gui_pos3 = yes
+			}
+			position3_gui_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			position4_gui_summary_button_click = {
+				tutorial_gui_pos4 = yes
+			}
+			position4_gui_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			position5_gui_summary_button_click = {
+				tutorial_gui_pos5 = yes
+			}
+			position5_gui_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			position6_gui_summary_button_click = {
+				tutorial_gui_pos6 = yes
+			}
+			position6_gui_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+			position7_gui_summary_button_click = {
+				tutorial_gui_pos7 = yes
+			}
+			position7_gui_summary_button_right_click = {
+				tutorial_gui_clear_all = yes
+			}
+		}
+		triggers = {
+			#Buttons visible 
+			kronii_symbol_visible = {
+				OR = {
+					AND = {
+						tutorial_gui_has_pos1_item = no
+						has_country_flag = view_position1
+					}
+					AND = {
+						tutorial_gui_has_pos2_item = no
+						has_country_flag = view_position2
+					}
+					AND = {
+						tutorial_gui_has_pos3_item = no
+						has_country_flag = view_position3
+					}
+					AND = {
+						tutorial_gui_has_pos4_item = no
+						has_country_flag = view_position4
+					}
+					AND = {
+						tutorial_gui_has_pos5_item = no
+						has_country_flag = view_position5
+					}
+					AND = {
+						tutorial_gui_has_pos6_item = no
+						has_country_flag = view_position6
+					}
+					AND = {
+						tutorial_gui_has_pos7_item = no
+						has_country_flag = view_position7
+					}
+				}
+			}
+			position3_gui_summary_button_visible = {
+				tutorial_gui_has_pos3_item = yes
+			}
+			position3_gui_summary_button_text_visible = {
+				tutorial_gui_has_pos3_item = yes
+			}
+			position4_gui_summary_button_visible = {
+				tutorial_gui_has_pos4_item = yes
+			}
+			position4_gui_summary_button_text_visible = {
+				tutorial_gui_has_pos4_item = yes
+			}
+			position5_gui_summary_button_visible = {
+				tutorial_gui_has_pos5_item = yes
+			}
+			position5_gui_summary_button_text_visible = {
+				tutorial_gui_has_pos5_item = yes
+			}
+			position6_gui_summary_button_visible = {
+				tutorial_gui_has_pos6_item = yes
+			}
+			position6_gui_summary_button_text_visible = {
+				tutorial_gui_has_pos6_item = yes
+			}
+			position7_gui_summary_button_visible = {
+				tutorial_gui_has_pos7_item = yes
+			}
+			position7_gui_summary_button_text_visible = {
+				tutorial_gui_has_pos7_item = yes
+			}
+			############
+			#Substitute visible 
+			position1_lore_summary_content_text_substitute_visible = {
+				tutorial_gui_has_pos1_item = no
+				has_country_flag = view_position1
+			}
+			position2_paths_summary_content_text_substitute_visible = {
+				tutorial_gui_has_pos2_item = no
+				has_country_flag = view_position2
+			}
+			############
+			lore_summary_content_visible = {
+				has_country_flag = view_lore_summary
+			}
+			lhs_resistance_summary_content_text_visible = {
+				has_country_flag = view_lhs_summary
+			}
+			ideology_summary_content_text_visible = {
+				has_country_flag = view_ideology_summary
+			}
+			cabinet_gui_summary_content_text_visible = {
+				has_country_flag = view_cabinet_summary
+			}
+			position1_lore_summary_content_text_visible = {
+				tutorial_gui_has_pos1_item = yes
+				has_country_flag = view_position1
+			}
+			position2_paths_summary_content_text_visible = {
+				tutorial_gui_has_pos2_item = yes
+				has_country_flag = view_position2
+			}
+			position3_gui_summary_content_text_visible = {
+				tutorial_gui_has_pos3_item = yes
+				has_country_flag = view_position3
+			}
+			position4_gui_summary_content_text_visible = {
+				tutorial_gui_has_pos4_item = yes
+				has_country_flag = view_position4
+			}
+			position5_gui_summary_content_text_visible = {
+				tutorial_gui_has_pos5_item = yes
+				has_country_flag = view_position5
+			}
+			position6_gui_summary_content_text_visible = {
+				tutorial_gui_has_pos6_item = yes
+				has_country_flag = view_position6
+			}
+			position7_gui_summary_content_text_visible = {
+				tutorial_gui_has_pos7_item = yes
+				has_country_flag = view_position7
+			}
+		}
+	}
 }
