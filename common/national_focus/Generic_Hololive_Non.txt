@@ -1,7 +1,7 @@
 focus_tree = {
 	id = FocusNonHolo
 	country = {
-		factor = 1
+		factor = 2
 	}
 	default = no
 	focus = {
@@ -1671,7 +1671,7 @@ focus_tree = {
 			focus = GEN_secret_armemants_program_non
 		}
 		completion_reward = {
-			random_state = {
+			capital_scope = {
 				limit = {
 					is_owned_by = ROOT
 				}
@@ -1679,37 +1679,6 @@ focus_tree = {
 					type = bunker
 					level = 2
 					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_border = yes
-					}
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_border = yes
-					}
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_border = yes
-					}
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_border = yes
-					}
 				}
 			}
 		}
@@ -1757,6 +1726,7 @@ focus_tree = {
 						communism > 0
 						pro_resistance_monarchy > 0
 						pro_resistance_kleptocracy > 0
+						left_wing_revolutionary > 0
 					}
 				}
 				add_popularity = {
@@ -1775,6 +1745,10 @@ focus_tree = {
 					ideology = pro_resistance_nationalism
 					popularity = -0.05
 				}
+				add_popularity = {
+					ideology = left_wing_revolutionary
+					popularity = -0.05
+				}
 			}
 			else_if = {
 				limit = {
@@ -1784,6 +1758,7 @@ focus_tree = {
 							communism > 0
 							pro_resistance_monarchy > 0
 							pro_resistance_kleptocracy > 0
+							left_wing_revolutionary > 0
 						}
 					}
 				}
@@ -1870,6 +1845,56 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_aggressive_outlook_non
 		}
+		completion_reward = {
+			random_state = {
+				limit = {
+					is_owned_by = ROOT
+					is_core_of = ROOT
+				}
+				add_state_modifier = {
+					modifier = {
+						resistance_growth = 0.2
+					}
+				}
+			}
+			random_state = {
+				limit = {
+					is_owned_by = ROOT
+					is_core_of = ROOT
+				}
+				add_state_modifier = {
+					modifier = {
+						resistance_growth = 0.2
+					}
+				}
+			}
+			random_state = {
+				limit = {
+					is_owned_by = ROOT
+					is_core_of = ROOT
+				}
+				add_state_modifier = {
+					modifier = {
+						resistance_growth = 0.2
+					}
+				}
+			}
+			random_state = {
+				limit = {
+					is_owned_by = ROOT
+					is_core_of = ROOT
+				}
+				add_state_modifier = {
+					modifier = {
+						resistance_growth = 0.2
+					}
+				}
+			}
+			add_timed_idea = {
+				idea = resistance_cell_training_idea
+				days = 140
+			}
+		}
 		x = 70
 		y = 6
 	}
@@ -1879,6 +1904,12 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_prepare_resistance_cells_non
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = standing_army_bolster
+				days = 365
+			}
 		}
 		x = 72
 		y = 7
@@ -1893,6 +1924,12 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_flames_of_revolution_non
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+		}
 		x = 74
 		y = 2
 	}
@@ -1903,6 +1940,12 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_flames_of_nationalism_non
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = new_nationalist_scholars_idea
+				days = 365
+			}
+		}
 		x = 73
 		y = 3
 	}
@@ -1912,6 +1955,12 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_flames_of_nationalism_non
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.15
+			}
 		}
 		x = 75
 		y = 3
@@ -1926,6 +1975,15 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_new_nationalist_scholars_non
 		}
+		available = {
+			fascism > 0.5
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+		}
 		x = 74
 		y = 4
 	}
@@ -1935,6 +1993,60 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_denounce_the_past_treaties_non
+		}
+		completion_reward = {
+			add_ideas = {
+				non_world_liberation_idea
+			}
+			add_war_support = 0.15
+			random_neighbor_country = {
+				limit = {
+					NOT = {
+						has_anti_ideology = yes
+						is_guaranteed_by = ROOT
+						is_in_faction_with = ROOT
+						has_non_aggression_pact_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				set_temp_variable = {
+					var = obama
+					value = THIS.id
+				}
+			}
+			ROOT = {
+				create_wargoal = {
+					target = var:obama
+					type = puppet_wargoal_focus
+				}
+				create_wargoal = {
+					target = var:obama
+					type = puppet_wargoal_focus
+				}
+				create_wargoal = {
+					target = var:obama
+					type = puppet_wargoal_focus
+				}
+				create_wargoal = {
+					target = var:obama
+					type = puppet_wargoal_focus
+				}
+				create_wargoal = {
+					target = var:obama
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		available = {
+			any_neighbor_country = {
+				NOT = {
+					has_anti_ideology = yes
+					is_guaranteed_by = ROOT
+					is_in_faction_with = ROOT
+					has_non_aggression_pact_with = ROOT
+					is_subject_of = ROOT
+				}
+			}
 		}
 		x = 74
 		y = 5

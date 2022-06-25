@@ -1,4 +1,45 @@
 debug_decisions = {
+	random_nation_war = {
+		icon = generic_research
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		complete_effect = {
+			add_ideas = {
+				non_world_liberation_idea
+			}
+			add_war_support = 0.15
+			set_temp_variable = {
+				aggrsr = THIS.id
+			}
+			random_neighbor_country = {
+				limit = {
+					NOT = {
+						has_anti_ideology = yes
+						is_guaranteed_by = ROOT
+						is_in_faction_with = ROOT
+						has_non_aggression_pact_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				set_temp_variable = {
+					var = obama
+					value = THIS.id
+				}
+			}
+			ROOT = {
+				create_wargoal = {
+					target = var:obama
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		cost = 0
+	}
 	sui_reload_focus_test = {
 		icon = generic_research
 		available = {

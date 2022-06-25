@@ -1,31 +1,62 @@
 FBK_army_variables = {
 	# Set army counts
-	set_variable = { FBK.army_national_army_divisions_count = FBK.num_armies }
-	set_variable = { FBK.army_WFA_divisions_count = FBK.num_armies_with_type@wfa_army_infantry }
-	subtract_from_variable = {FBK.army_national_army_divisions_count = FBK.army_WFA_divisions_count} 
-
-	set_variable = { FBK.army_WFA_to_NA_count = FBK.army_WFA_divisions_count }
-	set_variable = { FBK.army_NA_to_WFA_count = FBK.army_national_army_divisions_count }
-	subtract_from_variable = { FBK.army_WFA_to_NA_count = FBK.army_national_army_divisions_count}
-	subtract_from_variable = { FBK.army_NA_to_WFA_count = FBK.army_WFA_divisions_count}
-
+	set_variable = {
+		FBK.army_national_army_divisions_count = FBK.num_armies
+	}
+	set_variable = {
+		FBK.army_WFA_divisions_count = FBK.num_armies_with_type@wfa_army_infantry
+	}
+	subtract_from_variable = {
+		FBK.army_national_army_divisions_count = FBK.army_WFA_divisions_count
+	}
+	set_variable = {
+		FBK.army_WFA_to_NA_count = FBK.army_WFA_divisions_count
+	}
+	set_variable = {
+		FBK.army_NA_to_WFA_count = FBK.army_national_army_divisions_count
+	}
+	subtract_from_variable = {
+		FBK.army_WFA_to_NA_count = FBK.army_national_army_divisions_count
+	}
+	subtract_from_variable = {
+		FBK.army_NA_to_WFA_count = FBK.army_WFA_divisions_count
+	}
 	#Sets army ratios
-	set_variable = { FBK.army_national_army_divisions_ratio = FBK.army_national_army_divisions_count }	
-	set_variable = { FBK.army_WFA_divisions_ratio = FBK.army_WFA_divisions_count }	
-
-	divide_variable = { FBK.army_national_army_divisions_ratio = FBK.num_armies }
-	divide_variable = { FBK.army_WFA_divisions_ratio = FBK.num_armies }
-
+	set_variable = {
+		FBK.army_national_army_divisions_ratio = FBK.army_national_army_divisions_count
+	}
+	set_variable = {
+		FBK.army_WFA_divisions_ratio = FBK.army_WFA_divisions_count
+	}
+	divide_variable = {
+		FBK.army_national_army_divisions_ratio = FBK.num_armies
+	}
+	divide_variable = {
+		FBK.army_WFA_divisions_ratio = FBK.num_armies
+	}
 	#Sets army count modifier. 
-	set_variable = { FBK.army_balance_modifier_value = FBK.army_WFA_divisions_ratio }
-	subtract_from_variable = { FBK.army_balance_modifier_value = FBK.army_national_army_divisions_ratio }
-
+	set_variable = {
+		FBK.army_balance_modifier_value = FBK.army_WFA_divisions_ratio
+	}
+	subtract_from_variable = {
+		FBK.army_balance_modifier_value = FBK.army_national_army_divisions_ratio
+	}
 	#Applies modifier to relationship variable
-	set_temp_variable = { WFA_relationship_temp_var = FBK.WFA_relationship_flat_var } 
-	set_temp_variable = { WFA_relationship_balance_temp_var = FBK.WFA_relationship_flat_var } 
-	multiply_temp_variable = {WFA_relationship_balance_temp_var = FBK.army_balance_modifier_value }		
-	add_to_temp_variable = { WFA_relationship_temp_var = WFA_relationship_balance_temp_var }
-	set_variable = { FBK.WFA_relationship_var = WFA_relationship_temp_var }	
+	set_temp_variable = {
+		WFA_relationship_temp_var = FBK.WFA_relationship_flat_var
+	}
+	set_temp_variable = {
+		WFA_relationship_balance_temp_var = FBK.WFA_relationship_flat_var
+	}
+	multiply_temp_variable = {
+		WFA_relationship_balance_temp_var = FBK.army_balance_modifier_value
+	}
+	add_to_temp_variable = {
+		WFA_relationship_temp_var = WFA_relationship_balance_temp_var
+	}
+	set_variable = {
+		FBK.WFA_relationship_var = WFA_relationship_temp_var
+	}
 }
 
 FBK_spawn_wfa_divisions_effect = {
@@ -55,21 +86,20 @@ FBK_spawn_na_divisions_effect = {
 }
 
 FBK_delete_na_divisions_effect = {
-
 	FBK = {
-		delete_unit_template_and_units ={
+		delete_unit_template_and_units = {
 			division_template = "Hemvärnet Bataljonen"
 			disband = yes
 		}
-		delete_unit_template_and_units ={
+		delete_unit_template_and_units = {
 			division_template = "Gränsbevakningsbataljonen"
 			disband = yes
 		}
-		delete_unit_template_and_units ={
+		delete_unit_template_and_units = {
 			division_template = "Infanteridivisionen"
 			disband = yes
 		}
-		delete_unit_template_and_units ={
+		delete_unit_template_and_units = {
 			division_template = "Kungliga Pansarbrigaden"
 			disband = yes
 		}
