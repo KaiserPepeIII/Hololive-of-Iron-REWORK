@@ -1,34 +1,28 @@
 scripted_gui = {
-   hololive_upper_house_button_gui = {
-	window_name = "hololive_upper_house_button_gui_window"
-	context_type = player_context
-	parent_window_token = politics_tab
-		
-	visible = {
-		always = yes
-	}
-	 
-	effects = {
-		holo_parliament_button_click = {
-			set_country_flag = view_upper_house
-			seiso_refresh = yes
+	hololive_upper_house_button_gui = {
+		window_name = "hololive_upper_house_button_gui_window"
+		context_type = player_context
+		parent_window_token = politics_tab
+		visible = {
+			always = yes
 		}
-		holo_parliament_button_right_click = {
-			clr_country_flag = view_upper_house
+		effects = {
+			holo_parliament_button_click = {
+				set_country_flag = view_upper_house
+				seiso_refresh = yes
+			}
+			holo_parliament_button_right_click = {
+				clr_country_flag = view_upper_house
+			}
 		}
 	}
-	
-  }
-    hololive_upper_house_view_gui = {
-	window_name = "hololive_upper_house_view_gui_window"
-	context_type = player_context
-		
+	hololive_upper_house_view_gui = {
+		window_name = "hololive_upper_house_view_gui_window"
+		context_type = player_context
 		visible = {
 			has_country_flag = view_upper_house
 		}
-		
 		triggers = {
-			
 			seiso_not_saeiso_button_minus_click_enabled = {
 				ROOT = {
 					check_variable = {
@@ -62,139 +56,138 @@ scripted_gui = {
 				}
 			}
 			authoritarian_democracy_button_plus_click_enabled = {
-					ROOT = {
-						check_variable = {
-							var = ROOT.authoritarianism_alignment
-							value = 5
-							compare = less_than
-						}
-						government_alignment_cooldown = yes
+				ROOT = {
+					check_variable = {
+						var = ROOT.authoritarianism_alignment
+						value = 5
+						compare = less_than
 					}
+					government_alignment_cooldown = yes
+				}
 			}
 			reactionary_reformist_button_minus_click_enabled = {
-					ROOT = {
-						check_variable = {
-							var = ROOT.reactionary_alignment
-							value = 1
-							compare = greater_than
-						}
-						government_alignment_cooldown = yes
+				ROOT = {
+					check_variable = {
+						var = ROOT.reactionary_alignment
+						value = 1
+						compare = greater_than
 					}
+					government_alignment_cooldown = yes
+				}
 			}
 			reactionary_reformist_button_plus_click_enabled = {
-					ROOT = {
-						check_variable = {
-							var = ROOT.reactionary_alignment
-							value = 5
-							compare = less_than
-						}
-						government_alignment_cooldown = yes
+				ROOT = {
+					check_variable = {
+						var = ROOT.reactionary_alignment
+						value = 5
+						compare = less_than
 					}
+					government_alignment_cooldown = yes
+				}
 			}
 			capitalism_socialism_button_minus_click_enabled = {
-					ROOT = {
-						check_variable = {
-							var = ROOT.capitalism_alignment
-							value = 1
-							compare = greater_than
-						}
-						government_alignment_cooldown = yes
+				ROOT = {
+					check_variable = {
+						var = ROOT.capitalism_alignment
+						value = 1
+						compare = greater_than
 					}
+					government_alignment_cooldown = yes
+				}
 			}
 			capitalism_socialism_button_plus_click_enabled = {
-					ROOT = {
-						check_variable = {
-							var = ROOT.capitalism_alignment
-							value = 5
-							compare = less_than
-						}
-						government_alignment_cooldown = yes
+				ROOT = {
+					check_variable = {
+						var = ROOT.capitalism_alignment
+						value = 5
+						compare = less_than
 					}
+					government_alignment_cooldown = yes
+				}
 			}
 			isolationism_interventionism_button_minus_click_enabled = {
-					ROOT = {
-						check_variable = {
-							var = ROOT.isolationism_alignment
-							value = 1
-							compare = greater_than
-						}
-						government_alignment_cooldown = yes
+				ROOT = {
+					check_variable = {
+						var = ROOT.isolationism_alignment
+						value = 1
+						compare = greater_than
 					}
+					government_alignment_cooldown = yes
+				}
 			}
 			isolationism_interventionism_button_plus_click_enabled = {
-					ROOT = {
-						check_variable = {
-							var = ROOT.isolationism_alignment
-							value = 5
-							compare = less_than
-						}
-						government_alignment_cooldown = yes
+				ROOT = {
+					check_variable = {
+						var = ROOT.isolationism_alignment
+						value = 5
+						compare = less_than
 					}
+					government_alignment_cooldown = yes
 				}
+			}
 		}
-		
 		effects = {
 			#scripted effects/government_alignment_scripted_effects
-				seiso_not_saeiso_button_minus_click = {
-					ROOT = {
+			seiso_not_saeiso_button_minus_click = {
+				ROOT = {
 					seiso_minus_bar_scripted_effect = yes
 					seiso_refresh = yes
-					}
 				}
-				seiso_not_saeiso_button_plus_click = {
-					ROOT = {
+			}
+			seiso_not_saeiso_button_plus_click = {
+				ROOT = {
 					seiso_plus_bar_scripted_effect = yes
 					seiso_refresh = yes
-					}
 				}
-				authoritarian_democracy_button_minus_click = {
-					ROOT = {
+			}
+			authoritarian_democracy_button_minus_click = {
+				ROOT = {
 					authoritarianism_minus_bar_scripted_effect = yes
 					authoritarianism_refresh = yes
-					}
 				}
-				authoritarian_democracy_button_plus_click = {
-					ROOT = {
+			}
+			authoritarian_democracy_button_plus_click = {
+				ROOT = {
 					authoritarianism_plus_bar_scripted_effect = yes
 					authoritarianism_refresh = yes
-					}
 				}
-				reactionary_reformist_button_minus_click = {
-					ROOT = {
+			}
+			reactionary_reformist_button_minus_click = {
+				ROOT = {
 					reactionary_minus_bar_scripted_effect = yes
 					reactionary_refresh = yes
-					}
 				}
-				reactionary_reformist_button_plus_click = {
-					ROOT = {
+			}
+			reactionary_reformist_button_plus_click = {
+				ROOT = {
 					reactionary_plus_bar_scripted_effect = yes
 					reactionary_refresh = yes
-					}
 				}
-				capitalism_socialism_button_minus_click = {
-					ROOT = {
+			}
+			capitalism_socialism_button_minus_click = {
+				ROOT = {
 					capitalism_minus_bar_scripted_effect = yes
 					capitalism_refresh = yes
-					}
 				}
-				capitalism_socialism_button_plus_click = {
-					ROOT = {
+			}
+			capitalism_socialism_button_plus_click = {
+				ROOT = {
 					capitalism_plus_bar_scripted_effect = yes
 					capitalism_refresh = yes
-					}
 				}
-				isolationism_interventionism_button_minus_click = {
-					ROOT = {
+			}
+			isolationism_interventionism_button_minus_click = {
+				ROOT = {
 					isolationism_minus_bar_scripted_effect = yes
 					isolationism_refresh = yes
-					}
 				}
-				isolationism_interventionism_button_plus_click = {
-					ROOT = {
+			}
+			isolationism_interventionism_button_plus_click = {
+				ROOT = {
 					isolationism_plus_bar_scripted_effect = yes
 					isolationism_refresh = yes
-					}
 				}
+			}
 			first_minister_portrait_outline_click = {
 				ROOT = {
 					country_event = cabinet.1
@@ -244,8 +237,6 @@ scripted_gui = {
 				clr_country_flag = view_upper_house
 			}
 		}
-		
-		
 		properties = {
 			seiso_not_saeiso_bar = {
 				image = "[get_seiso_bar]"

@@ -1,7 +1,5 @@
 ﻿capital = 285
-
 oob = "HTO_1936"
-
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 3
@@ -21,13 +19,34 @@ set_technology = {
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
 	basic_train = 1
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "HTO_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
@@ -45,54 +64,48 @@ if = {
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "HTO_1936_naval_legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "HTO_1936_naval_legacy"
 }
 
 set_convoys = 60
-
 #LEADER GENERATION - HAATO 
-recruit_character  = HTO_akai_haato_democratic 
-recruit_character  = HTO_akai_haato_progressive  
-recruit_character  = HTO_akai_haato_yagoo_monarchy  
-recruit_character  = HTO_akai_haato_yagoo_kleptocratic  
-recruit_character  = HTO_akai_haato_revolutionary  
-recruit_character  = HTO_akai_haato_nationalism  
-recruit_character  = HTO_akai_haato_resistance_monarchy  
-recruit_character  = HTO_akai_haato_resistance_kleptocracy  
-recruit_character  = HTO_akai_haato_neutral_kleptocratic  
-recruit_character  = HTO_akai_haato_reactionary_nationalism  
-recruit_character  = HTO_akai_haato_neutral_democracy   
-recruit_character  = HTO_akai_haato_divine_mandate   
-   
-recruit_character  = HTO_generic_suit_divine_mandate   
-recruit_character  = HTO_generic_suit_new_nationalist
-recruit_character  = HTO_generic_suit_left_wing_revolutionary  
-recruit_character  = HTO_generic_suit_reactionary_monarchy
-recruit_character  = HTO_generic_suit_democratic_anti
-
+recruit_character = HTO_akai_haato_democratic
+recruit_character = HTO_akai_haato_progressive
+recruit_character = HTO_akai_haato_yagoo_monarchy
+recruit_character = HTO_akai_haato_yagoo_kleptocratic
+recruit_character = HTO_akai_haato_revolutionary
+recruit_character = HTO_akai_haato_nationalism
+recruit_character = HTO_akai_haato_resistance_monarchy
+recruit_character = HTO_akai_haato_resistance_kleptocracy
+recruit_character = HTO_akai_haato_neutral_kleptocratic
+recruit_character = HTO_akai_haato_reactionary_nationalism
+recruit_character = HTO_akai_haato_neutral_democracy
+recruit_character = HTO_akai_haato_divine_mandate
 set_politics = {
 	ruling_party = pro_resistance_nationalism
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	pro_resistance_nationalism = 66
 	reactionary_nationalism = 24
 	communism = 10
 }
-
-
-
-
-

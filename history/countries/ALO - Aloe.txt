@@ -1,10 +1,8 @@
 ﻿capital = 43
-
 oob = "ALO_1936"
 set_stability = 0.2
 set_war_support = 0.1
 set_research_slots = 3
-
 add_ideas = {
 	lhs_member
 	asacoco_reliance_minimal
@@ -12,12 +10,29 @@ add_ideas = {
 	imminent_societal_collapse
 }
 
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	YAG = {
+		set_autonomy = {
+			target = ALO
+			autonomous_state = autonomy_dominion
+		}
+	}
+	else = {
+		YAG = {
+			puppet = ALO
+		}
+	}
+}
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	gw_artillery = 1
-	tech_support = 1		
+	tech_support = 1
 	tech_recon = 1
 	motorised_infantry = 1
 	early_fighter = 1
@@ -26,41 +41,31 @@ set_technology = {
 }
 
 set_convoys = 40
-
 #LEADER GENERATION - ALOE 
-recruit_character  = ALO_mano_aloe_democratic 
-recruit_character  = ALO_mano_aloe_progressive  
-recruit_character  = ALO_mano_aloe_yagoo_monarchy  
-recruit_character  = ALO_mano_aloe_yagoo_kleptocratic  
-recruit_character  = ALO_mano_aloe_revolutionary  
-recruit_character  = ALO_mano_aloe_nationalism  
-recruit_character  = ALO_mano_aloe_resistance_monarchy  
-recruit_character  = ALO_mano_aloe_resistance_kleptocracy  
-recruit_character  = ALO_mano_aloe_neutral_kleptocratic  
-recruit_character  = ALO_mano_aloe_reactionary_nationalism  
-recruit_character  = ALO_mano_aloe_neutral_democracy   
-recruit_character  = ALO_mano_aloe_divine_mandate   
-
-recruit_character  = ALO_generic_suit_new_nationalist
-recruit_character  = ALO_generic_suit_left_wing_revolutionary  
-recruit_character  = ALO_generic_suit_reactionary_monarchy
-recruit_character  = ALO_generic_suit_democratic_anti
-
+recruit_character = ALO_mano_aloe_democratic
+recruit_character = ALO_mano_aloe_progressive
+recruit_character = ALO_mano_aloe_yagoo_monarchy
+recruit_character = ALO_mano_aloe_yagoo_kleptocratic
+recruit_character = ALO_mano_aloe_revolutionary
+recruit_character = ALO_mano_aloe_nationalism
+recruit_character = ALO_mano_aloe_resistance_monarchy
+recruit_character = ALO_mano_aloe_resistance_kleptocracy
+recruit_character = ALO_mano_aloe_neutral_kleptocratic
+recruit_character = ALO_mano_aloe_reactionary_nationalism
+recruit_character = ALO_mano_aloe_neutral_democracy
+recruit_character = ALO_mano_aloe_divine_mandate
 set_politics = {
 	ruling_party = pro_yagoo_kleptocracy
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
 	pro_yagoo_kleptocracy = 25
-	pro_yagoo_progressive = 15 
+	pro_yagoo_progressive = 15
 	democratic = 5
 	fascism = 30
 	reactionary_monarchy = 15
-	left_wing_revolutionary = 10 
+	left_wing_revolutionary = 10
 }
-
-
-
-

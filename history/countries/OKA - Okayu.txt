@@ -1,14 +1,12 @@
 ﻿capital = 266
-
 oob = "OKA_1936"
 set_stability = 0.15
 set_war_support = 0.05
 set_research_slots = 3
-
 add_ideas = {
 	lhs_member
 	asacoco_reliance_minimal
-    lhs_economic_development_gui
+	lhs_economic_development_gui
 }
 
 # Starting tech
@@ -18,7 +16,9 @@ set_technology = {
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "OKA_1936_naval_mtg"
 	set_technology = {
 		early_ship_hull_light = 1
@@ -26,48 +26,46 @@ if = {
 		basic_battery = 1
 		basic_light_battery = 1
 		basic_torpedo = 1
-		basic_depth_charges = 1		
-	}
-	else = {
-		set_technology = {
-			early_destroyer = 1
-			early_light_cruiser = 1
-		}
-		set_naval_oob = "OKA_1936_naval_legacy"
+		basic_depth_charges = 1
 	}
 }
 
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+	}
+	set_naval_oob = "OKA_1936_naval_legacy"
+}
+
 set_convoys = 60
-
 #LEADER GENERATION - OKAYU 
-recruit_character  = OKA_okayu_nekomata_democratic 
-recruit_character  = OKA_okayu_nekomata_progressive  
-recruit_character  = OKA_okayu_nekomata_yagoo_monarchy  
-recruit_character  = OKA_okayu_nekomata_yagoo_kleptocratic  
-recruit_character  = OKA_okayu_nekomata_revolutionary  
-recruit_character  = OKA_okayu_nekomata_nationalism  
-recruit_character  = OKA_okayu_nekomata_resistance_monarchy  
-recruit_character  = OKA_okayu_nekomata_resistance_kleptocracy  
-recruit_character  = OKA_okayu_nekomata_neutral_kleptocratic  
-recruit_character  = OKA_okayu_nekomata_reactionary_nationalism  
-recruit_character  = OKA_okayu_nekomata_neutral_democracy   
-recruit_character  = OKA_okayu_nekomata_divine_mandate     
-recruit_character  = OKA_generic_suit_new_nationalist
-recruit_character  = OKA_generic_suit_left_wing_revolutionary  
-recruit_character  = OKA_generic_suit_reactionary_monarchy
-recruit_character  = OKA_generic_suit_democratic_anti
-
+recruit_character = OKA_okayu_nekomata_democratic
+recruit_character = OKA_okayu_nekomata_progressive
+recruit_character = OKA_okayu_nekomata_yagoo_monarchy
+recruit_character = OKA_okayu_nekomata_yagoo_kleptocratic
+recruit_character = OKA_okayu_nekomata_revolutionary
+recruit_character = OKA_okayu_nekomata_nationalism
+recruit_character = OKA_okayu_nekomata_resistance_monarchy
+recruit_character = OKA_okayu_nekomata_resistance_kleptocracy
+recruit_character = OKA_okayu_nekomata_neutral_kleptocratic
+recruit_character = OKA_okayu_nekomata_reactionary_nationalism
+recruit_character = OKA_okayu_nekomata_neutral_democracy
+recruit_character = OKA_okayu_nekomata_divine_mandate
 set_politics = {
 	ruling_party = pro_yagoo_monarchy
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	pro_yagoo_monarchy = 43
 	reactionary_nationalism = 36
 	democratic = 21
 }
-
-
-

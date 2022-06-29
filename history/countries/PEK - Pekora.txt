@@ -1,11 +1,8 @@
 ﻿capital = 860
-
 oob = "PEK_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 4
-
-
 add_ideas = {
 	asacoco_reliance_low
 	PEK_lone_rabbit
@@ -16,19 +13,6 @@ add_ideas = {
 	closed_economy
 }
 
-# Starting tech
-set_technology = {
-	infantry_weapons = 1
-	tech_mountaineers = 1
-	motorised_infantry = 1
-	gw_artillery = 1
-	interwar_antiair = 1
-	early_fighter = 1
-	CAS1 = 1
-	gwtank = 1
-	tech_support = 1
-	basic_train = 1
-}
 PEK = {
 	if = {
 		limit = {
@@ -46,9 +30,51 @@ PEK = {
 
 create_faction = "Usada Alliance"
 add_to_faction = SUD
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	early_fighter = 1
+	CAS1 = 1
+	tech_support = 1
+	basic_train = 1
+}
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+		engine_tech_1 = 1
+		armor_tech_1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		improved_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "PEK_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
@@ -64,56 +90,55 @@ if = {
 		basic_battery = 1
 		basic_light_battery = 1
 		basic_torpedo = 1
-		basic_depth_charges = 1		
-	}
-	else = {
-		set_technology = {
-			early_destroyer = 1
-			basic_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battlecruiser = 1
-			early_battleship = 1
-			transport = 1
-			early_submarine = 1
-			basic_submarine = 1
-		}
-		set_naval_oob = "PEK_1936_naval_legacy"
+		basic_depth_charges = 1
 	}
 }
 
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battlecruiser = 1
+		early_battleship = 1
+		transport = 1
+		early_submarine = 1
+		basic_submarine = 1
+	}
+	set_naval_oob = "PEK_1936_naval_legacy"
+}
+
 set_convoys = 60
-
 #LEADER GENERATION - PEKORA 
-recruit_character  = PEK_usada_pekora_democratic 
-recruit_character  = PEK_usada_pekora_progressive  
-recruit_character  = PEK_usada_pekora_yagoo_monarchy  
-recruit_character  = PEK_usada_pekora_yagoo_kleptocratic  
-recruit_character  = PEK_usada_pekora_revolutionary  
-recruit_character  = PEK_usada_pekora_nationalism  
-recruit_character  = PEK_usada_pekora_resistance_monarchy  
-recruit_character  = PEK_usada_pekora_resistance_kleptocracy  
-recruit_character  = PEK_usada_pekora_neutral_kleptocratic  
-recruit_character  = PEK_usada_pekora_reactionary_nationalism  
-recruit_character  = PEK_usada_pekora_neutral_democracy   
-recruit_character  = PEK_usada_pekora_divine_mandate   
-recruit_character  = PEK_generic_suit_new_nationalist
-recruit_character  = PEK_generic_suit_left_wing_revolutionary  
-recruit_character  = PEK_generic_suit_reactionary_monarchy
-recruit_character  = PEK_generic_suit_democratic_anti
-
+recruit_character = PEK_usada_pekora_democratic
+recruit_character = PEK_usada_pekora_progressive
+recruit_character = PEK_usada_pekora_yagoo_monarchy
+recruit_character = PEK_usada_pekora_yagoo_kleptocratic
+recruit_character = PEK_usada_pekora_revolutionary
+recruit_character = PEK_usada_pekora_nationalism
+recruit_character = PEK_usada_pekora_resistance_monarchy
+recruit_character = PEK_usada_pekora_resistance_kleptocracy
+recruit_character = PEK_usada_pekora_neutral_kleptocratic
+recruit_character = PEK_usada_pekora_reactionary_nationalism
+recruit_character = PEK_usada_pekora_neutral_democracy
+recruit_character = PEK_usada_pekora_divine_mandate
 set_politics = {
 	ruling_party = reactionary_nationalism
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
 	reactionary_nationalism = 62
 	pro_resistance_nationalism = 38
 }
-
-
 
 #Dynamic Modifiers
 #Italy
@@ -125,6 +150,7 @@ set_popularities = {
 		modifier = PEK_mezzogiorno
 	}
 }
+
 156 = {
 	add_dynamic_modifier = {
 		modifier = PEK_esercito_santa_fede
@@ -133,6 +159,7 @@ set_popularities = {
 		modifier = PEK_mezzogiorno
 	}
 }
+
 117 = {
 	add_dynamic_modifier = {
 		modifier = PEK_esercito_santa_fede
@@ -141,87 +168,104 @@ set_popularities = {
 		modifier = PEK_mezzogiorno
 	}
 }
+
 #Africa
 458 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 665 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 448 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 449 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 661 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 662 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 450 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 663 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 451 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 452 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 457 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 1027 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 1029 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 1030 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 1031 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 456 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold
 	}
 }
+
 457 = {
 	add_dynamic_modifier = {
 		modifier = PEK_islamic_stronghold

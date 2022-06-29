@@ -1,38 +1,63 @@
 ﻿capital = 763
-
 oob = "NOE_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 4
+add_ideas = {
+	asacoco_reliance_low
+	novo_feudum
+	uradel_faction
+	great_depression_noel_1
+	breadbasket_of_europe
+	robber_barons
+	NOE_peasant_levees
+	resistance_member
+	coco_resistance_member
+}
 
-
-
-add_ideas = { 
-			  asacoco_reliance_low
-			  novo_feudum
-			  uradel_faction
-			  great_depression_noel_1
-			  breadbasket_of_europe
-			  robber_barons
-			  NOE_peasant_levees
-			  resistance_member
-			  coco_resistance_member
-            }
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
 	tech_mountaineers = 1
+	motorised_infantry = 1
 	gw_artillery = 1
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
 	basic_train = 1
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+		engine_tech_1 = 1
+		armor_tech_1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "NOE_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
@@ -50,47 +75,47 @@ if = {
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
-	else= {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "NOE_1936_naval_legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "NOE_1936_naval_legacy"
 }
 
 set_convoys = 50
-
 #LEADER GENERATION - NOEL 
-recruit_character  = NOE_noel_shirogane_democratic 
-recruit_character  = NOE_noel_shirogane_progressive  
-recruit_character  = NOE_noel_shirogane_yagoo_monarchy  
-recruit_character  = NOE_noel_shirogane_yagoo_kleptocratic  
-recruit_character  = NOE_noel_shirogane_revolutionary  
-recruit_character  = NOE_noel_shirogane_nationalism  
-recruit_character  = NOE_noel_shirogane_resistance_monarchy  
-recruit_character  = NOE_noel_shirogane_resistance_kleptocracy  
-recruit_character  = NOE_noel_shirogane_neutral_kleptocratic  
-recruit_character  = NOE_noel_shirogane_reactionary_nationalism  
-recruit_character  = NOE_noel_shirogane_neutral_democracy   
-recruit_character  = NOE_noel_shirogane_divine_mandate    
-recruit_character  = NOE_generic_suit_new_nationalist
-recruit_character  = NOE_generic_suit_left_wing_revolutionary  
-recruit_character  = NOE_generic_suit_reactionary_monarchy
-recruit_character  = NOE_generic_suit_democratic_anti
-
+recruit_character = NOE_noel_shirogane_democratic
+recruit_character = NOE_noel_shirogane_progressive
+recruit_character = NOE_noel_shirogane_yagoo_monarchy
+recruit_character = NOE_noel_shirogane_yagoo_kleptocratic
+recruit_character = NOE_noel_shirogane_revolutionary
+recruit_character = NOE_noel_shirogane_nationalism
+recruit_character = NOE_noel_shirogane_resistance_monarchy
+recruit_character = NOE_noel_shirogane_resistance_kleptocracy
+recruit_character = NOE_noel_shirogane_neutral_kleptocratic
+recruit_character = NOE_noel_shirogane_reactionary_nationalism
+recruit_character = NOE_noel_shirogane_neutral_democracy
+recruit_character = NOE_noel_shirogane_divine_mandate
 recruit_character = NOE_guy
-
 set_politics = {
 	ruling_party = pro_resistance_monarchy
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	pro_resistance_monarchy = 21
 	reactionary_nationalism = 20
@@ -98,15 +123,18 @@ set_popularities = {
 	democratic = 16
 	pro_yagoo_monarchy = 16
 }
+
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	create_equipment_variant = {
 		name = "Deutschland Class"
 		type = ship_hull_cruiser_panzerschiff
 		name_group = GER_CA_HISTORICAL
 		parent_version = 0
 		modules = {
-        	fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
 			fixed_ship_battery_slot = ship_heavy_battery_2
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
@@ -114,7 +142,7 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			rear_1_custom_slot = ship_torpedo_1
 			mid_1_custom_slot = ship_airplane_launcher_1
-    	}
+		}
 	}
 	create_equipment_variant = {
 		name = "Type 24 Class"
@@ -316,5 +344,3 @@ if = {
 		obsolete = yes
 	}
 }
-
-

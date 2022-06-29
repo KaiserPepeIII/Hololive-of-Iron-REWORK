@@ -1,11 +1,8 @@
 capital = 569
-
 oob = "RSR_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 3
-
-
 add_ideas = {
 	asacoco_reliance_minimal
 	heavy_decentralization
@@ -22,18 +19,37 @@ set_technology = {
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
 }
 
-set_convoys = 50
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
 
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+
+set_convoys = 50
 set_politics = {
 	ruling_party = left_wing_revolutionary
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	left_wing_revolutionary = 62
 	fascism = 38

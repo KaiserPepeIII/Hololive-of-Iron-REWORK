@@ -1,41 +1,36 @@
 ﻿capital = 131
-
 set_oob = "ENG_1936"
-
 set_research_slots = 4
-
 set_stability = 0.6
 set_war_support = 0.1
-
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
-	infantry_weapons1 = 1
 	tech_support = 1
-	tech_engineers = 1
-	tech_recon = 1
 	motorised_infantry = 1
 	gw_artillery = 1
 	interwar_antiair = 1
-	gwtank = 1
-	basic_light_tank = 1
-	early_fighter = 1
-	cv_early_fighter = 1
-	cv_naval_bomber1 = 1
-	naval_bomber1 = 1
-	early_bomber = 1
-	CAS1 = 1
-	
-	trench_warfare = 1
-
-	
-	fleet_in_being = 1
-	electronic_mechanical_engineering = 1
-	radio = 1
-	radio_detection = 1
-	fuel_silos = 1
-	fuel_refining = 1
 	basic_train = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+	}
 }
 
 if = {
@@ -69,20 +64,26 @@ if = {
 		basic_fire_control_system = 1
 	}
 	set_naval_oob = "ENG_1936_Naval"
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			basic_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			early_battlecruiser = 1
-			early_carrier = 1
-			transport = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "ENG_1936_Naval_Legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
+		transport = 1
+	}
+	set_naval_oob = "ENG_1936_Naval_Legacy"
 }
 
 if = {
@@ -95,47 +96,30 @@ if = {
 }
 
 add_ideas = {
- anti_member
+	anti_member
 }
-	
 
 set_convoys = 800
-
-#LEADER GENERATION - ENGLAND 
-recruit_character  = ENG_generic_suit_democratic 
-recruit_character  = ENG_generic_suit_progressive  
-recruit_character  = ENG_generic_suit_yagoo_monarchy  
-recruit_character  = ENG_generic_suit_yagoo_kleptocratic  
-recruit_character  = ENG_generic_suit_revolutionary  
-recruit_character  = ENG_generic_suit_nationalism  
-recruit_character  = ENG_generic_suit_resistance_monarchy  
-recruit_character  = ENG_generic_suit_resistance_kleptocracy  
-recruit_character  = ENG_generic_suit_neutral_kleptocratic  
-recruit_character  = ENG_generic_suit_reactionary_nationalism  
-recruit_character  = ENG_generic_suit_neutral_democracy   
-recruit_character  = ENG_generic_suit_divine_mandate   
-recruit_character  = ENG_generic_suit_new_nationalist
-recruit_character  = ENG_generic_suit_left_wing_revolutionary  
-recruit_character  = ENG_generic_suit_reactionary_monarchy
-recruit_character  = ENG_generic_suit_democratic_anti
-
 set_politics = {
 	ruling_party = fascism
 	last_election = "1935.11.14"
 	election_frequency = 48
-	elections_allowed = yes ##suspended through duration of war, which is handled via event
+	elections_allowed = yes	##suspended through duration of war, which is handled via event
 }
+
 set_popularities = {
 	fascism = 97
 	neutrality = 2
 	democratic = 1
 }
 
-
 ### Ship Variants ###
-
 if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
 	### Variants ###
 	# Submarines #
 	create_equipment_variant = {
@@ -246,7 +230,9 @@ if = {
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	### Variants ###
 	# Submarines #
 	create_equipment_variant = {
@@ -413,7 +399,7 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-		name = "Adventure Class"						# cruiser minelayer
+		name = "Adventure Class"		# cruiser minelayer
 		type = ship_hull_cruiser_1
 		name_group = ENG_MINELAYERS_HISTORICAL
 		parent_version = 0
@@ -430,23 +416,23 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-			name = "Town Class"
-			type = ship_hull_cruiser_2
-			name_group = ENG_CL_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_battery_slot = ship_light_medium_battery_2
-				fixed_ship_anti_air_slot = ship_anti_air_2
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = cruiser_ship_engine_2
-				fixed_ship_armor_slot = ship_armor_cruiser_2
-				front_1_custom_slot = ship_anti_air_2
-				mid_1_custom_slot = ship_torpedo_1
-				mid_2_custom_slot = ship_secondaries_2
-				rear_1_custom_slot = ship_light_medium_battery_2
-			}
+		name = "Town Class"
+		type = ship_hull_cruiser_2
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			front_1_custom_slot = ship_anti_air_2
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_secondaries_2
+			rear_1_custom_slot = ship_light_medium_battery_2
 		}
+	}
 	# Heavy Cruisers #
 	create_equipment_variant = {
 		name = "County Class"
@@ -542,7 +528,6 @@ if = {
 			rear_1_custom_slot = ship_heavy_battery_1
 		}
 	}
-
 	create_equipment_variant = {
 		name = "G3 Design"
 		type = ship_hull_heavy_1
@@ -638,7 +623,6 @@ if = {
 		}
 		obsolete = yes
 	}
-	
 	create_equipment_variant = {
 		name = "Hermes Class"
 		type = ship_hull_carrier_conversion_ca
@@ -671,19 +655,18 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-			name = "Ark Royal Class"
-			type = ship_hull_carrier_1
-			name_group = ENG_CV_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_deck_slot_1 = ship_deck_space
-				fixed_ship_deck_slot_2 = ship_deck_space
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = carrier_ship_engine_2
-				fixed_ship_secondaries_slot = ship_secondaries_2
-				front_1_custom_slot = ship_deck_space
-			}
+		name = "Ark Royal Class"
+		type = ship_hull_carrier_1
+		name_group = ENG_CV_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			front_1_custom_slot = ship_deck_space
 		}
-	
+	}
 }

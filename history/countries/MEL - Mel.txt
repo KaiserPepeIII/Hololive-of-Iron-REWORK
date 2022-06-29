@@ -35,16 +35,22 @@ if = {
 		basic_torpedo = 1
 		basic_depth_charges = 1
 	}
-	else = {
-		set_technology = {
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			transport = 1
-			early_submarine = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "MEL_1936_naval_legacy"
 	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		transport = 1
+		early_submarine = 1
+	}
+	set_naval_oob = "MEL_1936_naval_legacy"
 }
 
 set_convoys = 40
@@ -61,10 +67,6 @@ recruit_character = MEL_yozora_mel_neutral_kleptocratic
 recruit_character = MEL_yozora_mel_reactionary_nationalism
 recruit_character = MEL_yozora_mel_neutral_democracy
 recruit_character = MEL_yozora_mel_divine_mandate
-recruit_character = MEL_generic_suit_new_nationalist
-recruit_character = MEL_generic_suit_left_wing_revolutionary
-recruit_character = MEL_generic_suit_reactionary_monarchy
-recruit_character = MEL_generic_suit_democratic_anti
 set_politics = {
 	ruling_party = neutrality
 	last_election = "1936.1.1"

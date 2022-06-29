@@ -1,5 +1,4 @@
 ﻿capital = 303
-
 oob = "PRU_1936"
 # Starting tech
 set_technology = {
@@ -13,47 +12,36 @@ set_technology = {
 }
 
 set_convoys = 5
-
-recruit_character  = PRU_generic_suit_democratic 
-recruit_character  = PRU_generic_suit_progressive  
-recruit_character  = PRU_generic_suit_yagoo_monarchy  
-recruit_character  = PRU_generic_suit_yagoo_kleptocratic  
-recruit_character  = PRU_generic_suit_revolutionary  
-recruit_character  = PRU_generic_suit_nationalism  
-recruit_character  = PRU_generic_suit_resistance_monarchy  
-recruit_character  = PRU_generic_suit_resistance_kleptocracy  
-recruit_character  = PRU_generic_suit_neutral_kleptocratic  
-recruit_character  = PRU_generic_suit_reactionary_nationalism  
-recruit_character  = PRU_generic_suit_neutral_democracy   
-recruit_character  = PRU_generic_suit_divine_mandate   
-recruit_character  = PRU_generic_suit_new_nationalist
-recruit_character  = PRU_generic_suit_left_wing_revolutionary  
-recruit_character  = PRU_generic_suit_reactionary_monarchy
-recruit_character  = PRU_generic_suit_democratic_anti
-
 set_politics = {
 	ruling_party = neutrality
 	last_election = "1931.10.11"
 	election_frequency = 96
 	elections_allowed = yes
 }
+
 set_popularities = {
 	neutrality = 47
 	fascism = 53
 }
 
-
 ### VARIANTS ###
 # 1936 Start #
 if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
 	### Ship Variants ###
 }
+
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	# Submarines #
 	create_equipment_variant = {
-		name = "R1 Class"				
+		name = "R1 Class"
 		type = ship_hull_submarine_1
 		parent_version = 0
 		modules = {
@@ -64,7 +52,7 @@ if = {
 	}
 	# Destroyers #
 	create_equipment_variant = {
-		name = "Almirante Villar Class"				
+		name = "Almirante Villar Class"
 		type = ship_hull_light_1
 		name_group = PRU_DD_HISTORICAL
 		parent_version = 0
@@ -81,7 +69,7 @@ if = {
 	}
 	# Heavy Cruisers #
 	create_equipment_variant = {
-		name = "Almirante Grau Class"				
+		name = "Almirante Grau Class"
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = PRU_CA_HISTORICAL
 		parent_version = 0
