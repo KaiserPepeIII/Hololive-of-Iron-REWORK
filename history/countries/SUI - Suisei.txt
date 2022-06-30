@@ -1,16 +1,14 @@
 ﻿capital = 859
-
 oob = "SUI_1936"
 set_stability = 0.4
 set_war_support = 0.2
 set_research_slots = 4
-
 add_ideas = {
 	asacoco_reliance_moderate
 	great_depression_suisei
 	SUI_decadant_army
 	tropical_goods_market_poor
-	sui_extreme_colonial_unrest 
+	sui_extreme_colonial_unrest
 	SUI_jean_fabry
 	SUI_francois_darlan
 	SUI_eduard_deladier
@@ -22,6 +20,7 @@ add_ideas = {
 	SUI_albert_bedouce
 	SUI_yvon_delbos
 }
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
@@ -30,15 +29,37 @@ set_technology = {
 	gw_artillery = 1
 	interwar_antiair = 1
 	early_fighter = 1
-	gwtank = 1
 	CAS1 = 1
 	tech_support = 1
 	basic_train = 1
-	
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "SUI_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
@@ -66,46 +87,46 @@ if = {
 		mtg_transport = 1
 		improved_airplane_launcher = 1
 	}
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "SUI_1936_naval_legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "SUI_1936_naval_legacy"
 }
 
 set_convoys = 50
-
 #LEADER GENERATION - SUISEI 
-recruit_character  = SUI_hoshimachi_suisei_democratic 
-recruit_character  = SUI_hoshimachi_suisei_progressive  
-recruit_character  = SUI_hoshimachi_suisei_yagoo_monarchy  
-recruit_character  = SUI_hoshimachi_suisei_yagoo_kleptocratic  
-recruit_character  = SUI_hoshimachi_suisei_revolutionary  
-recruit_character  = SUI_hoshimachi_suisei_nationalism  
-recruit_character  = SUI_hoshimachi_suisei_resistance_monarchy  
-recruit_character  = SUI_hoshimachi_suisei_resistance_kleptocracy  
-recruit_character  = SUI_hoshimachi_suisei_neutral_kleptocratic  
-recruit_character  = SUI_hoshimachi_suisei_reactionary_nationalism  
-recruit_character  = SUI_hoshimachi_suisei_neutral_democracy   
-recruit_character  = SUI_hoshimachi_suisei_divine_mandate    
-recruit_character  = SUI_generic_suit_new_nationalist
-recruit_character  = SUI_generic_suit_left_wing_revolutionary  
-recruit_character  = SUI_generic_suit_reactionary_monarchy
-recruit_character  = SUI_generic_suit_democratic_anti
-
-
+recruit_character = SUI_hoshimachi_suisei_democratic
+recruit_character = SUI_hoshimachi_suisei_progressive
+recruit_character = SUI_hoshimachi_suisei_yagoo_monarchy
+recruit_character = SUI_hoshimachi_suisei_yagoo_kleptocratic
+recruit_character = SUI_hoshimachi_suisei_revolutionary
+recruit_character = SUI_hoshimachi_suisei_nationalism
+recruit_character = SUI_hoshimachi_suisei_resistance_monarchy
+recruit_character = SUI_hoshimachi_suisei_resistance_kleptocracy
+recruit_character = SUI_hoshimachi_suisei_neutral_kleptocratic
+recruit_character = SUI_hoshimachi_suisei_reactionary_nationalism
+recruit_character = SUI_hoshimachi_suisei_neutral_democracy
+recruit_character = SUI_hoshimachi_suisei_divine_mandate
 set_politics = {
 	ruling_party = democratic
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
 	pro_resistance_nationalism = 26
 	communism = 17
@@ -114,9 +135,51 @@ set_popularities = {
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "H-35"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 4
+		}
+	}
+	create_equipment_variant = {
+		name = "FT Char Cannon"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_nsb_armor_upgrade = 2
+		}
+		obsolete = yes
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	# Submarines #
-	create_equipment_variant = {				# represents Requin and all 600 series classes
+	create_equipment_variant = {
+		# represents Requin and all 600 series classes
 		name = "600 Series"
 		type = ship_hull_submarine_1
 		name_group = FRA_SS_HISTORICAL
@@ -129,7 +192,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "630 Series"						# represents all 630 series classes
+		name = "630 Series"		# represents all 630 series classes
 		type = ship_hull_submarine_1
 		name_group = FRA_SS_HISTORICAL
 		parent_version = 0
@@ -141,7 +204,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Saphir Class"					# minelayers
+		name = "Saphir Class"		# minelayers
 		type = ship_hull_submarine_1
 		name_group = FRA_SS_HISTORICAL
 		parent_version = 0
@@ -153,7 +216,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Redoutable Class"				# represents Surcouf, Roubtable, L'Esoire, and Agosta classes
+		name = "Redoutable Class"		# represents Surcouf, Roubtable, L'Esoire, and Agosta classes
 		type = ship_hull_submarine_2
 		name_group = FRA_SS_HISTORICAL
 		parent_version = 0
@@ -164,7 +227,7 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-		name = "Surcouf Class"				# cruiser submarine
+		name = "Surcouf Class"		# cruiser submarine
 		type = ship_hull_cruiser_submarine
 		name_group = FRA_SS_HISTORICAL
 		parent_version = 0
@@ -177,7 +240,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Minerve Class"					
+		name = "Minerve Class"
 		type = ship_hull_submarine_1
 		name_group = FRA_SS_HISTORICAL
 		parent_version = 0
@@ -189,7 +252,7 @@ if = {
 	}
 	# Destroyers #
 	create_equipment_variant = {
-		name = "Bourrasque Class"				# represents Bourrasque and L'Adroit classes
+		name = "Bourrasque Class"		# represents Bourrasque and L'Adroit classes
 		type = ship_hull_light_1
 		name_group = FRA_DE_HISTORICAL
 		parent_version = 0
@@ -206,7 +269,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Chacal Class"				# represents Chacal, Guépard, Agile, and Vauquelin classes
+		name = "Chacal Class"		# represents Chacal, Guépard, Agile, and Vauquelin classes
 		type = ship_hull_light_1
 		name_group = FRA_DD_HISTORICAL
 		parent_version = 0
@@ -223,7 +286,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Le Fantasque Class"				
+		name = "Le Fantasque Class"
 		type = ship_hull_light_1
 		name_group = FRA_DD_HISTORICAL
 		parent_version = 0
@@ -239,7 +302,7 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-		name = "Mogador Class"				
+		name = "Mogador Class"
 		type = ship_hull_light_2
 		name_group = FRA_DD_HISTORICAL
 		parent_version = 0
@@ -256,7 +319,7 @@ if = {
 	}
 	# Light Cruisers #
 	create_equipment_variant = {
-		name = "Duguay-Trouin Class"			# represents Duguay-Trouin, Pluton, Jeanne d'Arc classes
+		name = "Duguay-Trouin Class"		# represents Duguay-Trouin, Pluton, Jeanne d'Arc classes
 		type = ship_hull_cruiser_1
 		name_group = FRA_CL_HISTORICAL
 		parent_version = 0
@@ -273,7 +336,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Émile Bertin Class"					# minelaying cruiser
+		name = "Émile Bertin Class"		# minelaying cruiser
 		type = ship_hull_cruiser_1
 		name_group = FRA_CL_HISTORICAL
 		parent_version = 0
@@ -290,7 +353,7 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-		name = "La Galissonnière Class"			
+		name = "La Galissonnière Class"
 		type = ship_hull_cruiser_1
 		name_group = FRA_CL_HISTORICAL
 		parent_version = 0
@@ -308,7 +371,7 @@ if = {
 	}
 	# Heavy Cruisers #
 	create_equipment_variant = {
-		name = "Suffren Class"				# Duquesne and Suffren classes
+		name = "Suffren Class"		# Duquesne and Suffren classes
 		type = ship_hull_cruiser_1
 		name_group = FRA_CA_HISTORICAL
 		parent_version = 0
@@ -326,7 +389,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Algérie Class"				
+		name = "Algérie Class"
 		type = ship_hull_cruiser_1
 		name_group = FRA_CA_HISTORICAL
 		parent_version = 0
@@ -344,7 +407,7 @@ if = {
 	}
 	# Battleships #
 	create_equipment_variant = {
-		name = "Courbet Class"		
+		name = "Courbet Class"
 		type = ship_hull_heavy_1
 		name_group = FRA_BB_HISTORICAL
 		parent_version = 0
@@ -364,7 +427,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Bretagne Class"				
+		name = "Bretagne Class"
 		type = ship_hull_heavy_1
 		name_group = FRA_BB_HISTORICAL
 		parent_version = 0
@@ -384,7 +447,7 @@ if = {
 	}
 	# Battlecruisers #
 	create_equipment_variant = {
-		name = "Dunkerque Class"		
+		name = "Dunkerque Class"
 		type = ship_hull_heavy_2
 		name_group = FRA_BC_HISTORICAL
 		parent_version = 0
@@ -403,25 +466,25 @@ if = {
 		}
 	}
 	# Battleships #
-		create_equipment_variant = {
-			name = "Richelieu Class"
-			type = ship_hull_heavy_2
-			name_group = FRA_BB_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_battery_slot = ship_heavy_battery_2
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = heavy_ship_engine_2
-				fixed_ship_secondaries_slot = ship_secondaries_2
-				fixed_ship_armor_slot = ship_armor_bb_2
-				front_1_custom_slot = ship_heavy_battery_2
-				mid_1_custom_slot = ship_secondaries_2
-				mid_2_custom_slot = ship_anti_air_1
-				rear_1_custom_slot = ship_airplane_launcher_1
-			}
+	create_equipment_variant = {
+		name = "Richelieu Class"
+		type = ship_hull_heavy_2
+		name_group = FRA_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			fixed_ship_armor_slot = ship_armor_bb_2
+			front_1_custom_slot = ship_heavy_battery_2
+			mid_1_custom_slot = ship_secondaries_2
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_airplane_launcher_1
 		}
+	}
 	# Carriers #
 	create_equipment_variant = {
 		name = "Béarn Class"

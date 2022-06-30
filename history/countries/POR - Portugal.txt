@@ -1,14 +1,12 @@
 ﻿capital = 112
-
 oob = "POR_1936"
 set_research_slots = 3
-
 set_technology = {
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	gw_artillery = 1
 	interwar_antiair = 1
-	tech_support = 1		
+	tech_support = 1
 	tech_engineers = 1
 	early_fighter = 1
 	early_bomber = 1
@@ -16,7 +14,9 @@ set_technology = {
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_technology = {
 		basic_naval_mines = 1
 		submarine_mine_laying = 1
@@ -30,82 +30,64 @@ if = {
 		mtg_transport = 1
 	}
 	set_naval_oob = "POR_1936_naval_mtg"
-	else = {
-		set_technology = {
-			early_submarine = 1
-			basic_submarine = 1
-			early_destroyer = 1
-			transport = 1
-		}
-		set_naval_oob = "POR_1936_naval_legacy"
-	}
 }
 
-
-	set_technology = {
-		interwar_artillery = 1
-		infantry_weapons2 = 1
-		support_weapons = 1
-
-		#doctrines
-		air_superiority = 1
-		trench_warfare = 1
-		fleet_in_being = 1
-		battlefleet_concentration = 1
-		convoy_sailing = 1
-		submarine_operations = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		mechanical_computing = 1
-		computing_machine = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		synth_oil_experiments = 1
-		fuel_silos = 1
-		oil_processing = 1
-		improved_oil_processing = 1
-		construction1 = 1
-		construction2 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
 	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		transport = 1
+	}
+	set_naval_oob = "POR_1936_naval_legacy"
+}
+
+set_technology = {
+	interwar_artillery = 1
+	infantry_weapons2 = 1
+	support_weapons = 1
+	#doctrines
+	air_superiority = 1
+	trench_warfare = 1
+	fleet_in_being = 1
+	battlefleet_concentration = 1
+	convoy_sailing = 1
+	submarine_operations = 1
+	#electronics
+	electronic_mechanical_engineering = 1
+	radio = 1
+	radio_detection = 1
+	mechanical_computing = 1
+	computing_machine = 1
+	#industry
+	basic_machine_tools = 1
+	improved_machine_tools = 1
+	advanced_machine_tools = 1
+	synth_oil_experiments = 1
+	fuel_silos = 1
+	oil_processing = 1
+	improved_oil_processing = 1
+	construction1 = 1
+	construction2 = 1
+	dispersed_industry = 1
+	dispersed_industry2 = 1
 }
 
 set_convoys = 50
-
-#LEADER GENERATION - PORTUGAL 
-recruit_character  = POR_generic_suit_democratic 
-recruit_character  = POR_generic_suit_progressive  
-recruit_character  = POR_generic_suit_yagoo_monarchy  
-recruit_character  = POR_generic_suit_yagoo_kleptocratic  
-recruit_character  = POR_generic_suit_revolutionary  
-recruit_character  = POR_generic_suit_nationalism  
-recruit_character  = POR_generic_suit_resistance_monarchy  
-recruit_character  = POR_generic_suit_resistance_kleptocracy  
-recruit_character  = POR_generic_suit_neutral_kleptocratic  
-recruit_character  = POR_generic_suit_reactionary_nationalism  
-recruit_character  = POR_generic_suit_neutral_democracy   
-recruit_character  = POR_generic_suit_divine_mandate   
-recruit_character  = POR_generic_suit_new_nationalist
-recruit_character  = POR_generic_suit_left_wing_revolutionary  
-recruit_character  = POR_generic_suit_reactionary_monarchy
-recruit_character  = POR_generic_suit_democratic_anti
-
 set_politics = {
 	ruling_party = reactionary_nationalism
 	last_election = "1933.3.5"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	reactionary_nationalism = 100
 }
 
 set_convoys = 100
-

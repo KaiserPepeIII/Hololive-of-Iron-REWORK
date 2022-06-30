@@ -25,6 +25,28 @@ set_technology = {
 
 if = {
 	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+
+if = {
+	limit = {
 		has_dlc = "Man the Guns"
 	}
 	set_naval_oob = "MIK_1936_naval_mtg"
@@ -37,16 +59,22 @@ if = {
 		basic_torpedo = 1
 		basic_depth_charges = 1
 	}
-	else = {
-		set_technology = {
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			transport = 1
-			early_submarine = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "MIK_1936_naval_legacy"
 	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		transport = 1
+		early_submarine = 1
+	}
+	set_naval_oob = "MIK_1936_naval_legacy"
 }
 
 set_convoys = 50
@@ -63,10 +91,6 @@ recruit_character = MIK_sakura_miko_neutral_kleptocratic
 recruit_character = MIK_sakura_miko_reactionary_nationalism
 recruit_character = MIK_sakura_miko_neutral_democracy
 recruit_character = MIK_sakura_miko_divine_mandate
-recruit_character = MIK_generic_suit_new_nationalist
-recruit_character = MIK_generic_suit_left_wing_revolutionary
-recruit_character = MIK_generic_suit_reactionary_monarchy
-recruit_character = MIK_generic_suit_democratic_anti
 set_politics = {
 	ruling_party = pro_yagoo_monarchy
 	last_election = "1936.1.1"

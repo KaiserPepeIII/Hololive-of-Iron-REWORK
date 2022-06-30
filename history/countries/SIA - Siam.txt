@@ -1,5 +1,4 @@
 ﻿capital = 289
-
 oob = "SIA_1936"
 # Starting tech
 set_technology = {
@@ -9,12 +8,26 @@ set_technology = {
 	early_fighter = 1
 	CAS1 = 1
 }
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
 
-}
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+	}
+	set_naval_oob = "SIA_1936_naval_legacy"
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_technology = {
 		basic_naval_mines = 1
 		early_ship_hull_light = 1
@@ -23,59 +36,39 @@ if = {
 		coastal_defense_ships = 1
 	}
 	set_naval_oob = "SIA_1936_naval_mtg"
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-		}
-		set_naval_oob = "SIA_1936_naval_legacy"
-	}
 }
+
 set_convoys = 15
-
-#LEADER GENERATION - SIAM 
-recruit_character  = SIA_generic_suit_democratic 
-recruit_character  = SIA_generic_suit_progressive  
-recruit_character  = SIA_generic_suit_yagoo_monarchy  
-recruit_character  = SIA_generic_suit_yagoo_kleptocratic  
-recruit_character  = SIA_generic_suit_revolutionary  
-recruit_character  = SIA_generic_suit_nationalism  
-recruit_character  = SIA_generic_suit_resistance_monarchy  
-recruit_character  = SIA_generic_suit_resistance_kleptocracy  
-recruit_character  = SIA_generic_suit_neutral_kleptocratic  
-recruit_character  = SIA_generic_suit_reactionary_nationalism  
-recruit_character  = SIA_generic_suit_neutral_democracy   
-recruit_character  = SIA_generic_suit_divine_mandate   
-recruit_character  = SIA_generic_suit_new_nationalist
-recruit_character  = SIA_generic_suit_left_wing_revolutionary  
-recruit_character  = SIA_generic_suit_reactionary_monarchy
-recruit_character  = SIA_generic_suit_democratic_anti
-
 set_politics = {
 	ruling_party = reactionary_nationalism
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	fascism = 20
 	reactionary_nationalism = 80
 }
 
-
 ### VARIANTS ###
 # 1936 Start #
 if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
 	### Ship Variants ###
 }
+
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	# Destroyers #
 	create_equipment_variant = {
-		name = "Phra Ruang Class"				
+		name = "Phra Ruang Class"
 		type = ship_hull_light_1
 		name_group = SIA_DD_HISTORICAL
 		parent_version = 0
@@ -91,5 +84,3 @@ if = {
 		}
 	}
 }
-
-					 

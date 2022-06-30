@@ -1,29 +1,14 @@
 ﻿capital = 49
-
 oob = "KRN_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 3
-
-
 add_ideas = {
 	lhs_member
 	asacoco_reliance_puritan
 	economic_malaise
 	lhs_economic_development_gui
 	lhs_security_council_four
-}
-# Starting tech
-set_technology = {
-	infantry_weapons = 1
-	tech_mountaineers = 1
-	motorised_infantry = 1
-	gw_artillery = 1
-	interwar_antiair = 1
-	early_fighter = 1
-	CAS1 = 1
-	gwtank = 1
-	tech_support = 1
 }
 
 KRN = {
@@ -85,10 +70,46 @@ KRN = {
 		}
 	}
 }
+
 create_faction = KRN_starting_alliance
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	early_fighter = 1
+	CAS1 = 1
+	tech_support = 1
+}
+
 if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_naval_oob = "KRN_1936_naval_mtg"
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_technology = {
 		basic_naval_mines = 1
 		early_ship_hull_light = 1
@@ -105,50 +126,51 @@ if = {
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
+	set_naval_oob = "KRN_1936_naval_mtg"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "KRN_1936_naval_legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "KRN_1936_naval_legacy"
 }
 
 set_convoys = 50
-
 #LEADER GENERATION - KORONE 
-recruit_character  = KRN_inugami_korone_democratic 
-recruit_character  = KRN_inugami_korone_progressive  
-recruit_character  = KRN_inugami_korone_yagoo_monarchy  
-recruit_character  = KRN_inugami_korone_yagoo_kleptocratic  
-recruit_character  = KRN_inugami_korone_revolutionary  
-recruit_character  = KRN_inugami_korone_nationalism  
-recruit_character  = KRN_inugami_korone_resistance_monarchy  
-recruit_character  = KRN_inugami_korone_resistance_kleptocracy  
-recruit_character  = KRN_inugami_korone_neutral_kleptocratic  
-recruit_character  = KRN_inugami_korone_reactionary_nationalism  
-recruit_character  = KRN_inugami_korone_neutral_democracy   
-recruit_character  = KRN_inugami_korone_divine_mandate   
-recruit_character  = KRN_generic_suit_new_nationalist
-recruit_character  = KRN_generic_suit_left_wing_revolutionary  
-recruit_character  = KRN_generic_suit_reactionary_monarchy
-recruit_character  = KRN_generic_suit_democratic_anti
-
+recruit_character = KRN_inugami_korone_democratic
+recruit_character = KRN_inugami_korone_progressive
+recruit_character = KRN_inugami_korone_yagoo_monarchy
+recruit_character = KRN_inugami_korone_yagoo_kleptocratic
+recruit_character = KRN_inugami_korone_revolutionary
+recruit_character = KRN_inugami_korone_nationalism
+recruit_character = KRN_inugami_korone_resistance_monarchy
+recruit_character = KRN_inugami_korone_resistance_kleptocracy
+recruit_character = KRN_inugami_korone_neutral_kleptocratic
+recruit_character = KRN_inugami_korone_reactionary_nationalism
+recruit_character = KRN_inugami_korone_neutral_democracy
+recruit_character = KRN_inugami_korone_divine_mandate
 set_politics = {
 	ruling_party = pro_yagoo_progressive
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
 	pro_yagoo_progressive = 28
 	democratic = 22
 	divine_mandate = 10
 	left_wing_revolutionary = 25
-	reactionary_monarchy = 15 
+	reactionary_monarchy = 15
 }
-

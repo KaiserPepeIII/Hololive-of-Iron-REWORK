@@ -3,6 +3,9 @@ oob = "FBK_1936"
 set_stability = 0.25
 set_war_support = 0.3
 set_research_slots = 4
+create_faction = FBK_fubuki_kingdom
+add_to_faction = WFA
+add_to_faction = KRO
 add_ideas = {
 	lhs_member
 	asacoco_reliance_minimal
@@ -25,10 +28,35 @@ set_technology = {
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
 	basic_train = 1
 	wfa_army_infantry_tech = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+		engine_tech_1 = 1
+		armor_tech_1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		basic_heavy_tank = 1
+	}
 }
 
 if = {
@@ -52,21 +80,26 @@ if = {
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "FBK_1936_naval_legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "FBK_1936_naval_legacy"
 }
 
 set_convoys = 60
-
 #LEADER GENERATION - Fubuki 
 recruit_character = FBK_shirakami_fubuki_democratic
 recruit_character = FBK_shirakami_fubuki_progressive
@@ -80,11 +113,6 @@ recruit_character = FBK_shirakami_fubuki_neutral_kleptocratic
 recruit_character = FBK_shirakami_fubuki_reactionary_nationalism
 recruit_character = FBK_shirakami_fubuki_neutral_democracy
 recruit_character = FBK_shirakami_fubuki_divine_mandate
-recruit_character = FBK_generic_suit_new_nationalist
-recruit_character = FBK_generic_suit_left_wing_revolutionary
-recruit_character = FBK_generic_suit_reactionary_monarchy
-recruit_character = FBK_generic_suit_democratic_anti
-
 set_politics = {
 	ruling_party = reactionary_nationalism
 	last_election = "1936.1.1"
@@ -97,7 +125,6 @@ set_popularities = {
 	democratic = 22
 	pro_yagoo_monarchy = 20
 }
-
 
 ##State Modifiers
 96 = {
@@ -183,8 +210,13 @@ set_popularities = {
 		modifier = FBK_oblast
 	}
 }
+
 if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
 	### Ship Variants ###
 	create_equipment_variant = {
 		name = "Draken Class"
@@ -203,46 +235,101 @@ if = {
 		has_dlc = "No Step Back"
 	}
 	create_equipment_variant = {
-		name = "Stridsvagn m/21"
-		type = light_tank_chassis_0
+		name = "Stridsvagn MT m/29-II"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon
+			turret_type_slot = tank_medium_two_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = sloped_armor
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 7
+			tank_armor_upgrade = 8
+		}
+	}
+	create_equipment_variant = {
+		name = "Stridsvagn mT/32-VI"
+		type = heavy_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_cannon
+			turret_type_slot = tank_heavy_two_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = sloped_armor
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_armor_upgrade = 6
+		}
+	}
+	create_equipment_variant = {
+		name = "Stridsvagn mT/32"
+		type = heavy_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_cannon
+			turret_type_slot = tank_heavy_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		obsolete = yes
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_armor_upgrade = 1
+		}
+	}
+	create_equipment_variant = {
+		name = "Stridsvagn m/35"
+		type = light_tank_chassis_1
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_heavy_machine_gun
 			turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_bogie_suspension
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_gasoline_engine
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
 		}
 		upgrades = {
-			tank_nsb_engine_upgrade = 2
-			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 3
+			tank_armor_upgrade = 4
 		}
-		obsolete = yes #used for oob
 	}
 	create_equipment_variant = {
 		name = "Stridsvagn m/31"
-		type = light_tank_chassis_1
+		type = light_tank_chassis_0
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_small_cannon
-			turret_type_slot = tank_light_two_man_tank_turret
-			suspension_type_slot = tank_torsion_bar_suspension
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
 			armor_type_slot = tank_welded_armor
-			engine_type_slot = tank_gasoline_engine
-			special_type_slot_1 = tank_radio_1
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
 		}
 		upgrades = {
-			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 3
+			tank_nsb_engine_upgrade = 4
+			tank_armor_upgrade = 5
 		}
+		obsolete = yes
 	}
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	# Submarines #
 	create_equipment_variant = {
-		name = "Hajen Class"					# represents Hajen and Bävern classes	
+		name = "Hajen Class"		# represents Hajen and Bävern classes	
 		type = ship_hull_submarine_1
 		name_group = FBK_SS_HISTORICAL
 		parent_version = 0
@@ -254,7 +341,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Valen Class"				
+		name = "Valen Class"
 		type = ship_hull_submarine_1
 		name_group = FBK_SS_HISTORICAL
 		parent_version = 0
@@ -264,9 +351,9 @@ if = {
 			rear_1_custom_slot = ship_mine_layer_sub
 		}
 		obsolete = yes
-	} 
+	}
 	create_equipment_variant = {
-		name = "Draken Class"				
+		name = "Draken Class"
 		type = ship_hull_submarine_2
 		name_group = FBK_SS_HISTORICAL
 		parent_version = 0
@@ -278,7 +365,7 @@ if = {
 	}
 	# Destroyers #
 	create_equipment_variant = {
-		name = "Örnen Class"					# torpedo boats		
+		name = "Örnen Class"		# torpedo boats		
 		type = ship_hull_light_1
 		name_group = FBK_DD_HISTORICAL
 		parent_version = 0
@@ -295,7 +382,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Ehrensköld Class"				# represents Ehrensköld	and Klas Horn classes
+		name = "Ehrensköld Class"		# represents Ehrensköld	and Klas Horn classes
 		type = ship_hull_light_1
 		name_group = FBK_DD_HISTORICAL
 		parent_version = 0
@@ -312,7 +399,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Clas Fleming Class"				# minelayer		
+		name = "Clas Fleming Class"		# minelayer		
 		type = ship_hull_light_1
 		name_group = FBK_DD_HISTORICAL
 		parent_version = 0
@@ -329,7 +416,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Göteborg Class"	
+		name = "Göteborg Class"
 		type = ship_hull_light_2
 		name_group = FBK_DD_HISTORICAL
 		parent_version = 0
@@ -346,7 +433,7 @@ if = {
 	}
 	# Cruisers #
 	create_equipment_variant = {
-		name = "Fylgia Class"				
+		name = "Fylgia Class"
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = FBK_CL_HISTORICAL
 		parent_version = 0
@@ -365,7 +452,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Äran Class"				
+		name = "Äran Class"
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = FBK_CA_HISTORICAL
 		parent_version = 0
@@ -384,7 +471,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Oscar II Class"				
+		name = "Oscar II Class"
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = FBK_CA_HISTORICAL
 		parent_version = 0
@@ -403,7 +490,7 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Sverige Class"				
+		name = "Sverige Class"
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = FBK_CA_HISTORICAL
 		parent_version = 0
@@ -439,7 +526,7 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-		name = "Beef Cat Class"					
+		name = "Beef Cat Class"
 		type = ship_hull_heavy_1
 		name_group = SOV_BB_HISTORICAL
 		parent_version = 0
