@@ -63,7 +63,6 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
-	set_naval_oob = "COC_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
 		submarine_mine_laying = 1
@@ -80,6 +79,7 @@ if = {
 		basic_torpedo = 1
 		basic_depth_charges = 1
 	}
+	set_naval_oob = "COC_1936_naval_mtg"
 }
 
 if = {
@@ -102,6 +102,17 @@ if = {
 	set_naval_oob = "COC_1936_naval_legacy"
 }
 
+recruit_character = COC_kiryu_coco_democratic
+recruit_character = COC_kiryu_coco_progressive
+recruit_character = COC_kiryu_coco_yagoo_kleptocratic
+recruit_character = COC_kiryu_coco_yagoo_monarchy
+recruit_character = COC_kiryu_coco_revolutionary
+recruit_character = COC_kiryu_coco_nationalism
+recruit_character = COC_kiryu_coco_resistance_monarchy
+recruit_character = COC_kiryu_coco_resistance_kleptocracy
+recruit_character = COC_kiryu_coco_neutral_kleptocratic
+recruit_character = COC_kiryu_coco_divine_mandate
+recruit_character = COC_kiryu_coco_neutral_democracy
 set_convoys = 60
 set_politics = {
 	ruling_party = pro_resistance_nationalism
@@ -114,4 +125,285 @@ set_popularities = {
 	pro_resistance_nationalism = 43
 	reactionary_nationalism = 41
 	communism = 16
+}
+
+###############
+#
+#
+#	Tank Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	#Light Tank
+	create_equipment_variant = {
+		name = "M-1 Light Tank"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "M-2 Light Tank"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+		}
+		upgrades = {
+			tank_engine_upgrade = 1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "M-3 Light Tank"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+		}
+		upgrades = {
+			tank_engine_upgrade = 3
+			tank_gun_upgrade = 2
+		}
+	}
+	#Medium Tank
+	create_equipment_variant = {
+		name = "M-1 Medium Tank"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+		}
+	}
+}
+
+###############
+#
+#
+#	MTG Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	#carriers
+	create_equipment_variant = {
+		name = "New Orleans Class"
+		type = ship_hull_carrier_1
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = ship_deck_space
+		}
+	}
+	#Battleships
+	create_equipment_variant = {
+		name = "Louisiana Class"
+		type = ship_hull_heavy_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_anti_air_1
+		}
+	}
+	#Heavy Cruiser
+	create_equipment_variant = {
+		name = "Lee Class"
+		type = ship_hull_cruiser_2
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			front_1_custom_slot = ship_sonar_1
+		}
+	}
+	create_equipment_variant = {
+		name = "Dolphin Class"
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			front_1_custom_slot = ship_sonar_1
+		}
+		obsolete = yes
+	}
+	#destroyer
+	create_equipment_variant = {
+		name = "Perseus Class"
+		type = ship_hull_light_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_anti_air_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Neptune Class"
+		type = ship_hull_light_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_airplane_launcher_1
+		}
+	}
+	#submarines
+	create_equipment_variant = {
+		name = "D-Class"
+		type = ship_hull_submarine_1
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "F-Class"
+		type = ship_hull_submarine_2
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_2
+			rear_1_custom_slot = empty
+		}
+	}
+}
+
+###############
+#
+#
+#	Legacy Variants
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	#carriers
+	create_equipment_variant = {
+		name = "New Orleans Class"
+		type = ship_hull_carrier_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 2
+		}
+	}
+	#Battleships
+	create_equipment_variant = {
+		name = "Louisiana Class"
+		type = ship_hull_heavy_1
+		parent_version = 0
+		upgrades = {
+			ship_gun_upgrade = 1
+		}
+	}
+	#Heavy Cruiser
+	create_equipment_variant = {
+		name = "Lee Class"
+		type = ship_hull_cruiser_2
+		parent_version = 0
+		upgrades = {
+			ship_gun_upgrade = 3
+		}
+	}
+	create_equipment_variant = {
+		name = "Dolphin Class"
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_armor_upgrade = 1
+		}
+	}
+	#destroyer
+	create_equipment_variant = {
+		name = "Percius Class"
+		type = ship_hull_light_1
+		parent_version = 0
+		upgrades = {
+			ship_armor_upgrade = 1
+		}
+	}
+	create_equipment_variant = {
+		name = "Neptune Class"
+		type = ship_hull_light_2
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+		}
+	}
+	#submarines
+	create_equipment_variant = {
+		name = "D-Class"
+		type = ship_hull_submarine_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+		}
+	}
+	create_equipment_variant = {
+		name = "F-Class"
+		type = ship_hull_submarine_2
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 3
+			sub_torpedo_upgrade = 3
+		}
+	}
 }

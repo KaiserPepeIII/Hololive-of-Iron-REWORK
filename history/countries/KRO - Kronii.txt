@@ -8,6 +8,21 @@ set_technology = {
 	support_weapons = 1
 }
 
+FBK = {
+	if = {
+		limit = {
+			has_dlc = "Together for Victory"
+		}
+		set_autonomy = {
+			target = KRO
+			autonomy_state = autonomy_integrated_puppet
+		}
+		else = {
+			puppet = KRO
+		}
+	}
+}
+
 set_convoys = 10
 set_popularities = {
 	divine_mandate = 75

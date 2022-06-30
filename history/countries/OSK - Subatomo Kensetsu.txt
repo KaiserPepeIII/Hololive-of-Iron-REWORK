@@ -1,6 +1,21 @@
 ﻿capital = 973
 oob = "OSK_1936"
 # Starting tech
+SUB = {
+	if = {
+		limit = {
+			has_dlc = "Together for Victory"
+		}
+		set_autonomy = {
+			target = OSK
+			autonomy_state = autonomy_integrated_puppet
+		}
+		else = {
+			puppet = OSK
+		}
+	}
+}
+
 set_technology = {
 	infantry_weapons = 1
 	gw_artillery = 1

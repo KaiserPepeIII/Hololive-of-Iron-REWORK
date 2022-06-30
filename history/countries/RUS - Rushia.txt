@@ -55,7 +55,6 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
-	set_naval_oob = "RUS_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
 		early_ship_hull_light = 1
@@ -68,21 +67,29 @@ if = {
 		basic_secondary_battery = 1
 		basic_cruiser_armor_scheme = 1
 		basic_torpedo = 1
+		sonar = 1
 		basic_depth_charges = 1
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
+	set_naval_oob = "RUS_1936_naval_mtg"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "RUS_1936_naval_legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "RUS_1936_naval_legacy"
 }
 
 set_convoys = 40
@@ -110,4 +117,259 @@ set_popularities = {
 	pro_resistance_monarchy = 40
 	pro_yagoo_monarchy = 25
 	reactionary_nationalism = 35
+}
+
+###############
+#
+#
+#	Tank Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	#Light Tanks
+	create_equipment_variant = {
+		name = "T-22"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "T-24"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		upgrades = {
+			tank_engine_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "T-31"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = extra_ammo_storage
+		}
+	}
+	#heavy tank 
+	create_equipment_variant = {
+		name = "U-28"
+		type = heavy_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_cannon
+			turret_type_slot = tank_heavy_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		upgrades = {
+			tank_armor_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "U-34"
+		type = heavy_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_cannon
+			turret_type_slot = tank_heavy_two_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+			special_type_slot_2 = extra_ammo_storage
+		}
+		upgrades = {
+			tank_armor_upgrade = 2
+		}
+	}
+}
+
+###############
+#
+#
+#	MTG Variants	Ships scuttled 
+#
+###############
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	#Battleship
+	create_equipment_variant = {
+		name = "Sevastopol Class"
+		type = ship_hull_heavy_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = empty
+		}
+	}
+	#Light Cruisers
+	create_equipment_variant = {
+		name = "Diana Class"
+		type = ship_hull_cruiser_1
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			front_1_custom_slot = ship_sonar_1
+		}
+	}
+	#Destroyers
+	create_equipment_variant = {
+		name = "Kavkaz Class"
+		type = ship_hull_light_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_mine_layer_1
+		}
+	}
+	create_equipment_variant = {
+		name = "Krym Class"
+		type = ship_hull_light_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	#Submarines
+	create_equipment_variant = {
+		name = "Series-I"
+		type = ship_hull_submarine_1
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Series-IV"
+		type = ship_hull_submarine_2
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+			rear_1_custom_slot = empty
+		}
+	}
+}
+
+###############
+#
+#
+#	Legacy Variants	Ships scuttled 
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	#Battleship
+	create_equipment_variant = {
+		name = "Sevastopol Class"
+		type = battleship_1
+		parent_version = 0
+		upgrades = {
+			ship_armor_upgrade = 2
+			ship_gun_upgrade = 3
+		}
+	}
+	#Light Cruisers
+	create_equipment_variant = {
+		name = "Diana Clas"
+		type = light_cruiser_1
+		upgrades = {
+			ship_gun_upgrade = 1
+		}
+	}
+	#Destroyers
+	create_equipment_variant = {
+		name = "Kavkaz Class"
+		type = destroyer_2
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 2
+			ship_gun_upgrade = 1
+		}
+	}
+	create_equipment_variant = {
+		name = "Krym Class"
+		type = destroyer_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 2
+		}
+		obsolete = yes
+	}
+	#Submarines
+	create_equipment_variant = {
+		name = "Series-I"
+		type = submarine_1
+		upgrades = {
+			ship_torpedo_upgrade = 1
+			ship_engine_upgrade = 1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Series-IV"
+		type = submarine_2
+		upgrades = {
+			ship_torpedo_upgrade = 3
+			ship_engine_upgrade = 2
+		}
+	}
 }
