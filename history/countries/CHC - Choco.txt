@@ -1,5 +1,4 @@
 ﻿capital = 671
-
 oob = "CHC_1936"
 set_stability = 0.35
 set_war_support = 0.1
@@ -8,7 +7,6 @@ add_ideas = {
 	lhs_member
 	asacoco_reliance_high
 	lhs_customs_union_gui
-	
 }
 
 # Starting tech
@@ -18,7 +16,9 @@ set_technology = {
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "CHC_1936_naval_mtg"
 	set_technology = {
 		early_ship_hull_light = 1
@@ -26,50 +26,44 @@ if = {
 		basic_battery = 1
 		basic_light_battery = 1
 		basic_torpedo = 1
-		basic_depth_charges = 1	
-	}
-	else = {
-		set_technology = {
-			early_destroyer = 1
-			early_light_cruiser = 1
-		}
-		set_naval_oob = "CHC_1936_naval_legacy"
+		basic_depth_charges = 1
 	}
 }
 
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+	}
+	set_naval_oob = "CHC_1936_naval_legacy"
+}
+
 set_convoys = 50
-
 #LEADER GENERATION - CHOCO 
-recruit_character  = CHC_choco_yuzuki_democratic 
-recruit_character  = CHC_choco_yuzuki_progressive  
-recruit_character  = CHC_choco_yuzuki_yagoo_monarchy  
-recruit_character  = CHC_choco_yuzuki_yagoo_kleptocratic  
-recruit_character  = CHC_choco_yuzuki_revolutionary  
-recruit_character  = CHC_choco_yuzuki_nationalism  
-recruit_character  = CHC_choco_yuzuki_resistance_monarchy  
-recruit_character  = CHC_choco_yuzuki_resistance_kleptocracy  
-recruit_character  = CHC_choco_yuzuki_neutral_kleptocratic  
-recruit_character  = CHC_choco_yuzuki_reactionary_nationalism  
-recruit_character  = CHC_choco_yuzuki_neutral_democracy   
-recruit_character  = CHC_choco_yuzuki_divine_mandate   
-   
-recruit_character  = CHC_generic_suit_new_nationalist
-recruit_character  = CHC_generic_suit_left_wing_revolutionary  
-recruit_character  = CHC_generic_suit_reactionary_monarchy
-recruit_character  = CHC_generic_suit_democratic_anti
-
+recruit_character = CHC_choco_yuzuki_democratic
+recruit_character = CHC_choco_yuzuki_progressive
+recruit_character = CHC_choco_yuzuki_yagoo_monarchy
+recruit_character = CHC_choco_yuzuki_yagoo_kleptocratic
+recruit_character = CHC_choco_yuzuki_revolutionary
+recruit_character = CHC_choco_yuzuki_nationalism
+recruit_character = CHC_choco_yuzuki_resistance_monarchy
+recruit_character = CHC_choco_yuzuki_resistance_kleptocracy
+recruit_character = CHC_choco_yuzuki_neutral_kleptocratic
+recruit_character = CHC_choco_yuzuki_reactionary_nationalism
+recruit_character = CHC_choco_yuzuki_neutral_democracy
+recruit_character = CHC_choco_yuzuki_divine_mandate
 set_politics = {
 	ruling_party = democratic
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
 	democratic = 42
 	pro_yagoo_kleptocracy = 35
 	pro_resistance_kleptocracy = 23
 }
-
-
-
-

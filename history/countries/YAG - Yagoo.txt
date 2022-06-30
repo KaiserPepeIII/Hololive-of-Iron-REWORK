@@ -1,35 +1,12 @@
 capital = 107
-
 oob = "YAG_1936"
 set_stability = 0.35
 set_war_support = 0.2
 set_research_slots = 4
-
-
-if = {
-	limit = {
-		has_dlc = "Together for Victory"
-	}
-	set_autonomy = {
-		target = SOR
-		autonomous_state = autonomy_dominion
-	}
-	set_autonomy = {
-		target = ALO
-		autonomous_state = autonomy_dominion
-	}
-	else = {
-		puppet = SOR
-		puppet = ALO
-	}
-}
-
 create_faction = "LHS Shield"
 add_to_faction = ALO
 add_to_faction = SOR
 give_guarantee = AYA
-
-
 add_ideas = {
 	lhs_member
 	asacoco_reliance_puritan
@@ -39,6 +16,7 @@ add_ideas = {
 	lhs_defensive_union_gui
 	lhs_head
 }
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
@@ -54,8 +32,34 @@ set_technology = {
 }
 
 if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_naval_oob = "YAG_1936_naval_mtg"
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		armor_tech_1 = 1
+		engine_tech_1 = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_technology = {
 		basic_naval_mines = 1
 		early_ship_hull_light = 1
@@ -63,58 +67,395 @@ if = {
 		early_ship_hull_submarine = 1
 		basic_ship_hull_submarine = 1
 		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
 		early_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
 		basic_battery = 1
+		basic_light_battery = 1
 		basic_secondary_battery = 1
 		basic_cruiser_armor_scheme = 1
 		basic_torpedo = 1
+		improved_ship_torpedo_launcher = 1
 		basic_depth_charges = 1
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
+	set_naval_oob = "YAG_1936_naval_mtg"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "YAG_1936_naval_legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_carrier = 1
+		basic_carrier = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "YAG_1936_naval_legacy"
 }
 
 set_convoys = 50
-
 #LEADER GENERATION - YAGOO 
-recruit_character  = YAG_yagoo_democratic 
-recruit_character  = YAG_yagoo_progressive  
-recruit_character  = YAG_yagoo_yagoo_monarchy  
-recruit_character  = YAG_yagoo_yagoo_kleptocratic  
-recruit_character  = YAG_yagoo_revolutionary  
-recruit_character  = YAG_yagoo_nationalism  
-recruit_character  = YAG_yagoo_resistance_monarchy  
-recruit_character  = YAG_yagoo_resistance_kleptocracy  
-recruit_character  = YAG_yagoo_neutral_kleptocratic  
-recruit_character  = YAG_yagoo_reactionary_nationalism  
-recruit_character  = YAG_yagoo_neutral_democracy   
-recruit_character  = YAG_yagoo_divine_mandate   
-recruit_character  = YAG_generic_suit_new_nationalist
-recruit_character  = YAG_generic_suit_left_wing_revolutionary  
-recruit_character  = YAG_generic_suit_reactionary_monarchy
-recruit_character  = YAG_generic_suit_democratic_anti
-
+recruit_character = YAG_yagoo_democratic
+recruit_character = YAG_yagoo_progressive
+recruit_character = YAG_yagoo_yagoo_monarchy
+recruit_character = YAG_yagoo_yagoo_kleptocratic
+recruit_character = YAG_yagoo_revolutionary
+recruit_character = YAG_yagoo_nationalism
+recruit_character = YAG_yagoo_resistance_monarchy
+recruit_character = YAG_yagoo_resistance_kleptocracy
+recruit_character = YAG_yagoo_neutral_kleptocratic
+recruit_character = YAG_yagoo_reactionary_nationalism
+recruit_character = YAG_yagoo_neutral_democracy
+recruit_character = YAG_yagoo_divine_mandate
 set_politics = {
 	ruling_party = democratic
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
 	democratic = 58
 	mixed_ideology_democracy = 42
 }
 
+###############
+#
+#
+#	Tank Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "LT-5"		#Лаки тенк
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_armor_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "CT-2"		#Средњи тенк
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon
+			turret_type_slot = tank_medium_one_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = sloped_armor
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_armor_upgrade = 4
+		}
+	}
+	create_equipment_variant = {
+		name = "LT-3A"		#Лаки тенк
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_interleaved_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_petrol_electric_engine
+		}
+		obsolete = yes
+	}
+}
 
+###############
+#
+#
+#	MTG Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	#Carrier
+	create_equipment_variant = {
+		name = "Stefan Nemanja Class"		#Serbian King
+		type = ship_hull_carrier_1
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			front_1_custom_slot = ship_armor_carrier_deck
+		}
+	}
+	#battleships
+	create_equipment_variant = {
+		name = "Beo Class"		#White
+		type = ship_hull_heavy_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = empty
+		}
+	}
+	#Battlecruiser
+	create_equipment_variant = {
+		name = "Kosovo Class"
+		type = ship_hull_pre_dreadnought
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bc_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	#Cruisers
+	create_equipment_variant = {
+		name = "Sloboda Class"		#Liberty
+		type = ship_hull_cruiser_2
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			rear_1_custom_slot = ship_torpedo_1
+		}
+	}
+	create_equipment_variant = {
+		name = "Osveta Class"		#Vengeance
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+		}
+		obsolete = yes
+	}
+	#Destroyers
+	create_equipment_variant = {
+		name = "Sarejevo Class"
+		type = ship_hull_light_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_mine_layer_1
+		}
+	}
+	create_equipment_variant = {
+		name = "Tirana Class"
+		type = ship_hull_light_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	#Submarine
+	create_equipment_variant = {
+		name = "Hrabi Class"		#Brave
+		type = ship_hull_submarine_2
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Vernost Class"		#Fidelity
+		type = ship_hull_submarine_1
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Patriota Class"		#Patriot
+		type = ship_hull_submarine_1
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+}
 
+###############
+#
+#
+#	Non-DLC Variants
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	#Carriers
+	create_equipment_variant = {
+		name = "Stefan Nemanja Class"
+		type = carrier_1
+		parent_version = 0
+		upgrades = {
+			ship_deckspace_upgrade = 1
+			ship_reliability_upgrade = 1
+			ship_engine_upgrade = 2
+		}
+	}
+	#Battleships
+	create_equipment_variant = {
+		name = "Beo Class"		#white
+		type = battleship_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 2
+			ship_reliability_upgrade = 2
+		}
+	}
+	#Battlecruiser
+	create_equipment_variant = {
+		name = "Kosovo Class"
+		type = battle_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_gun_upgrade = 1
+		}
+		obsolete = yes
+	}
+	#cruisers
+	create_equipment_variant = {
+		name = "Slobada Class"		#Liberty
+		type = heavy_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "Osveta Class"
+		type = light_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+		}
+		obsolete = yes
+	}
+	#destroyers
+	create_equipment_variant = {
+		name = "Sarajevo Class"
+		type = destroyer_2
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+		}
+	}
+	create_equipment_variant = {
+		name = "Tirana Class"
+		type = destroyer_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+			ship_reliability_upgrade = 2
+		}
+		obsolete = yes
+	}
+	#submarines 
+	create_equipment_variant = {
+		name = "Hrabi Class"
+		type = submarine_2
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+			ship_torpedo_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "Vernost Class"
+		type = submarine_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+			ship_torpedo_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Patriota Class"
+		type = submarine_1
+		parent_version = 0
+		upgrades = {
+			ship_reliability_upgrade = 1
+		}
+		obsolete = yes
+	}
+}

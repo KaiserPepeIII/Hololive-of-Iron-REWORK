@@ -1,7 +1,7 @@
 on_actions = {
 	on_startup = {
 		effect = {
-		#LHS GUI
+			#LHS GUI
 			set_variable = {
 				var = global.lhs_count_support
 				value = 0
@@ -26,224 +26,221 @@ on_actions = {
 			set_variable = {
 				var = global.lhs_faith
 				value = 65
-				}
+			}
 			clamp_variable = {
 				var = global.lhs_faith
 				min = 0
 				max = 100
-				}		
-				set_variable = {
+			}
+			set_variable = {
 				var = global.brugg_legitimacy
 				value = 85
-				}
+			}
 			clamp_variable = {
 				var = global.brugg_legitimacy
 				min = 0
 				max = 100
-				}
+			}
 			every_country = {
 				limit = {
 					NOT = {
 						OR = {
-						has_idea = lhs_member
-						has_idea = resistance_member
-						has_idea = anti_member
-						has_idea = resistance_head
+							has_idea = lhs_member
+							has_idea = resistance_member
+							has_idea = anti_member
+							has_idea = resistance_head
 						}
 					}
 				}
 				add_ideas = neutral_member
 			}
 			every_country = {
-					limit = {
-						 NOT = {
-							OR = {
+				limit = {
+					NOT = {
+						OR = {
 							has_idea = lhs_member
 							has_idea = resistance_member
 							has_idea = neutral_member
-							}
-						  }
 						}
+					}
+				}
 				add_ideas = hololive_state
 			}
 			every_country = {
-				limit = { 	
-				NOT = {
-					tag = YAG
-				}
-				has_idea = lhs_member
+				limit = {
+					NOT = {
+						tag = YAG
 					}
+					has_idea = lhs_member
+				}
 				add_to_array = {
 					array = global.lhs_member_flag
 					value = THIS.id
 				}
-			 }
+			}
 			every_country = {
-				limit = { 	
-				has_idea = lhs_security_council_one
-					}
+				limit = {
+					has_idea = lhs_security_council_one
+				}
 				add_to_array = {
 					array = global.lhs_security_council_one
 					value = THIS.id
 				}
-			 }	
-			 every_country = {
-				limit = { 	
-				has_idea = lhs_security_council_two
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = lhs_security_council_two
+				}
 				add_to_array = {
 					array = global.lhs_security_council_two
 					value = THIS.id
 				}
-			 }			
-			 every_country = {
-				limit = { 	
-				has_idea = lhs_security_council_three
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = lhs_security_council_three
+				}
 				add_to_array = {
 					array = global.lhs_security_council_three
 					value = THIS.id
 				}
-			 }		
-			 every_country = {
-				limit = { 	
-				has_idea = lhs_security_council_four
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = lhs_security_council_four
+				}
 				add_to_array = {
 					array = global.lhs_security_council_four
 					value = THIS.id
 				}
-			 }	
-			 every_country = {
-				limit = { 	
-				has_idea = lhs_security_council_five
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = lhs_security_council_five
+				}
 				add_to_array = {
 					array = global.lhs_security_council_five
 					value = THIS.id
 				}
-			 }		
-			 every_country = {
-				limit = { 	
-				has_idea = lhs_security_council_six
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = lhs_security_council_six
+				}
 				add_to_array = {
 					array = global.lhs_security_council_six
 					value = THIS.id
 				}
-			 }		
+			}
 			every_country = {
 				limit = {
-				has_idea = lhs_customs_union_gui
-					}
+					has_idea = lhs_customs_union_gui
+				}
 				add_to_array = {
 					array = global.lhs_customs_union_flag
 					value = THIS.id
 				}
-			 }			
-			 every_country = {
+			}
+			every_country = {
 				limit = {
-				has_idea = lhs_economic_development_gui
-					}
+					has_idea = lhs_economic_development_gui
+				}
 				add_to_array = {
 					array = global.lhs_economic_development_flag
 					value = THIS.id
 				}
-			 }			
-			 every_country = {
+			}
+			every_country = {
 				limit = {
-				has_idea = lhs_defensive_union_gui
-					}
+					has_idea = lhs_defensive_union_gui
+				}
 				add_to_array = {
 					array = global.lhs_defensive_union_flag
 					value = THIS.id
 				}
-			 }			 
-			 every_country = {
-				limit = { 	
-				has_idea = lhs_head
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = lhs_head
+				}
 				add_to_array = {
 					array = global.lhs_head_flag
 					value = THIS.id
 				}
-			 }
-			 
+			}
 			#Resistance Gui
-			
-			 every_country = {
-				limit = { 	
-				has_idea = resistance_member
-					}
+			every_country = {
+				limit = {
+					has_idea = resistance_member
+				}
 				add_to_array = {
 					array = global.resistance_member_flag
 					value = THIS.id
 				}
-			 }
-			 every_country = {
-				limit = { 	
-				has_idea = coco_resistance_member
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = coco_resistance_member
+				}
 				add_to_array = {
 					array = global.coco_resistance_member_flag
 					value = THIS.id
 				}
-			 }			
-			 every_country = {
-				limit = { 	
-				has_idea = aqua_resistance_member
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = aqua_resistance_member
+				}
 				add_to_array = {
 					array = global.aqua_resistance_member_flag
 					value = THIS.id
 				}
-			 }			
-			 every_country = {
-				limit = { 	
-				has_idea = neutral_resistance_member
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = neutral_resistance_member
+				}
 				add_to_array = {
 					array = global.neutral_resistance_member_flag
 					value = THIS.id
 				}
-			 }
-			 every_country = {
-				limit = { 	
-				has_idea = resistance_head
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = resistance_head
+				}
 				add_to_array = {
 					array = global.resistance_head_flag
 					value = THIS.id
 				}
-			 }		
-			 every_country = {
-				limit = { 	
-				has_idea = resistance_runner_up
-					}
+			}
+			every_country = {
+				limit = {
+					has_idea = resistance_runner_up
+				}
 				add_to_array = {
 					array = global.resistance_runner_up
 					value = THIS.id
 				}
-			 }			
-			 set_variable = {
+			}
+			set_variable = {
 				var = global.resistance_faith
 				value = 85
-				}
+			}
 			clamp_variable = {
 				var = global.resistance_faith
 				min = 0
 				max = 100
-				}		
-				set_variable = {
+			}
+			set_variable = {
 				var = global.resistance_solidarity
 				value = 15
-				}
+			}
 			clamp_variable = {
 				var = global.resistance_solidarity
 				min = 0
 				max = 100
-				}
-			
+			}
 		}
-	 }
+	}
 }

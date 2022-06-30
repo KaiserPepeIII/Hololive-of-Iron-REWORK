@@ -1,11 +1,8 @@
 ﻿capital = 757
-
 oob = "WAT_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 3
-
-
 add_ideas = {
 	resistance_member
 	asacoco_reliance_crippling
@@ -20,37 +17,70 @@ set_technology = {
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+
 set_convoys = 50
-
 #LEADER GENERATION - WATAME 
-recruit_character  = WAT_watame_tsunomaki_democratic 
-recruit_character  = WAT_watame_tsunomaki_progressive  
-recruit_character  = WAT_watame_tsunomaki_yagoo_monarchy  
-recruit_character  = WAT_watame_tsunomaki_yagoo_kleptocratic  
-recruit_character  = WAT_watame_tsunomaki_revolutionary  
-recruit_character  = WAT_watame_tsunomaki_nationalism  
-recruit_character  = WAT_watame_tsunomaki_resistance_monarchy  
-recruit_character  = WAT_watame_tsunomaki_resistance_kleptocracy  
-recruit_character  = WAT_watame_tsunomaki_neutral_kleptocratic  
-recruit_character  = WAT_watame_tsunomaki_reactionary_nationalism  
-recruit_character  = WAT_watame_tsunomaki_neutral_democracy   
-recruit_character  = WAT_watame_tsunomaki_divine_mandate     
-recruit_character  = WAT_generic_suit_new_nationalist
-recruit_character  = WAT_generic_suit_left_wing_revolutionary  
-recruit_character  = WAT_generic_suit_reactionary_monarchy
-recruit_character  = WAT_generic_suit_democratic_anti
-
+recruit_character = WAT_watame_tsunomaki_democratic
+recruit_character = WAT_watame_tsunomaki_progressive
+recruit_character = WAT_watame_tsunomaki_yagoo_monarchy
+recruit_character = WAT_watame_tsunomaki_yagoo_kleptocratic
+recruit_character = WAT_watame_tsunomaki_revolutionary
+recruit_character = WAT_watame_tsunomaki_nationalism
+recruit_character = WAT_watame_tsunomaki_resistance_monarchy
+recruit_character = WAT_watame_tsunomaki_resistance_kleptocracy
+recruit_character = WAT_watame_tsunomaki_neutral_kleptocratic
+recruit_character = WAT_watame_tsunomaki_reactionary_nationalism
+recruit_character = WAT_watame_tsunomaki_neutral_democracy
+recruit_character = WAT_watame_tsunomaki_divine_mandate
 set_politics = {
 	ruling_party = pro_resistance_monarchy
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	pro_resistance_monarchy = 54
 	pro_resistance_nationalism = 46
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	#khab lan 'khar la/
+	create_equipment_variant = {
+		name = "Khab-la M-I"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+		}
+	}
 }

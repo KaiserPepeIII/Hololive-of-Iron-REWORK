@@ -1,10 +1,8 @@
 ﻿capital = 219
-
 oob = "RUS_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 3
-
 add_ideas = {
 	resistance_member
 	asacoco_reliance_low
@@ -13,6 +11,7 @@ add_ideas = {
 	imperial_staff
 	neutral_resistance_member
 }
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
@@ -22,12 +21,40 @@ set_technology = {
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
 	basic_train = 1
 }
+
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+		engine_tech_1 = 1
+		armor_tech_1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "RUS_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
@@ -59,36 +86,28 @@ if = {
 }
 
 set_convoys = 40
-
 #LEADER GENERATION - RUS 
-recruit_character  = RUS_uruha_rushia_democratic 
-recruit_character  = RUS_uruha_rushia_progressive  
-recruit_character  = RUS_uruha_rushia_yagoo_monarchy  
-recruit_character  = RUS_uruha_rushia_yagoo_kleptocratic  
-recruit_character  = RUS_uruha_rushia_revolutionary  
-recruit_character  = RUS_uruha_rushia_nationalism  
-recruit_character  = RUS_uruha_rushia_resistance_monarchy  
-recruit_character  = RUS_uruha_rushia_resistance_kleptocracy  
-recruit_character  = RUS_uruha_rushia_neutral_kleptocratic  
-recruit_character  = RUS_uruha_rushia_reactionary_nationalism  
-recruit_character  = RUS_uruha_rushia_neutral_democracy   
-recruit_character  = RUS_uruha_rushia_divine_mandate     
-recruit_character  = RUS_generic_suit_new_nationalist
-recruit_character  = RUS_generic_suit_left_wing_revolutionary  
-recruit_character  = RUS_generic_suit_reactionary_monarchy
-recruit_character  = RUS_generic_suit_democratic_anti
-
+recruit_character = RUS_uruha_rushia_democratic
+recruit_character = RUS_uruha_rushia_progressive
+recruit_character = RUS_uruha_rushia_yagoo_monarchy
+recruit_character = RUS_uruha_rushia_yagoo_kleptocratic
+recruit_character = RUS_uruha_rushia_revolutionary
+recruit_character = RUS_uruha_rushia_nationalism
+recruit_character = RUS_uruha_rushia_resistance_monarchy
+recruit_character = RUS_uruha_rushia_resistance_kleptocracy
+recruit_character = RUS_uruha_rushia_neutral_kleptocratic
+recruit_character = RUS_uruha_rushia_reactionary_nationalism
+recruit_character = RUS_uruha_rushia_neutral_democracy
+recruit_character = RUS_uruha_rushia_divine_mandate
 set_politics = {
 	ruling_party = pro_resistance_monarchy
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	pro_resistance_monarchy = 40
 	pro_yagoo_monarchy = 25
 	reactionary_nationalism = 35
 }
-
-
-

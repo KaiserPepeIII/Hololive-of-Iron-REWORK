@@ -28,9 +28,28 @@ set_technology = {
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
 	basic_train = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+	}
 }
 
 if = {
@@ -54,17 +73,23 @@ if = {
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "WTS_1936_naval_legacy"
 	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "WTS_1936_naval_legacy"
 }
 
 set_convoys = 50
@@ -81,10 +106,7 @@ recruit_character = WTS_amelia_watson_neutral_kleptocratic
 recruit_character = WTS_amelia_watson_reactionary_nationalism
 recruit_character = WTS_amelia_watson_neutral_democracy
 recruit_character = WTS_amelia_watson_divine_mandate
-recruit_character = WTS_generic_suit_new_nationalist
-recruit_character = WTS_generic_suit_left_wing_revolutionary
-recruit_character = WTS_generic_suit_reactionary_monarchy
-recruit_character = WTS_generic_suit_democratic_anti
+#Retirement Focus
 recruit_character = WTS_B_H_Linddell_Hart
 recruit_character = WTS_JFC_Fuller
 recruit_character = WTS_Claude_Auchinleck
@@ -98,6 +120,21 @@ recruit_character = WTS_Algernon_Willis
 recruit_character = WTS_William_Boyle
 recruit_character = WTS_Charles_Forbes
 recruit_character = WTS_Roger_Keyes
+#Others
+recruit_character = WTS_Archibald_Wavell
+recruit_character = WTS_Bernard_Montgomery
+recruit_character = WTS_Arthur_Percival
+recruit_character = WTS_Brian_Horrocks
+recruit_character = WTS_Harold_Alexander
+recruit_character = WTS_Henry_Wilson
+recruit_character = WTS_John_Vereker
+recruit_character = WTS_Bruce_Fraser
+recruit_character = WTS_Arthur_Power
+recruit_character = WTS_James_Sommerville
+recruit_character = WTS_Arthur_Harris
+recruit_character = WTS_Hugh_Dowding
+recruit_character = WTS_Dudley_Pound
+recruit_character = WTS_Norman_Douglas_Holbrook
 set_politics = {
 	ruling_party = democratic
 	last_election = "1936.1.1"
@@ -165,6 +202,47 @@ WTS = {
 		var = ROOT.isolationism_alignment
 		min = 1
 		max = 5
+	}
+	government_alignment_initiate = yes
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "Vickers Mk. E-III"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 7
+			tank_armor_upgrade = 1
+		}
+	}
+	create_equipment_variant = {
+		name = "Vickers Mk. II"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_armor_upgrade = 5
+		}
 	}
 }
 

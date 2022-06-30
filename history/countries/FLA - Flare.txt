@@ -1,10 +1,8 @@
 ﻿capital = 91
-
 oob = "FLA_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 3
-
 add_ideas = {
 	lhs_member
 	asacoco_reliance_high
@@ -12,55 +10,67 @@ add_ideas = {
 	great_depression_flare
 	lhs_economic_development_gui
 }
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
 	tech_mountaineers = 1
+	motorised_infantry = 1
 	gw_artillery = 1
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
 	basic_train = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+
 set_convoys = 50
-
 #LEADER GENERATION - FLARE 
-recruit_character  = FLA_flare_shiranui_democratic 
-recruit_character  = FLA_flare_shiranui_progressive  
-recruit_character  = FLA_flare_shiranui_yagoo_monarchy  
-recruit_character  = FLA_flare_shiranui_yagoo_kleptocratic  
-recruit_character  = FLA_flare_shiranui_revolutionary  
-recruit_character  = FLA_flare_shiranui_nationalism  
-recruit_character  = FLA_flare_shiranui_resistance_monarchy  
-recruit_character  = FLA_flare_shiranui_resistance_kleptocracy  
-recruit_character  = FLA_flare_shiranui_neutral_kleptocratic  
-recruit_character  = FLA_flare_shiranui_reactionary_nationalism  
-recruit_character  = FLA_flare_shiranui_neutral_democracy   
-recruit_character  = FLA_flare_shiranui_divine_mandate   
- 
-recruit_character  = FLA_generic_suit_new_nationalist
-recruit_character  = FLA_generic_suit_left_wing_revolutionary  
-recruit_character  = FLA_generic_suit_reactionary_monarchy
-recruit_character  = FLA_generic_suit_democratic_anti
-
+recruit_character = FLA_flare_shiranui_democratic
+recruit_character = FLA_flare_shiranui_progressive
+recruit_character = FLA_flare_shiranui_yagoo_monarchy
+recruit_character = FLA_flare_shiranui_yagoo_kleptocratic
+recruit_character = FLA_flare_shiranui_revolutionary
+recruit_character = FLA_flare_shiranui_nationalism
+recruit_character = FLA_flare_shiranui_resistance_monarchy
+recruit_character = FLA_flare_shiranui_resistance_kleptocracy
+recruit_character = FLA_flare_shiranui_neutral_kleptocratic
+recruit_character = FLA_flare_shiranui_reactionary_nationalism
+recruit_character = FLA_flare_shiranui_neutral_democracy
+recruit_character = FLA_flare_shiranui_divine_mandate
 set_politics = {
 	ruling_party = pro_yagoo_kleptocracy
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
+
 set_popularities = {
 	pro_yagoo_kleptocracy = 48
 	democratic = 20
 	pro_yagoo_monarchy = 10
 	reactionary_nationalism = 12
 	communism = 10
-	
 }
-
-
-
-

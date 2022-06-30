@@ -10,6 +10,23 @@ add_ideas = {
 	lhs_defensive_union_gui
 }
 
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	YAG = {
+		set_autonomy = {
+			target = SOR
+			autonomous_state = autonomy_dominion
+		}
+	}
+	else = {
+		YAG = {
+			puppet = SOR
+		}
+	}
+}
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
@@ -30,13 +47,19 @@ if = {
 		basic_torpedo = 1
 		basic_depth_charges = 1
 	}
-	else = {
-		set_technology = {
-			early_destroyer = 1
-			early_light_cruiser = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		set_naval_oob = "SOR_1936_naval_legacy"
 	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+	}
+	set_naval_oob = "SOR_1936_naval_legacy"
 }
 
 set_convoys = 50
@@ -53,10 +76,6 @@ recruit_character = SOR_tokino_sora_neutral_kleptocratic
 recruit_character = SOR_tokino_sora_reactionary_nationalism
 recruit_character = SOR_tokino_sora_neutral_democracy
 recruit_character = SOR_tokino_sora_divine_mandate
-recruit_character = SOR_generic_suit_new_nationalist
-recruit_character = SOR_generic_suit_left_wing_revolutionary
-recruit_character = SOR_generic_suit_reactionary_monarchy
-recruit_character = SOR_generic_suit_democratic_anti
 set_politics = {
 	ruling_party = pro_yagoo_monarchy
 	last_election = "1936.1.1"

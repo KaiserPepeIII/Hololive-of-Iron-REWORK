@@ -1,10 +1,8 @@
 ﻿capital = 606
-
 oob = "GAW_1936"
 set_stability = 0.8
 set_war_support = 0.1
 set_research_slots = 3
-
 add_ideas = {
 	lhs_member
 	asacoco_reliance_moderate
@@ -16,7 +14,6 @@ add_ideas = {
 	legacy_of_nagasaki
 	banditry_asia
 	lhs_security_council_five
-	basic_train = 1
 }
 
 # Starting tech
@@ -27,12 +24,34 @@ set_technology = {
 	interwar_antiair = 1
 	early_fighter = 1
 	CAS1 = 1
-	gwtank = 1
 	tech_support = 1
+	basic_train = 1
 }
 
-if={
-	limit = { has_dlc = "Man the Guns" }
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	set_naval_oob = "GAW_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
@@ -50,36 +69,38 @@ if={
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
-	else = {
-		set_technology = {
-			early_submarine = 1
-			early_destroyer = 1
-			early_light_cruiser = 1
-			early_heavy_cruiser = 1
-			early_battleship = 1
-			transport = 1
-		}
-		set_naval_oob = "GAW_1936_naval_legacy"
-	}
 }
-#LEADER GENERATION - GAWR 
-recruit_character  = GAW_gawr_gura_democratic 
-recruit_character  = GAW_gawr_gura_progressive  
-recruit_character  = GAW_gawr_gura_yagoo_monarchy  
-recruit_character  = GAW_gawr_gura_yagoo_kleptocratic  
-recruit_character  = GAW_gawr_gura_revolutionary  
-recruit_character  = GAW_gawr_gura_nationalism  
-recruit_character  = GAW_gawr_gura_resistance_monarchy  
-recruit_character  = GAW_gawr_gura_resistance_kleptocracy  
-recruit_character  = GAW_gawr_gura_neutral_kleptocratic  
-recruit_character  = GAW_gawr_gura_reactionary_nationalism  
-recruit_character  = GAW_gawr_gura_neutral_democracy   
-recruit_character  = GAW_gawr_gura_divine_mandate   
 
-recruit_character  = GAW_generic_suit_new_nationalist
-recruit_character  = GAW_generic_suit_left_wing_revolutionary  
-recruit_character  = GAW_generic_suit_reactionary_monarchy
-recruit_character  = GAW_generic_suit_democratic_anti
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+	set_naval_oob = "GAW_1936_naval_legacy"
+}
+
+#LEADER GENERATION - GAWR 
+recruit_character = GAW_gawr_gura_democratic
+recruit_character = GAW_gawr_gura_progressive
+recruit_character = GAW_gawr_gura_yagoo_monarchy
+recruit_character = GAW_gawr_gura_yagoo_kleptocratic
+recruit_character = GAW_gawr_gura_revolutionary
+recruit_character = GAW_gawr_gura_nationalism
+recruit_character = GAW_gawr_gura_resistance_monarchy
+recruit_character = GAW_gawr_gura_resistance_kleptocracy
+recruit_character = GAW_gawr_gura_neutral_kleptocratic
+recruit_character = GAW_gawr_gura_reactionary_nationalism
+recruit_character = GAW_gawr_gura_neutral_democracy
+recruit_character = GAW_gawr_gura_divine_mandate
 recruit_character = GAW_he_yingpin
 recruit_character = GAW_cheng_qian
 recruit_character = GAW_jing_baili
@@ -100,17 +121,14 @@ recruit_character = GAW_tang_shengzhi
 recruit_character = GAW_wang_xinheng
 recruit_character = GAW_chen_shaokun
 recruit_character = GAW_sak_dengbing
-
-
-
 set_convoys = 40
-
 set_politics = {
 	ruling_party = reactionary_nationalism
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
 	reactionary_nationalism = 72
 	pro_yagoo_kleptocracy = 28

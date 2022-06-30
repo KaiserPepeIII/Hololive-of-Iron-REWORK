@@ -2014,25 +2014,28 @@ focus_tree = {
 					value = THIS.id
 				}
 			}
+			random_neighbor_country = {
+				limit = {
+					NOT = {
+						has_anti_ideology = yes
+						is_guaranteed_by = ROOT
+						is_in_faction_with = ROOT
+						has_non_aggression_pact_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				set_temp_variable = {
+					var = barack
+					value = THIS.id
+				}
+			}
 			ROOT = {
 				create_wargoal = {
 					target = var:obama
 					type = puppet_wargoal_focus
 				}
 				create_wargoal = {
-					target = var:obama
-					type = puppet_wargoal_focus
-				}
-				create_wargoal = {
-					target = var:obama
-					type = puppet_wargoal_focus
-				}
-				create_wargoal = {
-					target = var:obama
-					type = puppet_wargoal_focus
-				}
-				create_wargoal = {
-					target = var:obama
+					target = var:barack
 					type = puppet_wargoal_focus
 				}
 			}
@@ -2061,9 +2064,21 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_flames_of_nationalism_non
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = left_wing_revolutionary
+				popularity = 0.1
+			}
+		}
 		x = 82
 		y = 2
 	}
+	#####COME BACK LATER
+	#################################################
+	################################################
+	###################################################
+	#####################################################
+	########################################################
 	focus = {
 		id = GEN_support_antis_abroad_non
 		icon = GFX_focus_GEN_support_antis_abroad
@@ -2072,9 +2087,32 @@ focus_tree = {
 			focus = GEN_flames_of_revolution_non
 			focus = GEN_flames_of_nationalism_non
 		}
+		completion_reward = {
+			if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							
+						}
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					
+				}
+			}
+		}
 		x = 78
 		y = 3
 	}
+		#####COME BACK LATER
+	#################################################
+	################################################
+	###################################################
+	#####################################################
+	########################################################
 	focus = {
 		id = GEN_train_foreign_soldiers_non
 		icon = GFX_focus_GEN_train_foreign_soldiers
@@ -2102,6 +2140,12 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_flames_of_revolution_non
 		}
+		completion_reward = {
+			add_popularity = {
+				popularity = 0.15
+				ideology = left_wing_revolutionary
+			}
+		}
 		x = 81
 		y = 3
 	}
@@ -2111,6 +2155,11 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_flames_of_revolution_non
+		}
+		completion_reward = {
+			add_ideas = {
+				GEN_promote_workers_rebellion_idea
+			}
 		}
 		x = 83
 		y = 3
@@ -2124,6 +2173,15 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GEN_promote_workers_rebellion_non
+		}
+		available = {
+			left_wing_revolutionary > 0.5
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = left_wing_revolutionary
+				elections_allowed = no
+			}
 		}
 		x = 82
 		y = 4
