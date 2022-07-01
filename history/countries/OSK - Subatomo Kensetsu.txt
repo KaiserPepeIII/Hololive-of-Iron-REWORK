@@ -23,6 +23,35 @@ set_technology = {
 	basic_train = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+	}
+	set_naval_oob = "OSK_1936_naval_mtg"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_heavy_cruiser = 1
+		early_light_cruiser = 1
+	}
+	set_naval_oob = "OSK_1936_naval_legacy"
+}
+
 set_convoys = 10
 set_popularities = {
 	neutrality = 75
@@ -34,4 +63,74 @@ set_politics = {
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
+}
+
+###############
+#
+#
+#	MTG Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	create_equipment_variant = {
+		name = "Sirene Klasse OSK"		#
+		type = ship_hull_cruiser_1
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Onderneming Klasse OSK"		#Lion
+		type = ship_hull_light_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+	}
+}
+
+###############
+#
+#
+#	Legacy Variants
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	create_equipment_variant = {
+		name = "Sirene Klasse OSK"
+		type = light_cruiser_1
+		parent_version = 0
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Onderneming Klasse OSK"
+		type = destroyer_1
+		parent_version = 0
+		obsolete = yes
+	}
 }

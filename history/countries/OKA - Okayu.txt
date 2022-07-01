@@ -19,7 +19,6 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
-	set_naval_oob = "OKA_1936_naval_mtg"
 	set_technology = {
 		early_ship_hull_light = 1
 		early_ship_hull_cruiser = 1
@@ -28,6 +27,7 @@ if = {
 		basic_torpedo = 1
 		basic_depth_charges = 1
 	}
+	set_naval_oob = "OKA_1936_naval_mtg"
 }
 
 if = {
@@ -68,4 +68,52 @@ set_popularities = {
 	pro_yagoo_monarchy = 43
 	reactionary_nationalism = 36
 	democratic = 21
+}
+
+###############
+#
+#
+#	MTG Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	create_equipment_variant = {
+		name = "Persepolis Class"		#Portland Class
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			front_1_custom_slot = empty
+		}
+	}
+}
+
+###############
+#
+#
+#	Legacy Variants
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	create_equipment_variant = {
+		name = "Persepolis Class"
+		type = heavy_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_gun_upgrade = 2
+		}
+	}
 }

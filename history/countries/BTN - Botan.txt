@@ -31,6 +31,9 @@ if = {
 	set_technology = {
 		gwtank_chassis = 1
 		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		engine_tech_1 = 1
+		armor_tech_1 = 1
 	}
 }
 
@@ -43,6 +46,7 @@ if = {
 	set_technology = {
 		gwtank = 1
 		basic_light_tank = 1
+		improved_light_tank = 1
 	}
 }
 
@@ -110,6 +114,18 @@ set_popularities = {
 	pro_resistance_nationalism = 5
 }
 
+###############
+#
+#
+#	Tank Variants
+#
+###############
+###############
+#
+#
+#	MTG Variants
+#
+###############
 if = {
 	limit = {
 		has_dlc = "Man the Guns"
@@ -178,63 +194,75 @@ if = {
 			rear_1_custom_slot = empty
 		}
 	}
-	else = {
-		create_equipment_variant = {
-			name = "S Class"
-			type = submarine_1
-			parent_version = 0
-			upgrades = {
-				ship_reliability_upgrade = 1
-				sub_engine_upgrade = 0
-				sub_stealth_upgrade = 0
-				sub_torpedo_upgrade = 0
-			}
+}
+
+###############
+#
+#
+#	Legacy Variants
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
 		}
-		create_equipment_variant = {
-			name = "A/B/C Class"
-			type = destroyer_1
-			parent_version = 0
-			upgrades = {
-				ship_torpedo_upgrade = 1
-				destroyer_engine_upgrade = 3
-				ship_ASW_upgrade = 0
-				ship_anti_air_upgrade = 1
-			}
-			obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "S Class"
+		type = submarine_1
+		parent_version = 0
+		upgrades = {
+			ship_reliability_upgrade = 1
+			sub_engine_upgrade = 0
+			sub_stealth_upgrade = 0
+			sub_torpedo_upgrade = 0
 		}
-		create_equipment_variant = {
-			name = "Vengeance Class"
-			type = light_cruiser_1
-			parent_version = 0
-			upgrades = {
-				ship_reliability_upgrade = 1
-				ship_engine_upgrade = 3
-				ship_gun_upgrade = 1
-				ship_anti_air_upgrade = 1
-			}
-			obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "A/B/C Class"
+		type = destroyer_1
+		parent_version = 0
+		upgrades = {
+			ship_torpedo_upgrade = 1
+			destroyer_engine_upgrade = 3
+			ship_ASW_upgrade = 0
+			ship_anti_air_upgrade = 1
 		}
-		create_equipment_variant = {
-			name = "Hammer Class"
-			type = heavy_cruiser_1
-			parent_version = 0
-			upgrades = {
-				ship_reliability_upgrade = 1
-				ship_engine_upgrade = 3
-				ship_armor_upgrade = 1
-				ship_gun_upgrade = 1
-			}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Vengeance Class"
+		type = light_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_reliability_upgrade = 1
+			ship_engine_upgrade = 3
+			ship_gun_upgrade = 1
+			ship_anti_air_upgrade = 1
 		}
-		create_equipment_variant = {
-			name = "Athens Class"
-			type = battleship_1
-			parent_version = 0
-			upgrades = {
-				ship_reliability_upgrade = 3
-				ship_engine_upgrade = 1
-				ship_armor_upgrade = 1
-				ship_gun_upgrade = 1
-			}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Hammer Class"
+		type = heavy_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_reliability_upgrade = 1
+			ship_engine_upgrade = 3
+			ship_armor_upgrade = 1
+			ship_gun_upgrade = 1
+		}
+	}
+	create_equipment_variant = {
+		name = "Athens Class"
+		type = battleship_1
+		parent_version = 0
+		upgrades = {
+			ship_reliability_upgrade = 3
+			ship_engine_upgrade = 1
+			ship_armor_upgrade = 1
+			ship_gun_upgrade = 1
 		}
 	}
 }
