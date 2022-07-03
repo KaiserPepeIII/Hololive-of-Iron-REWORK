@@ -2002,7 +2002,7 @@ focus_tree = {
 			random_neighbor_country = {
 				limit = {
 					NOT = {
-						has_anti_ideology = yes
+						is_anti_ideology = yes
 						is_guaranteed_by = ROOT
 						is_in_faction_with = ROOT
 						has_non_aggression_pact_with = ROOT
@@ -2017,7 +2017,7 @@ focus_tree = {
 			random_neighbor_country = {
 				limit = {
 					NOT = {
-						has_anti_ideology = yes
+						is_anti_ideology = yes
 						is_guaranteed_by = ROOT
 						is_in_faction_with = ROOT
 						has_non_aggression_pact_with = ROOT
@@ -2038,12 +2038,68 @@ focus_tree = {
 					target = var:barack
 					type = puppet_wargoal_focus
 				}
+			}completion_reward = {
+				add_ideas = {
+					non_world_liberation_idea
+				}
+				add_war_support = 0.15
+				random_neighbor_country = {
+					limit = {
+						NOT = {
+							is_anti_ideology = yes
+							is_guaranteed_by = ROOT
+							is_in_faction_with = ROOT
+							has_non_aggression_pact_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+					set_temp_variable = {
+						var = obama
+						value = THIS.id
+					}
+				}
+				random_neighbor_country = {
+					limit = {
+						NOT = {
+							is_anti_ideology = yes
+							is_guaranteed_by = ROOT
+							is_in_faction_with = ROOT
+							has_non_aggression_pact_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+					set_temp_variable = {
+						var = barack
+						value = THIS.id
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						target = var:obama
+						type = puppet_wargoal_focus
+					}
+					create_wargoal = {
+						target = var:barack
+						type = puppet_wargoal_focus
+					}
+				}
+			}
+			available = {
+				any_neighbor_country = {
+					NOT = {
+						is_anti_ideology = yes
+						is_guaranteed_by = ROOT
+						is_in_faction_with = ROOT
+						has_non_aggression_pact_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
 			}
 		}
 		available = {
 			any_neighbor_country = {
 				NOT = {
-					has_anti_ideology = yes
+					is_anti_ideology = yes
 					is_guaranteed_by = ROOT
 					is_in_faction_with = ROOT
 					has_non_aggression_pact_with = ROOT
@@ -2093,26 +2149,320 @@ focus_tree = {
 					any_country = {
 						limit = {
 							is_anti_ideology = yes
-							
+							capital_scope = {
+								is_on_continent = europe
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = europe
 						}
 					}
 				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = europe
+						}
+					}
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = PREV
+				}
+				send_equipment = {
+					equipment = artillery
+					amount = 200
+					target = PREV
+				}
+				send_equipment = {
+					equipment = support_equipment
+					amount = 250
+					target = PREV
+				}
 			}
-			random_country = {
+			else_if = {
 				limit = {
-					
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = south_america
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = south_america
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = south_america
+						}
+					}
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = PREV
+				}
+				send_equipment = {
+					equipment = artillery
+					amount = 200
+					target = PREV
+				}
+				send_equipment = {
+					equipment = support_equipment
+					amount = 250
+					target = PREV
+				}
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = north_america
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = north_america
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = north_america
+						}
+					}
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = PREV
+				}
+				send_equipment = {
+					equipment = artillery
+					amount = 200
+					target = PREV
+				}
+				send_equipment = {
+					equipment = support_equipment
+					amount = 250
+					target = PREV
+				}
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = africa
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = africa
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = africa
+						}
+					}
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = PREV
+				}
+				send_equipment = {
+					equipment = artillery
+					amount = 200
+					target = PREV
+				}
+				send_equipment = {
+					equipment = support_equipment
+					amount = 250
+					target = PREV
+				}
+			}
+			
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = middle_east
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = middle_east
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = middle_east
+						}
+					}
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = PREV
+				}
+				send_equipment = {
+					equipment = artillery
+					amount = 200
+					target = PREV
+				}
+				send_equipment = {
+					equipment = support_equipment
+					amount = 250
+					target = PREV
+				}
+			}
+			
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = asia
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = asia
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = asia
+						}
+					}
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = PREV
+				}
+				send_equipment = {
+					equipment = artillery
+					amount = 200
+					target = PREV
+				}
+				send_equipment = {
+					equipment = support_equipment
+					amount = 250
+					target = PREV
+				}
+			}
+			
+
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = australia
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = australia
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = australia
+						}
+					}
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = PREV
+				}
+				send_equipment = {
+					equipment = artillery
+					amount = 200
+					target = PREV
+				}
+				send_equipment = {
+					equipment = support_equipment
+					amount = 250
+					target = PREV
+				}
+			}
+			
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+					}
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = PREV
+				}
+				send_equipment = {
+					equipment = artillery
+					amount = 200
+					target = PREV
+				}
+				send_equipment = {
+					equipment = support_equipment
+					amount = 250
+					target = PREV
 				}
 			}
 		}
+
 		x = 78
 		y = 3
 	}
-		#####COME BACK LATER
-	#################################################
-	################################################
-	###################################################
-	#####################################################
-	########################################################
 	focus = {
 		id = GEN_train_foreign_soldiers_non
 		icon = GFX_focus_GEN_train_foreign_soldiers
@@ -2120,6 +2470,251 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_support_antis_abroad_non
 		}
+		completion_reward = {
+			if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = europe
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = europe
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = europe
+						}
+					}
+				}
+				PREV = {
+					add_ideas = {
+						foreign_training_non_idea
+					}
+					add_manpower = 100000
+				}
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = south_america
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = south_america
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = south_america
+						}
+					}
+				}
+				PREV = {
+					add_ideas = {
+						foreign_training_non_idea
+					}
+					add_manpower = 100000
+				}
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = north_america
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = north_america
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = north_america
+						}
+					}
+				}
+				PREV = {
+					add_ideas = {
+						foreign_training_non_idea
+					}
+					add_manpower = 100000
+				}
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = africa
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = africa
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = africa
+						}
+					}
+				}
+				PREV = {
+					add_ideas = {
+						foreign_training_non_idea
+					}
+					add_manpower = 100000
+				}
+			}
+			
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = asia
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = asia
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = asia
+						}
+					}
+				}
+				PREV = {
+					add_ideas = {
+						foreign_training_non_idea
+					}
+					add_manpower = 100000
+				}
+			}
+		
+					else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = middle_east
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = middle_east
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = middle_east
+						}
+					}
+				}
+				PREV = {
+					add_ideas = {
+						foreign_training_non_idea
+					}
+					add_manpower = 100000
+				}
+			}
+			
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+							capital_scope = {
+								is_on_continent = australia
+							}
+						}
+					}
+					ROOT = {
+						capital_scope = {
+							is_on_continent = australia
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = australia
+						}
+					}
+				}
+				PREV = {
+					add_ideas = {
+						foreign_training_non_idea
+					}
+					add_manpower = 100000
+				}
+			}
+			
+			else_if = {
+				limit = {
+					any_country = {
+						limit = {
+							is_anti_ideology = yes
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						is_anti_ideology = yes
+					}
+				}
+			PREV = {
+				add_ideas = {
+					foreign_training_non_idea
+				}
+				add_manpower = 100000
+			}
+			}
+		
+		}
+		
 		x = 77
 		y = 4
 	}
@@ -2129,6 +2724,12 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_support_antis_abroad_non
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = anti_hololive_propoganda_non_idea
+				days = 120
+			}
 		}
 		x = 79
 		y = 4
@@ -2218,6 +2819,63 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_seize_means_of_production_non
+		}
+		completion_reward = {
+			add_ideas = {
+				non_world_liberation_idea
+			}
+			add_war_support = 0.15
+			random_neighbor_country = {
+				limit = {
+					NOT = {
+						is_anti_ideology = yes
+						is_guaranteed_by = ROOT
+						is_in_faction_with = ROOT
+						has_non_aggression_pact_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				set_temp_variable = {
+					var = obama
+					value = THIS.id
+				}
+			}
+			random_neighbor_country = {
+				limit = {
+					NOT = {
+						is_anti_ideology = yes
+						is_guaranteed_by = ROOT
+						is_in_faction_with = ROOT
+						has_non_aggression_pact_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				set_temp_variable = {
+					var = barack
+					value = THIS.id
+				}
+			}
+			ROOT = {
+				create_wargoal = {
+					target = var:obama
+					type = puppet_wargoal_focus
+				}
+				create_wargoal = {
+					target = var:barack
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		available = {
+			any_neighbor_country = {
+				NOT = {
+					is_anti_ideology = yes
+					is_guaranteed_by = ROOT
+					is_in_faction_with = ROOT
+					has_non_aggression_pact_with = ROOT
+					is_subject_of = ROOT
+				}
+			}
 		}
 		x = 82
 		y = 5
