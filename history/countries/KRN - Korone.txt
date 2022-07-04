@@ -115,8 +115,8 @@ if = {
 		early_ship_hull_light = 1
 		basic_ship_hull_light = 1
 		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
 		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
 		early_ship_hull_heavy = 1
 		basic_battery = 1
 		basic_secondary_battery = 1
@@ -141,6 +141,7 @@ if = {
 		early_light_cruiser = 1
 		early_heavy_cruiser = 1
 		early_battleship = 1
+		early_battlecruiser = 1
 		transport = 1
 	}
 	set_naval_oob = "KRN_1936_naval_legacy"
@@ -173,4 +174,236 @@ set_popularities = {
 	divine_mandate = 10
 	left_wing_revolutionary = 25
 	reactionary_monarchy = 15
+}
+
+###############
+#
+#
+#	NSB Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "HF21-b"		#Hafif tank
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "HF-6"		#Лаки тенк
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_nsb_armor_upgrade = 2
+		}
+	}
+}
+
+###############
+#
+#
+#	MTG Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	create_equipment_variant = {
+		name = "Ankara Class"		#Provinces
+		type = ship_hull_heavy_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bc_1
+			front_1_custom_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Mesudiye Class"
+		type = ship_hull_pre_dreadnought
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bc_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	#Cruisers
+	create_equipment_variant = {
+		name = "Memleket Class"		#Fatherland
+		type = ship_hull_cruiser_2
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			rear_1_custom_slot = ship_torpedo_1
+		}
+	}
+	create_equipment_variant = {
+		name = "Mehmed Class"		#Mehmed II
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = empty
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+		obsolete = yes
+	}
+	#Destroyers
+	create_equipment_variant = {
+		name = "Constantinople Class"		#cities
+		type = ship_hull_light_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_mine_layer_1
+		}
+	}
+	create_equipment_variant = {
+		name = "Cesurluk Class"		#bravery
+		type = ship_hull_light_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_anti_air_1
+		}
+		obsolete = yes
+	}
+	#subs
+	create_equipment_variant = {
+		name = "Hayreddin Class"		#Early ottoman admiral
+		type = ship_hull_submarine_1
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+	}
+}
+
+###############
+#
+#
+#	Legacy Variants
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	create_equipment_variant = {
+		name = "Ankara Class"		#Provinces
+		type = battleship_1
+		parent_version = 0
+		upgrades = {
+		}
+	}
+	create_equipment_variant = {
+		name = "Mesudiye Class"
+		type = battle_cruiser_1
+		parent_version = 0
+		upgrades = {
+		}
+		obsolete = yes
+	}
+	#Cruisers
+	create_equipment_variant = {
+		name = "Memleket Class"		#Fatherland
+		type = light_cruiser_2
+		parent_version = 0
+		upgrades = {
+		}
+	}
+	create_equipment_variant = {
+		name = "Mehmed Class"		#Mehmed II
+		type = light_cruiser_1
+		parent_version = 0
+		upgrades = {
+		}
+		obsolete = yes
+	}
+	#Destroyers
+	create_equipment_variant = {
+		name = "Constantinople Class"		#cities
+		type = destroyer_2
+		parent_version = 0
+		upgrades = {
+		}
+	}
+	create_equipment_variant = {
+		name = "Cesurluk Class"		#bravery
+		type = destroyer_1
+		parent_version = 0
+		upgrades = {
+		}
+		obsolete = yes
+	}
+	#subs
+	create_equipment_variant = {
+		name = "Hayreddin Class"		#Early ottoman admiral
+		type = submarine_1
+		parent_version = 0
+		upgrades = {
+		}
+	}
 }

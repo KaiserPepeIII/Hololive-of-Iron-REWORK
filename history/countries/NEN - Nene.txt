@@ -15,6 +15,7 @@ set_technology = {
 	tech_support = 1
 	tech_recon = 1
 	gw_artillery = 1
+	interwar_antiair = 1
 	early_fighter = 1
 	early_bomber = 1
 }
@@ -23,23 +24,20 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
-	set_naval_oob = "NEN_1936_naval_mtg"
 	set_technology = {
 		basic_naval_mines = 1
 		early_ship_hull_light = 1
-		basic_ship_hull_light = 1
 		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
 		early_ship_hull_cruiser = 1
 		early_ship_hull_heavy = 1
 		basic_battery = 1
 		basic_secondary_battery = 1
-		basic_cruiser_armor_scheme = 1
 		basic_torpedo = 1
 		basic_depth_charges = 1
 		coastal_defense_ships = 1
 		mtg_transport = 1
 	}
+	set_naval_oob = "NEN_1936_naval_mtg"
 }
 
 if = {
@@ -85,4 +83,121 @@ set_popularities = {
 	democratic = 27
 	pro_yagoo_kleptocracy = 20
 	neutrality = 10
+}
+
+###############
+#
+#
+#	MTG Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	#Battleship
+	create_equipment_variant = {
+		name = "Vladivostok Class"
+		type = ship_hull_heavy_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = empty
+		}
+	}
+	#Light Cruisers
+	create_equipment_variant = {
+		name = "Muzh Class"
+		type = ship_hull_cruiser_1
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			front_1_custom_slot = ship_sonar_1
+		}
+	}
+	#Destroyer
+	create_equipment_variant = {
+		name = "Sneg Class"
+		type = ship_hull_light_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+	}
+	#Submarines
+	create_equipment_variant = {
+		name = "Brakoner Class"
+		type = ship_hull_submarine_1
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+	}
+}
+
+###############
+#
+#
+#	Legacy Variants
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	#Battleship
+	create_equipment_variant = {
+		name = "Vladivostok Class"
+		type = battleship_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 1
+		}
+	}
+	#Light Cruisers
+	create_equipment_variant = {
+		name = "Muzh Class"
+		type = light_cruiser_1
+		upgrades = {
+			ship_gun_upgrade = 1
+		}
+	}
+	#Destroyer
+	create_equipment_variant = {
+		name = "Sneg Class"
+		type = destroyer_1
+		parent_version = 0
+		upgrades = {
+			ship_engine_upgrade = 2
+		}
+	}
+	#Submarines
+	create_equipment_variant = {
+		name = "Class-I"
+		type = submarine_1
+		upgrades = {
+			sub_engine_upgrade = 1
+		}
+	}
 }

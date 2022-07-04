@@ -25,7 +25,6 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
-	set_naval_oob = "MEL_1936_naval_mtg"
 	set_technology = {
 		early_ship_hull_light = 1
 		early_ship_hull_cruiser = 1
@@ -35,6 +34,7 @@ if = {
 		basic_torpedo = 1
 		basic_depth_charges = 1
 	}
+	set_naval_oob = "MEL_1936_naval_mtg"
 }
 
 if = {
@@ -78,4 +78,94 @@ set_popularities = {
 	neutrality = 41
 	pro_resistance_kleptocracy = 40
 	pro_yagoo_kleptocracy = 19
+}
+
+###############
+#
+#
+#	MTG Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	#Heavy Cruiser
+	create_equipment_variant = {
+		name = "Vampir Class"		#Vampire
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+		}
+	}
+	#Destroyer
+	create_equipment_variant = {
+		name = "Ciocan Class"		#hammer
+		type = ship_hull_light_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+	}
+	#Submarine
+	create_equipment_variant = {
+		name = "Braconier Class"		#Patriot
+		type = ship_hull_submarine_1
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+	}
+}
+
+###############
+#
+#
+#	Legacy Variants
+#
+###############
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	#Heavy Cruiser
+	create_equipment_variant = {
+		name = "Vampir Class"		#Vampire
+		type = heavy_cruiser_1
+		parent_version = 0
+		upgrades = {
+		}
+	}
+	#Destroyer
+	create_equipment_variant = {
+		name = "Ciocan Class"		#hammer
+		type = destroyer_1
+		parent_version = 0
+		upgrades = {
+		}
+	}
+	#Submarine
+	create_equipment_variant = {
+		name = "Braconier Class"		#Patriot
+		type = submarine_1
+		parent_version = 0
+		upgrades = {
+		}
+	}
 }
