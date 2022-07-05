@@ -1,13 +1,14 @@
-lhs_security_council_trigger = {	
-		OR = {
+lhs_security_council_trigger = {
+	OR = {
 		has_idea = lhs_security_council_one
 		has_idea = lhs_security_council_two
 		has_idea = lhs_security_council_three
 		has_idea = lhs_security_council_four
 		has_idea = lhs_security_council_five
 		has_idea = lhs_security_council_six
-		}
+	}
 }
+
 lhs_not_voting_in_progress = {
 	NOT = {
 		has_global_flag = lhs_voting_state
@@ -18,20 +19,23 @@ lhs_not_voting_in_progress = {
 		has_global_flag = lhs_resistance_war_voting_security
 	}
 }
-lhs_calculating_trigger_yes = {	
+
+lhs_calculating_trigger_yes = {
 	check_variable = {
 		var = global.lhs_count_yes
 		value = global.lhs_count_no
 		compare = greater_than
 	}
 }
+
 lhs_calculating_trigger_no = {
-		check_variable = {
+	check_variable = {
 		var = global.lhs_count_no
 		value = global.lhs_count_yes
 		compare = greater_than_or_equals
 	}
 }
+
 lhs_vote_normal_round_pass = {
 	check_variable = {
 		var = global.lhs_count_support
@@ -44,25 +48,27 @@ lhs_vote_normal_round_pass = {
 		compare = greater_than
 	}
 }
+
 lhs_vote_normal_round_fails = {
 	OR = {
-	check_variable = {
-		var = global.lhs_count_support
-		value = global.lhs_count_reject
-		compare = less_than
-	}
-	check_variable = {
-		var = global.lhs_count_support
-		value = global.lhs_count_abstain
-		compare = less_than
-	}
-	check_variable = {
-		var = global.lhs_count_abstain
-		value =global.lhs_count_support
-		compare = greater_than
-	}
+		check_variable = {
+			var = global.lhs_count_support
+			value = global.lhs_count_reject
+			compare = less_than
+		}
+		check_variable = {
+			var = global.lhs_count_support
+			value = global.lhs_count_abstain
+			compare = less_than
+		}
+		check_variable = {
+			var = global.lhs_count_abstain
+			value = global.lhs_count_support
+			compare = greater_than
+		}
 	}
 }
+
 lhs_vote_second_round_pass = {
 	check_variable = {
 		var = global.lhs_count_support
@@ -82,6 +88,7 @@ lhs_vote_second_round_pass = {
 		}
 	}
 }
+
 lhs_vote_second_round_fails = {
 	OR = {
 		check_variable = {
@@ -101,11 +108,12 @@ lhs_vote_second_round_fails = {
 		}
 		check_variable = {
 			var = global.lhs_count_abstain
-			value =global.lhs_count_support
+			value = global.lhs_count_support
 			compare = greater_than
 		}
 	}
 }
+
 lhs_vote_third_round_passes = {
 	check_variable = {
 		var = global.lhs_count_support
@@ -113,6 +121,7 @@ lhs_vote_third_round_passes = {
 		compare = greater_than
 	}
 }
+
 lhs_vote_third_round_fails = {
 	check_variable = {
 		var = global.lhs_count_support
@@ -120,6 +129,7 @@ lhs_vote_third_round_fails = {
 		compare = less_than
 	}
 }
+
 lhs_has_war_with_negative = {
 	OR = {
 		has_offensive_war_with = democratic
@@ -130,12 +140,14 @@ lhs_has_war_with_negative = {
 		has_offensive_war_with = mixed_ideology_democracy
 	}
 }
+
 lhs_are_you_part_of_lhs = {
 	is_in_array = {
 		array = global.lhs_member_flag
 		value = ROOT.id
 	}
 }
+
 lhs_not_ideologies = {
 	NOT = {
 		has_government = communism

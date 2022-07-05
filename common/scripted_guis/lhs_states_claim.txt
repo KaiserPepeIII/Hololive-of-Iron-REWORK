@@ -2,45 +2,50 @@ scripted_gui = {
 	lhs_claimed_country_gui_Window = {
 		window_name = "lhs_claimed_country_gui"
 		context_type = selected_state_context
-		parent_window_token = selected_state_view 
-		
+		parent_window_token = selected_state_view
 		properties = {
+			#flag of country which you have claimed land from
 			lhs_claimed_country_large_flag = {
 				image = [THIS.GetFlag]
 			}
 		}
 		dynamic_lists = {
+			#flag of country which you have claimed land from
 			lhs_claimed_country_gridbox = {
-			array = ROOT.lhs_states_selected_country
-			entry_container = lhs_claimed_country_list_entry
-			change_scope = yes
+				array = ROOT.lhs_states_selected_country
+				entry_container = lhs_claimed_country_list_entry
+				change_scope = yes
 			}
 		}
 	}
-  lhs_states_claim_gui = {
-	window_name = "lhs_states_claim_window"
-	context_type = selected_state_context
-	parent_window_token = selected_state_view 
-	
+	lhs_states_claim_gui = {
+		window_name = "lhs_states_claim_window"
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
 		visible = {
 			ROOT = {
-			has_idea = lhs_member
+				has_idea = lhs_member
 			}
 		}
-
 		effects = {
+			#adds selected state to array
 			lhs_states_claim_button_click = {
 				ROOT = {
+					#sets country flag on nation claiming the land
 					set_country_flag = lhs_state_selected_first_country
 				}
+				# This bracket Makes sure that the nation isn't added to the array again
 				THIS = {
+					#adds claimed state into an array
 					add_to_array = {
 						array = ROOT.lhs_claim_state
 						value = THIS.id
 					}
 					if = {
 						limit = {
+							#State
 							THIS = {
+								#State Owner
 								OWNER = {
 									NOT = {
 										is_in_array = {
@@ -53,17 +58,19 @@ scripted_gui = {
 						}
 						OWNER = {
 							add_to_array = {
-							array = ROOT.lhs_states_selected_country
-							value = THIS.id
+								array = ROOT.lhs_states_selected_country
+								value = THIS.id
 							}
-						}	
+						}
 					}
 				}
+				#Counts the amount of states being added to the array, this is done in order to check for when you are at the limit, 12 and at the minimum 1. Going to 0 clear the arrays
 				set_variable = {
 					var = ROOT.lhs_claim_state_count
 					value = ROOT.lhs_claim_state^num
 				}
 			}
+			#removes individuals states
 			lhs_states_remove_claim_click = {
 				THIS = {
 					remove_from_array = {
@@ -71,85 +78,109 @@ scripted_gui = {
 						value = THIS.id
 					}
 				}
+				#ensures that the state number count goes down
 				set_variable = {
 					var = ROOT.lhs_claim_state_count
 					value = ROOT.lhs_claim_state^num
 				}
+				#see, told you so
 				if = {
 					limit = {
 						check_variable = {
-						var = ROOT.lhs_claim_state_count
-						value = 1
-						compare = less_than
+							var = ROOT.lhs_claim_state_count
+							value = 1
+							compare = less_than
 						}
 					}
 					clear_array = ROOT.lhs_states_selected_country
 					ROOT = {
-					clr_country_flag = lhs_state_selected_first_country
+						clr_country_flag = lhs_state_selected_first_country
 					}
 				}
 			}
+			#Clears all the flags, arrays and variables. As if you had not claimed anything 
 			lhs_states_remove_all_claim_click = {
 				clear_array = ROOT.lhs_claim_state
 				clear_variable = ROOT.lhs_claim_state_count
 				clear_array = ROOT.lhs_states_selected_country
 				ROOT = {
 					clr_country_flag = lhs_state_selected_first_country
-					}
+				}
 			}
-			lhs_bring_incident_with_lhs_click = {	
-				
+			#Begins the LHS voting process, the instigator and the country on the receiving end of the vote should not be able to vote 
+			lhs_bring_incident_with_lhs_click = {
+				#Clr this
+				ROOT = {
+					clr_country_flag = lhs_state_selected_first_country
+				}
+				#????????????
 				set_variable = {
 					var = global.instigator_variable_states
 					value = ROOT.id
 				}
+				#Voting flags to get the ball rolling, lhs_voting_state sets the heading of the vote 
 				set_global_flag = lhs_voting_state
 				set_global_flag = lhs_first_round_vote
+				#changes the scope of the number of states claimed to a global scope, this is okay since you can not claim a state or raise another vote while there is one already active. This is done for the state transfer part although tbh a state flag would've probably worked as well or better
 				set_variable = {
 					var = global.lhs_claim_counter
 					value = ROOT.lhs_claim_state_count
 				}
-				every_state = {
+				#This is for the state list at the side of the voting section, also used for the state transfer section. Cleared at the end of the lhs_hand_over_land scripted effect
+				every_country = {
 					limit = {
-						is_in_array = {	
-							array = ROOT.lhs_claim_state
-							value = THIS.id 
+						is_in_array = {
+							array = ROOT.lhs_states_selected_country
+							value = THIS.id
 						}
 					}
-					add_to_array = {	
+					add_to_array = {
+						array = GLOBAL.lhs_states_selected_country_event
+						value = THIS.id
+					}
+				}
+				every_state = {
+					limit = {
+						is_in_array = {
+							array = ROOT.lhs_claim_state
+							value = THIS.id
+						}
+					}
+					add_to_array = {
 						array = global.lhs_voting_states_claim
 						value = THIS.id
 					}
 				}
+				#Gets rid of the root arrays since the gui is changings
 				clear_array = ROOT.lhs_claim_state
 				clear_array = ROOT.lhs_states_selected_country
 				clear_variable = ROOT.lhs_claim_state_count
+				#Sets the instigator arrangement that shows on the gui. This part is YOUR country
 				ROOT = {
-				set_country_flag = lhs_instigate_flag
+					set_country_flag = lhs_instigate_flag
 					add_to_array = {
 						array = global.lhs_vote_instigator
 						value = THIS.id
 					}
-					add_to_array = {
-						var = global.lhs_instigator_var
-						value = THIS.id
-					}
 				}
+				#This part is the country you are voting AGAINST
 				THIS = {
 					OWNER = {
 						add_to_array = {
 							array = global.lhs_vote_instigator
 							value = THIS.id
-						}						
+						}
 					}
 				}
+				#Starts grouping up LHS members into different voting categories
+				#this is for the 1st round
 				every_country = {
 					limit = {
 						has_idea = lhs_member
 						NOT = {
 							has_idea = lhs_head
 							lhs_security_council_trigger = yes
-							is_in_array = {	
+							is_in_array = {
 								array = global.lhs_vote_instigator
 								value = THIS.id
 							}
@@ -160,18 +191,20 @@ scripted_gui = {
 						value = THIS.id
 					}
 				}
+				#This is for the 2nd round
 				every_country = {
-					limit = { 	
-							OR = {
+					limit = {
+						OR = {
 							lhs_security_council_trigger = yes
 							has_idea = lhs_head
-							}
 						}
+					}
 					add_to_array = {
 						array = global.lhs_security_council
 						value = THIS.id
 					}
 				}
+				#This just informs the countries, i.e the players that there is a vote going on. Not inclusive of the instigator for obvious reasons 
 				every_country = {
 					limit = {
 						is_in_array = {
@@ -189,14 +222,14 @@ scripted_gui = {
 				}
 			}
 		}
-			triggers = {
-			
+		triggers = {
 			lhs_states_claim_button_click_enabled = {
+				#You can't claim land during a vote
 				lhs_not_voting_in_progress = yes
-
+				#You can't claim land from two different countries at once
 				NOT = {
 					AND = {
-						ROOT = {	
+						ROOT = {
 							has_country_flag = lhs_state_selected_first_country
 						}
 						THIS = {
@@ -206,11 +239,14 @@ scripted_gui = {
 										array = ROOT.lhs_states_selected_country
 										value = THIS.id
 									}
+									has_war = yes
+									is_puppet = yes
 								}
 							}
 						}
 					}
 				}
+				#You can't add the same state to the array twice
 				NOT = {
 					THIS = {
 						is_in_array = {
@@ -218,16 +254,18 @@ scripted_gui = {
 							value = THIS.id
 						}
 					}
+					#can't claim from yourself, the head of the lhs, someone in a civil war (to avoid the game from breaking), or if there is a cooldown of some sort. 
 					THIS = {
-						OWNER ={
+						OWNER = {
 							OR = {
-							has_country_flag = lhs_vote_insitigate_cooldown
-							tag = ROOT
-							has_civil_war = yes
-							has_idea = lhs_head
+								has_country_flag = lhs_vote_insitigate_cooldown
+								tag = ROOT
+								has_civil_war = yes
+								has_idea = lhs_head
 							}
 						}
 					}
+					#Maximum states you can claim at once is twelve
 					check_variable = {
 						var = ROOT.lhs_claim_state_count
 						value = 12
@@ -245,7 +283,6 @@ scripted_gui = {
 			}
 			lhs_states_remove_all_claim_click_enabled = {
 				lhs_not_voting_in_progress = yes
-
 				NOT = {
 					check_variable = {
 						var = ROOT.lhs_claim_state_count
@@ -256,6 +293,7 @@ scripted_gui = {
 			}
 			lhs_bring_incident_with_lhs_click_enabled = {
 				lhs_not_voting_in_progress = yes
+				#Don't waste their time, you need at least one state 
 				NOT = {
 					check_variable = {
 						var = ROOT.lhs_claim_state_count
@@ -264,7 +302,67 @@ scripted_gui = {
 					}
 				}
 			}
-		  }
-		 
-	 }
+		}
+		ai_enabled = {
+			always = yes
+		}
+		ai_test_interval = 1000
+		ai_test_variance = 0.8
+		ai_test_scopes = test_neighbouring_states
+		ai_weights = {
+			lhs_states_claim_button_click = {
+				ai_will_do = {
+					base = 1
+					modifier = {
+						factor = 30
+						THIS = {
+							is_core_of = ROOT
+						}
+					}
+					modifier = {
+						factor = 15
+						THIS = {
+							is_claimed_by = ROOT
+						}
+					}
+					modifier = {
+						factor = 2
+						THIS = {
+							is_in_home_area = yes
+						}
+					}
+					modifier = {
+						factor = 2
+						THIS = {
+							state_strategic_value > 10
+						}
+					}
+					modifier = {
+						factor = 1.2
+						THIS = {
+							is_coastal = yes
+						}
+					}
+					modifier = {
+						factor = 10000
+						is_debug = yes
+						THIS = {
+							has_state_flag = debug_lhs_test
+						}
+					}
+				}
+			}
+			lhs_bring_incident_with_lhs_click = {
+				ai_will_do = {
+					base = 20
+					modifier = {
+						factor = 500
+						any_state = {
+							is_in_array = ROOT.lhs_states_claim
+						}
+					}
+				}
+			}
+		}
+	}
 }

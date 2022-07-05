@@ -1672,9 +1672,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			capital_scope = {
-				limit = {
-					is_owned_by = ROOT
-				}
 				add_building_construction = {
 					type = bunker
 					level = 2
@@ -2038,62 +2035,6 @@ focus_tree = {
 					target = var:barack
 					type = puppet_wargoal_focus
 				}
-			}completion_reward = {
-				add_ideas = {
-					non_world_liberation_idea
-				}
-				add_war_support = 0.15
-				random_neighbor_country = {
-					limit = {
-						NOT = {
-							has_anti_ideology = yes
-							is_guaranteed_by = ROOT
-							is_in_faction_with = ROOT
-							has_non_aggression_pact_with = ROOT
-							is_subject_of = ROOT
-						}
-					}
-					set_temp_variable = {
-						var = obama
-						value = THIS.id
-					}
-				}
-				random_neighbor_country = {
-					limit = {
-						NOT = {
-							has_anti_ideology = yes
-							is_guaranteed_by = ROOT
-							is_in_faction_with = ROOT
-							has_non_aggression_pact_with = ROOT
-							is_subject_of = ROOT
-						}
-					}
-					set_temp_variable = {
-						var = barack
-						value = THIS.id
-					}
-				}
-				ROOT = {
-					create_wargoal = {
-						target = var:obama
-						type = puppet_wargoal_focus
-					}
-					create_wargoal = {
-						target = var:barack
-						type = puppet_wargoal_focus
-					}
-				}
-			}
-			available = {
-				any_neighbor_country = {
-					NOT = {
-						has_anti_ideology = yes
-						is_guaranteed_by = ROOT
-						is_in_faction_with = ROOT
-						has_non_aggression_pact_with = ROOT
-						is_subject_of = ROOT
-					}
-				}
 			}
 		}
 		available = {
@@ -2147,11 +2088,9 @@ focus_tree = {
 			if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = europe
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = europe
 						}
 					}
 					ROOT = {
@@ -2174,7 +2113,7 @@ focus_tree = {
 					target = PREV
 				}
 				send_equipment = {
-					equipment = artillery
+					equipment = artillery_equipment
 					amount = 200
 					target = PREV
 				}
@@ -2187,11 +2126,9 @@ focus_tree = {
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = south_america
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = south_america
 						}
 					}
 					ROOT = {
@@ -2214,7 +2151,7 @@ focus_tree = {
 					target = PREV
 				}
 				send_equipment = {
-					equipment = artillery
+					equipment = artillery_equipment
 					amount = 200
 					target = PREV
 				}
@@ -2227,11 +2164,9 @@ focus_tree = {
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = north_america
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = north_america
 						}
 					}
 					ROOT = {
@@ -2254,7 +2189,7 @@ focus_tree = {
 					target = PREV
 				}
 				send_equipment = {
-					equipment = artillery
+					equipment = artillery_equipment
 					amount = 200
 					target = PREV
 				}
@@ -2267,11 +2202,9 @@ focus_tree = {
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = africa
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = africa
 						}
 					}
 					ROOT = {
@@ -2294,7 +2227,7 @@ focus_tree = {
 					target = PREV
 				}
 				send_equipment = {
-					equipment = artillery
+					equipment = artillery_equipment
 					amount = 200
 					target = PREV
 				}
@@ -2304,15 +2237,12 @@ focus_tree = {
 					target = PREV
 				}
 			}
-			
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = middle_east
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = middle_east
 						}
 					}
 					ROOT = {
@@ -2335,7 +2265,7 @@ focus_tree = {
 					target = PREV
 				}
 				send_equipment = {
-					equipment = artillery
+					equipment = artillery_equipment
 					amount = 200
 					target = PREV
 				}
@@ -2345,15 +2275,12 @@ focus_tree = {
 					target = PREV
 				}
 			}
-			
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = asia
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = asia
 						}
 					}
 					ROOT = {
@@ -2376,7 +2303,7 @@ focus_tree = {
 					target = PREV
 				}
 				send_equipment = {
-					equipment = artillery
+					equipment = artillery_equipment
 					amount = 200
 					target = PREV
 				}
@@ -2386,16 +2313,12 @@ focus_tree = {
 					target = PREV
 				}
 			}
-			
-
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = australia
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = australia
 						}
 					}
 					ROOT = {
@@ -2418,7 +2341,7 @@ focus_tree = {
 					target = PREV
 				}
 				send_equipment = {
-					equipment = artillery
+					equipment = artillery_equipment
 					amount = 200
 					target = PREV
 				}
@@ -2428,13 +2351,10 @@ focus_tree = {
 					target = PREV
 				}
 			}
-			
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-						}
+						has_anti_ideology = yes
 					}
 				}
 				random_country = {
@@ -2448,7 +2368,7 @@ focus_tree = {
 					target = PREV
 				}
 				send_equipment = {
-					equipment = artillery
+					equipment = artillery_equipment
 					amount = 200
 					target = PREV
 				}
@@ -2459,7 +2379,6 @@ focus_tree = {
 				}
 			}
 		}
-
 		x = 78
 		y = 3
 	}
@@ -2474,11 +2393,9 @@ focus_tree = {
 			if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = europe
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = europe
 						}
 					}
 					ROOT = {
@@ -2505,11 +2422,9 @@ focus_tree = {
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = south_america
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = south_america
 						}
 					}
 					ROOT = {
@@ -2536,11 +2451,9 @@ focus_tree = {
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = north_america
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = north_america
 						}
 					}
 					ROOT = {
@@ -2567,11 +2480,9 @@ focus_tree = {
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = africa
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = africa
 						}
 					}
 					ROOT = {
@@ -2595,15 +2506,12 @@ focus_tree = {
 					add_manpower = 100000
 				}
 			}
-			
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = asia
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = asia
 						}
 					}
 					ROOT = {
@@ -2627,15 +2535,12 @@ focus_tree = {
 					add_manpower = 100000
 				}
 			}
-		
-					else_if = {
+			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = middle_east
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = middle_east
 						}
 					}
 					ROOT = {
@@ -2659,15 +2564,12 @@ focus_tree = {
 					add_manpower = 100000
 				}
 			}
-			
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-							capital_scope = {
-								is_on_continent = australia
-							}
+						has_anti_ideology = yes
+						capital_scope = {
+							is_on_continent = australia
 						}
 					}
 					ROOT = {
@@ -2691,13 +2593,10 @@ focus_tree = {
 					add_manpower = 100000
 				}
 			}
-			
 			else_if = {
 				limit = {
 					any_country = {
-						limit = {
-							has_anti_ideology = yes
-						}
+						has_anti_ideology = yes
 					}
 				}
 				random_country = {
@@ -2705,16 +2604,14 @@ focus_tree = {
 						has_anti_ideology = yes
 					}
 				}
-			PREV = {
-				add_ideas = {
-					foreign_training_non_idea
+				PREV = {
+					add_ideas = {
+						foreign_training_non_idea
+					}
+					add_manpower = 100000
 				}
-				add_manpower = 100000
 			}
-			}
-		
 		}
-		
 		x = 77
 		y = 4
 	}
@@ -2980,6 +2877,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 5
 			add_doctrine_cost_reduction = {
+				name = generic_cost_reduction
 				cost_reduction = 0.5
 				uses = 2
 				category = cat_superior_firepower

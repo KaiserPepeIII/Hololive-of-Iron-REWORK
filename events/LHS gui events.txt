@@ -1180,6 +1180,7 @@ country_event = {
 			clear_array = global.lhs_voting_states_claim
 			clear_array = global.lhs_normal_voting
 			clr_global_flag = lhs_first_round_vote
+			clr_global_flag = lhs_voting_state
 		}
 	}
 	#Let's gooo
@@ -1229,7 +1230,7 @@ country_event = {
 				remove_ideas = lhs_voted
 			}
 			lhs_aid_success = yes
-			lhs_hand_over_land = yes
+			lhs_hand_over_land_demand = yes
 			lhs_join_success = yes
 			lhs_clear_all_voting = yes
 			lhs_intervention_begin_war = yes
@@ -1341,12 +1342,12 @@ country_event = {
 				}
 				remove_ideas = lhs_voted
 			}
-			lhs_intervention_yes_no = yes
+			lhs_hand_over_land_demand = yes
 			lhs_aid_success = yes
-			lhs_hand_over_land = yes
+			lhs_intervention_yes_no = yes
+			lhs_intervention_begin_war = yes
 			lhs_join_success = yes
 			lhs_clear_all_voting = yes
-			lhs_intervention_begin_war = yes
 			clr_global_flag = lhs_third_round_vote
 			clear_array = global.lhs_vote_instigator
 			clear_array = global.lhs_instigator_var
@@ -1408,6 +1409,7 @@ country_event = {
 			clear_array = global.lhs_voting_states_claim
 			clear_array = global.lhs_normal_voting
 			clear_array = global.lhs_security_council
+			clr_global_flag = lhs_voting_state
 			clr_global_flag = lhs_third_round_vote
 		}
 	}
@@ -1492,5 +1494,106 @@ country_event = {
 	#Let's gooo
 	option = {
 		name = lhs.47.a
+	}
+}
+
+#Do we hand over the land?
+country_event = {
+	id = lhs.48
+	title = lhs.48.t
+	desc = lhs.48.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Hell no
+	option = {
+		name = lhs.48.a
+		every_country = {
+			limit = {
+				has_country_flag = lhs_instigate_flag
+			}
+			set_country_flag = {
+				flag = lhs_vote_instigator_cooldown
+				days = 60
+				value = 1
+			}
+			country_event = lhs.50
+			clr_country_flag = lhs_instigate_flag
+		}
+		clr_global_flag = lhs_voting_state
+		clear_array = global.lhs_voting_states_claim
+		clear_variable = global.lhs_claim_counter
+	}
+	#sigh...yeah
+	option = {
+		name = lhs.48.b
+		every_country = {
+			limit = {
+				has_country_flag = lhs_instigate_flag
+			}
+			set_country_flag = {
+				flag = lhs_vote_instigator_cooldown
+				days = 60
+				value = 1
+			}
+			country_event = lhs.49
+		}
+		lhs_hand_over_land = yes
+		ai_chance = {
+			base = 1
+			modifier = {
+				is_debug = yes
+				factor = 500
+			}
+		}
+	}
+}
+
+#The country has handed over the land
+country_event = {
+	id = lhs.49
+	title = lhs.49.t
+	desc = lhs.49.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Let's gooo
+	option = {
+		name = lhs.49.a
+	}
+}
+
+#The country has not handed over the land
+country_event = {
+	id = lhs.50
+	title = lhs.50.t
+	desc = lhs.50.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#fine we'll let them go
+	option = {
+		name = lhs.50.a
+		clr_country_flag = lhs_instigate_flag
+	}
+	option = {
+		name = lhs.51.b
+		ROOT = {
+			create_wargoal = {
+				target = var:Global.lhs_states_selected_country_event^0
+				type = annex_everything
+			}
+		}
+		clear_array = global.lhs_states_selected_country_event
+	}
+}
+
+#There is a vote
+country_event = {
+	id = lhs.51
+	title = lhs.52.t
+	desc = lhs.52.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Let's gooo
+	option = {
+		name = lhs.52.a
 	}
 }

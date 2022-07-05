@@ -1,25 +1,47 @@
 pro_yagoo_conservative_category = {
 		generic_deregulate_economy = {
-		icon = generic_prepare_civil_war
-		
-		visible = {
-			always = yes
-		}
-		
-		fire_only_once = no
-		
-		ai_will_do = {
-			factor = 5
+			icon = generic_prepare_civil_war
+			
+			available = {
+				NOT = {
+					has_idea = deregulating_economy
+					has_idea = small_economic_boom
+				}
 			}
-			
-		days_re_enable = 120
 		
-		cost = 120
+			visible = {
+				NOT = {
+					has_idea = deregulating_economy
+					has_idea = small_economic_boom
+				}
+			}
 		
-		complete_effect = {
+			fire_only_once = no
+		
+			ai_will_do = {
+				factor = 5
+				}
 			
+			days_re_enable = 180
+		
+			days_remove = 180
+		
+			cost = 250
+		
+			complete_effect = {
+				add_timed_idea = {
+					idea = deregulating_economy
+					days = 180
+				}
+			}
+		
+			remove_effect = {
+				add_timed_idea = {
+					idea = small_economic_boom
+					days = 200
+				}
+			}
 		}
-	}
 		generic_encourage_traditional_family = {
 		icon = generic_prepare_civil_war
 		
@@ -33,12 +55,15 @@ pro_yagoo_conservative_category = {
 			factor = 5
 			}
 			
-		days_re_enable = 360
+		days_re_enable = 100
 		
-		cost = 120
+		cost = 10
 		
 		complete_effect = {
-			
+			add_timed_idea ={
+				idea = encourage_family_tradition
+				days = 100
+			}
 		}
 	}
 		generic_encourage_private_industry = {
@@ -56,10 +81,21 @@ pro_yagoo_conservative_category = {
 			
 		days_re_enable = 120
 		
-		cost = 120
+		cost = 50
 		
 		complete_effect = {
-			
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+				idea = encourage_private_industry
+				days = 70
+			}	
 		}
 	}
 		generic_encourage_private_infrastructure = {
@@ -75,12 +111,118 @@ pro_yagoo_conservative_category = {
 			factor = 5
 			}
 			
-		days_re_enable = 120
+		days_re_enable = 60
+		
+		days_remove = 120
 		
 		cost = 120
 		
 		complete_effect = {
+			random_list = {
+				50 = {
+					add_timed_idea = {
+						idea = contracted_railroads_1
+						days = 121
+					}
+				}
+				25 = {
+					add_timed_idea = {
+						idea = contracted_railroads_2
+						days = 121
+					}
+					add_political_power = -5
+				}
+				20 = {
+					add_timed_idea = {
+						idea = contracted_railroads_3
+						days = 121
+					}
+					add_political_power = -15
+				}
+				5 = {
+					add_timed_idea = {
+						idea = contracted_railroads_4
+						days = 121
+					}
+					add_political_power = -30
+				}
 			
+			}
+			
+		}
+		remove_effect = {
+			custom_effect_tooltip = "We will gain some infrastructure in our states depending on the quality of our contracted railroad company."
+			hidden_effect = {
+				if = {
+					limit = {
+						has_idea = contracted_railroads_1
+					}
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					}
+				else_if = {
+					limit = {
+						has_idea = contracted_railroads_2
+					}
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+					}
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = contracted_railroads_3
+					}
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 2
+							instant_build = yes
+						}
+					}
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+				else = {
+					limit = {
+						has_idea = contracted_railroads_4
+					}
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 2
+							instant_build = yes
+						}
+					}
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+			}
 		}
 	}
 		generic_attack_reformers = {
@@ -96,19 +238,30 @@ pro_yagoo_conservative_category = {
 			factor = 5
 			}
 			
-		days_re_enable = 120
+		days_re_enable = 45
 		
-		cost = 120
+		cost = 30
 		
 		complete_effect = {
-			
+			add_stability = -0.03
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.06
+			}
 		}
 	}
 		generic_promote_individualism = {
 		icon = generic_prepare_civil_war
 		
 		visible = {
-			always = yes
+			NOT = {
+				has_idea = promote_individualism
+			}
+		}
+		available = {
+			NOT = {
+				has_idea = promote_individualism
+			}
 		}
 		
 		fire_only_once = no
@@ -117,42 +270,62 @@ pro_yagoo_conservative_category = {
 			factor = 5
 			}
 			
-		days_re_enable = 120
+		days_re_enable = 45
 		
-		cost = 120
+		cost = 50
 		
 		complete_effect = {
-			
+			add_timed_idea = {
+				idea = promote_individualism
+				days = 120
+			}
 		}
 	}
 		generic_promote_law_order = {
 		icon = generic_prepare_civil_war
 		
 		visible = {
-			always = yes
+			NOT = {
+				has_idea = law_and_order_conservatismpolicy
+			}
 		}
-		
+		available = {
+			NOT = {
+				has_idea = law_and_order_conservatismpolicy
+				has_stability > 0.75
+			}
+		}
 		fire_only_once = no
 		
 		ai_will_do = {
 			factor = 5
 			}
 			
-		days_re_enable = 120
+		days_re_enable = 45
 		
-		cost = 120
+		cost = 50
 		
 		complete_effect = {
-			
+			add_timed_idea = {
+				idea = law_and_order_conservatismpolicy
+				days = 35
+			}
 		}
 	}
 		generic_rally_for_interventionism = {
 		icon = generic_prepare_civil_war
 		
 		visible = {
-			always = yes
+			NOT = {
+				has_idea = interventionism_rally
+			}
 		}
-		
+		available = {
+			NOT = {
+				has_idea = interventionism_rally
+				has_war_support > 0.75
+			}
+		}
 		fire_only_once = no
 		
 		ai_will_do = {
@@ -161,10 +334,13 @@ pro_yagoo_conservative_category = {
 			
 		days_re_enable = 120
 		
-		cost = 120
+		cost = 25
 		
 		complete_effect = {
-			
+			add_timed_idea = {
+				idea = interventionism_rally
+				days = 120
+			}
 		}
 	}
 }

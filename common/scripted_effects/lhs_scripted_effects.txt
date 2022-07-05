@@ -1,17 +1,29 @@
-lhs_clear_all_voting = {
-	clr_global_flag = lhs_is_counting
-	clr_global_flag = lhs_voting
-	clr_global_flag = lhs_voting_state
-	clr_global_flag = lhs_vote_join
-	clear_array = global.lhs_entry_list
+#Opens the resistance gui, clears LHS gui and "action array" which is the array a country that is clicked on in the gui gets put into
+resistance_button_click = {
+	set_country_flag = view_resistance_membership
+	clr_country_flag = view_lhs_membership
+	clr_country_flag = view_lhs_friendly_decisions
+	clear_array = GLOBAL.lhs_action_array
+}
+
+#clears everything
+resistance_button_right_click = {
+	clr_country_flag = view_resistance_membership
+	clr_country_flag = view_lhs_membership
+	clr_country_flag = view_resistance_friendly_decisions
+	clear_array = GLOBAL.resistance_action_array
+}
+
+lhs_clear_voting_soft = {
 	clear_variable = global.lhs_count_yes
 	clear_variable = global.lhs_count_no
-	clear_array = global.lhs_voted_yes 
+	clear_array = global.lhs_voted_yes
 	clear_array = global.lhs_voted_no
 	clear_array = global.lhs_voted_support
 	clear_array = global.lhs_voted_abstain
 	clear_array = global.lhs_voted_reject
 	clear_array = global.lhs_voted_veto
+	#resets the vote count 
 	set_variable = {
 		var = global.lhs_count_support
 		value = 0
@@ -28,43 +40,94 @@ lhs_clear_all_voting = {
 		var = global.lhs_count_veto
 		value = 0
 	}
-	every_country = {	
+	#removes the lhs_voted idea which is used to prevent nations from voting multiple times
+	every_country = {
 		limit = {
-			OR = {
-				is_in_array = {
-					array = global.lhs_member_flag
-					value = THIS.id
-				}				
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
 			}
 		}
-		remove_ideas = { lhs_voted }
+		remove_ideas = {
+			lhs_voted
+		}
 	}
 }
+
+#Clears literally almost everything in regards to voting, includes out of date lines of code 
+lhs_clear_all_voting = {
+	#clearing all flags and arrays for the next vote 
+	clr_global_flag = lhs_is_counting
+	clr_global_flag = lhs_voting
+	clr_global_flag = lhs_vote_join
+	clear_array = global.lhs_entry_list
+	clear_variable = global.lhs_count_yes
+	clear_variable = global.lhs_count_no
+	clear_array = global.lhs_voted_yes
+	clear_array = global.lhs_voted_no
+	clear_array = global.lhs_voted_support
+	clear_array = global.lhs_voted_abstain
+	clear_array = global.lhs_voted_reject
+	clear_array = global.lhs_voted_veto
+	#resets the vote count 
+	set_variable = {
+		var = global.lhs_count_support
+		value = 0
+	}
+	set_variable = {
+		var = global.lhs_count_reject
+		value = 0
+	}
+	set_variable = {
+		var = global.lhs_count_abstain
+		value = 0
+	}
+	set_variable = {
+		var = global.lhs_count_veto
+		value = 0
+	}
+	#removes the lhs_voted idea which is used to prevent nations from voting multiple times
+	every_country = {
+		limit = {
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+		}
+		remove_ideas = {
+			lhs_voted
+		}
+	}
+}
+
+#same as the resistance button
 lhs_button_click = {
 	set_country_flag = view_lhs_membership
 	clr_country_flag = view_resistance_membership
 	clr_country_flag = view_resistance_friendly_decisions
 	clear_array = GLOBAL.resistance_action_array
 }
+
+#same as the resistance button
 lhs_button_right_click = {
 	clr_country_flag = view_lhs_membership
 	clr_country_flag = view_resistance_membership
 	clr_country_flag = view_lhs_friendly_decisions
 	clear_array = GLOBAL.lh_action_array
 }
+
+#sets the instigator of a vote, the instigator can not vote for the issue they brought up
 lhs_instigate_set = {
 	ROOT = {
-	set_country_flag = lhs_instigate_flag
+		set_country_flag = lhs_instigate_flag
 		add_to_array = {
 			array = global.lhs_vote_instigator
 			value = THIS.id
 		}
-		add_to_array = {
-			var = global.lhs_instigator_var
-			value = THIS.id
-		}
 	}
 }
+
+#sets voters for the 1st and 3rd round 
 lhs_normal_voting_country_set = {
 	every_country = {
 		limit = {
@@ -72,7 +135,7 @@ lhs_normal_voting_country_set = {
 			NOT = {
 				has_idea = lhs_head
 				lhs_security_council_trigger = yes
-				is_in_array = {	
+				is_in_array = {
 					array = global.lhs_vote_instigator
 					value = THIS.id
 				}
@@ -84,20 +147,36 @@ lhs_normal_voting_country_set = {
 		}
 	}
 }
+
+#sets voters for the 2nd round
 lhs_security_council_country_set = {
 	every_country = {
-		limit = { 	
-				OR = {
+		limit = {
+			OR = {
 				lhs_security_council_trigger = yes
 				has_idea = lhs_head
-				}
 			}
+		}
 		add_to_array = {
 			array = global.lhs_security_council
 			value = THIS.id
 		}
 	}
 }
+
+lhs_hand_over_land_demand = {
+	every_country = {
+		limit = {
+			is_in_array = {
+				array = global.lhs_states_selected_country_event
+				value = THIS.id
+			}
+		}
+		country_event = lhs.48
+	}
+}
+
+#oh boy where do I start
 lhs_hand_over_land = {
 	if = {
 		limit = {
@@ -105,568 +184,568 @@ lhs_hand_over_land = {
 		}
 		every_country = {
 			limit = {
+				#this selects the instigator of a vote
 				has_country_flag = lhs_instigate_flag
 			}
-		if = {
-			limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 1
-					compare = equals
-				}
-			}
-			set_variable = {
-				var = global.lhs_state_transfer_one
-				value = global.lhs_voting_states_claim^0
-			}
-			THIS = {
-			transfer_state = var:global.lhs_state_transfer_one
-			}
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 2
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}
-				THIS = {
-				transfer_state =var:global.lhs_state_transfer_one
-				transfer_state =var:global.lhs_state_transfer_two
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 3
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 4
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				transfer_state = var:global.lhs_state_transfer_four
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 5
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_five
-					value = global.lhs_voting_states_claim^4
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				transfer_state = var:global.lhs_state_transfer_four
-				transfer_state = var:global.lhs_state_transfer_five
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 6
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_five
-					value = global.lhs_voting_states_claim^4
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_six
-					value = global.lhs_voting_states_claim^5
-				}
-				THIS = {
-				transfer_state =var:global.lhs_state_transfer_one
-				transfer_state =var:global.lhs_state_transfer_two
-				transfer_state =var:global.lhs_state_transfer_three
-				transfer_state =var:global.lhs_state_transfer_four
-				transfer_state =var:global.lhs_state_transfer_five
-				transfer_state =var:global.lhs_state_transfer_six
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 7
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_five
-					value = global.lhs_voting_states_claim^4
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_six
-					value = global.lhs_voting_states_claim^5
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_seven
-					value = global.lhs_voting_states_claim^6
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				transfer_state = var:global.lhs_state_transfer_four
-				transfer_state = var:global.lhs_state_transfer_five
-				transfer_state = var:global.lhs_state_transfer_six
-				transfer_state = var:global.lhs_state_transfer_seven
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 8
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_five
-					value = global.lhs_voting_states_claim^4
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_six
-					value = global.lhs_voting_states_claim^5
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_seven
-					value = global.lhs_voting_states_claim^6
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_eight
-					value = global.lhs_voting_states_claim^7
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				transfer_state = var:global.lhs_state_transfer_four
-				transfer_state = var:global.lhs_state_transfer_five
-				transfer_state = var:global.lhs_state_transfer_six
-				transfer_state = var:global.lhs_state_transfer_seven
-				transfer_state = var:global.lhs_state_transfer_eight
-				}
-			}	
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 9
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_five
-					value = global.lhs_voting_states_claim^4
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_six
-					value = global.lhs_voting_states_claim^5
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_seven
-					value = global.lhs_voting_states_claim^6
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_eight
-					value = global.lhs_voting_states_claim^7
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_nine
-					value = global.lhs_voting_states_claim^8
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				transfer_state = var:global.lhs_state_transfer_four
-				transfer_state = var:global.lhs_state_transfer_five
-				transfer_state = var:global.lhs_state_transfer_six
-				transfer_state = var:global.lhs_state_transfer_seven
-				transfer_state = var:global.lhs_state_transfer_eight
-				transfer_state = var:global.lhs_state_transfer_nine
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 10
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_five
-					value = global.lhs_voting_states_claim^4
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_six
-					value = global.lhs_voting_states_claim^5
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_seven
-					value = global.lhs_voting_states_claim^6
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_eight
-					value = global.lhs_voting_states_claim^7
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_nine
-					value = global.lhs_voting_states_claim^8
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_ten
-					value = global.lhs_voting_states_claim^9
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				transfer_state = var:global.lhs_state_transfer_four
-				transfer_state = var:global.lhs_state_transfer_five
-				transfer_state = var:global.lhs_state_transfer_six
-				transfer_state = var:global.lhs_state_transfer_seven
-				transfer_state = var:global.lhs_state_transfer_eight
-				transfer_state = var:global.lhs_state_transfer_nine
-				transfer_state = var:global.lhs_state_transfer_ten
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 11
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_five
-					value = global.lhs_voting_states_claim^4
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_six
-					value = global.lhs_voting_states_claim^5
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_seven
-					value = global.lhs_voting_states_claim^6
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_eight
-					value = global.lhs_voting_states_claim^7
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_nine
-					value = global.lhs_voting_states_claim^8
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_ten
-					value = global.lhs_voting_states_claim^9
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_eleven
-					value = global.lhs_voting_states_claim^10
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				transfer_state = var:global.lhs_state_transfer_four
-				transfer_state = var:global.lhs_state_transfer_five
-				transfer_state = var:global.lhs_state_transfer_six
-				transfer_state = var:global.lhs_state_transfer_seven
-				transfer_state = var:global.lhs_state_transfer_eight
-				transfer_state = var:global.lhs_state_transfer_nine
-				transfer_state = var:global.lhs_state_transfer_ten
-				transfer_state = var:global.lhs_state_transfer_eleven
-				}
-			}		
-			else_if = {
-				limit = {
-				has_country_flag = lhs_instigate_flag
-				check_variable = {
-					var =global.lhs_claim_counter
-					value = 12
-					compare = equals
-					}
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_one
-					value = global.lhs_voting_states_claim^0
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_two
-					value = global.lhs_voting_states_claim^1
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_three
-					value = global.lhs_voting_states_claim^2
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_four
-					value = global.lhs_voting_states_claim^3
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_five
-					value = global.lhs_voting_states_claim^4
-				}		
-					set_variable = {
-					var = global.lhs_state_transfer_six
-					value = global.lhs_voting_states_claim^5
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_seven
-					value = global.lhs_voting_states_claim^6
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_eight
-					value = global.lhs_voting_states_claim^7
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_nine
-					value = global.lhs_voting_states_claim^8
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_ten
-					value = global.lhs_voting_states_claim^9
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_eleven
-					value = global.lhs_voting_states_claim^10
-				}
-					set_variable = {
-					var = global.lhs_state_transfer_twelve
-					value = global.lhs_voting_states_claim^11
-				}
-				THIS = {
-				transfer_state = var:global.lhs_state_transfer_one
-				transfer_state = var:global.lhs_state_transfer_two
-				transfer_state = var:global.lhs_state_transfer_three
-				transfer_state = var:global.lhs_state_transfer_four
-				transfer_state = var:global.lhs_state_transfer_five
-				transfer_state = var:global.lhs_state_transfer_six
-				transfer_state = var:global.lhs_state_transfer_seven
-				transfer_state = var:global.lhs_state_transfer_eight
-				transfer_state = var:global.lhs_state_transfer_nine
-				transfer_state = var:global.lhs_state_transfer_ten
-				transfer_state = var:global.lhs_state_transfer_eleven
-				transfer_state = var:global.lhs_state_transfer_twelve
-				}
-			}
-			else ={
-					every_country = { 
-						limit = {
-							has_country_flag = lhs_instigate_flag
-						}
-						clr_country_flag = lhs_instigate_flag
-					}
-				}
-			}
-			every_country = { 
+			if = {
 				limit = {
 					has_country_flag = lhs_instigate_flag
+					#checks to see how many states were claimed
+					check_variable = {
+						var = global.lhs_claim_counter
+						value = 1
+						compare = equals
+					}
 				}
-				clr_country_flag = lhs_instigate_flag
+				#sets a variable from an array
+				set_variable = {
+					var = global.lhs_state_transfer_one
+					value = global.lhs_voting_states_claim^0
+				}
+				#transfers the actual state
+				THIS = {
+					transfer_state = var:global.lhs_state_transfer_one
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 2
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 3
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 4
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 5
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_five
+						value = global.lhs_voting_states_claim^4
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+						transfer_state = var:global.lhs_state_transfer_five
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 6
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_five
+						value = global.lhs_voting_states_claim^4
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_six
+						value = global.lhs_voting_states_claim^5
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+						transfer_state = var:global.lhs_state_transfer_five
+						transfer_state = var:global.lhs_state_transfer_six
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 7
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_five
+						value = global.lhs_voting_states_claim^4
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_six
+						value = global.lhs_voting_states_claim^5
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_seven
+						value = global.lhs_voting_states_claim^6
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+						transfer_state = var:global.lhs_state_transfer_five
+						transfer_state = var:global.lhs_state_transfer_six
+						transfer_state = var:global.lhs_state_transfer_seven
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 8
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_five
+						value = global.lhs_voting_states_claim^4
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_six
+						value = global.lhs_voting_states_claim^5
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_seven
+						value = global.lhs_voting_states_claim^6
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_eight
+						value = global.lhs_voting_states_claim^7
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+						transfer_state = var:global.lhs_state_transfer_five
+						transfer_state = var:global.lhs_state_transfer_six
+						transfer_state = var:global.lhs_state_transfer_seven
+						transfer_state = var:global.lhs_state_transfer_eight
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 9
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_five
+						value = global.lhs_voting_states_claim^4
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_six
+						value = global.lhs_voting_states_claim^5
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_seven
+						value = global.lhs_voting_states_claim^6
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_eight
+						value = global.lhs_voting_states_claim^7
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_nine
+						value = global.lhs_voting_states_claim^8
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+						transfer_state = var:global.lhs_state_transfer_five
+						transfer_state = var:global.lhs_state_transfer_six
+						transfer_state = var:global.lhs_state_transfer_seven
+						transfer_state = var:global.lhs_state_transfer_eight
+						transfer_state = var:global.lhs_state_transfer_nine
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 10
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_five
+						value = global.lhs_voting_states_claim^4
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_six
+						value = global.lhs_voting_states_claim^5
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_seven
+						value = global.lhs_voting_states_claim^6
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_eight
+						value = global.lhs_voting_states_claim^7
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_nine
+						value = global.lhs_voting_states_claim^8
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_ten
+						value = global.lhs_voting_states_claim^9
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+						transfer_state = var:global.lhs_state_transfer_five
+						transfer_state = var:global.lhs_state_transfer_six
+						transfer_state = var:global.lhs_state_transfer_seven
+						transfer_state = var:global.lhs_state_transfer_eight
+						transfer_state = var:global.lhs_state_transfer_nine
+						transfer_state = var:global.lhs_state_transfer_ten
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 11
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_five
+						value = global.lhs_voting_states_claim^4
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_six
+						value = global.lhs_voting_states_claim^5
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_seven
+						value = global.lhs_voting_states_claim^6
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_eight
+						value = global.lhs_voting_states_claim^7
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_nine
+						value = global.lhs_voting_states_claim^8
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_ten
+						value = global.lhs_voting_states_claim^9
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_eleven
+						value = global.lhs_voting_states_claim^10
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+						transfer_state = var:global.lhs_state_transfer_five
+						transfer_state = var:global.lhs_state_transfer_six
+						transfer_state = var:global.lhs_state_transfer_seven
+						transfer_state = var:global.lhs_state_transfer_eight
+						transfer_state = var:global.lhs_state_transfer_nine
+						transfer_state = var:global.lhs_state_transfer_ten
+						transfer_state = var:global.lhs_state_transfer_eleven
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = lhs_instigate_flag
+						check_variable = {
+							var = global.lhs_claim_counter
+							value = 12
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_one
+						value = global.lhs_voting_states_claim^0
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_two
+						value = global.lhs_voting_states_claim^1
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_three
+						value = global.lhs_voting_states_claim^2
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_four
+						value = global.lhs_voting_states_claim^3
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_five
+						value = global.lhs_voting_states_claim^4
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_six
+						value = global.lhs_voting_states_claim^5
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_seven
+						value = global.lhs_voting_states_claim^6
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_eight
+						value = global.lhs_voting_states_claim^7
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_nine
+						value = global.lhs_voting_states_claim^8
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_ten
+						value = global.lhs_voting_states_claim^9
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_eleven
+						value = global.lhs_voting_states_claim^10
+					}
+					set_variable = {
+						var = global.lhs_state_transfer_twelve
+						value = global.lhs_voting_states_claim^11
+					}
+					THIS = {
+						transfer_state = var:global.lhs_state_transfer_one
+						transfer_state = var:global.lhs_state_transfer_two
+						transfer_state = var:global.lhs_state_transfer_three
+						transfer_state = var:global.lhs_state_transfer_four
+						transfer_state = var:global.lhs_state_transfer_five
+						transfer_state = var:global.lhs_state_transfer_six
+						transfer_state = var:global.lhs_state_transfer_seven
+						transfer_state = var:global.lhs_state_transfer_eight
+						transfer_state = var:global.lhs_state_transfer_nine
+						transfer_state = var:global.lhs_state_transfer_ten
+						transfer_state = var:global.lhs_state_transfer_eleven
+						transfer_state = var:global.lhs_state_transfer_twelve
+					}
+				}
 			}
+			#clears the instigator flag, done in here as to not remove it before the states are transfered 
+		}
+		every_country = {
+			limit = {
+				has_country_flag = lhs_instigate_flag
+			}
+			clr_country_flag = lhs_instigate_flag
 		}
 	}
+	#finally clears the remainder of the state gui
+	clr_global_flag = lhs_voting_state
 	clear_array = global.lhs_voting_states_claim
-	clear_variable =global.lhs_claim_counter
+	clear_variable = global.lhs_claim_counter
 }
+
 lhs_aid_success = {
 	if = {
 		limit = {
 			has_global_flag = lhs_aid_request_deciding
 		}
 		set_variable = {
-			var = global.lhs_aid_pile 
+			var = global.lhs_aid_pile
 			value = 0
 		}
 		every_country = {
@@ -683,6 +762,7 @@ lhs_aid_success = {
 		}
 	}
 }
+
 lhs_intervention_yes_no = {
 	if = {
 		limit = {
@@ -698,10 +778,10 @@ lhs_intervention_yes_no = {
 					value = THIS.id
 				}
 			}
-				add_to_array = {	
-					array = global.lhs_pro_interventionists
-					value = THIS.id
-				}
+			add_to_array = {
+				array = global.lhs_pro_interventionists
+				value = THIS.id
+			}
 		}
 		every_country = {
 			limit = {
@@ -715,7 +795,7 @@ lhs_intervention_yes_no = {
 					}
 					is_in_array = {
 						array = global.lhs_voted_reject
-						value = THIS.id 
+						value = THIS.id
 					}
 					is_in_array = {
 						array = global.lhs_voted_abstain
@@ -723,13 +803,14 @@ lhs_intervention_yes_no = {
 					}
 				}
 			}
-				add_to_array = {	
-					array = global.lhs_anti_interventionists
-					value = THIS.id
-				}
+			add_to_array = {
+				array = global.lhs_anti_interventionists
+				value = THIS.id
+			}
 		}
 	}
 }
+
 lhs_intervention_begin_war = {
 	if = {
 		limit = {
@@ -760,12 +841,14 @@ lhs_intervention_begin_war = {
 		}
 		clr_global_flag = lhs_intervention_request_deciding
 		clear_array = global.lhs_anti_interventionists
-	}	
+	}
 }
+
 lhs_intervention_clear = {
 	clear_array = global.lhs_anti_interventionists
 	clear_array = global.lhs_pro_interventionists
 }
+
 lhs_intervention_vote_fails = {
 	clear_array = global.lhs_intervention_receive_list
 	clear_variable = global.request_support_receiver
@@ -774,6 +857,7 @@ lhs_intervention_vote_fails = {
 	clear_array = global.lhs_anti_interventionists
 	clear_array = global.lhs_pro_interventionists
 }
+
 lhs_aid_vote_fails = {
 	every_country = {
 		limit = {
@@ -786,24 +870,31 @@ lhs_aid_vote_fails = {
 	}
 	clr_global_flag = lhs_aid_request_deciding
 	clear_array = global.lhs_aid_list
-	clear_variable = global.lhs_aid_pile 
-
+	clear_variable = global.lhs_aid_pile
 }
+
 lhs_join_success = {
 	if = {
 		limit = {
 			has_global_flag = lhs_join_vote
 		}
 		clr_global_flag = lhs_join_vote
-		every_country = {	
+		every_country = {
 			limit = {
 				is_in_array = {
-				array = global.lhs_entry_list
-				value = THIS.id
+					array = global.lhs_entry_list
+					value = THIS.id
 				}
 			}
-			remove_ideas = { neutral_member anti_member resistance_member }
-			add_ideas = {lhs_member lhs_customs_union_gui}
+			remove_ideas = {
+				neutral_member
+				anti_member
+				resistance_member
+			}
+			add_ideas = {
+				lhs_member
+				lhs_customs_union_gui
+			}
 			add_to_array = {
 				array = global.lhs_customs_union_flag
 				value = THIS.id
@@ -815,11 +906,17 @@ lhs_join_success = {
 		}
 		lhs_clear_all_voting = yes
 	}
-} 
-lhs_calculating = {
-	set_variable = { global.global.lhs_count_yes = lhs_voted_yes^num }
-	set_variable = { global.global.lhs_count_no = lhs_voted_no^num }
 }
+
+lhs_calculating = {
+	set_variable = {
+		global.global.lhs_count_yes = lhs_voted_yes^num
+	}
+	set_variable = {
+		global.global.lhs_count_no = lhs_voted_no^num
+	}
+}
+
 lhs_calculating_with_specials = {
 	if = {
 		limit = {
@@ -837,7 +934,7 @@ lhs_calculating_with_specials = {
 		}
 		clr_global_flag = lhs_security_council_one_yes
 		clr_global_flag = lhs_security_council_one_no
-	}	
+	}
 	if = {
 		limit = {
 			has_global_flag = lhs_security_council_two_yes
@@ -938,80 +1035,164 @@ lhs_calculating_with_specials = {
 			}
 		}
 		clr_global_flag = lhs_head_voted_yes
-		clr_global_flag = lhs_head_voted_no			
+		clr_global_flag = lhs_head_voted_no
 	}
 }
+
 lhs_security_council_voting_yes = {
-		add_to_array = {global.lhs_voted_yes = THIS.id}
-		add_ideas = lhs_voted
-			if = {
-			limit = {
-				has_idea = lhs_security_council_one
-			}
-			set_global_flag = lhs_security_council_one_yes
-			else_if = {
-				limit = {
-					has_idea = lhs_security_council_two
-				}
-				set_global_flag = lhs_security_council_two_yes
-			}
-			else_if = {
-				limit = {
-					has_idea = lhs_security_council_three
-				}
-				set_global_flag = lhs_security_council_three_yes
-			}
-			else_if = {
-				limit = {
-					has_idea = lhs_security_council_four
-				}
-				set_global_flag = lhs_security_council_four_yes
-			}
-			else_if = {
-				limit = {
-					has_idea = lhs_security_council_five
-				}
-				set_global_flag = lhs_security_council_five_yes
-			}
-			else= {
-				set_global_flag = lhs_security_council_six_yes
-			}
+	add_to_array = {
+		global.lhs_voted_yes = THIS.id
+	}
+	add_ideas = lhs_voted
+	if = {
+		limit = {
+			has_idea = lhs_security_council_one
 		}
+		set_global_flag = lhs_security_council_one_yes
+		else_if = {
+			limit = {
+				has_idea = lhs_security_council_two
+			}
+			set_global_flag = lhs_security_council_two_yes
+		}
+		else_if = {
+			limit = {
+				has_idea = lhs_security_council_three
+			}
+			set_global_flag = lhs_security_council_three_yes
+		}
+		else_if = {
+			limit = {
+				has_idea = lhs_security_council_four
+			}
+			set_global_flag = lhs_security_council_four_yes
+		}
+		else_if = {
+			limit = {
+				has_idea = lhs_security_council_five
+			}
+			set_global_flag = lhs_security_council_five_yes
+		}
+		else = {
+			set_global_flag = lhs_security_council_six_yes
+		}
+	}
 }
+
 lhs_security_council_voting_no = {
-		add_to_array = {global.lhs_voted_no = THIS.id}
-		add_ideas = lhs_voted
-			if = {
+	add_to_array = {
+		global.lhs_voted_no = THIS.id
+	}
+	add_ideas = lhs_voted
+	if = {
+		limit = {
+			has_idea = lhs_security_council_one
+		}
+		set_global_flag = lhs_security_council_one_no
+		else_if = {
 			limit = {
-				has_idea = lhs_security_council_one
+				has_idea = lhs_security_council_two
 			}
-			set_global_flag = lhs_security_council_one_no
-			else_if = {
-				limit = {
-					has_idea = lhs_security_council_two
-				}
-				set_global_flag = lhs_security_council_two_no
+			set_global_flag = lhs_security_council_two_no
+		}
+		else_if = {
+			limit = {
+				has_idea = lhs_security_council_three
 			}
-			else_if = {
-				limit = {
-					has_idea = lhs_security_council_three
-				}
-				set_global_flag = lhs_security_council_three_no
+			set_global_flag = lhs_security_council_three_no
+		}
+		else_if = {
+			limit = {
+				has_idea = lhs_security_council_four
 			}
-			else_if = {
-				limit = {
-					has_idea = lhs_security_council_four
-				}
-				set_global_flag = lhs_security_council_four_no
+			set_global_flag = lhs_security_council_four_no
+		}
+		else_if = {
+			limit = {
+				has_idea = lhs_security_council_five
 			}
-			else_if = {
-				limit = {
-					has_idea = lhs_security_council_five
-				}
-				set_global_flag = lhs_security_council_five_no
-			}
-			else= {
-				set_global_flag = lhs_security_council_six_no
+			set_global_flag = lhs_security_council_five_no
+		}
+		else = {
+			set_global_flag = lhs_security_council_six_no
+		}
+	}
+}
+
+resistance_ideology_idea_set = {
+	if = {
+		limit = {
+			check_variable = {
+				var = global.resistance_ideology_bar
+				value = 1
+				compare = equals
 			}
 		}
+		every_country = {
+			limit = {
+				has_idea = resistance_member
+			}
+			add_ideas = resistance_ideology_1
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = global.resistance_ideology_bar
+					value = 2
+					compare = equals
+				}
+			}
+			every_country = {
+				limit = {
+					has_idea = resistance_member
+				}
+				add_ideas = resistance_ideology_2
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = global.resistance_ideology_bar
+					value = 3
+					compare = equals
+				}
+			}
+			every_country = {
+				limit = {
+					has_idea = resistance_member
+				}
+				add_ideas = resistance_ideology_3
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = global.resistance_ideology_bar
+					value = 4
+					compare = equals
+				}
+			}
+			every_country = {
+				limit = {
+					has_idea = resistance_member
+				}
+				add_ideas = resistance_ideology_4
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = global.resistance_ideology_bar
+					value = 5
+					compare = equals
+				}
+			}
+			every_country = {
+				limit = {
+					has_idea = resistance_member
+				}
+				add_ideas = resistance_ideology_5
+			}
+		}
+	}
 }
