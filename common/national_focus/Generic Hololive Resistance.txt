@@ -124,7 +124,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_timed_idea = {
-				idea = GEN_follow_resistance_idea
+				idea = GEN_subversive_ideas
 				days = 360
 			}
 		}
@@ -1937,40 +1937,19 @@ focus_tree = {
 
 	}
 	focus = {
-		id = GEN_purge_the_antis
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = GEN_continue_the_path_of_resistance
-			focus = GEN_mistake_was_made
-		}
-		mutually_exclusive = {
-			focus = GEN_the_unholy_alliance
-		}
-		x = 74
-		y = 2
-
-	}
-	focus = {
-		id = GEN_the_unholy_alliance
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = GEN_mistake_was_made
-		}
-		mutually_exclusive = {
-			focus = GEN_purge_the_antis
-		}
-		x = 76
-		y = 2
-
-	}
-	focus = {
 		id = GEN_reject_collectivisation
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
 			focus = GEN_mistake_was_made
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
 		}
 		x = 79
 		y = 2
@@ -1983,6 +1962,22 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_reject_collectivisation
 		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
 		x = 79
 		y = 3
 
@@ -1994,6 +1989,24 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_mistake_was_made
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = -0.03
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.03
+			}
+			add_popularity = {
+				ideology = pro_resistance_kleptocracy
+				popularity = -0.03
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.03
+			}
+		}
 		x = 81
 		y = 2
 
@@ -2004,6 +2017,10 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = GEN_criticize_status_quo
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = -0.05
 		}
 		x = 81
 		y = 3
@@ -2018,6 +2035,21 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GEN_distribute_harmful_literature
+		}
+		completion_reward = {
+			hidden_effect = {
+				start_civil_war = {
+					ruling_party = pro_yagoo_kleptocracy
+					ideology = ROOT
+					size = 0.45
+					keep_political_leader = yes
+					keep_political_party_members = yes
+					keep_unit_leaders_trigger = { 
+						is_unit_leader = yes
+					}
+				}
+			}
+			custom_effect_tooltip = resistance_civil_war_tooltip
 		}
 		x = 80
 		y = 4
