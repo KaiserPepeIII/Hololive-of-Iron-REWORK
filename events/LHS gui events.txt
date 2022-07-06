@@ -30,6 +30,7 @@ country_event = {
 	}
 }
 
+#9 AND 15 ARE AID EVENTS 
 #request aid event
 country_event = {
 	id = lhs.9
@@ -86,7 +87,8 @@ country_event = {
 	}
 }
 
-#request intervention
+#request intervention 10 and 14
+#this event gives the option for countries which opted against joining the war to change their mind 
 country_event = {
 	id = lhs.10
 	title = lhs.10.t
@@ -118,21 +120,24 @@ country_event = {
 	id = lhs.14
 	hidden = yes
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	trigger = {
+		NOT = {
+			has_global_flag = lhs_voting
+		}
+		has_global_flag = lhs_intervention_request_deciding
 		all_of = {
 			array = global.lhs_anti_interventionists
 			value = THIS.id
-			PREV = {
-				has_idea = lhs_intervention_decided
-			}
+			has_idea = lhs_intervention_decided
 		}
 	}
 	immediate = {
 		hidden_effect = {
 			every_country = {
 				limit = {
+					#just to make sure no stray idea is present 
 					is_in_array = {
 						array = global.lhs_member_flag
 						value = THIS.id
@@ -148,6 +153,7 @@ country_event = {
 	}
 }
 
+#Once every LHS nation has made a decision, this event should fire that would distribute the aid package and clean up all the ideas, flags and whatnot. 
 #aid decision cleanup
 country_event = {
 	id = lhs.15
@@ -155,21 +161,24 @@ country_event = {
 	desc = lhs.15.d
 	picture = GFX_report_event_mio
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	fire_only_once = no
 	trigger = {
+		#If the flag isn't there then it won't fire 
 		has_global_flag = lhs_aid_request_deciding
+		NOT = {
+			has_global_flag = lhs_voting
+		}
 		all_of = {
 			array = global.lhs_member_flag
 			value = THIS.id
-			PREV = {
-				has_idea = lhs_aid_decided
-			}
+			has_idea = lhs_aid_decided
 		}
 	}
 	immediate = {
 		hidden_effect = {
+			#This block clears the aid decided idea
 			every_country = {
 				limit = {
 					is_in_array = {
@@ -179,6 +188,7 @@ country_event = {
 				}
 				remove_ideas = lhs_aid_decided
 			}
+			#This adds the amount of equipment donated to the instigator nation
 			every_country = {
 				limit = {
 					is_in_array = {
@@ -188,15 +198,17 @@ country_event = {
 				}
 				add_equipment_to_stockpile = {
 					type = infantry_equipment
-					amount = global.lhs_aid_pile
-					producer = YAG
+					amount = var:global.lhs_aid_pile
+					producer = var:global.lhs_aid_list^0.id
 				}
 			}
+			#Cleans up the flags
 			clr_global_flag = lhs_aid_request_deciding
 			clear_array = global.lhs_aid_list
 			clear_variable = global.lhs_aid_pile
 		}
 	}
+	#Just here to make sure there is a proper loc and not just OK
 	option = {
 		name = lhs.15.a
 	}
@@ -252,7 +264,7 @@ country_event = {
 		ROOT = {
 			set_country_flag = {
 				flag = clearing_antis_medium
-				days = 280
+				days = 580
 				value = 1
 			}
 		}
@@ -269,7 +281,7 @@ country_event = {
 			}
 			add_timed_idea = {
 				idea = medium_anti_clearing
-				days = 280
+				days = 580
 			}
 		}
 	}
@@ -405,7 +417,7 @@ country_event = {
 	major = yes
 	fire_only_once = no
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	trigger = {
 		has_global_flag = lhs_is_counting
@@ -442,7 +454,7 @@ country_event = {
 	picture = GFX_report_event_mio
 	major = yes
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	trigger = {
 		has_global_flag = lhs_is_counting
@@ -560,7 +572,7 @@ country_event = {
 	major = yes
 	fire_only_once = no
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	trigger = {
 		has_global_flag = lhs_is_counting
@@ -597,7 +609,7 @@ country_event = {
 	picture = GFX_report_event_mio
 	major = yes
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	trigger = {
 		has_global_flag = lhs_is_counting
@@ -637,7 +649,7 @@ country_event = {
 			}
 			set_country_flag = {
 				flag = lhs_investment_focus_set
-				days = 280
+				days = 580
 				value = 1
 			}
 		}
@@ -856,7 +868,7 @@ country_event = {
 	major = yes
 	fire_only_once = no
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	trigger = {
 		has_global_flag = lhs_is_counting
@@ -909,7 +921,7 @@ country_event = {
 	major = yes
 	fire_only_once = no
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	trigger = {
 		has_global_flag = lhs_is_counting
@@ -1076,6 +1088,7 @@ country_event = {
 	title = lhs.36.t
 	desc = lhs.36.d
 	picture = GFX_report_event_mio
+	#This event triggers when all possible nations have voted 
 	trigger = {
 		all_of = {
 			array = global.lhs_normal_voting
@@ -1086,10 +1099,11 @@ country_event = {
 		has_global_flag = lhs_first_round_vote
 	}
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	immediate = {
 		hidden_effect = {
+			#this block readies the countries for the 2nd round of voting 
 			every_country = {
 				limit = {
 					is_in_array = {
@@ -1099,6 +1113,7 @@ country_event = {
 				}
 				remove_ideas = lhs_voted
 			}
+			#this block informs countries that another vote is coming 
 			every_country = {
 				limit = {
 					is_in_array = {
@@ -1108,6 +1123,7 @@ country_event = {
 				}
 				country_event = lhs.42
 			}
+			#clean up 
 			lhs_intervention_yes_no = yes
 			lhs_clear_all_voting = yes
 			set_global_flag = lhs_second_round_vote
@@ -1130,15 +1146,13 @@ country_event = {
 		all_of = {
 			array = global.lhs_normal_voting
 			value = THIS.id
-			PREV = {
-				has_idea = lhs_voted
-			}
+			has_idea = lhs_voted
 		}
 		lhs_vote_normal_round_fails = yes
 		has_global_flag = lhs_first_round_vote
 	}
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	immediate = {
 		hidden_effect = {
@@ -1169,7 +1183,7 @@ country_event = {
 				}
 				set_country_flag = {
 					flag = lhs_vote_insitigate_cooldown
-					days = 220
+					days = 520
 				}
 			}
 			lhs_clear_all_voting = yes
@@ -1199,15 +1213,13 @@ country_event = {
 		all_of = {
 			array = global.lhs_security_council
 			value = THIS.id
-			PREV = {
-				has_idea = lhs_voted
-			}
+			has_idea = lhs_voted
 		}
 		lhs_vote_second_round_pass = yes
 		has_global_flag = lhs_second_round_vote
 	}
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	immediate = {
 		hidden_effect = {
@@ -1229,11 +1241,12 @@ country_event = {
 				}
 				remove_ideas = lhs_voted
 			}
+			lhs_accept_member = yes
 			lhs_aid_success = yes
 			lhs_hand_over_land_demand = yes
-			lhs_join_success = yes
 			lhs_clear_all_voting = yes
 			lhs_intervention_begin_war = yes
+			clr_global_flag = lhs_voting
 			clear_array = global.lhs_vote_instigator
 			clear_array = global.lhs_instigator_var
 			clr_global_flag = lhs_second_round_vote
@@ -1255,15 +1268,13 @@ country_event = {
 		all_of = {
 			array = global.lhs_security_council
 			value = THIS.id
-			PREV = {
-				has_idea = lhs_voted
-			}
+			has_idea = lhs_voted
 		}
 		lhs_vote_second_round_fails = yes
 		has_global_flag = lhs_second_round_vote
 	}
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	immediate = {
 		hidden_effect = {
@@ -1312,15 +1323,13 @@ country_event = {
 		all_of = {
 			array = global.lhs_normal_voting
 			value = THIS.id
-			PREV = {
-				has_idea = lhs_voted
-			}
+			has_idea = lhs_voted
 		}
 		lhs_vote_third_round_passes = yes
 		has_global_flag = lhs_third_round_vote
 	}
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	immediate = {
 		hidden_effect = {
@@ -1342,13 +1351,14 @@ country_event = {
 				}
 				remove_ideas = lhs_voted
 			}
+			lhs_accept_member = yes
 			lhs_hand_over_land_demand = yes
 			lhs_aid_success = yes
 			lhs_intervention_yes_no = yes
 			lhs_intervention_begin_war = yes
-			lhs_join_success = yes
 			lhs_clear_all_voting = yes
 			clr_global_flag = lhs_third_round_vote
+			clr_global_flag = lhs_voting
 			clear_array = global.lhs_vote_instigator
 			clear_array = global.lhs_instigator_var
 			clear_array = global.lhs_normal_voting
@@ -1370,15 +1380,13 @@ country_event = {
 		all_of = {
 			array = global.lhs_normal_voting
 			value = THIS.id
-			PREV = {
-				has_idea = lhs_voted
-			}
+			has_idea = lhs_voted
 		}
 		lhs_vote_third_round_fails = yes
 		has_global_flag = lhs_third_round_vote
 	}
 	mean_time_to_happen = {
-		days = 2
+		days = 5
 	}
 	immediate = {
 		hidden_effect = {
@@ -1409,6 +1417,7 @@ country_event = {
 			clear_array = global.lhs_voting_states_claim
 			clear_array = global.lhs_normal_voting
 			clear_array = global.lhs_security_council
+			clr_global_flag = lhs_voting
 			clr_global_flag = lhs_voting_state
 			clr_global_flag = lhs_third_round_vote
 		}

@@ -58,9 +58,7 @@ lhs_clear_voting_soft = {
 lhs_clear_all_voting = {
 	#clearing all flags and arrays for the next vote 
 	clr_global_flag = lhs_is_counting
-	clr_global_flag = lhs_voting
 	clr_global_flag = lhs_vote_join
-	clear_array = global.lhs_entry_list
 	clear_variable = global.lhs_count_yes
 	clear_variable = global.lhs_count_no
 	clear_array = global.lhs_voted_yes
@@ -94,9 +92,7 @@ lhs_clear_all_voting = {
 				value = THIS.id
 			}
 		}
-		remove_ideas = {
-			lhs_voted
-		}
+		remove_ideas = lhs_voted
 	}
 }
 
@@ -133,6 +129,7 @@ lhs_normal_voting_country_set = {
 		limit = {
 			has_idea = lhs_member
 			NOT = {
+				#every country that is not the head of the LHS, not part of the security council and not the instigator 
 				has_idea = lhs_head
 				lhs_security_council_trigger = yes
 				is_in_array = {
@@ -145,6 +142,41 @@ lhs_normal_voting_country_set = {
 			array = global.lhs_normal_voting
 			value = THIS.id
 		}
+	}
+}
+
+lhs_accept_member = {
+	if = {
+		limit = {
+			has_global_flag = lhs_voting_join
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_entry_list
+					value = THIS.id
+				}
+			}
+			remove_ideas = {
+				neutral_member
+				anti_member
+				resistance_member
+			}
+			add_ideas = {
+				lhs_member
+				lhs_customs_union_gui
+			}
+			add_to_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+			add_to_array = {
+				array = global.lhs_customs_union_flag
+				value = THIS.id
+			}
+			clear_array = global.lhs_entry_list
+		}
+		clr_global_flag = lhs_voting_join
 	}
 }
 
@@ -740,14 +772,17 @@ lhs_hand_over_land = {
 }
 
 lhs_aid_success = {
+	#since the voting events are all the same, flags are required to indicate different types of votes
 	if = {
 		limit = {
 			has_global_flag = lhs_aid_request_deciding
 		}
+		#This is the aid package that would be sent to the country
 		set_variable = {
 			var = global.lhs_aid_pile
 			value = 0
 		}
+		#Every country in the LHS BUT the INSTIGATOR would get this event 
 		every_country = {
 			limit = {
 				is_in_array = {
@@ -763,6 +798,7 @@ lhs_aid_success = {
 	}
 }
 
+#this effect notes the nations which supports intervention so they get dragged into the war
 lhs_intervention_yes_no = {
 	if = {
 		limit = {
@@ -844,6 +880,7 @@ lhs_intervention_begin_war = {
 	}
 }
 
+#if the second round fails, this is reset 
 lhs_intervention_clear = {
 	clear_array = global.lhs_anti_interventionists
 	clear_array = global.lhs_pro_interventionists
@@ -871,41 +908,6 @@ lhs_aid_vote_fails = {
 	clr_global_flag = lhs_aid_request_deciding
 	clear_array = global.lhs_aid_list
 	clear_variable = global.lhs_aid_pile
-}
-
-lhs_join_success = {
-	if = {
-		limit = {
-			has_global_flag = lhs_join_vote
-		}
-		clr_global_flag = lhs_join_vote
-		every_country = {
-			limit = {
-				is_in_array = {
-					array = global.lhs_entry_list
-					value = THIS.id
-				}
-			}
-			remove_ideas = {
-				neutral_member
-				anti_member
-				resistance_member
-			}
-			add_ideas = {
-				lhs_member
-				lhs_customs_union_gui
-			}
-			add_to_array = {
-				array = global.lhs_customs_union_flag
-				value = THIS.id
-			}
-			add_to_array = {
-				array = global.lhs_member_flag
-				value = THIS.id
-			}
-		}
-		lhs_clear_all_voting = yes
-	}
 }
 
 lhs_calculating = {
