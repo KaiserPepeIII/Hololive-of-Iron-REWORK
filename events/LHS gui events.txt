@@ -323,88 +323,15 @@ country_event = {
 	}
 }
 
-#sanction voting
+#we have been sanctioned
 country_event = {
 	id = lhs.17
 	title = lhs.17.t
 	desc = lhs.17.d
 	picture = GFX_report_event_mio
 	is_triggered_only = yes
-	#yes we will sanction - base
 	option = {
-		name = lhs.17.a
-		trigger = {
-			NOT = {
-				has_idea = lhs_head
-				lhs_security_council_trigger = yes
-			}
-		}
-		ROOT = {
-			add_to_array = {
-				array = global.lhs_count_yes
-				value = THIS.id
-			}
-			add_ideas = lhs_voted
-		}
-	}
-	#no we will not sanction - base
-	option = {
-		trigger = {
-			NOT = {
-				has_idea = lhs_head
-				lhs_security_council_trigger = yes
-			}
-		}
-		name = lhs.17.b
-		ROOT = {
-			add_to_array = {
-				array = global.lhs_count_no
-				value = THIS.id
-			}
-			add_ideas = lhs_voted
-		}
-	}
-	#yes we will sanction - security council
-	option = {
-		name = lhs.17.c
-		trigger = {
-			lhs_security_council_trigger = yes
-		}
-		lhs_security_council_voting_yes = yes
-	}
-	#no we will not sanction - security council
-	option = {
-		name = lhs.17.e
-		trigger = {
-			lhs_security_council_trigger = yes
-		}
-		ROOT = {
-			lhs_security_council_voting_no = yes
-		}
-	}
-	#yes we will sanction - head
-	option = {
-		name = lhs.17.f
-		trigger = {
-			has_idea = lhs_head
-		}
-		add_to_array = {
-			global.lhs_voted_yes = THIS.id
-		}
-		set_global_flag = lhs_head_voted_yes
-		add_ideas = lhs_voted
-	}
-	#no we will not sanction - security council
-	option = {
-		name = lhs.17.g
-		trigger = {
-			has_idea = lhs_head
-		}
-		add_to_array = {
-			global.lhs_voted_no = THIS.id
-		}
-		set_global_flag = lhs_head_voted_no
-		add_ideas = lhs_voted
+		name = lhs.18
 	}
 }
 
@@ -1194,6 +1121,7 @@ country_event = {
 			clear_array = global.lhs_voting_states_claim
 			clear_array = global.lhs_normal_voting
 			clr_global_flag = lhs_first_round_vote
+			clr_global_flag = lhs_sanctions_vote
 			clr_global_flag = lhs_voting_state
 		}
 	}
@@ -1241,6 +1169,7 @@ country_event = {
 				}
 				remove_ideas = lhs_voted
 			}
+			lhs_sanction_nation = yes
 			lhs_accept_member = yes
 			lhs_aid_success = yes
 			lhs_hand_over_land_demand = yes
@@ -1351,6 +1280,7 @@ country_event = {
 				}
 				remove_ideas = lhs_voted
 			}
+			lhs_sanction_nation = yes
 			lhs_accept_member = yes
 			lhs_hand_over_land_demand = yes
 			lhs_aid_success = yes
@@ -1417,6 +1347,7 @@ country_event = {
 			clear_array = global.lhs_voting_states_claim
 			clear_array = global.lhs_normal_voting
 			clear_array = global.lhs_security_council
+			clr_global_flag = lhs_sanctions_vote
 			clr_global_flag = lhs_voting
 			clr_global_flag = lhs_voting_state
 			clr_global_flag = lhs_third_round_vote

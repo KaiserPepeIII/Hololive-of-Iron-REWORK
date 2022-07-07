@@ -1,61 +1,216 @@
 add_namespace = resistance
-
 #Resistance Debate Organization Initiate
 country_event = {
 	id = resistance.1
 	title = resistance.1.t
 	desc = resistance.1.d
 	picture = GFX_report_event_resistance
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = resistance.1.a
 	}
-
 }
 
-country_event = {
+#A nation joins the resistance
+news_event = {
 	id = resistance.2
 	title = resistance.2.t
 	desc = resistance.2.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.2.a
 	}
-
 }
 
+#Resistance Member donate aid
 country_event = {
 	id = resistance.3
 	title = resistance.3.t
 	desc = resistance.3.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
+	#Take all my resources bby
 	option = {
 		name = resistance.3.a
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+		add_to_variable = {
+			var = global.resistance_equipment_aid_package
+			value = 500
+		}
+		set_country_flag = resistance_voted
 	}
-
+	#we have some to spare
+	option = {
+		name = resistance.3.b
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 250
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -250
+		}
+		add_to_variable = {
+			var = global.resistance_equipment_aid_package
+			value = 250
+		}
+		set_country_flag = resistance_voted
+	}
+	#We are literally broke
+	option = {
+		name = resistance.3.c
+		set_country_flag = resistance_voted
+	}
 }
+
+#resistance member aid cleanup
+country_event = {
+	id = resistance.6
+	title = resistance.6.t
+	desc = resistance.6.d
+	picture = GFX_report_event_resistance
+	trigger = {
+		tag = var:global.resistance_aid_remember_me
+		all_of = {
+			array = global.resistance_member_flag
+			value = THIS.id
+			has_country_flag = resistance_voted
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	immediate = {
+		clear_variable = global.resistance_aid_remember_me
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.resistance_member_flag
+					value = THIS.id
+				}
+			}
+			clr_country_flag = resistance_voted
+			clr_global_flag = resistance_aid_requested_timer
+		}
+		every_country = {
+			limit = {
+				has_country_flag = resistance_asked_for_aid
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = var:global.resistance_equipment_aid_package
+			}
+		}
+	}
+	option = {
+		name = resistance.6.a
+	}
+}
+
+#non resistance members aid 
+country_event = {
+	id = resistance.9
+	title = resistance.9.t
+	desc = resistance.9.d
+	picture = GFX_report_event_resistance
+	is_triggered_only = yes
+	#sure have something
+	option = {
+		name = resistance.9.a
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+		every_country = {
+			limit = {
+				has_country_flag = resistance_asked_for_aid
+			}
+			country_event = resistance.10
+		}
+	}
+	#smaller thing
+	option = {
+		name = resistance.9.b
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 250
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -250
+		}
+		every_country = {
+			limit = {
+				has_country_flag = resistance_asked_for_aid
+			}
+			country_event = resistance.11
+		}
+	}
+	#nothing to spare
+	option = {
+		name = resistance.9.c
+	}
+}
+
+#wow we got lots of stuff 
+country_event = {
+	id = resistance.10
+	title = resistance.10.t
+	desc = resistance.10.d
+	picture = GFX_report_event_resistance
+	is_triggered_only = yes
+	option = {
+		name = resistance.10.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_0
+			amount = 500
+		}
+	}
+}
+
+#wow we got something
+country_event = {
+	id = resistance.11
+	title = resistance.11.t
+	desc = resistance.11.d
+	picture = GFX_report_event_resistance
+	is_triggered_only = yes
+	option = {
+		name = resistance.11.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_0
+			amount = 250
+		}
+	}
+}
+
 #Resistance Debate Organization End
 country_event = {
 	id = resistance.4
 	title = resistance.4.t
 	desc = resistance.4.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.4.a
 		set_global_flag = Resistance_org_debate_settled
 	}
-
 }
 
 #Resistance Debate integration Initiate
@@ -64,27 +219,10 @@ country_event = {
 	title = resistance.5.t
 	desc = resistance.5.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.5.a
 	}
-
-}
-
-country_event = {
-	id = resistance.6
-	title = resistance.6.t
-	desc = resistance.6.d
-	picture = GFX_report_event_resistance
-
-	is_triggered_only = yes
-
-	option = {
-		name = resistance.6.a
-	}
-
 }
 
 country_event = {
@@ -92,70 +230,23 @@ country_event = {
 	title = resistance.7.t
 	desc = resistance.7.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.7.a
 	}
-
 }
+
 #Resistance Debate integration End
 country_event = {
 	id = resistance.8
 	title = resistance.8.t
 	desc = resistance.8.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.8.a
 		set_global_flag = Resistance_integration_debate_settled
 	}
-
-}
-
-country_event = {
-	id = resistance.9
-	title = resistance.9.t
-	desc = resistance.9.d
-	picture = GFX_report_event_resistance
-
-	is_triggered_only = yes
-
-	option = {
-		name = resistance.9.a
-	}
-
-}
-
-country_event = {
-	id = resistance.10
-	title = resistance.10.t
-	desc = resistance.10.d
-	picture = GFX_report_event_resistance
-
-	is_triggered_only = yes
-
-	option = {
-		name = resistance.10.a
-	}
-
-}
-
-country_event = {
-	id = resistance.11
-	title = resistance.11.t
-	desc = resistance.11.d
-	picture = GFX_report_event_resistance
-
-	is_triggered_only = yes
-
-	option = {
-		name = resistance.11.a
-	}
-
 }
 
 country_event = {
@@ -163,13 +254,10 @@ country_event = {
 	title = resistance.12.t
 	desc = resistance.12.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.12.a
 	}
-
 }
 
 country_event = {
@@ -177,13 +265,10 @@ country_event = {
 	title = resistance.13.t
 	desc = resistance.13.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.13.a
 	}
-
 }
 
 country_event = {
@@ -191,13 +276,10 @@ country_event = {
 	title = resistance.14.t
 	desc = resistance.14.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.14.a
 	}
-
 }
 
 country_event = {
@@ -205,13 +287,10 @@ country_event = {
 	title = resistance.15.t
 	desc = resistance.15.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.15.a
 	}
-
 }
 
 country_event = {
@@ -219,13 +298,10 @@ country_event = {
 	title = resistance.16.t
 	desc = resistance.16.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.16.a
 	}
-
 }
 
 country_event = {
@@ -233,13 +309,10 @@ country_event = {
 	title = resistance.17.t
 	desc = resistance.17.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.17.a
 	}
-
 }
 
 country_event = {
@@ -247,13 +320,10 @@ country_event = {
 	title = resistance.18.t
 	desc = resistance.18.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.18.a
 	}
-
 }
 
 country_event = {
@@ -261,13 +331,10 @@ country_event = {
 	title = resistance.19.t
 	desc = resistance.19.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.19.a
 	}
-
 }
 
 country_event = {
@@ -275,13 +342,10 @@ country_event = {
 	title = resistance.20.t
 	desc = resistance.20.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.20.as
 	}
-
 }
 
 country_event = {
@@ -289,13 +353,10 @@ country_event = {
 	title = resistance.21.t
 	desc = resistance.21.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.21.a
 	}
-
 }
 
 country_event = {
@@ -303,13 +364,10 @@ country_event = {
 	title = resistance.22.t
 	desc = resistance.22.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.22.a
 	}
-
 }
 
 country_event = {
@@ -317,13 +375,10 @@ country_event = {
 	title = resistance.23.t
 	desc = resistance.23.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.23.a
 	}
-
 }
 
 country_event = {
@@ -331,13 +386,10 @@ country_event = {
 	title = resistance.24.t
 	desc = resistance.24.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.24.a
 	}
-
 }
 
 country_event = {
@@ -345,221 +397,186 @@ country_event = {
 	title = resistance.25.t
 	desc = resistance.25.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.25.a
 	}
-
 }
+
 country_event = {
 	id = resistance.26
 	title = resistance.26.t
 	desc = resistance.26.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.26.a
 	}
-
 }
+
 country_event = {
 	id = resistance.27
 	title = resistance.27.t
 	desc = resistance.27.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.27.a
 	}
-
 }
+
 country_event = {
 	id = resistance.28
 	title = resistance.28.t
 	desc = resistance.28.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.28.a
 	}
-
 }
+
 country_event = {
 	id = resistance.29
 	title = resistance.29.t
 	desc = resistance.29.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.29.a
 	}
-
 }
+
 country_event = {
 	id = resistance.30
 	title = resistance.30.t
 	desc = resistance.30.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.30.a
 	}
-
 }
+
 country_event = {
 	id = resistance.31
 	title = resistance.31.t
 	desc = resistance.31.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.31.a
 	}
-
 }
+
 country_event = {
 	id = resistance.32
 	title = resistance.32.t
 	desc = resistance.32.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.32.a
 	}
-
 }
+
 country_event = {
 	id = resistance.33
 	title = resistance.33.t
 	desc = resistance.33.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.33.a
 	}
-
 }
+
 country_event = {
 	id = resistance.34
 	title = resistance.34.t
 	desc = resistance.34.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.34.a
 	}
-
 }
+
 country_event = {
 	id = resistance.35
 	title = resistance.35.t
 	desc = resistance.35.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.35.a
 	}
-
 }
+
 country_event = {
 	id = resistance.36
 	title = resistance.36.t
 	desc = resistance.36.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.36.a
 	}
-
 }
+
 country_event = {
 	id = resistance.37
 	title = resistance.37.t
 	desc = resistance.37.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.37.a
 	}
-
 }
+
 country_event = {
 	id = resistance.38
 	title = resistance.38.t
 	desc = resistance.38.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.38.a
 	}
-
 }
+
 country_event = {
 	id = resistance.39
 	title = resistance.39.t
 	desc = resistance.39.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.39.a
 	}
-
 }
+
 country_event = {
 	id = resistance.40
 	title = resistance.40.t
 	desc = resistance.40.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.40.a
 	}
-
 }
+
 country_event = {
 	id = resistance.41
 	title = resistance.41.t
 	desc = resistance.41.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.41.a
 	}
-
 }
 
 country_event = {
@@ -567,11 +584,8 @@ country_event = {
 	title = resistance.42.t
 	desc = resistance.42.d
 	picture = GFX_report_event_resistance
-
 	is_triggered_only = yes
-
 	option = {
 		name = resistance.42.a
 	}
-
 }

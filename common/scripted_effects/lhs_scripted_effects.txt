@@ -145,6 +145,49 @@ lhs_normal_voting_country_set = {
 	}
 }
 
+#sets voters for the 2nd round
+lhs_security_council_country_set = {
+	every_country = {
+		limit = {
+			OR = {
+				lhs_security_council_trigger = yes
+				has_idea = lhs_head
+			}
+		}
+		add_to_array = {
+			array = global.lhs_security_council
+			value = THIS.id
+		}
+	}
+}
+
+lhs_sanction_nation = {
+	if = {
+		limit = {
+			has_global_flag = lhs_sanctions_vote
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_vote_instigator
+					value = THIS.id
+				}
+				has_country_flag = marked_for_sanction
+			}
+			#Inform the country they have been sanctioned
+			country_event = lhs.17
+			add_ideas = lhs_sanctions_idea
+			clr_country_flag = marked_for_sanction
+			add_to_array = {
+				array = global.lhs_sanctioned_list
+				value = THIS.id
+			}
+		}
+		clear_array = global.lhs_vote_instigator
+		clr_global_flag = lhs_sanctions_vote
+	}
+}
+
 lhs_accept_member = {
 	if = {
 		limit = {
@@ -177,22 +220,6 @@ lhs_accept_member = {
 			clear_array = global.lhs_entry_list
 		}
 		clr_global_flag = lhs_voting_join
-	}
-}
-
-#sets voters for the 2nd round
-lhs_security_council_country_set = {
-	every_country = {
-		limit = {
-			OR = {
-				lhs_security_council_trigger = yes
-				has_idea = lhs_head
-			}
-		}
-		add_to_array = {
-			array = global.lhs_security_council
-			value = THIS.id
-		}
 	}
 }
 

@@ -66,6 +66,41 @@ defined_text = {
 }
 
 defined_text = {
+	name = sanctions_scripted_loc
+	text = {
+		trigger = {
+			any_of = {
+				array = ROOT.lhs_action_array
+				value = THIS.id
+				NOT = {
+					is_in_array = {
+						array = global.lhs_sanctioned_list
+						value = THIS.id
+					}
+				}
+			}
+		}
+		localization_key = lhs_sanctions_adding
+	}
+	text = {
+		trigger = {
+			any_of = {
+				array = ROOT.lhs_action_array
+				value = THIS.id
+				is_in_array = {
+					array = global.lhs_sanctioned_list
+					value = THIS.id
+				}
+			}
+		}
+		localization_key = lhs_sanctions_removing
+	}
+	text = {
+		localization_key = lhs_sanctions_adding
+	}
+}
+
+defined_text = {
 	name = get_remove_claim_loc_script
 	text = {
 		trigger = {
@@ -254,6 +289,12 @@ defined_text = {
 	}
 	text = {
 		trigger = {
+			has_global_flag = lhs_sanctions_vote
+		}
+		localization_key = voting_prompt_sanctions_loc
+	}
+	text = {
+		trigger = {
 			has_global_flag = lhs_intervention_request_deciding
 		}
 		localization_key = voting_prompt_intervention_request_loc
@@ -310,6 +351,12 @@ defined_text = {
 			has_global_flag = lhs_voting_join
 		}
 		localization_key = lhs_nation_entry_text
+	}
+	text = {
+		trigger = {
+			has_global_flag = lhs_sanctions_vote
+		}
+		localization_key = lhs_nation_sanctions_text
 	}
 	text = {
 		localization_key = lhs_no_current_voting

@@ -844,33 +844,85 @@ scripted_gui = {
 			lhs_raid_antis_click = {
 				ROOT = {
 					country_event = lhs.16
+					add_political_power = -100
 				}
+				clear_array = ROOT.lhs_action_array
 			}
 			lhs_vote_sanctions_click = {
-				set_global_flag = lhs_sanctions_vote
-				every_country = {
+				if = {
 					limit = {
-						is_in_array = {
+						all_of = {
 							array = ROOT.lhs_action_array
 							value = THIS.id
+							NOT = {
+								has_idea = lhs_sanctions_idea
+							}
 						}
 					}
-					set_country_flag = marked_for_sanction
-				}
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = global.lhs_member_flag
+					set_global_flag = lhs_sanctions_vote
+					#General flags for voting
+					set_global_flag = lhs_voting
+					set_global_flag = lhs_first_round_vote
+					#General scripted effects for voting 
+					lhs_normal_voting_country_set = yes
+					lhs_security_council_country_set = yes
+					lhs_instigate_set = yes
+					ROOT = {
+						add_political_power = -100
+					}
+					every_country = {
+						limit = {
+							is_in_array = {
+								array = ROOT.lhs_action_array
+								value = THIS.id
+							}
+						}
+						set_country_flag = marked_for_sanction
+						add_to_array = {
+							array = global.lhs_vote_instigator
 							value = THIS.id
 						}
-						NOT = {
-							has_country_flag = marked_for_sanction
+					}
+					clear_array = ROOT.lhs_action_array
+					else_if = {
+						limit = {
+							all_of = {
+								array = ROOT.lhs_action_array
+								value = THIS.id
+								has_idea = lhs_sanctions_idea
+							}
+						}
+						set_global_flag = lhs_sanctions_remove_vote
+						#General flags for voting
+						set_global_flag = lhs_voting
+						set_global_flag = lhs_first_round_vote
+						#General scripted effects for voting 
+						lhs_normal_voting_country_set = yes
+						lhs_security_council_country_set = yes
+						lhs_instigate_set = yes
+						ROOT = {
+							add_political_power = -100
+						}
+						every_country = {
+							limit = {
+								is_in_array = {
+									array = ROOT.lhs_action_array
+									value = THIS.id
+								}
+							}
+							set_country_flag = marked_for_remove_sanction
+							add_to_array = {
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
 						}
 					}
-					country_event = lhs.17
 				}
 			}
 			lhs_vote_remove_sanctions_click = {
+				ROOT = {
+					add_political_power = -100
+				}
 				set_global_flag = lhs_remove_sanctions_vote
 				every_country = {
 					limit = {
@@ -893,8 +945,12 @@ scripted_gui = {
 					}
 					country_event = lhs.20
 				}
+				clear_array = ROOT.lhs_action_array
 			}
 			lhs_encourge_investment_click = {
+				ROOT = {
+					add_political_power = -100
+				}
 				if = {
 					limit = {
 						NOT = {
@@ -925,17 +981,33 @@ scripted_gui = {
 						}
 					}
 				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_call_lhs_council_click = {
+				ROOT = {
+					add_political_power = -200
+				}
+				clear_array = ROOT.lhs_action_array
 			}
 			lhs_begin_the_crusade_click = {
 				ROOT = {
+					add_political_power = -200
 					country_event = lhs.24
 				}
+				clear_array = ROOT.lhs_action_array
 			}
 		}
 		triggers = {
 			lhs_raid_antis_click_enabled = {
 				ROOT = {
 					has_political_power > 100
+					NOT = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
 				}
 				all_of = {
 					array = ROOT.lhs_action_array
@@ -955,46 +1027,35 @@ scripted_gui = {
 			lhs_vote_sanctions_click_enabled = {
 				ROOT = {
 					has_political_power > 100
+					NOT = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+					}
+				}
+				NOT = {
+					any_of = {
+						array = ROOT.lhs_action_array
+						value = THIS.id
+						is_in_array = {
+							array = global.lhs_sanctioned_list
+							value = THIS.id
+						}
+					}
 				}
 				lhs_not_voting_in_progress = yes
-			}
-			lhs_vote_sanctions_visible = {
-				all_of = {
-					array = ROOT.lhs_action_array
-					value = THIS.id
-					NOT = {
-						has_relation_modifier = {
-							target = THIS
-							modifier = lhs_embargo_modifier
-						}
-					}
-				}
-			}
-			lhs_vote_remove_sanctions_button_text_visible = {
-				all_of = {
-					array = ROOT.lhs_action_array
-					value = THIS.id
-					NOT = {
-						has_relation_modifier = {
-							target = THIS
-							modifier = lhs_embargo_modifier
-						}
-					}
-				}
-			}
-			lhs_vote_remove_sanctions_visible = {
-				all_of = {
-					array = ROOT.lhs_action_array
-					value = THIS.id
-					has_relation_modifier = {
-						target = THIS
-						modifier = lhs_embargo_modifier
-					}
-				}
 			}
 			lhs_encourge_investment_click_enabled = {
 				ROOT = {
 					has_political_power > 100
+					NOT = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
 				}
 				NOT = {
 					any_of = {
@@ -1004,9 +1065,24 @@ scripted_gui = {
 					}
 				}
 			}
+			lhs_call_lhs_council_click_enabled = {
+				ROOT = {
+					has_political_power > 200
+					NOT = {
+						has_idea = lhs_sanctions_idea
+					}
+				}
+			}
 			lhs_begin_the_crusade_click_enabled = {
 				ROOT = {
-					has_political_power > 100
+					has_political_power > 200
+					NOT = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
 				}
 				NOT = {
 					YAG = {
@@ -1135,6 +1211,9 @@ scripted_gui = {
 				ROOT = {
 					has_political_power > 100
 					has_war = yes
+					NOT = {
+						has_idea = lhs_sanctions_idea
+					}
 				}
 			}
 			lhs_request_intervention_click_enabled = {
@@ -1144,6 +1223,9 @@ scripted_gui = {
 				ROOT = {
 					has_political_power > 100
 					has_war = yes
+					NOT = {
+						has_idea = lhs_sanctions_idea
+					}
 				}
 			}
 		}
@@ -1179,6 +1261,7 @@ scripted_gui = {
 						days = 180
 					}
 				}
+				clear_array = ROOT.lhs_action_array
 			}
 			lhs_peacekeeping_missions_click = {
 				ROOT = {
@@ -1201,6 +1284,7 @@ scripted_gui = {
 						days = 180
 					}
 				}
+				clear_array = ROOT.lhs_action_array
 			}
 			lhs_rally_for_war_click = {
 				ROOT = {
@@ -1223,6 +1307,7 @@ scripted_gui = {
 						days = 180
 					}
 				}
+				clear_array = ROOT.lhs_action_array
 			}
 			lhs_send_military_support_click = {
 				ROOT = {
@@ -1245,6 +1330,7 @@ scripted_gui = {
 						days = 180
 					}
 				}
+				clear_array = ROOT.lhs_action_array
 			}
 			lhs_investments_click = {
 				ROOT = {
@@ -1308,6 +1394,7 @@ scripted_gui = {
 						}
 					}
 				}
+				clear_array = ROOT.lhs_action_array
 			}
 		}
 		triggers = {
@@ -1316,6 +1403,11 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = lhs_supported_lhs_party
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
 					}
 				}
 				NOT = {
@@ -1331,6 +1423,11 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = lhs_supported_peacekeeping_mission
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
 					}
 				}
 				NOT = {
@@ -1346,6 +1443,11 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = lhs_rallied_for_war_mission
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
 					}
 				}
 				NOT = {
@@ -1361,6 +1463,11 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = lhs_invested
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
 					}
 				}
 			}
@@ -1369,6 +1476,11 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = lhs_sent_military_support
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
 					}
 				}
 				NOT = {
@@ -1626,14 +1738,47 @@ scripted_gui = {
 		visible = {
 			has_country_flag = view_resistance_membership
 		}
+		effects = {
+			join_resistance_button_click = {
+				ROOT = {
+					add_political_power = -50
+					add_ideas = resistance_member
+					add_ideas = neutral_resistance_member
+					remove_ideas = {
+						lhs_member
+						neutral_member
+						anti_member
+					}
+					add_to_array = {
+						array = global.resistance_member_flag
+						value = THIS.id
+					}
+					add_to_array = {
+						array = global.neutral_resistance_member_flag
+						value = THIS.id
+					}
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = global.resistance_member_flag
+							value = THIS.id
+						}
+					}
+					news_event = resistance.2
+				}
+			}
+		}
 		triggers = {
 			join_resistance_button_click_enabled = {
 				ROOT = {
 					has_political_power > 50
 					NOT = {
+						has_idea = lhs_member
 						has_idea = resistance_member
 						has_idea = resistance_head
 						has_idea = resistance_runner_up
+						is_resistance_ideology = no
 					}
 				}
 			}
@@ -1775,6 +1920,10 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
 					}
 				}
 			}
@@ -1783,6 +1932,10 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
 					}
 				}
 			}
@@ -1791,6 +1944,10 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
 					}
 				}
 			}
@@ -1799,6 +1956,10 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
 					}
 				}
 			}
@@ -1807,6 +1968,10 @@ scripted_gui = {
 					has_political_power > 100
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
 					}
 				}
 			}
@@ -1821,21 +1986,55 @@ scripted_gui = {
 		effects = {
 			resistance_request_aid_click = {
 				ROOT = {
-					add_political_power = -50
+					add_political_power = -100
+					set_country_flag = {
+						flag = resistance_asked_for_aid
+						days = 90
+						value = 1
+					}
+					set_country_flag = resistance_voted
+					set_global_flag = {
+						flag = resistance_aid_requested_timer
+						days = 90
+						value = 1
+					}
+					set_variable = {
+						var = global.resistance_aid_remember_me
+						value = ROOT.id
+					}
 				}
 				every_country = {
-					limit = {
-						is_in_array = {
-							array = global.resistance_member_flag
-							value = THIS.id
+					if = {
+						limit = {
+							NOT = {
+								tag = PREV
+							}
+							is_in_array = {
+								array = global.resistance_member_flag
+								value = THIS.id
+							}
+						}
+						country_event = resistance.3
+						else_if = {
+							limit = {
+								THIS = {
+									is_resistance_ideology = yes
+								}
+								NOT = {
+									is_in_array = {
+										array = global.resistance_member_flag
+										value = THIS.id
+									}
+								}
+							}
+							country_event = resistance.9
 						}
 					}
-					country_event = resistance.31
 				}
 			}
 			resistance_request_intervention_click = {
 				ROOT = {
-					add_political_power = -50
+					add_political_power = -100
 				}
 				every_country = {
 					limit = {
@@ -1851,13 +2050,19 @@ scripted_gui = {
 		triggers = {
 			resistance_request_aid_click_enabled = {
 				ROOT = {
-					has_political_power > 50
+					has_political_power > 100
 					has_war = yes
+					NOT = {
+						has_country_flag = resistance_asked_for_aid
+					}
+				}
+				NOT = {
+					has_global_flag = resistance_aid_requested_timer
 				}
 			}
 			resistance_request_intervention_click_enabled = {
 				ROOT = {
-					has_political_power > 50
+					has_political_power > 100
 					has_war = yes
 				}
 			}
