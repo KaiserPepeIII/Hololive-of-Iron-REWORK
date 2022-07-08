@@ -2906,3 +2906,127 @@ country_event = {
 		set_country_flag = WTS_westminster_constitution_calc
 	}
 }
+
+#####################
+#
+#
+#	Colonial Empire
+#
+#
+########################
+#Nigeria 
+#NOT FOR WATSON
+country_event = {
+	id = watson.124
+	title = watson.124.t
+	desc = watson.124.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	fire_only_once = yes
+	#yes we will hand over our land 
+	option = {
+		name = watson.124.a
+		if = {
+			limit = {
+				owns_state = 558
+				NOT = {
+					owns_state = 850
+				}
+			}
+			558 = {
+				transfer_state_to = FROM
+			}
+			FROM = {
+				country_event = watson.125
+			}
+			else_if = {
+				limit = {
+					owns_state = 850
+					NOT = {
+						owns_state = 558
+					}
+				}
+				850 = {
+					transfer_state_to = FROM
+				}
+				FROM = {
+					country_event = watson.125
+				}
+			}
+			else = {
+				558 = {
+					transfer_state_to = FROM
+				}
+				850 = {
+					transfer_state_to = FROM
+				}
+				FROM = {
+					country_event = watson.125
+				}
+			}
+		}
+	}
+	#sod off
+	option = {
+		name = watson.121.b
+		ROOT = {
+			add_war_support = 0.05
+		}
+		FROM = {
+			country_event = watson.126
+		}
+	}
+}
+
+#They said yes 
+country_event = {
+	id = watson.125
+	title = watson.125.t
+	desc = watson.125.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	fire_only_once = yes
+	#wow thanks for Nigeria mate 
+	option = {
+		name = watson.125.a
+		WTS = {
+			add_popularity = {
+				ideology = var:WTS.current_party_ideology_group
+				popularity = 0.05
+			}
+		}
+	}
+}
+
+#They said no!
+country_event = {
+	id = watson.126
+	title = watson.126.t
+	desc = watson.126.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	fire_only_once = yes
+	#ATTACK
+	option = {
+		name = watson.126.a
+		ROOT = {
+			create_wargoal = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+	}
+	#I am a cuck
+	option = {
+		name = watson.126.b
+		WTS = {
+			add_popularity = {
+				ideology = var:WTS.current_party_ideology_group
+				popularity = -0.05
+			}
+		}
+		add_war_support = -0.05
+	}
+}
+
+#Commonwealth of Africa

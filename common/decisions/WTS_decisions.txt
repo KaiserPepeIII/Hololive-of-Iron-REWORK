@@ -2187,3 +2187,35 @@ WTS_bases_and_batteries_decisions = {
 		}
 	}
 }
+
+WTS_neo_colonialism = {
+	WTS_reclaim_nigeria = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			558 = {
+				NOT = {
+					is_owned_by = WTS
+				}
+			}
+			850 = {
+				NOT = {
+					is_owned_by = WTS
+				}
+			}
+		}
+		cost = 50
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						controls_state = 558
+						controls_state = 850
+					}
+				}
+				country_event = watson.124
+			}
+		}
+	}
+}
