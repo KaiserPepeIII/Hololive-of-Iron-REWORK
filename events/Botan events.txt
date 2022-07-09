@@ -1,0 +1,45 @@
+add_namespace = botan
+#
+#	Canada Plan
+#
+country_event = {
+	id = botan.1
+	title = botan.1.t
+	desc = botan.1.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sounds good, we will join watson
+	option = {
+		name = botan.1.a
+		if = {
+			limit = {
+				WTS = {
+					is_in_faction = yes
+				}
+			}
+			WTS = {
+				add_to_faction = BTN
+			}
+			else = {
+				WTS = {
+					create_faction = WTS_canada_faction
+					add_to_faction = BTN
+				}
+			}
+		}
+		WTS = {
+			country_event = watson.139
+		}
+	}
+	#let's just be friends
+	option = {
+		name = botan.1.b
+		add_opinion_modifier = {
+			target = FROM
+			modifier = WTS_polite
+		}
+		FROM = {
+			country_event = watson.141
+		}
+	}
+}

@@ -1,0 +1,65 @@
+add_namespace = yagoo
+#
+#	Canada Plan
+#
+country_event = {
+	id = yagoo.1
+	title = yagoo.1.t
+	desc = yagoo.1.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#We agree to sell all of them
+	option = {
+		name = yagoo.1.a
+		add_political_power = 300
+		331 = {
+			transfer_state_to = FROM
+		}
+		332 = {
+			transfer_state_to = FROM
+		}
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#Only sell Nova Scotia 
+	option = {
+		name = yagoo.1.b
+		add_political_power = 150
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#Only sell Newfoundland and Labrador 
+	option = {
+		name = yagoo.1.c
+		add_political_power = 150
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#hell no
+	option = {
+		name = yagoo.1.d
+		add_opinion_modifier = {
+			target = FROM
+			modifier = WTS_rude
+		}
+		FROM = {
+			reverse_add_opinion_modifier = {
+				target = PREV
+				modifier = WTS_rude
+			}
+			country_event = watson.145
+		}
+	}
+}

@@ -3030,3 +3030,585 @@ country_event = {
 }
 
 #Commonwealth of Africa
+#Watson demands land
+country_event = {
+	id = watson.127
+	title = watson.127.t
+	desc = watson.127.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#hand over our land
+	option = {
+		name = watson.127.a
+		every_core_state = {
+			limit = {
+				is_owned_by = ROOT
+			}
+			transfer_state_to = FROM
+		}
+		FROM = {
+			country_event = watson.128
+		}
+	}
+	#offer a compromise - puppet 
+	option = {
+		name = watson.127.b
+		FROM = {
+			country_event = watson.129
+		}
+	}
+	#outright refuse
+	option = {
+		name = watson.127.c
+		add_war_support = 0.15
+		FROM = {
+			country_event = watson.130
+		}
+	}
+}
+
+#nation folds
+country_event = {
+	id = watson.128
+	title = watson.128.t
+	desc = watson.128.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.128.a
+		WTS = {
+			add_popularity = {
+				ideology = var:WTS.current_party_ideology_group
+				popularity = 0.05
+			}
+		}
+	}
+}
+
+#nation offer compromise 
+country_event = {
+	id = watson.129
+	title = watson.129.t
+	desc = watson.129.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Accept it 
+	option = {
+		name = watson.129.a
+		puppet = FROM
+	}
+	#Nein, invade now 
+	option = {
+		name = watson.129.b
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#nation refuse
+country_event = {
+	id = watson.130
+	title = watson.130.t
+	desc = watson.130.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Invade now
+	option = {
+		name = watson.130.a
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+	#I am a cuck
+	option = {
+		name = watson.130.b
+		WTS = {
+			add_popularity = {
+				ideology = var:WTS.current_party_ideology_group
+				popularity = -0.05
+			}
+		}
+		add_war_support = -0.05
+	}
+}
+
+#MARINE REFUSES OUR GENEROUS OFFER
+country_event = {
+	id = watson.131
+	title = watson.131.t
+	desc = watson.131.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Bomb them 
+	option = {
+		name = watson.131.a
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+		every_state = {
+			limit = {
+				is_owned_by = FROM
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 3
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 3
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 3
+			}
+			damage_building = {
+				type = dockyard
+				damage = 5
+			}
+		}
+	}
+	#I am a cuck
+	option = {
+		name = watson.131.b
+		WTS = {
+			add_popularity = {
+				ideology = var:WTS.current_party_ideology_group
+				popularity = -0.05
+			}
+		}
+		add_war_support = -0.05
+		FROM = {
+			country_event = marine.2
+		}
+	}
+}
+
+#Watson offers to buy Ghana 
+country_event = {
+	id = watson.132
+	title = watson.132.t
+	desc = watson.132.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sure ig
+	option = {
+		name = watson.132.a
+		add_political_power = 50
+		FROM = {
+			country_event = watson.133
+		}
+		779 = {
+			transfer_state_to = FROM
+		}
+	}
+	#nah im fine 
+	option = {
+		name = watson.132.b
+		FROM = {
+			country_event = watson.134
+		}
+	}
+}
+
+#we got the land
+country_event = {
+	id = watson.133
+	title = watson.133.t
+	desc = watson.133.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = watson.133.a
+	}
+}
+
+# we didnt get the land
+country_event = {
+	id = watson.134
+	title = watson.134.t
+	desc = watson.134.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = watson.134.a
+		add_political_power = 50
+	}
+	#waaar
+	option = {
+		name = watson.134.b
+		add_political_power = 50
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#Sierra Leone 
+country_event = {
+	id = watson.135
+	title = watson.135.t
+	desc = watson.135.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sure ig
+	option = {
+		name = watson.135.a
+		add_political_power = 50
+		FROM = {
+			country_event = watson.133
+		}
+		700 = {
+			transfer_state_to = FROM
+		}
+	}
+	#nah im fine 
+	option = {
+		name = watson.135.b
+		FROM = {
+			country_event = watson.134
+		}
+	}
+}
+
+#gambia 
+country_event = {
+	id = watson.136
+	title = watson.136.t
+	desc = watson.136.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sure ig
+	option = {
+		name = watson.136.a
+		add_political_power = 50
+		FROM = {
+			country_event = watson.133
+		}
+		701 = {
+			transfer_state_to = FROM
+		}
+	}
+	#nah im fine 
+	option = {
+		name = watson.136.b
+		FROM = {
+			country_event = watson.134
+		}
+	}
+}
+
+#Somaliland 
+country_event = {
+	id = watson.137
+	title = watson.137.t
+	desc = watson.137.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sure ig
+	option = {
+		name = watson.136.a
+		add_political_power = 50
+		FROM = {
+			country_event = watson.133
+		}
+		289 = {
+			transfer_state_to = FROM
+		}
+	}
+	#nah im fine 
+	option = {
+		name = watson.136.b
+		FROM = {
+			country_event = watson.134
+		}
+	}
+}
+
+#Canadian Pland 
+country_event = {
+	id = watson.138
+	title = watson.138.t
+	desc = watson.138.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Approach Botan
+	option = {
+		name = watson.138.a
+		trigger = {
+			BTN = {
+				exists = yes
+			}
+		}
+		country_event = botan.1
+	}
+	#Approach Polka
+	option = {
+		name = watson.138.b
+		trigger = {
+			PLK = {
+				exists = yes
+			}
+		}
+		country_event = polka.1
+	}
+	#Foster relationship with united canada
+	option = {
+		name = watson.138.f
+		trigger = {
+			any_country = {
+				owns_state = 823
+				owns_state = 821
+				set_temp_variable = {
+					var = ruler_of_canada
+					value = THIS.id
+				}
+			}
+		}
+		add_opinion_modifier = {
+			target = ruler_of_canada
+			modifier = WTS_commonwealth_ties
+		}
+		add_to_temp_array = {
+			array = ruler_of_canada_give_event
+			value = var:ruler_of_canada
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = ruler_of_canada_give_event
+					value = THIS.id
+				}
+			}
+			country_event = watson.140
+		}
+	}
+	#Focus on Islands and Nova scotia
+	option = {
+		name = watson.138.c
+		add_political_power = -300
+		every_country = {
+			limit = {
+				owns_state = 331
+			}
+			country_event = yagoo.1
+		}
+	}
+	#Forget about it
+	option = {
+		name = watson.138.e
+		add_stability = 0.05
+		add_political_power = 100
+	}
+}
+
+#Botan accepts 
+country_event = {
+	id = watson.139
+	title = watson.139.t
+	desc = watson.139.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Cool
+	option = {
+		name = watson.139.a
+		set_country_flag = WTS_invading_PLK
+	}
+	#What are we waiting for? ATTACK!
+	option = {
+		name = watson.139.b
+		create_wargoal = {
+			target = PLK
+			type = annex_everything
+		}
+	}
+}
+
+#Botan declines  
+country_event = {
+	id = watson.141
+	title = watson.141.t
+	desc = watson.141.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#oh well 
+	option = {
+		name = watson.141.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = WTS_polite
+		}
+	}
+	#Oh hell no
+	option = {
+		name = watson.141.b
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#Polka accepts 
+country_event = {
+	id = watson.142
+	title = watson.142.t
+	desc = watson.142.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Cool
+	option = {
+		name = watson.142.a
+		set_country_flag = WTS_invading_BTN
+	}
+	#What are we waiting for? ATTACK!
+	option = {
+		name = watson.142.b
+		create_wargoal = {
+			target = PLK
+			type = annex_everything
+		}
+	}
+}
+
+#Polka declines  
+country_event = {
+	id = watson.143
+	title = watson.143.t
+	desc = watson.143.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#oh well 
+	option = {
+		name = watson.143.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = WTS_polite
+		}
+	}
+	#Oh hell no
+	option = {
+		name = watson.143.b
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#United canada nation 
+country_event = {
+	id = watson.140
+	title = watson.140.t
+	desc = watson.140.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#let's be friends
+	option = {
+		name = watson.140.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = WTS_commonwealth_ties
+		}
+	}
+}
+
+#We got Yagoo land Canada
+country_event = {
+	id = watson.144
+	title = watson.144.t
+	desc = {
+		text = watson.144.newfoundland
+		trigger = {
+			owns_state = 331
+			owns_state = 332
+		}
+	}
+	desc = {
+		text = watson.144.nova_scotia
+		trigger = {
+			owns_state = 464
+			owns_state = 465
+		}
+	}
+	desc = {
+		text = watson.144.everything
+		trigger = {
+			owns_state = 464
+			owns_state = 465
+			owns_state = 331
+			owns_state = 332
+		}
+	}
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+}
+
+#Refused to sell land 
+country_event = {
+	id = watson.145
+	title = watson.145.t
+	desc = watson.145.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#let it slide
+	option = {
+		name = watson.145.a
+		add_political_power = 300
+	}
+	#waaar 
+	option = {
+		name = watson.145.b
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#pekora laughs off our offer
+country_event = {
+	id = watson.146
+	title = watson.146.t
+	desc = watson.146.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#uhh okay fine then
+	option = {
+		name = watson.146.a
+		add_political_power = -25
+	}
+	#Oh hell no
+	option = {
+		name = watson.146.b
+		create_wargoal = {
+			target = PEK
+			type = annex_everything
+		}
+	}
+}
+
+#pekora falls for our bluff
+country_event = {
+	id = watson.147
+	title = watson.147.t
+	desc = watson.147.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Stupid fucking rabbit
+	option = {
+		name = watson.147.a
+		add_war_support = 0.15
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+}

@@ -2218,4 +2218,219 @@ WTS_neo_colonialism = {
 			}
 		}
 	}
+	WTS_commonwealth_of_africa = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			OR = {
+				SAF = {
+					exists = yes
+				}
+				any_country = {
+					is_in_faction_with = SAF
+				}
+			}
+		}
+		cost = 50
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = SAF
+						is_in_faction_with = SAF
+					}
+				}
+				country_event = watson.127
+			}
+		}
+	}
+	WTS_retaking_caribbean = {
+		available = {
+			has_political_power > 50
+			naval_strength_ratio = {
+				tag = MAR
+				ratio = 0.8
+			}
+		}
+		visible = {
+			MAR = {
+				exists = yes
+			}
+		}
+		cost = 50
+		complete_effect = {
+			MAR = {
+				country_event = marine.1
+			}
+		}
+	}
+	WTS_cleaning_up_minor_states_africa = {
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			558 = {
+				is_owned_by = WTS
+			}
+			850 = {
+				is_owned_by = WTS
+			}
+			275 = {
+				is_owned_by = WTS
+			}
+			545 = {
+				is_owned_by = WTS
+			}
+			546 = {
+				is_owned_by = WTS
+			}
+			1076 = {
+				is_owned_by = WTS
+			}
+		}
+		cost = 100
+		complete_effect = {
+			if = {
+				limit = {
+					BOT = {
+						exists = yes
+					}
+				}
+				BOT = {
+					country_event = watson.127
+				}
+			}
+			if = {
+				limit = {
+					UGA = {
+						exists = yes
+					}
+				}
+				UGA = {
+					country_event = watson.127
+				}
+			}
+		}
+	}
+	WTS_negotiate_with_hololivers = {
+		available = {
+			has_political_power > 150
+		}
+		visible = {
+			always = yes
+		}
+		cost = 150
+		complete_effect = {
+			779 = {
+				OWNER = {
+					country_event = watson.132
+				}
+			}
+			700 = {
+				OWNER = {
+					country_event = watson.135
+				}
+			}
+			701 = {
+				OWNER = {
+					country_event = watson.136
+				}
+			}
+			289 = {
+				OWNER = {
+					country_event = watson.137
+				}
+			}
+		}
+	}
+	WTS_ultimatum_for_the_nile = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			PEK = {
+				exists = yes
+			}
+			SUD = {
+				is_puppet_of = PEK
+			}
+			558 = {
+				is_owned_by = WTS
+			}
+			850 = {
+				is_owned_by = WTS
+			}
+			275 = {
+				is_owned_by = WTS
+			}
+			545 = {
+				is_owned_by = WTS
+			}
+			546 = {
+				is_owned_by = WTS
+			}
+			1076 = {
+				is_owned_by = WTS
+			}
+		}
+		cost = 50
+		complete_effect = {
+			PEK = {
+				country_event = pekora.5
+			}
+		}
+	}
+	WTS_request_arabian_colonies_returned = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			#
+		}
+	}
+	WTS_canada_plan = {
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			always = yes
+		}
+		cost = 100
+		complete_effect = {
+			country_event = watson.138
+		}
+	}
+	WTS_help_unite_canada = {
+		available = {
+			always = yes
+		}
+		visible = {
+			OR = {
+				has_country_flag = WTS_invading_PLK
+				has_country_flag = WTS_invading_BTN
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = WTS_invading_PLK
+				}
+				declare_war_on = {
+					target = PLK
+				}
+				else_if = {
+					limit = {
+						has_country_flag = WTS_invading_BTN
+					}
+					declare_war_on = {
+						target = BTN
+					}
+				}
+			}
+		}
+	}
 }

@@ -1,0 +1,50 @@
+add_namespace = marine
+#	Watson threatens us!
+#
+country_event = {
+	id = marine.1
+	title = marine.1.t
+	desc = marine.1.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Fine, we capitulate
+	option = {
+		name = marine.1.a
+		ROOT = {
+			create_wargoal = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+	}
+	#Sod off
+	option = {
+		name = marine.1.b
+		FROM = {
+			country_event = watson.131
+		}
+	}
+}
+
+#WATSON GOES AWAY
+#
+country_event = {
+	id = marine.2
+	title = marine.2.t
+	desc = marine.2.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Yay
+	option = {
+		name = marine.1.a
+		add_war_support = 0.05
+		MAR = {
+			add_popularity = {
+				ideology = var:MAR.current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+	}
+}
