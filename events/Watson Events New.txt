@@ -3608,7 +3608,280 @@ country_event = {
 		add_war_support = 0.15
 		add_popularity = {
 			ideology = var:WTS.current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Watson wants Arab lands
+country_event = {
+	id = watson.148
+	title = watson.148.t
+	desc = watson.148.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sure here you go
+	option = {
+		name = watson.148.a
+		FROM = {
+			puppet = YEM
+			puppet = OMA
+			puppet = QTR
+			puppet = TRU
+			puppet = BAH
+			puppet = KUW
+			country_event = watson.149
+		}
+	}
+	#No lol
+	option = {
+		FROM = {
+			country_event = watson.150
+		}
+	}
+}
+
+#Ruler of Arabs say yeah
+country_event = {
+	id = watson.149
+	title = watson.149.t
+	desc = watson.149.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = watson.149.a
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Ruler of Arabs say no
+country_event = {
+	id = watson.150
+	title = watson.150.t
+	desc = watson.150.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = watson.150.a
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
 			popularity = -0.05
+		}
+	}
+	#war
+	option = {
+		name = watson.150.b
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#Watson wants Indian Ocean Land
+country_event = {
+	id = watson.151
+	title = watson.151.t
+	desc = watson.151.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sure have it
+	option = {
+		name = watson.151.a
+		FROM = {
+			transfer_state = 838
+			transfer_state = 422
+			transfer_state = 281
+			transfer_state = 710
+			country_event = watson.152
+		}
+	}
+	#lol wut
+	option = {
+		name = watson.151.b
+		FROM = {
+			country_event = watson.153
+		}
+	}
+}
+
+#Indian ocean say yes
+country_event = {
+	id = watson.152
+	title = watson.152.t
+	desc = watson.152.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#cool 
+	option = {
+		name = watson.152.a
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Indian ocean say no
+country_event = {
+	id = watson.153
+	title = watson.153.t
+	desc = watson.153.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.153.a
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+	#war
+	option = {
+		name = watson.153.b
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#Watson wants Malaya
+country_event = {
+	id = watson.154
+	title = watson.154.t
+	desc = watson.154.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sure have it
+	option = {
+		name = watson.154.a
+		FROM = {
+			transfer_state = 336
+			transfer_state = 815
+			country_event = watson.155
+		}
+	}
+	#no
+	option = {
+		name = watson.154.b
+		FROM = {
+			country_event = watson.156
+		}
+	}
+}
+
+#Malaysia yes
+country_event = {
+	id = watson.155
+	title = watson.155.t
+	desc = watson.155.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#cool 
+	option = {
+		name = watson.155.a
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Malaysia say no
+country_event = {
+	id = watson.156
+	title = watson.156.t
+	desc = watson.156.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.156.a
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+	#war
+	option = {
+		name = watson.156.b
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#Watson wants Brunei
+country_event = {
+	id = watson.157
+	title = watson.157.t
+	desc = watson.157.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#sure have it
+	option = {
+		name = watson.157.a
+		FROM = {
+			transfer_state = 333
+			country_event = watson.155
+		}
+	}
+	#no
+	option = {
+		name = watson.157.b
+		FROM = {
+			country_event = watson.156
+		}
+	}
+}
+
+#Brunei yes
+country_event = {
+	id = watson.158
+	title = watson.158.t
+	desc = watson.158.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#cool 
+	option = {
+		name = watson.158.a
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Brunei say no
+country_event = {
+	id = watson.159
+	title = watson.159.t
+	desc = watson.159.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.159.a
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+	#war
+	option = {
+		name = watson.159.b
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
 		}
 	}
 }
