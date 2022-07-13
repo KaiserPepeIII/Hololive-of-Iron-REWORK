@@ -1,0 +1,45 @@
+add_namespace = aqua
+#KANATA REQUESTS HELP VERACRUZ
+country_event = {
+	id = aqua.1
+	title = aqua.1.t
+	desc = aqua.1.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Round up the Resistance to support Kanata
+	option = {
+		name = aqua.1.a
+		COC = {
+			country_event = coco.3
+		}
+	}
+	#It's not worth it 
+	option = {
+		name = aqua.1.b
+	}
+}
+
+#Coco refuses to back down 
+country_event = {
+	id = aqua.2
+	title = aqua.2.t
+	desc = aqua.2.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#war
+	option = {
+		name = aqua.2.a
+		declare_war_on = {
+			target = COC
+			type = annex_everything
+		}
+		country_event = kanata.8
+	}
+	#sorry kanata
+	option = {
+		name = aqua.2.b
+		KAN = {
+			country_event = kanata.7
+		}
+	}
+}

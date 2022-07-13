@@ -1,0 +1,336 @@
+add_namespace = kanata
+#Anti Revolution
+country_event = {
+	id = kanata.1
+	title = kanata.1.t
+	desc = kanata.1.desc
+	picture = GFX_news_event_001
+	trigger = {
+		tag = KAN
+		check_variable = {
+			var = KAN.anti_aggression
+			value = 100
+			compare = greater_than_or_equals
+		}
+		has_global_flag = veracruz_incident_settled
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#bruh
+	option = {
+		name = kanata.1.a
+		KAN = {
+			start_civil_war = {
+				ruling_party = divine_mandate
+				ideology = democratic_revitalisation
+				size = 0.55
+				states = {
+					485
+					483
+					1127
+					481
+					479
+					477
+					1130
+					476
+					475
+				}
+				keep_political_leader = yes
+			}
+			subtract_from_variable = {
+				var = KAN.anti_aggression
+				value = 80
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Milicia Heimin 'Angel' \" division_template = \"Milicia Heimin\" start_experience_factor = 0.15 start_equipment_factor = 0.2 start_manpower_factor = 1"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"Milicia Heimin 'Lealistas' \" division_template = \"Milicia Heimin\" start_experience_factor = 0.15 start_equipment_factor = 0.2 start_manpower_factor = 1"
+					owner = ROOT
+				}
+			}
+			add_war_support = 0.5
+		}
+	}
+}
+
+#Aqua abandons us 
+country_event = {
+	id = kanata.2
+	title = kanata.2.t
+	desc = kanata.2.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	immediate = {
+		#This move would make people lose faith in Aqua
+		add_to_variable = {
+			var = global.resistance_ideology_bar
+			value = 1
+		}
+		add_stability = -0.05
+		add_war_support = -0.05
+		add_opinion_modifier = {
+			target = AQA
+			modifier = despise
+		}
+	}
+	#Fine, we cave to Coco
+	option = {
+		name = kanata.2.a
+		set_global_flag = veracruz_incident_settled
+		ROOT = {
+			add_timed_idea = {
+				idea = KAN_debt_repayment
+				days = 730
+			}
+		}
+		news_event = global_holo.3
+	}
+	#Forget this nonsense, we declare war!!
+	option = {
+		name = kanata.2.b
+		set_global_flag = veracruz_incident_settled
+		declare_war_on = {
+			target = COC
+			type = annex_everything
+		}
+		news_event = global_holo.2
+	}
+	#There..has to be.. another way
+	option = {
+		name = kanata.2.c
+		add_stability = -0.05
+	}
+}
+
+#Yagoo's conditions
+country_event = {
+	id = kanata.3
+	title = kanata.3.t
+	desc = kanata.3.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	#Damn it! We'll accept it though
+	option = {
+		name = kanata.3.a
+		add_stability = -0.2
+		add_war_support = -0.1
+		set_politics = {
+			ruling_party = pro_yagoo_kleptocracy
+		}
+		add_timed_idea = {
+			idea = KAN_new_constitution
+			days = 365
+		}
+		KAN = {
+			join_the_lhs = yes
+			set_variable = {
+				var = ROOT.seiso_alignment
+				value = 2
+			}
+			clamp_variable = {
+				var = ROOT.seiso_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.reactionary_alignment
+				value = 4
+			}
+			clamp_variable = {
+				var = ROOT.reactionary_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.authoritarianism_alignment
+				value = 4
+			}
+			clamp_variable = {
+				var = ROOT.authoritarianism_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.capitalism_alignment
+				value = 2
+			}
+			clamp_variable = {
+				var = ROOT.capitalism_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.isolationism_alignment
+				value = 2
+			}
+			clamp_variable = {
+				var = ROOT.isolationism_alignment
+				min = 1
+				max = 5
+			}
+			government_alignment_initiate = yes
+		}
+		COC = {
+			country_event = coco.1
+		}
+	}
+	#Is this some sort of sick joke
+	option = {
+		name = kanata.3.b
+		add_stability = -0.05
+	}
+}
+
+#Coco backs down
+country_event = {
+	id = kanata.4
+	title = kanata.4.t
+	desc = kanata.4.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	#EL PUEBLO UNIDO
+	option = {
+		name = kanata.4.a
+		add_stability = 0.1
+	}
+	#Request the handover of Baja California
+	option = {
+		name = kanata.4.b
+		add_stability = 0.1
+		YAG = {
+			country_event = yagoo.3
+		}
+	}
+}
+
+#Yagoo says yeah
+country_event = {
+	id = kanata.5
+	title = kanata.5.t
+	desc = kanata.5.desc
+	is_triggered_only = yes
+	#gaming
+	option = {
+		name = kanata.5.a
+		add_popularity = {
+			ideology = var:KAN.current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Yagoo says no
+country_event = {
+	id = kanata.6
+	title = kanata.6.t
+	desc = kanata.6.desc
+	is_triggered_only = yes
+	#oh ok
+	option = {
+		name = kanata.6.a
+		add_popularity = {
+			ideology = var:KAN.current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+}
+
+#Yagoo backs down
+country_event = {
+	id = kanata.7
+	title = kanata.7.t
+	desc = kanata.7.desc
+	is_triggered_only = yes
+	#you bastard yagoo
+	option = {
+		name = kanata.7.a
+		trigger = {
+			has_country_flag = KAN_asked_yagoo_for_help
+		}
+		add_opinion_modifier = {
+			target = YAG
+			modifier = despise
+		}
+	}
+	#you bastard aqua
+	option = {
+		trigger = {
+			has_country_flag = KAN_asked_aqua_for_help
+		}
+		name = kanata.7.a
+		add_opinion_modifier = {
+			target = YAG
+			modifier = despise
+		}
+	}
+	#we will just war ourself
+	option = {
+		name = kanata.7.b
+		KAN = {
+			create_wargoal = {
+				target = COC
+				type = annex_everything
+			}
+		}
+	}
+}
+
+#Yagoo asks that we join war 
+country_event = {
+	id = kanata.8
+	title = kanata.8.t
+	desc = kanata.8.desc
+	is_triggered_only = yes
+	#sure 
+	option = {
+		name = kanata.8.a
+		declare_war_on = {
+			target = COC
+			type = annex_everything
+		}
+	}
+	#maybe later 
+	option = {
+		name = kanata.8.a
+		create_wargoal = {
+			target = COC
+			type = annex_everything
+		}
+	}
+}
+
+#Coco hands back our land 
+country_event = {
+	id = kanata.9
+	title = kanata.9.t
+	desc = kanata.9.desc
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = kanata.9.a
+		add_popularity = {
+			ideology = var:KAN.current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Coco refuses to hand back our land 
+country_event = {
+	id = kanata.10
+	title = kanata.10.t
+	desc = kanata.10.desc
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = kanata.9.a
+		add_opinion_modifier = {
+			target = COC
+			modifier = despise
+		}
+	}
+}

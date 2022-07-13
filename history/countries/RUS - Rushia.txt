@@ -106,7 +106,16 @@ recruit_character = RUS_uruha_rushia_neutral_kleptocratic
 recruit_character = RUS_uruha_rushia_reactionary_nationalism
 recruit_character = RUS_uruha_rushia_neutral_democracy
 recruit_character = RUS_uruha_rushia_divine_mandate
-RUS  = {
+RUS = {
+	set_variable = {
+		var = RUS.anti_aggression
+		value = 70
+	}
+	clamp_variable = {
+		var = RUS.anti_aggression
+		min = 0
+		max = 100
+	}
 	set_variable = {
 		var = ROOT.seiso_alignment
 		value = 4
@@ -154,6 +163,7 @@ RUS  = {
 	}
 	government_alignment_initiate = yes
 }
+
 set_politics = {
 	ruling_party = pro_resistance_monarchy
 	last_election = "1936.1.1"

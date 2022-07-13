@@ -1,4 +1,81 @@
 #Opens the resistance gui, clears LHS gui and "action array" which is the array a country that is clicked on in the gui gets put into
+join_the_lhs = {
+	add_ideas = {
+		lhs_member
+		lhs_customs_union_gui
+	}
+	add_to_array = {
+		array = global.lhs_member_flag
+		value = THIS.id
+	}
+	add_to_array = {
+		array = global.lhs_customs_union_flag
+		value = THIS.id
+	}
+	remove_ideas = {
+		resistance_member
+		neutral_member
+		anti_member
+		aqua_resistance_member
+		coco_resistance_member
+		neutral_resistance_member
+	}
+	remove_from_array = {
+		array = global.resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.aqua_resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.neutral_resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.coco_resistance_member_flag
+		value = THIS.id
+	}
+}
+
+join_the_resistance = {
+	add_ideas = {
+		resistance_member
+		neutral_member
+	}
+	add_to_array = {
+		array = global.resistance_member_flag
+		value = THIS.id
+	}
+	add_to_array = {
+		array = global.neutral_resistance_member_flag
+		value = THIS.id
+	}
+	remove_ideas = {
+		lhs_member
+		lhs_customs_union_gui
+		neutral_member
+		anti_member
+	}
+	remove_from_array = {
+		array = global.lhs_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_customs_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_defensive_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_economic_development_flag
+		value = THIS.id
+	}
+}
+
+###############
 resistance_button_click = {
 	set_country_flag = view_resistance_membership
 	clr_country_flag = view_lhs_membership

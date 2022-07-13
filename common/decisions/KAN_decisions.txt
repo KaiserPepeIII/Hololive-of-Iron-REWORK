@@ -1,0 +1,154 @@
+KAN_veracruz_incident_categories = {
+	KAN_veracruz_incident = {
+		activation = {
+			tag = KAN
+			KAN = {
+				NOT = {
+					owns_state = 482
+					owns_state = 480
+					owns_state = 1131
+					owns_state = 808
+				}
+			}
+			NOT = {
+				has_global_flag = veracruz_incident_settled
+			}
+		}
+		cancel_trigger = {
+			has_global_flag = veracruz_incident_settled
+		}
+		visible = {
+			OR = {
+				TAG = COC
+				TAG = KAN
+			}
+		}
+		available = {
+			tag = KAN
+			OR = {
+				AND = {
+					owns_state = 482
+					owns_state = 480
+					owns_state = 1131
+					owns_state = 808
+				}
+			}
+		}
+		is_good = no
+		days_mission_timeout = 90
+		selectable_mission = no
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			set_global_flag = veracruz_incident_settled
+			add_stability = -0.15
+			add_to_variable = {
+				var = KAN.anti_aggression
+				value = 75
+			}
+		}
+	}
+	COC_surrender_the_land = {
+		available = {
+			tag = COC
+			has_political_power > 50
+		}
+		visible = {
+			tag = COC
+		}
+		cost = 50
+		complete_effect = {
+			set_global_flag = veracruz_incident_settled
+			KAN = {
+				add_opinion_modifier = {
+					target = COC
+					modifier = pushing_friendly_relations
+				}
+				transfer_state = 482
+				transfer_state = 480
+				transfer_state = 1131
+				transfer_state = 808
+			}
+			add_stability = -0.1
+			add_war_support = -0.1
+			news_event = global_holo.3
+		}
+	}
+	KAN_liberate_veracruz = {
+		available = {
+			tag = KAN
+			has_political_power > 50
+		}
+		visible = {
+			tag = KAN
+		}
+		cost = 50
+		complete_effect = {
+			set_global_flag = veracruz_incident_settled
+			add_named_threat = {
+				threat = 10
+				name = KAN_veracruz_incident
+			}
+			declare_war_on = {
+				target = COC
+			}
+			news_event = global_holo.2
+		}
+	}
+	KAN_admit_wrong = {
+		available = {
+			tag = KAN
+			has_political_power > 100
+		}
+		visible = {
+			tag = KAN
+		}
+		cost = 100
+		complete_effect = {
+			set_global_flag = veracruz_incident_settled
+			ROOT = {
+				add_timed_idea = {
+					idea = KAN_debt_repayment
+					days = 730
+				}
+			}
+			COC = {
+				country_event = coco.2
+			}
+			news_event = global_holo.3
+		}
+	}
+	KAN_seek_support_from_aqua = {
+		available = {
+			tag = KAN
+			has_political_power > 100
+		}
+		visible = {
+			tag = KAN
+		}
+		cost = 100
+		complete_effect = {
+			set_country_flag = KAN_asked_aqua_for_help
+			AQA = {
+				country_event = aqua.1
+			}
+		}
+	}
+	KAN_seek_reconciliation_with_yagoo = {
+		available = {
+			tag = KAN
+			has_political_power > 100
+		}
+		visible = {
+			tag = KAN
+		}
+		cost = 100
+		complete_effect = {
+			set_country_flag = KAN_asked_yagoo_for_help
+			YAG = {
+				country_event = yagoo.2
+			}
+		}
+	}
+}

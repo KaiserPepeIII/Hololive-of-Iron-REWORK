@@ -8,20 +8,21 @@ focus_tree = {
 		}
 	}
 	default = no
-	continuous_focus_position = { x = 50 y = 20 }
-	
+	continuous_focus_position = {
+		x = 50
+		y = 20
+	}
 	focus = {
 		id = FBK_unification_day
 		icon = GFX_focus_FBK_unification_day
-		cost = 0.00
+		cost = 10
 		x = 13
 		y = 2
-
 	}
 	focus = {
 		id = FBK_make_friends
 		icon = GFX_focus_FBK_make_friends
-		cost = 0.00
+		cost = 10
 		x = 42
 		y = 4
 		completion_reward = {
@@ -48,11 +49,11 @@ focus_tree = {
 				}
 			}
 		}
-	}	
+	}
 	focus = {
 		id = FBK_restart_great_northern_war
 		icon = GFX_focus_FBK_restart_great_northern_war
-		cost = 0.00
+		cost = 10
 		x = 40
 		y = 4
 		completion_reward = {
@@ -62,22 +63,20 @@ focus_tree = {
 	focus = {
 		id = FBK_regionalism
 		icon = GFX_focus_FBK_regionalism
-		cost = 0.00
+		cost = 10
 		mutually_exclusive = {
 			focus = FBK_internationalism
 		}
 		x = 48
 		y = 4
-
 	}
 	focus = {
 		id = FBK_internationalism
 		icon = GFX_focus_FBK_internationalism
-		cost = 0.00
+		cost = 10
 		mutually_exclusive = {
 			focus = FBK_regionalism
 		}
-
 		completion_reward = {
 			add_ideas = {
 				fbk_internationalism_idea
@@ -85,18 +84,18 @@ focus_tree = {
 		}
 		x = 52
 		y = 4
-
 	}
 	focus = {
 		id = FBK_depoliticize_army
 		icon = GFX_focus_FBK_depoliticize_army
-		cost = 0.00
+		cost = 10
 		mutually_exclusive = {
 			focus = FBK_reinforce_wfa
 		}
-
 		completion_reward = {
-			subtract_from_variable = { FBK.WFA_relationship_flat_var = -40}
+			subtract_from_variable = {
+				FBK.WFA_relationship_flat_var = -40
+			}
 			add_political_power = -100
 			#add_popularity = {
 			#	ideology = authoritarism? 
@@ -110,61 +109,58 @@ focus_tree = {
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_make_wfa_lot_angry_tooltip
 		}
-
 		x = 45
 		y = 9
-
 	}
 	focus = {
 		id = FBK_reinforce_wfa
 		icon = GFX_focus_FBK_strengthen_the_wfa
-		cost = 0.00
+		cost = 10
 		mutually_exclusive = {
 			focus = FBK_depoliticize_army
 		}
-
 		completion_reward = {
-			add_ideas = {FBK_strengthen_wfa}
-			add_to_variable = {FBK.WFA_relationship_flat_var = 15}
+			add_ideas = {
+				FBK_strengthen_wfa
+			}
+			add_to_variable = {
+				FBK.WFA_relationship_flat_var = 15
+			}
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_make_wfa_bit_pleased_tooltip
 			#TODO: 
 			#Enable generals , theorists,  advisors, etc.
 		}
-
 		x = 41
 		y = 9
-
 	}
 	focus = {
 		id = FBK_depoliticize_the_navy
 		icon = GFX_focus_FBK_depoliticize_the_navy
-		cost = 0.00
-
+		cost = 10
 		completion_reward = {
 			navy_experience = 50
 			add_political_power = -100
-			subtract_from_variable = {FBK.WFA_relationship_flat_var = 15}
+			subtract_from_variable = {
+				FBK.WFA_relationship_flat_var = 15
+			}
 			ROOT = {
-				every_character = { 
-				limit= {
-					is_navy_chief = yes
-					}	
+				every_character = {
+					limit = {
+						is_navy_chief = yes
+					}
 					retire = yes
 				}
 			}
-			custom_effect_tooltip = FBK_make_wfa_bit_angry_tooltip	
+			custom_effect_tooltip = FBK_make_wfa_bit_angry_tooltip
 		}
-
 		x = 54
 		y = 9
-
 	}
 	focus = {
 		id = FBK_expand_the_airforce
 		icon = GFX_focus_FBK_expand_airfields
-		cost = 0.00
-
+		cost = 10
 		completion_reward = {
 			air_experience = 50
 			random_owned_controlled_state = {
@@ -205,70 +201,67 @@ focus_tree = {
 		}
 		x = 63
 		y = 9
-
 	}
 	focus = {
 		id = FBK_purge_the_wfa
 		icon = GFX_focus_FBK_purge_the_wfa
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_unification_day
 		}
 		mutually_exclusive = {
 			focus = FBK_end_the_purges
 		}
+		completion_reward = {
+			custom_effect_tooltip = FBK_purge_the_wfa_warning
+		}
 		x = 11
 		y = 3
-
 	}
 	focus = {
 		id = FBK_rule_from_stockholm
 		icon = GFX_focus_FBK_rule_from_stockholm
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_purge_the_wfa
 		}
 		x = 5
 		y = 4
-
 	}
 	focus = {
 		id = FBK_expand_cnsi
 		icon = GFX_focus_FBK_expand_cnsi
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_rule_from_stockholm
 		}
 		x = 3
 		y = 5
-
 	}
 	focus = {
 		id = FBK_fubu_youth_corps
 		icon = GFX_focus_FBK_fubu_youth_corps
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_expand_cnsi
 		}
 		x = 2
 		y = 6
-
 	}
 	focus = {
 		id = FBK_four_year_plan
 		icon = GFX_focus_FBK_four_year_plan
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_rule_from_stockholm
 		}
 		x = 7
 		y = 5
-
 	}
 	focus = {
 		id = FBK_liberalize_markets
 		icon = GFX_focus_FBK_liberalize_markets
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_four_year_plan
 		}
@@ -277,12 +270,11 @@ focus_tree = {
 		}
 		x = 6
 		y = 6
-
 	}
 	focus = {
 		id = FBK_expand_state_industry
 		icon = GFX_focus_FBK_expand_state_industry
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_expand_cnsi
 		}
@@ -294,67 +286,61 @@ focus_tree = {
 		}
 		x = 4
 		y = 6
-
 	}
 	focus = {
 		id = FBK_liquidate_failing_assets
 		icon = GFX_focus_FBK_liquidate_failing_assets
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_liberalize_markets
 		}
 		x = 6
 		y = 7
-
 	}
 	focus = {
 		id = FBK_shrink_military_complex
 		icon = GFX_focus_FBK_shrink_military_complex
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_liquidate_failing_assets
 		}
 		x = 6
 		y = 8
-
 	}
 	focus = {
 		id = FBK_peasants_to_farmers
 		icon = GFX_focus_FBK_peasants_to_farmers
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_four_year_plan
 		}
 		x = 8
 		y = 6
-
 	}
 	focus = {
 		id = FBK_improve_rural_infrastructure
 		icon = GFX_focus_FBK_improve_rural_infrastructure
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_peasants_to_farmers
 		}
 		x = 8
 		y = 7
-
 	}
 	focus = {
 		id = FBK_encourage_lumber_industry
 		icon = GFX_focus_focus_FBK_encourage_lumber_industry
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_improve_rural_infrastructure
 		}
 		x = 8
 		y = 8
-
 	}
 	focus = {
 		id = FBK_end_the_purges
 		icon = GFX_focus_FBK_end_the_purges
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_unification_day
 		}
@@ -363,24 +349,22 @@ focus_tree = {
 		}
 		x = 15
 		y = 3
-
 	}
 	focus = {
 		id = FBK_the_oblast_debate
 		icon = GFX_focus_FBK_the_oblast_debate
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_purge_the_wfa
 			focus = FBK_end_the_purges
 		}
 		x = 13
 		y = 4
-
 	}
 	focus = {
 		id = FBK_end_the_oblasts
 		icon = GFX_focus_FBK_end_the_oblasts
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_purge_the_wfa
 		}
@@ -389,23 +373,21 @@ focus_tree = {
 		}
 		x = 11
 		y = 5
-
 	}
 	focus = {
 		id = FBK_the_kronii_oblast
 		icon = GFX_focus_FBK_the_kronii_oblast
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_the_oblast_debate
 		}
 		x = 13
 		y = 5
-
 	}
 	focus = {
 		id = FBK_reform_the_system
 		icon = GFX_focus_FBK_reform_the_system
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_end_the_purges
 		}
@@ -414,12 +396,11 @@ focus_tree = {
 		}
 		x = 15
 		y = 5
-
 	}
 	focus = {
 		id = FBK_russian_integration
 		icon = GFX_focus_FBK_russian_integration
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_the_kronii_oblast
 			focus = FBK_end_the_oblasts
@@ -427,12 +408,11 @@ focus_tree = {
 		}
 		x = 13
 		y = 6
-
 	}
 	focus = {
 		id = FBK_crush_the_unrest
 		icon = GFX_focus_FBK_crush_the_unrest
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_russian_integration
 		}
@@ -441,12 +421,11 @@ focus_tree = {
 		}
 		x = 15
 		y = 7
-
 	}
 	focus = {
 		id = FBK_slow_integration
 		icon = GFX_focus_FBK_slow_integration
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_russian_integration
 		}
@@ -455,60 +434,55 @@ focus_tree = {
 		}
 		x = 11
 		y = 7
-
 	}
 	focus = {
 		id = FBK_russian_minds
 		icon = GFX_focus_FBK_russian_minds
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_crush_the_unrest
 			focus = FBK_slow_integration
 		}
 		x = 14
 		y = 8
-
 	}
 	focus = {
 		id = FBK_russian_industry
 		icon = GFX_focus_FBK_russian_industry
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_slow_integration
 			focus = FBK_crush_the_unrest
 		}
 		x = 10
 		y = 8
-
 	}
 	focus = {
 		id = FBK_russian_ports
 		icon = GFX_focus_FBK_russian_ports
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_slow_integration
 			focus = FBK_crush_the_unrest
 		}
 		x = 12
 		y = 8
-
 	}
 	focus = {
 		id = FBK_vodka
 		icon = GFX_focus_FBK_vodka
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_crush_the_unrest
 			focus = FBK_slow_integration
 		}
 		x = 16
 		y = 8
-
 	}
 	focus = {
 		id = FBK_many_peoples_one_nation
 		icon = GFX_focus_FBK_many_peoples_one_nation
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_russian_ports
 		}
@@ -523,12 +497,11 @@ focus_tree = {
 		}
 		x = 13
 		y = 9
-
 	}
 	focus = {
 		id = FBK_organs_of_the_state
 		icon = GFX_focus_FBK_organs_of_the_state
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_end_the_purges
 		}
@@ -537,34 +510,31 @@ focus_tree = {
 		}
 		x = 21
 		y = 4
-
 	}
 	focus = {
 		id = FBK_workers_state
 		icon = GFX_focus_FBK_workers_state
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_organs_of_the_state
 		}
 		x = 19
 		y = 5
-
 	}
 	focus = {
 		id = FBK_workers_economy
 		icon = GFX_focus_FBK_workers_economy
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_organs_of_the_state
 		}
 		x = 23
 		y = 5
-
 	}
 	focus = {
 		id = FBK_coco_principles
 		icon = GFX_focus_FBK_coco_principles
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_workers_state
 		}
@@ -576,34 +546,31 @@ focus_tree = {
 		}
 		x = 19
 		y = 6
-
 	}
 	focus = {
 		id = FBK_state_loyalty
 		icon = GFX_focus_FBK_state_loyalty
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_coco_principles
 		}
 		x = 18
 		y = 7
-
 	}
 	focus = {
 		id = FBK_cooperatism
 		icon = GFX_focus_FBK_cooperatism
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_coco_principles
 		}
 		x = 20
 		y = 7
-
 	}
 	focus = {
 		id = FBK_aqua_principles
 		icon = GFX_focus_FBK_aqua_principles
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_workers_economy
 		}
@@ -615,34 +582,31 @@ focus_tree = {
 		}
 		x = 23
 		y = 6
-
 	}
 	focus = {
 		id = FBK_workers_rights
 		icon = GFX_focus_FBK_workers_rights
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_aqua_principles
 		}
 		x = 22
 		y = 7
-
 	}
 	focus = {
 		id = FBK_cooperavatism
 		icon = GFX_focus_FBK_cooperavatism
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_aqua_principles
 		}
 		x = 24
 		y = 7
-
 	}
 	focus = {
 		id = FBK_progressive_economy
 		icon = GFX_focus_FBK_progressive_economy
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_cooperatism
 			focus = FBK_state_loyalty
@@ -651,34 +615,31 @@ focus_tree = {
 		}
 		x = 21
 		y = 8
-
 	}
 	focus = {
 		id = FBK_mass_urbanisation
 		icon = GFX_focus_FBK_mass_urbanisation
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_progressive_economy
 		}
 		x = 19
 		y = 9
-
 	}
 	focus = {
 		id = FBK_issue_of_trade
 		icon = GFX_focus_FBK_issue_of_trade
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_progressive_economy
 		}
 		x = 23
 		y = 9
-
 	}
 	focus = {
 		id = FBK_end_state_emergency
 		icon = GFX_focus_FBK_end_state_emergency
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_end_the_purges
 		}
@@ -687,79 +648,72 @@ focus_tree = {
 		}
 		x = 29
 		y = 4
-
 	}
 	focus = {
 		id = FBK_end_ghana_mandate
 		icon = GFX_focus_FBK_end_ghana_mandate
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_organs_of_the_state
 			focus = FBK_end_state_emergency
 		}
 		x = 26
 		y = 5
-
 	}
 	focus = {
 		id = FBK_restore_the_parliament
 		icon = GFX_focus_FBK_restore_the_parliament
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_end_state_emergency
 		}
 		x = 29
 		y = 5
-
 	}
 	focus = {
 		id = FBK_strengthen_parliament
 		icon = GFX_focus_FBK_strengthen_parliament
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_restore_the_parliament
 		}
 		x = 28
 		y = 6
-
 	}
 	focus = {
 		id = FBK_reduce_state_influence
 		icon = GFX_focus_FBK_reduce_state_influence
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_strengthen_parliament
 		}
 		x = 28
 		y = 7
-
 	}
 	focus = {
 		id = FBK_increase_suffrage
 		icon = GFX_focus_FBK_increase_suffrage
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_restore_the_parliament
 		}
 		x = 30
 		y = 6
-
 	}
 	focus = {
 		id = FBK_restore_workers_rights
 		icon = GFX_focus_FBK_restore_workers_rights
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_increase_suffrage
 		}
 		x = 30
 		y = 7
-
 	}
 	focus = {
 		id = FBK_democratic_constitution
 		icon = GFX_focus_FBK_democratic_constitution
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_reduce_state_influence
 		}
@@ -768,34 +722,31 @@ focus_tree = {
 		}
 		x = 29
 		y = 8
-
 	}
 	focus = {
 		id = FBK_end_wfa
 		icon = GFX_focus_FBK_end_wfa
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_end_state_emergency
 		}
 		x = 32
 		y = 5
-
 	}
 	focus = {
 		id = FBK_privitise_economy
 		icon = GFX_focus_FBK_privitise_economy
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_end_state_emergency
 		}
 		x = 35
 		y = 5
-
 	}
 	focus = {
 		id = FBK_local_needs
 		icon = GFX_focus_FBK_local_needs
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_privitise_economy
 		}
@@ -804,34 +755,31 @@ focus_tree = {
 		}
 		x = 34
 		y = 6
-
 	}
 	focus = {
 		id = FBK_consumer_goods_focus
 		icon = GFX_focus_FBK_consumer_goods_focus
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_local_needs
 		}
 		x = 32
 		y = 7
-
 	}
 	focus = {
 		id = FBK_convert_military_factories
 		icon = GFX_focus_FBK_convert_military_factories
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_local_needs
 		}
 		x = 34
 		y = 7
-
 	}
 	focus = {
 		id = FBK_lumber_and_iron
 		icon = GFX_focus_FBK_lumber_and_iron
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_consumer_goods_focus
 		}
@@ -840,12 +788,11 @@ focus_tree = {
 		}
 		x = 33
 		y = 8
-
 	}
 	focus = {
 		id = FBK_export_focus
 		icon = GFX_focus_FBK_export_focus
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_privitise_economy
 		}
@@ -854,34 +801,31 @@ focus_tree = {
 		}
 		x = 36
 		y = 6
-
 	}
 	focus = {
 		id = FBK_mass_resource_extraction
 		icon = GFX_focus_FBK_mass_resource_extraction
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_export_focus
 		}
 		x = 36
 		y = 7
-
 	}
 	focus = {
 		id = FBK_retain_military_economy
 		icon = GFX_focus_FBK_retain_military_economy
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_export_focus
 		}
 		x = 38
 		y = 7
-
 	}
 	focus = {
 		id = FBK_steel_and_guns
 		icon = GFX_focus_FBK_steel_and_guns
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_mass_resource_extraction
 		}
@@ -890,37 +834,34 @@ focus_tree = {
 		}
 		x = 37
 		y = 8
-
 	}
 	focus = {
 		id = FBK_brightest_minds
 		icon = GFX_focus_FBK_brightest_minds
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_lumber_and_iron
 			focus = FBK_steel_and_guns
 		}
 		x = 35
 		y = 9
-
 	}
 	focus = {
 		id = FBK_expand_wfa
 		icon = GFX_focus_FBK_expand_wfa
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_reinforce_wfa
 		}
 		available = {
-				check_variable = {
-					FBK.manpower_k > 10
-				}
+			check_variable = {
+				FBK.manpower_k > 10
+			}
 		}
-
 		completion_reward = {
 			custom_effect_tooltip = FBK_expand_wfa_transfer_requirement_text
 			FBK = {
-				add_manpower= -10000
+				add_manpower = -10000
 			}
 			WFA = {
 				add_manpower = 10000
@@ -930,31 +871,29 @@ focus_tree = {
 		}
 		x = 38
 		y = 10
-
 	}
 	focus = {
 		id = FBK_lessen_recruitment_standards
 		icon = GFX_focus_FBK_lessen_recruitment_standards
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_expand_wfa
 		}
 		mutually_exclusive = {
 			focus = FBK_professional_army
 		}
-
 		completion_reward = {
-			add_ideas = {FBK_low_standards}
+			add_ideas = {
+				FBK_low_standards
+			}
 		}
-
 		x = 37
 		y = 11
-
 	}
 	focus = {
 		id = FBK_suisei_friendship
 		icon = GFX_focus_FBK_suisei_friendship
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_make_friends
 		}
@@ -966,48 +905,45 @@ focus_tree = {
 		}
 		x = 38
 		y = 5
-
 	}
 	focus = {
 		id = FBK_professional_army
 		icon = GFX_focus_FBK_professional_soldiers
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_expand_wfa
 		}
 		mutually_exclusive = {
 			focus = FBK_lessen_recruitment_standards
 		}
-
 		completion_reward = {
-			add_ideas = {FBK_low_standards}
+			add_ideas = {
+				FBK_low_standards
+			}
 		}
-
 		x = 39
 		y = 11
-
 	}
 	focus = {
 		id = FBK_stormtroop_doctrine
 		icon = GFX_focus_FBK_stormtroop_doctrine
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_lessen_recruitment_standards
 			focus = FBK_professional_army
 		}
-
 		completion_reward = {
-			add_ideas = {FBK_stormtroopers}
+			add_ideas = {
+				FBK_stormtroopers
+			}
 		}
-
 		x = 38
 		y = 12
-
 	}
 	focus = {
 		id = FBK_disband_national_army
 		icon = GFX_focus_FBK_disband_national_army
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_stormtroop_doctrine
 		}
@@ -1017,19 +953,19 @@ focus_tree = {
 		completion_reward = {
 			FBK_delete_na_divisions_effect = yes
 			remove_ideas = FBK_politizied_army
-			add_to_variable = { FBK.WFA_relationship_flat_var = 50 } 
+			add_to_variable = {
+				FBK.WFA_relationship_flat_var = 50
+			}
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_make_wfa_lot_pleased_tooltip
 		}
-		
 		x = 37
 		y = 13
-
 	}
 	focus = {
 		id = FBK_unite_national_and_wfa
 		icon = GFX_focus_FBK_one_nation_two_armies
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_stormtroop_doctrine
 		}
@@ -1038,12 +974,11 @@ focus_tree = {
 		}
 		x = 39
 		y = 13
-
 	}
 	focus = {
 		id = FBK_miko_friendship
 		icon = GFX_focus_FBK_miko_friendship
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_make_friends
 		}
@@ -1055,12 +990,11 @@ focus_tree = {
 		}
 		x = 40
 		y = 5
-
 	}
 	focus = {
 		id = FBK_pekora_friendhship
 		icon = GFX_focus_FBK_pekora_friendhship
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_make_friends
 		}
@@ -1072,12 +1006,11 @@ focus_tree = {
 		}
 		x = 42
 		y = 5
-
 	}
 	focus = {
 		id = FBK_open_trade
 		icon = GFX_focus_FBK_open_trade
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_miko_friendship
 		}
@@ -1092,12 +1025,11 @@ focus_tree = {
 		}
 		x = 40
 		y = 6
-
 	}
 	focus = {
 		id = FBK_despotic_alliance
 		icon = GFX_focus_FBK_despotic_alliance
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_open_trade
 		}
@@ -1112,35 +1044,30 @@ focus_tree = {
 					id = fubuki.2
 				}
 			}
-
 			RUS = {
 				country_event = {
 					days = 1
 					id = fubuki.2
 				}
 			}
-
 			FLA = {
 				country_event = {
 					days = 1
 					id = fubuki.2
 				}
 			}
-
 			SUI = {
 				country_event = {
 					days = 1
 					id = fubuki.2
 				}
 			}
-
 			MIK = {
 				country_event = {
 					days = 1
 					id = fubuki.2
 				}
 			}
-
 			PEK = {
 				country_event = {
 					days = 1
@@ -1150,12 +1077,11 @@ focus_tree = {
 		}
 		x = 40
 		y = 7
-
 	}
 	focus = {
 		id = FBK_memories_of_konigsberg
 		icon = GFX_focus_FBK_memories_of_konigsberg
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_reinforce_wfa
 			focus = FBK_depoliticize_army
@@ -1164,37 +1090,35 @@ focus_tree = {
 			focus = FBK_memories_of_baltics
 		}
 		completion_reward = {
-			add_ideas = { FBK_memories_of_konigsberg }
+			add_ideas = {
+				FBK_memories_of_konigsberg
+			}
 		}
 		x = 42
 		y = 10
-
 	}
 	focus = {
-		id = FBK_infantry_lessons # inf eqpt, support cos
+		id = FBK_infantry_lessons		# inf eqpt, support cos
 		icon = GFX_focus_FBK_battlefield_support
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_memories_of_konigsberg
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 0.75
 				uses = 3
 				category = infantry_weapons
 				category = support_tech
-				}
 			}
-
+		}
 		x = 41
 		y = 11
-
 	}
 	focus = {
 		id = FBK_memories_of_baltics
 		icon = GFX_focus_FBK_memories_of_baltics
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_depoliticize_army
 			focus = FBK_reinforce_wfa
@@ -1204,30 +1128,28 @@ focus_tree = {
 		}
 		x = 44
 		y = 10
-
 	}
 	focus = {
 		id = FBK_tactical_innovation
 		icon = GFX_focus_FBK_expand_officers_corps
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_memories_of_konigsberg
 			focus = FBK_memories_of_baltics
 		}
-
 		completion_reward = {
 			army_experience = 20
-			add_ideas = {FBK_field_officers}
+			add_ideas = {
+				FBK_field_officers
+			}
 		}
-
 		x = 43
 		y = 11
-
 	}
 	focus = {
-		id = FBK_special_forces #sf cap und training
+		id = FBK_special_forces		#sf cap und training
 		icon = GFX_focus_FBK_special_forces
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_tactical_innovation
 		}
@@ -1235,20 +1157,20 @@ focus_tree = {
 			focus = FBK_infantry_lessons
 		}
 		completion_reward = {
-			add_ideas = {FBK_special_operations_command}
+			add_ideas = {
+				FBK_special_operations_command
+			}
 		}
 		x = 41
 		y = 12
-
 	}
 	focus = {
 		id = FBK_operational_innovation
 		icon = GFX_focus_FBK_operational_innovation
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_tactical_innovation
 		}
-
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
@@ -1257,32 +1179,31 @@ focus_tree = {
 				category = land_doctrine
 			}
 		}
-
 		x = 43
 		y = 12
-
 	}
 	focus = {
-		id = FBK_infantry_support #leg infantry buff
+		id = FBK_infantry_support		#leg infantry buff
 		icon = GFX_focus_FBK_artillery_and_guns
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_operational_innovation
 		}
 		prerequisite = {
 			focus = FBK_special_forces
 		}
-		completion_reward = {	
-			add_ideas = {FBK_light_infantry_focus}
+		completion_reward = {
+			add_ideas = {
+				FBK_light_infantry_focus
+			}
 		}
 		x = 42
 		y = 13
-
 	}
 	focus = {
 		id = FBK_treaties_eastward
 		icon = GFX_focus_FBK_treaties_eastward
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_make_friends
 		}
@@ -1290,38 +1211,34 @@ focus_tree = {
 			RUS = {
 				country_event = {
 					days = 1
-					id = fubuki.3  #event asking for NAP lmao
+					id = fubuki.3					#event asking for NAP lmao
 				}
 			}
 		}
 		x = 44
 		y = 5
-
 	}
 	focus = {
-		id = FBK_artillery_lessons #arty tech
+		id = FBK_artillery_lessons		#arty tech
 		icon = GFX_focus_FBK_superior_firepower
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_memories_of_baltics
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 1
 				uses = 2
 				category = artillery
-				}
 			}
-
+		}
 		x = 45
 		y = 11
-
 	}
 	focus = {
-		id = FBK_tank_lessons #tank tech and design cost reduction
+		id = FBK_tank_lessons		#tank tech and design cost reduction
 		icon = GFX_focus_FBK_armoured_spearheads
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_artillery_lessons
 		}
@@ -1330,78 +1247,74 @@ focus_tree = {
 		}
 		x = 45
 		y = 12
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 2.5
 				uses = 1
 				category = armor
-				}
 			}
-
+		}
 	}
 	focus = {
-		id = FBK_motorized_warfare #mot mech buff
+		id = FBK_motorized_warfare		#mot mech buff
 		icon = GFX_focus_FBK_motorised_push
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_tank_lessons
 		}
 		prerequisite = {
 			focus = FBK_operational_innovation
 		}
-		completion_reward = {	
-			add_ideas = {FBK_mobile_infantry_focus}
+		completion_reward = {
+			add_ideas = {
+				FBK_mobile_infantry_focus
+			}
 		}
 		x = 44
 		y = 13
-
 	}
 	focus = {
 		id = FBK_deterrence
 		icon = GFX_focus_FBK_deterrence
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_regionalism
 		}
 		x = 47
 		y = 5
-
 	}
 	focus = {
 		id = FBK_surrounded_on_all_fronts
 		icon = GFX_focus_FBK_surrounded_on_all_fronts
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_deterrence
 		}
 		x = 47
 		y = 6
-
 	}
 	focus = {
-		id = FBK_rework_conscription # increased conscription and mobilization speed
+		id = FBK_rework_conscription		# increased conscription and mobilization speed
 		icon = GFX_focus_FBK_rework_conscription
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_depoliticize_army
 		}
 		completion_reward = {
 			remove_ideas = FBK_starting_conscription_penalty
-			subtract_from_variable ={ FBK.WFA_relationship_flat_var = 10}
+			subtract_from_variable = {
+				FBK.WFA_relationship_flat_var = 10
+			}
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_make_wfa_bit_angry_tooltip
 		}
-		
-		
 		x = 48
 		y = 10
-
 	}
 	focus = {
 		id = FBK_peoples_army
 		icon = GFX_focus_FBK_peoples_army
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_rework_conscription
 		}
@@ -1409,27 +1322,26 @@ focus_tree = {
 			focus = FBK_states_army
 		}
 		available = {
-			OR={
+			OR = {
 				has_completed_focus = FBK_coco_principles
 				has_completed_focus = FBK_aqua_principles
 			}
 		}
-
-		completion_reward ={
-			subtract_from_variable = { FBK.WFA_relationship_flat_var = 15 }
+		completion_reward = {
+			subtract_from_variable = {
+				FBK.WFA_relationship_flat_var = 15
+			}
 			FBK_army_variables = yes
 			add_ideas = FBK_peoples_army
 			custom_effect_tooltip = FBK_make_wfa_bit_angry_tooltip
 		}
-
 		x = 47
 		y = 11
-
 	}
 	focus = {
 		id = FBK_resistance_principles
 		icon = GFX_focus_FBK_resistance_principles
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_regionalism
 			focus = FBK_internationalism
@@ -1442,85 +1354,77 @@ focus_tree = {
 		}
 		x = 49
 		y = 5
-
 	}
 	focus = {
 		id = FBK_european_stronghold
 		icon = GFX_focus_FBK_european_stronghold
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_resistance_principles
 		}
 		x = 49
 		y = 6
-
 	}
 	focus = {
 		id = FBK_states_army
 		icon = GFX_focus_FBK_states_army
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_rework_conscription
 		}
 		mutually_exclusive = {
 			focus = FBK_peoples_army
 		}
-
-		completion_reward ={
-			subtract_from_variable = { FBK.WFA_relationship_flat_var = 50 }
+		completion_reward = {
+			subtract_from_variable = {
+				FBK.WFA_relationship_flat_var = 50
+			}
 			FBK_army_variables = yes
 			remove_ideas = FBK_politizied_army
 			custom_effect_tooltip = FBK_make_wfa_lot_angry_tooltip
 		}
-
 		x = 49
 		y = 11
-
 	}
 	focus = {
 		id = FBK_revitalize_national_army
 		icon = GFX_focus_FBK_fix_the_national_military
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_peoples_army
 			focus = FBK_states_army
 		}
-		completion_reward={
+		completion_reward = {
 			add_ideas = FBK_revitalized_national_army
 		}
-
 		x = 48
 		y = 12
-
 	}
 	focus = {
 		id = FBK_pick_up_scraps
 		icon = GFX_focus_FBK_pick_up_scraps
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_revitalize_national_army
 		}
 		mutually_exclusive = {
 			focus = FBK_wfa_integration
 		}
-
-		completion_reward ={
-			delete_unit_template_and_units ={
+		completion_reward = {
+			delete_unit_template_and_units = {
 				division_template = "WFA Division"
 				disband = yes
 			}
 			#TODO:
 			#Events to keep generals
 		}
-
 		x = 49
 		y = 13
-
 	}
 	focus = {
 		id = FBK_wfa_integration
 		icon = GFX_focus_FBK_wfa_integration
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_revitalize_national_army
 		}
@@ -1529,12 +1433,11 @@ focus_tree = {
 		}
 		x = 47
 		y = 13
-
 	}
 	focus = {
 		id = FBK_yagooist_principles
 		icon = GFX_focus_FBK_yagooist_principles
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_internationalism
 			focus = FBK_regionalism
@@ -1550,12 +1453,11 @@ focus_tree = {
 		}
 		x = 51
 		y = 5
-
 	}
 	focus = {
 		id = FBK_reconciliation_with_lhs
 		icon = GFX_focus_FBK_reconciliation_with_lhs
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_yagooist_principles
 		}
@@ -1567,12 +1469,11 @@ focus_tree = {
 		}
 		x = 51
 		y = 6
-
 	}
 	focus = {
 		id = FBK_mission_to_uphold
 		icon = GFX_focus_FBK_mission_to_liberate
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_surrounded_on_all_fronts
 			focus = FBK_european_stronghold
@@ -1580,12 +1481,11 @@ focus_tree = {
 		}
 		x = 48
 		y = 7
-
 	}
 	focus = {
-		id = FBK_plan_hler 
+		id = FBK_plan_hler
 		icon = GFX_focus_FBK_carrier_design
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
 		}
@@ -1597,52 +1497,45 @@ focus_tree = {
 		}
 		x = 52
 		y = 10
-
 	}
 	focus = {
 		id = FBK_modern_designs
 		icon = GFX_focus_FBK_modern_designs
-		cost = 0.00
+		cost = 10
 		prerequisite = {
-			focus = FBK_plan_hler 
+			focus = FBK_plan_hler
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 1
 				uses = 3
 				category = naval_equipment
-				}
 			}
-
+		}
 		x = 51
 		y = 11
-
 	}
 	focus = {
 		id = FBK_submarine_designs
 		icon = GFX_focus_FBK_submarine_designs
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_modern_designs
 		}
-		
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 3
 				uses = 1
 				category = ss_tech
-				}
 			}
-
+		}
 		x = 51
 		y = 12
-
 	}
 	focus = {
 		id = FBK_volunteers_ethos
 		icon = GFX_focus_FBK_volunteers_ethos
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_internationalism
 		}
@@ -1654,12 +1547,11 @@ focus_tree = {
 		}
 		x = 53
 		y = 5
-
 	}
 	focus = {
 		id = FBK_a_shining_beacon
 		icon = GFX_focus_FBK_a_shining_beacon
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_volunteers_ethos
 		}
@@ -1671,12 +1563,11 @@ focus_tree = {
 		}
 		x = 53
 		y = 6
-
 	}
 	focus = {
 		id = FBK_mission_to_contain
 		icon = GFX_focus_FBK_mission_to_contain
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_reconciliation_with_lhs
 			focus = FBK_a_shining_beacon
@@ -1689,30 +1580,27 @@ focus_tree = {
 		}
 		x = 52
 		y = 7
-
 	}
 	focus = {
-		id = FBK_naval_expansion_one 
+		id = FBK_naval_expansion_one
 		icon = GFX_focus_FBK_battleshp_design
-		cost = 0.00
+		cost = 10
 		prerequisite = {
-			focus = FBK_plan_hler 
+			focus = FBK_plan_hler
 		}
 		completion_reward = {
 			add_timed_idea = {
 				idea = FBK_escort_fleet_expansion
 				days = 2920
-			}	
+			}
 		}
-
 		x = 53
 		y = 11
-
 	}
 	focus = {
 		id = FBK_naval_expansion_two
 		icon = GFX_focus_FBK_naval_expansion_two
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_naval_expansion_one
 		}
@@ -1720,46 +1608,43 @@ focus_tree = {
 			add_timed_idea = {
 				idea = FBK_battle_fleet_expansion
 				days = 2190
-			}	
+			}
 		}
-		
 		x = 53
 		y = 12
-
 	}
 	focus = {
-		id = FBK_legacy_of_northern_war #xp gain? / amphib/nav buffs
+		id = FBK_legacy_of_northern_war		#xp gain? / amphib/nav buffs
 		icon = GFX_focus_FBK_legacy_of_northern_war
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_depoliticize_the_navy
 		}
 		completion_reward = {
-		    navy_experience = 15
+			navy_experience = 15
 		}
 		x = 56
 		y = 10
-
 	}
 	focus = {
 		id = FBK_separate_the_marines
 		icon = GFX_focus_FBK_separate_the_marines
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_legacy_of_northern_war
 		}
-		completion_reward ={
-			add_ideas ={FBK_independent_marines}
+		completion_reward = {
+			add_ideas = {
+				FBK_independent_marines
+			}
 		}
-
 		x = 55
 		y = 11
-
 	}
 	focus = {
 		id = FBK_grand_fleet
 		icon = GFX_focus_FBK_fleet_in_being
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_separate_the_marines
 		}
@@ -1771,21 +1656,18 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 2
 				category = cat_fleet_in_being
-			}	
+			}
 		}
-
 		x = 55
 		y = 12
-
 	}
 	focus = {
 		id = FBK_revitalize_doctrine
 		icon = GFX_focus_FBK_experimental_doctrines
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_legacy_of_northern_war
 		}
-
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = nav_doctrine_boost
@@ -1796,12 +1678,11 @@ focus_tree = {
 		}
 		x = 57
 		y = 11
-
 	}
 	focus = {
-		id = FBK_baltic_sea_focus #baltic naval bases and forts?
+		id = FBK_baltic_sea_focus		#baltic naval bases and forts?
 		icon = GFX_focus_FBK_baltic_sea_focus
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_revitalize_doctrine
 		}
@@ -1811,44 +1692,37 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_grand_fleet
 		}
-
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.5
 				uses = 2
 				category = submarine_doctrine
-			}	
+			}
 		}
-
 		x = 57
 		y = 12
-
 	}
 	focus = {
 		id = FBK_plan_thor
 		icon = GFX_focus_FBK_plan_thor
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
-
 		completion_reward = {
 			air_experience = 10
 			custom_effect_tooltip = FBK_plan_thor_tooltip
 		}
-
 		x = 61
 		y = 10
-
 	}
 	focus = {
 		id = FBK_strategic_bombers
 		icon = GFX_focus_FBK_strategic_destruction
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_plan_thor
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 2
@@ -1856,19 +1730,16 @@ focus_tree = {
 				category = cat_strategic_bomber
 			}
 		}
-
 		x = 59
 		y = 11
-
 	}
 	focus = {
 		id = FBK_tactical_bombers
 		icon = GFX_focus_FBK_bombers_focus
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_plan_thor
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 1.5
@@ -1876,26 +1747,22 @@ focus_tree = {
 				category = tactical_bomber
 			}
 		}
-
 		x = 61
 		y = 11
-
 	}
 	focus = {
-		id = FBK_general_expansion # unlocks design co 
+		id = FBK_general_expansion		# unlocks design co 
 		icon = GFX_focus_FBK_general_expansion
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
-
 		completion_reward = {
 			add_equipment_to_stockpile = {
 				type = fighter_equipment
 				amount = 250
 				producer = ROOT
 			}
-
 			random_owned_controlled_state = {
 				add_building_construction = {
 					type = air_base
@@ -1931,27 +1798,23 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-
-			add_tech_bonus ={
+			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
 				category = light_fighter
 				category = cat_heavy_fighter
 			}
 		}
-
 		x = 63
 		y = 10
-
 	}
 	focus = {
 		id = FBK_fighter_modernisation
 		icon = GFX_focus_FBK_fighter_modernisation
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_general_expansion
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 1.5
@@ -1960,34 +1823,30 @@ focus_tree = {
 				category = cat_heavy_fighter
 			}
 		}
-
 		x = 63
 		y = 11
-
 	}
 	focus = {
 		id = FBK_plan_valkyrie
 		icon = GFX_focus_FBK_plan_valkyrie
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_expand_the_airforce
 		}
-		completion_reward={
+		completion_reward = {
 			air_experience = 10
 			custom_effect_tooltip = FBK_plan_valkyrie_tooltip
 		}
 		x = 65
 		y = 10
-
 	}
 	focus = {
 		id = FBK_naval_bombers
 		icon = GFX_focus_FBK_naval_bombers
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_plan_valkyrie
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 1.5
@@ -1995,19 +1854,16 @@ focus_tree = {
 				category = naval_bomber
 			}
 		}
-
 		x = 65
 		y = 11
-
 	}
 	focus = {
 		id = FBK_cas
 		icon = GFX_focus_FBK_cas_focus
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_plan_valkyrie
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 1.5
@@ -2015,15 +1871,13 @@ focus_tree = {
 				category = cas_bomber
 			}
 		}
-
 		x = 67
 		y = 11
-
 	}
 	focus = {
 		id = FBK_on_the_frontline
 		icon = GFX_focus_FBK_behind_the_line_destruction
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_fighter_modernisation
 			focus = FBK_naval_bombers
@@ -2034,19 +1888,18 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_home_defense
 		}
-		
 		completion_reward = {
-			add_ideas = {FBK_air_superiority}
+			add_ideas = {
+				FBK_air_superiority
+			}
 		}
-
 		x = 65
 		y = 12
-
 	}
 	focus = {
 		id = FBK_home_defense
 		icon = GFX_focus_FBK_home_defense
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_tactical_bombers
 			focus = FBK_strategic_bombers
@@ -2057,24 +1910,22 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_on_the_frontline
 		}
-
 		completion_reward = {
-			add_ideas = {FBK_interception}
+			add_ideas = {
+				FBK_interception
+			}
 		}
-
 		x = 61
 		y = 12
-
 	}
 	focus = {
-		id = FBK_heavy_water # nuke tech
+		id = FBK_heavy_water		# nuke tech
 		icon = GFX_focus_FBK_heavy_water
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_on_the_frontline
 			focus = FBK_home_defense
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 2
@@ -2082,71 +1933,64 @@ focus_tree = {
 				category = nuclear
 			}
 		}
-
 		x = 63
 		y = 13
-
 	}
 	focus = {
 		id = FBK_nationalize_the_unions
 		icon = GFX_focus_FBK_nationalize_the_unions
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_expand_state_industry
 		}
 		x = 4
 		y = 7
-
 	}
 	focus = {
 		id = FBK_everyone_a_friend
 		icon = GFX_focus_FBK_everyone_a_friend
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_fubu_youth_corps
 		}
 		x = 2
 		y = 7
-
 	}
 	focus = {
 		id = FBK_further_urbanisation
 		icon = GFX_focus_FBK_further_urbanisation
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_nationalize_the_unions
 		}
 		x = 4
 		y = 8
-
 	}
 	focus = {
 		id = FBK_tackle_the_depression
 		icon = GFX_focus_FBK_tackle_the_depression
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_further_urbanisation
 			focus = FBK_shrink_military_complex
 		}
 		x = 5
 		y = 9
-
 	}
 	focus = {
 		id = FBK_build_urban_support
 		icon = GFX_focus_FBK_build_urban_support
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_everyone_a_friend
 		}
 		x = 2
 		y = 8
-
 	}
 	focus = {
 		id = FBK_education_push
 		icon = GFX_focus_FBK_education_push
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_strengthen_the_military_complex
 		}
@@ -2158,107 +2002,101 @@ focus_tree = {
 		}
 		x = 21
 		y = 10
-
 	}
 	focus = {
 		id = FBK_strengthen_the_military_complex
 		icon = GFX_focus_FBK_strengthen_the_military_complex
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_progressive_economy
 		}
 		x = 21
 		y = 9
-
 	}
 	focus = {
 		id = FBK_new_elections
 		icon = GFX_focus_FBK_new_elections
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_democratic_constitution
 		}
 		x = 29
 		y = 9
-
 	}
 	focus = {
-		id = FBK_combined_arms_warfare # tank cas buff
+		id = FBK_combined_arms_warfare		# tank cas buff
 		icon = GFX_focus_FBK_air_land_war
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_infantry_support
 			focus = FBK_motorized_warfare
 		}
-		completion_reward = {	
-			add_ideas = {FBK_air_land_battle}
+		completion_reward = {
+			add_ideas = {
+				FBK_air_land_battle
+			}
 		}
 		x = 43
 		y = 14
-
 	}
 	focus = {
 		id = FBK_tool_of_fubuki
 		icon = GFX_focus_FBK_tool_of_fubuki
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_disband_national_army
 			focus = FBK_unite_national_and_wfa
 		}
 		x = 38
 		y = 14
-
 	}
 	focus = {
 		id = FBK_popular_army
 		icon = GFX_focus_FBK_popular_army
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_wfa_integration
 			focus = FBK_pick_up_scraps
 		}
-		completion_reward = {	
+		completion_reward = {
 			add_war_support = 0.15
 			add_stability = 0.15
-			add_popularity = { ideology = PREV  popularity = 0.15 }
+			add_popularity = {
+				ideology = PREV
+				popularity = 0.15
+			}
 		}
 		x = 48
 		y = 14
-
 	}
 	focus = {
 		id = FBK_end_plan_hler
 		icon = GFX_focus_FBK_end_plan_hler
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_submarine_designs
 		}
 		prerequisite = {
 			focus = FBK_naval_expansion_two
 		}
-
 		available = {
 			NOT = {
 				has_idea = FBK_plan_hler
 			}
 		}
-
 		completion_reward = {
 			add_ideas = FBK_plan_hler_results
 		}
-
 		x = 52
 		y = 13
-
 	}
 	focus = {
-		id = FBK_rocketry # rocket tech
+		id = FBK_rocketry		# rocket tech
 		icon = GFX_focus_FBK_rocketry
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_heavy_water
 		}
-
 		completion_reward = {
 			add_tech_bonus = {
 				bonus = 1.5
@@ -2266,25 +2104,22 @@ focus_tree = {
 				category = rocketry
 			}
 		}
-
 		x = 62
 		y = 14
-
 	}
 	focus = {
-		id = FBK_the_bomb # nuke production
+		id = FBK_the_bomb		# nuke production
 		icon = GFX_focus_FBK_the_bomb
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = FBK_heavy_water
 		}
-
 		completion_reward = {
-			add_ideas = {FBK_atomic_warfare}
+			add_ideas = {
+				FBK_atomic_warfare
+			}
 		}
-
 		x = 64
 		y = 14
-
 	}
 }

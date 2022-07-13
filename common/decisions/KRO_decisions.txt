@@ -1,0 +1,293 @@
+KRO_the_long_march = {
+	KRO_the_march_eastwards = {
+		available = {
+			has_political_power > 50
+			date > 1936.6.1
+		}
+		visible = {
+			is_puppet_of = FBK
+		}
+		cost = 50
+		complete_effect = {
+			set_country_flag = KRO_on_the_march1
+			FBK = {
+				end_puppet = KRO
+				country_event = fubuki.20
+			}
+			KRO = {
+				add_threat = 2.5
+				transfer_state = 581
+				transfer_state = 573
+				leave_faction = yes
+				declare_war_on = {
+					target = RSR
+					type = annex_everything
+				}
+			}
+			581 = {
+				add_core_of = KRO
+			}
+			573 = {
+				add_core_of = KRO
+			}
+			397 = {
+				transfer_state_to = FBK
+			}
+		}
+	}
+	KRO_facilitate_ground = {
+		activation = {
+			tag = KRO
+			has_country_flag = KRO_on_the_march1
+		}
+		visible = {
+			TAG = KRO
+		}
+		available = {
+			controls_state = 580
+			controls_state = 653
+			controls_state = 572
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			clr_country_flag = KRO_on_the_march1
+			set_country_flag = KRO_established_in_russia
+			580 = {
+				transfer_state_to = KRO
+			}
+			653 = {
+				transfer_state_to = KRO
+			}
+			572 = {
+				transfer_state_to = KRO
+			}
+			KRO = {
+				white_peace = RSR
+			}
+		}
+		timeout_effect = {
+			KRO = {
+				white_peace = RSR
+			}
+		}
+	}
+	KRO_claim_russia = {
+		available = {
+			has_political_power > 150
+		}
+		visible = {
+			has_country_flag = KRO_established_in_russia
+		}
+		cost = 150
+		fire_only_once = yes
+		complete_effect = {
+			KRO = {
+				add_threat = 5
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 329
+						state = 213
+						state = 722
+						state = 147
+						region = 132
+						region = 284
+						region = 283
+						region = 285
+						region = 133
+						region = 281
+						region = 280
+						region = 137
+						region = 135
+						region = 150
+						region = 138
+						region = 14
+						region = 151
+						region = 147
+						region = 277
+						region = 149
+						region = 276
+						region = 275
+						region = 274
+						region = 148
+					}
+				}
+				add_core_of = KRO
+			}
+		}
+	}
+}
+
+KRO_RSR_border_wars = {
+	KRO_ural_war = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = KRO_established_in_russia
+			NOT = {
+				owns_state = 516
+				has_country_flag = KRO_ural_border_war
+			}
+		}
+		cost = 50
+		complete_effect = {
+			KRO = {
+				add_threat = 1.5
+			}
+			declare_war_on = {
+				target = RSR
+				type = annex_everything
+			}
+			set_country_flag = KRO_ural_border_war
+		}
+	}
+	KRO_ural_war_mission = {
+		activation = {
+			tag = KRO
+			has_country_flag = KRO_ural_border_war
+		}
+		visible = {
+			TAG = KRO
+			has_country_flag = KRO_ural_border_war
+		}
+		available = {
+			controls_state = 580
+			controls_state = 653
+			controls_state = 572
+			controls_state = 403
+			controls_state = 577
+			controls_state = 579
+			controls_state = 516
+		}
+		is_good = no
+		days_mission_timeout = 240
+		selectable_mission = yes
+		complete_effect = {
+			add_war_support = 0.05
+			403 = {
+				transfer_state_to = KRO
+			}
+			577 = {
+				transfer_state_to = KRO
+			}
+			579 = {
+				transfer_state_to = KRO
+			}
+			824 = {
+				transfer_state_to = KRO
+			}
+			KRO = {
+				white_peace = RSR
+			}
+			clr_country_flag = KRO_ural_border_war
+		}
+		timeout_effect = {
+			add_war_support = -0.1
+			clr_country_flag = KRO_ural_border_war
+		}
+	}
+	KRO_siberia_war = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = KRO_established_in_russia
+			owns_state = 403
+			NOT = {
+				owns_state = 570
+				has_country_flag = KRO_siberia_border_war
+			}
+		}
+		cost = 50
+		complete_effect = {
+			KRO = {
+				add_threat = 1.5
+			}
+			declare_war_on = {
+				target = RSR
+				type = annex_everything
+			}
+			set_country_flag = KRO_siberia_border_war
+		}
+	}
+	KRO_siberia_war_mission = {
+		activation = {
+			tag = KRO
+			has_country_flag = KRO_siberia_border_war
+		}
+		visible = {
+			TAG = KRO
+			has_country_flag = KRO_siberia_border_war
+		}
+		available = {
+			controls_state = 571
+			controls_state = 578
+			controls_state = 570
+			controls_state = 40
+			controls_state = 654
+			controls_state = 569
+			controls_state = 568
+		}
+		is_good = no
+		days_mission_timeout = 280
+		selectable_mission = yes
+		complete_effect = {
+			add_war_support = 0.05
+			571 = {
+				transfer_state_to = KRO
+			}
+			578 = {
+				transfer_state_to = KRO
+			}
+			570 = {
+				transfer_state_to = KRO
+			}
+			40 = {
+				transfer_state_to = KRO
+			}
+			654 = {
+				transfer_state_to = KRO
+			}
+			569 = {
+				transfer_state_to = KRO
+			}
+			568 = {
+				transfer_state_to = KRO
+			}
+			KRO = {
+				white_peace = RSR
+			}
+			clr_country_flag = KRO_siberia_border_war
+		}
+		timeout_effect = {
+			add_war_support = -0.1
+			clr_country_flag = KRO_siberia_border_war
+		}
+	}
+	KRO_end_the_RSR = {
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			has_country_flag = KRO_established_in_russia
+			owns_state = 568
+			RSR = {
+				exists = no
+			}
+		}
+		cost = 100
+		complete_effect = {
+			KRO = {
+				add_threat = 5
+			}
+			declare_war_on = {
+				target = RSR
+				type = annex_everything
+			}
+		}
+	}
+}
