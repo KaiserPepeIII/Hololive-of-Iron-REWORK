@@ -2187,3 +2187,463 @@ WTS_bases_and_batteries_decisions = {
 		}
 	}
 }
+
+WTS_neo_colonialism = {
+	WTS_reclaim_nigeria = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			558 = {
+				NOT = {
+					is_owned_by = WTS
+				}
+			}
+			850 = {
+				NOT = {
+					is_owned_by = WTS
+				}
+			}
+		}
+		cost = 50
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						controls_state = 558
+						controls_state = 850
+					}
+				}
+				country_event = watson.124
+			}
+		}
+	}
+	WTS_commonwealth_of_africa = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			OR = {
+				SAF = {
+					exists = yes
+				}
+				any_country = {
+					is_in_faction_with = SAF
+				}
+			}
+		}
+		cost = 50
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = SAF
+						is_in_faction_with = SAF
+					}
+				}
+				country_event = watson.127
+			}
+		}
+	}
+	WTS_retaking_caribbean = {
+		available = {
+			has_political_power > 50
+			naval_strength_ratio = {
+				tag = MAR
+				ratio = 0.8
+			}
+		}
+		visible = {
+			MAR = {
+				exists = yes
+			}
+		}
+		cost = 50
+		complete_effect = {
+			MAR = {
+				country_event = marine.1
+			}
+		}
+	}
+	WTS_cleaning_up_minor_states_africa = {
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			558 = {
+				is_owned_by = WTS
+			}
+			850 = {
+				is_owned_by = WTS
+			}
+			275 = {
+				is_owned_by = WTS
+			}
+			545 = {
+				is_owned_by = WTS
+			}
+			546 = {
+				is_owned_by = WTS
+			}
+			1076 = {
+				is_owned_by = WTS
+			}
+		}
+		cost = 100
+		complete_effect = {
+			if = {
+				limit = {
+					BOT = {
+						exists = yes
+					}
+				}
+				BOT = {
+					country_event = watson.127
+				}
+			}
+			if = {
+				limit = {
+					UGA = {
+						exists = yes
+					}
+				}
+				UGA = {
+					country_event = watson.127
+				}
+			}
+		}
+	}
+	WTS_negotiate_with_hololivers = {
+		available = {
+			has_political_power > 150
+		}
+		visible = {
+			always = yes
+		}
+		cost = 150
+		complete_effect = {
+			779 = {
+				OWNER = {
+					country_event = watson.132
+				}
+			}
+			700 = {
+				OWNER = {
+					country_event = watson.135
+				}
+			}
+			701 = {
+				OWNER = {
+					country_event = watson.136
+				}
+			}
+			289 = {
+				OWNER = {
+					country_event = watson.137
+				}
+			}
+		}
+	}
+	WTS_ultimatum_for_the_nile = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			PEK = {
+				exists = yes
+			}
+			SUD = {
+				is_puppet_of = PEK
+			}
+			558 = {
+				is_owned_by = WTS
+			}
+			850 = {
+				is_owned_by = WTS
+			}
+			275 = {
+				is_owned_by = WTS
+			}
+			545 = {
+				is_owned_by = WTS
+			}
+			546 = {
+				is_owned_by = WTS
+			}
+			1076 = {
+				is_owned_by = WTS
+			}
+		}
+		cost = 50
+		complete_effect = {
+			PEK = {
+				country_event = pekora.5
+			}
+		}
+	}
+	WTS_indian_expedition1 = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			NOT = {
+				ROOT = {
+					owns_state = 838
+					owns_state = 281
+				}
+			}
+		}
+		cost = 75
+		complete_effect = {
+			every_country = {
+				limit = {
+					owns_state = 838
+				}
+				country_event = watson.151
+			}
+		}
+	}
+	WTS_indian_expedition2 = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			ROOT = {
+				owns_state = 838
+				owns_state = 281
+			}
+		}
+		cost = 75
+		complete_effect = {
+			430 = {
+				OWNER = {
+					set_temp_variable = {
+						var = owner_bengal
+						value = THIS.id
+					}
+				}
+			}
+			958 = {
+				OWNER = {
+					set_temp_variable = {
+						var = owner_india
+						value = THIS.id
+					}
+				}
+			}
+			create_wargoal = {
+				target = var:owner_bengal
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = var:owner_india
+				type = annex_everything
+			}
+		}
+	}
+	WTS_indian_expedition3 = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			ROOT = {
+				owns_state = 958
+				owns_state = 430
+			}
+		}
+		cost = 75
+		complete_effect = {
+			440 = {
+				OWNER = {
+					set_temp_variable = {
+						var = owner_okayu
+						value = THIS.id
+					}
+				}
+			}
+			323 = {
+				OWNER = {
+					set_temp_variable = {
+						var = owner_watame
+						value = THIS.id
+					}
+				}
+			}
+			288 = {
+				OWNER = {
+					set_temp_variable = {
+						var = owner_burma
+						value = THIS.id
+					}
+				}
+			}
+			create_wargoal = {
+				target = var:owner_okayu
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = var:owner_watame
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = var:owner_burma
+				type = annex_everything
+			}
+		}
+	}
+	WTS_malaysia = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			ROOT = {
+				owns_state = 838
+				owns_state = 281
+			}
+		}
+		cost = 75
+		complete_effect = {
+			every_country = {
+				limit = {
+					owns_state = 336
+					owns_state = 815
+				}
+				country_event = watson.154
+			}
+			333 = {
+				OWNER = {
+					country_event = watson.157
+				}
+			}
+		}
+	}
+	WTS_oceania = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			ROOT = {
+				owns_state = 336
+				owns_state = 333
+			}
+		}
+		cost = 75
+		complete_effect = {
+			285 = {
+				OWNER = {
+					set_temp_variable = {
+						var = owner_australia
+						value = THIS.id
+					}
+				}
+			}
+			create_wargoal = {
+				target = var:owner_australia
+				type = annex_everything
+			}
+		}
+	}
+	WTS_request_arabian_colonies_returned = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			OR = {
+				YEM = {
+					is_puppet = yes
+				}
+				OMA = {
+					is_puppet = yes
+				}
+				TRU = {
+					is_puppet = yes
+				}
+				QTR = {
+					is_puppet = yes
+				}
+				BAH = {
+					is_puppet = yes
+				}
+				KUW = {
+					is_puppet = yes
+				}
+			}
+		}
+		cost = 75
+		complete_effect = {
+			YEM = {
+				OVERLORD = {
+					country_event = watson.148
+				}
+			}
+		}
+	}
+	WTS_canada_plan = {
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			always = yes
+		}
+		cost = 100
+		complete_effect = {
+			country_event = watson.138
+		}
+	}
+	WTS_help_unite_canada = {
+		available = {
+			always = yes
+		}
+		visible = {
+			OR = {
+				has_country_flag = WTS_invading_PLK
+				has_country_flag = WTS_invading_BTN
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = WTS_invading_PLK
+				}
+				declare_war_on = {
+					target = PLK
+					type = annex_everything
+				}
+				else_if = {
+					limit = {
+						has_country_flag = WTS_invading_BTN
+					}
+					declare_war_on = {
+						target = BTN
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+	WTS_integrate_the_empire = {
+		available = {
+			always = yes
+		}
+		visible = {
+			owns_state = 285
+			owns_state = 723
+			owns_state = 336
+			owns_state = 333
+			owns_state = 281
+			owns_state = 430
+			owns_state = 958
+			owns_state = 446
+			owns_state = 890
+			owns_state = 1076
+			owns_state = 689
+			OR = {
+				owns_state = 331
+				owns_state = 464
+			}
+		}
+		complete_effect = {
+			WTS_integrate_the_empire = yes
+		}
+	}
+}

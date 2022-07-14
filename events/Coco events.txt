@@ -1,0 +1,126 @@
+add_namespace = coco
+#Yagoo backs Kanata
+country_event = {
+	id = coco.1
+	title = coco.1.t
+	desc = coco.1.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	#uh oh
+	option = {
+		name = coco.1.a
+		subtract_from_variable = {
+			var = global.resistance_ideology_bar
+			value = 1
+		}
+		KAN = {
+			transfer_state = 482
+			transfer_state = 480
+			transfer_state = 1131
+			transfer_state = 808
+		}
+		set_global_flag = veracruz_incident_settled
+		subtract_from_variable = {
+			var = global.resistance_faith
+			value = 40
+		}
+		subtract_from_variable = {
+			var = global.resistance_solidarity
+			value = 10
+		}
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_popularity = {
+			ideology = var:COC.current_party_ideology_group
+			popularity = -0.15
+		}
+	}
+	#we will not yield 
+	option = {
+		name = coco.1.b
+		add_war_support = 0.15
+	}
+}
+
+#Kanata backs down
+country_event = {
+	id = coco.2
+	title = coco.2.t
+	desc = coco.2.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	#cool. hand over the land 
+	option = {
+		name = coco.2.a
+		KAN = {
+			transfer_state = 482
+			transfer_state = 480
+			transfer_state = 1131
+			transfer_state = 808
+			country_event = kanata.9
+		}
+		ai_chance = {
+			base = 15
+		}
+	}
+	#no lol
+	option = {
+		name = coco.2.b
+		subtract_from_variable = {
+			var = global.resistance_ideology_bar
+			value = 2
+		}
+		subtract_from_variable = {
+			var = global.resistance_faith
+			value = 40
+		}
+		subtract_from_variable = {
+			var = global.resistance_solidarity
+			value = 10
+		}
+		KAN = {
+			country_event = kanata.10
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+#Aqua demands backs down
+country_event = {
+	id = coco.3
+	title = coco.3.t
+	desc = coco.3.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	#sure
+	option = {
+		name = coco.3.a
+		subtract_from_variable = {
+			var = global.resistance_ideology_bar
+			value = 1
+		}
+		KAN = {
+			transfer_state = 482
+			transfer_state = 480
+			transfer_state = 1131
+			transfer_state = 808
+		}
+		set_global_flag = veracruz_incident_settled
+		news_event = global_holo.3
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_popularity = {
+			ideology = var:COC.current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+	#no lol
+	option = {
+		name = coco.3.b
+		FROM = {
+			country_event = aqua.2
+		}
+	}
+}

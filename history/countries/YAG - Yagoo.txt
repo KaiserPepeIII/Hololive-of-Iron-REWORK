@@ -25,6 +25,7 @@ set_technology = {
 	gw_artillery = 1
 	interwar_antiair = 1
 	early_fighter = 1
+	cv_early_fighter = 1
 	CAS1 = 1
 	gwtank = 1
 	tech_support = 1
@@ -119,6 +120,64 @@ recruit_character = YAG_yagoo_neutral_kleptocratic
 recruit_character = YAG_yagoo_reactionary_nationalism
 recruit_character = YAG_yagoo_neutral_democracy
 recruit_character = YAG_yagoo_divine_mandate
+YAG = {
+	set_variable = {
+		var = YAG.anti_aggression
+		value = 35
+	}
+	clamp_variable = {
+		var = YAG.anti_aggression
+		min = 0
+		max = 100
+	}
+	set_variable = {
+		var = ROOT.seiso_alignment
+		value = 1
+	}
+	clamp_variable = {
+		var = ROOT.seiso_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.reactionary_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.reactionary_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 5
+	}
+	clamp_variable = {
+		var = ROOT.authoritarianism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.capitalism_alignment
+		value = 1
+	}
+	clamp_variable = {
+		var = ROOT.capitalism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.isolationism_alignment
+		value = 5
+	}
+	clamp_variable = {
+		var = ROOT.isolationism_alignment
+		min = 1
+		max = 5
+	}
+	government_alignment_initiate = yes
+}
+
 set_politics = {
 	ruling_party = democratic
 	last_election = "1936.1.1"
@@ -264,7 +323,7 @@ if = {
 			fixed_ship_armor_slot = ship_armor_cruiser_2
 			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
 			fixed_ship_engine_slot = cruiser_ship_engine_2
-			rear_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
 		}
 	}
 	create_equipment_variant = {
@@ -283,7 +342,7 @@ if = {
 	}
 	#Destroyers
 	create_equipment_variant = {
-		name = "Sarejevo Class"
+		name = "Sarajevo Class"
 		type = ship_hull_light_2
 		parent_version = 0
 		modules = {

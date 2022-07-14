@@ -1,0 +1,145 @@
+add_namespace = yagoo
+#
+#	Canada Plan
+#
+country_event = {
+	id = yagoo.1
+	title = yagoo.1.t
+	desc = yagoo.1.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#We agree to sell all of them
+	option = {
+		name = yagoo.1.a
+		add_political_power = 300
+		331 = {
+			transfer_state_to = FROM
+		}
+		332 = {
+			transfer_state_to = FROM
+		}
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#Only sell Nova Scotia 
+	option = {
+		name = yagoo.1.b
+		add_political_power = 150
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#Only sell Newfoundland and Labrador 
+	option = {
+		name = yagoo.1.c
+		add_political_power = 150
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#hell no
+	option = {
+		name = yagoo.1.d
+		add_opinion_modifier = {
+			target = FROM
+			modifier = WTS_rude
+		}
+		FROM = {
+			reverse_add_opinion_modifier = {
+				target = PREV
+				modifier = WTS_rude
+			}
+			country_event = watson.145
+		}
+	}
+}
+
+#
+#	HELP OUT KANATA
+#
+country_event = {
+	id = yagoo.2
+	title = yagoo.2.t
+	desc = yagoo.2.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#As long as you reform
+	option = {
+		name = yagoo.2.a
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 10
+		}
+		FROM = {
+			country_event = kanata.3
+		}
+	}
+}
+
+#
+#	Kanata demands Baja California
+#
+country_event = {
+	id = yagoo.3
+	title = yagoo.3.t
+	desc = yagoo.3.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#as long as she stays with us
+	option = {
+		name = yagoo.3.a
+		FROM = {
+			transfer_state = 484
+			transfer_state = 1126
+			country_event = kanata.5
+		}
+	}
+	#lolno
+	option = {
+		name = yagoo.3.a
+		FROM = {
+			country_event = kanata.6
+		}
+	}
+}
+
+#
+#	Coco REFUSES to back down
+#
+country_event = {
+	id = yagoo.4
+	title = yagoo.4.t
+	desc = yagoo.4.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#lol war it is then 
+	option = {
+		name = yagoo.4.a
+		set_global_flag = veracruz_incident_settled
+		declare_war_on = {
+			target = COC
+			type = annex_everything
+		}
+		add_to_faction = KAN
+		KAN = {
+			country_event = kanata.8
+		}
+	}
+	#sorry kanata
+	option = {
+		name = yagoo.4.b
+		KAN = {
+			country_event = kanata.7
+		}
+	}
+}

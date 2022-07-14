@@ -58,6 +58,7 @@ if = {
 		early_ship_hull_cruiser = 1
 		early_ship_hull_heavy = 1
 		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
 		mtg_transport = 1
 		basic_battery = 1
 		basic_light_battery = 1
@@ -97,6 +98,64 @@ recruit_character = AQA_minato_aqua_neutral_kleptocratic
 recruit_character = AQA_minato_aqua_reactionary_nationalism
 recruit_character = AQA_minato_aqua_neutral_democracy
 recruit_character = AQA_minato_aqua_divine_mandate
+AQA = {
+	set_variable = {
+		var = AQA.anti_aggression
+		value = 5
+	}
+	clamp_variable = {
+		var = AQA.anti_aggression
+		min = 0
+		max = 100
+	}
+	set_variable = {
+		var = ROOT.seiso_alignment
+		value = 5
+	}
+	clamp_variable = {
+		var = ROOT.seiso_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.reactionary_alignment
+		value = 5
+	}
+	clamp_variable = {
+		var = ROOT.reactionary_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.authoritarianism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.capitalism_alignment
+		value = 5
+	}
+	clamp_variable = {
+		var = ROOT.capitalism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.isolationism_alignment
+		value = 4
+	}
+	clamp_variable = {
+		var = ROOT.isolationism_alignment
+		min = 1
+		max = 5
+	}
+	government_alignment_initiate = yes
+}
+
 set_politics = {
 	ruling_party = communism
 	last_election = "1936.1.1"

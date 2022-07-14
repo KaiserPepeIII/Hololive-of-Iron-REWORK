@@ -1,18 +1,45 @@
 add_namespace = polka
-
-
+#Canada PLan
 country_event = {
 	id = polka.1
 	title = polka.1.t
 	desc = polka.1.d
 	picture = GFX_report_event_polka
-	
 	is_triggered_only = yes
-	
+	#sounds good, we will join watson
 	option = {
 		name = polka.1.a
+		if = {
+			limit = {
+				WTS = {
+					is_in_faction = yes
+				}
+			}
+			WTS = {
+				add_to_faction = PLK
+			}
+			else = {
+				WTS = {
+					create_faction = WTS_canada_faction
+					add_to_faction = PLK
+				}
+			}
+		}
+		WTS = {
+			country_event = watson.142
+		}
 	}
-
+	#let's just be friends
+	option = {
+		name = polka.1.b
+		add_opinion_modifier = {
+			target = FROM
+			modifier = WTS_polite
+		}
+		FROM = {
+			country_event = watson.143
+		}
+	}
 }
 
 country_event = {
@@ -20,13 +47,10 @@ country_event = {
 	title = polka.2.t
 	desc = polka.2.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.2.a
 	}
-
 }
 
 country_event = {
@@ -34,13 +58,10 @@ country_event = {
 	title = polka.3.t
 	desc = polka.3.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.3.a
 	}
-
 }
 
 country_event = {
@@ -48,13 +69,10 @@ country_event = {
 	title = polka.4.t
 	desc = polka.4.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.4.a
 	}
-
 }
 
 country_event = {
@@ -62,13 +80,10 @@ country_event = {
 	title = polka.5.t
 	desc = polka.5.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.5.a
 	}
-
 }
 
 country_event = {
@@ -76,13 +91,10 @@ country_event = {
 	title = polka.6.t
 	desc = polka.6.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.6.a
 	}
-
 }
 
 country_event = {
@@ -90,13 +102,10 @@ country_event = {
 	title = polka.7.t
 	desc = polka.7.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.7.a
 	}
-
 }
 
 country_event = {
@@ -104,13 +113,10 @@ country_event = {
 	title = polka.8.t
 	desc = polka.8.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.8.a
 	}
-
 }
 
 country_event = {
@@ -118,13 +124,10 @@ country_event = {
 	title = polka.9.t
 	desc = polka.9.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.9.a
 	}
-
 }
 
 country_event = {
@@ -132,13 +135,10 @@ country_event = {
 	title = polka.10.t
 	desc = polka.10.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.10.a
 	}
-
 }
 
 country_event = {
@@ -146,13 +146,10 @@ country_event = {
 	title = polka.11.t
 	desc = polka.11.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.11.a
 	}
-
 }
 
 country_event = {
@@ -160,13 +157,10 @@ country_event = {
 	title = polka.12.t
 	desc = polka.12.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.12.a
 	}
-
 }
 
 country_event = {
@@ -174,13 +168,10 @@ country_event = {
 	title = polka.13.t
 	desc = polka.13.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.13.a
 	}
-
 }
 
 country_event = {
@@ -188,13 +179,10 @@ country_event = {
 	title = polka.14.t
 	desc = polka.14.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.14.a
 	}
-
 }
 
 country_event = {
@@ -202,13 +190,10 @@ country_event = {
 	title = polka.15.t
 	desc = polka.15.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.15.a
 	}
-
 }
 
 country_event = {
@@ -216,13 +201,10 @@ country_event = {
 	title = polka.16.t
 	desc = polka.16.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.16.a
 	}
-
 }
 
 country_event = {
@@ -230,13 +212,10 @@ country_event = {
 	title = polka.17.t
 	desc = polka.17.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.17.a
 	}
-
 }
 
 country_event = {
@@ -244,13 +223,10 @@ country_event = {
 	title = polka.18.t
 	desc = polka.18.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.18.a
 	}
-
 }
 
 country_event = {
@@ -258,13 +234,10 @@ country_event = {
 	title = polka.19.t
 	desc = polka.19.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.19.a
 	}
-
 }
 
 country_event = {
@@ -272,13 +245,10 @@ country_event = {
 	title = polka.20.t
 	desc = polka.20.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.20.as
 	}
-
 }
 
 country_event = {
@@ -286,13 +256,10 @@ country_event = {
 	title = polka.21.t
 	desc = polka.21.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.21.a
 	}
-
 }
 
 country_event = {
@@ -300,13 +267,10 @@ country_event = {
 	title = polka.22.t
 	desc = polka.22.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.22.a
 	}
-
 }
 
 country_event = {
@@ -314,13 +278,10 @@ country_event = {
 	title = polka.23.t
 	desc = polka.23.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.23.a
 	}
-
 }
 
 country_event = {
@@ -328,13 +289,10 @@ country_event = {
 	title = polka.24.t
 	desc = polka.24.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.24.a
 	}
-
 }
 
 country_event = {
@@ -342,9 +300,7 @@ country_event = {
 	title = polka.25.t
 	desc = polka.25.d
 	picture = GFX_report_event_polka
-
 	is_triggered_only = yes
-
 	option = {
 		name = polka.25.a
 	}

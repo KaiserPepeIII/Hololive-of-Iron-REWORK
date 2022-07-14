@@ -1,12 +1,10 @@
 add_namespace = pekora
-
 #peko suisei alliance
 country_event = {
 	id = pekora.1
 	title = pekora.1.t
 	desc = pekora.1.d
 	picture = GFX_report_event_mio
-	
 	is_triggered_only = yes
 	#accept
 	option = {
@@ -33,39 +31,39 @@ country_event = {
 		}
 	}
 }
+
 #Suisei Truce accepted
 country_event = {
 	id = pekora.2
 	title = pekora.2.t
 	desc = pekora.2.d
 	picture = GFX_report_event_mio
-	
 	is_triggered_only = yes
 	#accept
 	option = {
 		name = pekora.2.a
 	}
 }
+
 #Suisei Truce rejected
 country_event = {
 	id = pekora.3
 	title = pekora.3.t
 	desc = pekora.3.d
 	picture = GFX_report_event_mio
-	
 	is_triggered_only = yes
 	#accept
 	option = {
 		name = pekora.3.a
 	}
 }
+
 #Suisei demands our African lands
 country_event = {
 	id = pekora.4
 	title = pekora.4.t
 	desc = pekora.4.d
 	picture = GFX_report_event_mio
-	
 	is_triggered_only = yes
 	#accept
 	option = {
@@ -103,33 +101,70 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
 	id = pekora.5
 	title = pekora.5.t
 	desc = pekora.5.d
 	picture = GFX_report_event_subaru
-
 	is_triggered_only = yes
-	
 	#Stronger together
 	option = {
 		name = pekora.5.a
 		NOE = {
-		country_event = {
-		id = noel.48
-		days = 1
-		 }
-		 add_to_faction = PEK
+			country_event = {
+				id = noel.48
+				days = 1
+			}
+			add_to_faction = PEK
 		}
 	}
 	#no
 	option = {
 		name = pekora.5.b
 		NOE = {
-		country_event = {
-		id = noel.49
-		days = 1
-		 }
+			country_event = {
+				id = noel.49
+				days = 1
+			}
+		}
+	}
+}
+
+#Watson demands Sudan and Egypt
+country_event = {
+	id = pekora.6
+	title = pekora.6.t
+	desc = pekora.6.d
+	picture = GFX_report_event_subaru
+	is_triggered_only = yes
+	#Is this a joke?
+	option = {
+		name = pekora.6.a
+		ai_chance = {
+			base = 10
+		}
+	}
+	#We will hand over the land ????????
+	option = {
+		name = pekora.6.b
+		every_state = {
+			limit = {
+				OR = {
+					is_owned_by = SUD
+					region = 128
+					state = 552
+					state = 767
+					state = 550
+				}
+			}
+			transfer_state_to = FROM
+		}
+		FROM = {
+			country_event = watson.147
+		}
+		ai_chance = {
+			base = 0
 		}
 	}
 }

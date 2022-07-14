@@ -23,12 +23,13 @@ guiTypes = {
 		fade_time = 100
 		moveable = no
 		fade_type = linear
-		click_to_front = yes
+		click_to_front = no 
 		clipping = yes
 		
 		background = {
 			name = "background"
 			quadTextureSprite = "GFX_tutorial_window"
+			
 		}
 		#close button
 		buttonType = {
@@ -81,7 +82,7 @@ guiTypes = {
 				text = "lore_summary_content_loc"
 				scrollbartype = "standardtext_slider"
 				maxWidth = 1001
-				maxHeight = 840
+				maxHeight = 840 
 				fixedsize = no	 
 		}
 		#LHS and Resistance
@@ -92,7 +93,7 @@ guiTypes = {
 			size = { x = 52 y = 52 }
 			orientation = upper_left
 			scale = 1.83
-		}
+		} 
 		instantTextBoxType = {
 			name = "lhs_resistance_summary_button_text"
 				position = {  x = 55 y = 212 }
@@ -115,7 +116,7 @@ guiTypes = {
 				fixedsize = yes	 
 				alwaystransparent = yes
 		} 
-		#Ideologies 
+		#Ideologies ###########################################
 		buttonType = {
 			name = "ideology_summary_button"
 			spriteType = "GFX_decision_gui_button_hostile"
@@ -124,6 +125,35 @@ guiTypes = {
 			orientation = upper_left
 			scale = 1.83 
 		}
+		buttonType = {
+			name = "ideology_tutorial_yagooist"
+			spriteType = "GFX_Tutorial_yagooist"
+			position = { x = 600 y = 175 }
+			size = { x = 52 y = 52 }
+			orientation = upper_left
+		}
+		buttonType = {
+			name = "ideology_tutorial_neutral"
+			spriteType = "GFX_Tutorial_neutral"
+			position = { x = 1200 y = 175 }
+			size = { x = 52 y = 52 }
+			orientation = upper_left
+		}
+		buttonType = {
+			name = "ideology_tutorial_anti"
+			spriteType = "GFX_Tutorial_anti"
+			position = { x = 600 y = 540 }
+			size = { x = 52 y = 52 }
+			orientation = upper_left
+		}
+		buttonType = {
+			name = "ideology_tutorial_resistance"
+			spriteType = "GFX_Tutorial_resistance"
+			position = { x = 1200 y = 540 }
+			size = { x = 52 y = 52 }
+			orientation = upper_left
+		}
+		
 		instantTextBoxType = {
 			name = "ideology_summary_button_text"
 				position = {  x = 95 y = 272 }
@@ -137,15 +167,62 @@ guiTypes = {
 		} 
 		instantTextBoxType = {
 			name = "ideology_summary_content_text"
-				position = {  x = 525 y = 125 }
+				position = {  x = 525 y = 115 }
+				font = "vic_36s" 
+				borderSize = {x = 10 y = 0}
+				text = "ideology_summary_content_loc"
+				scrollbartype = "standardtext_slider"
+				maxWidth = 1001
+				maxHeight = 840 	  
+				alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name = "ideology_summary_yagooist_title"
+				position = {  x = 600 y = 455 }
 				font = "vic_36s" 
 				borderSize = {x = 10 y = 10}
-				text = "ideology_summary_content_loc"
-				maxWidth = 501
-				maxHeight = 200 
+				text = "ideology_summary_yagooist_title_loc"
+				scrollbartype = "standardtext_slider"
+				maxWidth = 1001
+				maxHeight = 840 
+				alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name = "ideology_summary_anti_title"
+				position = { x = 635 y = 855 }
+				font = "vic_36s" 
+				borderSize = {x = 10 y = 10}
+				text = "ideology_summary_anti_title_loc"
+				scrollbartype = "standardtext_slider"
+				maxWidth = 1001
+				maxHeight = 840 
+				alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name = "ideology_summary_resistance_title"
+				position = {  x = 1175 y = 855 }
+				font = "vic_36s" 
+				borderSize = {x = 10 y = 10}
+				text = "ideology_summary_resistance_title_loc"
+				scrollbartype = "standardtext_slider"
+				maxWidth = 1001
+				maxHeight = 840 
 				fixedsize = yes	  
 				alwaystransparent = yes
 		} 
+		instantTextBoxType = {
+			name = "ideology_summary_neutral_title"
+				position = { x = 1200 y = 455 }
+				font = "vic_36s" 
+				borderSize = {x = 10 y = 10}
+				text = "ideology_summary_neutral_title_loc"
+				scrollbartype = "standardtext_slider"
+				maxWidth = 1001
+				maxHeight = 840 
+				fixedsize = yes	  
+				alwaystransparent = yes
+		} 
+		###########################################
 		#Cabinet GUI
 		buttonType = {
 			name = "cabinet_gui_summary_button"
@@ -259,7 +336,7 @@ guiTypes = {
 				font = "vic_36s" 
 				borderSize = {x = 10 y = 10}
 				text =  "position2_paths_summary_button_loc"
-				maxWidth = 501
+				maxWidth = 501   
 				maxHeight = 200   
 				fixedsize = yes	  
 				alwaystransparent = yes 
