@@ -2102,8 +2102,8 @@ focus_tree = {
 				ideology = pro_yagoo_progressive
 				popularity = 0.2
 			}
-			add_stability = 0.5
-			add_war_support = 0.5
+			add_stability = 0.05
+			add_war_support = 0.05
 		}
 		x = 75
 		y = 6
@@ -2182,6 +2182,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_reinstate_noble_titles
 		}
+		completion_reward = {
+			add_research_slot = 1
+		}
 		x = 81
 		y = 7
 
@@ -2206,6 +2209,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = GEN_solidify_monarch_power
+		}
+		completion_reward = {
+			add_ideas = {
+				monarch_head_of_army_idea
+			}
 		}
 		x = 83
 		y = 7
@@ -2534,6 +2542,12 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_return_to_tradition
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = reform_outdated_services_idea
+				days = 150
+			}
+		}
 		x = 85
 		y = 6
 
@@ -2544,6 +2558,22 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = GEN_reform_outdated_services
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
 		}
 		x = 85
 		y = 7
@@ -2603,6 +2633,22 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_order_and_stability
 		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
 		x = 79
 		y = 7
 
@@ -2615,6 +2661,12 @@ focus_tree = {
 			focus = GEN_order_and_stability
 			focus = GEN_progress_and_liberty
 		}
+		completion_reward = {
+			add_timed_idea = {
+				days = 180
+				idea = slander_old_regime_idea
+			}
+		}
 		x = 77
 		y = 7
 
@@ -2625,6 +2677,9 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = GEN_progress_and_liberty
+		}
+		completion_reward = {
+		add_stability = 0.05
 		}
 		x = 75
 		y = 7
@@ -2637,6 +2692,37 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_encourage_business
 			focus = GEN_liberty_egality_fraternity
+		}
+		completion_reward = {
+			hidden_effect = {
+				IF = {
+					limit = {
+						has_completed_focus = GEN_order_and_stability
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_popularity = {
+						ideology = pro_yagoo_progressive
+						popularity = 0.1
+					}
+				}
+				IF = {
+					limit = {
+						has_completed_focus = GEN_progress_and_liberty
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.1
+					}
+					add_popularity = {
+						ideology = pro_yagoo_progressive
+						popularity = 0.15
+					}
+				}
+			}
+			custom_effect_tooltip = new_elections_toolip
 		}
 		x = 77
 		y = 8
@@ -2651,6 +2737,11 @@ focus_tree = {
 			focus = GEN_royal_science
 			focus = GEN_royal_industries
 		}
+		completion_reward = {
+			add_ideas = {
+				gen_royal_guards_idea
+			}
+		}
 		x = 83
 		y = 8
 
@@ -2663,6 +2754,13 @@ focus_tree = {
 			focus = GEN_establish_royal_guards
 			focus = GEN_new_elections
 		}
+		completion_reward = {
+			add_ideas = {
+				lhs_member
+				lhs_defensive_union_gui
+				lhs_security_council_two
+			}
+		}
 		x = 80
 		y = 9
 
@@ -2673,6 +2771,12 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = GEN_new_elections
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = anti_corruption_measures_idea
+				days = 150
+			}
 		}
 		x = 77
 		y = 9
@@ -2685,6 +2789,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_anti_corruption_measures
 		}
+		completion_reward = {
+			add_research_slot = 1
+		}
 		x = 76
 		y = 10
 
@@ -2695,6 +2802,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = GEN_anti_corruption_measures
+		}
+		completion_reward = {
+			add_ideas = {
+				consumer_goods_priority_idea
+			}
 		}
 		x = 78
 		y = 10
@@ -2707,6 +2819,12 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_establish_royal_guards
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = pro_yagoo_monarchy
+				popularity = 0.1
+			}
+		}
 		x = 83
 		y = 9
 
@@ -2718,6 +2836,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_patriotism
 		}
+		completion_reward = {
+			add_war_support = 0.1
+		}
 		x = 82
 		y = 10
 
@@ -2728,6 +2849,11 @@ focus_tree = {
 		cost = 0.00
 		prerequisite = {
 			focus = GEN_patriotism
+		}
+		completion_reward = {
+			add_ideas = {
+				ensure_prosperity_idea
+			}
 		}
 		x = 84
 		y = 10
