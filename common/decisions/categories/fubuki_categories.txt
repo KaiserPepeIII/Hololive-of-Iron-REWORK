@@ -1,19 +1,29 @@
 wfa_loyalty_gui = {
 	icon = generic_formable_nations
-
 	visible_when_empty = yes
 	priority = 10
 	scripted_gui = dial_sample_scripted_gui
-	
 	allowed = {
 		tag = WFA
 	}
-	
 	visible = {
 		tag = WFA
 		NOT = {
-		has_war_with = FBK
+			has_war_with = FBK
 		}
+	}
+}
+
+FBK_colonial_policy_decisions = {
+	icon = generic_air
+	priority = 8
+	allowed = {
+		tag = FBK
+	}
+	visible = {
+		has_country_flag = FBK_ghana_debate
+		owns_state = 1090
+		owns_state = 274
 	}
 }
 
@@ -36,46 +46,40 @@ FBK_plan_valkyrie_decisions = {
 	}
 	visible = {
 		if = {
-			FBK = { has_completed_focus = FBK_plan_valkyrie }
+			FBK = {
+				has_completed_focus = FBK_plan_valkyrie
+			}
 		}
 	}
-	
 }
 
 FBK_WFA_relationship_gui_categories = {
 	icon = generic_formable_nations
-
 	visible_when_empty = yes
 	priority = 10
 	scripted_gui = FBK_WFA_relationship_scripted_dial_gui
-	
 	allowed = {
 		tag = FBK
 	}
-	
 	visible = {
 		tag = FBK
 		NOT = {
-		has_war_with = WFA
+			has_war_with = WFA
 		}
 	}
 }
 
 FBK_army_balance_categories = {
 	icon = generic_formable_nations
-
 	visible_when_empty = yes
 	priority = 10
-	
-	
 	allowed = {
 		tag = FBK
 	}
-	
 	visible = {
 		tag = FBK
 		NOT = {
-		has_war_with = WFA
+			has_war_with = WFA
 		}
 	}
 }

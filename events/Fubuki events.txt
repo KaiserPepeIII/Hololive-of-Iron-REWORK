@@ -759,3 +759,65 @@ country_event = {
 		add_stability = -0.05
 	}
 }
+
+#WFA receives Ghana
+country_event = {
+	id = fubuki.21
+	title = fubuki.21.t
+	desc = {
+		text = fubuki.21.accept.desc
+		trigger = {
+			NOT = {
+				owns_state = 1090
+				owns_state = 274
+			}
+		}
+	}
+	desc = {
+		text = fubuki.21.refuse.desc
+		trigger = {
+			owns_state = 1090
+			owns_state = 274
+		}
+	}
+	picture = GFX_report_event_mori
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = fubuki.21.a
+		trigger = {
+			NOT = {
+				owns_state = 1090
+				owns_state = 274
+			}
+		}
+		add_stability = 0.05
+	}
+	#uhh alright
+	option = {
+		name = fubuki.21.b
+		trigger = {
+			owns_state = 1090
+			owns_state = 274
+		}
+		add_stability = -0.05
+	}
+}
+#WFA  coup attempt
+country_event = {
+	id = fubuki.22
+	title = fubuki.22.t
+	desc = fubuki.22.d
+	picture = GFX_report_event_mori
+	trigger = {
+		WFA = {
+			check_variable = {
+				var = FBK.WFA_relationship_flat_var
+				value = 100
+			}
+		}
+	} 
+	option = {
+		name = fubuki.22.a
+	}
+}

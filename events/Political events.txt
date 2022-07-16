@@ -1,0 +1,763 @@
+add_namespace = politics
+#Pro Yagoo Conservatives takes charge - referendum
+country_event = {
+	id = politics.1
+	title = politics.1.t
+	desc = politics.1.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	option = {
+		name = politics.1.a
+	}
+}
+
+#Pro Yagoo Conservatives takes charge - ousted ruling party
+country_event = {
+	id = politics.2
+	title = politics.2.t
+	desc = politics.2.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	option = {
+		name = politics.2.a
+	}
+}
+
+#Outcome of attempted coup - Success
+country_event = {
+	id = politics.3
+	title = politics.3.t
+	desc = politics.3.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#pro yagoo conservative
+	option = {
+		name = politics.3.pyc
+		trigger = {
+			has_country_flag = pro_yagoo_conservative_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		clr_country_flag = pro_yagoo_conservative_coup
+	}
+	#pro yagoo progresive
+	option = {
+		name = politics.3.pyp
+		trigger = {
+			has_country_flag = pro_yagoo_progressive_coup
+		}
+		add_stability = -0.05
+		set_politics = {
+			ruling_party = pro_yagoo_progressive
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		clr_country_flag = pro_yagoo_progressive_coup
+	}
+	#pro yagoo monarchy
+	option = {
+		name = politics.3.pym
+		trigger = {
+			has_country_flag = pro_yagoo_monarchy_coup
+		}
+		add_stability = -0.15
+		set_politics = {
+			ruling_party = pro_yagoo_monarchy
+			elections_allowed = no
+		}
+		clr_country_flag = pro_yagoo_monarchy_coup
+	}
+	#pro yagoo kleptocracy
+	option = {
+		name = politics.3.pyk
+		trigger = {
+			has_country_flag = pro_yagoo_kleptocracy_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = pro_yagoo_kleptocracy
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		clr_country_flag = pro_yagoo_conservative_coup
+	}
+	#pro resistance revolutionary
+	option = {
+		name = politics.3.prr
+		trigger = {
+			has_country_flag = pro_resistance_revolutionary_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		clr_country_flag = pro_resistance_revolutionary_coup
+	}
+	#pro resistance nationalism
+	option = {
+		name = politics.3.prn
+		trigger = {
+			has_country_flag = pro_resistance_nationalism_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = pro_resistance_nationalism
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		clr_country_flag = pro_resistance_nationalism_coup
+	}
+	#pro resistance kleptocracy
+	option = {
+		name = politics.3.prk
+		trigger = {
+			has_country_flag = pro_resistance_kleptocracy_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = pro_resistance_kleptocracy
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		clr_country_flag = pro_resistance_kleptocracy_coup
+	}
+	#pro resistance monarchy
+	option = {
+		name = politics.3.prm
+		trigger = {
+			has_country_flag = pro_resistance_monarchy_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = pro_resistance_monarchy
+			elections_allowed = no
+		}
+		clr_country_flag = pro_resistance_monarchy_coup
+	}
+	#new nationalism
+	option = {
+		name = politics.3.nn
+		trigger = {
+			has_country_flag = new_nationalism_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		clr_country_flag = new_nationalism_coup
+	}
+	#left wing revolutionary
+	option = {
+		name = politics.3.lwr
+		trigger = {
+			has_country_flag = left_wing_revolutionary_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = left_wing_revolutionary
+			elections_allowed = no
+		}
+		clr_country_flag = left_wing_revolutionary_coup
+	}
+	#democratic revitalisation
+	option = {
+		name = politics.3.dr
+		trigger = {
+			has_country_flag = democratic_revitalisation_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = democratic_revitalisation
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		clr_country_flag = democratic_revitalisation_coup
+	}
+	#reactionary monarchy
+	option = {
+		name = politics.3.rm
+		trigger = {
+			has_country_flag = reactionary_monarchy_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = reactionary_monarchy
+			elections_allowed = no
+		}
+		clr_country_flag = reactionary_monarchy_coup
+	}
+	#kleptocratic dictatorship
+	option = {
+		name = politics.3.kd
+		trigger = {
+			has_country_flag = kleptocratic_dictatorship_coup
+		}
+		add_stability = -0.2
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+		}
+		clr_country_flag = kleptocratic_dictatorship_coup
+	}
+	#reactionary nationalism
+	option = {
+		name = politics.3.rn
+		trigger = {
+			has_country_flag = reactionary_nationalism_coup
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = reactionary_nationalism
+			elections_allowed = no
+		}
+		clr_country_flag = reactionary_nationalism_coup
+	}
+	#divine mandate
+	option = {
+		name = politics.3.dm
+		trigger = {
+			has_country_flag = divine_mandate_coup
+		}
+		add_stability = -0.2
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		clr_country_flag = divine_mandate_coup
+	}
+	#mixed ideology democracy
+	option = {
+		name = politics.3.mid
+		trigger = {
+			has_country_flag = mixed_ideology_democracy_coup
+		}
+		add_stability = -0.05
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		clr_country_flag = mixed_ideology_democracy_coup
+	}
+}
+
+#Outcome of attempted coup #Salvageable failure
+country_event = {
+	id = politics.4
+	title = politics.4.t
+	desc = politics.4.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#pro yagoo conservative 
+	option = {
+		name = politics.4.pyc
+		trigger = {
+			has_country_flag = pro_yagoo_conservative_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = democratic
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@democratic
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = pro_yagoo_conservative_coup
+	}
+	#pro yagoo progressive 
+	option = {
+		name = politics.4.pyp
+		trigger = {
+			has_country_flag = pro_yagoo_progressive_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = pro_yagoo_kleptocracy
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@pro_yagoo_progressive
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = pro_yagoo_progressive_coup
+	}
+	#pro yagoo kleptocracy 
+	option = {
+		name = politics.4.pyk
+		trigger = {
+			has_country_flag = pro_yagoo_kleptocracy_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = pro_yagoo_kleptocracy
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@pro_yagoo_kleptocracy
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = pro_yagoo_kleptocracy_coup
+	}
+	#pro yagoo monarchy 
+	option = {
+		name = politics.4.pym
+		trigger = {
+			has_country_flag = pro_yagoo_monarchy_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = pro_yagoo_monarchy
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@pro_yagoo_monarchy
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = pro_yagoo_monarchy_coup
+	}
+	#pro resistance revolutionary 
+	option = {
+		name = politics.4.prr
+		trigger = {
+			has_country_flag = pro_resistance_revolutionary_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = communism
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@communism
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = pro_resistance_revolutionary_coup
+	}
+	#pro resistance nationalism
+	option = {
+		name = politics.4.prn
+		trigger = {
+			has_country_flag = pro_resistance_nationalism_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = pro_resistance_nationalism
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@pro_resistance_nationalism
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = pro_resistance_nationalism_coup
+	}
+	#pro resistancce monarchy
+	option = {
+		name = politics.4.prm
+		trigger = {
+			has_country_flag = pro_resistance_monarchy_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = pro_resistance_monarchy
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@pro_resistance_monarchy
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = pro_resistance_monarchy_coup
+	}
+	#pro resistance kleptocracy
+	option = {
+		name = politics.4.pry
+		trigger = {
+			has_country_flag = pro_resistance_kleptocracy_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = pro_resistance_kleptocracy
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@pro_resistance_kleptocracy
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = pro_resistance_kleptocracy_coup
+	}
+	#new nationalism
+	option = {
+		name = politics.4.nn
+		trigger = {
+			has_country_flag = new_nationalism_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = fascism
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@fascism
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = new_nationalism_coup
+	}
+	#left wwing revolutionary
+	option = {
+		name = politics.4.lwr
+		trigger = {
+			has_country_flag = left_wing_revolutionary_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = left_wing_revolutionary
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@left_wing_revolutionary
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = left_wing_revolutionary_coup
+	}
+	#democratic revitalisation
+	option = {
+		name = politics.4.dr
+		trigger = {
+			has_country_flag = democratic_revitalisation_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = democratic_revitalisation
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@democratic_revitalisation
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = democratic_revitalisation_coup
+	}
+	#reactionary monarchy
+	option = {
+		name = politics.4.rm
+		trigger = {
+			has_country_flag = reactionary_monarchy_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = reactionary_monarchy
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@reactionary_monarchy
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = reactionary_monarchy_coup
+	}
+	#kleptocratic dictatorship
+	option = {
+		name = politics.4.kd
+		trigger = {
+			has_country_flag = kleptocratic_dictatorship_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = neutrality
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@neutrality
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = kleptocratic_dictatorship_coup
+	}
+	#reactionary nationalism
+	option = {
+		name = politics.4.rn
+		trigger = {
+			has_country_flag = reactionary_nationalism_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = reactionary_nationalism
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@reactionary_nationalism
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = reactionary_nationalism_coup
+	}
+	#mixed_ideology_democracy
+	option = {
+		name = politics.4.mid
+		trigger = {
+			has_country_flag = mixed_ideology_democracy_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = mixed_ideology_democracy
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@mixed_ideology_democracy
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = mixed_ideology_democracy_coup
+	}
+	#divine mandate
+	option = {
+		name = politics.4.dm
+		trigger = {
+			has_country_flag = divine_mandate_coup
+		}
+		add_stability = -0.3
+		set_temp_variable = {
+			var = initial_ideology
+			value = var:ROOT.current_party_ideology_group
+		}
+		start_civil_war = {
+			ruling_party = divine_mandate
+			ideology = var:initial_ideology
+			size = var:ROOT.party_popularity@divine_mandate
+		}
+		create_loyalist_militia = yes
+		clr_country_flag = divine_mandate_coup
+	}
+}
+
+#Outcome of attempted coup -Collasal Failure 
+country_event = {
+	id = politics.5
+	title = politics.5.t
+	desc = politics.5.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#pro yagoo conservative
+	option = {
+		name = politics.5.pyc
+		trigger = {
+			has_country_flag = pro_yagoo_conservative_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = pro_yagoo_conservative_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#pro yagoo progresive
+	option = {
+		name = politics.5.pyp
+		trigger = {
+			has_country_flag = pro_yagoo_progressive_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = pro_yagoo_progressive_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#pro yagoo monarchy
+	option = {
+		name = politics.5.pym
+		trigger = {
+			has_country_flag = pro_yagoo_monarchy_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = pro_yagoo_monarchy_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#pro yagoo kleptocracy
+	option = {
+		name = politics.5.pyk
+		trigger = {
+			has_country_flag = pro_yagoo_kleptocracy_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = pro_yagoo_conservative_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#pro resistance revolutionary
+	option = {
+		name = politics.5.prr
+		trigger = {
+			has_country_flag = pro_resistance_revolutionary_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = pro_resistance_revolutionary_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#pro resistance nationalism
+	option = {
+		name = politics.5.prn
+		trigger = {
+			has_country_flag = pro_resistance_nationalism_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = pro_resistance_nationalism_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#pro resistance kleptocracy
+	option = {
+		name = politics.5.prk
+		trigger = {
+			has_country_flag = pro_resistance_kleptocracy_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = pro_resistance_kleptocracy_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#pro resistance monarchy
+	option = {
+		name = politics.5.prm
+		trigger = {
+			has_country_flag = pro_resistance_monarchy_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = pro_resistance_monarchy_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#new nationalism
+	option = {
+		name = politics.5.nn
+		trigger = {
+			has_country_flag = new_nationalism_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = new_nationalism_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#left wing revolutionary
+	option = {
+		name = politics.5.lwr
+		trigger = {
+			has_country_flag = left_wing_revolutionary_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = left_wing_revolutionary_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#democratic revitalisation
+	option = {
+		name = politics.5.dr
+		trigger = {
+			has_country_flag = democratic_revitalisation_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = democratic_revitalisation_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#reactionary monarchy
+	option = {
+		name = politics.5.rm
+		trigger = {
+			has_country_flag = reactionary_monarchy_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = reactionary_monarchy_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#kleptocratic dictatorship
+	option = {
+		name = politics.5.kd
+		trigger = {
+			has_country_flag = kleptocratic_dictatorship_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = kleptocratic_dictatorship_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#reactionary nationalism
+	option = {
+		name = politics.5.rn
+		trigger = {
+			has_country_flag = reactionary_nationalism_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = reactionary_nationalism_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#divine mandate
+	option = {
+		name = politics.5.dm
+		trigger = {
+			has_country_flag = divine_mandate_coup
+		}
+		add_stability = -0.2
+		clr_country_flag = divine_mandate_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+	#mixed ideology democracy
+	option = {
+		name = politics.5.mid
+		trigger = {
+			has_country_flag = mixed_ideology_democracy_coup
+		}
+		add_stability = -0.05
+		clr_country_flag = mixed_ideology_democracy_coup
+		random_unit_leader = {
+			retire = yes
+		}
+	}
+}

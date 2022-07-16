@@ -145,10 +145,7 @@ focus_tree = {
 				FBK.WFA_relationship_flat_var = 15
 			}
 			ROOT = {
-				every_character = {
-					limit = {
-						is_navy_chief = yes
-					}
+				every_navy_leader = {
 					retire = yes
 				}
 			}
@@ -659,6 +656,10 @@ focus_tree = {
 		}
 		x = 26
 		y = 5
+		completion_reward = {
+			set_country_flag = FBK_ghana_debate
+			custom_effect_tooltip = FBK_ghana_debate_tooltip
+		}
 	}
 	focus = {
 		id = FBK_restore_the_parliament
@@ -1653,6 +1654,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_doctrine_cost_reduction = {
+				name = FBK_fleet_in_being_tech
 				cost_reduction = 0.5
 				uses = 2
 				category = cat_fleet_in_being
@@ -1694,6 +1696,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_doctrine_cost_reduction = {
+				name = FBK_submarine_doctrine
 				cost_reduction = 0.5
 				uses = 2
 				category = submarine_doctrine
@@ -2062,7 +2065,7 @@ focus_tree = {
 			add_war_support = 0.15
 			add_stability = 0.15
 			add_popularity = {
-				ideology = PREV
+				ideology = var:FBK.current_party_ideology_group
 				popularity = 0.15
 			}
 		}
@@ -2099,6 +2102,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_rocketry_bonus
 				bonus = 1.5
 				uses = 2
 				category = rocketry

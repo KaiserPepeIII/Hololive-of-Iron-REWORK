@@ -1,0 +1,5919 @@
+#HLOI_ideology_scripted_trigger
+#politics scripted effects
+pro_yagoo_conservatism_on_the_rise = {
+	open_up_political_discourse_pro_yagoo_conservative = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = pro_yagoo_conservative_booster
+			NOT = {
+				has_government = democratic
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_yagoo_conservative_discourse
+		}
+	}
+	have_constitutional_referendum_pyc = {
+		available = {
+			democratic > 0.5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_pyc = {
+		available = {
+			democratic > 0.5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_pyc = {
+		available = {
+			democratic > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = pro_yagoo_conservative_coup
+			activate_mission = upcoming_coup_pyc
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_pyc = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_yagoo_conservative_coup
+		}
+		cancel_trigger = {
+			has_government = democratic
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_pyc = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_pyc = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_pyc = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_pyc = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_pyc = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_pyc = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_discourse
+			NOT = {
+				has_idea = ideology_promoted_pyc
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_pyc
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_pyc = {
+		available = {
+			democratic > 0.2
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_yagoo_conservative_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_pyc
+		}
+	}
+	upcoming_civil_war_pyc = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_yagoo_conservative_civil_war
+		}
+		cancel_trigger = {
+			has_government = democratic
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = democratic
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_pyc = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_pyc = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_pyc = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_pyc = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_pyc = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_pyc = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = pro_yagoo_conservative_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+pro_yagoo_progressivism_on_the_rise = {
+	open_up_political_discourse_pro_yagoo_progressive = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = pro_yagoo_progressive_booster
+			NOT = {
+				has_government = pro_yagoo_progressive
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_yagoo_progressive_discourse
+		}
+	}
+	have_constitutional_referendum_pyp = {
+		available = {
+			pro_yagoo_progressive > 0.5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = pro_yagoo_progressive
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_pyp = {
+		available = {
+			pro_yagoo_progressive > 0.5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = pro_yagoo_progressive
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_pyp = {
+		available = {
+			pro_yagoo_progressive > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = pro_yagoo_progressive_coup
+			activate_mission = upcoming_coup_pyp
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_pyp = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_yagoo_progressive_coup
+		}
+		cancel_trigger = {
+			has_government = pro_yagoo_progressive
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_pyp = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_pyp = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_pyp = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_pyp = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_pyp = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_pyp = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_discourse
+			NOT = {
+				has_idea = ideology_promoted_pyp
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_pyp
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_pyp = {
+		available = {
+			pro_yagoo_progressive > 0.2
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_yagoo_progressive_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_pyp
+		}
+	}
+	upcoming_civil_war_pyp = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_yagoo_progressive_civil_war
+		}
+		cancel_trigger = {
+			has_government = pro_yagoo_progressive
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = pro_yagoo_progressive
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_pyp = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_pyp = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_pyp = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_pyp = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_pyp = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_pyp = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = pro_yagoo_progressive_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+pro_yagoo_monarchism_on_the_rise = {
+	open_up_political_discourse_pro_yagoo_monarchy = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = pro_yagoo_monarchy_booster
+			NOT = {
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_yagoo_monarchy_discourse
+		}
+	}
+	have_constitutional_referendum_pym = {
+		available = {
+			pro_yagoo_monarchy > 0.5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = pro_yagoo_monarchy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_pym = {
+		available = {
+			pro_yagoo_monarchy > 0.5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = pro_yagoo_monarchy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_pym = {
+		available = {
+			pro_yagoo_monarchy > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = pro_yagoo_monarchy_coup
+			activate_mission = upcoming_coup_pym
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_pym = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_yagoo_monarchy_coup
+		}
+		cancel_trigger = {
+			has_government = pro_yagoo_monarchy
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_pym = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_pym = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_pym = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_pym = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_pym = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = pro_yagoo_monarchy
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_pym = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_discourse
+			NOT = {
+				has_idea = ideology_promoted_pym
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_pym
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_pym = {
+		available = {
+			pro_yagoo_monarchy > 0.2
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_yagoo_monarchy_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_pym
+		}
+	}
+	upcoming_civil_war_pym = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_yagoo_monarchy_civil_war
+		}
+		cancel_trigger = {
+			has_government = pro_yagoo_monarchy
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = pro_yagoo_monarchy
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_pym = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_pym = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_pym = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_pym = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_pym = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_pym = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = pro_yagoo_monarchy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+pro_yagoo_kleptocracy_on_the_rise = {
+	open_up_political_discourse_pro_yagoo_kleptocracy = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = pro_yagoo_kleptocracy_booster
+			NOT = {
+				has_government = pro_yagoo_kleptocracy
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_yagoo_kleptocracy_discourse
+		}
+	}
+	have_constitutional_referendum_pyk = {
+		available = {
+			pro_yagoo_kleptocracy > 0.5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = pro_yagoo_kleptocracy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_pyk = {
+		available = {
+			pro_yagoo_kleptocracy > 0.5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = pro_yagoo_kleptocracy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_pyk = {
+		available = {
+			pro_yagoo_kleptocracy > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = pro_yagoo_kleptocracy_coup
+			activate_mission = upcoming_coup_pyk
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_pyk = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_yagoo_kleptocracy_coup
+		}
+		cancel_trigger = {
+			has_government = pro_yagoo_kleptocracy
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_pyk = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_pyk = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_pyk = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_pyk = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_pyk = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = pro_yagoo_kleptocracy
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_pyk = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_discourse
+			NOT = {
+				has_idea = ideology_promoted_pyk
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_pyk
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_pyk = {
+		available = {
+			pro_yagoo_kleptocracy > 0.2
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_yagoo_kleptocracy_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_pyk
+		}
+	}
+	upcoming_civil_war_pyk = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_yagoo_kleptocracy_civil_war
+		}
+		cancel_trigger = {
+			has_government = pro_yagoo_kleptocracy
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = pro_yagoo_kleptocracy
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_pyk = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_pyk = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_pyk = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_pyk = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_pyk = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_pyk = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = pro_yagoo_kleptocracy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+pro_resistance_revolutionary_on_the_rise = {
+	open_up_political_discourse_pro_resistance_revolutionary = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = pro_resistance_revolutionary_booster
+			NOT = {
+				has_government = communism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_resistance_revolutionary_discourse
+		}
+	}
+	have_constitutional_referendum_prr = {
+		available = {
+			communism > 0.5
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_prr = {
+		available = {
+			communism > 0.5
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_prr = {
+		available = {
+			communism > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = pro_resistance_revolutionary_coup
+			activate_mission = upcoming_coup_prr
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_prr = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_resistance_revolutionary_coup
+		}
+		cancel_trigger = {
+			has_government = communism
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_prr = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_prr = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_prr = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_prr = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_prr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_prr = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_discourse
+			NOT = {
+				has_idea = ideology_promoted_prr
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_prr
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_prr = {
+		available = {
+			communism > 0.2
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_resistance_revolutionary_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_prr
+		}
+	}
+	upcoming_civil_war_prr = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_resistance_revolutionary_civil_war
+		}
+		cancel_trigger = {
+			has_government = communism
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = communism
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_prr = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_prr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_prr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_prr = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_prr = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_prr = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = pro_resistance_revolutionary_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+pro_resistance_nationalism_on_the_rise = {
+	open_up_political_discourse_pro_resistance_nationalism = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = pro_resistance_nationalism_booster
+			NOT = {
+				has_government = pro_resistance_nationalism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_resistance_nationalism_discourse
+		}
+	}
+	have_constitutional_referendum_prn = {
+		available = {
+			pro_resistance_nationalism > 0.5
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = pro_resistance_nationalism
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_prn = {
+		available = {
+			pro_resistance_nationalism > 0.5
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = pro_resistance_nationalism
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_prn = {
+		available = {
+			pro_resistance_nationalism > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = pro_resistance_nationalism_coup
+			activate_mission = upcoming_coup_prn
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_prn = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_resistance_nationalism_coup
+		}
+		cancel_trigger = {
+			has_government = pro_resistance_nationalism
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_prn = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_prn = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_prn = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_prn = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_prn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.07
+			}
+		}
+	}
+	prepare_for_civil_war_prn = {
+		available = {
+			pro_resistance_nationalism > 0.2
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_resistance_nationalism_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_prn
+		}
+	}
+	upcoming_civil_war_prn = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_resistance_nationalism_civil_war
+		}
+		cancel_trigger = {
+			has_government = pro_resistance_nationalism
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = pro_resistance_nationalism
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_prn = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_prn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_prn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_prn = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_prn = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_prn = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = pro_resistance_nationalism_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+pro_resistance_monarchism_on_the_rise = {
+	open_up_political_discourse_pro_resistance_monarchy = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = pro_resistance_monarchy_booster
+			NOT = {
+				has_government = pro_resistance_monarchy
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_resistance_monarchy_discourse
+		}
+	}
+	have_constitutional_referendum_prm = {
+		available = {
+			pro_resistance_monarchy > 0.5
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = pro_resistance_monarchy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_prm = {
+		available = {
+			pro_resistance_monarchy > 0.5
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = pro_resistance_monarchy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_prm = {
+		available = {
+			pro_resistance_monarchy > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = pro_resistance_monarchy_coup
+			activate_mission = upcoming_coup_prm
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_prm = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_resistance_monarchy_coup
+		}
+		cancel_trigger = {
+			has_government = pro_resistance_monarchy
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_prm = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_prm = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_prm = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_prm = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_prm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_prm = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_discourse
+			NOT = {
+				has_idea = ideology_promoted_prm
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_prm
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_prm = {
+		available = {
+			pro_resistance_monarchy > 0.2
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_resistance_monarchy_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_prm
+		}
+	}
+	upcoming_civil_war_prm = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_resistance_monarchy_civil_war
+		}
+		cancel_trigger = {
+			has_government = pro_resistance_monarchy
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = pro_resistance_monarchy
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_prm = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_prm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_prm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_prm = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_prm = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_prm = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = pro_resistance_monarchy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+pro_resistance_kleptocracy_on_the_rise = {
+	open_up_political_discourse_pro_resistance_kleptocracy = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = pro_resistance_kleptocracy_booster
+			NOT = {
+				has_government = pro_resistance_kleptocracy
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_resistance_kleptocracy_discourse
+		}
+	}
+	have_constitutional_referendum_prk = {
+		available = {
+			pro_resistance_kleptocracy > 0.5
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = pro_resistance_kleptocracy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_prk = {
+		available = {
+			pro_resistance_kleptocracy > 0.5
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = pro_resistance_kleptocracy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_prk = {
+		available = {
+			pro_resistance_kleptocracy > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = pro_resistance_kleptocracy_coup
+			activate_mission = upcoming_coup_prk
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_prk = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_resistance_kleptocracy_coup
+		}
+		cancel_trigger = {
+			has_government = pro_resistance_kleptocracy
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_prk = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_prk = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_prk = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_prk = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_prk = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = pro_resistance_kleptocracy
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_prk = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_discourse
+			NOT = {
+				has_idea = ideology_promoted_prk
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_prk
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_prk = {
+		available = {
+			pro_resistance_kleptocracy > 0.2
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = pro_resistance_kleptocracy_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_prk
+		}
+	}
+	upcoming_civil_war_prk = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = pro_resistance_kleptocracy_civil_war
+		}
+		cancel_trigger = {
+			has_government = pro_resistance_kleptocracy
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = pro_resistance_kleptocracy
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_prk = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_prk = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_prk = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_prk = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_prk = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_prk = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = pro_resistance_kleptocracy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+new_nationalism_on_the_rise = {
+	open_up_political_discourse_new_nationalism = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = new_nationalism_booster
+			NOT = {
+				has_government = fascism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = new_nationalism_discourse
+		}
+	}
+	have_constitutional_referendum_nn = {
+		available = {
+			fascism > 0.5
+		}
+		visible = {
+			has_country_flag = new_nationalism_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_nn = {
+		available = {
+			fascism > 0.5
+		}
+		visible = {
+			has_country_flag = new_nationalism_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_nn = {
+		available = {
+			fascism > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = new_nationalism_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = new_nationalism_coup
+			activate_mission = upcoming_coup_nn
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_nn = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = new_nationalism_coup
+		}
+		cancel_trigger = {
+			has_government = fascism
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_nn = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = new_nationalism_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_nn = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = new_nationalism_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_nn = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = new_nationalism_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_nn = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = new_nationalism_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_nn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = new_nationalism_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_nn = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = new_nationalism_discourse
+			NOT = {
+				has_idea = ideology_promoted_nn
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_nn
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_nn = {
+		available = {
+			fascism > 0.2
+		}
+		visible = {
+			has_country_flag = new_nationalism_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = new_nationalism_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_nn
+		}
+	}
+	upcoming_civil_war_nn = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = new_nationalism_civil_war
+		}
+		cancel_trigger = {
+			has_government = fascism
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = fascism
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_nn = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = new_nationalism_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_nn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = new_nationalism_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_nn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = new_nationalism_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_nn = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = new_nationalism_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_nn = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = new_nationalism_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_nn = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = new_nationalism_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+left_wing_revolutionary_on_the_rise = {
+	open_up_political_discourse_left_wing_revolutionary = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = left_wing_revolutionary_booster
+			NOT = {
+				has_government = left_wing_revolutionary
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = left_wing_revolutionary_discourse
+		}
+	}
+	have_constitutional_referendum_lwr = {
+		available = {
+			left_wing_revolutionary > 0.5
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = left_wing_revolutionary
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_lwr = {
+		available = {
+			left_wing_revolutionary > 0.5
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = left_wing_revolutionary
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_lwr = {
+		available = {
+			left_wing_revolutionary > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = left_wing_revolutionary_coup
+			activate_mission = upcoming_coup_lwr
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_lwr = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = left_wing_revolutionary_coup
+		}
+		cancel_trigger = {
+			has_government = left_wing_revolutionary
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_lwr = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_lwr = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_lwr = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_lwr = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_lwr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = left_wing_revolutionary
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_lwr = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_discourse
+			NOT = {
+				has_idea = ideology_promoted_lwr
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_lwr
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_lwr = {
+		available = {
+			left_wing_revolutionary > 0.2
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = left_wing_revolutionary_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_lwr
+		}
+	}
+	upcoming_civil_war_lwr = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = left_wing_revolutionary_civil_war
+		}
+		cancel_trigger = {
+			has_government = left_wing_revolutionary
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = left_wing_revolutionary
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_lwr = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_lwr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_lwr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_lwr = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_lwr = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_lwr = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = left_wing_revolutionary_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+reactionary_monarchism_on_the_rise = {
+	open_up_political_discourse_reactionary_monarchism = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = reactionary_monarchy_booster
+			NOT = {
+				has_government = reactionary_monarchy
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = reactionary_monarchy_discourse
+		}
+	}
+	have_constitutional_referendum_rm = {
+		available = {
+			reactionary_monarchy > 0.5
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = reactionary_monarchy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_rm = {
+		available = {
+			reactionary_monarchy > 0.5
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = reactionary_monarchy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_rm = {
+		available = {
+			reactionary_monarchy > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = reactionary_monarchy_coup
+			activate_mission = upcoming_coup_rm
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_rm = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = reactionary_monarchy_coup
+		}
+		cancel_trigger = {
+			has_government = reactionary_monarchy
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_rm = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_rm = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_rm = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_rm = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_rm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = reactionary_monarchy
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_rm = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_discourse
+			NOT = {
+				has_idea = ideology_promoted_rm
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_rm
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_rm = {
+		available = {
+			reactionary_monarchy > 0.2
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = reactionary_monarchy_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_rm
+		}
+	}
+	upcoming_civil_war_rm = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = reactionary_monarchy_civil_war
+		}
+		cancel_trigger = {
+			has_government = reactionary_monarchy
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = reactionary_monarchy
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_rm = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_rm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_rm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_rm = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_rm = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_rm = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+democratic_revitalisation_on_the_rise = {
+	open_up_political_discourse_democratic_revitalisation = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = democratic_revitalization_booster
+			NOT = {
+				has_government = democratic_revitalisation
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = democratic_revitalisation_discourse
+		}
+	}
+	have_constitutional_referendum_dr = {
+		available = {
+			democratic_revitalisation > 0.5
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = democratic_revitalisation
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_dr = {
+		available = {
+			democratic_revitalisation > 0.5
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = democratic_revitalisation
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_dr = {
+		available = {
+			democratic_revitalisation > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = democratic_revitalisation_coup
+			activate_mission = upcoming_coup_dr
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_dr = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = democratic_revitalisation_coup
+		}
+		cancel_trigger = {
+			has_government = democratic_revitalisation
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_dr = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_dr = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_dr = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_dr = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_dr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = democratic_revitalisation
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_dr = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_discourse
+			NOT = {
+				has_idea = ideology_promoted_dr
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_dr
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_dr = {
+		available = {
+			democratic_revitalisation > 0.2
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = democratic_revitalisation_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_dr
+		}
+	}
+	upcoming_civil_war_dr = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = democratic_revitalisation_civil_war
+		}
+		cancel_trigger = {
+			has_government = democratic_revitalisation
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = democratic_revitalisation
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_dr = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_dr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_dr = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_dr = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_dr = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_dr = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = democratic_revitalisation_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+kleptocratic_dictatorship_on_the_rise = {
+	open_up_political_discourse_kleptocratic_dictatorship = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = kleptocratic_dictatorship_booster
+			NOT = {
+				has_government = neutrality
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = kleptocratic_dictatorship_discourse
+		}
+	}
+	have_constitutional_referendum_kd = {
+		available = {
+			neutrality > 0.5
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_kd = {
+		available = {
+			neutrality > 0.5
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_kd = {
+		available = {
+			neutrality > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = kleptocratic_dictatorship_coup
+			activate_mission = upcoming_coup_kd
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_kd = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = kleptocratic_dictatorship_coup
+		}
+		cancel_trigger = {
+			has_government = neutrality
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_kd = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_kd = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_kd = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_kd = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_kd = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_kd = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_discourse
+			NOT = {
+				has_idea = ideology_promoted_kd
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_kd
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_kd = {
+		available = {
+			neutrality > 0.2
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = kleptocratic_dictatorship_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_kd
+		}
+	}
+	upcoming_civil_war_kd = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = kleptocratic_dictatorship_civil_war
+		}
+		cancel_trigger = {
+			has_government = neutrality
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = neutrality
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_kd = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_kd = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_kd = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_kd = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_kd = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_kd = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = kleptocratic_dictatorship_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+reactionary_nationalism_on_the_rise = {
+	open_up_political_discourse_reactionary_nationalism = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = reactionary_nationalism_booster
+			NOT = {
+				has_government = reactionary_nationalism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = reactionary_nationalism_discourse
+		}
+	}
+	have_constitutional_referendum_rn = {
+		available = {
+			reactionary_nationalism > 0.5
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = reactionary_nationalism
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_rn = {
+		available = {
+			reactionary_nationalism > 0.5
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = reactionary_nationalism
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_rn = {
+		available = {
+			reactionary_nationalism > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = reactionary_nationalism_coup
+			activate_mission = upcoming_coup_rn
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_rn = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = reactionary_nationalism_coup
+		}
+		cancel_trigger = {
+			has_government = reactionary_nationalism
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_rn = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_rn = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_rn = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_rn = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_rn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = reactionary_monarchy_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = reactionary_nationalism
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_rn = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_discourse
+			NOT = {
+				has_idea = ideology_promoted_rn
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_rn
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_rn = {
+		available = {
+			reactionary_nationalism > 0.2
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = reactionary_nationalism_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_rn
+		}
+	}
+	upcoming_civil_war_rn = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = reactionary_nationalism_civil_war
+		}
+		cancel_trigger = {
+			has_government = reactionary_nationalism
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = reactionary_nationalism
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_rn = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_rn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_rn = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_rn = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_rn = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_rn = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = reactionary_nationalism_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+mixed_ideology_democracy_on_the_rise = {
+	open_up_political_discourse_mixed_ideology_democracy = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = mixed_ideology_democracy_booster
+			NOT = {
+				has_government = mixed_ideology_democracy
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = mixed_ideology_democracy_discourse
+		}
+	}
+	have_constitutional_referendum_mid = {
+		available = {
+			mixed_ideology_democracy > 0.5
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = mixed_ideology_democracy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_mid = {
+		available = {
+			mixed_ideology_democracy > 0.5
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = mixed_ideology_democracy
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_mid = {
+		available = {
+			mixed_ideology_democracy > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = mixed_ideology_democracy_coup
+			activate_mission = upcoming_coup_mid
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_mid = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = mixed_ideology_democracy_coup
+		}
+		cancel_trigger = {
+			has_government = mixed_ideology_democracy
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_mid = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_mid = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_mid = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_mid = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_mid = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = mixed_ideology_democracy
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_mid = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_discourse
+			NOT = {
+				has_idea = ideology_promoted_mid
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_mid
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_mid = {
+		available = {
+			mixed_ideology_democracy > 0.2
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = mixed_ideology_democracy_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_mid
+		}
+	}
+	upcoming_civil_war_mid = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = mixed_ideology_democracy_civil_war
+		}
+		cancel_trigger = {
+			has_government = mixed_ideology_democracy
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = mixed_ideology_democracy
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_mid = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_mid = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_mid = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_mid = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_mid = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_mid = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = mixed_ideology_democracy_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}
+
+divine_mandate_on_the_rise = {
+	open_up_political_discourse_divine_mandate = {
+		available = {
+			always = yes
+		}
+		visible = {
+			has_idea_with_trait = divine_mandate_booster
+			NOT = {
+				has_government = divine_mandate
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = divine_mandate_discourse
+		}
+	}
+	have_constitutional_referendum_dm = {
+		available = {
+			divine_mandate > 0.5
+		}
+		visible = {
+			has_country_flag = divine_mandate_discourse
+			NOT = {
+				has_elections = yes
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = divine_mandate
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.1
+		}
+	}
+	oust_ruling_party_dm = {
+		available = {
+			divine_mandate > 0.5
+		}
+		visible = {
+			has_country_flag = divine_mandate_discourse
+			has_elections = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			set_politics = {
+				ruling_party = divine_mandate
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			country_event = politics.2
+		}
+	}
+	prepare_a_coup_dm = {
+		available = {
+			divine_mandate > 0.05
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = divine_mandate_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			set_country_flag = divine_mandate_coup
+			activate_mission = upcoming_coup_dm
+			set_variable = {
+				var = ROOT.coup_power
+				value = 0
+			}
+		}
+	}
+	upcoming_coup_dm = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = divine_mandate_coup
+		}
+		cancel_trigger = {
+			has_government = divine_mandate
+		}
+		days_mission_timeout = 90
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			upcoming_coup_effect = yes
+		}
+	}
+	bribe_important_figures_dm = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = divine_mandate_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	facilitate_public_support_dm = {
+		available = {
+			has_political_power > 50
+			has_equipment = {
+				infantry_equipment > 100
+			}
+		}
+		visible = {
+			has_country_flag = divine_mandate_coup
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 2
+			}
+		}
+	}
+	secure_weapons_dm = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		visible = {
+			has_country_flag = divine_mandate_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	create_several_fail_safes_dm = {
+		available = {
+			command_power > 5
+			has_army_experience > 5
+		}
+		visible = {
+			has_country_flag = divine_mandate_coup
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -5
+			army_experience = -5
+			add_to_variable = {
+				var = root.coup_power
+				value = 1
+			}
+		}
+	}
+	slander_ruling_party_dm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = divine_mandate_discourse
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ROOT.current_party_ideology_group
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.07
+			}
+		}
+	}
+	promote_ideology_dm = {
+		available = {
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = divine_mandate_discourse
+			NOT = {
+				has_idea = ideology_promoted_dm
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = ideology_promoted_dm
+				days = 180
+			}
+		}
+	}
+	prepare_for_civil_war_dm = {
+		available = {
+			divine_mandate > 0.2
+		}
+		visible = {
+			has_country_flag = divine_mandate_discourse
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = divine_mandate_civil_war
+			set_variable = {
+				var = ROOT.civil_war_power
+				value = 0.2
+			}
+			clamp_variable = {
+				var = ROOT.civil_war_power
+				min = 0
+				max = 1
+			}
+			activate_mission = upcoming_civil_war_dm
+		}
+	}
+	upcoming_civil_war_dm = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			has_country_flag = divine_mandate_civil_war
+		}
+		cancel_trigger = {
+			has_government = divine_mandate
+		}
+		days_mission_timeout = 155
+		is_good = no
+		selectable_mission = no
+		#outcome of coup
+		timeout_effect = {
+			start_civil_war = {
+				ideology = var:ROOT.current_party_ideology_group
+				ruling_party = divine_mandate
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+		}
+	}
+	prepare_paramilitaries_dm = {
+		available = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		visible = {
+			has_country_flag = divine_mandate_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+			set_country_flag = politics_paramilitaries_prepared
+		}
+	}
+	stirr_public_discontent_dm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = divine_mandate_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	build_support_for_civil_war_dm = {
+		available = {
+			has_political_power > 75
+		}
+		visible = {
+			has_country_flag = divine_mandate_civil_war
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+	create_strategy_for_war_dm = {
+		available = {
+			command_power > 5
+		}
+		visible = {
+			has_country_flag = divine_mandate_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	prepare_heavy_weaponry_dm = {
+		available = {
+			has_equipment = {
+				support_equipment > 150
+			}
+		}
+		visible = {
+			has_country_flag = divine_mandate_civil_war
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.15
+			}
+		}
+	}
+	support_revolutionary_activity_dm = {
+		available = {
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = divine_mandate_civil_war
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_threat = 0.5
+			add_stability = -0.1
+			add_to_variable = {
+				var = root.civil_war_power
+				value = 0.1
+			}
+		}
+	}
+}

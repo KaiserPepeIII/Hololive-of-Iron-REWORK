@@ -1,14 +1,11 @@
 FBK_plan_thor_decisions = {
 	FBK_plan_thor_tac = {
 		days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 150
-		
 		available = {
 			has_tech = early_bomber
 		}
-
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = tac_bomber_equipment
@@ -19,14 +16,11 @@ FBK_plan_thor_decisions = {
 	}
 	FBK_plan_thor_strat = {
 		days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 150
-		
 		available = {
 			has_tech = strategic_bomber1
 		}
-		
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = strat_bomber_equipment
@@ -37,17 +31,166 @@ FBK_plan_thor_decisions = {
 	}
 }
 
+FBK_colonial_policy_decisions = {
+	FBK_GHA_approach_the_OSK = {
+		icon = GFX_decision_icon_default
+		available = {
+			OSK = {
+				exists = yes
+			}
+		}
+		visible = {
+			OSK = {
+				exists = yes
+			}
+			owns_state = 1090
+			owns_state = 274
+		}
+		complete_effect = {
+			OSK = {
+				country_event = osk.1
+			}
+		}
+	}
+	FBK_GHA_approach_YAG = {
+		icon = GFX_decision_icon_default
+		available = {
+			YAG = {
+				exists = yes
+			}
+		}
+		visible = {
+			YAG = {
+				exists = yes
+			}
+			owns_state = 1090
+			owns_state = 274
+		}
+		complete_effect = {
+			YAG = {
+				country_event = yagoo.5
+			}
+		}
+	}
+	FBK_GHA_approach_IRU = {
+		icon = GFX_decision_icon_default
+		available = {
+			IRU = {
+				exists = yes
+			}
+		}
+		visible = {
+			IRU = {
+				exists = yes
+			}
+			owns_state = 1090
+			owns_state = 274
+		}
+		complete_effect = {
+			IRU = {
+				country_event = irys.1
+			}
+		}
+	}
+	FBK_GHA_approach_SUI = {
+		icon = GFX_decision_icon_default
+		available = {
+			SUI = {
+				exists = yes
+			}
+		}
+		visible = {
+			SUI = {
+				exists = yes
+			}
+			owns_state = 1090
+			owns_state = 274
+		}
+		complete_effect = {
+			SUI = {
+				country_event = suisei.87
+			}
+		}
+	}
+	FBK_GHA_approach_WFA = {
+		icon = GFX_decision_icon_default
+		available = {
+			WFA = {
+				exists = yes
+			}
+			has_political_power > 100
+		}
+		visible = {
+			WFA = {
+				exists = yes
+			}
+			owns_state = 1090
+			owns_state = 274
+		}
+		complete_effect = {
+			WFA = {
+				country_event = wfa.1
+			}
+		}
+	}
+	FBK_GHA_independence = {
+		icon = GFX_decision_icon_default
+		available = {
+		}
+		visible = {
+			owns_state = 1090
+			owns_state = 274
+		}
+		complete_effect = {
+			add_political_power = 15
+			add_stability = 0.05
+			add_popularity = {
+				ideology = var:FBK.current_party_ideology_group
+				popularity = 0.05
+			}
+			every_state = {
+				limit = {
+					is_core_of = GHA
+				}
+				transfer_state_to = GHA
+			}
+		}
+	}
+	FBK_GHA_colonial_base = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			NOT = {
+				is_lhs_ideology = yes
+			}
+			owns_state = 1090
+			owns_state = 274
+		}
+		days_remove = 90
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			add_stability = -0.05
+			1090 = {
+				add_core_of = FBK
+			}
+			274 = {
+				add_core_of = FBK
+			}
+		}
+	}
+}
+
 FBK_plan_valkyrie_decisions = {
 	FBK_plan_valkyrie_fighthers = {
 		days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 150
-		
 		available = {
 			has_tech = early_fighter
 		}
-
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = fighter_equipment
@@ -58,14 +201,11 @@ FBK_plan_valkyrie_decisions = {
 	}
 	FBK_plan_valkyrie_cas = {
 		days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 150
-		
 		available = {
 			has_tech = CAS1
 		}
-		
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = CAS_equipment
@@ -75,12 +215,10 @@ FBK_plan_valkyrie_decisions = {
 		}
 	}
 }
-	
-FBK_army_balance_categories ={
+
+FBK_army_balance_categories = {
 	FBK_show_armies = {
-		is_good = yes
 		icon = GFX_decision_icon_default
-		
 		complete_effect = {
 			set_country_flag = open_army_ratio_textbox
 		}
@@ -90,25 +228,20 @@ FBK_army_balance_categories ={
 	#art - 72
 	#guns - 750
 	#supp eq - 40
-
 	##NA division
 	#MP - 5800
 	#art - 12
 	#guns - 540
 	#supp eq - 10
-
 	#Conditions might need an adjustment
 	#Currently one decision /w
 	#Currently player must not have guns deficit to not overspam unequiped armies
-
 	FBK_recruit_a_wfa = {
 		#days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 0
-		
 		available = {
-			AND={
+			AND = {
 				check_variable = {
 					var = FBK.manpower_k
 					value = 8.8
@@ -121,30 +254,27 @@ FBK_army_balance_categories ={
 						compare = less_than_or_equals
 					}
 				}
-				
 				NOT = {
-					has_country_flag =  FBK_army_units_raised_flag
+					has_country_flag = FBK_army_units_raised_flag
 				}
 			}
 		}
-		
 		complete_effect = {
 			add_manpower = -8800
-			set_variable = { FBK.number_armies_selected = 1 }
+			set_variable = {
+				FBK.number_armies_selected = 1
+			}
 			FBK_spawn_wfa_divisions_effect = yes
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
-
 	FBK_recruit_five_wfa = {
 		#days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 0
-		
 		available = {
-			AND={
+			AND = {
 				check_variable = {
 					var = FBK.manpower_k
 					value = 44
@@ -157,30 +287,27 @@ FBK_army_balance_categories ={
 						compare = less_than_or_equals
 					}
 				}
-				
 				NOT = {
-					has_country_flag =  FBK_army_units_raised_flag
+					has_country_flag = FBK_army_units_raised_flag
 				}
 			}
 		}
-		
 		complete_effect = {
 			add_manpower = -44000
-			set_variable = { FBK.number_armies_selected = 5 }
+			set_variable = {
+				FBK.number_armies_selected = 5
+			}
 			FBK_spawn_wfa_divisions_effect = yes
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
-
 	FBK_recruit_ten_wfa = {
 		#days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 0
-		
 		available = {
-			AND={
+			AND = {
 				check_variable = {
 					var = FBK.manpower_k
 					value = 88
@@ -193,16 +320,16 @@ FBK_army_balance_categories ={
 						compare = less_than_or_equals
 					}
 				}
-				
 				NOT = {
-					has_country_flag =  FBK_army_units_raised_flag
+					has_country_flag = FBK_army_units_raised_flag
 				}
 			}
 		}
-		
 		complete_effect = {
 			add_manpower = -88000
-			set_variable = { FBK.number_armies_selected = 10 }
+			set_variable = {
+				FBK.number_armies_selected = 10
+			}
 			FBK_spawn_wfa_divisions_effect = yes
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
@@ -210,12 +337,10 @@ FBK_army_balance_categories ={
 	}
 	FBK_recruit_a_na = {
 		#days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 0
-		
 		available = {
-			AND={
+			AND = {
 				check_variable = {
 					var = FBK.manpower_k
 					value = 5.8
@@ -228,16 +353,16 @@ FBK_army_balance_categories ={
 						compare = less_than_or_equals
 					}
 				}
-				
 				NOT = {
-					has_country_flag =  FBK_army_units_raised_flag
+					has_country_flag = FBK_army_units_raised_flag
 				}
 			}
 		}
-		
 		complete_effect = {
 			add_manpower = -5800
-			set_variable = { FBK.number_armies_selected = 1 }
+			set_variable = {
+				FBK.number_armies_selected = 1
+			}
 			FBK_spawn_na_divisions_effect = yes
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
@@ -245,12 +370,10 @@ FBK_army_balance_categories ={
 	}
 	FBK_recruit_five_na = {
 		#days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 0
-		
 		available = {
-			AND={
+			AND = {
 				check_variable = {
 					var = FBK.manpower_k
 					value = 29.5
@@ -263,16 +386,16 @@ FBK_army_balance_categories ={
 						compare = less_than_or_equals
 					}
 				}
-				
 				NOT = {
-					has_country_flag =  FBK_army_units_raised_flag
+					has_country_flag = FBK_army_units_raised_flag
 				}
 			}
 		}
-		
 		complete_effect = {
 			add_manpower = -29500
-			set_variable = { FBK.number_armies_selected = 5 }
+			set_variable = {
+				FBK.number_armies_selected = 5
+			}
 			FBK_spawn_na_divisions_effect = yes
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
@@ -280,12 +403,10 @@ FBK_army_balance_categories ={
 	}
 	FBK_recruit_ten_na = {
 		#days_re_enable = 30
-		is_good = yes
 		icon = GFX_decision_icon_default
 		cost = 0
-		
 		available = {
-			AND={
+			AND = {
 				check_variable = {
 					var = FBK.manpower_k
 					value = 58
@@ -298,24 +419,19 @@ FBK_army_balance_categories ={
 						compare = less_than_or_equals
 					}
 				}
-				
 				NOT = {
-					has_country_flag =  FBK_army_units_raised_flag
+					has_country_flag = FBK_army_units_raised_flag
 				}
 			}
-			
 		}
-		
 		complete_effect = {
 			add_manpower = -58000
-			set_variable = { FBK.number_armies_selected = 10 }
+			set_variable = {
+				FBK.number_armies_selected = 10
+			}
 			FBK_spawn_na_divisions_effect = yes
 			FBK_army_variables = yes
 			custom_effect_tooltip = FBK_army_units_not_guns_deficit_tooltip
 		}
 	}
-}	
-			
-	
-	
-			
+}
