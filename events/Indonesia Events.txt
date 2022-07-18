@@ -1,0 +1,29 @@
+add_namespace = indonesia
+#Do you want to join negotiations?
+country_event = {
+	id = indonesia.1
+	title = indonesia.1.t
+	desc = indonesia.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = indonesia.1.a
+		ROOT = {
+			add_to_array = {
+				array = global.indonesia_negotiations
+				value = THIS.id
+			}
+		}
+		FROM = {
+			country_event = indonesia.3
+		}
+	}
+	#Fuck off
+	option = {
+		name = indonesia.1.b
+		FROM = {
+			country_event = indonesia.2
+		}
+	}
+}

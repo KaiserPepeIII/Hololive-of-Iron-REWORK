@@ -1,32 +1,298 @@
 ﻿division_template = {
-	name = "Nakiri-gumi"		
-
+	name = "La Guardia Blanca"
 	division_names_group = AYA_INF_01
-
 	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 0 y = 2 }
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
-		infantry = { x = 1 y = 2 }
-		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-		infantry = { x = 2 y = 2 }
+		guards = {
+			x = 0
+			y = 0
+		}
+		guards = {
+			x = 0
+			y = 1
+		}
+		guards = {
+			x = 0
+			y = 2
+		}
+		guards = {
+			x = 1
+			y = 0
+		}
+		guards = {
+			x = 1
+			y = 1
+		}
+		artillery_brigade = {
+			x = 1
+			y = 2
+		}
+		cavalry = {
+			x = 2
+			y = 0
+		}
+	}
+	support = {
+		engineer = {
+			x = 0
+			y = 0
+		}
+		recon = {
+			x = 0
+			y = 1
+		}
 	}
 }
 
 division_template = {
-    name = "Giant Cavalry"        
-
-    division_names_group = AYA_CAV_01
-
-    regiments = {
-        cavalry = { x = 0 y = 0 }
-        cavalry = { x = 0 y = 1 }
-        cavalry = { x = 1 y = 0 }
-        cavalry = { x = 1 y = 1 }
-        cavalry = { x = 0 y = 2 }
-    }
+	name = "División Infantería"
+	division_names_group = AYA_CAV_01
+	regiments = {
+		infantry = {
+			x = 0
+			y = 0
+		}
+		infantry = {
+			x = 0
+			y = 1
+		}
+		infantry = {
+			x = 0
+			y = 2
+		}
+		infantry = {
+			x = 1
+			y = 0
+		}
+		infantry = {
+			x = 1
+			y = 1
+		}
+		infantry = {
+			x = 1
+			y = 2
+		}
+		artillery_brigade = {
+			x = 2
+			y = 0
+		}
+		artillery_brigade = {
+			x = 2
+			y = 1
+		}
+	}
 }
 
+division_template = {
+	name = "Brigada Armada"
+	regiments = {
+		light_armor = {
+			x = 0
+			y = 0
+		}
+		light_armor = {
+			x = 0
+			y = 1
+		}
+		light_armor = {
+			x = 0
+			y = 2
+		}
+		motorized = {
+			x = 1
+			y = 0
+		}
+		motorized = {
+			x = 1
+			y = 1
+		}
+	}
+}
+
+division_template = {
+	name = "Sección para Seguridad"
+	regiments = {
+		infantry = {
+			x = 0
+			y = 0
+		}
+		infantry = {
+			x = 0
+			y = 1
+		}
+		cavalry = {
+			x = 1
+			y = 0
+		}
+	}
+}
+
+units = {
+	#Army Group North - 1 Guardia Blanca, 4 Division Infanteria, 1 Division Armada, 
+	#Guardia Blanca
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 10515
+		division_template = "La Guardia Blanca"
+		start_experience_factor = 0.75
+		start_equipment_factor = 1
+	}
+	#Division Infanteria 
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 10447
+		division_template = "División Infantería"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.65
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 4604
+		division_template = "División Infantería"
+		start_experience_factor = 0.45
+		start_equipment_factor = 0.75
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 8187
+		division_template = "División Infantería"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.55
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 1542
+		division_template = "División Infantería"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.95
+	}
+	#division armada
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 4589
+		division_template = "Brigada Armada"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.95
+	}
+	#Army Group West 3 division infanteria, 4 security sections 
+	#Infantry Divisions
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 8215
+		division_template = "División Infantería"
+		start_experience_factor = 0.45
+		start_equipment_factor = 0.45
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 8216
+		division_template = "División Infantería"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.55
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 12942
+		division_template = "División Infantería"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.45
+	}
+	#Security Sections
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 2136
+		division_template = "Sección para Seguridad"
+		start_experience_factor = 0.45
+		start_equipment_factor = 0.85
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 1101
+		division_template = "Sección para Seguridad"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.95
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 5184
+		division_template = "Sección para Seguridad"
+		start_experience_factor = 0.65
+		start_equipment_factor = 1
+	}
+	#Army Group Patagonia 4 Security Sections
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 12349
+		division_template = "Sección para Seguridad"
+		start_experience_factor = 0.45
+		start_equipment_factor = 0.85
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 1639
+		division_template = "Sección para Seguridad"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.95
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 4573
+		division_template = "Sección para Seguridad"
+		start_experience_factor = 0.65
+		start_equipment_factor = 1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 12592
+		division_template = "Sección para Seguridad"
+		start_experience_factor = 0.65
+		start_equipment_factor = 1
+	}
+}

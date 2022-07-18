@@ -1,74 +1,377 @@
 ﻿division_template = {
-	name = "Dai Tenshi Aqua"		
-
+	name = "Divisão de Infantaria"
 	division_names_group = AQA_INF_01
-
 	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
-		
-		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-
-		infantry = { x = 3 y = 0 }
-		infantry = { x = 3 y = 1 }
-
-		infantry = { x = 4 y = 0 }
-		infantry = { x = 4 y = 1 }
-		
+		infantry = {
+			x = 0
+			y = 0
+		}
+		infantry = {
+			x = 0
+			y = 1
+		}
+		infantry = {
+			x = 1
+			y = 0
+		}
+		infantry = {
+			x = 1
+			y = 1
+		}
+		infantry = {
+			x = 2
+			y = 0
+		}
+		infantry = {
+			x = 2
+			y = 1
+		}
+		infantry = {
+			x = 3
+			y = 0
+		}
+		infantry = {
+			x = 3
+			y = 1
+		}
 	}
 }
 
 division_template = {
-	name = "Onion Gang"		
-
+	name = "Brigada de Trabalhadores"
 	division_names_group = AQA_INF_02
-
 	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 0 y = 2 }
-
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
-		infantry = { x = 1 y = 2 }
-
-		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-		infantry = { x = 2 y = 2 }
+		militia = {
+			x = 0
+			y = 0
+		}
+		militia = {
+			x = 0
+			y = 1
+		}
+		militia = {
+			x = 0
+			y = 2
+		}
+		militia = {
+			x = 1
+			y = 0
+		}
+		militia = {
+			x = 1
+			y = 1
+		}
+		militia = {
+			x = 1
+			y = 2
+		}
 	}
 }
 
 division_template = {
-	name = "A.M.T"		
-
+	name = "Divisão de Tanques"
 	division_names_group = AQA_CAV_01
-
 	regiments = {
-		cavalry = { x = 0 y = 0 }
-		cavalry = { x = 0 y = 1 }
-		cavalry = { x = 1 y = 0 }
-		cavalry = { x = 1 y = 1 }
-		cavalry = { x = 0 y = 2 }
-		cavalry = { x = 1 y = 2 }
+		light_armor = {
+			x = 0
+			y = 0
+		}
+		light_armor = {
+			x = 0
+			y = 1
+		}
+		light_armor = {
+			x = 0
+			y = 2
+		}
+		light_armor = {
+			x = 0
+			y = 3
+		}
+		infantry = {
+			x = 1
+			y = 0
+		}
+		infantry = {
+			x = 1
+			y = 1
+		}
+		infantry = {
+			x = 1
+			y = 2
+		}
+		artillery_brigade = {
+			x = 1
+			y = 3
+		}
 	}
 }
 
 division_template = {
-	name = "Aqua Navy Seal"		
-
+	name = "Batalhão Marinho"
 	division_names_group = AQA_MAR_01
-
 	regiments = {
-		marine = { x = 0 y = 0 }
-		marine = { x = 0 y = 1 }
-		marine = { x = 0 y = 2 }
-		marine = { x = 1 y = 0 }
-		marine = { x = 1 y = 1 }
-		marine = { x = 1 y = 2 }
+		marine = {
+			x = 0
+			y = 0
+		}
+		marine = {
+			x = 0
+			y = 1
+		}
+		marine = {
+			x = 1
+			y = 0
+		}
+		marine = {
+			x = 1
+			y = 1
+		}
 	}
 }
 
+division_template = {
+	name = "Batalhão de Fortaleza"
+	division_names_group = AQA_MAR_01
+	priority = 0
+	regiments = {
+		infantry = {
+			x = 0
+			y = 0
+		}
+		infantry = {
+			x = 0
+			y = 1
+		}
+		infantry = {
+			x = 1
+			y = 0
+		}
+		infantry = {
+			x = 1
+			y = 1
+		}
+	}
+}
+
+units = {
+	#Army Group South 6 Infantry Divisions, 2 workers divisions, 1 tank division, 1 marine division, 2 Fortress Divisions
+	#Divisão de Infantaria
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 7553
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.85
+		start_equipment_factor = 1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 5186
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 12972
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.55
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 8189
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 2181
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.45
+		start_equipment_factor = 0.75
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 5167
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.55
+	}
+	#Workers
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 10513
+		division_template = "Brigada de Trabalhadores"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 10513
+		division_template = "Brigada de Trabalhadores"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.1
+	}
+	#Divisão de Tanques
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 5112
+		division_template = "Divisão de Tanques"
+		start_experience_factor = 0.8
+		start_equipment_factor = 1
+	}
+	#Marine
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 5112
+		division_template = "Batalhão Marinho"
+		start_experience_factor = 0.26
+		start_equipment_factor = 1
+	}
+	#Batalhão de Fortaleza
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 10980
+		division_template = "Batalhão de Fortaleza"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 12877
+		division_template = "Batalhão de Fortaleza"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.2
+	}
+	#Army Group North, 6 Workers Brigades, 3 Fortress Brigades
+	#Workers
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 10419
+		division_template = "Brigada de Trabalhadores"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 12999
+		division_template = "Brigada de Trabalhadores"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 12933
+		division_template = "Brigada de Trabalhadores"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 5107
+		division_template = "Brigada de Trabalhadores"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 5168
+		division_template = "Brigada de Trabalhadores"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 8143
+		division_template = "Brigada de Trabalhadores"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.1
+	}
+	#Fortress
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 10946
+		division_template = "Batalhão de Fortaleza"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 10998
+		division_template = "Batalhão de Fortaleza"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 5168
+		division_template = "Batalhão de Fortaleza"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.2
+	}
+}

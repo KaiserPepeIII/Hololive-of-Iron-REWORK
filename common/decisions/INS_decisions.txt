@@ -1,0 +1,23 @@
+GEN_indonesian_civil_war = {
+	YAG_arrange_talks = {
+		available = {
+			tag = YAG
+			has_political_power > 75
+		}
+		visible = {
+			tag = YAG
+		}
+		cost = 75
+		complete_effect = {
+			every_country = {
+				limit = {
+					is_in_array = {
+						array = global.indonesia_players
+						value = THIS.id
+					}
+				}
+				country_event = indonesia.1
+			}
+		}
+	}
+}

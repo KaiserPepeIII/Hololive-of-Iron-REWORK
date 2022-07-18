@@ -1,0 +1,47 @@
+NOE_befriend_flare = {
+	allowed = {
+		tag = NOE
+		FLA = {
+			exists = yes
+		}
+	}
+	enable = {
+		original_tag = NOE
+	}
+	abort = {
+		FLA = {
+			exists = no
+			has_war_with = NOE
+		}
+	}
+	ai_strategy = {
+		type = diplo_action_desire
+		id = FLA
+		target = improve_relation
+		value = 50
+	}
+}
+
+NOE_great_northern_war = {
+	allowed = {
+		tag = NOE
+	}
+	enable = {
+		has_war_with = FBK
+	}
+	abort = {
+		has_war = no
+	}
+	ai_strategy = {
+		type = put_unit_buffers
+		ratio = 0.15
+		states = {
+			63
+			807
+			916
+			917
+			763
+		}
+		area = europe
+	}
+}

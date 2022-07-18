@@ -54,7 +54,6 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
-	set_naval_oob = "BTN_1936_naval_mtg"
 	set_technology = {
 		early_ship_hull_light = 1
 		early_ship_hull_cruiser = 1
@@ -66,6 +65,7 @@ if = {
 		basic_torpedo = 1
 		basic_depth_charges = 1
 	}
+	set_naval_oob = "BTN_1936_naval_mtg"
 }
 
 if = {
@@ -178,6 +178,82 @@ set_popularities = {
 #	Tank Variants
 #
 ###############
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		engine_tech_1 = 1
+		armor_tech_1 = 1
+	}
+	create_equipment_variant = {
+		name = "Vickers Mk. E-IV"
+		type = light_tank_chassis_0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 7
+			tank_armor_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "Vickers Mk. F-IV"
+		type = light_tank_chassis_0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_armor_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "Lv Mk. III"		#light vehicle mark III
+		type = light_tank_chassis_1
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_armor_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "Lv Mk. V"
+		type = light_tank_chassis_2
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_armor_upgrade = 4
+		}
+	}
+}
+
 ###############
 #
 #
@@ -189,28 +265,8 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	create_equipment_variant = {
-		name = "Athens Class"
-		type = ship_hull_heavy_1
-		name_group = HOLO_GEN_BB
-		parent_version = 0
-		modules = {
-			fixed_ship_battery_slot = ship_heavy_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = heavy_ship_engine_1
-			fixed_ship_secondaries_slot = ship_secondaries_1
-			fixed_ship_armor_slot = ship_armor_bb_1
-			front_1_custom_slot = empty
-			mid_1_custom_slot = empty
-			mid_2_custom_slot = ship_secondaries_1
-			rear_1_custom_slot = ship_heavy_battery_1
-		}
-	}
-	create_equipment_variant = {
-		name = "Vengeance Class"
+		name = "Restoration Class"
 		type = ship_hull_cruiser_1
-		name_group = HOLO_GEN_CL
 		parent_version = 0
 		modules = {
 			fixed_ship_battery_slot = ship_light_medium_battery_1
@@ -225,9 +281,8 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-		name = "A/B/C Class"
+		name = "A Class"
 		type = ship_hull_light_1
-		name_group = HOLO_GEN_DD
 		parent_version = 0
 		modules = {
 			fixed_ship_battery_slot = ship_light_battery_2
@@ -239,12 +294,10 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = ship_depth_charge_1
 		}
-		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "S Class"
 		type = ship_hull_submarine_1
-		name_group = HOLO_GEN_SS
 		parent_version = 0
 		modules = {
 			fixed_ship_torpedo_slot = ship_torpedo_sub_1
@@ -272,55 +325,31 @@ if = {
 		parent_version = 0
 		upgrades = {
 			ship_reliability_upgrade = 1
-			sub_engine_upgrade = 0
-			sub_stealth_upgrade = 0
-			sub_torpedo_upgrade = 0
+			sub_engine_upgrade = 1
+			sub_stealth_upgrade = 1
+			sub_torpedo_upgrade = 1
 		}
 	}
 	create_equipment_variant = {
-		name = "A/B/C Class"
+		name = "A Class"
 		type = destroyer_1
 		parent_version = 0
 		upgrades = {
 			ship_torpedo_upgrade = 1
-			destroyer_engine_upgrade = 3
-			ship_ASW_upgrade = 0
+			destroyer_engine_upgrade = 1
+			ship_ASW_upgrade = 1
 			ship_anti_air_upgrade = 1
 		}
-		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Vengeance Class"
-		type = light_cruiser_1
-		parent_version = 0
-		upgrades = {
-			ship_reliability_upgrade = 1
-			ship_engine_upgrade = 3
-			ship_gun_upgrade = 1
-			ship_anti_air_upgrade = 1
-		}
-		obsolete = yes
-	}
-	create_equipment_variant = {
-		name = "Hammer Class"
+		name = "Restoration Class"
 		type = heavy_cruiser_1
 		parent_version = 0
 		upgrades = {
-			ship_reliability_upgrade = 1
-			ship_engine_upgrade = 3
-			ship_armor_upgrade = 1
-			ship_gun_upgrade = 1
-		}
-	}
-	create_equipment_variant = {
-		name = "Athens Class"
-		type = battleship_1
-		parent_version = 0
-		upgrades = {
-			ship_reliability_upgrade = 3
-			ship_engine_upgrade = 1
-			ship_armor_upgrade = 1
-			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_gun_upgrade = 2
+			ship_anti_air_upgrade = 2
 		}
 	}
 }
