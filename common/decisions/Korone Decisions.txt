@@ -1,0 +1,738 @@
+GEN_arab_independence = {
+	debug_ARAB_mission_test = {
+		available = {
+			always = yes
+		}
+		visible = {
+			is_debug = yes
+		}
+		cost = 1
+		complete_effect = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.55
+			}
+			add_to_variable = {
+				var = root.anti_aggression
+				value = 60
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = ARAB_unrest_from_modernisation
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ARAB_unrest_from_modernisation
+				}
+			}
+		}
+	}
+	ARAB_arab_revolution_mission = {
+		activation = {
+			any_of = {
+				array = global.arab_nationalism_states
+				value = THIS.id
+				fascism > 0.5
+				check_variable = {
+					var = THIS.anti_aggression
+					value = 50
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		available = {
+			THIS = {
+				fascism < 0.45
+				check_variable = {
+					var = THIS.anti_aggression
+					value = 45
+					compare = less_than_or_equals
+				}
+			}
+		}
+		cancel_trigger = {
+			THIS = {
+				fascism < 0.45
+				check_variable = {
+					var = THIS.anti_aggression
+					value = 45
+					compare = less_than_or_equals
+				}
+			}
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = no
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			set_global_flag = ARAB_revolution
+			add_threat = 5
+			every_country = {
+				if = {
+					#multiple states nation
+					limit = {
+						is_in_array = {
+							array = global.arab_nationalism_states
+							value = THIS.id
+						}
+						NOT = {
+							tag = YAG
+							tag = KRN
+							tag = MUM
+							num_of_controlled_states = 1
+						}
+					}
+					country_event = arab.3
+					#1 state minors
+					else_if = {
+						limit = {
+							is_in_array = {
+								array = global.arab_nationalism_states
+								value = THIS.id
+							}
+							NOT = {
+								tag = YAG
+								tag = KRN
+								tag = MUM
+							}
+						}
+						country_event = arab.4
+					}
+					#Yagoo
+					else_if = {
+						limit = {
+							tag = YAG
+						}
+						country_event = arab.5
+					}
+					#Korone
+					else_if = {
+						limit = {
+							tag = KRN
+						}
+						country_event = arab.6
+					}
+					#Mumei
+					else_if = {
+						limit = {
+							tag = MUM
+						}
+						country_event = arab.7
+					}
+				}
+			}
+			#Unrest in muslim countries
+			every_country = {
+				limit = {
+					OR = {
+						tag = LAM
+						tag = KAZ
+						tag = TMS
+						tag = SAN
+						tag = UZB
+						tag = KYR
+						tag = MAT
+						tag = ROS
+						tag = MOR
+						tag = TOW
+						tag = XSM
+						tag = HTO
+						tag = MOO
+						tag = IOF
+					}
+				}
+				country_event = arab.9
+			}
+			SUD = {
+				country_event = arab.8
+			}
+			news_event = global_holo.3
+		}
+	}
+	ARAB_establish_constitution = {
+		available = {
+			NOT = {
+				tag = YAG
+				tag = MUM
+				tag = KRN
+			}
+			has_political_power > 75
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ARAB_constitution_established
+			}
+		}
+		cost = 75
+		complete_effect = {
+			ROOT = {
+				country_event = arab.1
+				set_country_flag = ARAB_constitution_established
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = ARAB_unrest_from_modernisation
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ARAB_unrest_from_modernisation
+				}
+			}
+		}
+	}
+	ARAB_modernize_army = {
+		available = {
+			NOT = {
+				tag = YAG
+				tag = MUM
+				tag = KRN
+			}
+			has_political_power > 75
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ARAB_army_modernized
+			}
+		}
+		cost = 75
+		complete_effect = {
+			ROOT = {
+				country_event = arab.1
+				set_country_flag = ARAB_army_modernized
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = ARAB_unrest_from_modernisation
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ARAB_unrest_from_modernisation
+				}
+			}
+		}
+	}
+	ARAB_invite_military_advisors = {
+		available = {
+			NOT = {
+				tag = YAG
+				tag = MUM
+				tag = KRN
+			}
+			has_political_power > 75
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ARAB_military_advisors
+			}
+		}
+		cost = 75
+		complete_effect = {
+			ROOT = {
+				country_event = arab.1
+				set_country_flag = ARAB_military_advisors
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = ARAB_unrest_from_modernisation
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ARAB_unrest_from_modernisation
+				}
+			}
+		}
+	}
+	ARAB_education_investment = {
+		available = {
+			NOT = {
+				tag = YAG
+				tag = MUM
+				tag = KRN
+			}
+			has_political_power > 75
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ARAB_education_investment
+			}
+		}
+		cost = 75
+		complete_effect = {
+			ROOT = {
+				country_event = arab.1
+				set_country_flag = ARAB_education_investment
+				add_research_slot = 1
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = ARAB_unrest_from_modernisation
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ARAB_unrest_from_modernisation
+				}
+			}
+		}
+	}
+	ARAB_land_reform = {
+		available = {
+			NOT = {
+				tag = YAG
+				tag = MUM
+				tag = KRN
+			}
+			has_political_power > 75
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ARAB_land_reform
+			}
+		}
+		cost = 75
+		complete_effect = {
+			ROOT = {
+				country_event = arab.1
+				set_country_flag = ARAB_land_reform
+				capital_scope = {
+					add_extra_state_shared_building_slots = 2
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = ARAB_unrest_from_modernisation
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ARAB_unrest_from_modernisation
+				}
+			}
+		}
+	}
+	ARAB_establish_industries = {
+		available = {
+			NOT = {
+				tag = YAG
+				tag = MUM
+				tag = KRN
+			}
+			has_political_power > 75
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ARAB_industries_established
+			}
+		}
+		cost = 75
+		complete_effect = {
+			ROOT = {
+				country_event = arab.1
+				set_country_flag = ARAB_industries_established
+				capital_scope = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = ARAB_unrest_from_modernisation
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ARAB_unrest_from_modernisation
+				}
+			}
+		}
+	}
+	ARAB_road_to_modernization = {
+		available = {
+			NOT = {
+				tag = YAG
+				tag = MUM
+				tag = KRN
+			}
+			has_political_power > 100
+			ROOT = {
+				check_variable = {
+					var = root.arab_development
+					value = 6
+				}
+			}
+		}
+		cost = 100
+		visible = {
+			NOT = {
+				tag = YAG
+				tag = MUM
+				tag = KRN
+			}
+		}
+		complete_effect = {
+			country_event = arab.2
+			remove_dynamic_modifier = {
+				modifier = ARAB_unrest_from_modernisation
+			}
+		}
+	}
+}
+
+KRN_dealing_with_unrest = {
+	KRN_the_nation_is_in_flames = {
+		activation = {
+			has_global_flag = ARAB_revolution
+		}
+		available = {
+			KRN = {
+				has_war = no
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = no
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			add_stability = -0.1
+			add_war_support = -0.1
+			add_to_variable = {
+				var = KRN.anti_aggression
+				value = 20
+			}
+		}
+	}
+	KRN_suppress_the_kurds = {
+		activation = {
+			has_global_flag = ARAB_revolution
+		}
+		available = {
+			KRN = {
+				divisions_in_state = {
+					size > 3
+					state = 800
+				}
+				divisions_in_state = {
+					size > 3
+					state = 353
+				}
+				divisions_in_state = {
+					size > 3
+					state = 350
+				}
+				divisions_in_state = {
+					size > 5
+					state = 352
+				}
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			add_stability = -0.1
+			add_war_support = -0.1
+			country_event = korone.2
+			add_to_variable = {
+				var = KRN.anti_aggression
+				value = 20
+			}
+			KUR = {
+				transfer_state = 800
+				transfer_state = 352
+				transfer_state = 350
+				transfer_state = 353
+			}
+		}
+	}
+	KRN_suppress_the_armenians = {
+		activation = {
+			has_global_flag = ARAB_revolution
+		}
+		available = {
+			KRN = {
+				divisions_in_state = {
+					size > 5
+					state = 354
+				}
+				divisions_in_state = {
+					size > 5
+					state = 800
+				}
+				divisions_in_state = {
+					size > 5
+					state = 230
+				}
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			add_stability = -0.1
+			add_war_support = -0.1
+			add_threat = 1
+			country_event = korone.3
+			add_to_variable = {
+				var = KRN.anti_aggression
+				value = 20
+			}
+			ARM = {
+				transfer_state = 230
+				transfer_state = 800
+				transfer_state = 354
+			}
+		}
+	}
+	KRN_suppress_the_azeris = {
+		activation = {
+			has_global_flag = ARAB_revolution
+		}
+		available = {
+			KRN = {
+				divisions_in_state = {
+					size > 6
+					state = 229
+				}
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			add_stability = -0.1
+			add_war_support = -0.1
+			country_event = korone.4
+			add_threat = 1
+			add_to_variable = {
+				var = KRN.anti_aggression
+				value = 20
+			}
+			AZR = {
+				transfer_state = 229
+			}
+		}
+	}
+	KRN_suppress_the_greeks = {
+		activation = {
+			has_global_flag = ARAB_revolution
+		}
+		available = {
+			KRN = {
+				divisions_in_state = {
+					size > 3
+					state = 339
+				}
+				divisions_in_state = {
+					size > 3
+					state = 340
+				}
+				divisions_in_state = {
+					size > 3
+					state = 342
+				}
+				divisions_in_state = {
+					size > 5
+					state = 345
+				}
+				divisions_in_state = {
+					size > 5
+					state = 355
+				}
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			add_stability = -0.1
+			add_war_support = -0.1
+			country_event = korone.5
+			add_threat = 1
+			add_to_variable = {
+				var = KRN.anti_aggression
+				value = 20
+			}
+			GRT = {
+				transfer_state = 339
+				transfer_state = 340
+				transfer_state = 342
+				transfer_state = 345
+				transfer_state = 355
+			}
+			hidden_effect = {
+				SOR = {
+					country_event = sora.2
+				}
+			}
+		}
+	}
+	#For when war does break out
+	KRN_dealing_with_kurds = {
+		activation = {
+			has_country_flag = KRN_dealing_with_kurds
+		}
+		available = {
+			KUR = {
+				exists = no
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.05
+			clr_country_flag = KRN_dealing_with_kurds
+		}
+		timeout_effect = {
+			KRN = {
+				white_peace = KUR
+				country_event = korone.6
+				clr_country_flag = KRN_dealing_with_kurds
+			}
+		}
+	}
+	KRN_dealing_with_armenians = {
+		activation = {
+			has_country_flag = KRN_dealing_with_armenians
+		}
+		available = {
+			ARM = {
+				exists = no
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.05
+			clr_country_flag = KRN_dealing_with_armenians
+		}
+		timeout_effect = {
+			KRN = {
+				white_peace = ARM
+				country_event = korone.7
+				clr_country_flag = KRN_dealing_with_armenians
+			}
+		}
+	}
+	KRN_dealing_with_azeris = {
+		activation = {
+			has_country_flag = KRN_dealing_with_azeris
+		}
+		available = {
+			KUR = {
+				exists = no
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.05
+			clr_country_flag = KRN_dealing_with_azeris
+		}
+		timeout_effect = {
+			KRN = {
+				white_peace = AZR
+				country_event = korone.8
+				clr_country_flag = KRN_dealing_with_azeris
+			}
+		}
+	}
+	KRN_dealing_with_greeks = {
+		activation = {
+			has_country_flag = KRN_dealing_with_greeks
+		}
+		available = {
+			GRT = {
+				exists = no
+			}
+		}
+		cancel_trigger = {
+			always = never
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.05
+			clr_country_flag = KRN_dealing_with_greeks
+		}
+		timeout_effect = {
+			KRN = {
+				white_peace = GRT
+				country_event = korone.9
+				clr_country_flag = KRN_dealing_with_greeks
+			}
+			GRT = {
+				country_event = sora.4
+			}
+		}
+	}
+}

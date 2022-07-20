@@ -1,0 +1,435 @@
+add_namespace = arab
+country_event = {
+	id = arab.1
+	title = arab.1.t
+	desc = arab.1.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#The die is cast
+	option = {
+		name = arab.1.a
+		add_stability = -0.05
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.1
+		}
+		add_to_variable = {
+			var = root.arab_development
+			value = 1
+		}
+		clear_variable = root.arab_development_2
+		set_variable = {
+			var = root.arab_development_2
+			value = root.arab_development
+		}
+		divide_variable = {
+			var = root.arab_development_2
+			value = 100
+		}
+	}
+	#The old order must remain 
+	option = {
+		name = arab.1.b
+		add_stability = -0.05
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+		}
+		add_to_variable = {
+			var = root.arab_development
+			value = 1
+		}
+		clear_variable = root.arab_development_2
+		set_variable = {
+			var = root.arab_development_2
+			value = root.arab_development
+		}
+		divide_variable = {
+			var = root.arab_development_2
+			value = 100
+		}
+		add_to_variable = {
+			var = root.anti_aggression
+			value = 10
+		}
+	}
+}
+
+#Modernization
+country_event = {
+	id = arab.2
+	title = arab.2.t
+	desc = arab.2.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#we are comfortable in our position
+	option = {
+		name = arab.2.a
+		add_stability = 0.05
+	}
+	#Declare Korone Rule illegitimate
+	option = {
+		name = arab.2.b
+		THIS = {
+			OVERLORD = {
+				country_event = korone.1
+				end_puppet = PREV
+				remove_from_faction = PREV
+			}
+		}
+	}
+}
+
+# ARAB REVOLUTION GENERIC MULTIPLE STATES
+country_event = {
+	id = arab.3
+	title = arab.3.t
+	desc = arab.3.desc
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	# WE MUST DEFEND THE OLD ORDER
+	option = {
+		name = arab.3.a
+		start_civil_war = {
+			ideology = fascism
+			size = var:ROOT.party_popularity@fascism
+			keep_political_leader = yes
+		}
+	}
+	#FUCK YOU KORONE, VIVA LA REVOLUTION
+	option = {
+		name = arab.3.b
+		OVERLORD = {
+			end_puppet = PREV
+		}
+		start_civil_war = {
+			ruling_party = fascism
+			ideology = neutrality
+			size = var:ROOT.party_popularity@fascism
+		}
+		if = {
+			limit = {
+				tag = NJD
+			}
+			set_cosmetic_tag = NJD_ind
+			else_if = {
+				limit = {
+					tag = HJZ
+				}
+				set_cosmetic_tag = HJZ_ind
+			}
+			else_if = {
+				limit = {
+					tag = JAB
+				}
+				set_cosmetic_tag = JAB_ind
+			}
+			else_if = {
+				limit = {
+					tag = YEM
+				}
+				set_cosmetic_tag = YEM_ind
+			}
+			else_if = {
+				limit = {
+					tag = JOR
+				}
+				set_cosmetic_tag = JOR_ind
+			}
+			else_if = {
+				limit = {
+					tag = KUW
+				}
+				set_cosmetic_tag = KUW_ind
+			}
+			else_if = {
+				limit = {
+					tag = OMA
+				}
+				set_cosmetic_tag = OMA_ind
+			}
+			else_if = {
+				limit = {
+					tag = QTR
+				}
+				set_cosmetic_tag = QTR_ind
+			}
+			else_if = {
+				limit = {
+					tag = BAH
+				}
+				set_cosmetic_tag = BAH_ind
+			}
+			else_if = {
+				limit = {
+					tag = TRU
+				}
+				set_cosmetic_tag = TRU_ind
+			}
+		}
+	}
+}
+
+# ARAB REVOLUTION GENERIC One state minors
+country_event = {
+	id = arab.4
+	title = arab.4.t
+	desc = arab.4.desc
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	# WE MUST DEFEND THE OLD ORDER
+	option = {
+		name = arab.4.a
+		add_stability = -0.3
+	}
+	#FUCK YOU KORONE, VIVA LA REVOLUTION
+	option = {
+		name = arab.4.b
+		add_stability = -0.3
+		OVERLORD = {
+			end_puppet = PREV
+		}
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		if = {
+			limit = {
+				tag = NJD
+			}
+			set_cosmetic_tag = NJD_ind
+			else_if = {
+				limit = {
+					tag = HJZ
+				}
+				set_cosmetic_tag = HJZ_ind
+			}
+			else_if = {
+				limit = {
+					tag = JAB
+				}
+				set_cosmetic_tag = JAB_ind
+			}
+			else_if = {
+				limit = {
+					tag = YEM
+				}
+				set_cosmetic_tag = YEM_ind
+			}
+			else_if = {
+				limit = {
+					tag = JOR
+				}
+				set_cosmetic_tag = JOR_ind
+			}
+			else_if = {
+				limit = {
+					tag = KUW
+				}
+				set_cosmetic_tag = KUW_ind
+			}
+			else_if = {
+				limit = {
+					tag = OMA
+				}
+				set_cosmetic_tag = OMA_ind
+			}
+			else_if = {
+				limit = {
+					tag = QTR
+				}
+				set_cosmetic_tag = QTR_ind
+			}
+			else_if = {
+				limit = {
+					tag = BAH
+				}
+				set_cosmetic_tag = BAH_ind
+			}
+			else_if = {
+				limit = {
+					tag = TRU
+				}
+				set_cosmetic_tag = TRU_ind
+			}
+		}
+	}
+}
+
+# ARAB REVOLUTION - Yagooist Palestine
+country_event = {
+	id = arab.5
+	title = arab.5.t
+	desc = arab.5.desc
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	# Oh hell no
+	option = {
+		name = arab.5.a
+		add_to_variable = {
+			var = YAG.anti_aggression
+			value = 10
+		}
+		add_threat = 2.5
+		PAL = {
+			transfer_state = 843
+		}
+		create_wargoal = {
+			target = PAL
+			type = annex_everything
+		}
+	}
+	#ogey
+	option = {
+		name = arab.5.b
+		add_to_variable = {
+			var = YAG.anti_aggression
+			value = 10
+		}
+		PAL = {
+			transfer_state = 843
+		}
+	}
+}
+
+# ARAB REVOLUTION - Korone Syria and Iraq
+country_event = {
+	id = arab.6
+	title = arab.6.t
+	desc = arab.6.desc
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	# Oh hell no
+	option = {
+		name = arab.6.a
+		add_to_variable = {
+			var = KRN.anti_aggression
+			value = 10
+		}
+		SYR = {
+			transfer_state = 1044
+			transfer_state = 554
+			transfer_state = 677
+			transfer_state = 1047
+			transfer_state = 1045
+			transfer_state = 680
+			transfer_state = 1046
+		}
+		IRQ = {
+			transfer_state = 291
+			transfer_state = 676
+			transfer_state = 1051
+			transfer_state = 1049
+			transfer_state = 675
+			transfer_state = 1052
+			transfer_state = 1050
+		}
+		create_wargoal = {
+			target = SYR
+			type = annex_everything
+		}
+		create_wargoal = {
+			target = IRQ
+			type = annex_everything
+		}
+	}
+	#ogey
+	option = {
+		name = arab.6.b
+		add_threat = 5
+		add_to_variable = {
+			var = KRN.anti_aggression
+			value = 10
+		}
+		SYR = {
+			transfer_state = 1044
+			transfer_state = 554
+			transfer_state = 677
+			transfer_state = 1047
+			transfer_state = 1048
+			transfer_state = 1045
+			transfer_state = 680
+			transfer_state = 1046
+		}
+		IRQ = {
+			transfer_state = 291
+			transfer_state = 676
+			transfer_state = 1051
+			transfer_state = 1049
+			transfer_state = 675
+			transfer_state = 1052
+			transfer_state = 1050
+		}
+	}
+}
+
+# ARAB REVOLUTION GENERIC Mumei
+country_event = {
+	id = arab.7
+	title = arab.7.t
+	desc = arab.7.desc
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	# WE MUST DEFEND THE OLD ORDER
+	option = {
+		name = arab.7.a
+		add_stability = -0.3
+	}
+	#Ig we will make compromises
+	option = {
+		name = arab.7.b
+		add_stability = -0.3
+		set_politics = {
+			ruling_party = reactionary_nationalism
+			elections_allowed = no
+		}
+	}
+}
+
+# SUDAN - Free our brothers?
+country_event = {
+	id = arab.8
+	title = arab.8.t
+	desc = arab.8.desc
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	# Uhh no thanks
+	option = {
+		name = arab.8.a
+		add_stability = -0.2
+		add_to_variable = {
+			var = SUD.anti_aggression
+			value = 25
+		}
+	}
+	#Ha^ha^ha^ let's destroy that infidel rabbit
+	option = {
+		name = arab.8.b
+		add_stability = 0.15
+		add_war_support = 0.3
+		PEK = {
+			end_puppet = SUD
+			remove_from_faction = SUD
+		}
+		SUD = {
+			declare_war_on = {
+				target = PEK
+				type = annex_everything
+			}
+		}
+	}
+}
+
+#Islamic instability
+country_event = {
+	id = arab.9
+	title = arab.9.t
+	desc = arab.9.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#F
+	option = {
+		name = arab.9.a
+		add_stability = -0.05
+	}
+}

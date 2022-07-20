@@ -20,3 +20,70 @@ country_event = {
 		}
 	}
 }
+
+### SUPPORT OUR GREEK FRIENDS?
+country_event = {
+	id = sora.2
+	title = sora.2.t
+	desc = sora.2.d
+	picture = GFX_report_event_sora
+	is_triggered_only = yes
+	#God no
+	option = {
+		name = sora.2.a
+	}
+	#sure
+	option = {
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 300
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -300
+		}
+		GRT = {
+			country_event = sora.3
+		}
+	}
+}
+
+###	Greek rebels - sora gives us aid
+country_event = {
+	id = sora.3
+	title = sora.3.t
+	desc = sora.3.d
+	picture = GFX_report_event_sora
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = sora.3.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 300
+		}
+	}
+}
+
+### GREEK REBELS - do we join sora
+country_event = {
+	id = sora.4
+	title = sora.4.t
+	desc = sora.4.d
+	picture = GFX_report_event_sora
+	is_triggered_only = yes
+	#no
+	option = {
+		name = sora.4.a
+	}
+	#sure ig
+	option = {
+		name = sora.4.b
+		SOR = {
+			annex_country = {
+				target = GRT
+			}
+		}
+	}
+}

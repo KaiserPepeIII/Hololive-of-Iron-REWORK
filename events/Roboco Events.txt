@@ -1,0 +1,28 @@
+add_namespace = roboco
+#Bashir War
+country_event = {
+	id = roboco.1
+	title = roboco.1.t
+	desc = roboco.1.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#No one crosses the state
+	option = {
+		name = roboco.1.a
+		add_stability = 0.05
+		SOM = {
+			transfer_state = 884
+			transfer_state = 269
+			transfer_state = 1072
+			transfer_state = 1073
+			transfer_state = 1074
+			transfer_state = 559
+		}
+		ROB = {
+			declare_war_on = {
+				target = SOM
+				type = annex_everything
+			}
+		}
+	}
+}
