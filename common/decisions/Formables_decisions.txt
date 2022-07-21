@@ -1,0 +1,1512 @@
+#
+#	Documenation in Formables Category.txt
+#
+#
+#	FOR ALLOWED NATIONS
+# 	format: GEN_form_(country)
+#
+#	TO FORM PUPPET
+#	format : GEN_create_puppet_(country)
+#
+#	
+#
+#################
+#
+# China Formable 
+#
+#
+CAT_form_china = {
+	GEN_form_china = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = GAW
+					tag = NIN
+					tag = NEN
+					tag = XSM
+					tag = LUN
+					tag = TOW
+					tag = WAT
+					tag = YOG
+					tag = CIV
+					tag = ART
+					tag = RSA
+					tag = CPG
+					tag = DOR
+				}
+				can_form_china = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_china_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_china = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_china_effect_tooltip
+			set_temp_variable = {
+				var = get_tag_for_cosmetic
+				value = ROOT.id
+			}
+			meta_effect = {
+				text = {
+					set_cosmetic_tag = [get_tag_for_cosmetic]_china
+				}
+				get_tag_for_cosmetic = "[?get_tag_for_cosmetic]"
+			}
+			hidden_effect = {
+				form_china = yes
+			}
+		}
+	}
+	GEN_create_puppet_china = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = GAW
+					tag = NIN
+					tag = NEN
+					tag = XSM
+					tag = LUN
+					tag = TOW
+					tag = WAT
+					tag = YOG
+					tag = CIV
+					tag = ART
+					tag = RSA
+					tag = CPG
+					tag = DOR
+				}
+				can_form_china = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_china_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_china = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_china_effect_tooltip
+			hidden_effect = {
+				make_puppet_china = yes
+				puppet = CN1
+			}
+		}
+	}
+}
+
+#
+#
+#
+# Arabia Formable 
+#
+#
+CAT_form_arabia = {
+	GEN_form_arabia = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = JOR
+					tag = HJZ
+					tag = NJD
+					tag = YEM
+					tag = OMA
+					tag = TRU
+					tag = BAH
+					tag = QTR
+					tag = KUW
+					tag = JAB
+					tag = MUM
+				}
+				can_form_arabia = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_arabia_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_arabia = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_arabia_effect_tooltip
+			hidden_effect = {
+				form_arabia = yes
+			}
+		}
+	}
+	GEN_create_puppet_arabia = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = JOR
+					tag = HJZ
+					tag = NJD
+					tag = YEM
+					tag = OMA
+					tag = TRU
+					tag = BAH
+					tag = QTR
+					tag = KUW
+					tag = JAB
+					tag = MUM
+				}
+				can_form_arabia = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_arabia_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_arabia = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_arabia_effect_tooltip
+			hidden_effect = {
+				make_puppet_arabia = yes
+				puppet = AR1
+			}
+		}
+	}
+}
+
+CAT_form_rome = {
+	GEN_form_rome = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = SUI
+					tag = PEK
+					tag = MIK
+					tag = SOR
+					tag = MEL
+				}
+				can_form_rome = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_rome_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_rome = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_rome_effect_tooltip
+			hidden_effect = {
+				form_rome = yes
+			}
+		}
+	}
+	GEN_create_puppet_rome = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = SUI
+					tag = PEK
+					tag = MIK
+					tag = SOR
+					tag = MEL
+				}
+				can_form_rome = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_rome_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_rome = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_rome_effect_tooltip
+			hidden_effect = {
+				make_puppet_rome = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_america = {
+	GEN_form_america = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = BTN
+					tag = USA
+					tag = MIO
+					tag = COC
+					tag = KOY
+					tag = MRI
+				}
+				can_form_america = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_america_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_america = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_america_effect_tooltip
+			hidden_effect = {
+				form_america = yes
+			}
+		}
+	}
+	GEN_create_puppet_america = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = BTN
+					tag = USA
+					tag = MIO
+					tag = COC
+					tag = KOY
+					tag = MRI
+				}
+				can_form_america = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_america_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_america = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_america_effect_tooltip
+			hidden_effect = {
+				make_puppet_america = yes
+				puppet = US1
+			}
+		}
+	}
+}
+
+CAT_form_gaelic = {
+	GEN_form_gaelic = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = FAU
+					tag = IRE
+					tag = SCO
+					tag = WLS
+					tag = ULS
+				}
+				can_form_gaelic = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_gaelic_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_gaelic = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_gaelic_effect_tooltip
+			hidden_effect = {
+				form_gaelic = yes
+			}
+		}
+	}
+	GEN_create_puppet_gaelic = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = FAU
+					tag = IRE
+					tag = SCO
+					tag = WLS
+					tag = ULS
+				}
+				can_form_gaelic = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_gaelic_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_gaelic = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_gaelic_effect_tooltip
+			hidden_effect = {
+				make_puppet_gaelic = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_england = {
+	GEN_form_england = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = WEM
+					tag = ULS
+					tag = WES
+					tag = EAN
+					tag = LON
+				}
+				can_form_england = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_england_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_england = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_england_effect_tooltip
+			hidden_effect = {
+				form_england = yes
+			}
+		}
+	}
+	GEN_create_puppet_england = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = WEM
+					tag = ULS
+					tag = WES
+					tag = EAN
+					tag = LON
+				}
+				can_form_england = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_england_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_england = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_england_effect_tooltip
+			hidden_effect = {
+				make_puppet_england = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_british_isles = {
+	GEN_form_british = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = FAU
+					tag = IRE
+					tag = SCO
+					tag = WLS
+					tag = WEM
+					tag = ULS
+					tag = WES
+					tag = EAN
+					tag = LON
+				}
+				can_form_british = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_british_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_british = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_british_effect_tooltip
+			hidden_effect = {
+				form_british = yes
+			}
+		}
+	}
+	GEN_create_puppet_british = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = FAU
+					tag = IRE
+					tag = SCO
+					tag = WLS
+					tag = WEM
+					tag = ULS
+					tag = WES
+					tag = EAN
+					tag = LON
+				}
+				can_form_british = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_british_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_british = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_british_effect_tooltip
+			hidden_effect = {
+				make_puppet_british = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_canada = {
+	GEN_form_canada = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = PLK
+					tag = BTN
+				}
+				can_form_canada = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_canada_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_canada = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_canada_effect_tooltip
+			hidden_effect = {
+				form_canada = yes
+			}
+		}
+	}
+	GEN_create_puppet_canada = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = PLK
+					tag = BTN
+				}
+				can_form_canada = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_canada_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_canada = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_canada_effect_tooltip
+			hidden_effect = {
+				make_puppet_canada = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_central_america = {
+	GEN_form_central_america = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = LUI
+					tag = GUA
+					tag = HON
+					tag = ELS
+					tag = COS
+					tag = PAN
+					tag = NIC
+				}
+				can_form_central_america = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_central_america_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_central_america = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_central_america_effect_tooltip
+			hidden_effect = {
+				form_central_america = yes
+			}
+		}
+	}
+	GEN_create_puppet_central_america = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = LUI
+					tag = GUA
+					tag = HON
+					tag = ELS
+					tag = COS
+					tag = PAN
+					tag = NIC
+				}
+				can_form_central_america = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_central_america_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_central_america = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_central_america_effect_tooltip
+			hidden_effect = {
+				make_puppet_central_america = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_russia = {
+	GEN_form_russia = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = RUS
+					tag = RSR
+					tag = NEN
+					tag = LUN
+					tag = FLA
+					tag = LAM
+				}
+				can_form_russia = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_russia_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_russia = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_russia_effect_tooltip
+			hidden_effect = {
+				form_russia = yes
+			}
+		}
+	}
+	GEN_create_puppet_russia = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = RUS
+					tag = RSR
+					tag = NEN
+					tag = LUN
+					tag = FLA
+					tag = LAM
+				}
+				can_form_russia = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_russia_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_russia = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_russia_effect_tooltip
+			hidden_effect = {
+				make_puppet_russia = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_germany = {
+	GEN_form_germany = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = KIA
+					tag = GER
+					tag = AUS
+				}
+				can_form_germany = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_germany_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_germany = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_germany_effect_tooltip
+			hidden_effect = {
+				form_germany = yes
+			}
+		}
+	}
+	GEN_create_puppet_germany = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = KIA
+					tag = GER
+					tag = AUS
+					tag = NOE
+				}
+				can_form_germany = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_germany_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_germany = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_germany_effect_tooltip
+			hidden_effect = {
+				make_puppet_germany = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_austrian_empire = {
+	GEN_form_austria = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = ALO
+					tag = AUS
+					tag = CZE
+					tag = KIA
+				}
+				can_form_austria = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_austria_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_austria = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_austria_effect_tooltip
+			hidden_effect = {
+				form_austria = yes
+			}
+		}
+	}
+}
+
+CAT_form_ukraine = {
+	GEN_form_ukraine = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = FLA
+				}
+				can_form_ukraine = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_ukraine_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_ukraine = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_ukraine_effect_tooltip
+			hidden_effect = {
+				form_ukraine = yes
+			}
+		}
+	}
+	GEN_create_puppet_ukraine = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = FLA
+				}
+				can_form_ukraine = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_ukraine_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_ukraine = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_ukraine_effect_tooltip
+			hidden_effect = {
+				make_puppet_ukraine = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_caucasus = {
+	GEN_form_caucasus = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = LAM
+					tag = ARM
+					tag = AZR
+				}
+				can_form_caucasus = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_caucasus_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_caucasus = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_caucasus_effect_tooltip
+			hidden_effect = {
+				form_caucasus = yes
+			}
+		}
+	}
+	GEN_create_puppet_caucasus = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = LAM
+					tag = ARM
+					tag = AZR
+				}
+				can_form_caucasus = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_caucasus_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_caucasus = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_caucasus_effect_tooltip
+			hidden_effect = {
+				make_puppet_caucasus = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_greater_egypt = {
+	GEN_form_egypt = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = MUM
+					tag = SUD
+				}
+				can_form_egypt = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_egypt_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_egypt = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_egypt_effect_tooltip
+			hidden_effect = {
+				form_egypt = yes
+			}
+		}
+	}
+	GEN_create_puppet_egypt = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = MUM
+					tag = SUD
+				}
+				can_form_egypt = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_egypt_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_egypt = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_egypt_effect_tooltip
+			hidden_effect = {
+				make_puppet_egypt = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_africa = {
+	GEN_form_africa = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				capital_scope = {
+					is_on_continent = africa
+				}
+				can_form_africa = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_africa_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_africa = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_africa_effect_tooltip
+			hidden_effect = {
+				form_africa = yes
+			}
+		}
+	}
+	GEN_create_puppet_africa = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					capital_scope = {
+						is_on_continent = africa
+					}
+				}
+				can_form_africa = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_africa_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_africa = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_africa_effect_tooltip
+			hidden_effect = {
+				make_puppet_africa = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_india = {
+	GEN_form_india = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = MAT
+					tag = AFG
+					tag = ROS
+					tag = OKA
+				}
+				can_form_india = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_india_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_india = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_india_effect_tooltip
+			hidden_effect = {
+				form_india = yes
+			}
+		}
+	}
+	GEN_create_puppet_india = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = MAT
+					tag = AFG
+					tag = ROS
+					tag = OKA
+				}
+				can_form_india = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_india_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_india = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_india_effect_tooltip
+			hidden_effect = {
+				make_puppet_india = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_central_asia = {
+	GEN_form_central_asia = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = TOW
+					tag = LUN
+					tag = KAZ
+					tag = TMS
+					tag = UZB
+					tag = KYR
+					tag = SAN
+					tag = AFG
+				}
+				can_form_central_asia = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_central_asia_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_central_asia = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_central_asia_effect_tooltip
+			hidden_effect = {
+				form_central_asia = yes
+			}
+		}
+	}
+	GEN_create_puppet_central_asia = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = TOW
+					tag = LUN
+					tag = KAZ
+					tag = TMS
+					tag = UZB
+					tag = KYR
+					tag = SAN
+					tag = AFG
+				}
+				can_form_central_asia = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_central_asia_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_central_asia = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_central_asia_effect_tooltip
+			hidden_effect = {
+				make_puppet_central_asia = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_grand_colombia = {
+	GEN_form_grand_colombia = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = BAE
+					tag = ECU
+					tag = PAN
+					tag = VEN
+				}
+				can_form_grand_colombia = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_grand_colombia_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_grand_colombia = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_grand_colombia_effect_tooltip
+			hidden_effect = {
+				form_grand_colombia = yes
+			}
+		}
+	}
+	GEN_create_puppet_grand_colombia = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = BAE
+					tag = ECU
+					tag = PAN
+					tag = VEN
+				}
+				can_form_grand_colombia = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_grand_colombia_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_grand_colombia = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_grand_colombia_effect_tooltip
+			hidden_effect = {
+				make_puppet_grand_colombia = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_caribbean = {
+	GEN_form_caribbean = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = CUB
+					tag = DOM
+					tag = HAI
+					tag = MAR
+					tag = GYA
+				}
+				can_form_caribbean = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_caribbean_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_caribbean = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_caribbean_effect_tooltip
+			hidden_effect = {
+				form_caribbean = yes
+			}
+		}
+	}
+	GEN_create_puppet_caribbean = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = CUB
+					tag = DOM
+					tag = HAI
+					tag = MAR
+					tag = GYA
+				}
+				can_form_caribbean = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_caribbean_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_caribbean = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_caribbean_effect_tooltip
+			hidden_effect = {
+				make_puppet_caribbean = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_mexican_empire = {
+	GEN_form_mexico = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = KAN
+					tag = LUI
+				}
+				can_form_mexico = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_mexico_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_mexico = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_mexico_effect_tooltip
+			hidden_effect = {
+				form_mexico = yes
+			}
+		}
+	}
+	GEN_create_puppet_mexico = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = KAN
+					tag = LUI
+				}
+				can_form_mexico = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_mexico_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_mexico = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_mexico_effect_tooltip
+			hidden_effect = {
+				make_puppet_mexico = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_north_africa = {
+	GEN_form_north_africa = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = MOR
+					tag = ALG
+					tag = MUM
+				}
+				can_form_north_africa = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_north_africa_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_north_africa = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_north_africa_effect_tooltip
+			hidden_effect = {
+				form_north_africa = yes
+			}
+		}
+	}
+	GEN_create_puppet_north_africa = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = MOR
+					tag = ALG
+					tag = MUM
+				}
+				can_form_north_africa = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_north_africa_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_north_africa = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_north_africa_effect_tooltip
+			hidden_effect = {
+				make_puppet_north_africa = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_poland = {
+	GEN_form_poland = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = KRO
+					tag = ALO
+					tag = FLA
+				}
+				can_form_poland = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_poland_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_poland = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_poland_effect_tooltip
+			hidden_effect = {
+				form_poland = yes
+			}
+		}
+	}
+	GEN_create_puppet_poland = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = KRO
+					tag = ALO
+					tag = FLA
+				}
+				can_form_poland = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_poland_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_poland = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_poland_effect_tooltip
+			hidden_effect = {
+				make_puppet_poland = yes
+				puppet = RM1
+			}
+		}
+	}
+}
+
+CAT_form_balkans = {
+	GEN_form_balkans = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			has_political_power > 150
+			hidden_trigger = {
+				OR = {
+					tag = ACH
+					tag = HIT
+					tag = ALO
+					tag = SOR
+					tag = MEL
+				}
+				can_form_balkans = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_balkans_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_balkans = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_balkans_effect_tooltip
+			hidden_effect = {
+				form_balkans = yes
+			}
+		}
+	}
+	GEN_create_puppet_balkans = {
+		icon = GFX_decision_icon_default
+		cost = 150
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = ACH
+					tag = HIT
+					tag = ALO
+					tag = SOR
+					tag = MEL
+				}
+				can_form_balkans = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = can_form_balkans_trigger_tooltip
+			}
+		}
+		visible = {
+			can_see_form_balkans = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = can_form_balkans_effect_tooltip
+			hidden_effect = {
+				make_puppet_balkans = yes
+				puppet = RM1
+			}
+		}
+	}
+}
