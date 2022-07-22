@@ -1598,6 +1598,15 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_support_coco
 		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
 		x = 62
 		y = 3
 	}
@@ -1607,6 +1616,13 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_support_coco
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.1
+			}
+			add_war_support = 0.1
 		}
 		x = 64
 		y = 3
@@ -1621,6 +1637,34 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_encourage_military_industry
 		}
+		completion_reward = {
+			IF = {
+				limit = {
+					any_neighbor_country = {
+						is_lhs_ideology = yes
+					}
+				}
+				random_neighbor_country = {
+					limit = {
+						is_lhs_ideology = yes
+					}
+					country_event = {
+						id = resistance.1
+						days = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					any_neighbor_country = {
+						is_lhs_ideology = no
+					}
+				}
+				add_political_power = 100
+				add_war_support = 0.05
+			}
+			custom_effect_tooltip = proclaim_fall_of_lhs_reward_tooltip
+		}
 		x = 63
 		y = 4
 	}
@@ -1630,6 +1674,30 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_proclaim_fall_of_lhs
+		}
+		completion_reward = {
+			
+			random_neighbor_country = {
+				limit = {
+					NOT = {
+						is_lhs_ideology = no
+						is_guaranteed_by = ROOT
+						is_in_faction_with = ROOT
+						has_non_aggression_pact_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				set_temp_variable = {
+					var = mogg
+					value = THIS.id
+				}
+			}
+			ROOT = {
+				create_wargoal = {
+					target = var:mogg
+					type = puppet_wargoal_focus
+				}
+			}
 		}
 		x = 63
 		y = 5
