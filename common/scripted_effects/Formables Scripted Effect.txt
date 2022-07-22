@@ -3,7 +3,10 @@
 # 	format: form_(country)
 #
 #	TO FORM PUPPET
-#	format : make_puppet_(country)
+#	format: make_puppet_(country)
+#
+#	GET COSMETIC TAG
+#	format: get_cosmetic_(country)
 #
 ############
 #	China
@@ -21,12 +24,12 @@ form_china = {
 	add_state_core = 617
 	add_state_core = 618
 	add_state_core = 619
+	add_state_core = 322
 	add_state_core = 287
 	add_state_core = 759
 	add_state_core = 760
 	add_state_core = 441
 	add_state_core = 758
-	add_state_core = 332
 	add_state_core = 604
 	add_state_core = 601
 	add_state_core = 757
@@ -38,6 +41,7 @@ form_china = {
 	add_state_core = 746
 	add_state_core = 621
 	add_state_core = 612
+	add_state_core = 611
 	#Northern China @CPG, DOR, YOG, YAG
 	add_state_core = 617
 	add_state_core = 610
@@ -68,11 +72,12 @@ form_china = {
 	#@GAW and Shanghai
 	add_state_core = 283
 	add_state_core = 744
-	add_state_core = 626
 	add_state_core = 607
 	add_state_core = 750
 	add_state_core = 748
 	add_state_core = 603
+	add_state_core = 620
+	add_state_core = 834
 	add_state_core = 599
 	add_state_core = 602
 	add_state_core = 600
@@ -80,7 +85,6 @@ form_china = {
 	add_state_core = 749
 	add_state_core = 606
 	add_state_core = 598
-	add_state_core = 28
 	add_state_core = 749
 	add_state_core = 600
 	add_state_core = 595
@@ -103,12 +107,12 @@ make_puppet_china = {
 		add_state_core = 617
 		add_state_core = 618
 		add_state_core = 619
+		add_state_core = 322
 		add_state_core = 287
 		add_state_core = 759
 		add_state_core = 760
 		add_state_core = 441
 		add_state_core = 758
-		add_state_core = 332
 		add_state_core = 604
 		add_state_core = 601
 		add_state_core = 757
@@ -120,6 +124,7 @@ make_puppet_china = {
 		add_state_core = 746
 		add_state_core = 621
 		add_state_core = 612
+		add_state_core = 611
 		#Northern China @CPG, DOR, YOG, YAG
 		add_state_core = 617
 		add_state_core = 610
@@ -150,11 +155,12 @@ make_puppet_china = {
 		#@GAW and Shanghai
 		add_state_core = 283
 		add_state_core = 744
-		add_state_core = 626
 		add_state_core = 607
 		add_state_core = 750
 		add_state_core = 748
 		add_state_core = 603
+		add_state_core = 620
+		add_state_core = 834
 		add_state_core = 599
 		add_state_core = 602
 		add_state_core = 600
@@ -162,7 +168,6 @@ make_puppet_china = {
 		add_state_core = 749
 		add_state_core = 606
 		add_state_core = 598
-		add_state_core = 28
 		add_state_core = 749
 		add_state_core = 600
 		add_state_core = 595
@@ -179,6 +184,87 @@ make_puppet_china = {
 			}
 		}
 		transfer_state_to = CN1
+	}
+}
+
+get_cosmetic_china = {
+	if = {
+		limit = {
+			tag = GAW
+		}
+		set_cosmetic_tag = GAW_formable_CHINA
+		else_if = {
+			limit = {
+				tag = NIN
+			}
+			set_cosmetic_tag = NIN_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = NEN
+			}
+			set_cosmetic_tag = NEN_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = XSM
+			}
+			set_cosmetic_tag = XSM_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = LUN
+			}
+			set_cosmetic_tag = LUN_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = TOW
+			}
+			set_cosmetic_tag = TOW_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = WAT
+			}
+			set_cosmetic_tag = WAT_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = YOG
+			}
+			set_cosmetic_tag = YOG_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = CIV
+			}
+			set_cosmetic_tag = CIV_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = ART
+			}
+			set_cosmetic_tag = ART_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = RSA
+			}
+			set_cosmetic_tag = RSA_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = CPG
+			}
+			set_cosmetic_tag = CPG_formable_CHINA
+		}
+		else_if = {
+			limit = {
+				tag = DOR
+			}
+			set_cosmetic_tag = DOR_formable_CHINA
+		}
 	}
 }
 
@@ -207,6 +293,7 @@ form_arabia = {
 	#Jordan-Palestine
 	add_state_core = 843
 	add_state_core = 454
+	add_state_core = 453
 	add_state_core = 553
 	add_state_core = 455
 	add_state_core = 1042
@@ -253,6 +340,7 @@ make_puppet_arabia = {
 		add_state_core = 1052
 		#Jordan-Palestine
 		add_state_core = 843
+		add_state_core = 453
 		add_state_core = 454
 		add_state_core = 553
 		add_state_core = 455
@@ -289,6 +377,18 @@ make_puppet_arabia = {
 	}
 }
 
+get_cosmetic_arabia = {
+	if = {
+		limit = {
+			tag = MUM
+		}
+		set_cosmetic_tag = MUM_formable_ARABIA
+		ELSE = {
+			set_cosmetic_tag = GEN_formable_ARABIA
+		}
+	}
+}
+
 ############
 #	Rome
 ############
@@ -310,10 +410,13 @@ form_rome = {
 	add_state_core = 844
 	add_state_core = 338
 	add_state_core = 132
-	add_state_core = 120
+	add_state_core = 130
 	add_state_core = 131
 	#France and Belgium
 	add_state_core = 6
+	add_state_core = 806
+	add_state_core = 942
+	add_state_core = 735
 	add_state_core = 34
 	add_state_core = 29
 	add_state_core = 8
@@ -356,6 +459,10 @@ form_rome = {
 	add_state_core = 946
 	add_state_core = 976
 	add_state_core = 1066
+	add_state_core = 83
+	add_state_core = 84
+	add_state_core = 941
+	add_state_core = 932
 	add_state_core = 153
 	add_state_core = 152
 	add_state_core = 1065
@@ -446,12 +553,13 @@ form_rome = {
 	add_state_core = 339
 	add_state_core = 342
 	add_state_core = 343
-	add_state_core = 868
 	add_state_core = 347
 	add_state_core = 356
 	add_state_core = 49
 	add_state_core = 346
+	add_state_core = 865
 	add_state_core = 345
+	add_state_core = 452
 	add_state_core = 348
 	add_state_core = 798
 	add_state_core = 349
@@ -522,6 +630,7 @@ form_rome = {
 	add_state_core = 792
 	add_state_core = 790
 	add_state_core = 171
+	add_state_core = 174
 	add_state_core = 791
 	add_state_core = 41
 	add_state_core = 788
@@ -539,6 +648,17 @@ form_rome = {
 	add_state_core = 795
 	add_state_core = 118
 	add_state_core = 179
+	#Iraq and Caucasus
+	add_state_core = 229
+	add_state_core = 230
+	add_state_core = 1049
+	add_state_core = 1050
+	add_state_core = 1051
+	add_state_core = 1052
+	add_state_core = 676
+	add_state_core = 675
+	add_state_core = 656
+	add_state_core = 291
 }
 
 make_puppet_rome = {
@@ -560,10 +680,13 @@ make_puppet_rome = {
 		add_state_core = 844
 		add_state_core = 338
 		add_state_core = 132
-		add_state_core = 120
+		add_state_core = 130
 		add_state_core = 131
 		#France and Belgium
 		add_state_core = 6
+		add_state_core = 806
+		add_state_core = 942
+		add_state_core = 735
 		add_state_core = 34
 		add_state_core = 29
 		add_state_core = 8
@@ -606,6 +729,10 @@ make_puppet_rome = {
 		add_state_core = 946
 		add_state_core = 976
 		add_state_core = 1066
+		add_state_core = 83
+		add_state_core = 84
+		add_state_core = 941
+		add_state_core = 932
 		add_state_core = 153
 		add_state_core = 152
 		add_state_core = 1065
@@ -696,12 +823,13 @@ make_puppet_rome = {
 		add_state_core = 339
 		add_state_core = 342
 		add_state_core = 343
-		add_state_core = 868
 		add_state_core = 347
 		add_state_core = 356
 		add_state_core = 49
 		add_state_core = 346
+		add_state_core = 865
 		add_state_core = 345
+		add_state_core = 452
 		add_state_core = 348
 		add_state_core = 798
 		add_state_core = 349
@@ -772,6 +900,7 @@ make_puppet_rome = {
 		add_state_core = 792
 		add_state_core = 790
 		add_state_core = 171
+		add_state_core = 174
 		add_state_core = 791
 		add_state_core = 41
 		add_state_core = 788
@@ -789,6 +918,17 @@ make_puppet_rome = {
 		add_state_core = 795
 		add_state_core = 118
 		add_state_core = 179
+		#Iraq and Caucasus
+		add_state_core = 229
+		add_state_core = 230
+		add_state_core = 1049
+		add_state_core = 1050
+		add_state_core = 1051
+		add_state_core = 1052
+		add_state_core = 676
+		add_state_core = 675
+		add_state_core = 656
+		add_state_core = 291
 		every_state = {
 			limit = {
 				is_core_of = RM1
@@ -798,6 +938,39 @@ make_puppet_rome = {
 				}
 			}
 			transfer_state_to = RM1
+		}
+	}
+}
+
+get_cosmetic_rome = {
+	if = {
+		limit = {
+			tag = SUI
+		}
+		set_cosmetic_tag = SUI_formable_ROME
+		else_if = {
+			limit = {
+				tag = PEK
+			}
+			set_cosmetic_tag = PEK_formable_ROME
+		}
+		else_if = {
+			limit = {
+				tag = MIK
+			}
+			set_cosmetic_tag = MIK_formable_ROME
+		}
+		else_if = {
+			limit = {
+				tag = SOR
+			}
+			set_cosmetic_tag = SOR_formable_ROME
+		}
+		else_if = {
+			limit = {
+				tag = MEL
+			}
+			set_cosmetic_tag = MEL_formable_ROME
 		}
 	}
 }
@@ -848,6 +1021,7 @@ form_america = {
 	#KOY, BTN and MRI
 	add_state_core = 377
 	add_state_core = 386
+	add_state_core = 385
 	add_state_core = 1024
 	add_state_core = 379
 	add_state_core = 378
@@ -858,6 +1032,8 @@ form_america = {
 	add_state_core = 813
 	#US Occupation
 	add_state_core = 396
+	add_state_core = 395
+	add_state_core = 359
 	add_state_core = 394
 	add_state_core = 817
 	add_state_core = 391
@@ -918,6 +1094,7 @@ make_puppet_america = {
 		#KOY, BTN and MRI
 		add_state_core = 377
 		add_state_core = 386
+		add_state_core = 385
 		add_state_core = 1024
 		add_state_core = 379
 		add_state_core = 378
@@ -928,6 +1105,8 @@ make_puppet_america = {
 		add_state_core = 813
 		#US Occupation
 		add_state_core = 396
+		add_state_core = 395
+		add_state_core = 359
 		add_state_core = 394
 		add_state_core = 817
 		add_state_core = 391
@@ -951,6 +1130,45 @@ make_puppet_america = {
 				}
 			}
 			transfer_state_to = US1
+		}
+	}
+}
+
+get_cosmetic_america = {
+	if = {
+		limit = {
+			tag = BTN
+		}
+		set_cosmetic_tag = BTN_formable_AMERICA
+		else_if = {
+			limit = {
+				tag = USA
+			}
+			set_cosmetic_tag = USA_formable_AMERICA
+		}
+		else_if = {
+			limit = {
+				tag = MIO
+			}
+			set_cosmetic_tag = MIO_formable_AMERICA
+		}
+		else_if = {
+			limit = {
+				tag = COC
+			}
+			set_cosmetic_tag = COC_formable_AMERICA
+		}
+		else_if = {
+			limit = {
+				tag = KOY
+			}
+			set_cosmetic_tag = KOY_formable_AMERICA
+		}
+		else_if = {
+			limit = {
+				tag = MRI
+			}
+			set_cosmetic_tag = MRI_formable_AMERICA
 		}
 	}
 }
@@ -1018,6 +1236,18 @@ make_puppet_gaelic = {
 	}
 }
 
+get_cosmetic_gaelic = {
+	if = {
+		limit = {
+			tag = FAU
+		}
+		set_cosmetic_tag = FAU_formable_GAELIC
+		else = {
+			set_cosmetic_tag = GEN_formable_GAELIC
+		}
+	}
+}
+
 ############
 #	England
 ############
@@ -1075,6 +1305,10 @@ make_puppet_england = {
 		}
 		transfer_state_to = EN1
 	}
+}
+
+get_cosmetic_england = {
+	set_cosmetic_tag = GEN_formable_ENGLAND
 }
 
 ############
@@ -1178,6 +1412,28 @@ make_puppet_british = {
 	}
 }
 
+get_cosmetic_british = {
+	if = {
+		limit = {
+			tag = FAU
+		}
+		set_cosmetic_tag = FAU_formable_BRITISH
+		else_if = {
+			limit = {
+				OR = {
+					tag = IRE
+					tag = SCO
+					tag = WLS
+				}
+			}
+			set_cosmetic_tag = GAELIC_formable_BRITISH
+		}
+		else = {
+			set_cosmetic_tag = GEN_formable_BRITISH
+		}
+	}
+}
+
 ############
 #	Canada
 ############
@@ -1193,6 +1449,10 @@ form_canada = {
 	add_state_core = 468
 	add_state_core = 466
 	add_state_core = 822
+	add_state_core = 823
+	add_state_core = 730
+	add_state_core = 465
+	add_state_core = 464
 	#BTN
 	add_state_core = 825
 	add_state_core = 469
@@ -1201,6 +1461,7 @@ form_canada = {
 	add_state_core = 472
 	add_state_core = 473
 	add_state_core = 740
+	add_state_core = 739
 	add_state_core = 821
 	add_state_core = 826
 }
@@ -1212,12 +1473,16 @@ make_puppet_canada = {
 		add_state_core = 682
 		add_state_core = 683
 		add_state_core = 467
+		add_state_core = 823
 		add_state_core = 824
 		add_state_core = 331
 		add_state_core = 332
 		add_state_core = 468
 		add_state_core = 466
 		add_state_core = 822
+		add_state_core = 730
+		add_state_core = 465
+		add_state_core = 464
 		#BTN
 		add_state_core = 825
 		add_state_core = 469
@@ -1226,6 +1491,7 @@ make_puppet_canada = {
 		add_state_core = 472
 		add_state_core = 473
 		add_state_core = 740
+		add_state_core = 739
 		add_state_core = 821
 		add_state_core = 826
 	}
@@ -1238,6 +1504,21 @@ make_puppet_canada = {
 			}
 		}
 		transfer_state_to = CA1
+	}
+}
+
+get_cosmetic_canada = {
+	if = {
+		limit = {
+			tag = PLK
+		}
+		set_cosmetic_tag = PLK_formable_CANADA
+		else_if = {
+			limit = {
+				tag = BTN
+			}
+			set_cosmetic_tag = BTN_formable_CANADA
+		}
 	}
 }
 
@@ -1286,6 +1567,54 @@ make_puppet_central_america = {
 	}
 }
 
+get_cosmetic_central_america = {
+	if = {
+		limit = {
+			tag = LUI
+		}
+		set_cosmetic_tag = LUI_formable_CENTRAL_AMERICA
+		else = {
+			set_cosmetic_tag = GEN_formable_CENTRAL_AMERICA
+		}
+		# else_if = {
+		# 	limit = {
+		# 		tag = GUA
+		# 	}
+		# 	set_cosmetic_tag = GUA_formable_CENTRAL_AMERICA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = HON
+		# 	}
+		# 	set_cosmetic_tag = HON_formable_CENTRAL_AMERICA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = ELS
+		# 	}
+		# 	set_cosmetic_tag = ELS_formable_CENTRAL_AMERICA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = COS
+		# 	}
+		# 	set_cosmetic_tag = COS_formable_CENTRAL_AMERICA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = PAN
+		# 	}
+		# 	set_cosmetic_tag = PAN_formable_CENTRAL_AMERICA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = NIC
+		# 	}
+		# 	set_cosmetic_tag = NIC_formable_CENTRAL_AMERICA
+		# }
+	}
+}
+
 ############
 #	Russia
 ############
@@ -1300,14 +1629,19 @@ form_russia = {
 	add_state_core = 574
 	add_state_core = 644
 	add_state_core = 562
-	add_state_core = 822
 	add_state_core = 637
+	add_state_core = 567
+	add_state_core = 329
+	add_state_core = 235
 	add_state_core = 565
 	add_state_core = 972
 	add_state_core = 971
 	add_state_core = 563
 	add_state_core = 970
 	add_state_core = 564
+	add_state_core = 253
+	add_state_core = 248
+	add_state_core = 258
 	add_state_core = 969
 	add_state_core = 566
 	add_state_core = 565
@@ -1319,7 +1653,6 @@ form_russia = {
 	add_state_core = 569
 	add_state_core = 578
 	add_state_core = 577
-	add_state_core = 824
 	add_state_core = 654
 	add_state_core = 40
 	add_state_core = 570
@@ -1343,7 +1676,6 @@ form_russia = {
 	add_state_core = 214
 	add_state_core = 351
 	add_state_core = 252
-	add_state_core = 833
 	add_state_core = 256
 	add_state_core = 250
 	add_state_core = 251
@@ -1384,7 +1716,6 @@ form_russia = {
 	add_state_core = 257
 	add_state_core = 254
 	add_state_core = 265
-	add_state_core = 829
 	add_state_core = 217
 	add_state_core = 236
 	add_state_core = 237
@@ -1395,7 +1726,6 @@ form_russia = {
 	add_state_core = 234
 	add_state_core = 821
 	add_state_core = 828
-	add_state_core = 827
 	add_state_core = 233
 }
 
@@ -1411,14 +1741,19 @@ make_puppet_russia = {
 		add_state_core = 574
 		add_state_core = 644
 		add_state_core = 562
-		add_state_core = 822
 		add_state_core = 637
+		add_state_core = 567
+		add_state_core = 329
+		add_state_core = 235
 		add_state_core = 565
 		add_state_core = 972
 		add_state_core = 971
 		add_state_core = 563
 		add_state_core = 970
 		add_state_core = 564
+		add_state_core = 253
+		add_state_core = 248
+		add_state_core = 258
 		add_state_core = 969
 		add_state_core = 566
 		add_state_core = 565
@@ -1430,7 +1765,6 @@ make_puppet_russia = {
 		add_state_core = 569
 		add_state_core = 578
 		add_state_core = 577
-		add_state_core = 824
 		add_state_core = 654
 		add_state_core = 40
 		add_state_core = 570
@@ -1454,7 +1788,6 @@ make_puppet_russia = {
 		add_state_core = 214
 		add_state_core = 351
 		add_state_core = 252
-		add_state_core = 833
 		add_state_core = 256
 		add_state_core = 250
 		add_state_core = 251
@@ -1495,7 +1828,6 @@ make_puppet_russia = {
 		add_state_core = 257
 		add_state_core = 254
 		add_state_core = 265
-		add_state_core = 829
 		add_state_core = 217
 		add_state_core = 236
 		add_state_core = 237
@@ -1505,8 +1837,6 @@ make_puppet_russia = {
 		add_state_core = 232
 		add_state_core = 234
 		add_state_core = 821
-		add_state_core = 828
-		add_state_core = 827
 		add_state_core = 233
 	}
 	every_state = {
@@ -1518,6 +1848,51 @@ make_puppet_russia = {
 			}
 		}
 		transfer_state_to = RU1
+	}
+}
+
+get_cosmetic_russia = {
+	if = {
+		limit = {
+			tag = RUS
+		}
+		set_cosmetic_tag = RUS_formable_RUSSIA
+		else_if = {
+			limit = {
+				tag = RSR
+			}
+			set_cosmetic_tag = RSR_formable_RUSSIA
+		}
+		else_if = {
+			limit = {
+				tag = NEN
+			}
+			set_cosmetic_tag = NEN_formable_RUSSIA
+		}
+		else_if = {
+			limit = {
+				tag = LUN
+			}
+			set_cosmetic_tag = LUN_formable_RUSSIA
+		}
+		else_if = {
+			limit = {
+				tag = FLA
+			}
+			set_cosmetic_tag = FLA_formable_RUSSIA
+		}
+		else_if = {
+			limit = {
+				tag = BTN
+			}
+			set_cosmetic_tag = BTN_formable_RUSSIA
+		}
+		else_if = {
+			limit = {
+				tag = LAM
+			}
+			set_cosmetic_tag = LAM_formable_RUSSIA
+		}
 	}
 }
 
@@ -1555,11 +1930,15 @@ form_germany = {
 	add_state_core = 53
 	add_state_core = 52
 	add_state_core = 63
-	add_state_core = 807
+	add_state_core = 85
 	add_state_core = 916
+	add_state_core = 905
 	add_state_core = 917
 	add_state_core = 763
 	add_state_core = 862
+	add_state_core = 862
+	add_state_core = 913
+	add_state_core = 55
 	add_state_core = 5
 	add_state_core = 86
 	add_state_core = 68
@@ -1570,6 +1949,8 @@ form_germany = {
 make_puppet_germany = {
 	DE1 = {
 		add_state_core = 58
+		add_state_core = 913
+		add_state_core = 55
 		add_state_core = 61
 		add_state_core = 62
 		add_state_core = 64
@@ -1599,7 +1980,8 @@ make_puppet_germany = {
 		add_state_core = 53
 		add_state_core = 52
 		add_state_core = 63
-		add_state_core = 807
+		add_state_core = 85
+		add_state_core = 905
 		add_state_core = 916
 		add_state_core = 917
 		add_state_core = 763
@@ -1619,6 +2001,27 @@ make_puppet_germany = {
 			}
 		}
 		transfer_state_to = DE1
+	}
+}
+
+get_cosmetic_germany = {
+	if = {
+		limit = {
+			tag = KIA
+		}
+		set_cosmetic_tag = KIA_formable_GERMANY
+		else_if = {
+			limit = {
+				tag = GER
+			}
+			set_cosmetic_tag = GER_formable_GERMANY
+		}
+		else_if = {
+			limit = {
+				tag = AUS
+			}
+			set_cosmetic_tag = AUS_formable_GERMANY
+		}
 	}
 }
 
@@ -1678,6 +2081,24 @@ form_austria = {
 	add_state_core = 89
 }
 
+get_cosmetic_austria = {
+	if = {
+		limit = {
+			tag = ALO
+		}
+		set_cosmetic_tag = ALO_formable_AUSTRIA
+		else_if = {
+			limit = {
+				tag = KIA
+			}
+			set_cosmetic_tag = KIA_formable_AUSTRIA
+		}
+		else = {
+			set_cosmetic_tag = GEN_formable_AUSTRIA
+		}
+	}
+}
+
 ############
 #	Ukraine
 ############
@@ -1689,7 +2110,7 @@ form_ukraine = {
 	add_state_core = 199
 	add_state_core = 80
 	add_state_core = 198
-	add_state_core = 834
+	add_state_core = 225
 	add_state_core = 192
 	add_state_core = 766
 	add_state_core = 201
@@ -1714,11 +2135,11 @@ make_puppet_ukraine = {
 		add_state_core = 91
 		add_state_core = 93
 		add_state_core = 89
+		add_state_core = 225
 		add_state_core = 866
 		add_state_core = 199
 		add_state_core = 80
 		add_state_core = 198
-		add_state_core = 834
 		add_state_core = 192
 		add_state_core = 766
 		add_state_core = 201
@@ -1749,6 +2170,15 @@ make_puppet_ukraine = {
 	}
 }
 
+get_cosmetic_ukraine = {
+	if = {
+		limit = {
+			tag = FLA
+		}
+		set_cosmetic_tag = FLA_formable_UKRAINE
+	}
+}
+
 ############
 #	Caucasus
 ############
@@ -1759,11 +2189,7 @@ form_caucasus = {
 	add_state_core = 234
 	add_state_core = 235
 	add_state_core = 232
-	add_state_core = 821
-	add_state_core = 828
-	add_state_core = 827
 	add_state_core = 233
-	add_state_core = 826
 	add_state_core = 231
 	add_state_core = 229
 	add_state_core = 230
@@ -1777,11 +2203,7 @@ make_puppet_caucasus = {
 		add_state_core = 234
 		add_state_core = 235
 		add_state_core = 232
-		add_state_core = 821
-		add_state_core = 828
-		add_state_core = 827
 		add_state_core = 233
-		add_state_core = 826
 		add_state_core = 231
 		add_state_core = 229
 		add_state_core = 230
@@ -1798,11 +2220,33 @@ make_puppet_caucasus = {
 	}
 }
 
+get_cosmetic_caucasus = {
+	if = {
+		limit = {
+			tag = LAM
+		}
+		set_cosmetic_tag = LAM_formable_CAUCASUS
+		else_if = {
+			limit = {
+				tag = ARM
+			}
+			set_cosmetic_tag = ARM_formable_CAUCASUS
+		}
+		else_if = {
+			limit = {
+				tag = AZR
+			}
+			set_cosmetic_tag = AZR_formable_CAUCASUS
+		}
+	}
+}
+
 ############
 #	Egypt
 ############
 form_egypt = {
 	add_state_core = 452
+	add_state_core = 453
 	add_state_core = 447
 	add_state_core = 1026
 	add_state_core = 948
@@ -1833,6 +2277,7 @@ form_egypt = {
 make_puppet_egypt = {
 	EG1 = {
 		add_state_core = 452
+		add_state_core = 453
 		add_state_core = 447
 		add_state_core = 1026
 		add_state_core = 948
@@ -1871,6 +2316,21 @@ make_puppet_egypt = {
 	}
 }
 
+get_cosmetic_egypt = {
+	if = {
+		limit = {
+			tag = SUD
+		}
+		set_cosmetic_tag = SUD_formable_EGYPT
+		else_if = {
+			limit = {
+				tag = MUM
+			}
+			set_cosmetic_tag = MUM_formable_EGYPT
+		}
+	}
+}
+
 ############
 #	Africa
 ############
@@ -1886,6 +2346,12 @@ form_africa = {
 make_puppet_africa = {
 	every_state = {
 		limit = {
+			is_on_continent = africa
+		}
+		add_core_of = AF1
+	}
+	every_state = {
+		limit = {
 			is_core_of = AF1
 			OR = {
 				is_owned_by = ROOT
@@ -1894,6 +2360,10 @@ make_puppet_africa = {
 		}
 		transfer_state_to = AF1
 	}
+}
+
+get_cosmetic_africa = {
+	set_cosmetic_tag = GEN_formable_africa
 }
 
 ############
@@ -1915,7 +2385,10 @@ form_india = {
 	add_state_core = 438
 	add_state_core = 832
 	add_state_core = 436
+	add_state_core = 424
+	add_state_core = 320
 	add_state_core = 426
+	add_state_core = 787
 	add_state_core = 427
 	add_state_core = 429
 	add_state_core = 809
@@ -1940,6 +2413,7 @@ make_puppet_india = {
 		add_state_core = 442
 		add_state_core = 440
 		add_state_core = 441
+		add_state_core = 320
 		add_state_core = 428
 		add_state_core = 433
 		add_state_core = 958
@@ -1951,8 +2425,10 @@ make_puppet_india = {
 		add_state_core = 436
 		add_state_core = 426
 		add_state_core = 427
+		add_state_core = 787
 		add_state_core = 429
 		add_state_core = 809
+		add_state_core = 424
 		add_state_core = 810
 		add_state_core = 425
 		add_state_core = 321
@@ -1977,6 +2453,33 @@ make_puppet_india = {
 	}
 }
 
+get_cosmetic_india = {
+	if = {
+		limit = {
+			tag = MAT
+		}
+		set_cosmetic_tag = MAT_formable_INDIA
+		else_if = {
+			limit = {
+				tag = AFG
+			}
+			set_cosmetic_tag = AFG_formable_INDIA
+		}
+		else_if = {
+			limit = {
+				tag = ROS
+			}
+			set_cosmetic_tag = ROS_formable_INDIA
+		}
+		else_if = {
+			limit = {
+				tag = OKA
+			}
+			set_cosmetic_tag = OKA_formable_INDIA
+		}
+	}
+}
+
 ############
 #	central asia
 ############
@@ -1985,13 +2488,9 @@ form_central_asia = {
 	add_state_core = 407
 	add_state_core = 587
 	add_state_core = 584
-	add_state_core = 823
-	add_state_core = 831
 	add_state_core = 585
-	add_state_core = 832
 	add_state_core = 582
 	add_state_core = 583
-	add_state_core = 302
 	add_state_core = 590
 	add_state_core = 588
 	add_state_core = 589
@@ -1999,8 +2498,8 @@ form_central_asia = {
 	add_state_core = 586
 	add_state_core = 732
 	add_state_core = 742
-	add_state_core = 830
 	add_state_core = 405
+	add_state_core = 402
 	add_state_core = 404
 	add_state_core = 829
 	add_state_core = 827
@@ -2009,16 +2508,13 @@ form_central_asia = {
 make_puppet_central_asia = {
 	TU1 = {
 		add_state_core = 406
+		add_state_core = 402
 		add_state_core = 407
 		add_state_core = 587
 		add_state_core = 584
-		add_state_core = 823
-		add_state_core = 831
 		add_state_core = 585
-		add_state_core = 832
 		add_state_core = 582
 		add_state_core = 583
-		add_state_core = 302
 		add_state_core = 590
 		add_state_core = 588
 		add_state_core = 589
@@ -2026,7 +2522,6 @@ make_puppet_central_asia = {
 		add_state_core = 586
 		add_state_core = 732
 		add_state_core = 742
-		add_state_core = 830
 		add_state_core = 405
 		add_state_core = 404
 		add_state_core = 829
@@ -2041,6 +2536,60 @@ make_puppet_central_asia = {
 			}
 		}
 		transfer_state_to = TU1
+	}
+}
+
+get_cosmetic_central_asia = {
+	if = {
+		limit = {
+			tag = TOW
+		}
+		set_cosmetic_tag = TOW_formable_CENTRAL_ASIA
+		else_if = {
+			limit = {
+				tag = LUN
+			}
+			set_cosmetic_tag = LUN_formable_CENTRAL_ASIA
+		}
+		else = {
+			set_cosmetic_tag = GEN_formable_CENTRAL_ASIA
+		}
+		# else_if = {
+		# 	limit = {
+		# 		tag = KAZ
+		# 	}
+		# 	set_cosmetic_tag = KAZ_formable_CENTRAL_ASIA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = TMS
+		# 	}
+		# 	set_cosmetic_tag = TMS_formable_CENTRAL_ASIA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = UZB
+		# 	}
+		# 	set_cosmetic_tag = UZB_formable_CENTRAL_ASIA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = KYR
+		# 	}
+		# 	set_cosmetic_tag = KYR_formable_CENTRAL_ASIA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = SAN
+		# 	}
+		# 	set_cosmetic_tag = SAN_formable_CENTRAL_ASIA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = AFG
+		# 	}
+		# 	set_cosmetic_tag = AFG_formable_INDIA
+		# }
 	}
 }
 
@@ -2096,6 +2645,36 @@ make_puppet_grand_colombia = {
 			}
 		}
 		transfer_state_to = CO1
+	}
+}
+
+get_cosmetic_grand_colombia = {
+	if = {
+		limit = {
+			tag = BAE
+		}
+		set_cosmetic_tag = BAE_formable_GRAND_COLOMBIA
+		else = {
+			set_cosmetic_tag = GEN_formable_GRAND_COLOMBIA
+		}
+		# else_if = {
+		# 	limit = {
+		# 		tag = ECU
+		# 	}
+		# 	set_cosmetic_tag = ECU_formable_GRAND_COLOMBIA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = PAN
+		# 	}
+		# 	set_cosmetic_tag = PAN_formable_GRAND_COLOMBIA
+		# }
+		# else_if = {
+		# 	limit = {
+		# 		tag = VEN
+		# 	}
+		# 	set_cosmetic_tag = VEN_formable_GRAND_COLOMBIA
+		# }
 	}
 }
 
@@ -2160,6 +2739,39 @@ make_puppet_caribbean = {
 	}
 }
 
+get_cosmetic_caribbean = {
+	if = {
+		limit = {
+			tag = CUB
+		}
+		set_cosmetic_tag = CUB_formable_CARIBBEAN
+		else_if = {
+			limit = {
+				tag = DOM
+			}
+			set_cosmetic_tag = DOM_formable_CARIBBEAN
+		}
+		else_if = {
+			limit = {
+				tag = HAI
+			}
+			set_cosmetic_tag = HAI_formable_CARIBBEAN
+		}
+		else_if = {
+			limit = {
+				tag = MAR
+			}
+			set_cosmetic_tag = MAR_formable_CARIBBEAN
+		}
+		else_if = {
+			limit = {
+				tag = GYA
+			}
+			set_cosmetic_tag = GYA_formable_CARIBBEAN
+		}
+	}
+}
+
 ############
 #	mexico
 ############
@@ -2169,6 +2781,7 @@ form_mexico = {
 	add_state_core = 485
 	add_state_core = 476
 	add_state_core = 1130
+	add_state_core = 1129
 	add_state_core = 475
 	add_state_core = 474
 	add_state_core = 1019
@@ -2199,11 +2812,10 @@ form_mexico = {
 	add_state_core = 1024
 	add_state_core = 379
 	#
-	add_state_core = 386
 	add_state_core = 379
+	add_state_core = 376
 	add_state_core = 378
 	add_state_core = 863
-	add_state_core = 811
 	add_state_core = 812
 	add_state_core = 814
 	add_state_core = 813
@@ -2215,6 +2827,7 @@ make_puppet_mexico = {
 		add_state_core = 477
 		add_state_core = 485
 		add_state_core = 476
+		add_state_core = 1129
 		add_state_core = 1130
 		add_state_core = 475
 		add_state_core = 474
@@ -2246,11 +2859,10 @@ make_puppet_mexico = {
 		add_state_core = 1024
 		add_state_core = 379
 		#
-		add_state_core = 386
 		add_state_core = 379
+		add_state_core = 376
 		add_state_core = 378
 		add_state_core = 863
-		add_state_core = 811
 		add_state_core = 812
 		add_state_core = 814
 		add_state_core = 813
@@ -2267,15 +2879,38 @@ make_puppet_mexico = {
 	}
 }
 
+get_cosmetic_mexico = {
+	if = {
+		limit = {
+			tag = KAN
+		}
+		set_cosmetic_tag = KAN_formable_MEXICO
+		else_if = {
+			limit = {
+				tag = LUI
+			}
+			set_cosmetic_tag = LUI_formable_MEXICO
+		}
+	}
+}
+
 ############
 #	North Africa
 ############
 form_north_africa = {
 	add_state_core = 462
+	add_state_core = 448
+	add_state_core = 661
+	add_state_core = 449
+	add_state_core = 459
+	add_state_core = 662
+	add_state_core = 450
+	add_state_core = 663
+	add_state_core = 462
+	add_state_core = 451
 	add_state_core = 461
 	add_state_core = 290
 	add_state_core = 783
-	add_state_core = 469
 	add_state_core = 513
 	add_state_core = 460
 	add_state_core = 458
@@ -2285,10 +2920,18 @@ form_north_africa = {
 make_puppet_north_africa = {
 	NA1 = {
 		add_state_core = 462
+		add_state_core = 459
+		add_state_core = 448
+		add_state_core = 661
+		add_state_core = 449
+		add_state_core = 662
+		add_state_core = 450
+		add_state_core = 663
+		add_state_core = 462
+		add_state_core = 451
 		add_state_core = 461
 		add_state_core = 290
 		add_state_core = 783
-		add_state_core = 469
 		add_state_core = 513
 		add_state_core = 460
 		add_state_core = 458
@@ -2306,6 +2949,18 @@ make_puppet_north_africa = {
 	}
 }
 
+get_cosmetic_north_africa = {
+	if = {
+		limit = {
+			tag = MUM
+		}
+		set_cosmetic_tag = MUM_formable_NORTH_AFRICA
+		else = {
+			set_cosmetic_tag = GEN_formable_NORTH_AFRICA
+		}
+	}
+}
+
 ############
 #	Poland
 ############
@@ -2313,13 +2968,16 @@ form_poland = {
 	add_state_core = 63
 	add_state_core = 66
 	add_state_core = 67
+	add_state_core = 85
+	add_state_core = 862
+	add_state_core = 188
+	add_state_core = 784
 	add_state_core = 68
 	add_state_core = 86
 	add_state_core = 807
 	add_state_core = 916
 	add_state_core = 917
 	add_state_core = 763
-	add_state_core = 861
 	add_state_core = 5
 	add_state_core = 97
 	add_state_core = 98
@@ -2343,13 +3001,16 @@ make_puppet_poland = {
 		add_state_core = 63
 		add_state_core = 66
 		add_state_core = 67
+		add_state_core = 85
+		add_state_core = 862
+		add_state_core = 188
+		add_state_core = 784
 		add_state_core = 68
 		add_state_core = 86
 		add_state_core = 807
 		add_state_core = 916
 		add_state_core = 917
 		add_state_core = 763
-		add_state_core = 861
 		add_state_core = 5
 		add_state_core = 97
 		add_state_core = 98
@@ -2376,6 +3037,27 @@ make_puppet_poland = {
 			}
 		}
 		transfer_state_to = PL1
+	}
+}
+
+get_cosmetic_poland = {
+	if = {
+		limit = {
+			tag = KRO
+		}
+		set_cosmetic_tag = KRO_formable_POLAND
+		else_if = {
+			limit = {
+				tag = ALO
+			}
+			set_cosmetic_tag = ALO_formable_POLAND
+		}
+		else_if = {
+			limit = {
+				tag = FLA
+			}
+			set_cosmetic_tag = FLA_formable_POLAND
+		}
 	}
 }
 
@@ -2509,5 +3191,38 @@ make_puppet_balkans = {
 			}
 		}
 		transfer_state_to = BL1
+	}
+}
+
+get_cosmetic_balkans = {
+	if = {
+		limit = {
+			tag = ACH
+		}
+		set_cosmetic_tag = ACH_formable_BALKANS
+		else_if = {
+			limit = {
+				tag = HIT
+			}
+			set_cosmetic_tag = HIT_formable_BALKANS
+		}
+		else_if = {
+			limit = {
+				tag = ALO
+			}
+			set_cosmetic_tag = ALO_formable_BALKANS
+		}
+		else_if = {
+			limit = {
+				tag = SOR
+			}
+			set_cosmetic_tag = SOR_formable_BALKANS
+		}
+		else_if = {
+			limit = {
+				tag = MEL
+			}
+			set_cosmetic_tag = MEL_formable_BALKANS
+		}
 	}
 }
