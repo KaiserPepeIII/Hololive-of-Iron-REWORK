@@ -1676,7 +1676,6 @@ focus_tree = {
 			focus = GEN_proclaim_fall_of_lhs
 		}
 		completion_reward = {
-			
 			random_neighbor_country = {
 				limit = {
 					NOT = {
@@ -1712,6 +1711,28 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_solidify_the_alliance
 		}
+		completion_reward = {
+			IF = {
+				limit = {
+					communism > 0
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.1
+				}
+				add_manpower = -10000
+				add_stability = -0.05
+				add_war_support = 0.05
+			}
+			else_if = {
+				limit = { communism < 0 
+				
+				}
+				add_war_support = 0.15
+				add_political_power = 100
+			}
+			custom_effect_tooltip = resist_the_aqua_tooltip
+		}
 		x = 63
 		y = 6
 	}
@@ -1721,6 +1742,9 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_resist_the_aquaists
+		}
+		completion_reward = {
+			
 		}
 		x = 62
 		y = 7
@@ -1732,6 +1756,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_resist_the_aquaists
 		}
+		completion_reward = {
+			add_ideas = {
+				counter_revolutionary_ideals_idea
+			}
+		}
 		x = 64
 		y = 7
 	}
@@ -1742,6 +1771,47 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_reject_revolutionary_ideals
 		}
+		IF = {
+			limit = {
+				any_neighbor_country = {
+					has_government = communism
+				}
+			}
+			random_neighbor_country = {
+				limit = {
+					has_government = communism
+				}
+				country_event = {
+					id = resistance.2
+					days = 1
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500 
+			}
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					has_government = communism
+				}
+			}
+			any_country = {
+				limit = {
+					has_government = communism
+				}
+				country_event = {
+					id = resistance.2
+					days = 1
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500 
+			}
+		}
+	}
 		x = 64
 		y = 8
 	}
