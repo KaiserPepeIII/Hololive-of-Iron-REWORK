@@ -1,0 +1,116 @@
+add_namespace = japan
+#Iroha revolution
+country_event = {
+	id = japan.1
+	title = japan.1.t
+	desc = japan.1.d
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Wagons towards Iroha!
+	option = {
+		name = japan.1.a
+		IRO = {
+			transfer_state = 536
+			transfer_state = 533
+			transfer_state = 534
+			transfer_state = 555
+			transfer_state = 537
+			transfer_state = 655
+			if = {
+				limit = {
+					OR = {
+						check_variable = {
+							var = JAP.the_iroha_revolution_strength
+							value = 4
+							compare = equals
+						}
+						check_variable = {
+							var = JAP.the_iroha_revolution_strength
+							value = 5
+							compare = equals
+						}
+					}
+				}
+				load_oob = "IRO_revolution_weak"
+				else_if = {
+					limit = {
+						check_variable = {
+							var = JAP.the_iroha_revolution_strength
+							value = 6
+							compare = greater_than_or_equals
+						}
+						check_variable = {
+							var = JAP.the_iroha_revolution_strength
+							value = 8
+							compare = less_than_or_equals
+						}
+					}
+					load_oob = "IRO_revolution_medium"
+				}
+				else = {
+					load_oob = "IRO_revolution_strong"
+				}
+			}
+			change_tag_from = JAP
+		}
+		JAP = {
+			declare_war_on = {
+				target = IRO
+				type = annex_everything
+			}
+		}
+	}
+	#faq Iroha!
+	option = {
+		name = japan.1.b
+		IRO = {
+			transfer_state = 536
+			transfer_state = 533
+			transfer_state = 534
+			transfer_state = 555
+			transfer_state = 537
+			transfer_state = 655
+			if = {
+				limit = {
+					OR = {
+						check_variable = {
+							var = JAP.the_iroha_revolution_strength
+							value = 4
+							compare = equals
+						}
+						check_variable = {
+							var = JAP.the_iroha_revolution_strength
+							value = 5
+							compare = equals
+						}
+					}
+				}
+				load_oob = "IRO_revolution_weak"
+				else_if = {
+					limit = {
+						check_variable = {
+							var = JAP.the_iroha_revolution_strength
+							value = 6
+							compare = greater_than_or_equals
+						}
+						check_variable = {
+							var = JAP.the_iroha_revolution_strength
+							value = 8
+							compare = less_than_or_equals
+						}
+					}
+					load_oob = "IRO_revolution_medium"
+				}
+				else = {
+					load_oob = "IRO_revolution_strong"
+				}
+			}
+		}
+		JAP = {
+			declare_war_on = {
+				target = IRO
+			}
+		}
+	}
+}

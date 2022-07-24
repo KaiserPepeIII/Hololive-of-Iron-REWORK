@@ -170,3 +170,49 @@ country_event = {
 		country_event = fubuki.21
 	}
 }
+
+#
+#
+#	TEMPORARY YAGOO COUNCIL MISSION EVENTS
+#
+#
+#The Council Begins
+country_event = {
+	id = yagoo.6
+	title = yagoo.6.t
+	desc = yagoo.6.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#let's gooo
+	option = {
+		country_event = {
+			id = yagoo.7
+			days = 2
+		}
+		clr_country_flag = YAG_lhs_council_1
+	}
+}
+
+#Policy on military expansion
+country_event = {
+	id = yagoo.7
+	title = yagoo.7.t
+	desc = yagoo.7.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#The Geneva Protocols was a mistake 
+	option = {
+		subtract_from_variable = {
+			var = global.lhs_faith
+			value = 10
+		}
+		subtract_from_variable = {
+			var = global.brugg_legitimacy
+			value = 10
+		}
+		country_event = {
+			id = yagoo.8
+			days = 2
+		}
+	}
+}

@@ -1,5 +1,5 @@
 focus_tree = {
-	id = FocusTree_1
+	id = Focus_Resistance
 	country = {
 		factor = 0
 		modifier = {
@@ -1725,8 +1725,8 @@ focus_tree = {
 				add_war_support = 0.05
 			}
 			else_if = {
-				limit = { communism < 0 
-				
+				limit = {
+					communism < 0
 				}
 				add_war_support = 0.15
 				add_political_power = 100
@@ -1744,7 +1744,6 @@ focus_tree = {
 			focus = GEN_resist_the_aquaists
 		}
 		completion_reward = {
-			
 		}
 		x = 62
 		y = 7
@@ -1771,47 +1770,48 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_reject_revolutionary_ideals
 		}
-		IF = {
-			limit = {
-				any_neighbor_country = {
-					has_government = communism
-				}
-			}
-			random_neighbor_country = {
+		completion_reward = {
+			IF = {
 				limit = {
-					has_government = communism
+					any_neighbor_country = {
+						has_government = communism
+					}
 				}
-				country_event = {
-					id = resistance.2
-					days = 1
+				random_neighbor_country = {
+					limit = {
+						has_government = communism
+					}
+					country_event = {
+						id = resistance.2
+						days = 1
+					}
 				}
-			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -500 
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500
+				}
+				else_if = {
+					limit = {
+						any_country = {
+							has_government = communism
+						}
+					}
+					every_country = {
+						limit = {
+							has_government = communism
+						}
+						country_event = {
+							id = resistance.2
+							days = 1
+						}
+					}
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -500
+					}
+				}
 			}
 		}
-		else_if = {
-			limit = {
-				any_country = {
-					has_government = communism
-				}
-			}
-			any_country = {
-				limit = {
-					has_government = communism
-				}
-				country_event = {
-					id = resistance.2
-					days = 1
-				}
-			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -500 
-			}
-		}
-	}
 		x = 64
 		y = 8
 	}
@@ -1883,14 +1883,12 @@ focus_tree = {
 				}
 				add_ideas = limited_exports
 			}
-			
 			if = {
 				limit = {
 					has_idea = limited_exports
 				}
 				add_ideas = export_focus
 			}
-			
 			if = {
 				limit = {
 					has_idea = export_focus
@@ -2165,7 +2163,6 @@ focus_tree = {
 					ideology = ROOT
 					size = 0.45
 					keep_political_leader = yes
-					keep_political_party_members = yes
 					keep_unit_leaders_trigger = {
 						is_unit_leader = yes
 					}
