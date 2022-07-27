@@ -8,21 +8,33 @@ focus_tree = {
 		}
 	}
 	continuous_focus_position = {
-		x = 60
+		x = 400
 		y = 1780
 	}
 	default = no
 	focus = {
 		id = ALO_the_looming_crisis
 		icon = GFX_focus_ALO_the_looming_crisis
-		cost = 0
+		cost = 1
+		available = {
+			has_country_flag = ALO_prepare_for_civil_war
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+		}
 		x = 9
 		y = 0
 	}
 	focus = {
-		id = ALO_the_anti_uprising
+		id = ALO_the_anti_uprising		#bypassed
 		icon = GFX_focus_ALO_the_anti_uprising
-		cost = 0
+		cost = 10
+		completion_reward = {
+			add_stability = -0.1
+		}
 		x = 10
 		y = 5
 	}
@@ -116,52 +128,50 @@ focus_tree = {
 	focus = {
 		id = ALO_inform_lhs_hq
 		icon = GFX_focus_ALO_inform_lhs_hq
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_the_looming_crisis
 		}
-		x = 4
-		y = 1
-	}
-	focus = {
-		id = ALO_sound_the_alarm
-		icon = GFX_focus_ALO_sound_the_alarm
-		cost = 0
-		prerequisite = {
-			focus = ALO_the_looming_crisis
+		completion_reward = {
+			YAG = {
+				country_event = yagoo.12
+			}
 		}
-		x = 9
+		x = 7
 		y = 1
 	}
 	focus = {
 		id = ALO_activate_emergency_powers
 		icon = GFX_focus_ALO_activate_emergency_powers
-		cost = 0
-		prerequisite = {
-			focus = ALO_sound_the_alarm
-		}
+		cost = 1
 		prerequisite = {
 			focus = ALO_inform_lhs_hq
 		}
-		x = 6
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 2
+			}
+		}
+		x = 7
 		y = 2
 	}
 	focus = {
 		id = ALO_secure_armouries
 		icon = GFX_focus_ALO_secure_armouries
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_activate_emergency_powers
 		}
-		x = 4
-		y = 3
-	}
-	focus = {
-		id = ALO_lockdown_cities
-		icon = GFX_focus_ALO_lockdown_cities
-		cost = 0
-		prerequisite = {
-			focus = ALO_activate_emergency_powers
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 600
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 85
+			}
 		}
 		x = 6
 		y = 3
@@ -169,9 +179,19 @@ focus_tree = {
 	focus = {
 		id = ALO_instate_curfews
 		icon = GFX_focus_ALO_instate_curfews
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_activate_emergency_powers
+		}
+		completion_reward = {
+			subtract_from_variable = {
+				var = ALO.anti_aggression
+				value = 2
+			}
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
 		}
 		x = 8
 		y = 3
@@ -179,17 +199,51 @@ focus_tree = {
 	focus = {
 		id = ALO_ma_no_tomo_militias
 		icon = GFX_focus_ALO_ma_no_tomo_militias
-		cost = 0
-		prerequisite = {
-			focus = ALO_lockdown_cities
-		}
+		cost = 1
 		prerequisite = {
 			focus = ALO_instate_curfews
 		}
 		prerequisite = {
 			focus = ALO_secure_armouries
 		}
-		x = 6
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+			division_template = {
+				name = "Ma no Tomo Miltia"
+				regiments = {
+					militia = {
+						x = 0
+						y = 0
+					}
+					militia = {
+						x = 0
+						y = 1
+					}
+					militia = {
+						x = 0
+						y = 2
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Devil's Batallion\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"Hell's Section\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"2nd Devil's Batallion\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+			}
+		}
+		x = 7
 		y = 4
 	}
 	focus = {
@@ -241,57 +295,136 @@ focus_tree = {
 	focus = {
 		id = ALO_arm_the_police
 		icon = GFX_focus_ALO_arm_the_police
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_the_looming_crisis
 		}
-		x = 14
+		completion_reward = {
+			division_template = {
+				name = "Gendarmerie"
+				regiments = {
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					cavalry = {
+						x = 0
+						y = 2
+					}
+				}
+				support = {
+					military_police = {
+						x = 0
+						y = 0
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1st Gendarmerie\" division_template = \"Gendarmerie\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"Gendarmerie\" division_template = \"Gendarmerie\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"Gendarmerie\" division_template = \"Gendarmerie\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+			}
+		}
+		x = 11
 		y = 1
 	}
 	focus = {
-		id = ALO_the_comng_split
+		id = ALO_the_comng_split		#promote radicalism
 		icon = GFX_focus_ALO_the_comng_split
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_arm_the_police
 		}
-		prerequisite = {
-			focus = ALO_sound_the_alarm
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.anti_aggression
+				value = 1
+			}
+			add_timed_idea = {
+				idea = ALO_wave_of_radicalism
+				days = 180
+			}
 		}
-		x = 13
+		x = 11
 		y = 2
 	}
 	focus = {
 		id = ALO_ma_no_tomo_propaganda
 		icon = GFX_focus_ALO_ma_no_tomo_propaganda
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_the_comng_split
 		}
-		x = 12
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+			add_war_support = 0.15
+		}
+		x = 10
 		y = 3
 	}
 	focus = {
 		id = ALO_denounce_anti_activism
 		icon = GFX_focus_ALO_denounce_anti_activism
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_the_comng_split
 		}
-		x = 14
+		completion_reward = {
+			add_popularity = {
+				ideology = var:ALO.current_party_ideology_group
+				popularity = 0.05
+			}
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+			add_stability = -0.05
+			add_war_support = 0.05
+		}
+		x = 12
 		y = 3
 	}
 	focus = {
 		id = ALO_silence_the_press
 		icon = GFX_focus_ALO_silence_the_press
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_denounce_anti_activism
 		}
 		prerequisite = {
 			focus = ALO_ma_no_tomo_propaganda
 		}
-		x = 13
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+			add_to_variable = {
+				var = ALO.anti_aggression
+				value = 1
+			}
+			add_timed_idea = {
+				idea = ALO_press_suppression
+				days = 360
+			}
+		}
+		x = 11
 		y = 4
 	}
 	focus = {
@@ -414,21 +547,11 @@ focus_tree = {
 		y = 11
 	}
 	focus = {
-		id = ALO_mending_tears
-		icon = GFX_focus_ALO_mending_tears
-		cost = 0
-		prerequisite = {
-			focus = ALO_end_of_strife
-		}
-		x = 19
-		y = 1
-	}
-	focus = {
 		id = ALO_manatomo_loyalty
 		icon = GFX_focus_ALO_manatomo_loyalty
 		cost = 0
 		prerequisite = {
-			focus = ALO_mending_tears
+			focus = ALO_rebuilding_homes
 		}
 		x = 19
 		y = 2
@@ -440,7 +563,7 @@ focus_tree = {
 		prerequisite = {
 			focus = ALO_end_of_strife
 		}
-		x = 21
+		x = 20
 		y = 1
 	}
 	focus = {

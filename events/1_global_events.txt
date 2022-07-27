@@ -1,0 +1,348 @@
+add_namespace = global_holo
+news_event = {
+	id = global_holo.1
+	title = global_holo.1.t
+	desc = global_holo.1.d
+	picture = GFX_report_event_shion_generic1
+	is_triggered_only = yes
+	option = {
+		name = "Ogey"
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+#WAR OVER VERACRUZ 
+news_event = {
+	id = global_holo.2
+	title = global_holo.2.t
+	desc = global_holo.2.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	major = yes
+	#KANATA
+	option = {
+		name = global_holo.2.a
+		trigger = {
+			tag = KAN
+		}
+	}
+	#COCO
+	option = {
+		name = global_holo.2.b
+		trigger = {
+			tag = COC
+		}
+	}
+	#AQUA
+	option = {
+		name = global_holo.2.c
+		trigger = {
+			tag = AQA
+		}
+	}
+	#North America
+	option = {
+		name = global_holo.2.d
+		trigger = {
+			NOT = {
+				tag = COC
+			}
+			any_country = {
+				capital_scope = {
+					is_on_continent = north_america
+				}
+			}
+		}
+	}
+	#LHS
+	option = {
+		name = global_holo.2.e
+		trigger = {
+			NOT = {
+				any_country = {
+					capital_scope = {
+						is_on_continent = north_america
+					}
+				}
+			}
+			has_idea = lhs_member
+		}
+	}
+	#Resistance
+	option = {
+		name = global_holo.2.f
+		trigger = {
+			NOT = {
+				any_country = {
+					capital_scope = {
+						is_on_continent = north_america
+					}
+				}
+				tag = AQA
+				tag = KAN
+				tag = COC
+			}
+			has_idea = resistance_member
+		}
+	}
+}
+
+#VERACRUZ DEAL PEACE
+news_event = {
+	id = global_holo.3
+	title = global_holo.3.t
+	desc = global_holo.3.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	major = yes
+	#KANATA
+	option = {
+		name = global_holo.3.a
+		trigger = {
+			tag = KAN
+		}
+	}
+	#COCO
+	option = {
+		name = global_holo.3.b
+		trigger = {
+			tag = COC
+		}
+	}
+	#AQUA
+	option = {
+		name = global_holo.3.c
+		trigger = {
+			tag = AQA
+		}
+	}
+	#North America
+	option = {
+		name = global_holo.3.d
+		trigger = {
+			NOT = {
+				tag = COC
+			}
+			any_country = {
+				capital_scope = {
+					is_on_continent = north_america
+				}
+			}
+		}
+	}
+	#LHS
+	option = {
+		name = global_holo.3.e
+		trigger = {
+			NOT = {
+				any_country = {
+					capital_scope = {
+						is_on_continent = north_america
+					}
+				}
+			}
+			has_idea = lhs_member
+		}
+	}
+	#Resistance
+	option = {
+		name = global_holo.3.f
+		trigger = {
+			NOT = {
+				any_country = {
+					capital_scope = {
+						is_on_continent = north_america
+					}
+				}
+				tag = AQA
+				tag = KAN
+				tag = COC
+			}
+			has_idea = resistance_member
+		}
+	}
+}
+
+#Islamic Spring
+news_event = {
+	id = global_holo.3
+	title = global_holo.3.t
+	desc = global_holo.3.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = global_holo.3.a
+	}
+}
+
+#Yagoo Council News Results
+news_event = {
+	id = global_holo.4
+	title = global_holo.4.t
+	desc = global_holo.4.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	major = yes
+	#Internationalism - LHS
+	option = {
+		name = global_holo.4.a
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_internationalism_flag
+			}
+			ROOT = {
+				is_in_array = {
+					array = GLOBAL.lhs_member_flag
+					value = THIS.id
+				}
+			}
+		}
+	}
+	#Internationalism - DISLIKES LHS
+	option = {
+		name = global_holo.4.b
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_internationalism_flag
+			}
+			ROOT = {
+				OR = {
+					is_in_array = {
+						array = GLOBAL.resistance_member_flag
+						value = THIS.id
+					}
+					has_anti_ideology = yes
+				}
+			}
+		}
+	}
+	#Internationalism - NEUTRAL
+	option = {
+		name = global_holo.4.c
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_internationalism_flag
+			}
+			NOT = {
+				is_in_array = {
+					array = GLOBAL.lhs_member_flag
+					value = THIS.id
+				}
+				is_in_array = {
+					array = GLOBAL.resistance_member_flag
+					value = THIS.id
+				}
+				has_anti_ideology = yes
+			}
+		}
+	}
+	#REGIONALISM - LHS
+	option = {
+		name = global_holo.4.d
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_regionalism_flag
+			}
+			ROOT = {
+				is_in_array = {
+					array = GLOBAL.lhs_member_flag
+					value = THIS.id
+				}
+			}
+		}
+	}
+	#REGIONALISM - DISLIKES LHS
+	option = {
+		name = global_holo.4.e
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_internationalism_flag
+			}
+			ROOT = {
+				OR = {
+					is_in_array = {
+						array = GLOBAL.resistance_member_flag
+						value = THIS.id
+					}
+					has_anti_ideology = yes
+				}
+			}
+		}
+	}
+	#REGIONALISM - NEUTRAL
+	option = {
+		name = global_holo.4.f
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_regionalism_flag
+			}
+			NOT = {
+				is_in_array = {
+					array = GLOBAL.lhs_member_flag
+					value = THIS.id
+				}
+				is_in_array = {
+					array = GLOBAL.resistance_member_flag
+					value = THIS.id
+				}
+				has_anti_ideology = yes
+			}
+		}
+	}
+	#NATIONALISM - LHS
+	option = {
+		name = global_holo.4.g
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_nationalism_flag
+			}
+			ROOT = {
+				is_in_array = {
+					array = GLOBAL.lhs_member_flag
+					value = THIS.id
+				}
+			}
+		}
+	}
+	#NATIONALISM - DISLIKES LHS
+	option = {
+		name = global_holo.4.h
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_nationalism_flag
+			}
+			ROOT = {
+				OR = {
+					is_in_array = {
+						array = GLOBAL.resistance_member_flag
+						value = THIS.id
+					}
+					has_anti_ideology = yes
+				}
+			}
+		}
+	}
+	#NATIONALISM - NEUTRAL
+	option = {
+		name = global_holo.4.i
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_nationalism_flag
+			}
+			NOT = {
+				is_in_array = {
+					array = GLOBAL.lhs_member_flag
+					value = THIS.id
+				}
+				is_in_array = {
+					array = GLOBAL.resistance_member_flag
+					value = THIS.id
+				}
+				has_anti_ideology = yes
+			}
+		}
+	}
+}
