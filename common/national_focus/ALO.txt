@@ -39,9 +39,12 @@ focus_tree = {
 		y = 5
 	}
 	focus = {
-		id = ALO_end_of_strife
+		id = ALO_end_of_strife		#Bypassed
 		icon = GFX_focus_ALO_end_of_strife
-		cost = 0
+		cost = 10
+		completion_reward = {
+			add_stability = 0.1
+		}
 		x = 26
 		y = 0
 	}
@@ -281,9 +284,16 @@ focus_tree = {
 	focus = {
 		id = ALO_urban_warfare
 		icon = GFX_focus_ALO_urban_warfare
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_hold_our_ground
+		}
+		completion_reward = {
+			every_army_leader = {
+				add_ideas = ALO_urban_warfare
+				add_defense = 1
+				add_coordination = 1
+			}
 		}
 		x = 6
 		y = 7
@@ -291,9 +301,12 @@ focus_tree = {
 	focus = {
 		id = ALO_attrition_doctrine
 		icon = GFX_focus_ALO_attrition_doctrine
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_hold_our_ground
+		}
+		completion_reward = {
+			add_ideas = ALO_attrition_modifier
 		}
 		x = 8
 		y = 7
@@ -301,12 +314,15 @@ focus_tree = {
 	focus = {
 		id = ALO_the_mano_line
 		icon = GFX_focus_ALO_the_mano_line
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = ALO_attrition_doctrine
 		}
 		prerequisite = {
 			focus = ALO_urban_warfare
+		}
+		completion_reward = {
+			add_ideas = ALO_mano_line
 		}
 		x = 7
 		y = 8
@@ -543,12 +559,14 @@ focus_tree = {
 	focus = {
 		id = ALO_devils_trigger
 		icon = GFX_focus_ALO_devils_trigger
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_arm_the_students
 		}
 		prerequisite = {
 			focus = ALO_rally_the_loyalists
+		}
+		completion_reward = {
 		}
 		x = 13
 		y = 8
@@ -556,12 +574,18 @@ focus_tree = {
 	focus = {
 		id = ALO_rally_the_working_class
 		icon = GFX_focus_ALO_rally_the_working_class
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_the_mano_line
-		}
-		prerequisite = {
 			focus = ALO_devils_trigger
+		}
+		completion_reward = {
+			add_stability = 0.15
+			add_war_support = 0.15
+			add_timed_idea = {
+				idea = ALO_rally_working_class
+				days = 120
+			}
 		}
 		x = 7
 		y = 9
@@ -569,9 +593,12 @@ focus_tree = {
 	focus = {
 		id = ALO_the_woring_matomo
 		icon = GFX_focus_ALO_the_woring_matomo
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_rally_the_working_class
+		}
+		completion_reward = {
+			add_ideas = ALO_working_manotomo
 		}
 		x = 8
 		y = 10
@@ -579,9 +606,15 @@ focus_tree = {
 	focus = {
 		id = ALO_lhs_aid
 		icon = GFX_focus_ALO_lhs_aid
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = ALO_devils_trigger
+			focus = ALO_the_mano_line
+		}
+		completion_reward = {
+			YAG = {
+				country_event = yagoo.13
+			}
 		}
 		x = 13
 		y = 9
@@ -589,9 +622,11 @@ focus_tree = {
 	focus = {
 		id = ALO_lhs_food_aid
 		icon = GFX_focus_ALO_lhs_food_aid
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_lhs_aid
+		}
+		completion_reward = {
 		}
 		x = 11
 		y = 10
@@ -629,9 +664,15 @@ focus_tree = {
 	focus = {
 		id = ALO_manatomo_loyalty
 		icon = GFX_focus_ALO_manatomo_loyalty
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = ALO_rebuilding_homes
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:ALO.current_party_ideology_group
+				popularity = 0.05
+			}
 		}
 		x = 19
 		y = 2
@@ -639,9 +680,15 @@ focus_tree = {
 	focus = {
 		id = ALO_rebuilding_homes
 		icon = GFX_focus_ALO_rebuilding_homes
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = ALO_end_of_strife
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = ALO_rebuilding_homes
+				days = 240
+			}
 		}
 		x = 20
 		y = 1
@@ -1508,9 +1555,24 @@ focus_tree = {
 	focus = {
 		id = ALO_localized_production
 		icon = GFX_focus_ALO_localized_production
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_rally_the_working_class
+		}
+		completion_reward = {
+			add_ideas = ALO_localized_production
+			every_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 		x = 6
 		y = 10
@@ -1518,9 +1580,20 @@ focus_tree = {
 	focus = {
 		id = ALO_emergency_factories
 		icon = GFX_focus_ALO_emergency_factories
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_rally_the_working_class
+		}
+		completion_reward = {
+			add_stability = -0.15
+			add_war_support = -0.1
+			every_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 		x = 4
 		y = 10
@@ -1528,12 +1601,20 @@ focus_tree = {
 	focus = {
 		id = ALO_a_loyal_manotomo
 		icon = GFX_focus_ALO_a_loyal_manotomo
-		cost = 0
+		cost = 4
 		prerequisite = {
 			focus = ALO_the_woring_matomo
 		}
 		prerequisite = {
 			focus = ALO_localized_production
+		}
+		completion_reward = {
+			add_stability = 0.2
+			add_war_support = 0.15
+			add_popularity = {
+				ideology = var:ALO.current_party_ideology_group
+				popularity = 0.1
+			}
 		}
 		x = 7
 		y = 11
@@ -1550,26 +1631,6 @@ focus_tree = {
 		}
 		x = 12
 		y = 11
-	}
-	focus = {
-		id = ALO_pledge_of_demon
-		icon = GFX_focus_ALO_pledge_of_demon
-		cost = 0
-		prerequisite = {
-			focus = ALO_a_loyal_manotomo
-		}
-		x = 7
-		y = 12
-	}
-	focus = {
-		id = ALO_yagoos_promises
-		icon = GFX_focus_ALO_yagoos_promises
-		cost = 0
-		prerequisite = {
-			focus = ALO_lhs_peacekeeper_corps
-		}
-		x = 12
-		y = 12
 	}
 	focus = {
 		id = ALO_manotomo_united

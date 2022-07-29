@@ -613,3 +613,64 @@ country_event = {
 		}
 	}
 }
+
+#Aloe asks for equipment 
+country_event = {
+	id = yagoo.13
+	title = yagoo.13.t
+	desc = yagoo.13.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = yagoo.13.a
+		ALO = {
+			country_event = aloe.18
+		}
+	}
+	#We have nothing to help
+	option = {
+		name = yagoo.13.b
+		ALO = {
+			country_event = aloe.19
+		}
+	}
+	#We'll sell it
+	option = {
+		name = yagoo.13.c
+		ALO = {
+			country_event = aloe.20
+		}
+	}
+}
+
+#Aloe turns down offer
+country_event = {
+	id = yagoo.14
+	title = yagoo.14.t
+	desc = yagoo.14.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = yagoo.14.a
+	}
+}
+
+#Aloe accepts offer
+country_event = {
+	id = yagoo.15
+	title = yagoo.15.t
+	desc = yagoo.15.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = yagoo.14.a
+		add_political_power = 150
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -2000
+		}
+	}
+}
