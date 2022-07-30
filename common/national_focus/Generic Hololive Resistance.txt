@@ -149,6 +149,8 @@ focus_tree = {
 		x = 8
 		y = 2
 	}
+	
+
 	focus = {
 		id = GEN_defensive_ethos_two
 		icon = GFX_focus_GEN_defensive_ethos
@@ -1797,7 +1799,7 @@ focus_tree = {
 					has_government = communism
 				}
 			}
-			any_country = {
+			random_country = {
 				limit = {
 					has_government = communism
 				}
@@ -1938,21 +1940,47 @@ focus_tree = {
 			focus = GEN_resistance_industry
 		}
 		completion_reward = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 1000
-				producer = AQA
+			IF = {
+				limit = {
+					has_completed_focus = GEN_support_aqua
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1000
+					producer = AQA
+				}
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = 500
+					producer = AQA
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 250
+					producer = AQA
+				}
 			}
-			add_equipment_to_stockpile = {
-				type = artillery_equipment
-				amount = 500
-				producer = AQA
+			else_if = {
+				limit = {
+					has_completed_focus = GEN_support_coco
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1000
+					producer = COC
+				}
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = 500
+					producer = COC
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 250
+					producer = COC
+				}
 			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = 250
-				producer = AQA
-			}
+			
 		}
 		x = 68
 		y = 5
@@ -1964,6 +1992,22 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_support_aqua
 		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
 		x = 70
 		y = 3
 	}
@@ -1974,6 +2018,49 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_support_aqua
 		}
+		completion_reward = {
+			IF = {
+				limit = {
+					any_neighbor_country = {
+						is_lhs_ideology = yes
+					}
+				}
+				random_neighbor_country = {
+					limit = {
+						is_lhs_ideology = yes
+					}
+					country_event = {
+						id = resistance.2
+						days = 1
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500 
+				}
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						is_lhs_ideology = yes
+					}
+				}
+				random_country = {
+					limit = {
+						is_lhs_ideology = yes
+					}
+					country_event = {
+						id = resistance.2
+						days = 1
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500 
+				}
+			}
+		}
+		
 		x = 72
 		y = 3
 	}

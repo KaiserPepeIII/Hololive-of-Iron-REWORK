@@ -1,0 +1,103 @@
+add_namespace = resistance
+#
+#	Neighbor destablizes us
+#
+country_event = {
+	id = resistance.1
+	title = resistance.1.t
+	desc = resistance.1.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#damn
+	option = {
+		name = resistance.1.a
+		add_stability = -0.05
+	}
+}
+# Cocoists sponsored by [FROM.getname] create havoc in aquaist country
+country_event = {
+	id = resistance.2
+	title = resistance.2.t
+	desc = resistance.2.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#damn
+	option = {
+		name = resistance.2.a
+		add_stability = -0.05
+		random_owned_controlled_state = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		random_owned_controlled_state = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		random_owned_controlled_state = {
+			damage_building = {
+				type = industrial_complex
+				damage = 1
+			}
+		}
+	}
+}
+#Revolutionaries sponsered by [FROM.getname] create havoc in non-revolutionary country
+country_event = {
+	id = resistance.3
+	title = resistance.3.t
+	desc = resistance.3.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#damn
+	option = {
+		name = resistance.3.a
+		add_stability = -0.05
+		random_owned_controlled_state = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		random_owned_controlled_state = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		random_owned_controlled_state = {
+			damage_building = {
+				type = industrial_complex
+				damage = 1
+			}
+		}
+		IF = {
+			limit = {
+				FROM = {
+					has_government = pro_resistance_nationalism
+				}
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.05
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_government = communism
+				}
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+	}
+}
+
+
+
