@@ -1,0 +1,121 @@
+JAP_the_iroha_revolution = {
+	JAP_the_iroha_revolution_mission = {
+		activation = {
+			tag = JAP
+			check_variable = {
+				var = JAP.the_iroha_revolution_strength
+				value = 4
+				compare = greater_than_or_equals
+			}
+			NOT = {
+				has_country_flag = JAP_iroha_revolution
+			}
+		}
+		cancel_trigger = {
+			always = no
+		}
+		visible = {
+			IRO = {
+				exists = no
+			}
+			NOT = {
+				has_country_flag = JAP_iroha_revolution
+			}
+		}
+		available = {
+			check_variable = {
+				var = JAP.the_iroha_revolution_strength
+				value = 0
+				compare = equals
+			}
+		}
+		is_good = no
+		days_mission_timeout = 180
+		selectable_mission = yes
+		complete_effect = {
+			add_stability = 0.1
+			set_country_flag = JAP_iroha_revolution
+		}
+		timeout_effect = {
+			country_event = japan.1
+		}
+	}
+	JAP_the_iroha_revolution_strength_gain_mission = {
+		activation = {
+			tag = JAP
+			NOT = {
+				has_country_flag = JAP_iroha_revolution
+			}
+		}
+		cancel_trigger = {
+			always = no
+		}
+		visible = {
+			IRO = {
+				exists = no
+			}
+			NOT = {
+				has_country_flag = JAP_iroha_revolution
+			}
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_mission_timeout = 90
+		selectable_mission = no
+		complete_effect = {
+			add_stability = 0.06
+		}
+		timeout_effect = {
+			random_list = {
+				55 = {
+					add_to_variable = {
+						var = JAP.the_iroha_revolution_strength
+						value = 1
+					}
+				}
+				35 = {
+					add_to_variable = {
+						var = JAP.the_iroha_revolution_strength
+						value = 2
+					}
+				}
+				10 = {
+					add_to_variable = {
+						var = JAP.the_iroha_revolution_strength
+						value = 3
+					}
+				}
+			}
+		}
+	}
+	JAP_crackdown_on_rebels = {
+		available = {
+			tag = JAP
+			has_political_power > 50
+			army_manpower_in_state = {
+				state = 533
+				amount > 4000
+			}
+			army_manpower_in_state = {
+				state = 534
+				amount > 4000
+			}
+			army_manpower_in_state = {
+				state = 536
+				amount > 4000
+			}
+		}
+		visible = {
+			tag = JAP
+		}
+		cost = 50
+		complete_effect = {
+			subtract_from_variable = {
+				var = JAP.the_iroha_revolution_strength
+				value = 1
+			}
+		}
+	}
+}

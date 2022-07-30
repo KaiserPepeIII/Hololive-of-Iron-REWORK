@@ -1,0 +1,57 @@
+ALO_preparing_for_civil_war = {
+	priority = 100
+	icon = generic_economic
+	picture = GFX_decision_cat_generic_arabia
+	visible_when_empty = yes
+	allowed = {
+		tag = ALO
+	}
+	visible = {
+		has_country_flag = ALO_prepare_for_civil_war
+	}
+}
+
+ALO_post_civil_war_recovery = {
+	priority = 25
+	icon = generic_economic
+	picture = GFX_decision_cat_generic_arabia
+	visible_when_empty = yes
+	allowed = {
+		tag = ALO
+	}
+}
+
+ALO_the_manotomo_dictatorship = {
+	priority = 25
+	icon = generic_economic
+	picture = GFX_decision_cat_generic_arabia
+	visible_when_empty = yes
+	allowed = {
+		tag = ALO
+	}
+	visible = {
+		has_completed_focus = ALO_the_looming_crisis
+		OR = {
+			AND = {
+				has_country_flag = ALO_prepare_for_civil_war
+				has_country_flag = ALO_civil_war
+			}
+			has_idea = ALO_national_confusion
+		}
+	}
+}
+
+ALO_executive_acts = {
+	priority = 24
+	icon = generic_economic
+	picture = GFX_decision_cat_generic_arabia
+	visible_when_empty = yes
+	allowed = {
+		tag = ALO
+	}
+	visible = {
+		has_completed_focus = ALO_the_looming_crisis
+		has_country_flag = ALO_prepare_for_civil_war
+		has_country_flag = ALO_civil_war
+	}
+}

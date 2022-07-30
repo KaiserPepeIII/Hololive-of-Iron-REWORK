@@ -1,0 +1,20 @@
+#
+#	Higher faith in the treaty in Brugg
+#	means less manpower, longer training time THIS IS REMOVED WHEN WORLD TENSION 
+#	GETS TOO HIGH.
+#	
+lhs_division_making_modifier = {
+	icon = GFX_idea_unknown
+	enable = {
+		is_in_array = {
+			array = global.lhs_member_flag
+			value = THIS.id
+		}
+	}
+	remove_trigger = {
+		threat > 0.5
+	}
+	training_time_factor = var:global.brugg_legitimacy
+	minimum_training_level = var:global.brugg_legitimacy
+	ai_focus_peaceful_factor = var:global.brugg_legitimacy
+}

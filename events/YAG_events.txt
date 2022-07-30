@@ -1,0 +1,676 @@
+add_namespace = yagoo
+#
+#	Canada Plan
+#
+country_event = {
+	id = yagoo.1
+	title = yagoo.1.t
+	desc = yagoo.1.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#We agree to sell all of them
+	option = {
+		name = yagoo.1.a
+		add_political_power = 300
+		331 = {
+			transfer_state_to = FROM
+		}
+		332 = {
+			transfer_state_to = FROM
+		}
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#Only sell Nova Scotia 
+	option = {
+		name = yagoo.1.b
+		add_political_power = 150
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#Only sell Newfoundland and Labrador 
+	option = {
+		name = yagoo.1.c
+		add_political_power = 150
+		464 = {
+			transfer_state_to = FROM
+		}
+		465 = {
+			transfer_state_to = FROM
+		}
+	}
+	#hell no
+	option = {
+		name = yagoo.1.d
+		add_opinion_modifier = {
+			target = FROM
+			modifier = WTS_rude
+		}
+		FROM = {
+			reverse_add_opinion_modifier = {
+				target = PREV
+				modifier = WTS_rude
+			}
+			country_event = watson.145
+		}
+	}
+}
+
+#
+#	HELP OUT KANATA
+#
+country_event = {
+	id = yagoo.2
+	title = yagoo.2.t
+	desc = yagoo.2.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#As long as you reform
+	option = {
+		name = yagoo.2.a
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 10
+		}
+		FROM = {
+			country_event = kanata.3
+		}
+	}
+}
+
+#
+#	Kanata demands Baja California
+#
+country_event = {
+	id = yagoo.3
+	title = yagoo.3.t
+	desc = yagoo.3.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#as long as she stays with us
+	option = {
+		name = yagoo.3.a
+		FROM = {
+			transfer_state = 484
+			transfer_state = 1126
+			country_event = kanata.5
+		}
+	}
+	#lolno
+	option = {
+		name = yagoo.3.a
+		FROM = {
+			country_event = kanata.6
+		}
+	}
+}
+
+#
+#	Coco REFUSES to back down
+#
+country_event = {
+	id = yagoo.4
+	title = yagoo.4.t
+	desc = yagoo.4.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#lol war it is then 
+	option = {
+		name = yagoo.4.a
+		set_global_flag = veracruz_incident_settled
+		declare_war_on = {
+			target = COC
+			type = annex_everything
+		}
+		add_to_faction = KAN
+		KAN = {
+			country_event = kanata.8
+		}
+	}
+	#sorry kanata
+	option = {
+		name = yagoo.4.b
+		KAN = {
+			country_event = kanata.7
+		}
+	}
+}
+
+#Fubuki offers us Ghana
+country_event = {
+	id = yagoo.5
+	title = yagoo.5.t
+	desc = yagoo.5.desc
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Sure!
+	option = {
+		name = yagoo.5.a
+		add_political_power = -100
+		YAG = {
+			transfer_state = 274
+			transfer_state = 1090
+		}
+		FBK = {
+			add_political_power = 100
+			country_event = fubuki.21
+		}
+	}
+	#Why would we need that lmfao
+	option = {
+		name = yagoo.5.b
+		country_event = fubuki.21
+	}
+}
+
+#
+#
+#	TEMPORARY YAGOO COUNCIL MISSION EVENTS
+#
+#
+#The Council Begins
+country_event = {
+	id = yagoo.6
+	title = yagoo.6.t
+	desc = yagoo.6.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#let's gooo
+	option = {
+		country_event = {
+			id = yagoo.7
+			days = 2
+		}
+		clr_country_flag = YAG_lhs_council_1
+	}
+}
+
+#Policy on military expansion
+country_event = {
+	id = yagoo.7
+	title = yagoo.7.t
+	desc = yagoo.7.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#The Geneva Protocols was a mistake 
+	option = {
+		name = yagoo.7.a
+		subtract_from_variable = {
+			var = global.lhs_faith
+			value = 10
+		}
+		subtract_from_variable = {
+			var = global.brugg_legitimacy
+			value = 10
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 3
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 1
+		}
+		country_event = {
+			id = yagoo.8
+			days = 2
+		}
+	}
+	#We need to rearm
+	option = {
+		name = yagoo.7.b
+		subtract_from_variable = {
+			var = global.lhs_faith
+			value = 5
+		}
+		subtract_from_variable = {
+			var = global.brugg_legitimacy
+			value = 5
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 2
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 2
+		}
+		country_event = {
+			id = yagoo.8
+			days = 2
+		}
+	}
+	#Diplomacy is the way to go
+	option = {
+		name = yagoo.7.c
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 15
+		}
+		add_to_variable = {
+			var = global.brugg_legitimacy
+			value = 15
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 1
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 3
+		}
+		country_event = {
+			id = yagoo.8
+			days = 2
+		}
+	}
+}
+
+#Foreign Policy
+country_event = {
+	id = yagoo.8
+	title = yagoo.8.t
+	desc = yagoo.8.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#International issues as always
+	option = {
+		name = yagoo.8.c
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 15
+		}
+		add_to_variable = {
+			var = global.brugg_legitimacy
+			value = 15
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 1
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 3
+		}
+		country_event = {
+			id = yagoo.9
+			days = 2
+		}
+	}
+	#Regional affairs
+	option = {
+		name = yagoo.8.b
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 5
+		}
+		add_to_variable = {
+			var = global.brugg_legitimacy
+			value = 5
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 2
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 2
+		}
+		country_event = {
+			id = yagoo.9
+			days = 2
+		}
+	}
+	#affairs of the interior and satellites 
+	option = {
+		name = yagoo.8.c
+		subtract_from_variable = {
+			var = global.lhs_faith
+			value = 15
+		}
+		subtract_from_variable = {
+			var = global.brugg_legitimacy
+			value = 15
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 3
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 1
+		}
+		country_event = {
+			id = yagoo.9
+			days = 2
+		}
+	}
+}
+
+#Fiscal Policy
+country_event = {
+	id = yagoo.9
+	title = yagoo.9.t
+	desc = yagoo.9.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#the status quo is fine
+	option = {
+		name = yagoo.9.c
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 5
+		}
+		add_to_variable = {
+			var = global.brugg_legitimacy
+			value = 5
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 1
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 2
+		}
+		country_event = {
+			id = yagoo.10
+			days = 2
+		}
+	}
+	#Inflate the currenncy
+	option = {
+		name = yagoo.9.b
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 15
+		}
+		add_to_variable = {
+			var = global.brugg_legitimacy
+			value = 15
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 1
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 3
+		}
+		country_event = {
+			id = yagoo.10
+			days = 2
+		}
+	}
+	#deflate the currency
+	option = {
+		name = yagoo.9.c
+		subtract_from_variable = {
+			var = global.lhs_faith
+			value = 15
+		}
+		subtract_from_variable = {
+			var = global.brugg_legitimacy
+			value = 15
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 3
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 1
+		}
+		country_event = {
+			id = yagoo.10
+			days = 2
+		}
+	}
+}
+
+#Investment Policy
+country_event = {
+	id = yagoo.10
+	title = yagoo.10.t
+	desc = yagoo.10.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Heavy investments
+	option = {
+		name = yagoo.10.a
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 15
+		}
+		add_to_variable = {
+			var = global.brugg_legitimacy
+			value = 15
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 3
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 3
+		}
+		country_event = {
+			id = yagoo.11
+			days = 2
+		}
+	}
+	#Medium Investments
+	option = {
+		name = yagoo.10.b
+		add_to_variable = {
+			var = global.lhs_faith
+			value = 5
+		}
+		add_to_variable = {
+			var = global.brugg_legitimacy
+			value = 5
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 2
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 2
+		}
+		country_event = {
+			id = yagoo.11
+			days = 2
+		}
+	}
+	#small investments
+	option = {
+		name = yagoo.10.c
+		subtract_from_variable = {
+			var = global.lhs_faith
+			value = 5
+		}
+		subtract_from_variable = {
+			var = global.brugg_legitimacy
+			value = 5
+		}
+		add_to_variable = {
+			var = ALO.yagooist_confidence
+			value = 1
+		}
+		add_to_variable = {
+			var = YAG.interventionism_isolationism_var
+			value = 1
+		}
+		country_event = {
+			id = yagoo.11
+			days = 2
+		}
+	}
+}
+
+#Results
+country_event = {
+	id = yagoo.11
+	title = yagoo.11.t
+	desc = yagoo.11.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#	COUNCIL RULES FOR INTERNATIONALISM
+	#viva la status quo
+	option = {
+		name = yagoo.11.a
+		trigger = {
+			check_variable = {
+				var = YAG.interventionism_isolationism_var
+				value = 8
+				compare = greater_than_or_equals
+			}
+		}
+		set_country_flag = YAG_internationalism_flag
+		news_event = global_holo.4
+		country_event = aloe.2
+	}
+	# COUNCIL RULES FOR REGIONALISM
+	#Europe has seen great destabilisation
+	option = {
+		name = yagoo.11.b
+		trigger = {
+			check_variable = {
+				var = YAG.interventionism_isolationism_var
+				value = 5
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = YAG.interventionism_isolationism_var
+				value = 8
+				compare = less_than
+			}
+		}
+		set_country_flag = YAG_regionalism_flag
+		news_event = global_holo.4
+		country_event = aloe.2
+	}
+	# COUNCIL RULES FOR NATIONALISM
+	#Truly an end of an era 
+	option = {
+		name = yagoo.11.c
+		trigger = {
+			check_variable = {
+				var = YAG.interventionism_isolationism_var
+				value = 5
+				compare = less_than
+			}
+		}
+		set_country_flag = YAG_nationalism_flag
+		news_event = global_holo.4
+		country_event = aloe.2
+	}
+}
+
+#Aloe asks for aid 
+country_event = {
+	id = yagoo.12
+	title = yagoo.12.t
+	desc = yagoo.12.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#In case of civil war we will help
+	option = {
+		name = yagoo.12.a
+		FROM = {
+			country_event = aloe.15
+		}
+	}
+	#Send aid
+	option = {
+		name = yagoo.12.b
+		FROM = {
+			country_event = aloe.16
+		}
+		YAG = {
+			end_puppet = ALO
+			remove_from_faction = ALO
+		}
+	}
+	#No it'll be fine lmao
+	option = {
+		name = yagoo.12.c
+		FROM = {
+			country_event = aloe.17
+		}
+		YAG = {
+			end_puppet = ALO
+			remove_from_faction = ALO
+		}
+	}
+}
+
+#Aloe asks for equipment 
+country_event = {
+	id = yagoo.13
+	title = yagoo.13.t
+	desc = yagoo.13.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = yagoo.13.a
+		ALO = {
+			country_event = aloe.18
+		}
+	}
+	#We have nothing to help
+	option = {
+		name = yagoo.13.b
+		ALO = {
+			country_event = aloe.19
+		}
+	}
+	#We'll sell it
+	option = {
+		name = yagoo.13.c
+		ALO = {
+			country_event = aloe.20
+		}
+	}
+}
+
+#Aloe turns down offer
+country_event = {
+	id = yagoo.14
+	title = yagoo.14.t
+	desc = yagoo.14.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = yagoo.14.a
+	}
+}
+
+#Aloe accepts offer
+country_event = {
+	id = yagoo.15
+	title = yagoo.15.t
+	desc = yagoo.15.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = yagoo.14.a
+		add_political_power = 150
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -2000
+		}
+	}
+}

@@ -1,0 +1,63 @@
+add_namespace = czech
+#
+#	ALOE DEMANDS UNVAR
+#
+country_event = {
+	id = czech.1
+	title = czech.1.t
+	desc = czech.1.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Fine
+	option = {
+		name = czech.1.a
+		add_stability = -0.1
+		add_to_variable = {
+			var = CZE.anti_agression
+			value = 30
+		}
+		FROM = {
+			transfer_state = 73
+			country_event = aloe.6
+		}
+	}
+	#never
+	option = {
+		name = czech.1.b
+		add_war_support = 0.15
+		ALO = {
+			country_event = aloe.8
+		}
+	}
+}
+
+#
+#	ALOE DEMANDS SOUTHERN SLOVAKIA
+#
+country_event = {
+	id = czech.2
+	title = czech.2.t
+	desc = czech.2.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Go to hell
+	option = {
+		name = czech.2.a
+		add_war_support = 0.2
+		ALO = {
+			country_event = aloe.10
+		}
+	}
+	#bruh 
+	option = {
+		name = czech.2.b
+		add_stability = -0.2
+		add_to_variable = {
+			var = CZE.anti_agression
+			value = 50
+		}
+		ALO = {
+			transfer_state = 664
+		}
+	}
+}

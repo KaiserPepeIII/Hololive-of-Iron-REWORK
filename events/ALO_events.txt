@@ -1,0 +1,641 @@
+add_namespace = aloe
+#Suisei Sends Proposition
+country_event = {
+	id = aloe.1
+	title = aloe.1.t
+	desc = aloe.1.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	option = {
+		name = aloe.1.a
+		SUI = {
+			country_event = suisei.60
+		}
+	}
+	option = {
+		name = aloe.1.b
+		add_war_support = 0.05
+		SUI = {
+			country_event = suisei.67
+		}
+	}
+}
+
+#Results of Yagoo council
+country_event = {
+	id = aloe.2
+	title = aloe.2.t
+	desc = aloe.2.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Internationalism
+	#Oh god oh man Oh god Oh man
+	option = {
+		name = aloe.2.a
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_internationalism_flag
+			}
+		}
+		set_country_flag = ALO_prepare_for_civil_war
+	}
+	#REGIONALSIM
+	#nICE
+	option = {
+		name = aloe.2.b
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_regionalism_flag
+			}
+		}
+		YAG = {
+			set_country_flag = YAG_stabilising_the_balkans
+		}
+		set_country_flag = ALO_prepare_for_civil_war
+	}
+	#Nationalism
+	#OH SHIT 
+	option = {
+		name = aloe.2.c
+		trigger = {
+			YAG = {
+				has_country_flag = YAG_nationalism_flag
+			}
+		}
+		YAG = {
+			set_country_flag = YAG_integrating_the_balkans
+		}
+		set_country_flag = ALO_prepare_for_civil_war
+	}
+}
+
+#CIVIL WAR BEGINS
+country_event = {
+	id = aloe.3
+	title = aloe.3.t
+	desc = aloe.3.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	immediate = {
+		add_threat = 2.5
+		ALO = {
+			set_country_flag = ALO_civil_war
+		}
+	}
+	#ONWAWRDS HUNGARY!
+	option = {
+		name = aloe.3.a
+		add_popularity = {
+			ideology = left_wing_revolutionary
+			popularity = -0.5
+		}
+		add_popularity = {
+			ideology = reactionary_monarchy
+			popularity = -0.5
+		}
+		add_popularity = {
+			ideology = democratic_revitalisation
+			popularity = -0.5
+		}
+		subtract_from_variable = {
+			var = ALO.anti_aggression
+			value = 50
+		}
+		HUN = {
+			#civil war lands
+			transfer_state = 842
+			add_state_core = 842
+			transfer_state = 155
+			add_state_core = 155
+			transfer_state = 841
+			add_state_core = 841
+			transfer_state = 154
+			add_state_core = 154
+			load_oob = HUN_revolution
+			#cores on the rest of greater hungary
+			add_state_core = 839
+			add_state_core = 43
+			add_state_core = 840
+			add_state_core = 73
+			add_state_core = 83
+			add_state_core = 76
+			add_state_core = 941
+			add_state_core = 84
+			add_state_core = 664
+			add_state_core = 82
+			add_state_core = 938
+			add_state_core = 764
+			add_state_core = 45
+			add_state_core = 919
+			add_state_core = 622
+			add_state_core = 109
+			add_state_core = 103
+			add_state_core = 163
+			add_state_core = 923
+			every_army_leader = {
+				limit = {
+					has_trait = ALO_questionnable_loyalty
+				}
+				random_list = {
+					25 = {
+						set_nationality = HUN
+					}
+					10 = {
+						retire = yes
+					}
+					65 = {
+					}
+				}
+			}
+			change_tag_from = ALO
+			declare_war_on = {
+				target = ALO
+				type = annex_everything
+			}
+		}
+	}
+	#WE WILL CRUSH THEM
+	option = {
+		name = aloe.3.b
+		add_popularity = {
+			ideology = left_wing_revolutionary
+			popularity = -0.5
+		}
+		add_popularity = {
+			ideology = reactionary_monarchy
+			popularity = -0.5
+		}
+		add_popularity = {
+			ideology = democratic_revitalisation
+			popularity = -0.5
+		}
+		subtract_from_variable = {
+			var = ALO.anti_aggression
+			value = 50
+		}
+		HUN = {
+			#civil war lands
+			transfer_state = 842
+			add_state_core = 842
+			transfer_state = 155
+			add_state_core = 155
+			transfer_state = 841
+			add_state_core = 841
+			transfer_state = 154
+			add_state_core = 154
+			load_oob = HUN_revolution
+			#cores on the rest of greater hungary
+			add_state_core = 839
+			add_state_core = 43
+			add_state_core = 840
+			add_state_core = 73
+			add_state_core = 83
+			add_state_core = 76
+			add_state_core = 941
+			add_state_core = 84
+			add_state_core = 664
+			add_state_core = 82
+			add_state_core = 938
+			add_state_core = 764
+			add_state_core = 45
+			add_state_core = 919
+			add_state_core = 622
+			add_state_core = 109
+			add_state_core = 103
+			add_state_core = 163
+			add_state_core = 923
+			declare_war_on = {
+				target = ALO
+				type = annex_everything
+			}
+		}
+	}
+	#WE WILL CRUSH THEM - and declare independence!
+	option = {
+		name = aloe.3.C
+		YAG = {
+			end_puppet = ALO
+			remove_from_faction = ALO
+		}
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.5
+		}
+		add_popularity = {
+			ideology = left_wing_revolutionary
+			popularity = -0.5
+		}
+		add_popularity = {
+			ideology = reactionary_monarchy
+			popularity = -0.5
+		}
+		add_popularity = {
+			ideology = democratic_revitalisation
+			popularity = -0.5
+		}
+		subtract_from_variable = {
+			var = ALO.anti_aggression
+			value = 50
+		}
+		HUN = {
+			#civil war lands
+			transfer_state = 842
+			add_state_core = 842
+			transfer_state = 155
+			add_state_core = 155
+			transfer_state = 841
+			add_state_core = 841
+			transfer_state = 154
+			add_state_core = 154
+			load_oob = HUN_revolution
+			#cores on the rest of greater hungary
+			add_state_core = 839
+			add_state_core = 43
+			add_state_core = 840
+			add_state_core = 73
+			add_state_core = 83
+			add_state_core = 76
+			add_state_core = 941
+			add_state_core = 84
+			add_state_core = 664
+			add_state_core = 82
+			add_state_core = 938
+			add_state_core = 764
+			add_state_core = 45
+			add_state_core = 919
+			add_state_core = 622
+			add_state_core = 109
+			add_state_core = 103
+			add_state_core = 163
+			add_state_core = 923
+			declare_war_on = {
+				target = ALO
+				type = annex_everything
+			}
+		}
+	}
+}
+
+#MEL SEIZES TRANSLYVANIA
+country_event = {
+	id = aloe.4
+	title = aloe.4.t
+	desc = aloe.4.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#DAMN
+	option = {
+		name = aloe.4.a
+		add_stability = -0.1
+	}
+}
+
+#MEL SEIZES TRANSLYVANIA
+country_event = {
+	id = aloe.5
+	title = aloe.5.t
+	desc = aloe.5.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#DAMN
+	option = {
+		name = aloe.5.a
+		add_stability = -0.1
+	}
+}
+
+#CZECH RETURNS UNVAR
+country_event = {
+	id = aloe.6
+	title = aloe.6.t
+	desc = aloe.6.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Yaya
+	option = {
+		name = aloe.6.a
+		add_stability = 0.05
+	}
+	#DEMAND SOUTHERN SLOVAKIA
+	option = {
+		name = aloe.6.b
+		add_threat = 1
+		CZE = {
+			country_event = czech.2
+		}
+	}
+}
+
+#MEL RETURNS TRANSLYVANIA
+country_event = {
+	id = aloe.7
+	title = aloe.7.t
+	desc = aloe.7.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Yaya
+	option = {
+		name = aloe.7.a
+		add_stability = 0.05
+	}
+}
+
+#CZECH REFUSES TO RETURN UNVAR
+country_event = {
+	id = aloe.8
+	title = aloe.8.t
+	desc = aloe.8.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#BRUH
+	option = {
+		name = aloe.8.a
+		add_stability = -0.05
+		add_war_support = -0.05
+	}
+	#war
+	option = {
+		name = aloe.8.b
+		declare_war_on = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#MEL REFUSES TO RETURN TRANSLYVANIA
+country_event = {
+	id = aloe.9
+	title = aloe.9.t
+	desc = aloe.9.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#BRUH
+	option = {
+		name = aloe.9.a
+		add_stability = -0.05
+		add_war_support = -0.05
+	}
+	#war
+	option = {
+		name = aloe.9.b
+		declare_war_on = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#MEL REFUSES TO RETURN SOUTHERN SLOVAKIA
+country_event = {
+	id = aloe.10
+	title = aloe.10.t
+	desc = aloe.10.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = aloe.10.a
+		add_stability = -0.05
+		add_war_support = -0.05
+	}
+	#war
+	option = {
+		name = aloe.10.b
+		declare_war_on = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#Alignment Switch
+country_event = {
+	id = aloe.11
+	title = aloe.11.t
+	desc = aloe.11.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Pro Yagoo Monarchy
+	option = {
+		name = aloe.11.a
+		add_stability = 0.05
+		add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.05
+		}
+	}
+	#Pro Resistance Monarchy
+	option = {
+		name = aloe.11.b
+		add_stability = -0.1
+		add_popularity = {
+			ideology = pro_resistance_monarchy
+			popularity = 0.05
+		}
+		clear_variable = ALO.var_ALO_dictatorship_alignment
+		set_variable = {
+			var = ALO.var_ALO_dictatorship_alignment
+			value = token:pro_resistance_monarchy
+		}
+	}
+	#Divine Mandate
+	option = {
+		name = aloe.11.c
+		add_stability = -0.1
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.05
+		}
+		clear_variable = ALO.var_ALO_dictatorship_alignment
+		set_variable = {
+			var = ALO.var_ALO_dictatorship_alignment
+			value = token:divine_mandate
+		}
+	}
+}
+
+#Aloe seizes power - Yagooist
+country_event = {
+	id = aloe.12
+	title = aloe.12.t
+	desc = aloe.12.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Urah
+	option = {
+		name = aloe.12.a
+	}
+}
+
+#Aloe seizes power - Resistance
+country_event = {
+	id = aloe.13
+	title = aloe.13.t
+	desc = aloe.13.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Urah
+	option = {
+		name = aloe.13.a
+	}
+}
+
+#Aloe seizes power - Neutral
+country_event = {
+	id = aloe.14
+	title = aloe.14.t
+	desc = aloe.14.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Urah
+	option = {
+		name = aloe.14.a
+	}
+}
+
+#Yagoo promises support
+country_event = {
+	id = aloe.15
+	title = aloe.15.t
+	desc = aloe.15.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#yippee 
+	option = {
+		name = aloe.15.a
+		set_country_flag = ALO_yagoo_promises_aid
+	}
+}
+
+#Yagoo sends guns
+country_event = {
+	id = aloe.16
+	title = aloe.16.t
+	desc = aloe.16.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = aloe.16.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 300
+			producer = YAG
+		}
+	}
+}
+
+#Yagoo tells us to fuck off
+country_event = {
+	id = aloe.17
+	title = aloe.17.t
+	desc = aloe.17.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#oh yeah, fuck you too
+	option = {
+		name = aloe.17
+		add_timed_idea = {
+			idea = ALO_national_confusion
+			days = 180
+		}
+	}
+}
+
+#Yagoo gives us aid
+country_event = {
+	id = aloe.18
+	title = aloe.18.t
+	desc = aloe.18.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Cewl
+	option = {
+		name = aloe.18.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 2000
+		}
+	}
+}
+
+#Yagoo has nothing to spare
+country_event = {
+	id = aloe.19
+	title = aloe.19.t
+	desc = aloe.19.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Alright
+	option = {
+		name = aloe.19.a
+	}
+}
+
+#Yagoo offers to sell it 
+country_event = {
+	id = aloe.20
+	title = aloe.20.t
+	desc = aloe.20.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Alright
+	option = {
+		name = aloe.20.a
+		add_political_power = -150
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 2000
+		}
+		YAG = {
+			country_event = yagoo.15
+		}
+	}
+	#Nah I'm good\
+	option = {
+		name = aloe.20.b
+		YAG = {
+			country_event = yagoo.14
+		}
+	}
+}
+
+#Aloe End of Civil War
+country_event = {
+	id = aloe.21
+	title = aloe.21.t
+	desc = aloe.21.d
+	picture = GFX_report_event_aloe
+	trigger = {
+		tag = ALO
+		ALO = {
+			has_country_flag = ALO_civil_war
+		}
+		HUN = {
+			exists = no
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#Urah!
+	option = {
+		name = aloe.21.a
+		add_stability = 0.1
+		add_war_support = 0.1
+		add_popularity = {
+			ideology = var:ALO.current_party_ideology_group
+			popularity = 0.2
+		}
+		complete_national_focus = ALO_end_of_strife
+	}
+}

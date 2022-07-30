@@ -1,0 +1,253 @@
+ALO_preparing_for_civil_war = {
+	ALO_civil_initiate_mission = {
+		activation = {
+			has_country_flag = ALO_prepare_for_civil_war
+		}
+		cancel_trigger = {
+			always = no
+		}
+		visible = {
+			has_country_flag = ALO_prepare_for_civil_war
+		}
+		available = {
+			always = no
+		}
+		days_mission_timeout = 55
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			country_event = aloe.3
+			unlock_national_focus = ALO_the_anti_uprising
+			clr_country_flag = ALO_prepare_for_civil_war
+		}
+	}
+}
+
+ALO_post_civil_war_recovery = {
+	ALO_demand_ungvar = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = yes
+		visible = {
+			CZE = {
+				owns_state = 73
+			}
+		}
+		cost = 50
+		complete_effect = {
+			CZE = {
+				country_event = czech.1
+			}
+		}
+	}
+	ALO_demand_translyvania = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = yes
+		visible = {
+			MEL = {
+				owns_state = 76
+				owns_state = 84
+				owns_state = 83
+				owns_state = 941
+			}
+		}
+		cost = 50
+		complete_effect = {
+			MEL = {
+				country_event = mel.1
+			}
+		}
+	}
+}
+
+ALO_the_manotomo_dictatorship = {
+	ALO_a_new_alignment = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		cost = 50
+		complete_effect = {
+			country_event = aloe.11
+		}
+	}
+	ALO_blame_the_parliament = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		days_re_enable = 25
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ALO.var_ALO_dictatorship_alignment
+				popularity = 0.1
+			}
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 2
+			}
+		}
+	}
+	ALO_exert_more_power = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		days_re_enable = 25
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_popularity = {
+				ideology = var:ALO.var_ALO_dictatorship_alignment
+				popularity = 0.05
+			}
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 2
+			}
+		}
+	}
+	ALO_seize_power = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+			check_variable = {
+				var = ALO.executive_control
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = ALO.var_ALO_dictatorship_alignment
+						value = token:pro_yagoo_monarchy
+						compare = equals
+					}
+				}
+				set_politics = {
+					ruling_party = pro_yagoo_monarchy
+					elections_allowed = no
+				}
+				country_event = aloe.12
+				else_if = {
+					limit = {
+						check_variable = {
+							var = ALO.var_ALO_dictatorship_alignment
+							value = token:pro_resistance_monarchy
+							compare = equals
+						}
+					}
+					set_politics = {
+						ruling_party = pro_resistance_monarchy
+						elections_allowed = no
+					}
+					country_event = aloe.13
+				}
+				else = {
+					set_politics = {
+						ruling_party = divine_mandate
+						elections_allowed = no
+					}
+					country_event = aloe.14
+				}
+			}
+		}
+	}
+	#
+	#
+	#	EXECUTIVE ACTS
+	#	#based off of important Aloe dates
+	#
+	#Conscription Act
+	ALO_executive_order_806 = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = yes
+		visible = {
+			check_variable = {
+				var = ALO.executive_control
+				value = 3
+				compare = greater_than
+			}
+		}
+		complete_effect = {
+			add_stability = -0.05
+			every_owned_state = {
+				add_dynamic_modifier = {
+					modifier = ALO_executive_order_806
+				}
+			}
+		}
+	}
+	#Resource Acquisition
+	ALO_executive_order_815 = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = yes
+		visible = {
+			check_variable = {
+				var = ALO.executive_control
+				value = 5
+				compare = greater_than
+			}
+		}
+		complete_effect = {
+			add_stability = -0.05
+			every_owned_state = {
+				add_dynamic_modifier = {
+					modifier = ALO_executive_order_815
+				}
+			}
+		}
+	}
+	#Construction Batallions 
+	ALO_executive_order_831 = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = yes
+		visible = {
+			check_variable = {
+				var = ALO.executive_control
+				value = 7
+				compare = greater_than
+			}
+		}
+		complete_effect = {
+			add_stability = -0.05
+			every_owned_state = {
+				add_dynamic_modifier = {
+					modifier = ALO_executive_order_831
+				}
+			}
+		}
+	}
+}

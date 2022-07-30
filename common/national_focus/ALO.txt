@@ -1,5 +1,5 @@
 focus_tree = {
-	id = FocusTree_0
+	id = ALO
 	country = {
 		factor = 0
 		modifier = {
@@ -7,440 +7,706 @@ focus_tree = {
 			tag = ALO
 		}
 	}
-	continuous_focus_position = { x = 60 y = 1780 }
-
+	continuous_focus_position = {
+		x = 400
+		y = 1780
+	}
 	default = no
 	focus = {
 		id = ALO_the_looming_crisis
 		icon = GFX_focus_ALO_the_looming_crisis
-		cost = 0.00
+		cost = 1
+		available = {
+			has_country_flag = ALO_prepare_for_civil_war
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+		}
 		x = 9
 		y = 0
-
 	}
 	focus = {
-		id = ALO_the_anti_uprising
+		id = ALO_the_anti_uprising		#bypassed
 		icon = GFX_focus_ALO_the_anti_uprising
-		cost = 0.00
+		cost = 10
+		completion_reward = {
+			add_stability = -0.1
+		}
 		x = 10
 		y = 5
-
 	}
 	focus = {
-		id = ALO_end_of_strife
+		id = ALO_end_of_strife		#Bypassed
 		icon = GFX_focus_ALO_end_of_strife
-		cost = 0.00
+		cost = 10
+		completion_reward = {
+			add_stability = 0.1
+		}
 		x = 26
 		y = 0
-
 	}
 	focus = {
 		id = ALO_restart_our_industry
 		icon = GFX_focus_ALO_restart_our_industry
-		cost = 0.00
+		cost = 0
+		completion_reward = {
+			add_timed_idea = {
+				idea = ALO_restarting_industry
+				days = 180
+			}
+			capital_scope = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
 		x = 42
 		y = 1
-
 	}
 	focus = {
 		id = ALO_manatomo_army_restructuring
 		icon = GFX_focus_ALO_manatomo_army_restructuring
-		cost = 0.00
+		cost = 10
 		x = 56
 		y = 1
-
 	}
 	focus = {
 		id = ALO_manatomo_airforce
 		icon = GFX_focus_ALO_manatomo_airforce
-		cost = 0.00
+		cost = 0
+		completion_reward = {
+			air_experience = 5
+			add_tech_bonus = {
+				name = ALO_manatomo_aircraft_tec
+				bonus = 0.5
+				uses = 2
+				category = air_equipment
+			}
+			random_owned_state = {
+				limit = {
+					is_owned_by = ROOT
+				}
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 		x = 51
 		y = 9
-
 	}
 	focus = {
 		id = ALO_manatomo_navy
 		icon = GFX_focus_ALO_manatomo_navy
-		cost = 0.00
+		cost = 0
 		x = 63
 		y = 9
-
+		available = {
+			any_state = {
+				is_coastal = yes
+			}
+		}
+		completion_reward = {
+			navy_experience = 10
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
 	}
 	focus = {
 		id = ALO_inform_lhs_hq
 		icon = GFX_focus_ALO_inform_lhs_hq
-		cost = 0.00
+		cost = 1
 		prerequisite = {
 			focus = ALO_the_looming_crisis
 		}
-		x = 4
-		y = 1
-
-	}
-	focus = {
-		id = ALO_sound_the_alarm
-		icon = GFX_focus_ALO_sound_the_alarm
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_the_looming_crisis
+		completion_reward = {
+			YAG = {
+				country_event = yagoo.12
+			}
 		}
-		x = 9
+		x = 7
 		y = 1
-
 	}
 	focus = {
 		id = ALO_activate_emergency_powers
 		icon = GFX_focus_ALO_activate_emergency_powers
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_sound_the_alarm
-		}
+		cost = 1
 		prerequisite = {
 			focus = ALO_inform_lhs_hq
 		}
-		x = 6
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 2
+			}
+		}
+		x = 7
 		y = 2
-
 	}
 	focus = {
 		id = ALO_secure_armouries
 		icon = GFX_focus_ALO_secure_armouries
-		cost = 0.00
+		cost = 1
 		prerequisite = {
 			focus = ALO_activate_emergency_powers
 		}
-		x = 4
-		y = 3
-
-	}
-	focus = {
-		id = ALO_lockdown_cities
-		icon = GFX_focus_ALO_lockdown_cities
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_activate_emergency_powers
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 600
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 85
+			}
 		}
 		x = 6
 		y = 3
-
 	}
 	focus = {
 		id = ALO_instate_curfews
 		icon = GFX_focus_ALO_instate_curfews
-		cost = 0.00
+		cost = 1
 		prerequisite = {
 			focus = ALO_activate_emergency_powers
 		}
+		completion_reward = {
+			subtract_from_variable = {
+				var = ALO.anti_aggression
+				value = 2
+			}
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+		}
 		x = 8
 		y = 3
-
 	}
 	focus = {
 		id = ALO_ma_no_tomo_militias
 		icon = GFX_focus_ALO_ma_no_tomo_militias
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_lockdown_cities
-		}
+		cost = 1
 		prerequisite = {
 			focus = ALO_instate_curfews
 		}
 		prerequisite = {
 			focus = ALO_secure_armouries
 		}
-		x = 6
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+			division_template = {
+				name = "Ma no Tomo Miltia"
+				regiments = {
+					militia = {
+						x = 0
+						y = 0
+					}
+					militia = {
+						x = 0
+						y = 1
+					}
+					militia = {
+						x = 0
+						y = 2
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Devil's Batallion\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"Hell's Section\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"2nd Devil's Batallion\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+			}
+		}
+		x = 7
 		y = 4
-
 	}
 	focus = {
 		id = ALO_hold_our_ground
 		icon = GFX_focus_ALO_hold_our_ground
-		cost = 0.00
+		cost = 3
 		prerequisite = {
 			focus = ALO_the_anti_uprising
 		}
 		mutually_exclusive = {
 			focus = ALO_crush_them_now
 		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					any_neighbor_state = {
+						OWNER = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+		}
 		x = 7
 		y = 6
-
 	}
 	focus = {
 		id = ALO_urban_warfare
 		icon = GFX_focus_ALO_urban_warfare
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_hold_our_ground
 		}
+		completion_reward = {
+			every_army_leader = {
+				add_ideas = ALO_urban_warfare
+				add_defense = 1
+				add_coordination = 1
+			}
+		}
 		x = 6
 		y = 7
-
 	}
 	focus = {
 		id = ALO_attrition_doctrine
 		icon = GFX_focus_ALO_attrition_doctrine
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_hold_our_ground
 		}
+		completion_reward = {
+			add_ideas = ALO_attrition_modifier
+		}
 		x = 8
 		y = 7
-
 	}
 	focus = {
 		id = ALO_the_mano_line
 		icon = GFX_focus_ALO_the_mano_line
-		cost = 0.00
+		cost = 5
 		prerequisite = {
 			focus = ALO_attrition_doctrine
 		}
 		prerequisite = {
 			focus = ALO_urban_warfare
 		}
+		completion_reward = {
+			add_ideas = ALO_mano_line
+		}
 		x = 7
 		y = 8
-
 	}
 	focus = {
 		id = ALO_arm_the_police
 		icon = GFX_focus_ALO_arm_the_police
-		cost = 0.00
+		cost = 1
 		prerequisite = {
 			focus = ALO_the_looming_crisis
 		}
-		x = 14
+		completion_reward = {
+			division_template = {
+				name = "Gendarmerie"
+				regiments = {
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					cavalry = {
+						x = 0
+						y = 2
+					}
+				}
+				support = {
+					military_police = {
+						x = 0
+						y = 0
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1st Gendarmerie\" division_template = \"Gendarmerie\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"Gendarmerie\" division_template = \"Gendarmerie\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"Gendarmerie\" division_template = \"Gendarmerie\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+			}
+		}
+		x = 11
 		y = 1
-
 	}
 	focus = {
-		id = ALO_the_comng_split
+		id = ALO_the_comng_split		#promote radicalism
 		icon = GFX_focus_ALO_the_comng_split
-		cost = 0.00
+		cost = 1
 		prerequisite = {
 			focus = ALO_arm_the_police
 		}
-		prerequisite = {
-			focus = ALO_sound_the_alarm
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.anti_aggression
+				value = 1
+			}
+			add_timed_idea = {
+				idea = ALO_wave_of_radicalism
+				days = 180
+			}
 		}
-		x = 13
+		x = 11
 		y = 2
-
 	}
 	focus = {
 		id = ALO_ma_no_tomo_propaganda
 		icon = GFX_focus_ALO_ma_no_tomo_propaganda
-		cost = 0.00
+		cost = 1
 		prerequisite = {
 			focus = ALO_the_comng_split
 		}
-		x = 12
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+			add_war_support = 0.15
+		}
+		x = 10
 		y = 3
-
 	}
 	focus = {
 		id = ALO_denounce_anti_activism
 		icon = GFX_focus_ALO_denounce_anti_activism
-		cost = 0.00
+		cost = 1
 		prerequisite = {
 			focus = ALO_the_comng_split
 		}
-		x = 14
+		completion_reward = {
+			add_popularity = {
+				ideology = var:ALO.current_party_ideology_group
+				popularity = 0.05
+			}
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+			add_stability = -0.05
+			add_war_support = 0.05
+		}
+		x = 12
 		y = 3
-
 	}
 	focus = {
 		id = ALO_silence_the_press
 		icon = GFX_focus_ALO_silence_the_press
-		cost = 0.00
+		cost = 1
 		prerequisite = {
 			focus = ALO_denounce_anti_activism
 		}
 		prerequisite = {
 			focus = ALO_ma_no_tomo_propaganda
 		}
-		x = 13
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.executive_control
+				value = 1
+			}
+			add_to_variable = {
+				var = ALO.anti_aggression
+				value = 1
+			}
+			add_timed_idea = {
+				idea = ALO_press_suppression
+				days = 360
+			}
+		}
+		x = 11
 		y = 4
-
 	}
 	focus = {
 		id = ALO_crush_them_now
 		icon = GFX_focus_ALO_crush_them_now
-		cost = 0.00
+		cost = 3
 		prerequisite = {
 			focus = ALO_the_anti_uprising
 		}
 		mutually_exclusive = {
 			focus = ALO_hold_our_ground
 		}
+		completion_reward = {
+			add_political_power = -450
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 4000
+				producer = YAG
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 200
+				producer = SUB
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 120
+				producer = FLA
+			}
+		}
 		x = 13
 		y = 6
-
 	}
 	focus = {
 		id = ALO_arm_the_students
 		icon = GFX_focus_ALO_arm_the_students
-		cost = 0.00
+		cost = 2
 		prerequisite = {
 			focus = ALO_crush_them_now
 		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_template = "Ma no Tomo Miltia"
+					}
+				}
+				division_template = {
+					name = "Ma no Tomo Miltia"
+					regiments = {
+						militia = {
+							x = 0
+							y = 0
+						}
+						militia = {
+							x = 0
+							y = 1
+						}
+						militia = {
+							x = 0
+							y = 2
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"2nd Devil's Batallion\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"2nd Hell's Section\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"3rd Devil's Batallion\" division_template = \"Ma no Tomo Miltia\" start_experience_factor = 0.1"
+					owner = ALO
+				}
+			}
+		}
 		x = 14
 		y = 7
-
 	}
 	focus = {
 		id = ALO_rally_the_loyalists
 		icon = GFX_focus_ALO_rally_the_loyalists
-		cost = 0.00
+		cost = 2
 		prerequisite = {
 			focus = ALO_crush_them_now
 		}
+		completion_reward = {
+			add_war_support = 0.15
+		}
 		x = 12
 		y = 7
-
 	}
 	focus = {
 		id = ALO_devils_trigger
 		icon = GFX_focus_ALO_devils_trigger
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_arm_the_students
 		}
 		prerequisite = {
 			focus = ALO_rally_the_loyalists
 		}
+		completion_reward = {
+		}
 		x = 13
 		y = 8
-
 	}
 	focus = {
 		id = ALO_rally_the_working_class
 		icon = GFX_focus_ALO_rally_the_working_class
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_the_mano_line
-		}
-		prerequisite = {
 			focus = ALO_devils_trigger
 		}
-		x = 6
+		completion_reward = {
+			add_stability = 0.15
+			add_war_support = 0.15
+			add_timed_idea = {
+				idea = ALO_rally_working_class
+				days = 120
+			}
+		}
+		x = 7
 		y = 9
-
 	}
 	focus = {
 		id = ALO_the_woring_matomo
 		icon = GFX_focus_ALO_the_woring_matomo
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_rally_the_working_class
 		}
+		completion_reward = {
+			add_ideas = ALO_working_manotomo
+		}
 		x = 8
 		y = 10
-
 	}
 	focus = {
 		id = ALO_lhs_aid
 		icon = GFX_focus_ALO_lhs_aid
-		cost = 0.00
+		cost = 5
 		prerequisite = {
 			focus = ALO_devils_trigger
+			focus = ALO_the_mano_line
+		}
+		completion_reward = {
+			YAG = {
+				country_event = yagoo.13
+			}
 		}
 		x = 13
 		y = 9
-
 	}
 	focus = {
 		id = ALO_lhs_food_aid
 		icon = GFX_focus_ALO_lhs_food_aid
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_lhs_aid
 		}
+		completion_reward = {
+		}
 		x = 11
 		y = 10
-
 	}
 	focus = {
 		id = ALO_yagoos_rifles
 		icon = GFX_focus_ALO_yagoos_rifles
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_lhs_aid
 		}
 		x = 13
 		y = 10
-
-	}
-	focus = {
-		id = ALO_refugee_passage
-		icon = GFX_focus_ALO_refugee_passage
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_lhs_aid
-		}
-		x = 15
-		y = 10
-
 	}
 	focus = {
 		id = ALO_cross_border_factories
 		icon = GFX_focus_ALO_cross_border_factories
-		cost = 0.00
+		cost = 3
 		prerequisite = {
-			focus = ALO_refugee_passage
+			focus = ALO_lhs_aid
+		}
+		completion_reward = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
 		}
 		x = 15
-		y = 11
-
-	}
-	focus = {
-		id = ALO_mending_tears
-		icon = GFX_focus_ALO_mending_tears
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_end_of_strife
-		}
-		x = 19
-		y = 1
-
+		y = 10
 	}
 	focus = {
 		id = ALO_manatomo_loyalty
 		icon = GFX_focus_ALO_manatomo_loyalty
-		cost = 0.00
+		cost = 7
 		prerequisite = {
-			focus = ALO_mending_tears
+			focus = ALO_rebuilding_homes
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:ALO.current_party_ideology_group
+				popularity = 0.05
+			}
 		}
 		x = 19
 		y = 2
-
 	}
 	focus = {
 		id = ALO_rebuilding_homes
 		icon = GFX_focus_ALO_rebuilding_homes
-		cost = 0.00
+		cost = 7
 		prerequisite = {
 			focus = ALO_end_of_strife
 		}
-		x = 21
+		completion_reward = {
+			add_timed_idea = {
+				idea = ALO_rebuilding_homes
+				days = 240
+			}
+		}
+		x = 20
 		y = 1
-
 	}
 	focus = {
 		id = ALO_restore_what_is_lost
 		icon = GFX_focus_ALO_restore_what_is_lost
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_rebuilding_homes
 		}
 		x = 21
 		y = 2
-
 	}
 	focus = {
 		id = ALO_the_anti_question
 		icon = GFX_focus_ALO_the_anti_question
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manatomo_loyalty
 		}
@@ -449,12 +715,11 @@ focus_tree = {
 		}
 		x = 20
 		y = 3
-
 	}
 	focus = {
 		id = ALO_reconciliation_movement
 		icon = GFX_focus_ALO_reconciliation_movement
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_the_anti_question
 		}
@@ -463,34 +728,31 @@ focus_tree = {
 		}
 		x = 17
 		y = 4
-
 	}
 	focus = {
 		id = ALO_appeal_to_hungarian_nationalism
 		icon = GFX_focus_ALO_appeal_to_hungarian_nationalism
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_reconciliation_movement
 		}
 		x = 16
 		y = 5
-
 	}
 	focus = {
 		id = ALO_address_past_mistakes
 		icon = GFX_focus_ALO_address_past_mistakes
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_reconciliation_movement
 		}
 		x = 18
 		y = 5
-
 	}
 	focus = {
 		id = ALO_the_anti_purge
 		icon = GFX_focus_ALO_the_anti_purge
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_the_anti_question
 		}
@@ -499,67 +761,61 @@ focus_tree = {
 		}
 		x = 23
 		y = 4
-
 	}
 	focus = {
 		id = ALO_hunt_the_remnants
 		icon = GFX_focus_ALO_hunt_the_remnants
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_the_anti_purge
 		}
 		x = 23
 		y = 5
-
 	}
 	focus = {
 		id = ALO_no_more_traitors
 		icon = GFX_focus_ALO_no_more_traitors
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_hunt_the_remnants
 		}
 		x = 22
 		y = 6
-
 	}
 	focus = {
 		id = ALO_no_more_division
 		icon = GFX_focus_ALO_no_more_division
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_hunt_the_remnants
 		}
 		x = 24
 		y = 6
-
 	}
 	focus = {
 		id = ALO_national_reconstruction_act
 		icon = GFX_focus_ALO_national_reconstruction_act
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_end_of_strife
 		}
 		x = 29
 		y = 1
-
 	}
 	focus = {
 		id = ALO_bring_home_refugees
 		icon = GFX_focus_ALO_bring_home_refugees
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_end_of_strife
 		}
 		x = 31
 		y = 1
-
 	}
 	focus = {
 		id = ALO_secure_lhs_funding
 		icon = GFX_focus_ALO_secure_lhs_funding
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_bring_home_refugees
 		}
@@ -568,12 +824,11 @@ focus_tree = {
 		}
 		x = 30
 		y = 2
-
 	}
 	focus = {
 		id = ALO_allocate_to_cities
 		icon = GFX_focus_ALO_allocate_to_cities
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_secure_lhs_funding
 		}
@@ -582,12 +837,11 @@ focus_tree = {
 		}
 		x = 28
 		y = 3
-
 	}
 	focus = {
 		id = ALO_allocate_to_countryside
 		icon = GFX_focus_ALO_allocate_to_countryside
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_secure_lhs_funding
 		}
@@ -596,78 +850,85 @@ focus_tree = {
 		}
 		x = 32
 		y = 3
-
 	}
 	focus = {
 		id = ALO_farming_subsidy_initiative
 		icon = GFX_focus_ALO_farming_subsidy_initiative
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_allocate_to_countryside
 		}
 		x = 32
 		y = 4
-
 	}
 	focus = {
 		id = ALO_soldiers_to_plowshares
 		icon = GFX_focus_ALO_soldiers_to_plowshares
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_farming_subsidy_initiative
 		}
 		x = 32
 		y = 5
-
 	}
 	focus = {
 		id = ALO_national_industrialization
 		icon = GFX_focus_ALO_national_industrialization
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_restart_our_industry
 		}
 		x = 42
 		y = 2
-
 	}
 	focus = {
 		id = ALO_assembly_line_optimization
 		icon = GFX_focus_ALO_assembly_line_optimization
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = ALO_assembly_line_improvement
+				days = 120
+			}
+		}
 		x = 40
 		y = 3
-
 	}
 	focus = {
 		id = ALO_expand_urban_centers
 		icon = GFX_focus_ALO_expand_urban_centers
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 4
+			}
+		}
 		x = 42
 		y = 3
-
 	}
 	focus = {
 		id = ALO_railroad_investment
 		icon = GFX_focus_ALO_railroad_investment
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
+		completion_reward = {
+			add_ideas = ALO_railway_investments
+		}
 		x = 44
 		y = 3
-
 	}
 	focus = {
 		id = ALO_open_manatomo_university
 		icon = GFX_focus_ALO_open_manatomo_university
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_expand_urban_centers
 		}
@@ -677,347 +938,601 @@ focus_tree = {
 		prerequisite = {
 			focus = ALO_assembly_line_optimization
 		}
+		completion_reward = {
+			add_research_slot = 1
+		}
 		x = 42
 		y = 4
-
 	}
 	focus = {
 		id = ALO_lhs_industrial_fund
 		icon = GFX_focus_ALO_lhs_industrial_fund
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_open_manatomo_university
 		}
+		completion_reward = {
+			set_country_flag = ALO_industrial_fund
+		}
 		x = 39
 		y = 5
-
 	}
 	focus = {
 		id = ALO_improved_border_roads
 		icon = GFX_focus_ALO_improved_border_roads
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_lhs_industrial_fund
 		}
+		completion_reward = {
+			every_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+				}
+			}
+		}
 		x = 38
 		y = 6
-
 	}
 	focus = {
 		id = ALO_industrialist_investment
 		icon = GFX_focus_ALO_industrialist_investment
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_lhs_industrial_fund
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = ALO_restarting_industry
+				days = 360
+			}
+		}
 		x = 40
 		y = 6
-
 	}
 	focus = {
 		id = ALO_expand_arms_industry
 		icon = GFX_focus_ALO_expand_arms_industry
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_open_manatomo_university
 		}
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+			}
+		}
 		x = 45
 		y = 5
-
 	}
 	focus = {
 		id = ALO_manatomo_arsenal
 		icon = GFX_focus_ALO_manatomo_arsenal
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_expand_arms_industry
 		}
-		x = 45
-		y = 6
-
-	}
-	focus = {
-		id = ALO_yagooist_arms
-		icon = GFX_focus_ALO_yagooist_arms
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_manatomo_arsenal
+		completion_reward = {
+			add_ideas = ALO_guns_manufacturer
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+			}
 		}
 		x = 45
-		y = 7
-
+		y = 6
 	}
 	focus = {
 		id = ALO_manatomo_aircraft
 		icon = GFX_focus_ALO_manatomo_aircraft
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manatomo_airforce
 		}
 		mutually_exclusive = {
 			focus = ALO_lhs_liscenses
 		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = ALO_aircraft_tech_bonus
+				bonus = 1
+				uses = 2
+				category = light_fighter
+			}
+			add_tech_bonus = {
+				name = ALO_bomber_tech_bonus
+				bonus = 1
+				uses = 2
+				category = tactical_bomber
+			}
+		}
 		x = 48
 		y = 10
-
 	}
 	focus = {
 		id = ALO_maintaining_discipline
 		icon = GFX_focus_ALO_maintaining_discipline
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manatomo_army_restructuring
 		}
+		completion_reward = {
+			add_ideas = ALO_maintain_discipline
+		}
 		x = 55
 		y = 2
-
 	}
 	focus = {
 		id = ALO_lhs_war_doctrine
 		icon = GFX_focus_ALO_lhs_war_doctrine
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = ALO_maintaining_discipline
+		}
+		prerequisite = {
+			focus = ALO_new_uniforms
 		}
 		mutually_exclusive = {
 			focus = ALO_german_style_maneuvers
 		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = ALO_lhs_tactics
+				bonus = 0.8
+				uses = 2
+				category = cat_grand_battle_plan
+			}
+		}
 		x = 52
 		y = 3
-
 	}
 	focus = {
 		id = ALO_seiso_pledge
 		icon = GFX_focus_ALO_seiso_pledge
-		cost = 0.00
+		cost = 7
 		prerequisite = {
 			focus = ALO_lhs_war_doctrine
 		}
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.05
+			add_popularity = {
+				ideology = var:ALO.current_party_ideology_group
+				popularity = 0.05
+			}
+		}
 		x = 52
 		y = 4
-
 	}
 	focus = {
 		id = ALO_coordinated_assault
 		icon = GFX_focus_ALO_coordinated_assault
-		cost = 0.00
+		cost = 7
 		prerequisite = {
 			focus = ALO_seiso_pledge
 		}
+		completion_reward = {
+			add_ideas = ALO_planning_bonus
+			add_tech_bonus = {
+				name = ALO_coordinated_assault
+				uses = 2
+				bonus = 0.8
+				category = cat_grand_battle_plan
+			}
+		}
 		x = 51
 		y = 5
-
 	}
 	focus = {
 		id = ALO_bite_and_hold
 		icon = GFX_focus_ALO_bite_and_hold
-		cost = 0.00
+		cost = 7
 		prerequisite = {
 			focus = ALO_seiso_pledge
 		}
 		x = 53
 		y = 5
-
 	}
 	focus = {
 		id = ALO_lhs_liscenses
 		icon = GFX_focus_ALO_lhs_liscenses
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manatomo_airforce
 		}
 		mutually_exclusive = {
 			focus = ALO_manatomo_aircraft
 		}
+		completion_reward = {
+			add_ideas = ALO_lhs_liscenses
+		}
 		x = 54
 		y = 10
-
 	}
 	focus = {
 		id = ALO_bucharest_airfields
 		icon = GFX_focus_ALO_bucharest_airfields
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_lhs_liscenses
 		}
 		prerequisite = {
 			focus = ALO_manatomo_aircraft
 		}
+		completion_reward = {
+			capital_scope = {
+				add_building_construction = {
+					type = air_base
+					level = 6
+					instant_build = yes
+				}
+			}
+		}
 		x = 51
 		y = 11
-
 	}
 	focus = {
 		id = ALO_fighter_focus
 		icon = GFX_focus_ALO_fighter_focus
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
 		mutually_exclusive = {
 			focus = ALO_bomber_focus
 		}
+		completion_reward = {
+			add_ideas = ALO_fighter_focus
+			add_tech_bonus = {
+				name = ALO_fighter_tech_bonus
+				bonus = 1
+				uses = 3
+				category = light_fighter
+			}
+		}
 		x = 54
 		y = 12
-
 	}
 	focus = {
 		id = ALO_cas_focus
 		icon = GFX_focus_ALO_cas_focus
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
 		mutually_exclusive = {
 			focus = ALO_bomber_focus
 		}
+		completion_reward = {
+			add_ideas = ALO_cas_focus
+			add_tech_bonus = {
+				name = ALO_cas_tech_bonus
+				bonus = 1
+				uses = 3
+				category = cas_bomber
+			}
+		}
 		x = 48
 		y = 12
-
 	}
 	focus = {
 		id = ALO_logistics_rework
 		icon = GFX_focus_ALO_logistics_rework
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = ALO_bite_and_hold
+			focus = ALO_coordinated_assault
 		}
 		prerequisite = {
-			focus = ALO_coordinated_assault
+			focus = ALO_motorized_infantry
+			focus = ALO_kfp_style_panzers
+		}
+		completion_reward = {
+			add_ideas = ALO_logistics_rework_idea
+			every_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 		x = 55
 		y = 6
-
 	}
 	focus = {
-		id = ALO_new_uniforms
+		id = ALO_new_uniforms		#Rearm Program
 		icon = GFX_focus_ALO_new_uniforms
-		cost = 0.00
+		cost = 7
 		prerequisite = {
 			focus = ALO_manatomo_army_restructuring
 		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = YAG
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 120
+				producer = YAG
+			}
+			add_tech_bonus = {
+				name = ALO_maneuvers_tactics
+				bonus = 0.8
+				uses = 2
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				name = ALO_maneuvers_tactics
+				bonus = 0.8
+				uses = 2
+				category = artillery
+			}
+		}
 		x = 57
 		y = 2
-
 	}
 	focus = {
 		id = ALO_german_style_maneuvers
 		icon = GFX_focus_ALO_german_style_maneuvers
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = ALO_new_uniforms
+		}
+		prerequisite = {
+			focus = ALO_maintaining_discipline
 		}
 		mutually_exclusive = {
 			focus = ALO_lhs_war_doctrine
 		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = ALO_maneuvers_tactics
+				bonus = 0.8
+				uses = 2
+				category = cat_mobile_warfare
+			}
+		}
 		x = 60
 		y = 3
-
 	}
 	focus = {
-		id = ALO_speed_kills
+		id = ALO_speed_kills		#An Emphasis on Speed
 		icon = GFX_focus_ALO_speed_kills
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_german_style_maneuvers
 		}
+		completion_reward = {
+			add_ideas = ALO_speed_emphasis
+		}
 		x = 60
 		y = 4
-
 	}
 	focus = {
 		id = ALO_motorized_infantry
 		icon = GFX_focus_ALO_motorized_infantry
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = ALO_speed_kills
 		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = ALO_motorized_infantry
+				bonus = 0.8
+				uses = 3
+				category = motorized_equipment
+			}
+			add_ideas = ALO_motorized_equipment
+		}
 		x = 59
 		y = 5
-
 	}
 	focus = {
 		id = ALO_kfp_style_panzers
 		icon = GFX_focus_ALO_kfp_style_panzers
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = ALO_speed_kills
 		}
+		completion_reward = {
+			add_ideas = ALO_kiara_licenses
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				create_equipment_variant = {
+					name = "M5 Avar"					#PzKpfw F
+					type = light_tank_chassis_1
+					parent_version = 1
+					modules = {
+						main_armament_slot = tank_heavy_machine_gun
+						turret_type_slot = tank_light_two_man_tank_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_cast_armor
+						engine_type_slot = tank_diesel_engine
+						special_type_slot_1 = additional_machine_guns
+					}
+					upgrades = {
+						tank_nsb_engine_upgrade = 7
+						tank_nsb_armor_upgrade = 4
+					}
+				}
+				create_equipment_variant = {
+					name = "M37 Székely"					#"PzKpfw G-Ka"
+					type = light_tank_chassis_2
+					parent_version = 1
+					modules = {
+						main_armament_slot = tank_small_cannon
+						turret_type_slot = tank_light_two_man_tank_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_cast_armor
+						engine_type_slot = tank_diesel_engine
+						special_type_slot_1 = additional_machine_guns
+						special_type_slot_2 = armor_skirts
+					}
+					upgrades = {
+						tank_nsb_engine_upgrade = 5
+						tank_nsb_armor_upgrade = 4
+					}
+				}
+				add_tech_bonus = {
+					name = ALO_tank_bonus_nsb
+					bonus = 0.5
+					uses = 3
+					category = armor
+				}
+				else = {
+					add_tech_bonus = {
+						name = ALO_tank_bonus_legacy
+						bonus = 0.8
+						uses = 2
+						category = armor
+					}
+				}
+			}
+		}
 		x = 61
 		y = 5
-
 	}
 	focus = {
 		id = ALO_manatomo_mobilization
 		icon = GFX_focus_ALO_manatomo_mobilization
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = ALO_motorized_infantry
-		}
-		prerequisite = {
 			focus = ALO_kfp_style_panzers
 		}
 		prerequisite = {
+			focus = ALO_kfp_style_panzers
 			focus = ALO_bite_and_hold
+		}
+		completion_reward = {
+			add_ideas = ALO_manotomo_mobilisation
 		}
 		x = 57
 		y = 6
-
 	}
 	focus = {
 		id = ALO_combine_arms
 		icon = GFX_focus_ALO_combine_arms
-		cost = 0.00
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_mobilization
 		}
 		prerequisite = {
 			focus = ALO_logistics_rework
 		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = ALO_combined_arms_land
+				bonus = 2
+				uses = 2
+				category = land_doctrine
+			}
+			add_tech_bonus = {
+				name = ALO_combined_arms_air
+				bonus = 2
+				uses = 2
+				category = air_doctrine
+			}
+		}
 		x = 56
 		y = 7
-
 	}
 	focus = {
 		id = ALO_lhs_naval_academy
 		icon = GFX_focus_ALO_lhs_naval_academy
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manatomo_navy
 		}
+		completion_reward = {
+			add_ideas = ALO_naval_academy
+		}
 		x = 62
 		y = 10
-
 	}
 	focus = {
 		id = ALO_submarine_focus
 		icon = GFX_focus_ALO_submarine_focus
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_lhs_naval_academy
 		}
 		mutually_exclusive = {
 			focus = ALO_destroyer_focus
 		}
+		completion_reward = {
+			add_ideas = ALO_submarine_bonus
+			add_tech_bonus = {
+				name = ALO_submarine_tech_bonus
+				bonus = 2
+				uses = 3
+				category = ss_tech
+			}
+		}
 		x = 61
 		y = 11
-
 	}
 	focus = {
 		id = ALO_dockyard_construction
 		icon = GFX_focus_ALO_dockyard_construction
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manatomo_navy
 		}
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
 		x = 64
 		y = 10
-
 	}
 	focus = {
 		id = ALO_destroyer_focus
 		icon = GFX_focus_ALO_destroyer_focus
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_dockyard_construction
 		}
@@ -1025,47 +1540,89 @@ focus_tree = {
 			focus = ALO_capital_ship_focus
 			focus = ALO_submarine_focus
 		}
+		completion_reward = {
+			add_ideas = ALO_destroyer_bonus
+			add_tech_bonus = {
+				name = ALO_destroyer_tech_bonus
+				bonus = 2
+				uses = 3
+				category = dd_tech
+			}
+		}
 		x = 63
 		y = 11
-
 	}
 	focus = {
 		id = ALO_localized_production
 		icon = GFX_focus_ALO_localized_production
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_rally_the_working_class
 		}
+		completion_reward = {
+			add_ideas = ALO_localized_production
+			every_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 		x = 6
 		y = 10
-
 	}
 	focus = {
 		id = ALO_emergency_factories
 		icon = GFX_focus_ALO_emergency_factories
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_rally_the_working_class
 		}
+		completion_reward = {
+			add_stability = -0.15
+			add_war_support = -0.1
+			every_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
 		x = 4
 		y = 10
-
 	}
 	focus = {
 		id = ALO_a_loyal_manotomo
 		icon = GFX_focus_ALO_a_loyal_manotomo
-		cost = 0.00
+		cost = 4
 		prerequisite = {
 			focus = ALO_the_woring_matomo
 		}
-		x = 8
+		prerequisite = {
+			focus = ALO_localized_production
+		}
+		completion_reward = {
+			add_stability = 0.2
+			add_war_support = 0.15
+			add_popularity = {
+				ideology = var:ALO.current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 7
 		y = 11
-
 	}
 	focus = {
 		id = ALO_lhs_peacekeeper_corps
 		icon = GFX_focus_ALO_lhs_peacekeeper_corps
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_yagoos_rifles
 		}
@@ -1074,34 +1631,11 @@ focus_tree = {
 		}
 		x = 12
 		y = 11
-
-	}
-	focus = {
-		id = ALO_pledge_of_demon
-		icon = GFX_focus_ALO_pledge_of_demon
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_a_loyal_manotomo
-		}
-		x = 8
-		y = 12
-
-	}
-	focus = {
-		id = ALO_yagoos_promises
-		icon = GFX_focus_ALO_yagoos_promises
-		cost = 0.00
-		prerequisite = {
-			focus = ALO_lhs_peacekeeper_corps
-		}
-		x = 12
-		y = 12
-
 	}
 	focus = {
 		id = ALO_manotomo_united
 		icon = GFX_focus_ALO_manotomo_united
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_address_past_mistakes
 		}
@@ -1110,34 +1644,31 @@ focus_tree = {
 		}
 		x = 17
 		y = 6
-
 	}
 	focus = {
 		id = ALO_worker_programs
 		icon = GFX_focus_ALO_worker_programs
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_allocate_to_cities
 		}
 		x = 28
 		y = 4
-
 	}
 	focus = {
 		id = ALO_promote_steel_production
 		icon = GFX_focus_ALO_promote_steel_production
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_worker_programs
 		}
 		x = 28
 		y = 5
-
 	}
 	focus = {
 		id = ALO_a_new_manatomo
 		icon = GFX_focus_ALO_a_new_manatomo
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_promote_steel_production
 		}
@@ -1155,12 +1686,11 @@ focus_tree = {
 		}
 		x = 28
 		y = 7
-
 	}
 	focus = {
 		id = ALO_restore_democracy
 		icon = GFX_goal_unknown
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_a_new_manatomo
 		}
@@ -1169,12 +1699,11 @@ focus_tree = {
 		}
 		x = 21
 		y = 8
-
 	}
 	focus = {
 		id = ALO_aloe_takes_the_reins
 		icon = GFX_focus_ALO_aloe_takes_the_reins
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_a_new_manatomo
 		}
@@ -1183,23 +1712,21 @@ focus_tree = {
 		}
 		x = 32
 		y = 8
-
 	}
 	focus = {
 		id = ALO_manotomo_elections
 		icon = GFX_focus_ALO_manotomo_elections
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_restore_democracy
 		}
 		x = 21
 		y = 9
-
 	}
 	focus = {
 		id = ALO_conservative_victory
 		icon = GFX_focus_ALO_conservative_victory
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manotomo_elections
 		}
@@ -1208,12 +1735,11 @@ focus_tree = {
 		}
 		x = 19
 		y = 10
-
 	}
 	focus = {
 		id = ALO_progressives_wins
 		icon = GFX_focus_ALO_progressives_wins
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manotomo_elections
 		}
@@ -1222,56 +1748,51 @@ focus_tree = {
 		}
 		x = 23
 		y = 10
-
 	}
 	focus = {
 		id = ALO_welfare_initiatives
 		icon = GFX_focus_ALO_welfare_initiatives
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_progressives_wins
 		}
 		x = 23
 		y = 11
-
 	}
 	focus = {
 		id = ALO_anti_poverty_programs
 		icon = GFX_focus_ALO_anti_poverty_programs
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_welfare_initiatives
 		}
 		x = 24
 		y = 12
-
 	}
 	focus = {
 		id = ALO_worker_compensation
 		icon = GFX_focus_ALO_worker_compensation
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_welfare_initiatives
 		}
 		x = 22
 		y = 12
-
 	}
 	focus = {
 		id = ALO_support_small_businesses
 		icon = GFX_focus_ALO_support_small_businesses
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_conservative_victory
 		}
 		x = 18
 		y = 11
-
 	}
 	focus = {
 		id = ALO_corporate_funding
 		icon = GFX_focus_ALO_corporate_funding
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_industrial_grants
 		}
@@ -1280,45 +1801,41 @@ focus_tree = {
 		}
 		x = 19
 		y = 12
-
 	}
 	focus = {
 		id = ALO_education_reform
 		icon = GFX_focus_ALO_education_reform
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_regulated_work_hours
 		}
 		x = 22
 		y = 14
-
 	}
 	focus = {
 		id = ALO_labour_regulations
 		icon = GFX_focus_ALO_labour_regulations
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_corporate_funding
 		}
 		x = 19
 		y = 13
-
 	}
 	focus = {
 		id = ALO_industrial_grants
 		icon = GFX_focus_ALO_industrial_grants
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_conservative_victory
 		}
 		x = 20
 		y = 11
-
 	}
 	focus = {
 		id = ALO_regulated_work_hours
 		icon = GFX_focus_ALO_regulated_work_hours
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_anti_poverty_programs
 		}
@@ -1327,12 +1844,11 @@ focus_tree = {
 		}
 		x = 23
 		y = 13
-
 	}
 	focus = {
 		id = ALO_a_free_ssociety
 		icon = GFX_focus_ALO_a_free_society
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_labour_regulations
 		}
@@ -1341,12 +1857,11 @@ focus_tree = {
 		}
 		x = 20
 		y = 14
-
 	}
 	focus = {
 		id = ALO_lhs_model_democracy
 		icon = GFX_focus_ALO_lhs_model_democracy
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_education_reform
 		}
@@ -1355,34 +1870,31 @@ focus_tree = {
 		}
 		x = 21
 		y = 15
-
 	}
 	focus = {
 		id = ALO_manatomo_cult
 		icon = GFX_focus_ALO_manatomo_cult
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_aloe_takes_the_reins
 		}
 		x = 35
 		y = 9
-
 	}
 	focus = {
 		id = ALO_aloe_militarism
 		icon = GFX_focus_ALO_aloe_militarism
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_aloe_takes_the_reins
 		}
 		x = 29
 		y = 9
-
 	}
 	focus = {
 		id = ALO_demon_of_the_carpathians
 		icon = GFX_focus_ALO_demon_of_the_carpathians
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_manatomo_fanatacism
 		}
@@ -1397,23 +1909,21 @@ focus_tree = {
 		}
 		x = 32
 		y = 15
-
 	}
 	focus = {
 		id = ALO_centralize_power
 		icon = GFX_focus_ALO_centralize_power
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_aloe_takes_the_reins
 		}
 		x = 32
 		y = 9
-
 	}
 	focus = {
 		id = ALO_our_demon_queen
 		icon = GFX_focus_ALO_our_demon_queen
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_centralize_power
 		}
@@ -1425,78 +1935,71 @@ focus_tree = {
 		}
 		x = 32
 		y = 11
-
 	}
 	focus = {
 		id = ALO_service_for_the_queen
 		icon = GFX_focus_ALO_service_for_the_queen
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_our_demon_queen
 		}
 		x = 35
 		y = 12
-
 	}
 	focus = {
 		id = ALO_offers_for_the_queen
 		icon = GFX_focus_ALO_offers_for_the_queen
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_our_demon_queen
 		}
 		x = 29
 		y = 12
-
 	}
 	focus = {
 		id = ALO_behead_the_traitors
 		icon = GFX_focus_ALO_behead_the_traitors
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_offers_for_the_queen
 		}
 		x = 28
 		y = 13
-
 	}
 	focus = {
 		id = ALO_evicerate_the_antis
 		icon = GFX_focus_ALO_evicerate_the_antis
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_offers_for_the_queen
 		}
 		x = 30
 		y = 13
-
 	}
 	focus = {
 		id = ALO_manatomo_fanatacism
 		icon = GFX_focus_ALO_manatomo_fanatacism
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_service_for_the_queen
 		}
 		x = 34
 		y = 13
-
 	}
 	focus = {
 		id = ALO_demonic_spirit
 		icon = GFX_focus_ALO_demonic_spirit
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_service_for_the_queen
 		}
 		x = 36
 		y = 13
-
 	}
 	focus = {
 		id = ALO_beyond_our_realm
 		icon = GFX_focus_ALO_beyond_our_realm
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_demon_of_the_carpathians
 		}
@@ -1505,67 +2008,61 @@ focus_tree = {
 		}
 		x = 26
 		y = 16
-
 	}
 	focus = {
 		id = ALO_demand_bessarabia
 		icon = GFX_focus_ALO_demand_bessarabia
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
 		x = 30
 		y = 17
-
 	}
 	focus = {
 		id = ALO_secure_the_oilfields
 		icon = GFX_focus_ALO_secure_the_oilfields
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_demand_bessarabia
 		}
 		x = 30
 		y = 18
-
 	}
 	focus = {
 		id = ALO_exploit_czech_weakness
 		icon = GFX_focus_ALO_exploit_czech_weakness
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
 		x = 26
 		y = 17
-
 	}
 	focus = {
 		id = ALO_flank_the_austrians
 		icon = GFX_focus_ALO_flank_the_austrians
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
 		x = 22
 		y = 17
-
 	}
 	focus = {
 		id = ALO_end_italian_existence
 		icon = GFX_focus_ALO_end_italian_existence
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_a_central_power
 		}
 		x = 21
 		y = 19
-
 	}
 	focus = {
 		id = ALO_a_central_power
 		icon = GFX_focus_ALO_a_central_power
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_flank_the_austrians
 		}
@@ -1574,23 +2071,21 @@ focus_tree = {
 		}
 		x = 24
 		y = 18
-
 	}
 	focus = {
 		id = ALO_the_german_situation
 		icon = GFX_focus_ALO_the_german_situation
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_a_central_power
 		}
 		x = 24
 		y = 19
-
 	}
 	focus = {
 		id = ALO_allign_with_kiara
 		icon = GFX_focus_ALO_allign_with_kiara
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_the_german_situation
 		}
@@ -1599,12 +2094,11 @@ focus_tree = {
 		}
 		x = 22
 		y = 20
-
 	}
 	focus = {
 		id = ALO_allign_with_noel
 		icon = GFX_focus_ALO_allign_with_noel
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_the_german_situation
 		}
@@ -1613,70 +2107,67 @@ focus_tree = {
 		}
 		x = 26
 		y = 20
-
 	}
 	focus = {
 		id = ALO_alpine_warfare
 		icon = GFX_focus_ALO_alpine_warfare
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_allign_with_kiara
 		}
 		x = 21
 		y = 21
-
 	}
 	focus = {
 		id = ALO_bavarian_front
 		icon = GFX_focus_ALO_bavarian_front
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_allign_with_kiara
 		}
 		x = 23
 		y = 21
-
 	}
 	focus = {
 		id = ALO_border_buildup
 		icon = GFX_focus_ALO_border_buildup
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_allign_with_noel
 		}
 		x = 27
 		y = 21
-
 	}
 	focus = {
 		id = ALO_march_to_krakow
 		icon = GFX_focus_ALO_march_to_krakow
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_allign_with_noel
 		}
 		x = 25
 		y = 21
-
 	}
 	focus = {
 		id = ALO_lhs_technocrat_institute
 		icon = GFX_focus_ALO_lhs_technocrat_institute
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_industrialist_investment
 		}
 		prerequisite = {
 			focus = ALO_improved_border_roads
 		}
+		completion_reward = {
+			add_ideas = ALO_technocrat_institute
+		}
 		x = 39
 		y = 7
-
 	}
 	focus = {
 		id = ALO_bomber_focus
 		icon = GFX_focus_ALO_bomber_focus
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
@@ -1684,22 +2175,38 @@ focus_tree = {
 			focus = ALO_cas_focus
 			focus = ALO_fighter_focus
 		}
+		completion_reward = {
+			add_ideas = ALO_bomber_focus
+			add_tech_bonus = {
+				name = ALO_bomber_tech_bonus
+				bonus = 1
+				uses = 3
+				category = tactical_bomber
+			}
+		}
 		x = 51
 		y = 12
-
 	}
 	focus = {
 		id = ALO_capital_ship_focus
 		icon = GFX_focus_ALO_capital_ship_focus
-		cost = 0.00
+		cost = 0
 		prerequisite = {
 			focus = ALO_lhs_naval_academy
 		}
 		mutually_exclusive = {
 			focus = ALO_destroyer_focus
 		}
+		completion_reward = {
+			add_ideas = ALO_battleship_bonus
+			add_tech_bonus = {
+				name = ALO_battleship_tech_bonus
+				bonus = 2
+				uses = 3
+				category = bb_tech
+			}
+		}
 		x = 65
 		y = 11
-
 	}
 }
