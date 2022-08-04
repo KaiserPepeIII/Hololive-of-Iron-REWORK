@@ -98,6 +98,283 @@ country_event = {
 		}
 	}
 }
+#Revolutionaries sponsered by [FROM.getname] spark major insurection!
+country_event = {
+	id = resistance.4
+	title = resistance.4.t
+	desc = resistance.4.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#damn!
+	option = {
+		name = resistance.4.a
+		add_stability = -0.15
+		FROM = {
+			IF = {
+				limit = {
+					NOT = {
+						any_country = {
+							has_country_flag = revolt_causer_flag1
+						}
+					}
+				}
+				set_country_flag = revolt_causer_flag1
+			}
+			ELSE_IF = {
+				limit = {
+					any_country = {
+						has_country_flag = revolt_causer_flag1
+					}
+				}
+				set_country_flag = revolt_causer_flag2
+			}
+			ELSE_IF = {
+				limit = {
+					any_country = {
+						has_country_flag = revolt_causer_flag2
+					}
+				}
+				set_country_flag = revolt_causer_flag3
+			}
+		}
+		IF = {
+			limit = {
+				FROM = {
+					has_government = pro_resistance_monarchy
+				}
+			}
+			start_civil_war = {
+				ideology = pro_resistance_monarchy
+				size = 0.25
+				keep_unit_leaders_trigger = {
+					is_unit_leader = yes
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
+			}
+		}
+		IF = {
+			limit = {
+				FROM = {
+					has_government = pro_resistance_monarchy
+				}
+			}
+			start_civil_war = {
+				ideology = communism
+				size = 0.25
+				keep_unit_leaders_trigger = {
+					is_unit_leader = yes
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
+			}
+		}
+		IF = {
+			limit = {
+				NOT = {
+					any_country = {
+						has_country_flag = revolt_victim_flag1
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					has_war_with = PREV
+				}
+				set_country_flag = revolt_victim_flag1
+			}
+			set_country_flag = revolt_victim_flag1
+		}
+		ELSE_IF = {
+			limit = {
+				any_country = {
+					has_country_flag = revolt_victim_flag1
+				}
+			}
+			every_country = {
+				limit = {
+					has_war_with = PREV
+				}
+				set_country_flag = revolt_victim_flag2
+			}
+			set_country_flag = revolt_victim_flag2
+		}
+		ELSE_IF = {
+			limit = {
+				any_country = {
+					has_country_flag = revolt_victim_flag2
+				}
+			}
+			every_country = {
+				limit = {
+					has_war_with = PREV
+				}
+				set_country_flag = revolt_victim_flag3
+			}
+			set_country_flag = revolt_victim_flag3
+		}
+	}
+	
+}
+#Insurrection Crushed!
+country_event = {
+	id = resistance.5
+	title = resistance.5.t
+	desc = resistance.5.d
+	picture = GFX_King_George_V
+	trigger = {
+		OR = {
+			has_country_flag = revolt_victim_flag1
+			has_country_flag = revolt_victim_flag2
+			has_country_flag = revolt_victim_flag3
+		}
+			is_resistance_ideology = no
+			has_war = no
+	}
+	mean_time_to_happen = {
+		days = 5
+	}
+	#Better dead then red
+	option = {
+		name = resistance.5.a
+		add_stability = 0.15
+		IF = {
+			limit = {
+				THIS = {
+					has_country_flag = revolt_victim_flag1
+				}
+			}
+			clr_country_flag = revolt_victim_flag1
+			every_country = {
+				limit = {
+					has_country_flag = revolt_causer_flag1
+				}
+				clr_country_flag = revolt_causer_flag1
+			}
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					has_country_flag = revolt_victim_flag2
+				}
+			}
+			clr_country_flag = revolt_victim_flag2
+			every_country = {
+				limit = {
+					has_country_flag = revolt_causer_flag2
+				}
+				clr_country_flag = revolt_causer_flag2
+			}
+		}	
+		else_if = {
+			limit = {
+				THIS = {
+					has_country_flag = revolt_victim_flag3
+				}
+			}
+			clr_country_flag = revolt_victim_flag3
+			every_country = {
+				limit = {
+					has_country_flag = revolt_causer_flag3
+				}
+				clr_country_flag = revolt_causer_flag3
+			}
+		}	
+	}
+}
+#Victory of the Insurgents!
+country_event = {
+	id = resistance.6
+	title = resistance.6.t
+	desc = resistance.6.d
+	picture = GFX_King_George_V
+	trigger = {
+		OR = {
+			has_country_flag = revolt_victim_flag1
+			has_country_flag = revolt_victim_flag2
+			has_country_flag = revolt_victim_flag3
+		}
+			is_resistance_ideology = yes
+			has_war = no
+	}	
+	mean_time_to_happen = {
+		days = 5
+	}
+	#Glory!
+	option = {
+		name = resistance.6.a
+		add_stability = 0.2
+		add_war_support = 0.15
+		IF = {
+			limit = {
+				THIS = {
+					has_country_flag = revolt_victim_flag1
+				}
+			}
+			clr_country_flag = revolt_victim_flag1
+			every_country = {
+				limit = {
+					has_country_flag = revolt_causer_flag1
+				}
+				clr_country_flag = revolt_causer_flag1
+				country_event = {
+					id = resistance.7
+					days = 1
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					has_country_flag = revolt_victim_flag2
+				}
+			}
+			clr_country_flag = revolt_victim_flag2
+			every_country = {
+				limit = {
+					has_country_flag = revolt_causer_flag2
+				}
+				clr_country_flag = revolt_causer_flag2
+				country_event = {
+					id = resistance.7
+					days = 1
+				}
+			}
+		}	
+		else_if = {
+			limit = {
+				THIS = {
+					has_country_flag = revolt_victim_flag3
+				}
+			}
+			clr_country_flag = revolt_victim_flag3
+			every_country = {
+				limit = {
+					has_country_flag = revolt_causer_flag3
+				}
+				clr_country_flag = revolt_causer_flag3
+				country_event = {
+					id = resistance.7
+					days = 1
+				}
+			}
+		}	
+	}
+}
+country_event = {
+	id = resistance.7
+	title = resistance.7.t
+	desc = resistance.7.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#A welcome surprise!
+	option = {
+		name = resistance.6.a
+		add_stability = 0.2
+		add_war_support = 0.15
+		puppet = FROM
+	}
+}
 
 
 

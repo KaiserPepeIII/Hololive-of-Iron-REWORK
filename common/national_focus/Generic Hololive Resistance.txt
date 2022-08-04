@@ -1589,6 +1589,15 @@ focus_tree = {
 				ideology = pro_resistance_nationalism
 				popularity = 0.15
 			}
+			IF = {
+				limit = {
+					NOT = {
+						has_government = pro_resistance_monarchy
+					}
+				}
+				set_country_leader_ideology = pro_resistance_nationalism
+			}
+			
 		}
 		x = 63
 		y = 2
@@ -1773,6 +1782,7 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_reject_revolutionary_ideals
 		}
+	completion_reward = {
 		IF = {
 			limit = {
 				any_neighbor_country = {
@@ -2074,6 +2084,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_exporting_the_revolution_abroad
 		}
+		completion_reward = {
+			add_stability = 0.1
+			civilian_factory_use = 2
+
+		}
 		x = 71
 		y = 4
 	}
@@ -2083,6 +2098,28 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_price_controls
+		}
+		completion_reward = {
+			IF = {
+				limit = {
+					any_neighbor_country = {
+						is_lhs_ideology = yes
+					}
+				}
+				random_neighbor_country = {
+					limit = {
+						is_lhs_ideology = yes
+					}
+					country_event = {
+						id = resistance.4
+						days = 1
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500 
+				}
+			}
 		}
 		x = 71
 		y = 5
