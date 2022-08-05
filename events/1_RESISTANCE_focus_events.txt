@@ -1,29 +1,30 @@
-add_namespace = resistance
+add_namespace = resistance_focus
 #
 #	Neighbor destablizes us
 #
 country_event = {
-	id = resistance.1
-	title = resistance.1.t
-	desc = resistance.1.d
+	id = resistance_focus.1
+	title = resistance_focus.1.t
+	desc = resistance_focus.1.d
 	picture = GFX_King_George_V
 	is_triggered_only = yes
 	#damn
 	option = {
-		name = resistance.1.a
+		name = resistance_focus.1.a
 		add_stability = -0.05
 	}
 }
+
 # Cocoists sponsored by [FROM.getname] create havoc in aquaist country
 country_event = {
-	id = resistance.2
-	title = resistance.2.t
-	desc = resistance.2.d
+	id = resistance_focus.2
+	title = resistance_focus.2.t
+	desc = resistance_focus.2.d
 	picture = GFX_King_George_V
 	is_triggered_only = yes
 	#damn
 	option = {
-		name = resistance.2.a
+		name = resistance_focus.2.a
 		add_stability = -0.05
 		random_owned_controlled_state = {
 			damage_building = {
@@ -45,16 +46,17 @@ country_event = {
 		}
 	}
 }
+
 #Revolutionaries sponsered by [FROM.getname] create havoc in non-revolutionary country
 country_event = {
-	id = resistance.3
-	title = resistance.3.t
-	desc = resistance.3.d
+	id = resistance_focus.3
+	title = resistance_focus.3.t
+	desc = resistance_focus.3.d
 	picture = GFX_King_George_V
 	is_triggered_only = yes
 	#damn
 	option = {
-		name = resistance.3.a
+		name = resistance_focus.3.a
 		add_stability = -0.05
 		random_owned_controlled_state = {
 			damage_building = {
@@ -81,7 +83,7 @@ country_event = {
 				}
 			}
 			add_popularity = {
-				ideology = pro_resistance_nationalism
+				ideology = pro_resistance_focus_nationalism
 				popularity = 0.05
 			}
 		}
@@ -98,16 +100,17 @@ country_event = {
 		}
 	}
 }
+
 #Revolutionaries sponsered by [FROM.getname] spark major insurection!
 country_event = {
-	id = resistance.4
-	title = resistance.4.t
-	desc = resistance.4.d
+	id = resistance_focus.4
+	title = resistance_focus.4.t
+	desc = resistance_focus.4.d
 	picture = GFX_King_George_V
 	is_triggered_only = yes
 	#damn!
 	option = {
-		name = resistance.4.a
+		name = resistance_focus.4.a
 		add_stability = -0.15
 		FROM = {
 			IF = {
@@ -144,7 +147,7 @@ country_event = {
 				}
 			}
 			start_civil_war = {
-				ideology = pro_resistance_monarchy
+				ideology = pro_resistance_focus_monarchy
 				size = 0.25
 				keep_unit_leaders_trigger = {
 					is_unit_leader = yes
@@ -214,13 +217,13 @@ country_event = {
 			set_country_flag = revolt_victim_flag3
 		}
 	}
-	
 }
+
 #Insurrection Crushed!
 country_event = {
-	id = resistance.5
-	title = resistance.5.t
-	desc = resistance.5.d
+	id = resistance_focus.5
+	title = resistance_focus.5.t
+	desc = resistance_focus.5.d
 	picture = GFX_King_George_V
 	trigger = {
 		OR = {
@@ -228,15 +231,15 @@ country_event = {
 			has_country_flag = revolt_victim_flag2
 			has_country_flag = revolt_victim_flag3
 		}
-			is_resistance_ideology = no
-			has_war = no
+		is_resistance_focus_ideology = no
+		has_war = no
 	}
 	mean_time_to_happen = {
 		days = 5
 	}
 	#Better dead then red
 	option = {
-		name = resistance.5.a
+		name = resistance_focus.5.a
 		add_stability = 0.15
 		IF = {
 			limit = {
@@ -265,7 +268,7 @@ country_event = {
 				}
 				clr_country_flag = revolt_causer_flag2
 			}
-		}	
+		}
 		else_if = {
 			limit = {
 				THIS = {
@@ -279,14 +282,15 @@ country_event = {
 				}
 				clr_country_flag = revolt_causer_flag3
 			}
-		}	
+		}
 	}
 }
+
 #Victory of the Insurgents!
 country_event = {
-	id = resistance.6
-	title = resistance.6.t
-	desc = resistance.6.d
+	id = resistance_focus.6
+	title = resistance_focus.6.t
+	desc = resistance_focus.6.d
 	picture = GFX_King_George_V
 	trigger = {
 		OR = {
@@ -294,15 +298,15 @@ country_event = {
 			has_country_flag = revolt_victim_flag2
 			has_country_flag = revolt_victim_flag3
 		}
-			is_resistance_ideology = yes
-			has_war = no
-	}	
+		is_resistance_ideology = yes
+		has_war = no
+	}
 	mean_time_to_happen = {
 		days = 5
 	}
 	#Glory!
 	option = {
-		name = resistance.6.a
+		name = resistance_focus.6.a
 		add_stability = 0.2
 		add_war_support = 0.15
 		IF = {
@@ -318,7 +322,7 @@ country_event = {
 				}
 				clr_country_flag = revolt_causer_flag1
 				country_event = {
-					id = resistance.7
+					id = resistance_focus.7
 					days = 1
 				}
 			}
@@ -336,11 +340,11 @@ country_event = {
 				}
 				clr_country_flag = revolt_causer_flag2
 				country_event = {
-					id = resistance.7
+					id = resistance_focus.7
 					days = 1
 				}
 			}
-		}	
+		}
 		else_if = {
 			limit = {
 				THIS = {
@@ -354,27 +358,25 @@ country_event = {
 				}
 				clr_country_flag = revolt_causer_flag3
 				country_event = {
-					id = resistance.7
+					id = resistance_focus.7
 					days = 1
 				}
 			}
-		}	
+		}
 	}
 }
+
 country_event = {
-	id = resistance.7
-	title = resistance.7.t
-	desc = resistance.7.d
+	id = resistance_focus.7
+	title = resistance_focus.7.t
+	desc = resistance_focus.7.d
 	picture = GFX_King_George_V
 	is_triggered_only = yes
 	#A welcome surprise!
 	option = {
-		name = resistance.6.a
+		name = resistance_focus.6.a
 		add_stability = 0.2
 		add_war_support = 0.15
 		puppet = FROM
 	}
 }
-
-
-
