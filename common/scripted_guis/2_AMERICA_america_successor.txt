@@ -1,0 +1,24 @@
+scripted_gui = {
+	america_successor_window_gui = {
+		window_name = "america_successor_window"
+		context_type = decision_category
+		parent_window_name = "GEN_true_american_successor_state"
+		visible = {
+			always = yes
+		}
+		properties = {
+			#flag of country which you have claimed land from
+			america_legitmacy_flagbox_large_flag = {
+				image = [THIS.GetFlag]
+			}
+		}
+		dynamic_lists = {
+			#flag of country which you have claimed land from
+			america_legitmacy_flagbox_gridbox = {
+				array = global.american_successor_states
+				entry_container = america_legitmacy_flagbox_list_entry
+				change_scope = yes
+			}
+		}
+	}
+}
