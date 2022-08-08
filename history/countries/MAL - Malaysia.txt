@@ -7,6 +7,27 @@ set_technology = {
 	early_fighter = 1
 }
 
+add_ideas = {
+	GEN_lhs_protectorate
+}
+
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	YAG = {
+		set_autonomy = {
+			target = IOM
+			autonomous_state = autonomy_dominion
+		}
+	}
+	else = {
+		YAG = {
+			puppet = IOM
+		}
+	}
+}
+
 set_convoys = 10
 set_popularities = {
 	democratic = 100
