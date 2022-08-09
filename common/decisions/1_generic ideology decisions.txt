@@ -173,7 +173,7 @@ pro_yagoo_conservative_category = {
 						}
 					}
 				}
-				else = {
+				else_if = {
 					limit = {
 						has_idea = contracted_railroads_4
 					}
@@ -293,26 +293,6 @@ pro_yagoo_conservative_category = {
 	}
 }
 
-# GEN_progressive_interventionism = {
-# 	targeted_decision = {
-# 		icon = generic_prepare_civil_war
-# 		visible = {
-# 			has_idea = world_interventionism_idea_2
-# 		}
-# 		icon = generic_prepare_civil_war
-# 		targets_dynamic = yes
-# 		target_trigger = {
-# 			FROM = {
-# 				has_added_tension_amount > 10
-# 			}
-# 		}
-# 		targeted_modifier = {
-# 			target = PREV
-# 			targets_dynamic = yes
-# 			attack_bonus_against = 0.05
-# 		}
-# 	}
-# }
 pro_yagoo_progressive_category = {
 	adopt_interventionism_policies = {
 		icon = generic_prepare_civil_war
@@ -543,6 +523,28 @@ pro_yagoo_progressive_category = {
 			}
 		}
 	}
+	bonus_against_warlike = {
+		icon = generic_prepare_civil_war
+		visible = {
+			has_idea = world_interventionism_idea_2
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			FROM = {
+				has_added_tension_amount > 10
+			}
+		}
+		complete_effect = {
+			FROM = {
+				add_ideas = world_interventionism_bonus_idea
+			}
+		}
+		# targeted_modifier = {
+		# 	target = PREV
+		# 	targets_dynamic = yes
+		# 	attack_bonus_against = 0.05
+		# }
+	}
 }
 
 pro_yagoo_monarchy_category = {
@@ -760,7 +762,7 @@ pro_yagoo_kleptocracy_category = {
 		days_remove = 120
 		cost = 0
 		modifier = {
-			political_advisor_cost_actor = -0.35
+			political_advisor_cost_factor = -0.35
 			political_power_cost = 0.3
 			economy_cost_factor = 0.15
 			trade_laws_cost_factor = 0.15
