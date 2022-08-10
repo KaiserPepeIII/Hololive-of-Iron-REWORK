@@ -54,10 +54,16 @@ focus_tree = {
 	focus = {
 		id = WTS_a_new_government
 		icon = GFX_focus_WTS_a_new_government
-		cost = 5
+		cost = 10
 		prerequisite = {
 			focus = WTS_the_easter_crisis
 		}
+		available = {
+			NOT = {
+				has_country_flag = WTS_forced_through_budget
+			}
+		}
+		cancelable = no
 		mutually_exclusive = {
 			focus = WTS_the_westminster_constitution
 		}
@@ -85,6 +91,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = WTS_a_new_government
 		}
+		cancelable = no
 		select_effect = {
 			country_event = {
 				id = watson.34
@@ -135,6 +142,17 @@ focus_tree = {
 		prerequisite = {
 			focus = WTS_socialist_budget
 		}
+		completion_reward = {
+			set_country_flag = WTS_four_year_plan
+			set_variable = {
+				var = WTS.four_year_plan_progress
+				value = 0
+			}
+			country_event = {
+				id = watson.162
+				days = 1460
+			}
+		}
 		x = 10
 		y = 5
 	}
@@ -144,6 +162,10 @@ focus_tree = {
 		cost = 10
 		prerequisite = {
 			focus = WTS_four_year_plan
+		}
+		completion_reward = {
+			remove_ideas = WTS_fixed_trade
+			add_ideas = limited_exports
 		}
 		x = 8
 		y = 6
@@ -224,6 +246,15 @@ focus_tree = {
 		prerequisite = {
 			focus = WTS_conservative_budget
 		}
+		completion_reward = {
+			remove_dynamic_modifier = {
+				modifier = WTS_unemployment
+			}
+			add_dynamic_modifier = {
+				modifier = WTS_unemployment
+				days = 720
+			}
+		}
 		x = 16
 		y = 5
 	}
@@ -238,6 +269,20 @@ focus_tree = {
 		y = 6
 		completion_reward = {
 			add_ideas = lower_taxes_kinda_buff
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 	focus = {
@@ -246,6 +291,10 @@ focus_tree = {
 		cost = 10
 		prerequisite = {
 			focus = WTS_privitisation_act
+		}
+		completion_reward = {
+			remove_ideas = WTS_fixed_trade
+			add_ideas = free_trade
 		}
 		x = 18
 		y = 6
@@ -264,6 +313,20 @@ focus_tree = {
 		y = 7
 		completion_reward = {
 			add_ideas = reduced_regulations_kinda_buff
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 	focus = {
@@ -1711,6 +1774,21 @@ focus_tree = {
 		y = 6
 		completion_reward = {
 			add_ideas = full_employment_kinda_buff
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = WTS_four_year_plan_cost
+					}
+				}
+				add_to_variable = {
+					var = WTS.four_year_plan_progress
+					value = 2
+				}
+				add_to_variable = {
+					var = WTS.four_year_plan_progress_cost
+					value = 5
+				}
+			}
 		}
 	}
 	focus = {

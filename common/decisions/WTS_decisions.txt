@@ -2647,3 +2647,403 @@ WTS_neo_colonialism = {
 		}
 	}
 }
+
+WTS_four_year_plan = {
+	WTS_nationalize_the_steel_mills = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 75
+			}
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		complete_effect = {
+			add_popularity = {
+				ideology = var:WTS.current_party_ideology_group
+				popularity = 0.05
+			}
+			random_owned_state = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+			random_owned_state = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress
+				value = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress_cost
+				value = 2
+			}
+		}
+	}
+	WTS_establish_the_nhs = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 75
+			}
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		complete_effect = {
+			add_ideas = WTS_the_NHS
+			add_to_variable = {
+				var = WTS.four_year_plan_progress
+				value = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress_cost
+				value = 2
+			}
+		}
+	}
+	WTS_recruit_keynes = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 75
+			}
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		complete_effect = {
+			set_country_flag = WTS_recruited_keynes
+			add_to_variable = {
+				var = WTS.four_year_plan_progress
+				value = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress_cost
+				value = 2
+			}
+		}
+	}
+	WTS_land_clearance_1 = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 100
+			}
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		complete_effect = {
+			every_owned_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress
+				value = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress_cost
+				value = 2
+			}
+		}
+	}
+	WTS_land_clearance_2 = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 100
+			}
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		complete_effect = {
+			every_owned_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress
+				value = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress_cost
+				value = 2
+			}
+		}
+	}
+	WTS_expand_the_arms_industry = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 75
+			}
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		complete_effect = {
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress
+				value = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress_cost
+				value = 2
+			}
+		}
+	}
+	WTS_expand_dockyards = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 75
+			}
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress
+				value = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress_cost
+				value = 2
+			}
+		}
+	}
+	WTS_fight_unemployment = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 75
+			}
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = WTS.four_year_plan_progress
+				value = 1
+			}
+			add_to_variable = {
+				var = WTS.four_year_plan_progress_cost
+				value = 2
+			}
+			add_to_variable = {
+				var = WTS.unemployment_var
+				value = 1
+			}
+			if = {
+				limit = {
+					NOT = {
+						check_variable = {
+							var = WTS.unemployment_var
+							value = 4
+							compare = equals
+						}
+					}
+				}
+				subtract_from_variable = {
+					var = WTS.unemployment_consumer_goods
+					value = 5
+				}
+				subtract_from_variable = {
+					var = WTS.unemployment_industrial_capacity
+					value = 5
+				}
+				subtract_from_variable = {
+					var = WTS.unemployment_construction_speed
+					value = 5
+				}
+				else = {
+					remove_dynamic_modifier = {
+						modifier = WTS_unemployment
+					}
+				}
+			}
+		}
+	}
+	WTS_end_four_year_plan = {
+		icon = decision_generic_industry
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = WTS_four_year_plan
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		complete_effect = {
+			remove_dynamic_modifier = {
+				modifier = WTS_four_year_plan_cost
+			}
+			clr_country_flag = WTS_four_year_plan
+			if = {
+				limit = {
+					check_variable = {
+						var = WTS.four_year_plan_progress
+						value = 12
+						compare = greater_than_or_equals
+					}
+				}
+				country_event = watson.163
+				else_if = {
+					limit = {
+						check_variable = {
+							var = WTS.four_year_plan_progress
+							value = 8
+							compare = greater_than_or_equals
+						}
+						check_variable = {
+							var = WTS.four_year_plan_progress
+							value = 12
+							compare = less_than
+						}
+					}
+					country_event = watson.164
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							var = WTS.four_year_plan_progress
+							value = 4
+							compare = greater_than_or_equals
+						}
+						check_variable = {
+							var = WTS.four_year_plan_progress
+							value = 8
+							compare = less_than
+						}
+					}
+					country_event = watson.165
+				}
+				else = {
+					country_event = watson.166
+				}
+			}
+		}
+	}
+}
+
+WTS_lhs_bobby = {
+	WTS_global_lhs_bobby = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			FROM = {
+				has_added_tension_amount > 15
+				is_resistance_ideology = yes
+			}
+		}
+		complete_effect = {
+			FROM = {
+				create_wargoal = {
+					target = THIS
+					type = topple_government
+				}
+			}
+		}
+	}
+}

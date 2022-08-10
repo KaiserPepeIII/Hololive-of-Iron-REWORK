@@ -672,6 +672,8 @@ country_event = {
 	#Westminster Constitution 
 	option = {
 		name = watson.29.b
+		country_event = watson.161
+		set_country_flag = WTS_forced_through_budget
 		clr_country_flag = WTS_pre_easter_crisis
 		add_ideas = WTS_easter_crisis
 		complete_national_focus = WTS_the_easter_crisis
@@ -693,6 +695,30 @@ country_event = {
 				var = WTS.ulster_teammates_support
 				value = 10
 			}
+		}
+	}
+}
+
+#
+#
+#	British Politics Broken
+#
+#
+country_event = {
+	id = watson.161
+	title = watson.30.t
+	desc = watson.30.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Oh dear
+	option = {
+		name = watson.161.a
+		add_stability = -0.3
+		#Workingman's Alliance breaks from the party
+		set_party_name = {
+			ideology = pro_yagoo_progressive
+			long_name = WTS_workingmans_alliance_long
+			name = WTS_workingmans_alliance
 		}
 	}
 }
@@ -830,23 +856,43 @@ country_event = {
 				days = 1
 			}
 			country_event = {
-				id = watson.100
+				id = watson.107
 				days = 4
 			}
 			country_event = {
-				id = watson.101
+				id = watson.108
 				days = 8
 			}
 			country_event = {
-				id = watson.102
+				id = watson.109
 				days = 16
 			}
 			country_event = {
-				id = watson.103
+				id = watson.110
 				days = 17
 			}
 			country_event = {
-				id = watson.104
+				id = watson.111
+				days = 25
+			}
+			country_event = {
+				id = watson.112
+				days = 25
+			}
+			country_event = {
+				id = watson.113
+				days = 25
+			}
+			country_event = {
+				id = watson.114
+				days = 25
+			}
+			country_event = {
+				id = watson.115
+				days = 25
+			}
+			country_event = {
+				id = watson.116
 				days = 25
 			}
 			country_event = {
@@ -854,55 +900,6 @@ country_event = {
 				days = 30
 			}
 		}
-	}
-}
-
-#Results of Westminster Const. - Strong Executive
-country_event = {
-	id = watson.35
-	title = watson.35.t
-	desc = watson.35.d
-	picture = GFX_King_George_V
-	is_triggered_only = yes
-	option = {
-		#ogey
-		name = watson.35.a
-		clr_country_flag = WTS_westminster_constitution_calc
-		set_politics = {
-			ruling_party = pro_yagoo_progressive
-		}
-		complete_national_focus = WTS_socialist_budget
-		add_stability = 0.1
-	}
-}
-
-#Results of Westminster Const. - wishy washy
-country_event = {
-	id = watson.36
-	title = watson.36.t
-	desc = watson.36.d
-	picture = GFX_King_George_V
-	is_triggered_only = yes
-	option = {
-		#ogey
-		name = watson.36.a
-		clr_country_flag = WTS_westminster_constitution_calc
-		add_stability = -0.1
-	}
-}
-
-#Results of Westminster Const. - wishy washy
-country_event = {
-	id = watson.37
-	title = watson.37.t
-	desc = watson.37.d
-	picture = GFX_King_George_V
-	is_triggered_only = yes
-	option = {
-		#ogey
-		name = watson.37.a
-		clr_country_flag = WTS_westminster_constitution_calc
-		add_stability = 0.15
 	}
 }
 
@@ -1952,10 +1949,6 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = watson.106
-				days = 1
-			}
-			country_event = {
 				id = watson.100
 				days = 4
 			}
@@ -1978,6 +1971,10 @@ country_event = {
 			country_event = {
 				id = watson.105
 				days = 30
+			}
+			country_event = {
+				id = watson.121
+				days = 35
 			}
 		}
 	}
@@ -2443,6 +2440,7 @@ country_event = {
 		}
 		add_political_power = 25
 		add_stability = 0.05
+		complete_national_focus = WTS_a_new_government
 	}
 	option = {
 		#Conservative government small WIN
@@ -2453,6 +2451,7 @@ country_event = {
 		}
 		add_political_power = -25
 		add_stability = -0.05
+		complete_national_focus = WTS_a_new_government
 	}
 	option = {
 		#socialist government BIG WIN
@@ -2462,6 +2461,7 @@ country_event = {
 		}
 		add_political_power = 25
 		add_stability = 0.05
+		complete_national_focus = WTS_a_new_government
 	}
 	option = {
 		#socialist government small WIN
@@ -2471,6 +2471,7 @@ country_event = {
 		}
 		add_political_power = -25
 		add_stability = -0.05
+		complete_national_focus = WTS_a_new_government
 	}
 	option = {
 		#Teammate government BIG WIN
@@ -2480,6 +2481,7 @@ country_event = {
 		}
 		add_political_power = 25
 		add_stability = 0.05
+		complete_national_focus = WTS_a_new_government
 	}
 	option = {
 		#Teammate government small WIN
@@ -2489,6 +2491,7 @@ country_event = {
 		}
 		add_political_power = -25
 		add_stability = -0.05
+		complete_national_focus = WTS_a_new_government
 	}
 }
 
@@ -2508,18 +2511,6 @@ country_event = {
 		set_politics = {
 			ruling_party = democratic
 		}
-		set_popularities = {
-			pro_yagoo_progressive = 0
-			pro_resistance_monarchy = 0
-		}
-		add_popularity = {
-			ideology = democratic
-			popularity = var:party_popularity@pro_yagoo_progressive
-		}
-		add_popularity = {
-			ideology = democratic
-			popularity = var:party_popularity@pro_yagoo_monarchy
-		}
 	}
 	option = {
 		#Socialist faction
@@ -2528,18 +2519,6 @@ country_event = {
 		set_country_flag = WTS_leading_socialists		# for progressives you need to win 80 lower class, 40 middle class, 20 upper class, 50 ulster
 		set_politics = {
 			ruling_party = pro_yagoo_progressive
-		}
-		set_popularities = {
-			democratic = 0
-			pro_resistance_monarchy = 0
-		}
-		add_popularity = {
-			ideology = pro_yagoo_progressive
-			popularity = var:party_popularity@democratic
-		}
-		add_popularity = {
-			ideology = pro_yagoo_progressive
-			popularity = var:party_popularity@pro_yagoo_monarchy
 		}
 	}
 	option = {
@@ -2709,7 +2688,19 @@ country_event = {
 	}
 	option = {
 		#now sounds like a good time for some martial law
-		name = watson.110.b
+		name = watson.110.c
+		trigger = {
+			has_political_power > 100
+		}
+		add_timed_idea = {
+			idea = WTS_martial_law
+			days = 180
+		}
+		add_stability = 0.1
+		add_to_variable = {
+			var = WTS.executive_influence
+			value = 2
+		}
 	}
 }
 
@@ -2724,6 +2715,11 @@ country_event = {
 	option = {
 		#Yes
 		name = watson.111.a
+		add_stability = -0.1
+		add_to_variable = {
+			var = WTS.executive_influence
+			value = 2
+		}
 	}
 	option = {
 		#No
@@ -2742,10 +2738,16 @@ country_event = {
 	option = {
 		#a progressive one
 		name = watson.112.a
+		add_stability = 0.05
+		add_to_variable = {
+			var = WTS.executive_influence
+			value = 1
+		}
 	}
 	option = {
 		#a conservative one
 		name = watson.112.b
+		add_stability = 0.05
 	}
 }
 
@@ -2760,10 +2762,23 @@ country_event = {
 	option = {
 		#let them talk
 		name = watson.113.a
+		add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.05
+		}
 	}
 	option = {
 		#you're fired
 		name = watson.113.b
+		add_stability = -0.05
+		add_to_variable = {
+			var = WTS.executive_influence
+			value = 1
+		}
 	}
 }
 
@@ -2778,6 +2793,15 @@ country_event = {
 	option = {
 		#Of course
 		name = watson.114.a
+		add_stability = -0.05
+		add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.05
+		}
+		add_to_variable = {
+			var = WTS.executive_influence
+			value = 1
+		}
 	}
 	option = {
 		#Probably a bad idea
@@ -2796,6 +2820,19 @@ country_event = {
 	option = {
 		#Of course
 		name = watson.115.a
+		add_stability = -0.05
+		add_popularity = {
+			ideology = mixed_ideology_democracy
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.05
+		}
+		add_to_variable = {
+			var = WTS.executive_influence
+			value = 1
+		}
 	}
 	option = {
 		#Prob a bad idea
@@ -2814,6 +2851,11 @@ country_event = {
 	option = {
 		#We support your cause
 		name = watson.116.a
+		add_stability = -0.05
+		add_to_variable = {
+			var = WTS.executive_influence
+			value = 1
+		}
 	}
 	option = {
 		#They are against our interest
@@ -2821,7 +2863,7 @@ country_event = {
 	}
 }
 
-###### PLACEHOLDER
+###### Inkpin Supports the Westminster Constitution
 country_event = {
 	id = watson.117
 	title = watson.117.t
@@ -2830,16 +2872,25 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
-		#PLACEHOLDER
+		#An unexpected surprise but a welcomed one
 		name = watson.117.a
+		add_popularity = {
+			ideology = var:WTS.current_party_ideology_group
+			popularity = 0.05
+		}
+		set_country_flag = WTS_labour_support
 	}
 	option = {
-		#PLACEHOLDER
+		#Go to hell
 		name = watson.117.b
-	}
-	option = {
-		#PLACEHOLDER
-		name = watson.117.b
+		add_popularity = {
+			ideology = communism
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = mixed_ideology_democracy
+			popularity = -0.05
+		}
 	}
 }
 
@@ -2899,11 +2950,61 @@ country_event = {
 		#The Regent shall storm into parliament
 		name = watson.120.a
 		set_country_flag = WTS_westminster_constitution_calc
+		country_event = watson.35
 	}
 	option = {
 		#no need for such a display
 		name = watson.120.b
 		set_country_flag = WTS_westminster_constitution_calc
+		country_event = watson.35
+	}
+}
+
+#Results of Westminster Const.
+country_event = {
+	id = watson.35
+	title = watson.35.t
+	desc = watson.35.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Strong Executive
+	option = {
+		name = watson.35.a
+		trigger = {
+			check_variable = {
+				var = WTS.executive_influence
+				value = 8
+				compare = greater_than_or_equals
+			}
+		}
+		clr_country_flag = WTS_westminster_constitution_calc
+		add_stability = -0.1
+	}
+	#As intended
+	option = {
+		name = watson.35.b
+		trigger = {
+			check_variable = {
+				var = WTS.executive_influence
+				value = 8
+				compare = greater_than_or_equals
+			}
+		}
+		clr_country_flag = WTS_westminster_constitution_calc
+		add_stability = -0.05
+	}
+	#Weak Executive
+	option = {
+		name = watson.35.c
+		trigger = {
+			check_variable = {
+				var = WTS.executive_influence
+				value = 2
+				compare = less_than_or_equals
+			}
+		}
+		clr_country_flag = WTS_westminster_constitution_calc
+		add_stability = -0.1
 	}
 }
 
@@ -3886,5 +3987,57 @@ country_event = {
 			target = FROM
 			type = annex_everything
 		}
+	}
+}
+
+#FOUR YEAR PLAN END - Total Success
+country_event = {
+	id = watson.163
+	title = watson.163.t
+	desc = watson.163.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.163.a
+		add_stability = 0.15
+	}
+}
+
+#FOUR YEAR PLAN END -  Success
+country_event = {
+	id = watson.164
+	title = watson.164.t
+	desc = watson.164.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.164.a
+		add_stability = 0.1
+	}
+}
+
+#FOUR YEAR PLAN END -  Moderate Results
+country_event = {
+	id = watson.165
+	title = watson.165.t
+	desc = watson.165.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.165.a
+		add_stability = 0.05
+	}
+}
+
+#FOUR YEAR PLAN END -  Failure
+country_event = {
+	id = watson.166
+	title = watson.166.t
+	desc = watson.166.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.166.a
+		add_stability = -0.15
 	}
 }
