@@ -515,27 +515,8 @@ WTS_restore_faith_in_government = {
 	}
 }
 
-wts_ira = {
-	WTS_test = {
-		icon = decision_generic_industry
-		available = {
-			WTS = {
-				has_political_power > 120
-			}
-		}
-		visible = {
-			is_debug = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 30
-		cost = 120
-		complete_effect = {
-		}
-	}
-	ira_attacks = {
+WTS_insurgency_attacks = {
+	WTS_ira_attacks = {
 		days_mission_timeout = 30
 		is_good = no
 		icon = GFX_decision_icon_default
@@ -551,7 +532,7 @@ wts_ira = {
 			always = yes
 		}
 		complete_effect = {
-			add_stability = .15
+			add_stability = 0.15
 		}
 		timeout_effect = {
 			random_list = {
@@ -576,25 +557,11 @@ wts_ira = {
 			}
 		}
 	}
-	WTS_test2 = {
-		icon = decision_generic_industry
-		available = {
-			WTS = {
-				has_political_power > 120
-			}
-		}
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 30
-		cost = 120
-		complete_effect = {
-		}
+	WTS_bgc_attacks = {
 	}
+}
+
+WTS_insurgency_gains = {
 }
 
 wts_home_defense = {

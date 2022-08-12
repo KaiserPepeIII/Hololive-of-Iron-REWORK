@@ -4172,6 +4172,13 @@ country_event = {
 	}
 }
 
+##############################
+##		Counter Insurgency  ##
+##		  Pacification		##
+##############################
+#
+#The Watch Wars - Initiate
+#
 country_event = {
 	id = watson_security.24
 	title = watson_security.24.t
@@ -4179,14 +4186,210 @@ country_event = {
 	trigger = {
 		original_tag = WTS
 		WTS = {
-			WTS_teammates_initiation_trigger_removal = yes
+			WTS_state_pacification_trigger = yes
 		}
 	}
 	mean_time_to_happen = {
 		days = 2
 	}
 	is_triggered_only = no
+	fire_only_once = no
+	#South England
 	option = {
 		name = watson_security.24.a
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_south_england_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_north_england_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_south_england_pacified
+	}
+	#East England
+	option = {
+		name = watson_security.24.b
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_east_england_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_east_england_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_east_england_pacified
+	}
+	#London 
+	option = {
+		name = watson_security.24.c
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_london_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_london_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_london_pacified
+	}
+	#West Midlands 
+	option = {
+		name = watson_security.24.e
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_west_midlands_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_west_midlands_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_west_midlands_pacified
+	}
+	#North England 
+	option = {
+		name = watson_security.24.f
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_north_england_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_north_england_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_north_england_pacified
+	}
+	#Wales 
+	option = {
+		name = watson_security.24.g
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_wales_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_wales_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_wales_pacified
+	}
+	#Scotland 
+	option = {
+		name = watson_security.24.h
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_scotland_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_scotland_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_scotland_pacified
+	}
+	#N. Ireland 
+	option = {
+		name = watson_security.24.i
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_northern_ireland_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_northern_ireland_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_northern_ireland_pacified
+	}
+	#NW Ireland 
+	option = {
+		name = watson_security.24.j
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_northwest_ireland_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_northwest_ireland_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_northwest_ireland_pacified
+	}
+	#Southwest Ireland 
+	option = {
+		name = watson_security.24.k
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_southwest_ireland_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_southwest_ireland_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_southwest_ireland_pacified
+	}
+	#Dublin 
+	option = {
+		name = watson_security.24.l
+		trigger = {
+			original_tag = WTS
+			WTS = {
+				check_variable = {
+					var = WTS.counter_insurgency_dublin_government
+					value = 1
+					compare = equals
+				}
+				NOT = {
+					has_country_flag = WTS_dublin_pacified
+				}
+			}
+		}
+		set_country_flag = WTS_dublin_pacified
 	}
 }

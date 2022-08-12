@@ -1,5 +1,6 @@
 #Opens the resistance gui, clears LHS gui and "action array" which is the array a country that is clicked on in the gui gets put into
 join_the_lhs = {
+	#Customs Union
 	add_ideas = {
 		lhs_member
 		lhs_customs_union_gui
@@ -38,7 +39,128 @@ join_the_lhs = {
 	}
 }
 
+join_lhs_development_union = {
+	add_ideas = {
+		lhs_member
+		lhs_economic_development_gui
+	}
+	if = {
+		limit = {
+			NOT = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+		}
+		add_to_array = {
+			array = global.lhs_member_flag
+			value = THIS.id
+		}
+		add_ideas = lhs_member
+	}
+	add_to_array = {
+		array = global.lhs_development_union_flag
+		value = THIS.id
+	}
+	remove_ideas = {
+		resistance_member
+		neutral_member
+		anti_member
+		lhs_customs_union_gui
+		lhs_defensive_union_gui
+		aqua_resistance_member
+		coco_resistance_member
+		neutral_resistance_member
+	}
+	remove_from_array = {
+		array = global.lhs_defensive_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_customs_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.aqua_resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.neutral_resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.coco_resistance_member_flag
+		value = THIS.id
+	}
+}
+
+join_lhs_defensive_union = {
+	add_ideas = {
+		lhs_member
+		lhs_defensive_union_gui
+	}
+	if = {
+		limit = {
+			NOT = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+		}
+		add_to_array = {
+			array = global.lhs_member_flag
+			value = THIS.id
+		}
+		add_ideas = lhs_member
+	}
+	add_to_array = {
+		array = global.lhs_defensive_union_flag
+		value = THIS.id
+	}
+	remove_ideas = {
+		resistance_member
+		neutral_member
+		anti_member
+		lhs_customs_union_gui
+		lhs_economic_development_gui
+		aqua_resistance_member
+		coco_resistance_member
+		neutral_resistance_member
+	}
+	remove_from_array = {
+		array = global.lhs_economic_development_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_customs_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.aqua_resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.neutral_resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.coco_resistance_member_flag
+		value = THIS.id
+	}
+}
+
 join_the_resistance = {
+	# NEutral Resistance
 	add_ideas = {
 		resistance_member
 		neutral_member
@@ -75,7 +197,124 @@ join_the_resistance = {
 	}
 }
 
-###############
+join_coco_resistance = {
+	if = {
+		limit = {
+			NOT = {
+				is_in_array = {
+					array = global.resistance_member_flag
+					value = THIS.id
+				}
+			}
+		}
+		add_to_array = {
+			array = global.resistance_member_flag
+			value = THIS.id
+		}
+		add_ideas = resistance_member
+	}
+	add_to_array = {
+		array = global.coco_resistance_flag
+		value = THIS.id
+	}
+	add_ideas = coco_resistance_member
+	remove_ideas = {
+		lhs_member
+		neutral_member
+		anti_member
+		lhs_customs_union_gui
+		lhs_defensive_union_gui
+		aqua_resistance_member
+		neutral_resistance_member
+	}
+	remove_from_array = {
+		array = global.lhs_defensive_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_customs_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_defensive_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.aqua_resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.neutral_resistance_member_flag
+		value = THIS.id
+	}
+}
+
+join_aqua_resistance = {
+	if = {
+		limit = {
+			NOT = {
+				is_in_array = {
+					array = global.resistance_member_flag
+					value = THIS.id
+				}
+			}
+		}
+		add_to_array = {
+			array = global.resistance_member_flag
+			value = THIS.id
+		}
+		add_ideas = resistance_member
+	}
+	add_to_array = {
+		array = global.aqua_resistance_flag
+		value = THIS.id
+	}
+	add_ideas = aqua_resistance_member
+	remove_ideas = {
+		lhs_member
+		neutral_member
+		anti_member
+		lhs_customs_union_gui
+		lhs_defensive_union_gui
+		coco_resistance_member
+		neutral_resistance_member
+	}
+	remove_from_array = {
+		array = global.lhs_defensive_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_customs_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.lhs_defensive_union_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.coco_resistance_member_flag
+		value = THIS.id
+	}
+	remove_from_array = {
+		array = global.neutral_resistance_member_flag
+		value = THIS.id
+	}
+}
+
+###################################
+##################################
+######################################
+##################################
+##################################
+###################################
 resistance_button_click = {
 	set_country_flag = view_resistance_membership
 	clr_country_flag = view_lhs_membership
