@@ -1,4 +1,5 @@
 add_namespace = watson_security
+add_namespace = watson_insurgency
 ##############################
 ##		Counter Insurgency  ##
 ##		  State Flipping	##
@@ -4391,5 +4392,63 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_dublin_pacified
+	}
+}
+
+#IRA ATTACK - BOMBS INFRASTRUCTURE 
+country_event = {
+	id = watson_insurgency.1
+	title = watson_insurgency.1.t
+	desc = watson_insurgency.1.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.1.a
+		add_stability = -0.05
+		random_list = {
+			50 = {
+				119 = {
+					damage_building = {
+						type = infrastructure
+						damage = 1
+					}
+				}
+			}
+			50 = {
+				1006 = {
+					damage_building = {
+						type = infrastructure
+						damage = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+#IRA ATTACK - KILLS LOCAL GARRISON
+country_event = {
+	id = watson_insurgency.2
+	title = watson_insurgency.2.t
+	desc = watson_insurgency.2.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.2.a
+		add_manpower = -100
+		add_stability = -0.05
+	}
+}
+
+#IRA ATTACK - PLOT DISCOVERED
+country_event = {
+	id = watson_insurgency.3
+	title = watson_insurgency.3.t
+	desc = watson_insurgency.3.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.3.a
+		add_stability = -0.15
 	}
 }
