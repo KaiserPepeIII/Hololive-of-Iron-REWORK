@@ -2122,28 +2122,28 @@ focus_tree = {
 		x = 71
 		y = 5
 	}
-	focus = {
-		id = GEN_solidify_the_alliance
-		icon = GFX_goal_unknown
-		cost = 0
-		prerequisite = {
-			focus = GEN_secure_resistance_trade
-		}
-		prerequisite = {
-			focus = GEN_gun_sharing_program
-			focus = GEN_neighbouring_revolt
-			focus = GEN_expand_borders
-		}
-		mutually_exclusive = {
-			focus = GEN_resist_the_aquaists
-			focus = GEN_resist_the_cocoists
-		}
-		available = {
-			never = yes
-		}
-		x = 67
-		y = 6
-	}
+	#focus = {
+	#	id = GEN_solidify_the_alliance
+	#	icon = GFX_goal_unknown
+	#	cost = 0
+	#	prerequisite = {
+	#		focus = GEN_secure_resistance_trade
+	#	}
+	#	prerequisite = {
+	#		focus = GEN_gun_sharing_program
+	#		focus = GEN_neighbouring_revolt
+	#		focus = GEN_expand_borders
+	#	}
+	#	mutually_exclusive = {
+	#		focus = GEN_resist_the_aquaists
+	#		focus = GEN_resist_the_cocoists
+	#	}
+	#	available = {
+	#		always = no
+	#	}
+	#	x = 67
+	#	y = 6
+	#}
 	focus = {
 		id = GEN_resist_the_cocoists
 		icon = GFX_goal_unknown
@@ -2153,6 +2153,28 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = GEN_solidify_the_alliance
+		}
+		completion_reward = {
+			IF = {
+				limit = {
+					pro_resistance_nationalism =  > 0
+				}
+				add_popularity = {
+					ideology = pro_resistance_kleptocracy
+					popularity = -0.1
+				}
+				add_manpower = -10000
+				add_stability = -0.05
+				add_war_support = 0.05
+			}
+			else_if = {
+				limit = {
+					pro_resistance_nationalism =  < 0
+				}
+				add_war_support = 0.15
+				add_political_power = 100
+			}
+			custom_effect_tooltip = resist_the_coco_tooltip
 		}
 		x = 71
 		y = 6
@@ -2812,16 +2834,16 @@ focus_tree = {
 		x = 85
 		y = 7
 	}
-	focus = {
-		id = GEN_support_the_great_crusade
-		icon = GFX_goal_unknown
-		cost = 0
-		prerequisite = {
-			focus = GEN_solidify_the_alliance
-		}
-		x = 67
-		y = 7
-	}
+	#focus = {
+	#	id = GEN_support_the_great_crusade
+	#	icon = GFX_goal_unknown
+	#	cost = 0
+	#	prerequisite = {
+	#		focus = GEN_solidify_the_alliance
+	#	}
+	#	x = 67
+	#	y = 7
+	#}
 	focus = {
 		id = GEN_promote_jingoism
 		icon = GFX_goal_unknown
