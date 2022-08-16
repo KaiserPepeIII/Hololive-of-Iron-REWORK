@@ -2,6 +2,7 @@ add_namespace = watson_ceasefire
 add_namespace = watson_crackdown
 add_namespace = watson_teammates
 add_namespace = watson_police
+add_namespace = watson_provocations
 ###########################
 #
 #	Negotiate Ceasefire
@@ -1975,6 +1976,543 @@ country_event = {
 
 ###########################
 #
-#	Police Presence
+#	Provocations
 #
 ###########################
+country_event = {
+	id = watson_provocations.1
+	title = watson_provocations.1.t
+	desc = watson_provocations.1.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.1.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_wales_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.1.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_wales_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.1.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_wales_adding_welsh = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#Dublin Ceasefire 
+country_event = {
+	id = watson_provocations.2
+	title = watson_provocations.2.t
+	desc = watson_provocations.2.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.2.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_dublin_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.2.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_dublin_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.2.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_dublin_adding_irish = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#London Ceasefire 
+country_event = {
+	id = watson_provocations.3
+	title = watson_provocations.3.t
+	desc = watson_provocations.3.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.3.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_london_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.3.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_london_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.3.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_london_adding_antis = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#West Midlands Ceasefire 
+country_event = {
+	id = watson_provocations.4
+	title = watson_provocations.4.t
+	desc = watson_provocations.4.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.4.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_west_midlands_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.4.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_west_midlands_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.4.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_west_midlands_adding_antis = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#Scotland Ceasefire 
+country_event = {
+	id = watson_provocations.5
+	title = watson_provocations.5.t
+	desc = watson_provocations.5.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.5.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_scotland_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.5.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_scotland_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.5.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_scotland_adding_antis = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#East England Ceasefire 
+country_event = {
+	id = watson_provocations.6
+	title = watson_provocations.6.t
+	desc = watson_provocations.6.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.6.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_east_england_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.6.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_east_england_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.6.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_east_england_adding_antis = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#North England Ceasefire 
+country_event = {
+	id = watson_provocations.7
+	title = watson_provocations.7.t
+	desc = watson_provocations.7.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.7.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_north_england_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.7.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_north_england_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.7.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_north_england_adding_antis = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#South England Ceasefire 
+country_event = {
+	id = watson_provocations.8
+	title = watson_provocations.8.t
+	desc = watson_provocations.8.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.8.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_south_england_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.8.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_south_england_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.8.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_south_england_adding_antis = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#Northern Ireland Ceasefire 
+country_event = {
+	id = watson_provocations.9
+	title = watson_provocations.9.t
+	desc = watson_provocations.9.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.9.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_northern_ireland_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.9.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_northern_ireland_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.9.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_northern_ireland_adding_irish = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#Northwest Ireland Ceasefire 
+country_event = {
+	id = watson_provocations.10
+	title = watson_provocations.10.t
+	desc = watson_provocations.10.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.10.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_northwest_ireland_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.10.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_northwest_ireland_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.10.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_northwest_ireland_adding_irish = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
+
+#Southwest Ireland Ceasefire 
+country_event = {
+	id = watson_provocations.11
+	title = watson_provocations.11.t
+	desc = watson_provocations.11.desc
+	is_triggered_only = yes
+	#Success
+	option = {
+		name = watson_provocations.11.a
+		trigger = {
+			has_country_flag = WTS_successful_negotiations
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 15
+		}
+		WTS_southwest_ireland_adding_teammates = yes
+		clr_country_flag = WTS_successful_negotiations
+	}
+	#Tension Eased
+	option = {
+		name = watson_provocations.11.b
+		trigger = {
+			has_country_flag = WTS_eased_tensions
+		}
+		add_political_power = 10
+		add_stability = 0.025
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 8
+		}
+		WTS_southwest_ireland_adding_teammates = yes
+		clr_country_flag = WTS_eased_tensions
+	}
+	#Critical Failure
+	option = {
+		name = watson_provocations.11.c
+		trigger = {
+			has_country_flag = WTS_critical_failure
+		}
+		set_temp_variable = {
+			var = pie_chart_change
+			value = 5
+		}
+		WTS_southwest_ireland_adding_irish = yes
+		clr_country_flag = WTS_critical_failure
+	}
+}
