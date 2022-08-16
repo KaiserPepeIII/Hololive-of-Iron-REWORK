@@ -515,27 +515,8 @@ WTS_restore_faith_in_government = {
 	}
 }
 
-wts_ira = {
-	WTS_test = {
-		icon = decision_generic_industry
-		available = {
-			WTS = {
-				has_political_power > 120
-			}
-		}
-		visible = {
-			is_debug = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 30
-		cost = 120
-		complete_effect = {
-		}
-	}
-	ira_attacks = {
+WTS_insurgency_attacks = {
+	WTS_ira_attacks = {
 		days_mission_timeout = 30
 		is_good = no
 		icon = GFX_decision_icon_default
@@ -545,54 +526,273 @@ wts_ira = {
 		}
 		fire_only_once = no
 		activation = {
-			has_country_flag = ira_established
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
+			}
 		}
 		visible = {
 			always = yes
 		}
 		complete_effect = {
-			add_stability = .15
+			add_stability = 0.15
 		}
 		timeout_effect = {
 			random_list = {
 				33 = {
 					country_event = {
-						id = watson.17
+						id = watson_insurgency.1
 						days = 1
 					}
 				}
 				33 = {
 					country_event = {
-						id = watson.18
+						id = watson_insurgency.2
 						days = 1
 					}
 				}
 				33 = {
 					country_event = {
-						id = watson.19
+						id = watson_insurgency.3
 						days = 1
 					}
 				}
 			}
 		}
 	}
-	WTS_test2 = {
-		icon = decision_generic_industry
+	WTS_bgc_attacks = {
+		days_mission_timeout = 45
+		is_good = no
+		icon = GFX_decision_icon_default
+		days_remove = 7
 		available = {
-			WTS = {
-				has_political_power > 120
+			has_country_flag = ira_dealt_with
+		}
+		fire_only_once = no
+		activation = {
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
 			}
 		}
 		visible = {
 			always = yes
 		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 30
-		cost = 120
 		complete_effect = {
+			add_stability = 0.15
+		}
+		timeout_effect = {
+			random_list = {
+				33 = {
+					country_event = {
+						id = watson_insurgency.1
+						days = 1
+					}
+				}
+				33 = {
+					country_event = {
+						id = watson_insurgency.2
+						days = 1
+					}
+				}
+				33 = {
+					country_event = {
+						id = watson_insurgency.3
+						days = 1
+					}
+				}
+			}
+		}
+	}
+	WTS_antis_attacks = {
+		days_mission_timeout = 55
+		is_good = no
+		icon = GFX_decision_icon_default
+		days_remove = 7
+		available = {
+			has_country_flag = ira_dealt_with
+		}
+		fire_only_once = no
+		activation = {
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_stability = 0.15
+		}
+		timeout_effect = {
+			random_list = {
+				33 = {
+					country_event = {
+						id = watson_insurgency.1
+						days = 1
+					}
+				}
+				33 = {
+					country_event = {
+						id = watson_insurgency.2
+						days = 1
+					}
+				}
+				33 = {
+					country_event = {
+						id = watson_insurgency.3
+						days = 1
+					}
+				}
+			}
+		}
+	}
+	WTS_teammates_attacks = {
+		days_mission_timeout = 90
+		is_good = no
+		icon = GFX_decision_icon_default
+		days_remove = 7
+		available = {
+			has_country_flag = ira_dealt_with
+		}
+		fire_only_once = no
+		activation = {
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_stability = 0.15
+		}
+		timeout_effect = {
+			random_list = {
+				33 = {
+					country_event = {
+						id = watson_insurgency.1
+						days = 1
+					}
+				}
+				33 = {
+					country_event = {
+						id = watson_insurgency.2
+						days = 1
+					}
+				}
+				33 = {
+					country_event = {
+						id = watson_insurgency.3
+						days = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+WTS_insurgency_gains = {
+	WTS_irish_gains = {
+		days_mission_timeout = 45
+		is_good = no
+		icon = GFX_decision_icon_default
+		days_remove = 7
+		available = {
+			has_country_flag = ira_dealt_with
+		}
+		fire_only_once = no
+		activation = {
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_stability = 0.15
+			}
+		}
+		timeout_effect = {
+			WTS_irish_gains_scripted_effect = yes
+		}
+	}
+	WTS_antis_gains = {
+		days_mission_timeout = 55
+		is_good = no
+		icon = GFX_decision_icon_default
+		days_remove = 7
+		available = {
+			has_country_flag = ira_dealt_with
+		}
+		fire_only_once = no
+		activation = {
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_stability = 0.15
+			}
+		}
+		timeout_effect = {
+			WTS_antis_gains_scripted_effect = yes
+		}
+	}
+	WTS_welsh_gains = {
+		days_mission_timeout = 65
+		is_good = no
+		icon = GFX_decision_icon_default
+		days_remove = 7
+		available = {
+			has_country_flag = ira_dealt_with
+		}
+		fire_only_once = no
+		activation = {
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_stability = 0.15
+			}
+		}
+		timeout_effect = {
+			WTS_welsh_gains_scripted_effect = yes
+		}
+	}
+	WTS_teammates_gains = {
+		days_mission_timeout = 95
+		is_good = no
+		icon = GFX_decision_icon_default
+		days_remove = 7
+		available = {
+			has_country_flag = ira_dealt_with
+		}
+		fire_only_once = no
+		activation = {
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_stability = 0.15
+			}
+		}
+		timeout_effect = {
+			WTS_teammates_gains_scripted_effect = yes
 		}
 	}
 }

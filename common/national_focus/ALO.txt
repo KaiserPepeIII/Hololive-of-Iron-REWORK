@@ -567,6 +567,10 @@ focus_tree = {
 			focus = ALO_rally_the_loyalists
 		}
 		completion_reward = {
+			add_timed_idea = {
+				idea = ALO_devil_trigger
+				days = 180
+			}
 		}
 		x = 13
 		y = 8
@@ -591,19 +595,6 @@ focus_tree = {
 		y = 9
 	}
 	focus = {
-		id = ALO_the_woring_matomo
-		icon = GFX_focus_ALO_the_woring_matomo
-		cost = 4
-		prerequisite = {
-			focus = ALO_rally_the_working_class
-		}
-		completion_reward = {
-			add_ideas = ALO_working_manotomo
-		}
-		x = 8
-		y = 10
-	}
-	focus = {
 		id = ALO_lhs_aid
 		icon = GFX_focus_ALO_lhs_aid
 		cost = 5
@@ -620,25 +611,16 @@ focus_tree = {
 		y = 9
 	}
 	focus = {
-		id = ALO_lhs_food_aid
-		icon = GFX_focus_ALO_lhs_food_aid
-		cost = 4
+		id = ALO_yagoos_rifles
+		icon = GFX_focus_ALO_yagoos_rifles
+		cost = 2
 		prerequisite = {
 			focus = ALO_lhs_aid
 		}
 		completion_reward = {
+			country_event = yagoo.13
 		}
-		x = 11
-		y = 10
-	}
-	focus = {
-		id = ALO_yagoos_rifles
-		icon = GFX_focus_ALO_yagoos_rifles
-		cost = 0
-		prerequisite = {
-			focus = ALO_lhs_aid
-		}
-		x = 13
+		x = 14
 		y = 10
 	}
 	focus = {
@@ -658,7 +640,7 @@ focus_tree = {
 				level = 2
 			}
 		}
-		x = 15
+		x = 12
 		y = 10
 	}
 	focus = {
@@ -1610,7 +1592,7 @@ focus_tree = {
 				}
 			}
 		}
-		x = 4
+		x = 8
 		y = 10
 	}
 	focus = {
@@ -1618,7 +1600,7 @@ focus_tree = {
 		icon = GFX_focus_ALO_a_loyal_manotomo
 		cost = 4
 		prerequisite = {
-			focus = ALO_the_woring_matomo
+			focus = ALO_emergency_factories
 		}
 		prerequisite = {
 			focus = ALO_localized_production
@@ -1637,14 +1619,61 @@ focus_tree = {
 	focus = {
 		id = ALO_lhs_peacekeeper_corps
 		icon = GFX_focus_ALO_lhs_peacekeeper_corps
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = ALO_yagoos_rifles
 		}
 		prerequisite = {
-			focus = ALO_lhs_food_aid
+			focus = ALO_cross_border_factories
 		}
-		x = 12
+		completion_reward = {
+			add_stability = 0.15
+			if = {
+				limit = {
+					NOT = {
+						has_template = "Peacekeepers"
+					}
+				}
+				division_template = {
+					name = "Peacekeepers"
+					regiments = {
+						infantry = {
+							x = 0
+							y = 0
+						}
+						infantry = {
+							x = 0
+							y = 1
+						}
+						cavalry = {
+							x = 0
+							y = 2
+						}
+					}
+					support = {
+						military_police = {
+							x = 0
+							y = 0
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Peacekeepers\" division_template = \"Peacekeepersa\" start_experience_factor = 0.5"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"Peacekeepers\" division_template = \"Peacekeepers\" start_experience_factor = 0.5"
+					owner = ALO
+				}
+				create_unit = {
+					division = "name = \"Peacekeepers\" division_template = \"Peacekeepers\" start_experience_factor = 0.5"
+					owner = ALO
+				}
+			}
+		}
+		x = 13
 		y = 11
 	}
 	focus = {
