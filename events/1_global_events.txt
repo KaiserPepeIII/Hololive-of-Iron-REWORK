@@ -346,3 +346,54 @@ news_event = {
 		}
 	}
 }
+
+#aLOE COUPS THE GOVERNMENT
+news_event = {
+	id = global_holo.5
+	title = global_holo.5.t
+	desc = global_holo.5.desc
+	picture = GFX_news_event_001
+	is_triggered_only = yes
+	major = yes
+	#lhs
+	option = {
+		name = global_holo.5.a
+		trigger = {
+			OR = {
+				is_in_array = {
+					array = GLOBAL.lhs_member_flag
+					value = THIS.id
+				}
+				is_lhs_ideology = yes
+			}
+		}
+	}
+	#resistance
+	option = {
+		name = global_holo.5.b
+		trigger = {
+			OR = {
+				is_in_array = {
+					array = GLOBAL.resistance_member_flag
+					value = THIS.id
+				}
+				is_resistance_ideology = yes
+			}
+		}
+	}
+	#antis
+	option = {
+		name = global_holo.5.b
+		trigger = {
+			has_anti_ideology = yes
+		}
+	}
+	#neutral
+	option = {
+		name = global_holo.5.b
+		trigger = {
+			is_neutral_ideology = yes
+		}
+	}
+	
+}

@@ -636,6 +636,7 @@ country_event = {
 			ideology = var:ALO.current_party_ideology_group
 			popularity = 0.2
 		}
+		country_event = aloe.26
 		clr_country_flag = ALO_civil_war
 		complete_national_focus = ALO_end_of_strife
 	}
@@ -657,5 +658,208 @@ country_event = {
 	option = {
 		name = aloe.22.b
 		set_country_flag = ALO_reconciliation_act
+	}
+}
+
+#yAGOO SAYS YES
+country_event = {
+	id = aloe.23
+	title = aloe.23.t
+	desc = aloe.23.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	option = {
+		name = aloe.23.a
+		add_political_power = 200
+	}
+}
+
+#yAGOO SAYS no
+country_event = {
+	id = aloe.24
+	title = aloe.24.t
+	desc = aloe.24.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	option = {
+		name = aloe.24.a
+	}
+}
+
+#Mel says no
+country_event = {
+	id = aloe.25
+	title = aloe.25.t
+	desc = aloe.25.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#war
+	option = {
+		name = aloe.25.a
+		create_wargoal = {
+			target = MEL
+			type = annex_everything
+		}
+	}
+	#no
+	option = {
+		name = aloe.25.b
+		add_stability = -0.05
+		add_popularity = {
+			ideology = var:ALO.current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+}
+
+#White Terror
+country_event = {
+	id = aloe.26
+	title = aloe.26.t
+	desc = aloe.26.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Damn
+	option = {
+		name = aloe.26.a
+		set_country_flag = ALO_white_terror
+	}
+}
+
+#White Terror - Attack
+country_event = {
+	id = aloe.27
+	title = aloe.27.t
+	desc = aloe.27.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Damn
+	option = {
+		name = aloe.27.a
+		add_manpower = -325
+		add_stability = -0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+}
+
+#Anti Revolutionaries killed
+country_event = {
+	id = aloe.28
+	title = aloe.28.t
+	desc = aloe.28.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Damn
+	option = {
+		name = aloe.28.a
+		add_stability = -0.01
+		random_state = {
+			add_manpower = -421
+		}
+	}
+}
+
+#The Kossuthist War
+country_event = {
+	id = aloe.29
+	title = aloe.29.t
+	desc = aloe.29.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Damn
+	option = {
+		name = aloe.29.a
+		43 = {
+			add_dynamic_modifier = {
+				modifier = ALO_the_kossuthist_war
+				days = 365
+			}
+		}
+		839 = {
+			add_dynamic_modifier = {
+				modifier = ALO_the_kossuthist_war
+				days = 365
+			}
+		}
+		842 = {
+			add_dynamic_modifier = {
+				modifier = ALO_the_kossuthist_war
+				days = 365
+			}
+		}
+		84 = {
+			add_dynamic_modifier = {
+				modifier = ALO_the_kossuthist_war
+				days = 365
+			}
+		}
+	}
+}
+
+#AThe Counter-Revolution
+country_event = {
+	id = aloe.30
+	title = aloe.30.t
+	desc = aloe.30.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Damn
+	option = {
+		name = aloe.30.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		set_variable = {
+			var = ALO.reactionary_alignment
+			value = 1
+		}
+	}
+}
+
+#Czechs refuse
+country_event = {
+	id = aloe.31
+	title = aloe.31.t
+	desc = aloe.31.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#War
+	option = {
+		name = aloe.31.a
+		create_wargoal = {
+			target = CZE
+			type = annex_everything
+		}
+	}
+	#no
+	option = {
+		name = aloe.31.a
+		add_war_support = -0.1
+	}
+}
+
+#Czechs offer some land
+country_event = {
+	id = aloe.32
+	title = aloe.32.t
+	desc = aloe.32.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#War
+	option = {
+		name = aloe.32.a
+		create_wargoal = {
+			target = CZE
+			type = annex_everything
+		}
+	}
+	#sure
+	option = {
+		name = aloe.32.a
+		add_war_support = -0.1
 	}
 }
