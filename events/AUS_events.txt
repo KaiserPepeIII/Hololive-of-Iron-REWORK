@@ -5,25 +5,63 @@ country_event = {
 	title = austria.1.t
 	desc = austria.1.d
 	picture = GFX_report_event_hitler_parade
-	
 	is_triggered_only = yes
-	
-	option = { # Accept
+	option = {
+		# Accept
 		name = austria.1.a
-		ai_chance = {base = 5}
+		ai_chance = {
+			base = 5
+		}
 		NOE = {
 			country_event = {
-			id = Noel.40
+				id = Noel.40
+			}
+			custom_effect_tooltip = GAME_OVER_TT
 		}
-		custom_effect_tooltip = GAME_OVER_TT
 	}
-   }
-	option = { # Refuse
+	option = {
+		# Refuse
 		name = austria.1.b
-			NOE = {
+		NOE = {
 			country_event = {
-			id = Noel.41
-		   }
-		  }
+				id = Noel.41
+			}
+		}
 	}
-   }
+}
+
+#
+#	Aloe demands annexation
+#
+country_event = {
+	id = austria.2
+	title = austria.2.t
+	desc = austria.2.d
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	option = {
+		# Accept
+		name = austria.1.a
+		ai_chance = {
+			base = 5
+		}
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = AUS
+				}
+				transfer_state_to = ALO
+			}
+		}
+		ALO = {
+			country_event = aloe.34
+		}
+	}
+	option = {
+		# Refuse
+		name = austria.1.b
+		ALO = {
+			country_event = aloe.35
+		}
+	}
+}

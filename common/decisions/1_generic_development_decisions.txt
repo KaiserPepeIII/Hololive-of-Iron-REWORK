@@ -1,0 +1,64 @@
+GEN_urban_development = {
+	GEN_develop_our_capital = {
+		icon = generic_prepare_civil_war
+		visible = {
+			capital_scope = {
+				NOT = {
+					has_state_category = metropolis
+				}
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 120
+		cost = 450
+		complete_effect = {
+			capital_scope = {
+				if = {
+					limit = {
+						OR = {
+							has_state_category = wasteland
+							has_state_category = enclave
+							has_state_category = small_island
+							has_state_category = tiny_island
+							has_state_category = pastoral
+						}
+					}
+					set_state_category = rural
+					else_if = {
+						limit = {
+							has_state_category = rural
+						}
+						set_state_category = town
+					}
+					else_if = {
+						limit = {
+							has_state_category = town
+						}
+						set_state_category = large_town
+					}
+					else_if = {
+						limit = {
+							has_state_category = large_town
+						}
+						set_state_category = city
+					}
+					else_if = {
+						limit = {
+							has_state_category = city
+						}
+						set_state_category = large_city
+					}
+					else_if = {
+						limit = {
+							has_state_category = large_city
+						}
+						set_state_category = metropolis
+					}
+				}
+			}
+		}
+	}
+}

@@ -863,3 +863,378 @@ country_event = {
 		add_war_support = -0.1
 	}
 }
+
+#The Anti purge
+country_event = {
+	id = aloe.33
+	title = aloe.33.t
+	desc = aloe.33.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	immediate = {
+		custom_effect_tooltip = ALO_no_communist_government_tooltip
+	}
+	option = {
+		name = aloe.33.a
+	}
+}
+
+#Austria accepts annexation
+country_event = {
+	id = aloe.34
+	title = aloe.34.t
+	desc = aloe.34.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	option = {
+		name = aloe.34.a
+		add_war_support = 0.05
+	}
+}
+
+#Austria refuses 
+country_event = {
+	id = aloe.35
+	title = aloe.35.t
+	desc = aloe.35.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#WAR
+	option = {
+		name = aloe.35.a
+		ALO = {
+			create_wargoal = {
+				target = AUS
+				type = annex_everything
+			}
+		}
+	}
+	#NO
+	option = {
+		name = aloe.35.b
+		add_war_support = -0.05
+	}
+}
+
+#The German Situation
+country_event = {
+	id = aloe.36
+	title = aloe.36.t
+	desc = aloe.36.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Support Kiara
+	option = {
+		name = aloe.36.a
+		diplomatic_relation = {
+			country = KIA
+			relation = guarantee
+			active = yes
+		}
+		diplomatic_relation = {
+			country = KIA
+			relation = non_aggression_pact
+			active = yes
+		}
+		complete_national_focus = ALO_allign_with_kiara
+	}
+	#Support Noel
+	option = {
+		name = aloe.36.b
+		diplomatic_relation = {
+			country = NOE
+			relation = guarantee
+			active = yes
+		}
+		diplomatic_relation = {
+			country = NOE
+			relation = non_aggression_pact
+			active = yes
+		}
+		complete_national_focus = ALO_allign_with_noel
+	}
+}
+
+#Noel hands over the land
+country_event = {
+	id = aloe.37
+	title = aloe.37.t
+	desc = aloe.37.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = aloe.37.a
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+#Noel didnt hand over the land
+country_event = {
+	id = aloe.38
+	title = aloe.38.t
+	desc = aloe.38.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#war
+	option = {
+		name = aloe.38.a
+		create_wargoal = {
+			target = NOE
+			type = annex_everything
+		}
+	}
+	#alright
+	option = {
+		name = aloe.38.b
+		add_war_support = -0.05
+	}
+}
+
+#Flare hands over the land
+country_event = {
+	id = aloe.39
+	title = aloe.39.t
+	desc = aloe.39.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = aloe.39.a
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+#Flare didnt hand over the land
+country_event = {
+	id = aloe.40
+	title = aloe.40.t
+	desc = aloe.40.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#war
+	option = {
+		name = aloe.40.a
+		create_wargoal = {
+			target = FLA
+			type = annex_everything
+		}
+	}
+	#alright
+	option = {
+		name = aloe.40.b
+		add_war_support = -0.05
+	}
+}
+
+#Beyond our realm
+country_event = {
+	id = aloe.41
+	title = aloe.41.t
+	desc = aloe.41.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Our realm is large enough as is
+	option = {
+		name = aloe.41.a
+		add_stability = 0.2
+	}
+	#Greater hungary
+	option = {
+		name = aloe.41.b
+		trigger = {
+			OR = {
+				has_completed_focus = ALO_appeal_to_hungarian_nationalism
+				has_government = pro_yagoo_monarchy
+				has_government = pro_resistance_monarchy
+				has_government = divine_mandate
+				has_government = pro_resistance_nationalism
+			}
+		}
+		add_war_support = 0.1
+		664 = {
+			add_core_of = ALO
+		}
+		70 = {
+			add_core_of = ALO
+		}
+		71 = {
+			add_core_of = ALO
+		}
+		764 = {
+			add_core_of = ALO
+		}
+		45 = {
+			add_core_of = ALO
+		}
+		919 = {
+			add_core_of = ALO
+		}
+		938 = {
+			add_core_of = ALO
+		}
+		add_threat = 10
+	}
+	#Austria-Hungary
+	option = {
+		name = aloe.41.c
+		trigger = {
+			OR = {
+				has_completed_focus = ALO_appeal_to_hungarian_nationalism
+				has_government = pro_yagoo_monarchy
+				has_government = pro_resistance_monarchy
+				has_government = divine_mandate
+				has_government = pro_resistance_nationalism
+			}
+		}
+		add_war_support = 0.25
+		1063 = {
+			add_core_of = ALO
+		}
+		4 = {
+			add_core_of = ALO
+		}
+		152 = {
+			add_core_of = ALO
+		}
+		1064 = {
+			add_core_of = ALO
+		}
+		1065 = {
+			add_core_of = ALO
+		}
+		1066 = {
+			add_core_of = ALO
+		}
+		153 = {
+			add_core_of = ALO
+		}
+		#CZE
+		664 = {
+			add_core_of = ALO
+		}
+		70 = {
+			add_core_of = ALO
+		}
+		71 = {
+			add_core_of = ALO
+		}
+		72 = {
+			add_core_of = ALO
+		}
+		74 = {
+			add_core_of = ALO
+		}
+		69 = {
+			add_core_of = ALO
+		}
+		9 = {
+			add_core_of = ALO
+		}
+		75 = {
+			add_core_of = ALO
+		}
+		#NOE
+		88 = {
+			add_core_of = ALO
+		}
+		#FLA
+		91 = {
+			add_core_of = ALO
+		}
+		866 = {
+			add_core_of = ALO
+		}
+		89 = {
+			add_core_of = ALO
+		}
+		#YAG
+		764 = {
+			add_core_of = ALO
+		}
+		45 = {
+			add_core_of = ALO
+		}
+		919 = {
+			add_core_of = ALO
+		}
+		938 = {
+			add_core_of = ALO
+		}
+		82 = {
+			add_core_of = ALO
+		}
+		922 = {
+			add_core_of = ALO
+		}
+		109 = {
+			add_core_of = ALO
+		}
+		102 = {
+			add_core_of = ALO
+		}
+		103 = {
+			add_core_of = ALO
+		}
+		736 = {
+			add_core_of = ALO
+		}
+		947 = {
+			add_core_of = ALO
+		}
+		163 = {
+			add_core_of = ALO
+		}
+		923 = {
+			add_core_of = ALO
+		}
+		add_threat = 15
+	}
+}
+
+#A New Manotomo - A Question of retaining the Hololive Kingdom
+country_event = {
+	id = aloe.42
+	title = aloe.42.t
+	desc = aloe.42.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#We are and always will be a Hololive Kingdom
+	option = {
+		name = aloe.42.a
+		custom_effect_tooltip = ALO_keeping_with_lhs
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+			reverse_add_opinion_modifier = {
+				target = ALO
+				modifier = ALO_reaffirmed_lhs
+			}
+		}
+	}
+	#We must redefine outselves, drop the Hololive part
+	option = {
+		name = aloe.42.b
+		#custom_effect_tooltip = ALO_unlock_
+		set_country_flag = ALO_distancing_from_lhs
+		add_war_support = 0.05
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.lhs_member_flag
+					value = THIS.id
+				}
+			}
+			reverse_add_opinion_modifier = {
+				target = ALO
+				modifier = ALO_distancing_lhs
+			}
+		}
+	}
+}

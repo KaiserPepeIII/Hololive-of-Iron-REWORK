@@ -280,3 +280,101 @@ ALO_white_terror = {
 		}
 	}
 }
+
+ALO_corporate_funding = {
+	ALO_fund_ikarus = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 75
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			capital_scope = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	#Fegyver- és Gépgyár
+	ALO_fund_feg = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 75
+		}
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			capital_scope = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+}
+
+ALO_our_demon_queen = {
+	ALO_whistle_stop_train_tour = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 125
+		}
+		cost = 125
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		days_remove = 90
+		complete_effect = {
+			every_character = {
+				limit = {
+					has_trait = ALO_hopeful_empress
+				}
+				remove_trait = {
+					trait = ALO_hopeful_empress
+				}
+				add_trait = {
+					trait = ALO_confident_empress
+				}
+			}
+		}
+	}
+	ALO_public_speech = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 125
+		}
+		cost = 125
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		days_remove = 30
+		complete_effect = {
+			every_character = {
+				limit = {
+					has_trait = ALO_confident_empress
+				}
+				remove_trait = {
+					trait = ALO_confident_empress
+				}
+				add_trait = {
+					trait = ALO_inspirational_empress
+				}
+			}
+		}
+	}
+}
