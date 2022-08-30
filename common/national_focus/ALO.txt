@@ -51,7 +51,7 @@ focus_tree = {
 	focus = {
 		id = ALO_restart_our_industry
 		icon = GFX_focus_ALO_restart_our_industry
-		cost = 0
+		cost = 8
 		completion_reward = {
 			add_timed_idea = {
 				idea = ALO_restarting_industry
@@ -105,7 +105,7 @@ focus_tree = {
 	focus = {
 		id = ALO_manatomo_navy
 		icon = GFX_focus_ALO_manatomo_navy
-		cost = 0
+		cost = 10
 		x = 63
 		y = 9
 		available = {
@@ -925,17 +925,37 @@ focus_tree = {
 	focus = {
 		id = ALO_national_industrialization
 		icon = GFX_focus_ALO_national_industrialization
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_restart_our_industry
 		}
+		completion_reward = {
+			add_stability = -0.1
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		
 		x = 42
 		y = 2
 	}
 	focus = {
 		id = ALO_assembly_line_optimization
 		icon = GFX_focus_ALO_assembly_line_optimization
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
@@ -951,7 +971,7 @@ focus_tree = {
 	focus = {
 		id = ALO_expand_urban_centers
 		icon = GFX_focus_ALO_expand_urban_centers
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
@@ -966,7 +986,7 @@ focus_tree = {
 	focus = {
 		id = ALO_railroad_investment
 		icon = GFX_focus_ALO_railroad_investment
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
@@ -979,7 +999,7 @@ focus_tree = {
 	focus = {
 		id = ALO_open_manatomo_university
 		icon = GFX_focus_ALO_open_manatomo_university
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_expand_urban_centers
 		}
@@ -998,12 +1018,12 @@ focus_tree = {
 	focus = {
 		id = ALO_lhs_industrial_fund
 		icon = GFX_focus_ALO_lhs_industrial_fund
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_open_manatomo_university
 		}
 		completion_reward = {
-			set_country_flag = ALO_industrial_fund
+			set_country_flag = ALO_industrial_fund #active decision
 		}
 		x = 39
 		y = 5
@@ -1011,7 +1031,7 @@ focus_tree = {
 	focus = {
 		id = ALO_improved_border_roads
 		icon = GFX_focus_ALO_improved_border_roads
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_lhs_industrial_fund
 		}
@@ -1029,7 +1049,7 @@ focus_tree = {
 	focus = {
 		id = ALO_industrialist_investment
 		icon = GFX_focus_ALO_industrialist_investment
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_lhs_industrial_fund
 		}
@@ -1045,7 +1065,7 @@ focus_tree = {
 	focus = {
 		id = ALO_expand_arms_industry
 		icon = GFX_focus_ALO_expand_arms_industry
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_open_manatomo_university
 		}
@@ -1075,7 +1095,7 @@ focus_tree = {
 	focus = {
 		id = ALO_manatomo_arsenal
 		icon = GFX_focus_ALO_manatomo_arsenal
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_expand_arms_industry
 		}
@@ -1094,7 +1114,7 @@ focus_tree = {
 	focus = {
 		id = ALO_manatomo_aircraft
 		icon = GFX_focus_ALO_manatomo_aircraft
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_airforce
 		}
@@ -1121,7 +1141,7 @@ focus_tree = {
 	focus = {
 		id = ALO_maintaining_discipline
 		icon = GFX_focus_ALO_maintaining_discipline
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_army_restructuring
 		}
@@ -1199,13 +1219,18 @@ focus_tree = {
 		prerequisite = {
 			focus = ALO_seiso_pledge
 		}
+		completion_reward = {
+			add_ideas = {
+				ALO_bite_hold
+			}
+		}
 		x = 53
 		y = 5
 	}
 	focus = {
 		id = ALO_lhs_liscenses
 		icon = GFX_focus_ALO_lhs_liscenses
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_airforce
 		}
@@ -1221,7 +1246,7 @@ focus_tree = {
 	focus = {
 		id = ALO_bucharest_airfields
 		icon = GFX_focus_ALO_bucharest_airfields
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_lhs_liscenses
 		}
@@ -1243,7 +1268,7 @@ focus_tree = {
 	focus = {
 		id = ALO_fighter_focus
 		icon = GFX_focus_ALO_fighter_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
@@ -1265,7 +1290,7 @@ focus_tree = {
 	focus = {
 		id = ALO_cas_focus
 		icon = GFX_focus_ALO_cas_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
@@ -1370,7 +1395,7 @@ focus_tree = {
 	focus = {
 		id = ALO_speed_kills		#An Emphasis on Speed
 		icon = GFX_focus_ALO_speed_kills
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_german_style_maneuvers
 		}
@@ -1514,7 +1539,7 @@ focus_tree = {
 	focus = {
 		id = ALO_lhs_naval_academy
 		icon = GFX_focus_ALO_lhs_naval_academy
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_navy
 		}
@@ -1527,7 +1552,7 @@ focus_tree = {
 	focus = {
 		id = ALO_submarine_focus
 		icon = GFX_focus_ALO_submarine_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_lhs_naval_academy
 		}
@@ -1549,11 +1574,12 @@ focus_tree = {
 	focus = {
 		id = ALO_dockyard_construction
 		icon = GFX_focus_ALO_dockyard_construction
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_navy
 		}
 		completion_reward = {
+			custom_effect_tooltip = ALO_dockyard_construction_tooltip
 			random_owned_state = {
 				limit = {
 					is_coastal = yes
@@ -1583,7 +1609,7 @@ focus_tree = {
 	focus = {
 		id = ALO_destroyer_focus
 		icon = GFX_focus_ALO_destroyer_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_dockyard_construction
 		}
@@ -2529,7 +2555,7 @@ focus_tree = {
 	focus = {
 		id = ALO_lhs_technocrat_institute
 		icon = GFX_focus_ALO_lhs_technocrat_institute
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_industrialist_investment
 		}
@@ -2545,7 +2571,7 @@ focus_tree = {
 	focus = {
 		id = ALO_bomber_focus
 		icon = GFX_focus_ALO_bomber_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
@@ -2568,7 +2594,7 @@ focus_tree = {
 	focus = {
 		id = ALO_capital_ship_focus
 		icon = GFX_focus_ALO_capital_ship_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_lhs_naval_academy
 		}
