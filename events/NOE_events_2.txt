@@ -238,17 +238,17 @@ country_event = {
 	desc = noel.53.d
 	picture = GFX_report_event_mori
 	trigger = {
-			OR = {
+		OR = {
+			any_country = {
+				has_country_flag = hololive_union_leader
+				is_puppet = yes
+			}
+			NOT = {
 				any_country = {
 					has_country_flag = hololive_union_leader
-					is_puppet = yes
-				}
-				NOT = {
-					any_country = {
-						has_country_flag = hololive_union_leader
-					}
 				}
 			}
+		}
 		has_global_flag = hololive_union
 	}
 	mean_time_to_happen = {
@@ -324,5 +324,32 @@ country_event = {
 			}
 		}
 		complete_national_focus = NOE_prepare_putsch
+	}
+}
+
+#ALOE DEMANDS WEST GALICIA
+country_event = {
+	id = noel.56
+	title = noel.56.t
+	desc = noel.56.d
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = noel.56.a
+		ALO = {
+			transfer_state = 88
+			country_event = aloe.37
+		}
+	}
+	#no
+	
+	option = {
+		name = noel.56.b
+		ALO = {
+			country_event = aloe.38
+		}
+		add_war_support = 0.1
 	}
 }

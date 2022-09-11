@@ -45,13 +45,13 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.1
 		}
-		x = 26
+		x = 25
 		y = 0
 	}
 	focus = {
 		id = ALO_restart_our_industry
 		icon = GFX_focus_ALO_restart_our_industry
-		cost = 0
+		cost = 8
 		completion_reward = {
 			add_timed_idea = {
 				idea = ALO_restarting_industry
@@ -105,7 +105,7 @@ focus_tree = {
 	focus = {
 		id = ALO_manatomo_navy
 		icon = GFX_focus_ALO_manatomo_navy
-		cost = 0
+		cost = 10
 		x = 63
 		y = 9
 		available = {
@@ -656,7 +656,7 @@ focus_tree = {
 				popularity = 0.05
 			}
 		}
-		x = 19
+		x = 20
 		y = 2
 	}
 	focus = {
@@ -676,24 +676,11 @@ focus_tree = {
 		y = 1
 	}
 	focus = {
-		id = ALO_restore_what_is_lost
-		icon = GFX_focus_ALO_restore_what_is_lost
-		cost = 0
-		prerequisite = {
-			focus = ALO_rebuilding_homes
-		}
-		x = 21
-		y = 2
-	}
-	focus = {
 		id = ALO_the_anti_question
 		icon = GFX_focus_ALO_the_anti_question
 		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_loyalty
-		}
-		prerequisite = {
-			focus = ALO_restore_what_is_lost
 		}
 		completion_reward = {
 			country_event = aloe.22
@@ -704,12 +691,19 @@ focus_tree = {
 	focus = {
 		id = ALO_reconciliation_movement
 		icon = GFX_focus_ALO_reconciliation_movement
-		cost = 0
+		cost = 15
+		available = {
+			has_country_flag = ALO_reconciliation_act
+		}
 		prerequisite = {
 			focus = ALO_the_anti_question
 		}
 		mutually_exclusive = {
 			focus = ALO_the_anti_purge
+		}
+		completion_reward = {
+			custom_effect_tooltip = ALO_able_recruit_antis
+			add_stability = 0.05
 		}
 		x = 17
 		y = 4
@@ -717,9 +711,21 @@ focus_tree = {
 	focus = {
 		id = ALO_appeal_to_hungarian_nationalism
 		icon = GFX_focus_ALO_appeal_to_hungarian_nationalism
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_reconciliation_movement
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.15
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = pro_yagoo_monarchy
+				popularity = 0.1
+			}
 		}
 		x = 16
 		y = 5
@@ -727,9 +733,16 @@ focus_tree = {
 	focus = {
 		id = ALO_address_past_mistakes
 		icon = GFX_focus_ALO_address_past_mistakes
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_reconciliation_movement
+		}
+		completion_reward = {
+			add_stability = 0.15
+			add_to_variable = {
+				var = ALO.anti_aggression
+				value = -0.05
+			}
 		}
 		x = 18
 		y = 5
@@ -737,12 +750,18 @@ focus_tree = {
 	focus = {
 		id = ALO_the_anti_purge
 		icon = GFX_focus_ALO_the_anti_purge
-		cost = 0
+		cost = 15
+		available = {
+			has_country_flag = ALO_the_purge
+		}
 		prerequisite = {
 			focus = ALO_the_anti_question
 		}
 		mutually_exclusive = {
 			focus = ALO_reconciliation_movement
+		}
+		completion_reward = {
+			country_event = aloe.33
 		}
 		x = 23
 		y = 4
@@ -750,9 +769,15 @@ focus_tree = {
 	focus = {
 		id = ALO_hunt_the_remnants
 		icon = GFX_focus_ALO_hunt_the_remnants
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_the_anti_purge
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = ALO_hunting_remnants
+				days = 365
+			}
 		}
 		x = 23
 		y = 5
@@ -760,9 +785,19 @@ focus_tree = {
 	focus = {
 		id = ALO_no_more_traitors
 		icon = GFX_focus_ALO_no_more_traitors
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_hunt_the_remnants
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = ALO.anti_aggression
+				value = -0.15
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.2
+			}
 		}
 		x = 22
 		y = 6
@@ -770,9 +805,12 @@ focus_tree = {
 	focus = {
 		id = ALO_no_more_division
 		icon = GFX_focus_ALO_no_more_division
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_hunt_the_remnants
+		}
+		completion_reward = {
+			add_stability = 0.15
 		}
 		x = 24
 		y = 6
@@ -798,7 +836,7 @@ focus_tree = {
 		icon = GFX_focus_ALO_bring_home_refugees
 		cost = 7
 		prerequisite = {
-			focus = ALO_end_of_strife
+			focus = ALO_national_reconstruction_act
 		}
 		completion_reward = {
 			add_timed_idea = {
@@ -806,82 +844,118 @@ focus_tree = {
 				days = 180
 			}
 		}
-		x = 31
-		y = 1
+		x = 29
+		y = 2
 	}
 	focus = {
 		id = ALO_secure_lhs_funding
 		icon = GFX_focus_ALO_secure_lhs_funding
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_bring_home_refugees
 		}
-		prerequisite = {
-			focus = ALO_national_reconstruction_act
+		completion_reward = {
+			YAG = {
+				country_event = yagoo.16
+			}
 		}
-		x = 30
-		y = 2
+		x = 29
+		y = 3
 	}
 	focus = {
 		id = ALO_allocate_to_cities
 		icon = GFX_focus_ALO_allocate_to_cities
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_secure_lhs_funding
 		}
 		mutually_exclusive = {
 			focus = ALO_allocate_to_countryside
 		}
-		x = 28
-		y = 3
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_capital = yes
+				}
+				add_extra_state_shared_building_slots = 6
+			}
+		}
+		x = 27
+		y = 4
 	}
 	focus = {
 		id = ALO_allocate_to_countryside
 		icon = GFX_focus_ALO_allocate_to_countryside
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_secure_lhs_funding
 		}
 		mutually_exclusive = {
 			focus = ALO_allocate_to_cities
 		}
-		x = 32
-		y = 3
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					NOT = {
+						is_capital = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		x = 31
+		y = 4
 	}
 	focus = {
 		id = ALO_farming_subsidy_initiative
 		icon = GFX_focus_ALO_farming_subsidy_initiative
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_allocate_to_countryside
 		}
-		x = 32
-		y = 4
-	}
-	focus = {
-		id = ALO_soldiers_to_plowshares
-		icon = GFX_focus_ALO_soldiers_to_plowshares
-		cost = 0
-		prerequisite = {
-			focus = ALO_farming_subsidy_initiative
+		completion_reward = {
+			add_timed_idea = {
+				idea = ALO_farming_subsidy
+				days = 1280
+			}
 		}
-		x = 32
+		x = 31
 		y = 5
 	}
 	focus = {
 		id = ALO_national_industrialization
 		icon = GFX_focus_ALO_national_industrialization
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_restart_our_industry
 		}
+		completion_reward = {
+			add_stability = -0.1
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		
 		x = 42
 		y = 2
 	}
 	focus = {
 		id = ALO_assembly_line_optimization
 		icon = GFX_focus_ALO_assembly_line_optimization
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
@@ -897,7 +971,7 @@ focus_tree = {
 	focus = {
 		id = ALO_expand_urban_centers
 		icon = GFX_focus_ALO_expand_urban_centers
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
@@ -912,7 +986,7 @@ focus_tree = {
 	focus = {
 		id = ALO_railroad_investment
 		icon = GFX_focus_ALO_railroad_investment
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_national_industrialization
 		}
@@ -925,7 +999,7 @@ focus_tree = {
 	focus = {
 		id = ALO_open_manatomo_university
 		icon = GFX_focus_ALO_open_manatomo_university
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_expand_urban_centers
 		}
@@ -944,12 +1018,12 @@ focus_tree = {
 	focus = {
 		id = ALO_lhs_industrial_fund
 		icon = GFX_focus_ALO_lhs_industrial_fund
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_open_manatomo_university
 		}
 		completion_reward = {
-			set_country_flag = ALO_industrial_fund
+			set_country_flag = ALO_industrial_fund #active decision
 		}
 		x = 39
 		y = 5
@@ -957,7 +1031,7 @@ focus_tree = {
 	focus = {
 		id = ALO_improved_border_roads
 		icon = GFX_focus_ALO_improved_border_roads
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_lhs_industrial_fund
 		}
@@ -975,7 +1049,7 @@ focus_tree = {
 	focus = {
 		id = ALO_industrialist_investment
 		icon = GFX_focus_ALO_industrialist_investment
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_lhs_industrial_fund
 		}
@@ -991,7 +1065,7 @@ focus_tree = {
 	focus = {
 		id = ALO_expand_arms_industry
 		icon = GFX_focus_ALO_expand_arms_industry
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_open_manatomo_university
 		}
@@ -1021,12 +1095,12 @@ focus_tree = {
 	focus = {
 		id = ALO_manatomo_arsenal
 		icon = GFX_focus_ALO_manatomo_arsenal
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_expand_arms_industry
 		}
 		completion_reward = {
-			add_ideas = ALO_guns_manufacturer
+			add_ideas = ALO_feg
 			random_owned_state = {
 				add_building_construction = {
 					type = arms_factory
@@ -1040,7 +1114,7 @@ focus_tree = {
 	focus = {
 		id = ALO_manatomo_aircraft
 		icon = GFX_focus_ALO_manatomo_aircraft
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_airforce
 		}
@@ -1067,7 +1141,7 @@ focus_tree = {
 	focus = {
 		id = ALO_maintaining_discipline
 		icon = GFX_focus_ALO_maintaining_discipline
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_army_restructuring
 		}
@@ -1145,13 +1219,18 @@ focus_tree = {
 		prerequisite = {
 			focus = ALO_seiso_pledge
 		}
+		completion_reward = {
+			add_ideas = {
+				ALO_bite_hold
+			}
+		}
 		x = 53
 		y = 5
 	}
 	focus = {
 		id = ALO_lhs_liscenses
 		icon = GFX_focus_ALO_lhs_liscenses
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_airforce
 		}
@@ -1167,7 +1246,7 @@ focus_tree = {
 	focus = {
 		id = ALO_bucharest_airfields
 		icon = GFX_focus_ALO_bucharest_airfields
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_lhs_liscenses
 		}
@@ -1189,7 +1268,7 @@ focus_tree = {
 	focus = {
 		id = ALO_fighter_focus
 		icon = GFX_focus_ALO_fighter_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
@@ -1211,7 +1290,7 @@ focus_tree = {
 	focus = {
 		id = ALO_cas_focus
 		icon = GFX_focus_ALO_cas_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
@@ -1316,7 +1395,7 @@ focus_tree = {
 	focus = {
 		id = ALO_speed_kills		#An Emphasis on Speed
 		icon = GFX_focus_ALO_speed_kills
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_german_style_maneuvers
 		}
@@ -1340,7 +1419,7 @@ focus_tree = {
 				uses = 3
 				category = motorized_equipment
 			}
-			add_ideas = ALO_motorized_equipment
+			add_ideas = ALO_ganz_work
 		}
 		x = 59
 		y = 5
@@ -1460,7 +1539,7 @@ focus_tree = {
 	focus = {
 		id = ALO_lhs_naval_academy
 		icon = GFX_focus_ALO_lhs_naval_academy
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_navy
 		}
@@ -1473,7 +1552,7 @@ focus_tree = {
 	focus = {
 		id = ALO_submarine_focus
 		icon = GFX_focus_ALO_submarine_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_lhs_naval_academy
 		}
@@ -1495,11 +1574,12 @@ focus_tree = {
 	focus = {
 		id = ALO_dockyard_construction
 		icon = GFX_focus_ALO_dockyard_construction
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_navy
 		}
 		completion_reward = {
+			custom_effect_tooltip = ALO_dockyard_construction_tooltip
 			random_owned_state = {
 				limit = {
 					is_coastal = yes
@@ -1529,7 +1609,7 @@ focus_tree = {
 	focus = {
 		id = ALO_destroyer_focus
 		icon = GFX_focus_ALO_destroyer_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_dockyard_construction
 		}
@@ -1679,7 +1759,7 @@ focus_tree = {
 	focus = {
 		id = ALO_manotomo_united
 		icon = GFX_focus_ALO_manotomo_united
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_address_past_mistakes
 		}
@@ -1690,34 +1770,44 @@ focus_tree = {
 		y = 6
 	}
 	focus = {
-		id = ALO_worker_programs
-		icon = GFX_focus_ALO_worker_programs
-		cost = 0
+		id = ALO_promote_steel_production
+		icon = GFX_focus_ALO_promote_steel_production
+		cost = 10
 		prerequisite = {
 			focus = ALO_allocate_to_cities
 		}
-		x = 28
-		y = 4
-	}
-	focus = {
-		id = ALO_promote_steel_production
-		icon = GFX_focus_ALO_promote_steel_production
-		cost = 0
-		prerequisite = {
-			focus = ALO_worker_programs
+		completion_reward = {
+			random_owned_state = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+			random_owned_state = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+			random_owned_state = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
 		}
-		x = 28
+		x = 27
 		y = 5
 	}
 	focus = {
 		id = ALO_a_new_manatomo
 		icon = GFX_focus_ALO_a_new_manatomo
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_promote_steel_production
 		}
 		prerequisite = {
-			focus = ALO_soldiers_to_plowshares
+			focus = ALO_farming_subsidy_initiative
 		}
 		prerequisite = {
 			focus = ALO_no_more_division
@@ -1728,13 +1818,16 @@ focus_tree = {
 		prerequisite = {
 			focus = ALO_manotomo_united
 		}
-		x = 28
+		completion_reward = {
+			country_event = aloe.42
+		}
+		x = 26
 		y = 7
 	}
 	focus = {
 		id = ALO_restore_democracy
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 15
 		prerequisite = {
 			focus = ALO_a_new_manatomo
 		}
@@ -1747,12 +1840,69 @@ focus_tree = {
 	focus = {
 		id = ALO_aloe_takes_the_reins
 		icon = GFX_focus_ALO_aloe_takes_the_reins
-		cost = 0
+		cost = 15
 		prerequisite = {
 			focus = ALO_a_new_manatomo
 		}
 		mutually_exclusive = {
 			focus = ALO_restore_democracy
+		}
+		cancelable = no
+		completion_reward = {
+			if = {
+				limit = {
+					has_country_flag = ALO_couped_the_government
+				}
+				add_popularity = {
+					ideology = var:current_party_ideology_group
+					popularity = 0.3
+				}
+				add_stability = 0.1
+				else = {
+					#white terror
+					country_event = {
+						id = aloe.27
+						days = 7
+					}
+					#white terror
+					country_event = {
+						id = aloe.27
+						days = 25
+					}
+					#white terror
+					country_event = {
+						id = aloe.27
+						days = 55
+					}
+					#white terror
+					country_event = {
+						id = aloe.27
+						days = 79
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = ALO_the_anti_purge
+							}
+						}
+						#Anti Revolutionaries Killed
+						country_event = {
+							id = aloe.28
+							days = 13
+						}
+						#The Kossuthist War
+						country_event = {
+							id = aloe.29
+							days = 35
+						}
+						#The Counter-Revolution
+						country_event = {
+							id = aloe.30
+							days = 63
+						}
+					}
+				}
+			}
 		}
 		x = 32
 		y = 8
@@ -1796,39 +1946,76 @@ focus_tree = {
 	focus = {
 		id = ALO_welfare_initiatives
 		icon = GFX_focus_ALO_welfare_initiatives
-		cost = 0
+		cost = 10
 		prerequisite = {
-			focus = ALO_progressives_wins
+			focus = ALO_worker_compensation
+		}
+		prerequisite = {
+			focus = ALO_anti_poverty_programs
+		}
+		completion_reward = {
+			add_ideas = ALO_welfare_initiatives
 		}
 		x = 23
-		y = 11
+		y = 12
 	}
 	focus = {
 		id = ALO_anti_poverty_programs
 		icon = GFX_focus_ALO_anti_poverty_programs
-		cost = 0
+		cost = 10
 		prerequisite = {
-			focus = ALO_welfare_initiatives
+			focus = ALO_progressives_wins
+		}
+		completion_reward = {
+			capital_scope = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
 		}
 		x = 24
-		y = 12
+		y = 11
 	}
 	focus = {
 		id = ALO_worker_compensation
 		icon = GFX_focus_ALO_worker_compensation
-		cost = 0
+		cost = 10
 		prerequisite = {
-			focus = ALO_welfare_initiatives
+			focus = ALO_progressives_wins
+		}
+		completion_reward = {
+			add_ideas = ALO_worker_compensation_idea
 		}
 		x = 22
-		y = 12
+		y = 11
 	}
 	focus = {
 		id = ALO_support_small_businesses
 		icon = GFX_focus_ALO_support_small_businesses
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_conservative_victory
+		}
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
 		}
 		x = 18
 		y = 11
@@ -1836,12 +2023,15 @@ focus_tree = {
 	focus = {
 		id = ALO_corporate_funding
 		icon = GFX_focus_ALO_corporate_funding
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_industrial_grants
 		}
 		prerequisite = {
 			focus = ALO_support_small_businesses
+		}
+		completion_reward = {
+			set_country_flag = ALO_corporate_funding
 		}
 		x = 19
 		y = 12
@@ -1849,353 +2039,523 @@ focus_tree = {
 	focus = {
 		id = ALO_education_reform
 		icon = GFX_focus_ALO_education_reform
-		cost = 0
-		prerequisite = {
-			focus = ALO_regulated_work_hours
-		}
-		x = 22
-		y = 14
-	}
-	focus = {
-		id = ALO_labour_regulations
-		icon = GFX_focus_ALO_labour_regulations
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_corporate_funding
+			focus = ALO_welfare_initiatives
 		}
-		x = 19
+		completion_reward = {
+			add_research_slot = 1
+		}
+		x = 22
 		y = 13
 	}
 	focus = {
 		id = ALO_industrial_grants
 		icon = GFX_focus_ALO_industrial_grants
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_conservative_victory
+		}
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
 		}
 		x = 20
 		y = 11
 	}
 	focus = {
-		id = ALO_regulated_work_hours
-		icon = GFX_focus_ALO_regulated_work_hours
-		cost = 0
-		prerequisite = {
-			focus = ALO_anti_poverty_programs
-		}
-		prerequisite = {
-			focus = ALO_worker_compensation
-		}
-		x = 23
-		y = 13
-	}
-	focus = {
 		id = ALO_a_free_ssociety
 		icon = GFX_focus_ALO_a_free_society
-		cost = 0
+		cost = 10
 		prerequisite = {
-			focus = ALO_labour_regulations
+			focus = ALO_corporate_funding
+			focus = ALO_welfare_initiatives
 		}
-		prerequisite = {
-			focus = ALO_regulated_work_hours
+		completion_reward = {
+			hidden_effect = {
+				set_popularities = {
+					pro_yagoo_kleptocracy = 0
+					pro_yagoo_monarchy = 0
+					pro_resistance_monarchy = 0
+					communism = 0
+					pro_resistance_kleptocracy = 0
+					pro_resistance_nationalism = 0
+					fascism = 0
+					left_wing_revolutionary = 0
+					democratic_revitalisation = 0
+					reactionary_monarchy = 0
+					neutrality = 0
+					divine_mandate = 0
+					reactionary_nationalism = 0
+				}
+			}
 		}
 		x = 20
-		y = 14
+		y = 13
 	}
 	focus = {
 		id = ALO_lhs_model_democracy
 		icon = GFX_focus_ALO_lhs_model_democracy
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_education_reform
 		}
 		prerequisite = {
 			focus = ALO_a_free_ssociety
 		}
-		x = 21
-		y = 15
-	}
-	focus = {
-		id = ALO_manatomo_cult
-		icon = GFX_focus_ALO_manatomo_cult
-		cost = 0
-		prerequisite = {
-			focus = ALO_aloe_takes_the_reins
+		completion_reward = {
+			add_ideas = ALO_model_democracy
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+			every_country = {
+				limit = {
+					is_in_array = {
+						array = GLOBAL.lhs_member_flag
+						value = THIS.id
+					}
+				}
+				reverse_add_opinion_modifier = {
+					target = ALO
+					modifier = ALO_model_democracy_modifier
+				}
+			}
 		}
-		x = 35
-		y = 9
+		x = 21
+		y = 14
 	}
 	focus = {
 		id = ALO_aloe_militarism
 		icon = GFX_focus_ALO_aloe_militarism
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_aloe_takes_the_reins
 		}
-		x = 29
+		completion_reward = {
+			add_war_support = 0.15
+		}
+		x = 31
 		y = 9
 	}
 	focus = {
 		id = ALO_demon_of_the_carpathians
 		icon = GFX_focus_ALO_demon_of_the_carpathians
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_fanatacism
 		}
 		prerequisite = {
-			focus = ALO_demonic_spirit
-		}
-		prerequisite = {
-			focus = ALO_evicerate_the_antis
-		}
-		prerequisite = {
 			focus = ALO_behead_the_traitors
 		}
+		completion_reward = {
+			army_experience = 5
+			air_experience = 5
+			add_ideas = ALO_demon_of_the_carpathians_idea
+		}
 		x = 32
-		y = 15
+		y = 14
 	}
 	focus = {
 		id = ALO_centralize_power
 		icon = GFX_focus_ALO_centralize_power
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_aloe_takes_the_reins
 		}
-		x = 32
+		completion_reward = {
+			add_stability = 0.15
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.05
+			}
+		}
+		x = 33
 		y = 9
 	}
 	focus = {
 		id = ALO_our_demon_queen
 		icon = GFX_focus_ALO_our_demon_queen
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_centralize_power
 		}
 		prerequisite = {
 			focus = ALO_aloe_militarism
 		}
-		prerequisite = {
-			focus = ALO_manatomo_cult
+		completion_reward = {
+			every_character = {
+				limit = {
+					has_trait = ALO_dejected_empress
+				}
+				remove_trait = {
+					trait = ALO_dejected_empress
+				}
+				add_trait = {
+					trait = ALO_hopeful_empress
+				}
+			}
 		}
 		x = 32
-		y = 11
+		y = 10
 	}
 	focus = {
 		id = ALO_service_for_the_queen
 		icon = GFX_focus_ALO_service_for_the_queen
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_our_demon_queen
 		}
-		x = 35
-		y = 12
+		completion_reward = {
+			add_ideas = ALO_service_for_aloe_idea
+		}
+		x = 33
+		y = 11
 	}
 	focus = {
 		id = ALO_offers_for_the_queen
 		icon = GFX_focus_ALO_offers_for_the_queen
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_our_demon_queen
 		}
-		x = 29
-		y = 12
+		completion_reward = {
+			add_political_power = 50
+			set_country_flag = ALO_our_demon_queen_flag
+		}
+		x = 31
+		y = 11
 	}
+	#DISCOVER THE SNAKES
 	focus = {
 		id = ALO_behead_the_traitors
 		icon = GFX_focus_ALO_behead_the_traitors
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_offers_for_the_queen
 		}
-		x = 28
-		y = 13
-	}
-	focus = {
-		id = ALO_evicerate_the_antis
-		icon = GFX_focus_ALO_evicerate_the_antis
-		cost = 0
-		prerequisite = {
-			focus = ALO_offers_for_the_queen
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_ideas = ALO_no_snakes_lar
+				else = {
+					add_ideas = ALO_no_snakes_idea
+				}
+			}
 		}
-		x = 30
-		y = 13
+		x = 31
+		y = 12
 	}
 	focus = {
 		id = ALO_manatomo_fanatacism
 		icon = GFX_focus_ALO_manatomo_fanatacism
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_service_for_the_queen
 		}
-		x = 34
-		y = 13
-	}
-	focus = {
-		id = ALO_demonic_spirit
-		icon = GFX_focus_ALO_demonic_spirit
-		cost = 0
-		prerequisite = {
-			focus = ALO_service_for_the_queen
+		completion_reward = {
+			add_ideas = ALO_manatomo_fanatacism_idea
 		}
-		x = 36
-		y = 13
+		x = 33
+		y = 12
 	}
 	focus = {
 		id = ALO_beyond_our_realm
 		icon = GFX_focus_ALO_beyond_our_realm
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_demon_of_the_carpathians
 		}
 		prerequisite = {
 			focus = ALO_lhs_model_democracy
 		}
+		completion_reward = {
+			add_war_support = 0.1
+			country_event = aloe.41
+		}
 		x = 26
-		y = 16
+		y = 15
 	}
 	focus = {
 		id = ALO_demand_bessarabia
 		icon = GFX_focus_ALO_demand_bessarabia
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
+		completion_reward = {
+			MEL = {
+				country_event = mel.2
+			}
+		}
 		x = 30
-		y = 17
+		y = 16
 	}
 	focus = {
 		id = ALO_secure_the_oilfields
 		icon = GFX_focus_ALO_secure_the_oilfields
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_demand_bessarabia
 		}
+		completion_reward = {
+			create_wargoal = {
+				target = MEL
+				type = puppet_wargoal_focus
+			}
+		}
 		x = 30
-		y = 18
+		y = 17
 	}
 	focus = {
 		id = ALO_exploit_czech_weakness
 		icon = GFX_focus_ALO_exploit_czech_weakness
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
+		completion_reward = {
+			CZE = {
+				country_event = czech.3
+			}
+		}
 		x = 26
-		y = 17
+		y = 16
 	}
 	focus = {
 		id = ALO_flank_the_austrians
 		icon = GFX_focus_ALO_flank_the_austrians
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
+		completion_reward = {
+			AUS = {
+				country_event = austria.2
+			}
+		}
 		x = 22
-		y = 17
+		y = 16
 	}
 	focus = {
 		id = ALO_end_italian_existence
 		icon = GFX_focus_ALO_end_italian_existence
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_a_central_power
 		}
+		completion_reward = {
+			create_wargoal = {
+				target = ITA
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = PEK
+				type = annex_everything
+			}
+		}
 		x = 21
-		y = 19
+		y = 18
 	}
 	focus = {
 		id = ALO_a_central_power
 		icon = GFX_focus_ALO_a_central_power
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_flank_the_austrians
 		}
 		prerequisite = {
 			focus = ALO_exploit_czech_weakness
 		}
+		completion_reward = {
+			add_stability = 0.15
+			add_war_support = 0.15
+			set_cosmetic_tag = ALO_GREATER_HUNGARY
+		}
 		x = 24
-		y = 18
+		y = 17
 	}
 	focus = {
 		id = ALO_the_german_situation
 		icon = GFX_focus_ALO_the_german_situation
-		cost = 0
+		cost = 1
 		prerequisite = {
 			focus = ALO_a_central_power
 		}
+		completion_reward = {
+			country_event = aloe.36
+		}
 		x = 24
-		y = 19
+		y = 18
 	}
 	focus = {
-		id = ALO_allign_with_kiara
+		id = ALO_allign_with_kiara		#autocompleted
 		icon = GFX_focus_ALO_allign_with_kiara
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_the_german_situation
 		}
 		mutually_exclusive = {
 			focus = ALO_allign_with_noel
 		}
+		completion_reward = {
+			add_stability = 0.05
+		}
 		x = 22
-		y = 20
+		y = 19
 	}
 	focus = {
-		id = ALO_allign_with_noel
+		id = ALO_allign_with_noel		#autocompleted
 		icon = GFX_focus_ALO_allign_with_noel
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_the_german_situation
 		}
 		mutually_exclusive = {
 			focus = ALO_allign_with_kiara
 		}
+		completion_reward = {
+			add_stability = 0.05
+		}
 		x = 26
-		y = 20
+		y = 19
 	}
 	focus = {
 		id = ALO_alpine_warfare
 		icon = GFX_focus_ALO_alpine_warfare
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_allign_with_kiara
 		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = ALO_alpine_warfare
+				bonus = 2
+				uses = 2
+				category = mountaineers_tech
+			}
+		}
 		x = 21
-		y = 21
+		y = 20
 	}
 	focus = {
 		id = ALO_bavarian_front
 		icon = GFX_focus_ALO_bavarian_front
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_allign_with_kiara
 		}
+		completion_reward = {
+			1066 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			153 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			152 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+		}
 		x = 23
-		y = 21
+		y = 20
 	}
 	focus = {
 		id = ALO_border_buildup
 		icon = GFX_focus_ALO_border_buildup
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_allign_with_noel
 		}
+		completion_reward = {
+			71 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			73 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+		}
 		x = 27
-		y = 21
+		y = 20
 	}
 	focus = {
 		id = ALO_march_to_krakow
 		icon = GFX_focus_ALO_march_to_krakow
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_allign_with_noel
 		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = ALO_march_to_krakow
+				bonus = 2
+				uses = 3
+				category = motorized_equipment
+			}
+		}
 		x = 25
-		y = 21
+		y = 20
 	}
 	focus = {
 		id = ALO_lhs_technocrat_institute
 		icon = GFX_focus_ALO_lhs_technocrat_institute
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = ALO_industrialist_investment
 		}
@@ -2211,7 +2571,7 @@ focus_tree = {
 	focus = {
 		id = ALO_bomber_focus
 		icon = GFX_focus_ALO_bomber_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
 		}
@@ -2234,7 +2594,7 @@ focus_tree = {
 	focus = {
 		id = ALO_capital_ship_focus
 		icon = GFX_focus_ALO_capital_ship_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = ALO_lhs_naval_academy
 		}

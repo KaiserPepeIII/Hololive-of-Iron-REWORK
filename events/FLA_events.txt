@@ -274,3 +274,31 @@ country_event = {
 		name = flare.15.a
 	}
 }
+
+#Aloe demands East Galicia
+country_event = {
+	id = flare.16
+	title = flare.16.t
+	desc = flare.16.d
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = flare.16.a
+		ALO = {
+			transfer_state = 89
+			transfer_state = 91
+			transfer_state = 866
+			country_event = aloe.39
+		}
+	}
+	#no
+	option = {
+		name = flare.16.b
+		ALO = {
+			country_event = aloe.40
+		}
+		add_war_support = 0.1
+	}
+}

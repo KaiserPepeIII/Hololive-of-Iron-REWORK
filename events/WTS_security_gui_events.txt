@@ -4395,7 +4395,69 @@ country_event = {
 	}
 }
 
-#IRA ATTACK - BOMBS INFRASTRUCTURE 
+##############################
+##	 					    ##
+##	 The Teammates Coup	    ##
+##		  					##
+##############################
+country_event = {
+	id = watson_security.25
+	title = watson_security.25.t
+	desc = watson_security.25.desc
+	picture = GFX_King_George_V
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		tag = WTS
+		WTS = {
+			all_owned_state = {
+				if = {
+					limit = {
+						has_state_flag = WTS_teammates_coup_count
+					}
+					add_to_temp_variable = {
+						var = WTS_teammates_count_state
+						value = 1
+					}
+				}
+			}
+		}
+		set_temp_variable = {
+			var = WTS_number_owned_state
+			value = var:num_core_states@WTS
+		}
+		divide_temp_variable = {
+			var = WTS_number_owned_state
+			value = 2
+		}
+		check_variable = {
+			var = WTS_teammates_count_state
+			value = var:WTS_number_owned_state
+			compare = greater_than_or_equals
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#ong
+	option = {
+		name = watson_security.25.a
+		news_event = watson_news.1
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		add_stability = -0.5
+		add_ideas = {
+			limited_exports
+		}
+		leave_the_lhs = yes
+	}
+}
+
+###################################
+#IRA ATTACK - BOMBS INFRASTRUCTURE#
+###################################
 country_event = {
 	id = watson_insurgency.1
 	title = watson_insurgency.1.t
