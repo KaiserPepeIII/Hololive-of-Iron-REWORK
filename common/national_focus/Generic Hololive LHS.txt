@@ -2095,6 +2095,20 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_faith_in_the_idol
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.025
+			}
+		}
 		x = 80
 		y = 3
 	}
@@ -2104,6 +2118,17 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_faith_in_the_idol
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = 0.07
+			}
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.07
+			}
 		}
 		x = 82
 		y = 3
@@ -2121,11 +2146,23 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_stir_up_anti_parliamentarianism
 		}
-		mutually_exclusive = {
-			focus = GEN_the_silent_revolution
-			focus = GEN_promote_remilitarisation
+		completion_reward = {
+			add_stability = -0.15
+			custom_effect_tooltip = chance_of_riots_tooltip
+			hidden_effect = {
+				set_up_yagoo_vs_revolutionary_check_effect = yes
+				if = {
+					limit = {
+						run_yag_vs_rev_popularity_check_more_yagoo = yes
+					}
+				}
+				country_event = {
+					id = lhs_focus.1
+					days = 1
+				}
+			}
 		}
-		x = 79
+		x = 80
 		y = 4
 	}
 	focus = {
@@ -2138,32 +2175,13 @@ focus_tree = {
 		x = 79
 		y = 5
 	}
-	focus = {
-		id = GEN_the_silent_revolution
-		icon = GFX_focus_GEN_the_silent_revolution
-		cost = 0
-		prerequisite = {
-			focus = GEN_enlightened_rulership
-		}
-		prerequisite = {
-			focus = GEN_radicalize_supporters
-		}
-		prerequisite = {
-			focus = GEN_stir_up_anti_parliamentarianism
-		}
-		mutually_exclusive = {
-			focus = GEN_abolish_parliament
-			focus = GEN_promote_remilitarisation
-		}
-		x = 81
-		y = 4
-	}
+	
 	focus = {
 		id = GEN_propaganda_campaigns
 		icon = GFX_focus_GEN_propaganda_campaign
 		cost = 0
 		prerequisite = {
-			focus = GEN_the_silent_revolution
+			focus = GEN_abolish_parliament
 		}
 		x = 81
 		y = 5
@@ -2211,11 +2229,8 @@ focus_tree = {
 		cost = 0
 		prerequisite = {
 			focus = GEN_stir_nationalist_fervor
-			focus = GEN_enlightened_rulership
 		}
 		mutually_exclusive = {
-			focus = GEN_abolish_parliament
-			focus = GEN_the_silent_revolution
 			focus = GEN_the_popular_uprising
 		}
 		x = 84
