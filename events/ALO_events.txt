@@ -1238,3 +1238,83 @@ country_event = {
 		}
 	}
 }
+
+#Aloe Elections 
+country_event = {
+	id = aloe.43
+	title = aloe.43.t
+	desc = aloe.43.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Progressives Win
+	option = {
+		name = aloe.43.a
+		set_politics = {
+			ruling_party = pro_yagoo_progressive
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.35
+		}
+		complete_national_focus = ALO_progressives_wins
+	}
+	#Conservatives Win
+	option = {
+		name = aloe.43.b
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.35
+		}
+		complete_national_focus = ALO_conservative_victory
+	}
+}
+
+#Manotomo United
+country_event = {
+	id = aloe.44
+	title = aloe.44.t
+	desc = aloe.44.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	option = {
+		name = aloe.44.a
+		add_stability = 0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+	}
+}
+
+#Manatomo Army restructuring
+country_event = {
+	id = aloe.45
+	title = aloe.45.t
+	desc = aloe.45.d
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	option = {
+		name = aloe.45.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_0_emergency
+			amount = 2500
+		}
+		random_owned_state = {
+			create_unit = {
+				division = "name = \"Gyalogdandár 'A'\" division_template = \"Gyalogdandár\" start_experience_factor = 0.25 start_equipment_factor = 0.4 start_manpower_factor = 1"
+				owner = ROOT
+			}
+			create_unit = {
+				division = "name = \"Gyalogdandár 'B'\" division_template = \"Gyalogdandár\" start_experience_factor = 0.25 start_equipment_factor = 0.4 start_manpower_factor = 1"
+				owner = ROOT
+			}
+		}
+	}
+}

@@ -18,6 +18,7 @@ ALO_post_civil_war_recovery = {
 	visible_when_empty = yes
 	allowed = {
 		tag = ALO
+		has_completed_focus = ALO_end_of_strife
 	}
 }
 
@@ -30,6 +31,9 @@ ALO_the_manotomo_dictatorship = {
 		tag = ALO
 	}
 	visible = {
+		NOT = {
+			has_completed_focus = ALO_end_of_strife
+		}
 		has_completed_focus = ALO_the_looming_crisis
 		OR = {
 			AND = {
@@ -115,6 +119,7 @@ ALO_corporate_funding = {
 		has_country_flag = ALO_corporate_funding
 	}
 }
+
 ALO_using_funds = {
 	priority = 100
 	icon = generic_economic
