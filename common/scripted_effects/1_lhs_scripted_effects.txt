@@ -472,7 +472,7 @@ lhs_button_right_click = {
 	clr_country_flag = view_lhs_membership
 	clr_country_flag = view_resistance_membership
 	clr_country_flag = view_lhs_friendly_decisions
-	clear_array = GLOBAL.lh_action_array
+	clear_array = GLOBAL.lhs_action_array
 }
 
 #sets the instigator of a vote, the instigator can not vote for the issue they brought up
@@ -1302,10 +1302,10 @@ lhs_aid_vote_fails = {
 
 lhs_calculating = {
 	set_variable = {
-		global.global.lhs_count_yes = lhs_voted_yes^num
+		global.lhs_count_yes = lhs_voted_yes^num
 	}
 	set_variable = {
-		global.global.lhs_count_no = lhs_voted_no^num
+		global.lhs_count_no = lhs_voted_no^num
 	}
 }
 
@@ -1315,12 +1315,12 @@ lhs_calculating_with_specials = {
 			has_global_flag = lhs_security_council_one_yes
 		}
 		add_to_variable = {
-			var = global.global.lhs_count_yes
+			var = global.lhs_count_yes
 			value = 2
 		}
 		else = {
 			add_to_variable = {
-				var = global.global.lhs_count_no
+				var = global.lhs_count_no
 				value = 2
 			}
 		}
