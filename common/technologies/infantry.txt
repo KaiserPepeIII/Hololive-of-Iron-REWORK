@@ -771,6 +771,38 @@ technologies = {
 			}
 		}
 	}
+	irregular_tech = {
+		enable_subunits = {
+			irregular_infantry
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = {
+				x = 3
+				y = 3
+			}
+		}
+		categories = {
+			infantry_tech
+		}
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 2
+				tag = USA
+			}
+			modifier = {
+				factor = 2
+				tag = GER
+			}
+			modifier = {
+				factor = 2
+				tag = ENG
+			}
+		}
+	}
 	guards = {
 		enable_subunits = {
 			guards
@@ -813,11 +845,83 @@ technologies = {
 		}
 		research_cost = 2
 		start_year = 1939
+		path = {
+			leads_to_tech = guards3
+			research_cost_coeff = 1
+		}
 		folder = {
 			name = infantry_folder
 			position = {
-				x = 3
-				y = @1938
+				x = 2
+				y = @1939
+			}
+		}
+		categories = {
+			guards
+		}
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 2
+				tag = USA
+			}
+			modifier = {
+				factor = 2
+				tag = GER
+			}
+			modifier = {
+				factor = 2
+				tag = ENG
+			}
+		}
+	}
+	guards3 = {
+		guards = {
+			max_organisation = 5
+		}
+		research_cost = 2
+		start_year = 1941
+		path = {
+			leads_to_tech = guards4
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = infantry_folder
+			position = {
+				x = 2
+				y = @1941
+			}
+		}
+		categories = {
+			guards
+		}
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 2
+				tag = USA
+			}
+			modifier = {
+				factor = 2
+				tag = GER
+			}
+			modifier = {
+				factor = 2
+				tag = ENG
+			}
+		}
+	}
+	guards4 = {
+		guards = {
+			max_organisation = 5
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = infantry_folder
+			position = {
+				x = 2
+				y = @1943
 			}
 		}
 		categories = {
