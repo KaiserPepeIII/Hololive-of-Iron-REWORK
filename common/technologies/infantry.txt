@@ -775,13 +775,17 @@ technologies = {
 		enable_subunits = {
 			irregular_infantry
 		}
+		path = {
+			leads_to_tech = irregular_tech2
+			research_cost_coeff = 1
+		}
 		research_cost = 1
-		start_year = 1936
+		start_year = 1918
 		folder = {
 			name = infantry_folder
 			position = {
 				x = 3
-				y = 3
+				y = @1918
 			}
 		}
 		categories = {
@@ -803,7 +807,155 @@ technologies = {
 			}
 		}
 	}
-	guards = {
+	irregular_tech2 = {
+		irregular_infantry = {
+			max_organisation = 5
+		}
+		path = {
+			leads_to_tech = irregular_partisans
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = irregular_skirmishers
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = {
+				x = 3
+				y = @1939
+			}
+		}
+		categories = {
+			infantry_tech
+		}
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 2
+				tag = USA
+			}
+			modifier = {
+				factor = 2
+				tag = GER
+			}
+			modifier = {
+				factor = 2
+				tag = ENG
+			}
+		}
+	}
+	irregular_partisans = {
+		xor = {
+			irregular_skirmishers
+		}
+		irregular_infantry = {
+			urban = {
+				attack = 0.45
+				defence = 0.55
+				movement = 0.35
+			}
+			plains = {
+				attack = 0.45
+				defence = 0.55
+				movement = 0.35
+			}
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = {
+				x = 2
+				y = @1942
+			}
+		}
+		categories = {
+			infantry_tech
+		}
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 2
+				tag = USA
+			}
+			modifier = {
+				factor = 2
+				tag = GER
+			}
+			modifier = {
+				factor = 2
+				tag = ENG
+			}
+		}
+	}
+	irregular_skirmishers = {
+		xor = {
+			irregular_partisans
+		}
+		irregular_infantry = {
+			mountain = {
+				attack = 0.15
+				defence = 0.15
+				movement = 0.25
+			}
+			jungle = {
+				attack = 0.15
+				defence = 0.15
+				movement = 0.25
+			}
+			desert = {
+				attack = 0.15
+				defence = 0.15
+				movement = 0.25
+			}
+			forest = {
+				attack = 0.15
+				defence = 0.15
+				movement = 0.25
+			}
+			marsh = {
+				attack = 0.15
+				defence = 0.15
+				movement = 0.25
+			}
+			hills = {
+				attack = 0.15
+				defence = 0.15
+				movement = 0.25
+			}
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = {
+				x = 4
+				y = @1942
+			}
+		}
+		categories = {
+			infantry_tech
+		}
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 2
+				tag = USA
+			}
+			modifier = {
+				factor = 2
+				tag = GER
+			}
+			modifier = {
+				factor = 2
+				tag = ENG
+			}
+		}
+	}
+	guards_technology = {
 		enable_subunits = {
 			guards
 		}
@@ -812,12 +964,12 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		research_cost = 2
-		start_year = 1936
+		start_year = 1918
 		folder = {
 			name = infantry_folder
 			position = {
 				x = 2
-				y = @1936
+				y = @1918
 			}
 		}
 		categories = {
