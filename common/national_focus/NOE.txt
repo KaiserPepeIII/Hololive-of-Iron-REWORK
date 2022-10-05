@@ -497,9 +497,9 @@ focus_tree = {
 				var = NOE.abolitionist_anger
 				value = -1
 			}
-			custom_effect_tooltip = abolitionist_anger_-1
+			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = uradel_anger_1
-			custom_effect_tooltip = anti_anger_-1
+			custom_effect_tooltip = anti_anger_minus_1
 		}
 		cost = 5
 		x = 14
@@ -520,7 +520,7 @@ focus_tree = {
 				var = NOE.uradel_faction
 				value = 1
 			}
-			custom_effect_tooltip = abolitionist_anger_-1
+			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = uradel_anger_1
 		}
 		cost = 5
@@ -545,7 +545,7 @@ focus_tree = {
 				var = NOE.uradel_faction
 				value = 1
 			}
-			custom_effect_tooltip = abolitionist_anger_-1
+			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = uradel_anger_1
 		}
 		cost = 5
@@ -658,7 +658,7 @@ focus_tree = {
 				var = NOE.anti_aggression
 				value = -10
 			}
-			custom_effect_tooltip = anti_anger_-1
+			custom_effect_tooltip = anti_anger_minus_1
 		}
 		cost = 5
 		x = 21
@@ -679,7 +679,7 @@ focus_tree = {
 				var = NOE.abolitionist_anger
 				value = -1
 			}
-			custom_effect_tooltip = abolitionist_anger_-1
+			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = uradel_anger_1
 		}
 		cost = 5
@@ -692,7 +692,6 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_establish_noelkorps
 			focus = NOE_allow_political_parties
-			focus = NOE_add_term_limits
 			focus = NOE_common_elections
 			focus = NOE_lower_nobility_hurdle
 			focus = NOE_elbing_proposals
@@ -811,7 +810,30 @@ focus_tree = {
 			focus = NOE_amelioration_proposals
 		}
 		completion_reward = {
-			add_ideas = darre_plan_1
+			#add_ideas = darre_plan_1
+			set_variable = {
+				var = NOE.darre_plan_a
+				value = 0.04
+			}
+			set_variable = {
+				var = NOE.darre_plan_b
+				value = 0
+			}
+			set_variable = {
+				var = NOE.darre_plan_c
+				value = 0
+			}
+			set_variable = {
+				var = NOE.darre_plan_d
+				value = 0
+			}
+			set_variable = {
+				var = NOE.darre_plan_e
+				value = 0
+			}
+			add_dynamic_modifier = {
+				modifier = NOE_darre_plan
+			}
 		}
 		cost = 5
 		x = 34
@@ -824,27 +846,39 @@ focus_tree = {
 			focus = NOE_darre_plan
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_completed_focus = NOE_darre_plan
-					NOT = {
-						has_idea = darre_plan_2mechanization
-					}
-				}
-				swap_ideas = {
-					remove_idea = darre_plan_1
-					add_idea = darre_plan_2mechanization
-				}
+			# if = {
+			# 	limit = {
+			# 		has_completed_focus = NOE_darre_plan
+			# 		NOT = {
+			# 			has_idea = darre_plan_2mechanization
+			# 		}
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = darre_plan_1
+			# 		add_idea = darre_plan_2mechanization
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_completed_focus = NOE_darre_plan
+			# 		has_idea = darre_plan_3quantity
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = darre_plan_3quantity
+			# 		add_idea = darre_plan_4quantity_mechanization
+			# 	}
+			# }
+			add_to_variable = {
+				var = NOE.darre_plan_a
+				value = 0.01
 			}
-			else_if = {
-				limit = {
-					has_completed_focus = NOE_darre_plan
-					has_idea = darre_plan_3quantity
-				}
-				swap_ideas = {
-					remove_idea = darre_plan_3quantity
-					add_idea = darre_plan_4quantity_mechanization
-				}
+			add_to_variable = {
+				var = NOE.darre_plan_b
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.darre_plan_c
+				value = 0.04
 			}
 		}
 		cost = 5
@@ -861,43 +895,59 @@ focus_tree = {
 			focus = NOE_mechanization_ethos
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_completed_focus = NOE_darre_plan
-					has_idea = darre_plan_4quantity_mechanization
-				}
-				swap_ideas = {
-					remove_idea = darre_plan_4quantity_mechanization
-					add_idea = darre_plan_6quantity_mechanization_safetylaw
-				}
+			# if = {
+			# 	limit = {
+			# 		has_completed_focus = NOE_darre_plan
+			# 		has_idea = darre_plan_4quantity_mechanization
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = darre_plan_4quantity_mechanization
+			# 		add_idea = darre_plan_6quantity_mechanization_safetylaw
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_completed_focus = NOE_darre_plan
+			# 		has_idea = darre_plan_5mechanization_quantity
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = darre_plan_5mechanization_quantity
+			# 		add_idea = darre_plan_7mechanization_quantity_safetylaw
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_idea = darre_plan_8quantity_mechanization_workweek
+			# 	}
+			# 	swap_ideas = {
+			# 		add_idea = darre_plan_10quantity_mechanization_workweek_safetylaw
+			# 		remove_idea = darre_plan_8quantity_mechanization_workweek
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_idea = darre_plan_9mechanization_quantity_workweek
+			# 	}
+			# 	swap_ideas = {
+			# 		add_idea = darre_plan_10mechanization_quantity_workweek_safetylaw
+			# 		remove_idea = darre_plan_9mechanization_quantity_workweek
+			# 	}
+			# }
+			add_to_variable = {
+				var = NOE.darre_plan_a
+				value = 0.05
 			}
-			else_if = {
-				limit = {
-					has_completed_focus = NOE_darre_plan
-					has_idea = darre_plan_5mechanization_quantity
-				}
-				swap_ideas = {
-					remove_idea = darre_plan_5mechanization_quantity
-					add_idea = darre_plan_7mechanization_quantity_safetylaw
-				}
+			add_to_variable = {
+				var = NOE.darre_plan_b
+				value = 0.1
 			}
-			else_if = {
-				limit = {
-					has_idea = darre_plan_8quantity_mechanization_workweek
-				}
-				swap_ideas = {
-					add_idea = darre_plan_10quantity_mechanization_workweek_safetylaw
-					remove_idea = darre_plan_8quantity_mechanization_workweek
-				}
+			add_to_variable = {
+				var = NOE.darre_plan_c
+				value = 0.1
 			}
-			else_if = {
-				limit = {
-					has_idea = darre_plan_9mechanization_quantity_workweek
-				}
-				swap_ideas = {
-					add_idea = darre_plan_10mechanization_quantity_workweek_safetylaw
-					remove_idea = darre_plan_9mechanization_quantity_workweek
-				}
+			add_to_variable = {
+				var = NOE.darre_plan_d
+				value = 0.05
 			}
 		}
 		cost = 5
@@ -911,27 +961,43 @@ focus_tree = {
 			focus = NOE_darre_plan
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_completed_focus = NOE_darre_plan
-					NOT = {
-						has_idea = darre_plan_3quantity
-					}
-				}
-				swap_ideas = {
-					remove_idea = darre_plan_1
-					add_idea = darre_plan_3quantity
-				}
+			# if = {
+			# 	limit = {
+			# 		has_completed_focus = NOE_darre_plan
+			# 		NOT = {
+			# 			has_idea = darre_plan_3quantity
+			# 		}
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = darre_plan_1
+			# 		add_idea = darre_plan_3quantity
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_completed_focus = NOE_darre_plan
+			# 		has_idea = darre_plan_2mechanization
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = darre_plan_2mechanization
+			# 		add_idea = darre_plan_5mechanization_quantity
+			# 	}
+			# }
+			add_to_variable = {
+				var = NOE.darre_plan_a
+				value = 0.05
 			}
-			else_if = {
-				limit = {
-					has_completed_focus = NOE_darre_plan
-					has_idea = darre_plan_2mechanization
-				}
-				swap_ideas = {
-					remove_idea = darre_plan_2mechanization
-					add_idea = darre_plan_5mechanization_quantity
-				}
+			add_to_variable = {
+				var = NOE.darre_plan_b
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.darre_plan_c
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.darre_plan_d
+				value = 0.05
 			}
 		}
 		cost = 5
@@ -948,43 +1014,59 @@ focus_tree = {
 			focus = NOE_mechanization_ethos
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_completed_focus = NOE_darre_plan
-					has_idea = darre_plan_4quantity_mechanization
-				}
-				swap_ideas = {
-					remove_idea = darre_plan_4quantity_mechanization
-					add_idea = darre_plan_11quantity_mechanization_workweek
-				}
+			# if = {
+			# 	limit = {
+			# 		has_completed_focus = NOE_darre_plan
+			# 		has_idea = darre_plan_4quantity_mechanization
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = darre_plan_4quantity_mechanization
+			# 		add_idea = darre_plan_11quantity_mechanization_workweek
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_completed_focus = NOE_darre_plan
+			# 		has_idea = darre_plan_5mechanization_quantity
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = darre_plan_5mechanization_quantity
+			# 		add_idea = darre_plan_12mechanization_quantity_workweek
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_idea = darre_plan_6quantity_mechanization_safetylaw
+			# 	}
+			# 	swap_ideas = {
+			# 		add_idea = darre_plan_13quantity_mechanization_safetylaw_workweek
+			# 		remove_idea = darre_plan_6quantity_mechanization_safetylaw
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_idea = darre_plan_7mechanization_quantity_safetylaw
+			# 	}
+			# 	swap_ideas = {
+			# 		add_idea = darre_plan_14mechanization_quantity_safetylaw_workweek
+			# 		remove_idea = darre_plan_7mechanization_quantity_safetylaw
+			# 	}
+			# }
+			add_to_variable = {
+				var = NOE.darre_plan_a
+				value = 0.05
 			}
-			else_if = {
-				limit = {
-					has_completed_focus = NOE_darre_plan
-					has_idea = darre_plan_5mechanization_quantity
-				}
-				swap_ideas = {
-					remove_idea = darre_plan_5mechanization_quantity
-					add_idea = darre_plan_12mechanization_quantity_workweek
-				}
+			add_to_variable = {
+				var = NOE.darre_plan_b
+				value = 0.05
 			}
-			else_if = {
-				limit = {
-					has_idea = darre_plan_6quantity_mechanization_safetylaw
-				}
-				swap_ideas = {
-					add_idea = darre_plan_13quantity_mechanization_safetylaw_workweek
-					remove_idea = darre_plan_6quantity_mechanization_safetylaw
-				}
+			add_to_variable = {
+				var = NOE.darre_plan_c
+				value = 0.05
 			}
-			else_if = {
-				limit = {
-					has_idea = darre_plan_7mechanization_quantity_safetylaw
-				}
-				swap_ideas = {
-					add_idea = darre_plan_14mechanization_quantity_safetylaw_workweek
-					remove_idea = darre_plan_7mechanization_quantity_safetylaw
-				}
+			add_to_variable = {
+				var = NOE.darre_plan_d
+				value = 0.05
 			}
 		}
 		cost = 5
@@ -1006,8 +1088,8 @@ focus_tree = {
 				var = NOE.anti_aggression
 				value = 10
 			}
-			custom_effect_tooltip = uradel_anger_-1
-			custom_effect_tooltip = anti_anger_-1
+			custom_effect_tooltip = abolitionist_anger_1
+			custom_effect_tooltip = anti_anger_minus_1
 		}
 		cost = 5
 		x = 38
@@ -1024,7 +1106,7 @@ focus_tree = {
 				var = NOE.uradel_faction
 				value = -1
 			}
-			custom_effect_tooltip = uradel_anger_-1
+			custom_effect_tooltip = abolitionist_anger_1
 		}
 		cost = 5
 		x = 37
@@ -1042,7 +1124,7 @@ focus_tree = {
 				value = -1
 			}
 			add_political_power = 50
-			custom_effect_tooltip = uradel_anger_-1
+			custom_effect_tooltip = abolitionist_anger_1
 		}
 		cost = 5
 		x = 39
@@ -1064,7 +1146,26 @@ focus_tree = {
 			focus = NOE_mechanization_ethos
 		}
 		completion_reward = {
-			add_ideas = NOE_prussian_chivalry_1			#Military idea starts weakish but gets stronger with each focus that swaps
+			#add_ideas = NOE_prussian_chivalry_1			#Military idea starts weakish but gets stronger with each focus that swaps
+			set_variable = {
+				var = NOE.prussian_chivalry_a
+				value = 0.2
+			}
+			set_variable = {
+				var = NOE.prussian_chivalry_b
+				value = 0
+			}
+			set_variable = {
+				var = NOE.prussian_chivalry_c
+				value = 0
+			}
+			set_variable = {
+				var = NOE.prussian_chivalry_d
+				value = 0
+			}
+			add_dynamic_modifier = {
+				modifier = NOE_prussian_chivalry
+			}
 		}
 		cost = 5
 		x = 36
@@ -1077,23 +1178,27 @@ focus_tree = {
 			focus = NOE_prussian_chivalry
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_idea = NOE_prussian_chivalry_1
-				}
-				swap_ideas = {
-					remove_idea = NOE_prussian_chivalry_1
-					add_idea = NOE_prussian_chivalry_2mace
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = NOE_prussian_chivalry_3gyudon
-				}
-				swap_ideas = {
-					remove_idea = NOE_prussian_chivalry_3gyudon
-					add_idea = NOE_prussian_chivalry_4gyudon_mace
-				}
+			# if = {
+			# 	limit = {
+			# 		has_idea = NOE_prussian_chivalry_1
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = NOE_prussian_chivalry_1
+			# 		add_idea = NOE_prussian_chivalry_2mace
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_idea = NOE_prussian_chivalry_3gyudon
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = NOE_prussian_chivalry_3gyudon
+			# 		add_idea = NOE_prussian_chivalry_4gyudon_mace
+			# 	}
+			# }
+			add_to_variable = {
+				var = NOE.prussian_chivalry_d
+				value = 0.2
 			}
 		}
 		cost = 5
@@ -1107,25 +1212,33 @@ focus_tree = {
 			focus = NOE_prussian_chivalry
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_idea = NOE_prussian_chivalry_1
-				}
-				swap_ideas = {
-					remove_idea = NOE_prussian_chivalry_1
-					add_idea = NOE_prussian_chivalry_3gyudon
-				}
+			# if = {
+			# 	limit = {
+			# 		has_idea = NOE_prussian_chivalry_1
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = NOE_prussian_chivalry_1
+			# 		add_idea = NOE_prussian_chivalry_3gyudon
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_idea = NOE_prussian_chivalry_2mace
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = NOE_prussian_chivalry_2mace
+			# 		add_idea = NOE_prussian_chivalry_5mace_gyudon
+			# 	}
+			# }
+			add_to_variable = {
+				var = NOE.prussian_chivalry_b
+				value = 0.2
 			}
-			else_if = {
-				limit = {
-					has_idea = NOE_prussian_chivalry_2mace
-				}
-				swap_ideas = {
-					remove_idea = NOE_prussian_chivalry_2mace
-					add_idea = NOE_prussian_chivalry_5mace_gyudon
-				}
+			add_to_variable = {
+				var = NOE.prussian_chivalry_c
+				value = 0.2
 			}
-			custom_effect_tooltip = anti_anger_-1
+			custom_effect_tooltip = anti_anger_minus_1
 		}
 		cost = 5
 		x = 37
@@ -1145,7 +1258,7 @@ focus_tree = {
 				var = NOE.anti_aggression
 				value = -10
 			}
-			custom_effect_tooltip = anti_anger_-1
+			custom_effect_tooltip = anti_anger_minus_1
 		}
 		cost = 5
 		x = 40
@@ -1300,7 +1413,7 @@ focus_tree = {
 				value = -2
 			}
 			custom_effect_tooltip = uradel_anger_-2
-			custom_effect_tooltip = anti_anger_-1
+			custom_effect_tooltip = anti_anger_minus_1
 		}
 		cost = 5
 		x = 46
@@ -1554,6 +1667,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 25
 			add_tech_bonus = {
+				name = NOE_fight_the_fox_tech
 				bonus = 1
 				uses = 2
 				category = tp_tech
@@ -2307,6 +2421,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_capital_ship_tech
 				bonus = 1
 				uses = 1
 				category = fleet_in_being_tree
@@ -2391,6 +2506,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_direct_contact_fleet_tech
 				bonus = 1
 				uses = 1
 				category = fleet_in_being_tree
@@ -2516,11 +2632,13 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_mechanized_push_tech
 				bonus = 1
 				uses = 1
 				category = cat_mobile_warfare
 			}
 			add_tech_bonus = {
+				name = NOE_motorized_equipment_tech
 				bonus = 1
 				uses = 1
 				category = motorized_equipment
@@ -2569,6 +2687,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_panzer_plan_one_tech
 				bonus = 1
 				uses = 1
 				category = armor
@@ -2586,6 +2705,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_panzer_plan_two_tech
 				bonus = 1
 				uses = 1
 				category = armor
@@ -2627,6 +2747,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_army_coordination_tech
 				bonus = 1
 				uses = 1
 				category = cat_mobile_warfare
@@ -2674,8 +2795,31 @@ focus_tree = {
 			focus = NOE_fighter_dominance
 		}
 		completion_reward = {
-			add_ideas = {
-				NOE_fast_bombers_idea				# bomber speed
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				create_equipment_variant = {
+					type = medium_plane_airframe_1
+					modules = {
+						armor_type_slot = armor_plate_medium
+						engine_type_slot = engine_2_3x
+						special_type_slot_1 = bomb_sights_1
+					}
+					upgrades = {
+						plane_reliability_upgrade = 2
+						plane_engine_upgrade = 3
+					}
+				}
+				else = {
+					create_equipment_variant = {
+						type = tac_bomber_equipment_1
+						upgrades = {
+							plane_reliability_upgrade = 2
+							plane_engine_upgrade = 3
+						}
+					}
+				}
 			}
 		}
 		cost = 5
@@ -2965,23 +3109,39 @@ focus_tree = {
 			focus = NOE_mace_and_mic
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_idea = NOE_prussian_chivalry_4gyudon_mace
-				}
-				swap_ideas = {
-					remove_idea = NOE_prussian_chivalry_4gyudon_mace
-					add_idea = NOE_prussian_chivalry_6
-				}
+			# if = {
+			# 	limit = {
+			# 		has_idea = NOE_prussian_chivalry_4gyudon_mace
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = NOE_prussian_chivalry_4gyudon_mace
+			# 		add_idea = NOE_prussian_chivalry_6
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = {
+			# 		has_idea = NOE_prussian_chivalry_5mace_gyudon
+			# 	}
+			# 	swap_ideas = {
+			# 		remove_idea = NOE_prussian_chivalry_5mace_gyudon
+			# 		add_idea = NOE_prussian_chivalry_6
+			# 	}
+			# }
+			add_to_variable = {
+				var = NOE.prussian_chivalry_a
+				value = 0.05
 			}
-			else_if = {
-				limit = {
-					has_idea = NOE_prussian_chivalry_5mace_gyudon
-				}
-				swap_ideas = {
-					remove_idea = NOE_prussian_chivalry_5mace_gyudon
-					add_idea = NOE_prussian_chivalry_6
-				}
+			add_to_variable = {
+				var = NOE.prussian_chivalry_b
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.prussian_chivalry_c
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.prussian_chivalry_d
+				value = 0.05
 			}
 			create_corps_commander = {
 				name = "Ubermensch Knight Guy"
@@ -3149,9 +3309,6 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_new_way_forward
 		}
-		prerequisite = {
-			focus = NOE_polish_german_harmony
-		}
 		completion_reward = {
 			swap_ideas = {
 				add_idea = robber_barons2
@@ -3251,6 +3408,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_mass_assault_tech
 				bonus = 1
 				uses = 2
 				category = cat_mass_assault
@@ -3321,6 +3479,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_blitzkrieg_tech
 				bonus = 1
 				uses = 2
 				category = cat_mobile_warfare
@@ -3341,6 +3500,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_beneath_the_seas_tech
 				bonus = 1
 				uses = 1
 				category = cat_trade_interdiction
@@ -3373,6 +3533,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_convoy_raiding_tech
 				bonus = 1
 				uses = 1
 				category = cat_trade_interdiction
@@ -3458,6 +3619,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = NOE_amphibious_assault_tech
 				bonus = 1.5
 				uses = 2
 				category = naval_doctrine
@@ -3655,8 +3817,6 @@ focus_tree = {
 					exists = no
 				}
 			}
-		}
-		available = {
 			OR = {
 				KIA = {
 					exists = no
@@ -3876,16 +4036,16 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_biofueles
 		}
+		available = {
+			OR = {
+				has_full_control_of_state = 64
+				has_full_control_of_state = 59
+				has_full_control_of_state = 60
+				has_full_control_of_state = 54
+			}
+		}
 		completion_reward = {
 			custom_effect_tooltip = GER_autobahn_tt
-			available = {
-				OR = {
-					has_full_control_of_state = 64
-					has_full_control_of_state = 59
-					has_full_control_of_state = 60
-					has_full_control_of_state = 54
-				}
-			}
 			hidden_effect = {
 				64 = {
 					if = {
