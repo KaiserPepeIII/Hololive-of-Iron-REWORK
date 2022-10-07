@@ -8,48 +8,46 @@ focus_tree = {
 		}
 	}
 	default = no
-	
-	continuous_focus_position = { x = 60 y = 150 }
-	
+	continuous_focus_position = {
+		x = 60
+		y = 150
+	}
 	focus = {
 		id = SUI_emergency_measures
 		icon = GFX_focus_SUI_emergency_measures
-		cost = 5.00
-		
+		cost = 5
 		bypass = {
-		has_country_flag = suisei_sudden_snap_elections
+			has_country_flag = suisei_sudden_snap_elections
 		}
 		ai_will_do = {
 			factor = 1
 		}
 		available = {
-		always = yes
+			always = yes
 		}
-		
 		available_if_capitulated = yes
-		search_filters = {Political}
-	
+		search_filters = {
+			Political
+		}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = great_depression_suisei
 				add_idea = great_depression_suisei_one
 			}
-			add_political_power = 75
+			add_political_power = 100
 		}
-		
 		x = 14
 		y = 2
-
 	}
 	focus = {
 		id = SUI_resistance_diplomacy
 		icon = GFX_focus_SUI_resistance_diplomacy
-		cost = 5.00
+		cost = 5
 		allow_branch = {
-		has_country_flag = SUI_had_elections
-		OR = {
-		has_government = pro_resistance_nationalism
-		has_government = communism
+			has_country_flag = SUI_had_elections
+			OR = {
+				has_government = pro_resistance_nationalism
+				has_government = communism
 			}
 		}
 		available = {
@@ -60,75 +58,73 @@ focus_tree = {
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		complete_tooltip = {
-			custom_effect_tooltip = ability_join_resistance	
+			custom_effect_tooltip = ability_join_resistance
 		}
-		completion_reward = {			
+		completion_reward = {
 			hidden_effect = {
-			add_popularity = {
-				ideology = communism
-				popularity = 0.02
+				add_popularity = {
+					ideology = communism
+					popularity = 0.02
+				}
 			}
-		  }
 		}
 		x = 47
 		y = 2
-
 	}
 	focus = {
 		id = SUI_deal_with_france
 		icon = GFX_focus_SUI_deal_with_france
-		cost = 7.00
+		cost = 7
 		allow_branch = {
-		has_country_flag = SUI_had_elections
-		NOT = {
-		has_country_flag = SUI_royalists_win
+			has_country_flag = SUI_had_elections
+			NOT = {
+				has_country_flag = SUI_royalists_win
+			}
 		}
-		}
-
 		offset = {
 			x = -28
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-		  }
 		}
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		x = 49
 		y = 2
 		completion_reward = {
 			custom_effect_tooltip = deal_with_france
-				hidden_effect = {
+			hidden_effect = {
 				set_country_flag = dealing_with_france
-				}
 			}
 		}
+	}
 	focus = {
 		id = SUI_suicopath_military
 		icon = GFX_focus_SUI_suicopath_military
-		cost = 10.00
+		cost = 10
 		allow_branch = {
-		has_country_flag = SUI_had_elections
+			has_country_flag = SUI_had_elections
 		}
 		offset = {
 			x = -22
@@ -136,16 +132,16 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -154,8 +150,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -171,14 +167,13 @@ focus_tree = {
 		}
 		x = 51
 		y = 6
-
 	}
 	focus = {
 		id = SUI_tropical_goods_recover_effort
 		icon = GFX_focus_SUI_tropical_goods_recover_effort
-		cost = 8.00
+		cost = 8
 		allow_branch = {
-		has_country_flag = SUI_had_elections
+			has_country_flag = SUI_had_elections
 		}
 		offset = {
 			x = -22
@@ -186,16 +181,16 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -204,8 +199,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -218,17 +213,17 @@ focus_tree = {
 			factor = 1
 		}
 		available = {
-		always = yes
+			always = yes
 		}
-		
 		available_if_capitulated = yes
 		cancel_if_invalid = yes
 		continue_if_invalid = no
-		search_filters = {Industry}
-	
+		search_filters = {
+			Industry
+		}
 		completion_reward = {
 			if = {
-					limit = {
+				limit = {
 					has_idea = sui_extreme_colonial_unrest
 				}
 				swap_ideas = {
@@ -247,15 +242,13 @@ focus_tree = {
 				value = 1
 			}
 		}
-			
 		x = 58
 		y = 1
-		
 	}
 	focus = {
 		id = SUI_bail_out_colonies
 		icon = GFX_focus_SUI_bail_out_colonies
-		cost = 5.00
+		cost = 5
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
@@ -267,14 +260,14 @@ focus_tree = {
 			factor = 1
 		}
 		available = {
-		always = yes
+			always = yes
 		}
-		
 		available_if_capitulated = yes
 		cancel_if_invalid = yes
 		continue_if_invalid = no
-		search_filters = {Political}
-	
+		search_filters = {
+			Political
+		}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = sui_extreme_colonial_unrest
@@ -283,15 +276,13 @@ focus_tree = {
 			add_political_power = -125
 			add_stability = 0.05
 		}
-		
 		x = 11
 		y = 3
-
 	}
 	focus = {
 		id = SUI_damage_control
 		icon = GFX_focus_SUI_damage_control
-		cost = 5.00
+		cost = 5
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
@@ -303,51 +294,49 @@ focus_tree = {
 				limit = {
 					has_idea = great_depression_suisei_one
 				}
-			swap_ideas = {
-				remove_idea = great_depression_suisei_one
-				add_idea = great_depression_suisei_two
+				swap_ideas = {
+					remove_idea = great_depression_suisei_one
+					add_idea = great_depression_suisei_two
 				}
-			add_popularity = {
-			ideology = democratic
-			popularity = 0.01
-			}
-			add_stability = 0.02
-		   }
-		   else_if = {	
-			   limit = {
-				has_idea = great_depression_suisei_two
-			   }
-			   swap_ideas = {
-				remove_idea = great_depression_suisei_two
-				add_idea = great_depression_suisei_four
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.01
 				}
-			add_popularity = {
-			ideology = democratic
-			popularity = 0.01
+				add_stability = 0.02
 			}
-			add_stability = 0.02
-		   }
-		   else = {
-			swap_ideas = {
-			 remove_idea = great_depression_suisei_three
-			 add_idea = great_depression_suisei_four
-			 }
-		 	add_popularity = {
-			 ideology = democratic
-			 popularity = 0.01
-			 }
-			 add_stability = 0.02
+			else_if = {
+				limit = {
+					has_idea = great_depression_suisei_two
+				}
+				swap_ideas = {
+					remove_idea = great_depression_suisei_two
+					add_idea = great_depression_suisei_four
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.01
+				}
+				add_stability = 0.02
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = great_depression_suisei_three
+					add_idea = great_depression_suisei_four
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.01
+				}
+				add_stability = 0.02
 			}
 		}
 		x = 13
 		y = 3
-
 	}
 	focus = {
 		id = SUI_organise_soup_kitchens
 		icon = GFX_focus_SUI_organize_soup_kitchens
-		cost = 5.00
-		
+		cost = 5
 		prerequisite = {
 			focus = SUI_damage_control
 		}
@@ -357,26 +346,23 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SUI_let_them_fail
 			has_country_flag = suisei_sudden_snap_elections
-
 		}
 		completion_reward = {
 			add_popularity = {
-				ideology = democratic 
+				ideology = democratic
 				popularity = 0.02
 			}
 			add_political_power = -50
 		}
 		x = 12
 		y = 4
-
 	}
 	focus = {
 		id = SUI_bail_out_businesses
 		icon = GFX_focus_SUI_bail_out_businesses
-		cost = 5.00	
-
+		cost = 5
 		bypass = {
-				has_country_flag = suisei_sudden_snap_elections
+			has_country_flag = suisei_sudden_snap_elections
 		}
 		prerequisite = {
 			focus = SUI_emergency_measures
@@ -386,34 +372,33 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_timed_idea = {
-			idea = sui_businesses_bailed_out
-			days = 180
+				idea = sui_businesses_bailed_out
+				days = 180
 			}
-			if = { 
+			if = {
 				limit = {
 					has_idea = great_depression_suisei_two
 				}
-					swap_ideas = {
+				swap_ideas = {
 					remove_idea = great_depression_suisei_two
 					add_idea = great_depression_suisei_three
-					}
-					add_political_power = -100
 				}
+				add_political_power = -75
+			}
 			else = {
 				swap_ideas = {
 					remove_idea = great_depression_suisei_one
 					add_idea = great_depression_suisei_two
-					}
 				}
 			}
+		}
 		x = 15
 		y = 3
-
 	}
 	focus = {
 		id = SUI_let_them_fail
 		icon = GFX_focus_SUI_let_them_fail
-		cost = 2.00
+		cost = 2
 		prerequisite = {
 			focus = SUI_emergency_measures
 		}
@@ -421,63 +406,71 @@ focus_tree = {
 			focus = SUI_bail_out_businesses
 		}
 		bypass = {
-				has_country_flag = suisei_sudden_snap_elections
-
+			has_country_flag = suisei_sudden_snap_elections
 		}
 		completion_reward = {
-				add_timed_idea = {
+			add_timed_idea = {
 				idea = sui_businesses_ignored
 				days = 720
-				}
-				if = {
-					limit = {
-						has_idea = great_depression_suisei_two
-					}
-				swap_ideas = {
-				remove_idea = great_depression_suisei_two
-				add_idea = great_depression_suisei_four
-				}
-				add_stability = -0.05
-				add_popularity= {
-					ideology = democratic
-					popularity = -0.03
-				}
-				country_event = { id = suisei.8 days = 1 }
-				add_to_variable = {
-					var = SUI_anti_aggression
-					value = 35
-				}
 			}
-			else_if= {
+			if = {
 				limit = {
-						has_idea = great_depression_suisei_three
-					}
+					has_idea = great_depression_suisei_two
+				}
 				swap_ideas = {
-				remove_idea = great_depression_suisei_three
-				add_idea = great_depression_suisei_four
+					remove_idea = great_depression_suisei_two
+					add_idea = great_depression_suisei_four
 				}
 				add_stability = -0.05
-				add_popularity= {
+				add_popularity = {
 					ideology = democratic
 					popularity = -0.03
 				}
-				country_event = { id = suisei.8 days = 1 }
+				country_event = {
+					id = suisei.8
+					days = 1
+				}
 				add_to_variable = {
 					var = SUI_anti_aggression
 					value = 35
 				}
 			}
-			else= {
+			else_if = {
+				limit = {
+					has_idea = great_depression_suisei_three
+				}
 				swap_ideas = {
-				remove_idea = great_depression_suisei_one
-				add_idea = great_depression_suisei_four
+					remove_idea = great_depression_suisei_three
+					add_idea = great_depression_suisei_four
 				}
 				add_stability = -0.05
-				add_popularity= {
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.03
+				}
+				country_event = {
+					id = suisei.8
+					days = 1
+				}
+				add_to_variable = {
+					var = SUI_anti_aggression
+					value = 35
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = great_depression_suisei_one
+					add_idea = great_depression_suisei_four
+				}
+				add_stability = -0.05
+				add_popularity = {
 					ideology = democratic
 					popularity = -0.05
 				}
-				country_event = { id = suisei.8 days = 1 }
+				country_event = {
+					id = suisei.8
+					days = 1
+				}
 				add_to_variable = {
 					var = SUI_anti_aggression
 					value = 35
@@ -486,19 +479,17 @@ focus_tree = {
 		}
 		x = 17
 		y = 3
-
 	}
 	focus = {
 		id = SUI_economic_recovery_plan
 		icon = GFX_focus_SUI_economic_recovery_plan
-		cost = 5.00
+		cost = 5
 		prerequisite = {
 			focus = SUI_let_them_fail
 			focus = SUI_bail_out_businesses
 		}
 		bypass = {
-				has_country_flag = suisei_sudden_snap_elections
-
+			has_country_flag = suisei_sudden_snap_elections
 		}
 		completion_reward = {
 			add_popularity = {
@@ -508,15 +499,13 @@ focus_tree = {
 		}
 		x = 16
 		y = 4
-
 	}
 	focus = {
 		id = SUI_new_elections
 		icon = GFX_focus_SUI_new_elections
-		cost = 7.00
+		cost = 7
 		bypass = {
 			has_country_flag = suisei_sudden_snap_elections
-
 		}
 		prerequisite = {
 			focus = SUI_economic_recovery_plan
@@ -524,7 +513,8 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_organise_soup_kitchens
 		}
-		completion_reward = {	
+		completion_reward = {
+			add_political_power = 25
 			country_event = {
 				id = holo_elections.1
 				days = 1
@@ -532,22 +522,21 @@ focus_tree = {
 		}
 		x = 14
 		y = 5
-
 	}
 	focus = {
 		id = SUI_pro_yagoo_coalition_wins
 		icon = GFX_focus_SUI_pro_yagoo_coalition_wins
-		cost = 10.00
-				bypass = {
-				has_country_flag = SUI_had_elections
-						OR = {
+		cost = 10
+		bypass = {
+			has_country_flag = SUI_had_elections
+			OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
 			}
 		}
 		allow_branch = {
-		has_country_flag = SUI_had_elections
-						OR = {
+			has_country_flag = SUI_had_elections
+			OR = {
 				has_government = democratic
 				has_government = pro_yagoo_progressive
 			}
@@ -564,22 +553,21 @@ focus_tree = {
 		}
 		x = 9
 		y = 6
-
 	}
 	focus = {
 		id = SUI_pro_resistance_coalition_wins
 		icon = GFX_focus_SUI_pro_resistance_coalition_wins
-		cost = 10.00
+		cost = 10
 		allow_branch = {
-		has_country_flag = SUI_had_elections
-				OR = {
+			has_country_flag = SUI_had_elections
+			OR = {
 				has_government = communism
 				has_government = pro_resistance_nationalism
-				}
 			}
-			bypass = {
-				has_country_flag = SUI_had_elections
-						OR = {
+		}
+		bypass = {
+			has_country_flag = SUI_had_elections
+			OR = {
 				has_government = pro_resistance_nationalism
 				has_government = communism
 			}
@@ -596,30 +584,28 @@ focus_tree = {
 		}
 		x = 19
 		y = 6
-
 	}
 	focus = {
 		id = SUI_new_economic_plan
 		icon = GFX_focus_SUI_new_economic_plan
-		cost = 7.00
+		cost = 7
 		prerequisite = {
 			focus = SUI_pro_resistance_coalition_wins
 		}
 		completion_reward = {
-		set_country_flag = SUI_new_economic_plan_flag
+			set_country_flag = SUI_new_economic_plan_flag
 		}
 		x = 19
 		y = 7
-
 	}
 	focus = {
 		id = SUI_revolutionary_economics
 		icon = GFX_focus_SUI_revolutionary_economy
-		cost = 7.00
+		cost = 7
 		allow_branch = {
-				has_country_flag = SUI_new_economic_plan_flag
-				has_government = communism
-			}
+			has_country_flag = SUI_new_economic_plan_flag
+			has_government = communism
+		}
 		prerequisite = {
 			focus = SUI_new_economic_plan
 		}
@@ -627,54 +613,53 @@ focus_tree = {
 			SUI = {
 				add_ideas = suisei_revolutionary_economics
 			}
-				set_variable = {
-					var = SUI.industrialisation_level
-					value = 22
-					}
-				clamp_variable = {
-					var = SUI.industrialisation_level
-					min = 0
-					max = 100
-				}
-				set_variable = {
-					var = SUI.unemployment_level
-					value = 90
-				}
-				clamp_variable = {
-					var = SUI.unemployment_level
-					min = 0
-					max = 1000
-				}
-				set_variable = {
-					var = SUI.urbanisation_level
-					value = 43
-				}
-				clamp_variable = {
-					var = SUI.urbanisation_level
-					min = 0
-					max = 100
-				}
-				set_variable = {
-					var = SUI.standard_of_living_rev
-					value = 517
-				}
-				clamp_variable = {
-					var = SUI_standard_of_living_rev
-					min = 0
-					max = 1000
-				}
+			set_variable = {
+				var = SUI.industrialisation_level
+				value = 22
+			}
+			clamp_variable = {
+				var = SUI.industrialisation_level
+				min = 0
+				max = 100
+			}
+			set_variable = {
+				var = SUI.unemployment_level
+				value = 90
+			}
+			clamp_variable = {
+				var = SUI.unemployment_level
+				min = 0
+				max = 1000
+			}
+			set_variable = {
+				var = SUI.urbanisation_level
+				value = 43
+			}
+			clamp_variable = {
+				var = SUI.urbanisation_level
+				min = 0
+				max = 100
+			}
+			set_variable = {
+				var = SUI.standard_of_living_rev
+				value = 517
+			}
+			clamp_variable = {
+				var = SUI_standard_of_living_rev
+				min = 0
+				max = 1000
+			}
 		}
 		mutually_exclusive = {
 			focus = SUI_work_family_fatherland
 		}
 		x = 17
 		y = 8
-
 	}
 	focus = {
 		id = SUI_forty_hour_weekday
 		icon = GFX_focus_SUI_fourty_hour_weekday
-		cost = 7.00
+		cost = 7
 		prerequisite = {
 			focus = SUI_revolutionary_economics
 		}
@@ -690,12 +675,11 @@ focus_tree = {
 		}
 		x = 13
 		y = 9
-
 	}
 	focus = {
 		id = SUI_raise_minimum_wage
 		icon = GFX_focus_SUI_raise_minimum_wages
-		cost = 7.00
+		cost = 7
 		prerequisite = {
 			focus = SUI_revolutionary_economics
 		}
@@ -719,71 +703,72 @@ focus_tree = {
 		}
 		x = 15
 		y = 9
-
 	}
 	focus = {
 		id = SUI_work_family_fatherland
 		icon = GFX_focus_SUI_work_family_fatherland
-		cost = 7.00
-			allow_branch = {
-				has_country_flag = SUI_new_economic_plan_flag
-				has_government = pro_resistance_nationalism
-			}
+		cost = 7
+		allow_branch = {
+			has_country_flag = SUI_new_economic_plan_flag
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = SUI_new_economic_plan
 		}
 		completion_reward = {
-		SUI = {	
-			add_ideas = { suisei_nationalist_economics suisei_urbanisation}
-		}
-				set_variable = {
-					var = SUI.efficiency_level
-					value = 98
-					}
-				clamp_variable = {
-					var = SUI.efficiency_level
-					min = 0
-					max = 400
+			SUI = {
+				add_ideas = {
+					suisei_nationalist_economics
+					suisei_urbanisation
 				}
-				set_variable = {
-					var = SUI.rural_level
-					value = 664
-				}
-				clamp_variable = {
-					var = SUI.rural_level
-					min = 0
-					max = 1000
-				}
-				set_variable = {
-					var = SUI.government_level
-					value = 43
-				}
-				clamp_variable = {
-					var = SUI.government_level
-					min = 92
-					max = 1000
-				}
-				set_variable = {
-					var = SUI.standard_of_living_nat
-					value = 517
-				}
-				clamp_variable = {
-					var = SUI_standard_of_living_nat
-					min = 0
-					max = 1000
-				}
+			}
+			set_variable = {
+				var = SUI.efficiency_level
+				value = 98
+			}
+			clamp_variable = {
+				var = SUI.efficiency_level
+				min = 0
+				max = 400
+			}
+			set_variable = {
+				var = SUI.rural_level
+				value = 664
+			}
+			clamp_variable = {
+				var = SUI.rural_level
+				min = 0
+				max = 1000
+			}
+			set_variable = {
+				var = SUI.government_level
+				value = 43
+			}
+			clamp_variable = {
+				var = SUI.government_level
+				min = 92
+				max = 1000
+			}
+			set_variable = {
+				var = SUI.standard_of_living_nat
+				value = 517
+			}
+			clamp_variable = {
+				var = SUI_standard_of_living_nat
+				min = 0
+				max = 1000
+			}
 		}
 		mutually_exclusive = {
 			focus = SUI_revolutionary_economics
 		}
 		x = 21
 		y = 8
-
 	}
 	focus = {
 		id = SUI_help_farmers
 		icon = GFX_focus_SUI_help_farmers
-		cost = 7.00
+		cost = 7
 		prerequisite = {
 			focus = SUI_work_family_fatherland
 		}
@@ -795,12 +780,11 @@ focus_tree = {
 		}
 		x = 21
 		y = 9
-
 	}
 	focus = {
 		id = SUI_modernization_program_agricultture
 		icon = GFX_focus_SUI_modernization_programs
-		cost = 7.00
+		cost = 7
 		prerequisite = {
 			focus = SUI_help_farmers
 		}
@@ -809,12 +793,11 @@ focus_tree = {
 		}
 		x = 21
 		y = 10
-
 	}
 	focus = {
 		id = SUI_modern_methods
 		icon = GFX_focus_SUI_modern_methods
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_modernization_program_agricultture
 		}
@@ -823,12 +806,11 @@ focus_tree = {
 		}
 		x = 21
 		y = 11
-
 	}
 	focus = {
 		id = SUI_let_them_eat_yakiniku
 		icon = GFX_focus_SUI_let_them_eat_yakiniku
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_help_farmers
 		}
@@ -844,12 +826,11 @@ focus_tree = {
 		}
 		x = 23
 		y = 10
-
 	}
 	focus = {
 		id = SUI_public_pensions
 		icon = GFX_focus_SUI_assist_pensioners
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_let_them_eat_yakiniku
 		}
@@ -866,52 +847,49 @@ focus_tree = {
 		}
 		x = 23
 		y = 11
-
 	}
 	focus = {
 		id = SUI_consumer_goods_agriculture
 		icon = GFX_focus_SUI_consumer_goods_agriculture
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_help_farmers
 		}
 		completion_reward = {
-				add_to_variable = {
+			add_to_variable = {
 				var = SUI_standard_of_living_nat
 				value = 15
-				}			
+			}
 			add_ideas = SUI_consumer_agri
-		}	
+		}
 		x = 25
 		y = 10
-
 	}
 	focus = {
 		id = SUI_bread_basket_western_europe
 		icon = GFX_focus_SUI_bread_basket_western_europe
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_consumer_goods_agriculture
 		}
 		completion_reward = {
 			add_to_variable = {
-			var = SUI_standard_of_living_nat
-			value = 35
-			}			
+				var = SUI_standard_of_living_nat
+				value = 35
+			}
 			add_to_variable = {
 				var = SUI.rural_level
 				value = 3
 			}
-		add_ideas = SUI_breadbasket
-	}	
+			add_ideas = SUI_breadbasket
+		}
 		x = 25
 		y = 11
-
 	}
 	focus = {
 		id = SUI_export_agriculture
 		icon = GFX_focus_SUI_export_agriculture
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_consumer_goods_agriculture
 		}
@@ -919,20 +897,19 @@ focus_tree = {
 			add_to_variable = {
 				var = SUI_standard_of_living_nat
 				value = 15
-				}			
-				add_to_variable = {
-					var = SUI.rural_level
-					value = 5
-				}			
+			}
+			add_to_variable = {
+				var = SUI.rural_level
+				value = 5
+			}
 		}
 		x = 27
 		y = 11
-
 	}
 	focus = {
 		id = SUI_ruralisation
 		icon = GFX_focus_SUI_ruralisation
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_export_agriculture
 		}
@@ -953,12 +930,11 @@ focus_tree = {
 		}
 		x = 26
 		y = 12
-
 	}
 	focus = {
 		id = SUI_industrialisation
 		icon = GFX_focus_SUI_industrialization
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_work_family_fatherland
 		}
@@ -967,12 +943,12 @@ focus_tree = {
 			SUI = {
 				random_state = {
 					add_building_construction = {
-						type = industrial_complex 
+						type = industrial_complex
 						instant_build = yes
 						level = 1
 					}
 					add_building_construction = {
-						type = arms_factory 
+						type = arms_factory
 						instant_build = yes
 						level = 1
 					}
@@ -982,12 +958,11 @@ focus_tree = {
 		}
 		x = 29
 		y = 9
-
 	}
 	focus = {
 		id = SUI_light_industrial_ethos
 		icon = GFX_focus_SUI_light_industry_ethos
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_industrialisation
 		}
@@ -995,7 +970,7 @@ focus_tree = {
 			SUI = {
 				random_state = {
 					add_building_construction = {
-						type = industrial_complex 
+						type = industrial_complex
 						instant_build = yes
 						level = 3
 					}
@@ -1009,12 +984,11 @@ focus_tree = {
 		}
 		x = 29
 		y = 10
-
 	}
 	focus = {
 		id = SUI_work_gacha
 		icon = GFX_focus_SUI_work_gacha
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_industrialisation
 		}
@@ -1022,7 +996,7 @@ focus_tree = {
 			subtract_from_variable = {
 				var = SUI.rural_level
 				value = 20
-			}			
+			}
 			add_to_variable = {
 				var = SUI_standard_of_living_nat
 				value = 30
@@ -1035,12 +1009,11 @@ focus_tree = {
 		}
 		x = 31
 		y = 10
-
 	}
 	focus = {
 		id = SUI_reduce_urban_unemployment
 		icon = GFX_focus_SUI_reduce_urban_unemployment
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_light_industrial_ethos
 		}
@@ -1051,12 +1024,12 @@ focus_tree = {
 			SUI = {
 				random_state = {
 					add_building_construction = {
-						type = industrial_complex 
+						type = industrial_complex
 						instant_build = yes
 						level = 1
 					}
 					add_building_construction = {
-						type = infrastructure 
+						type = infrastructure
 						instant_build = yes
 						level = 2
 					}
@@ -1066,7 +1039,7 @@ focus_tree = {
 			subtract_from_variable = {
 				var = SUI.rural_level
 				value = 10
-			}			
+			}
 			add_to_variable = {
 				var = SUI_standard_of_living_nat
 				value = 35
@@ -1075,16 +1048,15 @@ focus_tree = {
 				ideology = pro_resistance_nationalism
 				popularity = -0.05
 			}
-			add_stability = -0.05			
+			add_stability = -0.05
 		}
 		x = 30
 		y = 11
-
 	}
 	focus = {
 		id = SUI_traditional_economics
 		icon = GFX_focus_SUI_traditional_economics
-		cost = 7.00
+		cost = 7
 		prerequisite = {
 			focus = SUI_ruralisation
 		}
@@ -1111,22 +1083,21 @@ focus_tree = {
 		}
 		x = 26
 		y = 13
-
 	}
 	focus = {
 		id = SUI_royalist_coalition_wins
 		icon = GFX_focus_SUI_royalist_coalition_wins
-		cost = 10.00
+		cost = 10
 		allow_branch = {
-		has_country_flag = SUI_royalists_win
+			has_country_flag = SUI_royalists_win
 		}
-			offset = {
+		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_new_elections
 		}
@@ -1139,23 +1110,23 @@ focus_tree = {
 		}
 		x = 38
 		y = 6
-
 	}
 	focus = {
 		id = SUI_suisei_mo_kawaii_ne
 		icon = GFX_focus_SUI_suisei_mo_kawaii_ne
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_royalist_coalition_wins
 		}
 		completion_reward = {
+			add_political_power = 50
 			add_stability = 0.05
 			add_war_support = 0.05
 			add_popularity = {
@@ -1169,23 +1140,23 @@ focus_tree = {
 		}
 		x = 37
 		y = 7
-
 	}
 	focus = {
 		id = SUI_suicopath_intimidation
 		icon = GFX_focus_SUI_suiciopath_intimidation
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_royalist_coalition_wins
 		}
 		completion_reward = {
+			add_political_power = 50
 			add_timed_idea = {
 				idea = SUI_suicopath_intimidation_idea
 				days = 720
@@ -1193,19 +1164,18 @@ focus_tree = {
 		}
 		x = 39
 		y = 7
-
 	}
 	focus = {
 		id = SUI_rally_hoshiyomi
 		icon = GFX_focus_SUI_rally_hoshiyomi
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_suicopath_intimidation
 		}
@@ -1220,19 +1190,18 @@ focus_tree = {
 		}
 		x = 38
 		y = 8
-
 	}
 	focus = {
 		id = SUI_deal_with_depression
 		icon = GFX_focus_SUI_deal_with_depression
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_rally_hoshiyomi
 		}
@@ -1245,19 +1214,18 @@ focus_tree = {
 		}
 		x = 35
 		y = 9
-
 	}
 	focus = {
 		id = SUI_job_gacha_roll
 		icon = GFX_focus_SUI_gacha_roll
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_deal_with_depression
 		}
@@ -1269,19 +1237,18 @@ focus_tree = {
 		}
 		x = 33
 		y = 10
-
 	}
 	focus = {
 		id = SUI_gacha_economics
 		icon = GFX_focus_SUI_gacha_economics
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_job_gacha_roll
 		}
@@ -1290,19 +1257,18 @@ focus_tree = {
 		}
 		x = 32
 		y = 11
-
 	}
 	focus = {
 		id = SUI_electronic_goods
 		icon = GFX_focus_SUI_electronic_goods
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_gacha_economics
 		}
@@ -1316,19 +1282,18 @@ focus_tree = {
 		}
 		x = 31
 		y = 12
-
 	}
 	focus = {
 		id = SUI_concert_recovery
 		icon = GFX_focus_SUI_concert_recovery
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_deal_with_depression
 		}
@@ -1340,19 +1305,18 @@ focus_tree = {
 		}
 		x = 37
 		y = 10
-
 	}
 	focus = {
 		id = SUI_idol_step
 		icon = GFX_focus_SUI_idol_step
-		cost = 7.00
+		cost = 7
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_concert_recovery
 		}
@@ -1361,40 +1325,37 @@ focus_tree = {
 		}
 		x = 37
 		y = 11
-
 	}
 	focus = {
 		id = SUI_export_music
 		icon = GFX_focus_SUI_export_music
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_concert_recovery
 		}
 		completion_reward = {
-			
 		}
 		x = 39
 		y = 11
-
 	}
 	focus = {
 		id = SUI_international_hoshiyomi_migration
 		icon = GFX_focus_SUI_international_hoshiyomi_migration
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_idol_step
 		}
@@ -1406,19 +1367,18 @@ focus_tree = {
 		}
 		x = 38
 		y = 12
-
 	}
 	focus = {
 		id = SUI_suicopath_policy
 		icon = GFX_focus_SUI_suicopath_policy
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_rally_hoshiyomi
 		}
@@ -1432,19 +1392,18 @@ focus_tree = {
 		}
 		x = 41
 		y = 9
-
 	}
 	focus = {
 		id = SUI_public_broadcasting
 		icon = GFX_focus_SUI_public_broadcasting
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_suicopath_policy
 		}
@@ -1457,19 +1416,18 @@ focus_tree = {
 		}
 		x = 41
 		y = 10
-
 	}
 	focus = {
 		id = SUI_ensemble_fans
 		icon = GFX_focus_SUI_ensemble_fans
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_suicopath_policy
 		}
@@ -1477,23 +1435,22 @@ focus_tree = {
 			add_timed_idea = {
 				idea = SUI_ensemble_fans
 				days = 365
-				}
 			}
+		}
 		x = 43
 		y = 10
-
 	}
 	focus = {
 		id = SUI_youth_division
 		icon = GFX_focus_SUI_youth_division
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_public_broadcasting
 		}
@@ -1509,19 +1466,18 @@ focus_tree = {
 		}
 		x = 42
 		y = 11
-
 	}
 	focus = {
 		id = SUI_radio_personality
 		icon = GFX_focus_SUI_radio_personality
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_youth_division
 		}
@@ -1533,19 +1489,18 @@ focus_tree = {
 		}
 		x = 41
 		y = 12
-
 	}
 	focus = {
 		id = SUI_a_few_reasons_we_love_suisei
 		icon = GFX_focus_SUI_a_few_reasons_we_love_suisei
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_youth_division
 		}
@@ -1557,19 +1512,18 @@ focus_tree = {
 		}
 		x = 43
 		y = 12
-
 	}
 	focus = {
 		id = SUI_orderly_blood_type
 		icon = GFX_focus_SUI_orderly_blood_type
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_radio_personality
 		}
@@ -1585,26 +1539,24 @@ focus_tree = {
 		}
 		x = 42
 		y = 13
-
 	}
 	focus = {
 		id = SUI_annex_miko
 		icon = GFX_focus_SUI_annex_miko
-		cost = 8.00
-		
+		cost = 8
 		prerequisite = {
 			focus = SUI_resistance_diplomacy
 		}
-			offset = {
+		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		completion_reward = {
 			SUI = {
@@ -1619,25 +1571,24 @@ focus_tree = {
 		}
 		x = 44
 		y = 3
-
 	}
 	focus = {
 		id = SUI_encourage_miko
 		icon = GFX_focus_SUI_encourage_miko
-		cost = 4.00
+		cost = 4
 		prerequisite = {
 			focus = SUI_resistance_diplomacy
 		}
-			offset = {
+		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		completion_reward = {
 			MIK = {
@@ -1653,25 +1604,24 @@ focus_tree = {
 		}
 		x = 46
 		y = 3
-
 	}
 	focus = {
 		id = SUI_encourage_pekora
 		icon = GFX_focus_SUI_encourage_pekora
-		cost = 4.00
+		cost = 4
 		prerequisite = {
 			focus = SUI_resistance_diplomacy
-		}		
+		}
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		completion_reward = {
 			PEK = {
@@ -1687,22 +1637,21 @@ focus_tree = {
 		}
 		x = 48
 		y = 3
-
 	}
 	focus = {
 		id = SUI_annex_usagi
 		icon = GFX_focus_SUI_annex_usagi
-		cost = 8.00
-			offset = {
+		cost = 8
+		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		prerequisite = {
 			focus = SUI_resistance_diplomacy
@@ -1720,22 +1669,21 @@ focus_tree = {
 		}
 		x = 50
 		y = 3
-
 	}
 	focus = {
 		id = SUI_anti_yagoo_bulwark
 		icon = GFX_focus_SUI_anti_yagoo_bulwark
-		cost = 10.00
-			offset = {
+		cost = 10
+		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		prerequisite = {
 			focus = SUI_encourage_pekora
@@ -1748,22 +1696,21 @@ focus_tree = {
 		}
 		x = 47
 		y = 4
-
 	}
 	focus = {
 		id = SUI_annex_watson
 		icon = GFX_focus_SUI_annex_watson
-		cost = 8.00
-				offset = {
+		cost = 8
+		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		completion_reward = {
 			SUI = {
@@ -1778,28 +1725,27 @@ focus_tree = {
 		}
 		x = 46
 		y = 5
-
 	}
 	focus = {
 		id = SUI_meticulous_training
 		icon = GFX_focus_SUI_meticulous_training
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -1808,8 +1754,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -1826,28 +1772,27 @@ focus_tree = {
 		}
 		x = 50
 		y = 7
-
 	}
 	focus = {
 		id = SUI_absolute_fidelity
 		icon = GFX_focus_SUI_absolute_fidelity
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -1856,8 +1801,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -1878,28 +1823,27 @@ focus_tree = {
 		}
 		x = 52
 		y = 7
-
 	}
 	focus = {
 		id = SUI_suicopath_army
 		icon = GFX_focus_SUI_suicioath_army
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -1908,8 +1852,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -1929,12 +1873,11 @@ focus_tree = {
 		}
 		x = 47
 		y = 8
-
 	}
 	focus = {
 		id = SUI_shock_units
 		icon = GFX_focus_SUI_shock_units
-		cost = 8.00
+		cost = 8
 		available = {
 			has_idea = SUI_suicopath_military
 		}
@@ -1944,16 +1887,16 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -1962,8 +1905,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -1994,7 +1937,6 @@ focus_tree = {
 		}
 		x = 45
 		y = 9
-
 	}
 	focus = {
 		id = SUI_shock_and_awe
@@ -2008,17 +1950,16 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
-		
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2027,8 +1968,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2051,7 +1992,7 @@ focus_tree = {
 				category = artillery
 			}
 		}
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_suicopath_army
 		}
@@ -2060,28 +2001,27 @@ focus_tree = {
 		}
 		x = 49
 		y = 9
-
 	}
 	focus = {
 		id = SUI_land_air_coordination
 		icon = GFX_focus_SUI_land_coordination
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2090,8 +2030,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2120,28 +2060,27 @@ focus_tree = {
 		}
 		x = 47
 		y = 10
-
 	}
 	focus = {
 		id = SUI_suicopath_artillery
 		icon = GFX_focus_SUI_suiciopath_artillery
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2150,8 +2089,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2166,36 +2105,34 @@ focus_tree = {
 				bonus = 1
 				uses = 2
 				category = artillery
-			}	
+			}
 		}
-
 		prerequisite = {
 			focus = SUI_shock_and_awe
 		}
 		x = 49
 		y = 10
-
 	}
 	focus = {
 		id = SUI_suicopath_motorised
 		icon = GFX_focus_SUI_suicopath_motorised
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2204,8 +2141,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2227,28 +2164,27 @@ focus_tree = {
 		}
 		x = 45
 		y = 10
-
 	}
 	focus = {
 		id = SUI_terror_in_foes
 		icon = GFX_focus_SUI_terror_in_foes
-		cost = 0.00
+		cost = 0
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-							OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2257,8 +2193,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2276,22 +2212,21 @@ focus_tree = {
 		}
 		x = 47
 		y = 11
-
 	}
 	focus = {
 		id = SUI_annex_subaru
 		icon = GFX_focus_SUI_annex_subaru
-		cost = 8.00
-				offset = {
+		cost = 8
+		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = communism
-				has_government = pro_resistance_nationalism
+				OR = {
+					has_government = communism
+					has_government = pro_resistance_nationalism
+				}
 			}
-		  }
 		}
 		prerequisite = {
 			focus = SUI_anti_yagoo_bulwark
@@ -2306,28 +2241,27 @@ focus_tree = {
 		}
 		x = 48
 		y = 5
-
 	}
 	focus = {
 		id = SUI_strategic_destruction
 		icon = GFX_focus_SUI_strategic_destruction
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2336,8 +2270,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2371,28 +2305,27 @@ focus_tree = {
 		}
 		x = 49
 		y = 11
-
 	}
 	focus = {
 		id = SUI_meticulous_planning
 		icon = GFX_focus_SUI_meticulous_planning
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2401,8 +2334,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2413,7 +2346,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			SUI = {
-			add_ideas = SUI_efficient_general_staff
+				add_ideas = SUI_efficient_general_staff
 			}
 		}
 		prerequisite = {
@@ -2421,28 +2354,27 @@ focus_tree = {
 		}
 		x = 49
 		y = 12
-
 	}
 	focus = {
 		id = SUI_suicopath_navy
 		icon = GFX_focus_SUI_suicopath_navy
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2451,8 +2383,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2472,38 +2404,37 @@ focus_tree = {
 		}
 		x = 54
 		y = 8
-
 	}
 	focus = {
 		id = SUI_nice_port
 		icon = GFX_focus_SUI_nice_port
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2511,17 +2442,17 @@ focus_tree = {
 				has_country_flag = SUI_had_elections
 				has_government = communism
 			}
-		}	
+		}
 		completion_reward = {
 			735 = {
 				add_building_construction = {
-					type = naval_base 
+					type = naval_base
 					level = 3
 					instant_build = yes
-					province = 9909 
+					province = 9909
 				}
 				add_building_construction = {
-					type = dockyard  
+					type = dockyard
 					level = 3
 					instant_build = yes
 					#province = 9909 
@@ -2534,28 +2465,27 @@ focus_tree = {
 		}
 		x = 53
 		y = 9
-
 	}
 	focus = {
 		id = SUI_tropical_goods_recovery_europe
 		icon = GFX_focus_SUI_tropical_goods_recovery_europe
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2564,8 +2494,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2586,28 +2516,27 @@ focus_tree = {
 		}
 		x = 56
 		y = 2
-
 	}
 	focus = {
 		id = SUI_chocolate_artisans
 		icon = GFX_focus_SUI_chocolate_artisans
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-			has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2616,8 +2545,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2637,28 +2566,27 @@ focus_tree = {
 		}
 		x = 55
 		y = 3
-
 	}
 	focus = {
 		id = SUI_tropical_goods_manufacturing
 		icon = GFX_focus_SUI_tropical_goods_manufacturing
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -2667,8 +2595,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2685,27 +2613,26 @@ focus_tree = {
 		}
 		x = 57
 		y = 3
-
 	}
 	focus = {
 		id = SUI_expand_port_facilities
 		icon = GFX_focus_SUI_expand_port_facilities
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 				has_country_flag = SUI_had_elections
 			}
 		}
@@ -2715,8 +2642,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2752,12 +2679,11 @@ focus_tree = {
 		}
 		x = 56
 		y = 4
-
 	}
 	focus = {
 		id = SUI_foreign_demand
 		icon = GFX_focus_SUI_foreign_demand
-		cost = 8.00
+		cost = 8
 		available = {
 			has_idea = free_trade
 		}
@@ -2767,26 +2693,26 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2806,15 +2732,14 @@ focus_tree = {
 		}
 		x = 54
 		y = 5
-
 	}
 	focus = {
 		id = SUI_local_demand
 		icon = GFX_focus_SUI_local_demand
-		cost = 8.00
+		cost = 8
 		available = {
 			NOT = {
-			has_idea = free_trade
+				has_idea = free_trade
 			}
 		}
 		offset = {
@@ -2823,26 +2748,26 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2862,38 +2787,37 @@ focus_tree = {
 		}
 		x = 56
 		y = 5
-
 	}
 	focus = {
 		id = SUI_renewed_efforts
 		icon = GFX_focus_SUI_renewed_efforts
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2911,38 +2835,37 @@ focus_tree = {
 		}
 		x = 55
 		y = 6
-
 	}
 	focus = {
 		id = SUI_expand_port_marseille
 		icon = GFX_focus_SUI_expand_port_marseille
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -2954,13 +2877,13 @@ focus_tree = {
 		completion_reward = {
 			859 = {
 				add_building_construction = {
-					type = naval_base 
+					type = naval_base
 					level = 3
 					instant_build = yes
-					province = 11834   
+					province = 11834
 				}
 				add_building_construction = {
-					type = dockyard  
+					type = dockyard
 					level = 3
 					instant_build = yes
 					#province = 9909 
@@ -2973,28 +2896,27 @@ focus_tree = {
 		}
 		x = 55
 		y = 9
-
 	}
 	focus = {
 		id = SUI_coastal_defense
 		icon = GFX_focus_SUI_coastal_defense
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -3003,8 +2925,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3016,7 +2938,7 @@ focus_tree = {
 		completion_reward = {
 			859 = {
 				set_building_level = {
-					type = coastal_bunker 
+					type = coastal_bunker
 					level = 3
 					province = {
 						all_provinces = yes
@@ -3034,38 +2956,37 @@ focus_tree = {
 		}
 		x = 56
 		y = 10
-
 	}
 	focus = {
 		id = SUI_convoy_raiding
 		icon = GFX_focus_SUI_convoy_raiding
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3096,38 +3017,37 @@ focus_tree = {
 		}
 		x = 52
 		y = 10
-
 	}
 	focus = {
 		id = SUI_unrestricted_submarine_warfare
 		icon = GFX_focus_SUI_unrestricted_submarine_warfare
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3137,7 +3057,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_tech_bonus= {
+			add_tech_bonus = {
 				name = subs_doctrine
 				bonus = 1
 				uses = 2
@@ -3155,38 +3075,37 @@ focus_tree = {
 		}
 		x = 51
 		y = 11
-
 	}
 	focus = {
 		id = SUI_scourge_of_mediterranean
 		icon = GFX_focus_SUI_scourge_of_mediterranean
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3196,7 +3115,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_tech_bonus= {
+			add_tech_bonus = {
 				name = subs_doctrine
 				bonus = 1
 				uses = 2
@@ -3209,38 +3128,37 @@ focus_tree = {
 		}
 		x = 53
 		y = 11
-
 	}
 	focus = {
 		id = SUI_coastal_forts
 		icon = GFX_focus_SUI_coastal_forts
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3256,7 +3174,7 @@ focus_tree = {
 					is_owned_by = SUI
 				}
 				set_building_level = {
-					type = coastal_bunker 
+					type = coastal_bunker
 					level = 3
 					province = {
 						all_provinces = yes
@@ -3271,38 +3189,37 @@ focus_tree = {
 		}
 		x = 57
 		y = 11
-
 	}
 	focus = {
 		id = SUI_light_ships
 		icon = GFX_focus_SUI_light_ships
-		cost = 0.00
+		cost = 0
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3324,38 +3241,37 @@ focus_tree = {
 		}
 		x = 55
 		y = 11
-
 	}
 	focus = {
 		id = SUI_expand_coastal_garrisons
 		icon = GFX_focus_SUI_expand_coastal_garrisons
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3372,13 +3288,25 @@ focus_tree = {
 				priority = 0
 				template_counter = 0
 				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					cavalry = { x = 0 y = 2 }
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					cavalry = {
+						x = 0
+						y = 2
+					}
 				}
-				support = { 
-					military_police = { x = 0 y = 0 }
-				} 
+				support = {
+					military_police = {
+						x = 0
+						y = 0
+					}
+				}
 			}
 		}
 		prerequisite = {
@@ -3389,38 +3317,37 @@ focus_tree = {
 		}
 		x = 56
 		y = 12
-
 	}
 	focus = {
 		id = SUI_tropical_goods_recovery_africa
 		icon = GFX_focus_SUI_tropical_goods_recovery_africa
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3440,38 +3367,37 @@ focus_tree = {
 		}
 		x = 60
 		y = 2
-
 	}
 	focus = {
 		id = SUI_bolster_security
 		icon = GFX_focus_SUI_bolster_security
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3493,14 +3419,14 @@ focus_tree = {
 					remove_idea = sui_major_colonial_unrest
 					add_idea = sui_minor_colonial_unrest
 				}
-			else_if = {
-				limit = {
-					has_idea = sui_extreme_colonial_unrest
-				}
-				swap_ideas = {
-					remove_idea = sui_extreme_colonial_unrest
-					add_idea = sui_major_colonial_unrest
-				}
+				else_if = {
+					limit = {
+						has_idea = sui_extreme_colonial_unrest
+					}
+					swap_ideas = {
+						remove_idea = sui_extreme_colonial_unrest
+						add_idea = sui_major_colonial_unrest
+					}
 				}
 				else = {
 					swap_ideas = {
@@ -3515,38 +3441,37 @@ focus_tree = {
 		}
 		x = 59
 		y = 3
-
 	}
 	focus = {
 		id = SUI_suicopath_airforce
 		icon = GFX_focus_SUI_suicopath_airforce
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3577,38 +3502,37 @@ focus_tree = {
 		}
 		x = 61
 		y = 8
-
 	}
 	focus = {
 		id = SUI_suicopath_aces
 		icon = GFX_focus_SUI_suicopath_aces
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3623,7 +3547,7 @@ focus_tree = {
 				bonus = 0.4
 				uses = 1
 				category = cat_operational_integrity
-			}		
+			}
 		}
 		prerequisite = {
 			focus = SUI_suicopath_airforce
@@ -3633,38 +3557,37 @@ focus_tree = {
 		}
 		x = 59
 		y = 9
-
 	}
 	focus = {
 		id = SUI_ace_focus
 		icon = GFX_focus_SUI_ace_focus
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3681,46 +3604,45 @@ focus_tree = {
 				category = cat_operational_integrity
 			}
 			SUI = {
-			add_ideas = suicopath_aces
-			}		
+				add_ideas = suicopath_aces
+			}
 		}
 		prerequisite = {
 			focus = SUI_suicopath_aces
 		}
 		x = 59
 		y = 10
-
 	}
 	focus = {
 		id = SUI_protect_tade_routes
 		icon = GFX_focus_SUI_protect_trade_routes
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3746,28 +3668,27 @@ focus_tree = {
 		}
 		x = 61
 		y = 3
-
 	}
 	focus = {
 		id = SUI_goods_modern_methods
 		icon = GFX_focus_SUI_modern_methods
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
-			}
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
 		}
 		offset = {
@@ -3776,8 +3697,8 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3795,7 +3716,7 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = SUI_modernization_methods
 			add_to_variable = {
-				var = GLOBAL.tropical_goods_market 
+				var = GLOBAL.tropical_goods_market
 				value = 5
 			}
 			973 = {
@@ -3809,38 +3730,37 @@ focus_tree = {
 		}
 		x = 60
 		y = 4
-
 	}
 	focus = {
 		id = SUI_quality_wood
 		icon = GFX_focus_SUI_quality_wood
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3849,9 +3769,9 @@ focus_tree = {
 				has_government = communism
 			}
 		}
-		completion_reward= {
+		completion_reward = {
 			SUI = {
-			add_ideas = suisei_colonial_plywood
+				add_ideas = suisei_colonial_plywood
 			}
 		}
 		prerequisite = {
@@ -3859,38 +3779,37 @@ focus_tree = {
 		}
 		x = 58
 		y = 5
-
 	}
 	focus = {
 		id = SUI_palm_oil_plantations
 		icon = GFX_focus_SUI_palm_oil_plantations
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3916,38 +3835,37 @@ focus_tree = {
 		}
 		x = 60
 		y = 5
-
 	}
 	focus = {
 		id = SUI_quality_rubber
 		icon = GFX_focus_SUI_quality_rubber
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-			offset = {
+		}
+		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -3974,38 +3892,37 @@ focus_tree = {
 		}
 		x = 62
 		y = 5
-
 	}
 	focus = {
 		id = SUI_support_colonial_ventures
 		icon = GFX_focus_SUI_support_colonial_ventures
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -4029,38 +3946,37 @@ focus_tree = {
 		}
 		x = 60
 		y = 6
-
 	}
 	focus = {
 		id = SUI_aerial_dominance
 		icon = GFX_focus_SUI_aerial_dominance
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -4078,45 +3994,44 @@ focus_tree = {
 				bonus = 1
 				uses = 1
 				category = cat_battlefield_support
-			}		
+			}
 		}
 		mutually_exclusive = {
 			focus = SUI_suicopath_aces
 		}
 		x = 63
 		y = 9
-
 	}
 	focus = {
 		id = SUI_cheap_planes
 		icon = GFX_focus_SUI_cheap_planes
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -4136,27 +4051,24 @@ focus_tree = {
 		}
 		x = 62
 		y = 10
-
 	}
 	focus = {
 		id = SUI_continue_recovery_plan
 		icon = GFX_focus_SUI_continue_recovery_plan
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_pro_yagoo_coalition_wins
 		}
 		completion_reward = {
 			add_stability = 0.05
-
 		}
 		x = 9
 		y = 7
-
 	}
 	focus = {
 		id = SUI_rejoin_lhs
 		icon = GFX_focus_SUI_rejoin_lhs
-		cost = 7.00
+		cost = 7
 		prerequisite = {
 			focus = SUI_continue_recovery_plan
 		}
@@ -4175,12 +4087,11 @@ focus_tree = {
 		}
 		x = 2
 		y = 8
-
 	}
 	focus = {
 		id = SUI_lhs_loan
 		icon = GFX_focus_SUI_lhs_loan
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_rejoin_lhs
 		}
@@ -4192,12 +4103,11 @@ focus_tree = {
 		}
 		x = 3
 		y = 9
-
 	}
 	focus = {
 		id = SUI_encourage_lhs_investment
 		icon = GFX_focus_SUI_encourage_lhs_investment
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_rejoin_lhs
 		}
@@ -4210,19 +4120,18 @@ focus_tree = {
 			}
 			SUI = {
 				add_offsite_building = {
-					type = industrial_complex 
+					type = industrial_complex
 					level = 3
 				}
 			}
 		}
 		x = 1
 		y = 9
-
 	}
 	focus = {
 		id = SUI_tackle_unemployment
 		icon = GFX_focus_SUI_tackle_unemployment
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_continue_recovery_plan
 		}
@@ -4230,17 +4139,17 @@ focus_tree = {
 			SUI = {
 				random_owned_state = {
 					add_building_construction = {
-						type = infrastructure     
+						type = infrastructure
 						level = 2
 						instant_build = yes
 					}
 					add_building_construction = {
-						type = industrial_complex     
+						type = industrial_complex
 						level = 1
 						instant_build = yes
 					}
 					add_building_construction = {
-						type = dockyard                
+						type = dockyard
 						level = 1
 						instant_build = yes
 					}
@@ -4249,12 +4158,11 @@ focus_tree = {
 		}
 		x = 5
 		y = 8
-
 	}
 	focus = {
 		id = SUI_deladier_plan
 		icon = GFX_focus_SUI_deladier_plan
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_tackle_unemployment
 		}
@@ -4262,16 +4170,15 @@ focus_tree = {
 			add_timed_idea = {
 				idea = SUI_deladier_plan
 				days = 360
-			} 
+			}
 		}
 		x = 5
 		y = 9
-
 	}
 	focus = {
 		id = SUI_national_industry
 		icon = GFX_focus_SUI_national_industry
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_deladier_plan
 		}
@@ -4279,26 +4186,25 @@ focus_tree = {
 			SUI = {
 				random_owned_state = {
 					add_building_construction = {
-						type = arms_factory     
+						type = arms_factory
 						level = 2
 						instant_build = yes
 					}
 					add_building_construction = {
-						type = industrial_complex     
+						type = industrial_complex
 						level = 1
 						instant_build = yes
 					}
 				}
-			}			
+			}
 		}
 		x = 5
 		y = 10
-
 	}
 	focus = {
 		id = SUI_increase_productivity
 		icon = GFX_focus_SUI_increase_productivity
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_deladier_plan
 		}
@@ -4307,42 +4213,39 @@ focus_tree = {
 		}
 		x = 7
 		y = 10
-
 	}
 	focus = {
 		id = SUI_marseille_port
 		icon = GFX_focus_SUI_marseille_port
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_continue_recovery_plan
 		}
 		completion_reward = {
 			859 = {
 				add_building_construction = {
-					type = dockyard     
+					type = dockyard
 					level = 3
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = naval_base     
+					type = naval_base
 					level = 2
 					instant_build = yes
-					province = { 
+					province = {
 						limit_to_coastal = yes
 						all_provinces = yes
 					}
-
 				}
 			}
 		}
 		x = 10
 		y = 8
-
 	}
 	focus = {
 		id = SUI_support_shipping_industry
 		icon = GFX_focus_SUI_support_shipping_industry
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_marseille_port
 		}
@@ -4353,19 +4256,18 @@ focus_tree = {
 		}
 		x = 9
 		y = 9
-
 	}
 	focus = {
 		id = SUI_civilian_factory_investment
 		icon = GFX_focus_SUI_civilian_factory_investment
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_marseille_port
 		}
 		completion_reward = {
 			859 = {
 				add_building_construction = {
-					type = industrial_complex     
+					type = industrial_complex
 					level = 3
 					instant_build = yes
 				}
@@ -4377,12 +4279,11 @@ focus_tree = {
 		}
 		x = 11
 		y = 9
-
 	}
 	focus = {
 		id = SUI_lhs_recovery_plan
 		icon = GFX_focus_SUI_lhs_recovery_plan
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_lhs_loan
 		}
@@ -4394,12 +4295,11 @@ focus_tree = {
 		}
 		x = 2
 		y = 10
-
 	}
 	focus = {
 		id = SUI_restart_colonial_trade
 		icon = GFX_focus_SUI_restart_colonial_trade
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_support_shipping_industry
 		}
@@ -4416,12 +4316,11 @@ focus_tree = {
 		}
 		x = 9
 		y = 10
-
 	}
 	focus = {
 		id = SUI_heavy_industry_invetment
 		icon = GFX_focus_SUI_heavy_industry_investment
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_civilian_factory_investment
 		}
@@ -4445,12 +4344,11 @@ focus_tree = {
 		}
 		x = 11
 		y = 10
-
 	}
 	focus = {
 		id = SUI_final_civilian_industry_push
 		icon = GFX_focus_SUI_final_civilian_industry_push
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_heavy_industry_invetment
 		}
@@ -4476,12 +4374,11 @@ focus_tree = {
 		}
 		x = 10
 		y = 11
-
 	}
 	focus = {
 		id = SUI_efficiency_ethos
 		icon = GFX_focus_SUI_efficiency_ethos
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_increase_productivity
 		}
@@ -4493,12 +4390,11 @@ focus_tree = {
 		}
 		x = 6
 		y = 11
-
 	}
 	focus = {
 		id = SUI_full_depression_recovery
 		icon = GFX_focus_SUI_full_depression_recovery
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_efficiency_ethos
 		}
@@ -4509,21 +4405,22 @@ focus_tree = {
 			focus = SUI_lhs_recovery_plan
 		}
 		completion_reward = {
-			remove_ideas = { great_depression_suisei
-			 great_depression_suisei_one 
-			 great_depression_suisei_two
-			 great_depression_suisei_three
-			 great_depression_suisei_four}
-			 add_stability = 0.05
+			remove_ideas = {
+				great_depression_suisei
+				great_depression_suisei_one
+				great_depression_suisei_two
+				great_depression_suisei_three
+				great_depression_suisei_four
+			}
+			add_stability = 0.05
 		}
 		x = 7
 		y = 12
-
 	}
 	focus = {
 		id = SUI_formalize_lhs_alliance
 		icon = GFX_focus_SUI_formalize_lhs_alliance
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_full_depression_recovery
 		}
@@ -4535,12 +4432,11 @@ focus_tree = {
 		}
 		x = 5
 		y = 13
-
 	}
 	focus = {
 		id = SUI_kyou_mo_kawaii
 		icon = GFX_focus_SUI_kyou_mo_kawaii
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_full_depression_recovery
 		}
@@ -4549,12 +4445,11 @@ focus_tree = {
 		}
 		x = 9
 		y = 13
-
 	}
 	focus = {
 		id = SUI_expand_state_industry
 		icon = GFX_focus_SUI_expand_state_industry
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_revolutionary_economics
 		}
@@ -4577,12 +4472,11 @@ focus_tree = {
 		}
 		x = 17
 		y = 9
-
 	}
 	focus = {
 		id = SUI_heavy_industry
 		icon = GFX_focus_SUI_heavy_industry
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_raise_minimum_wage
 		}
@@ -4613,12 +4507,11 @@ focus_tree = {
 		}
 		x = 16
 		y = 10
-
 	}
 	focus = {
 		id = SUI_nationalize_failing_businesses
 		icon = GFX_focus_SUI_nationalize_failing_businesses
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_expand_state_industry
 		}
@@ -4631,12 +4524,11 @@ focus_tree = {
 		}
 		x = 18
 		y = 10
-
 	}
 	focus = {
 		id = SUI_welfare_hard_times
 		icon = GFX_focus_SUI_welfare_hard_times
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_raise_minimum_wage
 		}
@@ -4655,12 +4547,11 @@ focus_tree = {
 		}
 		x = 14
 		y = 10
-
 	}
 	focus = {
 		id = SUI_assist_pensioners
 		icon = GFX_focus_SUI_assist_pensioners
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_welfare_hard_times
 		}
@@ -4673,16 +4564,15 @@ focus_tree = {
 			add_to_variable = {
 				var = SUI.standard_of_living_rev
 				value = 35
-			}		
+			}
 		}
 		x = 14
 		y = 11
-
 	}
 	focus = {
 		id = SUI_nationalize_banks
 		icon = GFX_focus_SUI_nationalize_banks
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_heavy_industry
 		}
@@ -4706,12 +4596,11 @@ focus_tree = {
 		}
 		x = 17
 		y = 11
-
 	}
 	focus = {
 		id = SUI_peoples_car
 		icon = GFX_focus_SUI_peoples_car
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_nationalize_banks
 		}
@@ -4727,12 +4616,11 @@ focus_tree = {
 		}
 		x = 15
 		y = 12
-
 	}
 	focus = {
 		id = SUI_modernization_investments
 		icon = GFX_focus_SUI_modernization_investment
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_nationalize_banks
 		}
@@ -4755,12 +4643,11 @@ focus_tree = {
 		}
 		x = 17
 		y = 12
-
 	}
 	focus = {
 		id = SUI_work_lottery
 		icon = GFX_focus_SUI_work_lottery
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_nationalize_banks
 		}
@@ -4789,12 +4676,11 @@ focus_tree = {
 		}
 		x = 19
 		y = 12
-
 	}
 	focus = {
 		id = SUI_expand_public_works
 		icon = GFX_focus_SUI_expand_public_works
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_modernization_investments
 		}
@@ -4824,16 +4710,15 @@ focus_tree = {
 					level = 3
 				}
 				add_extra_state_shared_building_slots = 2
-			}			
+			}
 		}
 		x = 17
 		y = 13
-
 	}
 	focus = {
 		id = SUI_resistance_cooperation
 		icon = GFX_focus_SUI_resistance_cooperation
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_expand_public_works
 			focus = SUI_traditional_economics
@@ -4846,12 +4731,11 @@ focus_tree = {
 		}
 		x = 21
 		y = 14
-
 	}
 	focus = {
 		id = SUI_increase_resistance_trade
 		icon = GFX_focus_SUI_increase_resistance_trade
-		cost = 8.00
+		cost = 8
 		prerequisite = {
 			focus = SUI_resistance_cooperation
 		}
@@ -4865,60 +4749,62 @@ focus_tree = {
 		}
 		x = 21
 		y = 15
-
 	}
 	focus = {
 		id = SUI_full_recovery
 		icon = GFX_focus_SUI_full_recovery
-		cost = 10.00
+		cost = 10
 		prerequisite = {
 			focus = SUI_increase_resistance_trade
 		}
 		completion_reward = {
-			remove_ideas = { great_depression_suisei
-			 great_depression_suisei_one 
-			 great_depression_suisei_two
-			 great_depression_suisei_three
-			 great_depression_suisei_four}
-			 add_stability = 0.05
+			remove_ideas = {
+				great_depression_suisei
+				great_depression_suisei_one
+				great_depression_suisei_two
+				great_depression_suisei_three
+				great_depression_suisei_four
+			}
+			add_stability = 0.05
 		}
 		x = 21
 		y = 16
-
 	}
 	focus = {
 		id = SUI_independent_market
 		icon = GFX_focus_SUI_independent_market
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_deal_with_depression
 		}
 		completion_reward = {
-			remove_ideas = { export_focus free_trade  }
+			remove_ideas = {
+				export_focus
+				free_trade
+			}
 			add_ideas = limited_exports
 		}
 		x = 35
 		y = 10
-
 	}
 	focus = {
 		id = SUI_self_sufficiency
 		icon = GFX_focus_SUI_self_sufficiency
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_independent_market
 		}
@@ -4927,19 +4813,18 @@ focus_tree = {
 		}
 		x = 35
 		y = 11
-
 	}
 	focus = {
 		id = SUI_support_gambling
 		icon = GFX_focus_SUI_support_gambling
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_gacha_economics
 		}
@@ -4960,19 +4845,18 @@ focus_tree = {
 		}
 		x = 33
 		y = 12
-
 	}
 	focus = {
 		id = SUI_suisei_many_talents
 		icon = GFX_focus_SUI_suisei_many_talents
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_self_sufficiency
 		}
@@ -4984,19 +4868,18 @@ focus_tree = {
 		}
 		x = 35
 		y = 12
-
 	}
 	focus = {
 		id = SUI_full_suisei_recovery
 		icon = GFX_focus_SUI_full_suisei_recovery
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_suisei_many_talents
 		}
@@ -5010,32 +4893,35 @@ focus_tree = {
 			focus = SUI_electronic_goods
 		}
 		completion_reward = {
-			remove_ideas = { great_depression_suisei
-			great_depression_suisei_one 
-			great_depression_suisei_two
-			great_depression_suisei_three
-			great_depression_suisei_four}
+			remove_ideas = {
+				great_depression_suisei
+				great_depression_suisei_one
+				great_depression_suisei_two
+				great_depression_suisei_three
+				great_depression_suisei_four
+			}
 			add_stability = 0.05
 		}
 		x = 35
 		y = 13
-
 	}
 	focus = {
 		id = SUI_suisei_la_reine
 		icon = GFX_focus_SUI_suisei_la_reine
-		cost = 0.00
-
+		cost = 2
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  create_faction = suisei_monarchy_alliance
-		  }
+		}
+		completion_reward = {
+			create_faction = suisei_monarchy_alliance
+			country_event = technique.1
+			#France's Natural borders
+			SUI_france_natural_borders_core = yes
+		}
 		prerequisite = {
 			focus = SUI_orderly_blood_type
 		}
@@ -5044,12 +4930,11 @@ focus_tree = {
 		}
 		x = 39
 		y = 14
-
 	}
 	focus = {
 		id = SUI_war_france
 		icon = GFX_focus_SUI_war_france
-		cost = 8.00
+		cost = 8
 		allow_branch = {
 			has_completed_focus = SUI_suisei_la_reine
 		}
@@ -5059,24 +4944,38 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = FRA
-				  type = annex_everything
-			  }
-		  }
+		}
+		bypass = {
+			OR = {
+				FRA = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = FRA
+				}
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = FRA
+				type = annex_everything
+			}
+		}
 		prerequisite = {
 			focus = SUI_suisei_la_reine
 		}
 		x = 40
 		y = 15
-
 	}
 	focus = {
 		id = SUI_independent_pact_miko
 		icon = GFX_focus_SUI_independent_pact_miko
-		cost = 8.00
+		cost = 8
 		allow_branch = {
 			has_completed_focus = SUI_suisei_la_reine
 		}
@@ -5086,34 +4985,32 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  country_event = suisei.37
-		  }
+		}
+		completion_reward = {
+			country_event = suisei.37
+		}
 		prerequisite = {
 			focus = SUI_suisei_la_reine
 		}
-		
 		x = 38
 		y = 15
-
 	}
 	focus = {
 		id = SUI_peko_suisei_alliance
 		icon = GFX_focus_SUI_peko_suisei_alliance
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  PEK = {
-				  country_event = pekora.1
-			  }
-		  }
+		}
+		completion_reward = {
+			PEK = {
+				country_event = pekora.1
+			}
+		}
 		prerequisite = {
 			focus = SUI_war_france
 		}
@@ -5122,111 +5019,112 @@ focus_tree = {
 		}
 		x = 39
 		y = 16
-
 	}
 	focus = {
 		id = SUI_foie_gras
 		icon = GFX_focus_SUI_foie_gras
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  bypass = {
+		}
+		bypass = {
 			SUI = {
 				OR = {
-				has_war_with = SUB
-				is_puppet_of = SUB
-				SUB = {
-					is_puppet_of = SUI
-					is_subject_of = SUI
-				}
+					has_war_with = SUB
+					is_puppet_of = SUB
+					SUB = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
 				}
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = SUB
-				  type = puppet_wargoal_focus
-			  }
-		  }
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = SUB
+				type = puppet_wargoal_focus
+			}
+			SUI_dutch_cores = yes
+		}
 		prerequisite = {
 			focus = SUI_peko_suisei_alliance
 		}
 		x = 37
 		y = 17
-
 	}
 	focus = {
 		id = SUI_invade_kiarra
 		icon = GFX_focus_SUI_invade_kiara
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  bypass = {
+		}
+		bypass = {
 			SUI = {
 				OR = {
-				has_war_with = KIA
-				is_puppet_of = KIA
-				KIA = {
-					is_puppet_of = SUI
-					is_subject_of = SUI
-				}
+					has_war_with = KIA
+					is_puppet_of = KIA
+					KIA = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
 				}
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = KIA
-				  type = puppet_wargoal_focus
-			  }
-		  }
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = KIA
+				type = puppet_wargoal_focus
+			}
+		}
 		prerequisite = {
 			focus = SUI_peko_suisei_alliance
 		}
 		x = 41
 		y = 17
-
 	}
 	focus = {
 		id = SUI_invade_germany
 		icon = GFX_focus_SUI_invade_germany
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  bypass = {
+		}
+		bypass = {
 			SUI = {
 				OR = {
-				has_war_with = GER
-				is_puppet_of = GER
-				GER = {
-					OR = {
-					is_puppet_of = SUI
-					is_subject_of = SUI
+					has_war_with = GER
+					is_puppet_of = GER
+					GER = {
+						OR = {
+							is_puppet_of = SUI
+							is_subject_of = SUI
+							exists = no
+						}
 					}
 				}
-				}
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = GER
-				  type = puppet_wargoal_focus
-			  }
-		  }
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = GER
+				type = puppet_wargoal_focus
+			}
+		}
 		prerequisite = {
 			focus = SUI_invade_kiarra
 		}
@@ -5235,36 +5133,34 @@ focus_tree = {
 		}
 		x = 39
 		y = 18
-
 	}
 	focus = {
 		id = SUI_north_africa_plan
 		icon = GFX_focus_SUI_north_africa_plan
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  add_timed_idea = {
-				  idea = war_plan_peko
-				  days = 360
-			  }
-		  }
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = war_plan_peko
+				days = 360
+			}
+		}
 		prerequisite = {
 			focus = SUI_peko_suisei_alliance
 		}
 		x = 44
 		y = 17
-
 	}
 	focus = {
 		id = SUI_demand_libya_egypt
 		icon = GFX_focus_SUI_demand_libya_egypt
-		cost = 7.00
+		cost = 7
 		available = {
 			NOT = {
 				ALG = {
@@ -5275,7 +5171,7 @@ focus_tree = {
 		bypass = {
 			ALG = {
 				exists = yes
-			}			
+			}
 		}
 		offset = {
 			x = -22
@@ -5283,62 +5179,62 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  PEK = {
-				  country_event = pekora.4
-				  add_opinion_modifier = {
-					  target = SUI
-					  modifier = rejected_friendly_relations
-				  }
-			  }
-		  }
+		}
+		completion_reward = {
+			PEK = {
+				country_event = pekora.4
+				add_opinion_modifier = {
+					target = SUI
+					modifier = rejected_friendly_relations
+				}
+			}
+		}
 		prerequisite = {
 			focus = SUI_north_africa_plan
 		}
 		x = 44
 		y = 18
-
 	}
 	focus = {
 		id = SUI_rabbit_stew
 		icon = GFX_focus_SUI_rabbit_stew
-		cost = 15.00
+		cost = 15
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  bypass = {
-			  SUI = {
-				  OR = {
-				  has_war_with = PEK
-				  has_wargoal_against = PEK
-				  }
-			  }
-		  }
-		  completion_reward = {
+		}
+		bypass = {
+			SUI = {
+				OR = {
+					has_war_with = PEK
+					has_wargoal_against = PEK
+					PEK = {
+						exists = no
+					}
+				}
+			}
+		}
+		completion_reward = {
 			create_wargoal = {
 				target = PEK
 				type = puppet_wargoal_focus
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_demand_libya_egypt
 		}
 		x = 44
 		y = 19
-
 	}
 	focus = {
 		id = SUI_install_anemachi_italy
 		icon = GFX_focus_SUI_install_anemachi_italy
-		cost = 8.00
+		cost = 8
 		available = {
 			NOT = {
-
 			}
 		}
 		offset = {
@@ -5347,26 +5243,26 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  ANE = {
-				  add_state_core = 114
-				  add_state_core = 115
-				  add_state_core = 156
-				  add_state_core = 117
-				  add_state_core = 2
-				  add_state_core = 162
-				  add_state_core = 161
-				  add_state_core = 158
-				  add_state_core = 159
-				  add_state_core = 39
-				  add_state_core = 160
-			  }
-			  if ={
-				  limit = {
-					  has_dlc = "Together for Victory"
-				  }
-				  release_autonomy = {
+		}
+		completion_reward = {
+			ANE = {
+				add_state_core = 114
+				add_state_core = 115
+				add_state_core = 156
+				add_state_core = 117
+				add_state_core = 2
+				add_state_core = 162
+				add_state_core = 161
+				add_state_core = 158
+				add_state_core = 159
+				add_state_core = 39
+				add_state_core = 160
+			}
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				release_autonomy = {
 					target = ANE
 					autonomy_state = autonomy_puppet
 					freedom_level = 0.5
@@ -5374,70 +5270,76 @@ focus_tree = {
 				else = {
 					release_puppet = ANE
 				}
-			  }
-		  }
+			}
+		}
 		prerequisite = {
 			focus = SUI_rabbit_stew
 		}
 		x = 44
 		y = 20
-
 	}
 	focus = {
 		id = SUI_warplan_tspin
 		icon = GFX_focus_SUI_warplan_tspin
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  add_timed_idea = {
-				  idea = SUI_warplan_tspin
-				  days = 360
-			  }
-		  }
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SUI_warplan_tspin
+				days = 360
+			}
+		}
 		prerequisite = {
 			focus = SUI_independent_pact_miko
 		}
 		x = 34
 		y = 16
-
 	}
 	focus = {
 		id = SUI_demand_catalonia
 		icon = GFX_focus_SUI_demand_catalonia
-		cost = 7.00
+		cost = 7
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  MIK = {
-				  country_event = miko.5
-			  }
-		  }
+		}
+		completion_reward = {
+			MIK = {
+				country_event = miko.5
+			}
+		}
 		prerequisite = {
 			focus = SUI_warplan_tspin
 		}
 		x = 34
 		y = 17
-
 	}
 	focus = {
 		id = SUI_invade_miko
 		icon = GFX_focus_SUI_annex_miko
-		cost = 8.00
+		cost = 8
 		bypass = {
-			SUI = {
-				has_war_with = MIK
-				has_wargoal_against = MIK
+			OR = {
+				MIK = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = MIK
+				}
 			}
 		}
 		offset = {
@@ -5446,57 +5348,70 @@ focus_tree = {
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = MIK
-				  type = puppet_wargoal_focus
-			  }
-		  }
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = MIK
+				type = puppet_wargoal_focus
+			}
+		}
 		prerequisite = {
 			focus = SUI_demand_catalonia
 		}
 		x = 34
 		y = 18
-
 	}
 	focus = {
 		id = SUI_invade_portugal
 		icon = GFX_focus_SUI_invade_portugal
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  SUI = {
-			  create_wargoal = {
-				  target = POR
-				  type = puppet_wargoal_focus
-			  }
+		}
+		bypass = {
+			OR = {
+				POR = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = POR
+				}
 			}
-		  }
+		}
+		completion_reward = {
+			SUI = {
+				create_wargoal = {
+					target = POR
+					type = puppet_wargoal_focus
+				}
+			}
+		}
 		prerequisite = {
 			focus = SUI_invade_miko
 		}
 		x = 34
 		y = 19
-
 	}
 	focus = {
 		id = SUI_german_occupation
 		icon = GFX_focus_SUI_german_occupation
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_invade_germany
 		}
@@ -5511,19 +5426,18 @@ focus_tree = {
 		}
 		x = 38
 		y = 19
-
 	}
 	focus = {
 		id = SUI_azki_federation
 		icon = GFX_focus_SUI_azki_federation
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_invade_germany
 		}
@@ -5562,18 +5476,18 @@ focus_tree = {
 				add_state_core = 69
 				add_state_core = 58
 			}
-			if ={
+			if = {
 				limit = {
 					has_dlc = "Together for Victory"
 				}
 				release_autonomy = {
-				  target = AZK
-				  autonomy_state = autonomy_puppet
-				  freedom_level = 0.5
-			  }
-			  else = {
-				  release_puppet = AZK
-			  }
+					target = AZK
+					autonomy_state = autonomy_puppet
+					freedom_level = 0.5
+				}
+				else = {
+					release_puppet = AZK
+				}
 			}
 		}
 		mutually_exclusive = {
@@ -5581,96 +5495,152 @@ focus_tree = {
 		}
 		x = 40
 		y = 19
-
 	}
 	focus = {
 		id = SUI_revenge_knight_cup
 		icon = GFX_focus_SUI_revenge_knight_cup
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  SUI = {
-			  create_wargoal = {
-				  target = NOE
-				  type = puppet_wargoal_focus
-			  }
+		}
+		bypass = {
+			OR = {
+				NOE = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = NOE
+				}
 			}
-		  }
+		}
+		completion_reward = {
+			SUI = {
+				create_wargoal = {
+					target = NOE
+					type = puppet_wargoal_focus
+				}
+			}
+		}
 		prerequisite = {
 			focus = SUI_azki_federation
 			focus = SUI_german_occupation
 		}
 		x = 39
 		y = 20
-
 	}
 	focus = {
 		id = SUI_northern_campaign
 		icon = GFX_focus_SUI_northern_campaign
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = FBK
-				  type = puppet_wargoal_focus
-			  }
-		  }
+		}
+		bypass = {
+			OR = {
+				FBK = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = FBK
+				}
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = FBK
+				type = puppet_wargoal_focus
+			}
+		}
 		prerequisite = {
 			focus = SUI_revenge_knight_cup
 		}
 		x = 34
 		y = 21
-
 	}
 	focus = {
 		id = SUI_revenge_waterloo
 		icon = GFX_focus_SUI_revenge_waterloo
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  SUI = {
-				  create_wargoal = {
-					  target = WTS
-					  type = puppet_wargoal_focus
-				  }
-			  }
-		  }
+		}
+		bypass = {
+			OR = {
+				WTS = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = WTS
+				}
+			}
+		}
+		completion_reward = {
+			SUI = {
+				create_wargoal = {
+					target = WTS
+					type = puppet_wargoal_focus
+				}
+			}
+		}
 		prerequisite = {
 			focus = SUI_revenge_knight_cup
 		}
 		x = 37
 		y = 21
-
 	}
 	focus = {
 		id = SUI_bohemian_puppet
 		icon = GFX_focus_SUI_bohemian_puppet
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
+		bypass = {
+			OR = {
+				CZE = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = CZE
+				}
+			}
+		}
 		prerequisite = {
 			focus = SUI_revenge_knight_cup
 		}
@@ -5687,91 +5657,132 @@ focus_tree = {
 		}
 		x = 44
 		y = 21
-
 	}
 	focus = {
 		id = SUI_suiss_puppet
 		icon = GFX_focus_SUI_suiss_puppet
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
+		}
+		bypass = {
+			OR = {
+				SWI = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = SWI
+				}
+			}
+		}
+		completion_reward = {
 			create_wargoal = {
 				target = SWI
 				type = puppet_wargoal_focus
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_bohemian_puppet
 		}
 		x = 43
 		y = 22
-
 	}
 	focus = {
 		id = SUI_austrian_annex
 		icon = GFX_focus_SUI_austrian_annex
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = AUS
-				  type = puppet_wargoal_focus
-			  }
-		  }
+		}
+		bypass = {
+			OR = {
+				AUS = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = AUS
+				}
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = AUS
+				type = puppet_wargoal_focus
+			}
+		}
 		prerequisite = {
 			focus = SUI_bohemian_puppet
 		}
 		x = 45
 		y = 22
-
 	}
 	focus = {
 		id = SUI_cause_of_all_evils
 		icon = GFX_focus_SUI_cause_of_all_evils
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = YAG
-				  type = puppet_wargoal_focus
-			  }
-		  }
+		}
+		bypass = {
+			OR = {
+				YAG = {
+					OR = {
+						is_puppet_of = SUI
+						is_subject_of = SUI
+						exists = no
+					}
+					has_war_with = SUI
+				}
+				SUI = {
+					has_wargoal_against = YAG
+				}
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = YAG
+				type = puppet_wargoal_focus
+			}
+		}
 		prerequisite = {
 			focus = SUI_revenge_knight_cup
 		}
 		x = 40
 		y = 21
-
 	}
 	focus = {
 		id = SUI_aloe_proposition
 		icon = GFX_focus_SUI_aloe_proposition
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_cause_of_all_evils
 		}
@@ -5812,19 +5823,18 @@ focus_tree = {
 		}
 		x = 41
 		y = 22
-
 	}
 	focus = {
 		id = SUI_sora_offer
 		icon = GFX_focus_SUI_sora_offer
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_cause_of_all_evils
 		}
@@ -5860,30 +5870,29 @@ focus_tree = {
 							country_event = suisei.65
 						}
 					}
-				}	
+				}
 			}
 		}
 		x = 39
 		y = 22
-
 	}
 	focus = {
 		id = SUI_take_british_states
 		icon = GFX_focus_SUI_take_british_isles
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
-		  completion_reward = {
-			  create_wargoal = {
-				  target = ENG
-				  type = annex_everything
-			  }
-			  create_wargoal = {
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = ENG
+				type = annex_everything
+			}
+			create_wargoal = {
 				target = IRE
 				type = annex_everything
 			}
@@ -5891,25 +5900,24 @@ focus_tree = {
 				target = SCO
 				type = annex_everything
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_revenge_waterloo
 		}
 		x = 37
 		y = 22
-
 	}
 	focus = {
 		id = SUI_puppet_scandinavia
 		icon = GFX_focus_SUI_puppet_scandinavia
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_northern_campaign
 		}
@@ -5930,19 +5938,18 @@ focus_tree = {
 		}
 		x = 34
 		y = 22
-
 	}
 	focus = {
 		id = SUI_suicopath_empress
 		icon = GFX_focus_SUI_suicopath_empress
-		cost = 8.00
+		cost = 8
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		prerequisite = {
 			focus = SUI_aloe_proposition
 		}
@@ -5968,38 +5975,37 @@ focus_tree = {
 		}
 		x = 40
 		y = 23
-
 	}
 	focus = {
 		id = SUI_suicopath_submarines
 		icon = GFX_focus_SUI_suicopath_submarines
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -6030,38 +6036,37 @@ focus_tree = {
 		}
 		x = 52
 		y = 12
-
 	}
 	focus = {
 		id = SUI_shock_tanks
 		icon = GFX_focus_SUI_shock_tanks
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -6083,38 +6088,37 @@ focus_tree = {
 		}
 		x = 45
 		y = 11
-
 	}
 	focus = {
 		id = SUI_blitz_doctrine
 		icon = GFX_focus_SUI_blitz_doctrine
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -6133,13 +6137,13 @@ focus_tree = {
 			add_tech_bonus = {
 				name = mobile_war
 				bonus = 1
-				uses  =2
+				uses = 2
 				category = cat_mobile_warfare
 			}
 			add_tech_bonus = {
 				name = air_support
 				bonus = 0.4
-				uses  =2
+				uses = 2
 				category = light_air
 			}
 		}
@@ -6148,38 +6152,37 @@ focus_tree = {
 		}
 		x = 45
 		y = 12
-
 	}
 	focus = {
 		id = SUI_most_feared_army
 		icon = GFX_focus_SUI_most_feared_army
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-										OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -6190,7 +6193,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			SUI = {
-			add_ideas = psycho_brigades
+				add_ideas = psycho_brigades
 			}
 			add_war_support = 0.05
 		}
@@ -6200,38 +6203,37 @@ focus_tree = {
 		}
 		x = 47
 		y = 13
-
 	}
 	focus = {
 		id = SUI_comet_fighters
 		icon = GFX_focus_SUI_comet_fighters
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}	
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -6243,11 +6245,11 @@ focus_tree = {
 		completion_reward = {
 			create_equipment_variant = {
 				name = comet_fighters
-				type = fighter_equipment_2 
+				type = fighter_equipment_2
 				upgrades = {
-				  plane_gun_upgrade = 2
-				  plane_engine_upgrade = 1
-				  plane_reliability_upgrade = 3
+					plane_gun_upgrade = 2
+					plane_engine_upgrade = 1
+					plane_reliability_upgrade = 3
 				}
 			}
 		}
@@ -6256,38 +6258,37 @@ focus_tree = {
 		}
 		x = 64
 		y = 10
-
 	}
 	focus = {
 		id = SUI_bolster_airfields
 		icon = GFX_focus_SUI_bolster_airfields
-		cost = 10.00
+		cost = 10
 		offset = {
 			x = -22
 			y = 0
 			trigger = {
 				has_country_flag = SUI_royalists_win
 			}
-		  }
+		}
 		offset = {
 			x = -30
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
-						OR = {
-				has_government = democratic
-				has_government = pro_yagoo_progressive
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
 			}
-			}
-		}		
+		}
 		offset = {
 			x = -10
 			y = 0
 			trigger = {
 				has_country_flag = SUI_had_elections
 				has_government = pro_resistance_nationalism
-				}
 			}
+		}
 		offset = {
 			x = -20
 			y = 0
@@ -6299,7 +6300,7 @@ focus_tree = {
 		completion_reward = {
 			SUI = {
 				every_owned_state = {
-					limit = { 
+					limit = {
 						NOT = {
 							air_base > 4
 						}
@@ -6319,6 +6320,5 @@ focus_tree = {
 		}
 		x = 61
 		y = 11
-
 	}
 }
