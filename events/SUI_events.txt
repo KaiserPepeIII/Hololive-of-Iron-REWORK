@@ -188,7 +188,10 @@ country_event = {
 			ideology = democratic
 			popularity = -0.05
 		}
-		add_ideas = suisei_crackdowns
+		add_timed_idea = {
+			idea = suisei_crackdowns
+			days = 90
+		}
 	}
 	option = {
 		name = suisei.9.b
@@ -2822,5 +2825,113 @@ country_event = {
 	option = {
 		name = suisei.87.b
 		country_event = fubuki.21
+	}
+}
+
+#FRA marches into the occupation zones
+country_event = {
+	id = suisei.88
+	title = suisei.88.t
+	desc = suisei.88.desc
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#It's our time
+	option = {
+		name = suisei.88.a
+		add_war_support = 0.05
+		create_wargoal = {
+			target = FRA
+			type = annex_everything
+		}
+	}
+	#leave them
+	option = {
+		name = suisei.88.b
+		clr_country_flag = dealing_with_france
+		add_war_support = -0.15
+		add_stability = -0.1
+	}
+}
+
+#FRA and SUB end the occupation zones - PEACEFULLY
+country_event = {
+	id = suisei.89
+	title = suisei.89.t
+	desc = suisei.89.desc
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#We must act on our own
+	option = {
+		name = suisei.89.a
+		add_stability = -0.1
+		create_wargoal = {
+			target = FRA
+			type = annex_everything
+		}
+	}
+	#We are cornered
+	option = {
+		name = suisei.89.b
+		add_stability = -0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		clr_country_flag = dealing_with_france
+	}
+}
+
+#FRA end the occupation zones - SUB INTERVENES
+country_event = {
+	id = suisei.90
+	title = suisei.90.t
+	desc = suisei.90.desc
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#We must support our ally
+	option = {
+		name = suisei.90.a
+		create_wargoal = {
+			target = FRA
+			type = annex_everything
+		}
+	}
+	#We will not help
+	option = {
+		name = suisei.90.b
+		add_stability = -0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		clr_country_flag = dealing_with_france
+	}
+}
+
+#Miko denies negotiations
+country_event = {
+	id = suisei.91
+	title = suisei.91.t
+	desc = suisei.91.desc
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#We're on our own
+	option = {
+		name = suisei.91.a
+		set_country_flag = SUI_allow_invade_morocco
+	}
+}
+
+#Miko agrees to negotiate
+country_event = {
+	id = suisei.92
+	title = suisei.92.t
+	desc = suisei.92.desc
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Splendid
+	option = {
+		name = suisei.92.a
+		add_political_power = 1
 	}
 }

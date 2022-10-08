@@ -76,6 +76,39 @@ suisei_election_compromises = {
 	}
 }
 
+SUI_moroccan_rule = {
+	priority = 5
+	icon = generic_industry
+	picture = GFX_decision_cat_generic_nordic_league
+	visible_when_empty = yes
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		SUI = {
+			has_country_flag = SUI_had_elections
+		}
+	}
+}
+
+SUI_reestablishing_colonial_rule = {
+	priority = 5
+	icon = generic_industry
+	picture = GFX_decision_cat_generic_nordic_league
+	visible_when_empty = yes
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		SUI = {
+			OR = {
+				has_government = pro_resistance_nationalism
+				has_government = divine_mandate
+			}
+		}
+	}
+}
+
 suisei_colonial_fuel = {
 	priority = 7
 	icon = generic_industry
@@ -119,22 +152,6 @@ suisei_revolutionary_economics_decision = {
 		SUI = {
 			has_idea = suisei_revolutionary_economics
 			has_government = communism
-		}
-	}
-}
-
-suisei_gacha_economics_decision = {
-	priority = 20
-	icon = generic_industry
-	picture = GFX_decision_cat_generic_nordic_league
-	visible_when_empty = yes
-	scripted_gui = suisei_gacha_gui
-	allowed = {
-		tag = SUI
-	}
-	visible = {
-		SUI = {
-			has_idea = suisei_gacha_economics
 		}
 	}
 }

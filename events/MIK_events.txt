@@ -133,3 +133,432 @@ country_event = {
 		}
 	}
 }
+
+#Suisei negotiates with us over Morocco
+country_event = {
+	id = miko.6
+	title = miko.6.t
+	desc = miko.6.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 0
+			}
+			set_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 0
+			}
+		}
+	}
+	#We have no interest in this 
+	option = {
+		name = miko.6.a
+		SUI = {
+			country_event = suisei.91
+		}
+	}
+	#Let's negotiate
+	option = {
+		name = miko.6.b
+		SUI = {
+			country_event = suisei.92
+			country_event = {
+				id = miko.7
+				days = 5
+			}
+		}
+		MIK = {
+			country_event = {
+				id = miko.8
+				days = 5
+			}
+		}
+	}
+}
+
+#MOROCCO NEGOTIATIONS - SUI 
+country_event = {
+	id = miko.7
+	title = miko.7.t
+	desc = miko.7.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#We want all of Morocco, and the Rif
+	option = {
+		name = miko.7.a
+		add_to_variable = {
+			var = SUI.morocco_negotiations_overextend
+			value = 3
+		}
+	}
+	#We want all of Morocco
+	option = {
+		name = miko.7.b
+		add_to_variable = {
+			var = SUI.morocco_negotiations_overextend
+			value = 2
+		}
+	}
+	#We only want a sphere of influence
+	option = {
+		name = miko.7.c
+		add_to_variable = {
+			var = SUI.morocco_negotiations_overextend
+			value = 1
+		}
+	}
+}
+
+#MOROCCO NEGOTIATIONS - MIK 
+country_event = {
+	id = miko.8
+	title = miko.8.t
+	desc = miko.8.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			SUI = {
+				country_event = {
+					id = miko.9
+					days = 7
+				}
+			}
+			MIK = {
+				country_event = {
+					id = miko.9
+					days = 7
+				}
+			}
+		}
+	}
+	#We want all of Morocco
+	option = {
+		name = miko.8.a
+		add_to_variable = {
+			var = MIK.morocco_negotiations_overextend
+			value = 3
+		}
+	}
+	#We want to connect our territory
+	option = {
+		name = miko.8.b
+		add_to_variable = {
+			var = MIK.morocco_negotiations_overextend
+			value = 2
+		}
+	}
+	#We only want a sphere of influence
+	option = {
+		name = miko.8.c
+		add_to_variable = {
+			var = MIK.morocco_negotiations_overextend
+			value = 1
+		}
+	}
+}
+
+#Morocco NEGOTIATIONS RESULT
+country_event = {
+	id = miko.9
+	title = miko.9.t
+	desc = miko.9.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Colliding Interests
+	option = {
+		name = miko.9.a
+		trigger = {
+			check_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 3
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 3
+				compare = less_than_or_equals
+			}
+		}
+		add_political_power = -5
+		hidden_effect = {
+			clear_variable = SUI.morocco_negotiations_overextend
+			clear_variable = MIK.morocco_negotiations_overextend
+		}
+	}
+	#Agreement Reached - Strong Suisei
+	option = {
+		name = miko.9.b
+		trigger = {
+			check_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 2
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 1
+				compare = equals
+			}
+		}
+		add_political_power = 5
+		if = {
+			limit = {
+				tag = MIK
+			}
+			MIK = {
+				add_political_power = 35
+			}
+		}
+		if = {
+			limit = {
+				tag = SUI
+			}
+			SUI = {
+				create_wargoal = {
+					target = MOR
+					type = annex_everything
+				}
+			}
+		}
+		hidden_effect = {
+			clear_variable = SUI.morocco_negotiations_overextend
+			clear_variable = MIK.morocco_negotiations_overextend
+		}
+	}
+	#Agreement Reached - SUISEI - Concession to Miko? sure!
+	option = {
+		name = miko.9.c
+		trigger = {
+			tag = SUI
+			check_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 2
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 2
+				compare = equals
+			}
+		}
+		add_political_power = 5
+		set_country_flag = SUI_promised_miko_land
+		MIK = {
+			country_event = miko.10
+		}
+		hidden_effect = {
+			clear_variable = SUI.morocco_negotiations_overextend
+			clear_variable = MIK.morocco_negotiations_overextend
+		}
+	}
+	#Agreement Reached - SUISEI - Concession to Miko? nope!
+	option = {
+		name = miko.9.f
+		trigger = {
+			tag = SUI
+			check_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 2
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 2
+				compare = equals
+			}
+		}
+		add_political_power = 5
+		MIK = {
+			country_event = miko.11
+		}
+		SUI = {
+			country_event = miko.11
+		}
+		hidden_effect = {
+			clear_variable = SUI.morocco_negotiations_overextend
+			clear_variable = MIK.morocco_negotiations_overextend
+		}
+	}
+	#Agreement Reached - PARTITION MOROCCO - for miko*, Suisei gets an event with no effect
+	option = {
+		name = miko.9.e
+		trigger = {
+			tag = MIK
+			check_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 1
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 1
+				compare = equals
+			}
+		}
+		add_political_power = 25
+		MOR = {
+			country_event = morocco.1
+		}
+		hidden_effect = {
+			clear_variable = SUI.morocco_negotiations_overextend
+			clear_variable = MIK.morocco_negotiations_overextend
+		}
+	}
+	#No effect as seen above
+	option = {
+		name = miko.9.e_suisei
+		trigger = {
+			tag = SUI
+			check_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 1
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 1
+				compare = equals
+			}
+		}
+		add_political_power = 25
+	}
+	#Agreement Reached - Strong Miko - Conquest
+	option = {
+		name = miko.9.g
+		trigger = {
+			check_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 1
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 3
+				compare = equals
+			}
+		}
+		add_political_power = 25
+		if = {
+			limit = {
+				tag = MIK
+			}
+			MIK = {
+				create_wargoal = {
+					target = MOR
+					type = annex_everything
+				}
+			}
+		}
+		hidden_effect = {
+			clear_variable = SUI.morocco_negotiations_overextend
+			clear_variable = MIK.morocco_negotiations_overextend
+		}
+	}
+	#Agreement Reached - Strong Miko - Demand
+	option = {
+		name = miko.9.h
+		trigger = {
+			check_variable = {
+				var = SUI.morocco_negotiations_overextend
+				value = 1
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 2
+				compare = equals
+			}
+		}
+		add_political_power = 25
+		if = {
+			limit = {
+				tag = MIK
+			}
+			MOR = {
+				country_event = morocco.2
+			}
+		}
+		hidden_effect = {
+			clear_variable = SUI.morocco_negotiations_overextend
+			clear_variable = MIK.morocco_negotiations_overextend
+		}
+	}
+}
+
+#Morocco cedes to us - Concessions
+country_event = {
+	id = miko.12
+	title = miko.12.t
+	desc = miko.12.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Nice
+	option = {
+		name = miko.12.a
+		add_political_power = 75
+	}
+}
+
+#Morocco refuses us - Concessions
+country_event = {
+	id = miko.13
+	title = miko.13.t
+	desc = miko.13.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#War
+	option = {
+		name = miko.13.a
+		create_wargoal = {
+			target = MOR
+			type = topple_government
+		}
+	}
+}
+
+#Morocco cedes to us - Land transfer
+country_event = {
+	id = miko.14
+	title = miko.14.t
+	desc = miko.14.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#cewl
+	option = {
+		name = miko.14.a
+		add_political_power = 25
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.15
+		}
+	}
+}
+
+#Morocco refuses us - Land transfer
+country_event = {
+	id = miko.15
+	title = miko.15.t
+	desc = miko.15.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#War
+	option = {
+		name = miko.15.a
+		1169 = {
+			add_claim_by = MIK
+		}
+		create_wargoal = {
+			target = MOR
+			type = take_claimed_state
+		}
+	}
+	#Actually no
+	option = {
+		name = miko.15.b
+		add_stability = -0.1
+	}
+}

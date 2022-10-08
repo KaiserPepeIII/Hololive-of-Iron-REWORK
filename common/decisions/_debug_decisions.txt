@@ -1,4 +1,45 @@
 debug_decisions = {
+	CIVIL_WAR_test_realism = {
+		icon = generic_research
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		cost = 0
+		complete_effect = {
+			start_civil_war = {
+				ideology = democratic
+				ruling_party = reactionary_nationalism
+				size = var:ROOT.civil_war_power
+				keep_political_leader = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = politics_paramilitaries_prepared
+				}
+				create_loyalist_militia = yes
+			}
+			every_country = {
+				limit = {
+					has_global_flag = holo_realistic_names
+					has_war_with = ROOT
+					is_dynamic_country = yes
+				}
+				meta_effect = {
+					text = {
+						set_cosmetic_tag = [get_tag_realism]_b
+					}
+					get_tag_realism = "[realism_dynamic_set_name]"
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
 	WTS_test_scripted_effect = {
 		icon = generic_research
 		available = {

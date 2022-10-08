@@ -1,0 +1,94 @@
+add_namespace = morocco
+#Miko and Suisei demand concessions
+country_event = {
+	id = morocco.1
+	title = morocco.1.t
+	desc = morocco.1.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Fine 
+	option = {
+		name = morocco.1.a
+		add_political_power = -150
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		SUI = {
+			country_event = miko.12
+			diplomatic_relation = {
+				country = MOR
+				relation = military_access
+			}
+			diplomatic_relation = {
+				country = MOR
+				relation = docking_rights
+			}
+		}
+		MIK = {
+			country_event = miko.12
+			diplomatic_relation = {
+				country = MOR
+				relation = military_access
+			}
+			diplomatic_relation = {
+				country = MOR
+				relation = docking_rights
+			}
+		}
+	}
+	#Nope 
+	option = {
+		name = morocco.1.a
+		add_political_power = 50
+		add_war_support = 0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		SUI = {
+			country_event = miko.13
+		}
+		MIK = {
+			country_event = miko.13
+		}
+	}
+}
+
+#Miko demands Corridor to Western Sahara
+country_event = {
+	id = morocco.2
+	title = morocco.2.t
+	desc = morocco.2.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Fine
+	option = {
+		name = morocco.2.a
+		add_political_power = -100
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.3
+		}
+		MIK = {
+			country_event = miko.14
+			transfer_state = 1169
+		}
+		transfer_navy = {
+			target = MIK
+		}
+	}
+	#No
+	option = {
+		name = morocco.2.b
+		add_political_power = 75
+		add_war_support = 0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		MIK = {
+			country_event = miko.15
+		}
+	}
+}
