@@ -10,8 +10,8 @@ guiTypes = {
 			max = { width = 100% height = 10000 }
 			preserve_aspect_ratio = yes
 		}
-		Orientation = center
-		Origo = center 
+		orientation = center
+		origo = center 
 		clipping = no 
 		
 		background = {
@@ -37,6 +37,16 @@ guiTypes = {
 			spriteType = "GFX_frontend_game_logo"
 			position = { x= 20 y = 20 }
 		}
+		
+		ButtonType = {
+			name = "discord_link_button"
+			position = { x=20 y=185 }
+			quadTextureSprite ="GFX_discord_link_button"
+			clicksound = click_defaults
+			scale = 1.2
+			pdx_tooltip = "MENU_FACEBOOK"
+			web_link = "https://www.facebook.com/Heartsofiron"
+		}	
 		
 	}
 
@@ -64,7 +74,7 @@ guiTypes = {
 		animation_type = decelerated
 		animation_time = 1000					
 		size = { width = 256 height = 768}
-		Orientation = upper_right
+		orientation = upper_right
 
 		ButtonType = {
 			name = "achievements_button"
@@ -94,8 +104,8 @@ guiTypes = {
 		name = "mainmenu_single_player"
 		position = { x=0 y =0}
 		size = { width = 320 height = 395}
-		Orientation = CENTER
-		Origo = center	
+		orientation = CENTER
+		origo = center	
 				
 		background = {
 			name = "Background"		
@@ -116,7 +126,7 @@ guiTypes = {
 			name = "sp_continue_flag_left"
 			quadTextureSprite ="GFX_flag_small2_not_masked"
 			position = { x= 35 y = 22 }
-			Orientation = "UPPER_LEFT"
+			orientation = "UPPER_LEFT"
 			alwaystransparent = yes
 		}
 		
@@ -124,7 +134,7 @@ guiTypes = {
 			name = "sp_continue_flag_left_overlay"
 			quadTextureSprite ="GFX_flag_small2_not_masked"
 			position = { x= 35 y = 22 }
-			Orientation = "UPPER_LEFT"
+			orientation = "UPPER_LEFT"
 			alwaystransparent = yes
 		}
 		
@@ -132,7 +142,7 @@ guiTypes = {
 			name = "sp_continue_flag_right"
 			quadTextureSprite ="GFX_flag_small2_not_masked"
 			position = { x= 245 y = 22 }
-			Orientation = "UPPER_LEFT"
+			orientation = "UPPER_LEFT"
 			alwaystransparent = yes
 		}
 		
@@ -140,7 +150,7 @@ guiTypes = {
 			name = "sp_continue_flag_right_overlay"
 			quadTextureSprite ="GFX_flag_small2_not_masked"
 			position = { x= 245 y = 22 }
-			Orientation = "UPPER_LEFT"
+			orientation = "UPPER_LEFT"
 			alwaystransparent = yes
 		}
 		
@@ -189,19 +199,21 @@ guiTypes = {
 	### MAIN MENU PANEL (bottom)
 	containerWindowType = {
 		name ="mainmenu_panel_bottom"
-		position = { x=-790 y =150}
-		size = { width = 320 height = 395}
-		Orientation = CENTER
-		Origo = center		
+		position = { x=10 y =492}
+		size = { width = 320 height = 495}
+	
+		orientation = upper_left
+		origo = upper_left		  
+
 				
 		background = {
-			name = "Background"		
+			name = "Background"		 
 			quadTextureSprite ="GFX_tiled_window"
 		}
 			
 		ButtonType = {
 			name = "single_player_button"
-			position = { x = 16 y = 18 }
+			position = { x = 16 y = 18 } 
 			quadTextureSprite ="GFX_main_lobby_button"
 			font = "hoi_24header"			
 			text = "FE_SINGLE_PLAYER"				
@@ -229,7 +241,7 @@ guiTypes = {
 		instantTextBoxType = {
 
 			name ="version_label"
-			position = { x = 35 y = 356 }
+			position = { x = 35 y = 350 }
 			textureFile = ""
 			font = "hoi_18b"
 			borderSize = {x = 0 y = 0}
@@ -272,32 +284,33 @@ guiTypes = {
 
 		ButtonType = {
 			name = "exit_button"
-			position = { x = 16 y = 260 }
+			position = { x = 16 y = 218 }
 			quadTextureSprite ="GFX_main_lobby_button"
 			font = "hoi_24header"			
 			text = "FE_EXIT"			
 			clicksound = click_default
 			oversound = ui_menu_over
 			
-		}
+		} 
 	}
-	
 	containerWindowType = {
 		name = "mainmenu_social_buttons"
-		position = { x=-50 y=75 }	
+		position = { x=0 y=0 }	
 		size = { width = 240 height = 90 }
-		Orientation = center	
-		origo = center
+			orientation = LOWER_LEFT
+		origo = lower_left
 		
 		positionType = {
 			name = "position_without_social_gui"
-			position = { x = 0 y = 155 }
+			position = { x = 5 y = -60 }
 		}
 		
 		containerWindowType = {
 			name = "social_view_interface_window"
-			position = { x = 250 y = 0  }
+			position = { x = 0 y = 0  }
 			size = { width = 60 height = 40 }
+			orientation = LOWER_LEFT
+			origo = lower_left
 			
 			buttonType = {
 				name = "toggle_button"
@@ -340,15 +353,25 @@ guiTypes = {
 		}
 		iconType = {
 			name = "hloi_warning"
-			position = { x=-836 y =227 }
+			position = { x=0 y =0 }
 			spriteType = "GFX_frontend_warning"
 			pdx_tooltip = "SOCIAL_NEW_MESSAGE"
 		}		
 		instantTextBoxType={
 			name = "hloi_warning_text"
 			font = "hoi_24header"
-			position = { x=-820 y=240 }
+			position = { x=9 y=18 }
 			text = hloi_warning_text_loc
+			maxWidth = 300
+			maxHeight = 160
+			alwaysTransparent = yes
+			format = center
+		} 		
+		instantTextBoxType={
+			name = "hloi_version"
+			font = "hoi_18b"
+			position = { x=8 y=-20 }
+			text = "VERSION 0.1.3.0"
 			maxWidth = 300
 			maxHeight = 160
 			alwaysTransparent = yes
@@ -356,14 +379,14 @@ guiTypes = {
 		} 		
 		ButtonType = {
 			name = "homepage_button"
-			position = { x=-800 y=150 }
+			position = { x=50 y=-130 }
 			quadTextureSprite ="homepage"
 			clicksound = click_default
 			pdx_tooltip = "MENU_HOMEPAGE"
 		}
 		ButtonType = {
 			name = "forum_button"
-			position = { x=-750 y=150 }
+			position = { x=100 y=-130 }
 			quadTextureSprite ="forum"
 			clicksound = click_default
 			pdx_tooltip = "MENU_FORUM"
@@ -371,24 +394,15 @@ guiTypes = {
 		}
 		ButtonType = {
 			name = "facebook_button"
-			position = { x=-700 y=150 }
+			position = { x=150 y=-130 }
 			quadTextureSprite ="facebook"
 			clicksound = click_default
 			pdx_tooltip = "MENU_FACEBOOK"
 			web_link = "https://www.facebook.com/Heartsofiron"
 		}	
 		ButtonType = {
-			name = "discord_link_button"
-			position = { x=-810 y=-470 }
-			quadTextureSprite ="GFX_discord_link_button"
-			clicksound = click_defaults
-			scale = 1.2
-			pdx_tooltip = "MENU_FACEBOOK"
-			web_link = "https://www.facebook.com/Heartsofiron"
-		}
-		ButtonType = {
 			name = "twitter_button"
-			position = { x=-650 y=150 }
+			position = { x=200 y=-130 }
 			quadTextureSprite ="twitter"
 			#clicksound = click_default
 			pdx_tooltip = "MENU_TWITTER"
@@ -396,7 +410,7 @@ guiTypes = {
 		}
 		ButtonType = {
 			name = "privacy_policy_button"
-			position = { x=-600 y=150 }
+			position = { x=250 y=-130 }
 			quadTextureSprite ="privacy"
 			#clicksound = click_default
 			pdx_tooltip = "MENU_PRIVACY_POLICY"
@@ -408,7 +422,7 @@ guiTypes = {
 		name = "mainmenu_achievement_button"
 		position = { x = -500 y = 20 }	
 		size = { width = 100 height = 100 }
-		Orientation = upper_right
+		orientation = upper_right
 		clipping = no
 		
 		ButtonType = {

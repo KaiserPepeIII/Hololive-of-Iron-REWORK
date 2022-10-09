@@ -6,6 +6,239 @@ scripted_gui = {
 			has_country_flag = view_lhs_membership
 		}
 		effects = {
+			join_lhs_button_click = {
+				#reason for vote
+				set_global_flag = lhs_voting_join
+				#generic voting setup 
+				set_global_flag = lhs_voting
+				set_global_flag = lhs_first_round_vote
+				lhs_normal_voting_country_set = yes
+				lhs_security_council_country_set = yes
+				lhs_instigate_set = yes
+				#so that the game remembers which nation is applying 
+				ROOT = {
+					add_to_array = {
+						array = global.lhs_entry_list
+						value = THIS.id
+					}
+					add_political_power = -100
+				}
+			}
+			leave_lhs_button_click = {
+				ROOT = {
+					add_political_power = -100
+					country_event = lhs.8
+				}
+			}
+			lhs_request_aid_click = {
+				#notes the specific purpose of the vote, important for later event 
+				set_global_flag = lhs_aid_request_deciding
+				#General flags for voting
+				set_global_flag = lhs_voting
+				set_global_flag = lhs_first_round_vote
+				#General scripted effects for voting 
+				lhs_normal_voting_country_set = yes
+				lhs_security_council_country_set = yes
+				lhs_instigate_set = yes
+				ROOT = {
+					add_political_power = -100
+					add_to_array = {
+						array = global.lhs_aid_list
+						value = THIS.id
+					}
+					add_ideas = lhs_aid_decided
+				}
+			}
+			lhs_request_intervention_click = {
+				#sets issue of the day 
+				set_global_flag = lhs_intervention_request_deciding
+				#general flags for voting 
+				set_global_flag = lhs_voting
+				set_global_flag = lhs_first_round_vote
+				#general scripted effects for voting 
+				lhs_normal_voting_country_set = yes
+				lhs_security_council_country_set = yes
+				lhs_instigate_set = yes
+				ROOT = {
+					add_political_power = -100
+					#indicates an array and variable which refer to the INSTIGATOR 
+					add_to_array = {
+						array = global.lhs_intervention_receive_list
+						value = THIS.id
+					}
+					set_variable = {
+						var = global.request_support_receiver
+						value = ROOT.id
+					}
+				}
+				#nation at war with INSTIGATOR gets its own variable 
+				every_country = {
+					limit = {
+						has_war_with = global.request_support_receiver
+					}
+					set_variable = {
+						var = global.this_nation_at_war
+						value = THIS.id
+					}
+				}
+			}
+			lhs_boost_lhs_parties_click = {
+				ROOT = {
+					add_political_power = -100
+					set_country_flag = {
+						flag = lhs_supported_lhs_party
+						days = 180
+						value = 1
+					}
+					add_political_power = -100
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+					}
+					add_timed_idea = {
+						idea = lhs_boost_parties_decision
+						days = 180
+					}
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_peacekeeping_missions_click = {
+				ROOT = {
+					set_country_flag = {
+						flag = lhs_supported_peacekeeping_mission
+						days = 180
+						value = 1
+					}
+					add_political_power = -100
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+					}
+					add_timed_idea = {
+						idea = lhs_peacekeeping_mission
+						days = 180
+					}
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_rally_for_war_click = {
+				ROOT = {
+					set_country_flag = {
+						flag = lhs_rallied_for_war_mission
+						days = 180
+						value = 1
+					}
+					add_political_power = -100
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+					}
+					add_timed_idea = {
+						idea = lhs_rallied_for_war
+						days = 180
+					}
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_send_military_support_click = {
+				ROOT = {
+					set_country_flag = {
+						flag = lhs_sent_military_support
+						days = 180
+						value = 1
+					}
+					add_political_power = -100
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+					}
+					add_timed_idea = {
+						idea = lhs_received_military_support
+						days = 180
+					}
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_investments_click = {
+				ROOT = {
+					set_country_flag = {
+						flag = lhs_invested
+						days = 180
+						value = 1
+					}
+					add_political_power = -100
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+					}
+					random_owned_state = {
+						if = {
+							limit = {
+								THIS = {
+									is_coastal = yes
+								}
+							}
+							add_extra_state_shared_building_slots = 1
+							random_list = {
+								33 = {
+									add_building_construction = {
+										type = industrial_complex
+										level = 1
+									}
+								}
+								33 = {
+									add_building_construction = {
+										type = arms_factory
+										level = 1
+									}
+								}
+								33 = {
+									add_building_construction = {
+										type = dockyard
+										level = 1
+									}
+								}
+							}
+							else = {
+								add_extra_state_shared_building_slots = 1
+								50 = {
+									add_building_construction = {
+										type = industrial_complex
+										level = 1
+									}
+								}
+								50 = {
+									add_building_construction = {
+										type = arms_factory
+										level = 1
+									}
+								}
+							}
+						}
+					}
+				}
+				clear_array = ROOT.lhs_action_array
+			}
 			close_button_click = {
 				clr_country_flag = view_lhs_membership
 			}
@@ -85,7 +318,15 @@ scripted_gui = {
 			}
 			lhs_head_large_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -98,12 +339,21 @@ scripted_gui = {
 			lhs_head_large_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_customs_union_country_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -116,12 +366,21 @@ scripted_gui = {
 			lhs_customs_union_country_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_economic_development_gui_country_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -134,12 +393,21 @@ scripted_gui = {
 			lhs_economic_development_gui_country_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_defensive_union_gui_country_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -152,13 +420,23 @@ scripted_gui = {
 			lhs_defensive_union_gui_country_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_security_council_one_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
+				clear_array = ROOT.lhs_action_array
 				THIS = {
 					add_to_array = {
 						array = ROOT.lhs_action_array
@@ -169,12 +447,21 @@ scripted_gui = {
 			lhs_security_council_one_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_security_council_two_large_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -187,12 +474,21 @@ scripted_gui = {
 			lhs_security_council_two_large_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_security_council_three_large_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -205,12 +501,21 @@ scripted_gui = {
 			lhs_security_council_three_large_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_security_council_four_large_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -223,12 +528,21 @@ scripted_gui = {
 			lhs_security_council_four_large_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_security_council_five_large_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -241,12 +555,21 @@ scripted_gui = {
 			lhs_security_council_five_large_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 			lhs_security_council_six_large_flag_click = {
 				ROOT = {
-					set_country_flag = view_lhs_friendly_decisions
+					if = {
+						limit = {
+							lhs_resistance_member_button_trigger = yes
+						}
+						set_country_flag = view_lhs_hostile_decisions
+						else = {
+							set_country_flag = view_lhs_friendly_decisions
+						}
+					}
 				}
 				clear_array = ROOT.lhs_action_array
 				THIS = {
@@ -259,11 +582,642 @@ scripted_gui = {
 			lhs_security_council_six_large_flag_right_click = {
 				ROOT = {
 					clr_country_flag = view_lhs_friendly_decisions
+					clr_country_flag = view_lhs_hostile_decisions
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_raid_antis_click = {
+				ROOT = {
+					country_event = lhs.16
+					add_political_power = -100
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_vote_sanctions_click = {
+				if = {
+					limit = {
+						all_of = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+							NOT = {
+								has_idea = lhs_sanctions_idea
+							}
+						}
+					}
+					set_global_flag = lhs_sanctions_vote
+					#General flags for voting
+					set_global_flag = lhs_voting
+					set_global_flag = lhs_first_round_vote
+					#General scripted effects for voting 
+					lhs_normal_voting_country_set = yes
+					lhs_security_council_country_set = yes
+					lhs_instigate_set = yes
+					ROOT = {
+						add_political_power = -100
+					}
+					every_country = {
+						limit = {
+							is_in_array = {
+								array = ROOT.lhs_action_array
+								value = THIS.id
+							}
+						}
+						set_country_flag = marked_for_sanction
+						add_to_array = {
+							array = global.lhs_vote_instigator
+							value = THIS.id
+						}
+					}
+					clear_array = ROOT.lhs_action_array
+					else_if = {
+						limit = {
+							all_of = {
+								array = ROOT.lhs_action_array
+								value = THIS.id
+								has_idea = lhs_sanctions_idea
+							}
+						}
+						set_global_flag = lhs_sanctions_remove_vote
+						#General flags for voting
+						set_global_flag = lhs_voting
+						set_global_flag = lhs_first_round_vote
+						#General scripted effects for voting 
+						lhs_normal_voting_country_set = yes
+						lhs_security_council_country_set = yes
+						lhs_instigate_set = yes
+						ROOT = {
+							add_political_power = -100
+						}
+						every_country = {
+							limit = {
+								is_in_array = {
+									array = ROOT.lhs_action_array
+									value = THIS.id
+								}
+							}
+							set_country_flag = marked_for_remove_sanction
+							add_to_array = {
+								array = global.lhs_vote_instigator
+								value = THIS.id
+							}
+						}
+					}
+				}
+			}
+			lhs_vote_remove_sanctions_click = {
+				ROOT = {
+					add_political_power = -100
+				}
+				set_global_flag = lhs_remove_sanctions_vote
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+					}
+					set_country_flag = marked_for_remove_sanction
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = global.lhs_member_flag
+							value = THIS.id
+						}
+						NOT = {
+							has_country_flag = marked_for_remove_sanction
+						}
+					}
+					country_event = lhs.20
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_encourge_investment_click = {
+				ROOT = {
+					add_political_power = -100
+				}
+				if = {
+					limit = {
+						NOT = {
+							any_of = {
+								array = global.lhs_member_flag
+								value = THIS.id
+								has_idea = lhs_investment_focus
+							}
+						}
+					}
+					every_country = {
+						limit = {
+							is_in_array = {
+								array = ROOT.lhs_action_array
+								value = THIS.id
+							}
+						}
+						add_ideas = lhs_investment_focus
+						set_country_flag = {
+							flag = lhs_investment_focus_set
+							days = 180
+							value = 1
+						}
+					}
+					else = {
+						ROOT = {
+							country_event = lhs.23
+						}
+					}
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_call_lhs_council_click = {
+				ROOT = {
+					add_political_power = -200
+				}
+				clear_array = ROOT.lhs_action_array
+			}
+			lhs_begin_the_crusade_click = {
+				ROOT = {
+					add_political_power = -200
+					country_event = lhs.24
 				}
 				clear_array = ROOT.lhs_action_array
 			}
 		}
 		triggers = {
+			join_lhs_button_click_enabled = {
+				lhs_not_voting_in_progress = yes
+				NOT = {
+					has_global_flag = lhs_voting
+					has_global_flag = lhs_is_counting
+				}
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						OR = {
+							has_idea = lhs_member
+							has_idea = lhs_head
+							has_idea = resistance_member
+							has_idea = anti_member
+						}
+					}
+				}
+			}
+			leave_lhs_button_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					has_idea = lhs_member
+					NOT = {
+						has_idea = lhs_head
+						has_idea = lhs_economic_development_gui
+						has_idea = lhs_defensive_union_gui
+						has_idea = lhs_security_council_one
+						has_idea = lhs_security_council_two
+						has_idea = lhs_security_council_three
+						has_idea = lhs_security_council_four
+						has_idea = lhs_security_council_five
+						has_idea = lhs_security_council_six
+					}
+				}
+			}
+			lhs_support_status_quo_button_text_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_raid_antis_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_raid_antis_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
+				}
+				all_of = {
+					array = ROOT.lhs_action_array
+					value = THIS.id
+					check_variable = {
+						var = PREV.anti_aggression
+						value = 0
+						compare = greater_than
+					}
+					NOT = {
+						has_idea = large_anti_clearing
+						has_idea = medium_anti_clearing
+						has_idea = minor_anti_clearing
+					}
+				}
+			}
+			lhs_vote_sanctions_button_text_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_vote_sanctions_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_vote_sanctions_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+					}
+				}
+				NOT = {
+					any_of = {
+						array = ROOT.lhs_action_array
+						value = THIS.id
+						is_in_array = {
+							array = global.lhs_sanctioned_list
+							value = THIS.id
+						}
+					}
+				}
+				lhs_not_voting_in_progress = yes
+			}
+			lhs_encourge_investment_button_text_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_encourge_investment_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_encourge_investment_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
+				}
+				NOT = {
+					any_of = {
+						array = global.lhs_member_flag
+						value = THIS.id
+						has_country_flag = lhs_investment_focus_set
+					}
+				}
+			}
+			lhs_call_lhs_council_button_text_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_call_lhs_council_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_call_lhs_council_click_enabled = {
+				ROOT = {
+					has_political_power > 200
+					NOT = {
+						has_idea = lhs_sanctions_idea
+					}
+				}
+			}
+			lhs_begin_the_crusade_button_text_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_begin_the_crusade_visible = {
+				ROOT = {
+					has_idea = lhs_head
+				}
+				lhs_member_button_trigger = yes
+			}
+			lhs_begin_the_crusade_click_enabled = {
+				ROOT = {
+					has_political_power > 200
+					NOT = {
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
+				}
+				NOT = {
+					YAG = {
+						has_war_with = AQA
+					}
+					has_global_flag = resistance_lhs_war
+				}
+			}
+			lhs_boost_resistance_parties_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = view_lhs_hostile_decisions
+					NOT = {
+						has_country_flag = lhs_performed_hostile_action
+					}
+				}
+			}
+			lhs_instigate_protests_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = view_lhs_hostile_decisions
+					NOT = {
+						has_country_flag = lhs_performed_hostile_action
+					}
+				}
+			}
+			lhs_support_anti_groups_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = view_lhs_hostile_decisions
+					NOT = {
+						has_country_flag = lhs_performed_hostile_action
+					}
+				}
+			}
+			lhs_infiltrate_country_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = view_lhs_hostile_decisions
+					NOT = {
+						has_country_flag = lhs_performed_hostile_action
+					}
+				}
+			}
+			lhs_instigate_revolution_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					has_country_flag = view_lhs_hostile_decisions
+					NOT = {
+						has_country_flag = lhs_performed_hostile_action
+					}
+				}
+			}
+			lhs_boost_resistance_parties_button_text_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_boost_resistance_parties_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_instigate_protests_button_text_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_instigate_protests_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_support_anti_groups_button_text_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_support_anti_groups_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_infiltrate_country_text_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_infiltrate_country_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_instigate_revolution_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_instigate_revolution_text_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_instigate_revolution_visible = {
+				ROOT = {
+					lhs_resistance_member_button_trigger = yes
+				}
+			}
+			lhs_request_aid_button_text_visible = {
+				OR = {
+					is_in_array = {
+						array = global.lhs_member_flag
+						value = THIS.id
+					}
+					has_idea = lhs_member
+					has_idea = lhs_head
+				}
+			}
+			lhs_request_aid_visible = {
+				OR = {
+					is_in_array = {
+						array = global.lhs_member_flag
+						value = THIS.id
+					}
+					has_idea = lhs_member
+					has_idea = lhs_head
+				}
+			}
+			lhs_request_aid_click_enabled = {
+				NOT = {
+					has_global_flag = lhs_aid_request_deciding
+				}
+				ROOT = {
+					has_political_power > 100
+					has_war = yes
+					NOT = {
+						has_idea = lhs_sanctions_idea
+					}
+				}
+			}
+			lhs_request_intervention_text_visible = {
+				OR = {
+					is_in_array = {
+						array = global.lhs_member_flag
+						value = THIS.id
+					}
+					has_idea = lhs_member
+					has_idea = lhs_head
+				}
+			}
+			lhs_request_intervention_visible = {
+				OR = {
+					is_in_array = {
+						array = global.lhs_member_flag
+						value = THIS.id
+					}
+					has_idea = lhs_member
+					has_idea = lhs_head
+				}
+			}
+			lhs_request_intervention_click_enabled = {
+				NOT = {
+					has_global_flag = lhs_intervention_request_deciding
+				}
+				ROOT = {
+					has_political_power > 100
+					has_war = yes
+					NOT = {
+						has_idea = lhs_sanctions_idea
+					}
+				}
+			}
+			lhs_boost_lhs_parties_button_text_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_boost_lhs_parties_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_boost_lhs_parties_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = lhs_supported_lhs_party
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
+				}
+				NOT = {
+					all_of = {
+						array = ROOT.lhs_action_array
+						value = THIS.id
+						has_idea = lhs_boost_parties_decision
+					}
+				}
+			}
+			lhs_peacekeeping_missions_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_peacekeeping_missions_button_text_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_peacekeeping_missions_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = lhs_supported_peacekeeping_mission
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
+				}
+				NOT = {
+					all_of = {
+						array = ROOT.lhs_action_array
+						value = THIS.id
+						has_idea = lhs_peacekeeping_mission
+					}
+				}
+			}
+			lhs_rally_for_war_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_rally_for_war_button_text_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_rally_for_war_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = lhs_rallied_for_war_mission
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
+				}
+				NOT = {
+					all_of = {
+						array = ROOT.lhs_action_array
+						value = THIS.id
+						has_idea = lhs_rallied_for_war
+					}
+				}
+			}
+			lhs_investments_button_text_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_investments_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_investments_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = lhs_invested
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
+				}
+			}
+			lhs_send_military_support_button_text_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_send_military_support_visible = {
+				lhs_member_button_trigger = yes
+			}
+			lhs_send_military_support_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = lhs_sent_military_support
+						is_in_array = {
+							array = ROOT.lhs_action_array
+							value = THIS.id
+						}
+						has_idea = lhs_sanctions_idea
+					}
+				}
+				NOT = {
+					all_of = {
+						array = ROOT.lhs_action_array
+						value = THIS.id
+						has_idea = lhs_received_military_support
+					}
+				}
+			}
 			lhs_voting_support_click_enabled = {
 				OR = {
 					AND = {
@@ -749,978 +1703,8 @@ scripted_gui = {
 			}
 		}
 	}
-	lhs_permanent_buttons_gui = {
-		window_name = "lhs_permanent_buttons_container"
-		context_type = player_context
-		effects = {
-			join_lhs_button_click = {
-				#reason for vote
-				set_global_flag = lhs_voting_join
-				#generic voting setup 
-				set_global_flag = lhs_voting
-				set_global_flag = lhs_first_round_vote
-				lhs_normal_voting_country_set = yes
-				lhs_security_council_country_set = yes
-				lhs_instigate_set = yes
-				#so that the game remembers which nation is applying 
-				ROOT = {
-					add_to_array = {
-						array = global.lhs_entry_list
-						value = THIS.id
-					}
-					add_political_power = -100
-				}
-			}
-			leave_lhs_button_click = {
-				ROOT = {
-					add_political_power = -100
-					country_event = lhs.8
-				}
-			}
-		}
-		visible = {
-			has_country_flag = view_lhs_membership
-		}
-		triggers = {
-			join_lhs_button_click_enabled = {
-				lhs_not_voting_in_progress = yes
-				NOT = {
-					has_global_flag = lhs_voting
-					has_global_flag = lhs_is_counting
-				}
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						OR = {
-							has_idea = lhs_member
-							has_idea = lhs_head
-							has_idea = resistance_member
-							has_idea = anti_member
-						}
-					}
-				}
-			}
-			leave_lhs_button_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					has_idea = lhs_member
-					NOT = {
-						has_idea = lhs_head
-						has_idea = lhs_economic_development_gui
-						has_idea = lhs_defensive_union_gui
-						has_idea = lhs_security_council_one
-						has_idea = lhs_security_council_two
-						has_idea = lhs_security_council_three
-						has_idea = lhs_security_council_four
-						has_idea = lhs_security_council_five
-						has_idea = lhs_security_council_six
-					}
-				}
-			}
-		}
-	}
-	lhs_head_buttons_gui = {
-		window_name = "lhs_head_buttons_container"
-		context_type = player_context
-		visible = {
-			has_idea = lhs_head
-			has_country_flag = view_lhs_membership
-			has_country_flag = view_lhs_friendly_decisions
-		}
-		effects = {
-			lhs_raid_antis_click = {
-				ROOT = {
-					country_event = lhs.16
-					add_political_power = -100
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-			lhs_vote_sanctions_click = {
-				if = {
-					limit = {
-						all_of = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-							NOT = {
-								has_idea = lhs_sanctions_idea
-							}
-						}
-					}
-					set_global_flag = lhs_sanctions_vote
-					#General flags for voting
-					set_global_flag = lhs_voting
-					set_global_flag = lhs_first_round_vote
-					#General scripted effects for voting 
-					lhs_normal_voting_country_set = yes
-					lhs_security_council_country_set = yes
-					lhs_instigate_set = yes
-					ROOT = {
-						add_political_power = -100
-					}
-					every_country = {
-						limit = {
-							is_in_array = {
-								array = ROOT.lhs_action_array
-								value = THIS.id
-							}
-						}
-						set_country_flag = marked_for_sanction
-						add_to_array = {
-							array = global.lhs_vote_instigator
-							value = THIS.id
-						}
-					}
-					clear_array = ROOT.lhs_action_array
-					else_if = {
-						limit = {
-							all_of = {
-								array = ROOT.lhs_action_array
-								value = THIS.id
-								has_idea = lhs_sanctions_idea
-							}
-						}
-						set_global_flag = lhs_sanctions_remove_vote
-						#General flags for voting
-						set_global_flag = lhs_voting
-						set_global_flag = lhs_first_round_vote
-						#General scripted effects for voting 
-						lhs_normal_voting_country_set = yes
-						lhs_security_council_country_set = yes
-						lhs_instigate_set = yes
-						ROOT = {
-							add_political_power = -100
-						}
-						every_country = {
-							limit = {
-								is_in_array = {
-									array = ROOT.lhs_action_array
-									value = THIS.id
-								}
-							}
-							set_country_flag = marked_for_remove_sanction
-							add_to_array = {
-								array = global.lhs_vote_instigator
-								value = THIS.id
-							}
-						}
-					}
-				}
-			}
-			lhs_vote_remove_sanctions_click = {
-				ROOT = {
-					add_political_power = -100
-				}
-				set_global_flag = lhs_remove_sanctions_vote
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-					}
-					set_country_flag = marked_for_remove_sanction
-				}
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = global.lhs_member_flag
-							value = THIS.id
-						}
-						NOT = {
-							has_country_flag = marked_for_remove_sanction
-						}
-					}
-					country_event = lhs.20
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-			lhs_encourge_investment_click = {
-				ROOT = {
-					add_political_power = -100
-				}
-				if = {
-					limit = {
-						NOT = {
-							any_of = {
-								array = global.lhs_member_flag
-								value = THIS.id
-								has_idea = lhs_investment_focus
-							}
-						}
-					}
-					every_country = {
-						limit = {
-							is_in_array = {
-								array = ROOT.lhs_action_array
-								value = THIS.id
-							}
-						}
-						add_ideas = lhs_investment_focus
-						set_country_flag = {
-							flag = lhs_investment_focus_set
-							days = 180
-							value = 1
-						}
-					}
-					else = {
-						ROOT = {
-							country_event = lhs.23
-						}
-					}
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-			lhs_call_lhs_council_click = {
-				ROOT = {
-					add_political_power = -200
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-			lhs_begin_the_crusade_click = {
-				ROOT = {
-					add_political_power = -200
-					country_event = lhs.24
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-		}
-		triggers = {
-			lhs_raid_antis_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-						has_idea = lhs_sanctions_idea
-					}
-				}
-				all_of = {
-					array = ROOT.lhs_action_array
-					value = THIS.id
-					check_variable = {
-						var = PREV.anti_aggression
-						value = 0
-						compare = greater_than
-					}
-					NOT = {
-						has_idea = large_anti_clearing
-						has_idea = medium_anti_clearing
-						has_idea = minor_anti_clearing
-					}
-				}
-			}
-			lhs_vote_sanctions_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-					}
-				}
-				NOT = {
-					any_of = {
-						array = ROOT.lhs_action_array
-						value = THIS.id
-						is_in_array = {
-							array = global.lhs_sanctioned_list
-							value = THIS.id
-						}
-					}
-				}
-				lhs_not_voting_in_progress = yes
-			}
-			lhs_encourge_investment_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-						has_idea = lhs_sanctions_idea
-					}
-				}
-				NOT = {
-					any_of = {
-						array = global.lhs_member_flag
-						value = THIS.id
-						has_country_flag = lhs_investment_focus_set
-					}
-				}
-			}
-			lhs_call_lhs_council_click_enabled = {
-				ROOT = {
-					has_political_power > 200
-					NOT = {
-						has_idea = lhs_sanctions_idea
-					}
-				}
-			}
-			lhs_begin_the_crusade_click_enabled = {
-				ROOT = {
-					has_political_power > 200
-					NOT = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-						has_idea = lhs_sanctions_idea
-					}
-				}
-				NOT = {
-					YAG = {
-						has_war_with = AQA
-					}
-					has_global_flag = resistance_lhs_war
-				}
-			}
-		}
-	}
-	lhs_security_buttons = {
-		window_name = "lhs_security_buttons_container"
-		context_type = player_context
-		visible = {
-			always = no
-			#has_idea = lhs_member
-			#has_country_flag = view_lhs_membership
-			#has_country_flag = view_lhs_friendly_decisions
-		}
-	}
-	lhs_hostile_buttons_container_gui = {
-		window_name = "lhs_hostile_buttons_container"
-		context_type = player_context
-		visible = {
-			has_country_flag = view_lhs_membership
-			has_country_flag = view_lhs_friendly_decisions
-			OR = {
-				has_idea = resistance_member
-				has_idea = resistance_head
-				has_idea = resistance_runner_up
-			}
-		}
-		triggers = {
-			lhs_boost_resistance_parties_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-				}
-			}
-			lhs_instigate_protests_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-				}
-			}
-			lhs_support_anti_groups_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-				}
-			}
-			lhs_infiltrate_country_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-				}
-			}
-			lhs_instigate_revolution_click_enabled = {
-				ROOT = {
-					has_political_power > 150
-				}
-			}
-		}
-	}
-	lhs_military_buttons_gui = {
-		window_name = "lhs_military_buttons_container"
-		context_type = player_context
-		visible = {
-			has_country_flag = view_lhs_membership
-		}
-		effects = {
-			lhs_request_aid_click = {
-				#notes the specific purpose of the vote, important for later event 
-				set_global_flag = lhs_aid_request_deciding
-				#General flags for voting
-				set_global_flag = lhs_voting
-				set_global_flag = lhs_first_round_vote
-				#General scripted effects for voting 
-				lhs_normal_voting_country_set = yes
-				lhs_security_council_country_set = yes
-				lhs_instigate_set = yes
-				ROOT = {
-					add_political_power = -100
-					add_to_array = {
-						array = global.lhs_aid_list
-						value = THIS.id
-					}
-					add_ideas = lhs_aid_decided
-				}
-			}
-			lhs_request_intervention_click = {
-				#sets issue of the day 
-				set_global_flag = lhs_intervention_request_deciding
-				#general flags for voting 
-				set_global_flag = lhs_voting
-				set_global_flag = lhs_first_round_vote
-				#general scripted effects for voting 
-				lhs_normal_voting_country_set = yes
-				lhs_security_council_country_set = yes
-				lhs_instigate_set = yes
-				ROOT = {
-					add_political_power = -100
-					#indicates an array and variable which refer to the INSTIGATOR 
-					add_to_array = {
-						array = global.lhs_intervention_receive_list
-						value = THIS.id
-					}
-					set_variable = {
-						var = global.request_support_receiver
-						value = ROOT.id
-					}
-				}
-				#nation at war with INSTIGATOR gets its own variable 
-				every_country = {
-					limit = {
-						has_war_with = global.request_support_receiver
-					}
-					set_variable = {
-						var = global.this_nation_at_war
-						value = THIS.id
-					}
-				}
-			}
-		}
-		triggers = {
-			lhs_request_aid_click_enabled = {
-				NOT = {
-					has_global_flag = lhs_aid_request_deciding
-				}
-				ROOT = {
-					has_political_power > 100
-					has_war = yes
-					NOT = {
-						has_idea = lhs_sanctions_idea
-					}
-				}
-			}
-			lhs_request_intervention_click_enabled = {
-				NOT = {
-					has_global_flag = lhs_intervention_request_deciding
-				}
-				ROOT = {
-					has_political_power > 100
-					has_war = yes
-					NOT = {
-						has_idea = lhs_sanctions_idea
-					}
-				}
-			}
-		}
-	}
-	lhs_generic_buttons_gui = {
-		window_name = "lhs_generic_buttons_container"
-		context_type = player_context
-		visible = {
-			has_idea = lhs_member
-			has_country_flag = view_lhs_membership
-			has_country_flag = view_lhs_friendly_decisions
-		}
-		effects = {
-			lhs_boost_lhs_parties_click = {
-				ROOT = {
-					add_political_power = -100
-					set_country_flag = {
-						flag = lhs_supported_lhs_party
-						days = 180
-						value = 1
-					}
-					add_political_power = -100
-				}
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-					}
-					add_timed_idea = {
-						idea = lhs_boost_parties_decision
-						days = 180
-					}
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-			lhs_peacekeeping_missions_click = {
-				ROOT = {
-					set_country_flag = {
-						flag = lhs_supported_peacekeeping_mission
-						days = 180
-						value = 1
-					}
-					add_political_power = -100
-				}
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-					}
-					add_timed_idea = {
-						idea = lhs_peacekeeping_mission
-						days = 180
-					}
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-			lhs_rally_for_war_click = {
-				ROOT = {
-					set_country_flag = {
-						flag = lhs_rallied_for_war_mission
-						days = 180
-						value = 1
-					}
-					add_political_power = -100
-				}
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-					}
-					add_timed_idea = {
-						idea = lhs_rallied_for_war
-						days = 180
-					}
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-			lhs_send_military_support_click = {
-				ROOT = {
-					set_country_flag = {
-						flag = lhs_sent_military_support
-						days = 180
-						value = 1
-					}
-					add_political_power = -100
-				}
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-					}
-					add_timed_idea = {
-						idea = lhs_received_military_support
-						days = 180
-					}
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-			lhs_investments_click = {
-				ROOT = {
-					set_country_flag = {
-						flag = lhs_invested
-						days = 180
-						value = 1
-					}
-					add_political_power = -100
-				}
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-					}
-					random_owned_state = {
-						if = {
-							limit = {
-								THIS = {
-									is_coastal = yes
-								}
-							}
-							add_extra_state_shared_building_slots = 1
-							random_list = {
-								33 = {
-									add_building_construction = {
-										type = industrial_complex
-										level = 1
-									}
-								}
-								33 = {
-									add_building_construction = {
-										type = arms_factory
-										level = 1
-									}
-								}
-								33 = {
-									add_building_construction = {
-										type = dockyard
-										level = 1
-									}
-								}
-							}
-							else = {
-								add_extra_state_shared_building_slots = 1
-								50 = {
-									add_building_construction = {
-										type = industrial_complex
-										level = 1
-									}
-								}
-								50 = {
-									add_building_construction = {
-										type = arms_factory
-										level = 1
-									}
-								}
-							}
-						}
-					}
-				}
-				clear_array = ROOT.lhs_action_array
-			}
-		}
-		triggers = {
-			lhs_boost_lhs_parties_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = lhs_supported_lhs_party
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-						has_idea = lhs_sanctions_idea
-					}
-				}
-				NOT = {
-					all_of = {
-						array = ROOT.lhs_action_array
-						value = THIS.id
-						has_idea = lhs_boost_parties_decision
-					}
-				}
-			}
-			lhs_peacekeeping_missions_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = lhs_supported_peacekeeping_mission
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-						has_idea = lhs_sanctions_idea
-					}
-				}
-				NOT = {
-					all_of = {
-						array = ROOT.lhs_action_array
-						value = THIS.id
-						has_idea = lhs_peacekeeping_mission
-					}
-				}
-			}
-			lhs_rally_for_war_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = lhs_rallied_for_war_mission
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-						has_idea = lhs_sanctions_idea
-					}
-				}
-				NOT = {
-					all_of = {
-						array = ROOT.lhs_action_array
-						value = THIS.id
-						has_idea = lhs_rallied_for_war
-					}
-				}
-			}
-			lhs_investments_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = lhs_invested
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-						has_idea = lhs_sanctions_idea
-					}
-				}
-			}
-			lhs_send_military_support_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = lhs_sent_military_support
-						is_in_array = {
-							array = ROOT.lhs_action_array
-							value = THIS.id
-						}
-						has_idea = lhs_sanctions_idea
-					}
-				}
-				NOT = {
-					all_of = {
-						array = ROOT.lhs_action_array
-						value = THIS.id
-						has_idea = lhs_received_military_support
-					}
-				}
-			}
-		}
-	}
-	lhs_voting_buttons_gui = {
-		window_name = "lhs_voting_buttons_container"
-		context_type = player_context
-		parent_window_name = "lhs_membership_gui_window"
-		visible = {
-			always = no
-		}
-	}
 	resistance_membership_gui = {
 		window_name = "resistance_membership_gui_window"
-		context_type = player_context
-		visible = {
-			has_country_flag = view_resistance_membership
-		}
-		effects = {
-			close_button_click = {
-				clr_country_flag = view_resistance_membership
-			}
-			resistance_head_gui_country_flag_click = {
-				ROOT = {
-					set_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-				THIS = {
-					add_to_array = {
-						array = ROOT.resistance_action_array
-						value = THIS.id
-					}
-				}
-			}
-			resistance_head_gui_country_flag_right_click = {
-				ROOT = {
-					clr_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-			}
-			resistance_runner_up_country_flag_click = {
-				ROOT = {
-					set_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-				THIS = {
-					add_to_array = {
-						array = ROOT.resistance_action_array
-						value = THIS.id
-					}
-				}
-			}
-			resistance_runner_up_country_flag_right_click = {
-				ROOT = {
-					clr_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-			}
-			aqua_resistance_member_gui_country_flag_click = {
-				ROOT = {
-					set_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-				THIS = {
-					add_to_array = {
-						array = ROOT.resistance_action_array
-						value = THIS.id
-					}
-				}
-			}
-			aqua_resistance_member_gui_country_flag_right_click = {
-				ROOT = {
-					clr_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-			}
-			neutral_resistance_member_gui_country_flag_click = {
-				ROOT = {
-					set_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-				THIS = {
-					add_to_array = {
-						array = ROOT.resistance_action_array
-						value = THIS.id
-					}
-				}
-			}
-			neutral_resistance_member_gui_country_flag_right_click = {
-				ROOT = {
-					clr_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-			}
-			coco_resistance_member_gui_country_flag_click = {
-				ROOT = {
-					set_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-				THIS = {
-					add_to_array = {
-						array = ROOT.resistance_action_array
-						value = THIS.id
-					}
-				}
-			}
-			coco_resistance_member_gui_country_flag_right_click = {
-				ROOT = {
-					clr_country_flag = view_resistance_friendly_decisions
-				}
-				clear_array = ROOT.resistance_action_array
-			}
-		}
-		triggers = {
-			resistance_holo_flag_border_glow_visible = {
-				COC = {
-					has_idea = resistance_head
-				}
-			}
-			resistance_holo_flag_border_glow2_visible = {
-				AQA = {
-					has_idea = resistance_head
-				}
-			}
-			resistance_voting_veto_click_enabled = {
-				has_global_flag = resistance_first_round_vote
-				ROOT = {
-					is_in_array = {
-						array = global.resistance_normal_voting
-						value = THIS.id
-					}
-					NOT = {
-						is_in_array = {
-							array = global.resistance_vote_instigator
-							value = THIS.id
-						}
-						has_idea = resistance_voted
-					}
-				}
-			}
-			resistance_voting_support_click_enabled = {
-				has_global_flag = resistance_first_round_vote
-				ROOT = {
-					is_in_array = {
-						array = global.resistance_normal_voting
-						value = THIS.id
-					}
-					NOT = {
-						is_in_array = {
-							array = global.resistance_vote_instigator
-							value = THIS.id
-						}
-						has_idea = resistance_voted
-					}
-				}
-			}
-			resistance_voting_reject_click_enabled = {
-				has_global_flag = resistance_first_round_vote
-				ROOT = {
-					is_in_array = {
-						array = global.resistance_normal_voting
-						value = THIS.id
-					}
-					NOT = {
-						is_in_array = {
-							array = global.resistance_vote_instigator
-							value = THIS.id
-						}
-						has_idea = resistance_voted
-					}
-				}
-			}
-			resistance_vote_abstain_click_enabled = {
-				has_global_flag = resistance_first_round_vote
-				ROOT = {
-					is_in_array = {
-						array = global.resistance_normal_voting
-						value = THIS.id
-					}
-					NOT = {
-						is_in_array = {
-							array = global.resistance_vote_instigator
-							value = THIS.id
-						}
-						has_idea = resistance_voted
-					}
-				}
-			}
-		}
-		dynamic_lists = {
-			resistance_head_gui_gridbox = {
-				array = global.resistance_head_flag
-				entry_container = resistance_head_gui_list_entry
-				change_scope = yes
-			}
-			resistance_runner_up_gui_gridbox = {
-				array = global.resistance_runner_up
-				entry_container = resistance_runner_up_gui_gridbox_entry
-				change_scope = yes
-			}
-			coco_resistance_member_gui_gridbox = {
-				array = global.coco_resistance_member_flag
-				entry_container = coco_resistance_member_gui_list_entry
-				change_scope = yes
-			}
-			aqua_resistance_member_gui_gridbox = {
-				array = global.aqua_resistance_member_flag
-				entry_container = aqua_resistance_member_gui_list_entry
-				change_scope = yes
-			}
-			neutral_resistance_member_gui_gridbox = {
-				array = global.neutral_resistance_member_flag
-				entry_container = neutral_resistance_member_gui_list_entry
-				change_scope = yes
-			}
-		}
-		properties = {
-			resistance_ideology_bar = {
-				image = [get_resistance_ideology_bar]
-			}
-			resistance_head_gui_country_flag = {
-				image = [THIS.GetFlag]
-			}
-			resistance_runner_up_country_flag = {
-				image = [THIS.GetFlag]
-			}
-			coco_resistance_member_gui_country_flag = {
-				image = [THIS.GetFlag]
-			}
-			aqua_resistance_member_gui_country_flag = {
-				image = [THIS.GetFlag]
-			}
-			neutral_resistance_member_gui_country_flag = {
-				image = [THIS.GetFlag]
-			}
-			resistance_trust_progress_bar = {
-				frame = var:global.resistance_faith
-			}
-			resistance_solidarity_progress_bar = {
-				frame = var:global.resistance_solidarity
-			}
-		}
-	}
-	resistance_permanent_buttons_gui = {
-		window_name = "resistance_permanent_buttons_container"
 		context_type = player_context
 		visible = {
 			has_country_flag = view_resistance_membership
@@ -1755,41 +1739,144 @@ scripted_gui = {
 					news_event = resistance.2
 				}
 			}
-		}
-		triggers = {
-			join_resistance_button_click_enabled = {
+			close_button_click = {
+				clr_country_flag = view_resistance_membership
+			}
+			resistance_head_gui_country_flag_click = {
 				ROOT = {
-					has_political_power > 50
-					NOT = {
-						has_idea = lhs_member
-						has_idea = resistance_member
-						has_idea = resistance_head
-						has_idea = resistance_runner_up
-						is_resistance_ideology = no
+					if = {
+						limit = {
+							resistance_lhs_member_button_trigger = yes
+						}
+						set_country_flag = view_resistance_hostile_decisions
+						else = {
+							set_country_flag = view_resistance_friendly_decisions
+						}
+					}
+				}
+				clear_array = ROOT.resistance_action_array
+				THIS = {
+					add_to_array = {
+						array = ROOT.resistance_action_array
+						value = THIS.id
 					}
 				}
 			}
-			leave_resistance_button_click_enabled = {
+			resistance_head_gui_country_flag_right_click = {
 				ROOT = {
-					has_idea = resistance_member
-					has_political_power > 50
-					NOT = {
-						has_idea = resistance_head
-						has_idea = resistance_runner_up
+					clr_country_flag = view_resistance_friendly_decisions
+					clr_country_flag = view_resistance_hostile_decisions
+				}
+				clear_array = ROOT.resistance_action_array
+			}
+			resistance_runner_up_country_flag_click = {
+				ROOT = {
+					if = {
+						limit = {
+							resistance_lhs_member_button_trigger = yes
+						}
+						set_country_flag = view_resistance_hostile_decisions
+						else = {
+							set_country_flag = view_resistance_friendly_decisions
+						}
+					}
+				}
+				clear_array = ROOT.resistance_action_array
+				THIS = {
+					add_to_array = {
+						array = ROOT.resistance_action_array
+						value = THIS.id
 					}
 				}
 			}
-		}
-	}
-	resistance_generic_buttons_gui = {
-		window_name = "resistance_generic_buttons_container"
-		context_type = player_context
-		visible = {
-			has_idea = resistance_member
-			has_country_flag = view_resistance_membership
-			has_country_flag = view_resistance_friendly_decisions
-		}
-		effects = {
+			resistance_runner_up_country_flag_right_click = {
+				ROOT = {
+					clr_country_flag = view_resistance_friendly_decisions
+					clr_country_flag = view_resistance_hostile_decisions
+				}
+				clear_array = ROOT.resistance_action_array
+			}
+			aqua_resistance_member_gui_country_flag_click = {
+				ROOT = {
+					if = {
+						limit = {
+							resistance_lhs_member_button_trigger = yes
+						}
+						set_country_flag = view_resistance_hostile_decisions
+						else = {
+							set_country_flag = view_resistance_friendly_decisions
+						}
+					}
+				}
+				clear_array = ROOT.resistance_action_array
+				THIS = {
+					add_to_array = {
+						array = ROOT.resistance_action_array
+						value = THIS.id
+					}
+				}
+			}
+			aqua_resistance_member_gui_country_flag_right_click = {
+				ROOT = {
+					clr_country_flag = view_resistance_friendly_decisions
+					clr_country_flag = view_resistance_hostile_decisions
+				}
+				clear_array = ROOT.resistance_action_array
+			}
+			neutral_resistance_member_gui_country_flag_click = {
+				ROOT = {
+					if = {
+						limit = {
+							resistance_lhs_member_button_trigger = yes
+						}
+						set_country_flag = view_resistance_hostile_decisions
+						else = {
+							set_country_flag = view_resistance_friendly_decisions
+						}
+					}
+				}
+				clear_array = ROOT.resistance_action_array
+				THIS = {
+					add_to_array = {
+						array = ROOT.resistance_action_array
+						value = THIS.id
+					}
+				}
+			}
+			neutral_resistance_member_gui_country_flag_right_click = {
+				ROOT = {
+					clr_country_flag = view_resistance_friendly_decisions
+					clr_country_flag = view_resistance_hostile_decisions
+				}
+				clear_array = ROOT.resistance_action_array
+			}
+			coco_resistance_member_gui_country_flag_click = {
+				ROOT = {
+					if = {
+						limit = {
+							resistance_lhs_member_button_trigger = yes
+						}
+						set_country_flag = view_resistance_hostile_decisions
+						else = {
+							set_country_flag = view_resistance_friendly_decisions
+						}
+					}
+				}
+				clear_array = ROOT.resistance_action_array
+				THIS = {
+					add_to_array = {
+						array = ROOT.resistance_action_array
+						value = THIS.id
+					}
+				}
+			}
+			coco_resistance_member_gui_country_flag_right_click = {
+				ROOT = {
+					clr_country_flag = view_resistance_friendly_decisions
+					clr_country_flag = view_resistance_hostile_decisions
+				}
+				clear_array = ROOT.resistance_action_array
+			}
 			resistance_boost_resistance_parties_click = {
 				every_country = {
 					limit = {
@@ -1808,6 +1895,68 @@ scripted_gui = {
 					}
 				}
 				clear_array = ROOT.resistance_action_array
+			}
+			resistance_request_aid_click = {
+				ROOT = {
+					add_political_power = -100
+					set_country_flag = {
+						flag = resistance_asked_for_aid
+						days = 90
+						value = 1
+					}
+					set_country_flag = resistance_voted
+					set_global_flag = {
+						flag = resistance_aid_requested_timer
+						days = 90
+						value = 1
+					}
+					set_variable = {
+						var = global.resistance_aid_remember_me
+						value = ROOT.id
+					}
+				}
+				every_country = {
+					if = {
+						limit = {
+							NOT = {
+								tag = PREV
+							}
+							is_in_array = {
+								array = global.resistance_member_flag
+								value = THIS.id
+							}
+						}
+						country_event = resistance.3
+						else_if = {
+							limit = {
+								THIS = {
+									is_resistance_ideology = yes
+								}
+								NOT = {
+									is_in_array = {
+										array = global.resistance_member_flag
+										value = THIS.id
+									}
+								}
+							}
+							country_event = resistance.9
+						}
+					}
+				}
+			}
+			resistance_request_intervention_click = {
+				ROOT = {
+					add_political_power = -100
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = global.resistance_member_flag
+							value = THIS.id
+						}
+					}
+					country_event = resistance.32
+				}
 			}
 			resistance_peacekeeping_missions_click = {
 				every_country = {
@@ -1900,173 +2049,6 @@ scripted_gui = {
 				}
 				#clear_array = ROOT.resistance_action_array
 			}
-		}
-		triggers = {
-			resistance_boost_resistance_parties_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = resistance_performed_hostile_action
-						is_in_array = {
-							array = ROOT.resistance_action_array
-							value = THIS.id
-						}
-					}
-				}
-			}
-			resistance_peacekeeping_missions_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = resistance_performed_hostile_action
-						is_in_array = {
-							array = ROOT.resistance_action_array
-							value = THIS.id
-						}
-					}
-				}
-			}
-			resistance_rally_for_anti_support_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = resistance_performed_hostile_action
-						is_in_array = {
-							array = ROOT.resistance_action_array
-							value = THIS.id
-						}
-					}
-				}
-			}
-			resistance_support_ideology_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = resistance_performed_hostile_action
-						is_in_array = {
-							array = ROOT.resistance_action_array
-							value = THIS.id
-						}
-					}
-				}
-			}
-			resistance_send_military_support_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					NOT = {
-						has_country_flag = resistance_performed_hostile_action
-						is_in_array = {
-							array = ROOT.resistance_action_array
-							value = THIS.id
-						}
-					}
-				}
-			}
-		}
-	}
-	resistance_military_buttons_gui = {
-		window_name = "resistance_military_buttons_container"
-		context_type = player_context
-		visible = {
-			has_country_flag = view_resistance_membership
-		}
-		effects = {
-			resistance_request_aid_click = {
-				ROOT = {
-					add_political_power = -100
-					set_country_flag = {
-						flag = resistance_asked_for_aid
-						days = 90
-						value = 1
-					}
-					set_country_flag = resistance_voted
-					set_global_flag = {
-						flag = resistance_aid_requested_timer
-						days = 90
-						value = 1
-					}
-					set_variable = {
-						var = global.resistance_aid_remember_me
-						value = ROOT.id
-					}
-				}
-				every_country = {
-					if = {
-						limit = {
-							NOT = {
-								tag = PREV
-							}
-							is_in_array = {
-								array = global.resistance_member_flag
-								value = THIS.id
-							}
-						}
-						country_event = resistance.3
-						else_if = {
-							limit = {
-								THIS = {
-									is_resistance_ideology = yes
-								}
-								NOT = {
-									is_in_array = {
-										array = global.resistance_member_flag
-										value = THIS.id
-									}
-								}
-							}
-							country_event = resistance.9
-						}
-					}
-				}
-			}
-			resistance_request_intervention_click = {
-				ROOT = {
-					add_political_power = -100
-				}
-				every_country = {
-					limit = {
-						is_in_array = {
-							array = global.resistance_member_flag
-							value = THIS.id
-						}
-					}
-					country_event = resistance.32
-				}
-			}
-		}
-		triggers = {
-			resistance_request_aid_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					has_war = yes
-					NOT = {
-						has_country_flag = resistance_asked_for_aid
-					}
-				}
-				NOT = {
-					has_global_flag = resistance_aid_requested_timer
-				}
-			}
-			resistance_request_intervention_click_enabled = {
-				ROOT = {
-					has_political_power > 100
-					has_war = yes
-				}
-			}
-		}
-	}
-	resistance_head_buttons_gui = {
-		window_name = "resistance_head_buttons_container"
-		context_type = player_context
-		visible = {
-			OR = {
-				has_idea = resistance_head
-				has_idea = resistance_runner_up
-			}
-			has_country_flag = view_resistance_membership
-			has_country_flag = view_resistance_friendly_decisions
-		}
-		effects = {
 			resistance_debate_organization_click = {
 				ROOT = {
 					add_political_power = -150
@@ -2107,178 +2089,6 @@ scripted_gui = {
 				}
 				set_global_flag = Resistance_debate_in_progress
 			}
-			resistance_debate_requirements_click = {
-				ROOT = {
-					add_political_power = -150
-				}
-				every_country = {
-					limit = {
-						OR = {
-							has_idea = resistance_member
-							has_idea = resistance_head
-							has_idea = resistance_runner_up
-						}
-						is_in_array = {
-							array = global.resistance_member_flag
-							value = THIS.id
-						}
-					}
-					country_event = resistance.9
-				}
-				set_global_flag = Resistance_debate_in_progress
-			}
-			resistance_debate_lhs_click = {
-				ROOT = {
-					add_political_power = -150
-				}
-				every_country = {
-					limit = {
-						OR = {
-							has_idea = resistance_member
-							has_idea = resistance_head
-							has_idea = resistance_runner_up
-						}
-						is_in_array = {
-							array = global.resistance_member_flag
-							value = THIS.id
-						}
-					}
-					country_event = resistance.13
-				}
-				set_global_flag = Resistance_debate_in_progress
-			}
-			resistance_call_resistance_council_click = {
-				ROOT = {
-					add_political_power = -150
-				}
-				every_country = {
-					limit = {
-						OR = {
-							has_idea = resistance_member
-							has_idea = resistance_head
-							has_idea = resistance_runner_up
-						}
-						is_in_array = {
-							array = global.resistance_member_flag
-							value = THIS.id
-						}
-					}
-					country_event = resistance.17
-				}
-				set_global_flag = Resistance_debate_in_progress
-			}
-			resistance_begin_the_crusade_click = {
-				ROOT = {
-					add_political_power = -150
-				}
-				every_country = {
-					limit = {
-						OR = {
-							has_idea = resistance_member
-							has_idea = resistance_head
-							has_idea = resistance_runner_up
-						}
-						is_in_array = {
-							array = global.resistance_member_flag
-							value = THIS.id
-						}
-					}
-					country_event = resistance.21
-				}
-				set_global_flag = Resistance_debate_in_progress
-			}
-		}
-		triggers = {
-			resistance_debate_organization_click_enabled = {
-				ROOT = {
-					OR = {
-						has_idea = resistance_head
-						has_idea = resistance_runner_up
-					}
-					has_political_power > 150
-				}
-				NOT = {
-					has_global_flag = Resistance_debate_in_progress
-				}
-			}
-			resistance_debate_integration_click_enabled = {
-				ROOT = {
-					OR = {
-						has_idea = resistance_head
-						has_idea = resistance_runner_up
-					}
-					has_political_power > 150
-				}
-				has_global_flag = Resistance_org_debate_settled
-				NOT = {
-					has_global_flag = Resistance_debate_in_progress
-				}
-			}
-			resistance_debate_requirements_click_enabled = {
-				ROOT = {
-					OR = {
-						has_idea = resistance_head
-						has_idea = resistance_runner_up
-					}
-					has_political_power > 150
-				}
-				has_global_flag = Resistance_integration_debate_settled
-				NOT = {
-					has_global_flag = Resistance_debate_in_progress
-				}
-			}
-			resistance_debate_lhs_click_enabled = {
-				ROOT = {
-					OR = {
-						has_idea = resistance_head
-						has_idea = resistance_runner_up
-					}
-					has_political_power > 150
-				}
-				has_global_flag = Resistance_requirements_debate_settled
-				NOT = {
-					has_global_flag = Resistance_debate_in_progress
-				}
-			}
-			resistance_call_resistance_council_click_enabled = {
-				ROOT = {
-					OR = {
-						has_idea = resistance_head
-						has_idea = resistance_runner_up
-					}
-					has_political_power > 100
-				}
-				NOT = {
-					has_global_flag = Resistance_debate_in_progress
-				}
-			}
-			resistance_begin_the_crusade_click_enabled = {
-				ROOT = {
-					OR = {
-						has_idea = resistance_head
-						has_idea = resistance_runner_up
-					}
-					has_political_power > 150
-				}
-				has_global_flag = Resistance_lhs_debate_settled
-				NOT = {
-					has_global_flag = Resistance_debate_in_progress
-				}
-			}
-		}
-	}
-	resistance_hostile_buttons_container_gui = {
-		window_name = "resistance_hostile_buttons_container"
-		context_type = player_context
-		visible = {
-			OR = {
-				has_idea = lhs_member
-				has_idea = lhs_head
-			}
-			has_country_flag = view_resistance_membership
-			has_country_flag = view_resistance_friendly_decisions
-		}
-		effects = {
 			lhs_boost_lhs_parties_click = {
 				every_country = {
 					limit = {
@@ -2425,11 +2235,113 @@ scripted_gui = {
 				}
 				clear_array = ROOT.resistance_action_array
 			}
+			resistance_debate_requirements_click = {
+				ROOT = {
+					add_political_power = -150
+				}
+				every_country = {
+					limit = {
+						OR = {
+							has_idea = resistance_member
+							has_idea = resistance_head
+							has_idea = resistance_runner_up
+						}
+						is_in_array = {
+							array = global.resistance_member_flag
+							value = THIS.id
+						}
+					}
+					country_event = resistance.9
+				}
+				set_global_flag = Resistance_debate_in_progress
+			}
+			resistance_debate_lhs_click = {
+				ROOT = {
+					add_political_power = -150
+				}
+				every_country = {
+					limit = {
+						OR = {
+							has_idea = resistance_member
+							has_idea = resistance_head
+							has_idea = resistance_runner_up
+						}
+						is_in_array = {
+							array = global.resistance_member_flag
+							value = THIS.id
+						}
+					}
+					country_event = resistance.13
+				}
+				set_global_flag = Resistance_debate_in_progress
+			}
+			resistance_call_resistance_council_click = {
+				ROOT = {
+					add_political_power = -150
+				}
+				every_country = {
+					limit = {
+						OR = {
+							has_idea = resistance_member
+							has_idea = resistance_head
+							has_idea = resistance_runner_up
+						}
+						is_in_array = {
+							array = global.resistance_member_flag
+							value = THIS.id
+						}
+					}
+					country_event = resistance.17
+				}
+				set_global_flag = Resistance_debate_in_progress
+			}
+			resistance_begin_the_crusade_click = {
+				ROOT = {
+					add_political_power = -150
+				}
+				every_country = {
+					limit = {
+						OR = {
+							has_idea = resistance_member
+							has_idea = resistance_head
+							has_idea = resistance_runner_up
+						}
+						is_in_array = {
+							array = global.resistance_member_flag
+							value = THIS.id
+						}
+					}
+					country_event = resistance.21
+				}
+				set_global_flag = Resistance_debate_in_progress
+			}
+			resistance_boost_lhs_parties_click = {
+				
+				ROOT = {
+					add_political_power = -100
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
+					}
+					add_ideas = lhs_resistance_boosted_lhs
+				}
+			}
 		}
 		triggers = {
+			resistance_boost_resistance_parties_button_text_visible = {
+				resistance_lhs_member_button_trigger = yes
+			}
+			resistance_boost_lhs_parties_visible = {
+				resistance_lhs_member_button_trigger = yes
+			}
 			resistance_boost_lhs_parties_click_enabled = {
 				ROOT = {
 					has_political_power > 100
+					has_country_flag = view_resistance_hostile_decisions
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
 					}
@@ -2443,37 +2355,554 @@ scripted_gui = {
 					}
 				}
 			}
+			resistance_instigate_protests_button_text_visible = {
+				resistance_lhs_member_button_trigger = yes
+			}
+			resistance_instigate_protests_visible = {
+				resistance_lhs_member_button_trigger = yes
+			}
 			resistance_instigate_protests_click_enabled = {
 				ROOT = {
 					has_political_power > 100
+					has_country_flag = view_resistance_hostile_decisions
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
 					}
 				}
+			}
+			resistance_support_anti_groups_button_text_visible = {
+				resistance_lhs_member_button_trigger = yes
+			}
+			resistance_support_anti_groups_visible = {
+				resistance_lhs_member_button_trigger = yes
 			}
 			resistance_support_anti_groups_click_enabled = {
 				ROOT = {
 					has_political_power > 100
+					has_country_flag = view_resistance_hostile_decisions
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
 					}
 				}
+			}
+			resistance_infiltrate_country_text_visible = {
+				resistance_lhs_member_button_trigger = yes
+			}
+			resistance_infiltrate_country_visible = {
+				resistance_lhs_member_button_trigger = yes
 			}
 			resistance_infiltrate_country_click_enabled = {
 				ROOT = {
 					has_political_power > 100
+					has_country_flag = view_resistance_hostile_decisions
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
 					}
 				}
 			}
+			resistance_instigate_revolution_visible = {
+				resistance_lhs_member_button_trigger = yes
+			}
+			resistance_instigate_revolution_text_visible = {
+				resistance_lhs_member_button_trigger = yes
+			}
 			resistance_instigate_revolution_click_enabled = {
 				ROOT = {
-					has_political_power > 150
+					has_political_power > 100
+					has_country_flag = view_resistance_hostile_decisions
 					NOT = {
 						has_country_flag = resistance_performed_hostile_action
 					}
 				}
+			}
+			join_resistance_button_click_enabled = {
+				ROOT = {
+					has_political_power > 50
+					NOT = {
+						has_idea = lhs_member
+						has_idea = resistance_member
+						has_idea = resistance_head
+						has_idea = resistance_runner_up
+						is_resistance_ideology = no
+					}
+				}
+			}
+			leave_resistance_button_click_enabled = {
+				ROOT = {
+					has_idea = resistance_member
+					has_political_power > 50
+					NOT = {
+						has_idea = resistance_head
+						has_idea = resistance_runner_up
+					}
+				}
+			}
+			resistance_holo_flag_border_glow_visible = {
+				COC = {
+					has_idea = resistance_head
+				}
+			}
+			resistance_holo_flag_border_glow2_visible = {
+				AQA = {
+					has_idea = resistance_head
+				}
+			}
+			resistance_voting_veto_click_enabled = {
+				has_global_flag = resistance_first_round_vote
+				ROOT = {
+					is_in_array = {
+						array = global.resistance_normal_voting
+						value = THIS.id
+					}
+					NOT = {
+						is_in_array = {
+							array = global.resistance_vote_instigator
+							value = THIS.id
+						}
+						has_idea = resistance_voted
+					}
+				}
+			}
+			resistance_voting_support_click_enabled = {
+				has_global_flag = resistance_first_round_vote
+				ROOT = {
+					is_in_array = {
+						array = global.resistance_normal_voting
+						value = THIS.id
+					}
+					NOT = {
+						is_in_array = {
+							array = global.resistance_vote_instigator
+							value = THIS.id
+						}
+						has_idea = resistance_voted
+					}
+				}
+			}
+			resistance_voting_reject_click_enabled = {
+				has_global_flag = resistance_first_round_vote
+				ROOT = {
+					is_in_array = {
+						array = global.resistance_normal_voting
+						value = THIS.id
+					}
+					NOT = {
+						is_in_array = {
+							array = global.resistance_vote_instigator
+							value = THIS.id
+						}
+						has_idea = resistance_voted
+					}
+				}
+			}
+			resistance_request_aid_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					has_war = yes
+					NOT = {
+						has_country_flag = resistance_asked_for_aid
+					}
+				}
+				NOT = {
+					has_global_flag = resistance_aid_requested_timer
+				}
+			}
+			resistance_request_intervention_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					has_war = yes
+				}
+			}
+			resistance_debate_organization_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_organization_button_text_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_organization_click_enabled = {
+				ROOT = {
+					OR = {
+						has_idea = resistance_head
+						has_idea = resistance_runner_up
+					}
+					has_political_power > 150
+				}
+				NOT = {
+					has_global_flag = Resistance_debate_in_progress
+				}
+			}
+			resistance_debate_integration_button_text = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_integration_button_text_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_integration_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_integration_click_enabled = {
+				ROOT = {
+					OR = {
+						has_idea = resistance_head
+						has_idea = resistance_runner_up
+					}
+					has_political_power > 150
+				}
+				has_global_flag = Resistance_org_debate_settled
+				NOT = {
+					has_global_flag = Resistance_debate_in_progress
+				}
+			}
+			resistance_debate_requirements_button_text_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_requirements_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_requirements_click_enabled = {
+				ROOT = {
+					OR = {
+						has_idea = resistance_head
+						has_idea = resistance_runner_up
+					}
+					has_political_power > 150
+				}
+				has_global_flag = Resistance_integration_debate_settled
+				NOT = {
+					has_global_flag = Resistance_debate_in_progress
+				}
+			}
+			resistance_debate_lhs_button_text_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_lhs_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_debate_lhs_click_enabled = {
+				ROOT = {
+					OR = {
+						has_idea = resistance_head
+						has_idea = resistance_runner_up
+					}
+					has_political_power > 150
+				}
+				has_global_flag = Resistance_requirements_debate_settled
+				NOT = {
+					has_global_flag = Resistance_debate_in_progress
+				}
+			}
+			resistance_call_resistance_council_button_text_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_call_resistance_council_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_call_resistance_council_click_enabled = {
+				ROOT = {
+					OR = {
+						has_idea = resistance_head
+						has_idea = resistance_runner_up
+					}
+					has_political_power > 100
+				}
+				NOT = {
+					has_global_flag = Resistance_debate_in_progress
+				}
+			}
+			resistance_begin_the_crusade_button_text_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_begin_the_crusade_visible = {
+				OR = {
+					is_in_array = {
+						array = global.resistance_runner_up
+						value = THIS.id
+					}
+					is_in_array = {
+						array = global.resistance_head_flag
+						value = THIS.id
+					}
+				}
+			}
+			resistance_begin_the_crusade_click_enabled = {
+				ROOT = {
+					OR = {
+						has_idea = resistance_head
+						has_idea = resistance_runner_up
+					}
+					has_political_power > 150
+				}
+				has_global_flag = Resistance_lhs_debate_settled
+				NOT = {
+					has_global_flag = Resistance_debate_in_progress
+				}
+			}
+			resistance_vote_abstain_click_enabled = {
+				has_global_flag = resistance_first_round_vote
+				ROOT = {
+					is_in_array = {
+						array = global.resistance_normal_voting
+						value = THIS.id
+					}
+					NOT = {
+						is_in_array = {
+							array = global.resistance_vote_instigator
+							value = THIS.id
+						}
+						has_idea = resistance_voted
+					}
+				}
+			}
+			resistance_boost_resistance2_parties_button_text_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_boost_resistance_parties_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_boost_resistance_parties_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
+					}
+				}
+			}
+			resistance_peacekeeping_missions_button_text_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_peacekeeping_missions_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_peacekeeping_missions_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
+					}
+				}
+			}
+			resistance_rally_for_anti_support_button_text_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_rally_for_anti_support_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_rally_for_anti_support_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
+					}
+				}
+			}
+			resistance_support_ideology_button_text_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_support_ideology_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_support_ideology_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
+					}
+				}
+			}
+			resistance_send_military_support_button_text_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_send_military_support_visible = {
+				resistance_member_button_trigger = yes
+			}
+			resistance_send_military_support_click_enabled = {
+				ROOT = {
+					has_political_power > 100
+					NOT = {
+						has_country_flag = resistance_performed_hostile_action
+						is_in_array = {
+							array = ROOT.resistance_action_array
+							value = THIS.id
+						}
+					}
+				}
+			}
+		}
+		dynamic_lists = {
+			resistance_head_gui_gridbox = {
+				array = global.resistance_head_flag
+				entry_container = resistance_head_gui_list_entry
+				change_scope = yes
+			}
+			resistance_runner_up_gui_gridbox = {
+				array = global.resistance_runner_up
+				entry_container = resistance_runner_up_gui_gridbox_entry
+				change_scope = yes
+			}
+			coco_resistance_member_gui_gridbox = {
+				array = global.coco_resistance_member_flag
+				entry_container = coco_resistance_member_gui_list_entry
+				change_scope = yes
+			}
+			aqua_resistance_member_gui_gridbox = {
+				array = global.aqua_resistance_member_flag
+				entry_container = aqua_resistance_member_gui_list_entry
+				change_scope = yes
+			}
+			neutral_resistance_member_gui_gridbox = {
+				array = global.neutral_resistance_member_flag
+				entry_container = neutral_resistance_member_gui_list_entry
+				change_scope = yes
+			}
+		}
+		properties = {
+			resistance_ideology_bar = {
+				image = [get_resistance_ideology_bar]
+			}
+			resistance_head_gui_country_flag = {
+				image = [THIS.GetFlag]
+			}
+			resistance_runner_up_country_flag = {
+				image = [THIS.GetFlag]
+			}
+			coco_resistance_member_gui_country_flag = {
+				image = [THIS.GetFlag]
+			}
+			aqua_resistance_member_gui_country_flag = {
+				image = [THIS.GetFlag]
+			}
+			neutral_resistance_member_gui_country_flag = {
+				image = [THIS.GetFlag]
+			}
+			resistance_trust_progress_bar = {
+				frame = var:global.resistance_faith
+			}
+			resistance_solidarity_progress_bar = {
+				frame = var:global.resistance_solidarity
 			}
 		}
 	}

@@ -1,3 +1,57 @@
+lhs_member_button_trigger = {
+	any_of = {
+		array = root.lhs_action_array
+		value = THIS.id
+		exists = yes
+	}
+	NOT = {
+		is_in_array = {
+			array = global.resistance_member_flag
+			value = THIS.id
+		}
+		has_idea = resistance_member
+	}
+}
+
+resistance_member_button_trigger = {
+	any_of = {
+		array = root.resistance_action_array
+		value = THIS.id
+		exists = yes
+	}
+	NOT = {
+		is_in_array = {
+			array = global.lhs_member_flag
+			value = THIS.id
+		}
+		has_idea = lhs_member
+	}
+}
+
+lhs_resistance_member_button_trigger = {
+	OR = {
+		is_in_array = {
+			array = global.resistance_member_flag
+			value = THIS.id
+		}
+		has_idea = resistance_member
+		is_resistance_ideology = yes
+		is_neutral_ideology = yes
+	}
+}
+
+resistance_lhs_member_button_trigger = {
+	OR = {
+		is_in_array = {
+			array = global.lhs_member_flag
+			value = THIS.id
+		}
+		has_idea = lhs_member
+		is_lhs_ideology = yes
+		is_neutral_ideology = yes
+	}
+}
+
 lhs_security_council_trigger = {
 	OR = {
 		has_idea = lhs_security_council_one
@@ -127,17 +181,6 @@ lhs_vote_third_round_fails = {
 		var = global.lhs_count_support
 		value = global.lhs_third_round_vote_anti_count
 		compare = less_than
-	}
-}
-
-lhs_has_war_with_negative = {
-	OR = {
-		has_offensive_war_with = democratic
-		has_offensive_war_with = pro_yagoo_progressive
-		has_offensive_war_with = pro_yagoo_monarchy
-		has_offensive_war_with = pro_yagoo_kleptocracy
-		has_offensive_war_with = neutrality
-		has_offensive_war_with = mixed_ideology_democracy
 	}
 }
 
