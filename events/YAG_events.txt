@@ -701,3 +701,134 @@ country_event = {
 		}
 	}
 }
+
+#Gura wishes to annex our holdings
+country_event = {
+	id = yagoo.17
+	title = yagoo.17.t
+	desc = yagoo.17.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Agree to all the terms
+	option = {
+		name = yagoo.17.a
+		GAW = {
+			annex_country = {
+				target = EAM
+			}
+			country_event = gura.2
+		}
+	}
+	#Agree to hand it over as a democratic autonomous region
+	option = {
+		name = yagoo.17.b
+		GAW = {
+			country_event = gura.3
+		}
+	}
+	#Outright refuse
+	option = {
+		name = yagoo.17.c
+		GAW = {
+			country_event = gura.4
+		}
+	}
+}
+
+#Gura accepts our terms
+country_event = {
+	id = yagoo.18
+	title = yagoo.18.t
+	desc = yagoo.18.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Cool
+	option = {
+		name = yagoo.18.a
+	}
+}
+
+#Gura refuses our terms
+country_event = {
+	id = yagoo.19
+	title = yagoo.19.t
+	desc = yagoo.19.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#ok...then?
+	option = {
+		name = yagoo.18.a
+	}
+}
+
+#PROTESTS AROUND THE COUNTRY - GURA SUSPECTED
+country_event = {
+	id = yagoo.19
+	title = yagoo.19.t
+	desc = yagoo.19.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#We stand firm in our offer
+	option = {
+		name = yagoo.18.a
+		GAW = {
+			country_event = gura.5
+		}
+	}
+	#We must bow to the people
+	option = {
+		name = yagoo.18.b
+		GAW = {
+			country_event = gura.6
+		}
+	}
+	#Play stupid games win stupid prizes -withdraw offer
+	option = {
+		name = yagoo.18.c
+		GAW = {
+			country_event = gura.7
+		}
+	}
+}
+
+#Gura backs down
+country_event = {
+	id = yagoo.20
+	title = yagoo.20.t
+	desc = yagoo.20.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Good
+	option = {
+		name = yagoo.20.a
+	}
+}
+
+#Gura threatens with war
+country_event = {
+	id = yagoo.21
+	title = yagoo.21.t
+	desc = yagoo.21.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#I'd like to see them try
+	option = {
+		name = yagoo.21.a
+		add_war_support = 0.15
+		GAW = {
+			country_event = gura.6
+		}
+	}
+	#Uhhh sure ig
+	option = {
+		name = yagoo.21.b
+		add_stability = -0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		GAW = {
+			country_event = gura.7
+		}
+	}
+}

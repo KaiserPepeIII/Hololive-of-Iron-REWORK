@@ -1,0 +1,370 @@
+add_namespace = gura
+country_event = {
+	id = gura.1
+	title = gura.1.t
+	desc = gura.1.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Hang all the traitors
+	option = {
+		name = gura.1.a
+		create_wargoal = {
+			target = CPG
+			type = annex_everything
+		}
+		add_war_support = 0.05
+		add_stability = -0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+	#Issue a pardon for defectors
+	option = {
+		name = gura.1.b
+		create_wargoal = {
+			target = CPG
+			type = annex_everything
+		}
+		add_war_support = -0.05
+		add_stability = -0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+	}
+}
+
+#Yagoo unconditionally hands it over 
+country_event = {
+	id = gura.2
+	title = gura.2.t
+	desc = gura.2.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#A glorious day for China!
+	option = {
+		name = gura.2.a
+		add_stability = 0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+	}
+}
+
+#Yagoo agrees to hand it over "Agree to hand it over as a democratic autonomous region"
+country_event = {
+	id = gura.3
+	title = gura.3.t
+	desc = gura.3.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We accept 
+	option = {
+		name = gura.3.a
+		add_stability = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+		YAG = {
+			end_puppet = EAM
+			country_event = yagoo.18
+		}
+		EAM = {
+			leave_faction = yes
+		}
+		GAW = {
+			puppet = EAM
+			create_faction = GAW_chinese_faction
+			add_to_faction = EAM
+		}
+		EAM = {
+			set_popularities = {
+				democratic = 45
+				pro_yagoo_kleptocracy = 45
+				reactionary_nationalism = 10
+			}
+			set_politics = {
+				ruling_party = democratic
+				election_frequency = 48
+				elections_allowed = yes
+			}
+		}
+	}
+	#We refuse 
+	option = {
+		name = gura.3.b
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.05
+		}
+		YAG = {
+			country_event = yagoo.18
+		}
+	}
+	#Maybe a totally not funded by us protest might change their mind?
+	option = {
+		name = gura.3.c
+		YAG = {
+			country_event = yagoo.19
+		}
+	}
+}
+
+#Yagoo refuses 
+country_event = {
+	id = gura.4
+	title = gura.4.t
+	desc = gura.4.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Back down, we need Yagoo's support 
+	option = {
+		name = gura.4.a
+		YAG = {
+			country_event = yagoo.20
+		}
+	}
+	#Threaten with war
+	option = {
+		name = gura.4.b
+		YAG = {
+			country_event = yagoo.21
+		}
+	}
+}
+
+#Yagoo does not bend to pressure 
+country_event = {
+	id = gura.5
+	title = gura.5.t
+	desc = gura.5.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Back down, accept the offer
+	option = {
+		name = gura.5.a
+		add_stability = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+		YAG = {
+			end_puppet = EAM
+			country_event = yagoo.18
+		}
+		EAM = {
+			leave_faction = yes
+		}
+		GAW = {
+			puppet = EAM
+			create_faction = GAW_chinese_faction
+			add_to_faction = EAM
+		}
+		EAM = {
+			set_popularities = {
+				democratic = 45
+				pro_yagoo_kleptocracy = 45
+				reactionary_nationalism = 10
+			}
+			set_politics = {
+				ruling_party = democratic
+				election_frequency = 48
+				elections_allowed = yes
+			}
+		}
+	}
+	#Threaten with war
+	option = {
+		name = gura.5.b
+		YAG = {
+			country_event = yagoo.21
+		}
+	}
+	#We'll be back...
+	option = {
+		name = gura.5.c
+		YAG = {
+			country_event = yagoo.19
+		}
+	}
+}
+
+#Yagoo refuses to back down
+country_event = {
+	id = gura.6
+	title = gura.6.t
+	desc = gura.6.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Back down; we need Yagoo's support
+	option = {
+		name = gura.6.a
+		YAG = {
+			country_event = yagoo.20
+		}
+	}
+	#FUCK YOU YAGOOO!
+	option = {
+		name = gura.6.b
+		create_wargoal = {
+			target = YAG
+			type = take_core_state
+		}
+	}
+}
+
+#Yagoo backs down
+country_event = {
+	id = gura.7
+	title = gura.7.t
+	desc = gura.7.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#CHINA NUMBER 1!!!
+	option = {
+		name = gura.7.a
+		GAW = {
+			annex_country = {
+				target = EAM
+			}
+		}
+	}
+}
+
+#How much do we expand
+country_event = {
+	id = gura.8
+	title = gura.8.t
+	desc = gura.8.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Post Xinhai Revolution borders - only Mongolia 
+	option = {
+		name = gura.8.a
+		add_stability = -0.05
+		LUN = {
+			country_event = luna.1
+		}
+	}
+	#Qing Borders - Mongolia and Nene
+	option = {
+		name = gura.8.b
+		add_stability = -0.1
+		LUN = {
+			country_event = luna.1
+		}
+		NEN = {
+			country_event = nene.1
+		}
+	}
+	#We should focus on Han territories... 
+	option = {
+		name = gura.8.c
+		add_stability = 0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.055
+		}
+	}
+}
+
+#Luna refuses
+country_event = {
+	id = gura.9
+	title = gura.9.t
+	desc = gura.9.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#War
+	option = {
+		name = gura.9.a
+		create_wargoal = {
+			target = LUN
+			type = annex_everything
+		}
+	}
+	#Nah I won't invade 
+	option = {
+		name = gura.9.b
+	}
+}
+
+#Luna accepts
+country_event = {
+	id = gura.10
+	title = gura.10.t
+	desc = gura.10.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.10.a
+	}
+}
+
+#Luna refuses
+country_event = {
+	id = gura.11
+	title = gura.11.t
+	desc = gura.11.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#War
+	option = {
+		name = gura.11.a
+		create_wargoal = {
+			target = NEN
+			type = annex_everything
+		}
+	}
+	#Nah I won't invade 
+	option = {
+		name = gura.11.b
+	}
+}
+
+#Luna accepts
+country_event = {
+	id = gura.12
+	title = gura.12.t
+	desc = gura.12.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.12.a
+	}
+}
+
+#NF - A
+country_event = {
+	id = gura.13
+	title = gura.13.t
+	desc = gura.13.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#A
+	option = {
+		name = gura.13.a
+		add_political_power = 25
+	}
+}
+
+#NF - First Karaoke Conference
+country_event = {
+	id = gura.14
+	title = gura.14.t
+	desc = gura.14.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#A
+	option = {
+		name = gura.14.a
+		add_political_power = 25
+	}
+}

@@ -1,0 +1,35 @@
+add_namespace = luna
+#Gura sends us demand to become protectorate
+country_event = {
+	id = luna.1
+	title = luna.1.t
+	desc = luna.1.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Helll no, to the no no no
+	option = {
+		name = luna.1.a
+		GAW = {
+			country_event = gura.9
+		}
+	}
+	#Yeah sure ig (I am a cuck)
+	option = {
+		name = luna.1.a
+		GAW = {
+			country_event = gura.10
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = LUN
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = LUN
+				}
+			}
+		}
+	}
+}

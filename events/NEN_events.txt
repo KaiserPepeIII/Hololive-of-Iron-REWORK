@@ -1,0 +1,35 @@
+add_namespace = nene
+#Gura demand us become protectorate
+country_event = {
+	id = nene.1
+	title = nene.1.t
+	desc = nene.1.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#lolno
+	option = {
+		name = nene.1.a
+		GAW = {
+			country_event = gura.11
+		}
+	}
+	#Yeah sure ig (I am a cuck)
+	option = {
+		name = nene.1.a
+		GAW = {
+			country_event = gura.12
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = NEN
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = NEN
+				}
+			}
+		}
+	}
+}
