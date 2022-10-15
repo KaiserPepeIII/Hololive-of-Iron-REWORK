@@ -355,7 +355,7 @@ country_event = {
 	}
 }
 
-#NF - First Karaoke Conference
+#He Yinqing Plot - No Clues Found
 country_event = {
 	id = gura.14
 	title = gura.14.t
@@ -365,6 +365,287 @@ country_event = {
 	#A
 	option = {
 		name = gura.14.a
-		add_political_power = 25
+	}
+}
+
+#He Yinqing Plot - Suspect Found
+country_event = {
+	id = gura.15
+	title = gura.15.t
+	desc = gura.15.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#A
+	option = {
+		name = gura.15.a
+		set_country_flag = GAW_discovered_plotter
+	}
+}
+
+#He Yinqing Plot - Trial of He Yinqing
+country_event = {
+	id = gura.16
+	title = gura.16.t
+	desc = gura.16.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Treason means death
+	#NO NEW XINZHONGHUI
+	option = {
+		name = gura.16.a
+		add_to_variable = {
+			var = GAW.anti_aggression
+			value = 5
+		}
+		every_character = {
+			limit = {
+				is_character = GAW_he_yingpin
+			}
+			retire = yes
+		}
+	}
+	#His concerns were in the best interests of China, release him
+	#The existence of the New Xinzhonghui is made public, 
+	#any attempts to go to far monarchist will result in a coup
+	option = {
+		name = gura.16.b
+		add_stability = -0.1
+		every_character = {
+			limit = {
+				is_character = GAW_he_yingpin
+			}
+			add_unit_leader_trait = GAW_new_xingzhonghui
+		}
+		random_army_leader = {
+			add_unit_leader_trait = GAW_new_xingzhonghui
+		}
+		random_army_leader = {
+			add_unit_leader_trait = GAW_new_xingzhonghui
+		}
+		random_army_leader = {
+			add_unit_leader_trait = GAW_new_xingzhonghui
+		}
+	}
+}
+
+#He Yingin Plot - Silence in the halls
+country_event = {
+	id = gura.17
+	title = gura.17.t
+	desc = gura.17.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Still remains an earie silence 
+	#New Xinzhonghui still exists but is secret
+	option = {
+		name = gura.17.a
+		add_stability = -0.05
+	}
+}
+
+#He Yingin Plot - Failed Assasination Attempt - Death of Zheng Dongguo
+country_event = {
+	id = gura.18
+	title = gura.18.t
+	desc = gura.18.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Still remains an earie silence 
+	#New Xinzhonghui still exists 
+	option = {
+		name = gura.18.a
+		add_stability = -0.15
+		every_character = {
+			limit = {
+				is_character = GAW_zheng_dongguo
+			}
+			retire = yes
+		}
+	}
+}
+
+#NF - Question of Government 
+country_event = {
+	id = gura.19
+	title = gura.19.t
+	desc = gura.19.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Xu Shichang is such a smart guy!
+	option = {
+		name = gura.19.a
+		country_event = gura.20
+	}
+	#Chen Kuilong is such a wise guy!
+	option = {
+		name = gura.19.b
+		country_event = gura.26
+	}
+	#Tang Shaoli is such a progressive guy!
+	option = {
+		name = gura.19.c
+		country_event = gura.2
+	}
+}
+
+#NF - Xu Shichang's Constitution
+#	Qing monarch but with constitutional restraints
+#	Anger the New-Xinzhonghui
+country_event = {
+	id = gura.20
+	title = gura.20.t
+	desc = gura.20.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Replace empress with president and you have a deal
+	option = {
+		name = gura.20.a
+		country_event = gura.21
+	}
+	#I'd like to be the empress 
+	option = {
+		name = gura.20.b
+		random_list = {
+			#Accepts proposal
+			6 = {
+				country_event = gura.22
+			}
+			#Rejects proposal
+			4 = {
+				country_event = gura.23
+			}
+		}
+	}
+	#Insert Qing path here...
+}
+
+#NF - Xu Shichang's Constitution - And who do you suppose be President?
+country_event = {
+	id = gura.21
+	title = gura.21.t
+	desc = gura.21.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#That'd be me!
+	option = {
+		name = gura.21.a
+		set_country_flag = GAW_status_quo_allow
+	}
+}
+
+#NF - Xu Shichang's Constitution - Accepts Proposal 
+country_event = {
+	id = gura.22
+	title = gura.22.t
+	desc = gura.22.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#That'd be me!
+	option = {
+		name = gura.22.a
+		set_country_flag = GAW_form_new_dynasty_allow
+	}
+}
+
+#NF - Xu Shichang's Constitution - Rejects Proposal 
+country_event = {
+	id = gura.23
+	title = gura.23.t
+	desc = gura.23.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Fine, I'll just go to Chen Kuliong!
+	option = {
+		name = gura.23.a
+		country_event = gura.24
+	}
+	#Fine, I'll just go to Tang Shaoli
+	option = {
+		name = gura.23.b
+		country_event = gura.25
+	}
+	#Who even needs these guys anyways?
+	option = {
+		name = gura.23.c
+		country_event = gura.2
+	}
+}
+
+#NF - Xu Shichang's Constitution - Chen Kuliong
+#Assasination attempt! 
+#
+#	Xu Shichang ordered the killing for these two suspecting that they would restore the monarchy by force
+#	New-Xinzhonghui is discovered
+country_event = {
+	id = gura.24
+	title = gura.24.t
+	desc = gura.24.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#It seems I have no choice
+	option = {
+		name = gura.24.a
+		set_country_flag = GAW_form_new_dynasty_allow
+	}
+}
+
+#NF - Xu Shichang's Constitution - Tang Shaoli
+#
+#	Why would he ever accept this? 
+#	"I'll forget we ever had this encounter if you give me power"	
+#
+country_event = {
+	id = gura.25
+	title = gura.25.t
+	desc = gura.25.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Hell no; shoots the motherfucker
+	option = {
+		name = gura.25.a
+		set_country_flag = GAW_form_new_dynasty_allow
+	}
+	#Insert KMT path here...
+}
+
+#NF - Chen Kuilong's Constitution
+#A modern bureaucratic China
+#	Hardly democratic
+#	OK with Gura as empress
+country_event = {
+	id = gura.26
+	title = gura.26.t
+	desc = gura.26.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Make it a constitutional monarchy and we have a deal
+	option = {
+		name = gura.26.a
+		set_country_flag = GAW_form_new_dynasty_allow
+	}
+	#I agree to all of it
+	option = {
+		name = gura.26.b
+		set_country_flag = GAW_form_new_dynasty_allow
+		country_event = gura.27
+	}
+}
+
+#NF - Chen Kuilong's Constitution - They try to arrest Gura for treason
+country_event = {
+	id = gura.27
+	title = gura.27.t
+	desc = gura.27.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#You misheard, I support the republic!
+	option = {
+		name = gura.27.a
+		set_country_flag = GAW_status_quo_allow
+	}
+	#Shoots the fuckers
+	option = {
+		name = gura.27.b
+		set_country_flag = GAW_form_new_dynasty_allow
 	}
 }

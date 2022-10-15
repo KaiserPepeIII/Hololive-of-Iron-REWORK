@@ -1,19 +1,66 @@
-GAW_chinese_reunification = {
+GAW_he_yingqing_plot = {
 	icon = generic_formable_nations
 	visible_when_empty = yes
-	priority = 10
+	priority = 11
 	allowed = {
-		has_country_flag = GAW_deal_with_holocns
+		tag = GAW
 	}
 	visible = {
 		tag = GAW
+		NOT = {
+			OR = {
+				has_country_flag = GAW_uncovered_he_yingqing_plot
+			}
+		}
+	}
+}
+
+GAW_chinese_reunification = {
+	icon = generic_formable_nations
+	visible_when_empty = yes
+	priority = 11
+	allowed = {
+		tag = GAW
+	}
+	visible = {
+		tag = GAW
+		has_country_flag = GAW_deal_with_holocns
+	}
+}
+
+GAW_military_corruption = {
+	icon = generic_formable_nations
+	visible_when_empty = yes
+	priority = 8
+	allowed = {
+		tag = GAW
+	}
+	visible = {
+		tag = GAW
+		NOT = {
+			check_variable = {
+				var = GAW.corrupt_militarya
+				value = 0
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = GAW.corrupt_militaryb
+				value = 0
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = GAW.corrupt_militaryc
+				value = 0
+				compare = less_than_or_equals
+			}
+		}
 	}
 }
 
 GAW_expanding_the_railways = {
 	icon = generic_formable_nations
 	visible_when_empty = yes
-	priority = 10
+	priority = 9
 	allowed = {
 		tag = GAW
 	}
@@ -25,7 +72,7 @@ GAW_expanding_the_railways = {
 GAW_integrate_warlord_armies = {
 	icon = generic_formable_nations
 	visible_when_empty = yes
-	priority = 10
+	priority = 8
 	allowed = {
 		tag = GAW
 	}

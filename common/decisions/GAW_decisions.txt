@@ -1,0 +1,214 @@
+GAW_military_corruption = {
+	GAW_anti_corruption_purge = {
+		available = {
+			tag = GAW
+			has_political_power > 75
+		}
+		visible = {
+			tag = GAW
+		}
+		cost = 75
+		ai_will_do = {
+			base = 5
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = GAW.corrupt_militarya
+				value = 0.05
+			}
+			add_to_variable = {
+				var = GAW.corrupt_militaryb
+				value = 0.05
+			}
+			add_to_variable = {
+				var = GAW.corrupt_militaryc
+				value = -0.05
+			}
+			random_army_leader = {
+				retire = yes
+			}
+		}
+	}
+	GAW_root_out_corruption = {
+		available = {
+			tag = GAW
+			has_political_power > 150
+		}
+		visible = {
+			tag = GAW
+		}
+		cost = 150
+		ai_will_do = {
+			base = 5
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = GAW.corrupt_militarya
+				value = 0.05
+			}
+			add_to_variable = {
+				var = GAW.corrupt_militaryb
+				value = 0.05
+			}
+			add_to_variable = {
+				var = GAW.corrupt_militaryc
+				value = -0.05
+			}
+		}
+	}
+	GAW_corruption_appoint_lackeys = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+		}
+		cost = 0
+		ai_will_do = {
+			base = 5
+		}
+		complete_effect = {
+			add_political_power = 100
+			add_to_variable = {
+				var = GAW.corrupt_militarya
+				value = -0.05
+			}
+			add_to_variable = {
+				var = GAW.corrupt_militaryb
+				value = -0.05
+			}
+			add_to_variable = {
+				var = GAW.corrupt_militaryc
+				value = 0.05
+			}
+		}
+	}
+	GAW_corruption_buy_loyalty = {
+		available = {
+			tag = GAW
+			has_political_power > 75
+		}
+		visible = {
+			tag = GAW
+		}
+		cost = 75
+		ai_will_do = {
+			base = 5
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = GAW.corrupt_militarya
+				value = -0.05
+			}
+			add_to_variable = {
+				var = GAW.corrupt_militaryb
+				value = -0.05
+			}
+			add_to_variable = {
+				var = GAW.corrupt_militaryc
+				value = 0.05
+			}
+			random_army_leader = {
+				add_unit_leader_trait = GAW_loyal_to_the_shark
+			}
+			random_army_leader = {
+				add_unit_leader_trait = GAW_loyal_to_the_shark
+			}
+			random_army_leader = {
+				add_unit_leader_trait = GAW_loyal_to_the_shark
+			}
+		}
+	}
+}
+
+GAW_he_yingqing_plot = {
+	GAW_planned_coup = {
+		activation = {
+			tag = GAW
+			NOT = {
+				has_country_flag = GAW_uncovered_he_yingqing_plot
+			}
+		}
+		available = {
+			OR = {
+				has_country_flag = GAW_discovered_plotter
+				has_completed_focus = GAW_republican_principles
+				NOT = {
+					has_character = GAW_he_yingpin
+				}
+			}
+		}
+		selectable_mission = yes
+		days_mission_timeout = 365
+		complete_effect = {
+			set_country_flag = GAW_uncovered_he_yingqing_plot
+			if = {
+				limit = {
+					OR = {
+						NOT = {
+							has_character = GAW_he_yingpin
+						}
+						has_completed_focus = GAW_republican_principles
+					}
+				}
+				country_event = gura.17
+				else = {
+					country_event = gura.16
+				}
+			}
+		}
+		timeout_effect = {
+			set_country_flag = GAW_uncovered_he_yingqing_plot
+			country_event = gura.18
+		}
+	}
+	GAW_indiscriminate_purges = {
+		available = {
+			tag = GAW
+			has_political_power > 25
+		}
+		visible = {
+			tag = GAW
+		}
+		cost = 25
+		days_mission_timeout = 30
+		ai_will_do = {
+			base = 5
+		}
+		complete_effect = {
+			add_stability = -0.05
+			add_war_support = -0.05
+			random_army_leader = {
+				retire = yes
+			}
+		}
+	}
+	GAW_conduct_legitimate_investigation = {
+		available = {
+			tag = GAW
+			has_political_power > 100
+		}
+		visible = {
+			tag = GAW
+			NOT = {
+				has_country_flag = GAW_discovered_plotter
+			}
+		}
+		cost = 100
+		days_remove = 30
+		fire_only_once = no
+		ai_will_do = {
+			base = 5
+		}
+		remove_effect = {
+			random_list = {
+				7 = {
+					country_event = gura.14
+				}
+				3 = {
+					country_event = gura.15
+				}
+			}
+		}
+	}
+}
