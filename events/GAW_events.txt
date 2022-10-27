@@ -484,7 +484,7 @@ country_event = {
 	#Tang Shaoli is such a progressive guy!
 	option = {
 		name = gura.19.c
-		country_event = gura.2
+		country_event = gura.28
 	}
 }
 
@@ -626,7 +626,7 @@ country_event = {
 	#I agree to all of it
 	option = {
 		name = gura.26.b
-		set_country_flag = GAW_form_new_dynasty_allow
+		#set_country_flag = GAW_form_new_dynasty_allow
 		country_event = gura.27
 	}
 }
@@ -647,5 +647,92 @@ country_event = {
 	option = {
 		name = gura.27.b
 		set_country_flag = GAW_form_new_dynasty_allow
+	}
+}
+
+#NF - Tang Shaoli's Constitution 
+#		Have a government with strong local government 
+#		Supports Gura as a president 
+#
+country_event = {
+	id = gura.28
+	title = gura.28.t
+	desc = gura.28.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Accept, this is fine for me 
+	option = {
+		name = gura.28.a
+		set_country_flag = GAW_status_quo_allow
+	}
+	#Uhhh, I'll go by someone else
+	option = {
+		name = gura.28.b
+		country_event = gura.29
+	}
+}
+
+#NF - Tang Shaoli's Constitution 
+#	Encounter with the New-Xinzhonghui
+#
+country_event = {
+	id = gura.29
+	title = gura.29.t
+	desc = gura.29.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Uhh yeah of course I support him
+	option = {
+		name = gura.29.a
+		set_country_flag = GAW_status_quo_allow
+	}
+	#Shoots the fuckers, nah I want to be King
+	option = {
+		name = gura.29.b
+		set_country_flag = GAW_form_new_dynasty_allow
+	}
+}
+
+#NF - Form New Dynasty 
+#	Make a speech
+#	Flavour event
+country_event = {
+	id = gura.30
+	title = gura.30.t
+	desc = gura.30.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#I am ready
+	option = {
+		name = gura.30.a
+		country_event = gura.31
+	}
+}
+
+#NF - Uh Oh
+#	Violence in the crowd, Yagoo disaproves
+country_event = {
+	id = gura.31
+	title = gura.31.t
+	desc = gura.31.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Woops
+	option = {
+		name = gura.31.a
+	}
+}
+
+#NF - Status Quo
+#	A sigh of relief
+country_event = {
+	id = gura.32
+	title = gura.32.t
+	desc = gura.32.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = gura.32.a
 	}
 }

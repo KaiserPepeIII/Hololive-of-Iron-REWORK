@@ -100,10 +100,10 @@ focus_tree = {
 		x = 15
 		y = 2
 		completion_reward = {
-			custom_effect_tooltip = WTS_the_westminster_constitution_tooltip
 			country_event = {
 				id = watson.120
 			}
+			custom_effect_tooltip = WTS_the_westminster_constitution_tooltip
 		}
 	}
 	focus = {
@@ -131,6 +131,9 @@ focus_tree = {
 		}
 		available = {
 			has_country_flag = WTS_socialist_budget_flag
+		}
+		completion_reward = {
+			custom_effect_tooltip = GEN_this_focus_will_be_autocompleted
 		}
 		x = 11
 		y = 4
@@ -182,6 +185,9 @@ focus_tree = {
 		}
 		available = {
 			has_country_flag = WTS_conservative_budget_flag
+		}
+		completion_reward = {
+			custom_effect_tooltip = GEN_this_focus_will_be_autocompleted
 		}
 		x = 15
 		y = 4
@@ -737,7 +743,7 @@ focus_tree = {
 		cost = 10
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = wts_owns_eng
+				tooltip = wts_owns_sco
 				132 = {
 					is_controlled_by = WTS
 				}
@@ -747,9 +753,6 @@ focus_tree = {
 				130 = {
 					is_controlled_by = WTS
 				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = wts_owns_sco
 				121 = {
 					is_controlled_by = WTS
 				}
@@ -820,6 +823,9 @@ focus_tree = {
 		prerequisite = {
 			focus = WTS_the_military_inspection
 		}
+		completion_reward = {
+			country_event = watson.167
+		}
 		x = 48
 		y = 2
 	}
@@ -840,7 +846,6 @@ focus_tree = {
 		y = 3
 		completion_reward = {
 			army_experience = 15
-			custom_effect_tooltip = available_theorist
 			show_ideas_tooltip = WTS_B_H_Linddell_Hart
 		}
 	}
@@ -925,6 +930,10 @@ focus_tree = {
 		prerequisite = {
 			focus = WTS_war_of_manouvre
 		}
+		completion_reward = {
+			set_country_flag = WTS_watson_concoction_x_flag
+			custom_effect_tooltip = WTS_watson_concoction_x_locs
+		}
 		x = 31
 		y = 5
 	}
@@ -950,7 +959,6 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
-			custom_effect_tooltip = available_theorist
 			show_ideas_tooltip = WTS_JFC_Fuller
 		}
 	}
@@ -1104,7 +1112,6 @@ focus_tree = {
 					name = "AME A. TNK"
 					type = medium_tank_chassis_1
 					parent_version = 0
-					icon = "GFX_ENG_basic_medium_tank_medium"
 					modules = {
 						main_armament_slot = tank_high_velocity_cannon
 						turret_type_slot = tank_medium_three_man_tank_turret

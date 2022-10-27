@@ -361,7 +361,7 @@ country_event = {
 		name = watson.15.c
 	}
 	option = {
-		#pressure them towards neutrality
+		#pressure them towards neutrality 
 		name = watson.15.d
 	}
 }
@@ -855,9 +855,25 @@ country_event = {
 		#Prior socialist support and budget
 		name = watson.38.a
 		trigger = {
-			has_country_flag = WTS_socialist_budget_flag
+			OR = {
+				has_country_flag = WTS_socialist_budget_flag
+				has_country_flag = WTS_promised_progressive_budget
+			}
 		}
 		add_stability = 0.05
+		complete_national_focus = WTS_socialist_budget
+	}
+	option = {
+		#Prior socialist support and budget
+		name = watson.38.b
+		trigger = {
+			OR = {
+				has_country_flag = WTS_conservative_budget_flag
+				has_country_flag = WTS_promised_conservative_budget
+			}
+		}
+		add_stability = 0.05
+		complete_national_focus = WTS_socialist_budget
 	}
 }
 
@@ -2684,11 +2700,13 @@ country_event = {
 			var = WTS.executive_influence
 			value = 1
 		}
+		set_country_flag = WTS_promised_progressive_budget
 	}
 	option = {
 		#a conservative one
 		name = watson.112.b
 		add_stability = 0.05
+		set_country_flag = WTS_promised_conservative_budget
 	}
 }
 
@@ -3933,6 +3951,84 @@ country_event = {
 	}
 }
 
+#FOUR YEAR PLAN END - Generating Results
+country_event = {
+	id = watson.162
+	title = watson.162.t
+	desc = watson.162.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Total Success - 8
+	option = {
+		name = watson.162.a
+		trigger = {
+			check_variable = {
+				var = WTS.four_year_plan_progress
+				value = 8
+				compare = equals
+			}
+		}
+		country_event = watson.163
+	}
+	#Success - 6-7
+	option = {
+		name = watson.162.b
+		trigger = {
+			OR = {
+				check_variable = {
+					var = WTS.four_year_plan_progress
+					value = 7
+					compare = equals
+				}
+				check_variable = {
+					var = WTS.four_year_plan_progress
+					value = 6
+					compare = equals
+				}
+			}
+		}
+		country_event = watson.164
+	}
+	#Moderate Results - 3-5
+	option = {
+		name = watson.162.c
+		trigger = {
+			OR = {
+				check_variable = {
+					var = WTS.four_year_plan_progress
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = WTS.four_year_plan_progress
+					value = 4
+					compare = equals
+				}
+				check_variable = {
+					var = WTS.four_year_plan_progress
+					value = 3
+					compare = equals
+				}
+			}
+		}
+		country_event = watson.165
+	}
+	#Failure - 0-2
+	option = {
+		name = watson.162.e
+		trigger = {
+			OR = {
+				check_variable = {
+					var = WTS.four_year_plan_progress
+					value = 2
+					compare = less_than_or_equals
+				}
+			}
+		}
+		country_event = watson.166
+	}
+}
+
 #FOUR YEAR PLAN END - Total Success
 country_event = {
 	id = watson.163
@@ -3982,6 +4078,18 @@ country_event = {
 	option = {
 		name = watson.166.a
 		add_stability = -0.15
+	}
+}
+
+#Examine the navy
+country_event = {
+	id = watson.167
+	title = watson.167.t
+	desc = watson.167.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	option = {
+		name = watson.167.a
 	}
 }
 

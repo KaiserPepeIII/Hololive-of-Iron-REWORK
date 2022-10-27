@@ -3251,3 +3251,79 @@ WTS_lhs_bobby = {
 		}
 	}
 }
+
+WTS_watson_concoction_category = {
+	WTS_default_watson_concoction = {
+		available = {
+			has_equipment = {
+				watson_concoction_0 > 5000
+			}
+			command_power > 15
+		}
+		visible = {
+			NOT = {
+				has_completed_focus = WTS_watson_concoction_x
+			}
+		}
+		cost = 75
+		complete_effect = {
+			add_timed_idea = {
+				idea = WTS_watson_concoction_default
+				days = 90
+			}
+		}
+	}
+	WTS_improved_watson_concoction = {
+		available = {
+			has_equipment = {
+				watson_concoction_0 > 5000
+			}
+			command_power > 15
+		}
+		visible = {
+			has_completed_focus = WTS_watson_concoction_x
+			NOT = {
+				has_country_flag = WTS_finalized_watson_concoction
+			}
+		}
+		cost = 75
+		complete_effect = {
+			add_timed_idea = {
+				idea = WTS_watson_concoction_improved
+				days = 90
+			}
+		}
+	}
+	WTS_finalize_watson_concoction = {
+		available = {
+			has_political_power > 100
+			command_power > 15
+		}
+		visible = {
+			has_completed_focus = WTS_watson_concoction_x
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			set_country_flag = WTS_finalized_watson_concoction
+		}
+	}
+	WTS_finalized_watson_concoction = {
+		available = {
+			has_equipment = {
+				watson_concoction_0 > 5000
+			}
+			command_power > 15
+		}
+		visible = {
+			has_completed_focus = WTS_watson_concoction_x
+		}
+		cost = 75
+		complete_effect = {
+			add_timed_idea = {
+				idea = WTS_watson_concoction_finalized
+				days = 90
+			}
+		}
+	}
+}
