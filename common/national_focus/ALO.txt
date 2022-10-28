@@ -736,7 +736,7 @@ focus_tree = {
 	focus = {
 		id = ALO_the_anti_question
 		icon = GFX_focus_ALO_the_anti_question
-		cost = 10
+		cost = 5
 		prerequisite = {
 			focus = ALO_manatomo_loyalty
 		}
@@ -749,7 +749,7 @@ focus_tree = {
 	focus = {
 		id = ALO_reconciliation_movement
 		icon = GFX_focus_ALO_reconciliation_movement
-		cost = 15
+		cost = 8
 		available = {
 			has_country_flag = ALO_reconciliation_act
 		}
@@ -769,7 +769,7 @@ focus_tree = {
 	focus = {
 		id = ALO_appeal_to_hungarian_nationalism
 		icon = GFX_focus_ALO_appeal_to_hungarian_nationalism
-		cost = 8
+		cost = 6
 		prerequisite = {
 			focus = ALO_reconciliation_movement
 		}
@@ -791,7 +791,7 @@ focus_tree = {
 	focus = {
 		id = ALO_address_past_mistakes
 		icon = GFX_focus_ALO_address_past_mistakes
-		cost = 8
+		cost = 6
 		prerequisite = {
 			focus = ALO_reconciliation_movement
 		}
@@ -808,7 +808,7 @@ focus_tree = {
 	focus = {
 		id = ALO_the_anti_purge
 		icon = GFX_focus_ALO_the_anti_purge
-		cost = 15
+		cost = 8
 		available = {
 			has_country_flag = ALO_the_purge
 		}
@@ -827,25 +827,27 @@ focus_tree = {
 	focus = {
 		id = ALO_hunt_the_remnants
 		icon = GFX_focus_ALO_hunt_the_remnants
-		cost = 8
+		cost = 5
 		prerequisite = {
-			focus = ALO_the_anti_purge
+			focus = ALO_no_more_traitors
+			focus = ALO_no_more_division
 		}
 		completion_reward = {
 			add_timed_idea = {
 				idea = ALO_hunting_remnants
 				days = 365
 			}
+			clr_country_flag = ALO_white_terror
 		}
 		x = 23
-		y = 5
+		y = 6
 	}
 	focus = {
 		id = ALO_no_more_traitors
 		icon = GFX_focus_ALO_no_more_traitors
-		cost = 8
+		cost = 6
 		prerequisite = {
-			focus = ALO_hunt_the_remnants
+			focus = ALO_the_anti_purge
 		}
 		completion_reward = {
 			add_to_variable = {
@@ -858,20 +860,20 @@ focus_tree = {
 			}
 		}
 		x = 22
-		y = 6
+		y = 5
 	}
 	focus = {
 		id = ALO_no_more_division
 		icon = GFX_focus_ALO_no_more_division
-		cost = 8
+		cost = 6
 		prerequisite = {
-			focus = ALO_hunt_the_remnants
+			focus = ALO_the_anti_purge
 		}
 		completion_reward = {
 			add_stability = 0.15
 		}
 		x = 24
-		y = 6
+		y = 5
 	}
 	focus = {
 		id = ALO_national_reconstruction_act
@@ -908,7 +910,7 @@ focus_tree = {
 	focus = {
 		id = ALO_secure_lhs_funding
 		icon = GFX_focus_ALO_secure_lhs_funding
-		cost = 10
+		cost = 7
 		prerequisite = {
 			focus = ALO_bring_home_refugees
 		}
@@ -967,7 +969,7 @@ focus_tree = {
 	focus = {
 		id = ALO_farming_subsidy_initiative
 		icon = GFX_focus_ALO_farming_subsidy_initiative
-		cost = 10
+		cost = 7
 		prerequisite = {
 			focus = ALO_allocate_to_countryside
 		}
@@ -1828,7 +1830,7 @@ focus_tree = {
 	focus = {
 		id = ALO_manotomo_united
 		icon = GFX_focus_ALO_manotomo_united
-		cost = 8
+		cost = 5
 		prerequisite = {
 			focus = ALO_address_past_mistakes
 		}
@@ -1837,6 +1839,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = aloe.44
+			clr_country_flag = ALO_white_terror
 		}
 		x = 17
 		y = 6
@@ -1844,7 +1847,7 @@ focus_tree = {
 	focus = {
 		id = ALO_promote_steel_production
 		icon = GFX_focus_ALO_promote_steel_production
-		cost = 10
+		cost = 7
 		prerequisite = {
 			focus = ALO_allocate_to_cities
 		}
@@ -1877,17 +1880,10 @@ focus_tree = {
 		cost = 10
 		prerequisite = {
 			focus = ALO_promote_steel_production
-		}
-		prerequisite = {
 			focus = ALO_farming_subsidy_initiative
 		}
 		prerequisite = {
-			focus = ALO_no_more_division
-		}
-		prerequisite = {
-			focus = ALO_no_more_traitors
-		}
-		prerequisite = {
+			focus = ALO_hunt_the_remnants
 			focus = ALO_manotomo_united
 		}
 		completion_reward = {
@@ -2365,11 +2361,8 @@ focus_tree = {
 		id = ALO_beyond_our_realm
 		icon = GFX_focus_ALO_beyond_our_realm
 		cost = 10
-		prerequisite = {
-			focus = ALO_demon_of_the_carpathians
-		}
-		prerequisite = {
-			focus = ALO_lhs_model_democracy
+		available = {
+			has_completed_focus = ALO_a_new_manatomo
 		}
 		completion_reward = {
 			add_war_support = 0.1
