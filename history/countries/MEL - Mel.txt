@@ -17,8 +17,31 @@ set_technology = {
 	tech_support = 1
 	tech_recon = 1
 	gw_artillery = 1
-	early_fighter = 1
-	early_bomber = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_technology = {
+		iw_small_airframe = 1
+		aa_lmg = 1
+		early_bombs = 1
+		engines_1 = 1
+		aircraft_construction = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_technology = {
+		early_fighter = 1
+		early_bomber = 1
+	}
 }
 
 if = {
@@ -68,15 +91,15 @@ recruit_character = MEL_yozora_mel_reactionary_nationalism
 recruit_character = MEL_yozora_mel_neutral_democracy
 recruit_character = MEL_yozora_mel_divine_mandate
 MEL = {
-				set_variable  = { 
-				var = MEL.anti_aggression 
-				value = 85
-				}  
-				clamp_variable = {
-				var = MEL.anti_aggression
-				min = 0
-				max = 100
-				}
+	set_variable = {
+		var = MEL.anti_aggression
+		value = 85
+	}
+	clamp_variable = {
+		var = MEL.anti_aggression
+		min = 0
+		max = 100
+	}
 	set_variable = {
 		var = ROOT.seiso_alignment
 		value = 3
@@ -124,6 +147,7 @@ MEL = {
 	}
 	government_alignment_initiate = yes
 }
+
 set_politics = {
 	ruling_party = neutrality
 	last_election = "1936.1.1"

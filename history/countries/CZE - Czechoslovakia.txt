@@ -7,8 +7,30 @@ set_technology = {
 	tech_mountaineers = 1
 	gw_artillery = 1
 	interwar_antiair = 1
-	early_fighter = 1
 	basic_train = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_technology = {
+		iw_small_airframe = 1
+		aa_lmg = 1
+		engines_1 = 1
+		aircraft_construction = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_technology = {
+		early_fighter = 1
+	}
 }
 
 if = {
@@ -91,6 +113,7 @@ CZE = {
 	}
 	government_alignment_initiate = yes
 }
+
 set_popularities = {
 	mixed_ideology_democracy = 55
 	democratic = 15

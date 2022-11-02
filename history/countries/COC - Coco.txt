@@ -23,14 +23,37 @@ set_technology = {
 	motorised_infantry = 1
 	gw_artillery = 1
 	interwar_antiair = 1
-	early_fighter = 1
-	naval_bomber1 = 1
-	cv_early_fighter = 1
-	early_bomber = 1
-	tactical_bomber1 = 1
-	CAS1 = 1
 	basic_train = 1
 	radio = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_technology = {
+		iw_small_airframe = 1
+		iw_medium_airframe = 1
+		iw_large_airframe = 1
+		aa_lmg = 1
+		early_bombs = 1
+		engines_1 = 1
+		aircraft_construction = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_technology = {
+		early_fighter = 1
+		early_bomber = 1
+		tactical_bomber1 = 1
+		CAS1 = 1
+	}
 }
 
 if = {
@@ -256,7 +279,7 @@ if = {
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_medium_cannon
-			turret_type_slot = tank_light_one_man_tank_turret
+			turret_type_slot = tank_medium_one_man_tank_turret
 			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_cast_armor
 			engine_type_slot = tank_diesel_engine
