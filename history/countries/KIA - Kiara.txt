@@ -26,6 +26,7 @@ if = {
 	}
 	set_technology = {
 		iw_small_airframe = 1
+		basic_small_airframe = 1
 		aa_lmg = 1
 		early_bombs = 1
 		engines_1 = 1
@@ -72,6 +73,148 @@ if = {
 		basic_light_tank = 1
 		improved_light_tank = 1
 		basic_heavy_tank = 1
+	}
+}
+
+set_convoys = 50
+#LEADER GENERATION - Kiara 
+recruit_character = KIA_takanashi_kiara_democratic
+recruit_character = KIA_takanashi_kiara_progressive
+recruit_character = KIA_takanashi_kiara_yagoo_monarchy
+recruit_character = KIA_takanashi_kiara_yagoo_kleptocratic
+recruit_character = KIA_takanashi_kiara_revolutionary
+recruit_character = KIA_takanashi_kiara_nationalism
+recruit_character = KIA_takanashi_kiara_resistance_monarchy
+recruit_character = KIA_takanashi_kiara_resistance_kleptocracy
+recruit_character = KIA_takanashi_kiara_neutral_kleptocratic
+recruit_character = KIA_takanashi_kiara_reactionary_nationalism
+recruit_character = KIA_takanashi_kiara_neutral_democracy
+recruit_character = KIA_takanashi_kiara_divine_mandate
+KIA = {
+	set_variable = {
+		var = KIA.anti_aggression
+		value = 55
+	}
+	clamp_variable = {
+		var = KIA.anti_aggression
+		min = 0
+		max = 100
+	}
+	set_variable = {
+		var = ROOT.seiso_alignment
+		value = 4
+	}
+	clamp_variable = {
+		var = ROOT.seiso_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.reactionary_alignment
+		value = 3
+	}
+	clamp_variable = {
+		var = ROOT.reactionary_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.authoritarianism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.capitalism_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.capitalism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.isolationism_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.isolationism_alignment
+		min = 1
+		max = 5
+	}
+	government_alignment_initiate = yes
+}
+
+set_politics = {
+	ruling_party = pro_yagoo_monarchy
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	pro_yagoo_monarchy = 42
+	pro_resistance_monarchy = 40
+	reactionary_nationalism = 18
+}
+
+###############
+#
+#	BBA PLANES
+#
+###############
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Do 17"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = small_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = lmg_defense_turret_2x
+		}
+	}
+	create_equipment_variant = {
+		name = "He 51"		#also covers Ar 68
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Hs 123"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Bf 109 D"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Ju 87"
+		type = small_plane_cas_airframe_1
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = dive_brakes_small
+		}
 	}
 }
 
@@ -203,89 +346,4 @@ if = {
 			tank_nsb_engine_upgrade = 2
 		}
 	}
-}
-
-set_convoys = 50
-#LEADER GENERATION - Kiara 
-recruit_character = KIA_takanashi_kiara_democratic
-recruit_character = KIA_takanashi_kiara_progressive
-recruit_character = KIA_takanashi_kiara_yagoo_monarchy
-recruit_character = KIA_takanashi_kiara_yagoo_kleptocratic
-recruit_character = KIA_takanashi_kiara_revolutionary
-recruit_character = KIA_takanashi_kiara_nationalism
-recruit_character = KIA_takanashi_kiara_resistance_monarchy
-recruit_character = KIA_takanashi_kiara_resistance_kleptocracy
-recruit_character = KIA_takanashi_kiara_neutral_kleptocratic
-recruit_character = KIA_takanashi_kiara_reactionary_nationalism
-recruit_character = KIA_takanashi_kiara_neutral_democracy
-recruit_character = KIA_takanashi_kiara_divine_mandate
-KIA = {
-	set_variable = {
-		var = KIA.anti_aggression
-		value = 55
-	}
-	clamp_variable = {
-		var = KIA.anti_aggression
-		min = 0
-		max = 100
-	}
-	set_variable = {
-		var = ROOT.seiso_alignment
-		value = 4
-	}
-	clamp_variable = {
-		var = ROOT.seiso_alignment
-		min = 1
-		max = 5
-	}
-	set_variable = {
-		var = ROOT.reactionary_alignment
-		value = 3
-	}
-	clamp_variable = {
-		var = ROOT.reactionary_alignment
-		min = 1
-		max = 5
-	}
-	set_variable = {
-		var = ROOT.authoritarianism_alignment
-		value = 2
-	}
-	clamp_variable = {
-		var = ROOT.authoritarianism_alignment
-		min = 1
-		max = 5
-	}
-	set_variable = {
-		var = ROOT.capitalism_alignment
-		value = 2
-	}
-	clamp_variable = {
-		var = ROOT.capitalism_alignment
-		min = 1
-		max = 5
-	}
-	set_variable = {
-		var = ROOT.isolationism_alignment
-		value = 2
-	}
-	clamp_variable = {
-		var = ROOT.isolationism_alignment
-		min = 1
-		max = 5
-	}
-	government_alignment_initiate = yes
-}
-
-set_politics = {
-	ruling_party = pro_yagoo_monarchy
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
-
-set_popularities = {
-	pro_yagoo_monarchy = 42
-	pro_resistance_monarchy = 40
-	reactionary_nationalism = 18
 }

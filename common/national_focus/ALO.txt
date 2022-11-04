@@ -726,10 +726,19 @@ focus_tree = {
 		prerequisite = {
 			focus = ALO_end_of_strife
 		}
+		cancelable = no
+		select_effect = {
+			hidden_effect = {
+				add_ideas = ALO_passive_stability
+			}
+		}
 		completion_reward = {
 			add_timed_idea = {
 				idea = ALO_rebuilding_homes
 				days = 240
+			}
+			hidden_effect = {
+				remove_ideas = ALO_passive_stability
 			}
 		}
 		x = 20
@@ -821,6 +830,7 @@ focus_tree = {
 			focus = ALO_reconciliation_movement
 		}
 		completion_reward = {
+			add_political_power = 25
 			country_event = aloe.33
 		}
 		x = 23
@@ -1334,6 +1344,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = ALO_bomber_focus
 		}
+		mutually_exclusive = {
+			focus = ALO_cas_focus
+		}
 		completion_reward = {
 			add_ideas = ALO_fighter_focus
 			add_tech_bonus = {
@@ -1355,6 +1368,9 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = ALO_bomber_focus
+		}
+		mutually_exclusive = {
+			focus = ALO_fighter_focus
 		}
 		completion_reward = {
 			add_ideas = ALO_cas_focus
@@ -1698,11 +1714,6 @@ focus_tree = {
 			add_ideas = ALO_localized_production
 			every_owned_state = {
 				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
 					type = industrial_complex
 					level = 1
 					instant_build = yes
@@ -1728,7 +1739,7 @@ focus_tree = {
 			every_owned_state = {
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -1882,8 +1893,18 @@ focus_tree = {
 			focus = ALO_hunt_the_remnants
 			focus = ALO_manotomo_united
 		}
+		cancelable = no
+		select_effect = {
+			hidden_effect = {
+				add_ideas = ALO_passive_stability
+			}
+		}
 		completion_reward = {
+			add_political_power = 75
 			country_event = aloe.42
+			hidden_effect = {
+				remove_ideas = ALO_passive_stability
+			}
 		}
 		x = 26
 		y = 7
@@ -2276,6 +2297,10 @@ focus_tree = {
 			focus = ALO_aloe_militarism
 		}
 		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
 			every_character = {
 				limit = {
 					has_trait = ALO_dejected_empress
