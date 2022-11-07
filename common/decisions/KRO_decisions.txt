@@ -1,4 +1,80 @@
 KRO_the_long_march = {
+	#Before the March 
+	KRO_acquire_guns = {
+		available = {
+			has_political_power > 50
+			NOT = {
+				has_country_flag = KRO_on_the_march1
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		visible = {
+			is_puppet_of = FBK
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 125
+				producer = FBK
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 125
+				producer = RUS
+			}
+		}
+	}
+	KRO_acquire_artillery = {
+		available = {
+			has_political_power > 50
+			NOT = {
+				has_country_flag = KRO_on_the_march1
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		visible = {
+			is_puppet_of = FBK
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 25
+				producer = FBK
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 10
+				producer = RUS
+			}
+		}
+	}
+	KRO_acquire_heavy_equipment = {
+		available = {
+			has_political_power > 50
+			NOT = {
+				has_country_flag = KRO_on_the_march1
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		visible = {
+			is_puppet_of = FBK
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 105
+				producer = FBK
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 85
+				producer = RUS
+			}
+		}
+	}
 	KRO_the_march_eastwards = {
 		available = {
 			has_political_power > 50
@@ -33,6 +109,30 @@ KRO_the_long_march = {
 			397 = {
 				transfer_state_to = FBK
 			}
+			KRO_march_eastwards_summon_units = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	KRO_the_march_eastwards2 = {
+		available = {
+			has_political_power > 50
+			date > 1937.6.1
+		}
+		visible = {
+			has_country_flag = KRO_round2_electric_boogaloo
+		}
+		cost = 50
+		complete_effect = {
+			set_country_flag = KRO_on_the_march1
+			KRO = {
+				add_threat = 2.5
+				declare_war_on = {
+					target = RSR
+					type = annex_everything
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -51,12 +151,26 @@ KRO_the_long_march = {
 			controls_state = 653
 			controls_state = 572
 		}
+		cancel_trigger = {
+			KRO = {
+				NOT = {
+					has_War_with = RSR
+				}
+			}
+		}
+		cancel_effect = {
+			set_country_flag = KRO_round2_electric_boogaloo
+			clr_country_flag = KRO_on_the_march1
+		}
 		is_good = no
-		days_mission_timeout = 180
+		days_mission_timeout = 365
 		selectable_mission = yes
 		complete_effect = {
 			clr_country_flag = KRO_on_the_march1
 			set_country_flag = KRO_established_in_russia
+			KRO = {
+				white_peace = RSR
+			}
 			580 = {
 				transfer_state_to = KRO
 			}
@@ -65,9 +179,6 @@ KRO_the_long_march = {
 			}
 			572 = {
 				transfer_state_to = KRO
-			}
-			KRO = {
-				white_peace = RSR
 			}
 		}
 		timeout_effect = {
@@ -99,6 +210,7 @@ KRO_the_long_march = {
 						state = 213
 						state = 722
 						state = 147
+						state = 971
 						region = 132
 						region = 284
 						region = 283
@@ -122,6 +234,12 @@ KRO_the_long_march = {
 					}
 				}
 				add_core_of = KRO
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = KRO_polish_diaspora1
+					add_idea = KRO_polish_diaspora2
+				}
 			}
 		}
 		ai_will_do = {

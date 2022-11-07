@@ -447,6 +447,36 @@ focus_tree = {
 		id = WTS_invade_ireland
 		icon = GFX_focus_WTS_invade_ireland
 		cost = 10
+		bypass = {
+			AND = {
+				OR = {
+					FAU = {
+						OR = {
+							is_puppet_of = WTS
+							is_subject_of = WTS
+							exists = no
+						}
+						has_war_with = WTS
+					}
+					WTS = {
+						has_wargoal_against = FAU
+					}
+				}
+				OR = {
+					IRE = {
+						OR = {
+							is_puppet_of = WTS
+							is_subject_of = WTS
+							exists = no
+						}
+						has_war_with = WTS
+					}
+					WTS = {
+						has_wargoal_against = IRE
+					}
+				}
+			}
+		}
 		prerequisite = {
 			focus = WTS_another_northern_irish_solution
 		}
@@ -716,6 +746,36 @@ focus_tree = {
 		id = WTS_operation_ground_pound
 		icon = GFX_focus_WTS_operation_ground_pound
 		cost = 10
+		bypass = {
+			AND = {
+				OR = {
+					SCO = {
+						OR = {
+							is_puppet_of = WTS
+							is_subject_of = WTS
+							exists = no
+						}
+						has_war_with = WTS
+					}
+					WTS = {
+						has_wargoal_against = SCO
+					}
+				}
+				OR = {
+					ENG = {
+						OR = {
+							is_puppet_of = WTS
+							is_subject_of = WTS
+							exists = no
+						}
+						has_war_with = WTS
+					}
+					WTS = {
+						has_wargoal_against = ENG
+					}
+				}
+			}
+		}
 		prerequisite = {
 			focus = WTS_seek_lhs_military_support
 			focus = WTS_seek_alternative_sources

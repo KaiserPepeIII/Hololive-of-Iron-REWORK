@@ -1742,6 +1742,7 @@ focus_tree = {
 					level = 1
 					instant_build = yes
 				}
+				add_extra_state_shared_building_slots = 1
 			}
 		}
 		x = 8
@@ -2396,12 +2397,39 @@ focus_tree = {
 		id = ALO_demand_bessarabia
 		icon = GFX_focus_ALO_demand_bessarabia
 		cost = 8
+		bypass = {
+			OR = {
+				MEL = {
+					OR = {
+						is_puppet_of = ALO
+						is_subject_of = ALO
+						exists = no
+					}
+					has_war_with = ALO
+				}
+				ALO = {
+					has_wargoal_against = MEL
+				}
+			}
+		}
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
 		completion_reward = {
-			MEL = {
-				country_event = mel.2
+			if = {
+				limit = {
+					ALO = {
+						owns_state = 84
+					}
+				}
+				MEL = {
+					country_event = mel.2
+				}
+				else = {
+					MEL = {
+						country_event = mel.3
+					}
+				}
 			}
 		}
 		x = 30
@@ -2411,6 +2439,21 @@ focus_tree = {
 		id = ALO_secure_the_oilfields
 		icon = GFX_focus_ALO_secure_the_oilfields
 		cost = 8
+		bypass = {
+			OR = {
+				MEL = {
+					OR = {
+						is_puppet_of = ALO
+						is_subject_of = ALO
+						exists = no
+					}
+					has_war_with = ALO
+				}
+				ALO = {
+					has_wargoal_against = MEL
+				}
+			}
+		}
 		prerequisite = {
 			focus = ALO_demand_bessarabia
 		}
@@ -2427,6 +2470,21 @@ focus_tree = {
 		id = ALO_exploit_czech_weakness
 		icon = GFX_focus_ALO_exploit_czech_weakness
 		cost = 8
+		bypass = {
+			OR = {
+				CZE = {
+					OR = {
+						is_puppet_of = ALO
+						is_subject_of = ALO
+						exists = no
+					}
+					has_war_with = ALO
+				}
+				ALO = {
+					has_wargoal_against = CZE
+				}
+			}
+		}
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
@@ -2442,6 +2500,21 @@ focus_tree = {
 		id = ALO_flank_the_austrians
 		icon = GFX_focus_ALO_flank_the_austrians
 		cost = 8
+		bypass = {
+			OR = {
+				AUS = {
+					OR = {
+						is_puppet_of = ALO
+						is_subject_of = ALO
+						exists = no
+					}
+					has_war_with = ALO
+				}
+				ALO = {
+					has_wargoal_against = AUS
+				}
+			}
+		}
 		prerequisite = {
 			focus = ALO_beyond_our_realm
 		}
@@ -2457,6 +2530,32 @@ focus_tree = {
 		id = ALO_end_italian_existence
 		icon = GFX_focus_ALO_end_italian_existence
 		cost = 8
+		bypass = {
+			OR = {
+				ITA = {
+					OR = {
+						is_puppet_of = ALO
+						is_subject_of = ALO
+						exists = no
+					}
+					has_war_with = ALO
+				}
+				ALO = {
+					has_wargoal_against = ITA
+				}
+				PEK = {
+					OR = {
+						is_puppet_of = ALO
+						is_subject_of = ALO
+						exists = no
+					}
+					has_war_with = ALO
+				}
+				ALO = {
+					has_wargoal_against = PEK
+				}
+			}
+		}
 		prerequisite = {
 			focus = ALO_a_central_power
 		}
