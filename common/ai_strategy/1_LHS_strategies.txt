@@ -1,0 +1,32 @@
+LHS_dont_guarantee_antis = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		OR = {
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+			is_lhs_ideology = yes
+		}
+	}
+	enable_reverse = {
+		has_anti_ideology = yes
+	}
+	abort = {
+		NOT = {
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+			is_lhs_ideology = yes
+		}
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = THIS
+		target = guarantee
+		value = -200
+	}
+}

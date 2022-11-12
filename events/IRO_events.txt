@@ -1,0 +1,27 @@
+add_namespace = iroha
+#Iroha revolution - END 
+country_event = {
+	id = iroha.1
+	title = iroha.1.t
+	desc = iroha.1.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	trigger = {
+		tag = IRO
+		IRO = {
+			has_country_flag = IRO_iroha_revolution
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+	}
+	option = {
+		name = iroha.1.a
+		IRO_grant_claims = yes
+		IRO = {
+			add_stability = 0.15
+			add_political_power = 100
+		}
+		clr_country_flag = IRO_iroha_revolution
+	}
+}

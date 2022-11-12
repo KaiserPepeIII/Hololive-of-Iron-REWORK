@@ -1,0 +1,479 @@
+CENTRAL_ASIA_the_power_vacuum = {
+	CENTRAL_ASIA_invite_lhs_mission = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 10
+			}
+		}
+		visible = {
+			has_anti_ideology = no
+			NOT = {
+				threat > 7.5
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 180
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 10
+		complete_effect = {
+			ROOT = {
+				add_timed_idea = {
+					idea = CENTRAL_ASIA_lhs_mission
+					days = 180
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_invite_resistance_mission = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 10
+			}
+		}
+		visible = {
+			has_anti_ideology = no
+			NOT = {
+				threat > 7.5
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 180
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 10
+		complete_effect = {
+			ROOT = {
+				add_timed_idea = {
+					idea = CENTRAL_ASIA_resistance_mission
+					days = 180
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_pull_on_anti_imperalism = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 25
+			}
+		}
+		visible = {
+			has_anti_ideology = no
+		}
+		fire_only_once = no
+		days_re_enable = 180
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 25
+		complete_effect = {
+			ROOT = {
+				add_timed_idea = {
+					idea = CENTRAL_ASIA_anti_imperialism
+					days = 180
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_pull_on_westernization = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 25
+			}
+		}
+		visible = {
+			has_anti_ideology = no
+		}
+		fire_only_once = no
+		days_re_enable = 180
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 25
+		complete_effect = {
+			ROOT = {
+				add_timed_idea = {
+					idea = CENTRAL_ASIA_westernization
+					days = 180
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_acquire_arms = {
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = no
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 125
+				producer = RUS
+			}
+		}
+	}
+	CENTRAL_ASIA_war_with_TMS = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 50
+			}
+		}
+		visible = {
+			TMS = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = TMS
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = TMS
+				is_capital = yes
+			}
+		}
+		target_trigger = {
+			from = {
+				tag = TMS
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			ROOT = {
+				add_threat = 1.5
+				declare_war_on = {
+					target = TMS
+					type = annex_everything
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_war_with_SAN = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 50
+			}
+		}
+		visible = {
+			SAN = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = SAN
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = SAN
+				is_capital = yes
+			}
+		}
+		target_trigger = {
+			from = {
+				tag = SAN
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			ROOT = {
+				add_threat = 1.5
+				declare_war_on = {
+					target = SAN
+					type = annex_everything
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_war_with_KAZ = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 50
+			}
+		}
+		visible = {
+			KAZ = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = KAZ
+			}
+		}
+		visible = {
+			KAZ = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = KAZ
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = KAZ
+				is_capital = yes
+			}
+		}
+		target_trigger = {
+			from = {
+				tag = KAZ
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			ROOT = {
+				add_threat = 1.5
+				declare_war_on = {
+					target = KAZ
+					type = annex_everything
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_war_with_KYR = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 50
+			}
+		}
+		visible = {
+			KYR = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = KYR
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = KYR
+				is_capital = yes
+			}
+		}
+		target_trigger = {
+			from = {
+				tag = KYR
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			ROOT = {
+				add_threat = 1.5
+				declare_war_on = {
+					target = KYR
+					type = annex_everything
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_war_with_UZB = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 50
+			}
+		}
+		visible = {
+			UZB = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = UZB
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = UZB
+				is_capital = yes
+			}
+		}
+		target_trigger = {
+			from = {
+				tag = UZB
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			ROOT = {
+				add_threat = 1.5
+				declare_war_on = {
+					target = UZB
+					type = annex_everything
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_war_with_TOW = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 50
+			}
+		}
+		visible = {
+			TOW = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = TOW
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = TOW
+				is_capital = yes
+			}
+		}
+		target_trigger = {
+			from = {
+				tag = TIW
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			ROOT = {
+				add_threat = 1.5
+				declare_war_on = {
+					target = TOW
+					type = annex_everything
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_war_with_LUN = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 50
+			}
+		}
+		visible = {
+			LUN = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = LUN
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = LUN
+				is_capital = yes
+			}
+		}
+		target_trigger = {
+			from = {
+				tag = LUN
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			ROOT = {
+				add_threat = 1.5
+				declare_war_on = {
+					target = LUN
+					type = annex_everything
+				}
+			}
+		}
+	}
+	CENTRAL_ASIA_war_with_OKA = {
+		icon = decision_generic_industry
+		available = {
+			ROOT = {
+				has_political_power > 50
+			}
+		}
+		visible = {
+			OKA = {
+				exists = yes
+			}
+			ROOT = {
+				is_neighbor_of = OKA
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = OKA
+				is_capital = yes
+			}
+		}
+		target_trigger = {
+			from = {
+				tag = OKA
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = -100
+				OR = {
+					ROOT = {
+						strength_ratio = {
+							tag = OKA
+							ratio > 0.85
+						}
+					}
+					NOT = {
+						has_country_flag = CENTRAL_ASIA_formed_central_asia
+					}
+				}
+			}
+		}
+		cost = 50
+		complete_effect = {
+			ROOT = {
+				add_threat = 5
+				add_timed_idea = {
+					idea = CENTRAL_ASIA_spirit_of_the_horde
+					days = 175
+				}
+				declare_war_on = {
+					target = OKA
+					type = annex_everything
+				}
+			}
+		}
+	}
+}

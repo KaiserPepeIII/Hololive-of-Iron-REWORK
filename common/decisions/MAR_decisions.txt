@@ -1,0 +1,87 @@
+MAR_pirating_decisions = {
+	MAR_invade_guyana = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+}
+
+MAR_settling_decisions = {
+	MAR_develop_kingston = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 125
+		}
+		cost = 125
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			capital_scope = {
+				if = {
+					limit = {
+						OR = {
+							has_state_category = wasteland
+							has_state_category = enclave
+							has_state_category = small_island
+							has_state_category = tiny_island
+							has_state_category = pastoral
+						}
+					}
+					set_state_category = rural
+					else_if = {
+						limit = {
+							has_state_category = rural
+						}
+						set_state_category = town
+					}
+					else_if = {
+						limit = {
+							has_state_category = town
+						}
+						set_state_category = large_town
+					}
+					else_if = {
+						limit = {
+							has_state_category = large_town
+						}
+						set_state_category = city
+					}
+					else_if = {
+						limit = {
+							has_state_category = city
+						}
+						set_state_category = large_city
+					}
+					else_if = {
+						limit = {
+							has_state_category = large_city
+						}
+						set_state_category = metropolis
+					}
+					else_if = {
+						limit = {
+							has_state_category = metropolis
+						}
+						set_state_category = megalopolis
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+}
