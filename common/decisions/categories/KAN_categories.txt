@@ -14,3 +14,19 @@ KAN_veracruz_incident_categories = {
 		}
 	}
 }
+
+KAN_reclaim_baja_california = {
+	icon = generic_formable_nations
+	visible_when_empty = yes
+	priority = 10
+	allowed = {
+		tag = KAN
+	}
+	visible = {
+		has_global_flag = veracruz_incident_settled
+		NOT = {
+			owns_state = 484
+			owns_state = 1126
+		}
+	}
+}

@@ -1,0 +1,62 @@
+defined_text = { 
+    name = MAR_get_pirating_loc
+    text = {
+        trigger = {
+            check_variable = {
+			var = MAR.pirating_fervour
+			value = 7
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = MAR_strong_pirate
+    }
+    text = {
+        trigger = {
+            check_variable = {
+			var = MAR.pirating_fervour
+			value = 6
+			compare = less_than_or_equals
+			}
+            check_variable = {
+			var = MAR.pirating_fervour
+			value = 4
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = MAR_medium_pirate
+    }
+    text = {
+        localization_key = MAR_weak_pirate
+    }
+}
+defined_text = { 
+    name = MAR_get_settling_loc
+    text = {
+        trigger = {
+            check_variable = {
+			var = MAR.settling_fervour
+			value = 7
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = MAR_strong_settlement 
+    }
+    text = {
+        trigger = {
+            check_variable = {
+			var = MAR.settling_fervour
+			value = 6
+			compare = less_than_or_equals
+			}
+            check_variable = {
+			var = MAR.settling_fervour
+			value = 4
+			compare = greater_than_or_equals
+			}
+        }
+        localization_key = MAR_medium_settlement
+    }
+    text = {
+        localization_key = MAR_weak_settlement
+    }
+}

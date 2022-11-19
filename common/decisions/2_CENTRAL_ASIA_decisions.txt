@@ -64,6 +64,11 @@ CENTRAL_ASIA_the_power_vacuum = {
 		}
 		visible = {
 			has_anti_ideology = no
+			check_variable = {
+				var = ROOT.anti_aggression
+				value = 25
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_re_enable = 180
@@ -89,6 +94,9 @@ CENTRAL_ASIA_the_power_vacuum = {
 		}
 		visible = {
 			has_anti_ideology = no
+			NOT = {
+				amount_research_slots > 2
+			}
 		}
 		fire_only_once = no
 		days_re_enable = 180
@@ -358,7 +366,7 @@ CENTRAL_ASIA_the_power_vacuum = {
 		}
 		target_trigger = {
 			from = {
-				tag = TIW
+				tag = TOW
 			}
 		}
 		fire_only_once = no

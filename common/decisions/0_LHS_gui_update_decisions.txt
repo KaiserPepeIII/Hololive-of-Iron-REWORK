@@ -1,0 +1,115 @@
+LHS_update_category = {
+	LHS_update_decision = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		days_re_enable = 1
+		visible = {
+		NOT = {
+			lhs_member_button_trigger = yes
+			resistance_member_button_trigger = yes
+			has_idea = neutral_member
+			has_idea = anti_member
+		}
+		}
+		complete_effect = {
+			if = {
+				#OVERLORD - LHS member
+				limit = {
+					OR = {
+						is_puppet = yes
+						is_subject = yes
+					}
+					OVERLORD = {
+						has_idea = lhs_member
+					}
+				}
+				ROOT = {
+					join_the_lhs = yes
+				}
+				#OVERLORD - Neutral resistance member
+				else_if = {
+					limit = {
+						OR = {
+							is_puppet = yes
+							is_subject = yes
+						}
+						OVERLORD = {
+							has_idea = resistance_member
+							has_idea = neutral_resistance_member
+						}
+					}
+					ROOT = {
+						join_the_resistance = yes
+					}
+				}
+				#OVERLORD - Coco resistance member
+				else_if = {
+					limit = {
+						OR = {
+							is_puppet = yes
+							is_subject = yes
+						}
+						OVERLORD = {
+							has_idea = resistance_member
+							has_idea = coco_resistance_member
+						}
+					}
+					ROOT = {
+						join_coco_resistance = yes
+					}
+				}
+				#OVERLORD - Aqua resistance member
+				else_if = {
+					limit = {
+						OR = {
+							is_puppet = yes
+							is_subject = yes
+						}
+						OVERLORD = {
+							has_idea = resistance_member
+							has_idea = aqua_resistance_member
+						}
+					}
+					ROOT = {
+						join_aqua_resistance = yes
+					}
+				}
+				#OVERlord - NEUTRAL
+				else_if = {
+					limit = {
+						OR = {
+							is_puppet = yes
+							is_subject = yes
+						}
+						OVERLORD = {
+							has_idea = neutral_member
+						}
+					}
+					ROOT = {
+						add_ideas = neutral_member
+					}
+				}
+				#OVERlord - ANTI
+				else_if = {
+					limit = {
+						OR = {
+							is_puppet = yes
+							is_subject = yes
+						}
+						OVERLORD = {
+							has_idea = anti_member
+						}
+					}
+					ROOT = {
+						add_ideas = anti_member
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+}

@@ -38,11 +38,11 @@ GEN_arab_independence = {
 			any_of = {
 				array = global.arab_nationalism_states
 				value = THIS.id
-				fascism > 0.5
+				fascism > 0.3
 				check_variable = {
 					var = THIS.anti_aggression
-					value = 50
-					compare = greater_than_or_equals
+					value = 35
+					compare = greater_than
 				}
 			}
 		}
@@ -51,26 +51,26 @@ GEN_arab_independence = {
 				tag = KRN
 			}
 			THIS = {
-				fascism < 0.45
+				fascism < 0.3
 				check_variable = {
 					var = THIS.anti_aggression
-					value = 45
+					value = 35
 					compare = less_than_or_equals
 				}
 			}
 		}
 		cancel_trigger = {
 			THIS = {
-				fascism < 0.45
+				fascism < 0.24
 				check_variable = {
 					var = THIS.anti_aggression
-					value = 45
+					value = 25
 					compare = less_than_or_equals
 				}
 			}
 		}
 		is_good = no
-		days_mission_timeout = 180
+		days_mission_timeout = 60
 		selectable_mission = no
 		complete_effect = {
 			add_stability = 0.05

@@ -216,8 +216,6 @@ focus_tree = {
 			always = yes
 		}
 		available_if_capitulated = yes
-		cancel_if_invalid = yes
-		continue_if_invalid = no
 		search_filters = {
 			Industry
 		}
@@ -237,9 +235,25 @@ focus_tree = {
 					add_idea = sui_minor_colonial_unrest
 				}
 			}
-			add_to_variable = {
-				var = GLOBAL.tropical_goods_market
-				value = 1
+			random_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
 			}
 		}
 		x = 58
@@ -2505,10 +2519,6 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_to_variable = {
-				var = tropical_goods_market
-				value = 3
-			}
 			add_stability = 0.05
 		}
 		prerequisite = {
@@ -2556,10 +2566,6 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_to_variable = {
-				var = tropical_goods_market
-				value = 2
-			}
 		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_europe
@@ -2653,10 +2659,6 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_to_variable = {
-				var = tropical_goods_market
-				value = 2
-			}
 			973 = {
 				add_building_construction = {
 					type = industrial_complex
@@ -3357,10 +3359,6 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_to_variable = {
-				var = tropical_goods_market
-				value = 3
-			}
 		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recover_effort
@@ -3407,10 +3405,6 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_to_variable = {
-				var = tropical_goods_market
-				value = 1
-			}
 			if = {
 				limit = {
 					has_idea = sui_major_colonial_unrest
@@ -3655,10 +3649,6 @@ focus_tree = {
 			focus = SUI_tropical_goods_recovery_africa
 		}
 		completion_reward = {
-			add_to_variable = {
-				var = GLOBAL.tropical_goods_market
-				value = 5
-			}
 			add_stability = 0.01
 			add_political_power = 25
 			add_timed_idea = {
@@ -3715,10 +3705,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = SUI_modernization_methods
-			add_to_variable = {
-				var = GLOBAL.tropical_goods_market
-				value = 5
-			}
 			973 = {
 				add_building_construction = {
 					type = industrial_complex
@@ -4309,10 +4295,6 @@ focus_tree = {
 				days = 180
 			}
 			add_stability = 0.05
-			add_to_variable = {
-				var = GLOBAL.tropical_goods_market
-				value = 2
-			}
 		}
 		x = 9
 		y = 10
@@ -4946,14 +4928,32 @@ focus_tree = {
 			OR = {
 				FRA = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
 						has_war_with = SUI
 					}
 				}
 				SUI = {
 					has_wargoal_against = FRA
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						FRA = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						FRA = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5023,14 +5023,34 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			SUI = {
-				OR = {
-					has_war_with = SUB
-					is_puppet_of = SUB
-					SUB = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
+			OR = {
+				SUB = {
+					OR = {
 						exists = no
+						has_war_with = SUI
+					}
+				}
+				SUI = {
+					has_wargoal_against = SUB
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						SUB = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						SUB = {
+							is_subject_of = SUI
+						}
 					}
 				}
 			}
@@ -5060,14 +5080,34 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			SUI = {
-				OR = {
-					has_war_with = KIA
-					is_puppet_of = KIA
-					KIA = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
+			OR = {
+				FRA = {
+					OR = {
 						exists = no
+						has_war_with = KIA
+					}
+				}
+				SUI = {
+					has_wargoal_against = KIA
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						KIA = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						KIA = {
+							is_subject_of = SUI
+						}
 					}
 				}
 			}
@@ -5096,15 +5136,33 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			SUI = {
+			OR = {
+				FRA = {
+					OR = {
+						exists = no
+						has_war_with = GER
+					}
+				}
+				SUI = {
+					has_wargoal_against = GER
+				}
 				OR = {
-					has_war_with = GER
-					is_puppet_of = GER
-					GER = {
-						OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						GER = {
 							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						GER = {
 							is_subject_of = SUI
-							exists = no
 						}
 					}
 				}
@@ -5198,12 +5256,34 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			SUI = {
-				OR = {
-					has_war_with = PEK
-					has_wargoal_against = PEK
-					PEK = {
+			OR = {
+				PEK = {
+					OR = {
 						exists = no
+						has_war_with = SUI
+					}
+				}
+				SUI = {
+					has_wargoal_against = PEK
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						PEK = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						PEK = {
+							is_subject_of = SUI
+						}
 					}
 				}
 			}
@@ -5325,14 +5405,32 @@ focus_tree = {
 			OR = {
 				MIK = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = MIK
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						MIK = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						MIK = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5370,14 +5468,32 @@ focus_tree = {
 			OR = {
 				POR = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = POR
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						POR = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						POR = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5508,14 +5624,32 @@ focus_tree = {
 			OR = {
 				NOE = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = NOE
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						NOE = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						NOE = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5549,14 +5683,32 @@ focus_tree = {
 			OR = {
 				FBK = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = FBK
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						FBK = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						FBK = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5587,14 +5739,32 @@ focus_tree = {
 			OR = {
 				WTS = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = WTS
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						WTS = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						WTS = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5627,14 +5797,32 @@ focus_tree = {
 			OR = {
 				CZE = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = CZE
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						CZE = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						CZE = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5670,14 +5858,32 @@ focus_tree = {
 			OR = {
 				SWI = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = SWI
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						SWI = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						SWI = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5708,14 +5914,32 @@ focus_tree = {
 			OR = {
 				AUS = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = AUS
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						AUS = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						AUS = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -5746,14 +5970,32 @@ focus_tree = {
 			OR = {
 				YAG = {
 					OR = {
-						is_puppet_of = SUI
-						is_subject_of = SUI
 						exists = no
+						has_war_with = SUI
 					}
-					has_war_with = SUI
 				}
 				SUI = {
 					has_wargoal_against = YAG
+				}
+				OR = {
+					AND = {
+						hidden_trigger = {
+							NOT = {
+								has_dlc = "Together for Victory"
+							}
+						}
+						YAG = {
+							is_puppet_of = SUI
+						}
+					}
+					AND = {
+						hidden_trigger = {
+							has_dlc = "Together for Victory"
+						}
+						YAG = {
+							is_subject_of = SUI
+						}
+					}
 				}
 			}
 		}
@@ -6154,7 +6396,7 @@ focus_tree = {
 	focus = {
 		id = SUI_most_feared_army
 		icon = GFX_focus_SUI_most_feared_army
-		cost = 8
+		cost = 5
 		offset = {
 			x = -22
 			y = 0
@@ -6190,10 +6432,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			SUI = {
-				add_ideas = psycho_brigades
-			}
-			add_war_support = 0.05
+			add_war_support = 0.15
 		}
 		prerequisite = {
 			focus = SUI_meticulous_planning

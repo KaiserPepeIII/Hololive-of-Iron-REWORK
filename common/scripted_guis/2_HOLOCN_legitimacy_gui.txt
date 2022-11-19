@@ -1,0 +1,31 @@
+scripted_gui = {
+	HOLOCN_legitimacy_gui = {
+		window_name = "HOLOCN_legitimacy_gui_window"
+		context_type = decision_category
+		parent_window_name = "CN_chinese_reunification"
+		visible = {
+			always = yes
+		}
+		properties = {
+			HOLOCN_one_legitimate_large_flag = {
+				image = [THIS.GetFlag]
+			}
+		}
+		triggers = {
+			HOLOCN_one_legitimate_flag_blue_outline_visible = {
+				THIS = {
+					has_dynamic_modifier = {
+						modifier = HOLOCN_mandate_of_heaven
+					}
+				}
+			}
+		}
+		dynamic_lists = {
+			HOLOCN_one_legitimate_flag = {
+				array = global.holocn_countries
+				entry_container = HOLOCN_one_legitimate_flag_list_entry
+				change_scope = yes
+			}
+		}
+	}
+}

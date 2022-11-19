@@ -171,3 +171,65 @@ KAN_veracruz_incident_categories = {
 		}
 	}
 }
+
+KAN_reclaim_baja_california = {
+	KAN_demand_baja_california = {
+		available = {
+			tag = KAN
+			has_political_power > 25
+		}
+		visible = {
+			tag = KAN
+		}
+		cost = 25
+		complete_effect = {
+			YAG = {
+				country_event = yagoo.3
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	KAN_baja_california_border_war = {
+		available = {
+			tag = KAN
+			has_political_power > 25
+			command_power > 10
+		}
+		visible = {
+			tag = KAN
+		}
+		cost = 25
+		days_remove = 21
+		targets = {
+			YAG
+		}
+		war_with_on_complete = YAG
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			start_border_war = {
+				change_state_after_war = yes
+				attacker = {
+					state = 483
+					num_provinces = 1
+					on_win = kanata.11
+					on_lose = kanata.12
+					on_cancel = kanata.12
+				}
+				defender = {
+					state = 1126
+					num_provinces = 2
+					on_win = yagoo_borderwars.1
+					on_lose = yagoo_borderwars.2
+					on_cancel = yagoo_borderwars.2
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+}

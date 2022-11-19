@@ -1,0 +1,35 @@
+defined_text = {
+	name = HOLOCN_get_legitimacy_scripted_loc
+	text = {
+		trigger = {
+			THIS = {
+				check_variable = {
+					var = THIS.holocn_legitimacy
+					value = 0.75
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = HOLOCN_legitimacy_high
+	}
+	text = {
+		trigger = {
+			THIS = {
+				check_variable = {
+					var = THIS.holocn_legitimacy
+					value = 0.75
+					compare = less_than
+				}
+				check_variable = {
+					var = THIS.holocn_legitimacy
+					value = 0.5
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = HOLOCN_legitimacy_medium
+	}
+	text = {
+		localization_key = HOLOCN_legitimacy_low
+	}
+}

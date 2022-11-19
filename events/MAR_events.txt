@@ -27,6 +27,7 @@ country_event = {
 	}
 }
 
+#
 #WATSON GOES AWAY
 #
 country_event = {
@@ -45,6 +46,33 @@ country_event = {
 				ideology = var:MAR.current_party_ideology_group
 				popularity = 0.1
 			}
+		}
+	}
+}
+
+#
+#Baelz demands Panama
+#
+country_event = {
+	id = marine.3
+	title = marine.3.t
+	desc = marine.3.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Sure
+	option = {
+		name = marine.3.a
+		FROM = {
+			transfer_state = 685
+			country_event = baelz.1
+		}
+	}
+	#No
+	option = {
+		name = marine.3.b
+		FROM = {
+			country_event = baelz.2
 		}
 	}
 }

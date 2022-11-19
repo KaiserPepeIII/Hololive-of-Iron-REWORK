@@ -62,6 +62,15 @@ country_event = {
 	desc = arab.2.d
 	picture = GFX_report_event_miko
 	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_dynamic_modifier = {
+				modifier = ARAB_unrest_from_modernisation
+			}
+			clear_variable = root.arab_development
+			clear_variable = root.arab_development_2
+		}
+	}
 	#we are comfortable in our position
 	option = {
 		name = arab.2.a
@@ -87,6 +96,15 @@ country_event = {
 	desc = arab.3.desc
 	picture = GFX_report_event_miko
 	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_dynamic_modifier = {
+				modifier = ARAB_unrest_from_modernisation
+			}
+			clear_variable = root.arab_development
+			clear_variable = root.arab_development_2
+		}
+	}
 	# WE MUST DEFEND THE OLD ORDER
 	option = {
 		name = arab.3.a
@@ -177,6 +195,15 @@ country_event = {
 	desc = arab.4.desc
 	picture = GFX_report_event_miko
 	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_dynamic_modifier = {
+				modifier = ARAB_unrest_from_modernisation
+			}
+			clear_variable = root.arab_development
+			clear_variable = root.arab_development_2
+		}
+	}
 	# WE MUST DEFEND THE OLD ORDER
 	option = {
 		name = arab.4.a
@@ -188,6 +215,10 @@ country_event = {
 		add_stability = -0.3
 		OVERLORD = {
 			end_puppet = PREV
+			create_wargoal = {
+				target = ROOT
+				type = puppet_wargoal_focus
+			}
 		}
 		set_politics = {
 			ruling_party = fascism

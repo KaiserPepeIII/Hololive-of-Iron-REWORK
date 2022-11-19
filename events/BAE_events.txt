@@ -1,0 +1,154 @@
+add_namespace = baelz
+#
+#	 Panama Canal transfered
+#
+country_event = {
+	id = baelz.1
+	title = baelz.1.t
+	desc = baelz.1.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#COOl
+	option = {
+		name = baelz.1.a
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+#
+#	Refused Panama Canal transfered
+#
+country_event = {
+	id = baelz.2
+	title = baelz.2.t
+	desc = baelz.2.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#War
+	option = {
+		name = baelz.2.a
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#nOPE
+	option = {
+		name = baelz.2.b
+		add_stability = -0.05
+		add_war_support = -0.05
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+#
+#	Bae liberal coup
+#
+country_event = {
+	id = baelz.3
+	title = baelz.3.t
+	desc = baelz.3.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#The Junta falls...
+	option = {
+		name = baelz.3.a
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
+		add_stability = -0.15
+		set_politics = {
+			ruling_party = democratic_revitalisation
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		set_popularities = {
+			democratic_revitalisation = 60
+			pro_resistance_kleptocracy = 20
+			divine_mandate = 20
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#Viva la rata!
+	option = {
+		name = baelz.3.b
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
+		add_stability = -0.25
+		set_popularities = {
+			pro_resistance_kleptocracy = 20
+			divine_mandate = 80
+		}
+		start_civil_war = {
+			ruling_party = divine_mandate
+			ideology = democratic_revitalisation
+			size = 0.8
+			keep_all_characters = yes
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+#
+#	Bae conservative coup
+#
+country_event = {
+	id = baelz.4
+	title = baelz.4.t
+	desc = baelz.4.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#The Junta falls...
+	option = {
+		name = baelz.4.a
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
+		add_stability = -0.15
+		set_politics = {
+			ruling_party = democratic_revitalisation
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		set_popularities = {
+			democratic_revitalisation = 60
+			pro_resistance_kleptocracy = 20
+			divine_mandate = 20
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#Viva la rata!
+	option = {
+		name = baelz.4.b
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
+		add_stability = -0.25
+		set_popularities = {
+			pro_resistance_kleptocracy = 20
+			divine_mandate = 80
+		}
+		start_civil_war = {
+			ruling_party = divine_mandate
+			ideology = democratic_revitalisation
+			size = 0.8
+			keep_all_characters = yes
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}

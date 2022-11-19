@@ -2,35 +2,70 @@ ideas = {
 	academy_spirit = {
 		bold_attack_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			modifier = {
 				custom_modifier_tooltip = bold_attack_spirit_tt
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		tenacious_defense_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			modifier = {
 				custom_modifier_tooltip = tenacious_defense_spirit_tt
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		meticulous_preparation_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			modifier = {
 				custom_modifier_tooltip = meticulous_preparation_spirit_tt
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		best_of_the_best_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			visible = {
-				has_government = democratic
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+					has_government = democratic_revitalisation
+					has_government = mixed_ideology_democracy
+				}
 			}
 			modifier = {
 				army_leader_start_level = 2
@@ -39,12 +74,24 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		academy_scholarships_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			visible = {
-				has_government = communism
+				OR = {
+					has_government = communism
+					has_government = left_wing_revolutionary
+				}
 			}
 			modifier = {
 				army_leader_start_level = 1
@@ -54,14 +101,31 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		political_loyalty_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			visible = {
 				OR = {
 					has_government = fascism
+					has_government = pro_resistance_nationalism
+					has_government = reactionary_nationalism
+					has_government = divine_mandate
 					has_government = neutrality
+					has_government = reactionary_monarchy
+					has_government = pro_resistance_kleptocracy
+					has_government = pro_resistance_monarchy
+					has_government = pro_yagoo_kleptocracy
+					has_government = pro_yagoo_monarchy
 				}
 			}
 			modifier = {
@@ -71,10 +135,19 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		inventive_leadership_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			modifier = {
 				custom_modifier_tooltip = inventive_leadership_spirit_tt
 				trait_naval_invader_xp_gain_factor = 0.2
@@ -83,10 +156,19 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		mobile_warfare_academy_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			visible = {
 				has_tech = mobile_warfare
 			}
@@ -96,10 +178,19 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		superior_firepower_academy_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			visible = {
 				has_tech = superior_firepower
 			}
@@ -111,10 +202,19 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		theatre_training_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			visible = {
 				has_tech = trench_warfare
 			}
@@ -124,10 +224,19 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		mass_assault_academy_spirit = {
 			ledger = army
+			available = {
+				always = yes
+			}
 			visible = {
 				has_tech = mass_assault
 			}
@@ -137,6 +246,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 	}
@@ -150,6 +265,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		elevated_engineering_corps_spirit = {
@@ -158,10 +279,16 @@ ideas = {
 				trait_engineer_xp_gain_factor = 0.25
 				unit_engineer_design_cost_factor = -1
 				dig_in_speed_factor = 0.1
-				railway_gun_bombardment_factor = 0.05
+				railway_gun_bombardment_factor = 0.2
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		proper_heritage_spirit = {
@@ -173,6 +300,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		quick_improvisation_spirit = {
@@ -184,25 +317,45 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		relief_of_command_spirit = {
 			ledger = army
 			visible = {
-				has_government = democratic
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+					has_government = democratic_revitalisation
+					has_government = mixed_ideology_democracy
+				}
 			}
 			modifier = {
 				experience_gain_army_factor = 0.25
 				army_advisor_cost_factor = -0.5
 			}
 			ai_will_do = {
-				factor = 0.5
+				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		ideological_loyalty_spirit = {
 			ledger = army
 			visible = {
-				has_government = communism
+				OR = {
+					has_government = communism
+					has_government = left_wing_revolutionary
+				}
 			}
 			modifier = {
 				pocket_penalty = -0.2
@@ -210,19 +363,36 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		state_serves_the_military_spirit = {
 			ledger = army
 			visible = {
-				has_government = fascism
+				OR = {
+					has_government = fascism
+					has_government = pro_resistance_nationalism
+					has_government = reactionary_nationalism
+					has_government = divine_mandate
+				}
 			}
 			modifier = {
 				political_power_factor = 0.1
-				#mobilization_laws_cost_factor = -0.25
+				mobilization_laws_cost_factor = -0.25
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		mobile_warfare_army_spirit = {
@@ -246,6 +416,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		superior_firepower_army_spirit = {
@@ -266,6 +442,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		grand_battleplan_army_spirit = {
@@ -284,6 +466,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		mass_assault_army_spirit = {
@@ -299,6 +487,34 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
+			}
+		}
+		heritage_of_accomplishment = {
+			ledger = army
+			available = {
+				has_dlc = "By Blood Alone"
+			}
+			visible = {
+				has_dlc = "By Blood Alone"
+			}
+			modifier = {
+				grant_medal_cost_factor = -0.5
+				field_officer_promotion_penalty = -1
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 	}
@@ -313,6 +529,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		flexible_organization_spirit = {
@@ -324,6 +546,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		aggressive_reconnaisance_spirit = {
@@ -335,6 +563,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		reserve_officers_spirit = {
@@ -345,6 +579,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		victory_or_death_spirit = {
@@ -355,6 +595,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		maneuver_warfare_spirit = {
@@ -368,6 +614,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		smoke_and_fire_spirit = {
@@ -381,6 +633,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		logistical_focus_spirit = {
@@ -396,6 +654,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 		operational_reserve_spirit = {
@@ -409,6 +673,12 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
 			}
 		}
 	}
