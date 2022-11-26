@@ -1,28 +1,96 @@
 BAE_ratismo_generalissimo = {
-	BAE_debug = {
+	BAE_el_estado_ratisto = {
+		activation = {
+			tag = BAE
+			power_balance_value = {
+				id = BAE_party_balance
+				value < 0.25
+			}
+			power_balance_value = {
+				id = BAE_party_balance
+				value > -0.25
+			}
+			NOT = {
+				has_country_flag = BAE_el_estado_ratismo_flag
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				power_balance_value = {
+					id = BAE_party_balance
+					value > 0.25
+				}
+				power_balance_value = {
+					id = BAE_party_balance
+					value < -0.25
+				}
+			}
+		}
+		visible = {
+			power_balance_value = {
+				id = BAE_party_balance
+				value > 0.75
+			}
+		}
+		available = {
+			always = no
+		}
+		days_mission_timeout = 365
+		fire_only_once = no
+		timeout_effect = {
+			country_event = baelz.8
+			set_country_flag = BAE_el_estado_ratismo_flag
+		}
+	}
+	BAE_the_ratista_junta = {
 		icon = GFX_decision_icon_default
 		available = {
-			is_debug = yes
+			has_political_power > 100
 		}
-		days_re_enable = 1
 		visible = {
-			is_debug = yes
-		}
-		complete_effect = {
-			set_power_balance = {
-				id = BAE_party_balance
-				left_side = BAE_liberal_party
-				right_side = BAE_conservative_party
+			NOT = {
+				power_balance_value = {
+					id = BAE_party_balance
+					value < 0.25
+				}
+				power_balance_value = {
+					id = BAE_party_balance
+					value > -0.25
+				}
 			}
+			check_variable = {
+				var = BAE.ratismo_support
+				value = 8
+				compare = greater_than_or_equals
+			}
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			BAE = {
+				country_event = baelz.9
+			}
+		}
+		ai_will_do = {
+			base = 5
 		}
 	}
 	BAE_the_liberal_coup_mission = {
 		activation = {
-			power_balance_value = {
-				id = BAE_party_balance
-				value > 0.5
+			OR = {
+				AND = {
+					power_balance_value = {
+						id = BAE_party_balance
+						value > 0.75
+					}
+					pro_yagoo_kleptocracy > 0.4
+				}
+				check_variable = {
+					var = BAE.anti_aggression
+					value = 95
+					compare = greater_than_or_equals
+				}
 			}
-			pro_yagoo_kleptocracy > 0.4
 		}
 		cancel_trigger = {
 			always = no
@@ -30,7 +98,7 @@ BAE_ratismo_generalissimo = {
 		visible = {
 			power_balance_value = {
 				id = BAE_party_balance
-				value > 0.5
+				value > 0.75
 			}
 		}
 		available = {
@@ -49,7 +117,7 @@ BAE_ratismo_generalissimo = {
 		activation = {
 			power_balance_value = {
 				id = BAE_party_balance
-				value < -0.5
+				value < -0.75
 			}
 			pro_resistance_kleptocracy > 0.4
 		}
@@ -59,7 +127,7 @@ BAE_ratismo_generalissimo = {
 		visible = {
 			power_balance_value = {
 				id = BAE_party_balance
-				value < -0.5
+				value < -0.75
 			}
 		}
 		available = {
@@ -83,6 +151,10 @@ BAE_ratismo_generalissimo = {
 			VEN = {
 				exists = yes
 			}
+			power_balance_value = {
+				id = BAE_party_balance
+				value > 0.45
+			}
 		}
 		fire_only_once = yes
 		cost = 50
@@ -93,9 +165,19 @@ BAE_ratismo_generalissimo = {
 					value = 0.25
 					tooltip_side = BAE_conservative_party
 				}
+				add_to_variable = {
+					var = BAE.anti_aggression
+					value = 0.1
+					tooltip = GEN_change_in_anti_aggression
+				}
 				create_wargoal = {
 					target = VEN
 					type = annex_everything
+				}
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = 1
+					tooltip = BAE_ratismo_var_gain_tooltip
 				}
 			}
 		}
@@ -112,6 +194,10 @@ BAE_ratismo_generalissimo = {
 			ECU = {
 				exists = yes
 			}
+			power_balance_value = {
+				id = BAE_party_balance
+				value > 0.45
+			}
 		}
 		fire_only_once = yes
 		cost = 50
@@ -122,9 +208,19 @@ BAE_ratismo_generalissimo = {
 					value = 0.25
 					tooltip_side = BAE_conservative_party
 				}
+				add_to_variable = {
+					var = BAE.anti_aggression
+					value = 0.1
+					tooltip = GEN_change_in_anti_aggression
+				}
 				create_wargoal = {
 					target = ECU
 					type = annex_everything
+				}
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = 1
+					tooltip = BAE_ratismo_var_gain_tooltip
 				}
 			}
 		}
@@ -144,6 +240,10 @@ BAE_ratismo_generalissimo = {
 					owns_state = 685
 					owns_state = 949
 				}
+			}
+			power_balance_value = {
+				id = BAE_party_balance
+				value > 0.45
 			}
 		}
 		fire_only_once = yes
@@ -171,6 +271,11 @@ BAE_ratismo_generalissimo = {
 					value = 0.25
 					tooltip_side = BAE_conservative_party
 				}
+				add_to_variable = {
+					var = BAE.anti_aggression
+					value = 0.1
+					tooltip = GEN_change_in_anti_aggression
+				}
 				create_wargoal = {
 					target = var:owner_of_panama
 					type = annex_everything
@@ -178,6 +283,11 @@ BAE_ratismo_generalissimo = {
 			}
 			var:owner_of_panama_canal = {
 				country_event = marine.3
+			}
+			add_to_variable = {
+				var = BAE.ratismo_support
+				value = 1
+				tooltip = BAE_ratismo_var_gain_tooltip
 			}
 		}
 		ai_will_do = {
@@ -193,6 +303,10 @@ BAE_ratismo_generalissimo = {
 			GYA = {
 				exists = yes
 			}
+			power_balance_value = {
+				id = BAE_party_balance
+				value > 0.45
+			}
 		}
 		fire_only_once = yes
 		cost = 50
@@ -203,9 +317,19 @@ BAE_ratismo_generalissimo = {
 					value = 0.25
 					tooltip_side = BAE_conservative_party
 				}
+				add_to_variable = {
+					var = BAE.anti_aggression
+					value = 0.1
+					tooltip = GEN_change_in_anti_aggression
+				}
 				create_wargoal = {
 					target = GYA
 					type = annex_everything
+				}
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = 1
+					tooltip = BAE_ratismo_var_gain_tooltip
 				}
 			}
 		}
@@ -219,24 +343,73 @@ BAE_ratismo_generalissimo = {
 			has_political_power > 10
 		}
 		visible = {
-			always = yes
+			NOT = {
+				has_idea = BAE_met_coffee_barons
+			}
 		}
-		fire_only_once = yes
+		fire_only_once = no
+		days_re_enable = 60
 		cost = 10
 		complete_effect = {
 			BAE = {
 				add_power_balance_value = {
 					id = BAE_party_balance
-					value = 0.1
+					value = 0.15
 					tooltip_side = BAE_conservative_party
 				}
 				add_to_variable = {
 					var = BAE.anti_aggression
 					value = 0.15
+					tooltip = GEN_change_in_anti_aggression
 				}
 				add_timed_idea = {
 					idea = BAE_met_coffee_barons
 					days = 180
+				}
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = -1
+					tooltip = BAE_ratismo_var_subtract_tooltip
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	BAE_increase_military_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 10
+		}
+		visible = {
+			NOT = {
+				has_idea = BAE_military_strengthened
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 10
+		complete_effect = {
+			BAE = {
+				add_power_balance_value = {
+					id = BAE_party_balance
+					value = 0.15
+					tooltip_side = BAE_conservative_party
+				}
+				add_timed_idea = {
+					idea = BAE_military_strengthened
+					days = 180
+				}
+				add_to_variable = {
+					var = BAE.anti_aggression
+					value = 0.15
+					tooltip = GEN_change_in_anti_aggression
+				}
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = 1
+					tooltip = BAE_ratismo_var_gain_tooltip
 				}
 			}
 		}
@@ -250,7 +423,10 @@ BAE_ratismo_generalissimo = {
 			has_political_power > 50
 		}
 		visible = {
-			always = yes
+			power_balance_value = {
+				id = BAE_party_balance
+				value < -0.45
+			}
 		}
 		fire_only_once = yes
 		cost = 50
@@ -263,6 +439,12 @@ BAE_ratismo_generalissimo = {
 				}
 				two_random_civilian_factory = yes
 				one_random_arms_factory = yes
+				set_country_flag = BAE_industralization_i_flag
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = 2
+					tooltip = BAE_ratismo_var_gain_tooltip
+				}
 			}
 		}
 		ai_will_do = {
@@ -275,7 +457,11 @@ BAE_ratismo_generalissimo = {
 			has_political_power > 50
 		}
 		visible = {
-			always = yes
+			power_balance_value = {
+				id = BAE_party_balance
+				value < -0.45
+			}
+			has_country_flag = BAE_industralization_i_flag
 		}
 		fire_only_once = yes
 		cost = 50
@@ -288,6 +474,12 @@ BAE_ratismo_generalissimo = {
 				}
 				two_random_civilian_factory = yes
 				one_random_arms_factory = yes
+				set_country_flag = BAE_industralization_ii_flag
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = 2
+					tooltip = BAE_ratismo_var_gain_tooltip
+				}
 			}
 		}
 		ai_will_do = {
@@ -300,7 +492,11 @@ BAE_ratismo_generalissimo = {
 			has_political_power > 75
 		}
 		visible = {
-			always = yes
+			power_balance_value = {
+				id = BAE_party_balance
+				value < -0.65
+			}
+			has_country_flag = BAE_industralization_ii_flag
 		}
 		fire_only_once = yes
 		cost = 75
@@ -313,6 +509,11 @@ BAE_ratismo_generalissimo = {
 				}
 				three_random_civilian_factory = yes
 				two_random_arms_factory = yes
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = 2
+					tooltip = BAE_ratismo_var_gain_tooltip
+				}
 			}
 		}
 		ai_will_do = {
@@ -325,24 +526,33 @@ BAE_ratismo_generalissimo = {
 			has_political_power > 10
 		}
 		visible = {
-			always = yes
+			NOT = {
+				has_idea = BAE_decentralizing
+			}
 		}
-		fire_only_once = yes
+		fire_only_once = no
+		days_re_enable = 60
 		cost = 10
 		complete_effect = {
 			BAE = {
 				add_power_balance_value = {
 					id = BAE_party_balance
-					value = -0.1
+					value = -0.15
 					tooltip_side = BAE_liberal_party
 				}
 				add_to_variable = {
 					var = BAE.anti_aggression
 					value = -0.1
+					tooltip = GEN_change_in_anti_aggression
 				}
 				add_timed_idea = {
 					idea = BAE_decentralizing
 					days = 180
+				}
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = -2
+					tooltip = BAE_ratismo_var_subtract_tooltip
 				}
 			}
 		}
@@ -356,29 +566,103 @@ BAE_ratismo_generalissimo = {
 			has_political_power > 10
 		}
 		visible = {
-			always = yes
+			NOT = {
+				has_idea = BAE_anticlericalism
+			}
 		}
-		fire_only_once = yes
+		fire_only_once = no
+		days_re_enable = 60
 		cost = 10
 		complete_effect = {
 			BAE = {
 				add_power_balance_value = {
 					id = BAE_party_balance
-					value = -0.1
+					value = -0.15
 					tooltip_side = BAE_liberal_party
 				}
 				add_to_variable = {
 					var = BAE.anti_aggression
 					value = 0.15
+					tooltip = GEN_change_in_anti_aggression
 				}
 				add_timed_idea = {
 					idea = BAE_anticlericalism
 					days = 180
 				}
+				add_to_variable = {
+					var = BAE.ratismo_support
+					value = -1
+					tooltip = BAE_ratismo_var_subtract_tooltip
+				}
 			}
 		}
 		ai_will_do = {
 			base = 5
+		}
+	}
+	BAE_el_pueblo_unido = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		visible = {
+			power_balance_value = {
+				id = BAE_party_balance
+				value < 0.25
+			}
+			power_balance_value = {
+				id = BAE_party_balance
+				value > -0.25
+			}
+		}
+		fire_only_once = yes
+		cost = 35
+		complete_effect = {
+			country_event = baelz.5
+		}
+	}
+	BAE_la_ayuda_del_ejercito = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		visible = {
+			power_balance_value = {
+				id = BAE_party_balance
+				value < 0.25
+			}
+			power_balance_value = {
+				id = BAE_party_balance
+				value > -0.25
+			}
+		}
+		fire_only_once = yes
+		cost = 35
+		complete_effect = {
+			country_event = baelz.6
+		}
+	}
+	BAE_una_fuerza_intelectual = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		visible = {
+			has_country_flag = BAE_ratismo_support_1
+			has_country_flag = BAE_ratismo_support_2
+			power_balance_value = {
+				id = BAE_party_balance
+				value < 0.25
+			}
+			power_balance_value = {
+				id = BAE_party_balance
+				value > -0.25
+			}
+		}
+		fire_only_once = yes
+		cost = 35
+		complete_effect = {
+			country_event = baelz.7
 		}
 	}
 }

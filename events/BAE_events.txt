@@ -73,6 +73,9 @@ country_event = {
 			pro_resistance_kleptocracy = 20
 			divine_mandate = 20
 		}
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
 		ai_chance = {
 			base = 5
 		}
@@ -93,6 +96,9 @@ country_event = {
 			ideology = democratic_revitalisation
 			size = 0.8
 			keep_all_characters = yes
+		}
+		remove_power_balance = {
+			id = BAE_party_balance
 		}
 		ai_chance = {
 			base = 5
@@ -126,6 +132,9 @@ country_event = {
 			pro_resistance_kleptocracy = 20
 			divine_mandate = 20
 		}
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
 		ai_chance = {
 			base = 5
 		}
@@ -147,8 +156,259 @@ country_event = {
 			size = 0.8
 			keep_all_characters = yes
 		}
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
 		ai_chance = {
 			base = 5
+		}
+	}
+}
+
+#
+#	El pueblo unido
+#
+country_event = {
+	id = baelz.5
+	title = baelz.5.t
+	desc = baelz.5.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Jamas sera vencido!
+	option = {
+		name = baelz.5.a
+		set_country_flag = BAE_ratismo_support_1
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.05
+		}
+		add_to_variable = {
+			var = BAE.ratismo_support
+			value = 2
+			tooltip = BAE_ratismo_var_gain_tooltip
+		}
+		add_to_variable = {
+			var = BAE.anti_aggression
+			value = 0.15
+			tooltip = GEN_change_in_anti_aggression
+		}
+	}
+}
+
+#
+#	El Ejercito
+#
+country_event = {
+	id = baelz.6
+	title = baelz.6.t
+	desc = baelz.6.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#La decadencia de la democracia
+	option = {
+		name = baelz.6.a
+		set_country_flag = BAE_ratismo_support_2
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.05
+		}
+		add_to_variable = {
+			var = BAE.ratismo_support
+			value = 2
+			tooltip = BAE_ratismo_var_gain_tooltip
+		}
+		add_to_variable = {
+			var = BAE.anti_aggression
+			value = 0.15
+			tooltip = GEN_change_in_anti_aggression
+		}
+	}
+}
+
+#
+#	Una Fuerza Intelectual
+#
+country_event = {
+	id = baelz.7
+	title = baelz.7.t
+	desc = baelz.7.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Una ideologia de los colombianos para los colombianos
+	option = {
+		name = baelz.7.a
+		set_country_flag = BAE_ratismo_support_3
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.15
+		}
+		add_to_variable = {
+			var = BAE.ratismo_support
+			value = 4
+			tooltip = BAE_ratismo_var_gain_tooltip
+		}
+		add_to_variable = {
+			var = BAE.anti_aggression
+			value = 0.25
+			tooltip = GEN_change_in_anti_aggression
+		}
+	}
+}
+
+#
+#	El Estado Ratismo
+#
+country_event = {
+	id = baelz.8
+	title = baelz.8.t
+	desc = baelz.8.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Una ideologia de los colombianos para los colombianos
+	option = {
+		name = baelz.8.a
+		trigger = {
+			check_variable = {
+				var = BAE.ratismo_support
+				value = 8
+				compare = greater_than_or_equals
+			}
+		}
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		add_stability = 0.15
+		add_war_support = 0.15
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.35
+		}
+		add_to_variable = {
+			var = BAE.anti_aggression
+			value = 0.25
+			tooltip = GEN_change_in_anti_aggression
+		}
+		swap_ideas = {
+			remove_idea = BAE_ratismo
+			add_idea = BAE_ratismo2
+		}
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
+	}
+	#A Counter-Revolution
+	option = {
+		name = baelz.8.b
+		trigger = {
+			check_variable = {
+				var = BAE.ratismo_support
+				value = 8
+				compare = less_than
+			}
+			check_variable = {
+				var = BAE.ratismo_support
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		add_stability = -0.15
+		add_war_support = -0.15
+		add_to_variable = {
+			var = BAE.anti_aggression
+			value = 0.45
+			tooltip = GEN_change_in_anti_aggression
+		}
+		swap_ideas = {
+			remove_idea = BAE_ratismo
+			add_idea = BAE_ratismo2
+		}
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
+		start_civil_war = {
+			ruling_party = divine_mandate
+			ideology = democratic_revitalisation
+			size = 0.6
+			keep_all_characters = yes
+		}
+	}
+	#Civil war epic fail edition
+	option = {
+		name = baelz.8.c
+		trigger = {
+			check_variable = {
+				var = BAE.ratismo_support
+				value = 4
+				compare = greater_than
+			}
+		}
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		add_stability = -0.15
+		add_war_support = -0.15
+		add_to_variable = {
+			var = BAE.anti_aggression
+			value = 0.45
+			tooltip = GEN_change_in_anti_aggression
+		}
+		swap_ideas = {
+			remove_idea = BAE_ratismo
+			add_idea = BAE_ratismo2
+		}
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
+		start_civil_war = {
+			ruling_party = divine_mandate
+			ideology = democratic_revitalisation
+			size = 0.85
+			keep_all_characters = yes
+		}
+	}
+}
+
+#
+#	El Ratismo Coup
+#
+country_event = {
+	id = baelz.9
+	title = baelz.9.t
+	desc = baelz.9.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Una ideologia de los colombianos para los colombianos
+	option = {
+		name = baelz.9.a
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		add_stability = -0.15
+		add_war_support = -0.15
+		add_to_variable = {
+			var = BAE.anti_aggression
+			value = 0.45
+			tooltip = GEN_change_in_anti_aggression
+		}
+		swap_ideas = {
+			remove_idea = BAE_ratismo
+			add_idea = BAE_ratismo2
+		}
+		remove_power_balance = {
+			id = BAE_party_balance
+		}
+		start_civil_war = {
+			ruling_party = divine_mandate
+			ideology = democratic_revitalisation
+			size = 0.5
+			keep_all_characters = yes
 		}
 	}
 }

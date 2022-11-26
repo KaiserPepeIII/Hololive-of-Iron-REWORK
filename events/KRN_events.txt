@@ -12,6 +12,7 @@ country_event = {
 		add_to_variable = {
 			var = root.anti_aggression
 			value = 5
+			tooltip = GEN_change_in_anti_aggression
 		}
 	}
 	#Nope/10
@@ -146,5 +147,67 @@ country_event = {
 	#bruh
 	option = {
 		name = korone.9.a
+	}
+}
+
+#MUMEI REUNITING EGYPT - MUMEI WANTS OUR HELP
+country_event = {
+	id = korone.10
+	title = korone.10.t
+	desc = korone.10.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = korone.10.a
+		MUM = {
+			clear_variable = MUM.international_representative
+			set_variable = {
+				var = MUM.international_representative
+				value = THIS.id
+			}
+			country_event = mumei.6
+		}
+	}
+	#Uhhh no
+	option = {
+		name = korone.10.b
+		MUM = {
+			country_event = mumei.7
+		}
+	}
+}
+
+#MUMEI REUNITING EGYPT - MUMEI DISAVOWS US
+country_event = {
+	id = korone.11
+	title = korone.11.t
+	desc = korone.11.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#HOW DARE THEY
+	option = {
+		name = korone.11.a
+	}
+}
+
+#MUMEI RECONQUER EGYPT - DEVISING A TREATY
+country_event = {
+	id = korone.12
+	title = korone.12.t
+	desc = korone.12.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Plan A - Steward of the Region - Egypt, Sudan, Palestine and Lebanon become associated states of Korone. Korone adopts a policy of neutrality and leaves the LHS. The canal becomes an international zone.
+	option = {
+		name = korone.12.a
+	}
+	#Plan B - Arab Confederation - All Arab territories and Egypt will unite into one neutral confederation. The Suez Canal will become an international zone 
+	option = {
+		name = korone.12.b
+	}
+	#Plan C - Threaten with War (Anti-Pekora) - Pekora withdraws from Egypt unconditionally or Korone will join to defeat her
+	option = {
+		name = korone.12.c
 	}
 }

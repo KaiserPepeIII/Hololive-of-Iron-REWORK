@@ -1,7 +1,19 @@
+MEL_proclaim_greater_romania = {
+	priority = 125
+	icon = generic_economic
+	visible_when_empty = yes
+	allowed = {
+		tag = MEL
+	}
+	visible = {
+		always = yes
+	}
+}
+
 MEL_aloe_civil_war_interactions = {
 	priority = 100
-	icon = generic_economic
-	picture = GFX_decision_cat_generic_arabia
+	icon = GFX_decision_category_mel_aloe_civil_war_interactions
+	picture = GFX_decision_cat_mel_aloe_civil_war_interactions
 	visible_when_empty = yes
 	allowed = {
 		tag = MEL
@@ -12,6 +24,27 @@ MEL_aloe_civil_war_interactions = {
 		}
 		ALO = {
 			has_war = yes
+		}
+	}
+}
+
+MEL_demand_banat = {
+	priority = 100
+	icon = generic_economic
+	picture = GFX_decision_cat_generic_arabia
+	visible_when_empty = yes
+	allowed = {
+		tag = MEL
+	}
+	visible = {
+		YAG = {
+			exists = yes
+		}
+		MEL = {
+			owns_state = 76
+			owns_state = 84
+			owns_state = 941
+			owns_state = 83
 		}
 	}
 }

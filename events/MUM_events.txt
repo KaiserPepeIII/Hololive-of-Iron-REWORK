@@ -1,0 +1,271 @@
+add_namespace = mumei
+################################
+#
+#	SETS UP THE REUNITING EGYPT GUI
+#
+################################
+#Mumei is found!
+country_event = {
+	id = mumei.1
+	title = mumei.1.t
+	desc = mumei.1.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#YAYY
+	option = {
+		name = mumei.1.a
+		add_stability = 0.15
+		set_country_flag = MUM_mumei_found
+		hidden_effect = {
+			MUM = {
+				MUM_set_up_reuniting_egypt_gui = yes
+				retire_character = MUM_provisional_government_democratic
+				retire_character = MUM_provisional_government_progressive
+				retire_character = MUM_provisional_government_yagoo_monarchy
+				retire_character = MUM_provisional_government_yagoo_kleptocratic
+				retire_character = MUM_provisional_government_revolutionary
+				retire_character = MUM_provisional_government_nationalism
+				retire_character = MUM_provisional_government_resistance_monarchy
+				retire_character = MUM_provisional_government_resistance_kleptocracy
+				retire_character = MUM_provisional_government_neutral_kleptocratic
+				retire_character = MUM_provisional_government_reactionary_nationalism
+				retire_character = MUM_provisional_government_neutral_democracy
+				retire_character = MUM_provisional_government_divine_mandate
+			}
+		}
+	}
+}
+
+#Finding Mumei - The search continues
+country_event = {
+	id = mumei.2
+	title = mumei.2.t
+	desc = mumei.2.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Oof
+	option = {
+		name = mumei.2.a
+	}
+}
+
+#Finding Mumei - Mumei found!
+country_event = {
+	id = mumei.3
+	title = mumei.3.t
+	desc = mumei.3.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Yayy
+	option = {
+		name = mumei.3.a
+		set_country_flag = MUM_found_mumei_prior
+	}
+}
+
+################################
+#
+#	SETS UP THE REUNITING EGYPT GUI
+#
+################################
+#Mumei declared dead
+country_event = {
+	id = mumei.4
+	title = mumei.4.t
+	desc = mumei.4.desc
+	picture = GFX_report_event_001
+	#Mumei is dead, long live the republic
+	option = {
+		name = mumei.4.a
+		set_country_flag = MUM_mumei_declared_dead
+		set_cosmetic_tag = MUM_dead
+		add_stability = -0.15
+		set_politics = {
+			ruling_party = reactionary_nationalism
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = -0.25
+		}
+		hidden_effect = {
+			MUM = {
+				MUM_set_up_reuniting_egypt_gui = yes
+				retire_character = MUM_provisional_government_democratic
+				retire_character = MUM_provisional_government_progressive
+				retire_character = MUM_provisional_government_yagoo_monarchy
+				retire_character = MUM_provisional_government_yagoo_kleptocratic
+				retire_character = MUM_provisional_government_revolutionary
+				retire_character = MUM_provisional_government_nationalism
+				retire_character = MUM_provisional_government_resistance_monarchy
+				retire_character = MUM_provisional_government_resistance_kleptocracy
+				retire_character = MUM_provisional_government_neutral_kleptocratic
+				retire_character = MUM_provisional_government_reactionary_nationalism
+				retire_character = MUM_provisional_government_neutral_democracy
+				retire_character = MUM_provisional_government_divine_mandate
+				retire_character = MUM_nanashi_mumei_democratic
+				retire_character = MUM_nanashi_mumei_progressive
+				retire_character = MUM_nanashi_mumei_yagoo_monarchy
+				retire_character = MUM_nanashi_mumei_yagoo_kleptocratic
+				retire_character = MUM_nanashi_mumei_revolutionary
+				retire_character = MUM_nanashi_mumei_nationalism
+				retire_character = MUM_nanashi_mumei_resistance_monarchy
+				retire_character = MUM_nanashi_mumei_resistance_kleptocracy
+				retire_character = MUM_nanashi_mumei_neutral_kleptocratic
+				retire_character = MUM_nanashi_mumei_reactionary_nationalism
+				retire_character = MUM_nanashi_mumei_neutral_democracy
+				retire_character = MUM_nanashi_mumei_divine_mandate
+			}
+		}
+	}
+}
+
+#Council of Cairo
+country_event = {
+	id = mumei.5
+	title = mumei.5.t
+	desc = mumei.5.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Imperialism is wrong, Sudan should be free 
+	option = {
+		name = mumei.5.a
+		add_to_variable = {
+			var = MUM.pekora_willing_negotiate
+			value = 2
+		}
+		add_to_variable = {
+			var = MUM.yagoo_willing_negotiate
+			value = 2
+		}
+	}
+	#We need to restore the pre-war borders
+	option = {
+		name = mumei.5.b
+		add_to_variable = {
+			var = MUM.pekora_willing_negotiate
+			value = -2
+		}
+		add_to_variable = {
+			var = MUM.yagoo_willing_negotiate
+			value = 3
+		}
+	}
+	#Arab nationalism anyone?
+	option = {
+		name = mumei.5.c
+		add_to_variable = {
+			var = MUM.pekora_willing_negotiate
+			value = -2
+		}
+		add_to_variable = {
+			var = MUM.yagoo_willing_negotiate
+			value = -2
+		}
+	}
+}
+
+#KORONE AGREES TO HELP US
+country_event = {
+	id = mumei.6
+	title = mumei.6.t
+	desc = mumei.6.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Yay 
+	option = {
+		name = mumei.6.a
+	}
+}
+
+#KORONE DOES NOT AGREE TO HELP US
+country_event = {
+	id = mumei.7
+	title = mumei.7.t
+	desc = mumei.7.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Awww 
+	option = {
+		name = mumei.7.a
+	}
+}
+
+#WATSON AGREES TO HELP US
+country_event = {
+	id = mumei.8
+	title = mumei.8.t
+	desc = mumei.8.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Yay 
+	option = {
+		name = mumei.8.a
+	}
+}
+
+#WATSON DOES NOT AGREE TO HELP US
+country_event = {
+	id = mumei.9
+	title = mumei.9.t
+	desc = mumei.9.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Awww 
+	option = {
+		name = mumei.9.a
+	}
+}
+
+#MIKO AGREES TO HELP US
+country_event = {
+	id = mumei.10
+	title = mumei.10.t
+	desc = mumei.10.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Yay 
+	option = {
+		name = mumei.10.a
+	}
+}
+
+#MIKO DOES NOT AGREE TO HELP US
+country_event = {
+	id = mumei.11
+	title = mumei.11.t
+	desc = mumei.11.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Awww 
+	option = {
+		name = mumei.11.a
+	}
+}
+
+#MIO AGREES TO HELP US
+country_event = {
+	id = mumei.12
+	title = mumei.12.t
+	desc = mumei.12.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Yay 
+	option = {
+		name = mumei.12.a
+	}
+}
+
+#MIO DOES NOT AGREE TO HELP US
+country_event = {
+	id = mumei.13
+	title = mumei.13.t
+	desc = mumei.13.desc
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	#Awww 
+	option = {
+		name = mumei.13.a
+	}
+}

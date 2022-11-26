@@ -81,3 +81,78 @@ country_event = {
 		}
 	}
 }
+
+#Yagoo accepts
+country_event = {
+	id = mel.4
+	title = mel.4.t
+	desc = mel.4.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = mel.4.a
+		add_stability = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Yagoo refuses
+country_event = {
+	id = mel.5
+	title = mel.5.t
+	desc = mel.5.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Oof 
+	option = {
+		name = mel.5.a
+	}
+	#WAR 
+	option = {
+		name = mel.5.b
+		add_stability = -0.1
+		create_wargoal = {
+			target = YAG
+			type = annex_everything
+		}
+	}
+}
+
+#Yagoo counter-offers
+country_event = {
+	id = mel.6
+	title = mel.6.t
+	desc = mel.6.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Nah I'm good
+	option = {
+		name = mel.6.a
+	}
+	#Sure!!
+	option = {
+		name = mel.6.b
+		MEL = {
+			transfer_state = 82
+			transfer_state = 838
+		}
+		if = {
+			limit = {
+				NOT = {
+					is_in_array = {
+						array = global.lhs_member_flag
+						value = THIS.id
+					}
+				}
+			}
+			join_the_lhs = yes
+		}
+		YAG = {
+			add_to_faction = MEL
+		}
+	}
+}

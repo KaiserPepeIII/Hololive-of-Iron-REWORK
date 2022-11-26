@@ -1,7 +1,7 @@
 MUM_finding_mumei = {
 	priority = 100
-	icon = generic_economic
-	picture = GFX_decision_cat_generic_arabia
+	icon = GFX_decision_category_mum_finding_mumei
+	picture = GFX_decision_cat_mum_finding_mumei
 	visible_when_empty = yes
 	allowed = {
 		tag = MUM
@@ -10,6 +10,115 @@ MUM_finding_mumei = {
 		tag = MUM
 		NOT = {
 			has_country_flag = MUM_mumei_found
+			has_country_flag = MUM_mumei_declared_dead
+		}
+	}
+}
+
+MUM_restoring_egyptian_control = {
+	priority = 25
+	icon = generic_economic
+	picture = GFX_decision_cat_generic_arabia
+	scripted_gui = MUM_reuniting_egypt_gui
+	visible_when_empty = yes
+	allowed = {
+		OR = {
+			tag = MUM
+			tag = YAG
+			tag = PEK
+			tag = KRN
+			tag = MIK
+			tag = MIO
+		}
+	}
+	visible = {
+		OR = {
+			#for Mumei
+			AND = {
+				tag = MUM
+				OR = {
+					is_debug = yes
+					has_country_flag = MUM_mumei_found
+					has_country_flag = MUM_mumei_declared_dead
+				}
+			}
+			#for Yagoo and Pekora - they need to see this asap
+			AND = {
+				OR = {
+					tag = YAG
+					tag = PEK
+				}
+				MUM = {
+					OR = {
+						has_country_flag = MUM_mumei_found
+						has_country_flag = MUM_mumei_declared_dead
+					}
+				}
+			}
+			#for everyone else
+			AND = {
+				tag = KRN
+				MUM = {
+					OR = {
+						has_country_flag = MUM_mumei_found
+						has_country_flag = MUM_mumei_declared_dead
+					}
+					OR = {
+						check_variable = {
+							var = MUM.international_representative
+							value = KRN.id
+						}
+					}
+				}
+			}
+			#for everyone else
+			AND = {
+				tag = MIK
+				MUM = {
+					OR = {
+						has_country_flag = MUM_mumei_found
+						has_country_flag = MUM_mumei_declared_dead
+					}
+					OR = {
+						check_variable = {
+							var = MUM.international_representative
+							value = MIK.id
+						}
+					}
+				}
+			}
+			#for everyone else
+			AND = {
+				tag = MIO
+				MUM = {
+					OR = {
+						has_country_flag = MUM_mumei_found
+						has_country_flag = MUM_mumei_declared_dead
+					}
+					OR = {
+						check_variable = {
+							var = MUM.international_representative
+							value = MIO.id
+						}
+					}
+				}
+			}
+			#for everyone else
+			AND = {
+				tag = WTS
+				MUM = {
+					OR = {
+						has_country_flag = MUM_mumei_found
+						has_country_flag = MUM_mumei_declared_dead
+					}
+					OR = {
+						check_variable = {
+							var = MUM.international_representative
+							value = WTS.id
+						}
+					}
+				}
+			}
 		}
 	}
 }

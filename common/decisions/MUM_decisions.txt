@@ -1,3 +1,540 @@
 MUM_finding_mumei = {
-	
+	#
+	#
+	#	Will review when we do content for Mumei, this is just placeholder
+	#
+	#
+	MUM_finding_mumei_mission = {
+		activation = {
+			tag = MUM
+			NOT = {
+				has_country_flag = MUM_found_mumei
+			}
+		}
+		visible = {
+			TAG = MUM
+		}
+		available = {
+			has_country_flag = MUM_found_mumei_prior
+		}
+		cancel_trigger = {
+			always = no
+		}
+		is_good = yes
+		days_mission_timeout = 365
+		selectable_mission = yes
+		complete_effect = {
+			country_event = mumei.1
+		}
+		timeout_effect = {
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_raise_the_reward = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+			MUM = {
+				NOT = {
+					has_country_flag = MUM_found_mumei
+				}
+			}
+		}
+		cost = 25
+		fire_only_once = no
+		days_re_enable = 45
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			hidden_effect = {
+				random_list = {
+					#No results
+					80 = {
+						country_event = mumei.2
+					}
+					#Moomers found
+					20 = {
+						country_event = mumei.3
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_search_the_deserts = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+			has_manpower > 1000
+			MUM = {
+				NOT = {
+					has_country_flag = MUM_found_mumei
+				}
+			}
+		}
+		cost = 35
+		fire_only_once = no
+		days_re_enable = 90
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_manpower = -1000
+			hidden_effect = {
+				random_list = {
+					#No results
+					70 = {
+						country_event = mumei.2
+					}
+					#Moomers found
+					30 = {
+						country_event = mumei.3
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_declare_mumei_dead = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 75
+		}
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = mumei.4
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+}
+
+MUM_restoring_egyptian_control = {
+	MUM_debug_initiation = {
+		icon = GFX_decision_icon_default
+		available = {
+			is_debug = yes
+		}
+		fire_only_once = yes
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			MUM_set_up_reuniting_egypt_gui = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_council_of_cairo = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 75
+		}
+		cost = 75
+		fire_only_once = yes
+		days_remove = 75
+		visible = {
+			tag = MUM
+		}
+		complete_effect = {
+			country_event = mumei.5
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_request_korone = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 25
+		}
+		visible = {
+			tag = MUM
+			KRN = {
+				exists = yes
+			}
+			NOT = {
+				has_variable = MUM.international_representative
+			}
+		}
+		cost = 25
+		targets = {
+			KRN
+		}
+		fire_only_once = yes
+		complete_effect = {
+			KRN = {
+				country_event = korone.10
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_disavow_korone = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 25
+		}
+		visible = {
+			tag = MUM
+			KRN = {
+				exists = yes
+			}
+			has_variable = MUM.international_representative
+			check_variable = {
+				var = MUM.international_representative
+				value = KRN.id
+				compare = equals
+			}
+		}
+		cost = 25
+		targets = {
+			KRN
+		}
+		fire_only_once = yes
+		complete_effect = {
+			clear_variable = MUM.international_representative
+			set_variable = {
+				var = MUM.var:international_willing_negotiate
+				value = 5
+			}
+			KRN = {
+				country_event = korone.11
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_request_watson = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 25
+		}
+		visible = {
+			tag = MUM
+			WTS = {
+				exists = yes
+			}
+			NOT = {
+				has_variable = MUM.international_representative
+			}
+		}
+		cost = 25
+		targets = {
+			WTS
+		}
+		fire_only_once = yes
+		complete_effect = {
+			WTS = {
+				country_event = watson.168
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_disavow_watson = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 25
+		}
+		visible = {
+			tag = MUM
+			WTS = {
+				exists = yes
+			}
+			has_variable = MUM.international_representative
+			check_variable = {
+				var = MUM.international_representative
+				value = WTS.id
+				compare = equals
+			}
+		}
+		cost = 25
+		targets = {
+			WTS
+		}
+		fire_only_once = yes
+		complete_effect = {
+			clear_variable = MUM.international_representative
+			set_variable = {
+				var = MUM.var:international_willing_negotiate
+				value = 5
+			}
+			WTS = {
+				country_event = watson.169
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_request_miko = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 25
+		}
+		visible = {
+			tag = MUM
+			MIK = {
+				exists = yes
+			}
+			NOT = {
+				has_variable = MUM.international_representative
+			}
+		}
+		cost = 25
+		targets = {
+			MIK
+		}
+		fire_only_once = yes
+		complete_effect = {
+			MIK = {
+				country_event = miko.16
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_disavow_miko = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 25
+		}
+		visible = {
+			tag = MUM
+			MIK = {
+				exists = yes
+			}
+			has_variable = MUM.international_representative
+			check_variable = {
+				var = MUM.international_representative
+				value = MIK.id
+				compare = equals
+			}
+		}
+		cost = 25
+		targets = {
+			MIK
+		}
+		fire_only_once = yes
+		complete_effect = {
+			clear_variable = MUM.international_representative
+			set_variable = {
+				var = MUM.var:international_willing_negotiate
+				value = 5
+			}
+			MIK = {
+				country_event = miko.17
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_request_mio = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 25
+		}
+		visible = {
+			tag = MUM
+			MIO = {
+				exists = yes
+			}
+			NOT = {
+				has_variable = MUM.international_representative
+			}
+		}
+		cost = 25
+		targets = {
+			MIO
+		}
+		fire_only_once = yes
+		complete_effect = {
+			MIO = {
+				country_event = mio.1
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_disavow_mio = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MUM
+			has_political_power > 25
+		}
+		visible = {
+			tag = MUM
+			MIO = {
+				exists = yes
+			}
+			has_variable = MUM.international_representative
+			check_variable = {
+				var = MUM.international_representative
+				value = MIO.id
+				compare = equals
+			}
+		}
+		cost = 25
+		targets = {
+			MIO
+		}
+		fire_only_once = yes
+		complete_effect = {
+			clear_variable = MUM.international_representative
+			set_variable = {
+				var = MUM.var:international_willing_negotiate
+				value = 5
+			}
+			MIO = {
+				country_event = mio.2
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MIO_devise_peace_proposal = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MIO
+			has_political_power > 50
+		}
+		visible = {
+			tag = MIO
+			MIO = {
+				exists = yes
+			}
+			check_variable = {
+				var = MUM.international_representative
+				value = MIO.id
+				compare = equals
+			}
+		}
+		cost = 50
+		targets = {
+			MUM
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = mio.3
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MIK_devise_peace_proposal = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = MIK
+			has_political_power > 50
+		}
+		visible = {
+			tag = MIK
+			MIK = {
+				exists = yes
+			}
+			check_variable = {
+				var = MUM.international_representative
+				value = MIK.id
+				compare = equals
+			}
+		}
+		cost = 50
+		targets = {
+			MUM
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = miko.18
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	WTS_devise_peace_proposal = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = WTS
+			has_political_power > 50
+		}
+		visible = {
+			tag = WTS
+			WTS = {
+				exists = yes
+			}
+			check_variable = {
+				var = MUM.international_representative
+				value = WTS.id
+				compare = equals
+			}
+		}
+		cost = 50
+		targets = {
+			MUM
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = watson.170
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	KRN_devise_peace_proposal = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = KRN
+			has_political_power > 50
+		}
+		visible = {
+			tag = KRN
+			KRN = {
+				exists = yes
+			}
+			check_variable = {
+				var = MUM.international_representative
+				value = KRN.id
+				compare = equals
+			}
+		}
+		cost = 50
+		targets = {
+			MUM
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = korone.12
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
 }

@@ -1,3 +1,38 @@
+MEL_proclaim_greater_romania = {
+	MEL_proclaim_greater_romania_decision = {
+		icon = GFX_decision_icon_default
+		available = {
+			owns_state = 76
+			owns_state = 84
+			owns_state = 941
+			owns_state = 83
+			owns_state = 838
+			owns_state = 82
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_global_flag = holo_realistic_names
+				}
+				set_cosmetic_tag = MEL_greater_romania_b
+				else = {
+					set_cosmetic_tag = MEL_greater_romania
+				}
+			}
+			add_state_core = 76
+			add_state_core = 84
+			add_state_core = 941
+			add_state_core = 83
+			add_state_core = 838
+			add_state_core = 82
+		}
+	}
+}
+
 MEL_aloe_civil_war_interactions = {
 	MEL_occupy_translyvania = {
 		icon = GFX_decision_icon_default
@@ -27,6 +62,26 @@ MEL_aloe_civil_war_interactions = {
 		}
 		ai_will_do = {
 			base = 5
+		}
+	}
+}
+
+MEL_demand_banat = {
+	MEL_demand_banat_decision = {
+		icon = GFX_decision_icon_default
+		available = {
+			YAG = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			YAG = {
+				country_event = yagoo.22
+			}
 		}
 	}
 }

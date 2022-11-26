@@ -1490,9 +1490,13 @@ focus_tree = {
 	focus = {
 		id = GAW_republican_principles
 		icon = GFX_focus_GAW_republican_principles
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = GAW_status_quo
+		}
+		completion_reward = {
+			custom_effect_tooltip = GAW_no_monarchists_allowed
+			set_country_flag = GAW_no_monarchists_allowed
 		}
 		x = 7
 		y = 5
@@ -1500,12 +1504,15 @@ focus_tree = {
 	focus = {
 		id = GAW_the_mio_model
 		icon = GFX_focus_GAW_the_mio_model
-		cost = 0
+		cost = 6
 		prerequisite = {
 			focus = GAW_republican_principles
 		}
 		mutually_exclusive = {
 			focus = GAW_cocoist_principles
+		}
+		completion_reward = {
+			country_event = gura.34
 		}
 		x = 5
 		y = 6
@@ -1513,7 +1520,7 @@ focus_tree = {
 	focus = {
 		id = GAW_cocoist_principles
 		icon = GFX_focus_GAW_cocoist_principles
-		cost = 0
+		cost = 6
 		prerequisite = {
 			focus = GAW_republican_principles
 		}
@@ -1526,9 +1533,16 @@ focus_tree = {
 	focus = {
 		id = GAW_study_federalism
 		icon = GFX_focus_GAW_study_federalism
-		cost = 0
+		cost = 2
 		prerequisite = {
 			focus = GAW_the_mio_model
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = -0.05
+			}
+			country_event = gura.35
 		}
 		x = 5
 		y = 7
@@ -1536,9 +1550,15 @@ focus_tree = {
 	focus = {
 		id = GAW_local_elections
 		icon = GFX_focus_GAW_local_elections
-		cost = 0
+		cost = 2
 		prerequisite = {
 			focus = GAW_study_federalism
+		}
+		completion_reward = {
+			country_event = {
+				id = gura.36
+				days = 30
+			}
 		}
 		x = 5
 		y = 8
@@ -1546,7 +1566,7 @@ focus_tree = {
 	focus = {
 		id = GAW_federal_strongarm
 		icon = GAW_local_elections
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_local_elections
 		}
@@ -1559,7 +1579,7 @@ focus_tree = {
 	focus = {
 		id = GAW_provincial_rights
 		icon = GFX_focus_GAW_provincial_rights
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_local_elections
 		}
@@ -1592,7 +1612,7 @@ focus_tree = {
 	focus = {
 		id = GAW_political_tutelage
 		icon = GFX_focus_GAW_political_tutelage
-		cost = 0
+		cost = 2
 		prerequisite = {
 			focus = GAW_cocoist_principles
 		}
@@ -1602,7 +1622,7 @@ focus_tree = {
 	focus = {
 		id = GAW_idol_at_the_center
 		icon = GFX_focus_GAW_idol_at_the_center
-		cost = 0
+		cost = 2
 		prerequisite = {
 			focus = GAW_political_tutelage
 		}

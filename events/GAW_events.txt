@@ -396,6 +396,7 @@ country_event = {
 		add_to_variable = {
 			var = GAW.anti_aggression
 			value = 5
+			tooltip = GEN_change_in_anti_aggression
 		}
 		every_character = {
 			limit = {
@@ -585,6 +586,7 @@ country_event = {
 	#It seems I have no choice
 	option = {
 		name = gura.24.a
+		set_country_flag = GAW_discovered_plotter
 		set_country_flag = GAW_form_new_dynasty_allow
 	}
 }
@@ -603,6 +605,7 @@ country_event = {
 	#Hell no; shoots the motherfucker
 	option = {
 		name = gura.25.a
+		set_country_flag = GAW_discovered_plotter
 		set_country_flag = GAW_form_new_dynasty_allow
 	}
 	#Insert KMT path here...
@@ -641,12 +644,15 @@ country_event = {
 	#You misheard, I support the republic!
 	option = {
 		name = gura.27.a
+		set_country_flag = GAW_discovered_plotter
 		set_country_flag = GAW_status_quo_allow
 	}
 	#Shoots the fuckers
 	option = {
 		name = gura.27.b
+		set_country_flag = GAW_discovered_plotter
 		set_country_flag = GAW_form_new_dynasty_allow
+		set_country_flag = GAW_promised_absolutism
 	}
 }
 
@@ -684,11 +690,13 @@ country_event = {
 	#Uhh yeah of course I support him
 	option = {
 		name = gura.29.a
+		set_country_flag = GAW_discovered_plotter
 		set_country_flag = GAW_status_quo_allow
 	}
 	#Shoots the fuckers, nah I want to be King
 	option = {
 		name = gura.29.b
+		set_country_flag = GAW_discovered_plotter
 		set_country_flag = GAW_form_new_dynasty_allow
 	}
 }
@@ -705,7 +713,15 @@ country_event = {
 	#I am ready
 	option = {
 		name = gura.30.a
-		country_event = gura.31
+		if = {
+			limit = {
+				has_country_flag = GAW_promised_absolutism
+			}
+			country_event = gura.31
+			else = {
+				country_event = gura.33
+			}
+		}
 	}
 }
 
@@ -734,5 +750,81 @@ country_event = {
 	#Yay
 	option = {
 		name = gura.32.a
+	}
+}
+
+#NF - Constitutionalism
+#	A sigh of relief
+country_event = {
+	id = gura.33
+	title = gura.33.t
+	desc = gura.33.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = gura.33.a
+	}
+}
+
+#NF - The Mio Model
+#	A question on antis?
+country_event = {
+	id = gura.34
+	title = gura.34.t
+	desc = gura.34.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#They'll behave if in government
+	option = {
+		name = gura.34.a
+		set_country_flag = GAW_allowing_antis_in_government
+		add_to_variable = {
+			var = GAW.anti_aggression
+			value = -15
+			tooltip = GEN_change_in_anti_aggression
+		}
+	}
+	#Evidently this system has failed
+	option = {
+		name = gura.34.b
+	}
+}
+
+#NF - The Mio Model
+#	A question of the HoloCNS
+country_event = {
+	id = gura.35
+	title = gura.35.t
+	desc = gura.35.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#They'll behave if integrated
+	option = {
+		name = gura.34.a
+		set_country_flag = GAW_allowing_holocns_in_government
+	}
+	#Evidently this system has failed
+	option = {
+		name = gura.35.b
+	}
+}
+
+#NF - The Mio Model
+#	Role of Gura
+country_event = {
+	id = gura.36
+	title = gura.36.t
+	desc = gura.36.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Respect the principles of the Hololive Republic
+	option = {
+		name = gura.36.a
+		set_country_flag = GAW_allowing_hololive_republic_principles_in_government
+	}
+	#Evidently this system has failed
+	option = {
+		name = gura.35.b
 	}
 }

@@ -595,18 +595,22 @@ country_event = {
 			add_to_variable = {
 				var = WTS.upper_class_support
 				value = 15
+				tooltip = WTS_change_var_upper_class_support_tooltip
 			}
 			add_to_variable = {
 				var = WTS.middle_class_support
 				value = 5
+				tooltip = WTS_change_var_middle_class_support_tooltip
 			}
 			add_to_variable = {
 				var = WTS.lower_class_support
 				value = -15
+				tooltip = WTS_change_var_lower_class_support_tooltip
 			}
 			add_to_variable = {
 				var = WTS.ulster_teammates_support
 				value = -15
+				tooltip = WTS_change_var_ulster_teammates_support_tooltip
 			}
 		}
 	}
@@ -623,18 +627,22 @@ country_event = {
 			add_to_variable = {
 				var = WTS.upper_class_support
 				value = -15
+				tooltip = WTS_change_var_upper_class_support_tooltip
 			}
 			add_to_variable = {
 				var = WTS.middle_class_support
 				value = -5
+				tooltip = WTS_change_var_middle_class_support_tooltip
 			}
 			add_to_variable = {
 				var = WTS.lower_class_support
 				value = 10
+				tooltip = WTS_change_var_lower_class_support_tooltip
 			}
 			add_to_variable = {
 				var = WTS.ulster_teammates_support
 				value = 10
+				tooltip = WTS_change_var_ulster_teammates_support_tooltip
 			}
 		}
 	}
@@ -4090,6 +4098,68 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = watson.167.a
+	}
+}
+
+#MUMEI REUNITING EGYPT - MUMEI WANTS OUR HELP
+country_event = {
+	id = watson.168
+	title = watson.168.t
+	desc = watson.168.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = watson.168.a
+		MUM = {
+			clear_variable = MUM.international_representative
+			set_variable = {
+				var = MUM.international_representative
+				value = THIS.id
+			}
+			country_event = mumei.8
+		}
+	}
+	#Reee
+	option = {
+		name = watson.168.b
+		MUM = {
+			country_event = mumei.9
+		}
+	}
+}
+
+#MUMEI REUNITING EGYPT - MUMEI DISAVOWS US
+country_event = {
+	id = watson.169
+	title = watson.169.t
+	desc = watson.169.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#BRUH
+	option = {
+		name = watson.169.a
+	}
+}
+
+#MUMEI RECONQUER EGYPT - DEVISING A TREATY
+country_event = {
+	id = watson.170
+	title = watson.170.t
+	desc = watson.170.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Plan A - Steward of the Canal - Watson manages the Suez Canal as an autonomous territory, Watson can not lay future claims to Egypt, Pekora withdraws from Egypt, Yagoo withdraws from Palestine
+	option = {
+		name = watson.170.a
+	}
+	#Plan B - Deconisation - All European powers in Africa must leave, Mumei gains the Suez Canal, Sudan becomes independent, Mumei and the other North African states get a neutral constitution 
+	option = {
+		name = watson.170.b
+	}
+	#Plan C - International Zone - The Suez Canal is made into an International Zone, Palestine and Lebanon are to be independent, Pekora withdraw from Egypt, Mumei Neutral Constitution 
+	option = {
+		name = watson.170.c
 	}
 }
 

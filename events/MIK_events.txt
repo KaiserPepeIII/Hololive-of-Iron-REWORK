@@ -562,3 +562,69 @@ country_event = {
 		add_stability = -0.1
 	}
 }
+
+#MUMEI RECONQUER EGYPT - MUMEI WANTS OUR HELP
+country_event = {
+	id = miko.16
+	title = miko.16.t
+	desc = miko.16.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#War
+	option = {
+		name = miko.16.a
+		MUM = {
+			clear_variable = MUM.international_representative
+			set_variable = {
+				var = MUM.international_representative
+				value = THIS.id
+			}
+			country_event = mumei.10
+		}
+	}
+	#Actually no
+	option = {
+		name = miko.16.b
+		MUM = {
+			country_event = mumei.11
+		}
+	}
+}
+
+#MUMEI RECONQUER EGYPT - MUMEI DISAVOWS US
+country_event = {
+	id = miko.17
+	title = miko.17.t
+	desc = miko.17.d
+	picture = GFX_report_event_miko
+	is_triggered_only = yes
+	#Bruh
+	option = {
+		name = miko.17.a
+	}
+}
+
+#MUMEI RECONQUER EGYPT - DEVISING A TREATY
+country_event = {
+	id = miko.18
+	title = miko.18.t
+	desc = miko.18.desc
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Plan A - Free Seas Proposal - The Rif + Gibraltar and the Suez Canal become international zones, Sudan becomes independent, Pekora withdraws from Egypt
+	option = {
+		name = miko.18.a
+	}
+	#Plan B - Pan-Arab Federation - Egypt, Sudan, Palestine, the Canal, and Lebanon become part of an Arab Federation, referendums to be held in Korone's Arab territories, Neutral Constitution. Pekora and Yagoo withdraw from North Africa
+	option = {
+		name = miko.3.b
+	}
+	#Plan C - Self-Determination - Pekora withdraws from Egypt, Suez Canal is returned to Mumei, Palestine and Lebanon are made independent. Sudan is made independent. Neutral Constitution for Mumei
+	option = {
+		name = miko.3.c
+	}
+	#Plan D - Pro-Peko Solution - Mumei is given a pro-Pekora constitution, Pekora withdraws from Egypt, Yagoo retains control of the Canal, Palestine and Lebanon, the regions surrounding the Canal must be demilitarized, 
+	option = {
+		name = miko.3.d
+	}
+}
