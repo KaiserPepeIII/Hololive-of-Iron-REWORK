@@ -1,0 +1,72 @@
+on_actions = {
+	on_monthly = {
+		effect = {
+			#In case someone joins or leaves the LHS
+			if = {
+				limit = {
+					threat < 0.35
+				}
+				every_country = {
+					limit = {
+						has_idea = lhs_member
+						NOT = {
+							has_dynamic_modifier = {
+								modifier = lhs_division_making_modifier
+							}
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = lhs_division_making_modifier
+					}
+				}
+				else = {
+					remove_dynamic_modifier = {
+						modifier = lhs_division_making_modifier
+					}
+				}
+			}
+			###
+			###	LHS FAITH LEGITIMACY
+			###	This calculates the "lhs_division_making_modifier" modifier 
+			###
+			clear_variable = global.lhs_faith_modifier
+			set_temp_variable = {
+				var = global.lhs_faith_divisor
+				value = global.lhs_faith
+			}
+			divide_variable = {
+				var = global.lhs_faith_divisor
+				value = 100
+			}
+			divide_variable = {
+				var = global.lhs_faith_divisor
+				value = 2
+			}
+			set_variable = {
+				var = global.lhs_faith_modifier
+				value = global.lhs_faith_divisor
+			}
+			###
+			###	BRUGG LEGITIMACY
+			###	This calculates the "lhs_division_making_modifier" modifier 
+			###
+			clear_variable = global.brugg_legitimacy_modifier
+			set_temp_variable = {
+				var = global.brugg_legitimacy_divisor
+				value = global.brugg_legitimacy
+			}
+			divide_variable = {
+				var = global.brugg_legitimacy_divisor
+				value = 100
+			}
+			divide_variable = {
+				var = global.brugg_legitimacy_divisor
+				value = 2
+			}
+			set_variable = {
+				var = global.brugg_legitimacy_modifier
+				value = global.brugg_legitimacy_divisor
+			}
+		}
+	}
+}

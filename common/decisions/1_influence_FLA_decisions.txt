@@ -1,0 +1,746 @@
+#
+#
+# PUT FLA_influencing_flare_calculate_events_LHS = yes IN LHS DECISIONS
+# PUT FLA_influencing_flare_calculate_events_NOE = yes IN LHS DECISIONS
+# PUT FLA_influencing_flare_calculate_events_RUS = yes IN LHS DECISIONS
+#
+#
+FLA_vying_for_influence = {
+	GEN_LHS_boost_lhs_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			OR = {
+				has_idea = lhs_member
+				tag = YAG
+				tag = SUB
+				tag = FBK
+			}
+		}
+		cost = 35
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_LHS = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_lhs_influence
+				value = 5
+				tooltip = FLA_influencing_flare_increase_lhs
+			}
+			FLA_calculating_visibility_of_decisions_LHS = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	GEN_LHS_provide_equipment = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_equipment = {
+				infantry_equipment > 250
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			OR = {
+				has_idea = lhs_member
+				tag = YAG
+				tag = SUB
+				tag = FBK
+			}
+		}
+		custom_cost_trigger = {
+			always = yes
+		}
+		custom_cost_text = LHS_FLA_decision_guns_cost_tooltip
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_LHS = yes
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+			}
+			FLA = {
+				country_event = flare.17
+			}
+			add_to_variable = {
+				var = FLA.influencing_flare_lhs_influence
+				value = 5
+				tooltip = FLA_influencing_flare_increase_lhs
+			}
+			FLA_calculating_visibility_of_decisions_LHS = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	GEN_LHS_reduce_rus_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			OR = {
+				has_idea = lhs_member
+				tag = YAG
+				tag = SUB
+				tag = FBK
+			}
+		}
+		cost = 35
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_LHS = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_rus_influence
+				value = -5
+				tooltip = FLA_influencing_flare_reduce_rus
+			}
+			FLA_calculating_visibility_of_decisions_LHS = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	GEN_LHS_reduce_noe_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			OR = {
+				has_idea = lhs_member
+				tag = YAG
+				tag = SUB
+				tag = FBK
+			}
+		}
+		cost = 35
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_LHS = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_noe_influence
+				value = -5
+				tooltip = FLA_influencing_flare_reduce_noe
+			}
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	GEN_LHS_encourage_pro_lhs_ideology = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = no
+		cost = 50
+		visible = {
+			AND = {
+				FLA = {
+					NOT = {
+						has_idea = ideology_promoted_pyk
+					}
+				}
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_LHS
+					value = 10
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.rus_subtractor_influence_visibility_calculator_LHS
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+			OR = {
+				has_idea = lhs_member
+				tag = YAG
+				tag = SUB
+				tag = FBK
+			}
+		}
+		complete_effect = {
+			FLA = {
+				country_event = flare.19
+				add_stability = -0.025
+				add_to_variable = {
+					var = FLA.influencing_flare_lhs_influence
+					value = 1
+					tooltip = FLA_influencing_flare_increase_lhs
+				}
+				add_timed_idea = {
+					idea = ideology_promoted_pyk
+					days = 180
+				}
+			}
+		}
+	}
+	GEN_LHS_the_coup_d_etat = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+		}
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			OR = {
+				has_idea = lhs_member
+				tag = YAG
+				tag = SUB
+				tag = FBK
+			}
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_LHS
+					value = 20
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.rus_subtractor_influence_visibility_calculator_LHS
+					value = 20
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			FLA = {
+				country_event = flare.20
+				set_global_flag = FLA_fully_influenced
+			}
+		}
+	}
+	RUS_boost_rus_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			tag = RUS
+		}
+		cost = 35
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_RUS = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_rus_influence
+				value = 5
+				tooltip = FLA_influencing_flare_increase_rus
+			}
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	RUS_reduce_noe_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			tag = RUS
+		}
+		cost = 35
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_RUS = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_noe_influence
+				value = -5
+				tooltip = FLA_influencing_flare_reduce_noe
+			}
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	RUS_reduce_lhs_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			tag = RUS
+		}
+		cost = 35
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_RUS = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_lhs_influence
+				value = -5
+				tooltip = FLA_influencing_flare_reduce_lhs
+			}
+			FLA_calculating_visibility_of_decisions_RUS = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	RUS_encourage_ruthenian_identity = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+				FLA = {
+					has_idea = ideology_promoted_rn
+				}
+			}
+			tag = RUS
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_RUS
+					value = 10
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.lhs_subtractor_influence_visibility_calculator_RUS
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		cost = 35
+		complete_effect = {
+			FLA = {
+				add_timed_idea = {
+					idea = ideology_promoted_rn
+					days = 180
+				}
+			}
+			FLA_influencing_flare_calculate_events_RUS = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_rus_influence
+				value = 5
+				tooltip = FLA_influencing_flare_increase_rus
+			}
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	RUS_deal_with_refugees = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+				FLA = {
+					has_idea = FLA_dealing_with_refugees
+				}
+			}
+			tag = RUS
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_RUS
+					value = 10
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.lhs_subtractor_influence_visibility_calculator_RUS
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			FLA = {
+				add_timed_idea = {
+					idea = FLA_dealing_with_refugees
+					days = 180
+				}
+			}
+			RUS = {
+				add_timed_idea = {
+					idea = FLA_dealing_with_refugees
+					days = 180
+				}
+			}
+			FLA_influencing_flare_calculate_events_RUS = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_rus_influence
+				value = 5
+				tooltip = FLA_influencing_flare_increase_rus
+			}
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		cost = 35
+	}
+	RUS_the_ukraine_deal = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 75
+		}
+		fire_only_once = yes
+		visible = {
+			NOT = {
+				tag = FLA
+				FLA = {
+					has_idea = FLA_dealing_with_refugees
+				}
+			}
+			tag = RUS
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_RUS
+					value = 15
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.lhs_subtractor_influence_visibility_calculator_RUS
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			FLA = {
+				country_event = flare.23
+			}
+			FLA_influencing_flare_calculate_events_RUS = yes
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		cost = 75
+	}
+	RUS_promise_of_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = yes
+		visible = {
+			NOT = {
+				tag = FLA
+				FLA = {
+					has_idea = FLA_dealing_with_refugees
+				}
+			}
+			tag = RUS
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_RUS
+					value = 25
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.lhs_subtractor_influence_visibility_calculator_RUS
+					value = 25
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			FLA = {
+				country_event = flare.23
+			}
+			FLA_influencing_flare_calculate_events_RUS = yes
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		cost = 50
+	}
+	NOE_boost_noe_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			tag = NOE
+		}
+		cost = 25
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_NOE = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_noe_influence
+				value = 5
+				tooltip = FLA_influencing_flare_increase_noe
+			}
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	NOE_reduce_lhs_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			tag = NOE
+		}
+		cost = 25
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_NOE = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_lhs_influence
+				value = -5
+				tooltip = FLA_influencing_flare_reduce_lhs
+			}
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	NOE_reduce_rus_influence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		visible = {
+			NOT = {
+				tag = FLA
+			}
+			tag = NOE
+		}
+		cost = 25
+		complete_effect = {
+			FLA_influencing_flare_calculate_events_NOE = yes
+			add_to_variable = {
+				var = FLA.influencing_flare_rus_influence
+				tooltip = FLA_influencing_flare_reduce_noe
+				value = -5
+			}
+			FLA_calculating_visibility_of_decisions_NOE = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	NOE_invest_in_industry = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		cost = 50
+		visible = {
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_LHS
+					value = 5
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.rus_subtractor_influence_visibility_calculator_LHS
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			FLA = {
+				country_event = flare.18
+				FLA_influencing_flare_calculate_events_NOE = yes
+				add_stability = -0.025
+				add_to_variable = {
+					var = FLA.influencing_flare_noe_influence
+					value = 1
+					tooltip = FLA_influencing_flare_increase_noe
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+				FLA_calculating_visibility_of_decisions_NOE = yes
+			}
+		}
+	}
+	NOE_invest_in_industry_military = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = no
+		days_re_enable = 21
+		cost = 50
+		visible = {
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_LHS
+					value = 5
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.rus_subtractor_influence_visibility_calculator_LHS
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			FLA = {
+				country_event = flare.18
+				FLA_influencing_flare_calculate_events_NOE = yes
+				add_stability = -0.025
+				add_to_variable = {
+					var = FLA.influencing_flare_noe_influence
+					value = 1
+					tooltip = FLA_influencing_flare_increase_noe
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+				FLA_calculating_visibility_of_decisions_NOE = yes
+			}
+		}
+	}
+	NOE_noel_flare_alliance = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_LHS
+					value = 15
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.rus_subtractor_influence_visibility_calculator_LHS
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					NOE = {
+						is_in_faction = no
+					}
+				}
+				create_faction = NOE_noel_flare_faction_loc
+			}
+			FLA = {
+				hidden_effect = {
+					add_ideas = {
+						cant_modify_faction
+					}
+				}
+				country_event = flare.21
+				FLA_influencing_flare_calculate_events_NOE = yes
+				add_stability = -0.025
+				add_to_variable = {
+					var = FLA.influencing_flare_noe_influence
+					value = 1
+					tooltip = FLA_influencing_flare_increase_noe
+				}
+				FLA_calculating_visibility_of_decisions_NOE = yes
+			}
+		}
+	}
+	NOE_noel_flare_union = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+		}
+		cost = 100
+		fire_only_once = yes
+		visible = {
+			AND = {
+				check_variable = {
+					var = FLA.noe_subtractor_influence_visibility_calculator_LHS
+					value = 20
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FLA.rus_subtractor_influence_visibility_calculator_LHS
+					value = 20
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				NOE = {
+					set_autonomy = {
+						target = FLA
+						autonomy_state = autonomy_personal_union
+					}
+				}
+				else = {
+					NOE = {
+						puppet = FLA
+					}
+				}
+			}
+			FLA = {
+				country_event = flare.22
+			}
+			set_global_flag = FLA_fully_influenced
+		}
+	}
+}

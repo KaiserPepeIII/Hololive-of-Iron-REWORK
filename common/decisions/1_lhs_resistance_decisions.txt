@@ -1,0 +1,173 @@
+GEN_LHS_picking_our_side = {
+	GAW_align_with_lhs_shield = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_political_power > 25
+			threat > 0.5
+		}
+		visible = {
+			has_idea = lhs_member
+			hidden_trigger = {
+				tag = GAW
+			}
+			YAG = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		days_remove = 60
+		cost = 25
+		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 25
+				tooltip = GEN_change_in_anti_aggression
+			}
+		}
+		remove_effect = {
+			every_country = {
+				limit = {
+					is_in_faction_with = GAW
+				}
+				GAW = {
+					add_to_faction = THIS
+				}
+			}
+		}
+	}
+	SUB_align_with_lhs_shield = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_political_power > 25
+			threat > 0.5
+		}
+		visible = {
+			has_idea = lhs_member
+			hidden_trigger = {
+				tag = SUB
+			}
+			YAG = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		days_remove = 60
+		cost = 25
+		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
+		}
+		remove_effect = {
+			every_country = {
+				limit = {
+					is_in_faction_with = SUB
+				}
+				YAG = {
+					add_to_faction = THIS
+				}
+			}
+		}
+	}
+	GEN_join_the_lhs_shield = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_political_power > 75
+			threat > 0.85
+		}
+		visible = {
+			has_idea = lhs_member
+			YAG = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		days_remove = 60
+		cost = 75
+		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 15
+				tooltip = GEN_change_in_anti_aggression
+			}
+		}
+		remove_effect = {
+			YAG = {
+				add_to_faction = ROOT
+			}
+		}
+	}
+	GEN_join_the_coco_resistance = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_political_power > 75
+			threat > 0.85
+		}
+		visible = {
+			has_idea = coco_resistance_member
+			COC = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		days_remove = 60
+		cost = 75
+		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 15
+				tooltip = GEN_change_in_anti_aggression
+			}
+		}
+		remove_effect = {
+			COC = {
+				add_to_faction = ROOT
+			}
+		}
+	}
+	GEN_join_the_aqua_resistance = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_political_power > 75
+			threat > 0.85
+		}
+		visible = {
+			has_idea = aqua_resistance_member
+			AQA = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		days_remove = 60
+		cost = 75
+		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 15
+				tooltip = GEN_change_in_anti_aggression
+			}
+		}
+		remove_effect = {
+			AQA = {
+				add_to_faction = ROOT
+			}
+		}
+	}
+}

@@ -1,0 +1,250 @@
+FLA_influencing_flare_calculate_events_LHS = {
+	hidden_effect = {
+		set_temp_variable = {
+			var = FLA.lhs_influence_calculator
+			value = FLA.influencing_flare_lhs_influence
+		}
+		set_temp_variable = {
+			var = FLA.noe_influence_calculator
+			value = FLA.influencing_flare_noe_influence
+		}
+		set_temp_variable = {
+			var = FLA.rus_influence_calculator
+			value = FLA.influencing_flare_rus_influence
+		}
+		subtract_from_temp_variable = {
+			var = FLA.noe_influence_calculator
+			value = FLA.lhs_influence_calculator
+		}
+		subtract_from_temp_variable = {
+			var = FLA.rus_influence_calculator
+			value = FLA.lhs_influence_calculator
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = FLA.noe_influence_calculator
+					value = 15
+					compare = less_than_or_equals
+				}
+			}
+			NOE = {
+				country_event = noel.58
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = FLA.rus_influence_calculator
+					value = 15
+					compare = less_than_or_equals
+				}
+			}
+			RUS = {
+				country_event = rushia.1
+			}
+		}
+	}
+}
+
+FLA_influencing_flare_calculate_events_RUS = {
+	hidden_effect = {
+		set_temp_variable = {
+			var = FLA.lhs_influence_calculator
+			value = FLA.influencing_flare_lhs_influence
+		}
+		set_temp_variable = {
+			var = FLA.noe_influence_calculator
+			value = FLA.influencing_flare_noe_influence
+		}
+		set_temp_variable = {
+			var = FLA.rus_influence_calculator
+			value = FLA.influencing_flare_rus_influence
+		}
+		subtract_from_temp_variable = {
+			var = FLA.noe_influence_calculator
+			value = FLA.rus_influence_calculator
+		}
+		subtract_from_temp_variable = {
+			var = FLA.lhs_influence_calculator
+			value = FLA.rus_influence_calculator
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = FLA.noe_influence_calculator
+					value = 15
+					compare = less_than_or_equals
+				}
+			}
+			NOE = {
+				country_event = noel.58
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = FLA.lhs_influence_calculator
+					value = 15
+					compare = less_than_or_equals
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						AND = {
+							tag = FBK
+							is_lhs_ideology = yes
+						}
+						AND = {
+							tag = YAG
+							is_lhs_ideology = yes
+						}
+						AND = {
+							tag = SUB
+							is_lhs_ideology = yes
+						}
+					}
+				}
+				country_event = lhs_nongui.1
+			}
+		}
+	}
+}
+
+FLA_influencing_flare_calculate_events_NOE = {
+	hidden_effect = {
+		set_temp_variable = {
+			var = FLA.lhs_influence_calculator
+			value = FLA.influencing_flare_lhs_influence
+		}
+		set_temp_variable = {
+			var = FLA.noe_influence_calculator
+			value = FLA.influencing_flare_noe_influence
+		}
+		set_temp_variable = {
+			var = FLA.rus_influence_calculator
+			value = FLA.influencing_flare_rus_influence
+		}
+		subtract_from_temp_variable = {
+			var = FLA.rus_influence_calculator
+			value = FLA.noe_influence_calculator
+		}
+		subtract_from_temp_variable = {
+			var = FLA.lhs_influence_calculator
+			value = FLA.noe_influence_calculator
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = FLA.rus_influence_calculator
+					value = 15
+					compare = less_than_or_equals
+				}
+			}
+			RUS = {
+				country_event = rushia.1
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = FLA.lhs_influence_calculator
+					value = 15
+					compare = less_than_or_equals
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						AND = {
+							tag = FBK
+							is_lhs_ideology = yes
+						}
+						AND = {
+							tag = YAG
+							is_lhs_ideology = yes
+						}
+						AND = {
+							tag = SUB
+							is_lhs_ideology = yes
+						}
+					}
+				}
+				country_event = lhs_nongui.1
+			}
+		}
+	}
+}
+
+FLA_calculating_visibility_of_decisions_LHS = {
+	#
+	#	Clean up after each decisision
+	#
+	clear_variable = FLA.noe_subtractor_influence_visibility_calculator_LHS
+	clear_variable = FLA.rus_subtractor_influence_visibility_calculator_LHS
+	set_variable = {
+		var = FLA.noe_subtractor_influence_visibility_calculator_LHS
+		value = FLA.influencing_flare_lhs_influence
+	}
+	set_variable = {
+		var = FLA.rus_subtractor_influence_visibility_calculator_LHS
+		value = FLA.influencing_flare_lhs_influence
+	}
+	subtract_from_variable = {
+		var = FLA.noe_subtractor_influence_visibility_calculator_LHS
+		value = FLA.influencing_flare_noe_influence
+	}
+	subtract_from_variable = {
+		var = FLA.rus_subtractor_influence_visibility_calculator_LHS
+		value = FLA.influencing_flare_rus_influence
+	}
+}
+
+FLA_calculating_visibility_of_decisions_NOE = {
+	#
+	#	Clean up after each decisision
+	#
+	clear_variable = FLA.lhs_subtractor_influence_visibility_calculator_NOE
+	clear_variable = FLA.rus_subtractor_influence_visibility_calculator_NOE
+	set_variable = {
+		var = FLA.lhs_subtractor_influence_visibility_calculator_NOE
+		value = FLA.influencing_flare_noe_influence
+	}
+	set_variable = {
+		var = FLA.rus_subtractor_influence_visibility_calculator_NOE
+		value = FLA.influencing_flare_noe_influence
+	}
+	subtract_from_variable = {
+		var = FLA.lhs_subtractor_influence_visibility_calculator_NOE
+		value = FLA.influencing_flare_lhs_influence
+	}
+	subtract_from_variable = {
+		var = FLA.rus_subtractor_influence_visibility_calculator_NOE
+		value = FLA.influencing_flare_rus_influence
+	}
+}
+
+FLA_calculating_visibility_of_decisions_RUS = {
+	#
+	#	Clean up after each decisision
+	#
+	clear_variable = FLA.lhs_subtractor_influence_visibility_calculator_RUS
+	clear_variable = FLA.noe_subtractor_influence_visibility_calculator_RUS
+	set_variable = {
+		var = FLA.lhs_subtractor_influence_visibility_calculator_RUS
+		value = FLA.influencing_flare_rus_influence
+	}
+	set_variable = {
+		var = FLA.noe_subtractor_influence_visibility_calculator_RUS
+		value = FLA.influencing_flare_rus_influence
+	}
+	subtract_from_variable = {
+		var = FLA.lhs_subtractor_influence_visibility_calculator_RUS
+		value = FLA.influencing_flare_lhs_influence
+	}
+	subtract_from_variable = {
+		var = FLA.noe_subtractor_influence_visibility_calculator_RUS
+		value = FLA.influencing_flare_noe_influence
+	}
+}

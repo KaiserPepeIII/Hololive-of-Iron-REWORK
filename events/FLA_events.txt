@@ -302,3 +302,176 @@ country_event = {
 		add_war_support = 0.1
 	}
 }
+
+#The LHS send us weaponry
+country_event = {
+	id = flare.17
+	title = flare.17.t
+	desc = flare.17.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Cool thanks
+	option = {
+		name = flare.17.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 250
+		}
+	}
+}
+
+#FLARE INFLUENCING GUI - NOE INVESTS IN FACTORY
+country_event = {
+	id = flare.18
+	title = flare.18.t
+	desc = flare.18.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Cool thanks
+	option = {
+		name = flare.18.a
+	}
+}
+
+#FLARE INFLUENCING GUI - LHS influencing our ideology
+country_event = {
+	id = flare.19
+	title = flare.19.t
+	desc = flare.19.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Cool thanks
+	option = {
+		name = flare.19.a
+	}
+}
+
+#FLARE INFLUENCING GUI - the Yagooist Coup
+country_event = {
+	id = flare.20
+	title = flare.20.t
+	desc = flare.20.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#DAMN
+	option = {
+		name = flare.20.a
+		add_stability = -0.35
+		add_war_support = -0.25
+		add_to_variable = {
+			var = FLA.anti_aggression
+			value = 35
+			tooltip = GEN_change_in_anti_aggression
+		}
+		set_politics = {
+			ruling_party = pro_yagoo_kleptocracy
+			elections_allowed = no
+		}
+		join_the_lhs = yes
+		YAG = {
+			add_to_faction = FLA
+		}
+	}
+}
+
+#FLARE INFLUENCING GUI - Noel-Flare Alliance
+country_event = {
+	id = flare.21
+	title = flare.21.t
+	desc = flare.21.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#it seems we have no choice
+	option = {
+		name = flare.21.a
+		add_stability = -0.15
+		add_war_support = -0.15
+		add_to_variable = {
+			var = FLA.anti_aggression
+			value = 25
+			tooltip = GEN_change_in_anti_aggression
+		}
+		NOE = {
+			add_to_faction = FLA
+		}
+	}
+	#No FAQ 
+	#To complete later
+}
+
+#FLARE INFLUENCING GUI - Noel puppets us
+country_event = {
+	id = flare.22
+	title = flare.22.t
+	desc = flare.22.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#it seems we have no choice
+	option = {
+		name = flare.22.a
+		add_stability = -0.2
+		add_war_support = -0.2
+		add_to_variable = {
+			var = FLA.anti_aggression
+			value = 25
+			tooltip = GEN_change_in_anti_aggression
+		}
+		set_politics = {
+			ruling_party = var:current_party_ideology_group@NOE
+			elections_allowed = no
+		}
+	}
+	#No FAQ 
+	#To complete later
+}
+
+#FLARE INFLUENCING GUI - Rushia offers treaty to demilitarize eastern Ukraine
+country_event = {
+	id = flare.23
+	title = flare.23.t
+	desc = flare.23.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#WAO THIS IS SOO GOOD!!!
+	option = {
+		name = flare.23.a
+		FROM = {
+			country_event = rushia.2
+		}
+	}
+	#nein
+	#To be completed
+}
+
+#FLARE INFLUENCING GUI - Rushia proposes neutral constitution
+country_event = {
+	id = flare.24
+	title = flare.24.t
+	desc = flare.24.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#WAO THIS IS SOO GOOD!!!
+	option = {
+		name = flare.23.a
+		set_global_flag = FLA_fully_influenced
+		FROM = {
+			country_event = rushia.3
+		}
+		add_timed_idea = {
+			idea = cant_modify_faction
+			days = 1256
+		}
+		add_stability = -0.15
+		add_war_support = -0.15
+	}
+	#Nein
+	#to be completed
+}

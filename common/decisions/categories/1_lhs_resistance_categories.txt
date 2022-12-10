@@ -1,0 +1,21 @@
+GEN_LHS_picking_our_side = {
+	allowed = {
+		always = yes
+	}
+	icon = GFX_decision_category_form_china
+	picture = GFX_decision_cat_form_china
+	visible_when_empty = no
+	visible = {
+		OR = {
+			AND = {
+				tag = GAW
+				threat > 0.5
+			}
+			AND = {
+				tag = SUB
+				threat > 0.5
+			}
+			threat > 0.85
+		}
+	}
+}

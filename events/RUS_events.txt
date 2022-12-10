@@ -1,0 +1,74 @@
+add_namespace = rushia
+#INFLUENCING FLARE GUI - REMINDER TO INFLUENCE FLARE
+country_event = {
+	id = rushia.1
+	title = rushia.1.t
+	desc = rushia.1.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#OK
+	option = {
+		name = rushia.1.a
+	}
+}
+
+#INFLUENCING FLARE GUI - Flare accepts Ukraine deal
+country_event = {
+	id = rushia.2
+	title = rushia.2.t
+	desc = rushia.2.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = rushia.2.a
+		FLA = {
+			transfer_state = 203
+			transfer_state = 197
+		}
+		FLA_influencing_flare_calculate_events_RUS = yes
+		add_to_variable = {
+			var = FLA.influencing_flare_rus_influence
+			value = 10
+			tooltip = FLA_influencing_flare_increase_rus
+		}
+		FLA_calculating_visibility_of_decisions_NOE = yes
+		203 = {
+			set_demilitarized_zone = yes
+		}
+		197 = {
+			set_demilitarized_zone = yes
+		}
+		193 = {
+			set_demilitarized_zone = yes
+		}
+		241 = {
+			set_demilitarized_zone = yes
+		}
+		259 = {
+			set_demilitarized_zone = yes
+		}
+	}
+}
+
+#INFLUENCING FLARE GUI - Flare accepts neutral constitution
+country_event = {
+	id = rushia.3
+	title = rushia.3.t
+	desc = rushia.3.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = rushia.3.a
+		add_stability = 0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+	#
+}

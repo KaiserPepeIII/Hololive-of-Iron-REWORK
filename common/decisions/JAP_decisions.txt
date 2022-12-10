@@ -126,3 +126,79 @@ JAP_the_iroha_revolution = {
 		}
 	}
 }
+
+JAP_the_empire_strikes_back = {
+	JAP_seizing_vladivostok = {
+		available = {
+			tag = JAP
+			has_political_power > 50
+			date > 1938.01.01
+		}
+		visible = {
+			tag = JAP
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			add_threat = 5
+			create_wargoal = {
+				target = NEN
+				type = annex_everything
+			}
+		}
+	}
+	JAP_seizing_korea = {
+		available = {
+			tag = JAP
+			has_political_power > 50
+			date > 1938.01.01
+		}
+		visible = {
+			tag = JAP
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			add_threat = 5
+			create_wargoal = {
+				target = NIN
+				type = annex_everything
+			}
+		}
+	}
+	JAP_revenge_on_gura = {
+		available = {
+			tag = JAP
+			has_political_power > 50
+			OR = {
+				date > 1939.01.01
+				AND = {
+					NIN = {
+						exists = no
+					}
+					NEN = {
+						exists = no
+					}
+				}
+			}
+		}
+		visible = {
+			tag = JAP
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		complete_effect = {
+			add_threat = 10
+			create_wargoal = {
+				target = GAW
+				type = annex_everything
+			}
+		}
+	}
+}
