@@ -1,5 +1,21 @@
 ﻿capital = 763
 oob = "NOE_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "NOE_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "NOE_1936_air_legacy"
+}
+
 set_stability = 0.55
 set_war_support = 0.85
 set_research_slots = 4
@@ -34,9 +50,11 @@ if = {
 	}
 	set_technology = {
 		iw_small_airframe = 1
+		basic_small_airframe = 1
 		aa_lmg = 1
 		early_bombs = 1
 		engines_1 = 1
+		engines_2 = 1
 		aircraft_construction = 1
 	}
 }
@@ -288,6 +306,12 @@ if = {
 	}
 }
 
+###############
+#
+#
+#	NSB Variants
+#
+###############
 if = {
 	limit = {
 		has_dlc = "No Step Back"
@@ -343,7 +367,7 @@ if = {
 	}
 	create_equipment_variant = {
 		name = "PzKpfw II-A"
-		type = light_tank_artillery_equipment_1
+		type = medium_tank_artillery_chassis_0
 		modules = {
 			main_armament_slot = tank_close_support_gun
 			turret_type_slot = tank_light_fixed_superstructure_turret

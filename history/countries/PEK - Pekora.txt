@@ -1,5 +1,21 @@
 ﻿capital = 860
 oob = "PEK_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "PEK_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "PEK_1936_air_legacy"
+}
+
 set_stability = 0.65
 set_war_support = 0.85
 set_research_slots = 4
@@ -49,9 +65,14 @@ if = {
 	}
 	set_technology = {
 		iw_small_airframe = 1
+		iw_medium_airframe = 1
+		iw_large_airframe = 1
+		basic_small_airframe = 1
+		basic_medium_airframe = 1
 		aa_lmg = 1
 		early_bombs = 1
 		engines_1 = 1
+		engines_2 = 1
 		aircraft_construction = 1
 	}
 }
@@ -409,7 +430,6 @@ if = {
 			special_type_slot_1 = empty
 		}
 		obsolete = yes
-		icon = "GFX_ITA_CAS1_medium"
 	}
 	create_equipment_variant = {
 		name = "Ca.101"		#
@@ -420,7 +440,6 @@ if = {
 			special_type_slot_1 = lmg_defense_turret
 		}
 		obsolete = yes
-		icon = "GFX_ITA_early_bomber_old_medium"
 	}
 	create_equipment_variant = {
 		name = "Ca.133"		#
@@ -432,7 +451,6 @@ if = {
 			special_type_slot_1 = lmg_defense_turret_2x
 		}
 		obsolete = yes
-		icon = "GFX_ITA_early_bomber_old_medium"
 	}
 	create_equipment_variant = {
 		name = "SM.81"		#
@@ -443,7 +461,6 @@ if = {
 			engine_type_slot = engine_1_3x
 			special_type_slot_1 = lmg_defense_turret_2x
 		}
-		icon = "GFX_ITA_early_bomber_medium"
 	}
 	create_equipment_variant = {
 		name = "SM.79"		#
@@ -454,7 +471,6 @@ if = {
 			engine_type_slot = engine_2_3x
 			special_type_slot_1 = lmg_defense_turret_2x
 		}
-		icon = "GFX_ITA_naval_bomber1_medium"
 	}
 	create_equipment_variant = {
 		name = "Ba.65"		#
@@ -465,7 +481,6 @@ if = {
 			engine_type_slot = engine_2_1x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_ITA_CAS1_medium"
 	}
 }
 

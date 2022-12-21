@@ -1,5 +1,21 @@
 ﻿capital = 278
 oob = "AYA_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "AYA_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "AYA_1936_air_legacy"
+}
+
 set_stability = 0.75
 set_war_support = 0.65
 set_research_slots = 3
@@ -28,6 +44,7 @@ if = {
 	}
 	set_technology = {
 		iw_small_airframe = 1
+		iw_medium_airframe = 1
 		aa_lmg = 1
 		early_bombs = 1
 		engines_1 = 1
@@ -191,6 +208,48 @@ set_popularities = {
 	democratic = 45
 	pro_yagoo_progressive = 35
 	reactionary_nationalism = 20
+}
+
+###############
+#
+#
+#	BBA Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	# Fábrica Militar de Aviones  I - Interceptor AAT - Avión de ataque a tierra AC - Avion de caza 
+	create_equipment_variant = {
+		name = "FNMA AC/32"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = light_mg_2x
+			engine_type_slot = engine_1_2x
+		}
+	}
+	create_equipment_variant = {
+		name = "FNMA ArC/30"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "FNMA AgAT/32"
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			engine_type_slot = engine_1_4x
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
 }
 
 ###############

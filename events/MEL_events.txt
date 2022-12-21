@@ -18,7 +18,7 @@ country_event = {
 	}
 	#lolno 
 	option = {
-		name = mel.1.a
+		name = mel.1.b
 		add_war_support = 0.15
 		ALO = {
 			country_event = aloe.9
@@ -154,5 +154,66 @@ country_event = {
 		YAG = {
 			add_to_faction = MEL
 		}
+	}
+}
+
+#Mel demands Ukrainian land
+country_event = {
+	id = mel.7
+	title = mel.7.t
+	desc = mel.7.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#We refuse
+	option = {
+		name = mel.7.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		add_war_support = 0.15
+		FLA = {
+			country_event = flare.25
+		}
+	}
+	#sURE i guess
+	option = {
+		name = mel.7.b
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		add_stability = -0.1
+		add_war_support = -0.15
+		add_to_variable = {
+			var = root.anti_aggression
+			value = 25
+			tooltip = GEN_change_in_anti_aggression
+		}
+		FLA = {
+			country_event = flare.26
+			transfer_state = 766
+			transfer_state = 192
+			transfer_state = 80
+		}
+	}
+	#Waaah, Yagoo pls help
+}
+
+#Flare backs down
+country_event = {
+	id = mel.8
+	title = mel.8.t
+	desc = mel.8.d
+	picture = GFX_King_George_V
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = mel.8.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+		add_stability = 0.05
 	}
 }

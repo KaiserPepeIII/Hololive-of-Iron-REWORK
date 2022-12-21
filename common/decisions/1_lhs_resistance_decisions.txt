@@ -82,6 +82,9 @@ GEN_LHS_picking_our_side = {
 		available = {
 			has_political_power > 75
 			threat > 0.85
+			NOT = {
+				is_puppet = yes
+			}
 		}
 		visible = {
 			has_idea = lhs_member
@@ -106,6 +109,19 @@ GEN_LHS_picking_our_side = {
 			YAG = {
 				add_to_faction = ROOT
 			}
+			if = {
+				limit = {
+					num_subjects > 0
+				}
+				every_country = {
+					limit = {
+						is_puppet_of = ROOT
+					}
+					YAG = {
+						add_to_faction = THIS
+					}
+				}
+			}
 		}
 	}
 	GEN_join_the_coco_resistance = {
@@ -113,6 +129,9 @@ GEN_LHS_picking_our_side = {
 		available = {
 			has_political_power > 75
 			threat > 0.85
+			NOT = {
+				is_puppet = yes
+			}
 		}
 		visible = {
 			has_idea = coco_resistance_member
@@ -137,6 +156,19 @@ GEN_LHS_picking_our_side = {
 			COC = {
 				add_to_faction = ROOT
 			}
+			if = {
+				limit = {
+					num_subjects > 0
+				}
+				every_country = {
+					limit = {
+						is_puppet_of = ROOT
+					}
+					COC = {
+						add_to_faction = THIS
+					}
+				}
+			}
 		}
 	}
 	GEN_join_the_aqua_resistance = {
@@ -144,6 +176,9 @@ GEN_LHS_picking_our_side = {
 		available = {
 			has_political_power > 75
 			threat > 0.85
+			NOT = {
+				is_puppet = yes
+			}
 		}
 		visible = {
 			has_idea = aqua_resistance_member
@@ -167,6 +202,19 @@ GEN_LHS_picking_our_side = {
 		remove_effect = {
 			AQA = {
 				add_to_faction = ROOT
+			}
+			if = {
+				limit = {
+					num_subjects > 0
+				}
+				every_country = {
+					limit = {
+						is_puppet_of = ROOT
+					}
+					AQA = {
+						add_to_faction = THIS
+					}
+				}
 			}
 		}
 	}

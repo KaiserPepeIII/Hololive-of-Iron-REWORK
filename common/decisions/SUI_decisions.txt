@@ -1,3 +1,332 @@
+SUI_colonial_exploitation = {
+	SUI_change_in_unrest = {
+		allowed = {
+			tag = SUI
+		}
+		activation = {
+			tag = SUI
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		selectable_mission = no
+		days_mission_timeout = 60
+		is_good = no
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			hidden_effect = {
+				random_list = {
+					#Mild increase - 1
+					5 = {
+						country_event = suisei.97
+					}
+					#Mild increase - 2
+					2 = {
+						country_event = suisei.98
+					}
+					#decrease
+					2 = {
+						country_event = suisei.100
+					}
+					#Mild increase - 1
+					1 = {
+						country_event = suisei.99
+					}
+				}
+			}
+			SUI_calculate_dynamic_modifier_colonial = yes
+		}
+	}
+	SUI_hard_rule = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_manpower > 300
+			command_power > 10
+			SUI = {
+				any_occupied_country = {
+					divisions_in_state = {
+						size = 1
+						state = var:THIS.capital
+					}
+				}
+			}
+		}
+		visible = {
+			always = yes
+		}
+		visible = {
+			tag = SUI
+		}
+		fire_only_once = no
+		days_re_enable = 30
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			random_list = {
+				#Winwin
+				6 = {
+					country_event = suisei.101
+				}
+				#failure
+				4 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_invest_in_jobs = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 75
+		}
+		visible = {
+			always = yes
+		}
+		visible = {
+			tag = SUI
+		}
+		cost = 75
+		fire_only_once = no
+		days_re_enable = 30
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					is_on_continent = africa
+					is_owned_by = SUI
+				}
+				random_list = {
+					9 = {
+						if = {
+							limit = {
+								THIS = {
+									infrastructure < 5
+								}
+							}
+							add_building_construction = {
+								type = infrastructure
+								level = 1
+							}
+							else = {
+								add_building_construction = {
+									type = industrial_complex
+									level = 1
+								}
+								add_extra_state_shared_building_slots = 1
+							}
+						}
+					}
+					1 = {
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+						}
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+			}
+			random_list = {
+				#Winwin
+				8 = {
+					country_event = suisei.101
+				}
+				#failure
+				2 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_negotiate_settlements = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 100
+			NOT = {
+				any_owned_state = {
+					has_dynamic_modifier = {
+						modifier = SUI_colonial_settlements
+					}
+				}
+			}
+		}
+		visible = {
+			always = yes
+		}
+		visible = {
+			tag = SUI
+		}
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 30
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			#Winwin
+			country_event = suisei.101
+			every_owned_state = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = SUI_colonial_unrest
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = SUI_colonial_settlements
+					days = 90
+				}
+			}
+		}
+	}
+}
+
+SUI_an_african_sphere = {
+	SUI_the_african_congress = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 25
+		}
+		visible = {
+			tag = SUI
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 15
+		}
+		cost = 25
+		complete_effect = {
+			set_country_flag = SUI_congress_africa
+			create_faction = SUI_congress_of_africa
+			hidden_effect = {
+				every_country = {
+					limit = {
+						OR = {
+							tag = MRT
+							tag = MLI
+							tag = VOL
+							tag = NGR
+							tag = CHA
+							tag = CAM
+							tag = CAR
+							tag = MOR
+							tag = ALG
+						}
+					}
+					country_event = africa.4
+				}
+			}
+		}
+	}
+	SUI_influence_our_allies = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 50
+		}
+		visible = {
+			tag = SUI
+		}
+		fire_only_once = no
+		days_re_enable = 180
+		ai_will_do = {
+			factor = 15
+		}
+		cost = 50
+		complete_effect = {
+			hidden_effect = {
+				every_country = {
+					limit = {
+						is_in_faction_with = SUI
+					}
+					if = {
+						limit = {
+							SUI = {
+								has_government = democratic
+							}
+						}
+						add_timed_idea = {
+							idea = ideology_promoted_pyc
+							days = 180
+						}
+					}
+					else_if = {
+						limit = {
+							SUI = {
+								has_government = pro_yagoo_progressive
+							}
+						}
+						add_timed_idea = {
+							idea = ideology_promoted_pyp
+							days = 180
+						}
+					}
+					else_if = {
+						limit = {
+							SUI = {
+								has_government = pro_resistance_nationalism
+							}
+						}
+						add_timed_idea = {
+							idea = ideology_promoted_prn
+							days = 180
+						}
+					}
+					else_if = {
+						limit = {
+							SUI = {
+								has_government = communism
+							}
+						}
+						add_timed_idea = {
+							idea = ideology_promoted_prr
+							days = 180
+						}
+					}
+				}
+			}
+		}
+	}
+	GEN_assert_our_independence = {
+		icon = decision_generic_industry
+		available = {
+			NOT = {
+				tag = SUI
+			}
+			has_anti_ideology = yes
+			has_political_power > 50
+		}
+		visible = {
+			NOT = {
+				tag = SUI
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			ROOT = {
+				leave_faction = yes
+			}
+			SUI = {
+				country_event = suisei.96
+			}
+		}
+	}
+}
+
 SUI_cores_on_france = {
 	SUI_get_cores_on_france = {
 		icon = decision_generic_industry
@@ -7,6 +336,9 @@ SUI_cores_on_france = {
 		}
 		visible = {
 			tag = SUI
+			NOT = {
+				has_government = divine_mandate
+			}
 			FRA = {
 				exists = no
 			}
@@ -462,6 +794,9 @@ suisei_restoration_attempts = {
 				has_country_flag = SUI_resistance_monarchy_aim
 				has_country_flag = SUI_yagoo_monarchy_aim
 				has_country_flag = SUI_neutral_monarchy_aim
+			}
+			NOT = {
+				has_country_flag = SUI_hah_too_late_lol
 			}
 		}
 		available = {

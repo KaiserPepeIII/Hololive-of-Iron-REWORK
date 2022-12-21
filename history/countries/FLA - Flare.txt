@@ -1,5 +1,21 @@
 ﻿capital = 91
 oob = "FLA_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "FLA_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "FLA_1936_air_legacy"
+}
+
 set_stability = 0.4
 set_war_support = 0.2
 set_research_slots = 3
@@ -155,4 +171,62 @@ set_popularities = {
 	pro_yagoo_monarchy = 10
 	reactionary_nationalism = 12
 	communism = 10
+}
+
+###############
+#
+#
+#	BBA Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "I-15"		#
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Vandrare-3"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = small_bomb_bay
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = lmg_defense_turret_2x
+		}
+	}
+}
+
+###############
+#
+#
+#	NSB Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "PzKpfw E/R"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 5
+		}
+	}
 }

@@ -1,5 +1,21 @@
 capital = 110
 oob = "WFA_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "WFA_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "WFA_1936_air_legacy"
+}
+
 set_stability = 0.25
 set_war_support = 0.75
 set_research_slots = 4
@@ -44,9 +60,13 @@ if = {
 	}
 	set_technology = {
 		iw_small_airframe = 1
+		basic_small_airframe = 1
+		iw_medium_airframe = 1
+		iw_large_airframe = 1
 		aa_lmg = 1
 		early_bombs = 1
 		engines_1 = 1
+		engines_2 = 1
 		aircraft_construction = 1
 	}
 }
@@ -222,6 +242,114 @@ set_popularities = {
 
 WFA = {
 	add_manpower = 100000
+}
+
+###############
+#
+#
+#	BBA Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Jaktfalken-5"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Jaktfalken-6"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Viking-2a"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Viking-4"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Vandrare-3"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = small_bomb_bay
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = lmg_defense_turret_2x
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Vandrare-7"
+		type = small_plane_cas_airframe_1
+		modules = {
+			fixed_main_weapon_slot = small_bomb_bay
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = lmg_defense_turret_2x
+		}
+	}
+	create_equipment_variant = {
+		name = "Vandal-2"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = small_bomb_bay
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Thor-1b"
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = empty
+			engine_type_slot = engine_1_4x
+		}
+	}
+	create_equipment_variant = {
+		name = "Djävulen-1c"
+		type = large_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = large_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = empty
+			engine_type_slot = engine_2_4x
+			special_type_slot_1 = hmg_defense_turret
+			special_type_slot_2 = fuel_tanks_large
+		}
+	}
+	create_equipment_variant = {
+		name = "Valkyrie-3"
+		type = small_plane_naval_bomber_airframe_0
+		modules = {
+			fixed_main_weapon_slot = torpedo_mounting
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = floats
+		}
+	}
 }
 
 #Based off FBK but in Norwegian 

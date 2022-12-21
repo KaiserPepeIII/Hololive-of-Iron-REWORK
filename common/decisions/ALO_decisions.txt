@@ -77,13 +77,13 @@ ALO_the_manotomo_dictatorship = {
 	ALO_a_new_alignment = {
 		icon = GFX_decision_icon_default
 		available = {
-			has_political_power > 50
+			has_political_power > 10
 		}
 		fire_only_once = yes
 		visible = {
 			always = yes
 		}
-		cost = 50
+		cost = 10
 		complete_effect = {
 			country_event = aloe.11
 		}
@@ -94,13 +94,14 @@ ALO_the_manotomo_dictatorship = {
 	ALO_blame_the_parliament = {
 		icon = GFX_decision_icon_default
 		available = {
-			has_political_power > 50
+			has_political_power > 10
 		}
 		days_re_enable = 25
 		fire_only_once = yes
 		visible = {
 			always = yes
 		}
+		cost = 10
 		complete_effect = {
 			add_popularity = {
 				ideology = var:ALO.var_ALO_dictatorship_alignment
@@ -119,13 +120,14 @@ ALO_the_manotomo_dictatorship = {
 	ALO_exert_more_power = {
 		icon = GFX_decision_icon_default
 		available = {
-			has_political_power > 50
+			has_political_power > 10
 		}
 		days_re_enable = 25
 		fire_only_once = yes
 		visible = {
 			always = yes
 		}
+		cost = 10
 		complete_effect = {
 			add_popularity = {
 				ideology = var:ALO.var_ALO_dictatorship_alignment
@@ -144,7 +146,7 @@ ALO_the_manotomo_dictatorship = {
 	ALO_seize_power = {
 		icon = GFX_decision_icon_default
 		available = {
-			has_political_power > 50
+			has_political_power > 10
 			custom_trigger_tooltip = {
 				tooltip = ALO_executive_control_trigger_seize_power
 			}
@@ -158,6 +160,7 @@ ALO_the_manotomo_dictatorship = {
 		visible = {
 			always = yes
 		}
+		cost = 10
 		complete_effect = {
 			set_country_flag = ALO_couped_the_government
 			news_event = global_holo.5
@@ -213,13 +216,15 @@ ALO_the_manotomo_dictatorship = {
 			custom_trigger_tooltip = {
 				tooltip = ALO_executive_order_806_tooltip
 			}
-			has_political_power > 50
+			has_war = yes
+			has_political_power > 10
 			check_variable = {
 				var = ALO.executive_control
 				value = 3
 				compare = greater_than
 			}
 		}
+		cost = 10
 		fire_only_once = yes
 		visible = {
 			always = yes
@@ -243,13 +248,15 @@ ALO_the_manotomo_dictatorship = {
 			custom_trigger_tooltip = {
 				tooltip = ALO_executive_order_815_tooltip
 			}
-			has_political_power > 50
+			has_war = yes
+			has_political_power > 10
 			check_variable = {
 				var = ALO.executive_control
 				value = 5
 				compare = greater_than
 			}
 		}
+		cost = 10
 		fire_only_once = yes
 		visible = {
 			always = yes
@@ -273,13 +280,15 @@ ALO_the_manotomo_dictatorship = {
 			custom_trigger_tooltip = {
 				tooltip = ALO_executive_order_831_tooltip
 			}
-			has_political_power > 50
+			has_war = yes
+			has_political_power > 10
 			check_variable = {
 				var = ALO.executive_control
 				value = 7
 				compare = greater_than
 			}
 		}
+		cost = 10
 		fire_only_once = yes
 		visible = {
 			always = yes
@@ -439,7 +448,7 @@ ALO_our_demon_queen = {
 }
 
 ALO_using_funds = {
-	develop_budapest_region = {
+	ALO_develop_budapest_region = {
 		icon = GFX_decision_icon_default
 		cost = 200
 		fire_only_once = yes
@@ -454,13 +463,17 @@ ALO_using_funds = {
 					instant_build = yes
 				}
 				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = ALO.extra_research_slot
+				value = 1
 			}
 		}
 		ai_will_do = {
 			factor = 5
 		}
 	}
-	develop_south_transdanubia = {
+	ALO_develop_south_transdanubia = {
 		icon = GFX_decision_icon_default
 		cost = 200
 		fire_only_once = yes
@@ -475,13 +488,17 @@ ALO_using_funds = {
 					instant_build = yes
 				}
 				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = ALO.extra_research_slot
+				value = 1
 			}
 		}
 		ai_will_do = {
 			factor = 5
 		}
 	}
-	develop_west_transdanubia = {
+	ALO_develop_west_transdanubia = {
 		icon = GFX_decision_icon_default
 		cost = 200
 		fire_only_once = yes
@@ -496,13 +513,17 @@ ALO_using_funds = {
 					instant_build = yes
 				}
 				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = ALO.extra_research_slot
+				value = 1
 			}
 		}
 		ai_will_do = {
 			factor = 5
 		}
 	}
-	develop_south_west_plains = {
+	ALO_develop_south_west_plains = {
 		icon = GFX_decision_icon_default
 		cost = 200
 		fire_only_once = yes
@@ -517,13 +538,17 @@ ALO_using_funds = {
 					instant_build = yes
 				}
 				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = ALO.extra_research_slot
+				value = 1
 			}
 		}
 		ai_will_do = {
 			factor = 5
 		}
 	}
-	develop_north_west_plains = {
+	ALO_develop_north_west_plains = {
 		icon = GFX_decision_icon_default
 		cost = 200
 		fire_only_once = yes
@@ -539,6 +564,28 @@ ALO_using_funds = {
 				}
 				add_extra_state_shared_building_slots = 2
 			}
+			add_to_variable = {
+				var = ALO.extra_research_slot
+				value = 1
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	ALO_develop_our_research = {
+		icon = GFX_decision_icon_default
+		cost = 200
+		fire_only_once = yes
+		visible = {
+			check_variable = {
+				var = ALO.extra_research_slot
+				value = 5
+				compare = equals
+			}
+		}
+		complete_effect = {
+			add_research_slot = 1
 		}
 		ai_will_do = {
 			factor = 5

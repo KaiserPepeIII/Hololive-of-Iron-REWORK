@@ -61,6 +61,10 @@ focus_tree = {
 			add_ideas = {
 				NOE_professionalization				#this national spirit should straight up be worse then feudal army
 			}
+			delete_unit_template_and_units = {
+				division_template = "Bauern-Heerbann Grenadiers"
+				disband = yes
+			}
 		}
 		cost = 5
 		x = 71
@@ -1368,22 +1372,6 @@ focus_tree = {
 		y = 3
 	}
 	focus = {
-		id = NOE_carrot_stick_approach		#minus a lot of pp and pp gain, make uradel happy
-		icon = GFX_goal_unknown
-		prerequisite = {
-			focus = NOE_danzig_conference
-		}
-		completion_reward = {
-			add_political_power = -150
-			add_ideas = {
-				the_carrot				# small debuff to pp gain and consumer but higher efficiency in factories
-			}
-		}
-		cost = 5
-		x = 43
-		y = 6
-	}
-	focus = {
 		id = NOE_establish_internal_kingdoms		#make uradel happy, make peasants mad, add stability, make antis less mad
 		icon = GFX_goal_unknown
 		prerequisite = {
@@ -1403,7 +1391,7 @@ focus_tree = {
 			custom_effect_tooltip = anti_anger_minus_1
 		}
 		cost = 5
-		x = 46
+		x = 44
 		y = 6
 	}
 	focus = {
@@ -1411,7 +1399,6 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		prerequisite = {
 			focus = NOE_modern_serfdom
-			focus = NOE_carrot_stick_approach
 			focus = NOE_establish_internal_kingdoms
 		}
 		completion_reward = {
@@ -1420,7 +1407,7 @@ focus_tree = {
 			}
 		}
 		cost = 5
-		x = 42
+		x = 38
 		y = 8
 	}
 	focus = {
@@ -1428,7 +1415,6 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		prerequisite = {
 			focus = NOE_modern_serfdom
-			focus = NOE_carrot_stick_approach
 			focus = NOE_establish_internal_kingdoms
 		}
 		available = {
@@ -1454,7 +1440,7 @@ focus_tree = {
 			custom_effect_tooltip = permanently_control_uradel
 		}
 		cost = 5
-		x = 44
+		x = 42
 		y = 8
 	}
 	focus = {
@@ -1469,19 +1455,19 @@ focus_tree = {
 				days = 180
 			}
 			85 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					instant_build = yes
-					level = 2
-					type = industrial_complex
+					level = 3
+					type = arms_factory
 				}
 			}
 			763 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					instant_build = yes
-					level = 2
-					type = industrial_complex
+					level = 3
+					type = arms_factory
 				}
 			}
 		}
@@ -2025,6 +2011,7 @@ focus_tree = {
 		completion_reward = {
 			remove_ideas = {
 				ritter_tactics
+				NOE_feudal_army
 				NOE_guard_infantry3
 			}
 			add_ideas = {
@@ -2332,7 +2319,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = NOE_panzer_plan_two_tech
 				bonus = 1
-				uses = 1
+				uses = 2
 				category = armor
 			}
 			add_ideas = {
@@ -2425,6 +2412,7 @@ focus_tree = {
 					has_dlc = "By Blood Alone"
 				}
 				create_equipment_variant = {
+					name = "He 60-3"
 					type = medium_plane_airframe_1
 					modules = {
 						armor_type_slot = armor_plate_medium
@@ -2438,6 +2426,7 @@ focus_tree = {
 				}
 				else = {
 					create_equipment_variant = {
+						name = "He 60-3"
 						type = tac_bomber_equipment_1
 						upgrades = {
 							plane_reliability_upgrade = 2
@@ -3538,28 +3527,6 @@ focus_tree = {
 		y = 16
 	}
 	focus = {
-		id = NOE_invade_slovakia		#will automatically pass or do according to event
-		icon = GFX_goal_unknown
-		prerequisite = {
-			focus = NOE_establish_kingdom_bohemia
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = SLO
-			}
-		}
-		bypass = {
-			hidden_trigger = {
-				SLO = {
-					exists = no
-				}
-			}
-		}
-		x = 35
-		y = 17
-	}
-	focus = {
 		id = NOE_anschluss_or_war
 		icon = GFX_goal_unknown
 		prerequisite = {
@@ -3740,9 +3707,6 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = NOE_demands_for_the_duck
-		}
-		prerequisite = {
-			focus = NOE_invade_slovakia
 		}
 		prerequisite = {
 			focus = NOE_improve_village_infrastructure

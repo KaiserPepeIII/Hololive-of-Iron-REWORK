@@ -1,5 +1,21 @@
 ﻿capital = 219
 oob = "RUS_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "RUS_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "RUS_1936_air_legacy"
+}
+
 set_stability = 0.25
 set_war_support = 0.55
 set_research_slots = 3
@@ -31,6 +47,7 @@ if = {
 	}
 	set_technology = {
 		iw_small_airframe = 1
+		basic_small_airframe = 1
 		aa_lmg = 1
 		early_bombs = 1
 		engines_1 = 1

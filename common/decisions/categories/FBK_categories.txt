@@ -12,6 +12,10 @@ wfa_loyalty_gui = {
 		NOT = {
 			has_war_with = FBK
 		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -26,6 +30,10 @@ FBK_colonial_policy_decisions = {
 		has_country_flag = FBK_ghana_debate
 		owns_state = 1090
 		owns_state = 274
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -38,6 +46,10 @@ FBK_plan_thor_decisions = {
 	}
 	visible = {
 		has_completed_focus = FBK_plan_thor
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -49,10 +61,12 @@ FBK_plan_valkyrie_decisions = {
 		tag = FBK
 	}
 	visible = {
-		if = {
-			FBK = {
-				has_completed_focus = FBK_plan_valkyrie
-			}
+		FBK = {
+			has_completed_focus = FBK_plan_valkyrie
+		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
 		}
 	}
 }
@@ -71,6 +85,10 @@ FBK_WFA_relationship_gui_categories = {
 		NOT = {
 			has_war_with = WFA
 		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -86,6 +104,10 @@ FBK_army_balance_categories = {
 		tag = FBK
 		NOT = {
 			has_war_with = WFA
+		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
 		}
 	}
 }

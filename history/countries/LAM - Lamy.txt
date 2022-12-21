@@ -1,5 +1,21 @@
 ﻿capital = 232
 oob = "LAM_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "LAM_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "LAM_1936_air_legacy"
+}
+
 set_stability = 0.55
 set_war_support = 0.85
 set_research_slots = 3
@@ -161,6 +177,27 @@ set_politics = {
 set_popularities = {
 	pro_yagoo_monarchy = 73
 	democratic = 27
+}
+
+###############
+#
+#
+#	BBA Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "I-15"		#
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
 }
 
 ###############

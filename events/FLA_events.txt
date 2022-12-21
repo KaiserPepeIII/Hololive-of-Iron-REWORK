@@ -475,3 +475,52 @@ country_event = {
 	#Nein
 	#to be completed
 }
+
+#Mel refused our demands
+country_event = {
+	id = flare.25
+	title = flare.25.t
+	desc = flare.25.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Then war it is
+	option = {
+		name = flare.25.a
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+	#I am a cuck
+	option = {
+		name = flare.25.b
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.2
+		}
+		add_war_support = -0.15
+		MEL = {
+			country_event = mel.8
+		}
+	}
+}
+
+#Mel accepted our demands
+country_event = {
+	id = flare.26
+	title = flare.26.t
+	desc = flare.26.desc
+	picture = GFX_report_event_mori
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Cool
+	option = {
+		name = flare.26.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		add_war_support = 0.05
+	}
+}

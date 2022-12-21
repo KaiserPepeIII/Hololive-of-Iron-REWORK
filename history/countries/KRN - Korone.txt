@@ -1,5 +1,21 @@
 ﻿capital = 49
 oob = "KRN_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "KRN_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "KRN_1936_air_legacy"
+}
+
 set_stability = 0.4
 set_war_support = 0.1
 set_research_slots = 3
@@ -279,6 +295,10 @@ if = {
 			fixed_main_weapon_slot = light_mg_2x
 			engine_type_slot = engine_1_1x
 			special_type_slot_1 = empty
+		}
+		upgrades = {
+			plane_engine_upgrade = 2
+			plane_reliability_upgrade = 2
 		}
 	}
 }

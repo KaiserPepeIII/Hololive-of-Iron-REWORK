@@ -1,5 +1,21 @@
 ﻿capital = 857
 oob = "SUB_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "SUB_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "SUB_1936_air_legacy"
+}
+
 set_stability = 0.75
 set_war_support = 0.35
 set_research_slots = 5
@@ -44,11 +60,13 @@ if = {
 	}
 	set_technology = {
 		iw_small_airframe = 1
+		basic_small_airframe = 1
 		iw_medium_airframe = 1
 		iw_large_airframe = 1
 		aa_lmg = 1
 		early_bombs = 1
 		engines_1 = 1
+		engines_2 = 1
 		aircraft_construction = 1
 	}
 }
@@ -253,6 +271,15 @@ if = {
 		}
 	}
 	create_equipment_variant = {
+		name = "Fokker D.XVIII"		#
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
 		name = "Fokker C.X"		#also represents Fokker C.V
 		type = small_plane_cas_airframe_0
 		modules = {
@@ -276,10 +303,19 @@ if = {
 		name = "Fokker F.X"
 		type = large_plane_airframe_0
 		modules = {
-			fixed_main_weapon_slot = bomb_locks
-			fixed_auxiliary_weapon_slot_1 = large_bomb_bay
-			engine_type_slot = engine_1_2x
+			fixed_main_weapon_slot = large_bomb_bay
+			engine_type_slot = engine_2_4x
 			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Fokker T-XXIII"		#
+		type = small_plane_naval_bomber_airframe_0
+		modules = {
+			fixed_main_weapon_slot = torpedo_mounting
+			fixed_auxiliary_weapon_slot_1 = small_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = floats
 		}
 	}
 }

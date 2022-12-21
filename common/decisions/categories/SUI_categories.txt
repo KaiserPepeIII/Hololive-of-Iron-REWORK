@@ -10,6 +10,23 @@ SUI_cores_on_france = {
 	}
 }
 
+SUI_colonial_exploitation = {
+	priority = 21
+	icon = GFX_decision_category_suisei_dealing_with_occupation
+	visible_when_empty = yes
+	scripted_gui = SUI_colonial_unrest_scripted_gui
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		tag = SUI
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
+	}
+}
+
 suisei_deal_with_strikes = {
 	priority = 51
 	icon = GFX_decision_category_suisei_deal_with_strikes
@@ -23,6 +40,10 @@ suisei_deal_with_strikes = {
 		OR = {
 			has_idea = suisei_strikes
 			has_idea = looting_and_rioting
+		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
 		}
 	}
 }
@@ -46,6 +67,10 @@ suisei_restoration_attempts = {
 				}
 			}
 		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -64,6 +89,10 @@ suisei_dealing_with_occupation = {
 			has_idea = swiss_resistance
 			has_idea = italian_resistance
 			has_idea = german_resistance
+		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
 		}
 	}
 }
@@ -85,6 +114,10 @@ suisei_election_compromises = {
 			has_country_flag = SUI_nationalist_compromises
 			has_country_flag = SUI_revolutionary_compromises
 		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -99,6 +132,32 @@ SUI_moroccan_rule = {
 	visible = {
 		SUI = {
 			has_country_flag = SUI_had_elections
+		}
+		NOT = {
+			has_global_flag = GEN_morocco_negotiations_init
+			is_puppet = yes
+			is_subject = yes
+		}
+	}
+}
+
+SUI_an_african_sphere = {
+	priority = 10
+	icon = GFX_decision_category_sui_reestablishing_colonial_rule
+	picture = GFX_decision_cat_sui_reestablishing_colonial_rule
+	visible_when_empty = yes
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		OR = {
+			has_completed_focus = SUI_pro_yagoo_coalition_wins
+			has_completed_focus = SUI_new_economic_plan
+		}
+		has_country_flag = SUI_had_elections
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
 		}
 	}
 }
@@ -117,6 +176,10 @@ SUI_reestablishing_colonial_rule = {
 				has_government = pro_resistance_nationalism
 			}
 		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -131,6 +194,10 @@ suisei_colonial_fuel = {
 	visible = {
 		SUI = {
 			has_country_flag = suisei_biofuels
+		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
 		}
 	}
 }
@@ -164,6 +231,10 @@ suisei_revolutionary_economics_decision = {
 			has_idea = suisei_revolutionary_economics
 			has_government = communism
 		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -180,6 +251,10 @@ suisei_nationalist_economics_decision = {
 		SUI = {
 			has_idea = suisei_nationalist_economics
 			has_government = pro_resistance_nationalism
+		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
 		}
 	}
 }

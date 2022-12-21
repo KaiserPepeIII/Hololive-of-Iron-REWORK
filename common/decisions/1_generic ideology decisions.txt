@@ -903,7 +903,21 @@ pro_resistance_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			hidden_modifier = {
+				democratic_drift = -0.005
+				pro_yagoo_progressive_drift = -0.005
+				pro_yagoo_monarchy_drift = -0.005
+				reactionary_monarchy_drift = -0.005
+				democratic_revitalisation_drift = -0.005
+				reactionary_nationalism_drift = -0.005
+				mixed_ideology_democracy_drift = -0.005
+				divine_mandate_drift = -0.005
+			}
+			custom_modifier_tooltip = generic_purge_counter_revolutionaries_tooltip
+		}
 		complete_effect = {
 		}
 	}
@@ -916,9 +930,17 @@ pro_resistance_revolutionary_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 360
+		days_re_enable = 180
+		days_remove = 60
 		cost = 120
+		modifier = {
+			industrial_factory_donations = 4
+		}
 		complete_effect = {
+			add_timed_idea = {
+				idea = GEN_nationalized_private_businesses
+				days = 180
+			}
 		}
 	}
 	generic_establish_national_conglomerates = {
@@ -930,9 +952,25 @@ pro_resistance_revolutionary_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
+		days_re_enable = 180
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_gain = 0.1
+		}
 		complete_effect = {
+			add_timed_idea = {
+				idea = GEN_established_national_conglomerates
+				days = 180
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	generic_push_infrastructure_campaign = {
@@ -945,8 +983,27 @@ pro_resistance_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_gain = 0.1
+			consumer_goods_factor = 0.15
+		}
 		complete_effect = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	generic_push_for_workers_revolution = {
@@ -959,8 +1016,18 @@ pro_resistance_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			mobilization_speed = 0.2
+			army_attack_factor = 0.15
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_promote_collectivism = {
@@ -973,8 +1040,18 @@ pro_resistance_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = 0.01
+			war_support_weekly = 0.01
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_agrarian_push = {
@@ -987,7 +1064,11 @@ pro_resistance_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			consumer_goods_factor = -0.15
+		}
 		complete_effect = {
 		}
 	}
@@ -1001,7 +1082,11 @@ pro_resistance_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -1018,8 +1103,17 @@ pro_resistance_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			pro_resistance_nationalism_drift = 0.01
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_jingoist_push = {
@@ -1032,8 +1126,18 @@ pro_resistance_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			war_support_weekly = 0.02
+			mobilization_speed = 0.2
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_order_above_all = {
@@ -1046,8 +1150,17 @@ pro_resistance_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = 0.02
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_mass_conscription_drive = {
@@ -1060,8 +1173,17 @@ pro_resistance_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			mobilization_speed = 0.4
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_totalitarian_policies = {
@@ -1074,8 +1196,23 @@ pro_resistance_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_gain = 0.5
+			resistance_growth_on_our_occupied_states = -0.2
+			compliance_growth_on_our_occupied_states = -0.2
+		}
 		complete_effect = {
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.05
+			}
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 15
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_state_press = {
@@ -1088,22 +1225,19 @@ pro_resistance_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = 0.01
+			war_support_weekly = 0.01
+			pro_resistance_nationalism_drift = 0.01
+		}
 		complete_effect = {
-		}
-	}
-	generic_proclaim_true_resistance_national = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 15
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_lower_consumer_good_prices = {
@@ -1116,8 +1250,17 @@ pro_resistance_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = -10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 }
@@ -1133,8 +1276,18 @@ pro_resistance_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			pro_resistance_monarchy_drift = 0.02
+			stability_weekly = 0.01
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_royal_industry_supervision = {
@@ -1147,8 +1300,17 @@ pro_resistance_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			consumer_goods_factor = -0.05
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_push_for_expansionism = {
@@ -1161,22 +1323,19 @@ pro_resistance_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_gain = -0.1
+			war_support_weekly = 0.02
+			pro_resistance_monarchy_drift = 0.01
+		}
 		complete_effect = {
-		}
-	}
-	generic_the_populist_monarch = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_gather_fanatics = {
@@ -1191,6 +1350,49 @@ pro_resistance_monarchy_category = {
 		days_re_enable = 120
 		cost = 120
 		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_template = "Loyalist Militia"
+					}
+				}
+				division_template = {
+					name = "Loyalist Militia"
+					priority = 1
+					regiments = {
+						infantry = {
+							x = 0
+							y = 0
+						}
+						infantry = {
+							x = 0
+							y = 1
+						}
+						infantry = {
+							x = 1
+							y = 0
+						}
+						infantry = {
+							x = 1
+							y = 1
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Loyalist Militia\" division_template = \"Loyalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Loyalist Militia\" division_template = \"Loyalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+					}
+				}
+			}
 		}
 	}
 	generic_encourage_resistance_sympathy = {
@@ -1203,7 +1405,16 @@ pro_resistance_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_gain = -0.5
+			pro_resistance_monarchy_drift = 0.01
+			communism_acceptance = 35
+			pro_resistance_nationalism_acceptance = 35
+			pro_resistance_monarchy_acceptance = 35
+			pro_resistance_kleptocracy_acceptance = 35
+		}
 		complete_effect = {
 		}
 	}
@@ -1217,7 +1428,13 @@ pro_resistance_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			research_speed_factor = 0.05
+			stability_weekly = 0.01
+			pro_resistance_monarchy_drift = -0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -1231,8 +1448,17 @@ pro_resistance_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			war_support_weekly = 0.02
+		}
 		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 }
@@ -1248,7 +1474,16 @@ pro_resistance_kleptocracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_gain = -0.5
+			pro_resistance_kleptocracy_drift = 0.02
+			communism_acceptance = 35
+			pro_resistance_nationalism_acceptance = 35
+			pro_resistance_monarchy_acceptance = 35
+			pro_resistance_kleptocracy_acceptance = 35
+		}
 		complete_effect = {
 		}
 	}
@@ -1262,7 +1497,16 @@ pro_resistance_kleptocracy_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_gain = 0.15
+			pro_resistance_kleptocracy_drift = 0.02
+			communism_acceptance = 15
+			pro_resistance_nationalism_acceptance = 15
+			pro_resistance_monarchy_acceptance = 15
+			pro_resistance_kleptocracy_acceptance = 15
+		}
 		complete_effect = {
 		}
 	}
@@ -1276,7 +1520,15 @@ pro_resistance_kleptocracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			
+			communism_acceptance = -15
+			pro_resistance_nationalism_acceptance = -15
+			pro_resistance_monarchy_acceptance = -15
+			pro_resistance_kleptocracy_acceptance = -15
+		}
 		complete_effect = {
 		}
 	}

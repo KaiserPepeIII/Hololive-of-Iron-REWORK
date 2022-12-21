@@ -32,3 +32,77 @@ SUI_dutch_cores = {
 		add_state_core = 36
 	}
 }
+
+SUI_calculate_dynamic_modifier_colonial = {
+	#In case african states don't have it 
+	every_state = {
+		limit = {
+			is_owned_by = SUI
+			is_on_continent = africa
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = SUI_colonial_unrest
+				}
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = SUI_colonial_unrest
+		}
+	}
+	#Colonial Exploitation
+	#consumer goods
+	set_variable = {
+		var = SUI.colonial_exploitation_a
+		value = -0.01
+	}
+	multiply_variable = {
+		var = SUI.colonial_exploitation_a
+		value = SUI.colonial_exploitation
+	}
+	#build speed
+	set_variable = {
+		var = SUI.colonial_exploitation_b
+		value = -0.02
+	}
+	multiply_variable = {
+		var = SUI.colonial_exploitation_b
+		value = SUI.colonial_exploitation
+	}
+	#conscription factor
+	set_variable = {
+		var = SUI.colonial_exploitation_c
+		value = -0.01
+	}
+	multiply_variable = {
+		var = SUI.colonial_exploitation_c
+		value = SUI.colonial_exploitation
+	}
+	#Colonial Exploitation
+	#compliance growth
+	set_variable = {
+		var = SUI.colonial_unrest_a
+		value = -0.05
+	}
+	multiply_variable = {
+		var = SUI.colonial_unrest_a
+		value = SUI.colonial_unrest
+	}
+	#unrest growth
+	set_variable = {
+		var = SUI.colonial_unrest_b
+		value = 0.05
+	}
+	multiply_variable = {
+		var = SUI.colonial_unrest_b
+		value = SUI.colonial_unrest
+	}
+	#non core manpower
+	set_variable = {
+		var = SUI.colonial_unrest_c
+		value = -0.1
+	}
+	multiply_variable = {
+		var = SUI.colonial_unrest_c
+		value = SUI.colonial_unrest
+	}
+}

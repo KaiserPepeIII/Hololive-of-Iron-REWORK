@@ -1,14 +1,11 @@
 add_namespace = africa
-
 #CONGO - We accept negotiations
 country_event = {
 	id = africa.1
 	title = africa.1.t
 	desc = africa.1.d
 	picture = GFX_report_event_mio
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = africa.1.a
 		add_war_support = -0.1
@@ -22,28 +19,26 @@ country_event = {
 		add_war_support = 0.05
 	}
 }
+
 #CONGO - Peace Treaty
 country_event = {
 	id = africa.2
 	title = africa.2.t
 	desc = africa.2.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.2.a
 	}
 }
+
 #CONGO - we win
 country_event = {
 	id = africa.3
 	title = africa.3.t
 	desc = africa.3.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.3.a
 		add_stability = 0.1
@@ -51,18 +46,75 @@ country_event = {
 	}
 }
 
+#Join the congress
 country_event = {
 	id = africa.4
 	title = africa.4.t
 	desc = africa.4.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
+	#Yeeah, NOT Morocco
 	option = {
 		name = africa.4.a
+		trigger = {
+			NOT = {
+				tag = MOR
+			}
+		}
+		SUI = {
+			add_to_faction = ROOT
+		}
+		ai_chance = {
+			base = 10
+		}
 	}
-
+	#nooo, NOT Morocco
+	option = {
+		name = africa.4.b
+		trigger = {
+			NOT = {
+				tag = MOR
+			}
+		}
+		SUI = {
+			add_to_faction = ROOT
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	#Yeeah, Morocco
+	option = {
+		name = africa.4.c
+		trigger = {
+			OR = {
+				tag = MOR
+				tag = ALG
+			}
+		}
+		SUI = {
+			add_to_faction = ROOT
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	#nooo, Morocco
+	option = {
+		name = africa.4.d
+		trigger = {
+			OR = {
+				tag = MOR
+				tag = ALG
+			}
+		}
+		SUI = {
+			add_to_faction = ROOT
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
 }
 
 country_event = {
@@ -70,13 +122,10 @@ country_event = {
 	title = africa.5.t
 	desc = africa.5.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.5.a
 	}
-
 }
 
 country_event = {
@@ -84,13 +133,10 @@ country_event = {
 	title = africa.6.t
 	desc = africa.6.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.6.a
 	}
-
 }
 
 country_event = {
@@ -98,13 +144,10 @@ country_event = {
 	title = africa.7.t
 	desc = africa.7.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.7.a
 	}
-
 }
 
 country_event = {
@@ -112,13 +155,10 @@ country_event = {
 	title = africa.8.t
 	desc = africa.8.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.8.a
 	}
-
 }
 
 country_event = {
@@ -126,13 +166,10 @@ country_event = {
 	title = africa.9.t
 	desc = africa.9.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.9.a
 	}
-
 }
 
 country_event = {
@@ -140,13 +177,10 @@ country_event = {
 	title = africa.10.t
 	desc = africa.10.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.10.a
 	}
-
 }
 
 country_event = {
@@ -154,13 +188,10 @@ country_event = {
 	title = africa.11.t
 	desc = africa.11.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.11.a
 	}
-
 }
 
 country_event = {
@@ -168,13 +199,10 @@ country_event = {
 	title = africa.12.t
 	desc = africa.12.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.12.a
 	}
-
 }
 
 country_event = {
@@ -182,13 +210,10 @@ country_event = {
 	title = africa.13.t
 	desc = africa.13.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.13.a
 	}
-
 }
 
 country_event = {
@@ -196,13 +221,10 @@ country_event = {
 	title = africa.14.t
 	desc = africa.14.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.14.a
 	}
-
 }
 
 country_event = {
@@ -210,13 +232,10 @@ country_event = {
 	title = africa.15.t
 	desc = africa.15.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.15.a
 	}
-
 }
 
 country_event = {
@@ -224,13 +243,10 @@ country_event = {
 	title = africa.16.t
 	desc = africa.16.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.16.a
 	}
-
 }
 
 country_event = {
@@ -238,13 +254,10 @@ country_event = {
 	title = africa.17.t
 	desc = africa.17.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.17.a
 	}
-
 }
 
 country_event = {
@@ -252,13 +265,10 @@ country_event = {
 	title = africa.18.t
 	desc = africa.18.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.18.a
 	}
-
 }
 
 country_event = {
@@ -266,13 +276,10 @@ country_event = {
 	title = africa.19.t
 	desc = africa.19.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.19.a
 	}
-
 }
 
 country_event = {
@@ -280,13 +287,10 @@ country_event = {
 	title = africa.20.t
 	desc = africa.20.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.20.as
 	}
-
 }
 
 country_event = {
@@ -294,13 +298,10 @@ country_event = {
 	title = africa.21.t
 	desc = africa.21.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.21.a
 	}
-
 }
 
 country_event = {
@@ -308,13 +309,10 @@ country_event = {
 	title = africa.22.t
 	desc = africa.22.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.22.a
 	}
-
 }
 
 country_event = {
@@ -322,13 +320,10 @@ country_event = {
 	title = africa.23.t
 	desc = africa.23.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.23.a
 	}
-
 }
 
 country_event = {
@@ -336,13 +331,10 @@ country_event = {
 	title = africa.24.t
 	desc = africa.24.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.24.a
 	}
-
 }
 
 country_event = {
@@ -350,11 +342,8 @@ country_event = {
 	title = africa.25.t
 	desc = africa.25.d
 	picture = GFX_report_event_mio
-
 	is_triggered_only = yes
-
 	option = {
 		name = africa.25.a
 	}
-
 }

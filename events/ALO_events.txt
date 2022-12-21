@@ -80,12 +80,22 @@ country_event = {
 	picture = GFX_report_event_ALO_civil_war
 	is_triggered_only = yes
 	immediate = {
-		add_threat = 2.5
+		hidden_effect = {
+			add_threat = 2.5
+		}
 	}
 	#ONWAWRDS HUNGARY!
 	option = {
 		name = aloe.3.a
 		set_country_flag = ALO_civil_war
+		YAG = {
+			end_puppet = ALO
+			remove_from_faction = ALO
+			country_event = yagoo.23
+		}
+		YAG = {
+			country_event = yagoo.23
+		}
 		add_popularity = {
 			ideology = left_wing_revolutionary
 			popularity = -0.5
@@ -146,6 +156,9 @@ country_event = {
 						retire = yes
 					}
 					65 = {
+						remove_trait = {
+							trait = ALO_questionnable_loyalty
+						}
 					}
 				}
 			}
@@ -210,6 +223,11 @@ country_event = {
 	option = {
 		name = aloe.3.b
 		set_country_flag = ALO_civil_war
+		YAG = {
+			end_puppet = ALO
+			remove_from_faction = ALO
+			country_event = yagoo.23
+		}
 		add_popularity = {
 			ideology = left_wing_revolutionary
 			popularity = -0.5
@@ -316,19 +334,12 @@ country_event = {
 	}
 	#WE WILL CRUSH THEM - and declare independence!
 	option = {
-		name = aloe.3.C
+		name = aloe.3.c
 		set_country_flag = ALO_civil_war
 		YAG = {
 			end_puppet = ALO
 			remove_from_faction = ALO
-		}
-		set_politics = {
-			ruling_party = divine_mandate
-			elections_allowed = no
-		}
-		add_popularity = {
-			ideology = divine_mandate
-			popularity = 0.2
+			country_event = yagoo.24
 		}
 		add_popularity = {
 			ideology = fascism
@@ -1483,6 +1494,30 @@ country_event = {
 	picture = GFX_report_event_ALO_mel_takes_unvar
 	is_triggered_only = yes
 	option = {
-		name = aloe.46
+		name = aloe.46.a
+	}
+}
+
+#Yagoo reaffirms our alliance
+country_event = {
+	id = aloe.47
+	title = aloe.47.t
+	desc = aloe.47.d
+	picture = GFX_report_event_ALO_mel_takes_unvar
+	is_triggered_only = yes
+	option = {
+		name = aloe.47.a
+	}
+}
+
+#Yagoo distances from our government
+country_event = {
+	id = aloe.48
+	title = aloe.48.t
+	desc = aloe.48.d
+	picture = GFX_report_event_ALO_mel_takes_unvar
+	is_triggered_only = yes
+	option = {
+		name = aloe.48.a
 	}
 }

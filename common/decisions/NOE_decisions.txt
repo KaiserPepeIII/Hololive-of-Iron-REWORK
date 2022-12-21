@@ -1,3 +1,84 @@
+NOE_army_professionalization = {
+	NOE_professionalization_plan_one = {
+		icon = GFX_decision_icon_default
+		complete_effect = {
+			hidden_effect = {
+				army_experience = -20
+			}
+			swap_ideas = {
+				remove_idea = NOE_professionalization
+				add_idea = NOE_professionalization2
+			}
+		}
+		custom_cost_trigger = {
+			always = yes
+		}
+		custom_cost_text = NOE_professionalization_custom_text_20
+		fire_only_once = yes
+		visible = {
+			has_idea = NOE_professionalization
+		}
+		available = {
+			has_army_experience > 20
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_professionalization_plan_two = {
+		icon = GFX_decision_icon_default
+		complete_effect = {
+			hidden_effect = {
+				army_experience = -20
+			}
+			swap_ideas = {
+				remove_idea = NOE_professionalization2
+				add_idea = NOE_professionalization3
+			}
+		}
+		custom_cost_trigger = {
+			always = yes
+		}
+		custom_cost_text = NOE_professionalization_custom_text_20
+		fire_only_once = yes
+		visible = {
+			has_idea = NOE_professionalization
+		}
+		available = {
+			has_army_experience > 20
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_professionalization_plan_three = {
+		icon = GFX_decision_icon_default
+		complete_effect = {
+			hidden_effect = {
+				army_experience = -50
+			}
+			swap_ideas = {
+				remove_idea = NOE_professionalization3
+				add_idea = NOE_professionalization4
+			}
+		}
+		custom_cost_trigger = {
+			always = yes
+		}
+		custom_cost_text = NOE_professionalization_custom_text_50
+		fire_only_once = yes
+		visible = {
+			has_idea = NOE_professionalization
+		}
+		available = {
+			has_army_experience > 50
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+}
+
 noe_warplan = {
 	warplan_Yakineko = {
 		icon = GFX_decision_icon_default

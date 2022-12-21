@@ -530,7 +530,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				consumer_goods_factor = 0.2
+				consumer_goods_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.15
 			}
 		}
 		industrialized_mining = {
@@ -544,7 +545,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				local_resources = 0.2
+				local_resources = 0.25
 			}
 		}
 		industrialized_coal_methods = {
@@ -699,7 +700,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				special_forces_min = 1000
+				special_forces_min = 1500
 				special_forces_training_time_factor = -0.2
 			}
 		}
@@ -714,7 +715,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				special_forces_min = 1000
+				special_forces_min = 2000
 				special_forces_training_time_factor = -0.3
 			}
 		}
@@ -731,6 +732,7 @@ ideas = {
 			removal_cost = -1
 			modifier = {
 				offence = 0.05
+				army_speed_factor = 0.1
 			}
 		}
 		ritter_tactics = {
@@ -744,7 +746,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_artillery_attack_factor = 0.1
+				army_artillery_attack_factor = 0.25
 			}
 		}
 		NOE_noble_officers = {
@@ -773,7 +775,12 @@ ideas = {
 				always = yes
 			}
 			removal_cost = -1
-			modifier = {
+			equipment_bonus = {
+				fighter = {
+					build_cost_ic = -0.1
+					air_attack_factor = 0.1
+					air_agility = 0.1
+				}
 			}
 		}
 		NOE_workers_not_serfs_idea = {
@@ -813,7 +820,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				navy_capital_ship_attack_factor = 0.3
+				navy_capital_ship_attack_factor = 0.15
 			}
 		}
 		NOE_imperial_ships2 = {
@@ -827,8 +834,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				navy_capital_ship_attack_factor = 0.3
-				navy_carrier_air_attack_factor = 0.3
+				navy_capital_ship_attack_factor = 0.15
+				navy_carrier_air_attack_factor = 0.15
 			}
 		}
 		expand_draft_time = {
@@ -842,8 +849,9 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_org_factor = -0.05
-				recruitable_population_factor = 0.25
+				conscription_factor = 0.05
+				experience_gain_army_factor = 0.15
+				training_time_factor = -0.25
 			}
 		}
 		NOE_feudal_army = {
@@ -916,14 +924,62 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				custom_modifier_tooltip = peasant_levees
 				army_org_factor = -0.2
 				army_org_regain = -0.2
 				army_morale_factor = -0.2
-				attrition = -0.2
 				planning_speed = -0.2
 				training_time_factor = 0.3
-				custom_modifier_tooltip = peasant_levees
+			}
+		}
+		NOE_professionalization2 = {
+			##negative effects from NOE_peasant_levees increased by 50-100%
+			picture = GFX_NOE_professionalization
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = -0.1
+				army_org_regain = -0.1
+				army_morale_factor = -0.1
+				planning_speed = -0.1
+				training_time_factor = 0.15
+			}
+		}
+		NOE_professionalization3 = {
+			##negative effects from NOE_peasant_levees increased by 50-100%
+			picture = GFX_NOE_professionalization
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.05
+				army_org_regain = 0.05
+			}
+		}
+		NOE_professionalization4 = {
+			##negative effects from NOE_peasant_levees increased by 50-100%
+			picture = GFX_NOE_professionalization
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.1
+				army_org_regain = 0.1
+				army_morale_factor = 0.1
+				planning_speed = 0.1
+				training_time_factor = -0.15
 			}
 		}
 		NOE_yakiniku_for_all = {
@@ -983,7 +1039,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				cavalry_attack_factor = 0.1
+				cavalry_attack_factor = 0.2
 				cavalry_defence_factor = 0.1
 				#army_cavalry_speed_factor = 0.25
 			}
@@ -1447,6 +1503,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
+				conscription_factor = 0.025
+				training_time_factor = -0.25
 			}
 		}
 		NOE_manteuffel_plan_idea = {
@@ -1459,6 +1517,9 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
+				army_attack_factor = 0.15
+				army_speed_factor = 0.1
+				army_defence_factor = -0.15
 			}
 		}
 		truck_logistics = {
@@ -1470,7 +1531,13 @@ ideas = {
 				always = yes
 			}
 			removal_cost = -1
+			equipment_bonus = {
+				motorized_equipment = {
+					build_cost_ic = -0.35
+				}
+			}
 			modifier = {
+				truck_attrition_factor = -0.25
 			}
 		}
 		NOE_a_gun_for_every_peasant_idea = {
@@ -1482,7 +1549,10 @@ ideas = {
 				always = yes
 			}
 			removal_cost = -1
-			modifier = {
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.35
+				}
 			}
 		}
 		hololive_union_research_assistance_small = {

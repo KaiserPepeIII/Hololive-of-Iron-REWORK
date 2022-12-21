@@ -71,12 +71,12 @@ KRO_the_long_march = {
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = support_equipment
-				amount = 105
+				amount = 65
 				producer = FBK
 			}
 			add_equipment_to_stockpile = {
 				type = support_equipment
-				amount = 85
+				amount = 55
 				producer = RUS
 			}
 		}
@@ -225,6 +225,8 @@ KRO_the_long_march = {
 						state = 147
 						state = 971
 						state = 218
+						state = 252
+						state = 255
 						region = 132
 						region = 284
 						region = 283
@@ -272,6 +274,7 @@ KRO_RSR_border_wars = {
 			NOT = {
 				owns_state = 516
 				has_country_flag = KRO_ural_border_war
+				has_war_with = RSR
 			}
 		}
 		cost = 50
@@ -344,6 +347,7 @@ KRO_RSR_border_wars = {
 			NOT = {
 				owns_state = 570
 				has_country_flag = KRO_siberia_border_war
+				has_war_with = RSR
 			}
 		}
 		cost = 50
@@ -426,7 +430,10 @@ KRO_RSR_border_wars = {
 			has_country_flag = KRO_established_in_russia
 			owns_state = 568
 			RSR = {
-				exists = no
+				exists = yes
+			}
+			NOT = {
+				has_war_with = RSR
 			}
 		}
 		cost = 100

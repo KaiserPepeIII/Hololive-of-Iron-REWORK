@@ -1,5 +1,21 @@
 ﻿capital = 593
 oob = "RSA_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "RSA_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "RSA_1936_air_legacy"
+}
+
 set_stability = 0.55
 set_war_support = 0.15
 set_research_slots = 4
@@ -213,6 +229,36 @@ set_popularities = {
 ###############
 #
 #
+#	BBA Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "P-6"		#export models only
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "O2U"		#
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			fixed_auxiliary_weapon_slot_1 = light_mg_2x
+			engine_type_slot = engine_1_1x
+		}
+	}
+}
+
+###############
+#
+#
 #	Tank Variants
 #
 ###############
@@ -280,12 +326,6 @@ if = {
 	}
 }
 
-###############
-#
-#
-#	MTG Variants
-#
-###############
 ###############
 #
 #

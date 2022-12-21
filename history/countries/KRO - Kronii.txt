@@ -1,5 +1,21 @@
 ﻿capital = 397
 oob = "KRO_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "KRO_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "KRO_1936_air_legacy"
+}
+
 set_stability = 0.4
 set_war_support = 1
 set_research_slots = 2
@@ -144,4 +160,38 @@ set_politics = {
 
 KRO = {
 	add_manpower = 100000
+}
+
+###############
+#
+#
+#	BBA Variants
+#
+###############
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Jaktfalken-5F"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		upgrades = {
+			plane_reliability_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "Vandal-2"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			fixed_auxiliary_weapon_slot_1 = small_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+	}
 }

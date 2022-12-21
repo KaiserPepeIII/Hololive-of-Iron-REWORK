@@ -155,6 +155,11 @@ focus_tree = {
 		id = ALO_inform_lhs_hq
 		icon = GFX_focus_ALO_inform_lhs_hq
 		cost = 1
+		available = {
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
+		}
 		prerequisite = {
 			focus = ALO_the_looming_crisis
 		}
@@ -170,10 +175,16 @@ focus_tree = {
 		id = ALO_activate_emergency_powers
 		icon = GFX_focus_ALO_activate_emergency_powers
 		cost = 1
+		available = {
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
+		}
 		prerequisite = {
 			focus = ALO_inform_lhs_hq
 		}
 		completion_reward = {
+			add_political_power = 50
 			add_to_variable = {
 				var = ALO.executive_control
 				value = 2
@@ -187,6 +198,11 @@ focus_tree = {
 		id = ALO_secure_armouries
 		icon = GFX_focus_ALO_secure_armouries
 		cost = 1
+		available = {
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
+		}
 		prerequisite = {
 			focus = ALO_activate_emergency_powers
 		}
@@ -229,6 +245,11 @@ focus_tree = {
 		id = ALO_ma_no_tomo_militias
 		icon = GFX_focus_ALO_ma_no_tomo_militias
 		cost = 1
+		available = {
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
+		}
 		prerequisite = {
 			focus = ALO_instate_curfews
 		}
@@ -370,6 +391,11 @@ focus_tree = {
 		id = ALO_arm_the_police
 		icon = GFX_focus_ALO_arm_the_police
 		cost = 1
+		available = {
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
+		}
 		prerequisite = {
 			focus = ALO_the_looming_crisis
 		}
@@ -419,6 +445,11 @@ focus_tree = {
 		id = ALO_the_comng_split		#promote radicalism
 		icon = GFX_focus_ALO_the_comng_split
 		cost = 1
+		available = {
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
+		}
 		prerequisite = {
 			focus = ALO_arm_the_police
 		}
@@ -440,6 +471,11 @@ focus_tree = {
 		id = ALO_ma_no_tomo_propaganda
 		icon = GFX_focus_ALO_ma_no_tomo_propaganda
 		cost = 1
+		available = {
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
+		}
 		prerequisite = {
 			focus = ALO_the_comng_split
 		}
@@ -458,6 +494,11 @@ focus_tree = {
 		id = ALO_denounce_anti_activism
 		icon = GFX_focus_ALO_denounce_anti_activism
 		cost = 1
+		available = {
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
+		}
 		prerequisite = {
 			focus = ALO_the_comng_split
 		}
@@ -482,7 +523,9 @@ focus_tree = {
 		icon = GFX_focus_ALO_silence_the_press
 		cost = 1
 		available = {
-			has_country_flag = ALO_civil_war
+			NOT = {
+				has_completed_focus = ALO_the_anti_uprising
+			}
 		}
 		prerequisite = {
 			focus = ALO_denounce_anti_activism
@@ -1313,7 +1356,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ALO_lhs_liscenses
-		icon = GFX_focus_ALO_lhs_liscenses
+		icon = GFX_focus_ALO_lhs_liscenses_focus
 		cost = 10
 		prerequisite = {
 			focus = ALO_manatomo_airforce
@@ -1349,7 +1392,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ALO_fighter_focus
-		icon = GFX_focus_ALO_fighter_focus
+		icon = GFX_focus_ALO_fighter_focus_focus
 		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
@@ -1374,7 +1417,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ALO_cas_focus
-		icon = GFX_focus_ALO_cas_focus
+		icon = GFX_focus_ALO_cas_focus_focus
 		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
@@ -1715,7 +1758,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ALO_localized_production
-		icon = GFX_focus_ALO_localized_production
+		icon = GFX_focus_ALO_localized_production_focus
 		cost = 4
 		available = {
 			has_country_flag = ALO_civil_war
@@ -1925,7 +1968,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ALO_restore_democracy
-		icon = GFX_goal_unknown
+		icon = GFX_focus_ALO_restore_democracy
 		cost = 15
 		prerequisite = {
 			focus = ALO_a_new_manatomo
@@ -2057,7 +2100,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ALO_welfare_initiatives
-		icon = GFX_focus_ALO_welfare_initiatives
+		icon = GFX_focus_ALO_welfare_initiatives_focus
 		cost = 10
 		prerequisite = {
 			focus = ALO_worker_compensation
@@ -2781,7 +2824,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ALO_bomber_focus
-		icon = GFX_focus_ALO_bomber_focus
+		icon = GFX_focus_ALO_bomber_focus_focus
 		cost = 8
 		prerequisite = {
 			focus = ALO_bucharest_airfields
