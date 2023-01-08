@@ -1,0 +1,47 @@
+on_actions = {
+	on_monthly = {
+		effect = {
+			#If a new country doesnt have the dynamic modifier
+			every_country = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = GEN_parliament_stability_dynamic_modifier
+						}
+					}
+				}
+				set_variable = {
+					var = ROOT.parliament_cohesion
+					value = 5
+				}
+				clamp_variable = {
+					var = ROOT.parliament_cohesion
+					min = 0
+					max = 10
+				}
+				add_dynamic_modifier = {
+					modifier = GEN_parliament_stability_dynamic_modifier
+				}
+			}
+			###
+			###	PARLIAMENT COHESION DYNAMIC MODIFIER 
+			###
+			every_country = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = GEN_parliament_stability_dynamic_modifier
+					}
+				}
+				clear_variable = ROOT.parliament_cohesion_modifier
+				set_variable = {
+					var = ROOT.parliament_cohesion_modifier
+					value = 0.001
+				}
+				multiply_variable = {
+					var = ROOT.parliament_cohesion_modifier
+					value = ROOT.parliament_cohesion
+				}
+			}
+		}
+	}
+}

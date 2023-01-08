@@ -1,6 +1,9 @@
 on_actions = {
 	on_startup = {
 		effect = {
+			#
+			#	SUI
+			#
 			set_variable = {
 				var = SUI.parliament_cohesion
 				value = 5
@@ -9,7 +12,64 @@ on_actions = {
 			var = SUI.parliament_cohesion
 			min = 0
 			max = 10
+			} 
+			#
+			#	ALO
+			#
+			set_variable = {
+				var = ALO.parliament_cohesion
+				value = 2
 			}
+			clamp_variable = {
+			var = ALO.parliament_cohesion
+			min = 0
+			max = 10
+			} 
+			every_country = {
+				limit = {
+					NOT = {
+						has_variable = ROOT.parliament_cohesion
+					}
+				}
+				set_variable = {
+					var = ROOT.parliament_cohesion
+					value = 5
+				}
+				clamp_variable = {
+					var = ROOT.parliament_cohesion
+					min = 0
+					max = 10
+				}
+			}
+			every_country = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = GEN_parliament_stability_dynamic_modifier
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = GEN_parliament_stability_dynamic_modifier
+				}
+			}
+			every_country = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = GEN_parliament_stability_dynamic_modifier
+					}
+				}
+				clear_variable = ROOT.parliament_cohesion_modifier
+				set_variable = {
+					var = ROOT.parliament_cohesion_modifier
+					value = 0.001
+				}
+				multiply_variable = {
+					var = ROOT.parliament_cohesion_modifier
+					value = ROOT.parliament_cohesion
+				}
+			}
+		
 		} 
 	}
 }

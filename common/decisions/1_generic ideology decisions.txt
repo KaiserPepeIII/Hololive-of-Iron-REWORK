@@ -1523,13 +1523,13 @@ pro_resistance_kleptocracy_category = {
 		days_remove = 60
 		cost = 120
 		modifier = {
-			
 			communism_acceptance = -15
 			pro_resistance_nationalism_acceptance = -15
 			pro_resistance_monarchy_acceptance = -15
 			pro_resistance_kleptocracy_acceptance = -15
 		}
 		complete_effect = {
+			add_political_power = 75
 		}
 	}
 	generic_crush_supposed_counter_revolutionaries = {
@@ -1542,7 +1542,12 @@ pro_resistance_kleptocracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			pro_resistance_kleptocracy_drift = 0.01
+			stability_weekly = -0.005
+		}
 		complete_effect = {
 		}
 	}
@@ -1557,7 +1562,11 @@ pro_resistance_kleptocracy_category = {
 		}
 		days_re_enable = 120
 		cost = 120
+		remove_effect = {
+			one_random_civilian_factory = yes
+		}
 		complete_effect = {
+			add_stability = -0.02
 		}
 	}
 	generic_promote_cronyism = {
@@ -1572,6 +1581,7 @@ pro_resistance_kleptocracy_category = {
 		days_re_enable = 120
 		cost = 120
 		complete_effect = {
+			add_stability = 0.05
 		}
 	}
 	generic_loyal_military = {
@@ -1584,8 +1594,18 @@ pro_resistance_kleptocracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			army_org_factor = -0.1
+		}
 		complete_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_popularity = {
+				ideology = pro_resistance_kleptocracy
+				popularity = 0.05
+			}
 		}
 	}
 	generic_secretly_negotiate_lhs = {
@@ -1598,7 +1618,14 @@ pro_resistance_kleptocracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			democratic_acceptance = 15
+			pro_yagoo_progressive_drift = 15
+			pro_yagoo_monarchy_acceptance = 15
+			pro_yagoo_kleptocracy_drift = 20
+		}
 		complete_effect = {
 		}
 	}
@@ -1617,6 +1644,8 @@ new_nationalism_category = {
 		days_re_enable = 120
 		cost = 120
 		complete_effect = {
+			one_random_militia = yes
+			add_war_support = 0.05
 		}
 	}
 	generic_loyalty_to_state = {
@@ -1629,7 +1658,12 @@ new_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			fascism_drift = 0.01
+			stability_weekly = 0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -1645,6 +1679,8 @@ new_nationalism_category = {
 		days_re_enable = 120
 		cost = 120
 		complete_effect = {
+			one_random_civilian_factory = yes
+			one_random_arms_factory = yes
 		}
 	}
 	generic_loosen_conscription_standards = {
@@ -1657,7 +1693,12 @@ new_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			recruitable_population_factor = 0.15
+			training_time_army_factor = -0.1
+		}
 		complete_effect = {
 		}
 	}
@@ -1671,22 +1712,14 @@ new_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			fascism_drift = 0.02
+			stability_weekly = -0.01
+		}
 		complete_effect = {
-		}
-	}
-	generic_claim_rightful_rulership = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
+			add_stability = -0.05
 		}
 	}
 	generic_civilian_material_drive = {
@@ -1699,7 +1732,11 @@ new_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			local_resources_factor = 0.1
+		}
 		complete_effect = {
 		}
 	}
@@ -1713,7 +1750,13 @@ new_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+			mobilization_laws_cost_factor = -0.25
+			mobilization_speed = 0.35
+		}
 		complete_effect = {
 		}
 	}
@@ -1730,7 +1773,12 @@ left_wing_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+			left_wing_revolutionary_drift = 0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -1744,7 +1792,12 @@ left_wing_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			justify_war_goal_time = -0.25
+			mobilization_speed = 0.25
+		}
 		complete_effect = {
 		}
 	}
@@ -1758,8 +1811,13 @@ left_wing_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+		}
 		complete_effect = {
+			one_random_civilian_factory = yes
 		}
 	}
 	generic_efficiency_push = {
@@ -1772,7 +1830,12 @@ left_wing_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			production_factory_efficiency_gain_factor = 0.1
+			local_resources_factor = 0.15
+		}
 		complete_effect = {
 		}
 	}
@@ -1786,21 +1849,12 @@ left_wing_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
-		complete_effect = {
+		modifier = {
+			stability_weekly = 0.01
+			left_wing_revolutionary_drift = 0.01
 		}
-	}
-	generic_mass_mechanization_push = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
 		complete_effect = {
 		}
 	}
@@ -1816,6 +1870,7 @@ left_wing_revolutionary_category = {
 		days_re_enable = 120
 		cost = 120
 		complete_effect = {
+			two_random_militia = yes
 		}
 	}
 	generic_scientific_push = {
@@ -1828,7 +1883,11 @@ left_wing_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			research_speed_factor = 0.05
+		}
 		complete_effect = {
 		}
 	}
@@ -1845,7 +1904,11 @@ reactionary_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = 0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -1859,7 +1922,12 @@ reactionary_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			war_support_weekly = 0.01
+			reactionary_monarchy_drift = 0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -1873,21 +1941,11 @@ reactionary_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
-		complete_effect = {
+		modifier = {
+			army_defence_factor = 0.15
 		}
-	}
-	generic_cultural_preservation = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
 		complete_effect = {
 		}
 	}
@@ -1901,7 +1959,13 @@ reactionary_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+			political_power_factor = 0.25
+			reactionary_monarchy_drift = 0.02
+		}
 		complete_effect = {
 		}
 	}
@@ -1915,7 +1979,13 @@ reactionary_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+			reactionary_monarchy_drift = -0.01
+			consumer_goods_factor = -0.05
+		}
 		complete_effect = {
 		}
 	}
@@ -1929,7 +1999,14 @@ reactionary_monarchy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_gain = 0.5
+			production_factory_efficiency_gain_factor = -0.1
+			production_speed_buildings_factor = -0.1
+			stability_weekly = -0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -1945,25 +2022,13 @@ reactionary_monarchy_category = {
 		days_re_enable = 120
 		cost = 120
 		complete_effect = {
+			add_political_power = 35
+			add_stability = -0.05
 		}
 	}
 }
 
 democratic_revitalisation_category = {
-	generic_crush_authoritarian_support = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-		}
-	}
 	generic_lower_taxes = {
 		icon = generic_prepare_civil_war
 		visible = {
@@ -1974,7 +2039,12 @@ democratic_revitalisation_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = 0.01
+			consumer_goods_factor = 0.05
+		}
 		complete_effect = {
 		}
 	}
@@ -1988,7 +2058,13 @@ democratic_revitalisation_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_factor = -0.25
+			stability_weekly = -0.01
+			democratic_revitalisation_drift = 0.02
+		}
 		complete_effect = {
 		}
 	}
@@ -2002,7 +2078,13 @@ democratic_revitalisation_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.02
+			production_factory_efficiency_gain_factor = 0.1
+			production_speed_buildings_factor = 0.1
+		}
 		complete_effect = {
 		}
 	}
@@ -2016,7 +2098,12 @@ democratic_revitalisation_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_factor = -0.25
+			stability_weekly = 0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -2030,7 +2117,12 @@ democratic_revitalisation_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			war_support_weekly = 0.01
+			recruitable_population_factor = 0.15
+		}
 		complete_effect = {
 		}
 	}
@@ -2044,7 +2136,11 @@ democratic_revitalisation_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			resistance_growth_on_our_occupied_states = 0.2
+		}
 		complete_effect = {
 		}
 	}
@@ -2058,7 +2154,13 @@ democratic_revitalisation_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+			political_power_factor = 0.15
+			consumer_goods_factor = -0.05
+		}
 		complete_effect = {
 		}
 	}
@@ -2075,7 +2177,13 @@ reactionary_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+			war_support_weekly = 0.01
+			reactionary_nationalism_drift = 0.02
+		}
 		complete_effect = {
 		}
 	}
@@ -2089,7 +2197,11 @@ reactionary_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			war_support_weekly = 0.02
+		}
 		complete_effect = {
 		}
 	}
@@ -2103,22 +2215,18 @@ reactionary_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			political_power_factor = 0.25
+			stability_weekly = -0.01
+		}
 		complete_effect = {
-		}
-	}
-	generic_empower_army = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
+			add_to_variable = {
+				var = root.anti_aggression
+				value = THIS.id
+				tooltip = GEN_change_in_anti_aggression
+			}
 		}
 	}
 	generic_greatly_increase_conscription = {
@@ -2131,7 +2239,13 @@ reactionary_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+			war_support_weekly = -0.01
+			recruitable_population_factor = 0.2
+		}
 		complete_effect = {
 		}
 	}
@@ -2145,7 +2259,12 @@ reactionary_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			army_org_factor = 0.05
+			training_time_army_factor = -0.15
+		}
 		complete_effect = {
 		}
 	}
@@ -2159,8 +2278,13 @@ reactionary_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+		}
 		complete_effect = {
+			two_random_arms_factory = yes
 		}
 	}
 	generic_substitute_labour = {
@@ -2173,27 +2297,17 @@ reactionary_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			consumer_goods_factor = -0.05
+		}
 		complete_effect = {
 		}
 	}
 }
 
 mixed_ideology_democracy_category = {
-	generic_ensure_transparency = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-		}
-	}
 	generic_host_debates = {
 		icon = generic_prepare_civil_war
 		visible = {
@@ -2204,7 +2318,13 @@ mixed_ideology_democracy_category = {
 			factor = 5
 		}
 		days_re_enable = 360
+		days_remove = 60
 		cost = 120
+		modifier = {
+			economy_cost_factor = -0.35
+			trade_laws_cost_factor = -0.35
+			mixed_ideology_democracy_drift = -0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -2218,7 +2338,12 @@ mixed_ideology_democracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = 0.01
+			research_speed_factor = 0.05
+		}
 		complete_effect = {
 		}
 	}
@@ -2232,7 +2357,12 @@ mixed_ideology_democracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 50
 		cost = 120
+		modifier = {
+			stability_weekly = 0.01
+			monthly_population = 0.02
+		}
 		complete_effect = {
 		}
 	}
@@ -2248,6 +2378,18 @@ mixed_ideology_democracy_category = {
 		days_re_enable = 120
 		cost = 120
 		complete_effect = {
+			random_neighbor_country = {
+				add_timed_idea = {
+					idea = GEN_democracy_spread
+					days = 180
+				}
+			}
+			random_neighbor_country = {
+				add_timed_idea = {
+					idea = GEN_democracy_spread
+					days = 180
+				}
+			}
 		}
 	}
 	generic_reject_radicalism = {
@@ -2260,7 +2402,12 @@ mixed_ideology_democracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = 0.02
+			war_support_weekly = -0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -2274,7 +2421,12 @@ mixed_ideology_democracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			army_core_attack_factor = 0.15
+			army_core_defence_factor = 0.15
+		}
 		complete_effect = {
 		}
 	}
@@ -2288,7 +2440,12 @@ mixed_ideology_democracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = 0.02
+			production_factory_efficiency_gain_factor = -0.1
+		}
 		complete_effect = {
 		}
 	}
@@ -2333,7 +2490,13 @@ divine_mandate_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			army_attack_factor = 0.15
+			recruitable_population_factor = 0.1
+			war_support_weekly = 0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -2347,7 +2510,12 @@ divine_mandate_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			justify_war_goal_time = -0.35
+			war_support_weekly = 0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -2361,7 +2529,12 @@ divine_mandate_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			stability_weekly = -0.01
+			divine_mandate_drift = 0.02
+		}
 		complete_effect = {
 		}
 	}
@@ -2389,7 +2562,13 @@ divine_mandate_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
+		modifier = {
+			army_core_attack_factor = 0.1
+			army_core_defence_factor = 0.1
+			divine_mandate_drift = 0.01
+		}
 		complete_effect = {
 		}
 	}
@@ -2405,6 +2584,18 @@ divine_mandate_category = {
 		days_re_enable = 120
 		cost = 120
 		complete_effect = {
+			random_neighbor_country = {
+				add_timed_idea = {
+					idea = GEN_divine_mandate
+					days = 180
+				}
+			}
+			random_neighbor_country = {
+				add_timed_idea = {
+					idea = GEN_divine_mandate
+					days = 180
+				}
+			}
 		}
 	}
 }
