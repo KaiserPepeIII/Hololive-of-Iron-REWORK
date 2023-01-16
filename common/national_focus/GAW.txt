@@ -27,6 +27,9 @@ focus_tree = {
 		id = GAW_integrate_warlord_armies
 		icon = GFX_focus_GAW_integrate_warlord_armies
 		cost = 4
+		prerequisite = {
+			focus = GAW_shrimp_reorganization
+		}
 		completion_reward = {
 			set_country_flag = GAW_integrate_warlord_armies_decisions
 		}
@@ -1557,6 +1560,9 @@ focus_tree = {
 		completion_reward = {
 			country_event = {
 				id = gura.36
+			}
+			country_event = {
+				id = gura.37
 				days = 30
 			}
 		}
@@ -1567,6 +1573,13 @@ focus_tree = {
 		id = GAW_federal_strongarm
 		icon = GFX_focus_GAW_federal_strongarm
 		cost = 8
+		available = {
+			check_variable = {
+				var = GAW.federalism_progress
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
 		prerequisite = {
 			focus = GAW_local_elections
 		}

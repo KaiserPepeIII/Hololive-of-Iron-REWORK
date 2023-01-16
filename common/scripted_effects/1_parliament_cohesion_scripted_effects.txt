@@ -1,0 +1,61 @@
+GEN_reload_parliament_cohesion = {
+	ROOT = {
+		clear_variable = ROOT.parliament_cohesion_modifier
+		set_variable = {
+			var = ROOT.parliament_cohesion_modifier
+			value = 0.001
+		}
+		multiply_variable = {
+			var = ROOT.parliament_cohesion_modifier
+			value = ROOT.parliament_cohesion
+		}
+	}
+}
+
+GEN_reduce_parliament_cohesion_one = {
+	subtract_from_variable = {
+		var = ROOT.parliament_cohesion
+		value = 1
+	}
+	GEN_reload_parliament_cohesion = yes
+}
+
+GEN_reduce_parliament_cohesion_two = {
+	subtract_from_variable = {
+		var = ROOT.parliament_cohesion
+		value = 2
+	}
+	GEN_reload_parliament_cohesion = yes
+}
+
+GEN_reduce_parliament_cohesion_three = {
+	subtract_from_variable = {
+		var = ROOT.parliament_cohesion
+		value = 3
+	}
+	GEN_reload_parliament_cohesion = yes
+}
+
+GEN_add_parliament_cohesion_one = {
+	add_to_variable = {
+		var = ROOT.parliament_cohesion
+		value = 1
+	}
+	GEN_reload_parliament_cohesion = yes
+}
+
+GEN_add_parliament_cohesion_two = {
+	add_to_variable = {
+		var = ROOT.parliament_cohesion
+		value = 2
+	}
+	GEN_reload_parliament_cohesion = yes
+}
+
+GEN_add_parliament_cohesion_three = {
+	add_to_variable = {
+		var = ROOT.parliament_cohesion
+		value = 3
+	}
+	GEN_reload_parliament_cohesion = yes
+}

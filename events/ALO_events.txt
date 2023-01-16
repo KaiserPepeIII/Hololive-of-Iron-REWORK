@@ -1041,11 +1041,9 @@ country_event = {
 	desc = aloe.33.d
 	picture = GFX_report_event_ALO_anti_purge
 	is_triggered_only = yes
-	immediate = {
-		custom_effect_tooltip = ALO_no_communist_government_tooltip
-	}
 	option = {
 		name = aloe.33.a
+		custom_effect_tooltip = ALO_no_communist_government_tooltip
 	}
 }
 
@@ -1428,6 +1426,7 @@ country_event = {
 			ideology = pro_yagoo_progressive
 			popularity = 0.35
 		}
+		country_event = ideology_change.1
 		complete_national_focus = ALO_progressives_wins
 	}
 	#Conservatives Win
@@ -1442,6 +1441,7 @@ country_event = {
 			ideology = democratic
 			popularity = 0.35
 		}
+		country_event = ideology_change.1
 		complete_national_focus = ALO_conservative_victory
 	}
 }
@@ -1522,5 +1522,20 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = aloe.48.a
+	}
+}
+
+#White Terror
+country_event = {
+	id = aloe.49
+	title = aloe.49.t
+	desc = aloe.49.d
+	picture = GFX_report_event_ALO_mel_takes_unvar
+	is_triggered_only = yes
+	option = {
+		name = aloe.49.a
+		add_stability = -0.05
+		set_country_flag = ALO_antis_purged
+		custom_effect_tooltip = ALO_no_communist_government_tooltip
 	}
 }

@@ -1,0 +1,643 @@
+add_namespace = ALO_cabinet
+#first minister
+country_event = {
+	id = ALO_cabinet.1
+	title = ALO_cabinet.1.t
+	desc = ALO_cabinet.1.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.1.a
+	}
+	#Gyula Gombos
+	option = {
+		name = ALO_cabinet.1.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_gyula_gombos
+				has_anti_ideology = yes
+			}
+		}
+		ALO_switch_first_minister = yes
+		add_ideas = ALO_gyula_gombos
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Istvan Bethlen
+	option = {
+		name = ALO_cabinet.1.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_istvan_bethlen
+				has_anti_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		ALO_switch_first_minister = yes
+		add_ideas = ALO_istvan_bethlen
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Istvan Friedrich
+	option = {
+		name = ALO_cabinet.1.d
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_istvan_friedrich
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
+		}
+		ALO_switch_first_minister = yes
+		add_ideas = ALO_istvan_friedrich
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Mihaly Karolyi
+	option = {
+		name = ALO_cabinet.1.e
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_mihaly_karolyi
+				has_country_flag = ALO_antis_purged
+			}
+			OR = {
+				has_anti_ideology = yes
+				has_completed_focus = ALO_reconciliation_movement
+			}
+		}
+		ALO_switch_first_minister = yes
+		add_ideas = ALO_mihaly_karolyi
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}
+
+#finance minister
+country_event = {
+	id = ALO_cabinet.2
+	title = ALO_cabinet.2.t
+	desc = ALO_cabinet.2.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.2.a
+	}
+	#Lajos Walko
+	option = {
+		name = ALO_cabinet.2.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_lajos_walko
+				has_anti_ideology = yes
+			}
+		}
+		ALO_switch_finance_minister = yes
+		add_ideas = ALO_lajos_walko
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Eugen Varga
+	option = {
+		name = ALO_cabinet.2.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_eugen_varga
+				has_anti_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		ALO_switch_finance_minister = yes
+		add_ideas = ALO_eugen_varga
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Tihamer Fabinyi
+	option = {
+		name = ALO_cabinet.2.d
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_tihamer_fabinyi
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
+		}
+		ALO_switch_finance_minister = yes
+		add_ideas = ALO_tihamer_fabinyi
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Gustav Gratz
+	option = {
+		name = ALO_cabinet.2.e
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_gustav_gratz
+				has_country_flag = ALO_antis_purged
+			}
+			OR = {
+				has_anti_ideology = yes
+				has_completed_focus = ALO_reconciliation_movement
+			}
+		}
+		ALO_switch_finance_minister = yes
+		add_ideas = ALO_gustav_gratz
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}
+
+#economy minister
+country_event = {
+	id = ALO_cabinet.3
+	title = ALO_cabinet.3.t
+	desc = ALO_cabinet.3.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.3.a
+	}
+	#Tibor Scitovszky
+	option = {
+		name = ALO_cabinet.3.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_tibor_sicitovszky
+				has_anti_ideology = yes
+			}
+		}
+		ALO_switch_economy_minister = yes
+		add_ideas = ALO_tibor_sicitovszky
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Imre Oltvanyi
+	option = {
+		name = ALO_cabinet.3.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_imre_oltvanyi
+				has_anti_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		ALO_switch_economy_minister = yes
+		add_ideas = ALO_imre_oltvanyi
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Tibor Farkas
+	option = {
+		name = ALO_cabinet.3.d
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_tibor_farkas
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
+		}
+		ALO_switch_economy_minister = yes
+		add_ideas = ALO_tibor_farkas
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Gyula Lengyel
+	option = {
+		name = ALO_cabinet.3.e
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_gyula_lengyel
+				has_country_flag = ALO_antis_purged
+			}
+			OR = {
+				has_anti_ideology = yes
+				has_completed_focus = ALO_reconciliation_movement
+			}
+		}
+		ALO_switch_economy_minister = yes
+		add_ideas = ALO_gyula_lengyel
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}
+
+#armaments minister
+country_event = {
+	id = ALO_cabinet.4
+	title = ALO_cabinet.4.t
+	desc = ALO_cabinet.4.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.4.a
+	}
+	#Jeno Ruszkay 
+	option = {
+		name = ALO_cabinet.4.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_jeno_ruszkay
+				has_anti_ideology = yes
+			}
+		}
+		ALO_switch_armaments_minister = yes
+		add_ideas = ALO_jeno_ruszkay
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Bela Imredy
+	option = {
+		name = ALO_cabinet.4.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_bela_imredy
+				has_anti_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		ALO_switch_armaments_minister = yes
+		add_ideas = ALO_bela_imredy
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Anton Lehar
+	option = {
+		name = ALO_cabinet.4.d
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_anton_lehar
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
+		}
+		ALO_switch_armaments_minister = yes
+		add_ideas = ALO_anton_lehar
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Pal Szende 
+	option = {
+		name = ALO_cabinet.4.e
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_pal_szende
+				has_country_flag = ALO_antis_purged
+			}
+			OR = {
+				has_anti_ideology = yes
+				has_completed_focus = ALO_reconciliation_movement
+			}
+		}
+		ALO_switch_armaments_minister = yes
+		add_ideas = ALO_pal_szende
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}
+
+#chief navy
+country_event = {
+	id = ALO_cabinet.5
+	title = ALO_cabinet.5.t
+	desc = ALO_cabinet.5.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.5.a
+	}
+	#Miklos Horthy
+	option = {
+		name = ALO_cabinet.5.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_miklos_horthy
+			}
+		}
+		ALO_switch_navy_chief = yes
+		add_ideas = ALO_miklos_horthy
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Georg von Trapp
+	option = {
+		name = ALO_cabinet.5.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_georg_von_trapp
+			}
+		}
+		ALO_switch_navy_chief = yes
+		add_ideas = ALO_georg_von_trapp
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Tivadar Batthyany
+	option = {
+		name = ALO_cabinet.5.d
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_tivadar_batthyany
+			}
+		}
+		ALO_switch_navy_chief = yes
+		add_ideas = ALO_tivadar_batthyany
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}
+
+#chief army
+country_event = {
+	id = ALO_cabinet.6
+	title = ALO_cabinet.6.t
+	desc = ALO_cabinet.6.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.6.a
+	}
+	#Dome Sztoja
+	option = {
+		name = ALO_cabinet.6.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_dome_sztoja
+				has_anti_ideology = yes
+			}
+		}
+		ALO_switch_army_chief = yes
+		add_ideas = ALO_dome_sztoja
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Jeno Ratz
+	option = {
+		name = ALO_cabinet.6.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_jeno_ratz
+				has_anti_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		ALO_switch_army_chief = yes
+		add_ideas = ALO_jeno_ratz
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Sandor Farkas de Boldogfa 
+	option = {
+		name = ALO_cabinet.6.d
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_sandor_farkas_de_boldogfa
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
+		}
+		ALO_switch_army_chief = yes
+		add_ideas = ALO_sandor_farkas_de_boldogfa
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Albert Bartha
+	option = {
+		name = ALO_cabinet.6.e
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_albert_bartha
+				has_country_flag = ALO_antis_purged
+			}
+			OR = {
+				has_anti_ideology = yes
+				has_completed_focus = ALO_reconciliation_movement
+			}
+		}
+		ALO_switch_army_chief = yes
+		add_ideas = ALO_albert_bartha
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}
+
+#interior minister
+country_event = {
+	id = ALO_cabinet.7
+	title = ALO_cabinet.7.t
+	desc = ALO_cabinet.7.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.7.a
+	}
+	#Ferenc Keresztes Fischer
+	option = {
+		name = ALO_cabinet.7.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_ferenc_keresztes_fischer
+				has_anti_ideology = yes
+			}
+		}
+		ALO_switch_interior_minister = yes
+		add_ideas = ALO_ferenc_keresztes_fischer
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Bela Imredy
+	option = {
+		name = ALO_cabinet.7.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_bela_imredy
+				has_anti_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		ALO_switch_interior_minister = yes
+		add_ideas = ALO_bela_imredy
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Miklos Kozma
+	option = {
+		name = ALO_cabinet.7.e
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_miklos_kozma
+				has_country_flag = ALO_antis_purged
+			}
+			OR = {
+				has_anti_ideology = yes
+				has_completed_focus = ALO_reconciliation_movement
+			}
+		}
+		ALO_switch_interior_minister = yes
+		add_ideas = ALO_miklos_kozma
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}
+
+#foreign minister
+country_event = {
+	id = ALO_cabinet.8
+	title = ALO_cabinet.8.t
+	desc = ALO_cabinet.8.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.8.a
+	}
+	#Gyula Karol
+	option = {
+		name = ALO_cabinet.8.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_gyula_karol
+				has_anti_ideology = yes
+			}
+		}
+		ALO_switch_foreign_minister = yes
+		add_ideas = ALO_gyula_karol
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Endre Puky
+	option = {
+		name = ALO_cabinet.8.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_endre_puky
+				has_anti_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		ALO_switch_foreign_minister = yes
+		add_ideas = ALO_endre_puky
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Istvan Tisza
+	option = {
+		name = ALO_cabinet.8.d
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_istvan_tisza
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
+		}
+		ALO_switch_foreign_minister = yes
+		add_ideas = ALO_istvan_tisza
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Bela Kun
+	option = {
+		name = ALO_cabinet.8.e
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_bela_kun
+				has_country_flag = ALO_antis_purged
+			}
+			OR = {
+				has_anti_ideology = yes
+				has_completed_focus = ALO_reconciliation_movement
+			}
+		}
+		ALO_switch_foreign_minister = yes
+		add_ideas = ALO_bela_kun
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}
+
+#allegiance minister
+country_event = {
+	id = ALO_cabinet.9
+	title = ALO_cabinet.9.t
+	desc = ALO_cabinet.9.desc
+	picture = GFX_report_event_GEN_sacking_event
+	is_triggered_only = yes
+	option = {
+		name = ALO_cabinet.9.a
+	}
+	#Kalman Daranyi
+	option = {
+		name = ALO_cabinet.9.b
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_kalman_daranyi
+				has_anti_ideology = yes
+			}
+		}
+		ALO_switch_allegiance_minister = yes
+		add_ideas = ALO_kalman_daranyi
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Miklos Kally
+	option = {
+		name = ALO_cabinet.9.c
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_miklos_kally
+				has_anti_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+		ALO_switch_allegiance_minister = yes
+		add_ideas = ALO_miklos_kally
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Joszef Minszenty
+	option = {
+		name = ALO_cabinet.9.d
+		trigger = {
+			original_tag = ALO
+			NOT = {
+				has_idea = ALO_Jozsef_Minszenty
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
+		}
+		ALO_switch_allegiance_minister = yes
+		add_ideas = ALO_jozsef_minszenty
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+}

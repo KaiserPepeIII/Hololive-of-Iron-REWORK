@@ -780,6 +780,10 @@ country_event = {
 		name = gura.34.a
 		set_country_flag = GAW_allowing_antis_in_government
 		add_to_variable = {
+			var = GAW.federalism_progress
+			value = 1
+		}
+		add_to_variable = {
 			var = GAW.anti_aggression
 			value = -15
 			tooltip = GEN_change_in_anti_aggression
@@ -803,6 +807,10 @@ country_event = {
 	option = {
 		name = gura.34.a
 		set_country_flag = GAW_allowing_holocns_in_government
+		add_to_variable = {
+			var = GAW.federalism_progress
+			value = 1
+		}
 	}
 	#Evidently this system has failed
 	option = {
@@ -822,9 +830,73 @@ country_event = {
 	option = {
 		name = gura.36.a
 		set_country_flag = GAW_allowing_hololive_republic_principles_in_government
+		add_to_variable = {
+			var = GAW.federalism_progress
+			value = 1
+		}
 	}
 	#Evidently this system has failed
 	option = {
 		name = gura.35.b
+	}
+}
+
+#NF - The Mio Model
+#Success of the Guramingtan
+country_event = {
+	id = gura.37
+	title = gura.37.t
+	desc = gura.37.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#The Guramingtan does really well
+	option = {
+		name = gura.37.a
+		trigger = {
+			check_variable = {
+				var = GAW.federalism_progress
+				value = 2
+				compare = greater_than
+			}
+		}
+		add_to_variable = {
+			var = GAW.federalism_progress
+			value = 1
+		}
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+	#The Guramingtan does poorly
+	#Compromise is needed; get nationalist support
+	option = {
+		name = gura.37.b
+		trigger = {
+			check_variable = {
+				var = GAW.federalism_progress
+				value = 2
+				compare = less_than
+			}
+		}
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = 0.15
+		}
+	}
+	#Compromise is needed; get progressive support
+	option = {
+		name = gura.37.b
+		trigger = {
+			check_variable = {
+				var = GAW.federalism_progress
+				value = 2
+				compare = less_than
+			}
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.05
+		}
 	}
 }

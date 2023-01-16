@@ -6,11 +6,25 @@ country_event = {
 	desc = ideology_change.1.desc
 	picture = GFX_report_event_generic_parliament
 	is_triggered_only = yes
+	#No other option
+	option = {
+		name = ideology_change.1.no_option
+		trigger = {
+			NOT = {
+				has_government = democratic
+				has_government = pro_yagoo_progressive
+				has_government = pro_yagoo_kleptocracy
+				has_government = pro_resistance_monarchy
+				has_government = divine_mandate
+				has_anti_ideology = yes
+			}
+		}
+	}
 	#Left wing Revolutionaries
 	option = {
 		name = ideology_change.1.a
 		trigger = {
-			has_government = left_wing_revolutionary
+			has_anti_ideology = yes
 		}
 		ALO_clear_ministers = yes
 		ALO_left_wing_revolutionary_cabinet = yes
@@ -20,6 +34,7 @@ country_event = {
 		name = ideology_change.1.b
 		trigger = {
 			has_government = democratic
+			has_government = pro_yagoo_kleptocracy
 		}
 		ALO_clear_ministers = yes
 		ALO_pro_yagoo_conservative_cabinet = yes
@@ -29,6 +44,7 @@ country_event = {
 		name = ideology_change.1.c
 		trigger = {
 			has_government = pro_yagoo_progressive
+			has_government = pro_yagoo_kleptocracy
 		}
 		ALO_clear_ministers = yes
 		ALO_pro_yagoo_progressive_cabinet = yes
@@ -37,7 +53,11 @@ country_event = {
 	option = {
 		name = ideology_change.1.d
 		trigger = {
-			has_government = pro_yagoo_monarchy
+			OR = {
+				has_government = pro_yagoo_monarchy
+				has_government = pro_resistance_monarchy
+				has_government = divine_mandate
+			}
 		}
 		ALO_clear_ministers = yes
 		ALO_pro_yagoo_monarchy_cabinet = yes

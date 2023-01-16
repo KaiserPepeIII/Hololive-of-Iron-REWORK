@@ -327,7 +327,7 @@ characters = {
 		advisor = {
 			cost = 100
 			slot = political_advisor
-			idea_token = ALO_anton_lehar
+			idea_token = ALO_anton_lehar_char
 			ledger = civilian
 			traits = {
 				ALO_anton_lehar_trait
@@ -372,7 +372,7 @@ characters = {
 		advisor = {
 			cost = 100
 			slot = political_advisor
-			idea_token = ALO_tibor_farkas
+			idea_token = ALO_tibor_farkas_char
 			ledger = civilian
 			traits = {
 				ALO_tibor_farkas_trait
@@ -1097,7 +1097,7 @@ characters = {
 		advisor = {
 			cost = 100
 			slot = political_advisor
-			idea_token = ALO_gyula_gombos_char
+			idea_token = ALO_ferenc_keresztes_fischer_char
 			ledger = civilian
 			traits = {
 				ALO_ferenc_keresztes_fischer_trait
@@ -1388,33 +1388,75 @@ characters = {
 	}
 	ALO_endre_puky_char = {
 		#Economic
-		name = ALO_Endre_Puky
-		portraits = {
-			army = {
-				small = GFX_portrait_ALO_foreign_minister_endre_puky_small				#small portrait as a minister icon for example
-				large = GFX_portrait_ALO_foreign_minister_endre_puky				#large portrait
-			}
-		}
-		advisor = {
-			cost = 100
-			slot = political_advisor
-			idea_token = ALO_gyula_gombos_char
-			ledger = civilian
-			traits = {
-				ALO_endre_puky_trait
-			}
+		instance = {
 			allowed = {
-				original_tag = ALO
+				has_dlc = "Together for Victory"
 			}
-			available = {
-				hidden_trigger = {
-					has_idea = ALO_endre_puky
+			name = ALO_Endre_Puky
+			portraits = {
+				army = {
+					small = GFX_portrait_ALO_foreign_minister_endre_puky_small					#small portrait as a minister icon for example
+					large = GFX_portrait_ALO_foreign_minister_endre_puky					#large portrait
 				}
 			}
-			visible = {
-				OR = {
-					has_government = pro_yagoo_progressive
-					has_idea = ALO_endre_puky
+			advisor = {
+				cost = 100
+				slot = political_advisor
+				idea_token = ALO_endre_puky_char
+				ledger = civilian
+				traits = {
+					ALO_endre_puky_tfv_trait
+				}
+				allowed = {
+					original_tag = ALO
+				}
+				available = {
+					hidden_trigger = {
+						has_idea = ALO_endre_puky
+					}
+				}
+				visible = {
+					OR = {
+						has_government = pro_yagoo_progressive
+						has_idea = ALO_endre_puky
+					}
+				}
+			}
+		}
+		instance = {
+			allowed = {
+				NOT = {
+					has_dlc = "Together for Victory"
+				}
+			}
+			name = ALO_Endre_Puky
+			portraits = {
+				army = {
+					small = GFX_portrait_ALO_foreign_minister_endre_puky_small					#small portrait as a minister icon for example
+					large = GFX_portrait_ALO_foreign_minister_endre_puky					#large portrait
+				}
+			}
+			advisor = {
+				cost = 100
+				slot = political_advisor
+				idea_token = ALO_endre_puky_char
+				ledger = civilian
+				traits = {
+					ALO_endre_puky_trait
+				}
+				allowed = {
+					original_tag = ALO
+				}
+				available = {
+					hidden_trigger = {
+						has_idea = ALO_endre_puky
+					}
+				}
+				visible = {
+					OR = {
+						has_government = pro_yagoo_progressive
+						has_idea = ALO_endre_puky
+					}
 				}
 			}
 		}
@@ -1653,6 +1695,39 @@ characters = {
 			}
 		}
 	}
+	ALO_georg_von_trapp_char = {
+		#Economic
+		name = ALO_georg_von_trapp
+		portraits = {
+			army = {
+				small = GFX_portrait_ALO_minister_of_allegiance_józsef_minszenty_small				#small portrait as a minister icon for example
+				large = GFX_portrait_ALO_minister_of_allegiance_józsef_minszenty				#large portrait
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = ALO_georg_von_trapp_char
+			ledger = civilian
+			traits = {
+				ALO_georg_von_trapp_trait
+			}
+			allowed = {
+				original_tag = ALO
+			}
+			available = {
+				hidden_trigger = {
+					has_idea = ALO_georg_von_trapp
+				}
+			}
+			visible = {
+				OR = {
+					has_government = pro_yagoo_monarchy
+					has_idea = ALO_georg_von_trapp
+				}
+			}
+		}
+	}
 	############################################
 	#	   	LEFT WING REVOLUTIONARY	     	   #
 	############################################
@@ -1683,11 +1758,11 @@ characters = {
 			}
 			visible = {
 				NOT = {
-					is_monarchist = yes
+					has_country_flag = ALO_antis_purged
 				}
 				OR = {
 					has_anti_ideology = yes
-					has_completed_focus = ALO_manotomo_united
+					has_completed_focus = ALO_reconciliation_movement
 				}
 			}
 		}
@@ -1719,11 +1794,11 @@ characters = {
 			}
 			visible = {
 				NOT = {
-					is_monarchist = yes
+					has_country_flag = ALO_antis_purged
 				}
 				OR = {
 					has_anti_ideology = yes
-					has_completed_focus = ALO_manotomo_united
+					has_completed_focus = ALO_reconciliation_movement
 				}
 			}
 		}
@@ -1755,11 +1830,11 @@ characters = {
 			}
 			visible = {
 				NOT = {
-					is_monarchist = yes
+					has_country_flag = ALO_antis_purged
 				}
 				OR = {
 					has_anti_ideology = yes
-					has_completed_focus = ALO_manotomo_united
+					has_completed_focus = ALO_reconciliation_movement
 				}
 			}
 		}
@@ -1791,52 +1866,98 @@ characters = {
 			}
 			visible = {
 				NOT = {
-					is_monarchist = yes
+					has_country_flag = ALO_antis_purged
 				}
 				OR = {
 					has_anti_ideology = yes
-					has_completed_focus = ALO_manotomo_united
+					has_completed_focus = ALO_reconciliation_movement
 				}
 			}
 		}
 	}
 	ALO_albert_bartha_char = {
-		#Economic
-		name = ALO_Albert_Bartha
-		portraits = {
-			army = {
-				small = GFX_portrait_ALO_chief_of_army_albert_bartha_small				#small portrait as a minister icon for example
-				large = GFX_portrait_ALO_chief_of_army_albert_bartha				#large portrait
+		instance = {
+			allowed = {
+				has_dlc = "Death or Dishonor"
+			}
+			#Economic
+			name = ALO_Albert_Bartha
+			portraits = {
+				army = {
+					small = GFX_portrait_ALO_chief_of_army_albert_bartha_small					#small portrait as a minister icon for example
+					large = GFX_portrait_ALO_chief_of_army_albert_bartha					#large portrait
+				}
+			}
+			advisor = {
+				cost = 100
+				slot = political_advisor
+				idea_token = ALO_albert_bartha_char
+				ledger = civilian
+				traits = {
+					ALO_albert_bartha_dod_trait
+				}
+				allowed = {
+					original_tag = ALO
+				}
+				available = {
+					hidden_trigger = {
+						has_idea = ALO_albert_bartha
+					}
+				}
+				visible = {
+					NOT = {
+						has_country_flag = ALO_antis_purged
+					}
+					OR = {
+						has_anti_ideology = yes
+						has_completed_focus = ALO_reconciliation_movement
+					}
+				}
 			}
 		}
-		advisor = {
-			cost = 100
-			slot = political_advisor
-			idea_token = ALO_albert_bartha_char
-			ledger = civilian
-			traits = {
-				ALO_albert_bartha_trait
-			}
+		instance = {
 			allowed = {
-				original_tag = ALO
-			}
-			available = {
-				hidden_trigger = {
-					has_idea = ALO_albert_bartha
-				}
-			}
-			visible = {
 				NOT = {
-					is_monarchist = yes
+					has_dlc = "Death or Dishonor"
 				}
-				OR = {
-					has_anti_ideology = yes
-					has_completed_focus = ALO_manotomo_united
+			}
+			#Economic
+			name = ALO_Albert_Bartha
+			portraits = {
+				army = {
+					small = GFX_portrait_ALO_chief_of_army_albert_bartha_small					#small portrait as a minister icon for example
+					large = GFX_portrait_ALO_chief_of_army_albert_bartha					#large portrait
+				}
+			}
+			advisor = {
+				cost = 100
+				slot = political_advisor
+				idea_token = ALO_albert_bartha_char
+				ledger = civilian
+				traits = {
+					ALO_albert_bartha_trait
+				}
+				allowed = {
+					original_tag = ALO
+				}
+				available = {
+					hidden_trigger = {
+						has_idea = ALO_albert_bartha
+					}
+				}
+				visible = {
+					NOT = {
+						has_country_flag = ALO_antis_purged
+					}
+					OR = {
+						has_anti_ideology = yes
+						has_completed_focus = ALO_reconciliation_movement
+					}
 				}
 			}
 		}
 	}
-	ALO_miklos_kozmav_char = {
+	ALO_miklos_kozma_char = {
 		#Economic
 		name = ALO_Miklos_Kozma
 		portraits = {
@@ -1863,11 +1984,11 @@ characters = {
 			}
 			visible = {
 				NOT = {
-					is_monarchist = yes
+					has_country_flag = ALO_antis_purged
 				}
 				OR = {
 					has_anti_ideology = yes
-					has_completed_focus = ALO_manotomo_united
+					has_completed_focus = ALO_reconciliation_movement
 				}
 			}
 		}
@@ -1899,11 +2020,47 @@ characters = {
 			}
 			visible = {
 				NOT = {
-					is_monarchist = yes
+					has_country_flag = ALO_antis_purged
 				}
 				OR = {
 					has_anti_ideology = yes
-					has_completed_focus = ALO_manotomo_united
+					has_completed_focus = ALO_reconciliation_movement
+				}
+			}
+		}
+	}
+	ALO_tivadar_batthyany_char = {
+		#Economic
+		name = ALO_tivadar_batthyany
+		portraits = {
+			army = {
+				small = GFX_portrait_ALO_chief_of_navy_tivadar_batthyány_small				#small portrait as a minister icon for example
+				large = GFX_portrait_ALO_chief_of_navy_tivadar_batthyány				#large portrait
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = ALO_tivadar_batthyany_char
+			ledger = civilian
+			traits = {
+				ALO_tivadar_batthyany_trait
+			}
+			allowed = {
+				original_tag = ALO
+			}
+			available = {
+				hidden_trigger = {
+					has_idea = ALO_tivadar_batthyany
+				}
+			}
+			visible = {
+				NOT = {
+					has_country_flag = ALO_antis_purged
+				}
+				OR = {
+					has_anti_ideology = yes
+					has_completed_focus = ALO_reconciliation_movement
 				}
 			}
 		}
