@@ -541,8 +541,30 @@ country_event = {
 #look to belgrade
 country_event = {
 	id = watson.26
-	title = watson.26.t
-	desc = watson.26.d
+	title = {
+		text = watson.26.status_quo_title
+		trigger = {
+			is_lhs_ideology = yes
+		}
+	}
+	title = {
+		text = watson.26.change_of_plan_title
+		trigger = {
+			is_lhs_ideology = no
+		}
+	}
+	desc = {
+		text = watson.26.status_quo
+		trigger = {
+			is_lhs_ideology = yes
+		}
+	}
+	desc = {
+		text = watson.26.change_of_plan
+		trigger = {
+			is_lhs_ideology = no
+		}
+	}
 	picture = GFX_report_event_WTS_look_to_belgrade
 	is_triggered_only = yes
 	option = {
@@ -554,8 +576,30 @@ country_event = {
 #Bastion of resistance
 country_event = {
 	id = watson.27
-	title = watson.27.t
-	desc = watson.27.d
+	title = {
+		text = watson.27.status_quo_title
+		trigger = {
+			is_resistance_ideology = yes
+		}
+	}
+	title = {
+		text = watson.27.change_of_plan_title
+		trigger = {
+			is_resistance_ideology = no
+		}
+	}
+	desc = {
+		text = watson.27.status_quo
+		trigger = {
+			is_resistance_ideology = yes
+		}
+	}
+	desc = {
+		text = watson.27.change_of_plan
+		trigger = {
+			is_resistance_ideology = no
+		}
+	}
 	picture = GFX_report_event_WTS_bastion_of_resistance
 	is_triggered_only = yes
 	option = {
@@ -1916,31 +1960,31 @@ country_event = {
 		hidden_effect = {
 			country_event = {
 				id = watson.100
-				days = 4
-			}
-			country_event = {
-				id = watson.101
 				days = 8
 			}
 			country_event = {
-				id = watson.102
+				id = watson.101
 				days = 16
 			}
 			country_event = {
+				id = watson.102
+				days = 24
+			}
+			country_event = {
 				id = watson.103
-				days = 17
+				days = 35
 			}
 			country_event = {
 				id = watson.104
-				days = 25
+				days = 48
 			}
 			country_event = {
 				id = watson.105
-				days = 30
+				days = 57
 			}
 			country_event = {
 				id = watson.121
-				days = 35
+				days = 65
 			}
 		}
 	}
@@ -3968,14 +4012,28 @@ country_event = {
 	desc = watson.162.d
 	picture = GFX_report_event_WTS_four_year_plan_success
 	is_triggered_only = yes
+	#Already did this
+	option = {
+		name = watson.162.a
+		trigger = {
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = WTS_four_year_plan_cost
+				}
+			}
+		}
+	}
 	#Total Success - 8
 	option = {
 		name = watson.162.a
 		trigger = {
 			check_variable = {
 				var = WTS.four_year_plan_progress
-				value = 8
-				compare = equals
+				value = 12
+				compare = greater_than_or_equals
+			}
+			has_dynamic_modifier = {
+				modifier = WTS_four_year_plan_cost
 			}
 		}
 		country_event = watson.163
@@ -3984,17 +4042,18 @@ country_event = {
 	option = {
 		name = watson.162.b
 		trigger = {
-			OR = {
-				check_variable = {
-					var = WTS.four_year_plan_progress
-					value = 7
-					compare = equals
-				}
-				check_variable = {
-					var = WTS.four_year_plan_progress
-					value = 6
-					compare = equals
-				}
+			check_variable = {
+				var = WTS.four_year_plan_progress
+				value = 8
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = WTS.four_year_plan_progress
+				value = 12
+				compare = less_than
+			}
+			has_dynamic_modifier = {
+				modifier = WTS_four_year_plan_cost
 			}
 		}
 		country_event = watson.164
@@ -4003,22 +4062,18 @@ country_event = {
 	option = {
 		name = watson.162.c
 		trigger = {
-			OR = {
-				check_variable = {
-					var = WTS.four_year_plan_progress
-					value = 5
-					compare = equals
-				}
-				check_variable = {
-					var = WTS.four_year_plan_progress
-					value = 4
-					compare = equals
-				}
-				check_variable = {
-					var = WTS.four_year_plan_progress
-					value = 3
-					compare = equals
-				}
+			check_variable = {
+				var = WTS.four_year_plan_progress
+				value = 4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = WTS.four_year_plan_progress
+				value = 8
+				compare = less_than
+			}
+			has_dynamic_modifier = {
+				modifier = WTS_four_year_plan_cost
 			}
 		}
 		country_event = watson.165
@@ -4030,9 +4085,12 @@ country_event = {
 			OR = {
 				check_variable = {
 					var = WTS.four_year_plan_progress
-					value = 2
-					compare = less_than_or_equals
+					value = 4
+					compare = less_than
 				}
+			}
+			has_dynamic_modifier = {
+				modifier = WTS_four_year_plan_cost
 			}
 		}
 		country_event = watson.166
@@ -4049,6 +4107,7 @@ country_event = {
 	option = {
 		name = watson.163.a
 		add_stability = 0.15
+		set_country_flag = WTS_four_year_plan_success
 	}
 }
 
@@ -4062,6 +4121,7 @@ country_event = {
 	option = {
 		name = watson.164.a
 		add_stability = 0.1
+		set_country_flag = WTS_four_year_plan_success
 	}
 }
 
@@ -4075,6 +4135,7 @@ country_event = {
 	option = {
 		name = watson.165.a
 		add_stability = 0.05
+		set_country_flag = WTS_four_year_plan_success
 	}
 }
 
@@ -4088,6 +4149,7 @@ country_event = {
 	option = {
 		name = watson.166.a
 		add_stability = -0.15
+		set_country_flag = WTS_four_year_plan_failure
 	}
 }
 
@@ -4181,6 +4243,794 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = watson.171.a
+	}
+}
+
+#WTS_play_around_with_the_watch
+country_event = {
+	id = watson.172
+	title = watson.172.t
+	desc = watson.172.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#The watch malfunctions
+	#Uh oh
+	option = {
+		name = watson.172.a
+		set_country_flag = WTS_played_around_with_watch
+	}
+}
+
+#The government falls!
+country_event = {
+	id = watson.179
+	title = watson.179.t
+	desc = watson.179.d
+	picture = GFX_report_event_mio
+	trigger = {
+		OR = {
+			has_completed_focus = WTS_guns_and_steel
+			has_completed_focus = WTS_reduce_regulations
+		}
+		OR = {
+			has_completed_focus = WTS_london_conference
+			has_completed_focus = WTS_look_to_the_seas
+		}
+		NOT = {
+			has_country_flag = WTS_four_year_plan_success
+			has_country_flag = WTS_stopped_deindustrialization
+		}
+		date > 1940.01.01
+		has_completed_focus = WTS_global_crusade_against_antis
+	}
+	#Shit
+	option = {
+		name = watson.179.a
+		add_stability = -0.15
+		if = {
+			limit = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+			custom_effect_tooltip = WTS_conservative_faction_takes_charge
+			set_politics = {
+				ruling_party = democratic
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = -0.2
+			}
+			else = {
+				set_politics = {
+					ruling_party = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.15
+				}
+			}
+		}
+		set_variable = {
+			var = WTS.parliament_cohesion
+			value = 0
+		}
+		add_ideas = WTS_hung_parliament
+		hidden_effect = {
+			#Rise of Harold Harmsworth
+			country_event = {
+				id = watson.187
+				days = 14
+			}
+			#Infighting within the National Teammates Front
+			country_event = {
+				id = watson.188
+				days = 32
+			}
+			#The Dissolution of the National Teammates Front
+			country_event = {
+				id = watson.189
+				days = 46
+			}
+			#Neville Chamberlain takes office
+			country_event = {
+				id = watson.190
+				days = 71
+			}
+			#Nationalist Coalition formed
+			country_event = {
+				id = watson.191
+				days = 90
+			}
+			#East London Riots
+			country_event = {
+				id = watson.192
+				days = 121
+			}
+			#Labour Challenges the ruling government
+			country_event = {
+				id = watson.193
+				days = 135
+			}
+			#The Royal Ame League rises 
+			country_event = {
+				id = watson.194
+				days = 150
+			}
+			#Neville Chamberlain dies
+			country_event = {
+				id = watson.195
+				days = 158
+			}
+			#Watson's finest hour
+			country_event = {
+				id = watson.196
+				days = 166
+			}
+		}
+	}
+}
+
+#The government survives!
+country_event = {
+	id = watson.180
+	title = watson.180.t
+	desc = watson.180.d
+	picture = GFX_report_event_mio
+	trigger = {
+		OR = {
+			has_completed_focus = WTS_guns_and_steel
+			has_completed_focus = WTS_reduce_regulations
+		}
+		OR = {
+			has_completed_focus = WTS_london_conference
+			has_completed_focus = WTS_look_to_the_seas
+		}
+		OR = {
+			has_country_flag = WTS_four_year_plan_success
+			has_country_flag = WTS_stopped_deindustrialization
+		}
+		OR = {
+			AND = {
+				has_government = democratic
+				democratic > 0.4
+			}
+			AND = {
+				has_government = pro_yagoo_progressive
+				pro_yagoo_progressive > 0.4
+			}
+		}
+		has_completed_focus = WTS_global_crusade_against_antis
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#Yippee
+	option = {
+		name = watson.180.a
+		add_stability = 0.15
+		complete_national_focus = WTS_the_government_survives
+		hidden_effect = {
+			#Watson's role
+			country_event = {
+				id = watson.204
+				days = 14
+			}
+		}
+	}
+}
+
+#Deindustrialization halted!
+country_event = {
+	id = watson.181
+	title = watson.181.t
+	desc = watson.181.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#hurray
+	option = {
+		name = watson.181.a
+		add_stability = 0.1
+		set_country_flag = WTS_stopped_deindustrialization
+	}
+}
+
+#Factory Closedowns
+country_event = {
+	id = watson.182
+	title = watson.182.t
+	desc = watson.182.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Damn
+	option = {
+		name = watson.182.a
+		add_stability = -0.02
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.02
+		}
+		add_popularity = {
+			ideology = pro_yagoo_kleptocracy
+			popularity = -0.02
+		}
+		random_list = {
+			1 = {
+				random_owned_state = {
+					add_building_construction = {
+						type = industrial_complex
+						level = -1
+						instant_build = yes
+					}
+				}
+			}
+			2 = {
+				random_owned_state = {
+					add_building_construction = {
+						type = arms_factory
+						level = -1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+#The unions crushed
+country_event = {
+	id = watson.183
+	title = watson.183.t
+	desc = watson.183.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Labour isnt working
+	option = {
+		name = watson.183.a
+		add_stability = -0.05
+	}
+}
+
+#Strikes!
+country_event = {
+	id = watson.184
+	title = watson.184.t
+	desc = watson.184.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Meet their demands
+	option = {
+		name = watson.184.a
+		add_political_power = -25
+		add_stability = 0.05
+	}
+	#Let them strike
+	option = {
+		name = watson.184.b
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.01
+		}
+		add_timed_idea = {
+			idea = WTS_strikes_continue
+			days = 55
+		}
+	}
+	#Shoot
+	option = {
+		name = watson.184.c
+		add_popularity = {
+			ideology = reactionary_nationalism
+			popularity = 0.05
+		}
+		add_stability = -0.05
+	}
+}
+
+#The government survives focus - The role of watson?
+country_event = {
+	id = watson.185
+	title = watson.185.t
+	desc = watson.185.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Watson has stabilized the country, she deserves a crown (constitutional)
+	option = {
+		name = watson.185.a
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = pro_yagoo_monarchy
+				has_government = pro_resistance_nationalism
+				has_government = pro_resistance_monarchy
+			}
+		}
+		add_stability = 0.05
+		set_cosmetic_tag = WTS_constitutional_queen_flag
+	}
+	#Establish a Hololive republic with Watson at the healm 
+	option = {
+		name = watson.185.a
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = pro_yagoo_progressive
+				has_government = mixed_ideology_democracy
+			}
+		}
+		add_stability = 0.05
+		set_cosmetic_tag = WTS_president_watson_flag
+	}
+}
+
+#Snap election results
+country_event = {
+	id = watson.186
+	title = watson.186.t
+	desc = watson.186.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#All according to plan
+	option = {
+		name = watson.186.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.15
+		}
+	}
+}
+
+#Rise of Harold Harmsworth
+country_event = {
+	id = watson.187
+	title = watson.187.t
+	desc = watson.187.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#really?
+	option = {
+		name = watson.187.a
+		add_popularity = {
+			ideology = reactionary_nationalism
+			popularity = 0.05
+		}
+	}
+}
+
+#Infighting within the National Teammates Front
+country_event = {
+	id = watson.188
+	title = watson.188.t
+	desc = watson.188.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#I have a bad feeling about this...
+	option = {
+		name = watson.188.a
+		hidden_effect = {
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_yagoo_kleptocracy
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_yagoo_monarchy
+				popularity = -0.05
+			}
+		}
+	}
+}
+
+#Dissolution of the National Teammates Front
+country_event = {
+	id = watson.189
+	title = watson.189.t
+	desc = watson.189.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Oh god oh man
+	option = {
+		name = watson.189.a
+		custom_effect_tooltip = WTS_dissolution_national_teammates_front
+		hidden_effect = {
+			#Rename all the parties
+		}
+		set_country_flag = WTS_national_teammates_front_dissolved
+		add_stability = -0.15
+		set_popularities = {
+			democratic = 5
+			pro_yagoo_progressive = 25
+			communism = 5
+			pro_resistance_nationalism = 15
+			reactionary_nationalism = 30
+			divine_mandate = 20
+		}
+	}
+}
+
+#Neville Chamberlain Takes office
+country_event = {
+	id = watson.190
+	title = watson.190.t
+	desc = watson.190.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Is stability finally here?
+	option = {
+		name = watson.190.a
+		add_stability = 0.05
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+	}
+}
+
+#Nationalist coalition forms
+country_event = {
+	id = watson.191
+	title = watson.191.t
+	desc = watson.191.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Oh great
+	option = {
+		name = watson.191.a
+		custom_effect_tooltip = WTS_nationalist_coalition_forms
+		set_country_flag = WTS_harold_harmsworth_flag
+		hidden_effect = {
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.2
+			}
+			add_popularity = {
+				ideology = reactionary_nationalism
+				popularity = 0.15
+			}
+		}
+	}
+}
+
+#East London Riots
+country_event = {
+	id = watson.192
+	title = watson.192.t
+	desc = watson.192.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Damn!
+	option = {
+		name = watson.192.a
+		add_stability = -0.05
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.05
+		}
+	}
+}
+
+#Labour challenges government's legitimacy
+country_event = {
+	id = watson.193
+	title = watson.193.t
+	desc = watson.193.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#They're not wrong
+	option = {
+		name = watson.193.a
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.05
+		}
+		set_country_flag = WTS_labour_legitimacy_flag
+	}
+}
+
+#Royal Ame League rises
+country_event = {
+	id = watson.194
+	title = watson.194.t
+	desc = watson.194.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Support them, they have a good idea
+	option = {
+		name = watson.195.a
+		add_stability = 0.02
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.05
+		}
+		set_country_flag = WTS_royal_ame_league_flag
+	}
+}
+
+#Neville Chamberlain dies
+country_event = {
+	id = watson.195
+	title = watson.195.t
+	desc = watson.195.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#What's next? a labour government?
+	option = {
+		name = watson.195.a
+		add_stability = 0.05
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.05
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_yagoo_kleptocracy_cabinet = yes
+	}
+}
+
+#Watson's finest hour
+country_event = {
+	id = watson.196
+	title = watson.196.t
+	desc = watson.196.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#The time is right!
+	option = {
+		name = watson.196.a
+		set_country_flag = WTS_the_time_is_right
+		add_stability = 0.05
+	}
+}
+
+#Status of the monarchy?
+country_event = {
+	id = watson.197
+	title = watson.197.t
+	desc = watson.197.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#I deserve a crown!
+	option = {
+		name = watson.197.a
+		set_country_flag = WTS_absolutist_watson_flag
+	}
+	#The Hololive Kingdom has to end
+	option = {
+		name = watson.197.b
+		set_country_flag = WTS_president_watson_flag
+	}
+}
+
+#Policy on Nationalists?
+country_event = {
+	id = watson.198
+	title = watson.198.t
+	desc = watson.198.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Harmsworth is our man 
+	option = {
+		name = watson.198.a
+		add_popularity = {
+			ideology = reactionary_nationalism
+			popularity = 0.05
+		}
+		set_country_flag = WTS_supported_nationalists
+	}
+	#Harmsworth is a threat to our country
+	option = {
+		name = watson.198.b
+		add_popularity = {
+			ideology = reactionary_nationalism
+			popularity = -0.05
+		}
+		set_country_flag = WTS_nationalists_opposed
+	}
+}
+
+#Policy on labour?
+country_event = {
+	id = watson.199
+	title = watson.199.t
+	desc = watson.199.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Communism is a threat to our nation
+	option = {
+		name = watson.199.a
+		trigger = {
+			OR = {
+				has_country_flag = WTS_supported_nationalists
+				has_country_flag = WTS_absolutist_watson_flag
+			}
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.05
+		}
+	}
+	#Labour is needed for our democracy to function
+	option = {
+		name = watson.199.b
+		trigger = {
+			NOT = {
+				has_country_flag = WTS_supported_nationalists
+				has_country_flag = WTS_absolutist_watson_flag
+			}
+		}
+		add_stability = 0.05
+	}
+	#Labour's time is now
+	option = {
+		name = watson.199.c
+		trigger = {
+			NOT = {
+				has_country_flag = WTS_supported_nationalists
+				has_country_flag = WTS_absolutist_watson_flag
+			}
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = mixed_ideology_democracy
+			popularity = 0.02
+		}
+		set_country_flag = WTS_labours_time
+	}
+}
+
+#The nationalist coup
+country_event = {
+	id = watson.200
+	title = watson.200.t
+	desc = watson.200.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Oh dear....
+	option = {
+		name = watson.200.a
+		set_stability = 0.1
+		set_politics = {
+			ruling_party = reactionary_nationalism
+			elections_allowed = no
+		}
+		set_variable = {
+			var = WTS.parliament_cohesion
+			value = 6
+		}
+		WTS_clear_ministers = yes
+		WTS_reactionary_nationalism_cabinet = yes
+		set_country_flag = WTS_constitutional_queen_flag
+	}
+}
+
+#Labours time! 
+country_event = {
+	id = watson.201
+	title = watson.201.t
+	desc = watson.201.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#Workers of Britain unite!
+	option = {
+		name = watson.201.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_resistance_revolutionary_cabinet = yes
+		set_country_flag = WTS_president_watson_flag
+	}
+	#Democratic labour takes charge
+	option = {
+		name = watson.201.b
+		set_politics = {
+			ruling_party = pro_yagoo_progressive
+			elections_allowed = yes
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_yagoo_progressive_cabinet = yes
+		set_country_flag = WTS_president_watson_flag
+	}
+	#Moderate labour takes charge
+	option = {
+		name = watson.201.c
+		set_politics = {
+			ruling_party = mixed_ideology_democracy
+			elections_allowed = yes
+		}
+		WTS_clear_ministers = yes
+		WTS_mixed_ideology_democracy_cabinet = yes
+		set_country_flag = WTS_president_watson_flag
+	}
+}
+
+#Nationalist coalition 
+country_event = {
+	id = watson.202
+	title = watson.202.t
+	desc = watson.202.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#For a brighter britain
+	option = {
+		name = watson.202.a
+		set_politics = {
+			ruling_party = reactionary_nationalism
+			elections_allowed = no
+		}
+		WTS_clear_ministers = yes
+		WTS_reactionary_nationalism_cabinet = yes
+		set_country_flag = WTS_president_watson_flag
+	}
+	#For a brighter britain, with the resistance
+	option = {
+		name = watson.202.b
+		set_politics = {
+			ruling_party = pro_resistance_nationalism
+			elections_allowed = no
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_resistance_nationalism_cabinet = yes
+		set_country_flag = WTS_constitutional_queen_flag
+	}
+}
+
+#Absolutist rule 
+country_event = {
+	id = watson.203
+	title = watson.203.t
+	desc = watson.203.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#For Ame! I mean Britannia
+	option = {
+		name = watson.203.a
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_yagoo_monarchy_cabinet = yes
+		set_country_flag = WTS_absolutist_watson_flag
+	}
+}
+
+#Watson's role in government?
+country_event = {
+	id = watson.204
+	title = watson.204.t
+	desc = watson.204.d
+	picture = GFX_report_event_mio
+	is_triggered_only = yes
+	#She deserves a crown, offer constitutional monarchy
+	option = {
+		name = watson.204.a
+		add_stability = 0.05
+		set_country_flag = WTS_constitutional_queen_flag
+	}
+	#No one will take the crown, let's transition towards a Hololive Republic
+	option = {
+		name = watson.204.b
+		add_stability = 0.05
+		set_country_flag = WTS_president_watson_flag
 	}
 }
 

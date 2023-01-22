@@ -1,3 +1,170 @@
+WTS_fixing_the_timeline = {
+	WTS_play_around_with_the_watch = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 10
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = WTS_played_around_with_watch
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			hidden_effect = {
+				country_event = watson.172
+			}
+		}
+	}
+	WTS_fix_the_watch_mission = {
+		activation = {
+			WTS = {
+				has_country_flag = WTS_played_around_with_watch
+			}
+		}
+		available = {
+			WTS = {
+				has_country_flag = WTS_watch_repaired
+			}
+		}
+		icon = mission_icon
+		is_good = no
+		days_mission_timeout = 120
+		complete_effect = {
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			add_stability = -0.1
+		}
+	}
+}
+
+WTS_watsons_finest_hour = {
+	WTS_end_of_crisis = {
+		activation = {
+			WTS = {
+				has_idea = WTS_hung_parliament
+			}
+		}
+		available = {
+			WTS = {
+				has_country_flag = WTS_watsons_finest_hour
+				has_country_flag = WTS_the_time_is_right
+			}
+		}
+		icon = mission_icon
+		is_good = no
+		days_mission_timeout = 180
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = WTS_labours_time
+				}
+				country_event = watson.201
+				else_if = {
+					limit = {
+						has_country_flag = WTS_supported_nationalists
+					}
+					country_event = watson.202
+				}
+				else_if = {
+					limit = {
+						has_country_flag = WTS_royal_ame_league_flag
+					}
+					country_event = watson.203
+				}
+			}
+		}
+		timeout_effect = {
+			country_event = watson.200
+		}
+	}
+	WTS_status_of_the_monarchy = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 10
+			}
+		}
+		visible = {
+			OR = {
+				has_completed_focus = WTS_look_to_belgrade
+				has_completed_focus = WTS_splendid_isolation
+				has_completed_focus = WTS_bastion_of_resistance
+			}
+			has_country_flag = WTS_royal_ame_league_flag
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			country_event = {
+				id = watson.197
+			}
+		}
+	}
+	WTS_policy_on_nationalists = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 10
+			}
+		}
+		visible = {
+			OR = {
+				has_completed_focus = WTS_look_to_belgrade
+				has_completed_focus = WTS_splendid_isolation
+				has_completed_focus = WTS_bastion_of_resistance
+			}
+			has_country_flag = WTS_harold_harmsworth_flag
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			country_event = {
+				id = watson.198
+			}
+		}
+	}
+	WTS_policy_on_labour = {
+		icon = decision_generic_industry
+		available = {
+			WTS = {
+				has_political_power > 10
+			}
+		}
+		visible = {
+			OR = {
+				has_completed_focus = WTS_look_to_belgrade
+				has_completed_focus = WTS_splendid_isolation
+				has_completed_focus = WTS_bastion_of_resistance
+			}
+			has_country_flag = WTS_labour_legitimacy_flag
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			country_event = {
+				id = watson.199
+			}
+		}
+	}
+}
+
 WTS_put_down_revolt = {
 	WTS_put_down_london = {
 		activation = {
@@ -3240,6 +3407,113 @@ WTS_four_year_plan = {
 					country_event = watson.166
 				}
 			}
+		}
+	}
+}
+
+WTS_neoliberalism = {
+	WTS_deindustrialization = {
+		activation = {
+			WTS = {
+				has_country_flag = WTS_neoliberalism
+			}
+		}
+		available = {
+			has_stability > 0.8
+		}
+		icon = mission_icon
+		is_good = no
+		fire_only_once = no
+		days_mission_timeout = 180
+		days_re_enable = 1
+		complete_effect = {
+			country_event = watson.181
+		}
+		timeout_effect = {
+			country_event = watson.182
+		}
+	}
+	WTS_general_strikes = {
+		activation = {
+			WTS = {
+				has_country_flag = WTS_neoliberalism
+			}
+		}
+		cancel_trigger = {
+			has_country_flag = WTS_stopped_deindustrialization
+		}
+		icon = mission_icon
+		selectable_mission = no
+		is_good = no
+		fire_only_once = no
+		days_mission_timeout = 180
+		days_re_enable = 1
+		timeout_effect = {
+			country_event = watson.184
+		}
+	}
+	WTS_invite_foreign_companies = {
+		available = {
+			has_stability > 0.3
+		}
+		visible = {
+			has_country_flag = WTS_neoliberalism
+		}
+		cost = 0
+		fire_only_once = no
+		days_mission_timeout = 140
+		days_re_enable = 140
+		modifier = {
+			stability_weekly = 0.005
+		}
+		complete_effect = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.02
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = 0.02
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	WTS_crush_the_unions = {
+		available = {
+			has_stability > 0.3
+			has_political_power > 50
+		}
+		visible = {
+			has_country_flag = WTS_neoliberalism
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = -0.08
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = mixed_ideology_democracy
+				popularity = -0.05
+			}
+			country_event = watson.183
 		}
 	}
 }

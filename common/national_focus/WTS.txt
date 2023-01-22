@@ -70,15 +70,15 @@ focus_tree = {
 		}
 		select_effect = {
 			country_event = {
+				id = watson.106
+			}
+			country_event = {
 				id = watson.33
 			}
 		}
 		x = 11
 		y = 2
 		completion_reward = {
-			country_event = {
-				id = watson.106
-			}
 			custom_effect_tooltip = WTS_a_new_government_tooltip
 		}
 	}
@@ -118,6 +118,7 @@ focus_tree = {
 		x = 13
 		y = 3
 		completion_reward = {
+			country_event = watson.38
 		}
 	}
 	focus = {
@@ -254,6 +255,7 @@ focus_tree = {
 			focus = WTS_conservative_budget
 		}
 		completion_reward = {
+			set_country_flag = WTS_neoliberalism
 			remove_dynamic_modifier = {
 				modifier = WTS_unemployment
 			}
@@ -1950,6 +1952,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = WTS_the_government_falls
 		}
+		completion_reward = {
+			add_stability = 0.05
+		}
 		x = 10
 		y = 8
 	}
@@ -1966,6 +1971,9 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = WTS_the_government_survives
+		}
+		completion_reward = {
+			#Autocompleted
 		}
 		x = 22
 		y = 8
@@ -2020,6 +2028,25 @@ focus_tree = {
 			focus = WTS_look_to_belgrade
 			focus = WTS_bastion_of_resistance
 		}
+		available = {
+			NOT = {
+				is_resistance_ideology = yes
+			}
+			OR = {
+				has_country_flag = WTS_absolutist_watson_flag
+				has_country_flag = WTS_constitutional_queen_flag
+				has_country_flag = WTS_absolutist_watson_flag
+			}
+		}
+		completion_reward = {
+			add_ideas = WTS_splendid_isolation
+			add_stability = 0.15
+			add_war_support = -0.05
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
 		x = 16
 		y = 9
 	}
@@ -2035,12 +2062,23 @@ focus_tree = {
 			focus = WTS_splendid_isolation
 			focus = WTS_bastion_of_resistance
 		}
+		available = {
+			NOT = {
+				is_resistance_ideology = yes
+			}
+			OR = {
+				has_country_flag = WTS_absolutist_watson_flag
+				has_country_flag = WTS_constitutional_queen_flag
+				has_country_flag = WTS_absolutist_watson_flag
+			}
+		}
 		completion_reward = {
 			add_ideas = {
-				lhs_defensive_union_gui
+				#lhs_defensive_union_gui
 				looking_to_belgrade
 			}
-			set_global_flag = watson_lhs_defense
+			#join_lhs_defensive_union = yes
+			#set_global_flag = watson_lhs_defense
 			country_event = {
 				id = watson.26
 				days = 1
@@ -2061,11 +2099,21 @@ focus_tree = {
 			focus = WTS_look_to_belgrade
 			focus = WTS_splendid_isolation
 		}
+		available = {
+			NOT = {
+				is_lhs_ideology = yes
+			}
+			OR = {
+				has_country_flag = WTS_absolutist_watson_flag
+				has_country_flag = WTS_constitutional_queen_flag
+				has_country_flag = WTS_absolutist_watson_flag
+			}
+		}
 		completion_reward = {
 			custom_effect_tooltip = wts_join_resistance
-			add_ideas = {
-				aqua_resistance_member
-			}
+			#add_ideas = {
+			#	aqua_resistance_member
+			#}
 			country_event = {
 				id = watson.27
 				days = 1
@@ -2077,9 +2125,19 @@ focus_tree = {
 	focus = {
 		id = WTS_activate_emergency_powers
 		icon = GFX_focus_WTS_activate_emergency_powers
-		cost = 10
+		cost = 5
+		available = {
+			OR = {
+				has_completed_focus = WTS_look_to_belgrade
+				has_completed_focus = WTS_splendid_isolation
+				has_completed_focus = WTS_bastion_of_resistance
+			}
+		}
 		prerequisite = {
 			focus = WTS_the_government_falls
+		}
+		completion_reward = {
+			add_political_power = 100
 		}
 		x = 20
 		y = 9
@@ -2087,22 +2145,39 @@ focus_tree = {
 	focus = {
 		id = WTS_find_popular_support
 		icon = GFX_focus_WTS_find_popular_support
-		cost = 10
+		cost = 5
+		available = {
+			OR = {
+				has_completed_focus = WTS_look_to_belgrade
+				has_completed_focus = WTS_splendid_isolation
+				has_completed_focus = WTS_bastion_of_resistance
+			}
+		}
 		prerequisite = {
 			focus = WTS_the_government_falls
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.05
+			}
 		}
 		x = 22
 		y = 9
 	}
 	focus = {
+		#Establish Legitimacy
 		id = WTS_a_queen_is_found
 		icon = GFX_focus_WTS_a_queen_is_found
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = WTS_activate_emergency_powers
 		}
 		prerequisite = {
 			focus = WTS_find_popular_support
+		}
+		completion_reward = {
+			add_stability = 0.15
 		}
 		x = 21
 		y = 10
@@ -2110,12 +2185,15 @@ focus_tree = {
 	focus = {
 		id = WTS_find_a_queen
 		icon = GFX_focus_WTS_find_a_queen
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = WTS_restored_faith_in_government
 		}
 		prerequisite = {
 			focus = WTS_call_snap_elections
+		}
+		completion_reward = {
+			country_event = watson.185
 		}
 		x = 11
 		y = 10
@@ -2123,9 +2201,19 @@ focus_tree = {
 	focus = {
 		id = WTS_call_snap_elections
 		icon = GFX_focus_WTS_call_snap_elections
-		cost = 10
+		cost = 5
 		prerequisite = {
 			focus = WTS_the_government_survives
+		}
+		available = {
+			OR = {
+				has_completed_focus = WTS_look_to_belgrade
+				has_completed_focus = WTS_splendid_isolation
+				has_completed_focus = WTS_bastion_of_resistance
+			}
+		}
+		completion_reward = {
+			country_event = watson.186
 		}
 		x = 12
 		y = 9
@@ -2133,9 +2221,23 @@ focus_tree = {
 	focus = {
 		id = WTS_restored_faith_in_government
 		icon = GFX_focus_WTS_restore_faith_in_the_government
-		cost = 10
+		cost = 5
 		prerequisite = {
 			focus = WTS_the_government_survives
+		}
+		available = {
+			OR = {
+				has_completed_focus = WTS_look_to_belgrade
+				has_completed_focus = WTS_splendid_isolation
+				has_completed_focus = WTS_bastion_of_resistance
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.05
+			}
+			add_stability = 0.05
 		}
 		x = 10
 		y = 9
@@ -2218,6 +2320,14 @@ focus_tree = {
 			focus = WTS_deterrence
 			focus = WTS_another_lhs_bobby
 		}
+		available = {
+			OR = {
+				has_completed_focus = WTS_another_lhs_bobby
+				has_completed_focus = WTS_colonial_outlook
+				has_completed_focus = WTS_deterrence
+			}
+			has_country_flag = WTS_absolutist_watson_flag
+		}
 		x = 19
 		y = 11
 		completion_reward = {
@@ -2239,6 +2349,14 @@ focus_tree = {
 			focus = WTS_colonial_outlook
 			focus = WTS_deterrence
 		}
+		available = {
+			OR = {
+				has_completed_focus = WTS_another_lhs_bobby
+				has_completed_focus = WTS_colonial_outlook
+				has_completed_focus = WTS_deterrence
+			}
+			has_country_flag = WTS_president_watson_flag
+		}
 		x = 13
 		y = 11
 		completion_reward = {
@@ -2259,6 +2377,14 @@ focus_tree = {
 			focus = WTS_a_queen_is_found
 			focus = WTS_another_lhs_bobby
 			focus = WTS_find_a_queen
+		}
+		available = {
+			OR = {
+				has_completed_focus = WTS_another_lhs_bobby
+				has_completed_focus = WTS_colonial_outlook
+				has_completed_focus = WTS_deterrence
+			}
+			has_country_flag = WTS_constitutional_queen_flag
 		}
 		x = 16
 		y = 11

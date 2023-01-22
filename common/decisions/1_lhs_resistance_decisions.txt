@@ -1,4 +1,77 @@
 GEN_LHS_picking_our_side = {
+	WTS_align_with_lhs_shield = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_political_power > 25
+			threat > 0.35
+		}
+		visible = {
+			has_idea = lhs_member
+			has_completed_focus = WTS_look_to_belgrade
+			hidden_trigger = {
+				tag = WTS
+			}
+			WTS = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 25
+		complete_effect = {
+			custom_effect_tooltip = WTS_align_with_lhs_shield_tooltip
+			hidden_effect = {
+				if = {
+					limit = {
+						has_completed_focus = WTS_the_government_falls
+					}
+					set_country_flag = WTS_watsons_finest_hour
+					else = {
+						set_country_flag = WTS_lhs_reforms
+					}
+				}
+			}
+		}
+	}
+	WTS_align_with_resistance = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_political_power > 25
+			threat > 0.35
+		}
+		visible = {
+			has_idea = lhs_member
+			has_completed_focus = WTS_look_to_belgrade
+			hidden_trigger = {
+				tag = WTS
+			}
+			WTS = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		days_remove = 60
+		cost = 25
+		complete_effect = {
+			custom_effect_tooltip = WTS_align_with_resistance_tooltip
+			hidden_effect = {
+				if = {
+					limit = {
+						has_completed_focus = WTS_the_government_falls
+					}
+					set_country_flag = WTS_watsons_finest_hour
+					else = {
+						set_country_flag = WTS_resistance_reforms
+					}
+				}
+			}
+		}
+	}
 	GAW_align_with_lhs_shield = {
 		icon = generic_prepare_civil_war
 		available = {
@@ -32,7 +105,7 @@ GEN_LHS_picking_our_side = {
 				limit = {
 					is_in_faction_with = GAW
 				}
-				GAW = {
+				YAG = {
 					add_to_faction = THIS
 				}
 			}
