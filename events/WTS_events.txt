@@ -568,8 +568,26 @@ country_event = {
 	picture = GFX_report_event_WTS_look_to_belgrade
 	is_triggered_only = yes
 	option = {
-		#LHS Dominance
+		#LHS Lets us In EZ
 		name = watson.26.a
+		trigger = {
+			is_lhs_ideology = yes
+		}
+		join_lhs_defensive_union = yes
+		set_global_flag = watson_lhs_defense
+	}
+	option = {
+		#LHS IS BEING A BITCH!
+		name = watson.26.b
+		trigger = {
+			is_lhs_ideology = no
+		}
+		custom_effect_tooltip = WTS_adjustments_needed_tooltip
+		set_country_flag = {
+			flag = WTS_adjustments_needed
+			days = 180
+			value = 1
+		}
 	}
 }
 
@@ -603,9 +621,44 @@ country_event = {
 	picture = GFX_report_event_WTS_bastion_of_resistance
 	is_triggered_only = yes
 	option = {
-		#Aquas Resistance
+		#Aqua's Resistance maybe?
 		name = watson.27.a
+		trigger = {
+			AQA = {
+				is_in_faction = yes
+			}
+		}
 	}
+	option = {
+		#Coco's Resistance maybe?
+		name = watson.27.B
+		trigger = {
+			COC = {
+				is_in_faction = yes
+			}
+		}
+	}
+	# option = {
+	# 	#Aqua's Resistance lets us in EZ
+	# 	name = watson.27.a
+	# 	trigger = {
+	# 		is_resistance_ideology = yes
+	# 	}
+	# 	join_aqua_resistance = yes
+	# }
+	# option = {
+	# 	#Aqua's Resistance IS BEING A BITCH!
+	# 	name = watson.27.b
+	# 	trigger = {
+	# 		is_resistance_ideology = no
+	# 	}
+	# 	custom_effect_tooltip = WTS_adjustments_needed_tooltip
+	# 	set_country_flag = {
+	# 		flag = WTS_adjustments_needed_aqua_resistance
+	# 		days = 180
+	# 		value = 1
+	# 	}
+	# }
 }
 
 #Antis Question
@@ -4320,6 +4373,7 @@ country_event = {
 			value = 0
 		}
 		add_ideas = WTS_hung_parliament
+		complete_national_focus = WTS_the_government_falls
 		hidden_effect = {
 			#Rise of Harold Harmsworth
 			country_event = {

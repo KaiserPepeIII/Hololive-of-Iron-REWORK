@@ -40,7 +40,9 @@ WTS_fixing_the_timeline = {
 			add_stability = 0.05
 		}
 		timeout_effect = {
-			add_stability = -0.1
+			WTS = {
+				country_event = bubba.1
+			}
 		}
 	}
 }
@@ -885,33 +887,6 @@ WTS_insurgency_gains = {
 			WTS_irish_gains_scripted_effect = yes
 		}
 	}
-	WTS_antis_gains = {
-		days_mission_timeout = 90
-		is_good = no
-		icon = GFX_decision_icon_default
-		days_remove = 7
-		days_re_enable = 0
-		available = {
-			has_country_flag = ira_dealt_with
-		}
-		fire_only_once = no
-		activation = {
-			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
-			}
-		}
-		visible = {
-			always = yes
-		}
-		complete_effect = {
-			hidden_effect = {
-				add_stability = 0.15
-			}
-		}
-		timeout_effect = {
-			WTS_antis_gains_scripted_effect = yes
-		}
-	}
 	WTS_welsh_gains = {
 		days_mission_timeout = 100
 		is_good = no
@@ -937,6 +912,33 @@ WTS_insurgency_gains = {
 		}
 		timeout_effect = {
 			WTS_welsh_gains_scripted_effect = yes
+		}
+	}
+	WTS_antis_gains = {
+		days_mission_timeout = 90
+		is_good = no
+		icon = GFX_decision_icon_default
+		days_remove = 7
+		days_re_enable = 0
+		available = {
+			has_country_flag = ira_dealt_with
+		}
+		fire_only_once = no
+		activation = {
+			NOT = {
+				has_country_flag = WTS_dealt_with_insurgents
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_stability = 0.15
+			}
+		}
+		timeout_effect = {
+			WTS_antis_gains_scripted_effect = yes
 		}
 	}
 	WTS_teammates_gains = {
@@ -3514,6 +3516,23 @@ WTS_neoliberalism = {
 				popularity = -0.05
 			}
 			country_event = watson.183
+		}
+	}
+	WTS_lower_taxes = {
+		available = {
+			has_stability > 0.3
+			has_political_power > 25
+		}
+		visible = {
+			has_country_flag = WTS_neoliberalism
+		}
+		cost = 25
+		fire_only_once = no
+		days_re_enable = 90
+		days_remove = 90
+		modifier = {
+			consumer_goods_factor = 0.05
+			stability_weekly = 0.01
 		}
 	}
 }

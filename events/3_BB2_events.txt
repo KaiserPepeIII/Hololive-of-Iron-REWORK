@@ -1,0 +1,181 @@
+#
+#	THESE EVENTS ALL RELATE TO BUBBA, EVENTS THAT FIRE FOR WATSON WOULD BE MARKED AS SUCH
+#
+add_namespace = bubba
+#Fire for WTS, the spawn of Bubba
+country_event = {
+	id = bubba.1
+	title = bubba.1.t
+	desc = bubba.1.desc
+	picture = GFX_report_event_aloe
+	is_triggered_only = yes
+	#Uh OH
+	option = {
+		name = bubba.1.a
+		BB2 = {
+			add_state_core = 329
+		}
+		329 = {
+			owner = {
+				release = BB2
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 5
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 10
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 8
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 24
+		}
+		BB2 = {
+			add_research_slot = 5
+			add_manpower = 3000000
+			add_ideas = BB2_anti_holobot
+			add_timed_idea = {
+				idea = BB2_catch_up
+				days = 365
+			}
+			load_oob = "BB2_start"
+			set_variable = {
+				var = ROOT.seiso_alignment
+				value = 5
+			}
+			clamp_variable = {
+				var = ROOT.seiso_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.reactionary_alignment
+				value = 1
+			}
+			clamp_variable = {
+				var = ROOT.reactionary_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.authoritarianism_alignment
+				value = 1
+			}
+			clamp_variable = {
+				var = ROOT.authoritarianism_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.capitalism_alignment
+				value = 5
+			}
+			clamp_variable = {
+				var = ROOT.capitalism_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.isolationism_alignment
+				value = 5
+			}
+			clamp_variable = {
+				var = ROOT.isolationism_alignment
+				min = 1
+				max = 5
+			}
+			government_alignment_initiate = yes
+		}
+	}
+	#It's time to kick some ass and chew bubble gum, and I'm all out of gum
+	option = {
+		name = bubba.1.b
+		BB2 = {
+			add_state_core = 329
+		}
+		329 = {
+			owner = {
+				release = BB2
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 5
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 10
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 8
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 24
+		}
+		BB2 = {
+			add_research_slot = 5
+			add_manpower = 3000000
+			add_ideas = BB2_anti_holobot
+			add_timed_idea = {
+				idea = BB2_catch_up
+				days = 365
+			}
+			load_oob = "BB2_start"
+			set_variable = {
+				var = ROOT.seiso_alignment
+				value = 5
+			}
+			clamp_variable = {
+				var = ROOT.seiso_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.reactionary_alignment
+				value = 1
+			}
+			clamp_variable = {
+				var = ROOT.reactionary_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.authoritarianism_alignment
+				value = 1
+			}
+			clamp_variable = {
+				var = ROOT.authoritarianism_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.capitalism_alignment
+				value = 5
+			}
+			clamp_variable = {
+				var = ROOT.capitalism_alignment
+				min = 1
+				max = 5
+			}
+			set_variable = {
+				var = ROOT.isolationism_alignment
+				value = 5
+			}
+			clamp_variable = {
+				var = ROOT.isolationism_alignment
+				min = 1
+				max = 5
+			}
+			government_alignment_initiate = yes
+			change_tag_from = ROOT
+		}
+	}
+}
