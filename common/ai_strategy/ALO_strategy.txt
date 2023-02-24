@@ -1,0 +1,205 @@
+ALO_german_style_strategy_weak_industry_nsb = {
+	allowed = {
+		tag = ALO
+		has_dlc = "No Step Back"
+	}
+	enable = {
+		has_completed_focus = ALO_german_style_maneuvers
+		num_of_factories < 75
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = light_tank_chassis
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = medium_tank_chassis
+		value = 10
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = heavy_tank_chassis
+		value = 5
+	}
+}
+
+ALO_german_style_strategy_high_industry_nsb = {
+	allowed = {
+		tag = ALO
+		has_dlc = "No Step Back"
+	}
+	enable = {
+		has_completed_focus = ALO_german_style_maneuvers
+		num_of_factories > 75
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = light_tank_chassis
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = medium_tank_chassis
+		value = 30
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = heavy_tank_chassis
+		value = 10
+	}
+}
+
+ALO_german_style_strategy_weak_industry_legacy = {
+	allowed = {
+		tag = ALO
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	enable = {
+		has_completed_focus = ALO_german_style_maneuvers
+		num_of_factories < 75
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = equipment_production_factor
+		id = light_armor
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = medium_armor
+		value = 10
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = heavy_armor
+		value = 5
+	}
+}
+
+ALO_german_style_strategy_high_industry_legacy = {
+	allowed = {
+		tag = ALO
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	enable = {
+		has_completed_focus = ALO_german_style_maneuvers
+		num_of_factories < 75
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = equipment_production_factor
+		id = light_armor
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = medium_armor
+		value = 30
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = heavy_armor
+		value = 15
+	}
+}
+
+ALO_catchup_navy_mtg = {
+	allowed = {
+		tag = ALO
+		has_dlc = "Man the Guns"
+	}
+	enable = {
+		has_completed_focus = ALO_manatomo_navy
+		ALO = {
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}
+		NOT = {
+			ALO = {
+				is_resistance_ideology = yes
+				is_neighbor_of = YAG
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = ship_hull_submarine
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = ship_hull_light
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = ship_hull_cruiser
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = ship_hull_heavy
+		value = 5
+	}
+}
+
+ALO_catchup_navy_legacy = {
+	allowed = {
+		tag = ALO
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	enable = {
+		has_completed_focus = ALO_manatomo_navy
+		ALO = {
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}
+		NOT = {
+			ALO = {
+				is_resistance_ideology = yes
+				is_neighbor_of = YAG
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = submarine
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = destroyer
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = light_cruiser
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = battleship
+		value = 5
+	}
+}

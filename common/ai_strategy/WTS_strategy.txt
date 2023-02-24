@@ -1,0 +1,48 @@
+WTS_focus_on_army_early = {
+	allowed = {
+		tag = WTS
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		ENG = {
+			exists = no
+		}
+		SCO = {
+			exists = no
+		}
+	}
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = -45
+	}
+}
+
+WTS_post_uniting_military_doctrine = {
+	allowed = {
+		tag = WTS
+	}
+	enable = {
+		ENG = {
+			exists = no
+		}
+		SCO = {
+			exists = no
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = air_factory_balance
+		value = 15
+	}
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 25
+	}
+	ai_strategy = {
+		type = building_target
+		id = dockyard
+		value = 15
+	}
+}

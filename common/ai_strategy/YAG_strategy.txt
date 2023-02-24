@@ -1,0 +1,333 @@
+YAG_loves_his_airforce_and_navy_legacy = {
+	allowed = {
+		tag = YAG
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		surrender_progress > 0.3
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = fighter
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = cas
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = tac_bomber
+		value = 8
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = strategic_bomber
+		value = 8
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = destroyer
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = battle_cruiser
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = battleship
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = carrier
+		value = 15
+	}
+	ai_strategy = {
+		type = air_factory_balance
+		value = 17
+	}
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 15
+	}
+}
+
+YAG_loves_his_airforce_and_navy_bba = {
+	allowed = {
+		tag = YAG
+		has_dlc = "By Blood Alone"
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		surrender_progress > 0.3
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = small_plane_airframe
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = medium_plane_airframe
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = large_plane_airframe
+		value = 8
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = ship_hull_light
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = ship_hull_cruiser
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = ship_hull_heavy
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = ship_hull_carrier
+		value = 15
+	}
+	ai_strategy = {
+		type = air_factory_balance
+		value = 17
+	}
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 15
+	}
+}
+
+YAG_protect_metropole = {
+	allowed = {
+		tag = YAG
+	}
+	enable = {
+		OR = {
+			threat > 0.75
+			any_country = {
+				OR = {
+					is_justifying_wargoal_against = YAG
+					has_war_with = YAG
+				}
+			}
+		}
+	}
+	abort = {
+		threat < 0.15
+	}
+	ai_strategy = {
+		type = area_priority
+		id = europe
+		value = 25
+	}
+}
+
+YAG_protect_against_pek = {
+	allowed = {
+		tag = YAG
+	}
+	enable = {
+		OR = {
+			threat > 0.25
+			PEK = {
+				threat > 0.15
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_unit_request
+		tag = PEK
+		value = 25
+	}
+	ai_strategy = {
+		type = put_unit_buffers
+		ratio = 0.15
+		states = {
+			103
+			182
+			183
+			841
+			948
+			454
+			453
+			553
+		}
+	}
+}
+
+YAG_protect_ayame = {
+	allowed = {
+		tag = YAG
+	}
+	enable = {
+		any_country = {
+			is_justifying_wargoal_against = AYA
+			has_war_with = AYA
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "AYA"
+		value = 15
+	}
+}
+
+YAG_bolster_ayame = {
+	allowed = {
+		tag = YAG
+	}
+	enable = {
+		AYA = {
+			is_lhs_ideology = yes
+		}
+		threat > 0.15
+	}
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = "AYA"
+		value = 100
+	}
+}
+
+YAG_befriend_mumei = {
+	allowed = {
+		tag = YAG
+	}
+	enable = {
+		MUM = {
+			NOT = {
+				is_resistance_ideology = yes
+			}
+		}
+	}
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = "MUM"
+		value = 25
+	}
+	ai_strategy = {
+		type = befriend
+		id = "MUM"
+		value = 45
+	}
+	ai_strategy = {
+		type = alliance
+		id = "MUM"
+		value = 45
+	}
+	ai_strategy = {
+		type = protect
+		id = "MUM"
+		value = 75
+	}
+	abort_when_not_enabled = yes
+}
+
+YAG_befriend_subaru = {
+	allowed = {
+		tag = YAG
+	}
+	enable = {
+		SUB = {
+			NOT = {
+				is_resistance_ideology = yes
+			}
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "SUB"
+		value = 45
+	}
+	ai_strategy = {
+		type = alliance
+		id = "SUB"
+		value = 45
+	}
+	ai_strategy = {
+		type = protect
+		id = "SUB"
+		value = 75
+	}
+	abort_when_not_enabled = yes
+}
+
+YAG_befriend_mio = {
+	allowed = {
+		tag = YAG
+	}
+	enable = {
+		MIO = {
+			NOT = {
+				is_resistance_ideology = yes
+			}
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "MIO"
+		value = 45
+	}
+	ai_strategy = {
+		type = alliance
+		id = "MIO"
+		value = 45
+	}
+	ai_strategy = {
+		type = protect
+		id = "MIO"
+		value = 75
+	}
+	abort_when_not_enabled = yes
+}
+
+YAG_befriend_aya = {
+	allowed = {
+		tag = YAG
+	}
+	enable = {
+		AYA = {
+			NOT = {
+				is_resistance_ideology = yes
+			}
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "AYA"
+		value = 45
+	}
+	ai_strategy = {
+		type = alliance
+		id = "AYA"
+		value = 45
+	}
+	ai_strategy = {
+		type = protect
+		id = "AYA"
+		value = 75
+	}
+	abort_when_not_enabled = yes
+}

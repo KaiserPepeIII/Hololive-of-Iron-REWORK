@@ -1,0 +1,45 @@
+GAW_restrained_military_expansion = {
+	allowed = {
+		tag = GAW
+	}
+	enable = {
+		has_dynamic_modifier = {
+			modifier = GAW_corrupt_military
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = force_build_armies
+		value = -35
+	}
+}
+
+GAW_expanding_the_navy_moderate = {
+	allowed = {
+		tag = GAW
+	}
+	enable = {
+		has_completed_focus = GAW_atlantean_navy
+	}
+	abort = {
+		has_completed_focus = GAW_gura_rules_seas
+	}
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 15
+	}
+}
+
+GAW_expanding_the_navy_extreme = {
+	allowed = {
+		tag = GAW
+	}
+	enable = {
+		has_completed_focus = GAW_gura_rules_seas
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 35
+	}
+}

@@ -1,0 +1,80 @@
+AQA_SHI_crush_ayame_asap = {
+	allowed = {
+		OR = {
+			tag = SHI
+			tag = AQA
+		}
+	}
+	enable = {
+		is_resistance_ideology = yes
+		AYA = {
+			OR = {
+				has_war_with = AQA
+				has_war_with = SHI
+				is_justifying_wargoal_against = AQA
+				is_justifying_wargoal_against = SHI
+			}
+		}
+	}
+	ai_strategy = {
+		type = conquer
+		id = AYA
+		value = 300
+	}
+	ai_strategy = {
+		type = area_priority
+		id = south_america
+		value = 350
+	}
+	abort_when_not_enabled = yes
+}
+
+RESISTANCE_are_building_up_for_war = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		is_resistance_ideology = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = force_build_armies
+		value = 25
+	}
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 15
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 25
+	}
+	ai_strategy = {
+		type = building_target
+		id = dockyard
+		value = 12
+	}
+}
+
+RESISTANCE_members_like_militias = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		has_government = communism
+		has_government = pro_resistance_monarchy
+		has_government = pro_resistance_kleptocracy
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = unit_ratio
+		id = militia
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = infantry_equipment
+		value = 25
+	}
+}

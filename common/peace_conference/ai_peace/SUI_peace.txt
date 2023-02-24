@@ -1,0 +1,123 @@
+peace_ai_desires = {
+	SUI_france_natural_borders = {
+		peace_action_type = {
+			take_states
+		}
+		enable = {
+			ROOT = {
+				tag = SUI
+			}
+			FROM.FROM.FROM = {
+				OR = {
+					state = 29
+					state = 34
+					state = 8
+					state = 28
+					state = 6
+					state = 909
+					state = 14
+					state = 30
+					state = 942
+					state = 943
+					state = 15
+					state = 945
+					state = 16
+					state = 24
+					state = 27
+					state = 17
+					state = 18
+					state = 944
+					state = 858
+					state = 785
+					state = 1132
+					state = 1
+				}
+			}
+		}
+		ai_desire = 350
+	}
+	SUI_france_dont_take_beyond_natural_borders = {
+		peace_action_type = {
+			take_states
+		}
+		enable = {
+			ROOT = {
+				tag = SUI
+			}
+			FROM.FROM.FROM = {
+				NOT = {
+					is_on_continent = africa
+					is_on_continent = middle_east
+					is_on_continent = asia
+					is_on_continent = north_america
+					is_on_continent = south_america
+					is_on_continent = australia
+					state = 29
+					state = 34
+					state = 8
+					state = 28
+					state = 6
+					state = 909
+					state = 14
+					state = 30
+					state = 942
+					state = 943
+					state = 15
+					state = 945
+					state = 16
+					state = 24
+					state = 27
+					state = 17
+					state = 18
+					state = 944
+					state = 858
+					state = 785
+					state = 1132
+					state = 1
+				}
+			}
+		}
+		ai_desire = -350
+	}
+	SUI_continental_system = {
+		peace_action_type = {
+			puppet
+		}
+		enable = {
+			ROOT = {
+				tag = SUI
+			}
+			FROM.FROM = {
+				is_on_continent = europe
+				NOT = {
+					tag = FRA
+				}
+			}
+		}
+		ai_desire = 150
+	}
+	SUI_france_ignore_colonies = {
+		peace_action_type = {
+			take_states
+			puppet
+		}
+		enable = {
+			ROOT = {
+				tag = SUI
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+					has_government = communism
+					has_government = pro_yagoo_monarchy
+					has_government = divine_mandate
+				}
+			}
+			FROM.FROM.FROM = {
+				NOT = {
+					is_on_continent = europe
+				}
+			}
+		}
+		ai_desire = -450
+	}
+}

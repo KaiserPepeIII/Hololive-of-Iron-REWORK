@@ -1,0 +1,182 @@
+RUS_reuniting_russia = {
+	allowed = {
+		tag = RUS
+	}
+	enable = {
+		RUS = {
+			OR = {
+				is_resistance_ideology = yes
+				is_neutral_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+		}
+	}
+	ai_strategy = {
+		type = conquer
+		id = LAM
+		value = 55
+	}
+	ai_strategy = {
+		type = conquer
+		id = RSR
+		value = 25
+	}
+	ai_strategy = {
+		type = conquer
+		id = FLA
+		value = 25
+	}
+	ai_strategy = {
+		type = conquer
+		id = FBK
+		value = 15
+	}
+	ai_strategy = {
+		type = conquer
+		id = KRN
+		value = 15
+	}
+}
+
+RUS_invade_central_asia = {
+	allowed = {
+		tag = RUS
+	}
+	enable = {
+		RUS = {
+			OR = {
+				is_resistance_ideology = yes
+				is_neutral_ideology = yes
+				has_government = pro_yagoo_monarchy
+			}
+			OR = {
+				owns_state = 564
+				owns_state = 561
+				owns_state = 654
+			}
+			KRO = {
+				exists = no
+			}
+		}
+	}
+	ai_strategy = {
+		type = conquer
+		id = KAZ
+		value = 45
+	}
+	ai_strategy = {
+		type = conquer
+		id = TMS
+		value = 45
+	}
+	ai_strategy = {
+		type = conquer
+		id = KYR
+		value = 45
+	}
+	ai_strategy = {
+		type = conquer
+		id = SAN
+		value = 45
+	}
+	ai_strategy = {
+		type = conquer
+		id = UZB
+		value = 45
+	}
+}
+
+RUS_great_northern_war_opportune_timing = {
+	allowed = {
+		tag = RUS
+	}
+	enable = {
+		tag = RUS
+		FBK = {
+			has_war_with = NOE
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = conquer
+		id = NOE
+		value = 90
+	}
+	ai_strategy = {
+		type = conquer
+		id = FBK
+		value = 90
+	}
+	ai_strategy = {
+		type = declare_war
+		id = NOE
+		value = 90
+	}
+	ai_strategy = {
+		type = declare_war
+		id = FBK
+		value = 90
+	}
+}
+
+RUS_gnw_focus_on_FBK = {
+	allowed = {
+		tag = RUS
+	}
+	enable = {
+		tag = RUS
+		FBK = {
+			has_war_with = NOE
+		}
+		RUS = {
+			strength_ratio = {
+				tag = FBK
+				ratio > 1.5
+			}
+			strength_ratio = {
+				tag = WFA
+				ratio > 1.5
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			is_owned_by = FBK
+		}
+		ratio = 0.75
+		ordertype = front
+		execution_type = rush
+		manual_attack = no
+	}
+}
+
+RUS_gnw_focus_on_NOE = {
+	allowed = {
+		tag = RUS
+	}
+	enable = {
+		tag = RUS
+		FBK = {
+			has_war_with = NOE
+		}
+		RUS = {
+			strength_ratio = {
+				tag = NOE
+				ratio > 2
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			is_owned_by = NOE
+		}
+		ratio = 0.75
+		ordertype = front
+		execution_type = rush
+		manual_attack = no
+	}
+}

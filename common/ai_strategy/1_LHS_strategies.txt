@@ -1,3 +1,85 @@
+LHS_yagooist_way_of_war_low_industry = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		OR = {
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+			is_lhs_ideology = yes
+		}
+		num_of_factories < 60
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = air_factory_balance
+		value = 10
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = support
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = artillery
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = motorized_equipment
+		value = 10
+	}
+}
+
+LHS_yagooist_way_of_war_high_industry = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		OR = {
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+			is_lhs_ideology = yes
+		}
+		num_of_factories > 60
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = air_factory_balance
+		value = 20
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = support
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = artillery
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = 20
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = motorized_equipment
+		value = 15
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = mechanized_equipment
+		value = 15
+	}
+}
+
 LHS_dont_guarantee_antis = {
 	allowed = {
 		always = yes
@@ -28,5 +110,45 @@ LHS_dont_guarantee_antis = {
 		id = THIS
 		target = guarantee
 		value = -200
+	}
+}
+
+LHS_yagooists_are_sleeping_early_game = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		OR = {
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+			is_lhs_ideology = yes
+		}
+		NOT = {
+			has_government = divine_mandate
+			has_government = reactionary_nationalism
+		}
+	}
+	abort = {
+		threat > 0.35
+		OR = {
+			tag = YAG
+			tag = SUB
+			tag = MIO
+		}
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = -15
+	}
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = -15
+	}
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 25
 	}
 }

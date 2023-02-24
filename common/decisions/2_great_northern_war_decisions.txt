@@ -1,0 +1,1340 @@
+CAT_great_northern_war = {
+	#These two missions for Noel and Fubuki activate when the great_northern_war_tension gets too high
+	#
+	#	For now decisions will be organized based on country
+	# 
+	#
+	#
+	#	FBK 
+	# 
+	#   
+	FBK_great_northern_war_escalation_mission = {
+		activation = {
+			tag = FBK
+			check_variable = {
+				var = global.great_northern_war_tension
+				value = 75
+				compare = greater_than_or_equals
+			}
+		}
+		cancel_trigger = {
+			check_variable = {
+				var = global.great_northern_war_tension
+				value = 75
+				compare = less_than
+			}
+		}
+		visible = {
+			tag = FBK
+			check_variable = {
+				var = global.great_northern_war_tension
+				value = 75
+				compare = greater_than_or_equals
+			}
+		}
+		available = {
+			always = no
+		}
+		days_mission_timeout = 55
+		fire_only_once = no
+		timeout_effect = {
+			country_event = FBK_gnw.1
+		}
+	}
+	FBK_negotiate_with_KRO_after_war = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = FBK
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FBK
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FBK_negotiate_with_SUB_support = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = FBK
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FBK
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FBK_negotiate_with_KIA = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = FBK
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FBK
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FBK_negotiate_with_CZE = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = FBK
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FBK
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FBK_negotiate_with_FLA = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = FBK
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FBK
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FBK_negotiate_with_GER = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = FBK
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FBK
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FBK_negotiate_with_RUS = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = FBK
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FBK
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	#
+	#
+	#	NOE
+	#
+	#
+	NOE_great_northern_war_escalation_mission = {
+		activation = {
+			tag = NOE
+			check_variable = {
+				var = global.great_northern_war_tension
+				value = 75
+				compare = greater_than_or_equals
+			}
+		}
+		cancel_trigger = {
+			check_variable = {
+				var = global.great_northern_war_tension
+				value = 75
+				compare = less_than
+			}
+		}
+		visible = {
+			tag = NOE
+			check_variable = {
+				var = global.great_northern_war_tension
+				value = 75
+				compare = greater_than_or_equals
+			}
+		}
+		available = {
+			always = no
+		}
+		days_mission_timeout = 55
+		fire_only_once = no
+		timeout_effect = {
+			country_event = NOE_gnw.1
+		}
+	}
+	NOE_negotiate_with_germany = {
+		available = {
+			tag = NOE
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		cost = 25
+		visible = {
+			tag = NOE
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		complete_effect = {
+			#Unite Germany in exchange for removing status as a Hololive Kingdom
+			GER = {
+				country_event = GER_gnw.3
+			}
+		}
+	}
+	NOE_negotiate_with_RUS_alliance = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_negotiate_with_GER_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_negotiate_with_KRO = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_negotiate_with_KIA = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_negotiate_with_CZE = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_negotiate_with_FLA = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_negotiate_with_SUB = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	NOE_negotiate_with_RUS = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	#
+	#
+	#	KRO 
+	#
+	#
+	KRO_declare_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = KRO
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KRO
+		}
+		cost = 15
+		complete_effect = {
+			set_country_flag = KRO_gnw_neutral
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	KRO_a_return_to_poland = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = KRO
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KRO
+		}
+		cost = 15
+		complete_effect = {
+			#Flavour event 
+			country_event = KRO_gnw.1
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	KRO_open_negotiations_with_FBK = {
+		available = {
+			tag = KRO
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KRO
+			has_country_flag = KRO_gnw_interested
+			NOT = {
+				has_country_flag = KRO_gnw_neutral
+				has_country_flag = KRO_negotiating_with_FBK
+				has_country_flag = KRO_negotiating_with_LHS
+				has_country_flag = KRO_negotiating_with_NOE
+			}
+		}
+		cost = 15
+		complete_effect = {
+			#Fubuki gets an option to either keep Kronii as an oblast (bad end), to restore Kronii AFTER the war, or to send Kronii to start a revolution in Poland.  
+			FBK = {
+				country_event = FBK_gnw.1
+			}
+			set_country_flag = KRO_negotiating_with_FBK
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	KRO_open_negotiations_with_LHS = {
+		available = {
+			tag = KRO
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KRO
+			has_country_flag = KRO_gnw_interested
+			NOT = {
+				has_country_flag = KRO_gnw_neutral
+				has_country_flag = KRO_negotiating_with_FBK
+				has_country_flag = KRO_negotiating_with_LHS
+				has_country_flag = KRO_negotiating_with_NOE
+			}
+		}
+		cost = 15
+		complete_effect = {
+			#Yagoo either encourages Kronii to revolt in Poland or would push Fubuki to restore Poland after the war. 
+			YAG = {
+				country_event = LHS_gnw.6
+			}
+			set_country_flag = KRO_negotiating_with_LHS
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	KRO_open_negotiations_with_NOE = {
+		available = {
+			tag = KRO
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KRO
+			has_country_flag = KRO_gnw_interested
+			NOT = {
+				has_country_flag = KRO_gnw_neutral
+				has_country_flag = KRO_negotiating_with_FBK
+				has_country_flag = KRO_negotiating_with_LHS
+				has_country_flag = KRO_negotiating_with_NOE
+			}
+		}
+		cost = 15
+		complete_effect = {
+			#Noel either tells Kronii to fuck off or she'd allow for a lesser Polish state
+			NOE = {
+				country_event = NOE_gnw.3
+			}
+			set_country_flag = KRO_negotiating_with_NOE
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	KRO_moving_back_to_poland_noel = {
+		activation = {
+			tag = KRO
+			KRO = {
+				is_in_array = {
+					array = global.gnw_noel_allies
+					value = THIS.id
+				}
+			}
+		}
+		cancel_trigger = {
+			NOT = {
+				KRO = {
+					is_in_array = {
+						array = global.gnw_noel_allies
+						value = THIS.id
+					}
+				}
+			}
+		}
+		visible = {
+			tag = KRO
+			KRO = {
+				is_in_array = {
+					array = global.gnw_noel_allies
+					value = THIS.id
+				}
+			}
+		}
+		available = {
+			always = no
+		}
+		days_mission_timeout = 55
+		fire_only_once = yes
+		timeout_effect = {
+			KRO = {
+				country_event = KRO_gnw.12
+				transfer_state = 87
+				transfer_state = 98
+				transfer_state = 97
+				transfer_state = 807
+				transfer_state = 92
+				transfer_state = 10
+				transfer_state = 90
+				transfer_state = 88
+				transfer_state = 762
+			}
+			if = {
+				limit = {
+					NOE = {
+						owns_state = 72
+					}
+				}
+				KRO = {
+					transfer_state = 72
+				}
+			}
+		}
+	}
+	#              
+	#         
+	#	KIA     
+	# 
+	# 
+	KIA_declare_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = KIA
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KIA
+		}
+		cost = 15
+		complete_effect = {
+			set_country_flag = KIA_gnw_neutral
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	KIA_rile_up_german_nationalists = {
+		available = {
+			tag = KIA
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KIA
+		}
+		cost = 15
+		complete_effect = {
+			#Flavour event to enter the scene
+			country_event = KIA_gnw.1
+		}
+	}
+	KIA_pact_with_the_devil = {
+		#i.e germany
+		available = {
+			tag = KIA
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KIA
+		}
+		cost = 15
+		complete_effect = {
+			#This gives Germany the option to unite with Kiara in one big fuck you to Noel and the LHS. This is 1/3 times likely to go through I think
+			GER = {
+				country_event = GER_gnw.4
+			}
+		}
+	}
+	KIA_negotiate_with_lhs = {
+		available = {
+			tag = KIA
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KIA
+		}
+		cost = 15
+		complete_effect = {
+			YAG = {
+				country_event = LHS_gnw.11
+			}
+		}
+	}
+	KIA_bring_germany_into_the_fold = {
+		available = {
+			tag = KIA
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KIA
+		}
+		cost = 15
+		complete_effect = {
+			GER = {
+				country_event = GER_gnw.6
+			}
+		}
+	}
+	KIA_negotiate_with_noe = {
+		available = {
+			tag = KIA
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KIA
+		}
+		cost = 15
+		complete_effect = {
+			NOE = {
+				country_event = NOE_gnw.4
+			}
+		}
+	}
+	KIA_send_arms_to_FBK = {
+		available = {
+			tag = KIA
+			has_equipment = {
+				infantry_equipment > 1000
+			}
+		}
+		fire_only_once = no
+		visible = {
+			tag = KIA
+			NOE = {
+				has_war_with = FBK
+			}
+			NOT = {
+				KIA = {
+					has_war_with = NOE
+				}
+			}
+		}
+		complete_effect = {
+			FBK = {
+				country_event = FBK_gnw.7
+			}
+		}
+	}
+	KIA_cross_the_seelow_heights = {
+		#KIARA TO GO TO WAR WITH NOEL
+		available = {
+			tag = KIA
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KIA
+			KIA = {
+				is_neighbor_of = NOE
+			}
+			NOE = {
+				has_war_with = FBK
+			}
+		}
+		cost = 25
+		days_remove = 7
+		complete_effect = {
+			country_event = KIA_gnw.4
+			declare_war_on = {
+				target = NOE
+				type = annex_everything
+			}
+		}
+	}
+	#
+	#  
+	#	GER 
+	# 
+	#  
+	GER_declare_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = GER
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GER
+		}
+		cost = 15
+		complete_effect = {
+			set_country_flag = GER_gnw_neutral
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	GER_negotiations_with_LHS = {
+		available = {
+			#Available if the Great Northern War started
+			tag = GER
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		cost = 25
+		visible = {
+			tag = GER
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		complete_effect = {
+			#If Yagoo is willing to sacrifice part of Poland's territorial integrity for the Czechs + recognition of Germany as a proper country
+			YAG = {
+				country_event = LHS_gnw.4
+			}
+		}
+	}
+	GER_extract_concession_from_noel = {
+		available = {
+			tag = GER
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		cost = 25
+		visible = {
+			tag = GER
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		complete_effect = {
+			NOE = {
+				country_event = NOE_gnw.5
+			}
+		}
+	}
+	GER_invade_noel = {
+		available = {
+			#Available if the Great Northern War started
+			tag = GER
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GER
+			NOE = {
+				has_war_with = FBK
+			}
+			NOT = {
+				has_country_flag = GER_offered_german_lands
+			}
+		}
+		cost = 25
+		days_remove = 7
+		complete_effect = {
+			country_event = GER_gnw.1
+			declare_war_on = {
+				target = NOE
+				type = take_core_state
+			}
+		}
+	}
+	#     
+	# 
+	#	CZE
+	#
+	#
+	CZE_declare_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = CZE
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = CZE
+		}
+		cost = 15
+		complete_effect = {
+			set_country_flag = CZE_gnw_neutral
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	CZE_negotiate_with_LHS = {
+		available = {
+			#Available if the Great Northern War started
+			tag = CZE
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		cost = 25
+		visible = {
+			tag = CZE
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		complete_effect = {
+			#If Yagoo is willing to sacrifice part of Poland's territorial integrity for the Czechs
+			YAG = {
+				country_event = LHS_gnw.1
+			}
+		}
+	}
+	CZE_negotiate_with_noel = {
+		available = {
+			#Available if the Great Northern War started
+			tag = CZE
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		cost = 25
+		visible = {
+			tag = CZE
+		}
+		complete_effect = {
+			NOE = {
+				country_event = NOE_gnw.6
+			}
+		}
+	}
+	CZE_retake_zaolzie = {
+		available = {
+			#Available if the Great Northern War started
+			tag = CZE
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = CZE
+			NOE = {
+				has_war_with = FBK
+			}
+			NOT = {
+				has_country_flag = CZE_promised_zaolzie
+			}
+		}
+		cost = 25
+		days_remove = 7
+		complete_effect = {
+			country_event = CZE_gnw.1
+			declare_war_on = {
+				target = NOE
+				type = take_core_state
+			}
+		}
+	}
+	#
+	#
+	#	FLA
+	#
+	#
+	FLA_declare_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = KRO
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = KRO
+		}
+		cost = 15
+		complete_effect = {
+			set_country_flag = FLA_gnw_neutral
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FLA_congress_with_noel = {
+		available = {
+			tag = FLA
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		cost = 15
+		visible = {
+			tag = FLA
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		complete_effect = {
+			#this just invites Noel, everything else would be done in an event chain
+			NOE = {
+				country_event = NOE_gnw.3
+			}
+		}
+	}
+	FLA_publically_support_noel = {
+		available = {
+			tag = FLA
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		cost = 25
+		visible = {
+			tag = FLA
+			NOE = {
+				has_war_with = FBK
+			}
+		}
+		complete_effect = {
+		}
+	}
+	FLA_publically_denounce_noel = {
+		available = {
+			tag = FLA
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		cost = 25
+		visible = {
+			tag = FLA
+			NOE = {
+				has_war_with = FBK
+			}
+		}
+		complete_effect = {
+		}
+	}
+	FLA_declare_neutrality = {
+		available = {
+			tag = FLA
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		cost = 25
+		visible = {
+			tag = FLA
+			NOE = {
+				has_war_with = FBK
+			}
+		}
+		complete_effect = {
+		}
+	}
+	FLA_open_negotiations_with_LHS = {
+		available = {
+			tag = FLA
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		cost = 15
+		visible = {
+			tag = FLA
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		complete_effect = {
+			#this just invites LHS, everything else would be done in an event chain
+			YAG = {
+				country_event = LHS_gnw.12
+			}
+		}
+	}
+	FLA_the_time_is_right = {
+		available = {
+			#Available if the Great Northern War started
+			tag = FLA
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FLA
+			NOE = {
+				has_war_with = FBK
+			}
+		}
+		cost = 25
+		days_remove = 7
+		complete_effect = {
+			country_event = FLA_gnw.1
+			declare_war_on = {
+				target = NOE
+				type = take_core_state
+			}
+		}
+	}
+	#
+	#
+	#	SUB
+	#
+	#
+	SUB_declare_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = SUB
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = SUB
+		}
+		cost = 15
+		complete_effect = {
+			set_country_flag = SUB_gnw_neutral
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	SUB_push_into_the_spotlight = {
+		available = {
+			#Flavour decision
+			tag = SUB
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = SUB
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		cost = 25
+		complete_effect = {
+			#flavour event
+			country_event = SUB_gnw.1
+		}
+	}
+	SUB_send_demands_to_fubuki = {
+		available = {
+			tag = SUB
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = SUB
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		cost = 25
+		complete_effect = {
+			country_event = SUB_gnw.4
+		}
+	}
+	SUB_allow_dutch_legion = {
+		available = {
+			#Flavour decision
+			tag = SUB
+			has_political_power > 35
+			command_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = SUB
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		cost = 35
+		complete_effect = {
+			add_ideas = SUB_dutch_legion
+		}
+	}
+	#
+	#
+	#	RUS
+	#
+	#
+	RUS_declare_neutrality = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = RUS
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = RUS
+		}
+		cost = 15
+		complete_effect = {
+			set_country_flag = RUS_gnw_neutral
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	RUS_call_the_duma = {
+		available = {
+			#Flavour decision
+			tag = RUS
+			has_political_power > 35
+		}
+		fire_only_once = yes
+		visible = {
+			tag = RUS
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		cost = 35
+		complete_effect = {
+			country_event = RUS_gnw.1
+		}
+	}
+	RUS_demand_arkhangelsk_northern_russia_neutrality = {
+		available = {
+			tag = RUS
+			has_political_power > 35
+		}
+		fire_only_once = yes
+		visible = {
+			tag = RUS
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		cost = 35
+		complete_effect = {
+			FBK = {
+				country_event = FBK_gnw.14
+			}
+		}
+	}
+	RUS_demand_all_russian_land_returned = {
+		available = {
+			tag = RUS
+			has_political_power > 35
+		}
+		fire_only_once = yes
+		visible = {
+			tag = RUS
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		cost = 35
+		complete_effect = {
+			FBK = {
+				country_event = FBK_gnw.17
+			}
+		}
+	}
+	#Available exclusively during the war
+	RUS_make_a_deal_with_fubuki = {
+		available = {
+			tag = RUS
+			has_political_power > 35
+		}
+		fire_only_once = yes
+		visible = {
+			tag = RUS
+			NOE = {
+				has_war_with = FBK
+			}
+		}
+		cost = 35
+		complete_effect = {
+			FBK = {
+				country_event = FBK_gnw.19
+			}
+		}
+	}
+	RUS_secret_negotiations_with_noel = {
+		available = {
+			tag = RUS
+			has_political_power > 35
+		}
+		fire_only_once = yes
+		visible = {
+			tag = RUS
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		cost = 35
+		complete_effect = {
+			RUS = {
+				country_event = RUS_gnw.8
+			}
+		}
+	}
+	#
+	#
+	#
+	#	YAG
+	#
+	#
+	YAG_negotiate_with_KRO = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = YAG
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	YAG_negotiate_with_KIA = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = YAG
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	YAG_negotiate_with_CZE = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = YAG
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	YAG_negotiate_with_FLA = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = YAG
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	YAG_negotiate_with_SUB = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = YAG
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
+		cost = 15
+		complete_effect = {
+			SUB = {
+				country_event = SUB_gnw.2
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	YAG_negotiate_with_RUS = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = YAG
+			has_political_power > 15
+		}
+		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
+		cost = 15
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+}

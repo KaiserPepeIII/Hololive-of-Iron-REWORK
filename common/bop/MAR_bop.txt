@@ -1,0 +1,42 @@
+MAR_pirateering_settling_bop = {
+	initial_value = 0.25
+	left_side = MAR_pirateering
+	right_side = MAR_settling_down
+	decision_category = MAR_pirating_settling_decisions
+	range = {
+		id = MAR_civil_conflict
+		min = -0.25
+		max = 0.25
+		modifier = {
+			consumer_goods_factor = 0.2
+			justify_war_goal_time = -0.25
+			reactionary_nationalism_drift = 0.01
+		}
+	}
+	side = {
+		id = MAR_pirateering
+		icon = GFX_idea_generic_agrarian_society
+		range = {
+			id = MAR_pirateering
+			min = -1
+			max = -0.25
+			modifier = {
+				consumer_goods_factor = 0.1
+				pro_yagoo_kleptocracy_drift = 0.01
+			}
+		}
+	}
+	side = {
+		id = MAR_settling_down
+		icon = GFX_idea_generic_degauss_ship_hulls
+		range = {
+			id = MAR_settling_down
+			min = 0.25
+			max = 1
+			modifier = {
+				consumer_goods_factor = 0.1
+				pro_resistance_kleptocracy_drift = 0.1
+			}
+		}
+	}
+}

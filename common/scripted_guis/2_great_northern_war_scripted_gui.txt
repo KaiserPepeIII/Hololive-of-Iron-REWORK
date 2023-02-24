@@ -1,0 +1,71 @@
+scripted_gui = {
+	great_northern_war_scripted_gui = {
+		window_name = "great_northern_war_window"
+		context_type = decision_category
+		parent_window_name = "great_northern_war_window"
+		visible = {
+			always = yes
+		}
+		properties = {
+			great_northern_war_bar = {
+				frame = var:global.great_northern_war_tension
+			}
+			gnw_noel_supporters_large_flag = {
+				image = [THIS.GetFlag]
+			}
+			gnw_noel_large_flag = {
+				image = [NOE.GetFlag]
+			}
+			gnw_fubuki_large_flag = {
+				image = [FBK.GetFlag]
+			}
+			gnw_fubuki_supporters_large_flag = {
+				image = [THIS.GetFlag]
+			}
+			gnw_neutral_small_flag = {
+				image = [THIS.GetFlag]
+			}
+			gnw_on_fence_small_flag = {
+				image = [THIS.GetFlag] 
+			}
+		}
+		triggers = {
+			gnw_noel_flag_blue_outline_visible = {
+				check_variable = {
+					var = global.gnw_noel_allies^num
+					value = global.gnw_fubuki_allies^num
+					compare = greater_than
+				}
+			}
+			gnw_fubuki_flag_blue_outline_visible = {
+				check_variable = {
+					var = global.gnw_fubuki_allies^num
+					value = global.gnw_noel_allies^num
+					compare = greater_than
+				}
+			}
+		}
+		dynamic_lists = {
+			gnw_noel_supporters_gridbox = {
+				array = global.gnw_noel_allies
+				entry_container = gnw_noel_supporters_container
+				change_scope = yes
+			}
+			gnw_fubuki_supporters_gridbox = {
+				array = global.gnw_fubuki_allies
+				entry_container = gnw_fubuki_supporters_container
+				change_scope = yes
+			}
+			gnw_on_fence_gridbox = {
+				array = global.gnw_on_fence
+				entry_container = gnw_on_fence_container
+				change_scope = yes
+			}
+			gnw_neutral_gridbox = {
+				array = global.gnw_neutral
+				entry_container = gnw_neutral_container
+				change_scope = yes
+			}
+		}
+	}
+}

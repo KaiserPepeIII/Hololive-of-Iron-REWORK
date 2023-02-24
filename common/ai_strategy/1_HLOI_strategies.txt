@@ -1,0 +1,68 @@
+poor_nations_use_irregulars = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		OR = {
+			AND = {
+				ROOT = {
+					capital_scope = {
+						is_on_continent = europe
+					}
+					num_of_factories < 12
+				}
+			}
+			AND = {
+				ROOT = {
+					capital_scope = {
+						is_on_continent = south_america
+					}
+					num_of_factories < 14
+				}
+			}
+			AND = {
+				ROOT = {
+					capital_scope = {
+						is_on_continent = north_america
+					}
+					num_of_factories < 18
+				}
+			}
+			AND = {
+				ROOT = {
+					capital_scope = {
+						is_on_continent = asia
+					}
+					num_of_factories < 20
+				}
+			}
+			AND = {
+				ROOT = {
+					capital_scope = {
+						is_on_continent = australia
+					}
+					num_of_factories < 20
+				}
+			}
+			AND = {
+				ROOT = {
+					capital_scope = {
+						is_on_continent = middle_east
+					}
+					num_of_factories < 20
+				}
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = unit_ratio
+		id = irregular_infantry
+		value = 15
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = militia
+		value = 15
+	}
+}

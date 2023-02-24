@@ -1,0 +1,2261 @@
+add_namespace = NOE_gnw
+add_namespace = FBK_gnw
+add_namespace = WFA_gnw
+add_namespace = SUB_gnw
+add_namespace = LHS_gnw
+add_namespace = RUS_gnw
+add_namespace = GER_gnw
+add_namespace = FLA_gnw
+add_namespace = CZE_gnw
+add_namespace = KRO_gnw
+add_namespace = KIA_gnw
+#
+#	Countries who have the (TAG)_gnw_neutral country flag and/or are in the array, will not 
+#	be able to further participate in the GNW decisions and will not be 
+#	called in a war against either side. The category will disappear for them.
+#
+#	Once a country falls into either the pro-Noel or pro-FBK camp, they will no longer 
+#	be able to take any more GNW decisions.
+#
+#	All countries (minus Yagoo, NOE, WFA and FBK) can declare neturality. This locks 
+#	them out of making their own negotiations but they can still be negotiated with. 
+#	Albeit the AI is much more likely to turn these negotiations down. This faction feature is done through arrays.
+#		
+#	Concessions promised to each country is done through a variable, the higher the value the more valuable
+#	the concessions
+#
+#	If either Fubuki or Noel have overwhelming support, they can resolve the GNW 
+#	without fighting
+#
+#	
+#
+#
+#
+#
+############################################
+#
+#	FBK
+#
+# KRO wishes to return to Poland
+country_event = {
+	id = FBK_gnw.1
+	title = FBK_gnw.1.t
+	desc = FBK_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Know your place
+	option = {
+		name = FBK_gnw.1.a
+		KRO = {
+			country_event = KRO_gnw.2
+		}
+	}
+	#We agree to your idea
+	option = {
+		name = FBK_gnw.1.b
+		KRO = {
+			country_event = KRO_gnw.3
+		}
+	}
+	#As long as you remain our subject
+	option = {
+		name = FBK_gnw.1.c
+		KRO = {
+			country_event = KRO_gnw.4
+		}
+	}
+	#We have other ideas - Poland revolt plan
+	option = {
+		name = FBK_gnw.1.d
+		KRO = {
+			country_event = KRO_gnw.5
+		}
+	}
+}
+
+#Kronii accepts our offer KRO_gnw.4
+country_event = {
+	id = FBK_gnw.2
+	title = FBK_gnw.2.t
+	desc = FBK_gnw.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippeeee
+	option = {
+		name = FBK_gnw.2.a
+	}
+}
+
+#Kronii refuses our offer KRO_gnw.4
+country_event = {
+	id = FBK_gnw.3
+	title = FBK_gnw.3.t
+	desc = FBK_gnw.3.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Faq
+	option = {
+		name = FBK_gnw.3.a
+	}
+}
+
+#Kronii accepts our offer KRO_gnw.5
+country_event = {
+	id = FBK_gnw.4
+	title = FBK_gnw.4.t
+	desc = FBK_gnw.4.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippeeee
+	option = {
+		name = FBK_gnw.4.a
+	}
+}
+
+#Kronii refuses our offer KRO_gnw.5
+country_event = {
+	id = FBK_gnw.5
+	title = FBK_gnw.5.t
+	desc = FBK_gnw.5.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Faq
+	option = {
+		name = FBK_gnw.5.a
+	}
+}
+
+#Yagoo asks us to restore Poland after the war
+country_event = {
+	id = FBK_gnw.6
+	title = FBK_gnw.6.t
+	desc = FBK_gnw.6.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#we need their support 
+	option = {
+		name = FBK_gnw.6.a
+		KRO = {
+			set_country_flag = KRO_promised_poland_independence_revolution_fbk
+		}
+		YAG = {
+			country_event = LHS_gnw.9
+		}
+	}
+	#We cant promise anything
+	option = {
+		name = FBK_gnw.6.b
+		YAG = {
+			country_event = LHS_gnw.10
+		}
+	}
+}
+
+#Kiara sends weapons
+country_event = {
+	id = FBK_gnw.7
+	title = FBK_gnw.7.t
+	desc = FBK_gnw.7.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = FBK_gnw.7.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = KIA
+		}
+	}
+}
+
+#Subaru sends democratization demands!
+country_event = {
+	id = FBK_gnw.8
+	title = FBK_gnw.8.t
+	desc = FBK_gnw.8.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Uhh yeah sure we could "democratize"
+	option = {
+		name = FBK_gnw.8.a
+		SUB = {
+			country_event = SUB_gnw.5
+		}
+		set_country_flag = FBK_democratization
+	}
+	#She has a point
+	option = {
+		name = FBK_gnw.8.b
+		SUB = {
+			country_event = SUB_gnw.7
+		}
+	}
+	#No
+	option = {
+		name = FBK_gnw.8.c
+		SUB = {
+			country_event = SUB_gnw.6
+		}
+	}
+}
+
+#Subaru sends democratization and bulwark demands!
+country_event = {
+	id = FBK_gnw.9
+	title = FBK_gnw.9.t
+	desc = FBK_gnw.9.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Uhh yeah sure we could "democratize"
+	option = {
+		name = FBK_gnw.9.a
+		SUB = {
+			country_event = SUB_gnw.5
+		}
+		set_country_flag = FBK_democratization_bulwark
+	}
+	#She has a point
+	option = {
+		name = FBK_gnw.9.b
+		SUB = {
+			country_event = SUB_gnw.8
+		}
+	}
+	#No
+	option = {
+		name = FBK_gnw.9.c
+		SUB = {
+			country_event = SUB_gnw.6
+		}
+	}
+}
+
+#Subaru capitulates to our bs!
+country_event = {
+	id = FBK_gnw.10
+	title = FBK_gnw.10.t
+	desc = FBK_gnw.10.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yAy
+	option = {
+		name = FBK_gnw.10.a
+	}
+}
+
+#Subaru demands something more concrete 
+country_event = {
+	id = FBK_gnw.11
+	title = FBK_gnw.11.t
+	desc = FBK_gnw.11.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Ok whatevers - democratization
+	option = {
+		name = FBK_gnw.11.a
+		trigger = {
+			has_country_flag = FBK_democratization
+		}
+		clr_country_flag = FBK_democratization
+		SUB = {
+			country_event = SUB_gnw.7
+		}
+	}
+	#Ok whatevers - democratization and bulwark
+	option = {
+		name = FBK_gnw.11.b
+		trigger = {
+			has_country_flag = FBK_democratization_bulwark
+		}
+		clr_country_flag = FBK_democratization_bulwark
+		SUB = {
+			country_event = SUB_gnw.8
+		}
+	}
+	#NO
+	option = {
+		name = FBK_gnw.11.c
+		SUB = {
+			country_event = SUB_gnw.6
+		}
+	}
+}
+
+#Subaru capitulates to our bs!
+country_event = {
+	id = FBK_gnw.12
+	title = FBK_gnw.12.t
+	desc = FBK_gnw.12.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yAy
+	option = {
+		name = FBK_gnw.12.a
+	}
+}
+
+#Subaru abandons us!
+country_event = {
+	id = FBK_gnw.13
+	title = FBK_gnw.13.t
+	desc = FBK_gnw.13.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#faaaaack
+	option = {
+		name = FBK_gnw.13.a
+	}
+}
+
+#Rushia demands Arkhangelsk and Northern Russia in exchange for neutrality
+country_event = {
+	id = FBK_gnw.14
+	title = FBK_gnw.14.t
+	desc = FBK_gnw.14.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Sure we could promise "change" after the war
+	option = {
+		name = FBK_gnw.14.a
+		RUS = {
+			country_event = RUS_gnw.2
+		}
+	}
+	#We are scared :(
+	option = {
+		name = FBK_gnw.14.b
+		RUS = {
+			country_event = RUS_gnw.3
+			transfer_state = 262
+			transfer_state = 214
+			transfer_state = 351
+			transfer_state = 400
+			transfer_state = 398
+			transfer_state = 397
+		}
+	}
+}
+
+#Rushia wants the concessions now!!!
+country_event = {
+	id = FBK_gnw.15
+	title = FBK_gnw.15.t
+	desc = FBK_gnw.15.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Oh yeah, come and take it!
+	option = {
+		name = FBK_gnw.15.a
+		RUS = {
+			country_event = RUS_gnw.4
+		}
+	}
+	#Groan, fine, have it
+	option = {
+		name = FBK_gnw.15.b
+		RUS = {
+			country_event = RUS_gnw.3
+			transfer_state = 262
+			transfer_state = 214
+			transfer_state = 351
+			transfer_state = 400
+			transfer_state = 398
+			transfer_state = 397
+		}
+	}
+}
+
+#Rushia backs down
+country_event = {
+	id = FBK_gnw.16
+	title = FBK_gnw.16.t
+	desc = FBK_gnw.16.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Get fucked
+	option = {
+		name = FBK_gnw.16.a
+	}
+}
+
+#Rushia demands all Russians lands returned
+country_event = {
+	id = FBK_gnw.17
+	title = FBK_gnw.17.t
+	desc = FBK_gnw.17.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Bruh, fuck off
+	option = {
+		name = FBK_gnw.17.a
+		RUS = {
+			country_event = RUS_gnw.5
+		}
+	}
+	#:(
+	option = {
+		name = FBK_gnw.17.b
+		RUS = {
+			country_event = RUS_gnw.6
+		}
+	}
+}
+
+#Rushia backs down - all russian lands returned chain 
+country_event = {
+	id = FBK_gnw.18
+	title = FBK_gnw.18.t
+	desc = FBK_gnw.18.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#:)
+	option = {
+		name = FBK_gnw.18.a
+	}
+}
+
+#Rushia offers us a deal 
+country_event = {
+	id = FBK_gnw.19
+	title = FBK_gnw.19.t
+	desc = FBK_gnw.19.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#It's a steep price but we're desperate 
+	option = {
+		name = FBK_gnw.19.a
+		RUS = {
+			country_event = RUS_gnw.7
+		}
+	}
+}
+
+#
+#	NOE
+#
+# GER accepts our offer
+country_event = {
+	id = NOE_gnw.1
+	title = NOE_gnw.1.t
+	desc = NOE_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippeee!
+	option = {
+		name = NOE_gnw.1.a
+		add_to_variable = {
+			var = NOE.anti_aggression
+			value = -100
+			tooltip = anti_aggresion_text
+		}
+		add_stability = -0.15
+		add_war_support = 0.05
+		set_politics = {
+			ruling_party = reactionary_nationalism
+		}
+	}
+}
+
+# GER refuses our offer
+country_event = {
+	id = NOE_gnw.2
+	title = NOE_gnw.2.t
+	desc = NOE_gnw.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = NOE_gnw.2.a
+	}
+}
+
+#	Kronii offers to negotiate; wants control over even a lesser Polish state
+country_event = {
+	id = NOE_gnw.3
+	title = NOE_gnw.3.t
+	desc = NOE_gnw.3.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#lolwut
+	option = {
+		name = NOE_gnw.3.a
+		KRO = {
+			country_event = KRO_gnw.10
+		}
+	}
+	#sure?
+	option = {
+		name = NOE_gnw.3.a
+		KRO = {
+			country_event = KRO_gnw.11
+		}
+	}
+}
+
+# Kiara wants to negotiate - Oder-Neisse Line
+country_event = {
+	id = NOE_gnw.4
+	title = NOE_gnw.4.t
+	desc = NOE_gnw.4.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Hell no!
+	option = {
+		name = NOE_gnw.4.a
+		KIA = {
+			country_event = KIA_gnw.9
+		}
+	}
+	#...Sigh yeah sure 
+	option = {
+		name = NOE_gnw.4.b
+		KIA = {
+			country_event = KIA_gnw.10
+		}
+	}
+}
+
+#Germany wants to negotiate - recognition for neutrality
+country_event = {
+	id = NOE_gnw.5
+	title = NOE_gnw.5.t
+	desc = NOE_gnw.5.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Lolwut
+	option = {
+		name = NOE_gnw.5.a
+		GER = {
+			country_event = GER_gnw.9
+		}
+	}
+	#sure....?
+	option = {
+		name = NOE_gnw.5.b
+		GER = {
+			country_event = GER_gnw.10
+		}
+	}
+}
+
+#Czechoslovakia offers us a deal 
+country_event = {
+	id = NOE_gnw.6
+	title = NOE_gnw.6.t
+	desc = NOE_gnw.6.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Join us, or no deal
+	option = {
+		name = NOE_gnw.6.a
+		CZE = {
+			country_event = CZE_gnw.5
+		}
+	}
+	#Neutrality
+	option = {
+		name = NOE_gnw.6.b
+		CZE = {
+			country_event = CZE_gnw.6
+		}
+	}
+	#No deal at all
+	option = {
+		name = NOE_gnw.6.c
+		CZE = {
+			country_event = CZE_gnw.7
+		}
+	}
+}
+
+#Rushia offers us intervention in exchange for Fubuki's Russian lands
+country_event = {
+	id = NOE_gnw.7
+	title = NOE_gnw.7.t
+	desc = NOE_gnw.7.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	# We have no choice, accept
+	option = {
+		name = NOE_gnw.7.a
+		RUS = {
+			country_event = RUS_gnw.9
+		}
+	}
+	# Go to hell
+	option = {
+		name = NOE_gnw.7.b
+		RUS = {
+			country_event = RUS_gnw.10
+		}
+	}
+	# Your treachery will be known to the world
+	option = {
+		name = NOE_gnw.7.c
+	}
+	#Uhh how about we just be friends
+	option = {
+		name = NOE_gnw.7.d
+		trigger = {
+			NOT = {
+				RUS = {
+					has_country_flag = RUS_second_negotiations
+				}
+			}
+		}
+		RUS = {
+			country_event = RUS_gnw.13
+		}
+	}
+}
+
+#Rushia offering intervention (^) + Finland and Baltics
+country_event = {
+	id = NOE_gnw.8
+	title = NOE_gnw.8.t
+	desc = NOE_gnw.8.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	# We have no choice, accept
+	option = {
+		name = NOE_gnw.8.a
+		RUS = {
+			country_event = RUS_gnw.11
+		}
+	}
+	# Go to hell
+	option = {
+		name = NOE_gnw.8.b
+		RUS = {
+			country_event = RUS_gnw.10
+		}
+	}
+	# Your treachery will be known to the world
+	option = {
+		name = NOE_gnw.8.c
+	}
+	#Uhh how about we just be friends
+	option = {
+		name = NOE_gnw.8.d
+		trigger = {
+			NOT = {
+				RUS = {
+					has_country_flag = RUS_second_negotiations
+				}
+			}
+		}
+		RUS = {
+			country_event = RUS_gnw.13
+		}
+	}
+}
+
+#Rushia offering intervention (^) + Finland and Baltics + Flare Influence
+country_event = {
+	id = NOE_gnw.9
+	title = NOE_gnw.9.t
+	desc = NOE_gnw.9.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	# We have no choice, accept
+	option = {
+		name = NOE_gnw.9.a
+		RUS = {
+			country_event = RUS_gnw.12
+		}
+	}
+	# Go to hell
+	option = {
+		name = NOE_gnw.9.b
+		RUS = {
+			country_event = RUS_gnw.10
+		}
+	}
+	# Your treachery will be known to the world
+	option = {
+		name = NOE_gnw.9.c
+	}
+	#Uhh how about we just be friends
+	option = {
+		name = NOE_gnw.9.d
+		trigger = {
+			NOT = {
+				RUS = {
+					has_country_flag = RUS_second_negotiations
+				}
+			}
+		}
+		RUS = {
+			country_event = RUS_gnw.13
+		}
+	}
+}
+
+#Rushia calls us out on our bs :(
+country_event = {
+	id = NOE_gnw.10
+	title = NOE_gnw.10.t
+	desc = NOE_gnw.10.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We stand our ground
+	option = {
+		name = NOE_gnw.10.a
+		RUS = {
+			country_event = RUS_gnw.14
+		}
+	}
+	#Perhaps we could work out a deal after all?
+	option = {
+		name = NOE_gnw.10.a
+		RUS = {
+			country_event = RUS_gnw.15
+		}
+	}
+}
+
+#
+#	GER
+#
+#Yagoo refuses our offer
+country_event = {
+	id = GER_gnw.1
+	title = GER_gnw.1.t
+	desc = GER_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Really?
+	option = {
+		name = GER_gnw.1.a
+		set_variable = {
+			var = FBK.gnw_germany_concessions
+			value = 0
+		}
+	}
+}
+
+#Yagoo accepts our offer
+country_event = {
+	id = GER_gnw.2
+	title = GER_gnw.2.t
+	desc = GER_gnw.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yipeee!
+	option = {
+		name = GER_gnw.2.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+		remove_ideas = GER_unrecognized_country
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_germany_concessions
+			value = 1
+		}
+		YAG = {
+			country_event = LHS_gnw.5
+		}
+	}
+}
+
+#Noel offers us a deal
+country_event = {
+	id = GER_gnw.3
+	title = GER_gnw.3.t
+	desc = GER_gnw.3.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yippeee!
+	option = {
+		name = GER_gnw.3.a
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		NOE = {
+			country_event = NOE_gnw.1
+			annex_country = {
+				target = GER
+			}
+		}
+	}
+	#Fuck no
+	option = {
+		name = GER_gnw.3.b
+		NOE = {
+			country_event = NOE_gnw.2
+		}
+	}
+}
+
+# Kiara proposes unification
+country_event = {
+	id = GER_gnw.4
+	title = GER_gnw.4.t
+	desc = GER_gnw.4.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#With monarchists? Hell no
+	option = {
+		name = GER_gnw.4.a
+		KIA = {
+			country_event = KIA_gnw.2
+		}
+	}
+	#Sure!
+	option = {
+		name = GER_gnw.4.b
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		KIA = {
+			country_event = KIA_gnw.3
+			annex_country = {
+				target = GER
+			}
+		}
+	}
+}
+
+# Yagoo proclaims that our land belongs to Kiara
+country_event = {
+	id = GER_gnw.5
+	title = GER_gnw.5.t
+	desc = GER_gnw.5.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Shit
+	option = {
+		name = GER_gnw.5.a
+	}
+}
+
+# Kiara demands we fold
+country_event = {
+	id = GER_gnw.6
+	title = GER_gnw.6.t
+	desc = GER_gnw.6.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Shit, begin to mobilize
+	option = {
+		name = GER_gnw.6.a
+		KIA = {
+			country_event = KIA_gnw.7
+		}
+	}
+	#Sure!
+	option = {
+		name = GER_gnw.6.b
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		KIA = {
+			country_event = KIA_gnw.8
+			annex_country = {
+				target = GER
+			}
+		}
+	}
+}
+
+# Kiara backs down
+country_event = {
+	id = GER_gnw.7
+	title = GER_gnw.7.t
+	desc = GER_gnw.7.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yipeee
+	option = {
+		name = GER_gnw.7.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		add_stability = 0.05
+	}
+}
+
+# Yagoo agrees to hand over land if join war 
+country_event = {
+	id = GER_gnw.8
+	title = GER_gnw.8.t
+	desc = GER_gnw.8.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yipeee
+	option = {
+		name = GER_gnw.8.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_germany_concessions
+			value = 2
+		}
+	}
+}
+
+#Noel refuses our offer
+country_event = {
+	id = GER_gnw.9
+	title = GER_gnw.9.t
+	desc = GER_gnw.9.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#bruhh why :sob:
+	option = {
+		name = GER_gnw.9.a
+		set_variable = {
+			var = NOE.gnw_germany_concessions
+			value = 0
+		}
+	}
+}
+
+#Noel accepts our offer
+country_event = {
+	id = GER_gnw.10
+	title = GER_gnw.10.t
+	desc = GER_gnw.10.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = GER_gnw.10.a
+		GNW_move_to_noel = yes
+		set_variable = {
+			var = NOE.gnw_germany_concessions
+			value = 1
+		}
+	}
+}
+
+#
+#	CZE
+#
+#	Retake Zaolzie
+country_event = {
+	id = CZE_gnw.1
+	title = CZE_gnw.1.t
+	desc = CZE_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We March!
+	#Flavour event
+	option = {
+		name = CZE_gnw.1.a
+	}
+}
+
+#Yagoo offers Zaolzie and joining the LHS
+country_event = {
+	id = CZE_gnw.2
+	title = CZE_gnw.2.t
+	desc = CZE_gnw.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Sure!!!
+	option = {
+		name = CZE_gnw.2.a
+		join_the_lhs = yes
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_czechoslovakia_concessions
+			value = 1
+		}
+		YAG = {
+			country_event = LHS_gnw.2
+		}
+	}
+	#It's not worth it
+	option = {
+		name = CZE_gnw.2.b
+		YAG = {
+			country_event = LHS_gnw.3
+		}
+	}
+}
+
+#Yagoo refuses our aid
+country_event = {
+	id = CZE_gnw.3
+	title = CZE_gnw.3.t
+	desc = CZE_gnw.3.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Seriously!
+	option = {
+		name = CZE_gnw.3.a
+	}
+}
+
+#Yagoo will return Zaolzie after the war
+country_event = {
+	id = CZE_gnw.4
+	title = CZE_gnw.4.t
+	desc = CZE_gnw.4.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yay!
+	option = {
+		name = CZE_gnw.4.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_czechoslovakia_concessions
+			value = 2
+		}
+	}
+}
+
+#Noel wants us to join the war
+country_event = {
+	id = CZE_gnw.5
+	title = CZE_gnw.5.t
+	desc = CZE_gnw.5.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Ook then
+	option = {
+		name = CZE_gnw.5.a
+		GNW_move_to_noel = yes
+		set_variable = {
+			var = NOE.gnw_czechoslovakia_concessions
+			value = 1
+		}
+	}
+	#nein
+	option = {
+		name = CZE_gnw.5.b
+	}
+}
+
+#Noel just wants our neutrality
+country_event = {
+	id = CZE_gnw.6
+	title = CZE_gnw.6.t
+	desc = CZE_gnw.6.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Ook then
+	option = {
+		name = CZE_gnw.6.a
+		GNW_move_to_noel = yes
+		set_variable = {
+			var = NOE.gnw_czechoslovakia_concessions
+			value = 2
+		}
+	}
+	#nein
+	option = {
+		name = CZE_gnw.6.b
+	}
+}
+
+#Noel refuses any deal
+country_event = {
+	id = CZE_gnw.7
+	title = CZE_gnw.7.t
+	desc = CZE_gnw.7.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#ok coolz
+	option = {
+		name = CZE_gnw.7.a
+	}
+}
+
+#
+#
+#	LHS
+#
+# Czech wants to negotiate
+country_event = {
+	id = LHS_gnw.1
+	title = LHS_gnw.1.t
+	desc = LHS_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Offer Zaolzie and joining the LHS 
+	option = {
+		name = LHS_gnw.1.a
+		CZE = {
+			country_event = CZE_gnw.2
+		}
+	}
+	#We don't trust them
+	option = {
+		name = LHS_gnw.1.b
+		CZE = {
+			country_event = CZE_gnw.3
+		}
+	}
+	#Zaolzie will be returned after the war
+	option = {
+		name = LHS_gnw.1.c
+		CZE = {
+			country_event = CZE_gnw.4
+		}
+	}
+}
+
+#CZE accepts our offer
+country_event = {
+	id = LHS_gnw.2
+	title = LHS_gnw.2.t
+	desc = LHS_gnw.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Another win for diplomacy
+	option = {
+		name = LHS_gnw.2.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.02
+		}
+	}
+}
+
+#CZE refuses our offer
+country_event = {
+	id = LHS_gnw.3
+	title = LHS_gnw.3.t
+	desc = LHS_gnw.3.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Really?
+	option = {
+		name = LHS_gnw.3.a
+	}
+}
+
+#GER offers us a deal
+country_event = {
+	id = LHS_gnw.4
+	title = LHS_gnw.4.t
+	desc = LHS_gnw.4.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Nope, nope, nope, absolutely not
+	option = {
+		name = LHS_gnw.4.a
+		GER = {
+			country_event = GER_gnw.1
+		}
+	}
+	#Deal with the devil; only recognition
+	option = {
+		name = LHS_gnw.4.b
+		GER = {
+			country_event = GER_gnw.2
+		}
+	}
+	#Deal with the devil; land
+	option = {
+		name = LHS_gnw.4.b
+		GER = {
+			country_event = GER_gnw.8
+		}
+	}
+}
+
+#GER accepts our offer
+country_event = {
+	id = LHS_gnw.5
+	title = LHS_gnw.5.t
+	desc = LHS_gnw.5.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Sigh....
+	option = {
+		name = LHS_gnw.5.a
+	}
+}
+
+#Kronii offers negotiations
+country_event = {
+	id = LHS_gnw.6
+	title = LHS_gnw.6.t
+	desc = LHS_gnw.6.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Revolt in Poland and you got a deal
+	option = {
+		name = LHS_gnw.6.a
+		KRO = {
+			country_event = KRO_gnw.6
+		}
+	}
+	#Push Fubuki to restore Poland after the war
+	option = {
+		name = LHS_gnw.6.b
+		FBK = {
+			country_event = FBK_gnw.6
+		}
+	}
+	#This is outside of our abilities
+	option = {
+		name = LHS_gnw.6.c
+		KRO = {
+			country_event = KRO_gnw.7
+		}
+	}
+}
+
+#Kronii REFUSES
+country_event = {
+	id = LHS_gnw.7
+	title = LHS_gnw.7.t
+	desc = LHS_gnw.7.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#well shit
+	option = {
+		name = LHS_gnw.7.a
+	}
+}
+
+#Kronii ACCEPTS
+country_event = {
+	id = LHS_gnw.8
+	title = LHS_gnw.8.t
+	desc = LHS_gnw.8.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippeee
+	option = {
+		name = LHS_gnw.8.a
+	}
+}
+
+#Fubuki ACCEPTS
+country_event = {
+	id = LHS_gnw.9
+	title = LHS_gnw.9.t
+	desc = LHS_gnw.9.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippeee
+	option = {
+		name = LHS_gnw.9.a
+		KRO = {
+			country_event = KRO_gnw.8
+		}
+	}
+}
+
+#Fubuki refuses
+country_event = {
+	id = LHS_gnw.10
+	title = LHS_gnw.10.t
+	desc = LHS_gnw.10.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#DO YOU WANT TO LOSE THIS WAR???
+	option = {
+		name = LHS_gnw.10.a
+		KRO = {
+			country_event = KRO_gnw.9
+		}
+	}
+}
+
+#Kiara wants to negotiate with us - they want control of Germany
+country_event = {
+	id = LHS_gnw.11
+	title = LHS_gnw.11.t
+	desc = LHS_gnw.11.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#No no no, the LHS zone of Germany is still there
+	option = {
+		name = LHS_gnw.11.a
+		KIA = {
+			country_event = KIA_gnw.5
+		}
+	}
+	#...We have no choice, give them control over Germany
+	option = {
+		name = LHS_gnw.11.b
+		KIA = {
+			country_event = KIA_gnw.6
+		}
+		GER = {
+			country_event = GER_gnw.5
+		}
+	}
+}
+
+#Subaru wants a stronger stance on despots
+country_event = {
+	id = LHS_gnw.12
+	title = LHS_gnw.12.t
+	desc = LHS_gnw.12.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We'll deal with them after the war
+	option = {
+		name = LHS_gnw.12.a
+		FROM = {
+			country_event = SUB_gnw.3
+		}
+	}
+	#We need their support
+	option = {
+		name = LHS_gnw.12.b
+		FROM = {
+			country_event = SUB_gnw.4
+		}
+	}
+}
+
+#Kiara wants to restore Imperial German borders 
+country_event = {
+	id = LHS_gnw.13
+	title = LHS_gnw.13.t
+	desc = LHS_gnw.13.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = LHS_gnw.13.a
+		KIA = {
+			country_event = KIA_gnw.11
+		}
+	}
+	#Don't push your luck
+	option = {
+		name = LHS_gnw.13.b
+		KIA = {
+			country_event = KIA_gnw.12
+		}
+	}
+}
+
+#
+#	KRO
+#
+# A return to Poland?
+country_event = {
+	id = KRO_gnw.1
+	title = KRO_gnw.1.t
+	desc = KRO_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	# An unrealistic proposition, we must find another way
+	option = {
+		name = KRO_gnw.1.a
+		add_political_power = 25
+		set_country_flag = KRO_gnw_neutral
+	}
+	#
+	# It's always on the cards
+	option = {
+		name = KRO_gnw.1.b
+		set_country_flag = KRO_gnw_interested
+	}
+}
+
+#FBK tells us no
+country_event = {
+	id = KRO_gnw.2
+	title = KRO_gnw.2.t
+	desc = KRO_gnw.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We'll work with someone else then
+	option = {
+		name = KRO_gnw.2.a
+		clr_country_flag = KRO_negotiating_with_FBK
+	}
+	#Abandon this foolish idea, we march eastwards
+	option = {
+		name = KRO_gnw.2.b
+		add_war_support = 0.05
+		GNW_move_to_neutrality = yes
+		clr_country_flag = KRO_gnw_interested
+		clr_country_flag = KRO_negotiating_with_FBK
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 0
+		}
+	}
+}
+
+#FBK accepts our proposal
+country_event = {
+	id = KRO_gnw.3
+	title = KRO_gnw.3.t
+	desc = KRO_gnw.3.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippeee
+	option = {
+		name = KRO_gnw.3.a
+		news_event = gnw_news_events.2
+		#	set_country_flag = KRO_promised_poland_independence
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 3
+		}
+	}
+}
+
+#FBK counteroffers - Puppet state
+country_event = {
+	id = KRO_gnw.4
+	title = KRO_gnw.4.t
+	desc = KRO_gnw.4.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#If it's our only option 
+	option = {
+		name = KRO_gnw.4.a
+		FBK = {
+			country_event = FBK_gnw.2
+		}
+		news_event = gnw_news_events.2
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 1
+		}
+	}
+	#We can't accept this
+	option = {
+		name = KRO_gnw.4.b
+		clr_country_flag = KRO_negotiating_with_FBK
+		FBK = {
+			country_event = FBK_gnw.3
+		}
+	}
+}
+
+#FBK counteroffers - Revolution
+country_event = {
+	id = KRO_gnw.5
+	title = KRO_gnw.5.t
+	desc = KRO_gnw.5.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#This is suicidal; refuse
+	option = {
+		name = KRO_gnw.5.a
+		clr_country_flag = KRO_negotiating_with_FBK
+		FBK = {
+			country_event = FBK_gnw.4
+		}
+	}
+	#We have no choice, accept
+	option = {
+		name = KRO_gnw.5.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 2
+		}
+		FBK = {
+			country_event = FBK_gnw.5
+		}
+	}
+}
+
+#LHS offers - Revolution
+country_event = {
+	id = KRO_gnw.6
+	title = KRO_gnw.6.t
+	desc = KRO_gnw.6.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#This is suicidal; refuse
+	option = {
+		name = KRO_gnw.6.a
+		clr_country_flag = KRO_negotiating_with_LHS
+		YAG = {
+			country_event = LHS_gnw.7
+		}
+	}
+	#We have no choice, accept
+	option = {
+		name = KRO_gnw.5.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 2
+		}
+		YAG = {
+			country_event = LHS_gnw.8
+		}
+	}
+}
+
+#LHS tells us to fujck off
+country_event = {
+	id = KRO_gnw.7
+	title = KRO_gnw.7.t
+	desc = KRO_gnw.7.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = KRO_gnw.7.a
+		clr_country_flag = KRO_negotiating_with_LHS
+	}
+}
+
+#LHS seals out independence after the war
+country_event = {
+	id = KRO_gnw.8
+	title = KRO_gnw.8.t
+	desc = KRO_gnw.8.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = KRO_gnw.8.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 3
+		}
+	}
+}
+
+#LHS could not seal independence after the war
+country_event = {
+	id = KRO_gnw.9
+	title = KRO_gnw.9.t
+	desc = KRO_gnw.9.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = KRO_gnw.9.a
+		clr_country_flag = KRO_negotiating_with_LHS
+	}
+}
+
+#Noel tells us to fuck off
+country_event = {
+	id = KRO_gnw.10
+	title = KRO_gnw.10.t
+	desc = KRO_gnw.10.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#what did you expect, seriously
+	option = {
+		name = KRO_gnw.10.a
+		clr_country_flag = KRO_negotiating_with_NOE
+	}
+}
+
+#Noel agrees
+country_event = {
+	id = KRO_gnw.11
+	title = KRO_gnw.11.t
+	desc = KRO_gnw.11.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#HOWWWW!?!?!?!?
+	option = {
+		name = KRO_gnw.11.a
+		GNW_move_to_noel = yes
+		set_variable = {
+			var = NOE.gnw_kronii_concessions
+			value = 1
+		}
+	}
+}
+
+#Return to Poland
+country_event = {
+	id = KRO_gnw.12
+	title = KRO_gnw.12.t
+	desc = KRO_gnw.12.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yay, flavour event
+	option = {
+		name = KRO_gnw.12.a
+	}
+}
+
+#
+#	KIA
+#
+#We are interested in the GNW
+country_event = {
+	id = KIA_gnw.1
+	title = KIA_gnw.1.t
+	desc = KIA_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#blah blah 
+	option = {
+		name = KIA_gnw.1.a
+		set_country_flag = KIA_gnw_interested
+	}
+}
+
+#Germany rejects our proposal
+country_event = {
+	id = KIA_gnw.2
+	title = KIA_gnw.2.t
+	desc = KIA_gnw.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#rip
+	option = {
+		name = KIA_gnw.2.a
+	}
+}
+
+#Germany accepts our proposal
+country_event = {
+	id = KIA_gnw.3
+	title = KIA_gnw.3.t
+	desc = KIA_gnw.3.desc
+	is_triggered_only = yes
+	#yippee
+	option = {
+		name = KIA_gnw.3.a
+		add_stability = -0.15
+		add_war_support = 0.05
+		set_politics = {
+			ruling_party = reactionary_nationalism
+		}
+	}
+}
+
+#Cross the seelow heights
+country_event = {
+	id = KIA_gnw.4
+	title = KIA_gnw.4.t
+	desc = KIA_gnw.4.desc
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = KIA_gnw.4.a
+		add_war_support = 0.05
+	}
+}
+
+#Yagoo wants to maintain the LHS Germany Protectorate
+country_event = {
+	id = KIA_gnw.5
+	title = KIA_gnw.5.t
+	desc = KIA_gnw.5.desc
+	is_triggered_only = yes
+	#Fine be like that
+	option = {
+		name = KIA_gnw.5.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.02
+		}
+		set_variable = {
+			var = FBK.gnw_kiara_concessions
+			value = 0
+		}
+	}
+}
+
+#Yagoo accepts our domination of Germany
+country_event = {
+	id = KIA_gnw.6
+	title = KIA_gnw.6.t
+	desc = KIA_gnw.6.desc
+	is_triggered_only = yes
+	#Let's go
+	option = {
+		name = KIA_gnw.6.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 3
+		}
+	}
+	#Actually, could we get a slice of Noel's lands too?
+	option = {
+		name = KIA_gnw.6.a
+		trigger = {
+			check_variable = {
+				var = global.great_northern_war_tension
+				value = 45
+				compare = greater_than_or_equals
+			}
+		}
+		YAG = {
+			country_event = LHS_gnw.13
+		}
+	}
+}
+
+#Germany begins to mobilize
+country_event = {
+	id = KIA_gnw.7
+	title = KIA_gnw.7.t
+	desc = KIA_gnw.7.desc
+	is_triggered_only = yes
+	#We are ready for war
+	option = {
+		name = KIA_gnw.7.a
+		add_war_support = 0.05
+		create_wargoal = {
+			target = GER
+			type = annex_everything
+		}
+	}
+	#I am a cuck
+	option = {
+		name = KIA_gnw.7.b
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		add_stability = -0.1
+		add_war_support = -0.05
+		GER = {
+			country_event = GER_gnw.7
+		}
+	}
+}
+
+#Germany folds
+country_event = {
+	id = KIA_gnw.8
+	title = KIA_gnw.8.t
+	desc = KIA_gnw.8.desc
+	is_triggered_only = yes
+	#Yipeee
+	option = {
+		name = KIA_gnw.8.a
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		add_stability = 0.05
+	}
+}
+
+#Noel refuses our offer
+country_event = {
+	id = KIA_gnw.9
+	title = KIA_gnw.9.t
+	desc = KIA_gnw.9.desc
+	is_triggered_only = yes
+	#Bruh
+	option = {
+		name = KIA_gnw.9.a
+		#to be done
+	}
+}
+
+#Noel accepts our offer
+country_event = {
+	id = KIA_gnw.10
+	title = KIA_gnw.10.t
+	desc = KIA_gnw.10.desc
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = KIA_gnw.10.a
+		#to be done
+	}
+}
+
+#lhs allows us to take Noel land
+country_event = {
+	id = KIA_gnw.11
+	title = KIA_gnw.11.t
+	desc = KIA_gnw.11.desc
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = KIA_gnw.11.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 4
+		}
+	}
+}
+
+#lhs does not allow us to take Noel land
+country_event = {
+	id = KIA_gnw.12
+	title = KIA_gnw.12.t
+	desc = KIA_gnw.12.desc
+	is_triggered_only = yes
+	#alright old deal stands
+	option = {
+		name = KIA_gnw.12.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_kronii_concessions
+			value = 3
+		}
+	}
+}
+
+#
+#	SUB
+#
+#Push into the spotlight
+country_event = {
+	id = SUB_gnw.1
+	title = SUB_gnw.1.t
+	desc = SUB_gnw.1.desc
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = SUB_gnw.1.a
+		set_country_flag = SUB_gnw_interested
+	}
+}
+
+#Yagoo wants us to participate more in the conflict
+country_event = {
+	id = SUB_gnw.2
+	title = SUB_gnw.2.t
+	desc = SUB_gnw.2.desc
+	is_triggered_only = yes
+	#Sure why not
+	option = {
+		name = SUB_gnw.2.a
+		GNW_move_to_fubuki = yes
+	}
+	#We have enough issues, neutrality
+	option = {
+		name = SUB_gnw.2.b
+		GNW_move_to_neutrality = yes
+	}
+	#Yeah, but we need to see some changes too in government of Kronii and Fubuki
+	option = {
+		name = SUB_gnw.2.c
+		FROM = {
+			country_event = LHS_gnw.12
+		}
+	}
+}
+
+#Yagoo event - we'll deal with them after the war
+country_event = {
+	id = SUB_gnw.3
+	title = SUB_gnw.3.t
+	desc = SUB_gnw.3.desc
+	is_triggered_only = yes
+	#Fair enough
+	option = {
+		name = SUB_gnw.3.a
+		GNW_move_to_fubuki = yes
+		add_to_variable = {
+			var = FBK.gnw_subaru_concessions
+			value = 2
+		}
+	}
+}
+
+#What should our policy towards Fubuki be?
+country_event = {
+	id = SUB_gnw.4
+	title = SUB_gnw.4.t
+	desc = SUB_gnw.4.desc
+	is_triggered_only = yes
+	#They should democratize and follow LHS principles
+	option = {
+		name = SUB_gnw.4.a
+		FBK = {
+			country_event = FBK_gnw.8
+		}
+	}
+	#...and be a bulwark against Rushia and Pekora
+	option = {
+		name = SUB_gnw.4.b
+		FBK = {
+			country_event = FBK_gnw.9
+		}
+	}
+}
+
+#Fubuki offers to "democratize"
+country_event = {
+	id = SUB_gnw.5
+	title = SUB_gnw.5.t
+	desc = SUB_gnw.5.desc
+	is_triggered_only = yes
+	#Sigh..whatever Noel is the threat
+	option = {
+		name = SUB_gnw.5.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_subaru_concessions
+			value = 1
+		}
+		FBK = {
+			country_event = FBK_gnw.10
+		}
+	}
+	#No, we need something more concrete
+	option = {
+		name = SUB_gnw.5.b
+		FBK = {
+			country_event = FBK_gnw.11
+		}
+	}
+}
+
+#Fubuki refuses to democratize
+country_event = {
+	id = SUB_gnw.6
+	title = SUB_gnw.6.t
+	desc = SUB_gnw.6.desc
+	is_triggered_only = yes
+	#Sigh..whatever Noel is the threat
+	option = {
+		name = SUB_gnw.6.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_subaru_concessions
+			value = 0
+		}
+		FBK = {
+			country_event = FBK_gnw.12
+		}
+	}
+	#Hell no, who do you think we are?
+	option = {
+		name = SUB_gnw.6.a
+		GNW_move_to_neutrality = yes
+		set_variable = {
+			var = FBK.gnw_subaru_concessions
+			value = 0
+		}
+		FBK = {
+			country_event = FBK_gnw.13
+		}
+	}
+}
+
+#Fubuki accepts to democratize
+country_event = {
+	id = SUB_gnw.7
+	title = SUB_gnw.7.t
+	desc = SUB_gnw.7.desc
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = SUB_gnw.7.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_subaru_concessions
+			value = 2
+		}
+	}
+}
+
+#Fubuki accepts to democratize and be bulwark
+country_event = {
+	id = SUB_gnw.8
+	title = SUB_gnw.8.t
+	desc = SUB_gnw.8.desc
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = SUB_gnw.8.a
+		GNW_move_to_fubuki = yes
+		set_variable = {
+			var = FBK.gnw_subaru_concessions
+			value = 3
+		}
+	}
+}
+
+#
+#	RUS
+#
+#Call the duma
+country_event = {
+	id = RUS_gnw.1
+	title = RUS_gnw.1.t
+	desc = RUS_gnw.1.desc
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = RUS_gnw.1.a
+		set_country_flag = RUS_gnw_interested
+	}
+}
+
+#Fubuki promises "changes" after the war
+country_event = {
+	id = RUS_gnw.2
+	title = RUS_gnw.2.t
+	desc = RUS_gnw.2.desc
+	is_triggered_only = yes
+	#Is this a joke? Press a claim now
+	option = {
+		name = RUS_gnw.2.a
+		FBK = {
+			country_event = FBK_gnw.15
+		}
+	}
+	#Whatever, this is the best we could do 
+	#Can press claims again but this causes more tension
+	option = {
+		name = RUS_gnw.2.b
+		FBK = {
+			country_event = FBK_gnw.16
+		}
+	}
+	#Ohh trust me we'll be back
+	option = {
+		name = RUS_gnw.2.c
+	}
+}
+
+#Fubuki capitulates to our demands
+country_event = {
+	id = RUS_gnw.3
+	title = RUS_gnw.3.t
+	desc = RUS_gnw.3.desc
+	is_triggered_only = yes
+	#Oh ok nice
+	option = {
+		name = RUS_gnw.3.a
+		GNW_move_to_neutrality = yes
+	}
+}
+
+#Fubuki refuses to capitulate to our demands
+country_event = {
+	id = RUS_gnw.4
+	title = RUS_gnw.4.t
+	desc = RUS_gnw.4.desc
+	is_triggered_only = yes
+	#Oh yeah??!? War!!
+	option = {
+		name = RUS_gnw.4.a
+		GNW_move_to_noel = yes
+		create_wargoal = {
+			target = FBK
+			type = annex_everything
+		}
+	}
+	#It's way too soon
+	option = {
+		name = RUS_gnw.4.b
+		FBK = {
+			country_event = FBK_gnw.16
+		}
+	}
+}
+
+#FUBUKI TELLS US TO GO HOME >:(
+country_event = {
+	id = RUS_gnw.5
+	title = RUS_gnw.5.t
+	desc = RUS_gnw.5.desc
+	is_triggered_only = yes
+	#WAAAAR
+	option = {
+		name = RUS_gnw.5.a
+		GNW_move_to_noel = yes
+		create_wargoal = {
+			target = FBK
+			type = annex_everything
+		}
+	}
+	#It's not the right time...
+	option = {
+		name = RUS_gnw.5.b
+		FBK = {
+			country_event = FBK_gnw.18
+		}
+	}
+}
+
+#FUBUKI BENDS OVER TO OUR WILL
+country_event = {
+	id = RUS_gnw.6
+	title = RUS_gnw.6.t
+	desc = RUS_gnw.6.desc
+	is_triggered_only = yes
+	#:)
+	option = {
+		name = RUS_gnw.6.a
+	}
+}
+
+#FUBUKI ACCEPTS OUR DEAL 
+country_event = {
+	id = RUS_gnw.7
+	title = RUS_gnw.7.t
+	desc = RUS_gnw.7.desc
+	is_triggered_only = yes
+	#:)
+	option = {
+		name = RUS_gnw.7.a
+		GNW_move_to_fubuki = yes
+	}
+}
+
+#Secret negotiations with Noel - What should we offer?
+country_event = {
+	id = RUS_gnw.8
+	title = RUS_gnw.8.t
+	desc = RUS_gnw.8.desc
+	is_triggered_only = yes
+	#Fubuki's Russian lands 
+	option = {
+		name = RUS_gnw.8.a
+		NOE = {
+			country_event = NOE_gnw.7
+		}
+	}
+	#(^) + Finland and Baltics 
+	option = {
+		name = RUS_gnw.8.b
+		NOE = {
+			country_event = NOE_gnw.8
+		}
+	}
+	#We want more influence over Flare
+	option = {
+		name = RUS_gnw.8.c
+		NOE = {
+			country_event = NOE_gnw.9
+		}
+	}
+}
+
+#Noel accepts our deal - Fubuki Russian land
+country_event = {
+	id = RUS_gnw.9
+	title = RUS_gnw.9.t
+	desc = RUS_gnw.9.desc
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = RUS_gnw.9.a
+		GNW_move_to_noel = yes
+		set_variable = {
+			var = NOE.gnw_rushia_concessions
+			value = 2
+		}
+	}
+}
+
+#Noel refuses our deal
+country_event = {
+	id = RUS_gnw.10
+	title = RUS_gnw.10.t
+	desc = RUS_gnw.10.desc
+	is_triggered_only = yes
+	#Bruh
+	option = {
+		name = RUS_gnw.10.a
+	}
+}
+
+#Noel accepts our deal - Finland and Baltics
+country_event = {
+	id = RUS_gnw.11
+	title = RUS_gnw.11.t
+	desc = RUS_gnw.11.desc
+	is_triggered_only = yes
+	#Bruh
+	option = {
+		name = RUS_gnw.11.a
+		GNW_move_to_noel = yes
+		set_variable = {
+			var = NOE.gnw_rushia_concessions
+			value = 3
+		}
+	}
+}
+
+#Noel accepts our deal - Flare influence
+country_event = {
+	id = RUS_gnw.12
+	title = RUS_gnw.12.t
+	desc = RUS_gnw.12.desc
+	is_triggered_only = yes
+	#Bruh
+	option = {
+		name = RUS_gnw.12.a
+		GNW_move_to_noel = yes
+		set_variable = {
+			var = NOE.gnw_rushia_concessions
+			value = 4
+		}
+	}
+}
+
+#Noel aoffers us some rubbish deal
+country_event = {
+	id = RUS_gnw.13
+	title = RUS_gnw.13.t
+	desc = RUS_gnw.13.desc
+	is_triggered_only = yes
+	#Sure!!! looks greato!!
+	option = {
+		name = RUS_gnw.13.a
+		GNW_move_to_noel = yes
+		set_variable = {
+			var = NOE.gnw_rushia_concessions
+			value = 1
+		}
+	}
+	#U mad bruv?
+	option = {
+		name = RUS_gnw.13.b
+		NOE = {
+			country_event = NOE_gnw.10
+		}
+	}
+}
+
+#Noel stands their ground!
+country_event = {
+	id = RUS_gnw.14
+	title = RUS_gnw.14.t
+	desc = RUS_gnw.14.desc
+	is_triggered_only = yes
+	#Ook then 
+	option = {
+		name = RUS_gnw.14.a
+	}
+}
+
+#Noel offers negotiating part 2 electric boogaloo
+country_event = {
+	id = RUS_gnw.15
+	title = RUS_gnw.15.t
+	desc = RUS_gnw.15.desc
+	is_triggered_only = yes
+	#Fubuki's Russian lands 
+	option = {
+		name = RUS_gnw.15.a
+		set_country_flag = RUS_second_negotiations
+		NOE = {
+			country_event = NOE_gnw.7
+		}
+	}
+	#(^) + Finland and Baltics 
+	option = {
+		name = RUS_gnw.15.b
+		set_country_flag = RUS_second_negotiations
+		NOE = {
+			country_event = NOE_gnw.8
+		}
+	}
+	#We want more influence over Flare
+	option = {
+		name = RUS_gnw.15.c
+		set_country_flag = RUS_second_negotiations
+		NOE = {
+			country_event = NOE_gnw.9
+		}
+	}
+}

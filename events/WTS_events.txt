@@ -967,6 +967,15 @@ country_event = {
 		}
 		add_stability = 0.05
 		complete_national_focus = WTS_socialist_budget
+		set_politics = {
+			ruling_party = pro_yagoo_progressive
+		}
+		add_popularity = {
+			ideology = pro_yagoo_progressive
+			popularity = 0.05
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_yagoo_progressive_cabinet = yes
 	}
 	option = {
 		#Prior socialist support and budget
@@ -978,7 +987,16 @@ country_event = {
 			}
 		}
 		add_stability = 0.05
-		complete_national_focus = WTS_socialist_budget
+		complete_national_focus = WTS_conservative_budget
+		set_politics = {
+			ruling_party = democratic
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_yagoo_conservative_cabinet = yes
 	}
 }
 
@@ -4700,6 +4718,56 @@ country_event = {
 		custom_effect_tooltip = WTS_dissolution_national_teammates_front
 		hidden_effect = {
 			#Rename all the parties
+			set_party_name = {
+				ideology = democratic
+				long_name = WTS_new_tories_long
+				name = WTS_new_tories
+			}
+			set_party_name = {
+				ideology = pro_yagoo_progressive
+				long_name = WTS_labour_unionists_long
+				name = WTS_labour_unionists
+			}
+			set_party_name = {
+				ideology = pro_yagoo_kleptocracy
+				long_name = WTS_northern_irish_union_party_long
+				name = WTS_northern_irish_union_party
+			}
+			set_party_name = {
+				ideology = pro_yagoo_monarchy
+				long_name = WTS_teammates_party_yagoo_long
+				name = WTS_teammates_party_yagoo
+			}
+			set_party_name = {
+				ideology = pro_resistance_kleptocracy
+				long_name = WTS_northern_irish_union_party_long
+				name = WTS_northern_irish_union_party
+			}
+			set_party_name = {
+				ideology = neutrality
+				long_name = WTS_northern_irish_union_party_long
+				name = WTS_northern_irish_union_party
+			}
+			set_party_name = {
+				ideology = pro_resistance_nationalism
+				long_name = WTS_british_national_imperial_party_mosely_long
+				name = WTS_british_national_imperial_party_mosely
+			}
+			set_party_name = {
+				ideology = pro_resistance_monarchy
+				long_name = WTS_british_national_imperial_party_chesterton_long
+				name = WTS_british_national_imperial_party_chesterton
+			}
+			set_party_name = {
+				ideology = divine_mandate
+				long_name = WTS_teammates_party_ortha_long
+				name = WTS_teammates_party_ortha
+			}
+			set_party_name = {
+				ideology = reactionary_nationalism
+				long_name = WTS_british_national_imperial_party_harmsworth_long
+				name = WTS_british_national_imperial_party_harmsworth
+			}
 		}
 		set_country_flag = WTS_national_teammates_front_dissolved
 		add_stability = -0.15
@@ -4729,6 +4797,8 @@ country_event = {
 			ideology = democratic
 			popularity = 0.01
 		}
+		WTS_clear_ministers = yes
+		WTS_pro_yagoo_kleptocracy_cabinet = yes
 	}
 }
 
@@ -4828,7 +4898,7 @@ country_event = {
 			popularity = -0.05
 		}
 		WTS_clear_ministers = yes
-		WTS_pro_yagoo_kleptocracy_cabinet = yes
+		WTS_mixed_ideology_democracy_cabinet = yes
 	}
 }
 
@@ -5046,6 +5116,17 @@ country_event = {
 		WTS_pro_resistance_nationalism_cabinet = yes
 		set_country_flag = WTS_constitutional_queen_flag
 	}
+	#For a brighter britain, under Watson
+	option = {
+		name = watson.202.b
+		set_politics = {
+			ruling_party = pro_resistance_monarchy
+			elections_allowed = no
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_resistance_monarchy_cabinet = yes
+		set_country_flag = WTS_constitutional_queen_flag
+	}
 }
 
 #Absolutist rule 
@@ -5055,6 +5136,17 @@ country_event = {
 	desc = watson.203.d
 	picture = GFX_report_event_mio
 	is_triggered_only = yes
+	#For Britannia!
+	option = {
+		name = watson.203.b
+		set_politics = {
+			ruling_party = pro_yagoo_monarchy
+			elections_allowed = no
+		}
+		WTS_clear_ministers = yes
+		WTS_pro_yagoo_monarchy_cabinet = yes
+		set_country_flag = WTS_absolutist_watson_flag
+	}
 	#For Ame! I mean Britannia
 	option = {
 		name = watson.203.a
@@ -5063,7 +5155,7 @@ country_event = {
 			elections_allowed = no
 		}
 		WTS_clear_ministers = yes
-		WTS_pro_yagoo_monarchy_cabinet = yes
+		WTS_divine_mandate_cabinet = yes
 		set_country_flag = WTS_absolutist_watson_flag
 	}
 }

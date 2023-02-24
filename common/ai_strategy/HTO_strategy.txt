@@ -1,0 +1,155 @@
+HTO_need_strong_navy_and_airforce = {
+	allowed = {
+		tag = HTO
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		surrender_progress > 0.3
+	}
+	ai_strategy = {
+		type = air_factory_balance
+		value = 25
+	}
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 25
+	}
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 10
+	}
+}
+
+HTO_indonesia_strategy = {
+	allowed = {
+		tag = HTO
+	}
+	enable = {
+		HTO = {
+			OR = {
+				is_resistance_ideology = yes
+				is_neutral_ideology = yes
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = conquer
+		id = ANY
+		value = 75
+	}
+	ai_strategy = {
+		type = conquer
+		id = IOF
+		value = 50
+	}
+	ai_strategy = {
+		type = conquer
+		id = RIS
+		value = 50
+	}
+	ai_strategy = {
+		type = conquer
+		id = MOO
+		value = 35
+	}
+	ai_strategy = {
+		type = conquer
+		id = CLO
+		value = 35
+	}
+	ai_strategy = {
+		type = conquer
+		id = ZTA
+		value = 25
+	}
+	ai_strategy = {
+		type = conquer
+		id = KRU
+		value = 25
+	}
+	ai_strategy = {
+		type = conquer
+		id = PAV
+		value = 25
+	}
+}
+
+HTO_challenge_yagoo = {
+	allowed = {
+		tag = HTO
+	}
+	enable = {
+		HTO = {
+			OR = {
+				is_resistance_ideology = yes
+				is_neutral_ideology = yes
+			}
+			OR = {
+				AND = {
+					owns_state = 335
+					owns_state = 1145
+					owns_state = 1157
+				}
+				AND = {
+					num_of_factories > 50
+					strength_ratio = {
+						tag = YAG
+						ratio < 0.5
+					}
+				}
+				threat > 0.75
+			}
+		}
+	}
+	ai_strategy = {
+		type = conquer
+		id = YAG
+		value = 35
+	}
+	ai_strategy = {
+		type = conquer
+		id = MAL
+		value = 35
+	}
+	ai_strategy = {
+		type = conquer
+		id = PAV
+		value = 35
+	}
+	ai_strategy = {
+		type = area_priority
+		id = east_indies
+		value = 25
+	}
+	abort_when_not_enabled = yes
+}
+
+HTO_align_with_coco = {
+	allowed = {
+		tag = HTO
+	}
+	enable = {
+		HTO = {
+			OR = {
+				is_resistance_ideology = yes
+				is_neutral_ideology = yes
+			}
+			NOT = {
+				has_government = communism
+			}
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = HTO
+		value = 85
+	}
+	ai_strategy = {
+		type = alliance
+		id = HTO
+		value = 85
+	}
+}

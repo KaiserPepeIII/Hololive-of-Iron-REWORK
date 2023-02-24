@@ -2367,15 +2367,16 @@ focus_tree = {
 				ideology = var:current_party_ideology_group
 				popularity = 0.1
 			}
-			every_character = {
-				limit = {
-					has_trait = ALO_dejected_empress
-				}
-				remove_trait = {
-					trait = ALO_dejected_empress
-				}
-				add_trait = {
-					trait = ALO_hopeful_empress
+			custom_effect_tooltip = ALO_our_demon_queen_tt
+			hidden_effect = {
+				every_character = {
+					limit = {
+						has_trait = ALO_dejected_empress
+					}
+					swap_country_leader_traits = {
+						remove = ALO_dejected_empress
+						add = ALO_hopeful_empress
+					}
 				}
 			}
 		}
