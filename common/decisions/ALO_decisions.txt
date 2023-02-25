@@ -399,17 +399,18 @@ ALO_our_demon_queen = {
 		visible = {
 			always = yes
 		}
-		days_remove = 90
+		days_remove = 30
 		complete_effect = {
-			every_character = {
-				limit = {
-					has_trait = ALO_hopeful_empress
-				}
-				remove_trait = {
-					trait = ALO_hopeful_empress
-				}
-				add_trait = {
-					trait = ALO_confident_empress
+			custom_effect_tooltip = ALO_tour_tt
+			hidden_effect = {
+				every_character = {
+					limit = {
+						has_trait = ALO_hopeful_empress
+					}
+					swap_country_leader_traits = { 
+						remove = ALO_hopeful_empress
+						add = ALO_confident_empress
+					}
 				}
 			}
 		}
@@ -421,6 +422,9 @@ ALO_our_demon_queen = {
 		icon = GFX_decision_icon_default
 		available = {
 			has_political_power > 125
+			ALO_mano_aloe_divine_mandate = {
+				has_trait = ALO_confident_empress
+			}
 		}
 		cost = 125
 		fire_only_once = yes
@@ -429,15 +433,16 @@ ALO_our_demon_queen = {
 		}
 		days_remove = 30
 		complete_effect = {
-			every_character = {
-				limit = {
-					has_trait = ALO_confident_empress
-				}
-				remove_trait = {
-					trait = ALO_confident_empress
-				}
-				add_trait = {
-					trait = ALO_inspirational_empress
+			custom_effect_tooltip = ALO_speech_tt
+			hidden_effect = {
+				every_character = {
+					limit = {
+						has_trait = ALO_confident_empress
+					}
+					swap_country_leader_traits = { 
+						remove = ALO_confident_empress
+						add = ALO_inspirational_empress
+					}
 				}
 			}
 		}
