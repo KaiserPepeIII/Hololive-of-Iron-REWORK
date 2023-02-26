@@ -431,6 +431,62 @@ country_event = {
 	}
 }
 
+#Flare offers to be a mediator
+country_event = {
+	id = FBK_gnw.20
+	title = FBK_gnw.20.t
+	desc = FBK_gnw.20.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#What should we demand?
+	#Flavour event
+	option = {
+		name = FBK_gnw.20.a
+		country_event = FBK_gnw.21
+	}
+}
+
+#Our demands?
+country_event = {
+	id = FBK_gnw.21
+	title = FBK_gnw.21.t
+	desc = FBK_gnw.21.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#
+	#	Losses referred to here are largely territorial based
+	#	like it or not reparations and a Treaty of Trianon style 
+	#	thing would have to happen
+	#We want to crush Noel completely
+	option = {
+		name = FBK_gnw.21.a
+		FLA = {
+			country_event = FLA_gnw.1
+		}
+	}
+	#We want to crush Noel but we agree to Baltic autonomy
+	option = {
+		name = FBK_gnw.21.b
+		FLA = {
+			country_event = FLA_gnw.2
+		}
+	}
+	#We will be less harsh, the Baltics will be free
+	option = {
+		name = FBK_gnw.21.c
+		FLA = {
+			country_event = FLA_gnw.3
+		}
+	}
+	#Kronii will regain her control but Noel would be largely left alone
+	option = {
+		name = FBK_gnw.21.c
+		FLA = {
+			country_event = FLA_gnw.4
+		}
+	}
+}
+
 #
 #	NOE
 #
@@ -711,6 +767,62 @@ country_event = {
 		name = NOE_gnw.10.a
 		RUS = {
 			country_event = RUS_gnw.15
+		}
+	}
+}
+
+#Flare approaches us for a settlement
+country_event = {
+	id = NOE_gnw.11
+	title = NOE_gnw.11.t
+	desc = NOE_gnw.11.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Flavour event
+	#What should we push for
+	option = {
+		name = NOE_gnw.11.a
+		country_event = NOE_gnw.12
+	}
+}
+
+#Our demands
+country_event = {
+	id = NOE_gnw.12
+	title = NOE_gnw.12.t
+	desc = NOE_gnw.12.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#
+	#	Losses referred to here are largely territorial based
+	#	like it or not reparations and a Treaty of Trianon style 
+	#	thing would have to happen
+	#We want to crush Fubuki completely
+	option = {
+		name = NOE_gnw.12.a
+		FLA = {
+			country_event = FLA_gnw.5
+		}
+	}
+	#Fubuki keeps Sweden and Finland, everything else released
+	option = {
+		name = NOE_gnw.12.b
+		FLA = {
+			country_event = FLA_gnw.6
+		}
+	}
+	#Only Russian and Baltic lands will be returned
+	option = {
+		name = NOE_gnw.12.c
+		FLA = {
+			country_event = FLA_gnw.7
+		}
+	}
+	#Baltic lands returned, Poland is ours
+	option = {
+		name = NOE_gnw.12.c
+		FLA = {
+			country_event = FLA_gnw.8
 		}
 	}
 }
@@ -1342,12 +1454,14 @@ country_event = {
 		name = KRO_gnw.1.a
 		add_political_power = 25
 		set_country_flag = KRO_gnw_neutral
+		custom_effect_tooltip = FBK_stay_in_russia_tooltip
 	}
 	#
 	# It's always on the cards
 	option = {
 		name = KRO_gnw.1.b
 		set_country_flag = KRO_gnw_interested
+		custom_effect_tooltip = FBK_return_to_pland_tooltip
 	}
 }
 
@@ -1361,7 +1475,7 @@ country_event = {
 	#We'll work with someone else then
 	option = {
 		name = KRO_gnw.2.a
-		clr_country_flag = KRO_negotiating_with_FBK
+		set_country_flag = KRO_negotiated_with_FBK
 	}
 	#Abandon this foolish idea, we march eastwards
 	option = {
@@ -1466,7 +1580,7 @@ country_event = {
 	#This is suicidal; refuse
 	option = {
 		name = KRO_gnw.6.a
-		clr_country_flag = KRO_negotiating_with_LHS
+		set_country_flag = KRO_negotiated_with_LHS
 		YAG = {
 			country_event = LHS_gnw.7
 		}
@@ -1495,7 +1609,7 @@ country_event = {
 	#ogey
 	option = {
 		name = KRO_gnw.7.a
-		clr_country_flag = KRO_negotiating_with_LHS
+		set_country_flag = KRO_negotiated_with_LHS
 	}
 }
 
@@ -1527,7 +1641,9 @@ country_event = {
 	#bruh
 	option = {
 		name = KRO_gnw.9.a
-		clr_country_flag = KRO_negotiating_with_LHS
+		KRO = {
+			set_country_flag = KRO_negotiated_with_LHS
+		}
 	}
 }
 
@@ -1541,7 +1657,9 @@ country_event = {
 	#what did you expect, seriously
 	option = {
 		name = KRO_gnw.10.a
-		clr_country_flag = KRO_negotiating_with_NOE
+		KRO = {
+			set_country_flag = KRO_negotiated_with_NOE
+		}
 	}
 }
 
@@ -1671,7 +1789,7 @@ country_event = {
 		}
 		GNW_move_to_fubuki = yes
 		set_variable = {
-			var = FBK.gnw_kronii_concessions
+			var = FBK.gnw_kiara_concessions
 			value = 3
 		}
 	}
@@ -2257,5 +2375,200 @@ country_event = {
 		NOE = {
 			country_event = NOE_gnw.9
 		}
+	}
+}
+
+#
+#	FLA
+#
+#Fubuki wants to completely destroy Noel
+country_event = {
+	id = FLA_gnw.1
+	title = FLA_gnw.1.t
+	desc = FLA_gnw.1.desc
+	is_triggered_only = yes
+	#Get LHS to do something
+	option = {
+		name = FLA_gnw.1.a
+	}
+	#Get Rushia to do something
+	option = {
+		name = FLA_gnw.1.b
+	}
+	#Get Kiara to do something
+	option = {
+		name = FLA_gnw.1.c
+	}
+	#We have to accept these terms
+	option = {
+		name = FLA_gnw.1.d
+	}
+}
+
+#Fubuki wants to destroy Noel; agreeed to Baltic autonomy
+country_event = {
+	id = FLA_gnw.2
+	title = FLA_gnw.2.t
+	desc = FLA_gnw.2.desc
+	is_triggered_only = yes
+	#Get LHS to do something
+	option = {
+		name = FLA_gnw.2.a
+	}
+	#Get Rushia to do something
+	option = {
+		name = FLA_gnw.2.b
+	}
+	#Get Kiara to do something
+	option = {
+		name = FLA_gnw.2.c
+	}
+	#We have to accept these terms
+	option = {
+		name = FLA_gnw.2.d
+	}
+}
+
+#Fubuki wants to reduce Noel; agreeed to Baltic freedom
+country_event = {
+	id = FLA_gnw.3
+	title = FLA_gnw.3.t
+	desc = FLA_gnw.3.desc
+	is_triggered_only = yes
+	#Get LHS to do something
+	option = {
+		name = FLA_gnw.3.a
+	}
+	#Get Rushia to do something
+	option = {
+		name = FLA_gnw.3.b
+	}
+	#Get Kiara to do something
+	option = {
+		name = FLA_gnw.3.c
+	}
+	#We have to accept these terms
+	option = {
+		name = FLA_gnw.3.d
+	}
+}
+
+#Fubuki wants to restore Kronii and issue minor stuff
+country_event = {
+	id = FLA_gnw.4
+	title = FLA_gnw.4.t
+	desc = FLA_gnw.4.desc
+	is_triggered_only = yes
+	#Get LHS to do something
+	option = {
+		name = FLA_gnw.4.a
+	}
+	#Get Rushia to do something
+	option = {
+		name = FLA_gnw.4.b
+	}
+	#Get Kiara to do something
+	option = {
+		name = FLA_gnw.4.c
+	}
+	#We have to accept these terms
+	option = {
+		name = FLA_gnw.4.d
+	}
+}
+
+#Noel wants to completely crush Fubuki
+country_event = {
+	id = FLA_gnw.5
+	title = FLA_gnw.5.t
+	desc = FLA_gnw.5.desc
+	is_triggered_only = yes
+	#Get Rushia to do something
+	option = {
+		name = FLA_gnw.5.a
+	}
+	#Get Kiara to do something
+	option = {
+		name = FLA_gnw.5.b
+	}
+	#Push ourselves
+	option = {
+		name = FLA_gnw.5.c
+	}
+	#We have to accept these terms
+	option = {
+		name = FLA_gnw.5.d
+	}
+}
+
+#Noel wants to only leave Fubuki Sweden and Finland
+country_event = {
+	id = FLA_gnw.6
+	title = FLA_gnw.6.t
+	desc = FLA_gnw.6.desc
+	is_triggered_only = yes
+	#Get Rushia to do something
+	option = {
+		name = FLA_gnw.6.a
+	}
+	#Get Kiara to do something
+	option = {
+		name = FLA_gnw.6.b
+	}
+	#Push ourselves
+	option = {
+		name = FLA_gnw.6.c
+	}
+	#We have to accept these terms
+	option = {
+		name = FLA_gnw.6.d
+	}
+}
+
+#Noel only wants Russian and Baltic lands returned 
+country_event = {
+	id = FLA_gnw.7
+	title = FLA_gnw.7.t
+	desc = FLA_gnw.7.desc
+	is_triggered_only = yes
+	#Get Rushia to do something
+	option = {
+		name = FLA_gnw.7.a
+	}
+	#Get Kiara to do something
+	option = {
+		name = FLA_gnw.7.b
+	}
+	#Push ourselves
+	option = {
+		name = FLA_gnw.7.c
+	}
+	#We have to accept these terms
+	option = {
+		name = FLA_gnw.7.d
+	}
+}
+
+#Noel only wants Baltic Lands and Poland
+country_event = {
+	id = FLA_gnw.8
+	title = FLA_gnw.8.t
+	desc = FLA_gnw.8.desc
+	is_triggered_only = yes
+	#Get Rushia to do something
+	option = {
+		name = FLA_gnw.8.a
+	}
+	#Get Kiara to do something
+	option = {
+		name = FLA_gnw.8.b
+	}
+	#Push ourselves
+	option = {
+		name = FLA_gnw.8.c
+	}
+	#We have to accept these terms
+	option = {
+		name = FLA_gnw.8.d
 	}
 }
