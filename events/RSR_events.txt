@@ -1,0 +1,31 @@
+add_namespace = RSR
+# CPG wants an alliance
+country_event = {
+	id = RSR.1
+	title = RSR.1.t
+	desc = RSR.1.desc
+	picture = GFX_report_event_JAP_iroha_revolution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#yeah sure sounds good ig
+	option = {
+		name = RSR.1.a
+		CPG = {
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				create_faction = CPG_RSR_alliance
+			}
+			country_event = CPG.3
+			add_to_faction = RSR
+		}
+	}
+	#lolno
+	option = {
+		name = RSR.1.b
+		CPG = {
+			country_event = CPG.4
+		}
+	}
+}

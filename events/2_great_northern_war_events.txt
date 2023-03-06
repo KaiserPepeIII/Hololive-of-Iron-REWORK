@@ -1,3 +1,4 @@
+add_namespace = initiator_gnw
 add_namespace = NOE_gnw
 add_namespace = FBK_gnw
 add_namespace = WFA_gnw
@@ -2570,5 +2571,35 @@ country_event = {
 	#We have to accept these terms
 	option = {
 		name = FLA_gnw.8.d
+	}
+}
+
+#
+#	Initiator
+#	
+#Treaty breaking down
+country_event = {
+	id = initiator_gnw.1
+	title = initiator_gnw.1.t
+	desc = initiator_gnw.1.desc
+	is_triggered_only = yes
+	#Must retain at all costs!
+	option = {
+		name = initiator_gnw.1.a
+		subtract_from_variable = {
+			var = global.great_northern_war_tension
+			value = 10
+		}
+	}
+	#War button
+	option = {
+		name = initiator_gnw.1.b
+		hidden_effect = {
+			FBK = {
+				declare_war_on = {
+					target = NOE
+				}
+			}
+		}
 	}
 }
