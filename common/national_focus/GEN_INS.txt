@@ -51,20 +51,23 @@ focus_tree = {
 		id = IND_wartime_industry
 		icon = GFX_focus_IND_wartime_industry
 		cost = 7
+		completion_reward = {
+			add_timed_idea = {
+				idea = IND_wartime_industry_idea
+				days = 365
+			}
+		}
 		x = 38
 		y = 0
-	}
-	focus = {
-		id = IND_village_factories
-		icon = GFX_focus_IND_village_factories
-		cost = 7
-		x = 41
-		y = 2
 	}
 	focus = {
 		id = IND_victory_in_civil_war
 		icon = GFX_focus_IND_victory_in_civil_war
 		cost = 7
+		completion_reward = {
+			#autocompleted
+			add_stability = 0.05
+		}
 		x = 38
 		y = 7
 	}
@@ -74,6 +77,9 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_enter_usada
+		}
+		completion_reward = {
+			add_ideas = IND_road_networks_idea
 		}
 		x = 8
 		y = 5
@@ -95,6 +101,13 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_private_military_training
 		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0_emergency
+				amount = 2000
+				producer = PEK
+			}
+		}
 		x = 8
 		y = 7
 	}
@@ -104,6 +117,12 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_enter_usada
+		}
+		completion_reward = {
+			capital_scope = {
+				two_random_arms_factory = yes
+				two_random_civilian_factory = yes
+			}
 		}
 		x = 10
 		y = 5
@@ -135,6 +154,12 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_the_fire_rises
 		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0_emergency
+				amount = 1250
+			}
+		}
 		x = 15
 		y = 1
 	}
@@ -144,6 +169,10 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_the_fire_rises
+		}
+		completion_reward = {
+			one_random_militia = yes
+			add_war_support = 0.05
 		}
 		x = 18
 		y = 1
@@ -158,6 +187,10 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_rally_our_supporters
 		}
+		completion_reward = {
+			two_random_militia = yes
+			two_random_militia = yes
+		}
 		x = 16
 		y = 2
 	}
@@ -167,6 +200,19 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_the_fire_rises
+		}
+		completion_reward = {
+			every_owned_state = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
 		}
 		x = 21
 		y = 1
@@ -181,6 +227,9 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_fortify_the_villages
 		}
+		completion_reward = {
+			add_ideas = IND_loyal_officers
+		}
 		x = 20
 		y = 2
 	}
@@ -193,6 +242,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = IND_establish_militias
+		}
+		completion_reward = {
+			country_event = indonesia.7
 		}
 		x = 18
 		y = 3
@@ -218,6 +270,10 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_look_to_lhs
 		}
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = IND_bankrolled
+		}
 		x = 20
 		y = 5
 	}
@@ -228,6 +284,9 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_look_to_lhs
 		}
+		completion_reward = {
+			add_ideas = IND_security_training_idea
+		}
 		x = 16
 		y = 5
 	}
@@ -237,6 +296,8 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_comades_in_resistance
+		}
+		completion_reward = {
 		}
 		x = 26
 		y = 5
@@ -380,7 +441,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = IND_national_reconciliation
 		}
-		x = 35
+		completion_reward = {
+			country_event = indonesia.3
+		}
+		x = 36
 		y = 9
 	}
 	focus = {
@@ -390,7 +454,7 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_wartime_industry
 		}
-		x = 39
+		x = 41
 		y = 1
 	}
 	focus = {
@@ -400,7 +464,15 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_every_hand_needed
 		}
-		x = 39
+		completion_reward = {
+			capital_scope = {
+				add_resource = {
+					type = steel
+					amount = 7
+				}
+			}
+		}
+		x = 40
 		y = 2
 	}
 	focus = {
@@ -426,7 +498,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = IND_punish_opposition
 		}
-		x = 41
+		completion_reward = {
+			country_event = indonesia.2
+		}
+		x = 40
 		y = 9
 	}
 	focus = {
@@ -436,63 +511,50 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_national_reconciliation
 		}
-		x = 39
-		y = 10
-	}
-	focus = {
-		id = IND_link_the_villages
-		icon = GFX_focus_IND_link_the_villages
-		cost = 7
 		prerequisite = {
 			focus = IND_punish_opposition
 		}
-		prerequisite = {
-			focus = IND_national_reconciliation
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
 		}
-		x = 37
+		x = 38
 		y = 10
-	}
-	focus = {
-		id = IND_secure_industrial_assets
-		icon = GFX_focus_IND_secure_industrial_assets
-		cost = 7
-		prerequisite = {
-			focus = IND_rebuild_the_cities
-		}
-		x = 39
-		y = 11
 	}
 	focus = {
 		id = IND_repair_roads
 		icon = GFX_focus_IND_repair_roads
 		cost = 7
 		prerequisite = {
-			focus = IND_village_factories
-		}
-		prerequisite = {
 			focus = IND_makeshift_steel_mills
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = IND_roadworks
+				days = 720
+			}
 		}
 		x = 40
 		y = 3
-	}
-	focus = {
-		id = IND_scavange_scrap_metal
-		icon = GFX_focus_IND_scavange_scrap_metal
-		cost = 7
-		prerequisite = {
-			focus = IND_wartime_industry
-		}
-		x = 43
-		y = 1
 	}
 	focus = {
 		id = IND_arms_workshops
 		icon = GFX_focus_IND_arms_workshops
 		cost = 7
 		prerequisite = {
-			focus = IND_scavange_scrap_metal
+			focus = IND_every_hand_needed
 		}
-		x = 43
+		completion_reward = {
+			two_random_arms_factory = yes
+		}
+		x = 42
 		y = 2
 	}
 	focus = {
@@ -500,10 +562,33 @@ focus_tree = {
 		icon = GFX_focus_IND_connect_the_villages
 		cost = 7
 		prerequisite = {
-			focus = IND_village_factories
-		}
-		prerequisite = {
 			focus = IND_arms_workshops
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
 		}
 		x = 42
 		y = 3
@@ -518,6 +603,12 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_repair_roads
 		}
+		completion_reward = {
+			capital_scope = {
+				two_random_arms_factory = yes
+				two_random_civilian_factory = yes
+			}
+		}
 		x = 41
 		y = 4
 	}
@@ -527,6 +618,9 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_look_to_lhs
+		}
+		completion_reward = {
+			add_ideas = IND_pro_yagoo_propaganda_idea
 		}
 		x = 18
 		y = 5
@@ -541,6 +635,12 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_new_rifle_shipments
 		}
+		completion_reward = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+		}
 		x = 18
 		y = 7
 	}
@@ -553,6 +653,13 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = IND_security_training
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 1200
+				producer = SUB
+			}
 		}
 		x = 17
 		y = 6
@@ -595,9 +702,12 @@ focus_tree = {
 		icon = GFX_focus_IND_political_indoctrination
 		cost = 7
 		prerequisite = {
-			focus = IND_link_the_villages
+			focus = IND_rebuild_the_cities
 		}
-		x = 37
+		completion_reward = {
+			add_ideas = IND_political_indoctrination_idea
+		}
+		x = 38
 		y = 11
 	}
 	focus = {
@@ -607,18 +717,14 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_political_indoctrination
 		}
-		x = 35
-		y = 12
-	}
-	focus = {
-		id = IND_loyalty_to_the_party
-		icon = GFX_focus_IND_loyalty_to_the_party
-		cost = 7
-		prerequisite = {
-			focus = IND_a_national_army
+		completion_reward = {
+			add_timed_idea = {
+				idea = IND_army_professionalization
+				days = 365
+			}
 		}
-		x = 34
-		y = 13
+		x = 36
+		y = 12
 	}
 	focus = {
 		id = IND_loyalty_to_the_nation
@@ -626,6 +732,13 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_a_national_army
+		}
+		completion_reward = {
+			add_war_support = 0.15
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
 		}
 		x = 36
 		y = 13
@@ -635,23 +748,13 @@ focus_tree = {
 		icon = GFX_focus_IND_indonesian_identity
 		cost = 7
 		prerequisite = {
-			focus = IND_secure_industrial_assets
-		}
-		prerequisite = {
 			focus = IND_political_indoctrination
 		}
-		x = 41
-		y = 12
-	}
-	focus = {
-		id = IND_unite_the_islands
-		icon = GFX_focus_IND_unite_the_islands
-		cost = 7
-		prerequisite = {
-			focus = IND_indonesian_identity
+		completion_reward = {
+			add_stability = 0.1
 		}
-		x = 41
-		y = 13
+		x = 40
+		y = 12
 	}
 	focus = {
 		id = IND_cultural_unification
@@ -660,17 +763,10 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_indonesian_identity
 		}
-		x = 39
-		y = 13
-	}
-	focus = {
-		id = IND_new_culture_act
-		icon = GFX_focus_IND_new_culture_act
-		cost = 7
-		prerequisite = {
-			focus = IND_indonesian_identity
+		completion_reward = {
+			add_ideas = IND_cultural_unification_idea
 		}
-		x = 43
+		x = 40
 		y = 13
 	}
 	focus = {
@@ -681,16 +777,10 @@ focus_tree = {
 			focus = IND_loyalty_to_the_nation
 		}
 		prerequisite = {
-			focus = IND_loyalty_to_the_party
-		}
-		prerequisite = {
 			focus = IND_cultural_unification
 		}
-		prerequisite = {
-			focus = IND_unite_the_islands
-		}
-		prerequisite = {
-			focus = IND_new_culture_act
+		completion_reward = {
+			country_event = indonesia.4
 		}
 		x = 38
 		y = 14
@@ -701,6 +791,9 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_a_new_indonesia
+		}
+		completion_reward = {
+			country_event = indonesia.5
 		}
 		x = 38
 		y = 15
@@ -912,23 +1005,16 @@ focus_tree = {
 		y = 17
 	}
 	focus = {
-		id = IND_scout_the_beaches
-		icon = GFX_focus_IND_scout_the_beaches
-		cost = 7
-		prerequisite = {
-			focus = IND_fortify_timor
-		}
-		x = 49
-		y = 18
-	}
-	focus = {
 		id = IND_remember_the_fallen
 		icon = GFX_focus_IND_remember_the_fallen
 		cost = 7
 		prerequisite = {
 			focus = IND_revanchist_propaganda
 		}
-		x = 47
+		prerequisite = {
+			focus = IND_fortify_timor
+		}
+		x = 48
 		y = 18
 	}
 	focus = {
@@ -937,9 +1023,6 @@ focus_tree = {
 		cost = 7
 		prerequisite = {
 			focus = IND_remember_the_fallen
-		}
-		prerequisite = {
-			focus = IND_scout_the_beaches
 		}
 		x = 48
 		y = 19

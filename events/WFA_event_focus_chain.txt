@@ -1,0 +1,297 @@
+#
+#	The WFA is a country whose path solely relies on events and decisions
+#	consult the document for path information
+#
+#	
+add_namespace = wfa_focus
+#BEGINNING OF THE GAME
+#explains the situation and mechanics of the WFA
+country_event = {
+	id = wfa_focus.1
+	title = wfa_focus.1.t
+	desc = wfa_focus.1.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = wfa_focus.1.a
+		#all events here would be triggered by a hidden effect block
+		hidden_effect = {
+			#Brigadier plot proposal to von Schalburg
+			country_event = {
+				id = wfa_focus.2
+				days = 21
+			}
+		}
+	}
+}
+
+#BEGINNING OF THE GAME
+#Brigadier plot proposal to von Schalburg
+country_event = {
+	id = wfa_focus.2
+	title = wfa_focus.2.t
+	desc = wfa_focus.2.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#He rejects (binding)
+	option = {
+		name = wfa_focus.2.a
+		custom_modifier_tooltip = WFA_tooltip_von_schalburg_rejects
+		hidden_effect = {
+			#The Brigadier Plot - Von Schalburg is killed
+			country_event = {
+				id = wfa_focus.3
+				days = 180
+			}
+		}
+	}
+	#He accepts (non-binding)
+	option = {
+		name = wfa_focus.2.b
+		custom_modifier_tooltip = WFA_tooltip_von_schalburg_accepts_non_binding
+		hidden_effect = {
+			#The Brigadier Plot -The Plotters Meet
+			country_event = {
+				id = wfa_focus.4
+				days = 35
+			}
+		}
+	}
+}
+
+#Anti-FBK - The Brigadier Plot - The Plotters Meet
+country_event = {
+	id = wfa_focus.4
+	title = wfa_focus.4.t
+	desc = wfa_focus.4.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Schalburg disaagrees (non-binding)
+	option = {
+		name = wfa_focus.4.a
+		custom_modifier_tooltip = WFA_tooltip_von_schalburg_rejects_non_binding
+		set_country_flag = WFA_pro_wfa_gather_strength
+		hidden_effect = {
+			#Anti-FBK - Karl Martinsen's confrontation 
+			country_event = {
+				id = wfa_focus.10
+				days = 30
+			}
+		}
+	}
+	#Schalburg agrees (binding)
+	option = {
+		name = wfa_focus.4.b
+		custom_modifier_tooltip = WFA_tooltip_von_schalburg_accepts_binding
+		hidden_effect = {
+			#The Brigadier Plot -The bomb plot
+			country_event = {
+				id = wfa_focus.5
+				days = 150
+			}
+		}
+	}
+}
+
+#Anti-FBK - The Brigadier Plot - The bomb plot
+country_event = {
+	id = wfa_focus.5
+	title = wfa_focus.5.t
+	desc = wfa_focus.5.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#BOOOOM
+	option = {
+		name = wfa_focus.5.a
+		hidden_effect = {
+			#Karl Martinsen's confrontation 
+			country_event = {
+				id = wfa_focus.6
+				days = 14
+			}
+		}
+	}
+}
+
+#Anti-FBK - Karl Martinsen's confrontation 
+country_event = {
+	id = wfa_focus.6
+	title = wfa_focus.6.t
+	desc = wfa_focus.6.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Uh oh
+	option = {
+		name = wfa_focus.6.a
+		set_country_flag = WFA_civil_war_flag
+		hidden_effect = {
+			FBK = {
+				country_event = {
+					id = fubuki.24
+					days = 7
+				}
+			}
+		}
+	}
+}
+
+#Anti-FBK - Assassination of Von Schalburg
+country_event = {
+	id = wfa_focus.7
+	title = wfa_focus.7.t
+	desc = wfa_focus.7.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	trigger = {
+		tag = WFA
+		has_country_flag = WFA_civil_war_flag
+		OR = {
+			WFA = {
+				surrender_progress > 0.5
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	fire_only_once = yes
+	#Uh oh
+	option = {
+		name = wfa_focus.7.a
+	}
+}
+
+#Anti-FBK - End of the civil war (reused)
+country_event = {
+	id = wfa_focus.8
+	title = wfa_focus.8.t
+	desc = wfa_focus.8.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	trigger = {
+		OR = {
+			tag = WFA
+			#
+		}
+		has_country_flag = WFA_civil_war_flag
+		OR = {
+			WFA = {
+				exists = no
+			}
+			#
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#yippeee
+	option = {
+		name = wfa_focus.8.a
+		clr_country_flag = WFA_civil_war_flag
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = WFA
+				}
+				set_country_flag = WFA_pro_wfa_win_flag
+				declare_war_on = {
+					target = FBK
+					type = annex_everything
+				}
+			}
+		}
+	}
+}
+
+#Anti-FBK beat up fubuki (reused)
+country_event = {
+	id = wfa_focus.9
+	title = wfa_focus.9.t
+	desc = wfa_focus.9.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	trigger = {
+		tag = WFA
+		FBK = {
+			exists = no
+		}
+		has_country_flag = WFA_pro_wfa_win_flag
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#yippeee
+	option = {
+		name = wfa_focus.9.a
+	}
+}
+
+#END OF PRO-WFA DEVOTED PATH
+#Anti-FBK - Karl Martinsen's confrontation - No non binding path
+country_event = {
+	id = wfa_focus.10
+	title = wfa_focus.10.t
+	desc = wfa_focus.10.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Refuse to back down
+	option = {
+		name = wfa_focus.10.a
+		hidden_effect = {
+			#Karl Martinsen agrees 
+			country_event = {
+				id = wfa_focus.11
+				days = 1
+			}
+		}
+	}
+	#Backs down
+	option = {
+		name = wfa_focus.10.b
+		set_country_flag = WFA_pro_fbk_gather_strength
+	}
+	#Kill the man
+	option = {
+		name = wfa_focus.10.c
+		hidden_effect = {
+			#Botched Assassination!
+			country_event = {
+				id = wfa_focus.12
+				days = 1
+			}
+		}
+	}
+}
+
+#Anti-FBK - Botched assassination attempt
+country_event = {
+	id = wfa_focus.12
+	title = wfa_focus.12.t
+	desc = wfa_focus.12.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Damn, I guess my path ends here
+	option = {
+		name = wfa_focus.12.a
+		hidden_effect = {
+			#Framing of the murder
+			country_event = {
+				id = wfa_focus.13
+				days = 1
+			}
+		}
+	}
+}
+
+#Anti-FBK - Consequences of the assassination
+country_event = {
+	id = wfa_focus.13
+	title = wfa_focus.13.t
+	desc = wfa_focus.13.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#oof 
+	option = {
+		name = wfa_focus.13.a
+	}
+}
+
+#END OF WFA TRIED TO ASSASSINATE THE DUDE PATH

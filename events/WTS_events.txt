@@ -974,6 +974,10 @@ country_event = {
 			ideology = pro_yagoo_progressive
 			popularity = 0.05
 		}
+		remove_ideas = {
+			WTS_easter_crisis
+			WTS_easter_crisis_long
+		}
 		WTS_clear_ministers = yes
 		WTS_pro_yagoo_progressive_cabinet = yes
 	}
@@ -994,6 +998,10 @@ country_event = {
 		add_popularity = {
 			ideology = democratic
 			popularity = 0.05
+		}
+		remove_ideas = {
+			WTS_easter_crisis
+			WTS_easter_crisis_long
 		}
 		WTS_clear_ministers = yes
 		WTS_pro_yagoo_conservative_cabinet = yes
@@ -4341,19 +4349,24 @@ country_event = {
 	picture = GFX_report_event_mio
 	trigger = {
 		OR = {
-			has_completed_focus = WTS_guns_and_steel
-			has_completed_focus = WTS_reduce_regulations
+			AND = {
+				OR = {
+					has_completed_focus = WTS_guns_and_steel
+					has_completed_focus = WTS_reduce_regulations
+				}
+				OR = {
+					has_completed_focus = WTS_london_conference
+					has_completed_focus = WTS_look_to_the_seas
+				}
+				NOT = {
+					has_country_flag = WTS_four_year_plan_success
+					has_country_flag = WTS_stopped_deindustrialization
+				}
+				date > 1938.01.01
+				has_completed_focus = WTS_global_crusade_against_antis
+			}
+			date > 1940.01.01
 		}
-		OR = {
-			has_completed_focus = WTS_london_conference
-			has_completed_focus = WTS_look_to_the_seas
-		}
-		NOT = {
-			has_country_flag = WTS_four_year_plan_success
-			has_country_flag = WTS_stopped_deindustrialization
-		}
-		date > 1940.01.01
-		has_completed_focus = WTS_global_crusade_against_antis
 	}
 	#Shit
 	option = {
@@ -4466,16 +4479,6 @@ country_event = {
 		OR = {
 			has_country_flag = WTS_four_year_plan_success
 			has_country_flag = WTS_stopped_deindustrialization
-		}
-		OR = {
-			AND = {
-				has_government = democratic
-				democratic > 0.4
-			}
-			AND = {
-				has_government = pro_yagoo_progressive
-				pro_yagoo_progressive > 0.4
-			}
 		}
 		has_completed_focus = WTS_global_crusade_against_antis
 	}
