@@ -1,36 +1,250 @@
 HOLOCN_gangs_category = {
-	example = {
+	EAM_pp_for_gangs = {
 		icon = generic_prepare_civil_war
 		available = {
-			NOT = {
-				has_idea = deregulating_economy
-				has_idea = small_economic_boom
-			}
 		}
 		visible = {
-			NOT = {
-				has_idea = deregulating_economy
-				has_idea = small_economic_boom
-			}
 		}
 		fire_only_once = no
 		ai_will_do = {
-			factor = 5
+			factor = 1
 		}
-		days_re_enable = 180
-		days_remove = 180
-		cost = 250
+		days_re_enable = 0
+		days_remove = 60
+		cost = 100
 		complete_effect = {
-			add_timed_idea = {
-				idea = deregulating_economy
-				days = 180
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM_holocn_axegang_resources
+				value = 10
+			}
+			custom_effect_tooltip = "Add 10 resources to the axe gang"
+		}
+	}
+
+	EAM_guns_for_gangs = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 50
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = ROOT
 			}
 		}
 		remove_effect = {
-			add_timed_idea = {
-				idea = small_economic_boom
-				days = 200
+			add_to_variable = {
+				var = EAM_holocn_axegang_resources
+				value = 10
 			}
+			custom_effect_tooltip = "Add 10 resources to the axe gang"
+		}
+	}
+	EAM_support_for_gangs = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_equipment = {
+				support_equipment > 60
+			}
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 50
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -60
+				producer = ROOT
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM_holocn_axegang_resources
+				value = 10
+			}
+			custom_effect_tooltip = "Add 10 resources to the axe gang"
+		}
+	}
+	EAM_artillery_for_gangs = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_equipment = {
+				artillery_equipment > 100
+			}
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 50
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = -100
+				producer = ROOT
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM_holocn_axegang_resources
+				value = 15
+			}
+			custom_effect_tooltip = "Add 15 resources to the axe gang"
+		}
+	}
+	EAM_create_shadow_factory = {
+		icon = generic_prepare_civil_war
+		available = {
+			NOT = {
+				has_country_flag = shadow_factory_built
+			}
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			add_ideas ={
+			 	EAM_shadow_factory
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM_holocn_axegang_resources
+				value = 20
+			}
+			custom_effect_tooltip = "Add 20 resources to the axe gang"
+		}
+	}
+	EAM_repurpose_shadow_factory = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_country_flag = shadow_factory_built
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 25
+		complete_effect = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM_holocn_axegang_resources
+				value = -10
+			}
+			add_offsite_building = { type = arms_factory level = -1 }
+			custom_effect_tooltip = "Remove 10 resources to the axe gang"
+		}
+	}
+	EAM_bandit_raid_gang_convoy = {
+		icon = generic_prepare_civil_war
+		available = {
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 25
+		complete_effect = {
+			add_manpower = -50
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -75
+				producer = ROOT
+			}
+		}
+		remove_effect = {
+			random_list = {
+				10 = {
+					add_equipment_to_stockpile = {
+						type = artillery_equipment
+						amount = 100
+						producer = ECH
+					}
+				}
+				15 = {
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 60
+						producer = ECH
+					}
+				}
+				20 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 500
+						producer = ECH
+					}
+				}
+			}
+			add_to_variable = {
+				var = EAM_holocn_axegang_resources
+				value = -10
+			}
+			custom_effect_tooltip = "Remove 10 resources to the axe gang"
+		}
+	}
+	EAM_take_bribes_for_gang_info = {
+		icon = generic_prepare_civil_war
+		available = {
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			add_political_power = 50
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM_holocn_axegang_resources
+				value = -10
+			}
+			custom_effect_tooltip = "Remove 10 resources to the axe gang"
 		}
 	}
 }
