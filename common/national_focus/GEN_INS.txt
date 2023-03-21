@@ -34,6 +34,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = IND_look_to_lhs
 		}
+		completion_reward = {
+			country_event = indonesia.30
+		}
 		x = 9
 		y = 4
 	}
@@ -259,6 +262,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = IND_enter_usada
 			focus = IND_comades_in_resistance
+		}
+		completion_reward = {
+			country_event = indonesia.3
 		}
 		x = 18
 		y = 4
@@ -673,6 +679,52 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = IND_superchat_bankroll
+		}
+		completion_reward = {
+			division_template = {
+				name = "Experimental Tank Regiment"
+				regiments = {
+					light_armor = {
+						x = 0
+						y = 0
+					}
+					light_armor = {
+						x = 0
+						y = 1
+					}
+					infantry = {
+						x = 1
+						y = 0
+					}
+					infantry = {
+						x = 1
+						y = 1
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Experimental Tank Regiment\" division_template = \"Experimental Tank Regiment\" start_experience_factor = 0.25 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					amount = 20
+					producer = YAG
+				}
+				else = {
+					add_equipment_to_stockpile = {
+						type = light_tank_equipment_1
+						amount = 20
+						producer = YAG
+					}
+				}
+			}
 		}
 		x = 19
 		y = 6

@@ -4,7 +4,7 @@ country_event = {
 	id = CPG.1
 	title = CPG.1.t
 	desc = CPG.1.desc
-	picture = GFX_report_event_JAP_iroha_revolution
+	picture = GFX_CPG_fate_of_china
 	fire_only_once = yes
 	is_triggered_only = yes
 	#Good to know
@@ -18,13 +18,16 @@ country_event = {
 	id = CPG.2
 	title = CPG.2.t
 	desc = CPG.2.desc
-	picture = GFX_report_event_JAP_iroha_revolution
+	picture = GFX_CPG_cpg_conference
 	fire_only_once = yes
 	is_triggered_only = yes
 	#Strengthen the communists
 	option = {
 		name = CPG.2.a
 		complete_national_focus = CPG_maoist_coup
+		set_politics = {
+			ruling_party = left_wing_revolutionary
+		}
 	}
 	#Strengthen the nationalists
 	option = {
@@ -39,7 +42,7 @@ country_event = {
 	id = CPG.3
 	title = CPG.3.t
 	desc = CPG.3.desc
-	picture = GFX_report_event_JAP_iroha_revolution
+	picture = GFX_CPG_rsr_alliance
 	fire_only_once = yes
 	is_triggered_only = yes
 	#yay
@@ -53,7 +56,7 @@ country_event = {
 	id = CPG.4
 	title = CPG.4.t
 	desc = CPG.4.desc
-	picture = GFX_report_event_JAP_iroha_revolution
+	picture = GFX_CPG_rsr_alliance
 	fire_only_once = yes
 	is_triggered_only = yes
 	#bruh
@@ -67,7 +70,7 @@ country_event = {
 	id = CPG.5
 	title = CPG.5.t
 	desc = CPG.5.desc
-	picture = GFX_report_event_JAP_iroha_revolution
+	picture = GFX_CPG_japan_alliance
 	fire_only_once = yes
 	is_triggered_only = yes
 	#yay
@@ -81,7 +84,7 @@ country_event = {
 	id = CPG.6
 	title = CPG.6.t
 	desc = CPG.6.desc
-	picture = GFX_report_event_JAP_iroha_revolution
+	picture = GFX_CPG_japan_alliance
 	fire_only_once = yes
 	is_triggered_only = yes
 	#bruh
@@ -95,11 +98,87 @@ country_event = {
 	id = CPG.7
 	title = CPG.7.t
 	desc = CPG.7.desc
-	picture = GFX_report_event_JAP_iroha_revolution
+	picture = GFX_CPG_birth_of_prc
 	fire_only_once = yes
 	is_triggered_only = yes
 	#yay
 	option = {
 		name = CPG.7.a
+		add_stability = 0.15
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.15
+		}
+	}
+}
+
+#Yagoo accepts our demands
+country_event = {
+	id = CPG.8
+	title = CPG.8.t
+	desc = CPG.8.desc
+	fire_only_once = yes
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = CPG.8.a
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+	}
+}
+
+#Yagoo refuses
+country_event = {
+	id = CPG.9
+	title = CPG.9.t
+	desc = CPG.9.desc
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We will wait
+	option = {
+		name = CPG.9.a
+		add_stability = -0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.05
+		}
+		YAG = {
+			country_event = yagoo.26
+		}
+	}
+	#WAAAAR
+	option = {
+		name = CPG.9.b
+		create_wargoal = {
+			target = YAG
+			type = annex_everything
+		}
+	}
+}
+
+#RSR told us no!
+country_event = {
+	id = CPG.10
+	title = CPG.10.t
+	desc = CPG.10.desc
+	picture = GFX_CPG_rsr_alliance
+	fire_only_once = yes
+	is_triggered_only = yes
+	#SADGE
+	option = {
+		name = CPG.10.a
+		add_stability = 0.05
+	}
+	#WAAAR
+	option = {
+		name = CPG.10.b
+		create_wargoal = {
+			target = RSR
+			type = annex_everything
+		}
 	}
 }

@@ -29,3 +29,37 @@ country_event = {
 		}
 	}
 }
+
+# Sino-Soviet Union
+country_event = {
+	id = RSR.2
+	title = RSR.2.t
+	desc = RSR.2.desc
+	picture = GFX_report_event_JAP_iroha_revolution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Sure!!!
+	option = {
+		name = RSR.2.a
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		every_state = {
+			limit = {
+				is_core_of = RSR
+			}
+			add_core_of = CPG
+		}
+		CPG = {
+			annex_country = {
+				target = RSR
+			}
+			set_cosmetic_tag = SSU
+		}
+	}
+	#NET
+	option = {
+		name = RSR.2.b
+		CPG = {
+			country_event = CPG.10
+		}
+	}
+}
