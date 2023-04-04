@@ -39,6 +39,11 @@ country_event = {
 		name = wfa_focus.2.a
 		custom_modifier_tooltip = WFA_tooltip_von_schalburg_rejects
 		hidden_effect = {
+			country_event = {
+				#Narrative focus
+				id = wfa_focus.35
+				days = 7
+			}
 			#The Brigadier Plot - Von Schalburg is killed
 			country_event = {
 				id = wfa_focus.3
@@ -51,6 +56,11 @@ country_event = {
 		name = wfa_focus.2.b
 		custom_modifier_tooltip = WFA_tooltip_von_schalburg_accepts_non_binding
 		hidden_effect = {
+			country_event = {
+				#Narrative focus
+				id = wfa_focus.42
+				days = 7
+			}
 			#The Brigadier Plot -The Plotters Meet
 			country_event = {
 				id = wfa_focus.4
@@ -70,7 +80,13 @@ country_event = {
 	#Martinsen is quickly sworn in
 	option = {
 		name = wfa_focus.3.a
+		retire_character = WFA_christian_shalburg
 		hidden_effect = {
+			#narrative event
+			country_event = {
+				id = wfa_focus.36
+				days = 2
+			}
 			country_event = {
 				id = wfa_focus.21
 				days = 7
@@ -80,7 +96,13 @@ country_event = {
 	#A council of advisors take power
 	option = {
 		name = wfa_focus.3.b
+		retire_character = WFA_christian_shalburg
 		hidden_effect = {
+			#narrative event
+			country_event = {
+				id = wfa_focus.38
+				days = 2
+			}
 			#Karl Martinsen contests our legitimacy
 			country_event = {
 				id = wfa_focus.28
@@ -103,6 +125,11 @@ country_event = {
 		custom_modifier_tooltip = WFA_tooltip_von_schalburg_rejects_non_binding
 		set_country_flag = WFA_pro_wfa_gather_strength
 		hidden_effect = {
+			#narrative event
+			country_event = {
+				id = wfa_focus.43
+				days = 2
+			}
 			#Anti-FBK - Karl Martinsen's confrontation 
 			country_event = {
 				id = wfa_focus.10
@@ -188,6 +215,7 @@ country_event = {
 	#Uh oh
 	option = {
 		name = wfa_focus.7.a
+		retire_character = WFA_christian_shalburg
 		#Killing of Martinsen
 		if = {
 			limit = {
@@ -357,6 +385,7 @@ country_event = {
 	#Damn, I guess my path ends here
 	option = {
 		name = wfa_focus.12.a
+		retire_character = WFA_christian_shalburg
 		hidden_effect = {
 			#Framing of the murder
 			country_event = {
@@ -478,15 +507,8 @@ country_event = {
 	#maybe not?
 	option = {
 		name = wfa_focus.17.b
-		create_wargoal = {
-			target = FBK
-			type = annex_everything
-		}
 		FBK = {
-			create_wargoal = {
-				target = WFA
-				type = annex_everything
-			}
+			country_event = fubuki.26
 		}
 	}
 }
@@ -567,6 +589,13 @@ country_event = {
 		set_country_flag = WFA_sway_ministers_gui
 		set_power_balance = {
 			id = WFA_sway_ministers_balance
+		}
+		hidden_effect = {
+			#Narrative event
+			country_event = {
+				id = wfa_focus.37
+				days = 14
+			}
 		}
 	}
 }
@@ -687,9 +716,19 @@ country_event = {
 	option = {
 		name = wfa_focus.28.a
 		hidden_effect = {
+			#nARRATIVE EVENT
+			country_event = {
+				id = wfa_focus.39
+				days = 2
+			}
+			#nARRATIVE EVENT
+			country_event = {
+				id = wfa_focus.40
+				days = 175
+			}
 			#CIVIL WAR
 			country_event = {
-				id = fubuki.29
+				id = wfa_focus.29
 				days = 180
 			}
 		}
@@ -700,8 +739,8 @@ country_event = {
 		hidden_effect = {
 			#Martinsen warns of Civil War
 			country_event = {
-				id = fubuki.30
-				days = 180
+				id = wfa_focus.30
+				days = 60
 			}
 		}
 	}
@@ -761,6 +800,11 @@ country_event = {
 	option = {
 		name = wfa_focus.30.a
 		hidden_effect = {
+			#nARRATIVE EVENT
+			country_event = {
+				id = wfa_focus.41
+				days = 85
+			}
 			#CIVIL WAR
 			country_event = {
 				id = wfa_focus.29
@@ -782,19 +826,21 @@ country_event = {
 		name = wfa_focus.31.a
 		set_stability = 0
 		add_war_support = -0.25
-		hidden_effect = {
-			random_list = {
-				4 = {
-					country_event = wfa_focus.32
-				}
-				4 = {
-					country_event = wfa_focus.33
-				}
-				2 = {
-					country_event = wfa_focus.34
-				}
-			}
-		}
+		country_event = wfa_focus.32
+	}
+	#damn that pretty srs bro
+	option = {
+		name = wfa_focus.31.b
+		set_stability = 0
+		add_war_support = -0.25
+		country_event = wfa_focus.33
+	}
+	#damn that pretty srs bro
+	option = {
+		name = wfa_focus.31.c
+		set_stability = 0
+		add_war_support = -0.25
+		country_event = wfa_focus.34
 	}
 }
 
@@ -851,5 +897,113 @@ country_event = {
 				country_event = fubuki.24
 			}
 		}
+	}
+}
+
+#Rejecting the madness
+country_event = {
+	id = wfa_focus.35
+	title = wfa_focus.35.t
+	desc = wfa_focus.35.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.35.a
+	}
+}
+
+#Karl von Marthinsen takes power
+country_event = {
+	id = wfa_focus.36
+	title = wfa_focus.36.t
+	desc = wfa_focus.36.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.36.a
+	}
+}
+
+#The Power Struggle begins
+country_event = {
+	id = wfa_focus.37
+	title = wfa_focus.37.t
+	desc = wfa_focus.37.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.37.a
+	}
+}
+
+#The Power Struggle begins
+country_event = {
+	id = wfa_focus.38
+	title = wfa_focus.38.t
+	desc = wfa_focus.38.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.38.a
+	}
+}
+
+#Marthinsen arrested
+country_event = {
+	id = wfa_focus.39
+	title = wfa_focus.39.t
+	desc = wfa_focus.39.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.39.a
+	}
+}
+
+#Hardliners rebel
+country_event = {
+	id = wfa_focus.40
+	title = wfa_focus.40.t
+	desc = wfa_focus.40.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.40.a
+	}
+}
+
+#Hardliners rebel x2
+country_event = {
+	id = wfa_focus.41
+	title = wfa_focus.41.t
+	desc = wfa_focus.41.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.41.a
+	}
+}
+
+#Throwing off the shackles
+country_event = {
+	id = wfa_focus.42
+	title = wfa_focus.42.t
+	desc = wfa_focus.42.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.42.a
+	}
+}
+
+#Gathering strength
+country_event = {
+	id = wfa_focus.43
+	title = wfa_focus.43.t
+	desc = wfa_focus.43.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	option = {
+		name = wfa_focus.43.a
 	}
 }

@@ -525,7 +525,14 @@ WFA_sway_ministers_category = {
 			hidden_effect = {
 				WFA = {
 					clr_country_flag = WFA_sway_ministers_gui
-					remove_power_balance = WFA_sway_ministers_balance
+					if = {
+						limit = {
+							has_power_balance = {
+								id = WFA_sway_ministers_balance
+							}
+						}
+						remove_power_balance = WFA_sway_ministers_balance
+					}
 				}
 			}
 		}
@@ -558,7 +565,212 @@ WFA_council_civil_war_coup_category = {
 			factor = 1
 		}
 		timeout_effect = {
-			country_event = wfa.31
+			country_event = wfa_focus.31
+		}
+	}
+}
+
+WFA_vidkun_quisling_power = {
+	WFA_quisling_gains_power = {
+		allowed = {
+			tag = WFA
+		}
+		activation = {
+			tag = WFA
+			WFA_vidkun_quisling_char = {
+				is_advisor = yes
+			}
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		selectable_mission = no
+		days_mission_timeout = 90
+		is_good = no
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			2 = {
+				#gains no power
+				add_to_variable = {
+					var = WFA.quisling_power
+					value = 0
+				}
+			}
+			4 = {
+				#gains some power
+				add_to_variable = {
+					var = WFA.quisling_power
+					value = 1
+				}
+			}
+			2 = {
+				#gains a lot of power
+				add_to_variable = {
+					var = WFA.quisling_power
+					value = 2
+				}
+			}
+			2 = {
+				#horreee shit
+				add_to_variable = {
+					var = WFA.quisling_power
+					value = 3
+				}
+			}
+		}
+	}
+	WFA_quisling_coup = {
+		allowed = {
+			tag = WFA
+		}
+		activation = {
+			tag = WFA
+			check_variable = {
+				var = WFA.quisling_power
+				value = 12
+				compare = greater_than_or_equals
+			}
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		selectable_mission = no
+		days_mission_timeout = 60
+		is_good = no
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			country_event = wfa.22
+		}
+	}
+	WFA_remove_quisling_loyalists = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 30
+		}
+		cost = 30
+		fire_only_once = no
+		days_re_enable = 30
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			subtract_from_variable = {
+				var = WFA.quisling_power
+				value = 1
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_threaten_violence = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_manpower > 1000
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_stability = -0.05
+			subtract_from_variable = {
+				var = WFA.quisling_power
+				value = 2
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_petty_disruption = {
+		icon = GFX_decision_icon_default
+		available = {
+			command_power > 10
+		}
+		custom_cost_trigger = {
+			command_power = 10
+		}
+		custom_cost_text = HLOI_cost_10_cp
+		fire_only_once = no
+		days_re_enable = 30
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			subtract_from_variable = {
+				var = WFA.quisling_power
+				value = 1
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_privitize_assets = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 90
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_political_power = 25
+			add_stability = -0.05
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = -0.05
+			}
+			subtract_from_variable = {
+				var = WFA.quisling_power
+				value = 1
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_arrest_quisling = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+			command_power > 10
+			check_variable = {
+				var = WFA.quisling_power
+				value = 2
+				compare = less_than
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 30
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.23
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 }

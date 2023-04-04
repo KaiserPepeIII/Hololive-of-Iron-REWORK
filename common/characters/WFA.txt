@@ -156,6 +156,36 @@ characters = {
 			id = -1			#id = 4701
 		}
 	}
+	WFA_vidkun_quisling_leader = {
+		#Economic
+		name = WFA_vidkun_quisling
+		portraits = {
+			army = {
+				small = GFX_portrait_WFA_minister_armaments_vidkun_quisling_small				#small portrait as a minister icon for example
+				large = GFX_portrait_WFA_minister_armaments_vidkun_quisling				#large portrait
+			}
+		}
+		country_leader = {
+			ideology = kleptocratic_dictator
+			expire = "1965.1.1.1"
+			id = -1			#id = 4701
+		}
+	}
+	WFA_council = {
+		#Economic
+		name = WFA_council_loc
+		portraits = {
+			army = {
+				small = GFX_portrait_WFA_minister_armaments_vidkun_quisling_small				#small portrait as a minister icon for example
+				large = WFA_portrait_council				#large portrait
+			}
+		}
+		country_leader = {
+			ideology = reactionary_nationalist
+			expire = "1965.1.1.1"
+			id = -1			#id = 4701
+		}
+	}
 	WFA_lauri_torni = {
 		name = WFA_lauri_torni
 		portraits = {
@@ -211,6 +241,11 @@ characters = {
 			planning_skill = 3
 			logistics_skill = 2
 			#legacy_#id = 582
+		}
+		country_leader = {
+			ideology = reactionary_nationalist
+			expire = "1965.1.1.1"
+			id = -1			#id = 4701
 		}
 	}
 	WFA_sophus_kahrs = {
@@ -458,7 +493,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_knud_borge_martinsen
 				}
 			}
@@ -491,7 +526,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_elias_corneliussen
 				}
 			}
@@ -524,7 +559,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_christian_peder_kryssing
 				}
 			}
@@ -532,34 +567,86 @@ characters = {
 	}
 	WFA_karl_marthinsen_char = {
 		#Economic
-		name = WFA_karl_marthinsen
-		portraits = {
-			army = {
-				small = GFX_portrait_WFA_minister_alignment_karl_marthinsen_small				#small portrait as a minister icon for example
-				large = GFX_portrait_WFA_minister_alignment_karl_marthinsen				#large portrait
+		instance = {
+			name = WFA_karl_marthinsen
+			allowed = {
+				NOT = {
+					has_dlc = "La Resistance"
+				}
+			}
+			portraits = {
+				army = {
+					small = GFX_portrait_WFA_minister_alignment_karl_marthinsen_small					#small portrait as a minister icon for example
+					large = GFX_portrait_WFA_minister_alignment_karl_marthinsen					#large portrait
+				}
+			}
+			advisor = {
+				cost = 100
+				slot = political_advisor
+				idea_token = WFA_karl_marthinsen_char
+				ledger = civilian
+				traits = {
+					WFA_karl_marthinsen_trait
+				}
+				allowed = {
+					original_tag = WFA
+				}
+				available = {
+					hidden_trigger = {
+						has_idea = WFA_karl_marthinsen
+					}
+				}
+				visible = {
+					OR = {
+						has_government = democratic
+						has_idea = WFA_karl_marthinsen
+					}
+				}
+			}
+			country_leader = {
+				ideology = reactionary_nationalist
+				expire = "1965.1.1.1"
+				id = -1				#id = 4701
 			}
 		}
-		advisor = {
-			cost = 100
-			slot = political_advisor
-			idea_token = WFA_karl_marthinsen_char
-			ledger = civilian
-			traits = {
-				WFA_karl_marthinsen_trait
-			}
+		instance = {
+			name = WFA_karl_marthinsen
 			allowed = {
-				original_tag = WFA
+				has_dlc = "La Resistance"
 			}
-			available = {
-				hidden_trigger = {
-					has_idea = WFA_karl_marthinsen
+			portraits = {
+				army = {
+					small = GFX_portrait_WFA_minister_alignment_karl_marthinsen_small					#small portrait as a minister icon for example
+					large = GFX_portrait_WFA_minister_alignment_karl_marthinsen					#large portrait
 				}
 			}
-			visible = {
-				OR = {
-					has_government = democratic
-					has_idea = WFA_karl_marthinsen
+			advisor = {
+				cost = 100
+				slot = political_advisor
+				idea_token = WFA_karl_marthinsen_char
+				ledger = civilian
+				traits = {
+					WFA_karl_marthinsen_trait_lar
 				}
+				allowed = {
+					original_tag = WFA
+				}
+				available = {
+					hidden_trigger = {
+						has_idea = WFA_karl_marthinsen
+					}
+				}
+				visible = {
+					OR = {
+						has_government = democratic
+						has_idea = WFA_karl_marthinsen
+					}
+				}
+			}
+			country_leader = {
+				ideology = reactionary_nationalist
+				expire = "1965.1.1.1"
+				id = -1				#id = 4701
 			}
 		}
 	}
@@ -591,7 +678,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_vidkun_quisling
 				}
 			}
@@ -624,7 +711,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_christian_frederick_von_schalburg
 				}
 			}
@@ -657,7 +744,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_frits_clausen
 				}
 			}
@@ -690,7 +777,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_soren_kam
 				}
 			}
@@ -723,7 +810,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_sverre_riisnaes
 				}
 			}
@@ -759,7 +846,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_martin_ekström
 				}
 			}
@@ -792,7 +879,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_erhard_qvistgaard
 				}
 			}
@@ -825,7 +912,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_finn_kjelstrup
 				}
 			}
@@ -858,7 +945,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_eric_von_rosen
 				}
 			}
@@ -891,7 +978,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_per_engdahl
 				}
 			}
@@ -924,7 +1011,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_tormod_hustad
 				}
 			}
@@ -957,7 +1044,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_sven_olov_lindholm
 				}
 			}
@@ -969,7 +1056,7 @@ characters = {
 		portraits = {
 			army = {
 				small = GFX_portrait_WFA_minister_interior_konrad_hallgren_small				#small portrait as a minister icon for example
-				large = GFX_portrait_WFA_minister_interior_konrad_hallgren				#large portrait
+				large = GFX_portrait_WFA_minister_interior_konrad_hallgren				#large portrait 
 			}
 		}
 		advisor = {
@@ -990,7 +1077,7 @@ characters = {
 			}
 			visible = {
 				OR = {
-					has_government = democratic
+					has_government = reactionary_nationalism
 					has_idea = WFA_konrad_hallgren
 				}
 			}

@@ -31,6 +31,7 @@ WFA_sway_ministers_category = {
 		has_country_flag = WFA_sway_ministers_gui
 	}
 }
+
 #explicitly pro-FBK path
 WFA_council_civil_war_coup_category = {
 	icon = GFX_decision_category_rob_dealing_with_separatists
@@ -44,5 +45,21 @@ WFA_council_civil_war_coup_category = {
 		has_country_flag = WFA_council_civil_war_flag
 	}
 	priority = 10
+}
 
+#Anti Military path
+WFA_vidkun_quisling_power = {
+	icon = GFX_decision_category_rob_dealing_with_separatists
+	picture = GFX_decision_cat_rob_dealing_with_separatists
+	allowed = {
+		tag = WFA
+	}
+	visible_when_empty = no
+	visible = {
+		tag = WFA
+		WFA_vidkun_quisling_char = {
+			is_advisor = yes
+		}
+	}
+	priority = 10
 }

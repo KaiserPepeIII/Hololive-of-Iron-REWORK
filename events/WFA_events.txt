@@ -625,3 +625,49 @@ country_event = {
 		}
 	}
 }
+
+#Quisling's Coup
+country_event = {
+	id = wfa.22
+	title = wfa.22.t
+	desc = wfa.22.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#OOf
+	option = {
+		name = wfa.22.a
+		set_stability = 0.1
+		add_war_support = -0.35
+		hidden_effect = {
+			FBK = {
+				release = WFA
+			}
+			set_politics = {
+				ruling_party = neutrality
+			}
+		}
+	}
+}
+
+#Quisling Arrested
+country_event = {
+	id = wfa.23
+	title = wfa.23.t
+	desc = wfa.23.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Good riddence
+	option = {
+		name = wfa.23.a
+		add_stability = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+		hidden_effect = {
+			retire_character = WFA_vidkun_quisling_char
+			retire_character = WFA_vidkun_quisling_leader
+			remove_ideas = WFA_vidkun_quisling
+		}
+	}
+}
