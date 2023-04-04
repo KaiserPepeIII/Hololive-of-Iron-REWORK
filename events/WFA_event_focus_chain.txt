@@ -60,6 +60,36 @@ country_event = {
 	}
 }
 
+#PRO-FBK - The Brigadier Plot - Von Schalburg is killed
+country_event = {
+	id = wfa_focus.3
+	title = wfa_focus.3.t
+	desc = wfa_focus.3.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Martinsen is quickly sworn in
+	option = {
+		name = wfa_focus.3.a
+		hidden_effect = {
+			country_event = {
+				id = wfa_focus.21
+				days = 7
+			}
+		}
+	}
+	#A council of advisors take power
+	option = {
+		name = wfa_focus.3.b
+		hidden_effect = {
+			#Karl Martinsen contests our legitimacy
+			country_event = {
+				id = wfa_focus.28
+				days = 7
+			}
+		}
+	}
+}
+
 #Anti-FBK - The Brigadier Plot - The Plotters Meet
 country_event = {
 	id = wfa_focus.4
@@ -158,6 +188,18 @@ country_event = {
 	#Uh oh
 	option = {
 		name = wfa_focus.7.a
+		#Killing of Martinsen
+		if = {
+			limit = {
+				exists = yes
+			}
+			hidden_effect = {
+				country_event = {
+					id = wfa_focus.20
+					days = 1
+				}
+			}
+		}
 	}
 }
 
@@ -170,14 +212,18 @@ country_event = {
 	trigger = {
 		OR = {
 			tag = WFA
-			#
+			WFA = {
+				has_country_flag = WFA_civil_war_flag
+			}
+			WFR = {
+				exists = no
+			}
 		}
-		has_country_flag = WFA_civil_war_flag
 		OR = {
+			tag = WFR
 			WFA = {
 				exists = no
 			}
-			#
 		}
 	}
 	mean_time_to_happen = {
@@ -191,11 +237,25 @@ country_event = {
 			if = {
 				limit = {
 					tag = WFA
+					WFA = {
+						has_country_flag = WFA_sided_pro_wfa
+					}
 				}
 				set_country_flag = WFA_pro_wfa_win_flag
 				declare_war_on = {
 					target = FBK
 					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					tag = WFA
+					WFA = {
+						has_country_flag = WFA_sided_pro_fbk
+					}
+				}
+				FBK = {
+					country_event = fubuki.24
 				}
 			}
 		}
@@ -236,9 +296,9 @@ country_event = {
 	option = {
 		name = wfa_focus.10.a
 		hidden_effect = {
-			#Karl Martinsen agrees 
+			#Karl agrees
 			country_event = {
-				id = wfa_focus.11
+				id = wfa_focus.18
 				days = 1
 			}
 		}
@@ -247,6 +307,11 @@ country_event = {
 	option = {
 		name = wfa_focus.10.b
 		set_country_flag = WFA_pro_fbk_gather_strength
+		#Schalburg returns to FBK
+		country_event = {
+			id = wfa_focus.11
+			days = 1
+		}
 	}
 	#Kill the man
 	option = {
@@ -256,6 +321,27 @@ country_event = {
 			country_event = {
 				id = wfa_focus.12
 				days = 1
+			}
+		}
+	}
+}
+
+#Pro-FBK - Schalburg returns to FBK
+country_event = {
+	id = wfa_focus.11
+	title = wfa_focus.11.t
+	desc = wfa_focus.11.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#I'm only human after all
+	option = {
+		name = wfa_focus.11.a
+		#PRO FBK MINIGAME
+		set_country_flag = WFA_pro_fbk_gather_strength
+		hidden_effect = {
+			country_event = {
+				id = wfa_focus.14
+				days = 90
 			}
 		}
 	}
@@ -295,3 +381,475 @@ country_event = {
 }
 
 #END OF WFA TRIED TO ASSASSINATE THE DUDE PATH
+#PRO-FBK - Dude gets kill
+country_event = {
+	id = wfa_focus.14
+	title = wfa_focus.14.t
+	desc = wfa_focus.14.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	trigger = {
+		tag = WFA
+		has_country_flag = WFA_civil_war_flag
+		OR = {
+			WFA = {
+				surrender_progress > 0.5
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#oh my goodness gracious
+	option = {
+		name = wfa_focus.14.a
+		hidden_effect = {
+			id = wfa_focus.15
+			days = 1
+		}
+	}
+}
+
+#Pro-FBK - succession
+country_event = {
+	id = wfa_focus.15
+	title = wfa_focus.15.t
+	desc = wfa_focus.15.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#tbd 
+	option = {
+		name = wfa_focus.15.a
+	}
+}
+
+#Pro-FBK - End of the civil war (reused)
+country_event = {
+	id = wfa_focus.16
+	title = wfa_focus.16.t
+	desc = wfa_focus.16.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	trigger = {
+		OR = {
+			tag = WFA
+			#
+		}
+		has_country_flag = WFA_civil_war_flag
+		OR = {
+			WFA = {
+				exists = no
+			}
+			#
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#yippeee
+	option = {
+		name = wfa_focus.16.a
+		clr_country_flag = WFA_civil_war_flag
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = WFA
+				}
+				set_country_flag = WFA_pro_fbk_win_flag
+				country_event = {
+					id = wfa_focus.17
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+#Pro-FBK - Reaffirm oath to ikubuF
+country_event = {
+	id = wfa_focus.17
+	title = wfa_focus.17.t
+	desc = wfa_focus.17.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#yeah ofc
+	option = {
+		name = wfa_focus.17.a
+		#tbd
+	}
+	#maybe not?
+	option = {
+		name = wfa_focus.17.b
+		create_wargoal = {
+			target = FBK
+			type = annex_everything
+		}
+		FBK = {
+			create_wargoal = {
+				target = WFA
+				type = annex_everything
+			}
+		}
+	}
+}
+
+#END OF FLIP TO PRO-FBK PATH
+#ANTI-FBK - Karl agrees
+country_event = {
+	id = wfa_focus.18
+	title = wfa_focus.18.t
+	desc = wfa_focus.18.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#....ok?
+	option = {
+		name = wfa_focus.18.a
+		set_country_flag = WFA_pro_wfa_gather_strength
+		hidden_effect = {
+			country_event = {
+				id = wfa_focus.19
+				days = 90
+			}
+		}
+	}
+}
+
+#ANTI-FBK - START CIVIL WAR
+country_event = {
+	id = wfa_focus.19
+	title = wfa_focus.19.t
+	desc = wfa_focus.19.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = wfa_focus.19.a
+		#
+	}
+}
+
+#ANTI-FBK - Killing of Martinsen
+country_event = {
+	id = wfa_focus.20
+	title = wfa_focus.20.t
+	desc = wfa_focus.20.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#damn he so fake for that
+	option = {
+		name = wfa_focus.20.a
+		#
+	}
+}
+
+#End of this branch
+#PRO-FBK - The Brigadier Plot - Knud Martinsen Fights for Power!
+country_event = {
+	id = wfa_focus.21
+	title = wfa_focus.21.t
+	desc = wfa_focus.21.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Arrest him!
+	option = {
+		name = wfa_focus.21.a
+		#
+		hidden_effect = {
+			#Sverige Government
+			country_event = {
+				id = wfa_focus.22
+				days = 14
+			}
+		}
+	}
+	#We'll see who gets the last laugh!
+	option = {
+		name = wfa_focus.21.b
+		#
+		set_country_flag = WFA_sway_ministers_gui
+		set_power_balance = {
+			id = WFA_sway_ministers_balance
+		}
+	}
+}
+
+#PRO-FBK - The Brigadier Plot - Sverige Government
+country_event = {
+	id = wfa_focus.22
+	title = wfa_focus.22.t
+	desc = wfa_focus.22.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Damn!
+	option = {
+		name = wfa_focus.22.a
+		#
+		hidden_effect = {
+			country_event = {
+				id = wfa_focus.23
+				days = 21
+			}
+		}
+	}
+}
+
+#PRO-FBK - The Brigadier Plot - Pro-independence demonstrators rise up!
+country_event = {
+	id = wfa_focus.23
+	title = wfa_focus.23.t
+	desc = wfa_focus.23.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Shoot
+	option = {
+		name = wfa_focus.23.a
+		hidden_effect = {
+			FBK = {
+				country_event = fubuki.24
+			}
+		}
+	}
+}
+
+#Pro-FBK - Fubuki demands our loyalty
+country_event = {
+	id = wfa_focus.24
+	title = wfa_focus.24.t
+	desc = wfa_focus.24.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Huh, is this even a question, of course!
+	option = {
+		name = wfa_focus.24.a
+		FBK = {
+			country_event = fubuki.25
+		}
+	}
+	#Bruh lmfao fuck you
+	option = {
+		name = wfa_focus.24.b
+		FBK = {
+			country_event = fubuki.26
+		}
+	}
+}
+
+#Pro-FBK - Fubuki is fucking invading
+country_event = {
+	id = wfa_focus.25
+	title = wfa_focus.25.t
+	desc = wfa_focus.25.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#damn
+	option = {
+		name = wfa_focus.25.a
+	}
+}
+
+#Pro-FBK - Crushing the Sverige Government
+country_event = {
+	id = wfa_focus.26
+	title = wfa_focus.26.t
+	desc = wfa_focus.26.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Die traitourous bastards
+	option = {
+		name = wfa_focus.26.a
+	}
+}
+
+#END OF PRO-FBK Sverige Government Route
+#Pro-FBK - We'll see about that - Solution is reached
+#This event is triggered only by a decision in the bop decisions
+country_event = {
+	id = wfa_focus.27
+	title = wfa_focus.27.t
+	desc = wfa_focus.27.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = wfa_focus.27.a
+		FBK = {
+			country_event = fubuki.24
+		}
+	}
+}
+
+#PRO-FBK - The Council - Karl Martinsen Contests our legitimacy
+country_event = {
+	id = wfa_focus.28
+	title = wfa_focus.28.t
+	desc = wfa_focus.28.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Arrest him!
+	option = {
+		name = wfa_focus.28.a
+		hidden_effect = {
+			#CIVIL WAR
+			country_event = {
+				id = fubuki.29
+				days = 180
+			}
+		}
+	}
+	#He hasn't done anything wrong
+	option = {
+		name = wfa_focus.28.b
+		hidden_effect = {
+			#Martinsen warns of Civil War
+			country_event = {
+				id = fubuki.30
+				days = 180
+			}
+		}
+	}
+}
+
+#PRO-FBK - The Council - CIVIL WAR
+country_event = {
+	id = wfa_focus.29
+	title = wfa_focus.29.t
+	desc = wfa_focus.29.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Oh nos
+	option = {
+		name = wfa_focus.29.a
+		set_country_flag = {
+			flag = WFA_civil_war_flag
+		}
+		set_country_flag = {
+			flag = WFA_council_civil_war_flag
+			days = 365
+		}
+		#
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_core_of = WFA
+				}
+				add_core_of = WFR
+			}
+			WFR = {
+				transfer_state = 144
+				transfer_state = 999
+				transfer_state = 143
+				transfer_state = 989
+			}
+			WFR = {
+				WFR_pro_wfa_setup = yes
+				load_oob = "WFR_civil_war"
+				add_manpower = 10000
+			}
+			WFA = {
+				WFA_pro_wfa_setup = yes
+			}
+		}
+	}
+}
+
+#PRO-FBK - The Council - Martinsen warns of Civil War
+country_event = {
+	id = wfa_focus.30
+	title = wfa_focus.30.t
+	desc = wfa_focus.30.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Oh nos
+	option = {
+		name = wfa_focus.30.a
+		hidden_effect = {
+			#CIVIL WAR
+			country_event = {
+				id = wfa_focus.29
+				days = 90
+			}
+		}
+	}
+}
+
+#PRO-FBK - THE COUNCIL - MARTINSEN'S COUP
+country_event = {
+	id = wfa_focus.31
+	title = wfa_focus.31.t
+	desc = wfa_focus.31.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#damn that pretty srs bro
+	option = {
+		name = wfa_focus.31.a
+		set_stability = 0
+		add_war_support = -0.25
+		hidden_effect = {
+			random_list = {
+				4 = {
+					country_event = wfa_focus.32
+				}
+				4 = {
+					country_event = wfa_focus.33
+				}
+				2 = {
+					country_event = wfa_focus.34
+				}
+			}
+		}
+	}
+}
+
+#PRO-FBK - MARTINSEN'S COUP - Council escapes
+country_event = {
+	id = wfa_focus.32
+	title = wfa_focus.32.t
+	desc = wfa_focus.32.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#DAMN!! HE BACKSTABBED US
+	option = {
+		name = wfa_focus.32.a
+		WFR = {
+			country_event = wfr.1
+		}
+	}
+}
+
+#PRO-FBK - MARTINSEN'S COUP - Council is captured
+country_event = {
+	id = wfa_focus.33
+	title = wfa_focus.33.t
+	desc = wfa_focus.33.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Long live Martinsen!
+	option = {
+		name = wfa_focus.33.a
+		WFR = {
+			country_event = wfr.2
+		}
+	}
+}
+
+#PRO-FBK - MARTINSEN'S COUP - Council is killed
+country_event = {
+	id = wfa_focus.34
+	title = wfa_focus.34.t
+	desc = wfa_focus.34.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Uh oh
+	option = {
+		name = wfa_focus.34.a
+		WFA = {
+			white_peace = WFR
+			annex_country = {
+				target = WFR
+			}
+		}
+		hidden_effect = {
+			FBK = {
+				country_event = fubuki.24
+			}
+		}
+	}
+}

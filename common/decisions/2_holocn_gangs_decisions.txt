@@ -1,35 +1,555 @@
 HOLOCN_gangs_category = {
-	example = {
+	HOLOCN_pp_for_gangs = {
 		icon = generic_prepare_civil_war
 		available = {
-			NOT = {
-				has_idea = deregulating_economy
-				has_idea = small_economic_boom
+			has_political_power > 100
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 100
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 10
+			}
+			custom_effect_tooltip = HOLOCN_resources_add_10
+		}
+	}
+	HOLOCN_guns_for_gangs = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_equipment = {
+				infantry_equipment > 500
 			}
 		}
 		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 50
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = ROOT
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 10
+			}
+			custom_effect_tooltip = HOLOCN_resources_add_10
+		}
+	}
+	HOLOCN_support_for_gangs = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_equipment = {
+				support_equipment > 60
+			}
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 50
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -60
+				producer = ROOT
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 10
+			}
+			custom_effect_tooltip = HOLOCN_resources_add_10
+		}
+	}
+	HOLOCN_artillery_for_gangs = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_equipment = {
+				artillery_equipment > 100
+			}
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 50
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = -100
+				producer = ROOT
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 15
+			}
+			custom_effect_tooltip = HOLOCN_resources_add_15
+		}
+	}
+	HOLOCN_create_shadow_factory = {
+		icon = generic_prepare_civil_war
+		available = {
 			NOT = {
-				has_idea = deregulating_economy
-				has_idea = small_economic_boom
+				has_country_flag = HOLOCN_shadow_factory_built
+			}
+		}
+		visible = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 0
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			add_ideas = {
+				HOLOCN_shadow_factory
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 20
+			}
+			custom_effect_tooltip = HOLOCN_resources_add_20
+		}
+	}
+	HOLOCN_repurpose_shadow_factory = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_country_flag = HOLOCN_shadow_factory_built
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 20
+				compare = greater_than_or_equals
+			}
+			NOT = {
+				has_country_flag = EAM_gang_leader
+			}
+		}
+		visible = {
+			has_country_flag = HOLOCN_shadow_factory_built
+			NOT = {
+				has_country_flag = EAM_gang_leader
 			}
 		}
 		fire_only_once = no
 		ai_will_do = {
-			factor = 5
+			factor = 1
 		}
-		days_re_enable = 180
-		days_remove = 180
-		cost = 250
+		days_re_enable = 0
+		days_remove = 60
+		cost = 25
 		complete_effect = {
-			add_timed_idea = {
-				idea = deregulating_economy
-				days = 180
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
 			}
 		}
 		remove_effect = {
-			add_timed_idea = {
-				idea = small_economic_boom
-				days = 200
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -10
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = -1
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_10
+		}
+	}
+	HOLOCN_bandit_raid_gang_convoy = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 10
+				compare = greater_than_or_equals
+			}
+			NOT = {
+				has_country_flag = EAM_gang_leader
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = EAM_gang_leader
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 60
+		days_remove = 60
+		cost = 25
+		complete_effect = {
+			add_manpower = -50
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -75
+				producer = ROOT
+			}
+		}
+		remove_effect = {
+			random_list = {
+				10 = {
+					add_equipment_to_stockpile = {
+						type = artillery_equipment
+						amount = 100
+						producer = ECH
+					}
+				}
+				15 = {
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 60
+						producer = ECH
+					}
+				}
+				20 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 500
+						producer = ECH
+					}
+				}
+			}
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -10
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_10
+		}
+	}
+	HOLOCN_take_bribes_for_gang_info = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = EAM_gang_leader
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 60
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			add_political_power = 50
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -10
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_10
+		}
+	}
+	HOLOCN_press_gangs_into_police = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = EAM_gang_leader
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 60
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			add_stability = 0.05
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -10
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_10
+		}
+	}
+	HOLOCN_increase_gang_power_in_shanghai = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 50
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = EAM.axegang_control_shanghai
+				value = 5
+				compare = less_than_or_equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -50
+			}
+			add_to_variable = {
+				var = EAM.axegang_control_shanghai
+				value = 1
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_50
+			custom_effect_tooltip = HOLOCN_increased_control
+		}
+	}
+	HOLOCN_increase_gang_power_in_tianjin = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 50
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = EAM.axegang_control_tianjin
+				value = 5
+				compare = less_than_or_equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -50
+			}
+			add_to_variable = {
+				var = EAM.axegang_control_tianjin
+				value = 1
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_50
+			custom_effect_tooltip = HOLOCN_increased_control
+		}
+	}
+	HOLOCN_increase_gang_power_in_fuzhou = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 50
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = EAM.axegang_control_fuzhou
+				value = 5
+				compare = less_than_or_equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -50
+			}
+			add_to_variable = {
+				var = EAM.axegang_control_fuzhou
+				value = 1
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_50
+			custom_effect_tooltip = HOLOCN_increased_control
+		}
+	}
+	HOLOCN_increase_gang_power_in_fujian = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 50
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = EAM.axegang_control_fujian
+				value = 5
+				compare = less_than_or_equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -50
+			}
+			add_to_variable = {
+				var = EAM.axegang_control_fujian
+				value = 1
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_50
+			custom_effect_tooltip = HOLOCN_increased_control
+		}
+	}
+	HOLOCN_increase_gang_power_in_hubei = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.holocn_axegang_resources
+				value = 50
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = EAM.axegang_control_hubei
+				value = 5
+				compare = less_than_or_equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = EAM.holocn_axegang_resources
+				value = -50
+			}
+			add_to_variable = {
+				var = EAM.axegang_control_hubei
+				value = 1
+			}
+			custom_effect_tooltip = HOLOCN_resources_remove_50
+			custom_effect_tooltip = HOLOCN_increased_control
+		}
+	}
+	HOLOCN_takeover_fujian = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.axegang_control_fujian
+				value = 5
+				compare = equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			custom_effect_tooltip = HOLOCN_takeover_fujian_tt
+		}
+		remove_effect = {
+			# this may be the wrong version of the all_countries type syntax, if so please just fix it and tell me i fucked it up
+			every_country = {
+				limit = {
+					OR = {
+						tag = EAM
+						tag = RSA
+						tag = CIV
+						tag = YOG
+						tag = ART
+						tag = DOR
+					}
+				}
+				country_event = {
+					days = 1
+					id = gtakeover.1
+				}
 			}
 		}
 	}

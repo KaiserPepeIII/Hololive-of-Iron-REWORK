@@ -25,3 +25,603 @@ country_event = {
 		country_event = fubuki.21
 	}
 }
+
+#REQUESTED ARMS - FUBUKI IS A BROKE ASS MOFO
+country_event = {
+	id = wfa.2
+	title = wfa.2.t
+	desc = wfa.2.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = wfa.2.a
+	}
+}
+
+#REQUESTED ARMS - Fubuki GRANTS US GUNS
+country_event = {
+	id = wfa.3
+	title = wfa.3.t
+	desc = wfa.3.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = wfa.3.a
+		trigger = {
+			WFA = {
+				has_country_flag = WFA_pro_fbk_gather_strength
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 125
+			producer = FBK
+		}
+	}
+	#YOU FOOL
+	option = {
+		name = wfa.3.b
+		trigger = {
+			WFA = {
+				has_country_flag = WFA_pro_wfa_gather_strength
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 125
+			producer = FBK
+		}
+	}
+}
+
+#REQUESTED ARMS - Fubuki doesn't trust us
+country_event = {
+	id = wfa.4
+	title = wfa.4.t
+	desc = wfa.4.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#pewdiepie bridge moment
+	option = {
+		name = wfa.4.a
+		set_country_flag = WFA_fubuki_distrust
+	}
+}
+
+#WFA CIVIL WAR
+country_event = {
+	id = wfa.5
+	title = wfa.5.t
+	desc = wfa.5.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#We will crush the Fox bastards!
+	option = {
+		name = wfa.5.a
+		trigger = {
+			has_country_flag = WFA_pro_wfa_gather_strength
+		}
+		country_event = wfa.6
+	}
+	#We will crush the traitors!
+	option = {
+		name = wfa.5.b
+		trigger = {
+			has_country_flag = WFA_pro_fbk_gather_strength
+		}
+		country_event = wfa.6
+	}
+}
+
+#WFA CIVIL WAR - Our guns situation
+country_event = {
+	id = wfa.6
+	title = wfa.6.t
+	desc = wfa.6.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Damn really that's wild bro
+	option = {
+		name = wfa.6.a
+		custom_effect_tooltip = WFA_civil_war_guns_tooltip
+		country_event = wfa.7
+		hidden_effect = {
+			set_temp_variable = {
+				var = WFA.temp_guns_counter
+				value = var:num_equipment@infantry_equipment
+			}
+			divide_temp_variable = {
+				var = WFA.temp_guns_counter
+				value = 2
+			}
+			WFR = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = var:WFA.temp_guns_counter
+				}
+			}
+			multiply_temp_variable = {
+				var = WFA.temp_guns_counter
+				value = -1
+			}
+			WFA = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = var:WFA.temp_guns_counter
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = var:WFA.civil_war_stockpiled_guns
+				}
+			}
+		}
+	}
+}
+
+#WFA CIVIL WAR - state of the army
+country_event = {
+	id = wfa.7
+	title = wfa.7.t
+	desc = wfa.7.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Damn really that's wild bro
+	option = {
+		name = wfa.7.a
+		custom_effect_tooltip = WFA_civil_war_army_loyalty
+		custom_effect_tooltip = WFA_civil_war_retire_officers
+		country_event = wfa.8
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = WFA_loyalty_improved
+				}
+				damage_units = {
+					limit = {
+						any_state = {
+							is_owned_and_controlled_by = WFA
+						}
+					}
+					str_damage = 0.25
+					org_damage = 0.25
+					army = yes
+					navy = no
+				}
+				else = {
+					damage_units = {
+						limit = {
+							any_state = {
+								is_owned_and_controlled_by = WFA
+							}
+						}
+						str_damage = 0.45
+						org_damage = 0.45
+						army = yes
+						navy = no
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = WFA_officers_retired
+				}
+				WFR = {
+					add_timed_idea = {
+						idea = WFR_stripped_officer_corps
+						days = 180
+					}
+				}
+			}
+		}
+	}
+}
+
+#WFA CIVIL WAR - arrested dissidents
+country_event = {
+	id = wfa.8
+	title = wfa.8.t
+	desc = wfa.8.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Damn really that's wild bro
+	option = {
+		name = wfa.8.a
+		custom_effect_tooltip = WFA_civil_war_potential_dissidents
+		if = {
+			limit = {
+				has_country_flag = WFA_pro_fbk_gather_strength
+			}
+			country_event = wfa.9
+			else = {
+				country_event = wfa.10
+			}
+		}
+		hidden_effect = {
+			set_temp_variable = {
+				var = WFA.manpower_defect
+				value = var:manpower@WFA
+			}
+			divide_temp_variable = {
+				var = WFA.manpower_defect
+				value = var:WFA.arrested_dissidents
+			}
+			WFR = {
+				add_manpower = var:WFA.manpower_defect
+			}
+			multiply_temp_variable = {
+				var = WFA.manpower_defect
+				value = -1
+			}
+			WFA = {
+				add_manpower = var:WFA.manpower_defect
+			}
+		}
+	}
+}
+
+#WFA CIVIL WAR - PRO-FBK - Fervour
+country_event = {
+	id = wfa.9
+	title = wfa.9.t
+	desc = wfa.9.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Damn really that's wild bro
+	option = {
+		name = wfa.9.a
+		custom_effect_tooltip = WFA_civil_war_pro_fbk_fervour
+		hidden_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = WFA.pro_fbk_fervour
+						value = 1
+						compare = equals
+					}
+				}
+				add_ideas = WFA_pro_fbk_fervour1
+				else_if = {
+					limit = {
+						check_variable = {
+							var = WFA.pro_fbk_fervour
+							value = 2
+							compare = equals
+						}
+					}
+					add_ideas = WFA_pro_fbk_fervour2
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							var = WFA.pro_fbk_fervour
+							value = 3
+							compare = equals
+						}
+					}
+					add_ideas = WFA_pro_fbk_fervour3
+				}
+			}
+		}
+	}
+}
+
+#WFA CIVIL WAR - PRO-WFA - Smugglers
+country_event = {
+	id = wfa.10
+	title = wfa.10.t
+	desc = wfa.10.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Damn really that's wild bro
+	option = {
+		name = wfa.10.a
+		custom_effect_tooltip = WFA_civil_war_pro_wfa_smuggling
+		hidden_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = WFA.pro_wfa_smuggled
+						value = 1
+						compare = equals
+					}
+				}
+				add_manpower = 2500
+				else_if = {
+					limit = {
+						check_variable = {
+							var = WFA.pro_wfa_smuggled
+							value = 2
+							compare = equals
+						}
+					}
+					add_manpower = 3500
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							var = WFA.pro_wfa_smuggled
+							value = 3
+							compare = equals
+						}
+					}
+					add_manpower = 6000
+				}
+			}
+		}
+	}
+}
+
+#WFA Sway ministers - Elias Corneliussen
+country_event = {
+	id = wfa.11
+	title = wfa.11.t
+	desc = wfa.11.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#His demand is better attention to overseas holdings.
+	#That's it?
+	option = {
+		name = wfa.11.a
+		custom_effect_tooltip = WFA_sway_elias_corneliussen_demand_tooltip
+		set_country_flag = {
+			flag = WFA_sway_elias_corneliussen_demand
+			days = 360
+		}
+		hidden_effect = {
+			100 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	#No 
+	option = {
+		name = wfa.11.b
+		custom_effect_tooltip = WFA_sway_unable_get_support_again
+	}
+}
+
+#WFA Sway ministers - Peder Kryssing
+country_event = {
+	id = wfa.12
+	title = wfa.12.t
+	desc = wfa.12.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#His demand is arrest some pro-Independence dissidents in army.
+	#I'd do it for free tbh
+	option = {
+		name = wfa.12.a
+		custom_effect_tooltip = WFA_sway_peder_kryssing_demand
+		hidden_effect = {
+			add_stability = -0.1
+			add_war_support = -0.1
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = -0.1
+			}
+			add_timed_idea = {
+				idea = WFA_pro_independence_activists_purged
+				days = 720
+			}
+			add_power_balance_value = {
+				id = WFA_sway_ministers_balance
+				value = -0.25
+			}
+		}
+	}
+	#No 
+	option = {
+		name = wfa.12.b
+		custom_effect_tooltip = WFA_sway_unable_get_support_again
+	}
+}
+
+#WFA Sway ministers - vidkun_quisling
+country_event = {
+	id = wfa.13
+	title = wfa.13.t
+	desc = wfa.13.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#A political favour - #appoints him as a political advisor
+	#Uhhhh sure?
+	option = {
+		name = wfa.13.a
+		custom_effect_tooltip = WFA_sway_vidkun_quisling_demand
+		activate_advisor = WFA_vidkun_quisling_char
+	}
+	#No 
+	option = {
+		name = wfa.13.b
+		custom_effect_tooltip = WFA_sway_unable_get_support_again
+	}
+}
+
+#WFA Sway ministers - per_engdahl
+country_event = {
+	id = wfa.14
+	title = wfa.14.t
+	desc = wfa.14.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#His demand, corporatism
+	#This sounds kinda decent actually
+	option = {
+		name = wfa.14.a
+		custom_effect_tooltip = WFA_sway_per_engdahl_demand
+		add_ideas = WFA_engdahls_corporatism
+		add_power_balance_value = {
+			id = WFA_sway_ministers_balance
+			value = -0.25
+		}
+	}
+	#No 
+	option = {
+		name = wfa.14.b
+		custom_effect_tooltip = WFA_sway_unable_get_support_again
+	}
+}
+
+#WFA Sway ministers - frits_clausen
+country_event = {
+	id = wfa.15
+	title = wfa.15.t
+	desc = wfa.15.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#His demand, more nationalism
+	#uuhh sure?
+	option = {
+		name = wfa.15.a
+		custom_effect_tooltip = WFA_sway_frits_clausen_demand
+		add_timed_idea = {
+			idea = WFA_nationalism_promoted
+			days = 720
+		}
+		add_power_balance_value = {
+			id = WFA_sway_ministers_balance
+			value = -0.25
+		}
+	}
+	#No
+	option = {
+		name = wfa.15.b
+		custom_effect_tooltip = WFA_sway_unable_get_support_again
+	}
+}
+
+#WFA Sway ministers - soren_kam
+country_event = {
+	id = wfa.16
+	title = wfa.16.t
+	desc = wfa.16.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#His demand, Operation Tunnel Rat #Sneak across the border into Sweden to arrest communists
+	#This is such a bad idea
+	option = {
+		name = wfa.16.a
+		custom_effect_tooltip = WFA_sway_soren_kam_demand
+		hidden_effect = {
+			FBK = {
+				country_event = fubuki.28
+			}
+		}
+	}
+	#No
+	option = {
+		name = wfa.16.b
+		custom_effect_tooltip = WFA_sway_unable_get_support_again
+	}
+}
+
+#WFA Sway ministers - sverre_riisnaes
+country_event = {
+	id = wfa.17
+	title = wfa.17.t
+	desc = wfa.17.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#His demand, the establishment of the WF Svartskjorter
+	#sURE
+	option = {
+		name = wfa.16.a
+		custom_effect_tooltip = WFA_sway_sverre_riisnaes_demand
+		set_country_flag = {
+			flag = WFA_sverre_riisnaes_timer
+			days = 150
+		}
+	}
+	#No
+	option = {
+		name = wfa.16.b
+		custom_effect_tooltip = WFA_sway_unable_get_support_again
+	}
+}
+
+#Fubuki demands extradition
+country_event = {
+	id = wfa.18
+	title = wfa.18.t
+	desc = wfa.18.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#We have no choice
+	option = {
+		name = wfa.18.a
+		custom_effect_tooltip = WFA_sway_unable_get_support_again
+		FBK = {
+			country_event = fubuki.29
+		}
+	}
+	#No
+	option = {
+		name = wfa.18.b
+		FBK = {
+			country_event = fubuki.30
+		}
+	}
+}
+
+#Fubuki supports our action
+country_event = {
+	id = wfa.19
+	title = wfa.19.t
+	desc = wfa.19.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = wfa.19.a
+		add_power_balance_value = {
+			id = WFA_sway_ministers_balance
+			value = -0.25
+		}
+	}
+}
+
+#Hostage Crisis blows up in our face
+country_event = {
+	id = wfa.20
+	title = wfa.20.t
+	desc = wfa.20.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Ts fall back!
+	option = {
+		name = wfa.20.a
+		add_stability = -0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		add_power_balance_value = {
+			id = WFA_sway_ministers_balance
+			value = 0.15
+		}
+	}
+}
+
+#Karl Martinsen reigns supreme
+country_event = {
+	id = wfa.21
+	title = wfa.21.t
+	desc = wfa.21.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Let's gooo
+	option = {
+		name = wfa.21.a
+		add_political_power = 25
+		add_stability = 0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		FBK = {
+			country_event = fubuki.24
+		}
+	}
+}

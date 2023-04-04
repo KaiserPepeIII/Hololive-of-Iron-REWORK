@@ -837,3 +837,204 @@ country_event = {
 		name = fubuki.23.a
 	}
 }
+
+#Unrest in the WFA
+country_event = {
+	id = fubuki.24
+	title = fubuki.24.t
+	desc = fubuki.24.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#They need to reconfirm their loyalty
+	option = {
+		name = fubuki.24.a
+		WFA = {
+			country_event = wfa_focus.24
+		}
+	}
+}
+
+#WFA reaffirms loyalty
+country_event = {
+	id = fubuki.25
+	title = fubuki.25.t
+	desc = fubuki.25.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Cool, now to deal with the menace
+	option = {
+		name = fubuki.25.a
+		#
+		WFA = {
+			country_event = wfa_focus.26
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_completed_focus = FBK_purge_the_wfa
+				}
+			}
+			set_country_flag = FBK_purging_the_wfa
+		}
+	}
+}
+
+#WFA refuses
+country_event = {
+	id = fubuki.26
+	title = fubuki.26.t
+	desc = fubuki.26.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Bro wtf
+	option = {
+		name = fubuki.26.a
+		WFA = {
+			country_event = wfa_focus.25
+		}
+		create_wargoal = {
+			target = WFA
+			type = annex_everything
+		}
+		hidden_effect = {
+			WFA = {
+				create_wargoal = {
+					target = FBK
+					type = annex_everything
+				}
+			}
+		}
+	}
+}
+
+#WFA loyalists request assistance
+country_event = {
+	id = fubuki.27
+	title = fubuki.27.t
+	desc = fubuki.27.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#We have nothing to spare 
+	option = {
+		name = fubuki.27.a
+		trigger = {
+			has_equipment = {
+				infantry_equipment < 125
+			}
+		}
+		WFA = {
+			country_event = wfa.2
+		}
+	}
+	#We could offer some support
+	option = {
+		name = fubuki.27.b
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 125
+			}
+		}
+		WFA = {
+			country_event = wfa.3
+		}
+	}
+	#Something is wrong here
+	option = {
+		name = fubuki.27.c
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 125
+			}
+		}
+		WFA = {
+			country_event = wfa.4
+		}
+	}
+}
+
+#Arrests from across the border
+country_event = {
+	id = fubuki.28
+	title = fubuki.28.t
+	desc = fubuki.28.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Communists or not, they are our problem
+	option = {
+		name = fubuki.28.a
+		WFA = {
+			country_event = wfa.18
+		}
+	}
+	#They have the right idea
+	option = {
+		name = fubuki.28.b
+		WFA = {
+			country_event = wfa.19
+		}
+	}
+}
+
+#WFA returns hostages
+country_event = {
+	id = fubuki.29
+	title = fubuki.29.t
+	desc = fubuki.29.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#nice
+	option = {
+		name = fubuki.29.a
+		add_political_power = 25
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.02
+		}
+	}
+}
+
+#Hostage Crisis
+country_event = {
+	id = fubuki.30
+	title = fubuki.30.t
+	desc = fubuki.30.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#oH NO YOU DIDNT
+	option = {
+		name = fubuki.30.a
+		custom_effect_tooltip = FBK_hostage_crisis_tooltip
+		set_country_flag = FBK_WFA_hostage_crisis_flag
+	}
+}
+
+#Hostage Crisis difused
+country_event = {
+	id = fubuki.31
+	title = fubuki.31.t
+	desc = fubuki.31.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Counter Terrorists Win
+	option = {
+		name = fubuki.31.a
+		add_political_power = 50
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Hostage Crisis difused
+country_event = {
+	id = fubuki.32
+	title = fubuki.32.t
+	desc = fubuki.32.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Counter Terrorists Win
+	option = {
+		name = fubuki.32.a
+	}
+}

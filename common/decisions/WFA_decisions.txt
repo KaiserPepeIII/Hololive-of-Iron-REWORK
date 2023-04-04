@@ -1,0 +1,564 @@
+WFA_gather_strength_category = {
+	WFA_our_struggle = {
+		allowed = {
+			tag = WFA
+		}
+		activation = {
+			tag = WFA
+			OR = {
+				has_country_flag = WFA_pro_fbk_gather_strength
+				has_country_flag = WFA_pro_wfa_gather_strength
+			}
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		selectable_mission = no
+		days_mission_timeout = 90
+		is_good = no
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			country_event = wfa.5
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_core_of = WFA
+					}
+					add_core_of = WFR
+				}
+				WFR = {
+					transfer_state = 144
+					transfer_state = 999
+					transfer_state = 143
+					transfer_state = 989
+				}
+				if = {
+					limit = {
+						WFA = {
+							has_country_flag = WFA_pro_fbk_gather_strength
+						}
+					}
+					WFR = {
+						WFR_pro_fbk_setup = yes
+						load_oob = "WFR_civil_war"
+						add_manpower = 10000
+					}
+					WFA = {
+						WFA_pro_fbk_setup = yes
+					}
+					else = {
+						WFR = {
+							WFR_pro_wfa_setup = yes
+							load_oob = "WFR_civil_war"
+							add_manpower = 10000
+						}
+						WFA = {
+							WFA_pro_wfa_setup = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	WFA_stockpile_arms = {
+		#When the rebellion starts, the revolt will take half your guns or some crap 
+		icon = GFX_decision_icon_default
+		available = {
+			WFA = {
+				has_equipment = {
+					infantry_equipment > 125
+				}
+				OR = {
+					has_country_flag = WFA_pro_fbk_gather_strength
+					has_country_flag = WFA_pro_wfa_gather_strength
+				}
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 14
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -125
+			}
+			add_to_variable = {
+				var = WFA.civil_war_stockpiled_guns
+				value = 125
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	WFA_improve_army_loyalty = {
+		#Some units would defect, lose some manpower maybe
+		icon = GFX_decision_icon_default
+		available = {
+			WFA = {
+				command_power > 25
+				OR = {
+					has_country_flag = WFA_pro_fbk_gather_strength
+					has_country_flag = WFA_pro_wfa_gather_strength
+				}
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_command_power = -25
+			set_country_flag = WFA_loyalty_improved
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	WFA_retire_disloyal_officers = {
+		#Some units would defect, lose some manpower maybe
+		icon = GFX_decision_icon_default
+		available = {
+			WFA = {
+				has_political_power > 50
+				OR = {
+					has_country_flag = WFA_pro_fbk_gather_strength
+					has_country_flag = WFA_pro_wfa_gather_strength
+				}
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_political_power = -50
+			#When civil war kicks off, WFR would get a negative spirit
+			set_country_flag = WFA_officers_retired
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	WFA_request_assistance = {
+		icon = GFX_decision_icon_default
+		available = {
+			WFA = {
+				has_political_power > 15
+				OR = {
+					has_country_flag = WFA_pro_fbk_gather_strength
+					has_country_flag = WFA_pro_wfa_gather_strength
+				}
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 25
+		visible = {
+			NOT = {
+				has_country_flag = WFA_fubuki_distrust
+			}
+		}
+		complete_effect = {
+			add_political_power = -15
+			FBK = {
+				country_event = fubuki.27
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	WFA_arrest_potential_dissidents = {
+		icon = GFX_decision_icon_default
+		available = {
+			WFA = {
+				OR = {
+					has_country_flag = WFA_pro_fbk_gather_strength
+					has_country_flag = WFA_pro_wfa_gather_strength
+				}
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 25
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = -0.05
+			}
+			add_to_variable = {
+				var = WFA.arrested_dissidents
+				value = 1
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#WFA_pro_fbk_gather_strength - exclusive
+	WFA_pro_fbk_increase_fervour = {
+		icon = GFX_decision_icon_default
+		available = {
+			WFA = {
+				command_power > 25
+				OR = {
+					has_country_flag = WFA_pro_fbk_gather_strength
+				}
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 25
+		visible = {
+			NOT = {
+				check_variable = {
+					var = WFA.pro_fbk_fervour
+					value = 3
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			add_command_power = -25
+			add_stability = -0.05
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.05
+			}
+			add_to_variable = {
+				var = WFA.pro_fbk_fervour
+				value = 1
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#WFA_pro_wfa_gather_strength - exclusive
+	WFA_pro_wfa_smuggle_loyalists_over_border = {
+		icon = GFX_decision_icon_default
+		available = {
+			WFA = {
+				command_power > 25
+				OR = {
+					has_country_flag = WFA_pro_wfa_gather_strength
+				}
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 25
+		visible = {
+			NOT = {
+				check_variable = {
+					var = WFA.pro_wfa_smuggled
+					value = 3
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = WFA.pro_wfa_smuggled
+				value = 1
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+}
+
+#explicitly pro-FBK path
+WFA_sway_ministers_category = {
+	#influencing 4 should be enough, so 35 each on the bop
+	WFA_sway_elias_corneliussen = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.11
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_sway_elias_corneliussen_demand = {
+		icon = GFX_decision_icon_default
+		allowed = {
+			tag = WFA
+		}
+		activation = {
+			tag = WFA
+			OR = {
+				has_country_flag = WFA_sway_sverre_riisnaes_demand
+			}
+		}
+		available = {
+			100 = {
+				dockyard > 2
+			}
+		}
+		selectable_mission = yes
+		days_mission_timeout = 360
+		is_good = no
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = WFA_sway_ministers_balance
+				value = -0.25
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	WFA_sway_christian_peder_kryssing = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.12
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	#Unlocks Quisling path
+	WFA_sway_vidkun_quisling = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.13
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	#Schalburg is dead so the pro-WFA economy minister is used
+	WFA_sway_per_engdahl = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.14
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_sway_frits_clausen = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.15
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_sway_soren_kam = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.16
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_sway_sverre_riisnaes = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.17
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	WFA_establishment_of_wf_svartskjorter = {
+		icon = GFX_decision_icon_default
+		allowed = {
+			tag = WFA
+		}
+		activation = {
+			tag = WFA
+			OR = {
+				has_country_flag = WFA_sway_sverre_riisnaes_demand
+			}
+		}
+		available = {
+			command_power > 25
+			has_army_experience > 15
+		}
+		selectable_mission = yes
+		days_mission_timeout = 150
+		is_good = no
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+				army_experience = -15
+			}
+			division_template = {
+				name = "WF Svartskjorter"
+				regiments = {
+					militia = {
+						x = 0
+						y = 0
+					}
+					militia = {
+						x = 0
+						y = 1
+					}
+					militia = {
+						x = 1
+						y = 0
+					}
+					militia = {
+						x = 1
+						y = 1
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1st WF Svartskjorter Division 'Thor'\" division_template = \"WF Svartskjorter\" start_experience_factor = 0.15 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"1st WF Svartskjorter Division 'Odin'\" division_template = \"WF Svartskjorter\" start_experience_factor = 0.15 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"1st WF Svartskjorter Division 'Magni'\" division_template = \"WF Svartskjorter\" start_experience_factor = 0.15 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+				}
+			}
+			add_power_balance_value = {
+				id = WFA_sway_ministers_balance
+				value = -0.25
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	WFA_consolidate_power = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = WFA
+			power_balance_value = {
+				id = WFA_sway_ministers_balance
+				value = 0.5
+			}
+		}
+		cost = 0
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			country_event = wfa.21
+			hidden_effect = {
+				WFA = {
+					clr_country_flag = WFA_sway_ministers_gui
+					remove_power_balance = WFA_sway_ministers_balance
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+}
+
+WFA_council_civil_war_coup_category = {
+	WFA_martinsen_coup = {
+		allowed = {
+			tag = WFA
+		}
+		activation = {
+			tag = WFA
+			has_country_flag = WFA_council_civil_war_flag
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		selectable_mission = no
+		days_mission_timeout = 365
+		is_good = no
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			country_event = wfa.31
+		}
+	}
+}

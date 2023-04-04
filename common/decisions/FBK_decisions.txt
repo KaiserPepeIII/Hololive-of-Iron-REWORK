@@ -1,3 +1,49 @@
+FBK_hostage_crisis = {
+	FBK_WFA_hostage_crisis_mission = {
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			tag = FBK
+			OR = {
+				has_country_flag = FBK_WFA_hostage_crisis_flag
+			}
+		}
+		available = {
+			command_power > 25
+			has_manpower > 200
+			has_equipment = {
+				infantry_equipment > 200
+			}
+		}
+		custom_cost_trigger = {
+			command_power = 25
+		}
+		custom_cost_text = HLOI_cost_15_cp
+		visible = {
+			always = yes
+		}
+		selectable_mission = yes
+		days_mission_timeout = 90
+		is_good = no
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			FBK = {
+				country_event = fubuki.31
+			}
+			hidden_effect = {
+				add_command_power = -15
+				WFA = {
+					country_event = wfa.20
+				}
+			}
+		}
+	}
+}
+
 FBK_plan_thor_decisions = {
 	FBK_plan_thor_tac = {
 		days_re_enable = 30
