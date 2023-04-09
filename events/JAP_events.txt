@@ -264,3 +264,179 @@ country_event = {
 		}
 	}
 }
+
+#CPG wants more officers
+country_event = {
+	id = japan.3
+	title = japan.3.t
+	desc = japan.3.d
+	picture = GFX_report_event_JAP_iroha_revolution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = japan.3.a
+		add_command_power = -15
+		CPG = {
+			country_event = CPG.11
+		}
+	}
+	#Nein
+	option = {
+		name = japan.3.b
+		CPG = {
+			country_event = CPG.12
+		}
+	}
+}
+
+#CPG lend-lease
+country_event = {
+	id = japan.4
+	title = japan.4.t
+	desc = japan.4.d
+	picture = GFX_report_event_JAP_iroha_revolution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = japan.4.a
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+		CPG = {
+			country_event = CPG.13
+		}
+	}
+	#Nein
+	option = {
+		name = japan.4.b
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		CPG = {
+			country_event = CPG.14
+		}
+	}
+	#We have nothing to spare
+	option = {
+		name = japan.4.c
+		trigger = {
+			has_equipment = {
+				infantry_equipment < 500
+			}
+		}
+		CPG = {
+			country_event = CPG.14
+		}
+	}
+}
+
+#CPG planes
+country_event = {
+	id = japan.5
+	title = japan.5.t
+	desc = japan.5.d
+	picture = GFX_report_event_JAP_iroha_revolution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = japan.4.a
+		trigger = {
+			has_equipment = {
+				fighter_equipment_0 > 50
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_0
+			amount = -50
+		}
+		CPG = {
+			country_event = CPG.15
+		}
+	}
+	#Nein
+	option = {
+		name = japan.4.b
+		trigger = {
+			has_equipment = {
+				fighter_equipment_0 > 50
+			}
+		}
+		CPG = {
+			country_event = CPG.16
+		}
+	}
+	#We have nothing to spare
+	option = {
+		name = japan.4.c
+		trigger = {
+			has_equipment = {
+				fighter_equipment_0 < 50
+			}
+		}
+		CPG = {
+			country_event = CPG.16
+		}
+	}
+}
+
+#CPG planes order
+country_event = {
+	id = japan.6
+	title = japan.6.t
+	desc = japan.6.d
+	picture = GFX_report_event_JAP_iroha_revolution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = japan.6.a
+		trigger = {
+			has_equipment = {
+				fighter_equipment_0 > 50
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_0
+			amount = -50
+		}
+		add_political_power = 75
+		CPG = {
+			country_event = CPG.17
+		}
+	}
+	#Nein
+	option = {
+		name = japan.6.b
+		trigger = {
+			has_equipment = {
+				fighter_equipment_0 > 50
+			}
+		}
+		CPG = {
+			country_event = CPG.18
+		}
+	}
+	#We have nothing to spare
+	option = {
+		name = japan.6.c
+		trigger = {
+			has_equipment = {
+				fighter_equipment_0 < 50
+			}
+		}
+		CPG = {
+			country_event = CPG.18
+		}
+	}
+}

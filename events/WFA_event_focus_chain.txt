@@ -82,6 +82,8 @@ country_event = {
 		name = wfa_focus.3.a
 		retire_character = WFA_christian_shalburg
 		hidden_effect = {
+			set_country_flag = WFA_schalburg_dead
+			remove_ideas = WFA_christian_frederick_von_schalburg
 			#narrative event
 			country_event = {
 				id = wfa_focus.36
@@ -98,6 +100,8 @@ country_event = {
 		name = wfa_focus.3.b
 		retire_character = WFA_christian_shalburg
 		hidden_effect = {
+			set_country_flag = WFA_schalburg_dead
+			remove_ideas = WFA_christian_frederick_von_schalburg
 			#narrative event
 			country_event = {
 				id = wfa_focus.38
@@ -181,12 +185,12 @@ country_event = {
 	#Uh oh
 	option = {
 		name = wfa_focus.6.a
-		set_country_flag = WFA_civil_war_flag
+		set_country_flag = WFA_pro_wfa_gather_strength
 		hidden_effect = {
-			FBK = {
+			WFA = {
 				country_event = {
-					id = fubuki.24
-					days = 7
+					id = wfa_focus.44
+					days = 90
 				}
 			}
 		}
@@ -206,6 +210,9 @@ country_event = {
 			WFA = {
 				surrender_progress > 0.5
 			}
+			WFR = {
+				surrender_progress > 0.5
+			}
 		}
 	}
 	mean_time_to_happen = {
@@ -216,26 +223,58 @@ country_event = {
 	option = {
 		name = wfa_focus.7.a
 		retire_character = WFA_christian_shalburg
-		#Killing of Martinsen
 		if = {
 			limit = {
-				exists = yes
+				has_country_flag = WFA_sided_pro_wfa
 			}
 			hidden_effect = {
 				country_event = {
-					id = wfa_focus.20
+					id = wfa_focus.45
+					days = 1
+				}
+			}
+			else = {
+				country_event = {
+					id = wfa_focus.48
 					days = 1
 				}
 			}
 		}
+		hidden_effect = {
+			set_country_flag = WFA_schalburg_dead
+			remove_ideas = WFA_christian_frederick_von_schalburg
+		}
 	}
 }
 
-#Anti-FBK - End of the civil war (reused)
+#End of the civil war (reused)
 country_event = {
 	id = wfa_focus.8
 	title = wfa_focus.8.t
-	desc = wfa_focus.8.desc
+	desc = {
+		trigger = {
+			WFA_karl_marthinsen_char = {
+				is_country_leader = no
+			}
+			has_country_flag = WFA_sided_pro_fbk
+		}
+		text = wfa_focus.8.desca
+	}
+	desc = {
+		trigger = {
+			has_country_flag = WFA_sided_pro_wfa
+		}
+		text = wfa_focus.8.descb
+	}
+	desc = {
+		trigger = {
+			WFA_karl_marthinsen_char = {
+				is_country_leader = yes
+			}
+			has_country_flag = WFA_sided_pro_fbk
+		}
+		text = wfa_focus.8.descmart
+	}
 	picture = GFX_report_event_WFA_ghana_offer
 	trigger = {
 		OR = {
@@ -388,6 +427,8 @@ country_event = {
 		retire_character = WFA_christian_shalburg
 		hidden_effect = {
 			#Framing of the murder
+			set_country_flag = WFA_schalburg_dead
+			remove_ideas = WFA_christian_frederick_von_schalburg
 			country_event = {
 				id = wfa_focus.13
 				days = 1
@@ -432,8 +473,10 @@ country_event = {
 	option = {
 		name = wfa_focus.14.a
 		hidden_effect = {
-			id = wfa_focus.15
-			days = 1
+			country_event = {
+				id = wfa_focus.15
+				days = 1
+			}
 		}
 	}
 }
@@ -448,47 +491,6 @@ country_event = {
 	#tbd 
 	option = {
 		name = wfa_focus.15.a
-	}
-}
-
-#Pro-FBK - End of the civil war (reused)
-country_event = {
-	id = wfa_focus.16
-	title = wfa_focus.16.t
-	desc = wfa_focus.16.desc
-	picture = GFX_report_event_WFA_ghana_offer
-	trigger = {
-		OR = {
-			tag = WFA
-			#
-		}
-		has_country_flag = WFA_civil_war_flag
-		OR = {
-			WFA = {
-				exists = no
-			}
-			#
-		}
-	}
-	mean_time_to_happen = {
-		days = 2
-	}
-	#yippeee
-	option = {
-		name = wfa_focus.16.a
-		clr_country_flag = WFA_civil_war_flag
-		hidden_effect = {
-			if = {
-				limit = {
-					tag = WFA
-				}
-				set_country_flag = WFA_pro_fbk_win_flag
-				country_event = {
-					id = wfa_focus.17
-					days = 1
-				}
-			}
-		}
 	}
 }
 
@@ -527,38 +529,10 @@ country_event = {
 		set_country_flag = WFA_pro_wfa_gather_strength
 		hidden_effect = {
 			country_event = {
-				id = wfa_focus.19
+				id = wfa_focus.44
 				days = 90
 			}
 		}
-	}
-}
-
-#ANTI-FBK - START CIVIL WAR
-country_event = {
-	id = wfa_focus.19
-	title = wfa_focus.19.t
-	desc = wfa_focus.19.desc
-	picture = GFX_report_event_WFA_ghana_offer
-	is_triggered_only = yes
-	#ogey
-	option = {
-		name = wfa_focus.19.a
-		#
-	}
-}
-
-#ANTI-FBK - Killing of Martinsen
-country_event = {
-	id = wfa_focus.20
-	title = wfa_focus.20.t
-	desc = wfa_focus.20.desc
-	picture = GFX_report_event_WFA_ghana_offer
-	is_triggered_only = yes
-	#damn he so fake for that
-	option = {
-		name = wfa_focus.20.a
-		#
 	}
 }
 
@@ -674,7 +648,7 @@ country_event = {
 	}
 }
 
-#Pro-FBK - Crushing the Sverige Government
+#Pro-FBK - Crushing the Narvik Government
 country_event = {
 	id = wfa_focus.26
 	title = wfa_focus.26.t
@@ -684,6 +658,9 @@ country_event = {
 	#Die traitourous bastards
 	option = {
 		name = wfa_focus.26.a
+		hidden_effect = {
+			country_event = wfa_focus.46
+		}
 	}
 }
 
@@ -759,6 +736,7 @@ country_event = {
 		set_country_flag = {
 			flag = WFA_civil_war_flag
 		}
+		set_country_flag = WFA_sided_pro_fbk
 		set_country_flag = {
 			flag = WFA_council_civil_war_flag
 			days = 365
@@ -871,7 +849,7 @@ country_event = {
 	option = {
 		name = wfa_focus.33.a
 		WFR = {
-			country_event = wfr.2
+			country_event = wfr.3
 		}
 	}
 }
@@ -1005,5 +983,146 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = wfa_focus.43.a
+	}
+}
+
+#PRO-WFA -  CIVIL WAR
+country_event = {
+	id = wfa_focus.44
+	title = wfa_focus.44.t
+	desc = wfa_focus.44.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Oh nos
+	option = {
+		name = wfa_focus.44.a
+		set_country_flag = {
+			flag = WFA_civil_war_flag
+		}
+		set_country_flag = WFA_sided_pro_wfa
+		clr_country_flag = WFA_pro_wfa_gather_strength
+		#
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_core_of = WFA
+				}
+				add_core_of = WFR
+			}
+			WFR = {
+				transfer_state = 144
+				transfer_state = 999
+				transfer_state = 143
+				transfer_state = 989
+			}
+			WFR = {
+				WFR_pro_wfa_setup = yes
+				load_oob = "WFR_civil_war"
+				add_manpower = 10000
+			}
+			WFA = {
+				WFA_pro_wfa_setup = yes
+			}
+			FBK = {
+				country_event = fubuki.33
+			}
+		}
+	}
+}
+
+#PRO-WFA -  CIVIL WAR - Kjelstrup takes charge
+country_event = {
+	id = wfa_focus.45
+	title = wfa_focus.45.t
+	desc = wfa_focus.45.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#ogey
+	option = {
+		name = wfa_focus.45.a
+		#
+	}
+}
+
+#PRO-FBK - NON-council - CIVIL WAR
+country_event = {
+	id = wfa_focus.46
+	title = wfa_focus.46.t
+	desc = wfa_focus.46.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Oh nos
+	option = {
+		name = wfa_focus.46.a
+		set_country_flag = {
+			flag = WFA_civil_war_flag
+		}
+		set_country_flag = WFA_sided_pro_fbk
+		#
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_core_of = WFA
+				}
+				add_core_of = WFR
+			}
+			WFR = {
+				transfer_state = 144
+				transfer_state = 999
+				transfer_state = 143
+				transfer_state = 989
+			}
+			WFR = {
+				WFR_pro_wfa_setup = yes
+				load_oob = "WFR_civil_war"
+				add_manpower = 10000
+			}
+			WFA = {
+				WFA_pro_wfa_setup = yes
+			}
+		}
+	}
+}
+
+#Extent of the Purges
+country_event = {
+	id = wfa_focus.47
+	title = wfa_focus.47.t
+	desc = wfa_focus.47.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#“Refrain from the purges, but continue to gather evidence.”
+	option = {
+		name = wfa_focus.47.a
+		add_ideas = WFA_files_on_everyone
+	}
+	#“Try a few disloyal officers and politicians. They will serve as an example.”
+	option = {
+		name = wfa_focus.47.b
+		add_political_power = 100
+		add_stability = 0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.15
+		}
+	}
+	#“Investigate everyone. Leave no stone unturned.”
+	option = {
+		name = wfa_focus.47.c
+		add_ideas = WFA_ideological_purity
+		add_manpower = -1250
+	}
+}
+
+#Formation of a New Council
+country_event = {
+	id = wfa_focus.48
+	title = wfa_focus.48.t
+	desc = wfa_focus.48.desc
+	picture = GFX_report_event_WFA_ghana_offer
+	is_triggered_only = yes
+	#Ogey
+	option = {
+		name = wfa_focus.48.a
 	}
 }

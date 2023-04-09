@@ -864,18 +864,6 @@ country_event = {
 	#Cool, now to deal with the menace
 	option = {
 		name = fubuki.25.a
-		#
-		WFA = {
-			country_event = wfa_focus.26
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_completed_focus = FBK_purge_the_wfa
-				}
-			}
-			set_country_flag = FBK_purging_the_wfa
-		}
 	}
 }
 
@@ -1036,5 +1024,36 @@ country_event = {
 	#Counter Terrorists Win
 	option = {
 		name = fubuki.32.a
+	}
+}
+
+#Civil war in the WFA - pro WFA
+country_event = {
+	id = fubuki.33
+	title = fubuki.33.t
+	desc = fubuki.33.d
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#We can't afford a war, send guns
+	option = {
+		name = fubuki.33.a
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		WFR = {
+			country_event = wfr.2
+		}
+		hidden_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -750
+			}
+		}
+	}
+	#We have nothing to spare
+	option = {
+		name = fubuki.33.b
 	}
 }

@@ -89,7 +89,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#Pro-Yagoo Conservative
-		FBK_gösta_bagge = {
+		FBK_gosta_bagge = {
 			allowed = {
 				always = no
 			}
@@ -100,7 +100,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#Pro-Yagoo Conservative
-		FBK_kyösti_järvinen = {
+		FBK_kyosti_jarvinen = {
 			allowed = {
 				always = no
 			}
@@ -122,18 +122,18 @@ ideas = {
 			removal_cost = -1
 		}
 		#Pro-Yagoo Conservative
-		FBK_yrjö_pulkkinen = {
+		FBK_yrjo_pulkkinen = {
 			allowed = {
 				always = no
 			}
 			allowed_civil_war = {
 				always = yes
-			}
+			} 
 			picture = generic_war_preparation
 			removal_cost = -1
 		}
 		#Pro-Yagoo Conservative
-		FBK_natanael_gärde = {
+		FBK_natanael_garde = {
 			allowed = {
 				always = no
 			}
@@ -199,7 +199,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#Pro-Yagoo Monarchist
-		FBK_kaarlo_castrén = {
+		FBK_kaarlo_castren = {
 			allowed = {
 				always = no
 			}
@@ -243,7 +243,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#Pro-Yagoo Monarchist
-		FBK_karl_söderholm = {
+		FBK_karl_soderholm = {
 			allowed = {
 				always = no
 			}
@@ -254,7 +254,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#Pro-Yagoo Monarchist
-		FBK_arthur_castrén = {
+		FBK_arthur_castren = {
 			allowed = {
 				always = no
 			}
@@ -419,7 +419,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#Pro-Resistance Revolutionary
-		FBK_zeth_höglund = {
+		FBK_zeth_hoglund = {
 			allowed = {
 				always = no
 			}
@@ -485,7 +485,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#Pro-Resistance Revolutionary
-		FBK_verner_lehtimäki = {
+		FBK_verner_lehtimaki = {
 			allowed = {
 				always = no
 			}
@@ -1375,6 +1375,338 @@ ideas = {
 				army_morale_factor = 0.5
 				army_org = 10
 				army_org_regain = 0.1
+			}
+		}
+	}
+	tank_manufacturer = {
+		FBK_landsverk_legacy = {
+			picture = FBK_idea_landsverk
+			allowed = {
+				tag = FBK
+				NOT = {
+					has_dlc = "No Step Back"
+				}
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				cat_light_armor = 0.15
+			}
+			traits = {
+				FBK_landsverk_legacy_trait
+			}
+		}
+		FBK_landsverk_nsb = {
+			picture = FBK_idea_landsverk
+			allowed = {
+				tag = FBK
+				has_dlc = "No Step Back"
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				cat_light_armor = 0.15
+			}
+			traits = {
+				FBK_landsverk_nsb_trait
+			}
+		}
+		FBK_kirov_zavod = {
+			picture = FBK_idea_kirov_zavod
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				armor = 0.1
+			}
+			traits = {
+				FBK_kirov_zavod_trait
+			}
+		}
+		FBK_sisu_auto = {
+			picture = FBK_idea_sisu_auto
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				cat_light_armor = 0.1
+				motorized_equipment = 0.1
+				cat_mechanized_equipment = 0.05
+			}
+			traits = {
+				FBK_sisu_auto_trait
+			}
+		}
+	}
+	naval_manufacturer = {
+		FBK_wartsila = {
+			picture = FBK_idea_wartsila
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			traits = {
+				FBK_wartsila_trait
+			}
+		}
+		FBK_kockums = {
+			picture = FBK_idea_kockums
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			traits = {
+				FBK_kockums_trait
+			}
+		}
+		FBK_kronstadt = {
+			picture = FBK_idea_kronstadt_marine_plant
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			traits = {
+				FBK_kronstadt_trait
+			}
+		}
+		FBK_orlogsvaerftet_navy = {
+			picture = FBK_idea_orlogsvaerftet
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				naval_equipment = 0.1
+				air_equipment = 0.05
+			}
+			traits = {
+				FBK_orlogsvaerftet_navy_trait
+			}
+		}
+	}
+	aircraft_manufacturer = {
+		FBK_lavochkin = {
+			picture = FBK_idea_lavochkin
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				air_equipment = 0.1
+				rocketry = 0.15
+			}
+			traits = {
+				FBK_lavochkin_trait
+			}
+		}
+		FBK_vaikion_lentokontehdas = {
+			picture = FBK_idea_vaikion_lentokontehdas
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				light_air = 0.2
+				medium_air = 0.1
+			}
+			traits = {
+				FBK_vaikion_lentokontehdas_trait
+			}
+		}
+		FBK_orlogsvaerftet_aircraft = {
+			picture = FBK_idea_orlogsvaerftet
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				light_air = 0.15
+				naval_equipment = 0.1
+			}
+			traits = {
+				FBK_orlogsvaerftet_aircraft_trait
+			}
+		}
+	}
+	materiel_manufacturer = {
+		FBK_husqvarna_vapenfabriks = {
+			picture = FBK_idea_husqvarna_vapenfabriks
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				infantry_weapons = 0.15
+				support_tech = 0.05
+			}
+			traits = {
+				FBK_husqvarna_vapenfabriks_trait
+			}
+		}
+		FBK_tikkakoski = {
+			picture = FBK_idea_tikka
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				infantry_weapons = 0.05
+				support_tech = 0.15
+			}
+			traits = {
+				FBK_tikkakoski_trait
+			}
+		}
+		FBK_forsvarets_materielverk = {
+			picture = FBK_idea_forsvarets_materielverk
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				artillery = 0.15
+			}
+			traits = {
+				FBK_forsvarets_materielverk_trait
+			}
+		}
+	}
+	industrial_concern = {
+		FBK_vr = {
+			picture = FBK_idea_vr
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				industry = 0.05
+				construction_tech = 0.1
+			}
+			traits = {
+				FBK_vr_trait
+			}
+		}
+		FBK_lemminkainen = {
+			picture = FBK_idea_lemminkainen
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				industry = 0.1
+				construction_tech = 0.05
+			}
+			traits = {
+				FBK_lemminkainen_trait
+			}
+		}
+		FBK_alfa_laval = {
+			picture = FBK_idea_alfa_laval
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				industry = 0.15
+			}
+			traits = {
+				FBK_alfa_laval_trait
+			}
+		}
+		FBK_state_radium_institute = {
+			picture = FBK_idea_state_radium_institute
+			allowed = {
+				tag = FBK
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				nuclear = 0.15
+				rocketry = 0.05
+				electronics = 0.05
+			}
+			traits = {
+				FBK_state_radium_institute_trait
 			}
 		}
 	}

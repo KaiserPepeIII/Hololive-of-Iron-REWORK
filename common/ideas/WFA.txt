@@ -100,7 +100,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#kleptocratic dictatorship
-		WFA_martin_ekström = {
+		WFA_martin_ekstrom = {
 			allowed = {
 				always = no
 			}
@@ -111,7 +111,7 @@ ideas = {
 			removal_cost = -1
 		}
 		#kleptocratic dictatorship
-		WFA_erhard_qvistgaar = {
+		WFA_erhard_qvistgaard = {
 			allowed = {
 				always = no
 			}
@@ -433,29 +433,39 @@ ideas = {
 			modifier = {
 			}
 		}
-	}
-	tank_manufacturer = {
-		WFA_kongsberg_defense_and_aerospace_tm = {
-			picture = WTS_idea_monno_and_culus_limited
+		WFA_files_on_everyone = {
 			allowed = {
-				tag = WFA
+				always = no
 			}
-			available = {
+			allowed_civil_war = {
 				always = yes
 			}
-			cost = 150
-			removal_cost = 10
-			research_bonus = {
-				industry = 0.15
-			}
-			traits = {
-				industrial_concern
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
 			}
 		}
-		WFA_forsvarets_forskningsinstitutt_tm = {
-			picture = WTS_idea_monno_and_culus_limited
+		WFA_ideological_purity = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+			}
+		}
+	}
+	tank_manufacturer = {
+		WFA_kongsberg_defense_and_aerospace_tm_legacy = {
+			picture = WFA_idea_kongsburg
 			allowed = {
 				tag = WFA
+				NOT = {
+					has_dlc = "No Step Back"
+				}
 			}
 			available = {
 				always = yes
@@ -463,14 +473,34 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				armor = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_kongsberg_defense_and_aerospace_tm_legacy_trait
+			}
+		}
+		WFA_forsvarets_forskningsinstitutt_tm_legacy = {
+			picture = WFA_idea_forsvarets_forskningsinstitutt
+			allowed = {
+				tag = WFA
+				NOT = {
+					has_dlc = "No Step Back"
+				}
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				armor = 0.15
+			}
+			traits = {
+				WFA_forsvarets_forskningsinstitutt_tm_legacy_trait
 			}
 		}
 		WFA_moller_mobilitetsgruppe = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_moller
 			allowed = {
 				tag = WFA
 			}
@@ -480,16 +510,54 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				armor = 0.1
+				motorized_equipment = 0.05
+				cat_mechanized_equipment = 0.05
 			}
 			traits = {
-				industrial_concern
+				WFA_moller_mobilitetsgruppe_trait
+			}
+		}
+		WFA_kongsberg_defense_and_aerospace_tm_nsb = {
+			picture = WFA_idea_kongsburg
+			allowed = {
+				tag = WFA
+				has_dlc = "No Step Back"
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				armor = 0.15
+			}
+			traits = {
+				WFA_kongsberg_defense_and_aerospace_tm_nsb_trait
+			}
+		}
+		WFA_forsvarets_forskningsinstitutt_tm_nsb = {
+			picture = WFA_idea_forsvarets_forskningsinstitutt
+			allowed = {
+				tag = WFA
+				has_dlc = "No Step Back"
+			}
+			available = {
+				always = yes
+			}
+			cost = 150
+			removal_cost = 10
+			research_bonus = {
+				armor = 0.15
+			}
+			traits = {
+				WFA_forsvarets_forskningsinstitutt_tm_nsb_trait
 			}
 		}
 	}
 	naval_manufacturer = {
 		WFA_kongsberg_maritime = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_kongsburg
 			allowed = {
 				tag = WFA
 			}
@@ -499,14 +567,14 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				naval_equipment = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_kongsberg_maritime_trait
 			}
 		}
 		WFA_forsvarets_forskningsinstitutt_nm = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_forsvarets_forskningsinstitutt
 			allowed = {
 				tag = WFA
 			}
@@ -516,14 +584,14 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				naval_equipment = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_forsvarets_forskningsinstitutt_nm_trait
 			}
 		}
 		WFA_wilhelmsen_holding = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_wilhelmsen_holding
 			allowed = {
 				tag = WFA
 			}
@@ -533,14 +601,15 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				naval_equipment = 0.15
+				naval_doctrine = 0.05
 			}
 			traits = {
-				industrial_concern
+				WFA_wilhelmsen_holding_trait
 			}
 		}
 		WFA_kvaerner = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_kvaerner
 			allowed = {
 				tag = WFA
 			}
@@ -550,16 +619,16 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				naval_equipment = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_kvaerner_trait
 			}
 		}
 	}
 	aircraft_manufacturer = {
 		WFA_kongsberg_defense_and_aerospace_am = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_kongsburg
 			allowed = {
 				tag = WFA
 			}
@@ -569,14 +638,14 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				air_equipment = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_kongsberg_defense_and_aerospace_am_trait
 			}
 		}
 		WFA_kjeller_flyfabrikk = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_kjeller_flyfabrikk
 			allowed = {
 				tag = WFA
 			}
@@ -586,16 +655,16 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				air_equipment = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_kjeller_flyfabrikk_trait
 			}
 		}
 	}
 	materiel_manufacturer = {
 		WFA_kongsberg_defense_and_aerospace_mm = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_kongsburg
 			allowed = {
 				tag = WFA
 			}
@@ -605,14 +674,14 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				infantry_weapons = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_kongsberg_defense_and_aerospace_mm_trait
 			}
 		}
 		WFA_forsvarsmateriell = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_forsvarets_forskningsinstitutt
 			allowed = {
 				tag = WFA
 			}
@@ -622,14 +691,15 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				support_tech = 0.15
+				infantry_weapons = 0.05
 			}
 			traits = {
-				industrial_concern
+				WFA_forsvarsmateriell_trait
 			}
 		}
 		WFA_forsvarets_forskningsinstitutt_mm = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_forsvarets_forskningsinstitutt
 			allowed = {
 				tag = WFA
 			}
@@ -639,16 +709,16 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				artillery = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_forsvarets_forskningsinstitutt_mm_trait
 			}
 		}
 	}
 	industrial_concern = {
 		WFA_kongsberg_gruppen = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_kongsburg
 			allowed = {
 				tag = WFA
 			}
@@ -661,11 +731,11 @@ ideas = {
 				industry = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_kongsberg_gruppen_trait
 			}
 		}
 		WFA_veidekke = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_veidekke
 			allowed = {
 				tag = WFA
 			}
@@ -675,14 +745,15 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				construction_tech = 0.2
+				industry = 0.05
 			}
 			traits = {
-				industrial_concern
+				WFA_veidekke_trait
 			}
 		}
 		WFA_moelven_industrier = {
-			picture = WTS_idea_monno_and_culus_limited
+			picture = WFA_idea_moeleven_industrier
 			allowed = {
 				tag = WFA
 			}
@@ -692,10 +763,11 @@ ideas = {
 			cost = 150
 			removal_cost = 10
 			research_bonus = {
-				industry = 0.15
+				industry = 0.1
+				synth_resources = 0.15
 			}
 			traits = {
-				industrial_concern
+				WFA_moelven_industrier_trait
 			}
 		}
 	}

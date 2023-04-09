@@ -3,83 +3,160 @@ add_namespace = WFA_cabinet
 country_event = {
 	id = WFA_cabinet.1
 	title = WFA_cabinet.1.t
-	desc = WFA_cabinet.1.d
+	desc = WFA_cabinet.1.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.1.a
 	}
+	#Christian Peder Kryssing
 	option = {
 		name = WFA_cabinet.1.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_christian_peder_kryssing
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.9
+		WFA_switch_first_minister = yes
+		add_ideas = WFA_christian_peder_kryssing
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Finn Kjestrup
+	option = {
+		name = WFA_cabinet.1.c
+		trigger = {
+			original_tag = WFA
+			NOT = {
+				has_idea = WFA_finn_kjelstrup
+			}
 		}
+		WFA_switch_first_minister = yes
+		add_ideas = WFA_finn_kjelstrup
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister interior
+#finance minister
 country_event = {
 	id = WFA_cabinet.2
 	title = WFA_cabinet.2.t
-	desc = WFA_cabinet.2.d
+	desc = WFA_cabinet.2.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.2.a
 	}
+	#Frits Clausen
 	option = {
 		name = WFA_cabinet.2.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_frits_clausen
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.3
+		WFA_switch_finance_minister = yes
+		add_ideas = WFA_frits_clausen
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Turmod Hurstad
+	option = {
+		name = WFA_cabinet.2.c
+		trigger = {
+			original_tag = WFA
+			NOT = {
+				has_idea = WFA_tormod_hustad
+			}
 		}
+		WFA_switch_finance_minister = yes
+		add_ideas = WFA_tormod_hustad
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister finance
+#economy minister
 country_event = {
 	id = WFA_cabinet.3
 	title = WFA_cabinet.3.t
-	desc = WFA_cabinet.3.d
+	desc = WFA_cabinet.3.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.3.a
 	}
+	#Christian von Shalburg
 	option = {
 		name = WFA_cabinet.3.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_christian_frederick_von_schalburg
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.1
+		WFA_switch_economy_minister = yes
+		add_ideas = WFA_christian_frederick_von_schalburg
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Per Engdahl
+	option = {
+		name = WFA_cabinet.3.c
+		trigger = {
+			original_tag = WFA
+			NOT = {
+				has_idea = WFA_per_engdahl
+			}
 		}
+		WFA_switch_economy_minister = yes
+		add_ideas = WFA_per_engdahl
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#chief army
+#armaments minister
 country_event = {
 	id = WFA_cabinet.4
 	title = WFA_cabinet.4.t
-	desc = WFA_cabinet.4.d
+	desc = WFA_cabinet.4.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.4.a
 	}
+	#Vidkud Quisling
 	option = {
 		name = WFA_cabinet.4.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_vidkun_quisling
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.5
+		WFA_switch_armaments_minister = yes
+		add_ideas = WFA_vidkun_quisling
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Eric von Rosen
+	option = {
+		name = WFA_cabinet.4.c
+		trigger = {
+			original_tag = WFA
+			NOT = {
+				has_idea = WFA_eric_von_rosen
+				has_idea = WFA_vidkun_quisling
+			}
 		}
+		WFA_switch_armaments_minister = yes
+		add_ideas = WFA_eric_von_rosen
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
@@ -87,103 +164,184 @@ country_event = {
 country_event = {
 	id = WFA_cabinet.5
 	title = WFA_cabinet.5.t
-	desc = WFA_cabinet.5.d
+	desc = WFA_cabinet.5.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.5.a
 	}
+	#Elias Corneliussen
 	option = {
 		name = WFA_cabinet.5.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_elias_corneliussen
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.6
+		WFA_switch_navy_chief = yes
+		add_ideas = WFA_elias_corneliussen
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Erhard Qvistgaard
+	option = {
+		name = WFA_cabinet.5.c
+		trigger = {
+			original_tag = WFA
+			NOT = {
+				has_idea = WFA_erhard_qvistgaard
+			}
 		}
+		WFA_switch_navy_chief = yes
+		add_ideas = WFA_elias_corneliussen
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister foreign
+#chief army
 country_event = {
 	id = WFA_cabinet.6
 	title = WFA_cabinet.6.t
-	desc = WFA_cabinet.6.d
+	desc = WFA_cabinet.6.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.6.a
 	}
+	#Knud Borg Martinsen
 	option = {
 		name = WFA_cabinet.6.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_knud_borge_martinsen
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.2
+		WFA_switch_army_chief = yes
+		add_ideas = WFA_knud_borge_martinsen
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Martin Ekstrom
+	option = {
+		name = WFA_cabinet.6.c
+		trigger = {
+			original_tag = WFA
+			NOT = {
+				has_idea = WFA_martin_ekström
+			}
 		}
+		WFA_switch_army_chief = yes
+		add_ideas = WFA_martin_ekström
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister armaments
+#interior minister
 country_event = {
 	id = WFA_cabinet.7
 	title = WFA_cabinet.7.t
-	desc = WFA_cabinet.7.d
+	desc = WFA_cabinet.7.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.7.a
 	}
+	#Sverre Riisnaes
 	option = {
 		name = WFA_cabinet.7.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_sverre_riisnaes
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.7
+		WFA_switch_interior_minister = yes
+		add_ideas = WFA_sverre_riisnaes
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Konrad Hallgren
+	option = {
+		name = WFA_cabinet.7.c
+		trigger = {
+			original_tag = WFA
+			NOT = {
+				has_idea = WFA_konrad_hallgren
+			}
 		}
+		WFA_switch_interior_minister = yes
+		add_ideas = WFA_konrad_hallgren
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#Minister economy
+#foreign minister
 country_event = {
 	id = WFA_cabinet.8
 	title = WFA_cabinet.8.t
-	desc = WFA_cabinet.8.d
+	desc = WFA_cabinet.8.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.8.a
 	}
+	#Soren Kam
 	option = {
 		name = WFA_cabinet.8.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_soren_kam
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.8
+		WFA_switch_foreign_minister = yes
+		add_ideas = WFA_soren_kam
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Sven Olov
+	option = {
+		name = WFA_cabinet.8.c
+		trigger = {
+			original_tag = WFA
+			NOT = {
+				has_idea = WFA_sven_olov_lindholm
+			}
 		}
+		WFA_switch_foreign_minister = yes
+		add_ideas = WFA_sven_olov_lindholm
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister alignment
+#allegiance minister
 country_event = {
 	id = WFA_cabinet.9
 	title = WFA_cabinet.9.t
-	desc = WFA_cabinet.9.d
+	desc = WFA_cabinet.9.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = WFA_cabinet.9.a
 	}
+	#Karl Marthinsen
 	option = {
 		name = WFA_cabinet.9.b
 		trigger = {
 			original_tag = WFA
+			NOT = {
+				has_idea = WFA_karl_marthinsen
+			}
 		}
-		WFA = {
-			country_event = WFA_cabinet.4
-		}
+		WFA_switch_allegiance_minister = yes
+		add_ideas = WFA_karl_marthinsen
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
