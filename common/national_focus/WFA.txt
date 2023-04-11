@@ -15,19 +15,23 @@ focus_tree = {
 	focus = {
 		id = WFA_norwegian_independence		#norwegian nationalism and eventual independence
 		icon = GFX_focus_WFA_norwegian_independence
-		cost = 0
+		cost = 8
+		allow_branch = {
+			always = no
+		}
 		x = 22
 		y = 2
 	}
 	focus = {
 		id = WFA_expand_industrial_base		#industrial tech and foctory 
 		icon = GFX_focus_WFA_expand_industrial_base
-		cost = 0
+		cost = 8
 		x = 34
 		y = 2
 		completion_reward = {
 			two_random_civilian_factory = yes
 			add_tech_bonus = {
+				name = WFA_industry_tech_bonus
 				bonus = 1
 				uses = 1
 				category = industry
@@ -37,7 +41,7 @@ focus_tree = {
 	focus = {
 		id = WFA_wfa_reliance		#+ to nationalism, bonus to wfa focus
 		icon = GFX_focus_WFA_wfa_reliance
-		cost = 0
+		cost = 8
 		mutually_exclusive = {
 			focus = WFA_local_defense
 		}
@@ -53,12 +57,16 @@ focus_tree = {
 	focus = {
 		id = WFA_local_defense		# 
 		icon = GFX_focus_WFA_local_defense
-		cost = 0
+		cost = 8
 		mutually_exclusive = {
 			focus = WFA_wfa_reliance
 		}
+		available = {
+			has_character = WFA_vidkun_quisling_char
+		}
 		completion_reward = {
 			add_ideas = {
+				limited_conscription
 				WFA_local_defense_focus
 			}
 		}
@@ -68,7 +76,7 @@ focus_tree = {
 	focus = {
 		id = WFA_anti_hololive_sentiment
 		icon = GFX_focus_WFA_anti_hololive_sentiment
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_norwegian_independence
 		}
@@ -78,7 +86,7 @@ focus_tree = {
 	focus = {
 		id = WFA_return_of_haakon
 		icon = GFX_focus_WFA_return_of_haakon
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_anti_hololive_sentiment
 		}
@@ -91,7 +99,7 @@ focus_tree = {
 	focus = {
 		id = WFA_monarchist_sentiment
 		icon = GFX_focus_WFA_monarchist_sentiment
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_return_of_haakon
 		}
@@ -101,7 +109,7 @@ focus_tree = {
 	focus = {
 		id = WFA_seek_support_britain
 		icon = GFX_focus_WFA_seek_support_britain
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_monarchist_sentiment
 		}
@@ -114,7 +122,7 @@ focus_tree = {
 	focus = {
 		id = WFA_internal_support
 		icon = GFX_focus_WFA_internal_support
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_monarchist_sentiment
 		}
@@ -127,7 +135,7 @@ focus_tree = {
 	focus = {
 		id = WFA_monarchist_revolution
 		icon = GFX_focus_WFA_monarchist_revolution
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_seek_support_britain
 			focus = WFA_internal_support
@@ -138,7 +146,7 @@ focus_tree = {
 	focus = {
 		id = WFA_kingdom_of_norway
 		icon = GFX_focus_WFA_kingdom_of_norway
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_monarchist_revolution
 		}
@@ -148,7 +156,7 @@ focus_tree = {
 	focus = {
 		id = WFA_paramilitary_groups
 		icon = GFX_focus_WFA_paramilitary_groups
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_return_of_haakon
 		}
@@ -158,7 +166,7 @@ focus_tree = {
 	focus = {
 		id = WFA_du_popular_front
 		icon = GFX_focus_WFA_du_popular_front
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_anti_hololive_sentiment
 		}
@@ -171,7 +179,7 @@ focus_tree = {
 	focus = {
 		id = WFA_republican_monarchist_alliance
 		icon = GFX_focus_WFA_republican_monarchist_alliance
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_du_popular_front
 			focus = WFA_return_of_haakon
@@ -182,7 +190,7 @@ focus_tree = {
 	focus = {
 		id = WFA_the_resistance
 		icon = GFX_focus_WFA_the_resistance
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_du_popular_front
 		}
@@ -192,7 +200,7 @@ focus_tree = {
 	focus = {
 		id = WFA_seek_support_france
 		icon = GFX_focus_WFA_seek_support_france
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_republican_monarchist_alliance
 			focus = WFA_the_resistance
@@ -204,7 +212,7 @@ focus_tree = {
 	focus = {
 		id = WFA_encourage_nordic_revolution
 		icon = GFX_focus_WFA_encourage_nordic_revolution
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_the_resistance
 			focus = WFA_paramilitary_groups
@@ -215,7 +223,7 @@ focus_tree = {
 	focus = {
 		id = WFA_raid_arsenals
 		icon = GFX_focus_WFA_raid_arsenals
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_du_popular_front
 		}
@@ -225,7 +233,7 @@ focus_tree = {
 	focus = {
 		id = WFA_popular_revolution
 		icon = GFX_focus_WFA_popular_revolution
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_raid_arsenals
 		}
@@ -235,7 +243,7 @@ focus_tree = {
 	focus = {
 		id = WFA_sympathetic_officers
 		icon = GFX_focus_WFA_sympathetic_officers
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_raid_arsenals
 		}
@@ -245,7 +253,7 @@ focus_tree = {
 	focus = {
 		id = WFA_great_democratic_revolution
 		icon = GFX_focus_WFA_great_democratic_revolution
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_sympathetic_officers
 		}
@@ -258,7 +266,7 @@ focus_tree = {
 	focus = {
 		id = WFA_new_republic
 		icon = GFX_focus_WFA_new_republic
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_great_democratic_revolution
 		}
@@ -268,7 +276,7 @@ focus_tree = {
 	focus = {
 		id = WFA_nordic_union
 		icon = GFX_focus_WFA_nordic_union
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_new_republic
 			focus = WFA_kingdom_of_norway
@@ -279,9 +287,18 @@ focus_tree = {
 	focus = {
 		id = WFA_consumer_industries
 		icon = GFX_focus_WFA_consumer_industries
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = WFA_expand_industrial_base
+		}
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = WFA_consumer_economics
+			}
+			add_to_variable = {
+				var = WFA.consumer_economics_var
+				value = -0.02
+			}
 		}
 		x = 31
 		y = 3
@@ -289,9 +306,19 @@ focus_tree = {
 	focus = {
 		id = WFA_local_fisheries
 		icon = GFX_focus_WFA_local_fisheries
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = WFA_consumer_industries
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.05
+			}
+			add_to_variable = {
+				var = WFA.consumer_economics_var
+				value = -0.04
+			}
 		}
 		x = 29
 		y = 4
@@ -299,9 +326,16 @@ focus_tree = {
 	focus = {
 		id = WFA_support_local_artisans
 		icon = GFX_focus_WFA_support_local_artisans
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = WFA_consumer_industries
+		}
+		completion_reward = {
+			add_stability = 0.02
+			add_to_variable = {
+				var = WFA.consumer_economics_var
+				value = -0.03
+			}
 		}
 		x = 31
 		y = 4
@@ -309,12 +343,19 @@ focus_tree = {
 	focus = {
 		id = WFA_consumer_factories
 		icon = GFX_focus_WFA_consumer_factories
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_support_local_artisans
 		}
 		prerequisite = {
 			focus = WFA_local_fisheries
+		}
+		completion_reward = {
+			one_random_civilian_factory = yes
+			add_to_variable = {
+				var = WFA.consumer_economics_var
+				value = -0.02
+			}
 		}
 		x = 30
 		y = 5
@@ -322,9 +363,19 @@ focus_tree = {
 	focus = {
 		id = WFA_colonial_consumer_goods
 		icon = GFX_focus_WFA_colonial_consumer_goods
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = WFA_support_local_artisans
+		}
+		completion_reward = {
+			100 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
 		}
 		x = 32
 		y = 5
@@ -332,7 +383,7 @@ focus_tree = {
 	focus = {
 		id = WFA_quality_training
 		icon = GFX_focus_WFA_quality_training
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_wfa_reliance
 		}
@@ -347,9 +398,19 @@ focus_tree = {
 	focus = {
 		id = WFA_austerity_measures
 		icon = GFX_focus_WFA_austerity_measures
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_consumer_industries
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = WFA.consumer_economics_var
+				value = 0.12
+			}
+			add_to_variable = {
+				var = WFA.WFA_consumer_economics_var2
+				value = 0.15
+			}
 		}
 		x = 33
 		y = 4
@@ -357,7 +418,7 @@ focus_tree = {
 	focus = {
 		id = WFA_quality_conscription
 		icon = GFX_focus_WFA_quality_conscription
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_wfa_reliance
 		}
@@ -372,12 +433,15 @@ focus_tree = {
 	focus = {
 		id = WFA_expand_special_forces
 		icon = GFX_focus_WFA_expand_special_forces
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_quality_conscription
 		}
 		prerequisite = {
 			focus = WFA_quality_training
+		}
+		completion_reward = {
+			add_ideas = WFA_expanded_special_forces
 		}
 		x = 33
 		y = 10
@@ -385,7 +449,7 @@ focus_tree = {
 	focus = {
 		id = WFA_military_industry_expansion
 		icon = GFX_focus_WFA_military_industry_expansion
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_expand_industrial_base
 		}
@@ -398,7 +462,7 @@ focus_tree = {
 	focus = {
 		id = WFA_oslo_arsenals
 		icon = GFX_focus_WFA_oslo_arsenals
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_military_industry_expansion
 		}
@@ -414,11 +478,13 @@ focus_tree = {
 				}
 			}
 			add_tech_bonus = {
+				name = WFA_infantry_tech_bonus
 				bonus = 0.8
 				uses = 2
 				category = infantry_weapons
 			}
 			add_tech_bonus = {
+				name = WFA_artillery_tech_bonus
 				bonus = 0.8
 				uses = 1
 				category = artillery
@@ -428,7 +494,7 @@ focus_tree = {
 	focus = {
 		id = WFA_narvik_arsenals
 		icon = GFX_focus_WFA_narvik_arsenals
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_military_industry_expansion
 		}
@@ -452,11 +518,13 @@ focus_tree = {
 				}
 			}
 			add_tech_bonus = {
+				name = WFA_infantry_tech_bonus
 				bonus = 0.8
 				uses = 1
 				category = infantry_weapons
 			}
 			add_tech_bonus = {
+				name = WFA_marine_tech_bonus
 				bonus = 0.8
 				uses = 1
 				category = marine_tech
@@ -466,7 +534,7 @@ focus_tree = {
 	focus = {
 		id = WFA_expand_dockyards
 		icon = GFX_focus_WFA_expand_dockyards
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_oslo_arsenals
 		}
@@ -476,7 +544,6 @@ focus_tree = {
 		completion_reward = {
 			two_random_dockyards = yes
 			two_random_dockyards = yes
-			two_random_dockyards = yes
 		}
 		x = 35
 		y = 5
@@ -484,7 +551,7 @@ focus_tree = {
 	focus = {
 		id = WFA_colonial_industry
 		icon = GFX_focus_WFA_colonial_industry
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_expand_dockyards
 		}
@@ -507,7 +574,7 @@ focus_tree = {
 	focus = {
 		id = WFA_cheaper_ships
 		icon = GFX_focus_WFA_cheaper_ships
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_narvik_arsenals
 		}
@@ -525,7 +592,7 @@ focus_tree = {
 	focus = {
 		id = WFA_colonial_ports
 		icon = GFX_focus_WFA_colonial_ports
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_cheaper_ships
 		}
@@ -582,7 +649,7 @@ focus_tree = {
 	focus = {
 		id = WFA_efficient_industry
 		icon = GFX_focus_WFA_efficient_industry
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_colonial_ports
 		}
@@ -600,9 +667,11 @@ focus_tree = {
 	focus = {
 		id = WFA_colonial_troops		#load oob to spawn overseas garrisons
 		icon = GFX_focus_WFA_colonial_troops
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_local_defense
+		}
+		completion_reward = {
 		}
 		x = 37
 		y = 9
@@ -610,7 +679,7 @@ focus_tree = {
 	focus = {
 		id = WFA_defense_ethos
 		icon = GFX_focus_WFA_defense_ethos
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_local_defense
 		}
@@ -627,11 +696,12 @@ focus_tree = {
 	focus = {
 		id = WFA_local_arsenals
 		icon = GFX_focus_WFA_local_arsenals
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_local_defense
 		}
 		completion_reward = {
+			add_manpower = 3000
 			add_ideas = {
 				WFA_civilian_guard
 			}
@@ -642,7 +712,7 @@ focus_tree = {
 	focus = {
 		id = WFA_expand_garrisons		#spawn local guard/garrisons
 		icon = GFX_focus_WFA_expand_garrisons
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_colonial_troops
 		}
@@ -652,13 +722,17 @@ focus_tree = {
 		prerequisite = {
 			focus = WFA_local_arsenals
 		}
+		completion_reward = {
+			add_manpower = 10000
+			add_ideas = WFA_garrisons_expanded
+		}
 		x = 38
 		y = 10
 	}
 	focus = {
 		id = WFA_defense_doctrine
 		icon = GFX_focus_WFA_defense_doctrine
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_defense_ethos
 		}
@@ -677,7 +751,7 @@ focus_tree = {
 	focus = {
 		id = WFA_expand_conscription
 		icon = GFX_focus_WFA_expand_conscription
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_expand_garrisons
 		}
@@ -686,6 +760,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = {
+				extensive_conscription
 				WFA_expanded_conscription
 			}
 		}
@@ -695,7 +770,7 @@ focus_tree = {
 	focus = {
 		id = WFA_amphibious_focus
 		icon = GFX_focus_WFA_amphibious_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_expand_special_forces
 		}
@@ -705,6 +780,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = WFA_marine_tech_bonus
 				bonus = 2
 				uses = 2
 				category = marine_tech
@@ -716,7 +792,7 @@ focus_tree = {
 	focus = {
 		id = WFA_motorized_focus
 		icon = GFX_focus_WFA_motorized_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_expand_special_forces
 		}
@@ -726,6 +802,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = WFA_motorized_tech_bonus
 				bonus = 2
 				uses = 2
 				category = motorized_equipment
@@ -737,7 +814,7 @@ focus_tree = {
 	focus = {
 		id = WFA_light_infantry_focus
 		icon = GFX_focus_WFA_light_infantry_focus
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = WFA_expand_special_forces
 		}
@@ -747,6 +824,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = WFA_infantry_tech_bonus
 				bonus = 1
 				uses = 3
 				category = infantry_weapons

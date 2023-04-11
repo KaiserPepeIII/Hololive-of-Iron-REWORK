@@ -1,106 +1,104 @@
 scripted_gui = {
-  suisei_nationalist_gui = {
-	window_name = "suisei_nationalist_window"
-	context_type = decision_category
-	parent_window_name = "suisei_nationalist_economics_decision"
-		
-	visible = {
-		always = yes
-	}
-	effects = {
-		cooperation_efficiency_box_click = {
-			add_political_power = -100
-			add_to_variable = {
-				SUI.efficiency_level = 25
-			}
-			country_event = {
-				id = suisei.79
-			}
+	suisei_nationalist_gui = {
+		window_name = "suisei_nationalist_window"
+		context_type = decision_category
+		parent_window_name = "suisei_nationalist_economics_decision"
+		visible = {
+			always = yes
 		}
-		rural_population_box_click = {
-			add_political_power = -100
-			add_to_variable = {
-				SUI.rural_level = 25
+		effects = {
+			cooperation_efficiency_box_click = {
+				add_political_power = -100
+				add_to_variable = {
+					SUI.efficiency_level = 25
+				}
+				country_event = {
+					id = suisei.79
+				}
 			}
-			country_event = {
-				id = suisei.80
+			rural_population_box_click = {
+				add_political_power = -100
+				add_to_variable = {
+					SUI.rural_level = 25
+				}
+				country_event = {
+					id = suisei.80
+				}
 			}
-		}
-		government_employment_box_click = {
-			add_political_power = -100
-			add_to_variable = {
-				SUI.government_level = 25
+			government_employment_box_click = {
+				add_political_power = -100
+				add_to_variable = {
+					SUI.government_level = 25
+				}
+				country_event = {
+					id = suisei.81
+				}
 			}
-			country_event = {
-				id = suisei.81
-			}
-		}
-		standard_of_living_box_click = {
-			add_political_power = -100
-			add_to_variable = {
-				SUI.standard_of_living_nat = 25
-			}
-			country_event = {
-				id = suisei.82
-			}
-		}
-	}
-	triggers = {
-		cooperation_efficiency_box_click_enabled = {
-			has_political_power > 100
-			NOT = {
-				check_variable = {
-					var = SUI.efficiency_level
-					value = 100
-					compare = greater_than_or_equals
+			standard_of_living_box_click = {
+				add_political_power = -100
+				add_to_variable = {
+					SUI.standard_of_living_nat = 25
+				}
+				country_event = {
+					id = suisei.82
 				}
 			}
 		}
-		rural_population_box_click_enabled = {
-			has_political_power > 100
-			NOT = {
-				check_variable = {
-					var = SUI.rural_level
-					value = 100
-					compare = greater_than_or_equals
+		triggers = {
+			cooperation_efficiency_box_click_enabled = {
+				has_political_power > 100
+				NOT = {
+					check_variable = {
+						var = SUI.efficiency_level
+						value = 100
+						compare = greater_than_or_equals
+					}
 				}
 			}
-			
-		}
-		government_employment_box_click_enabled = {
-			has_political_power > 100
-			NOT = {
-				check_variable = {
-					var = SUI.government_level
-					value = 100
-					compare = greater_than_or_equals
+			rural_population_box_click_enabled = {
+				has_political_power > 100
+				NOT = {
+					check_variable = {
+						var = SUI.rural_level
+						value = 100
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			government_employment_box_click_enabled = {
+				has_political_power > 100
+				NOT = {
+					check_variable = {
+						var = SUI.government_level
+						value = 100
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			standard_of_living_box_click_enabled = {
+				has_political_power > 100
+				NOT = {
+					check_variable = {
+						var = SUI.standard_of_living_nat
+						value = 100
+						compare = greater_than_or_equals
+					}
 				}
 			}
 		}
-		standard_of_living_box_click_enabled = {
-			has_political_power > 100
-			NOT = {
-				check_variable = {
-					var = SUI.standard_of_living_nat
-					value = 100
-					compare = greater_than_or_equals
-				}
+		properties = {
+			cooperation_efficiency_bar = {
+				frame = var:SUI.efficiency_level
+			}
+			rural_population_bar = {
+				frame = var:SUI.rural_level
+			}
+			government_employment_bar = {
+				frame = var:SUI.government_level
+			}
+			standard_of_living_bar = {
+				frame = var:SUI.standard_of_living_nat
 			}
 		}
 	}
-	properties = {
-		cooperation_efficiency_bar = {
-		frame = var:SUI.efficiency_level
-		}
-		rural_population_bar = {
-		frame = var:SUI.rural_level
-		}
-		government_employment_bar = {
-		frame = var:SUI.government_level
-		}
-		standard_of_living_bar = {
-		frame = var:SUI.standard_of_living_nat
-		}
-	}
-  }
 }

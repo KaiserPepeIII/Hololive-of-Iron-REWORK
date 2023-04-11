@@ -187,8 +187,37 @@ ideas = {
 			picture = generic_war_preparation
 			removal_cost = -1
 		}
+		WFA_increased_special_forces = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				special_forces_cap = 0.4
+			}
+		}
 	}
 	country = {
+		WFA_white_fox_army = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				winter_attrition_factor = -0.15
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				planning_speed = 0.05
+			}
+		}
 		military_state = {
 			allowed = {
 				always = no
@@ -226,16 +255,6 @@ ideas = {
 			picture = generic_war_preparation
 			removal_cost = -1
 		}
-		WFA_fisheries = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			picture = generic_war_preparation
-			removal_cost = -1
-		}
 		WFA_winter_warfare = {
 			allowed = {
 				always = no
@@ -247,6 +266,19 @@ ideas = {
 			removal_cost = -1
 			modifier = {
 				winter_attrition_factor = -0.2
+			}
+		}
+		WFA_garrisons_expanded = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				resistance_damage_to_garrison_on_our_occupied_states = -0.15
 			}
 		}
 		WFA_higher_training_standards = {
@@ -407,6 +439,10 @@ ideas = {
 			picture = generic_war_preparation
 			removal_cost = -1
 			modifier = {
+				war_support_weekly = -0.01
+				stability_weekly = -0.01
+				master_ideology_drift = -0.01
+				command_power_gain = -0.05
 			}
 		}
 		WFA_engdahls_corporatism = {
@@ -419,6 +455,11 @@ ideas = {
 			picture = generic_war_preparation
 			removal_cost = -1
 			modifier = {
+				consumer_goods_factor = 0.15
+				local_resources = 0.2
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
 			}
 		}
 		WFA_nationalism_promoted = {
@@ -431,6 +472,8 @@ ideas = {
 			picture = generic_war_preparation
 			removal_cost = -1
 			modifier = {
+				war_support_factor = 0.05
+				fascism_drift = 0.01
 			}
 		}
 		WFA_files_on_everyone = {
@@ -455,6 +498,10 @@ ideas = {
 			picture = generic_war_preparation
 			removal_cost = -1
 			modifier = {
+				stability_factor = 0.15
+				war_support_factor = 0.15
+				drift_defence_factor = 0.5
+				master_ideology_drift = 0.01
 			}
 		}
 	}

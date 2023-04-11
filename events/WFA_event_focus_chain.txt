@@ -37,7 +37,8 @@ country_event = {
 	#He rejects (binding)
 	option = {
 		name = wfa_focus.2.a
-		custom_modifier_tooltip = WFA_tooltip_von_schalburg_rejects
+		custom_modifier_tooltip = WFA_tooltip_von_schalburg_rejects_binding
+		custom_effect_tooltip = WFA_brigadier_plot_wait_time
 		hidden_effect = {
 			country_event = {
 				#Narrative focus
@@ -145,6 +146,7 @@ country_event = {
 	option = {
 		name = wfa_focus.4.b
 		custom_modifier_tooltip = WFA_tooltip_von_schalburg_accepts_binding
+		custom_effect_tooltip = WFA_brigadier_plot_accept_wait_time
 		hidden_effect = {
 			#The Brigadier Plot -The bomb plot
 			country_event = {
@@ -185,6 +187,7 @@ country_event = {
 	#Uh oh
 	option = {
 		name = wfa_focus.6.a
+		custom_effect_tooltip = WFA_gather_strength
 		set_country_flag = WFA_pro_wfa_gather_strength
 		hidden_effect = {
 			WFA = {
@@ -373,7 +376,6 @@ country_event = {
 	#Backs down
 	option = {
 		name = wfa_focus.10.b
-		set_country_flag = WFA_pro_fbk_gather_strength
 		#Schalburg returns to FBK
 		country_event = {
 			id = wfa_focus.11
@@ -404,6 +406,7 @@ country_event = {
 	option = {
 		name = wfa_focus.11.a
 		#PRO FBK MINIGAME
+		custom_effect_tooltip = WFA_gather_strength
 		set_country_flag = WFA_pro_fbk_gather_strength
 		hidden_effect = {
 			country_event = {
@@ -526,6 +529,7 @@ country_event = {
 	#....ok?
 	option = {
 		name = wfa_focus.18.a
+		custom_effect_tooltip = WFA_gather_strength
 		set_country_flag = WFA_pro_wfa_gather_strength
 		hidden_effect = {
 			country_event = {
@@ -692,6 +696,7 @@ country_event = {
 	#Arrest him!
 	option = {
 		name = wfa_focus.28.a
+		custom_effect_tooltip = WFA_arrest_civil_war
 		hidden_effect = {
 			#nARRATIVE EVENT
 			country_event = {
@@ -713,6 +718,7 @@ country_event = {
 	#He hasn't done anything wrong
 	option = {
 		name = wfa_focus.28.b
+		custom_effect_tooltip = WFA_martinsen_warning
 		hidden_effect = {
 			#Martinsen warns of Civil War
 			country_event = {
@@ -802,6 +808,7 @@ country_event = {
 	#damn that pretty srs bro
 	option = {
 		name = wfa_focus.31.a
+		custom_effect_tooltip = WFA_council_escapes
 		set_stability = 0
 		add_war_support = -0.25
 		country_event = wfa_focus.32
@@ -809,6 +816,7 @@ country_event = {
 	#damn that pretty srs bro
 	option = {
 		name = wfa_focus.31.b
+		custom_effect_tooltip = WFA_council_captured
 		set_stability = 0
 		add_war_support = -0.25
 		country_event = wfa_focus.33
@@ -816,6 +824,7 @@ country_event = {
 	#damn that pretty srs bro
 	option = {
 		name = wfa_focus.31.c
+		custom_effect_tooltip = WFA_council_killed
 		set_stability = 0
 		add_war_support = -0.25
 		country_event = wfa_focus.34
@@ -1099,8 +1108,8 @@ country_event = {
 	#“Try a few disloyal officers and politicians. They will serve as an example.”
 	option = {
 		name = wfa_focus.47.b
-		add_political_power = 100
-		add_stability = 0.15
+		add_political_power = 200
+		add_stability = 0.1
 		add_popularity = {
 			ideology = var:current_party_ideology_group
 			popularity = 0.15
