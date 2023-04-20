@@ -900,3 +900,294 @@ country_event = {
 		}
 	}
 }
+
+#Failure of Mio Democracy
+country_event = {
+	id = gura.38
+	title = gura.38.t
+	desc = gura.38.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#damn
+	option = {
+		name = gura.38.a
+		add_stability = -0.15
+		set_politics = {
+			ruling_party = mixed_ideology_democracy
+		}
+		if = {
+			limit = {
+				has_country_flag = GAW_allowing_antis_in_government
+			}
+			set_popularities = {
+				mixed_ideology_democracy = 20
+				pro_resistance_kleptocracy = 30
+				fascism = 30
+				left_wing_revolutionary = 20
+			}
+			else = {
+				set_popularities = {
+					mixed_ideology_democracy = 20
+					pro_yagoo_kleptocracy = 40
+					pro_yagoo_progressive = 10
+					reactionary_nationalism = 20
+					divine_mandate = 10
+				}
+			}
+		}
+		complete_national_focus = GAW_a_new_republic
+		hidden_effect = {
+			clear_variable = GAW.federalism_progress
+		}
+	}
+}
+
+#mODERATE success of Mio Democracy
+country_event = {
+	id = gura.39
+	title = gura.39.t
+	desc = gura.39.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#damn
+	option = {
+		name = gura.39.a
+		add_stability = 0.05
+		set_politics = {
+			ruling_party = mixed_ideology_democracy
+		}
+		if = {
+			limit = {
+				has_country_flag = GAW_allowing_antis_in_government
+			}
+			set_popularities = {
+				mixed_ideology_democracy = 40
+				pro_resistance_kleptocracy = 30
+				fascism = 10
+				left_wing_revolutionary = 20
+			}
+			else = {
+				set_popularities = {
+					mixed_ideology_democracy = 40
+					pro_yagoo_kleptocracy = 30
+					pro_yagoo_progressive = 20
+					reactionary_nationalism = 10
+				}
+			}
+		}
+		complete_national_focus = GAW_a_new_republic
+		hidden_effect = {
+			clear_variable = GAW.federalism_progress
+		}
+	}
+}
+
+#aBSOLUTE success of Mio Democracy
+country_event = {
+	id = gura.40
+	title = gura.40.t
+	desc = gura.40.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#damn
+	option = {
+		name = gura.39.a
+		add_stability = 0.15
+		set_politics = {
+			ruling_party = mixed_ideology_democracy
+		}
+		if = {
+			limit = {
+				has_country_flag = GAW_allowing_antis_in_government
+			}
+			set_popularities = {
+				mixed_ideology_democracy = 60
+				pro_resistance_kleptocracy = 10
+				fascism = 10
+				left_wing_revolutionary = 20
+			}
+			else = {
+				set_popularities = {
+					mixed_ideology_democracy = 60
+					pro_yagoo_kleptocracy = 20
+					pro_yagoo_progressive = 20
+				}
+			}
+		}
+		complete_national_focus = GAW_a_new_republic
+		hidden_effect = {
+			clear_variable = GAW.federalism_progress
+		}
+	}
+}
+
+#The establishment of the council of syndicates and corporations
+#53, 54, 55 reserved for finish up events
+country_event = {
+	id = gura.41
+	title = gura.41.t
+	desc = gura.41.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Ogey 
+	option = {
+		name = gura.41.a
+		add_stability = -0.1
+		hidden_effect = {
+			#Policy on Collectivisation and Conglomeration
+			country_event = {
+				id = gura.42
+				days = 14
+			}
+			#Han supremacy?
+			country_event = {
+				id = gura.43
+				days = 36
+			}
+			#Industrialization vs Ruralization
+			country_event = {
+				id = gura.44
+				days = 50
+			}
+			#Centralization vs Decentralization
+			country_event = {
+				id = gura.45
+				days = 72
+			}
+			#Nationalize foreign assets?
+			country_event = {
+				id = gura.46
+				days = 150
+			}
+			#View of antis?
+			country_event = {
+				id = gura.47
+				days = 200
+			}
+			#Foreign policy
+			country_event = {
+				id = gura.48
+				days = 242
+			}
+			#Squash the trade unions?
+			country_event = {
+				id = gura.49
+				days = 268
+			}
+			#Form the Blueshirts
+			country_event = {
+				id = gura.50
+				days = 295
+			}
+			#Spending policy
+			country_event = {
+				id = gura.51
+				days = 320
+			}
+			#Conclusion of the council
+			country_event = {
+				id = gura.52
+				days = 355
+			}
+		}
+	}
+}
+
+#Shark Cult of Personality
+country_event = {
+	id = gura.53
+	title = gura.53.t
+	desc = gura.53.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#SHAAAARK
+	option = {
+		name = gura.53.a
+		add_political_power = 50
+		add_war_support = 0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		complete_national_focus = GAW_shark_president_for_life
+	}
+}
+
+#Supremacy of the Council
+country_event = {
+	id = gura.54
+	title = gura.54.t
+	desc = gura.54.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#SHAAAARK
+	option = {
+		name = gura.54.a
+		add_political_power = 50
+		add_stability = 0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		complete_national_focus = GAW_oligarchic_council
+	}
+}
+
+#Political deadlock
+country_event = {
+	id = gura.55
+	title = gura.55.t
+	desc = gura.55.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Uuhh 
+	option = {
+		name = gura.55.a
+		add_war_support = -0.15
+		add_stability = -0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		complete_national_focus = GAW_oligarchic_council
+	}
+}
+
+#One Party democracy
+country_event = {
+	id = gura.56
+	title = gura.56.t
+	desc = gura.56.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Uuhh 
+	option = {
+		name = gura.56.a
+		add_ideas = GAW_one_party_democracy_idea
+	}
+}
+
+#A New Republic - Corporatist
+country_event = {
+	id = gura.57
+	title = gura.57.t
+	desc = gura.57.desc
+	picture = GFX_report_event_hitler_parade
+	#Uuhh 
+	option = {
+		name = gura.57.a
+	}
+}
+
+#Eyes to the world
+country_event = {
+	id = gura.58
+	title = gura.58.t
+	desc = gura.58.desc
+	picture = GFX_report_event_hitler_parade
+	#The world is mind 
+	option = {
+		name = gura.58.a
+		add_ideas = WFA_eyes_to_the_world_idea
+	}
+}

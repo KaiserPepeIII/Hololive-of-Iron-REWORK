@@ -115,9 +115,20 @@ focus_tree = {
 	focus = {
 		id = GAW_warlords_to_nobles
 		icon = GFX_focus_GAW_warlords_to_nobles
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_form_new_dynasty
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					NOT = {
+						is_core_of = GAW
+					}
+				}
+				add_resistance = -0.2
+				add_compliance = 0.25
+			}
 		}
 		x = 18
 		y = 5
@@ -125,9 +136,12 @@ focus_tree = {
 	focus = {
 		id = GAW_a_grand_coronation
 		icon = GFX_focus_GAW_a_grand_coronation
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_form_new_dynasty
+		}
+		completion_reward = {
+			country_event = gura.62
 		}
 		x = 16
 		y = 5
@@ -135,12 +149,19 @@ focus_tree = {
 	focus = {
 		id = GAW_mandate_of_heaven
 		icon = GFX_focus_GAW_mandate_of_heaven
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_a_grand_coronation
 		}
 		prerequisite = {
 			focus = GAW_warlords_to_nobles
+		}
+		completion_reward = {
+			add_stability = 0.15
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.05
+			}
 		}
 		x = 17
 		y = 6
@@ -148,9 +169,12 @@ focus_tree = {
 	focus = {
 		id = GAW_draft_a_constitution
 		icon = GFX_focus_GAW_draft_a_constitution
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_mandate_of_heaven
+		}
+		completion_reward = {
+			country_event = gura.63
 		}
 		x = 15
 		y = 7
@@ -158,12 +182,15 @@ focus_tree = {
 	focus = {
 		id = GAW_maintain_republican_elements
 		icon = GFX_focus_GAW_maintain_republican_elements
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_draft_a_constitution
 		}
 		mutually_exclusive = {
 			focus = GAW_divine_shark_privillages
+		}
+		completion_reward = {
+			country_event = gura.64
 		}
 		x = 14
 		y = 8
@@ -171,12 +198,15 @@ focus_tree = {
 	focus = {
 		id = GAW_divine_shark_privillages
 		icon = GFX_focus_GAW_divine_shark_privillages
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_draft_a_constitution
 		}
 		mutually_exclusive = {
 			focus = GAW_maintain_republican_elements
+		}
+		completion_reward = {
+			country_event = gura.65
 		}
 		x = 16
 		y = 8
@@ -184,9 +214,16 @@ focus_tree = {
 	focus = {
 		id = GAW_one_empress
 		icon = GFX_focus_GAW_one_empress
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_mandate_of_heaven
+		}
+		completion_reward = {
+			add_ideas = GAW_one_empress_idea
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.1
+			}
 		}
 		x = 19
 		y = 7
@@ -194,9 +231,12 @@ focus_tree = {
 	focus = {
 		id = GAW_nobility_empowerment
 		icon = GFX_focus_GAW_nobility_empowerment
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_one_empress
+		}
+		completion_reward = {
+			country_event = gura.65
 		}
 		x = 19
 		y = 8
@@ -204,9 +244,15 @@ focus_tree = {
 	focus = {
 		id = GAW_imperial_propaganda
 		icon = GFX_focus_GAW_imperial_propaganda
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_nobility_empowerment
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GAW_imperial_propaganda_idea
+				days = 720
+			}
 		}
 		x = 19
 		y = 9
@@ -214,9 +260,12 @@ focus_tree = {
 	focus = {
 		id = GAW_same_cult
 		icon = GFX_focus_GAW_same_cult
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_imperial_propaganda
+		}
+		completion_reward = {
+			add_ideas = GAW_cult_of_shark
 		}
 		x = 19
 		y = 10
@@ -1507,7 +1556,7 @@ focus_tree = {
 	focus = {
 		id = GAW_the_mio_model
 		icon = GFX_focus_GAW_the_mio_model
-		cost = 6
+		cost = 8
 		prerequisite = {
 			focus = GAW_republican_principles
 		}
@@ -1523,12 +1572,16 @@ focus_tree = {
 	focus = {
 		id = GAW_cocoist_principles
 		icon = GFX_focus_GAW_cocoist_principles
-		cost = 6
+		cost = 8
 		prerequisite = {
 			focus = GAW_republican_principles
 		}
 		mutually_exclusive = {
 			focus = GAW_the_mio_model
+		}
+		completion_reward = {
+			country_event = gura.41
+			GAW_council_setup = yes
 		}
 		x = 9
 		y = 6
@@ -1586,6 +1639,16 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GAW_provincial_rights
 		}
+		completion_reward = {
+			add_political_power = 150
+			add_ideas = {
+				GAW_federal_strongman_idea
+			}
+			subtract_from_variable = {
+				var = GAW.federalism_progress
+				value = 3
+			}
+		}
 		x = 4
 		y = 9
 	}
@@ -1599,15 +1662,31 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GAW_federal_strongarm
 		}
+		completion_reward = {
+			add_ideas = {
+				GAW_provincial_rights_idea
+			}
+			add_to_variable = {
+				var = GAW.federalism_progress
+				value = 3
+			}
+		}
 		x = 6
 		y = 9
 	}
 	focus = {
 		id = GAW_expand_state_bureaucracy
 		icon = GFX_focus_GAW_expand_state_bureaucracy
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_federal_strongarm
+		}
+		completion_reward = {
+			add_political_power = 120
+			subtract_from_variable = {
+				var = GAW.federalism_progress
+				value = 2
+			}
 		}
 		x = 4
 		y = 10
@@ -1615,9 +1694,20 @@ focus_tree = {
 	focus = {
 		id = GAW_provincial_autonomy
 		icon = GFX_focus_GAW_provincial_autonomy
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_provincial_rights
+		}
+		completion_reward = {
+			add_political_power = -100
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.05
+			}
+			add_to_variable = {
+				var = GAW.federalism_progress
+				value = 3
+			}
 		}
 		x = 6
 		y = 10
@@ -1625,9 +1715,17 @@ focus_tree = {
 	focus = {
 		id = GAW_political_tutelage
 		icon = GFX_focus_GAW_political_tutelage
-		cost = 2
+		cost = 5
 		prerequisite = {
 			focus = GAW_cocoist_principles
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_to_variable = {
+				var = GAW.council_support
+				value = 15
+			}
+			GAW_reload_council = yes
 		}
 		x = 9
 		y = 7
@@ -1635,9 +1733,17 @@ focus_tree = {
 	focus = {
 		id = GAW_idol_at_the_center
 		icon = GFX_focus_GAW_idol_at_the_center
-		cost = 2
+		cost = 5
 		prerequisite = {
 			focus = GAW_political_tutelage
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_to_variable = {
+				var = GAW.council_support
+				value = 5
+			}
+			GAW_reload_council = yes
 		}
 		x = 9
 		y = 8
@@ -1645,12 +1751,18 @@ focus_tree = {
 	focus = {
 		id = GAW_oligarchic_council
 		icon = GFX_focus_GAW_oligarchic_council
-		cost = 0
+		cost = 8
+		available = {
+			always = no
+		}
 		prerequisite = {
 			focus = GAW_idol_at_the_center
 		}
 		mutually_exclusive = {
 			focus = GAW_shark_president_for_life
+		}
+		completion_reward = {
+			add_political_power = 25
 		}
 		x = 8
 		y = 9
@@ -1658,12 +1770,18 @@ focus_tree = {
 	focus = {
 		id = GAW_shark_president_for_life
 		icon = GFX_focus_GAW_shark_president_for_life
-		cost = 0
+		cost = 8
+		available = {
+			always = no
+		}
 		prerequisite = {
 			focus = GAW_idol_at_the_center
 		}
 		mutually_exclusive = {
 			focus = GAW_oligarchic_council
+		}
+		completion_reward = {
+			add_political_power = 25
 		}
 		x = 10
 		y = 9
@@ -1671,9 +1789,12 @@ focus_tree = {
 	focus = {
 		id = GAW_one_party_democracy
 		icon = GFX_focus_GAW_one_party_democracy
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_oligarchic_council
+		}
+		completion_reward = {
+			country_event = gura.56
 		}
 		x = 8
 		y = 10
@@ -1681,9 +1802,13 @@ focus_tree = {
 	focus = {
 		id = GAW_shark_knows_best
 		icon = GFX_focus_GAW_shark_knows_best
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_shark_president_for_life
+		}
+		completion_reward = {
+			add_political_power = 200
+			add_ideas = GAW_shark_knows_best_idea
 		}
 		x = 10
 		y = 10
@@ -1691,12 +1816,30 @@ focus_tree = {
 	focus = {
 		id = GAW_a_new_republic
 		icon = GFX_focus_GAW_a_new_republic
-		cost = 0
+		cost = 8
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
 		prerequisite = {
 			focus = GAW_one_party_democracy
 			focus = GAW_provincial_autonomy
 			focus = GAW_shark_knows_best
 			focus = GAW_expand_state_bureaucracy
+		}
+		completion_reward = {
+			hidden_effect = {
+				if = {
+					limit = {
+						OR = {
+							has_completed_focus = GAW_shark_knows_best
+							has_completed_focus = GAW_one_party_democracy
+						}
+					}
+					country_event = gura.57
+				}
+			}
 		}
 		x = 7
 		y = 11
@@ -1704,9 +1847,15 @@ focus_tree = {
 	focus = {
 		id = GAW_court_advisory
 		icon = GFX_focus_GAW_court_advisory
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_national_concert_act
+		}
+		prerequisite = {
+			focus = GAW_form_royal_legislature
+		}
+		completion_reward = {
+			add_political_power = 25
 		}
 		x = 16
 		y = 10
@@ -1714,9 +1863,12 @@ focus_tree = {
 	focus = {
 		id = GAW_form_royal_legislature
 		icon = GFX_focus_GAW_form_royal_legislature
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_maintain_republican_elements
+		}
+		completion_reward = {
+			add_ideas = GAW_royal_legislature
 		}
 		x = 14
 		y = 9
@@ -1724,31 +1876,30 @@ focus_tree = {
 	focus = {
 		id = GAW_national_concert_act
 		icon = GFX_focus_GAW_national_concert_act
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_divine_shark_privillages
+		}
+		completion_reward = {
+			add_political_power = 180
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.15
+			}
 		}
 		x = 16
 		y = 9
 	}
 	focus = {
-		id = GAW_provincial_representation
-		icon = GFX_focus_GAW_provincial_representation
-		cost = 0
-		prerequisite = {
-			focus = GAW_form_royal_legislature
-		}
-		x = 14
-		y = 10
-	}
-	focus = {
 		id = GAW_without_gura_there_would_be_no_new_china
 		icon = GFX_focus_GAW_without_gura_there_would_be_no_new_china
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_same_cult
 			focus = GAW_court_advisory
-			focus = GAW_provincial_representation
+		}
+		completion_reward = {
+			country_event = gura.66
 		}
 		x = 17
 		y = 11
@@ -1756,9 +1907,18 @@ focus_tree = {
 	focus = {
 		id = GAW_eyes_to_the_world
 		icon = GFX_focus_GAW_eyes_to_the_world
-		cost = 0
+		cost = 7
+		available = {
+			OR = {
+				has_completed_focus = GAW_form_new_dynasty
+				has_completed_focus = GAW_status_quo
+			}
+		}
 		x = 9
 		y = 13
+		completion_reward = {
+			country_event = gura.58
+		}
 	}
 	focus = {
 		id = GAW_jaws_over_beijing
@@ -1880,7 +2040,6 @@ focus_tree = {
 		completion_reward = {
 			two_random_dockyards = yes
 			two_random_dockyards = yes
-			two_random_dockyards = yes
 			two_random_arms_factory = yes
 		}
 		x = 12
@@ -1889,9 +2048,12 @@ focus_tree = {
 	focus = {
 		id = GAW_beyond_china
 		icon = GFX_focus_GAW_beyond_china
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_one_china_under_gooruh
+		}
+		completion_reward = {
+			country_event = gura.60
 		}
 		x = 5
 		y = 19
@@ -1899,9 +2061,12 @@ focus_tree = {
 	focus = {
 		id = GAW_southern_ambitions
 		icon = GFX_focus_GAW_southern_ambitions
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_beyond_china
+		}
+		completion_reward = {
+			country_event = gura.61
 		}
 		x = 4
 		y = 20
@@ -1909,9 +2074,11 @@ focus_tree = {
 	focus = {
 		id = GAW_safeguard_the_north
 		icon = GFX_focus_GAW_safeguard_the_north
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_beyond_china
+		}
+		completion_reward = {
 		}
 		x = 6
 		y = 20
@@ -1919,9 +2086,27 @@ focus_tree = {
 	focus = {
 		id = GAW_counter_haato_presense
 		icon = GFX_focus_GAW_counter_haato_presense
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_pacific_arms_race
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 749
+			}
+			has_political_power > 74
+		}
+		completion_reward = {
+			CLO = {
+				country_event = chloe.1
+			}
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -750
+				}
+				add_political_power = -75
+			}
 		}
 		x = 12
 		y = 15
@@ -1929,9 +2114,42 @@ focus_tree = {
 	focus = {
 		id = GAW_north_phillipines_defenses
 		icon = GFX_focus_GAW_north_phillipines_defenses
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_counter_haato_presense
+		}
+		completion_reward = {
+			625 = {
+				add_building_construction = {
+					type = bunker
+					level = 4
+					instant_build = yes
+					province = 4269
+				}
+			}
+			327 = {
+				add_building_construction = {
+					type = bunker
+					level = 4
+					instant_build = yes
+					province = 10265
+				}
+				add_building_construction = {
+					type = bunker
+					level = 4
+					instant_build = yes
+					province = 10236
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+				}
+			}
 		}
 		x = 11
 		y = 16
@@ -1939,52 +2157,62 @@ focus_tree = {
 	focus = {
 		id = GAW_alert_island_garrisons
 		icon = GFX_focus_GAW_alert_island_garrisons
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_counter_haato_presense
+		}
+		completion_reward = {
+			army_experience = 5
+			CLO = {
+				country_event = chloe.2
+			}
 		}
 		x = 13
 		y = 16
 	}
 	focus = {
-		id = GAW_stage_border_incident
-		icon = GFX_focus_GAW_stage_border_incident
-		cost = 0
-		prerequisite = {
-			focus = GAW_alert_island_garrisons
-		}
-		prerequisite = {
-			focus = GAW_north_phillipines_defenses
-		}
-		mutually_exclusive = {
-			focus = GAW_bulwark_against_chama
-		}
-		x = 11
-		y = 17
-	}
-	focus = {
 		id = GAW_bulwark_against_chama
 		icon = GFX_focus_GAW_bulwark_against_chama
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = GAW_alert_island_garrisons
 		}
 		prerequisite = {
 			focus = GAW_north_phillipines_defenses
 		}
-		mutually_exclusive = {
-			focus = GAW_stage_border_incident
+		completion_reward = {
+			add_ideas = GAW_bulwark_against_haachama
+			every_country = {
+				limit = {
+					capital_scope = {
+						is_on_continent = asia
+						is_on_continent = australia
+					}
+					NOT = {
+						tag = GAW
+						tag = HTO
+						is_resistance_ideology = yes
+						has_anti_ideology = yes
+					}
+				}
+				country_event = gura.59
+			}
 		}
-		x = 13
+		x = 12
 		y = 17
 	}
 	focus = {
 		id = GAW_strike_the_horror
 		icon = GFX_focus_GAW_strike_the_horror
-		cost = 0
+		cost = 10
 		prerequisite = {
 			focus = GAW_bulwark_against_chama
-			focus = GAW_stage_border_incident
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = HTO
+				type = topple_government
+			}
 		}
 		x = 12
 		y = 18
@@ -1992,9 +2220,12 @@ focus_tree = {
 	focus = {
 		id = GAW_friends_in_hololive
 		icon = GFX_focus_GAW_friends_in_hololive
-		cost = 0
+		cost = 5
 		prerequisite = {
 			focus = GAW_eyes_to_the_world
+		}
+		completion_reward = {
+			add_political_power = 25
 		}
 		x = 18
 		y = 14
@@ -2002,9 +2233,14 @@ focus_tree = {
 	focus = {
 		id = GAW_sameame
 		icon = GFX_focus_GAW_sameame
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_friends_in_hololive
+		}
+		completion_reward = {
+			WTS = {
+				country_event = gura_diplo.11
+			}
 		}
 		x = 16
 		y = 15
@@ -2059,21 +2295,19 @@ focus_tree = {
 		y = 18
 	}
 	focus = {
-		id = GAW_but_never_affar
-		icon = GFX_focus_GAW_but_never_affar
-		cost = 0
-		prerequisite = {
-			focus = GAW_continents_away
-		}
-		x = 16
-		y = 19
-	}
-	focus = {
 		id = GAW_european_contacts
 		icon = GFX_focus_GAW_european_contacts
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_friends_in_hololive
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GAW_european_tech_bonus
+				bonus = 0.55
+				category = electronics
+				uses = 2
+			}
 		}
 		x = 21
 		y = 15
@@ -2081,9 +2315,23 @@ focus_tree = {
 	focus = {
 		id = GAW_american_trade_deals
 		icon = GFX_focus_GAW_american_trade_deals
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_friends_in_hololive
+		}
+		completion_reward = {
+			MRI = {
+				country_event = gura_diplo.1
+			}
+			COC = {
+				country_event = gura_diplo.1
+			}
+			MIO = {
+				country_event = gura_diplo.1
+			}
+			BTN = {
+				country_event = gura_diplo.1
+			}
 		}
 		x = 25
 		y = 15
@@ -2091,9 +2339,12 @@ focus_tree = {
 	focus = {
 		id = GAW_german_military_mission
 		icon = GFX_focus_GAW_german_military_mission
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_european_contacts
+		}
+		completion_reward = {
+			add_ideas = GAW_german_military_presence
 		}
 		x = 21
 		y = 16
@@ -2101,12 +2352,17 @@ focus_tree = {
 	focus = {
 		id = GAW_reach_out_to_genmate
 		icon = GFX_focus_GAW_reach_out_to_genmate
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_german_military_mission
 		}
 		mutually_exclusive = {
 			focus = GAW_noel_senpai
+		}
+		completion_reward = {
+			KIA = {
+				country_event = GAW_diplo.7
+			}
 		}
 		x = 20
 		y = 17
@@ -2114,12 +2370,17 @@ focus_tree = {
 	focus = {
 		id = GAW_noel_senpai
 		icon = GFX_focus_GAW_noel_senpai
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_german_military_mission
 		}
 		mutually_exclusive = {
 			focus = GAW_reach_out_to_genmate
+		}
+		completion_reward = {
+			NOE = {
+				country_event = GAW_diplo.9
+			}
 		}
 		x = 22
 		y = 17
@@ -2127,9 +2388,12 @@ focus_tree = {
 	focus = {
 		id = GAW_KFP_china_branch
 		icon = GFX_focus_GAW_KFP_china_branch
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_reach_out_to_genmate
+		}
+		completion_reward = {
+			add_ideas = GAW_kfp_china
 		}
 		x = 20
 		y = 18
@@ -2137,9 +2401,17 @@ focus_tree = {
 	focus = {
 		id = GAW_in_bed_with_noel
 		icon = GFX_focus_GAW_in_bed_with_noel
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_noel_senpai
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GAW_noel_tech_bonus
+				category = cat_heavy_armor
+				bonus = 0.85
+				uses = 2
+			}
 		}
 		x = 22
 		y = 18
@@ -2147,12 +2419,17 @@ focus_tree = {
 	focus = {
 		id = GAW_a_deal_with_death
 		icon = GFX_focus_GAW_a_deal_with_death
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_american_trade_deals
 		}
 		mutually_exclusive = {
 			focus = GAW_judgement_partner
+		}
+		completion_reward = {
+			MRI = {
+				country_event = gura_diplo.3
+			}
 		}
 		x = 24
 		y = 16
@@ -2173,9 +2450,14 @@ focus_tree = {
 	focus = {
 		id = GAW_dance_with_death
 		icon = GFX_focus_GAW_dance_with_death
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_a_deal_with_death
+		}
+		completion_reward = {
+			MRI = {
+				country_event = gura_diplo.5
+			}
 		}
 		x = 24
 		y = 17

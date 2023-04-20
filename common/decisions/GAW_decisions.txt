@@ -1,3 +1,64 @@
+GAW_council_of_cocoism = {
+	GAW_council_debug = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+			is_debug = yes
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			GAW_council_setup = yes
+		}
+	}
+	GAW_solidification_of_council = {
+		activation = {
+			tag = GAW
+			has_completed_focus = GAW_cocoist_principles
+		}
+		cancel_trigger = {
+			always = no
+		}
+		visible = {
+			GAW = {
+				exists = yes
+			}
+		}
+		is_good = yes
+		days_mission_timeout = 365
+		selectable_mission = no
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = GAW.council_support
+						value = GAW.council_against
+						compare = greater_than
+					}
+				}
+				country_event = gura.53
+				else_if = {
+					limit = {
+						check_variable = {
+							var = GAW.council_support
+							value = GAW.council_against
+							compare = less_than
+						}
+					}
+					country_event = gura.54
+				}
+				#Tie
+				else = {
+					country_event = gura.55
+				}
+			}
+		}
+	}
+}
+
 GAW_military_corruption = {
 	GAW_anti_corruption_purge = {
 		available = {
@@ -117,6 +178,193 @@ GAW_military_corruption = {
 			random_army_leader = {
 				add_unit_leader_trait = GAW_loyal_to_the_shark
 			}
+		}
+	}
+}
+
+GAW_mio_model_democracy = {
+	GAW_the_mio_experiemnt_results = {
+		activation = {
+			tag = GAW
+			has_completed_focus = GAW_the_mio_model
+		}
+		cancel_trigger = {
+			always = no
+		}
+		visible = {
+			GAW = {
+				exists = yes
+			}
+		}
+		is_good = yes
+		days_mission_timeout = 360
+		selectable_mission = no
+		timeout_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = {
+							var = GAW.federalism_progress
+							value = 4
+							compare = less_than_or_equals
+						}
+					}
+					country_event = gura.38
+					else_if = {
+						limit = {
+							check_variable = {
+								var = GAW.federalism_progress
+								value = 4
+								compare = greater_than
+							}
+							check_variable = {
+								var = GAW.federalism_progress
+								value = 7
+								compare = less_than_or_equals
+							}
+						}
+						country_event = gura.39
+					}
+					else_if = {
+						limit = {
+							check_variable = {
+								var = GAW.federalism_progress
+								value = 8
+								compare = greater_than_or_equals
+							}
+						}
+						country_event = gura.40
+					}
+				}
+			}
+		}
+	}
+	GAW_decentralize_power = {
+		available = {
+			tag = GAW
+			has_political_power > 49
+		}
+		visible = {
+			tag = GAW
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		days_remove = 30
+		cost = 50
+		ai_will_do = {
+			base = 5
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = GAW.federalism_progress
+				value = 1
+			}
+		}
+		modifier = {
+			political_power_factor = -0.15
+		}
+	}
+	GAW_coerce_community_leaders = {
+		available = {
+			tag = GAW
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			command_power > 24
+		}
+		visible = {
+			tag = GAW
+		}
+		fire_only_once = no
+		days_re_enable = 90
+		days_remove = 30
+		ai_will_do = {
+			base = 5
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = GAW.federalism_progress
+				value = 2
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -200
+				}
+				add_command_power = -25
+			}
+		}
+	}
+	GAW_education_initiatives = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+		}
+		fire_only_once = no
+		days_re_enable = 90
+		days_remove = 30
+		ai_will_do = {
+			base = 5
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = GAW.federalism_progress
+				value = 1
+			}
+		}
+		modifier = {
+			research_speed_factor = -0.1
+		}
+	}
+	GAW_stand_in_local_governors = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+		}
+		fire_only_once = no
+		days_re_enable = 90
+		days_remove = 30
+		ai_will_do = {
+			base = 5
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = GAW.federalism_progress
+				value = 1
+			}
+		}
+		modifier = {
+			master_ideology_drift = -0.01
+		}
+	}
+	GAW_anti_corruption_campaigns = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+		}
+		fire_only_once = no
+		days_re_enable = 90
+		days_remove = 30
+		ai_will_do = {
+			base = 5
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = GAW.federalism_progress
+				value = 2
+			}
+		}
+		modifier = {
+			stability_weekly_factor = -0.02
+			master_ideology_drift = -0.01
 		}
 	}
 }

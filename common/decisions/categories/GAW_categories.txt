@@ -85,6 +85,37 @@ GAW_expanding_the_railways = {
 	}
 }
 
+GAW_mio_model_democracy = {
+	icon = GFX_decision_category_gaw_expanding_the_railways
+	picture = GFX_decision_cat_gaw_expanding_the_railways
+	visible_when_empty = yes
+	scripted_gui = GAW_mio_democracy_gui
+	priority = 9
+	allowed = {
+		tag = GAW
+	}
+	visible = {
+		has_completed_focus = GAW_the_mio_model
+	}
+}
+
+GAW_council_of_cocoism = {
+	icon = GFX_decision_category_gaw_expanding_the_railways
+	picture = GFX_decision_cat_gaw_expanding_the_railways
+	visible_when_empty = yes
+	scripted_gui = GAW_council_of_cocoism_gui
+	priority = 9
+	allowed = {
+		tag = GAW
+	}
+	visible = {
+		OR = {
+			has_completed_focus = GAW_cocoist_principles
+			is_debug = yes
+		}
+	}
+}
+
 GAW_integrate_warlord_armies = {
 	icon = GFX_decision_category_gaw_integrate_warlord_armies
 	picture = GFX_decision_cat_gaw_integrate_warlord_armies
@@ -95,5 +126,31 @@ GAW_integrate_warlord_armies = {
 	}
 	visible = {
 		has_country_flag = GAW_integrate_warlord_armies_decisions
+	}
+}
+
+GAW_sort_the_court = {
+	icon = GFX_decision_category_gaw_integrate_warlord_armies
+	picture = GFX_decision_cat_gaw_integrate_warlord_armies
+	visible_when_empty = yes
+	priority = 8
+	allowed = {
+		tag = GAW
+	}
+	visible = {
+		has_completed_focus = GAW_court_advisory
+	}
+}
+
+GAW_great_wonders = {
+	icon = GFX_decision_category_gaw_integrate_warlord_armies
+	picture = GFX_decision_cat_gaw_integrate_warlord_armies
+	visible_when_empty = yes
+	priority = 8
+	allowed = {
+		tag = GAW
+	}
+	visible = {
+		has_completed_focus = GAW_a_grand_coronation
 	}
 }

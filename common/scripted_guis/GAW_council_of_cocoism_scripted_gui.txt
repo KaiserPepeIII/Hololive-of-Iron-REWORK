@@ -1,0 +1,25 @@
+scripted_gui = {
+	GAW_council_of_cocoism_gui = {
+		window_name = "GAW_council_window_container"
+		context_type = decision_category
+		parent_window_name = "GAW_council_of_cocoism"
+		visible = {
+			always = yes
+		}
+		dynamic_lists = {
+			parliament_diagram = {
+				array = GAW_x_array
+				change_scope = no
+				entry_container = GAW_parliament_seat
+				index = seat_idx
+			}
+		}
+		properties = {
+			parliament_dot_icon = {
+				x = GAW_x_array^seat_idx
+				y = GAW_y_array^seat_idx
+				frame = GAW_council_array^seat_idx
+			}
+		}
+	}
+}
