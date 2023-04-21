@@ -37,7 +37,7 @@ country_event = {
 	#He rejects (binding)
 	option = {
 		name = wfa_focus.2.a
-		custom_modifier_tooltip = WFA_tooltip_von_schalburg_rejects_binding
+		custom_effect_tooltip = WFA_tooltip_von_schalburg_rejects_binding
 		custom_effect_tooltip = WFA_brigadier_plot_wait_time
 		hidden_effect = {
 			country_event = {
@@ -55,7 +55,7 @@ country_event = {
 	#He accepts (non-binding)
 	option = {
 		name = wfa_focus.2.b
-		custom_modifier_tooltip = WFA_tooltip_von_schalburg_accepts_non_binding
+		custom_effect_tooltip = WFA_tooltip_von_schalburg_accepts_non_binding
 		hidden_effect = {
 			country_event = {
 				#Narrative focus
@@ -127,7 +127,7 @@ country_event = {
 	#Schalburg disaagrees (non-binding)
 	option = {
 		name = wfa_focus.4.a
-		custom_modifier_tooltip = WFA_tooltip_von_schalburg_rejects_non_binding
+		custom_effect_tooltip = WFA_tooltip_von_schalburg_rejects_non_binding
 		set_country_flag = WFA_pro_wfa_gather_strength
 		hidden_effect = {
 			#narrative event
@@ -145,7 +145,7 @@ country_event = {
 	#Schalburg agrees (binding)
 	option = {
 		name = wfa_focus.4.b
-		custom_modifier_tooltip = WFA_tooltip_von_schalburg_accepts_binding
+		custom_effect_tooltip = WFA_tooltip_von_schalburg_accepts_binding
 		custom_effect_tooltip = WFA_brigadier_plot_accept_wait_time
 		hidden_effect = {
 			#The Brigadier Plot -The bomb plot
@@ -747,6 +747,11 @@ country_event = {
 			flag = WFA_council_civil_war_flag
 			days = 365
 		}
+		set_party_name = {
+			ideology = reactionary_alignment
+			long_name = WFA_pro_fubuki_government_long
+			name = WFA_pro_fubuki_government
+		}
 		#
 		hidden_effect = {
 			every_state = {
@@ -764,7 +769,7 @@ country_event = {
 			WFR = {
 				WFR_pro_wfa_setup = yes
 				load_oob = "WFR_civil_war"
-				add_manpower = 10000
+				add_manpower = 100000
 			}
 			WFA = {
 				WFA_pro_wfa_setup = yes
@@ -1010,6 +1015,11 @@ country_event = {
 		}
 		set_country_flag = WFA_sided_pro_wfa
 		clr_country_flag = WFA_pro_wfa_gather_strength
+		set_party_name = {
+			ideology = reactionary_nationalism
+			long_name = WFA_pro_wfa_government_long
+			name = WFA_pro_wfa_government
+		}
 		#
 		hidden_effect = {
 			every_state = {
@@ -1027,7 +1037,7 @@ country_event = {
 			WFR = {
 				WFR_pro_wfa_setup = yes
 				load_oob = "WFR_civil_war"
-				add_manpower = 10000
+				add_manpower = 100000
 			}
 			WFA = {
 				WFA_pro_wfa_setup = yes

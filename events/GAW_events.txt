@@ -1093,6 +1093,577 @@ country_event = {
 	}
 }
 
+#Collectivisation and Congolermation
+country_event = {
+	id = gura.42
+	title = gura.42.t
+	desc = gura.42.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Let the free market be
+	option = {
+		name = gura.42.a
+		add_political_power = 25
+		add_stability = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+	}
+	#Everything under the state
+	option = {
+		name = gura.42.b
+		custom_effect_tooltip = GAW_corporatist_economics_tooltip
+		add_stability = -0.1
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = GAW_corporatist_economics
+						}
+					}
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cgf
+					value = 0.05
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cs
+					value = 0.02
+				}
+				set_variable = {
+					var = GAW.GAW.corporatist_economics_re
+					value = 0.05
+				}
+				add_dynamic_modifier = {
+					modifier = GAW_corporatist_economics
+				}
+				else = {
+					add_to_variable = {
+						var = GAW.corporatist_economics_cgf
+						value = 0.05
+					}
+					add_to_variable = {
+						var = GAW.corporatist_economics_cs
+						value = 0.02
+					}
+				}
+			}
+		}
+	}
+}
+
+#Han Supremacy
+country_event = {
+	id = gura.43
+	title = gura.43.t
+	desc = gura.43.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Is this even a question
+	option = {
+		name = gura.43.a
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+		add_ideas = GAW_cultural_assimilation
+	}
+	#One China, many nations
+	option = {
+		name = gura.43.b
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+		add_ideas = GAW_one_china_many_nations
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.07
+		}
+	}
+}
+
+#Industrialization vs Ruralisation
+country_event = {
+	id = gura.44
+	title = gura.44.t
+	desc = gura.44.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We are a nation of peasants
+	option = {
+		name = gura.44.a
+		add_political_power = 75
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+	}
+	#The proletariat are a hotbead of revolution
+	option = {
+		name = gura.44.b
+		custom_effect_tooltip = GAW_corporatist_economics_tooltip
+		add_political_power = -100
+		add_timed_idea = {
+			idea = GAW_building_restrictions
+			days = 365
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = GAW_corporatist_economics
+						}
+					}
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cgf
+					value = 0.05
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cs
+					value = 0.02
+				}
+				add_dynamic_modifier = {
+					modifier = GAW_corporatist_economics
+				}
+				else = {
+					add_to_variable = {
+						var = GAW.corporatist_economics_cgf
+						value = 0.05
+					}
+				}
+			}
+		}
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+	}
+	#We need to develop of cities
+	option = {
+		name = gura.44.c
+		one_random_arms_factory = yes
+		one_random_civilian_factory = yes
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+	}
+}
+
+#Centralization vs Decentralization
+country_event = {
+	id = gura.45
+	title = gura.45.t
+	desc = gura.45.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Everything in the state
+	option = {
+		name = gura.45.a
+		add_ideas = GAW_centralized_state
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+	}
+	#Local governors know best
+	option = {
+		name = gura.45.b
+		add_ideas = GAW_decentralized_state
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+	}
+}
+
+#Foreign Assets
+country_event = {
+	id = gura.46
+	title = gura.46.t
+	desc = gura.46.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Nationalize, but sell them off
+	option = {
+		name = gura.46.a
+		set_country_flag = GAW_nationalized_foreign_assets
+		add_political_power = 125
+	}
+	#Nationalize, and keep
+	option = {
+		name = gura.46.b
+		custom_effect_tooltip = GAW_corporatist_economics_tooltip
+		set_country_flag = GAW_nationalized_foreign_assets
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = GAW_corporatist_economics
+						}
+					}
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cgf
+					value = 0.05
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cs
+					value = 0.02
+				}
+				add_dynamic_modifier = {
+					modifier = GAW_corporatist_economics
+				}
+				else = {
+					add_to_variable = {
+						var = GAW.corporatist_economics_cgf
+						value = 0.02
+					}
+					add_to_variable = {
+						var = GAW.corporatist_economics_cs
+						value = 0.05
+					}
+				}
+			}
+		}
+	}
+	#Leave them alone 
+	option = {
+		name = gura.46.c
+		add_ideas = GAW_foreign_investment
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+	}
+}
+
+#View of antis
+country_event = {
+	id = gura.47
+	title = gura.47.t
+	desc = gura.47.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Leave them alone
+	option = {
+		name = gura.47.a
+		add_ideas = GAW_tolerant_regime
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+	}
+	#hang the dogs
+	option = {
+		name = gura.47.b
+		add_timed_idea = {
+			idea = GAW_purging_antis
+			days = 365
+		}
+		add_war_support = 0.05
+		add_stability = -0.1
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+	}
+}
+
+#Our foreign policy
+country_event = {
+	id = gura.48
+	title = gura.48.t
+	desc = gura.48.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Our priority is the Han people
+	option = {
+		name = gura.48.a
+		add_stability = 0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.15
+		}
+		add_ideas = GAW_han_focus
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+	}
+	#The borders of the Qing dynasty
+	option = {
+		name = gura.48.b
+		add_war_support = 0.15
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+	}
+	#We should encourage imperialism
+	option = {
+		name = gura.48.c
+		custom_effect_tooltip = GAW_corporatist_economics_tooltip
+		add_ideas = GAW_imperalism
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = GAW_corporatist_economics
+						}
+					}
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cgf
+					value = 0.05
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cs
+					value = 0.02
+				}
+				add_dynamic_modifier = {
+					modifier = GAW_corporatist_economics
+				}
+				else = {
+					add_to_variable = {
+						var = GAW.corporatist_economics_cgf
+						value = 0.05
+					}
+					add_to_variable = {
+						var = GAW.corporatist_economics_cs
+						value = 0.05
+					}
+					add_to_variable = {
+						var = GAW.corporatist_economics_re
+						value = 0.15
+					}
+				}
+			}
+		}
+	}
+}
+
+#Our foreign policy
+country_event = {
+	id = gura.49
+	title = gura.49.t
+	desc = gura.49.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#leave them alone
+	option = {
+		name = gura.49.a
+		add_political_power = 75
+		add_ideas = GAW_unions_left_alone
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+	}
+	#Consolidate the unions
+	option = {
+		name = gura.49.b
+		add_political_power = -125
+		add_stability = -0.05
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+	}
+	#Shut down the unions
+	option = {
+		name = gura.49.c
+		add_political_power = -75
+		add_ideas = GAW_unions_busted
+		add_to_variable = {
+			var = GAW.council_support
+			value = 2
+		}
+		GAW_reload_council = yes
+	}
+}
+
+#The Blueshirts
+country_event = {
+	id = gura.50
+	title = gura.50.t
+	desc = gura.50.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Why not?
+	option = {
+		name = gura.50.a
+		add_ideas = GAW_blueshirts
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+	}
+	#our forcus should be on our work ethic
+	option = {
+		name = gura.50.b
+		add_ideas = GAW_chinese_industriousness
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+	}
+}
+
+#Spending policy
+country_event = {
+	id = gura.51
+	title = gura.51.t
+	desc = gura.51.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Keynes' ideas are pretty nifty
+	option = {
+		name = gura.51.a
+		custom_effect_tooltip = GAW_corporatist_economics_tooltip
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+		}
+		GAW_reload_council = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = GAW_corporatist_economics
+						}
+					}
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cgf
+					value = 0.05
+				}
+				set_variable = {
+					var = GAW.corporatist_economics_cs
+					value = 0.02
+				}
+				add_dynamic_modifier = {
+					modifier = GAW_corporatist_economics
+				}
+				else = {
+					add_to_variable = {
+						var = GAW.corporatist_economics_cgf
+						value = 0.05
+					}
+					add_to_variable = {
+						var = GAW.corporatist_economics_cs
+						value = 0.1
+					}
+					add_to_variable = {
+						var = GAW.corporatist_economics_re
+						value = 0.1
+					}
+				}
+			}
+		}
+	}
+	#No
+	option = {
+		name = gura.51.b
+		add_ideas = GAW_conservative_spending
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+		}
+		GAW_reload_council = yes
+	}
+}
+
+#Conclusion of the council
+country_event = {
+	id = gura.52
+	title = gura.52.t
+	desc = gura.52.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#A cultural revolution
+	option = {
+		name = gura.52.a
+		trigger = {
+			check_variable = {
+				var = GAW.corporatist_economics_cgf
+				value = 0.15
+				compare = greater_than_or_equals
+			}
+		}
+		add_timed_idea = {
+			idea = GAW_cultural_revolution
+			days = 720
+		}
+		add_war_support = 0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+	#steady as she goes
+	option = {
+		name = gura.52.b
+		trigger = {
+			check_variable = {
+				var = GAW.corporatist_economics_cgf
+				value = 0.15
+				compare = less_than
+			}
+		}
+		add_political_power = 75
+		add_stability = 0.15
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
 #Shark Cult of Personality
 country_event = {
 	id = gura.53
@@ -1173,6 +1744,7 @@ country_event = {
 	title = gura.57.t
 	desc = gura.57.desc
 	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
 	#Uuhh 
 	option = {
 		name = gura.57.a
@@ -1185,6 +1757,7 @@ country_event = {
 	title = gura.58.t
 	desc = gura.58.desc
 	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
 	#The world is mind 
 	option = {
 		name = gura.58.a

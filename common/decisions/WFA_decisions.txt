@@ -325,7 +325,7 @@ WFA_sway_ministers_category = {
 		activation = {
 			tag = WFA
 			OR = {
-				has_country_flag = WFA_sway_sverre_riisnaes_demand
+				has_country_flag = WFA_sway_elias_corneliussen_demand
 			}
 		}
 		available = {
@@ -525,13 +525,42 @@ WFA_sway_ministers_category = {
 			base = 5
 		}
 	}
+	WFA_show_of_force = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = WFA
+		}
+		custom_cost_trigger = {
+			has_equipment = {
+				infantry_equipment > 250
+			}
+			has_army_experience > 24
+			command_power > 24
+		}
+		custom_cost_text = WFA_show_of_force_tooltip
+		fire_only_once = no
+		days_re_enable = 90
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = WFA_sway_ministers_balance
+				value = -0.1
+			}
+			hidden_effect = {
+				army_experience = -25
+				add_command_power = -25
+			}
+		}
+	}
 	WFA_consolidate_power = {
 		icon = GFX_decision_icon_default
 		available = {
 			tag = WFA
 			power_balance_value = {
 				id = WFA_sway_ministers_balance
-				value = 0.5
+				value = -0.65
 			}
 		}
 		cost = 0
@@ -550,7 +579,9 @@ WFA_sway_ministers_category = {
 								id = WFA_sway_ministers_balance
 							}
 						}
-						remove_power_balance = WFA_sway_ministers_balance
+						remove_power_balance = {
+							id = WFA_sway_ministers_balance
+						}
 					}
 				}
 			}
@@ -597,7 +628,7 @@ WFA_vidkun_quisling_power = {
 		activation = {
 			tag = WFA
 			WFA_vidkun_quisling_char = {
-				is_advisor = yes
+				is_political_advisor = yes
 			}
 		}
 		available = {
@@ -619,6 +650,7 @@ WFA_vidkun_quisling_power = {
 				add_to_variable = {
 					var = WFA.quisling_power
 					value = 0
+					tooltip = WFA_add_quisling_power
 				}
 			}
 			4 = {
@@ -626,6 +658,7 @@ WFA_vidkun_quisling_power = {
 				add_to_variable = {
 					var = WFA.quisling_power
 					value = 1
+					tooltip = WFA_add_quisling_power
 				}
 			}
 			2 = {
@@ -633,6 +666,7 @@ WFA_vidkun_quisling_power = {
 				add_to_variable = {
 					var = WFA.quisling_power
 					value = 2
+					tooltip = WFA_add_quisling_power
 				}
 			}
 			2 = {
@@ -640,6 +674,7 @@ WFA_vidkun_quisling_power = {
 				add_to_variable = {
 					var = WFA.quisling_power
 					value = 3
+					tooltip = WFA_add_quisling_power
 				}
 			}
 		}
@@ -688,6 +723,7 @@ WFA_vidkun_quisling_power = {
 			subtract_from_variable = {
 				var = WFA.quisling_power
 				value = 1
+				tooltip = WFA_subtract_quisling_power
 			}
 		}
 		ai_will_do = {
@@ -712,6 +748,7 @@ WFA_vidkun_quisling_power = {
 			subtract_from_variable = {
 				var = WFA.quisling_power
 				value = 2
+				tooltip = WFA_subtract_quisling_power
 			}
 		}
 		ai_will_do = {
@@ -736,6 +773,7 @@ WFA_vidkun_quisling_power = {
 			subtract_from_variable = {
 				var = WFA.quisling_power
 				value = 1
+				tooltip = WFA_subtract_quisling_power
 			}
 		}
 		ai_will_do = {
@@ -762,6 +800,7 @@ WFA_vidkun_quisling_power = {
 			subtract_from_variable = {
 				var = WFA.quisling_power
 				value = 1
+				tooltip = WFA_subtract_quisling_power
 			}
 		}
 		ai_will_do = {
@@ -775,7 +814,7 @@ WFA_vidkun_quisling_power = {
 			command_power > 10
 			check_variable = {
 				var = WFA.quisling_power
-				value = 2
+				value = 1
 				compare = less_than
 			}
 		}
@@ -786,6 +825,7 @@ WFA_vidkun_quisling_power = {
 			always = yes
 		}
 		complete_effect = {
+			remove_mission = WFA_quisling_coup
 			country_event = wfa.23
 		}
 		ai_will_do = {
