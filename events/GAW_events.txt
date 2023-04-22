@@ -736,6 +736,13 @@ country_event = {
 	#Woops
 	option = {
 		name = gura.31.a
+		set_politics = {
+			ruling_party = divine_mandate
+		}
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.05
+		}
 	}
 }
 
@@ -750,6 +757,13 @@ country_event = {
 	#Yay
 	option = {
 		name = gura.32.a
+		set_politics = {
+			ruling_party = pro_yagoo_monarchy
+		}
+		add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.05
+		}
 	}
 }
 
@@ -1762,5 +1776,173 @@ country_event = {
 	option = {
 		name = gura.58.a
 		add_ideas = WFA_eyes_to_the_world_idea
+	}
+}
+
+#A Grand Coronation
+country_event = {
+	id = gura.59
+	title = gura.59.t
+	desc = gura.59.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Truly Magnificent
+	option = {
+		name = gura.59.a
+		swap_ruler_traits = {
+			remove = GAW_gawr_gura_trait
+			add = GAW_capable_leader_trait
+		}
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Draft a constitution
+country_event = {
+	id = gura.60
+	title = gura.60.t
+	desc = gura.60.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Insert same vague notions of democracy
+	option = {
+		name = gura.60.a
+		add_stability = 0.05
+	}
+	#Loyalty to the Empress 
+	option = {
+		name = gura.60.b
+		add_to_variable = {
+			var = GAW.anti_aggression
+			value = 5
+			tooltip = GEN_change_in_anti_aggression
+		}
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
+		}
+	}
+}
+
+#Republican elements
+country_event = {
+	id = gura.61
+	title = gura.61.t
+	desc = gura.61.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+}
+
+#Divine Shark Privileges
+country_event = {
+	id = gura.62
+	title = gura.62.t
+	desc = gura.62.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+}
+
+#Policy towards Ina
+country_event = {
+	id = gura.63
+	title = gura.63.t
+	desc = gura.63.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Bring her into the HoloCN Federation
+	option = {
+		name = gura.63.a
+		NIN = {
+			country_event = gura_diplo.13
+		}
+	}
+	#Keep as seperate ally
+	option = {
+		name = gura.63.b
+		NIN = {
+			country_event = gura_diplo.14
+		}
+	}
+	#One crown, one empire
+	option = {
+		name = gura.63.c
+		trigger = {
+			is_monarchist = yes
+		}
+		create_wargoal = {
+			target = NIN
+			type = annex_everything
+		}
+	}
+}
+
+#Ina accepts integration
+country_event = {
+	id = gura.64
+	title = gura.64.t
+	desc = gura.64.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = gura.64.a
+	}
+}
+
+#Ina rejects integration
+country_event = {
+	id = gura.65
+	title = gura.65.t
+	desc = gura.65.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = gura.65.a
+	}
+	#war button
+	option = {
+		name = gura.65.b
+		create_wargoal = {
+			target = NIN
+			type = annex_everything
+		}
+	}
+}
+
+#Ina accepts alliance
+country_event = {
+	id = gura.66
+	title = gura.66.t
+	desc = gura.66.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = gura.66.a
+	}
+}
+
+#Ina rejects alliance
+country_event = {
+	id = gura.67
+	title = gura.67.t
+	desc = gura.67.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = gura.67.a
+	}
+	#war button
+	option = {
+		name = gura.67.b
+		create_wargoal = {
+			target = NIN
+			type = annex_everything
+		}
 	}
 }

@@ -174,3 +174,100 @@ country_event = {
 		}
 	}
 }
+
+#Bulwark against Haachama?
+country_event = {
+	id = gura_diplo.12
+	title = gura_diplo.12.t
+	desc = gura_diplo.12.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yes of course!
+	option = {
+		name = gura_diplo.12.a
+		add_ideas = GAW_bulwark_against_haachama
+		GAW = {
+			diplomatic_relation = {
+				country = ROOT
+				relation = guarantee
+			}
+		}
+		add_opinion_modifier = {
+			target = GAW
+			modifier = GAW_anti_haachama_pact
+		}
+	}
+	#Uhhhh....no?
+	option = {
+		name = gura_diplo.12.b
+		add_opinion_modifier = {
+			target = GAW
+			modifier = GAW_anti_haachama_pact
+		}
+		GAW = {
+			reverse_add_opinion_modifier = {
+				target = ROOT
+				modifier = GAW_anti_haachama_pact
+			}
+		}
+	}
+}
+
+#INA - Integration into the HOLOCN FEDERATION
+country_event = {
+	id = gura_diplo.13
+	title = gura_diplo.13.t
+	desc = gura_diplo.13.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Fine
+	option = {
+		name = gura_diplo.13.a
+		GAW = {
+			country_event = gura.64
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				set_autonomy = {
+					target = NIN
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = NIN
+				}
+			}
+		}
+	}
+	#no
+	option = {
+		name = gura_diplo.13.b
+		GAW = {
+			country_event = gura.65
+		}
+	}
+}
+
+#Gura wants to revive the alliance
+country_event = {
+	id = gura_diplo.14
+	title = gura_diplo.14.t
+	desc = gura_diplo.14.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#sure
+	option = {
+		name = gura_diplo.14.a
+		GAW = {
+			add_to_faction = NIN
+			country_event = gura.66
+		}
+	}
+	#nope
+	option = {
+		name = gura_diplo.14.b
+		GAW = {
+			country_event = gura.67
+		}
+	}
+}

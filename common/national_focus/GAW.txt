@@ -141,7 +141,7 @@ focus_tree = {
 			focus = GAW_form_new_dynasty
 		}
 		completion_reward = {
-			country_event = gura.62
+			country_event = gura.59
 		}
 		x = 16
 		y = 5
@@ -159,7 +159,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.15
 			add_popularity = {
-				ideology = divine_mandate
+				ideology = var:current_party_ideology_group
 				popularity = 0.05
 			}
 		}
@@ -174,7 +174,7 @@ focus_tree = {
 			focus = GAW_mandate_of_heaven
 		}
 		completion_reward = {
-			country_event = gura.63
+			country_event = gura.60
 		}
 		x = 15
 		y = 7
@@ -183,6 +183,11 @@ focus_tree = {
 		id = GAW_maintain_republican_elements
 		icon = GFX_focus_GAW_maintain_republican_elements
 		cost = 8
+		available = {
+			NOT = {
+				has_government = divine_mandate
+			}
+		}
 		prerequisite = {
 			focus = GAW_draft_a_constitution
 		}
@@ -190,7 +195,7 @@ focus_tree = {
 			focus = GAW_divine_shark_privillages
 		}
 		completion_reward = {
-			country_event = gura.64
+			country_event = gura.61
 		}
 		x = 14
 		y = 8
@@ -199,6 +204,9 @@ focus_tree = {
 		id = GAW_divine_shark_privillages
 		icon = GFX_focus_GAW_divine_shark_privillages
 		cost = 8
+		available = {
+			has_government = divine_mandate
+		}
 		prerequisite = {
 			focus = GAW_draft_a_constitution
 		}
@@ -206,7 +214,7 @@ focus_tree = {
 			focus = GAW_maintain_republican_elements
 		}
 		completion_reward = {
-			country_event = gura.65
+			country_event = gura.62
 		}
 		x = 16
 		y = 8
@@ -219,10 +227,9 @@ focus_tree = {
 			focus = GAW_mandate_of_heaven
 		}
 		completion_reward = {
-			add_ideas = GAW_one_empress_idea
 			add_popularity = {
-				ideology = divine_mandate
-				popularity = 0.1
+				ideology = var:current_party_ideology_group
+				popularity = 0.15
 			}
 		}
 		x = 19
@@ -236,7 +243,6 @@ focus_tree = {
 			focus = GAW_one_empress
 		}
 		completion_reward = {
-			country_event = gura.65
 		}
 		x = 19
 		y = 8
@@ -1966,69 +1972,33 @@ focus_tree = {
 	focus = {
 		id = GAW_the_tentacult
 		icon = GFX_focus_GAW_the_tentacult
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GAW_jaws_over_beijing
 		}
+		completion_reward = {
+			country_event = gura.63
+		}
+		will_lead_to_war_with = NIN
 		x = 7
 		y = 15
-	}
-	focus = {
-		id = GAW_shark_eats_tako
-		icon = GFX_focus_GAW_shark_eats_tako
-		cost = 0
-		prerequisite = {
-			focus = GAW_the_tentacult
-		}
-		mutually_exclusive = {
-			focus = GAW_guraina_reproachment
-		}
-		x = 6
-		y = 16
-	}
-	focus = {
-		id = GAW_guraina_reproachment
-		icon = GFX_focus_GAW_guraina_reproachment
-		cost = 0
-		prerequisite = {
-			focus = GAW_the_tentacult
-		}
-		mutually_exclusive = {
-			focus = GAW_shark_eats_tako
-		}
-		x = 8
-		y = 16
-	}
-	focus = {
-		id = GAW_operation_sharknado
-		icon = GFX_focus_GAW_operation_sharknado
-		cost = 0
-		prerequisite = {
-			focus = GAW_shark_eats_tako
-		}
-		x = 6
-		y = 17
 	}
 	focus = {
 		id = GAW_one_china_under_gooruh
 		icon = GFX_focus_GAW_one_china_under_gooruh
 		cost = 8
 		prerequisite = {
-			focus = GAW_operation_sharknado
 			focus = GAW_northern_expedition
 		}
 		prerequisite = {
-			focus = GAW_guraina_reproachment
-		}
-		prerequisite = {
-			focus = GAW_negotiate_yagoo_holdings
+			focus = GAW_the_tentacult
 		}
 		completion_reward = {
 			add_war_support = 0.15
 			set_country_flag = GAW_deal_with_holocns
 		}
 		x = 5
-		y = 18
+		y = 16
 	}
 	focus = {
 		id = GAW_pacific_arms_race
@@ -2044,44 +2014,6 @@ focus_tree = {
 		}
 		x = 12
 		y = 14
-	}
-	focus = {
-		id = GAW_beyond_china
-		icon = GFX_focus_GAW_beyond_china
-		cost = 8
-		prerequisite = {
-			focus = GAW_one_china_under_gooruh
-		}
-		completion_reward = {
-			country_event = gura.60
-		}
-		x = 5
-		y = 19
-	}
-	focus = {
-		id = GAW_southern_ambitions
-		icon = GFX_focus_GAW_southern_ambitions
-		cost = 8
-		prerequisite = {
-			focus = GAW_beyond_china
-		}
-		completion_reward = {
-			country_event = gura.61
-		}
-		x = 4
-		y = 20
-	}
-	focus = {
-		id = GAW_safeguard_the_north
-		icon = GFX_focus_GAW_safeguard_the_north
-		cost = 8
-		prerequisite = {
-			focus = GAW_beyond_china
-		}
-		completion_reward = {
-		}
-		x = 6
-		y = 20
 	}
 	focus = {
 		id = GAW_counter_haato_presense
@@ -2195,7 +2127,7 @@ focus_tree = {
 						has_anti_ideology = yes
 					}
 				}
-				country_event = gura.59
+				country_event = gura_diplo.12
 			}
 		}
 		x = 12
@@ -2361,7 +2293,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			KIA = {
-				country_event = GAW_diplo.7
+				country_event = gura_diplo.7
 			}
 		}
 		x = 20
@@ -2379,7 +2311,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			NOE = {
-				country_event = GAW_diplo.9
+				country_event = gura_diplo.9
 			}
 		}
 		x = 22
