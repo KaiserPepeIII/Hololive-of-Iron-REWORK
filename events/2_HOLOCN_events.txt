@@ -1,0 +1,250 @@
+add_namespace = holocn_event
+#Gura's invasion
+country_event = {
+	id = holocn_event.1
+	title = holocn_event.1.t
+	desc = holocn_event.1.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#The council commences
+	option = {
+		name = holocn_event.1.a
+	}
+}
+
+#We are called to lead 
+country_event = {
+	id = holocn_event.2
+	title = holocn_event.2.t
+	desc = holocn_event.2.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Must it come to this?
+	option = {
+		name = holocn_event.2.a
+	}
+}
+
+#DORIS - Gura wants to negotiate a HOLOCN federation
+country_event = {
+	id = holocn_event.3
+	title = holocn_event.3.t
+	desc = holocn_event.3.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't interested 
+	option = {
+		name = holocn_event.3.a
+		custom_effect_tooltip = HLOI_HOLOCN_war_with_gura
+		GAW = {
+			country_event = gura.69
+		}
+	}
+	#Being nobility sounds noice
+	option = {
+		name = holocn_event.3.b
+		trigger = {
+			GAW = {
+				is_monarchist = yes
+			}
+		}
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		GAW = {
+			country_event = gura.71
+		}
+	}
+	#We want nobility
+	option = {
+		name = holocn_event.3.c
+		GAW = {
+			country_event = gura.77
+		}
+	}
+}
+
+#Yogiri - Gura wants to negotiate a HOLOCN federation
+country_event = {
+	id = holocn_event.4
+	title = holocn_event.4.t
+	desc = holocn_event.4.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't interested 
+	option = {
+		name = holocn_event.4.a
+		custom_effect_tooltip = HLOI_HOLOCN_war_with_gura
+		GAW = {
+			country_event = gura.69
+		}
+	}
+	#Gura's republicanism is acceptable to us
+	option = {
+		name = holocn_event.4.b
+		trigger = {
+			GAW = {
+				has_completed_focus = GAW_status_quo
+			}
+		}
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		GAW = {
+			country_event = gura.72
+		}
+	}
+	#We want democracy
+	option = {
+		name = holocn_event.4.c
+	}
+}
+
+#Rosalyn - Gura wants to negotiate a HOLOCN federation
+country_event = {
+	id = holocn_event.5
+	title = holocn_event.5.t
+	desc = holocn_event.5.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't interested 
+	option = {
+		name = holocn_event.5.a
+		custom_effect_tooltip = HLOI_HOLOCN_war_with_gura
+		GAW = {
+			country_event = gura.69
+		}
+	}
+	#Gura's corporatism is acceptable to us
+	option = {
+		name = holocn_event.5.b
+		trigger = {
+			GAW = {
+				has_completed_focus = GAW_cocoist_principles
+			}
+		}
+		GAW = {
+			country_event = gura.73
+		}
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+	}
+	#We want corporatism
+	option = {
+		name = holocn_event.5.c
+	}
+}
+
+#Artia - Gura wants to negotiate a HOLOCN federation
+country_event = {
+	id = holocn_event.6
+	title = holocn_event.6.t
+	desc = holocn_event.6.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't interested 
+	option = {
+		name = holocn_event.6.a
+		custom_effect_tooltip = HLOI_HOLOCN_war_with_gura
+		GAW = {
+			country_event = gura.69
+		}
+	}
+	#We stand no chance
+	option = {
+		name = holocn_event.6.b
+		trigger = {
+			GAW = {
+				strength_ratio = {
+					tag = ART
+					ratio = 2.5
+				}
+			}
+		}
+		GAW = {
+			country_event = gura.74
+		}
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+	}
+	#We'll like to see them try
+	option = {
+		name = holocn_event.6.c
+		custom_effect_tooltip = HLOI_HOLOCN_war_with_gura
+	}
+}
+
+#Civia - Gura wants to negotiate a HOLOCN federation
+country_event = {
+	id = holocn_event.7
+	title = holocn_event.7.t
+	desc = holocn_event.7.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't interested 
+	option = {
+		name = holocn_event.7.a
+		custom_effect_tooltip = HLOI_HOLOCN_war_with_gura
+		GAW = {
+			country_event = gura.69
+		}
+	}
+	#They have proven to respect minority rights
+	option = {
+		name = holocn_event.7.b
+		trigger = {
+			GAW = {
+				has_idea = GAW_one_china_many_nations
+			}
+		}
+		GAW = {
+			country_event = gura.75
+		}
+	}
+	#We want them to respect minority rights
+	option = {
+		name = holocn_event.7.c
+	}
+}
+
+#Echo - Gura wants to negotiate a HOLOCN federation
+country_event = {
+	id = holocn_event.8
+	title = holocn_event.8.t
+	desc = holocn_event.8.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't interested 
+	option = {
+		name = holocn_event.8.a
+		custom_effect_tooltip = HLOI_HOLOCN_war_with_gura
+		GAW = {
+			country_event = gura.69
+		}
+	}
+	#Gura has shown her strength
+	option = {
+		name = holocn_event.8.b
+		trigger = {
+			OR = {
+				DOR = {
+					exists = no
+				}
+				CIV = {
+					exists = no
+				}
+				ART = {
+					exists = no
+				}
+				RSA = {
+					exists = no
+				}
+				YOG = {
+					exists = no
+				}
+			}
+		}
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		GAW = {
+			country_event = gura.76
+		}
+	}
+	#We want power 
+	option = {
+		name = holocn_event.8.c
+	}
+}

@@ -10,11 +10,6 @@ HOLOCN_recalculate_moh_effect = {
 			var = ROOT.temp_holocn_legtimacy
 			value = ROOT.holocn_legitimacy
 		}
-		clamp_temp_variable = {
-			var = ROOT.temp_holocn_legitimacy
-			min = 0
-			max = -100
-		}
 		subtract_from_temp_variable = {
 			var = ROOT.temp_holocn_legitimacy
 			value = 50
@@ -22,6 +17,11 @@ HOLOCN_recalculate_moh_effect = {
 		divide_temp_variable = {
 			var = ROOT.temp_holocn_legitimacy
 			value = 2
+		}
+		clamp_temp_variable = {
+			var = ROOT.temp_holocn_legitimacy
+			min = 0
+			max = 100
 		}
 		set_variable = {
 			var = ROOT.holocn_legitimacy_moh_modifier

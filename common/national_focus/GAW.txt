@@ -1943,6 +1943,9 @@ focus_tree = {
 		id = GAW_northern_expedition
 		icon = GFX_focus_GAW_northern_expedition
 		cost = 8
+		available = {
+			has_completed_focus = GAW_one_china_under_gooruh
+		}
 		prerequisite = {
 			focus = GAW_jaws_over_beijing
 		}
@@ -1973,6 +1976,9 @@ focus_tree = {
 		id = GAW_the_tentacult
 		icon = GFX_focus_GAW_the_tentacult
 		cost = 8
+		available = {
+			has_completed_focus = GAW_one_china_under_gooruh
+		}
 		prerequisite = {
 			focus = GAW_jaws_over_beijing
 		}
@@ -1987,11 +1993,15 @@ focus_tree = {
 		id = GAW_one_china_under_gooruh
 		icon = GFX_focus_GAW_one_china_under_gooruh
 		cost = 8
-		prerequisite = {
-			focus = GAW_northern_expedition
+		available = {
+			OR = {
+				has_completed_focus = GAW_the_mio_model
+				has_completed_focus = GAW_cocoist_principles
+				has_completed_focus = GAW_mandate_of_heaven
+			}
 		}
 		prerequisite = {
-			focus = GAW_the_tentacult
+			focus = GAW_jaws_over_beijing
 		}
 		completion_reward = {
 			add_war_support = 0.15

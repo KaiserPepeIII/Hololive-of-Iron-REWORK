@@ -1946,3 +1946,260 @@ country_event = {
 		}
 	}
 }
+
+#Policy towards HolOCNs
+country_event = {
+	id = gura.68
+	title = gura.68.t
+	desc = gura.68.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Reproach with them, a united HoloCN front is what we need
+	option = {
+		name = gura.68.a
+		custom_effect_tooltip = GAW_HOLOCN_reproaching_warning
+		set_country_flag = GAW_holocn_federation
+		set_power_balance = {
+			id = GAW_holocns_gura_balance
+			set_value = -1
+		}
+	}
+	#Death
+	option = {
+		name = gura.68.b
+		custom_effect_tooltip = GAW_HOLOCN_war_warning
+		set_country_flag = GAW_the_coming_holocn_war
+		subtract_from_variable = {
+			var = THIS.holocn_legitimacy
+			value = 20
+		}
+		HOLOCN_recalculate_moh_effect = yes
+		hidden_effect = {
+			YOG = {
+				create_faction = HOLOCN_pact
+				country_event = holocn_event.2
+				add_to_faction = DOR
+				add_to_faction = CIV
+				add_to_faction = ART
+				add_to_faction = RSA
+				add_to_faction = ECH
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = DOR
+						tag = CIV
+						tag = ART
+						tag = RSA
+						tag = ECH
+					}
+				}
+				country_event = holocn_event.1
+			}
+		}
+	}
+}
+
+#HoloCN refuses to submit
+country_event = {
+	id = gura.69
+	title = gura.69.t
+	desc = gura.69.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Then war is the only option
+	option = {
+		name = gura.69.a
+		subtract_from_variable = {
+			var = GAW.holocn_legitimacy
+			value = 15
+		}
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
+}
+
+#Disaster in Nanking
+country_event = {
+	id = gura.70
+	title = gura.70.t
+	desc = gura.70.desc
+	picture = GFX_report_event_hitler_parade
+	trigger = {
+		tag = GAW
+		check_variable = {
+			var = GAW.holocn_legitimacy
+			value = 5
+			compare = less_than
+		}
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
+	#Oh no
+	option = {
+		name = gura.70.a
+		every_state = {
+			limit = {
+				is_owned_by = GAW
+				NOT = {
+					is_capital = yes
+				}
+			}
+			remove_core_of = GAW
+		}
+	}
+}
+
+#Doris folds!
+country_event = {
+	id = gura.71
+	title = gura.71.t
+	desc = gura.71.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = gura.71.a
+		GAW = {
+			annex_country = {
+				target = DOR
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.15
+		}
+	}
+}
+
+#Yogiri folds!
+country_event = {
+	id = gura.72
+	title = gura.72.t
+	desc = gura.72.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = gura.72.a
+		GAW = {
+			annex_country = {
+				target = YOG
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.15
+		}
+	}
+}
+
+#Rosalyn folds!
+country_event = {
+	id = gura.73
+	title = gura.73.t
+	desc = gura.73.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = gura.73.a
+		GAW = {
+			annex_country = {
+				target = YOG
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.15
+		}
+	}
+}
+
+#Artia folds!
+country_event = {
+	id = gura.74
+	title = gura.74.t
+	desc = gura.74.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = gura.74.a
+		GAW = {
+			annex_country = {
+				target = ART
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.15
+		}
+	}
+}
+
+#Civia folds!
+country_event = {
+	id = gura.75
+	title = gura.75.t
+	desc = gura.75.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = gura.75.a
+		GAW = {
+			annex_country = {
+				target = CIV
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.15
+		}
+	}
+}
+
+#Echo folds 
+country_event = {
+	id = gura.76
+	title = gura.76.t
+	desc = gura.76.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = gura.76.a
+		GAW = {
+			annex_country = {
+				target = ECH
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.15
+		}
+	}
+}
+
+#Doris wants nobility
+country_event = {
+	id = gura.77
+	title = gura.77.t
+	desc = gura.77.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#FIne whatever 
+	#Yippee
+	option = {
+		name = gura.76.a
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.25
+		}
+	}
+}

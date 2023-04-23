@@ -626,6 +626,7 @@ CN_chinese_reunification = {
 	CN_appeal_to_chinese_nationalism = {
 		icon = GFX_decision_icon_default
 		available = {
+			has_political_power > 49
 			hidden_trigger = {
 				NOT = {
 					tag = YAG
@@ -633,10 +634,14 @@ CN_chinese_reunification = {
 				}
 			}
 		}
+		cost = 50
 		fire_only_once = no
 		days_re_enable = 180
 		visible = {
-			always = yes
+			NOT = {
+				tag = YAG
+				tag = JAP
+			}
 		}
 		complete_effect = {
 			ROOT = {
@@ -646,7 +651,7 @@ CN_chinese_reunification = {
 				}
 				add_to_variable = {
 					var = ROOT.holocn_legitimacy
-					value = 0.1
+					value = 5
 					tooltip = GEN_holocn_legitimacy_increase_var_tooltip
 				}
 				HOLOCN_recalculate_moh_effect = yes
@@ -654,6 +659,299 @@ CN_chinese_reunification = {
 		}
 		ai_will_do = {
 			base = 5
+		}
+	}
+	CN_smear_mandate_of_heaven = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 49
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = HOLOCN_mandate_of_heaven
+				}
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 180
+		visible = {
+			NOT = {
+				tag = YAG
+				tag = JAP
+			}
+		}
+		complete_effect = {
+			every_country = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = HOLOCN_mandate_of_heaven
+					}
+				}
+				subtract_from_variable = {
+					var = THIS.holocn_legitimacy
+					value = 5
+					tooltip = GEN_holocn_legitimacy_increase_var_tooltip
+				}
+				HOLOCN_recalculate_moh_effect = yes
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	CN_CE_show_of_force = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+		}
+		custom_cost_text = HLOI_cost_250_guns
+		custom_cost_trigger = {
+			has_equipment = {
+				infantry_equipment > 250
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 180
+		visible = {
+			has_dynamic_modifier = {
+				modifier = HOLOCN_mandate_of_heaven
+			}
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = ROOT.holocn_legitimacy
+				value = 5
+				tooltip = GEN_holocn_legitimacy_increase_var_tooltip
+			}
+			HOLOCN_recalculate_moh_effect = yes
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+			}
+		}
+	}
+	CN_CE_bread_and_circuses = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power = 125
+		}
+		cost = 125
+		fire_only_once = no
+		days_re_enable = 180
+		visible = {
+			has_dynamic_modifier = {
+				modifier = HOLOCN_mandate_of_heaven
+			}
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = ROOT.holocn_legitimacy
+				value = 5
+				tooltip = GEN_holocn_legitimacy_increase_var_tooltip
+			}
+			HOLOCN_recalculate_moh_effect = yes
+		}
+	}
+	CN_CE_pacify_population = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_war_support > 0.1
+		}
+		fire_only_once = no
+		days_re_enable = 180
+		visible = {
+			has_dynamic_modifier = {
+				modifier = HOLOCN_mandate_of_heaven
+			}
+		}
+		complete_effect = {
+			add_war_support = -0.07
+			add_to_variable = {
+				var = ROOT.holocn_legitimacy
+				value = 5
+				tooltip = GEN_holocn_legitimacy_increase_var_tooltip
+			}
+			HOLOCN_recalculate_moh_effect = yes
+		}
+	}
+	GAW_policy_towards_holocns = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GAW
+			has_country_flag = GAW_deal_with_holocns
+		}
+		cost = 25
+		complete_effect = {
+			GAW = {
+				country_event = gura.68
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	GAW_coercing_doris = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GAW
+			has_country_flag = GAW_holocn_federation
+			DOR = {
+				exists = yes
+			}
+		}
+		cost = 25
+		targets = {
+			DOR
+		}
+		complete_effect = {
+			DOR = {
+				country_event = holocn_event.3
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	GAW_coercing_yogiri = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GAW
+			has_country_flag = GAW_holocn_federation
+			YOG = {
+				exists = yes
+			}
+		}
+		cost = 25
+		targets = {
+			YOG
+		}
+		complete_effect = {
+			YOG = {
+				country_event = holocn_event.4
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	GAW_coercing_rosalyn = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GAW
+			has_country_flag = GAW_holocn_federation
+			RSA = {
+				exists = yes
+			}
+		}
+		cost = 25
+		targets = {
+			RSA
+		}
+		complete_effect = {
+			RSA = {
+				country_event = holocn_event.5
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	GAW_coercing_artia = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GAW
+			has_country_flag = GAW_holocn_federation
+			ART = {
+				exists = yes
+			}
+		}
+		cost = 25
+		targets = {
+			ART
+		}
+		complete_effect = {
+			RSA = {
+				country_event = holocn_event.6
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	GAW_coercing_civia = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GAW
+			has_country_flag = GAW_holocn_federation
+			CIV = {
+				exists = yes
+			}
+		}
+		cost = 25
+		targets = {
+			CIV
+		}
+		complete_effect = {
+			CIV = {
+				country_event = holocn_event.7
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	GAW_coercing_echo = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = GAW
+			has_country_flag = GAW_holocn_federation
+			ECH = {
+				exists = yes
+			}
+		}
+		cost = 25
+		targets = {
+			ECH
+		}
+		complete_effect = {
+			ECH = {
+				country_event = holocn_event.7
+			}
+		}
+		ai_will_do = {
+			factor = 5
 		}
 	}
 }
