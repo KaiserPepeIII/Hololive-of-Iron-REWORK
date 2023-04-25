@@ -1,3 +1,50 @@
+GAW_great_wonders = {
+	GAW_build_great_trident = {
+		available = {
+			has_political_power > 124
+			NOT = {
+				check_variable = {
+					var = GAW.great_trident_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		cost = 125
+		visible = {
+			tag = GAW
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 180
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = GAW_great_trident
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = GAW_great_trident
+				}
+				set_variable = {
+					var = GAW.great_trident_var
+					value = 0.05
+				}
+				else = {
+					add_to_variable = {
+						var = GAW.great_trident_var
+						value = 0.05
+					}
+				}
+			}
+		}
+	}
+}
+
 GAW_council_of_cocoism = {
 	GAW_council_debug = {
 		available = {

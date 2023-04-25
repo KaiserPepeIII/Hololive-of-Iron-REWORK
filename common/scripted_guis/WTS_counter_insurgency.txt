@@ -49,41 +49,47 @@ scripted_gui = {
 			attempt_a_ceasefire_button_click_enabled = {
 				ROOT = {
 					NOT = {
-						has_country_flag = WTS_recent_action
+						has_country_flag = WTS_recent_ceasefire
 					}
-					has_political_power > 100
+					has_political_power > 75
 				}
 			}
 			crackdown_on_armed_groups_button_click_enabled = {
 				ROOT = {
 					NOT = {
 						has_country_flag = WTS_recent_action
+						has_country_flag = WTS_recent_crackdown
 					}
-					has_political_power > 100
+					has_political_power > 25
 				}
 			}
 			increase_police_presence_button_click_enabled = {
 				ROOT = {
 					NOT = {
 						has_country_flag = WTS_recent_action
+						any_state = {
+							has_state_flag = WTS_increased_police_presence
+						}
 					}
-					has_political_power > 100
+					has_political_power > 75
 				}
 			}
-			martial_law__button_click_enabled = {
+			martial_law_button_click_enabled = {
 				ROOT = {
 					NOT = {
 						has_country_flag = WTS_recent_action
+						has_idea = WTS_martial_law
 					}
-					has_political_power > 150
+					has_political_power > 75
 				}
 			}
 			provoke_armed_groups_button_click_enabled = {
 				ROOT = {
 					NOT = {
 						has_country_flag = WTS_recent_action
+						has_stability < 0.2
 					}
-					has_political_power > 100
+					has_political_power > 35
 				}
 			}
 			rely_on_teamates_button_click_enabled = {
@@ -91,7 +97,7 @@ scripted_gui = {
 					NOT = {
 						has_country_flag = WTS_recent_action
 					}
-					has_political_power > 100
+					has_political_power > 15
 				}
 			}
 		}

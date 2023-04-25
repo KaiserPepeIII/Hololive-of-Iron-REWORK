@@ -954,4 +954,39 @@ CN_chinese_reunification = {
 			factor = 5
 		}
 	}
+	GAW_artia_border_war = {
+		activation = {
+			tag = GAW
+			has_country_flag = GAW_artia_border_war
+		}
+		cancel_trigger = {
+			always = no
+		}
+		visible = {
+			GAW = {
+				exists = yes
+			}
+		}
+		is_good = no
+		days_mission_timeout = 21
+		fire_only_once = yes
+		selectable_mission = no
+		timeout_effect = {
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 603
+					num_provinces = 4
+					on_win = gura.83
+					on_lose = gura.84
+				}
+				defender = {
+					state = 325
+					num_provinces = 4
+					on_win = holocn_event.10
+					on_lose = holocn_event.11
+				}
+			}
+		}
+	}
 }

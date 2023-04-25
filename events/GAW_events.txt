@@ -2193,13 +2193,340 @@ country_event = {
 	desc = gura.77.desc
 	picture = GFX_report_event_hitler_parade
 	is_triggered_only = yes
-	#FIne whatever 
+	#We aren't going to accept this
+	option = {
+		name = gura.77.a
+		subtract_from_variable = {
+			var = GAW.holocn_legitimacy
+			value = 15
+		}
+		create_wargoal = {
+			target = DOR
+			type = annex_everything
+		}
+		DOR = {
+			country_event = holocn_event.9
+		}
+	}
 	#Yippee
 	option = {
-		name = gura.76.a
+		name = gura.77.b
+		GAW = {
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = DOR
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = DOR
+				}
+			}
+		}
 		add_power_balance_value = {
 			id = GAW_holocns_gura_balance
-			value = 0.25
+			value = 0.3
+		}
+	}
+}
+
+#Yogiri wants democracy
+country_event = {
+	id = gura.78
+	title = gura.78.t
+	desc = gura.78.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't going to accept this
+	option = {
+		name = gura.78.a
+		subtract_from_variable = {
+			var = GAW.holocn_legitimacy
+			value = 15
+		}
+		create_wargoal = {
+			target = YOG
+			type = annex_everything
+		}
+		YOG = {
+			country_event = holocn_event.9
+		}
+	}
+	#Yippee
+	option = {
+		name = gura.78.b
+		GAW = {
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = YOG
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = YOG
+				}
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.3
+		}
+	}
+}
+
+#Rosalyn wants corporatism
+country_event = {
+	id = gura.79
+	title = gura.79.t
+	desc = gura.79.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't going to accept this
+	option = {
+		name = gura.79.a
+		subtract_from_variable = {
+			var = GAW.holocn_legitimacy
+			value = 15
+		}
+		create_wargoal = {
+			target = YOG
+			type = annex_everything
+		}
+		YOG = {
+			country_event = holocn_event.9
+		}
+	}
+	#Yippee
+	option = {
+		name = gura.79.b
+		GAW = {
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = RSA
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = RSA
+				}
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.3
+		}
+	}
+}
+
+#Artia is threatening us
+country_event = {
+	id = gura.80
+	title = gura.80.t
+	desc = gura.80.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't going to accept this
+	option = {
+		name = gura.80.a
+		subtract_from_variable = {
+			var = GAW.holocn_legitimacy
+			value = 15
+		}
+		create_wargoal = {
+			target = ART
+			type = annex_everything
+		}
+		ART = {
+			country_event = holocn_event.9
+		}
+	}
+	#Show of force
+	option = {
+		name = gura.80.b
+		set_country_flag = {
+			flag = GAW_artia_border_war
+			value = 1
+			days = 7
+		}
+	}
+}
+
+#Civia wants minority rights
+country_event = {
+	id = gura.81
+	title = gura.81.t
+	desc = gura.81.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't going to accept this
+	option = {
+		name = gura.81.a
+		subtract_from_variable = {
+			var = GAW.holocn_legitimacy
+			value = 15
+		}
+		create_wargoal = {
+			target = CIV
+			type = annex_everything
+		}
+		CIV = {
+			country_event = holocn_event.9
+		}
+	}
+	#Yippee
+	option = {
+		name = gura.81.b
+		GAW = {
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = CIV
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = CIV
+				}
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.3
+		}
+	}
+}
+
+#Echo wants minority rights
+country_event = {
+	id = gura.82
+	title = gura.82.t
+	desc = gura.82.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#We aren't going to accept this
+	option = {
+		name = gura.82.a
+		subtract_from_variable = {
+			var = GAW.holocn_legitimacy
+			value = 15
+		}
+		create_wargoal = {
+			target = ECH
+			type = annex_everything
+		}
+		ECH = {
+			country_event = holocn_event.9
+		}
+	}
+	#Yippee
+	option = {
+		name = gura.82.b
+		GAW = {
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = ECH
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = ECH
+				}
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.4
+		}
+	}
+}
+
+#Artia - Show of force successful!
+country_event = {
+	id = gura.83
+	title = gura.83.t
+	desc = gura.83.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#ura!
+	option = {
+		name = gura.83.a
+	}
+}
+
+#Artia - Show of force failed!
+country_event = {
+	id = gura.84
+	title = gura.84.t
+	desc = gura.84.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#damn!
+	option = {
+		name = gura.84.a
+		subtract_from_variable = {
+			var = GAW.holocn_legitimacy
+			value = 25
+		}
+		create_wargoal = {
+			target = ART
+			type = annex_everything
+		}
+	}
+}
+
+#Artia refuses to submit
+country_event = {
+	id = gura.85
+	title = gura.85.t
+	desc = gura.85.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#war
+	option = {
+		name = gura.85.a
+		create_wargoal = {
+			target = ART
+			type = annex_everything
+		}
+	}
+}
+
+#Artia submits
+country_event = {
+	id = gura.86
+	title = gura.86.t
+	desc = gura.86.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.86.a
+		GAW = {
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = ECH
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = ECH
+				}
+			}
+		}
+		add_power_balance_value = {
+			id = GAW_holocns_gura_balance
+			value = 0.15
 		}
 	}
 }

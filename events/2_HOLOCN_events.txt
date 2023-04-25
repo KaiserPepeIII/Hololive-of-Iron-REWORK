@@ -93,6 +93,9 @@ country_event = {
 	#We want democracy
 	option = {
 		name = holocn_event.4.c
+		GAW = {
+			country_event = gura.78
+		}
 	}
 }
 
@@ -127,6 +130,9 @@ country_event = {
 	#We want corporatism
 	option = {
 		name = holocn_event.5.c
+		GAW = {
+			country_event = gura.79
+		}
 	}
 }
 
@@ -165,6 +171,9 @@ country_event = {
 	option = {
 		name = holocn_event.6.c
 		custom_effect_tooltip = HLOI_HOLOCN_war_with_gura
+		GAW = {
+			country_event = gura.80
+		}
 	}
 }
 
@@ -198,6 +207,16 @@ country_event = {
 	#We want them to respect minority rights
 	option = {
 		name = holocn_event.7.c
+		trigger = {
+			NOT = {
+				GAW = {
+					has_idea = GAW_han_focus
+				}
+			}
+		}
+		GAW = {
+			country_event = gura.81
+		}
 	}
 }
 
@@ -246,5 +265,62 @@ country_event = {
 	#We want power 
 	option = {
 		name = holocn_event.8.c
+		GAW = {
+			country_event = gura.82
+		}
+	}
+}
+
+#Gura refuses our demands
+country_event = {
+	id = holocn_event.9
+	title = holocn_event.9.t
+	desc = holocn_event.9.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#uh oh
+	option = {
+		name = holocn_event.9.a
+	}
+}
+
+#Artia - WE WIN
+country_event = {
+	id = holocn_event.10
+	title = holocn_event.10.t
+	desc = holocn_event.10.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#uRRAAAA
+	option = {
+		name = holocn_event.10.a
+		add_war_support = 0.15
+		two_random_militia = yes
+		two_random_militia = yes
+	}
+}
+
+#Artia - WE LOST
+country_event = {
+	id = holocn_event.11
+	title = holocn_event.11.t
+	desc = holocn_event.11.desc
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	#bro what we have no choice now
+	option = {
+		name = holocn_event.11.a
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		GAW = {
+			country_event = gura.86
+		}
+	}
+	#nooooo
+	option = {
+		name = holocn_event.11.b
+		add_war_support = -0.15
+		GAW = {
+			country_event = gura.85
+		}
 	}
 }
