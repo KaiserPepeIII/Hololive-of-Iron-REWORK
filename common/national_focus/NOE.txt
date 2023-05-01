@@ -23,6 +23,9 @@ focus_tree = {
 			country_event = noel.59
 			add_political_power = 100
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		x = 13
 		y = 1
 	}
@@ -33,6 +36,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_surrounded_by_powers				# this would be a flat defense bonus of id say 5%
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 55
@@ -49,6 +55,9 @@ focus_tree = {
 				remove_idea = NOE_peasant_levees
 				add_idea = NOE_feudal_army				#just make the army better in a way that it scales up to the point where there are no more penalty
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 68
@@ -70,6 +79,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = NOE_professionalization_decision_tooltip
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 71
 		y = 1
@@ -80,6 +92,9 @@ focus_tree = {
 		completion_reward = {
 			navy_experience = 25
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
 		cost = 5
 		x = 71
 		y = 7
@@ -88,30 +103,34 @@ focus_tree = {
 		id = NOE_depression_economic		#modify depression idea
 		icon = GFX_NOE_depression_economic
 		completion_reward = {
+			custom_effect_tooltip = NOE_help_with_great_depression
 			subtract_from_variable = {
 				var = NOE.great_depression_modifier_a
 				value = 0.08
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_b
 				value = 0.11
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_c
 				value = 0.14
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_d
 				value = 0.05
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_e
 				value = 0.07
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_f
 				value = 0.02
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 42
@@ -124,27 +143,28 @@ focus_tree = {
 			focus = NOE_bankruptcy_for_them
 		}
 		completion_reward = {
+			custom_effect_tooltip = NOE_help_with_great_depression
 			subtract_from_variable = {
 				var = NOE.great_depression_modifier_a
 				value = 0.08
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_b
 				value = 0.11
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_c
 				value = 0.14
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_d
 				value = 0.05
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_e
 				value = 0.07
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_f
 				value = 0.02
 			}
@@ -152,6 +172,9 @@ focus_tree = {
 				idea = bail_out_noblemen				# this idea should be more consumer goods(bad)
 				days = 360
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 45
@@ -168,23 +191,23 @@ focus_tree = {
 				var = NOE.great_depression_modifier_a
 				value = 0.2
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_b
 				value = 0.3
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_c
 				value = 0.3
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_d
 				value = 0.13
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_e
 				value = 0.19
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_f
 				value = 0.05
 			}
@@ -192,6 +215,9 @@ focus_tree = {
 				idea = bankrupt_noblemen				# this should be be a bonus to construction 
 				days = 360
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 49
@@ -209,6 +235,9 @@ focus_tree = {
 				days = 1
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 12
 		y = 2
@@ -224,6 +253,9 @@ focus_tree = {
 				id = noel.25
 				days = 1
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 14
@@ -254,6 +286,9 @@ focus_tree = {
 			custom_effect_tooltip = abolitionists_established
 			set_country_flag = abolitionists_not_integrated
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 13
 		y = 3
@@ -272,6 +307,9 @@ focus_tree = {
 				value = 1
 			}
 			custom_effect_tooltip = uradel_anger_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		x = 11
 		y = 4
@@ -294,6 +332,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = uradel_anger_2
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 6
@@ -329,6 +370,9 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = NOE_political_shift
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 5
@@ -366,6 +410,9 @@ focus_tree = {
 			custom_effect_tooltip = uradel_anger_1
 			add_stability = -0.05
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 	}
 	focus = {
 		id = NOE_expand_lower_house		#anger variable, 
@@ -379,6 +426,9 @@ focus_tree = {
 				value = 1
 			}
 			custom_effect_tooltip = uradel_anger_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 7
@@ -416,6 +466,9 @@ focus_tree = {
 			custom_effect_tooltip = NOE_political_shift
 		}
 		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		x = 11
 		y = 7
 	}
@@ -432,6 +485,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = uradel_anger_1
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 7
 		y = 7
@@ -444,6 +500,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 50
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 15
@@ -461,6 +520,9 @@ focus_tree = {
 				value = -2
 			}
 			custom_effect_tooltip = abolitionist_anger_-2
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 15
@@ -490,6 +552,9 @@ focus_tree = {
 			custom_effect_tooltip = uradel_anger_1
 			custom_effect_tooltip = anti_anger_minus_1
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 14
 		y = 6
@@ -511,6 +576,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = uradel_anger_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 15
@@ -537,6 +605,10 @@ focus_tree = {
 			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = uradel_anger_1
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
+		}
 		cost = 5
 		x = 16
 		y = 6
@@ -556,6 +628,9 @@ focus_tree = {
 				tooltip = GEN_change_in_anti_aggression
 			}
 			custom_effect_tooltip = anti_anger_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 20
@@ -583,6 +658,10 @@ focus_tree = {
 			custom_effect_tooltip = anti_anger_1
 			custom_effect_tooltip = uradel_anger_1
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
+		}
 		cost = 5
 		x = 19
 		y = 6
@@ -601,6 +680,9 @@ focus_tree = {
 			custom_effect_tooltip = uradel_anger_1
 			add_political_power = 100
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 17
 		y = 7
@@ -618,6 +700,9 @@ focus_tree = {
 				days = 1
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 19
 		y = 7
@@ -633,6 +718,10 @@ focus_tree = {
 			add_ideas = {
 				farmers_encouraged				# this should be less consumer goods
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
 		}
 		cost = 5
 		x = 22
@@ -651,6 +740,9 @@ focus_tree = {
 				tooltip = GEN_change_in_anti_aggression
 			}
 			custom_effect_tooltip = anti_anger_minus_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 21
@@ -674,6 +766,9 @@ focus_tree = {
 			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = uradel_anger_1
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 23
 		y = 7
@@ -695,6 +790,9 @@ focus_tree = {
 				id = noel.55
 				days = 1
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 13
@@ -723,6 +821,9 @@ focus_tree = {
 			custom_effect_tooltip = NOE_abolitionists_integrated_tooltip
 			clr_country_flag = NOE_abolitionists_not_integrated
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 8
 		y = 9
@@ -742,6 +843,9 @@ focus_tree = {
 			add_stability = -0.15
 			add_war_support = 0.15
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 18
 		y = 9
@@ -755,6 +859,9 @@ focus_tree = {
 		completion_reward = {
 			set_country_flag = NOE_noelkorps_armed
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 16
 		y = 10
@@ -767,6 +874,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			set_country_flag = NOE_citezens_armed
+		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
 		}
 		cost = 5
 		x = 20
@@ -790,6 +900,9 @@ focus_tree = {
 				value = 10
 			}
 			custom_effect_tooltip = anti_anger_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 36
@@ -826,6 +939,10 @@ focus_tree = {
 			add_dynamic_modifier = {
 				modifier = NOE_darre_plan
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
 		}
 		cost = 5
 		x = 34
@@ -872,6 +989,10 @@ focus_tree = {
 				var = NOE.darre_plan_c
 				value = 0.04
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
 		}
 		cost = 5
 		x = 33
@@ -942,6 +1063,10 @@ focus_tree = {
 				value = 0.05
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
+		}
 		cost = 5
 		x = 27
 		y = 6
@@ -991,6 +1116,10 @@ focus_tree = {
 				var = NOE.darre_plan_d
 				value = 0.05
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
 		}
 		cost = 5
 		x = 35
@@ -1061,6 +1190,10 @@ focus_tree = {
 				value = 0.05
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
+		}
 		cost = 5
 		x = 30
 		y = 6
@@ -1084,6 +1217,9 @@ focus_tree = {
 			custom_effect_tooltip = abolitionist_anger_1
 			custom_effect_tooltip = anti_anger_minus_1
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 38
 		y = 4
@@ -1100,6 +1236,9 @@ focus_tree = {
 				value = -1
 			}
 			custom_effect_tooltip = abolitionist_anger_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 37
@@ -1118,6 +1257,9 @@ focus_tree = {
 			}
 			add_political_power = 50
 			custom_effect_tooltip = abolitionist_anger_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 39
@@ -1160,6 +1302,10 @@ focus_tree = {
 				modifier = NOE_prussian_chivalry
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 36
 		y = 6
@@ -1193,6 +1339,10 @@ focus_tree = {
 				var = NOE.prussian_chivalry_d
 				value = 0.2
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 35
@@ -1233,6 +1383,10 @@ focus_tree = {
 			}
 			custom_effect_tooltip = anti_anger_minus_1
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 37
 		y = 7
@@ -1252,7 +1406,10 @@ focus_tree = {
 				value = -10
 				tooltip = GEN_change_in_anti_aggression
 			}
-			custom_effect_tooltip = anti_anger_minus_1
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
 		}
 		cost = 5
 		x = 40
@@ -1265,30 +1422,34 @@ focus_tree = {
 			focus = NOE_depression_economic
 		}
 		completion_reward = {
+			custom_effect_tooltip = NOE_help_with_great_depression
 			subtract_from_variable = {
 				var = NOE.great_depression_modifier_a
 				value = 0.04
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_b
 				value = 0.05
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_c
 				value = 0.07
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_d
 				value = 0.05
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_e
 				value = 0.07
 			}
-			subtract_from_variable = {
+			add_to_variable = {
 				var = NOE.great_depression_modifier_f
 				value = 0.02
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 42
@@ -1301,6 +1462,7 @@ focus_tree = {
 			focus = NOE_spending_plan
 		}
 		completion_reward = {
+			custom_effect_tooltip = NOE_help_with_great_depression
 			subtract_from_variable = {
 				var = NOE.great_depression_modifier_a
 				value = 0.16
@@ -1330,6 +1492,9 @@ focus_tree = {
 				days = 120
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 41
 		y = 3
@@ -1344,6 +1509,9 @@ focus_tree = {
 			add_ideas = {
 				industrialized_mining
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 44
@@ -1394,6 +1562,9 @@ focus_tree = {
 			custom_effect_tooltip = uradel_anger_-2
 			custom_effect_tooltip = anti_anger_minus_1
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 44
 		y = 6
@@ -1409,6 +1580,9 @@ focus_tree = {
 			add_ideas = {
 				days_of_the_ritter
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 38
@@ -1443,6 +1617,10 @@ focus_tree = {
 			}
 			custom_effect_tooltip = permanently_control_uradel
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
+		}
 		cost = 5
 		x = 42
 		y = 8
@@ -1475,6 +1653,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 46
 		y = 2
@@ -1495,6 +1676,9 @@ focus_tree = {
 				}
 			}
 			add_stability = 0.1
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 46
@@ -1528,6 +1712,9 @@ focus_tree = {
 				days = 100
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 48
 		y = 2
@@ -1559,6 +1746,9 @@ focus_tree = {
 				industrieller_assistance
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 48
 		y = 3
@@ -1585,6 +1775,9 @@ focus_tree = {
 				modifier = NOE_great_depression
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 47
 		y = 4
@@ -1602,6 +1795,9 @@ focus_tree = {
 				value = -20
 				tooltip = GEN_change_in_anti_aggression
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 50
@@ -1621,6 +1817,10 @@ focus_tree = {
 				uses = 2
 				category = tp_tech
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
 		x = 51
@@ -1695,6 +1895,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = sea_wall
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
 		cost = 5
 		x = 50
 		y = 8
@@ -1721,6 +1924,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
 		cost = 5
 		x = 48
 		y = 9
@@ -1741,6 +1947,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
 		cost = 5
 		x = 50
 		y = 9
@@ -1755,6 +1964,9 @@ focus_tree = {
 			add_ideas = {
 				consumer_economics
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 52
@@ -1805,6 +2017,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 52
 		y = 8
@@ -1819,6 +2034,9 @@ focus_tree = {
 			add_ideas = {
 				expand_the_levees
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 52
@@ -1837,6 +2055,9 @@ focus_tree = {
 			custom_effect_tooltip = NOE_unlock_fubuki_warplan
 			set_country_flag = NOE_warplan_Yakineko
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 51
 		y = 10
@@ -1849,6 +2070,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			army_experience = 25
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 59
@@ -1868,6 +2092,9 @@ focus_tree = {
 				NOE_guard_infantry				#add increased special forces cap and a small buff to guard attack and defense
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 64
 		y = 2
@@ -1883,6 +2110,9 @@ focus_tree = {
 				remove_idea = NOE_guard_infantry
 				add_idea = NOE_guard_infantry2				# even more special forces cap and a bit bigger of a buff to guard attack and defense
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 64
@@ -1921,10 +2151,6 @@ focus_tree = {
 						y = 4
 					}
 					guards = {
-						x = 0
-						y = 5
-					}
-					guards = {
 						x = 1
 						y = 0
 					}
@@ -1953,6 +2179,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 63
 		y = 4
@@ -1969,6 +2198,9 @@ focus_tree = {
 				add_idea = NOE_guard_infantry3				# even even more special forces cap and a bit big buff to guard attack and defense 20% id say
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 63
 		y = 5
@@ -1984,6 +2216,9 @@ focus_tree = {
 				NOE_royal_sappers				#Decreased production cost for support equipment
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 65
 		y = 4
@@ -1998,6 +2233,9 @@ focus_tree = {
 			add_ideas = {
 				ritter_tactics				# artillery production is cheaper
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 65
@@ -2022,6 +2260,9 @@ focus_tree = {
 				NOE_noble_officers				#Combine both of the removed idea buffs and increase the bonus to ritter tactics
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 64
 		y = 6
@@ -2043,6 +2284,10 @@ focus_tree = {
 				category = fleet_in_being_tree
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 68
 		y = 8
@@ -2057,6 +2302,10 @@ focus_tree = {
 			add_ideas = {
 				NOE_imperial_ships				#cheaper capital ships
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 66
@@ -2078,6 +2327,9 @@ focus_tree = {
 				add_idea = NOE_feudal_army2
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 68
 		y = 2
@@ -2092,6 +2344,9 @@ focus_tree = {
 			add_ideas = {
 				reduced_levee_standards				# small debuff to organization but a increase to manpower (flat percent)
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 67
@@ -2110,6 +2365,9 @@ focus_tree = {
 				add_idea = NOE_feudal_army3
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 69
 		y = 4
@@ -2125,8 +2383,11 @@ focus_tree = {
 				name = NOE_direct_contact_fleet_tech
 				bonus = 1
 				uses = 1
-				category = fleet_in_being_tree
+				category = naval_doctrine
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
 		x = 68
@@ -2147,6 +2408,9 @@ focus_tree = {
 				add_idea = NOE_imperial_ships2				# keep previous buffs but add an equal buff for carriers
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
 		cost = 5
 		x = 67
 		y = 10
@@ -2161,6 +2425,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_a_gun_for_every_peasant_idea
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 69
@@ -2177,6 +2444,9 @@ focus_tree = {
 				remove_idea = reduced_levee_standards
 				add_idea = expand_draft_time				# more of the same
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 67
@@ -2195,6 +2465,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_yakiniku_for_all
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 68
@@ -2216,6 +2489,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
 		cost = 5
 		x = 71
 		y = 9
@@ -2235,6 +2511,9 @@ focus_tree = {
 					province = 362
 				}
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
 		x = 71
@@ -2261,6 +2540,10 @@ focus_tree = {
 				category = cat_mechanized_equipment
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+			FOCUS_FILTER_RESEARCH
+		}
 		cost = 5
 		x = 71
 		y = 2
@@ -2276,6 +2559,9 @@ focus_tree = {
 				NOE_manteuffel_plan_idea				#Armor attack and defense
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 71
 		y = 3
@@ -2290,6 +2576,9 @@ focus_tree = {
 			add_ideas = {
 				truck_logistics
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 71
@@ -2308,6 +2597,10 @@ focus_tree = {
 				uses = 1
 				category = armor
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
 		x = 74
@@ -2330,6 +2623,10 @@ focus_tree = {
 				NOE_panzer_plan_two_idea				#cheaper armor
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+			FOCUS_FILTER_RESEARCH
+		}
 		cost = 5
 		x = 73
 		y = 4
@@ -2344,6 +2641,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_modern_cavalry_idea				#give cavalry a big stupid buff
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 75
@@ -2364,7 +2664,7 @@ focus_tree = {
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = NOE_army_coordination_tech
-				bonus = 1
+				cost_reduction = 0.85
 				uses = 1
 				category = cat_mobile_warfare
 			}
@@ -2384,6 +2684,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			air_experience = 25
+		}
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
 		x = 78
@@ -2440,6 +2743,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
 		cost = 5
 		x = 77
 		y = 4
@@ -2459,6 +2765,9 @@ focus_tree = {
 					level = 2
 				}
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 11
@@ -2496,6 +2805,10 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 10
 		y = 6
@@ -2511,6 +2824,10 @@ focus_tree = {
 				NOE_workers_not_serfs_idea
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 12
 		y = 6
@@ -2523,6 +2840,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			set_country_flag = NOE_serfs_gathered
+		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
 		}
 		cost = 5
 		x = 18
@@ -2548,6 +2868,9 @@ focus_tree = {
 		completion_reward = {
 			set_country_flag = NOE_disloyal_officers_purged
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 18
 		y = 11
@@ -2561,6 +2884,9 @@ focus_tree = {
 		completion_reward = {
 			set_country_flag = NOE_opposition_raided
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 18
 		y = 12
@@ -2573,6 +2899,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			set_country_flag = NOE_revolution_started
+		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
 		}
 		cost = 5
 		x = 18
@@ -2600,6 +2929,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = anti_anger_-2
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 7
 		y = 10
@@ -2621,6 +2953,9 @@ focus_tree = {
 				tooltip = GEN_change_in_anti_aggression
 			}
 			custom_effect_tooltip = anti_anger_3
+		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
 		}
 		cost = 5
 		x = 9
@@ -2649,6 +2984,9 @@ focus_tree = {
 				popularity = -0.05
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 8
 		y = 11
@@ -2664,6 +3002,9 @@ focus_tree = {
 				NOE_federalism_idea
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 8
 		y = 12
@@ -2676,6 +3017,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			#faction GUI?!?!?!!?!?!?!?!?
+		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
 		}
 		cost = 5
 		x = 8
@@ -2699,6 +3043,9 @@ focus_tree = {
 			add_stability = -0.2
 			add_political_power = -150
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 17
 		y = 14
@@ -2714,6 +3061,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = remember_to_kill_generals_here_devs
+		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
 		}
 		cost = 5
 		x = 19
@@ -2786,6 +3136,10 @@ focus_tree = {
 				logistics_skill = 2
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ARMY_XP
+		}
 		cost = 5
 		x = 36
 		y = 8
@@ -2802,6 +3156,9 @@ focus_tree = {
 				days = 180
 			}
 			add_stability = 0.1
+		}
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
 		x = 33
@@ -2824,6 +3181,10 @@ focus_tree = {
 				NOE_guilds				# efficiency speed and efficiency max increase
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRIAL
+		}
 		cost = 5
 		x = 30
 		y = 7
@@ -2844,6 +3205,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRIAL
+		}
 		cost = 5
 		x = 29
 		y = 8
@@ -2863,6 +3227,9 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRIAL
 		}
 		cost = 5
 		x = 31
@@ -2899,6 +3266,9 @@ focus_tree = {
 			custom_effect_tooltip = anti_anger_2
 			custom_effect_tooltip = uradel_anger_3
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 36
 		y = 9
@@ -2920,6 +3290,9 @@ focus_tree = {
 			add_stability = 0.1
 			custom_effect_tooltip = NOE_political_shift
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 36
 		y = 10
@@ -2936,6 +3309,9 @@ focus_tree = {
 				remove_idea = robber_barons
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 36
 		y = 11
@@ -2950,6 +3326,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_winter_combat_idea				# winter atrition down
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
 		x = 54
@@ -2984,6 +3363,9 @@ focus_tree = {
 			set_country_flag = NOE_seek_lhs_support_flag
 			custom_effect_tooltip = NOE_seek_lhs_support_tooltip
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 54
 		y = 8
@@ -3000,6 +3382,9 @@ focus_tree = {
 		completion_reward = {
 			set_country_flag = NOE_seek_resistance_support_flag
 			custom_effect_tooltip = NOE_seek_resistance_support_tooltip
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 56
@@ -3019,6 +3404,10 @@ focus_tree = {
 				category = cat_mass_assault
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+			FOCUS_FILTER_RESEARCH
+		}
 		cost = 5
 		x = 68
 		y = 6
@@ -3032,6 +3421,9 @@ focus_tree = {
 		completion_reward = {
 			air_experience = 15
 			custom_effect_tooltip = NOE_establish_pzl_tooltip
+		}
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
 		x = 79
@@ -3047,6 +3439,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_cheaper_planes_idea				#cheaper production for fighters
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
 		x = 79
@@ -3069,6 +3464,9 @@ focus_tree = {
 				NOE_air_ground_coordination_idea				# small buff to both bombers and ground attack from planes
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
 		cost = 5
 		x = 76
 		y = 5
@@ -3089,6 +3487,10 @@ focus_tree = {
 				uses = 2
 				category = cat_mobile_warfare
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
 		x = 74
@@ -3111,6 +3513,10 @@ focus_tree = {
 				category = cat_trade_interdiction
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+			FOCUS_FILTER_RESEARCH
+		}
 		cost = 5
 		x = 74
 		y = 8
@@ -3125,6 +3531,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_course_de_guerre_idea				#Torpedo attack
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
 		x = 74
@@ -3143,6 +3552,10 @@ focus_tree = {
 				uses = 1
 				category = cat_trade_interdiction
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
 		x = 76
@@ -3167,6 +3580,10 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 75
 		y = 10
@@ -3183,6 +3600,9 @@ focus_tree = {
 				NOE_danzig_naval_academy_idea				# experience_gain_navy = 0.15
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
 		cost = 5
 		x = 71
 		y = 11
@@ -3196,6 +3616,9 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = NOE_ritter_marines			#Unlock great marine guy in high command
 			navy_experience = 25
+		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
 		x = 71
@@ -3211,6 +3634,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_marsh_warfare_idea				# give marines some terrain reduction but not too much
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
 		x = 70
@@ -3229,6 +3655,10 @@ focus_tree = {
 				uses = 2
 				category = naval_doctrine
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
 		x = 72
@@ -3254,6 +3684,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = NOE_political_shift
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 36
 		y = 12
@@ -3268,6 +3701,9 @@ focus_tree = {
 			remove_ideas = {
 				robber_barons2
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 31
@@ -3285,6 +3721,9 @@ focus_tree = {
 				days = 1
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 41
 		y = 13
@@ -3301,6 +3740,9 @@ focus_tree = {
 				days = 1
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 36
 		y = 13
@@ -3315,6 +3757,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_agrarian_roots_idea
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 31
@@ -3332,6 +3777,9 @@ focus_tree = {
 				target = GER
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		will_lead_to_war_with = GER
 		cost = 5
 		x = 36
@@ -3345,6 +3793,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_research_slot = 1
+		}
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
 		x = 30
@@ -3361,6 +3812,9 @@ focus_tree = {
 				remove_idea = breadbasket_of_europe
 				add_idea = breadbasket_of_world
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 32
@@ -3383,6 +3837,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 40
 		y = 14
@@ -3403,6 +3860,9 @@ focus_tree = {
 			}
 		}
 		will_lead_to_war_with = KIA
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 42
 		y = 14
@@ -3438,6 +3898,9 @@ focus_tree = {
 				id = noel.39
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 38
 		y = 15
@@ -3453,6 +3916,9 @@ focus_tree = {
 				type = annex_everything
 				target = CZE
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
 		}
 		cost = 5
 		x = 36
@@ -3486,6 +3952,9 @@ focus_tree = {
 		bypass = {
 			has_country_flag = NOE_kiara_integrated
 		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
+		}
 		cost = 5
 		x = 38
 		y = 16
@@ -3511,6 +3980,9 @@ focus_tree = {
 				add_state_core = 907
 				add_state_core = 908
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
 		}
 		cost = 5
 		x = 40
@@ -3539,6 +4011,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 37
 		y = 17
@@ -3556,6 +4031,9 @@ focus_tree = {
 			}
 		}
 		will_lead_to_war_with = SWI
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 39
 		y = 17
@@ -3574,6 +4052,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 41
 		y = 17
@@ -3588,6 +4069,9 @@ focus_tree = {
 			add_ideas = {
 				NOE_german_wine				# it is as it says, consumer goods buff
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 32
@@ -3608,6 +4092,9 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 30
@@ -3640,7 +4127,7 @@ focus_tree = {
 						}
 						add_building_construction = {
 							type = infrastructure
-							level = 10
+							level = 5
 							instant_build = yes
 						}
 					}
@@ -3652,7 +4139,7 @@ focus_tree = {
 						}
 						add_building_construction = {
 							type = infrastructure
-							level = 10
+							level = 5
 							instant_build = yes
 						}
 					}
@@ -3664,7 +4151,7 @@ focus_tree = {
 						}
 						add_building_construction = {
 							type = infrastructure
-							level = 10
+							level = 5
 							instant_build = yes
 						}
 					}
@@ -3676,12 +4163,15 @@ focus_tree = {
 						}
 						add_building_construction = {
 							type = infrastructure
-							level = 10
+							level = 5
 							instant_build = yes
 						}
 					}
 				}
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
 		x = 31
@@ -3709,6 +4199,9 @@ focus_tree = {
 			}
 		}
 		will_lead_to_war_with = PEK
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 36
 		y = 18
@@ -3735,6 +4228,9 @@ focus_tree = {
 			}
 		}
 		will_lead_to_war_with = SUI
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 40
 		y = 18
@@ -3915,6 +4411,9 @@ focus_tree = {
 			}
 			set_cosmetic_tag = HRE
 		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
 		cost = 5
 		x = 38
 		y = 19
@@ -3931,6 +4430,9 @@ focus_tree = {
 				elections_allowed = no
 			}
 			#ADD FLAVOR EVENT LATER
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 8
@@ -3955,6 +4457,9 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = NOE_political_shift
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 18
@@ -4113,6 +4618,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 11
 		y = 16
@@ -4263,6 +4771,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
 		cost = 5
 		x = 15
 		y = 16
@@ -4279,6 +4790,9 @@ focus_tree = {
 				target = GER
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		will_lead_to_war_with = GER
 		cost = 5
 		x = 17
@@ -4293,6 +4807,9 @@ focus_tree = {
 		completion_reward = {
 			set_country_flag = NOE_german_empire_aspiration
 			custom_effect_tooltip = NOE_can_form_germany_now
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		cost = 5
 		x = 19
@@ -4311,6 +4828,9 @@ focus_tree = {
 			}
 		}
 		will_lead_to_war_with = SUB
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 19
 		y = 17
@@ -4328,6 +4848,9 @@ focus_tree = {
 			}
 		}
 		will_lead_to_war_with = KIA
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 21
 		y = 17
@@ -4349,6 +4872,9 @@ focus_tree = {
 				NOE_noel_expansionism_idea				#faster justification
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 19
 		y = 18
@@ -4366,6 +4892,9 @@ focus_tree = {
 			}
 		}
 		will_lead_to_war_with = KIA
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 8
 		y = 16
@@ -4384,6 +4913,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 3
 		y = 17
@@ -4401,6 +4933,9 @@ focus_tree = {
 					days = 1
 				}
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
 		}
 		cost = 5
 		x = 8
@@ -4426,6 +4961,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 3
 		y = 18
@@ -4450,6 +4988,9 @@ focus_tree = {
 				create_faction = "Hololive Union Defense Area"
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 8
 		y = 18
@@ -4468,6 +5009,9 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		cost = 5
 		x = 2
 		y = 19
@@ -4485,6 +5029,9 @@ focus_tree = {
 					days = 1
 				}
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
 		}
 		cost = 5
 		x = 4
@@ -4528,6 +5075,9 @@ focus_tree = {
 				max = 9999
 			}
 			custom_effect_tooltip = NOE_hololive_union_tooltip
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
 		}
 		cost = 5
 		x = 8
@@ -4700,6 +5250,9 @@ focus_tree = {
 				add_state_core = 905
 				add_state_core = 80
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_INTERNAL_AFFAIRS
 		}
 		cost = 5
 		x = 7

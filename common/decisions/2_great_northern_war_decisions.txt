@@ -41,6 +41,69 @@ CAT_great_northern_war = {
 			country_event = initiator_gnw.1
 		}
 	}
+	FBK_force_noel_to_negotiate = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = FBK
+			hidden_trigger = {
+				check_variable = {
+					var = global.gnw_fubuki_allies^num
+					value = global.gnw_noel_allies^num
+					compare = greater_than
+				}
+				OR = {
+					AND = {
+						check_variable = {
+							var = global.gnw_fubuki_allies^num
+							value = 6
+							compare = greater_than
+						}
+						check_variable = {
+							var = global.gnw_noel_allies^num
+							value = 2
+							compare = less_than
+						}
+					}
+					AND = {
+						check_variable = {
+							var = global.gnw_fubuki_allies^num
+							value = 7
+							compare = greater_than
+						}
+						check_variable = {
+							var = global.gnw_noel_allies^num
+							value = 3
+							compare = less_than
+						}
+					}
+					AND = {
+						check_variable = {
+							var = global.gnw_fubuki_allies^num
+							value = 8
+							compare = greater_than
+						}
+						check_variable = {
+							var = global.gnw_noel_allies^num
+							value = 4
+							compare = less_than
+						}
+					}
+				}
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			tag = FBK
+		}
+		cost = 15
+		complete_effect = {
+			#Our demands? - Noel
+			country_event = FBK_gnw.22
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
 	FBK_negotiate_with_KRO_after_war = {
 		icon = GFX_decision_icon_default
 		available = {
@@ -603,6 +666,7 @@ CAT_great_northern_war = {
 						puppet = KRO
 					}
 				}
+				set_cosmetic_tag = KRO_NOE
 			}
 			KRO = {
 				set_politics = {

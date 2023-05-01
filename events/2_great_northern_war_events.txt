@@ -447,7 +447,7 @@ country_event = {
 	}
 }
 
-#Our demands?
+#Our demands? - Flare
 country_event = {
 	id = FBK_gnw.21
 	title = FBK_gnw.21.t
@@ -484,6 +484,47 @@ country_event = {
 		name = FBK_gnw.21.c
 		FLA = {
 			country_event = FLA_gnw.4
+		}
+	}
+}
+
+#Our demands? - Noel
+country_event = {
+	id = FBK_gnw.22
+	title = FBK_gnw.22.t
+	desc = FBK_gnw.22.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#
+	#	Losses referred to here are largely territorial based
+	#	like it or not reparations and a Treaty of Trianon style 
+	#	thing would have to happen
+	#We want to crush Noel completely
+	option = {
+		name = FBK_gnw.22.a
+		NOE = {
+			country_event = NOE_gnw.13
+		}
+	}
+	#We want to crush Noel but we agree to Baltic autonomy
+	option = {
+		name = FBK_gnw.22.b
+		NOE = {
+			country_event = NOE_gnw.14
+		}
+	}
+	#We will be less harsh, the Baltics will be free
+	option = {
+		name = FBK_gnw.22.c
+		NOE = {
+			country_event = NOE_gnw.15
+		}
+	}
+	#Kronii will regain her control but Noel would be largely left alone
+	option = {
+		name = FBK_gnw.22.c
+		NOE = {
+			country_event = NOE_gnw.16
 		}
 	}
 }
@@ -1125,6 +1166,86 @@ country_event = {
 		FLA = {
 			country_event = FLA_gnw.8
 		}
+	}
+}
+
+#Fubuki wants to crush us completely - negotiations 
+country_event = {
+	id = NOE_gnw.13
+	title = NOE_gnw.13.t
+	desc = NOE_gnw.13.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = NOE_gnw.13.a
+		custom_effect_tooltip = NOE_crushed_completely_tooltip
+		GNW_NOE_crushed_completely = YES
+	}
+	#We refuse even despite our situation
+	option = {
+		name = NOE_gnw.13.b
+		custom_effect_tooltip = NOE_severely_disadvantaged
+	}
+}
+
+#Fubuki wants to crush us but autonomous Baltics - negotiations 
+country_event = {
+	id = NOE_gnw.14
+	title = NOE_gnw.14.t
+	desc = NOE_gnw.14.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = NOE_gnw.14.a
+		custom_effect_tooltip = NOE_autonomous_baltics_tooltip
+		GNW_NOE_autonomous_baltics = yes
+	}
+	#We refuse even despite our situation
+	option = {
+		name = NOE_gnw.14.b
+		custom_effect_tooltip = NOE_severely_disadvantaged
+	}
+}
+
+#Fubuki wants independent Baltics - negotiations 
+country_event = {
+	id = NOE_gnw.15
+	title = NOE_gnw.15.t
+	desc = NOE_gnw.15.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = NOE_gnw.15.a
+		custom_effect_tooltip = NOE_independent_baltics_tooltip
+		GNW_NOE_independent_baltics = YES
+	}
+	#We refuse even despite our situation
+	option = {
+		name = NOE_gnw.15.b
+		custom_effect_tooltip = NOE_severely_disadvantaged
+	}
+}
+
+#Fubuki wants restore Kronii - negotiations 
+country_event = {
+	id = NOE_gnw.16
+	title = NOE_gnw.16.t
+	desc = NOE_gnw.16.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = NOE_gnw.16.a
+		custom_effect_tooltip = NOE_restored_kronii_tooltip
+		GNW_NOE_restore_kronii = yes
+	}
+	#We refuse even despite our situation
+	option = {
+		name = NOE_gnw.16.b
+		custom_effect_tooltip = NOE_severely_disadvantaged
 	}
 }
 
@@ -3526,6 +3647,7 @@ country_event = {
 					target = NOE
 				}
 			}
+			news_event = gnw_news_events.4
 		}
 	}
 }
