@@ -32,7 +32,6 @@ HOLOCN_gangs_category = {
 			}
 		}
 		visible = {
-			always = yes
 		}
 		fire_only_once = no
 		ai_will_do = {
@@ -64,7 +63,6 @@ HOLOCN_gangs_category = {
 			}
 		}
 		visible = {
-			always = yes
 		}
 		fire_only_once = no
 		ai_will_do = {
@@ -96,7 +94,6 @@ HOLOCN_gangs_category = {
 			}
 		}
 		visible = {
-			always = yes
 		}
 		fire_only_once = no
 		ai_will_do = {
@@ -128,7 +125,6 @@ HOLOCN_gangs_category = {
 			}
 		}
 		visible = {
-			always = yes
 		}
 		fire_only_once = no
 		ai_will_do = {
@@ -438,7 +434,7 @@ HOLOCN_gangs_category = {
 			custom_effect_tooltip = HOLOCN_increased_control
 		}
 	}
-	HOLOCN_increase_gang_power_in_fujian = {
+	HOLOCN_increase_gang_power_in_jiangxi = {
 		icon = generic_prepare_civil_war
 		available = {
 			check_variable = {
@@ -447,7 +443,7 @@ HOLOCN_gangs_category = {
 				compare = greater_than_or_equals
 			}
 			check_variable = {
-				var = EAM.axegang_control_fujian
+				var = EAM.axegang_control_jiangxi
 				value = 5
 				compare = less_than_or_equals
 			}
@@ -470,7 +466,7 @@ HOLOCN_gangs_category = {
 				value = -50
 			}
 			add_to_variable = {
-				var = EAM.axegang_control_fujian
+				var = EAM.axegang_control_jiangxi
 				value = 1
 			}
 			custom_effect_tooltip = HOLOCN_resources_remove_50
@@ -516,11 +512,11 @@ HOLOCN_gangs_category = {
 			custom_effect_tooltip = HOLOCN_increased_control
 		}
 	}
-	HOLOCN_takeover_fujian = {
+	HOLOCN_takeover_jiangxi = {
 		icon = generic_prepare_civil_war
 		available = {
 			check_variable = {
-				var = EAM.axegang_control_fujian
+				var = EAM.axegang_control_jiangxi
 				value = 5
 				compare = equals
 			}
@@ -536,7 +532,7 @@ HOLOCN_gangs_category = {
 		days_remove = 60
 		cost = 0
 		complete_effect = {
-			custom_effect_tooltip = HOLOCN_takeover_fujian_tt
+			custom_effect_tooltip = HOLOCN_takeover_jiangxi_tt
 		}
 		remove_effect = {
 			# this may be the wrong version of the all_countries type syntax, if so please just fix it and tell me i fucked it up
@@ -554,6 +550,174 @@ HOLOCN_gangs_category = {
 				country_event = {
 					days = 1
 					id = gtakeover.1
+				}
+			}
+		}
+	}
+	HOLOCN_takeover_fuzhou = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.axegang_control_fuzhou
+				value = 5
+				compare = equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			custom_effect_tooltip = HOLOCN_takeover_fuzhou_tt
+		}
+		remove_effect = {
+			# this may be the wrong version of the all_countries type syntax, if so please just fix it and tell me i fucked it up
+			every_country = {
+				limit = {
+					OR = {
+						tag = EAM
+						tag = RSA
+						tag = CIV
+						tag = YOG
+						tag = ART
+						tag = DOR
+					}
+				}
+				country_event = {
+					days = 1
+					id = gtakeover.2
+				}
+			}
+		}
+	}
+	HOLOCN_takeover_hubei = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.axegang_control_hubei
+				value = 5
+				compare = equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			custom_effect_tooltip = HOLOCN_takeover_hubei_tt
+		}
+		remove_effect = {
+			# this may be the wrong version of the all_countries type syntax, if so please just fix it and tell me i fucked it up
+			every_country = {
+				limit = {
+					OR = {
+						tag = EAM
+						tag = RSA
+						tag = CIV
+						tag = YOG
+						tag = ART
+						tag = DOR
+					}
+				}
+				country_event = {
+					days = 1
+					id = gtakeover.3
+				}
+			}
+		}
+	}
+	HOLOCN_takeover_tianjin = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.axegang_control_tianjin
+				value = 5
+				compare = equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			custom_effect_tooltip = HOLOCN_takeover_hubei_tt
+		}
+		remove_effect = {
+			# this may be the wrong version of the all_countries type syntax, if so please just fix it and tell me i fucked it up
+			every_country = {
+				limit = {
+					OR = {
+						tag = EAM
+						tag = RSA
+						tag = CIV
+						tag = YOG
+						tag = ART
+						tag = DOR
+					}
+				}
+				country_event = {
+					days = 1
+					id = gtakeover.4
+				}
+			}
+		}
+	}
+	HOLOCN_takeover_shanghai = {
+		icon = generic_prepare_civil_war
+		available = {
+			check_variable = {
+				var = EAM.axegang_control_shanghai
+				value = 5
+				compare = equals
+			}
+		}
+		visible = {
+			tag = EAM
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		days_re_enable = 30
+		days_remove = 60
+		cost = 0
+		complete_effect = {
+			custom_effect_tooltip = HOLOCN_takeover_shanghai_tt
+		}
+		remove_effect = {
+			# this may be the wrong version of the all_countries type syntax, if so please just fix it and tell me i fucked it up
+			every_country = {
+				limit = {
+					OR = {
+						tag = EAM
+						tag = RSA
+						tag = CIV
+						tag = YOG
+						tag = ART
+						tag = DOR
+					}
+				}
+				country_event = {
+					days = 1
+					id = gtakeover.5
 				}
 			}
 		}

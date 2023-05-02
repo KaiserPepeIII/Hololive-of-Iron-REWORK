@@ -1,0 +1,134 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			#Developed Countries
+			every_country = {
+				limit = {
+					OR = {
+						tag = YAG
+						tag = WTS
+						tag = SUI
+						tag = SUB
+						tag = FBK
+						tag = NOE
+						tag = RUS
+						tag = MIK
+						tag = MIO
+						tag = COC
+						tag = MRI
+						tag = BTN
+						tag = AQA
+						tag = AYA
+						tag = PEK
+						tag = CZE
+						tag = KIA
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_tech = basic_train
+						}
+					}
+					add_technology = {
+						basic_train = 1
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = train_equipment
+					amount = 14
+					producer = ROOT
+				}
+			}
+			#Mid-Ranged Countries
+			every_country = {
+				limit = {
+					OR = {
+						tag = WFA
+						tag = GER
+						tag = ALO
+						tag = MEL
+						tag = FRA
+						tag = SHI
+						tag = BAE
+						tag = ECU
+						tag = VEN
+						tag = USA
+						tag = KOY
+						tag = KAN
+						tag = SAF
+						tag = MUM
+						tag = KRN
+						tag = OKA
+						tag = MAT
+						tag = ROS
+						tag = GAW
+						tag = NEN
+						tag = HTO
+						tag = RSA
+					}
+				} 
+				
+				if = {
+					limit = {
+						NOT = {
+							has_tech = basic_train
+						}
+					}
+					add_technology = {
+						basic_train = 1
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = train_equipment
+					amount = 7
+					producer = ROOT
+				}
+			}
+			#Underdeveloped Countries
+			every_country = {
+				limit = {
+					OR = {
+						tag = LUI
+						tag = MAR
+						tag = ZIM
+						tag = ZAM
+						tag = KEN
+						tag = ROB
+						tag = WAT
+						tag = TOW
+						tag = SAN
+						tag = LUN
+						tag = NIN
+						tag = CIV
+						tag = ART
+						tag = YOG
+						tag = XSM
+						tag = EAM
+						tag = MOO
+						tag = RIS
+						tag = IOF
+						tag = KOV
+						tag = KRU
+						tag = PAV
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_tech = basic_train
+						}
+					}
+					add_technology = {
+						basic_train = 1
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = train_equipment
+					amount = 3
+					producer = ROOT
+				}
+			}
+		}
+	}
+}
