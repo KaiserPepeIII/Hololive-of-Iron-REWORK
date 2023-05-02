@@ -1539,3 +1539,33 @@ country_event = {
 		custom_effect_tooltip = ALO_no_communist_government_tooltip
 	}
 }
+#Aloe Peace Deal
+country_event = {
+	id = aloe.50
+	title = aloe.50.t
+	desc = aloe.50.d
+	picture = GFX_report_event_ALO_mel_takes_unvar
+	is_triggered_only = yes
+	#Aloe accept
+	option = {
+		name = aloe.50.a
+		MEL = {
+			country_event = mel.9
+		}
+		white_peace = MEL
+		ALO = {
+			transfer_state = 941
+			transfer_state = 84
+			transfer_state = 76
+			transfer_state = 83
+		}
+	}
+	#Aloe decline
+	option = {
+		name = aloe.50.a
+		MEL = {
+			country_event = mel.10
+		}
+		add_war_support = -0.1
+	}
+}

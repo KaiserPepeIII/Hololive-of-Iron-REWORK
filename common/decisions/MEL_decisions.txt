@@ -87,3 +87,29 @@ MEL_demand_banat = {
 		}
 	}
 }
+MEL_scripted_peacedeal_aloe = {
+	MEL_peace_transylvania_decision = {
+		icon = GFX_decision_icon_default
+		available = {
+			MEL = {
+				surrender_progress < 0.7
+
+			}
+		}
+		fire_only_once = yes
+		visible = {
+				ALO = {
+					has_war_with = MEL
+				}
+				MEL = {
+					owns_state = 84
+				}
+		}
+		complete_effect = {
+			ALO = {
+				
+				country_event = aloe.50
+			}
+		}
+	}
+}
