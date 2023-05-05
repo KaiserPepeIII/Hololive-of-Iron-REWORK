@@ -323,3 +323,278 @@ GNW_NOE_restore_kronii = {
 		transfer_state = 1000
 	}
 }
+
+GNW_set_up_gnw_scripted_effect = {
+	#Subaru
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_subaru_concessions
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		SUB = {
+			leave_faction = yes
+		}
+		OSK = {
+			leave_faction = yes
+		}
+		FBK = {
+			add_to_faction = SUB
+			add_to_faction = OSK
+		}
+		SUB = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+		OSK = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+	}
+	#Kronii
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_kronii_concessions
+				value = 1
+				compare = equals
+			}
+		}
+		KRO = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.gnw_kronii_concessions
+					value = 2
+					compare = equals
+				}
+			}
+			activate_mission = KRO_revolt_prep
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.gnw_kronii_concessions
+					value = 3
+					compare = equals
+				}
+			}
+			FBK = {
+				end_puppet = KRO
+			}
+			KRO = {
+				leave_faction = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = NOE.gnw_kronii_concessions
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		NOE = {
+			add_to_faction = KRO
+		}
+		KRO = {
+			declare_war_on = {
+				target = FBK
+			}
+		}
+	}
+	#Germany
+	if = {
+		limit = {
+			GER = {
+				exists = yes
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = FBK.gnw_germany_concessions
+					value = 1
+					compare = greater_than_or_equals
+				}
+			}
+			FBK = {
+				add_to_faction = GER
+			}
+			GER = {
+				declare_war_on = {
+					target = NOE
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						var = NOE.gnw_germany_concessions
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+				GER = {
+					diplomatic_relation = {
+						country = FBK
+						relation = non_aggression_pact
+					}
+					diplomatic_relation = {
+						country = NOE
+						relation = non_aggression_pact
+					}
+				}
+			}
+		}
+	}
+	#Flare
+	if = {
+		limit = {
+			OR = {
+				check_variable = {
+					var = FBK.gnw_germany_concessions
+					value = 4
+					compare = equals
+				}
+				check_variable = {
+					var = FBK.gnw_germany_concessions
+					value = 6
+					compare = equals
+				}
+			}
+		}
+		FBK = {
+			add_to_faction = FLA
+		}
+		FLA = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = NOE.gnw_germany_concessions
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		NOE = {
+			add_to_faction = FLA
+		}
+		FLA = {
+			declare_war_on = {
+				target = FBK
+			}
+		}
+	}
+	#Rushia
+	if = {
+		limit = {
+			OR = {
+				check_variable = {
+					var = FBK.gnw_rushia_concessions
+					value = 3
+					compare = equals
+				}
+				check_variable = {
+					var = FBK.gnw_rushia_concessions
+					value = 5
+					compare = equals
+				}
+			}
+		}
+		FBK = {
+			add_to_faction = RUS
+		}
+		RUS = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = NOE.gnw_rushia_concessions
+					value = 2
+					compare = greater_than_or_equals
+				}
+			}
+			NOE = {
+				add_to_faction = RUS
+			}
+			RUS = {
+				declare_war_on = {
+					target = FBK
+				}
+			}
+		}
+	}
+	#Czecho
+	if = {
+		limit = {
+			OR = {
+				check_variable = {
+					var = FBK.gnw_czechoslovakia_concessions
+					value = 2
+					compare = equals
+				}
+			}
+		}
+		FBK = {
+			add_to_faction = CZE
+		}
+		CZE = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				check_variable = {
+					var = NOE.gnw_czechoslovakia_concessions
+					value = 2
+					compare = equals
+				}
+			}
+		}
+		NOE = {
+			add_to_faction = CZE
+		}
+		CZE = {
+			declare_war_on = {
+				target = FBK
+			}
+		}
+	}
+	#KIARA
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_kiara_concessions
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		FBK = {
+			add_to_faction = KIA
+		}
+		KIA = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+	}
+}
