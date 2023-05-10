@@ -101,6 +101,9 @@ GEN_LHS_picking_our_side = {
 			}
 		}
 		remove_effect = {
+			YAG = {
+				add_to_faction = ROOT
+			}
 			every_country = {
 				limit = {
 					is_in_faction_with = GAW
@@ -140,9 +143,54 @@ GEN_LHS_picking_our_side = {
 			}
 		}
 		remove_effect = {
+			YAG = {
+				add_to_faction = ROOT
+			}
 			every_country = {
 				limit = {
 					is_in_faction_with = SUB
+				}
+				YAG = {
+					add_to_faction = THIS
+				}
+			}
+		}
+	}
+	AYA_align_with_lhs_shield = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_political_power > 25
+			threat > 0.5
+		}
+		visible = {
+			has_idea = lhs_member
+			hidden_trigger = {
+				tag = AYA
+			}
+			YAG = {
+				exists = yes
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 15
+		}
+		days_remove = 60
+		cost = 25
+		complete_effect = {
+			add_to_variable = {
+				var = ROOT.anti_aggression
+				value = 10
+				tooltip = GEN_change_in_anti_aggression
+			}
+		}
+		remove_effect = {
+			YAG = {
+				add_to_faction = ROOT
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = AYA
 				}
 				YAG = {
 					add_to_faction = THIS

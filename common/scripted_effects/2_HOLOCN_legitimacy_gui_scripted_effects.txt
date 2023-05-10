@@ -1,5 +1,5 @@
 HOLOCN_recalculate_moh_effect = {
-	if = {
+	every_country = {
 		limit = {
 			has_dynamic_modifier = {
 				modifier = HOLOCN_mandate_of_heaven
@@ -12,7 +12,7 @@ HOLOCN_recalculate_moh_effect = {
 		}
 		subtract_from_temp_variable = {
 			var = ROOT.temp_holocn_legitimacy
-			value = 50
+			value = 0.5
 		}
 		divide_temp_variable = {
 			var = ROOT.temp_holocn_legitimacy
@@ -21,7 +21,7 @@ HOLOCN_recalculate_moh_effect = {
 		clamp_temp_variable = {
 			var = ROOT.temp_holocn_legitimacy
 			min = 0
-			max = 100
+			max = 1
 		}
 		set_variable = {
 			var = ROOT.holocn_legitimacy_moh_modifier

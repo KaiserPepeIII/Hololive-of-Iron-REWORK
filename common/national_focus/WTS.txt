@@ -558,33 +558,24 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = {
-					country_exists = FAU
-					country_exists = IRE
-				}
-				create_wargoal = {
-					type = annex_everything
-					target = FAU
-				}
-				create_wargoal = {
-					type = annex_everything
-					target = IRE
-				}
-			}
-			else_if = {
-				limit = {
-					NOT = {
-						country_exists = IRE
+					IRE = {
+						exists = yes
 					}
 				}
 				create_wargoal = {
+					target = IRE
 					type = annex_everything
-					target = FAU
 				}
 			}
-			else = {
+			if = {
+				limit = {
+					FAU = {
+						exists = yes
+					}
+				}
 				create_wargoal = {
+					target = FAU
 					type = annex_everything
-					target = IRE
 				}
 			}
 		}
