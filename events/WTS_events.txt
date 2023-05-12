@@ -10,21 +10,17 @@ country_event = {
 	option = {
 		#Send our condolences
 		name = watson.1.a
-		ENG = {
-			add_opinion_modifier = {
-				target = WTS
-				modifier = WTS_polite
-			}
+		add_popularity = {
+			ideology = pro_yagoo_monarchy
+			popularity = 0.05
 		}
 	}
 	option = {
 		#Good riddance
 		name = watson.1.b
-		ENG = {
-			add_opinion_modifier = {
-				target = ENG
-				modifier = WTS_rude
-			}
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.05
 		}
 	}
 	option = {
@@ -978,11 +974,13 @@ country_event = {
 			WTS_easter_crisis
 			WTS_easter_crisis_long
 		}
-		WTS_clear_ministers = yes
-		WTS_pro_yagoo_progressive_cabinet = yes
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_pro_yagoo_progressive_cabinet = yes
+		}
 	}
 	option = {
-		#Prior conservative support and budget
+		#Prior conservative support and budget 
 		name = watson.38.b
 		trigger = {
 			OR = {
@@ -1004,8 +1002,11 @@ country_event = {
 			WTS_easter_crisis
 			WTS_easter_crisis_long
 		}
-		WTS_clear_ministers = yes
-		WTS_pro_yagoo_conservative_cabinet = yes
+		custom_effect_tooltip = set_pro_yagoo_progressive_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_pro_yagoo_conservative_cabinet = yes
+		}
 	}
 }
 
@@ -1431,12 +1432,14 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = watson.62.a
+		complete_national_focus = WTS_harts_reforms
 		set_technology = {
 			mobile_warfare = 1
 		}
 	}
 	option = {
 		name = watson.62.b
+		complete_national_focus = WTS_jfc_fullers_reforms
 		set_technology = {
 			superior_firepower = 1
 		}
@@ -4521,7 +4524,7 @@ country_event = {
 	#hurray
 	option = {
 		name = watson.181.a
-		add_stability = 0.1
+		add_stability = 0.02
 		set_country_flag = WTS_stopped_deindustrialization
 	}
 }
@@ -4811,8 +4814,11 @@ country_event = {
 			ideology = democratic
 			popularity = 0.01
 		}
-		WTS_clear_ministers = yes
-		WTS_pro_yagoo_kleptocracy_cabinet = yes
+		custom_effect_tooltip = set_pro_yagoo_kleptocracy_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_pro_yagoo_kleptocracy_cabinet = yes
+		}
 	}
 }
 
@@ -4911,8 +4917,11 @@ country_event = {
 			ideology = democratic
 			popularity = -0.05
 		}
-		WTS_clear_ministers = yes
-		WTS_mixed_ideology_democracy_cabinet = yes
+		custom_effect_tooltip = set_mixed_ideology_democracy_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_mixed_ideology_democracy_cabinet = yes
+		}
 	}
 }
 
@@ -5056,8 +5065,11 @@ country_event = {
 			var = WTS.parliament_cohesion
 			value = 6
 		}
-		WTS_clear_ministers = yes
-		WTS_reactionary_nationalism_cabinet = yes
+		custom_effect_tooltip = set_reactionary_nationalism_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_reactionary_nationalism_cabinet = yes
+		}
 		set_country_flag = WTS_constitutional_queen_flag
 	}
 }
@@ -5076,8 +5088,11 @@ country_event = {
 			ruling_party = communism
 			elections_allowed = no
 		}
-		WTS_clear_ministers = yes
-		WTS_pro_resistance_revolutionary_cabinet = yes
+		custom_effect_tooltip = set_pro_resistance_revolutionary_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_pro_resistance_revolutionary_cabinet = yes
+		}
 		set_country_flag = WTS_president_watson_flag
 	}
 	#Democratic labour takes charge
@@ -5087,8 +5102,11 @@ country_event = {
 			ruling_party = pro_yagoo_progressive
 			elections_allowed = yes
 		}
-		WTS_clear_ministers = yes
-		WTS_pro_yagoo_progressive_cabinet = yes
+		custom_effect_tooltip = set_pro_yagoo_progressive_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_pro_yagoo_progressive_cabinet = yes
+		}
 		set_country_flag = WTS_president_watson_flag
 	}
 	#Moderate labour takes charge
@@ -5098,8 +5116,11 @@ country_event = {
 			ruling_party = mixed_ideology_democracy
 			elections_allowed = yes
 		}
-		WTS_clear_ministers = yes
-		WTS_mixed_ideology_democracy_cabinet = yes
+		custom_effect_tooltip = set_mixed_ideology_democracy_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_mixed_ideology_democracy_cabinet = yes
+		}
 		set_country_flag = WTS_president_watson_flag
 	}
 }
@@ -5118,8 +5139,11 @@ country_event = {
 			ruling_party = reactionary_nationalism
 			elections_allowed = no
 		}
-		WTS_clear_ministers = yes
-		WTS_reactionary_nationalism_cabinet = yes
+		custom_effect_tooltip = set_reactionary_nationalism_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_reactionary_nationalism_cabinet = yes
+		}
 		set_country_flag = WTS_president_watson_flag
 	}
 	#For a brighter britain, with the resistance
@@ -5129,8 +5153,11 @@ country_event = {
 			ruling_party = pro_resistance_nationalism
 			elections_allowed = no
 		}
-		WTS_clear_ministers = yes
-		WTS_pro_resistance_nationalism_cabinet = yes
+		custom_effect_tooltip = set_pro_resistance_nationalism_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_pro_resistance_nationalism_cabinet = yes
+		}
 		set_country_flag = WTS_constitutional_queen_flag
 	}
 	#For a brighter britain, under Watson
@@ -5140,8 +5167,11 @@ country_event = {
 			ruling_party = pro_resistance_monarchy
 			elections_allowed = no
 		}
-		WTS_clear_ministers = yes
-		WTS_pro_resistance_monarchy_cabinet = yes
+		custom_effect_tooltip = set_pro_resistance_monarchy_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_pro_resistance_monarchy_cabinet = yes
+		}
 		set_country_flag = WTS_constitutional_queen_flag
 	}
 }
@@ -5160,8 +5190,11 @@ country_event = {
 			ruling_party = pro_yagoo_monarchy
 			elections_allowed = no
 		}
-		WTS_clear_ministers = yes
-		WTS_pro_yagoo_monarchy_cabinet = yes
+		custom_effect_tooltip = set_pro_yagoo_monarchy_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_pro_yagoo_monarchy_cabinet = yes
+		}
 		set_country_flag = WTS_absolutist_watson_flag
 	}
 	#For Ame! I mean Britannia
@@ -5171,8 +5204,11 @@ country_event = {
 			ruling_party = divine_mandate
 			elections_allowed = no
 		}
-		WTS_clear_ministers = yes
-		WTS_divine_mandate_cabinet = yes
+		custom_effect_tooltip = set_divine_mandate_government
+		hidden_effect = {
+			WTS_clear_ministers = yes
+			WTS_divine_mandate_cabinet = yes
+		}
 		set_country_flag = WTS_absolutist_watson_flag
 	}
 }

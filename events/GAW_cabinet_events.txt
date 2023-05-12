@@ -3,83 +3,235 @@ add_namespace = GAW_cabinet
 country_event = {
 	id = GAW_cabinet.1
 	title = GAW_cabinet.1.t
-	desc = GAW_cabinet.1.d
+	desc = GAW_cabinet.1.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.1.a
 	}
+	#Xu Shicheng 
 	option = {
 		name = GAW_cabinet.1.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_xu_shichang
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.9
+		GAW_switch_first_minister = yes
+		add_ideas = GAW_xu_shichang
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Chen Kuilong
+	option = {
+		name = GAW_cabinet.1.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_chen_kuilong
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_first_minister = yes
+		add_ideas = GAW_chen_kuilong
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Tang Shaoyi
+	option = {
+		name = GAW_cabinet.1.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_tang_shaoyi_pyp
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_first_minister = yes
+		add_ideas = GAW_tang_shaoyi_pyp
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister interior
+#finance minister
 country_event = {
 	id = GAW_cabinet.2
 	title = GAW_cabinet.2.t
-	desc = GAW_cabinet.2.d
+	desc = GAW_cabinet.2.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.2.a
 	}
+	#Chen Jintao
 	option = {
 		name = GAW_cabinet.2.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_chen_jintao
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.3
+		GAW_switch_finance_minister = yes
+		add_ideas = GAW_chen_jintao
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Li Sihao
+	option = {
+		name = GAW_cabinet.2.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_li_sihao
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_finance_minister = yes
+		add_ideas = GAW_li_sihao
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Gu Mengyu
+	option = {
+		name = GAW_cabinet.2.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_gu_mengyu
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_finance_minister = yes
+		add_ideas = GAW_gu_mengyu
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister finance
+#economy minister
 country_event = {
 	id = GAW_cabinet.3
 	title = GAW_cabinet.3.t
-	desc = GAW_cabinet.3.d
+	desc = GAW_cabinet.3.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.3.a
 	}
+	#Zhou Xuexi
 	option = {
 		name = GAW_cabinet.3.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_zhao_xuexi
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.1
+		GAW_switch_economy_minister = yes
+		add_ideas = GAW_zhao_xuexi
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Wang Kemin
+	option = {
+		name = GAW_cabinet.3.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_wang_kemin
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_economy_minister = yes
+		add_ideas = GAW_wang_kemin
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Xiong Xiling
+	option = {
+		name = GAW_cabinet.3.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_xiong_xiling
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_economy_minister = yes
+		add_ideas = GAW_xiong_xiling
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#chief army
+#armaments minister
 country_event = {
 	id = GAW_cabinet.4
 	title = GAW_cabinet.4.t
-	desc = GAW_cabinet.4.d
+	desc = GAW_cabinet.4.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.4.a
 	}
+	#He Yingqing
 	option = {
 		name = GAW_cabinet.4.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_he_yingpin
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.5
+		GAW_switch_armaments_minister = yes
+		add_ideas = GAW_he_yingpin
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Murca Tieliang
+	option = {
+		name = GAW_cabinet.4.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_murca_tieliang
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_armaments_minister = yes
+		add_ideas = GAW_murca_tieliang
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Zhao Hengti
+	option = {
+		name = GAW_cabinet.4.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_zhao_hengti
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_armaments_minister = yes
+		add_ideas = GAW_zhao_hengti
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
@@ -87,103 +239,292 @@ country_event = {
 country_event = {
 	id = GAW_cabinet.5
 	title = GAW_cabinet.5.t
-	desc = GAW_cabinet.5.d
+	desc = GAW_cabinet.5.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.5.a
 	}
+	#Sak Deng Bing
 	option = {
 		name = GAW_cabinet.5.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_sak_deng_bing
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.6
+		GAW_switch_navy_chief = yes
+		add_ideas = GAW_sak_deng_bing
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Aisingioro Zaixun
+	option = {
+		name = GAW_cabinet.5.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_aisingioro_zaixun
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_navy_chief = yes
+		add_ideas = GAW_aisingioro_zaixun
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Chen Shaokuan
+	option = {
+		name = GAW_cabinet.5.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_chen_shaokuan
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_navy_chief = yes
+		add_ideas = GAW_chen_shaokuan
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister foreign
+#chief army
 country_event = {
 	id = GAW_cabinet.6
 	title = GAW_cabinet.6.t
-	desc = GAW_cabinet.6.d
+	desc = GAW_cabinet.6.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.6.a
 	}
+	#Gu Zhutong
 	option = {
 		name = GAW_cabinet.6.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_gu_zhutong
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.2
+		GAW_switch_army_chief = yes
+		add_ideas = GAW_gu_zhutong
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Aisingioro Zitao
+	option = {
+		name = GAW_cabinet.6.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_aisingioro_zaitao
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_army_chief = yes
+		add_ideas = GAW_aisingioro_zaitao
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Li Shucheng
+	option = {
+		name = GAW_cabinet.6.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_li_shucheng
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_army_chief = yes
+		add_ideas = GAW_li_shucheng
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister armaments
+#interior minister
 country_event = {
 	id = GAW_cabinet.7
 	title = GAW_cabinet.7.t
-	desc = GAW_cabinet.7.d
+	desc = GAW_cabinet.7.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.7.a
 	}
+	#Chen Jintao
 	option = {
 		name = GAW_cabinet.7.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_chen_jintao
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.7
+		GAW_switch_interior_minister = yes
+		add_ideas = GAW_chen_jintao
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Hu Siyuan
+	option = {
+		name = GAW_cabinet.7.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_hu_siyuan
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_interior_minister = yes
+		add_ideas = GAW_hu_siyuan
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Sun Ke
+	option = {
+		name = GAW_cabinet.7.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_sun_ke
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_interior_minister = yes
+		add_ideas = GAW_sun_ke
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#Minister economy
+#foreign minister
 country_event = {
 	id = GAW_cabinet.8
 	title = GAW_cabinet.8.t
-	desc = GAW_cabinet.8.d
+	desc = GAW_cabinet.8.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.8.a
 	}
+	#Xhu Qiqian
 	option = {
 		name = GAW_cabinet.8.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_zhu_qiqian
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.8
+		GAW_switch_foreign_minister = yes
+		add_ideas = GAW_zhu_qiqian
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Zhang Zhongqian
+	option = {
+		name = GAW_cabinet.8.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_zhang_zongxiang
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_foreign_minister = yes
+		add_ideas = GAW_zhang_zongxiang
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#koo vi kyuin
+	option = {
+		name = GAW_cabinet.8.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_koo_vi_kyuin
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_foreign_minister = yes
+		add_ideas = GAW_koo_vi_kyuin
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
 
-#minister alignment
+#allegiance minister
 country_event = {
 	id = GAW_cabinet.9
 	title = GAW_cabinet.9.t
-	desc = GAW_cabinet.9.d
+	desc = GAW_cabinet.9.desc
 	picture = GFX_report_event_GEN_sacking_event
 	is_triggered_only = yes
 	option = {
 		name = GAW_cabinet.9.a
 	}
+	#Tang Shaoli
 	option = {
 		name = GAW_cabinet.9.b
 		trigger = {
 			original_tag = GAW
+			NOT = {
+				has_idea = GAW_tang_shaoyi_pyc
+				has_anti_ideology = yes
+			}
 		}
-		GAW = {
-			country_event = GAW_cabinet.4
+		GAW_switch_allegiance_minister = yes
+		add_ideas = GAW_tang_shaoyi_pyc
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Lou Tseng Tsiang
+	option = {
+		name = GAW_cabinet.9.c
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_idea = GAW_lou_tseng_tsiang
+				has_anti_ideology = yes
+				has_government = pro_yagoo_progressive
+			}
 		}
+		GAW_switch_allegiance_minister = yes
+		add_ideas = GAW_lou_tseng_tsiang
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
+	}
+	#Eugene Chen
+	option = {
+		name = GAW_cabinet.9.d
+		trigger = {
+			original_tag = GAW
+			NOT = {
+				has_anti_ideology = yes
+				is_monarchist = yes
+			}
+		}
+		GAW_switch_allegiance_minister = yes
+		add_ideas = GAW_eugene_chen
+		GEN_reduce_parliament_cohesion_one = yes
+		custom_effect_tooltip = GEN_reduce_parliament_cohesion_tooltip
 	}
 }
