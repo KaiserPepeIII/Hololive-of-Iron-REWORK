@@ -225,7 +225,9 @@ country_event = {
 	#Uh oh
 	option = {
 		name = wfa_focus.7.a
-		retire_character = WFA_christian_shalburg
+		WFA_christian_shalburg = {
+			kill_country_leader = yes
+		}
 		if = {
 			limit = {
 				has_country_flag = WFA_sided_pro_wfa
@@ -427,7 +429,9 @@ country_event = {
 	#Damn, I guess my path ends here
 	option = {
 		name = wfa_focus.12.a
-		retire_character = WFA_christian_shalburg
+		WFA_christian_shalburg = {
+			kill_country_leader = yes
+		}
 		hidden_effect = {
 			#Framing of the murder
 			set_country_flag = WFA_schalburg_dead
@@ -450,6 +454,11 @@ country_event = {
 	#oof 
 	option = {
 		name = wfa_focus.13.a
+		WFA_finn_klelstrup = {
+			promote_character = {
+				ideology = reactionary_nationalist
+			}
+		}
 	}
 }
 
@@ -475,6 +484,9 @@ country_event = {
 	#oh my goodness gracious
 	option = {
 		name = wfa_focus.14.a
+		WFA_christian_shalburg = {
+			kill_country_leader = yes
+		}
 		hidden_effect = {
 			country_event = {
 				id = wfa_focus.15
@@ -871,6 +883,11 @@ country_event = {
 	#Long live Martinsen!
 	option = {
 		name = wfa_focus.33.a
+		WFA_kund_martinsen = {
+			promote_character = {
+				ideology = reactionary_nationalist
+			}
+		}
 		WFR = {
 			country_event = wfr.3
 		}
@@ -887,6 +904,14 @@ country_event = {
 	#Uh oh
 	option = {
 		name = wfa_focus.34.a
+		WFA_council = {
+			kill_country_leader = yes
+		}
+		WFA_kund_martinsen = {
+			promote_character = {
+				ideology = reactionary_nationalist
+			}
+		}
 		WFA = {
 			white_peace = WFR
 			annex_country = {
@@ -1037,30 +1062,31 @@ country_event = {
 			declare_war_on = {
 				target = WFR
 			}
-		#
-		hidden_effect = {
-			every_state = {
-				limit = {
-					is_core_of = WFA
+			#
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_core_of = WFA
+					}
+					add_core_of = WFR
 				}
-				add_core_of = WFR
-			}
-			WFR = {
-				transfer_state = 144
-				transfer_state = 999
-				transfer_state = 143
-				transfer_state = 989
-			}
-			WFR = {
-				WFR_pro_wfa_setup = yes
-				load_oob = "WFR_civil_war"
-				add_manpower = 100000
-			}
-			WFA = {
-				WFA_pro_wfa_setup = yes
-			}
-			FBK = {
-				country_event = fubuki.33
+				WFR = {
+					transfer_state = 144
+					transfer_state = 999
+					transfer_state = 143
+					transfer_state = 989
+				}
+				WFR = {
+					WFR_pro_wfa_setup = yes
+					load_oob = "WFR_civil_war"
+					add_manpower = 100000
+				}
+				WFA = {
+					WFA_pro_wfa_setup = yes
+				}
+				FBK = {
+					country_event = fubuki.33
+				}
 			}
 		}
 	}
@@ -1076,9 +1102,10 @@ country_event = {
 	#ogey
 	option = {
 		name = wfa_focus.45.a
-		promote_character = {
-			character = WFA_finn_klelstrup
-			ideology = reactionary_nationalism
+		WFA_finn_klelstrup = {
+			promote_character = {
+				ideology = reactionary_nationalist
+			}
 		}
 	}
 }
@@ -1133,7 +1160,15 @@ country_event = {
 	#“Refrain from the purges, but continue to gather evidence.”
 	option = {
 		name = wfa_focus.47.a
-		add_ideas = WFA_files_on_everyone
+		if = {
+			limit = {
+				has_dlc = "La Resistance"
+			}
+			add_ideas = WFA_files_on_everyone_lar
+			else = {
+				add_ideas = WFA_files_on_everyone_legacy
+			}
+		}
 	}
 	#“Try a few disloyal officers and politicians. They will serve as an example.”
 	option = {
@@ -1163,5 +1198,10 @@ country_event = {
 	#Ogey
 	option = {
 		name = wfa_focus.48.a
+		WFA_council = {
+			promote_character = {
+				ideology = reactionary_nationalist
+			}
+		}
 	}
 }

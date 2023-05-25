@@ -27,7 +27,65 @@ CAT_great_northern_war = {
 	}
 	visible = {
 		NOT = {
-			has_global_flag = GNW_post_gnw_negotiations
+			has_global_flag = GNW_gnw_launched
+		}
+		OR = {
+			#Majors
+			tag = NOE
+			tag = FBK
+			tag = WFA
+			#MAJOR INFLUENCERS
+			tag = SUB
+			tag = YAG
+			tag = RUS
+			#Minors
+			tag = GER
+			tag = FLA
+			tag = CZE
+			tag = KRO
+			tag = KIA
+			#Mostly observers
+			tag = AQA
+			tag = COC
+		}
+	}
+}
+
+CAT_great_northern_war_during_war = {
+	icon = GFX_decision_category_gaw_chinese_reunification
+	scripted_gui = great_northern_war_scripted_gui
+	picture = GFX_decision_cat_chinese_reunification
+	visible_when_empty = yes
+	priority = 12
+	allowed = {
+		OR = {
+			#Majors
+			tag = NOE
+			tag = FBK
+			tag = WFA
+			#MAJOR INFLUENCERS
+			tag = SUB
+			tag = YAG
+			tag = RUS
+			#Minors
+			tag = GER
+			tag = FLA
+			tag = CZE
+			tag = KRO
+			tag = KIA
+			#Mostly observers
+			tag = AQA
+			tag = COC
+		}
+	}
+	visible = {
+		has_global_flag = GNW_gnw_launched
+		NOT = {
+			is_in_array = {
+				array = global.gnw_neutral
+				value = THIS.id
+			}
+			has_global_flag = GNW_peace_treaty
 		}
 		OR = {
 			#Majors

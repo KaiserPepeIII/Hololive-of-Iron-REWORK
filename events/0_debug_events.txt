@@ -1,13 +1,23 @@
 add_namespace = technique
+country_event = {
+	id = technique.1
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		ROOT = {
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+}
 
 country_event = {
-    id = technique.1
+	id = technique.2
 	hidden = yes
-    is_triggered_only = yes
-
-    immediate = {
-        ROOT = {
-		mark_focus_tree_layout_dirty = yes
+	is_triggered_only = yes
+	immediate = {
+		add_to_variable = {
+			var = global.great_northern_war_tension
+			value = 85
 		}
-    }
+	}
 }

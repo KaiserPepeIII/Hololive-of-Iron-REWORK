@@ -235,7 +235,7 @@ ideas = {
 				experience_gain_army = 0.05
 			}
 		}
-		WFA_cheap_ships = {
+		WFA_cheap_ships_legacy = {
 			allowed = {
 				always = no
 			}
@@ -244,6 +244,56 @@ ideas = {
 			}
 			picture = WFA_cheap_ships
 			removal_cost = -1
+			equipment_bonus = {
+				submarine = {
+					build_cost_ic = -0.15
+				}
+				destroyer = {
+					build_cost_ic = -0.15
+				}
+				battleship = {
+					build_cost_ic = -0.15
+				}
+			}
+		}
+		WFA_cheap_ships_mtg = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = WFA_cheap_ships
+			removal_cost = -1
+			equipment_bonus = {
+				ship_hull_submarine = {
+					build_cost_ic = -0.15
+				}
+				ship_hull_light = {
+					build_cost_ic = -0.15
+				}
+				ship_hull_heavy = {
+					build_cost_ic = -0.15
+				}
+			}
+		}
+		WFA_motorization_effort = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = WFA_cheap_ships
+			removal_cost = -1
+			equipment_bonus = {
+				motorized_equipment = {
+					build_cost_ic = -0.2
+				}
+				mechanized_equipment = {
+					build_cost_ic = -0.2
+				}
+			}
 		}
 		WFA_efficient_industry = {
 			allowed = {
@@ -254,6 +304,11 @@ ideas = {
 			}
 			picture = WFA_efficient_industry
 			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.02
+				industrial_capacity_dockyard = 0.02
+				production_lack_of_resource_penalty_factor = -0.25
+			}
 		}
 		WFA_winter_warfare = {
 			allowed = {
@@ -476,7 +531,19 @@ ideas = {
 				fascism_drift = 0.01
 			}
 		}
-		WFA_files_on_everyone = {
+		WFA_files_on_everyone_lar = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = WFA_files_on_everyone
+			removal_cost = -1
+			modifier = {
+			}
+		}
+		WFA_files_on_everyone_legacy = {
 			allowed = {
 				always = no
 			}

@@ -1,6 +1,8 @@
 add_namespace = initiator_gnw
 add_namespace = NOE_gnw
+add_namespace = NOE_post_gnw
 add_namespace = FBK_gnw
+add_namespace = FBK_post_gnw
 add_namespace = WFA_gnw
 add_namespace = SUB_gnw
 add_namespace = LHS_gnw
@@ -613,7 +615,7 @@ country_event = {
 	}
 }
 
-#Our demands? - Noel
+#Our demands? - Noel - before war
 country_event = {
 	id = FBK_gnw.22
 	title = FBK_gnw.22.t
@@ -1024,6 +1026,374 @@ country_event = {
 	}
 }
 
+#Noel wants to crush us completely - negotiations  
+country_event = {
+	id = FBK_gnw.36
+	title = FBK_gnw.36.t
+	desc = FBK_gnw.36.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = FBK_gnw.36.a
+		custom_effect_tooltip = FBK_crushed_completely_tooltip
+		GNW_FBK_crushed_completely = yes
+	}
+	#We refuse even despite our situation
+	option = {
+		name = FBK_gnw.36.b
+		custom_effect_tooltip = FBK_severely_disadvantaged
+	}
+}
+
+#Fubuki keeps Sweden and Finland, everything else released - negotiations  
+country_event = {
+	id = FBK_gnw.37
+	title = FBK_gnw.37.t
+	desc = FBK_gnw.37.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = FBK_gnw.37.a
+		custom_effect_tooltip = FBK_sweden_finland_tooltip
+		GNW_FBK_keeps_sweden_finland = yes
+	}
+	#We refuse even despite our situation
+	option = {
+		name = FBK_gnw.37.b
+		custom_effect_tooltip = FBK_severely_disadvantaged
+	}
+}
+
+#Only Russian and Baltic lands will be returned - negotiations  
+country_event = {
+	id = FBK_gnw.38
+	title = FBK_gnw.38.t
+	desc = FBK_gnw.38.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = FBK_gnw.38.a
+		custom_effect_tooltip = NOE_crushed_completely_tooltip
+		GNW_FBK_keeps_sweden_finland = yes
+	}
+	#We refuse even despite our situation
+	option = {
+		name = FBK_gnw.38.b
+		custom_effect_tooltip = FBK_severely_disadvantaged
+	}
+}
+
+#Baltic lands returned, Poland is ours - negotiations  
+country_event = {
+	id = FBK_gnw.39
+	title = FBK_gnw.39.t
+	desc = FBK_gnw.39.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = FBK_gnw.39.a
+		custom_effect_tooltip = FBK_light_treaty_tooltip
+		GNW_fubuki_light_peace = yes
+	}
+	#We refuse even despite our situation
+	option = {
+		name = FBK_gnw.39.b
+		custom_effect_tooltip = FBK_severely_disadvantaged
+	}
+}
+
+#Our demands? - Noel - war
+country_event = {
+	id = FBK_gnw.40
+	title = FBK_gnw.40.t
+	desc = FBK_gnw.40.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#
+	#	Losses referred to here are largely territorial based
+	#	like it or not reparations and a Treaty of Trianon style 
+	#	thing would have to happen
+	#We want to crush Noel completely
+	option = {
+		name = FBK_gnw.40.a
+		NOE = {
+			country_event = NOE_gnw.17
+		}
+	}
+	#We want to crush Noel but we agree to Baltic autonomy
+	option = {
+		name = FBK_gnw.40.b
+		NOE = {
+			country_event = NOE_gnw.18
+		}
+	}
+	#We will be less harsh, the Baltics will be free
+	option = {
+		name = FBK_gnw.40.c
+		NOE = {
+			country_event = NOE_gnw.19
+		}
+	}
+	#Kronii will regain her control but Noel would be largely left alone
+	option = {
+		name = FBK_gnw.40.d
+		NOE = {
+			country_event = NOE_gnw.20
+		}
+	}
+}
+
+#Noel wants to crush us completely - war  
+country_event = {
+	id = FBK_gnw.41
+	title = FBK_gnw.41.t
+	desc = FBK_gnw.41.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = FBK_gnw.41.a
+		custom_effect_tooltip = FBK_crushed_completely_tooltip
+		NOE = {
+			white_peace = FBK
+		}
+		GNW_FBK_crushed_completely = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = FBK
+				NOT = {
+					tag = FBK
+					tag = WFA
+				}
+			}
+			leave_faction = yes
+		}
+		NOE = {
+			dismantle_faction = yes
+		}
+		set_country_flag = GNW_FBK_capitulated
+		set_global_flag = GNW_peace_treaty
+	}
+	#We refuse even despite our situation
+	option = {
+		name = FBK_gnw.41.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_FBK_capitulated
+			}
+		}
+		custom_effect_tooltip = FBK_severely_disadvantaged
+	}
+}
+
+#Fubuki keeps Sweden and Finland, everything else released - war  
+country_event = {
+	id = FBK_gnw.42
+	title = FBK_gnw.42.t
+	desc = FBK_gnw.42.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = FBK_gnw.42.a
+		custom_effect_tooltip = FBK_sweden_finland_tooltip
+		NOE = {
+			white_peace = FBK
+		}
+		GNW_FBK_keeps_sweden_finland = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = FBK
+				NOT = {
+					tag = FBK
+					tag = WFA
+				}
+			}
+			leave_faction = yes
+		}
+		NOE = {
+			dismantle_faction = yes
+		}
+		set_country_flag = GNW_FBK_capitulated
+		set_global_flag = GNW_peace_treaty
+	}
+	#We refuse even despite our situation
+	option = {
+		name = FBK_gnw.42.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_FBK_capitulated
+			}
+		}
+		custom_effect_tooltip = FBK_severely_disadvantaged
+	}
+}
+
+#Only Russian and Baltic lands will be returned - war  
+country_event = {
+	id = FBK_gnw.43
+	title = FBK_gnw.43.t
+	desc = FBK_gnw.43.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = FBK_gnw.43.a
+		custom_effect_tooltip = NOE_crushed_completely_tooltip
+		NOE = {
+			white_peace = FBK
+		}
+		GNW_FBK_keeps_sweden_finland = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = FBK
+				NOT = {
+					tag = FBK
+					tag = WFA
+				}
+			}
+			leave_faction = yes
+		}
+		NOE = {
+			dismantle_faction = yes
+		}
+		set_country_flag = GNW_FBK_capitulated
+		set_global_flag = GNW_peace_treaty
+	}
+	#We refuse even despite our situation
+	option = {
+		name = FBK_gnw.43.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_FBK_capitulated
+			}
+		}
+		custom_effect_tooltip = FBK_severely_disadvantaged
+	}
+}
+
+#Baltic lands returned, Poland is ours - war  
+country_event = {
+	id = FBK_gnw.44
+	title = FBK_gnw.44.t
+	desc = FBK_gnw.44.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = FBK_gnw.44.a
+		custom_effect_tooltip = FBK_light_treaty_tooltip
+		NOE = {
+			white_peace = FBK
+		}
+		GNW_fubuki_light_peace = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = NOE
+				NOT = {
+					tag = NOE
+				}
+			}
+			leave_faction = yes
+		}
+		FBK = {
+			dismantle_faction = yes
+		}
+		set_global_flag = GNW_peace_treaty
+		set_country_flag = GNW_FBK_capitulated
+	}
+	#We refuse even despite our situation
+	option = {
+		name = FBK_gnw.44.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_FBK_capitulated
+			}
+		}
+		custom_effect_tooltip = FBK_severely_disadvantaged
+	}
+}
+
+#We have been crushed 
+country_event = {
+	id = FBK_gnw.45
+	title = FBK_gnw.45.t
+	desc = FBK_gnw.45.desc
+	picture = GFX_report_event_sora_generic1
+	trigger = {
+		tag = FBK
+		FBK = {
+			surrender_progress > 0.9
+			has_war_with = NOE
+			NOT = {
+				has_country_flag = GNW_FBK_capitulated
+			}
+		}
+		has_global_flag = GNW_gnw_launched
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#The war is lost
+	option = {
+		name = FBK_gnw.45.a
+		set_country_flag = GNW_FBK_capitulated
+		NOE = {
+			white_peace = FBK
+			country_event = NOE_gnw.21
+		}
+	}
+}
+
+#X Nation sends us Guns
+country_event = {
+	id = FBK_gnw.46
+	title = FBK_gnw.46.t
+	desc = FBK_gnw.46.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Thanks
+	option = {
+		name = FBK_gnw.46.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 250
+			producer = FROM
+		}
+	}
+}
+
+#Forest Brothers, Freikorps and Paramilitaries!
+country_event = {
+	id = FBK_post_gnw.1
+	title = FBK_post_gnw.1.t
+	desc = FBK_post_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Thanks
+	option = {
+		name = FBK_post_gnw.1.a
+	}
+}
+
+#Aland Issue
+country_event = {
+	id = FBK_post_gnw.2
+	title = FBK_post_gnw.2.t
+	desc = FBK_post_gnw.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Stage Border Incident
+	option = {
+		name = FBK_post_gnw.2.a
+	}
+	#Our cause is lost
+}
+
 #
 #	NOE
 #
@@ -1420,7 +1790,7 @@ country_event = {
 	option = {
 		name = NOE_gnw.13.a
 		custom_effect_tooltip = NOE_crushed_completely_tooltip
-		GNW_NOE_crushed_completely = YES
+		GNW_NOE_crushed_completely = yes
 	}
 	#We refuse even despite our situation
 	option = {
@@ -1469,6 +1839,67 @@ country_event = {
 	}
 }
 
+#Our demands - Fubuki
+country_event = {
+	id = NOE_gnw.17
+	title = NOE_gnw.17.t
+	desc = NOE_gnw.17.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#
+	#	Losses referred to here are largely territorial based
+	#	like it or not reparations and a Treaty of Trianon style 
+	#	thing would have to happen
+	#We want to crush Fubuki completely
+	option = {
+		name = NOE_gnw.17.a
+		FBK = {
+			country_event = NOE_gnw.13
+		}
+		add_to_variable = {
+			var = global.great_northern_war_tension
+			value = 20
+			tooltip = GNW_tension_raise_tooltip
+		}
+	}
+	#Fubuki keeps Sweden and Finland, everything else released
+	option = {
+		name = NOE_gnw.17.b
+		FBK = {
+			country_event = NOE_gnw.13
+		}
+		add_to_variable = {
+			var = global.great_northern_war_tension
+			value = 15
+			tooltip = GNW_tension_raise_tooltip
+		}
+	}
+	#Only Russian and Baltic lands will be returned
+	option = {
+		name = NOE_gnw.17.c
+		FBK = {
+			country_event = NOE_gnw.13
+		}
+		add_to_variable = {
+			var = global.great_northern_war_tension
+			value = 10
+			tooltip = GNW_tension_raise_tooltip
+		}
+	}
+	#Baltic lands returned, Poland is ours
+	option = {
+		name = NOE_gnw.17.d
+		FBK = {
+			country_event = NOE_gnw.13
+		}
+		add_to_variable = {
+			var = global.great_northern_war_tension
+			value = 10
+			tooltip = GNW_tension_raise_tooltip
+		}
+	}
+}
+
 #Fubuki wants restore Kronii - negotiations 
 country_event = {
 	id = NOE_gnw.16
@@ -1485,7 +1916,274 @@ country_event = {
 	#We refuse even despite our situation
 	option = {
 		name = NOE_gnw.16.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_NOE_capitulated
+			}
+		}
 		custom_effect_tooltip = NOE_severely_disadvantaged
+	}
+}
+
+#Fubuki wants to crush us completely - war  
+country_event = {
+	id = NOE_gnw.17
+	title = NOE_gnw.17.t
+	desc = NOE_gnw.17.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = NOE_gnw.17.a
+		custom_effect_tooltip = NOE_crushed_completely_tooltip
+		FBK = {
+			white_peace = NOE
+		}
+		GNW_NOE_crushed_completely = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = FBK
+				NOT = {
+					tag = FBK
+					tag = WFA
+				}
+			}
+			leave_faction = yes
+		}
+		NOE = {
+			dismantle_faction = yes
+		}
+		set_country_flag = GNW_NOE_capitulated
+		set_global_flag = GNW_peace_treaty
+	}
+	#We refuse even despite our situation
+	option = {
+		name = NOE_gnw.13.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_NOE_capitulated
+			}
+		}
+		custom_effect_tooltip = NOE_severely_disadvantaged
+	}
+}
+
+#Fubuki wants to crush us but autonomous Baltics - war 
+country_event = {
+	id = NOE_gnw.18
+	title = NOE_gnw.18.t
+	desc = NOE_gnw.18.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = NOE_gnw.18.a
+		custom_effect_tooltip = NOE_autonomous_baltics_tooltip
+		FBK = {
+			white_peace = NOE
+		}
+		GNW_NOE_autonomous_baltics = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = FBK
+				NOT = {
+					tag = FBK
+					tag = WFA
+				}
+			}
+			leave_faction = yes
+		}
+		NOE = {
+			dismantle_faction = yes
+		}
+		set_country_flag = GNW_NOE_capitulated
+		set_global_flag = GNW_peace_treaty
+	}
+	#We refuse even despite our situation
+	option = {
+		name = NOE_gnw.18.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_NOE_capitulated
+			}
+		}
+		custom_effect_tooltip = NOE_severely_disadvantaged
+	}
+}
+
+#Fubuki wants independent Baltics - war 
+country_event = {
+	id = NOE_gnw.19
+	title = NOE_gnw.19.t
+	desc = NOE_gnw.19.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = NOE_gnw.19.a
+		custom_effect_tooltip = NOE_independent_baltics_tooltip
+		FBK = {
+			white_peace = NOE
+		}
+		GNW_NOE_independent_baltics = YES
+		every_country = {
+			limit = {
+				is_in_faction_with = FBK
+				NOT = {
+					tag = FBK
+					tag = WFA
+				}
+			}
+			leave_faction = yes
+		}
+		NOE = {
+			dismantle_faction = yes
+		}
+		set_country_flag = GNW_NOE_capitulated
+		set_global_flag = GNW_peace_treaty
+	}
+	#We refuse even despite our situation
+	option = {
+		name = NOE_gnw.19.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_NOE_capitulated
+			}
+		}
+		custom_effect_tooltip = NOE_severely_disadvantaged
+	}
+}
+
+#Fubuki wants restore Kronii - war 
+country_event = {
+	id = NOE_gnw.20
+	title = NOE_gnw.20.t
+	desc = NOE_gnw.20.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our hands are tied
+	option = {
+		name = NOE_gnw.20.a
+		custom_effect_tooltip = NOE_restored_kronii_tooltip
+		FBK = {
+			white_peace = NOE
+		}
+		GNW_NOE_restore_kronii = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = FBK
+				NOT = {
+					tag = FBK
+					tag = WFA
+				}
+			}
+			leave_faction = yes
+		}
+		NOE = {
+			dismantle_faction = yes
+		}
+		set_country_flag = GNW_NOE_capitulated
+		set_global_flag = GNW_peace_treaty
+	}
+	#We refuse even despite our situation
+	option = {
+		name = NOE_gnw.20.b
+		trigger = {
+			NOT = {
+				has_country_flag = GNW_NOE_capitulated
+			}
+		}
+		custom_effect_tooltip = NOE_severely_disadvantaged
+	}
+}
+
+#Our demands - Fubuki - war
+country_event = {
+	id = NOE_gnw.21
+	title = NOE_gnw.21.t
+	desc = NOE_gnw.21.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#
+	#	Losses referred to here are largely territorial based
+	#	like it or not reparations and a Treaty of Trianon style 
+	#	thing would have to happen
+	#We want to crush Fubuki completely
+	option = {
+		name = NOE_gnw.21.a
+		FBK = {
+			country_event = FBK_gnw.41
+		}
+	}
+	#Fubuki keeps Sweden and Finland, everything else released
+	option = {
+		name = NOE_gnw.21.b
+		FBK = {
+			country_event = FBK_gnw.42
+		}
+	}
+	#Only Russian and Baltic lands will be returned
+	option = {
+		name = NOE_gnw.21.c
+		FBK = {
+			country_event = FBK_gnw.43
+		}
+	}
+	#Baltic lands returned, Poland is ours
+	option = {
+		name = NOE_gnw.21.d
+		FBK = {
+			country_event = FBK_gnw.44
+		}
+	}
+}
+
+#We have been crushed 
+country_event = {
+	id = NOE_gnw.22
+	title = NOE_gnw.22.t
+	desc = NOE_gnw.22.desc
+	picture = GFX_report_event_sora_generic1
+	trigger = {
+		tag = NOE
+		NOE = {
+			surrender_progress > 0.9
+			has_war_with = FBK
+			NOT = {
+				has_country_flag = GNW_NOE_capitulated
+			}
+		}
+		has_global_flag = GNW_gnw_launched
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#The war is lost
+	option = {
+		name = NOE_gnw.22.a
+		set_country_flag = GNW_NOE_capitulated
+		FBK = {
+			white_peace = NOE
+			country_event = FBK_gnw.40
+		}
+	}
+}
+
+#X Nation sends us Guns
+country_event = {
+	id = NOE_gnw.23
+	title = NOE_gnw.23.t
+	desc = NOE_gnw.23.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Thanks
+	option = {
+		name = NOE_gnw.23.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 250
+			producer = FROM
+		}
 	}
 }
 
@@ -3108,6 +3806,19 @@ country_event = {
 	}
 }
 
+#Noel wants to negotiate
+country_event = {
+	id = SUB_gnw.10
+	title = SUB_gnw.10.t
+	desc = SUB_gnw.10.desc
+	is_triggered_only = yes
+	#Are you daft?
+	option = {
+		name = SUB_gnw.10.a
+	}
+	#
+}
+
 #
 #	RUS
 #
@@ -3885,8 +4596,10 @@ country_event = {
 			FBK = {
 				declare_war_on = {
 					target = NOE
+					type = annex_everything
 				}
 			}
+			set_global_flag = GNW_gnw_launched
 			GNW_set_up_gnw_scripted_effect = yes
 			news_event = gnw_news_events.4
 		}

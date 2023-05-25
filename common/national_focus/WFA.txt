@@ -390,6 +390,9 @@ focus_tree = {
 		prerequisite = {
 			focus = WFA_support_local_artisans
 		}
+		prerequisite = {
+			focus = WFA_austerity_measures
+		}
 		completion_reward = {
 			100 = {
 				add_building_construction = {
@@ -636,8 +639,14 @@ focus_tree = {
 		x = 39
 		y = 5
 		completion_reward = {
-			add_ideas = {
-				WFA_cheap_ships
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_ideas = WFA_cheap_ships_mtg
+				else = {
+					add_ideas = WFA_cheap_ships_legacy
+				}
 			}
 		}
 		search_filters = {
@@ -885,11 +894,12 @@ focus_tree = {
 			focus = WFA_amphibious_focus
 		}
 		completion_reward = {
+			add_ideas = WFA_motorization_effort
 			add_tech_bonus = {
 				name = WFA_motorized_tech_bonus
 				bonus = 2
 				uses = 2
-				category = motorized_equipment
+				category = cat_mechanized_equipment
 			}
 		}
 		search_filters = {
