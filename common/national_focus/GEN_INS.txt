@@ -37,6 +37,9 @@ focus_tree = {
 		allow_branch = {
 			tag = MOO
 		}
+		prerequisite = {
+			focus = IND_seek_foreign_aid
+		}
 		completion_reward = {
 			country_event = indonesia.30
 		}
@@ -47,6 +50,14 @@ focus_tree = {
 		id = IND_comades_in_resistance
 		icon = GFX_focus_IND_comades_in_resistance
 		cost = 5
+		prerequisite = {
+			focus = IND_seek_foreign_aid
+		}
+		available = {
+			NOT = {
+				tag = MOO
+			}
+		}
 		mutually_exclusive = {
 			focus = IND_look_to_lhs
 		}
@@ -70,9 +81,50 @@ focus_tree = {
 		id = IND_victory_in_civil_war
 		icon = GFX_focus_IND_victory_in_civil_war
 		cost = 5
+	    available = {
+			always = false
+		}
+		bypass = {
+			OR = {
+				AND = {
+					original_tag = RIS 
+					NOT = {
+						country_exists = MOO
+						country_exists = IOF
+						country_event = PAV
+					} 
+				}
+				AND = {
+					original_tag = MOO 
+					NOT = {
+						country_exists = RIS
+						country_exists = IOF
+						country_event = PAV
+					} 
+				}
+				AND = {
+					original_tag = IOF 
+					NOT = {
+						country_exists = MOO
+						country_exists = RIS
+						country_event = PAV
+					} 
+				}
+				AND = {
+					original_tag = PAV 
+					NOT = {
+						country_exists = MOO
+						country_exists = IOF
+						country_event = RIS
+					} 
+				}
+			}
+		}
 		completion_reward = {
 			#autocompleted
-			add_stability = 0.05
+			country_event = {
+				id = indonesia.4
+			}
 		}
 		x = 38
 		y = 7
@@ -262,6 +314,11 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_seek_foreign_aid
 		}
+		available = {
+			NOT = {
+				tag = MOO
+			}
+		}
 		mutually_exclusive = {
 			focus = IND_enter_usada
 			focus = IND_comades_in_resistance
@@ -371,6 +428,10 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_wartime_industry
 		}
+		completion_reward = {
+			add_war_support = -0.05
+			add_stability = 0.05
+		}
 		x = 34
 		y = 1
 	}
@@ -383,6 +444,20 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = IND_dont_disturb_peasants
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_resource = {
+					type = iron
+					amount = 4
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = tungsten
+					amount = 3
+				}
+			}
 		}
 		x = 33
 		y = 2
@@ -397,6 +472,11 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = IND_collective_crops
 		}
+		completion_reward = {
+			add_ideas = {
+				IND_undisturbed_peasants
+			}
+		}
 		x = 35
 		y = 2
 	}
@@ -406,6 +486,9 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = IND_dont_disturb_peasants
+		}
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 1 }
 		}
 		x = 35
 		y = 3
@@ -417,6 +500,11 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_encourage_surpluses
 		}
+		completion_reward = {
+			add_ideas = {
+				IND_local_markets_idea
+			}
+		}
 		x = 35
 		y = 4
 	}
@@ -427,10 +515,17 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_victory_in_civil_war
 		}
+		completion_reward = {
+			country_event = {
+				id = indonesia.2
+				days = 1
+			}
+		}
 		x = 37
 		y = 8
 	}
 	focus = {
+		# KAISER THE IDEA YOU HAD FOR THIS ONE MAKES LIKE NO SENSE AS EVERY COUNTRY IN INDONESIA DOESNT REALLY HAVE ANY REAL PROBLEMS WITH ANTI PARTIES BEING POPULAR AND IS ANTI REVOLT RISK REALLY THAT BIG OF AN ISSUE ESPECIALLY IN COMPARISON TO STABILITY? someone else had put down for this focus to go to an event but beats me
 		id = IND_punish_opposition
 		icon = GFX_focus_IND_punish_opposition
 		cost = 5
@@ -440,9 +535,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = IND_national_reconciliation
 		}
-		completion_reward = {
-			country_event = indonesia.3
-		}
+		
 		x = 36
 		y = 9
 	}
@@ -481,6 +574,12 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_victory_in_civil_war
 		}
+		completion_reward = {
+			country_event = {
+				id = indonesia.3
+				days = 1
+			}
+		}
 		x = 39
 		y = 8
 	}
@@ -498,7 +597,7 @@ focus_tree = {
 			focus = IND_punish_opposition
 		}
 		completion_reward = {
-			country_event = indonesia.2
+			add_stability = 0.1
 		}
 		x = 40
 		y = 9
@@ -729,6 +828,11 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_collective_crops
 		}
+		completion_reward = {
+			add_ideas = {
+				IND_quotas
+			}
+		}
 		x = 33
 		y = 3
 	}
@@ -738,6 +842,11 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = IND_production_quotas
+		}
+		completion_reward = {
+			add_ideas = {
+				IND_soldier_for_food
+			}
 		}
 		x = 33
 		y = 4
@@ -763,9 +872,8 @@ focus_tree = {
 			focus = IND_political_indoctrination
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = IND_army_professionalization
-				days = 365
+			add_ideas = {
+				IND_national_army
 			}
 		}
 		x = 36
@@ -825,7 +933,7 @@ focus_tree = {
 			focus = IND_cultural_unification
 		}
 		completion_reward = {
-			country_event = indonesia.4
+			country_event = indonesia.5
 		}
 		x = 38
 		y = 14
@@ -837,6 +945,11 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_a_new_indonesia
 		}
+		completion_reward = {
+			add_ideas = {
+				IND_horror_and_fear
+			}
+		}
 		x = 48
 		y = 15
 	}
@@ -845,7 +958,7 @@ focus_tree = {
 		icon = GFX_focus_IND_civil_war_allies
 		cost = 5
 		prerequisite = {
-			focus = IND_to_the_world_stage
+			focus = IND_a_new_indonesia
 		}
 		x = 38
 		y = 15
@@ -856,6 +969,9 @@ focus_tree = {
 		cost = 5
 		allow_branch = {
 			tag = MOO
+		}
+		bypass = {
+			IND_seek_foreign_aid
 		}
 		prerequisite = {
 			focus = civil_war_allies
@@ -869,6 +985,9 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = IND_a_new_indonesia
+		}
+		bypass = {
+			has_completed_focus = civil_war_allies
 		}
 		x = 38
 		y = 16
@@ -894,6 +1013,11 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_repay_usada_kensetsu
 		}
+		completion_reward = {
+			add_ideas = {
+				IND_usada_construction_contract
+			}
+		}
 		x = 33
 		y = 17
 	}
@@ -903,6 +1027,11 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = IND_repay_usada_kensetsu
+		}
+		completion_reward = {
+			add_ideas = {
+				IND_usada_industry_training
+			}
 		}
 		x = 35
 		y = 17
@@ -917,6 +1046,10 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_continued_construction_contract
 		}
+		completion_reward = {
+			army_experience = 100
+			add_command_power = 50
+		}
 		x = 34
 		y = 18
 	}
@@ -926,6 +1059,10 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = IND_corporate_force_training
+		}
+		completion_reward = {
+			two_random_arms_factory = yes
+			two_random_civilian_factory = yes
 		}
 		x = 34
 		y = 19
@@ -937,6 +1074,13 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_commit_to_lhs
 		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = IND_lhs_loans
+				days = 365
+			}
+		}
+		
 		x = 38
 		y = 17
 	}
@@ -947,6 +1091,15 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_lhs_loan
 		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 4
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 4
+			}
+		}
+		
 		x = 37
 		y = 18
 	}
@@ -957,9 +1110,22 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_lhs_loan
 		}
+			completion_reward = {
+				add_doctrine_cost_reduction = {
+					cost_reduction = 0.75
+					uses = 2
+					category = land_doctrine
+				}
+			}
 		x = 39
 		y = 18
 	}
+	#WONDERING IF THERE IS A TRIGGER TO CHECK THE CURRENT RULING PARTY OR IF IT HAS TO BE DONE VIA A GAZILLION IF ELSE 
+	# ALSO WHAT IS THE ARRAY THEY HAVE TO BE ADDED TO?
+	#
+	#
+	#
+	#
 	focus = {
 		id = IND_lhs_membership
 		icon = GFX_focus_IND_lhs_membership
@@ -990,6 +1156,12 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_revolutionary_fervor
 		}
+		completion_reward = {
+			add_political_power = 150
+			add_ideas = {
+				IND_resistance_demagogues
+			}
+		}
 		x = 42
 		y = 18
 	}
@@ -999,6 +1171,11 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = IND_invite_resistance_ideologues
+		}
+		completion_reward = {
+			add_ideas = {
+				IND_resistance_training
+			}
 		}
 		x = 43
 		y = 19
@@ -1010,6 +1187,11 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_invite_resistance_ideologues
 		}
+		completion_reward = {
+			add_ideas = {
+				IND_resistance_work
+			}
+		}
 		x = 41
 		y = 19
 	}
@@ -1020,6 +1202,39 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_the_haachama_horror
 		}
+		completion_reward = {
+			1157 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 4
+				instant_build = yes
+				
+					province = {
+						all_provinces = yes
+					}
+				
+				
+			}
+		}
+		IF = {
+			ROOT ={
+				owns_state = 721
+			}
+			721 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					
+						province = {
+							all_provinces = yes
+						}
+					
+					
+				}
+			}
+		}
+		}
 		x = 49
 		y = 16
 	}
@@ -1029,6 +1244,11 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = IND_the_haachama_horror
+		}
+		completion_reward = {
+			country_event = {
+				id = indonesia.6
+			}
 		}
 		x = 47
 		y = 16
@@ -1043,15 +1263,26 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_fortify_timor
 		}
+		completion_reward = {
+			country_event = {
+				id = indonesia.7
+			}
+		}
 		x = 48
 		y = 17
 	}
 	focus = {
 		id = IND_reclaim_what_is_ours
 		icon = GFX_focus_IND_reclaim_what_is_ours
-		cost = 5
+		cost = 7
 		prerequisite = {
 			focus = IND_remember_the_fallen
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = HTO
+				type = annex_everything
+			}
 		}
 		x = 48
 		y = 18
