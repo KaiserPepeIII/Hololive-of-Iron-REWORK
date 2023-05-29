@@ -1121,14 +1121,14 @@ country_event = {
 	option = {
 		name = FBK_gnw.40.a
 		NOE = {
-			country_event = NOE_gnw.17
+			country_event = NOE_gnw.44
 		}
 	}
 	#We want to crush Noel but we agree to Baltic autonomy
 	option = {
 		name = FBK_gnw.40.b
 		NOE = {
-			country_event = NOE_gnw.18
+			country_event = NOE_gnw.45
 		}
 	}
 	#We will be less harsh, the Baltics will be free
@@ -1367,6 +1367,153 @@ country_event = {
 	}
 }
 
+#Noel and Flare wants negotiations
+country_event = {
+	id = FBK_gnw.47
+	title = FBK_gnw.47.t
+	desc = FBK_gnw.47.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We are open to discussions
+	option = {
+		name = FBK_gnw.47.a
+		set_global_flag = GNW_negotiations
+		FLA = {
+			country_event = NOE_gnw.28
+		}
+		NOE = {
+			country_event = NOE_gnw.28
+		}
+	}
+	#No
+	option = {
+		name = FBK_gnw.47.b
+		FLA = {
+			country_event = FLA_gnw.15
+		}
+		NOE = {
+			country_event = NOE_gnw.27
+		}
+	}
+}
+
+#Negotiations - The Poland Issue - Fubuki
+country_event = {
+	id = FBK_gnw.48
+	title = FBK_gnw.48.t
+	desc = FBK_gnw.48.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Full Push - Pre-1931 borders
+	option = {
+		name = FBK_gnw.48.a
+		set_country_flag = GNW_FBK_negotiation_poland_pre_1931
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 4
+		}
+	}
+	#Semi Push - Reduced Kronii borders
+	option = {
+		name = FBK_gnw.48.b
+		set_country_flag = GNW_FBK_negotiation_poland_reduced_borders
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 2
+		}
+	}
+	#Barely Push - Puppet Kronii
+	option = {
+		name = FBK_gnw.48.c
+		set_country_flag = GNW_FBK_negotiation_poland_puppet_kronii
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 1
+		}
+	}
+}
+
+#Negotiations - The Baltics Issue - Fubuki
+country_event = {
+	id = FBK_gnw.49
+	title = FBK_gnw.49.t
+	desc = FBK_gnw.49.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Full Push - We keep what we get
+	option = {
+		name = FBK_gnw.49.a
+		set_country_flag = GNW_FBK_negotiation_baltics_annexation
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 3
+		}
+	}
+	#Semi Push - independent Baltic 
+	option = {
+		name = FBK_gnw.49.b
+		set_country_flag = GNW_FBK_negotiation_baltics_independence
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 1
+		}
+	}
+	#Barely Push - we will return the baltics 
+	option = {
+		name = FBK_gnw.49.c
+		set_country_flag = GNW_FBK_negotiation_baltics_return
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 1
+		}
+	}
+}
+
+#Negotiations - The Germany Issue - Fubuki
+country_event = {
+	id = FBK_gnw.50
+	title = FBK_gnw.50.t
+	desc = FBK_gnw.50.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Full Push - Noel must renounce her claim entirely
+	option = {
+		name = FBK_gnw.50.a
+		set_country_flag = GNW_FBK_negotiation_germany_renounce
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 3
+		}
+		NOE = {
+			country_event = NOE_gnw.29
+		}
+	}
+	#Semi Push - Noel must promise peace
+	option = {
+		name = FBK_gnw.50.b
+		set_country_flag = GNW_FBK_negotiation_germany_peace
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 2
+		}
+		NOE = {
+			country_event = NOE_gnw.29
+		}
+	}
+	#Barely Push - We will have no say on this matter 
+	option = {
+		name = FBK_gnw.50.c
+		set_country_flag = GNW_FBK_negotiation_germany_barely
+		add_to_variable = {
+			var = FBK.gnw_negotiations_claim
+			value = 0
+		}
+		NOE = {
+			country_event = NOE_gnw.29
+		}
+	}
+}
+
 #Forest Brothers, Freikorps and Paramilitaries!
 country_event = {
 	id = FBK_post_gnw.1
@@ -1596,6 +1743,13 @@ country_event = {
 	# Your treachery will be known to the world
 	option = {
 		name = NOE_gnw.7.c
+		trigger = {
+			NOT = {
+				NOE = {
+					has_country_flag = NOE_rushia_alliance_initiate
+				}
+			}
+		}
 		add_to_variable = {
 			var = global.great_northern_war_tension
 			value = 20
@@ -1609,6 +1763,9 @@ country_event = {
 			NOT = {
 				RUS = {
 					has_country_flag = RUS_second_negotiations
+				}
+				NOE = {
+					has_country_flag = NOE_rushia_alliance_initiate
 				}
 			}
 		}
@@ -1642,6 +1799,13 @@ country_event = {
 	# Your treachery will be known to the world
 	option = {
 		name = NOE_gnw.8.c
+		trigger = {
+			NOT = {
+				NOE = {
+					has_country_flag = NOE_rushia_alliance_initiate
+				}
+			}
+		}
 	}
 	#Uhh how about we just be friends
 	option = {
@@ -1650,6 +1814,9 @@ country_event = {
 			NOT = {
 				RUS = {
 					has_country_flag = RUS_second_negotiations
+				}
+				NOE = {
+					has_country_flag = NOE_rushia_alliance_initiate
 				}
 			}
 		}
@@ -1683,6 +1850,13 @@ country_event = {
 	# Your treachery will be known to the world
 	option = {
 		name = NOE_gnw.9.c
+		trigger = {
+			NOT = {
+				NOE = {
+					has_country_flag = NOE_rushia_alliance_initiate
+				}
+			}
+		}
 	}
 	#Uhh how about we just be friends
 	option = {
@@ -1691,6 +1865,9 @@ country_event = {
 			NOT = {
 				RUS = {
 					has_country_flag = RUS_second_negotiations
+				}
+				NOE = {
+					has_country_flag = NOE_rushia_alliance_initiate
 				}
 			}
 		}
@@ -1902,20 +2079,20 @@ country_event = {
 
 #Fubuki wants restore Kronii - negotiations 
 country_event = {
-	id = NOE_gnw.16
-	title = NOE_gnw.16.t
-	desc = NOE_gnw.16.desc
+	id = NOE_gnw.44
+	title = NOE_gnw.44.t
+	desc = NOE_gnw.44.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
 	#Our hands are tied
 	option = {
-		name = NOE_gnw.16.a
+		name = NOE_gnw.44.a
 		custom_effect_tooltip = NOE_restored_kronii_tooltip
 		GNW_NOE_restore_kronii = yes
 	}
 	#We refuse even despite our situation
 	option = {
-		name = NOE_gnw.16.b
+		name = NOE_gnw.44.b
 		trigger = {
 			NOT = {
 				has_country_flag = GNW_NOE_capitulated
@@ -1927,14 +2104,14 @@ country_event = {
 
 #Fubuki wants to crush us completely - war  
 country_event = {
-	id = NOE_gnw.17
-	title = NOE_gnw.17.t
-	desc = NOE_gnw.17.desc
+	id = NOE_gnw.45
+	title = NOE_gnw.45.t
+	desc = NOE_gnw.45.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
 	#Our hands are tied
 	option = {
-		name = NOE_gnw.17.a
+		name = NOE_gnw.45.a
 		custom_effect_tooltip = NOE_crushed_completely_tooltip
 		FBK = {
 			white_peace = NOE
@@ -1958,7 +2135,7 @@ country_event = {
 	}
 	#We refuse even despite our situation
 	option = {
-		name = NOE_gnw.13.b
+		name = NOE_gnw.45.b
 		trigger = {
 			NOT = {
 				has_country_flag = GNW_NOE_capitulated
@@ -2183,6 +2360,494 @@ country_event = {
 			type = infantry_equipment
 			amount = 250
 			producer = FROM
+		}
+	}
+}
+
+#Subaru tells us off 
+country_event = {
+	id = NOE_gnw.24
+	title = NOE_gnw.24.t
+	desc = NOE_gnw.24.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Wow
+	option = {
+		name = NOE_gnw.24.a
+	}
+}
+
+#What do we want from Flare?
+country_event = {
+	id = NOE_gnw.25
+	title = NOE_gnw.25.t
+	desc = NOE_gnw.25.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We want help with a settlement 
+	option = {
+		name = NOE_gnw.25.a
+		FLA = {
+			country_event = FLA_gnw.14
+		}
+	}
+	#We want help in a war
+	option = {
+		name = NOE_gnw.25.b
+		FLA = {
+			country_event = FLA_gnw.16
+		}
+	}
+}
+
+#Flare wants nothing to do with us
+country_event = {
+	id = NOE_gnw.26
+	title = NOE_gnw.26.t
+	desc = NOE_gnw.26.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#uhhh
+	option = {
+		name = NOE_gnw.26.a
+	}
+}
+
+#Flare supports us
+country_event = {
+	id = NOE_gnw.27
+	title = NOE_gnw.27.t
+	desc = NOE_gnw.27.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#damn
+	option = {
+		name = NOE_gnw.27.a
+	}
+}
+
+#Let the negotiations begin
+country_event = {
+	id = NOE_gnw.28
+	title = NOE_gnw.28.t
+	desc = NOE_gnw.28.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = NOE_gnw.28.a
+		hidden_effect = {
+			FBK = {
+				#The Poland issue
+				country_event = {
+					id = FBK_gnw.48
+					days = 12
+				}
+				#The Baltics issue
+				country_event = {
+					id = FBK_gnw.49
+					days = 24
+				}
+				#The Germany issue
+				country_event = {
+					id = FBK_gnw.50
+					days = 36
+				}
+			}
+		}
+	}
+}
+
+#Fubuki's resolution
+country_event = {
+	id = NOE_gnw.29
+	title = {
+		text = NOE_gnw.29.tstrong
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 7
+				compare = greater_than_or_equals
+			}
+		}
+	}
+	title = {
+		text = NOE_gnw.29.tmedium
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 7
+				compare = less_than
+			}
+		}
+	}
+	title = {
+		text = NOE_gnw.29.tweak
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 4
+				compare = less_than
+			}
+		}
+	}
+	desc = {
+		text = NOE_gnw.29.dstrong
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 7
+				compare = greater_than_or_equals
+			}
+		}
+	}
+	desc = {
+		text = NOE_gnw.29.dmedium
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 7
+				compare = less_than
+			}
+		}
+	}
+	desc = {
+		text = NOE_gnw.29.dweak
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 4
+				compare = less_than
+			}
+		}
+	}
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Bad deal for Noel - accept
+	option = {
+		name = NOE_gnw.29.ostrong
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 7
+				compare = greater_than_or_equals
+			}
+		}
+	}
+	#Bad deal for Noel - decline
+	option = {
+		name = NOE_gnw.29.ostrong
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 7
+				compare = greater_than_or_equals
+			}
+		}
+	}
+	#Meh deal for Noel - accept
+	option = {
+		name = NOE_gnw.29.omedium
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 7
+				compare = less_than
+			}
+		}
+	}
+	#Meh deal for Noel - decline
+	option = {
+		name = NOE_gnw.29.omedium
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 7
+				compare = less_than
+			}
+		}
+	}
+	#Relatively good deal for noel - accept
+	option = {
+		name = NOE_gnw.29.oweak
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 4
+				compare = less_than
+			}
+		}
+	}
+	#Relatively good deal for noel - decline
+	option = {
+		name = NOE_gnw.29.oweak
+		trigger = {
+			check_variable = {
+				var = FBK.gnw_negotiations_claim
+				value = 4
+				compare = less_than
+			}
+		}
+	}
+}
+
+#The Czechs accept! - war
+country_event = {
+	id = NOE_gnw.30
+	title = NOE_gnw.30.t
+	desc = NOE_gnw.30.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = NOE_gnw.30.a
+	}
+}
+
+#The Czechs decline! 
+country_event = {
+	id = NOE_gnw.31
+	title = NOE_gnw.31.t
+	desc = NOE_gnw.31.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#grrrr
+	option = {
+		name = NOE_gnw.31.a
+	}
+}
+
+#The Czechs accept! - neutrality
+country_event = {
+	id = NOE_gnw.32
+	title = NOE_gnw.32.t
+	desc = NOE_gnw.32.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yippee
+	option = {
+		name = NOE_gnw.32.a
+	}
+}
+
+#Kiara rejects any negotiations
+country_event = {
+	id = NOE_gnw.33
+	title = NOE_gnw.33.t
+	desc = NOE_gnw.33.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Seriously?
+	option = {
+		name = NOE_gnw.33.a
+	}
+}
+
+#Kiara wants recognition of the Oder-Neisse Line
+country_event = {
+	id = NOE_gnw.34
+	title = NOE_gnw.34.t
+	desc = NOE_gnw.34.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Seriously? We cant accept this
+	option = {
+		name = NOE_gnw.34.a
+		KIA = {
+			country_event = KIA_gnw.20
+		}
+	}
+	#If it means we could secure our borders
+	option = {
+		name = NOE_gnw.34.b
+		KIA = {
+			country_event = KIA_gnw.21
+		}
+	}
+}
+
+#Policy towards Kronii?
+country_event = {
+	id = NOE_gnw.35
+	title = NOE_gnw.35.t
+	desc = NOE_gnw.35.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We will give you guns to go eastward
+	option = {
+		name = NOE_gnw.35.a
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 1000
+			}
+		}
+		KRO = {
+			country_event = KRO_gnw.15
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+		}
+	}
+	#Do you want to return as a puppet?
+	option = {
+		name = NOE_gnw.35.b
+		KRO = {
+			country_event = KRO_gnw.16
+		}
+	}
+}
+
+#Kronii refuses our offer
+country_event = {
+	id = NOE_gnw.36
+	title = NOE_gnw.36.t
+	desc = NOE_gnw.36.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Of course she would...
+	option = {
+		name = NOE_gnw.36.a
+	}
+}
+
+#Kronii accepts our offer
+country_event = {
+	id = NOE_gnw.37
+	title = NOE_gnw.37.t
+	desc = NOE_gnw.37.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Oo?
+	option = {
+		name = NOE_gnw.37.a
+	}
+}
+
+#Germany refuses any offer
+country_event = {
+	id = NOE_gnw.38
+	title = NOE_gnw.38.t
+	desc = NOE_gnw.38.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = NOE_gnw.38.a
+	}
+}
+
+#Germany wants recognition
+country_event = {
+	id = NOE_gnw.39
+	title = NOE_gnw.39.t
+	desc = NOE_gnw.39.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Sure 
+	option = {
+		name = NOE_gnw.39.a
+		GER = {
+			country_event = GER_gnw.14
+		}
+	}
+	#No
+	option = {
+		name = NOE_gnw.39.b
+		GER = {
+			country_event = GER_gnw.15
+		}
+	}
+}
+
+#Flare refuses
+country_event = {
+	id = NOE_gnw.40
+	title = NOE_gnw.40.t
+	desc = NOE_gnw.40.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Oh
+	option = {
+		name = NOE_gnw.40.a
+	}
+}
+
+#Flare accepts
+country_event = {
+	id = NOE_gnw.41
+	title = NOE_gnw.41.t
+	desc = NOE_gnw.41.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Oh
+	option = {
+		name = NOE_gnw.41.a
+	}
+}
+
+#Flare wants part of western ukraine
+country_event = {
+	id = NOE_gnw.42
+	title = NOE_gnw.42.t
+	desc = NOE_gnw.42.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = NOE_gnw.42.a
+		FLA = {
+			country_event = FLA_gnw.17
+		}
+	}
+	#No
+	option = {
+		name = NOW_gnw.42.b
+		FLA = {
+			country_event = FLA_gnw.18
+		}
+	}
+}
+
+#Flare wants help retaking Eastern Ukraine
+country_event = {
+	id = NOE_gnw.43
+	title = NOE_gnw.43.t
+	desc = NOE_gnw.43.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Sure
+	option = {
+		name = NOE_gnw.43.a
+		FLA = {
+			country_event = FLA_gnw.19
+		}
+	}
+	#No
+	option = {
+		name = NOW_gnw.43.b
+		FLA = {
+			country_event = FLA_gnw.18
 		}
 	}
 }
@@ -2458,6 +3123,60 @@ country_event = {
 	}
 }
 
+#Noel wants a promise of neutrality
+country_event = {
+	id = GER_gnw.13
+	title = GER_gnw.13.t
+	desc = GER_gnw.13.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#If we can get recognition that would be great
+	option = {
+		name = GER_gnw.13.a
+		NOE = {
+			country_event = NOE_gnw.39
+		}
+	}
+	#We can't promise anything
+	option = {
+		name = GER_gnw.13.b
+		NOE = {
+			country_event = NOE_gnw.38
+		}
+	}
+}
+
+#Noel agrees
+country_event = {
+	id = GER_gnw.14
+	title = GER_gnw.14.t
+	desc = GER_gnw.14.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = GER_gnw.14.a
+		set_variable = {
+			var = NOE.gnw_germany_concessions
+			value = 2
+		}
+		GNW_move_to_neutrality = yes
+	}
+}
+
+#Noel says no
+country_event = {
+	id = GER_gnw.15
+	title = GER_gnw.15.t
+	desc = GER_gnw.15.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Wait what, why!!?!?
+	option = {
+		name = GER_gnw.15.a
+	}
+}
+
 #
 #	CZE
 #
@@ -2623,6 +3342,52 @@ country_event = {
 		name = CZE_gnw.8.b
 		THIS = {
 			GNW_move_to_neutrality = yes
+		}
+	}
+}
+
+#Noel offers us Zaolzie for neutrality
+country_event = {
+	id = CZE_gnw.9
+	title = CZE_gnw.9.t
+	desc = CZE_gnw.9.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Actually, we want to help you in this war
+	option = {
+		name = CZE_gnw.9.a
+		set_variable = {
+			var = NOE.gnw_czechoslovakia_concessions
+			value = 1
+		}
+		GNW_move_to_noel = yes
+		CZE = {
+			transfer_state = 72
+		}
+		NOE = {
+			country_event = NOE_gnw.30
+		}
+	}
+	#We'll take neutrality
+	option = {
+		name = CZE_gnw.9.b
+		set_variable = {
+			var = NOE.gnw_czechoslovakia_concessions
+			value = 2
+		}
+		GNW_move_to_neutrality = yes
+		CZE = {
+			transfer_state = 72
+		}
+		NOE = {
+			country_event = NOE_gnw.33
+		}
+	}
+	#No thanks
+	option = {
+		name = CZE_gnw.9.c
+		NOE = {
+			country_event = NOE_gnw.32
 		}
 	}
 }
@@ -3229,6 +3994,62 @@ country_event = {
 	}
 }
 
+#Noel sends an odd message
+country_event = {
+	id = KRO_gnw.15
+	title = KRO_gnw.15.t
+	desc = KRO_gnw.15.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Ooh so that what she means
+	option = {
+		name = KRO_gnw.15.a
+		#tbd 
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+		}
+	}
+	#I have no clue, thanks for the guns though
+	option = {
+		name = KRO_gnw.15.b
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+		}
+	}
+}
+
+#Noel wants us to return as a puppet state
+country_event = {
+	id = KRO_gnw.16
+	title = KRO_gnw.16.t
+	desc = KRO_gnw.16.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Lolwut
+	option = {
+		name = FBK_gnw.16.a
+		NOE = {
+			country_event = NOE_gnw.36
+		}
+	}
+	#Sure!!! 
+	option = {
+		name = FBK_gnw.16.b
+		NOE = {
+			country_event = NOE_gnw.37
+			THIS = {
+				GNW_move_to_noel = yes
+			}
+			set_variable = {
+				var = NOE.gnw_kronii_concessions
+				value = 1
+			}
+		}
+	}
+}
+
 #
 #	KIA
 #
@@ -3584,6 +4405,57 @@ country_event = {
 	}
 }
 
+#Noel wants assurances of peace
+country_event = {
+	id = KIA_gnw.19
+	title = KIA_gnw.19.t
+	desc = KIA_gnw.19.desc
+	is_triggered_only = yes
+	#We want recognition over the Oder-Neisse line
+	option = {
+		name = KIA_gnw.19.a
+		NOE = {
+			country_event = NOE_gnw.34
+		}
+	}
+	#The enemy of my enemy is still an enemy
+	option = {
+		name = KIA_gnw.19.b
+		NOE = {
+			country_event = NOE_gnw.33
+		}
+	}
+}
+
+#Noel rejects our demands
+country_event = {
+	id = KIA_gnw.20
+	title = KIA_gnw.20.t
+	desc = KIA_gnw.20.desc
+	is_triggered_only = yes
+	#So be it
+	option = {
+		name = KIA_gnw.20.a
+	}
+}
+
+#Noel accepts our demands
+country_event = {
+	id = KIA_gnw.21
+	title = KIA_gnw.21.t
+	desc = KIA_gnw.21.desc
+	is_triggered_only = yes
+	#So be it
+	option = {
+		name = KIA_gnw.21.a
+		set_variable = {
+			var = NOE.gnw_kiara_concessions
+			value = 1
+		}
+		GNW_move_to_neutrality = yes
+	}
+}
+
 #
 #	SUB
 #
@@ -3790,7 +4662,7 @@ country_event = {
 			value = 0
 		}
 	}
-	#Democratize now!!
+	#Democratize now!! 
 	option = {
 		name = SUB_gnw.9.b
 		FBK = {
@@ -3816,7 +4688,7 @@ country_event = {
 	option = {
 		name = SUB_gnw.10.a
 	}
-	#
+	#Perhaps we could come to an agreement
 }
 
 #
@@ -4216,7 +5088,7 @@ country_event = {
 	}
 	#No
 	option = {
-		name = RUS_gnw.18.c
+		name = RUS_gnw.18.b
 		THIS = {
 			GNW_move_to_neutrality = yes
 		}
@@ -4272,6 +5144,35 @@ country_event = {
 		set_variable = {
 			var = FBK.gnw_rushia_concessions
 			value = 5
+		}
+	}
+}
+
+#Noel wants an alliance
+country_event = {
+	id = RUS_gnw.22
+	title = RUS_gnw.22.t
+	desc = RUS_gnw.22.desc
+	is_triggered_only = yes
+	#Fubuki's Russian lands 
+	option = {
+		name = RUS_gnw.22.a
+		NOE = {
+			country_event = NOE_gnw.7
+		}
+	}
+	#(^) + Finland and Baltics 
+	option = {
+		name = RUS_gnw.22.b
+		NOE = {
+			country_event = NOE_gnw.8
+		}
+	}
+	#We want more influence over Flare
+	option = {
+		name = RUS_gnw.22.c
+		NOE = {
+			country_event = NOE_gnw.9
 		}
 	}
 }
@@ -4569,6 +5470,157 @@ country_event = {
 		THIS = {
 			GNW_move_to_neutrality = yes
 		}
+	}
+}
+
+#Noel wants help with a settlement 
+country_event = {
+	id = FLA_gnw.14
+	title = FLA_gnw.14.t
+	desc = FLA_gnw.14.desc
+	is_triggered_only = yes
+	#We want nothing to do with this war
+	option = {
+		name = FLA_gnw.14.a
+		GNW_move_to_neutrality = yes
+		NOE = {
+			country_event = NOE_gnw.26
+		}
+	}
+	#We will help you
+	option = {
+		name = FLA_gnw.14.b
+		FBK = {
+			country_event = FBK_gnw.47
+		}
+	}
+}
+
+#Seriously?
+country_event = {
+	id = FLA_gnw.15
+	title = FLA_gnw.15.t
+	desc = FLA_gnw.15.desc
+	is_triggered_only = yes
+	#We want nothing to do with this
+	option = {
+		name = FLA_gnw.15.a
+		GNW_move_to_neutrality = yes
+		NOE = {
+			country_event = NOE_gnw.26
+		}
+	}
+	#We will support Noel
+	option = {
+		name = FLA_gnw.15.b
+		set_variable = {
+			var = NOE.gnw_flare_concessions
+			value = 4
+		}
+		GNW_move_to_noel = yes
+		NOE = {
+			country_event = NOE_gnw.27
+		}
+	}
+}
+
+#Noel wants our help in the war
+country_event = {
+	id = FLA_gnw.16
+	title = FLA_gnw.16.t
+	desc = FLA_gnw.16.desc
+	is_triggered_only = yes
+	#No way
+	option = {
+		name = FLA_gnw.16.a
+		GNW_move_to_neutrality = yes
+		NOE = {
+			country_event = NOE_gnw.40
+		}
+	}
+	#Sure
+	option = {
+		name = FLA_gnw.16.b
+		set_variable = {
+			var = NOE.gnw_flare_concessions
+			value = 4
+		}
+		GNW_move_to_noel = yes
+		NOE = {
+			country_event = NOE_gnw.41
+		}
+	}
+	#For parts of Western Ukraine?
+	option = {
+		name = FLA_gnw.16.c
+		NOE = {
+			country_event = NOE_gnw.42
+		}
+	}
+	#iF THEY Could also support our claims in the eat
+	option = {
+		name = FLA_gnw.16.d
+		NOE = {
+			country_event = NOE_gnw.43
+		}
+	}
+}
+
+#Noel accepts our demands
+country_event = {
+	id = FLA_gnw.17
+	title = FLA_gnw.17.t
+	desc = FLA_gnw.17.desc
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = FLA_gnw.17.a
+		set_variable = {
+			var = NOE.gnw_flare_concessions
+			value = 5
+		}
+		GNW_move_to_noel = yes
+	}
+}
+
+#Noel rejects our demands
+country_event = {
+	id = FLA_gnw.18
+	title = FLA_gnw.18.t
+	desc = FLA_gnw.18.desc
+	is_triggered_only = yes
+	#why??
+	option = {
+		name = FLA_gnw.18.a
+	}
+}
+
+#Noel accepts our demands
+country_event = {
+	id = FLA_gnw.19
+	title = FLA_gnw.19.t
+	desc = FLA_gnw.19.desc
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = FLA_gnw.19.a
+		set_variable = {
+			var = NOE.gnw_flare_concessions
+			value = 6
+		}
+		GNW_move_to_noel = yes
+	}
+}
+
+#The Time is Right flavour event
+country_event = {
+	id = FLA_gnw.20
+	title = FLA_gnw.20.t
+	desc = FLA_gnw.20.desc
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = FLA_gnw.20.a
 	}
 }
 

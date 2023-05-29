@@ -171,11 +171,14 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = FBK
+			KRO = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
 			KRO = {
-				country_event = LHS_gnw.6
+				country_event = FBK_gnw.35
 			}
 			set_country_flag = {
 				flag = GNW_diplomatic_cooldown
@@ -198,6 +201,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = FBK
+			SUB = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -223,6 +229,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = FBK
+			KIA = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -248,6 +257,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = FBK
+			KRO = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -273,6 +285,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = FBK
+			FLA = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -298,6 +313,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = FBK
+			GER = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -323,6 +341,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = FBK
+			RUS = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -434,7 +455,7 @@ CAT_great_northern_war = {
 		cost = 30
 		complete_effect = {
 			#Our demands? - Noel
-			country_event = FBK_gnw.22
+			country_event = NOE_gnw.17
 		}
 		ai_will_do = {
 			factor = 5
@@ -456,6 +477,9 @@ CAT_great_northern_war = {
 				NOE = {
 					has_war_with = FBK
 				}
+			}
+			GER = {
+				GNW_already_aligned = no
 			}
 		}
 		complete_effect = {
@@ -481,12 +505,22 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = NOE
+			RUS = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
+			RUS = {
+				country_event = RUS_gnw.22
+			}
 			set_country_flag = {
 				flag = GNW_diplomatic_cooldown
 				days = 30
+			}
+			hidden_effect = {
+				#This is to remove some of the localisations because they share events
+				set_country_flag = NOE_rushia_alliance_initiate
 			}
 		}
 		ai_will_do = {
@@ -505,9 +539,15 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = NOE
+			GER = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
+			GER = {
+				country_event = GER_gnw.13
+			}
 			set_country_flag = {
 				flag = GNW_diplomatic_cooldown
 				days = 30
@@ -529,9 +569,15 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = NOE
+			KRO = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
+			NOE = {
+				country_event = NOE_gnw.35
+			}
 			set_country_flag = {
 				flag = GNW_diplomatic_cooldown
 				days = 30
@@ -553,9 +599,15 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = NOE
+			KIA = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
+			KIA = {
+				country_event = KIA_gnw.19
+			}
 			set_country_flag = {
 				flag = GNW_diplomatic_cooldown
 				days = 30
@@ -577,9 +629,15 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = NOE
+			CZE = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
+			CZE = {
+				country_event = CZE_gnw.9
+			}
 			set_country_flag = {
 				flag = GNW_diplomatic_cooldown
 				days = 30
@@ -601,9 +659,13 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = NOE
+			FLA = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
+			country_event = NOE_gnw.25
 			set_country_flag = {
 				flag = GNW_diplomatic_cooldown
 				days = 30
@@ -625,36 +687,15 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = NOE
+			SUB = {
+				GNW_already_aligned = no
+			}
 		}
 		cost = 30
 		complete_effect = {
 			SUB = {
 				country_event = SUB_gnw.10
 			}
-			set_country_flag = {
-				flag = GNW_diplomatic_cooldown
-				days = 30
-			}
-		}
-		ai_will_do = {
-			factor = 5
-		}
-	}
-	NOE_negotiate_with_RUS = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = NOE
-			has_political_power > 29
-			NOT = {
-				has_country_flag = GNW_diplomatic_cooldown
-			}
-		}
-		fire_only_once = yes
-		visible = {
-			tag = NOE
-		}
-		cost = 30
-		complete_effect = {
 			set_country_flag = {
 				flag = GNW_diplomatic_cooldown
 				days = 30
@@ -678,6 +719,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = KRO
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -698,6 +742,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = KRO
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -720,18 +767,7 @@ CAT_great_northern_war = {
 			NOT = {
 				has_country_flag = GNW_negotiation_cooldown
 				has_country_flag = KRO_negotiated_with_FBK
-				is_in_array = {
-					array = global.gnw_fubuki_allies
-					value = THIS.id
-				}
-				is_in_array = {
-					array = global.gnw_noel_allies
-					value = THIS.id
-				}
-				is_in_array = {
-					array = global.gnw_neutral
-					value = THIS.id
-				}
+				GNW_already_aligned = yes
 			}
 		}
 		cost = 30
@@ -762,18 +798,7 @@ CAT_great_northern_war = {
 			NOT = {
 				has_country_flag = GNW_negotiation_cooldown
 				has_country_flag = KRO_negotiated_with_LHS
-				is_in_array = {
-					array = global.gnw_fubuki_allies
-					value = THIS.id
-				}
-				is_in_array = {
-					array = global.gnw_noel_allies
-					value = THIS.id
-				}
-				is_in_array = {
-					array = global.gnw_neutral
-					value = THIS.id
-				}
+				GNW_already_aligned = yes
 			}
 		}
 		cost = 30
@@ -804,18 +829,7 @@ CAT_great_northern_war = {
 			NOT = {
 				has_country_flag = GNW_negotiation_cooldown
 				has_country_flag = KRO_negotiated_with_NOE
-				is_in_array = {
-					array = global.gnw_fubuki_allies
-					value = THIS.id
-				}
-				is_in_array = {
-					array = global.gnw_noel_allies
-					value = THIS.id
-				}
-				is_in_array = {
-					array = global.gnw_neutral
-					value = THIS.id
-				}
+				GNW_already_aligned = yes
 			}
 		}
 		cost = 30
@@ -927,6 +941,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = KIA
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -946,6 +963,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = KIA
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -962,6 +982,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = KIA
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -981,6 +1004,9 @@ CAT_great_northern_war = {
 			tag = KIA
 			NOT = {
 				has_country_flag = GNW_negotiation_cooldown
+			}
+			NOT = {
+				GNW_already_aligned = yes
 			}
 		}
 		cost = 30
@@ -1002,10 +1028,17 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = KIA
-			check_variable = {
-				var = FBK.gnw_kiara_concessions
-				value = 3
-				compare = equals
+			OR = {
+				check_variable = {
+					var = FBK.gnw_kiara_concessions
+					value = 3
+					compare = equals
+				}
+				check_variable = {
+					var = NOE.gnw_kiara_concessions
+					value = 1
+					compare = equals
+				}
 			}
 		}
 		cost = 30
@@ -1135,6 +1168,9 @@ CAT_great_northern_war = {
 					has_war_with = FBK
 				}
 			}
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		complete_effect = {
 			#If Yagoo is willing to sacrifice part of Poland's territorial integrity for the Czechs + recognition of Germany as a proper country
@@ -1160,6 +1196,9 @@ CAT_great_northern_war = {
 				NOE = {
 					has_war_with = FBK
 				}
+			}
+			NOT = {
+				GNW_already_aligned = yes
 			}
 		}
 		complete_effect = {
@@ -1212,6 +1251,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = CZE
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -1239,6 +1281,9 @@ CAT_great_northern_war = {
 					has_war_with = FBK
 				}
 			}
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		complete_effect = {
 			#If Yagoo is willing to sacrifice part of Poland's territorial integrity for the Czechs
@@ -1263,6 +1308,9 @@ CAT_great_northern_war = {
 			tag = CZE
 			NOT = {
 				has_country_flag = GNW_negotiation_cooldown
+			}
+			NOT = {
+				GNW_already_aligned = yes
 			}
 		}
 		complete_effect = {
@@ -1319,6 +1367,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = KRO
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -1342,6 +1393,9 @@ CAT_great_northern_war = {
 			}
 			NOT = {
 				has_country_flag = GNW_negotiation_cooldown
+			}
+			NOT = {
+				GNW_already_aligned = yes
 			}
 		}
 		complete_effect = {
@@ -1368,6 +1422,9 @@ CAT_great_northern_war = {
 			}
 			NOT = {
 				has_country_flag = GNW_negotiation_cooldown
+			}
+			NOT = {
+				GNW_already_aligned = yes
 			}
 		}
 		complete_effect = {
@@ -1396,7 +1453,7 @@ CAT_great_northern_war = {
 		cost = 25
 		days_remove = 7
 		complete_effect = {
-			country_event = FLA_gnw.1
+			country_event = FLA_gnw.20
 			declare_war_on = {
 				target = NOE
 				type = take_core_state
@@ -1417,6 +1474,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = SUB
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -1440,6 +1500,9 @@ CAT_great_northern_war = {
 					has_war_with = FBK
 				}
 			}
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 25
 		complete_effect = {
@@ -1460,6 +1523,9 @@ CAT_great_northern_war = {
 				NOE = {
 					has_war_with = FBK
 				}
+			}
+			NOT = {
+				GNW_already_aligned = yes
 			}
 		}
 		cost = 25
@@ -1506,6 +1572,9 @@ CAT_great_northern_war = {
 		fire_only_once = yes
 		visible = {
 			tag = RUS
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -1551,6 +1620,9 @@ CAT_great_northern_war = {
 					has_war_with = FBK
 				}
 			}
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 35
 		complete_effect = {
@@ -1576,6 +1648,9 @@ CAT_great_northern_war = {
 				NOE = {
 					has_war_with = FBK
 				}
+			}
+			NOT = {
+				GNW_already_aligned = yes
 			}
 		}
 		cost = 35
@@ -1604,6 +1679,9 @@ CAT_great_northern_war = {
 			NOT = {
 				has_country_flag = GNW_negotiation_cooldown
 			}
+			NOT = {
+				GNW_already_aligned = yes
+			}
 		}
 		cost = 35
 		complete_effect = {
@@ -1629,6 +1707,9 @@ CAT_great_northern_war = {
 				NOE = {
 					has_war_with = FBK
 				}
+			}
+			NOT = {
+				GNW_already_aligned = yes
 			}
 		}
 		cost = 35
