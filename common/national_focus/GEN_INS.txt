@@ -81,42 +81,42 @@ focus_tree = {
 		id = IND_victory_in_civil_war
 		icon = GFX_focus_IND_victory_in_civil_war
 		cost = 5
-	    available = {
-			always = false
+		available = {
+			always = no
 		}
 		bypass = {
 			OR = {
 				AND = {
-					original_tag = RIS 
+					original_tag = RIS
 					NOT = {
 						country_exists = MOO
 						country_exists = IOF
-						country_event = PAV
-					} 
+						country_exists = PAV
+					}
 				}
 				AND = {
-					original_tag = MOO 
+					original_tag = MOO
 					NOT = {
 						country_exists = RIS
 						country_exists = IOF
-						country_event = PAV
-					} 
+						country_exists = PAV
+					}
 				}
 				AND = {
-					original_tag = IOF 
+					original_tag = IOF
 					NOT = {
 						country_exists = MOO
 						country_exists = RIS
-						country_event = PAV
-					} 
+						country_exists = PAV
+					}
 				}
 				AND = {
-					original_tag = PAV 
+					original_tag = PAV
 					NOT = {
 						country_exists = MOO
 						country_exists = IOF
-						country_event = RIS
-					} 
+						country_exists = RIS
+					}
 				}
 			}
 		}
@@ -448,7 +448,7 @@ focus_tree = {
 		completion_reward = {
 			random_owned_controlled_state = {
 				add_resource = {
-					type = iron
+					type = steel
 					amount = 4
 				}
 			}
@@ -488,7 +488,10 @@ focus_tree = {
 			focus = IND_dont_disturb_peasants
 		}
 		completion_reward = {
-			add_offsite_building = { type = arms_factory level = 1 }
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
 		}
 		x = 35
 		y = 3
@@ -535,7 +538,6 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = IND_national_reconciliation
 		}
-		
 		x = 36
 		y = 9
 	}
@@ -970,9 +972,6 @@ focus_tree = {
 		allow_branch = {
 			tag = MOO
 		}
-		bypass = {
-			IND_seek_foreign_aid
-		}
 		prerequisite = {
 			focus = civil_war_allies
 		}
@@ -1080,7 +1079,6 @@ focus_tree = {
 				days = 365
 			}
 		}
-		
 		x = 38
 		y = 17
 	}
@@ -1099,7 +1097,6 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 4
 			}
 		}
-		
 		x = 37
 		y = 18
 	}
@@ -1110,22 +1107,16 @@ focus_tree = {
 		prerequisite = {
 			focus = IND_lhs_loan
 		}
-			completion_reward = {
-				add_doctrine_cost_reduction = {
-					cost_reduction = 0.75
-					uses = 2
-					category = land_doctrine
-				}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.75
+				uses = 2
+				category = land_doctrine
 			}
+		}
 		x = 39
 		y = 18
 	}
-	#WONDERING IF THERE IS A TRIGGER TO CHECK THE CURRENT RULING PARTY OR IF IT HAS TO BE DONE VIA A GAZILLION IF ELSE 
-	# ALSO WHAT IS THE ARRAY THEY HAVE TO BE ADDED TO?
-	#
-	#
-	#
-	#
 	focus = {
 		id = IND_lhs_membership
 		icon = GFX_focus_IND_lhs_membership
@@ -1135,6 +1126,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = IND_food_aid
+		}
+		completion_reward = {
+			join_the_lhs = yes
 		}
 		x = 38
 		y = 19
@@ -1204,36 +1198,32 @@ focus_tree = {
 		}
 		completion_reward = {
 			1157 = {
-			add_building_construction = {
-				type = coastal_bunker
-				level = 4
-				instant_build = yes
-				
-					province = {
-						all_provinces = yes
-					}
-				
-				
-			}
-		}
-		IF = {
-			ROOT ={
-				owns_state = 721
-			}
-			721 = {
 				add_building_construction = {
 					type = coastal_bunker
 					level = 4
 					instant_build = yes
-					
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						owns_state = 721
+					}
+				}
+				721 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 4
+						instant_build = yes
 						province = {
 							all_provinces = yes
 						}
-					
-					
+					}
 				}
 			}
-		}
 		}
 		x = 49
 		y = 16

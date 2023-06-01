@@ -556,6 +556,9 @@ technologies = {
 		enable_equipments = {
 			infantry_equipment_5
 		}
+		sub_technologies = {
+			post_war_infantry_weapons_emergency
+		}
 		path = {
 			leads_to_tech = modern_war_infantry_weapons
 			research_cost_coeff = 1
@@ -588,9 +591,38 @@ technologies = {
 			}
 		}
 	}
+	post_war_infantry_weapons_emergency = {
+		enable_equipments = {
+			infantry_equipment_5_emergency
+		}
+		research_cost = 1
+		start_year = 1948
+		sub_tech_index = 1
+		categories = {
+			infantry_weapons
+		}
+		ai_will_do = {
+			factor = 0.8
+			modifier = {
+				tag = GER
+				factor = 2.5
+			}
+			modifier = {
+				num_of_military_factories > 150
+				factor = 2.5
+			}
+			modifier = {
+				num_of_military_factories < 50
+				factor = 0.5
+			}
+		}
+	}
 	modern_war_infantry_weapons = {
 		enable_equipments = {
 			infantry_equipment_6
+		}
+		sub_technologies = {
+			modern_war_infantry_weapons_emergency
 		}
 		research_cost = 2
 		start_year = 1952
@@ -601,6 +633,32 @@ technologies = {
 				y = 28
 			}
 		}
+		categories = {
+			infantry_weapons
+		}
+		ai_will_do = {
+			factor = 0.8
+			modifier = {
+				tag = GER
+				factor = 2.5
+			}
+			modifier = {
+				num_of_military_factories > 150
+				factor = 2.5
+			}
+			modifier = {
+				num_of_military_factories < 50
+				factor = 0.5
+			}
+		}
+	}
+	modern_war_infantry_weapons_emergency = {
+		enable_equipments = {
+			infantry_equipment_6_emergency
+		}
+		research_cost = 1
+		start_year = 1952
+		sub_tech_index = 1
 		categories = {
 			infantry_weapons
 		}
