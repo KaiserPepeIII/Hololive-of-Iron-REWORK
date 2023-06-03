@@ -1,4 +1,5 @@
 add_namespace = gura
+#Turbs
 country_event = {
 	id = gura.1
 	title = gura.1.t
@@ -92,6 +93,9 @@ country_event = {
 				elections_allowed = yes
 			}
 		}
+		ai_chance = {
+			#Gura would accept this normally
+		}
 	}
 	#We refuse 
 	option = {
@@ -105,12 +109,20 @@ country_event = {
 		YAG = {
 			country_event = yagoo.18
 		}
+		ai_chance = {
+			#unlikely
+			#If went down cocoist path
+		}
 	}
 	#Maybe a totally not funded by us protest might change their mind?
 	option = {
 		name = gura.3.c
 		YAG = {
 			country_event = yagoo.19
+		}
+		ai_chance = {
+			#Likely
+			#If went down cocoist path
 		}
 	}
 }
@@ -128,6 +140,9 @@ country_event = {
 		YAG = {
 			country_event = yagoo.20
 		}
+		ai_chance = {
+			#likely
+		}
 	}
 	#Threaten with war
 	option = {
@@ -135,6 +150,9 @@ country_event = {
 		add_threat = 2.5
 		YAG = {
 			country_event = yagoo.21
+		}
+		ai_chance = {
+			#If went down cocoist path
 		}
 	}
 }
@@ -178,6 +196,9 @@ country_event = {
 				elections_allowed = yes
 			}
 		}
+		ai_chance = {
+			#most likely
+		}
 	}
 	#Threaten with war
 	option = {
@@ -186,12 +207,18 @@ country_event = {
 		YAG = {
 			country_event = yagoo.21
 		}
+		ai_chance = {
+			#If went down cocoist path
+		}
 	}
 	#We'll be back...
 	option = {
 		name = gura.5.c
 		YAG = {
-			country_event = yagoo.19
+			#inc
+		}
+		ai_chance = {
+			#If went down cocoist path
 		}
 	}
 }
@@ -209,6 +236,9 @@ country_event = {
 		YAG = {
 			country_event = yagoo.20
 		}
+		ai_chance = {
+			#more likely
+		}
 	}
 	#FUCK YOU YAGOOO!
 	option = {
@@ -217,6 +247,9 @@ country_event = {
 		create_wargoal = {
 			target = YAG
 			type = take_core_state
+		}
+		ai_chance = {
+			#If went down cocoist path
 		}
 	}
 }
@@ -254,6 +287,11 @@ country_event = {
 		LUN = {
 			country_event = luna.1
 		}
+		ai_chance = {
+			#divman
+			#reactionary nationalist
+			#monarchist
+		}
 	}
 	#Qing Borders - Mongolia and Nene
 	option = {
@@ -266,6 +304,10 @@ country_event = {
 		NEN = {
 			country_event = nene.1
 		}
+		ai_chance = {
+			#monarchist
+			#cocoist
+		}
 	}
 	#We should focus on Han territories... 
 	option = {
@@ -274,6 +316,10 @@ country_event = {
 		add_popularity = {
 			ideology = var:current_party_ideology_group
 			popularity = 0.055
+		}
+		ai_chance = {
+			#cocoist
+			#democratic
 		}
 	}
 }
@@ -292,6 +338,9 @@ country_event = {
 		create_wargoal = {
 			target = LUN
 			type = annex_everything
+		}
+		ai_chance = {
+			#always war
 		}
 	}
 	#Nah I won't invade 
@@ -1867,12 +1916,19 @@ country_event = {
 		NIN = {
 			country_event = gura_diplo.13
 		}
+		ai_chance = {
+			#non-monarchist
+		}
 	}
 	#Keep as seperate ally
 	option = {
 		name = gura.63.b
 		NIN = {
 			country_event = gura_diplo.14
+		}
+		ai_chance = {
+			#democratic - mixed ideology democracy
+			#rn
 		}
 	}
 	#One crown, one empire
@@ -1884,6 +1940,9 @@ country_event = {
 		create_wargoal = {
 			target = NIN
 			type = annex_everything
+		}
+		ai_chance = {
+			#monarchist
 		}
 	}
 }
@@ -1919,6 +1978,9 @@ country_event = {
 		create_wargoal = {
 			target = NIN
 			type = annex_everything
+		}
+		ai_chance = {
+			#always war
 		}
 	}
 }
@@ -1974,6 +2036,9 @@ country_event = {
 			id = GAW_holocns_gura_balance
 			set_value = -1
 		}
+		ai_chance = {
+			#If democratic more likely
+		}
 	}
 	#Death
 	option = {
@@ -1983,7 +2048,7 @@ country_event = {
 		set_country_flag = GAW_the_coming_holocn_war
 		subtract_from_variable = {
 			var = THIS.holocn_legitimacy
-			value = 20
+			value = 40
 		}
 		HOLOCN_recalculate_moh_effect = yes
 		hidden_effect = {
@@ -2008,6 +2073,9 @@ country_event = {
 				}
 				country_event = holocn_event.1
 			}
+		}
+		ai_chance = {
+			#If not democratic, more likely
 		}
 	}
 }
@@ -2226,6 +2294,9 @@ country_event = {
 		DOR = {
 			country_event = holocn_event.9
 		}
+		ai_chance = {
+			#More likely if not monarchist
+		}
 	}
 	#Yippee
 	option = {
@@ -2278,6 +2349,9 @@ country_event = {
 		YOG = {
 			country_event = holocn_event.9
 		}
+		ai_chance = {
+			#More likely if monarchist
+		}
 	}
 	#Yippee
 	option = {
@@ -2329,6 +2403,9 @@ country_event = {
 		}
 		YOG = {
 			country_event = holocn_event.9
+		}
+		ai_chance = {
+			#More likely if not Cocoist
 		}
 	}
 	#Yippee
@@ -2392,6 +2469,9 @@ country_event = {
 			value = 1
 			days = 7
 		}
+		ai_chance = {
+			#Yeah always try this option before straight up war
+		}
 	}
 }
 
@@ -2422,6 +2502,9 @@ country_event = {
 		CIV = {
 			country_event = holocn_event.9
 		}
+		ai_chance = {
+			#More likely if not democratic
+		}
 	}
 	#Yippee
 	option = {
@@ -2447,7 +2530,7 @@ country_event = {
 	}
 }
 
-#Echo wants minority rights
+#Echo wants power
 country_event = {
 	id = gura.82
 	title = gura.82.t
@@ -2473,6 +2556,9 @@ country_event = {
 		}
 		ECH = {
 			country_event = holocn_event.9
+		}
+		ai_chance = {
+			#More likely to say no 
 		}
 	}
 	#Yippee

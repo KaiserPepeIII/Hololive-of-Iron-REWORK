@@ -1,8 +1,16 @@
 CAT_great_northern_war = {
+	#
+	#	High Tension = > 70%
+	#
+	#	Medium Tension = 41-70%
+	#
+	#	Low Tension = 0-40%
+	#	
 	GNW_tension_rise_mission = {
 		activation = {
 			NOT = {
 				has_global_flag = GNW_post_gnw_negotiations
+				has_global_flag = GNW_gnw_launched
 				FBK = {
 					has_war_with = NOE
 				}
@@ -11,6 +19,7 @@ CAT_great_northern_war = {
 		cancel_trigger = {
 			OR = {
 				has_global_flag = GNW_post_gnw_negotiations
+				has_global_flag = GNW_gnw_launched
 				FBK = {
 					has_war_with = NOE
 				}
@@ -138,7 +147,7 @@ CAT_great_northern_war = {
 			country_event = FBK_gnw.22
 		}
 		ai_will_do = {
-			factor = 5
+			base = 10
 		}
 	}
 	FBK_negotiate_with_KRO_after_war = {
@@ -167,8 +176,21 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#The revolt option is definitely a gamble, that choice would only be done at high tension and low amount of allies
+		#
+		#AI would want to secure Kronii's loyalty ASAP
 		ai_will_do = {
-			factor = 5
+			base = 15
+			#By some miracle this decision isnt taken by then
+			modifier = {
+				add = 85
+				RUS = {
+					is_in_array = {
+						array = global.gnw_noel_allies
+						value = THIS.id
+					}
+				}
+			}
 		}
 	}
 	FBK_negotiate_with_SUB_support = {
@@ -195,8 +217,17 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#Subaru is almost guaranteed to help FBK so this could be put on the back burner
 		ai_will_do = {
-			factor = 5
+			base = 2.5
+			modifier = {
+				add = 17.5
+				GNW_high_tension = yes
+			}
+			modifier = {
+				add = 10
+				GNW_medium_tension = yes
+			}
 		}
 	}
 	FBK_negotiate_with_KIA = {
@@ -223,8 +254,35 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#Kiara is an extremely strong ally for Fubuki, however, a strong Kiara subsequently leads to a strong Germany which is something that Fubuki and Subaru don't want. Desire to invovle Kiara in the war should only come at medium tension or over. 
 		ai_will_do = {
-			factor = 5
+			base = 1
+			modifier = {
+				add = 14
+				GNW_high_tension = yes
+			}
+			modifier = {
+				add = 4
+				GNW_medium_tension = yes
+			}
+			modifier = {
+				add = 15
+				RUS = {
+					is_in_array = {
+						array = global.gnw_noel_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 10
+				RUS = {
+					is_in_array = {
+						array = global.gnw_noel_allies
+						value = THIS.id
+					}
+				}
+			}
 		}
 	}
 	FBK_negotiate_with_CZE = {
@@ -251,8 +309,97 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#War over Zaolzie is a weak sell but if it seems certain that Noel would lose the war then the Czechs have a real reason to pitch in
 		ai_will_do = {
-			factor = 5
+			base = 2.5
+			#Negative ones first
+			#Czechs want a quick, easy war. More enemies on the border is not desireable.
+			modifier = {
+				add = -15
+				RUS = {
+					is_in_array = {
+						array = global.gnw_noel_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = -10
+				KIA = {
+					is_in_array = {
+						array = global.gnw_noel_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = -10
+				GER = {
+					is_in_array = {
+						array = global.gnw_noel_allies
+						value = THIS.id
+					}
+				}
+			}
+			#fubuki has bigger fish to fry
+			modifier = {
+				add = -5
+				GNW_high_tension = yes
+			}
+			#Positive ones after
+			modifier = {
+				add = 5
+				check_variable = {
+					var = global.gnw_fubuki_allies^num
+					value = global.gnw_noel_allies^num
+					compare = greater_than
+				}
+			}
+			modifier = {
+				add = 10
+				FLA = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_fubuki_allies
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_neutral
+							value = THIS.id
+						}
+					}
+				}
+			}
+			modifier = {
+				add = 10
+				KIA = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_fubuki_allies
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_neutral
+							value = THIS.id
+						}
+					}
+				}
+			}
+			modifier = {
+				add = 5
+				GER = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_fubuki_allies
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_neutral
+							value = THIS.id
+						}
+					}
+				}
+			}
 		}
 	}
 	FBK_negotiate_with_FLA = {
@@ -279,8 +426,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#Flare would be a tremendous asset. However, Flare's desire for Fubuki supremacy is very low and generally wishes to maintain the status quo. Flare would be VERY hesistant to be at war with a faction involving Rushia
 		ai_will_do = {
-			factor = 5
+			base = 8.5
 		}
 	}
 	FBK_negotiate_with_GER = {
@@ -298,6 +446,11 @@ CAT_great_northern_war = {
 			GER = {
 				GNW_already_aligned = no
 			}
+			NOT = {
+				GER = {
+					exists = no
+				}
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -307,8 +460,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#An alliance with Germany is ironically a fantastic tool for Fubuki. It simultaneously keeps Germany weak and divided while raising an opponent to counter Kiara
 		ai_will_do = {
-			factor = 5
+			base = 7.5
 		}
 	}
 	FBK_negotiate_with_RUS = {
@@ -335,8 +489,26 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#Securing Rushia's support would be a short term boon but a long term disaster from a gameplay perspective(From both Noel and Fubuki). Thus Rushia is actively discouraged as an ally until tension gets high. To accomodate this for the player, Rushia would in term reject offers at a low tension; especially lowball ones. This wouldnt make much sense politically but it's for the sake of gameplay.
 		ai_will_do = {
-			factor = 5
+			base = 1
+			modifier = {
+				add = 9
+				GNW_high_tension = yes
+			}
+			modifier = {
+				add = 4
+				GNW_medium_tension = yes
+			}
+			modifier = {
+				add = 10
+				FLA = {
+					is_in_array = {
+						array = global.gnw_noel_allies
+						value = THIS.id
+					}
+				}
+			}
 		}
 	}
 	#
@@ -440,7 +612,101 @@ CAT_great_northern_war = {
 			country_event = NOE_gnw.17
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
+		}
+	}
+	NOE_negotiate_with_RUS_alliance = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = NOE
+			has_political_power > 29
+			NOT = {
+				has_country_flag = GNW_diplomatic_cooldown
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			tag = NOE
+			RUS = {
+				GNW_already_aligned = no
+			}
+		}
+		cost = 30
+		complete_effect = {
+			RUS = {
+				country_event = RUS_gnw.22
+			}
+			set_country_flag = {
+				flag = GNW_diplomatic_cooldown
+				days = 30
+			}
+			hidden_effect = {
+				#This is to remove some of the localisations because they share events
+				set_country_flag = NOE_rushia_alliance_initiate
+			}
+		}
+		#Securing Rushia's support would be a short term boon but a long term disaster from a gameplay perspective(From both Noel and Fubuki). Thus Rushia is actively discouraged as an ally until tension gets high. To accomodate this for the player, Rushia would in term reject offers at a low tension; especially lowball ones. This wouldnt make much sense politically but it's for the sake of gameplay.
+		ai_will_do = {
+			base = 1
+			modifier = {
+				add = 14
+				GNW_medium_tension = yes
+			}
+			modifier = {
+				add = 4
+				GNW_medium_tension = yes
+			}
+			modifier = {
+				add = 10
+				FLA = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 10
+				KIA = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+				GER = {
+					exists = no
+				}
+			}
+			modifier = {
+				add = 5
+				KIA = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+				GER = {
+					exists = yes
+				}
+			}
+			modifier = {
+				add = 5
+				CZE = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 5
+				GER = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
 		}
 	}
 	NOE_negotiate_with_germany = {
@@ -474,39 +740,8 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
-	}
-	NOE_negotiate_with_RUS_alliance = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = NOE
-			has_political_power > 29
-			NOT = {
-				has_country_flag = GNW_diplomatic_cooldown
-			}
-		}
-		fire_only_once = yes
-		visible = {
-			tag = NOE
-			RUS = {
-				GNW_already_aligned = no
-			}
-		}
-		cost = 30
-		complete_effect = {
-			RUS = {
-				country_event = RUS_gnw.22
-			}
-			set_country_flag = {
-				flag = GNW_diplomatic_cooldown
-				days = 30
-			}
-			hidden_effect = {
-				#This is to remove some of the localisations because they share events
-				set_country_flag = NOE_rushia_alliance_initiate
-			}
-		}
 		ai_will_do = {
-			factor = 5
+			base = 10
 		}
 	}
 	NOE_negotiate_with_GER_neutrality = {
@@ -524,6 +759,11 @@ CAT_great_northern_war = {
 			GER = {
 				GNW_already_aligned = no
 			}
+			NOT = {
+				GER = {
+					exists = no
+				}
+			}
 		}
 		cost = 30
 		complete_effect = {
@@ -536,7 +776,82 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
+			#nEGATIVE ones first
+			modifier = {
+				add = -50
+				KIA = {
+					is_in_array = {
+						array = global.gnw_neutral
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = -15
+				FLA = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_neutral
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_noel_allies
+							value = THIS.id
+						}
+					}
+				}
+			}
+			modifier = {
+				add = -5
+				CZE = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_neutral
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_noel_allies
+							value = THIS.id
+						}
+					}
+				}
+			}
+			#Positive ones after
+			modifier = {
+				add = 10
+				OR = {
+					GNW_medium_tension = yes
+					GNW_high_tension = yes
+				}
+			}
+			modifier = {
+				add = 15
+				KIA = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 15
+				FLA = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 10
+				CZE = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
 		}
 	}
 	NOE_negotiate_with_KRO = {
@@ -565,8 +880,17 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#Reproaching the nation you took over is kinda weird lmao
 		ai_will_do = {
-			factor = 5
+			base = 2
+			modifier = {
+				add = 3
+				check_variable = {
+					var = global.gnw_fubuki_allies^num
+					value = global.gnw_noel_allies^num
+					compare = greater_than
+				}
+			}
 		}
 	}
 	NOE_negotiate_with_KIA = {
@@ -596,7 +920,53 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
+			#Negative ones first
+			modifier = {
+				add = -5
+				check_variable = {
+					var = NOE.gnw_czechoslovakia_concessions
+					value = 1
+					compare = equals
+				}
+			}
+			modifier = {
+				add = -50
+				check_variable = {
+					var = NOE.gnw_germany_concessions
+					value = 1
+					compare = equals
+				}
+			}
+			#Positive ones after
+			modifier = {
+				add = 10
+				GNW_low_tension = yes
+			}
+			modifier = {
+				add = 10
+				GER = {
+					exists = no
+				}
+			}
+			modifier = {
+				add = 10
+				RUS = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 5
+				GER = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
 		}
 	}
 	NOE_negotiate_with_CZE = {
@@ -626,7 +996,97 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
+			#Negative ones first
+			modifier = {
+				add = -25
+				GER = {
+					exists = yes
+					OR = {
+						is_in_array = {
+							array = global.gnw_noel_allies
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_neutral_allies
+							value = THIS.id
+						}
+					}
+				}
+			}
+			modifier = {
+				add = -35
+				GER = {
+					exists = yes
+				}
+				FLA = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_noel_allies
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_neutral_allies
+							value = THIS.id
+						}
+					}
+				}
+			}
+			modifier = {
+				add = -50
+				GER = {
+					exists = yes
+				}
+				KIA = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_noel_allies
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_neutral_allies
+							value = THIS.id
+						}
+					}
+				}
+			}
+			#Positive ones after
+			modifier = {
+				add = 100
+				GER = {
+					exists = no
+				}
+				KIA = {
+					NOT = {
+						is_in_array = {
+							array = global.gnw_noel_allies
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_neutral_allies
+							value = THIS.id
+						}
+					}
+				}
+			}
+			modifier = {
+				add = 50
+				FLA = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 25
+				GER = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
 		}
 	}
 	NOE_negotiate_with_FLA = {
@@ -638,7 +1098,8 @@ CAT_great_northern_war = {
 				has_country_flag = GNW_diplomatic_cooldown
 			}
 		}
-		fire_only_once = yes
+		#1st time for the diplomatic solution, 2nd for joining the war. The former option will be removed if done already and Flare doesn't join in an alliance
+		fire_only_once = no
 		visible = {
 			tag = NOE
 			FLA = {
@@ -653,8 +1114,100 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#The diplomatic solution is LOW TENSION material. Noel will rush this.
 		ai_will_do = {
-			factor = 5
+			base = 5
+			#Negative ones first
+			modifier = {
+				add = -5
+				CZE = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_neutral
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_noel_allies
+							value = THIS.id
+						}
+					}
+				}
+			}
+			modifier = {
+				add = -10
+				GER = {
+					exists = yes
+					is_in_array = {
+						array = global.gnw_neutral
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = -20
+				KIA = {
+					is_in_array = {
+						array = global.gnw_neutral
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = -20
+				RUS = {
+					OR = {
+						is_in_array = {
+							array = global.gnw_neutral
+							value = THIS.id
+						}
+						is_in_array = {
+							array = global.gnw_noel_allies
+							value = THIS.id
+						}
+					}
+				}
+			}
+			#Positive ones after
+			modifier = {
+				add = 75
+				GNW_low_tension = yes
+			}
+			modifier = {
+				add = 50
+				RUS = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 35
+				KIA = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 10
+				GER = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
+			modifier = {
+				add = 10
+				CZE = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
+			}
 		}
 	}
 	NOE_negotiate_with_SUB = {
@@ -683,8 +1236,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#No.
 		ai_will_do = {
-			factor = 5
+			base = 0
 		}
 	}
 	#
@@ -712,7 +1266,7 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 3.5
 		}
 	}
 	KRO_a_return_to_poland = {
@@ -734,7 +1288,7 @@ CAT_great_northern_war = {
 			country_event = KRO_gnw.1
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 	KRO_open_negotiations_with_FBK = {
@@ -765,7 +1319,11 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
+			modifier = {
+				add = 10
+				GNW_low_tension = yes
+			}
 		}
 	}
 	KRO_open_negotiations_with_LHS = {
@@ -796,7 +1354,11 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
+			modifier = {
+				add = 10
+				GNW_low_tension = yes
+			}
 		}
 	}
 	KRO_open_negotiations_with_NOE = {
@@ -827,7 +1389,11 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 1
+			modifier = {
+				add = 10
+				GNW_high_tension = yes
+			}
 		}
 	}
 	KRO_moving_back_to_poland_noel = {
@@ -934,7 +1500,7 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 1
 		}
 	}
 	KIA_rile_up_german_nationalists = {
@@ -954,28 +1520,31 @@ CAT_great_northern_war = {
 			#Flavour event to enter the scene
 			country_event = KIA_gnw.1
 		}
-	}
-	KIA_pact_with_the_devil = {
-		#i.e germany
-		available = {
-			tag = KIA
-			has_political_power > 29
-		}
-		fire_only_once = yes
-		visible = {
-			tag = KIA
-			NOT = {
-				GNW_already_aligned = yes
-			}
-		}
-		cost = 30
-		complete_effect = {
-			#This gives Germany the option to unite with Kiara in one big fuck you to Noel and the LHS. This is 1/3 times likely to go through I think
-			GER = {
-				country_event = GER_gnw.4
-			}
+		ai_will_do = {
+			base = 10
 		}
 	}
+	# KIA_pact_with_the_devil = {
+	# 	#i.e germany
+	# 	available = {
+	# 		tag = KIA
+	# 		has_political_power > 29
+	# 	}
+	# 	fire_only_once = yes
+	# 	visible = {
+	# 		tag = KIA
+	# 		NOT = {
+	# 			GNW_already_aligned = yes
+	# 		}
+	# 	}
+	# 	cost = 30
+	# 	complete_effect = {
+	# 		#This gives Germany the option to unite with Kiara in one big fuck you to Noel and the LHS. This is 1/3 times likely to go through I think
+	# 		GER = {
+	# 			country_event = GER_gnw.4
+	# 		}
+	# 	}
+	# }
 	KIA_negotiate_with_lhs = {
 		available = {
 			tag = KIA
@@ -1001,6 +1570,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 5
+		}
 	}
 	KIA_bring_germany_into_the_fold = {
 		available = {
@@ -1022,12 +1594,20 @@ CAT_great_northern_war = {
 					compare = equals
 				}
 			}
+			NOT = {
+				GER = {
+					exists = no
+				}
+			}
 		}
 		cost = 30
 		complete_effect = {
 			GER = {
 				country_event = GER_gnw.6
 			}
+		}
+		ai_will_do = {
+			base = 10
 		}
 	}
 	KIA_negotiate_with_noe = {
@@ -1057,6 +1637,13 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				add = 2
+				GNW_low_tension = yes
+			}
+		}
 	}
 	KIA_send_arms_to_FBK = {
 		available = {
@@ -1081,6 +1668,9 @@ CAT_great_northern_war = {
 			FBK = {
 				country_event = FBK_gnw.7
 			}
+		}
+		ai_will_do = {
+			base = 5
 		}
 	}
 	KIA_cross_the_seelow_heights = {
@@ -1108,6 +1698,9 @@ CAT_great_northern_war = {
 				type = annex_everything
 			}
 		}
+		ai_will_do = {
+			base = 5.5
+		}
 	}
 	#
 	#  
@@ -1131,7 +1724,7 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 1
 		}
 	}
 	GER_negotiations_with_LHS = {
@@ -1164,6 +1757,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 5
+		}
 	}
 	GER_extract_concession_from_noel = {
 		available = {
@@ -1192,6 +1788,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 	GER_invade_noel = {
 		available = {
@@ -1217,6 +1816,9 @@ CAT_great_northern_war = {
 				target = NOE
 				type = take_core_state
 			}
+		}
+		ai_will_do = {
+			base = 5
 		}
 	}
 	#     
@@ -1244,7 +1846,7 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 1
 		}
 	}
 	CZE_negotiate_with_LHS = {
@@ -1277,6 +1879,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 2
+		}
 	}
 	CZE_negotiate_with_noel = {
 		available = {
@@ -1304,37 +1909,43 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
-	}
-	CZE_retake_zaolzie = {
-		available = {
-			#Available if the Great Northern War started
-			tag = CZE
-			has_political_power > 25
-		}
-		fire_only_once = yes
-		visible = {
-			tag = CZE
-			NOE = {
-				has_war_with = FBK
-			}
-			NOT = {
-				check_variable = {
-					var = FBK.gnw_czechoslovakia_concessions
-					value = 2
-					compare = equals
-				}
-			}
-		}
-		cost = 25
-		days_remove = 7
-		complete_effect = {
-			country_event = CZE_gnw.1
-			declare_war_on = {
-				target = NOE
-				type = take_core_state
-			}
+		ai_will_do = {
+			base = 2.5
 		}
 	}
+	# CZE_retake_zaolzie = {
+	# 	available = {
+	# 		#Available if the Great Northern War started
+	# 		tag = CZE
+	# 		has_political_power > 25
+	# 	}
+	# 	fire_only_once = yes
+	# 	visible = {
+	# 		tag = CZE
+	# 		NOE = {
+	# 			has_war_with = FBK
+	# 		}
+	# 		NOT = {
+	# 			check_variable = {
+	# 				var = FBK.gnw_czechoslovakia_concessions
+	# 				value = 2
+	# 				compare = equals
+	# 			}
+	# 		}
+	# 	}
+	# 	cost = 25
+	# 	days_remove = 7
+	# 	complete_effect = {
+	# 		country_event = CZE_gnw.1
+	# 		declare_war_on = {
+	# 			target = NOE
+	# 			type = take_core_state
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 0.5
+	# 	}
+	# }
 	#
 	#
 	#	FLA
@@ -1358,7 +1969,7 @@ CAT_great_northern_war = {
 			GNW_move_to_neutrality = yes
 		}
 		ai_will_do = {
-			factor = 5
+			base = 1
 		}
 	}
 	FLA_approach_fubuki_for_settlement = {
@@ -1389,6 +2000,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 7.5
+		}
 	}
 	FLA_approach_noel_for_settlement = {
 		available = {
@@ -1418,30 +2032,33 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
-	}
-	FLA_the_time_is_right = {
-		available = {
-			#Available if the Great Northern War started
-			tag = FLA
-			has_political_power > 25
-		}
-		fire_only_once = yes
-		visible = {
-			tag = FLA
-			NOE = {
-				has_war_with = FBK
-			}
-		}
-		cost = 25
-		days_remove = 7
-		complete_effect = {
-			country_event = FLA_gnw.20
-			declare_war_on = {
-				target = NOE
-				type = take_core_state
-			}
+		ai_will_do = {
+			base = 7.5
 		}
 	}
+	# FLA_the_time_is_right = {
+	# 	available = {
+	# 		#Available if the Great Northern War started
+	# 		tag = FLA
+	# 		has_political_power > 25
+	# 	}
+	# 	fire_only_once = yes
+	# 	visible = {
+	# 		tag = FLA
+	# 		NOE = {
+	# 			has_war_with = FBK
+	# 		}
+	# 	}
+	# 	cost = 25
+	# 	days_remove = 7
+	# 	complete_effect = {
+	# 		country_event = FLA_gnw.20
+	# 		declare_war_on = {
+	# 			target = NOE
+	# 			type = take_core_state
+	# 		}
+	# 	}
+	# }
 	#
 	#
 	#	SUB
@@ -1465,7 +2082,7 @@ CAT_great_northern_war = {
 			GNW_move_to_neutrality = yes
 		}
 		ai_will_do = {
-			factor = 5
+			base = 1
 		}
 	}
 	SUB_push_into_the_spotlight = {
@@ -1490,6 +2107,9 @@ CAT_great_northern_war = {
 		complete_effect = {
 			#flavour event
 			country_event = SUB_gnw.1
+		}
+		ai_will_do = {
+			base = 7.5
 		}
 	}
 	SUB_send_demands_to_fubuki = {
@@ -1518,6 +2138,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 5.5
+		}
 	}
 	SUB_allow_dutch_legion = {
 		available = {
@@ -1538,6 +2161,9 @@ CAT_great_northern_war = {
 		cost = 35
 		complete_effect = {
 			add_ideas = SUB_dutch_legion
+		}
+		ai_will_do = {
+			base = 10
 		}
 	}
 	#
@@ -1565,7 +2191,7 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 1
 		}
 	}
 	RUS_call_the_duma = {
@@ -1586,6 +2212,9 @@ CAT_great_northern_war = {
 		cost = 35
 		complete_effect = {
 			country_event = RUS_gnw.1
+		}
+		ai_will_do = {
+			base = 7.5
 		}
 	}
 	RUS_demand_arkhangelsk_northern_russia_neutrality = {
@@ -1616,6 +2245,18 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		#WAIT FOR HIGH TENSION
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 5
+				GNW_high_tension = yes
+			}
+			modifier = {
+				add = 2.5
+				GNW_medium_tension = yes
+			}
+		}
 	}
 	RUS_demand_all_russian_land_returned = {
 		available = {
@@ -1643,6 +2284,18 @@ CAT_great_northern_war = {
 			set_country_flag = {
 				flag = GNW_negotiation_cooldown
 				days = 30
+			}
+		}
+		#WAIT FOR HIGH TENSION
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 5
+				GNW_high_tension = yes
+			}
+			modifier = {
+				add = 2.5
+				GNW_medium_tension = yes
 			}
 		}
 	}
@@ -1675,6 +2328,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 2
+		}
 	}
 	RUS_secret_negotiations_with_noel = {
 		available = {
@@ -1704,6 +2360,9 @@ CAT_great_northern_war = {
 				days = 30
 			}
 		}
+		ai_will_do = {
+			base = 2
+		}
 	}
 	#
 	#
@@ -1725,7 +2384,7 @@ CAT_great_northern_war = {
 		complete_effect = {
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 	YAG_negotiate_with_KIA = {
@@ -1742,7 +2401,7 @@ CAT_great_northern_war = {
 		complete_effect = {
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 	YAG_negotiate_with_CZE = {
@@ -1759,7 +2418,7 @@ CAT_great_northern_war = {
 		complete_effect = {
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 	YAG_negotiate_with_FLA = {
@@ -1776,7 +2435,7 @@ CAT_great_northern_war = {
 		complete_effect = {
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 	YAG_negotiate_with_SUB = {
@@ -1796,7 +2455,7 @@ CAT_great_northern_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 	YAG_negotiate_with_RUS = {
@@ -1813,7 +2472,7 @@ CAT_great_northern_war = {
 		complete_effect = {
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 }
@@ -1842,7 +2501,7 @@ CAT_great_northern_war_during_war = {
 			set_country_flag = GNW_late_fubuki_ally
 		}
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 	}
 	GNW_send_guns_to_fubuki = {
@@ -1878,7 +2537,7 @@ CAT_great_northern_war_during_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 2
+			base = 2
 		}
 	}
 	GNW_generic_volunteers_enable = {
@@ -1923,7 +2582,7 @@ CAT_great_northern_war_during_war = {
 			set_country_flag = GNW_late_noel_ally
 		}
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 	}
 	GNW_send_guns_to_noel = {
@@ -1959,7 +2618,7 @@ CAT_great_northern_war_during_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 2
+			base = 2
 		}
 	}
 	#
@@ -1997,7 +2656,7 @@ CAT_great_northern_war_during_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 	#
@@ -2035,7 +2694,7 @@ CAT_great_northern_war_during_war = {
 			}
 		}
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 }

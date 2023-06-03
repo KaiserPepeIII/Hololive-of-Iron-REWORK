@@ -14,4 +14,32 @@ GNW_already_aligned = {
 		}
 	}
 }
- 
+
+GNW_high_tension = {
+	check_variable = {
+		var = global.great_northern_war_tension
+		value = 70
+		compare = greater_than
+	}
+}
+
+GNW_medium_tension = {
+	check_variable = {
+		var = global.great_northern_war_tension
+		value = 70
+		compare = less_than_or_equals
+	}
+	check_variable = {
+		var = global.great_northern_war_tension
+		value = 40
+		compare = greater_than
+	}
+}
+
+GNW_low_tension = {
+	check_variable = {
+		var = global.great_northern_war_tension
+		value = 40
+		compare = less_than_or_equals
+	}
+}

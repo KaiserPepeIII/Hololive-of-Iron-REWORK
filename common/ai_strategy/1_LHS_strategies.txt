@@ -29,7 +29,7 @@ LHS_yagooist_way_of_war_low_industry = {
 	}
 	ai_strategy = {
 		type = equipment_production_factor
-		id = motorized_equipment
+		id = motorized_equipment_1
 		value = 10
 	}
 }
@@ -70,13 +70,23 @@ LHS_yagooist_way_of_war_high_industry = {
 	}
 	ai_strategy = {
 		type = equipment_production_factor
-		id = motorized_equipment
+		id = motorized_equipment_1
 		value = 15
+	}
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = 10
 	}
 	ai_strategy = {
 		type = equipment_production_factor
 		id = mechanized_equipment
 		value = 15
+	}
+	ai_strategy = {
+		type = template_prio
+		id = mechanised_infantry
+		value = 10
 	}
 }
 
@@ -100,7 +110,7 @@ LHS_dont_guarantee_antis = {
 		NOT = {
 			is_in_array = {
 				array = global.lhs_member_flag
-				value = THIS.id
+				value = ROOT.id
 			}
 			is_lhs_ideology = yes
 		}
