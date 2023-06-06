@@ -1,0 +1,81 @@
+#These events are shown at the beginning for each country in the GNW system 
+#with the intent of informing the players of the context and the paths 
+#that their country has.
+#
+add_namespace = gnw_info
+#NOE - Prepare for another war
+country_event = {
+	id = gnw_info.1
+	title = gnw_info.1.t
+	desc = gnw_info.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	option = {
+		name = gnw_info.1.a
+		add_political_power = 25
+		army_experience = 5
+		navy_experience = 5
+		air_experience = 5
+	}
+}
+
+#NOE - Examine our weaponry
+country_event = {
+	id = gnw_info.2
+	title = gnw_info.2.t
+	desc = gnw_info.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	option = {
+		name = gnw_info.2.a
+		add_tech_bonus = {
+			name = GNW_NOE_examine_our_weaponry_tech
+			category = infantry_weapons
+			bonus = 0.8
+			uses = 2
+		}
+	}
+}
+
+#NOE - Examine our airforce
+country_event = {
+	id = gnw_info.3
+	title = gnw_info.3.t
+	desc = gnw_info.3.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	option = {
+		name = gnw_info.3.a
+		add_tech_bonus = {
+			name = GNW_NOE_examine_our_airforce_tech
+			category = air_equipment
+			bonus = 0.8
+			uses = 2
+		}
+		add_doctrine_cost_reduction = {
+			cost_reduction = 0.5
+			name = GNW_NOE_examine_our_airforce_tech
+			category = air_doctrine
+			uses = 2
+		}
+	}
+}
+
+#NOE - Examine our navy
+country_event = {
+	id = gnw_info.4
+	title = gnw_info.4.t
+	desc = gnw_info.4.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	option = {
+		name = gnw_info.4.a
+		navy_experience = 25
+		add_doctrine_cost_reduction = {
+			cost_reduction = 0.8
+			name = GNW_NOE_examine_our_navy_tech
+			category = naval_doctrine
+			uses = 2
+		}
+	}
+}

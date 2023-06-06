@@ -72,3 +72,128 @@ country_event = {
 	}
 	#
 }
+
+#Noel wants to buy fighters
+country_event = {
+	id = rushia.4
+	title = rushia.4.t
+	desc = rushia.4.desc
+	picture = GFX_report_event_RUS_flare_accepts_neutral_constitution
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = rushia.4.a
+		NOE = {
+			country_event = NOE_gnw.50
+			set_country_flag = NOE_RUS_fighter_sale
+		}
+	}
+	#no
+	option = {
+		name = rushia.4.b
+		NOE = {
+			country_event = NOE_gnw.47
+		}
+	}
+}
+
+#Noel wants to buy cas
+country_event = {
+	id = rushia.5
+	title = rushia.5.t
+	desc = rushia.5.desc
+	picture = GFX_report_event_RUS_flare_accepts_neutral_constitution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#uhh we dont have one but we could make one ig
+	option = {
+		name = rushia.5.a
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			create_equipment_variant = {
+				name = "Polikarpov R-1"				#
+				type = small_plane_cas_airframe_0
+				modules = {
+					fixed_main_weapon_slot = small_bomb_bay
+					engine_type_slot = engine_1_1x
+					special_type_slot_1 = empty
+				}
+			}
+			add_equipment_to_stockpile = {
+				version_name = "Polikarpov R-1"
+				type = small_plane_cas_airframe_0
+				amount = 50
+				producer = RUS
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_1
+					amount = 150
+				}
+			}
+		}
+		NOE = {
+			country_event = NOE_gnw.50
+			set_country_flag = NOE_RUS_cas_sale
+		}
+	}
+	#no
+	option = {
+		name = rushia.5.b
+		NOE = {
+			country_event = NOE_gnw.47
+		}
+	}
+}
+
+#Noel wants to buy naval bombers
+country_event = {
+	id = rushia.6
+	title = rushia.6.t
+	desc = rushia.6.desc
+	picture = GFX_report_event_RUS_flare_accepts_neutral_constitution
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = rushia.6.a
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			create_equipment_variant = {
+				name = "Tupolev Tu-3"				#
+				type = small_plane_naval_bomber_airframe_0
+				modules = {
+					fixed_main_weapon_slot = small_bomb_bay
+					engine_type_slot = engine_1_1x
+					special_type_slot_1 = empty
+				}
+			}
+			add_equipment_to_stockpile = {
+				version_name = "Tupolev Tu-3"
+				type = small_plane_naval_bomber_airframe_0
+				amount = 50
+				producer = RUS
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = nav_bomber_equipment_1
+					amount = 150
+				}
+			}
+		}
+		NOE = {
+			country_event = NOE_gnw.50
+			set_country_flag = NOE_RUS_naval_bomber_sale
+		}
+	}
+	#no
+	option = {
+		name = rushia.6.b
+		NOE = {
+			country_event = NOE_gnw.47
+		}
+	}
+}

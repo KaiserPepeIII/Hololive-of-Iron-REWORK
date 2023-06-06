@@ -1802,9 +1802,14 @@ country_event = {
 		}
 		NOE = {
 			dismantle_faction = yes
+			country_event = {
+				id = NOE_post_gnw.1
+				days = 30
+			}
 		}
 		set_country_flag = GNW_FBK_capitulated
 		set_global_flag = GNW_peace_treaty
+		news_event = gnw_news_events.5
 	}
 	#We refuse even despite our situation
 	option = {
@@ -1845,9 +1850,14 @@ country_event = {
 		}
 		NOE = {
 			dismantle_faction = yes
+			country_event = {
+				id = NOE_post_gnw.1
+				days = 30
+			}
 		}
 		set_country_flag = GNW_FBK_capitulated
 		set_global_flag = GNW_peace_treaty
+		news_event = gnw_news_events.5
 	}
 	#We refuse even despite our situation
 	option = {
@@ -1888,9 +1898,14 @@ country_event = {
 		}
 		NOE = {
 			dismantle_faction = yes
+			country_event = {
+				id = NOE_post_gnw.1
+				days = 30
+			}
 		}
 		set_country_flag = GNW_FBK_capitulated
 		set_global_flag = GNW_peace_treaty
+		news_event = gnw_news_events.5
 	}
 	#We refuse even despite our situation
 	option = {
@@ -1921,18 +1936,23 @@ country_event = {
 		GNW_fubuki_light_peace = yes
 		every_country = {
 			limit = {
-				is_in_faction_with = NOE
+				is_in_faction_with = FBK
 				NOT = {
-					tag = NOE
+					tag = FBK
 				}
 			}
 			leave_faction = yes
 		}
-		FBK = {
+		NOE = {
 			dismantle_faction = yes
+			country_event = {
+				id = NOE_post_gnw.1
+				days = 30
+			}
 		}
 		set_global_flag = GNW_peace_treaty
 		set_country_flag = GNW_FBK_capitulated
+		news_event = gnw_news_events.5
 	}
 	#We refuse even despite our situation
 	option = {
@@ -2187,6 +2207,52 @@ country_event = {
 		}
 		ai_chance = {
 			base = 2
+		}
+	}
+}
+
+#Kronii begs for ammo to be used in revolt
+country_event = {
+	id = FBK_gnw.51
+	title = FBK_gnw.51.t
+	desc = FBK_gnw.51.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#OK
+	option = {
+		name = FBK_gnw.51.a
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		KRO = {
+			country_event = KRO_gnw.17
+		}
+		hidden_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			}
+		}
+	}
+	#We have nothing to spare
+	option = {
+		name = FBK_gnw.51.b
+		trigger = {
+			has_equipment = {
+				infantry_equipment < 500
+			}
+		}
+		KRO = {
+			country_event = KRO_gnw.18
+		}
+	}
+	#No
+	option = {
+		name = FBK_gnw.51.c
+		KRO = {
+			country_event = KRO_gnw.19
 		}
 	}
 }
@@ -2876,6 +2942,7 @@ country_event = {
 		}
 		set_country_flag = GNW_NOE_capitulated
 		set_global_flag = GNW_peace_treaty
+		news_event = gnw_news_events.5
 	}
 	#We refuse even despite our situation
 	option = {
@@ -2919,6 +2986,7 @@ country_event = {
 		}
 		set_country_flag = GNW_NOE_capitulated
 		set_global_flag = GNW_peace_treaty
+		news_event = gnw_news_events.5
 	}
 	#We refuse even despite our situation
 	option = {
@@ -2962,6 +3030,7 @@ country_event = {
 		}
 		set_country_flag = GNW_NOE_capitulated
 		set_global_flag = GNW_peace_treaty
+		news_event = gnw_news_events.5
 	}
 	#We refuse even despite our situation
 	option = {
@@ -3005,6 +3074,7 @@ country_event = {
 		}
 		set_country_flag = GNW_NOE_capitulated
 		set_global_flag = GNW_peace_treaty
+		news_event = gnw_news_events.5
 	}
 	#We refuse even despite our situation
 	option = {
@@ -3593,6 +3663,436 @@ country_event = {
 		FLA = {
 			country_event = FLA_gnw.18
 		}
+	}
+}
+
+#Who are we buying fighters from?
+country_event = {
+	id = NOE_gnw.44
+	title = NOE_gnw.44.t
+	desc = NOE_gnw.44.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Suisei
+	option = {
+		name = NOE_gnw.44.a
+		SUI = {
+			country_event = suisei.103
+		}
+	}
+	#Pekora
+	option = {
+		name = NOE_gnw.44.b
+		PEK = {
+			country_event = pekora.7
+		}
+	}
+	#Rushia
+	option = {
+		name = NOE_gnw.44.c
+		RUS = {
+			country_event = rushia.4
+		}
+	}
+	#Domestic
+	option = {
+		name = NOE_gnw.44.d
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_0
+				version_name = "He 51B-2"
+				amount = 75
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_0
+					amount = 75
+				}
+			}
+		}
+	}
+}
+
+#Who are we buying cas from?
+country_event = {
+	id = NOE_gnw.45
+	title = NOE_gnw.45.t
+	desc = NOE_gnw.45.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Suisei
+	option = {
+		name = NOE_gnw.45.a
+		SUI = {
+			country_event = suisei.104
+		}
+	}
+	#Pekora
+	option = {
+		name = NOE_gnw.45.b
+		PEK = {
+			country_event = pekora.8
+		}
+	}
+	#Rushia
+	option = {
+		name = NOE_gnw.45.c
+		RUS = {
+			country_event = rushia.5
+		}
+	}
+	#Domestic
+	option = {
+		name = NOE_gnw.45.d
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_cas_airframe_0
+				version_name = "Hs 123C-2"
+				amount = 75
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_1
+					amount = 75
+				}
+			}
+		}
+	}
+}
+
+#Who are we buying naval bombers from?
+country_event = {
+	id = NOE_gnw.46
+	title = NOE_gnw.46.t
+	desc = NOE_gnw.46.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Suisei
+	option = {
+		name = NOE_gnw.46.a
+		SUI = {
+			country_event = suisei.105
+		}
+	}
+	#Pekora
+	option = {
+		name = NOE_gnw.46.b
+		PEK = {
+			country_event = pekora.9
+		}
+	}
+	#Rushia
+	option = {
+		name = NOE_gnw.46.c
+		RUS = {
+			country_event = rushia.6
+		}
+	}
+	#Domestic
+	option = {
+		name = NOE_gnw.46.d
+		air_experience = 15
+		navy_experience = 5
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			create_equipment_variant = {
+				name = "Fw 200"
+				type = small_plane_naval_bomber_airframe_0
+				modules = {
+					fixed_main_weapon_slot = torpedo_mounting
+					engine_type_slot = engine_1_2x
+					special_type_slot_1 = floats
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_naval_bomber_airframe_0
+				version_name = "Fw 200"
+				amount = 75
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = nav_bomber_equipment_1
+					amount = 75
+				}
+			}
+		}
+	}
+}
+
+#Country refuses to sell
+country_event = {
+	id = NOE_gnw.47
+	title = NOE_gnw.47.t
+	desc = NOE_gnw.47.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	option = {
+		name = NOE_gnw.47.a
+	}
+}
+
+#Suisei accepts sale planes
+country_event = {
+	id = NOE_gnw.48
+	title = NOE_gnw.48.t
+	desc = NOE_gnw.48.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Fighters
+	option = {
+		name = NOE_gnw.48.a
+		trigger = {
+			has_country_flag = NOE_SUI_fighter_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "D.510"
+				type = small_plane_airframe_0
+				amount = 100
+				producer = SUI
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_0
+					amount = 100
+				}
+			}
+		}
+	}
+	#CAS
+	option = {
+		name = NOE_gnw.48.b
+		trigger = {
+			has_country_flag = NOE_SUI_cas_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "Br. 19"
+				type = small_plane_cas_airframe_0
+				amount = 100
+				producer = SUI
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_1
+					amount = 100
+				}
+			}
+		}
+	}
+	#NAVAL BOMBER
+	option = {
+		name = NOE_gnw.48.c
+		trigger = {
+			has_country_flag = NOE_SUI_naval_bomber_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "Latécoère 296"
+				type = small_plane_naval_bomber_airframe_0
+				amount = 100
+				producer = SUI
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = nav_bomber_equipment_1
+					amount = 100
+				}
+			}
+		}
+	}
+}
+
+#Pekora accepts sale planes
+country_event = {
+	id = NOE_gnw.49
+	title = NOE_gnw.49.t
+	desc = NOE_gnw.49.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Fighters
+	option = {
+		name = NOE_gnw.49.a
+		trigger = {
+			has_country_flag = NOE_PEK_fighter_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "CR.32"
+				type = small_plane_airframe_0
+				amount = 100
+				producer = PEK
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_0
+					amount = 100
+				}
+			}
+		}
+	}
+	#CAS
+	option = {
+		name = NOE_gnw.49.b
+		trigger = {
+			has_country_flag = NOE_PEK_cas_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "Ca.111"
+				type = small_plane_cas_airframe_0
+				amount = 100
+				producer = PEK
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_1
+					amount = 100
+				}
+			}
+		}
+	}
+	#nav bomb
+	option = {
+		name = NOE_gnw.49.c
+		trigger = {
+			has_country_flag = NOE_PEK_naval_bomber_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "CANT Z.506"
+				type = small_plane_naval_bomber_airframe_0
+				amount = 100
+				producer = PEK
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = nav_bomber_equipment_1
+					amount = 100
+				}
+			}
+		}
+	}
+}
+
+#rushia accepts sale planes
+country_event = {
+	id = NOE_gnw.50
+	title = NOE_gnw.50.t
+	desc = NOE_gnw.50.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Fighters
+	option = {
+		name = NOE_gnw.50.a
+		trigger = {
+			has_country_flag = NOE_RUS_fighter_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "I-15"
+				type = small_plane_airframe_0
+				amount = 150
+				producer = RUS
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_0
+					amount = 150
+				}
+			}
+		}
+	}
+	#CAS
+	option = {
+		name = NOE_gnw.50.b
+		trigger = {
+			has_country_flag = NOE_RUS_cas_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "Polikarpov R-1"
+				type = small_plane_cas_airframe_0
+				amount = 150
+				producer = RUS
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_1
+					amount = 150
+				}
+			}
+		}
+	}
+	#nav
+	option = {
+		name = NOE_gnw.50.c
+		trigger = {
+			has_country_flag = NOE_RUS_naval_bomber_sale
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			add_equipment_to_stockpile = {
+				version_name = "Latécoère 296"
+				type = small_plane_naval_bomber_airframe_0
+				amount = 150
+				producer = RUS
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = nav_bomber_equipment_1
+					amount = 150
+				}
+			}
+		}
+	}
+}
+
+#Demobilization
+country_event = {
+	id = NOE_post_gnw.1
+	title = NOE_post_gnw.1.t
+	desc = NOE_post_gnw.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Wow
+	option = {
+		name = NOE_post_gnw.1.a
+		GNW_NOE_post_war_victory_setup = yes
 	}
 }
 
@@ -4794,6 +5294,50 @@ country_event = {
 	}
 }
 
+#Fubuki gives us our requested guns
+country_event = {
+	id = KRO_gnw.17
+	title = KRO_gnw.17.t
+	desc = KRO_gnw.17.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yay
+	option = {
+		name = KRO_gnw.17.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = FBK
+		}
+	}
+}
+
+#Fubuki is broke
+country_event = {
+	id = KRO_gnw.18
+	title = KRO_gnw.18.t
+	desc = KRO_gnw.18.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Bruh
+	option = {
+		name = KRO_gnw.18.a
+	}
+}
+
+#Fubuki refuses
+country_event = {
+	id = KRO_gnw.19
+	title = KRO_gnw.19.t
+	desc = KRO_gnw.19.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Bruh
+	option = {
+		name = KRO_gnw.19.a
+	}
+}
+
 #
 #	KIA
 #
@@ -5490,6 +6034,7 @@ country_event = {
 		THIS = {
 			GNW_move_to_neutrality = yes
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5509,6 +6054,7 @@ country_event = {
 			target = FBK
 			type = annex_everything
 		}
+		news_event = gnw_news_events.7
 	}
 	#It's way too soon
 	option = {
@@ -5535,6 +6081,7 @@ country_event = {
 			target = FBK
 			type = annex_everything
 		}
+		news_event = gnw_news_events.7
 	}
 	#It's not the right time...
 	option = {
@@ -5569,6 +6116,7 @@ country_event = {
 		THIS = {
 			GNW_move_to_fubuki = yes
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5617,6 +6165,7 @@ country_event = {
 			var = NOE.gnw_rushia_concessions
 			value = 2
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5648,6 +6197,7 @@ country_event = {
 			var = NOE.gnw_rushia_concessions
 			value = 3
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5667,6 +6217,7 @@ country_event = {
 			var = NOE.gnw_rushia_concessions
 			value = 4
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5686,6 +6237,7 @@ country_event = {
 			var = NOE.gnw_rushia_concessions
 			value = 1
 		}
+		news_event = gnw_news_events.7
 	}
 	#U mad bruv?
 	option = {
@@ -5756,6 +6308,7 @@ country_event = {
 			var = FBK.gnw_rushia_concessions
 			value = 2
 		}
+		news_event = gnw_news_events.7
 	}
 	#More
 	option = {
@@ -5777,6 +6330,7 @@ country_event = {
 		THIS = {
 			GNW_move_to_neutrality = yes
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5796,6 +6350,7 @@ country_event = {
 			var = FBK.gnw_rushia_concessions
 			value = 3
 		}
+		news_event = gnw_news_events.7
 	}
 	#More
 	option = {
@@ -5810,6 +6365,7 @@ country_event = {
 		THIS = {
 			GNW_move_to_neutrality = yes
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5829,6 +6385,7 @@ country_event = {
 			var = FBK.gnw_rushia_concessions
 			value = 5
 		}
+		news_event = gnw_news_events.7
 	}
 	#No
 	option = {
@@ -5836,6 +6393,7 @@ country_event = {
 		THIS = {
 			GNW_move_to_neutrality = yes
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5855,6 +6413,7 @@ country_event = {
 			var = FBK.gnw_rushia_concessions
 			value = 3
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5870,6 +6429,7 @@ country_event = {
 		THIS = {
 			GNW_move_to_neutrality = yes
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -5889,6 +6449,7 @@ country_event = {
 			var = FBK.gnw_rushia_concessions
 			value = 5
 		}
+		news_event = gnw_news_events.7
 	}
 }
 
@@ -6384,6 +6945,9 @@ country_event = {
 			var = global.great_northern_war_tension
 			value = 10
 		}
+		ai_chance = {
+			base = 2
+		}
 	}
 	#War button
 	option = {
@@ -6398,6 +6962,9 @@ country_event = {
 			set_global_flag = GNW_gnw_launched
 			GNW_set_up_gnw_scripted_effect = yes
 			news_event = gnw_news_events.4
+		}
+		ai_chance = {
+			base = 1.5
 		}
 	}
 }

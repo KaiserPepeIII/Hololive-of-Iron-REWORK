@@ -9,7 +9,6 @@ CAT_great_northern_war = {
 	GNW_tension_rise_mission = {
 		activation = {
 			NOT = {
-				has_global_flag = GNW_post_gnw_negotiations
 				has_global_flag = GNW_gnw_launched
 				FBK = {
 					has_war_with = NOE
@@ -18,7 +17,6 @@ CAT_great_northern_war = {
 		}
 		cancel_trigger = {
 			OR = {
-				has_global_flag = GNW_post_gnw_negotiations
 				has_global_flag = GNW_gnw_launched
 				FBK = {
 					has_war_with = NOE
@@ -59,12 +57,24 @@ CAT_great_northern_war = {
 				value = 75
 				compare = greater_than_or_equals
 			}
+			NOT = {
+				has_global_flag = GNW_gnw_launched
+				FBK = {
+					has_war_with = NOE
+				}
+			}
 		}
 		cancel_trigger = {
-			check_variable = {
-				var = global.great_northern_war_tension
-				value = 75
-				compare = less_than
+			OR = {
+				check_variable = {
+					var = global.great_northern_war_tension
+					value = 75
+					compare = less_than
+				}
+				has_global_flag = GNW_gnw_launched
+				FBK = {
+					has_war_with = NOE
+				}
 			}
 		}
 		visible = {
@@ -73,6 +83,12 @@ CAT_great_northern_war = {
 				var = global.great_northern_war_tension
 				value = 75
 				compare = greater_than_or_equals
+			}
+			NOT = {
+				has_global_flag = GNW_gnw_launched
+				FBK = {
+					has_war_with = NOE
+				}
 			}
 		}
 		available = {
@@ -2619,6 +2635,54 @@ CAT_great_northern_war_during_war = {
 		}
 		ai_will_do = {
 			base = 2
+		}
+	}
+	#
+	#
+	#
+	#	KRO
+	#
+	#
+	KRO_revolt_prep = {
+		activation = {
+			always = no
+		}
+		cancel_trigger = {
+			always = no
+		}
+		visible = {
+			tag = KRO
+		}
+		available = {
+			always = no
+		}
+		days_mission_timeout = 90
+		fire_only_once = yes
+		is_good = yes
+		timeout_effect = {
+			KRO_kronii_revolt = yes
+		}
+	}
+	KRO_beg_for_ammo = {
+		icon = GFX_decision_icon_default
+		available = {
+			tag = KRO
+			has_political_power > 29
+		}
+		fire_only_once = no
+		days_re_enable = 7
+		visible = {
+			tag = KRO
+			has_country_flag = KRO_preparing_for_revolt
+		}
+		cost = 30
+		complete_effect = {
+			FBK = {
+				country_event = FBK_gnw.51
+			}
+		}
+		ai_will_do = {
+			base = 5
 		}
 	}
 	#

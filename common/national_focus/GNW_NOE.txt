@@ -1,0 +1,1128 @@
+focus_tree = {
+	id = Pre_GNW_NOE
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = NOE
+		}
+	}
+	default = no
+	focus = {
+		id = GNW_NOE_prepare_for_another_war
+		icon = GFX_goal_unknown
+		cost = 5
+		x = 5
+		y = 1
+		completion_reward = {
+			country_event = gnw_info.1
+		}
+	}
+	focus = {
+		id = GNW_NOE_the_war_begins
+		icon = GFX_goal_unknown
+		cost = 5
+		x = 8
+		y = 6
+		completion_reward = {
+			army_experience = 5
+		}
+	}
+	focus = {
+		id = GNW_NOE_emergency_acts
+		icon = GFX_goal_unknown
+		cost = 5
+		x = 16
+		y = 6
+		completion_reward = {
+			set_country_flag = GNW_NOE_emergency_acts_flag
+			swap_ideas = {
+				remove_idea = partial_economic_mobilisation
+				add_idea = war_economy
+			}
+		}
+	}
+	focus = {
+		id = GNW_NOE_apply_lessons
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_prepare_for_another_war
+		}
+		completion_reward = {
+			army_experience = 25
+			add_doctrine_cost_reduction = {
+				category = land_doctrine
+				cost_reduction = 0.5
+				name = GNW_NOE_apply_lessons_tech
+			}
+		}
+		x = 2
+		y = 2
+	}
+	focus = {
+		id = GNW_NOE_ideological_zeal
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_apply_lessons
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = GNW_NOE_ideological_zeal_idea
+		}
+		x = 1
+		y = 3
+	}
+	focus = {
+		id = GNW_NOE_military_exercises
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_apply_lessons
+		}
+		completion_reward = {
+			army_experience = 15
+			add_ideas = GNW_NOE_military_exercises_idea
+		}
+		x = 3
+		y = 3
+	}
+	focus = {
+		id = GNW_NOE_know_your_enemy
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_ideological_zeal
+		}
+		prerequisite = {
+			focus = GNW_NOE_military_exercises
+		}
+		completion_reward = {
+			add_ideas = GNW_NOE_know_your_enemy_idea
+		}
+		x = 2
+		y = 4
+	}
+	focus = {
+		id = GNW_NOE_operation_alaric
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_the_war_begins
+		}
+		completion_reward = {
+			add_command_power = 35
+			add_ideas = GNW_NOE_operation_alaric_idea
+		}
+		x = 4
+		y = 7
+	}
+	focus = {
+		id = GNW_NOE_air_dominance
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_alaric
+		}
+		completion_reward = {
+			add_ideas = GNW_NOE_air_dominance_idea
+		}
+		x = 3
+		y = 8
+	}
+	focus = {
+		id = GNW_NOE_examine_our_weaponry
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_prepare_for_another_war
+		}
+		completion_reward = {
+			country_event = gnw_info.2
+		}
+		x = 8
+		y = 2
+	}
+	focus = {
+		id = GNW_NOE_repurpose_old_weaponry
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_examine_our_weaponry
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0_emergency
+				amount = 3500
+			}
+		}
+		x = 6
+		y = 3
+	}
+	focus = {
+		id = GNW_NOE_operation_aetius
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_the_war_begins
+		}
+		completion_reward = {
+			add_command_power = 35
+			add_ideas = GNW_NOE_operation_aetius_idea
+		}
+		x = 8
+		y = 7
+	}
+	focus = {
+		id = GNW_NOE_mercenaries
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_aetius
+		}
+		completion_reward = {
+			division_template = {
+				name = "Hired Guns"
+				regiments = {
+					irregular_infantry = {
+						x = 0
+						y = 0
+					}
+					irregular_infantry = {
+						x = 0
+						y = 1
+					}
+					irregular_infantry = {
+						x = 0
+						y = 2
+					}
+					irregular_infantry = {
+						x = 1
+						y = 0
+					}
+					irregular_infantry = {
+						x = 1
+						y = 1
+					}
+					irregular_infantry = {
+						x = 1
+						y = 2
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Hired Guns\" division_template = \"Hired Guns\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"Hired Guns\" division_template = \"Hired Guns\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = NOE
+				}
+			}
+		}
+		x = 7
+		y = 8
+	}
+	focus = {
+		id = GNW_NOE_mass_production
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_examine_our_weaponry
+		}
+		completion_reward = {
+			add_ideas = GNW_NOE_mass_production_idea
+		}
+		x = 8
+		y = 3
+	}
+	focus = {
+		id = GNW_NOE_expand_levees
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_mass_production
+		}
+		completion_reward = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"21st Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"22nd Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"23rd Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"24th Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"25th Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"26th Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"27th Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+			}
+		}
+		x = 5
+		y = 4
+	}
+	focus = {
+		id = GNW_NOE_arm_new_brigades
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_mass_production
+		}
+		completion_reward = {
+			division_template = {
+				name = "Landsknecht"
+				regiments = {
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					infantry = {
+						x = 1
+						y = 0
+					}
+					infantry = {
+						x = 1
+						y = 1
+					}
+					infantry = {
+						x = 2
+						y = 0
+					}
+					artillery_brigade = {
+						x = 2
+						y = 1
+					}
+					artillery_brigade = {
+						x = 2
+						y = 2
+					}
+				}
+				support = {
+					engineer = {
+						x = 0
+						y = 0
+					}
+					recon = {
+						x = 0
+						y = 1
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1st Königliche Landsknecht\" division_template = \"Landsknecht\" start_experience_factor = 0.15 start_equipment_factor = 0.75 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"2nd Königliche Landsknecht\" division_template = \"Landsknecht\" start_experience_factor = 0.15 start_equipment_factor = 0.75 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"3rd Königliche Landsknecht\" division_template = \"Landsknecht\" start_experience_factor = 0.15 start_equipment_factor = 0.75 start_manpower_factor = 1"
+					owner = NOE
+				}
+			}
+		}
+		x = 8
+		y = 4
+	}
+	focus = {
+		id = GNW_NOE_baltic_volunteers
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_aetius
+		}
+		completion_reward = {
+			division_template = {
+				name = "Baltic Liberation Army"
+				regiments = {
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					infantry = {
+						x = 1
+						y = 0
+					}
+					infantry = {
+						x = 1
+						y = 1
+					}
+					infantry = {
+						x = 2
+						y = 0
+					}
+					artillery_brigade = {
+						x = 2
+						y = 1
+					}
+				}
+				support = {
+					engineer = {
+						x = 0
+						y = 0
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1st Baltic Free Corps\" division_template = \"Baltic Liberation Army\" start_experience_factor = 0.3 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"2nd Baltic Free Corps\" division_template = \"Baltic Liberation Army\" start_experience_factor = 0.3 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"3rd Baltic Free Corps\" division_template = \"Baltic Liberation Army\" start_experience_factor = 0.3 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+			}
+		}
+		x = 9
+		y = 8
+	}
+	focus = {
+		id = GNW_NOE_examine_our_airforce
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_prepare_for_another_war
+		}
+		completion_reward = {
+			country_event = gnw_info.3
+		}
+		x = 12
+		y = 2
+	}
+	focus = {
+		id = GNW_NOE_purchase_new_fighters
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_examine_our_airforce
+		}
+		completion_reward = {
+			country_event = NOE_gnw.44
+		}
+		x = 11
+		y = 3
+	}
+	focus = {
+		id = GNW_NOE_operation_agrippa
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_the_war_begins
+		}
+		completion_reward = {
+			navy_experience = 25
+			add_command_power = 35
+			add_ideas = GNW_NOE_operation_agrippa_idea
+		}
+		x = 12
+		y = 7
+	}
+	focus = {
+		id = GNW_NOE_concentration_of_fire
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_agrippa
+		}
+		completion_reward = {
+			add_ideas = GNW_NOE_concentration_of_fire_idea
+		}
+		x = 11
+		y = 8
+	}
+	focus = {
+		id = GNW_NOE_purchase_naval_bombers
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_examine_our_airforce
+		}
+		completion_reward = {
+			country_event = NOE_gnw.46
+		}
+		x = 12
+		y = 4
+	}
+	focus = {
+		id = GNW_NOE_purchase_new_dive_bombers
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_examine_our_airforce
+		}
+		completion_reward = {
+			country_event = NOE_gnw.45
+		}
+		x = 13
+		y = 3
+	}
+	focus = {
+		id = GNW_NOE_convoy_raiding
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_agrippa
+		}
+		completion_reward = {
+			add_ideas = GNW_NOE_convoy_raiding_idea
+		}
+		x = 13
+		y = 8
+	}
+	focus = {
+		id = GNW_NOE_seize_noble_industry
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_emergency_acts
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = -0.05
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 3
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 3
+			}
+		}
+		x = 15
+		y = 7
+	}
+	focus = {
+		id = GNW_NOE_more_industry_seized
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_seize_noble_industry
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = -0.05
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 3
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 3
+			}
+		}
+		x = 15
+		y = 8
+	}
+	focus = {
+		id = GNW_NOE_examine_our_navy
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_prepare_for_another_war
+		}
+		completion_reward = {
+			country_event = gnw_info.4
+		}
+		x = 16
+		y = 2
+	}
+	focus = {
+		id = GNW_NOE_reservice_old_submarines
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_examine_our_navy
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type II Class"
+						type = ship_hull_submarine_1
+					}
+					progress = 0.95
+				}
+				else = {
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+					add_equipment_production = {
+						equipment = {
+							type = submarine_1
+						}
+						progress = 0.95
+					}
+				}
+			}
+		}
+		x = 16
+		y = 3
+	}
+	focus = {
+		id = GNW_NOE_secure_fuel
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_reservice_old_submarines
+		}
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = fuel_silo
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = fuel_silo
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = fuel_silo
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+		}
+		x = 16
+		y = 4
+	}
+	focus = {
+		id = GNW_NOE_call_up_additional_levees
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_emergency_acts
+		}
+		completion_reward = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"28th Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"29th Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"30th Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"31st Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"32nd Polnischtruppe Bauern-Heerbann Grenadiers\" division_template = \"Bauern-Heerbann Grenadiers\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+			}
+		}
+		x = 17
+		y = 7
+	}
+	focus = {
+		id = GNW_NOE_repurpose_civilian_planes
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_call_up_additional_levees
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				version_name = "He 51B-2"
+				type = small_plane_airframe_0
+				amount = 50
+				producer = NOE
+			}
+		}
+		x = 17
+		y = 8
+	}
+	focus = {
+		id = GNW_NOE_reservice_old_surface_ships
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_examine_our_navy
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Deutschland Class"
+						type = ship_hull_pre_dreadnought
+					}
+					progress = 0.9
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Bremse Class"
+						type = ship_hull_cruiser_1
+					}
+					progress = 0.9
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Bremse Class"
+						type = ship_hull_cruiser_1
+					}
+					progress = 0.9
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Bremse Class"
+						type = ship_hull_cruiser_1
+					}
+					progress = 0.9
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type 24 Class"
+						type = ship_hull_light_1
+					}
+					progress = 0.9
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type 24 Class"
+						type = ship_hull_light_1
+					}
+					progress = 0.9
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type 24 Class"
+						type = ship_hull_light_1
+					}
+					progress = 0.9
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type 24 Class"
+						type = ship_hull_light_1
+					}
+					progress = 0.9
+				}
+				add_equipment_production = {
+					equipment = {
+						version_name = "Type 24 Class"
+						type = ship_hull_light_1
+					}
+					progress = 0.9
+				}
+				else = {
+					add_equipment_production = {
+						equipment = {
+							type = battleship_1
+						}
+						progress = 0.9
+					}
+					add_equipment_production = {
+						equipment = {
+							type = heavy_cruiser_1
+						}
+						progress = 0.9
+					}
+					add_equipment_production = {
+						equipment = {
+							type = heavy_cruiser_1
+						}
+						progress = 0.9
+					}
+					add_equipment_production = {
+						equipment = {
+							type = heavy_cruiser_1
+						}
+						progress = 0.9
+					}
+					add_equipment_production = {
+						equipment = {
+							type = destroyer_1
+						}
+						progress = 0.9
+					}
+					add_equipment_production = {
+						equipment = {
+							type = destroyer_1
+						}
+						progress = 0.9
+					}
+					add_equipment_production = {
+						equipment = {
+							type = destroyer_1
+						}
+						progress = 0.9
+					}
+					add_equipment_production = {
+						equipment = {
+							type = destroyer_1
+						}
+						progress = 0.9
+					}
+					add_equipment_production = {
+						equipment = {
+							type = destroyer_1
+						}
+						progress = 0.9
+					}
+				}
+			}
+		}
+		x = 18
+		y = 3
+	}
+	focus = {
+		id = GNW_NOE_adam_and_germaniawerft
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_reservice_old_submarines
+		}
+		completion_reward = {
+			activate_advisor = NOE_hans_adam
+			add_ideas = NOE_germaniawerft
+		}
+		x = 19
+		y = 4
+	}
+	focus = {
+		id = GNW_NOE_total_war
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_more_industry_seized
+		}
+		prerequisite = {
+			focus = GNW_NOE_repurpose_civilian_planes
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = war_economy
+				add_idea = tot_economic_mobilisation
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 4
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 4
+			}
+			add_ideas = GNW_NOE_total_war_idea
+		}
+		x = 16
+		y = 9
+	}
+	focus = {
+		id = GNW_NOE_marine_units
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_agrippa
+		}
+		completion_reward = {
+			division_template = {
+				name = "Marines"
+				regiments = {
+					marine = {
+						x = 0
+						y = 0
+					}
+					marine = {
+						x = 0
+						y = 1
+					}
+					marine = {
+						x = 0
+						y = 2
+					}
+					marine = {
+						x = 1
+						y = 0
+					}
+					marine = {
+						x = 1
+						y = 1
+					}
+					marine = {
+						x = 1
+						y = 2
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1st Marines\" division_template = \"Baltic Liberation Army\" start_experience_factor = 0.5 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"2nd Marines\" division_template = \"Baltic Liberation Army\" start_experience_factor = 0.5 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+			}
+		}
+		x = 12
+		y = 9
+	}
+	focus = {
+		id = GNW_NOE_penal_units
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_aetius
+		}
+		completion_reward = {
+			add_ideas = GNW_NOE_penal_units_idea
+		}
+		x = 8
+		y = 9
+	}
+	focus = {
+		id = GNW_NOE_tank_breakthrough
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_alaric
+		}
+		completion_reward = {
+			add_ideas = GNW_NOE_tank_breakthrough_idea
+		}
+		x = 5
+		y = 8
+	}
+	focus = {
+		id = GNW_NOE_artillery_support
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_NOE_operation_alaric
+		}
+		completion_reward = {
+			add_ideas = GNW_NOE_artillery_support_idea
+		}
+		x = 4
+		y = 9
+	}
+}

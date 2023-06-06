@@ -74,12 +74,114 @@ GNW_move_to_noel = {
 	}
 }
 
+KRO_kronii_revolt = {
+	KRO = {
+		transfer_state = 10
+		transfer_state = 90
+		transfer_state = 88
+		transfer_state = 92
+		teleport_armies = {
+			limit = {
+				always = yes
+			}
+			to_state = 10
+		}
+		division_template = {
+			name = "Polish Liberation Army"
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 0
+					y = 1
+				}
+				militia = {
+					x = 0
+					y = 2
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 1
+				}
+				militia = {
+					x = 1
+					y = 2
+				}
+				militia = {
+					x = 2
+					y = 0
+				}
+				militia = {
+					x = 2
+					y = 1
+				}
+				militia = {
+					x = 2
+					y = 2
+				}
+			}
+		}
+	}
+	10 = {
+		create_unit = {
+			division = "name = \"1st Polish Free Corps\" division_template = \"Polish Liberation Army\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+			owner = KRO
+		}
+		create_unit = {
+			division = "name = \"2nd Polish Free Corps\" division_template = \"Polish Liberation Army\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+			owner = KRO
+		}
+		create_unit = {
+			division = "name = \"3rd Polish Free Corps\" division_template = \"Polish Liberation Army\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+			owner = KRO
+		}
+		create_unit = {
+			division = "name = \"4th Polish Free Corps\" division_template = \"Polish Liberation Army\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+			owner = KRO
+		}
+		create_unit = {
+			division = "name = \"5th Polish Free Corps\" division_template = \"Polish Liberation Army\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+			owner = KRO
+		}
+		create_unit = {
+			division = "name = \"6th Polish Free Corps\" division_template = \"Polish Liberation Army\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+			owner = KRO
+		}
+		create_unit = {
+			division = "name = \"7th Polish Free Corps\" division_template = \"Polish Liberation Army\" start_experience_factor = 0.1 start_equipment_factor = 0.8 start_manpower_factor = 1"
+			owner = KRO
+		}
+	}
+}
+
 GNW_FBK_crushed_completely = {
 	FBK = {
 		set_politics = {
 			ruling_party = mixed_ideology_democracy
 		}
 		add_ideas = FBK_treaty_of_konigsberg
+		diplomatic_relation = {
+			country = WFA
+			relation = puppet
+			active = no
+		}
+		diplomatic_relation = {
+			country = KRO
+			relation = puppet
+			active = no
+		}
+	}
+	WFA = {
+		leave_faction = yes
+	}
+	KRO = {
+		leave_faction = yes
 	}
 	every_state = {
 		limit = {
@@ -116,6 +218,11 @@ GNW_FBK_crushed_completely = {
 		release = SWE
 		release = DEN
 	}
+	set_global_flag = GNW_conflict_resolved
+	NOE = {
+		load_focus_tree = NOE
+		mark_focus_tree_layout_dirty = yes
+	}
 }
 
 GNW_FBK_keeps_sweden_finland = {
@@ -124,6 +231,22 @@ GNW_FBK_keeps_sweden_finland = {
 			ruling_party = mixed_ideology_democracy
 		}
 		add_ideas = FBK_treaty_of_konigsberg
+		diplomatic_relation = {
+			country = WFA
+			relation = puppet
+			active = no
+		}
+		diplomatic_relation = {
+			country = KRO
+			relation = puppet
+			active = no
+		}
+	}
+	WFA = {
+		leave_faction = yes
+	}
+	KRO = {
+		leave_faction = yes
 	}
 	every_state = {
 		limit = {
@@ -158,6 +281,11 @@ GNW_FBK_keeps_sweden_finland = {
 	FBK = {
 		release = NOV
 	}
+	set_global_flag = GNW_conflict_resolved
+	NOE = {
+		load_focus_tree = NOE
+		mark_focus_tree_layout_dirty = yes
+	}
 }
 
 GNW_fubuki_light_peace = {
@@ -174,6 +302,11 @@ GNW_fubuki_light_peace = {
 		}
 		transfer_state_to = NOE
 	}
+	set_global_flag = GNW_conflict_resolved
+	NOE = {
+		load_focus_tree = NOE
+		mark_focus_tree_layout_dirty = yes
+	}
 }
 
 GNW_NOE_crushed_completely = {
@@ -181,7 +314,7 @@ GNW_NOE_crushed_completely = {
 		set_politics = {
 			ruling_party = pro_yagoo_kleptocracy
 		}
-		add_ideas = NOE_treaty_of_gotland_crushed_completely
+		add_ideas = NOE_treaty_of_gotland
 		set_stability = 0
 	}
 	KRO = {
@@ -225,6 +358,7 @@ GNW_NOE_crushed_completely = {
 			}
 		}
 	}
+	set_global_flag = GNW_conflict_resolved
 }
 
 GNW_NOE_autonomous_baltics = {
@@ -232,7 +366,7 @@ GNW_NOE_autonomous_baltics = {
 		set_politics = {
 			ruling_party = pro_yagoo_kleptocracy
 		}
-		add_ideas = NOE_treaty_of_gotland_autonomous_baltics
+		add_ideas = NOE_treaty_of_gotland
 	}
 	set_stability = 0
 	KRO = {
@@ -300,6 +434,7 @@ GNW_NOE_autonomous_baltics = {
 			}
 		}
 	}
+	set_global_flag = GNW_conflict_resolved
 }
 
 GNW_NOE_independent_baltics = {
@@ -307,7 +442,7 @@ GNW_NOE_independent_baltics = {
 		set_politics = {
 			ruling_party = pro_yagoo_kleptocracy
 		}
-		add_ideas = NOE_treaty_of_gotland_autonomous_baltics
+		add_ideas = NOE_treaty_of_gotland
 	}
 	set_stability = 0
 	KRO = {
@@ -356,6 +491,7 @@ GNW_NOE_independent_baltics = {
 		release = LIT
 		release = LAT
 	}
+	set_global_flag = GNW_conflict_resolved
 }
 
 GNW_NOE_restore_kronii = {
@@ -363,7 +499,7 @@ GNW_NOE_restore_kronii = {
 		set_politics = {
 			ruling_party = pro_yagoo_kleptocracy
 		}
-		add_ideas = NOE_treaty_of_gotland_restore_kronii
+		add_ideas = NOE_treaty_of_gotland
 	}
 	set_stability = 0
 	KRO = {
@@ -424,39 +560,40 @@ GNW_NOE_restore_kronii = {
 		transfer_state = 965
 		transfer_state = 1000
 	}
+	set_global_flag = GNW_conflict_resolved
 }
 
 GNW_set_up_gnw_scripted_effect = {
 	#Subaru
-	if = {
-		limit = {
-			check_variable = {
-				var = FBK.gnw_subaru_concessions
-				value = 1
-				compare = greater_than_or_equals
-			}
-		}
-		SUB = {
-			leave_faction = yes
-		}
-		OSK = {
-			leave_faction = yes
-		}
-		FBK = {
-			add_to_faction = SUB
-			add_to_faction = OSK
-		}
-		SUB = {
-			declare_war_on = {
-				target = NOE
-			}
-		}
-		OSK = {
-			declare_war_on = {
-				target = NOE
-			}
-		}
-	}
+	# if = {
+	# 	limit = {
+	# 		check_variable = {
+	# 			var = FBK.gnw_subaru_concessions
+	# 			value = 1
+	# 			compare = greater_than_or_equals
+	# 		}
+	# 	}
+	# 	SUB = {
+	# 		leave_faction = yes
+	# 	}
+	# 	OSK = {
+	# 		leave_faction = yes
+	# 	}
+	# 	FBK = {
+	# 		add_to_faction = SUB
+	# 		add_to_faction = OSK
+	# 	}
+	# 	SUB = {
+	# 		declare_war_on = {
+	# 			target = NOE
+	# 		}
+	# 	}
+	# 	OSK = {
+	# 		declare_war_on = {
+	# 			target = NOE
+	# 		}
+	# 	}
+	# }
 	#Kronii
 	if = {
 		limit = {
@@ -480,6 +617,12 @@ GNW_set_up_gnw_scripted_effect = {
 				}
 			}
 			activate_mission = KRO_revolt_prep
+			KRO = {
+				set_country_flag = {
+					flag = KRO_preparing_for_revolt
+					days = 90
+				}
+			}
 		}
 		else_if = {
 			limit = {
@@ -697,6 +840,56 @@ GNW_set_up_gnw_scripted_effect = {
 			declare_war_on = {
 				target = NOE
 			}
+		}
+	}
+}
+
+GNW_NOE_post_war_victory_setup = {
+	add_ideas = {
+		novo_feudum
+		uradel_faction
+		#great_depression_noel_1
+		breadbasket_of_europe
+		robber_barons
+		NOE_peasant_levees
+	}
+	set_variable = {
+		var = NOE.uradel_faction
+		value = 5
+	}
+	clamp_variable = {
+		var = NOE.uradel_faction
+		min = 0
+		max = 10
+	}
+	NOE = {
+		#GREAT DEPRESSION DYNAMIC MODIFIER
+		set_variable = {
+			var = NOE.great_depression_modifier_a
+			value = 0.32
+		}
+		set_variable = {
+			var = NOE.great_depression_modifier_b
+			value = -0.44
+		}
+		set_variable = {
+			var = NOE.great_depression_modifier_c
+			value = -0.58
+		}
+		set_variable = {
+			var = NOE.great_depression_modifier_d
+			value = -0.2
+		}
+		set_variable = {
+			var = NOE.great_depression_modifier_e
+			value = -0.3
+		}
+		set_variable = {
+			var = NOE.great_depression_modifier_f
+			value = -0.08
+		}
+		add_dynamic_modifier = {
+			modifier = NOE_great_depression
 		}
 	}
 }
