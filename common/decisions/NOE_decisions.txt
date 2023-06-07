@@ -80,20 +80,106 @@ NOE_army_professionalization = {
 }
 
 NOE_emergency_acts = {
-	NOE_emergency_industry = {
+	NOE_emergency_conversions = {
 		available = {
-			has_political_power > 50
+			always = yes
 		}
-		cost = 50
 		fire_only_once = no
+		days_mission_timeout = 21
+		days_re_enable = 7
 		visible = {
 			always = yes
 		}
-		complete_effect = {
-			add_offsite_building = {
-				type = arms_factory
-				level = 2
+		remove_effect = {
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
 			}
+			GNW_NOE_add_to_depression = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	NOE_seize_land = {
+		available = {
+			always = yes
+		}
+		fire_only_once = no
+		days_mission_timeout = 21
+		days_re_enable = 7
+		visible = {
+			always = yes
+		}
+		remove_effect = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			GNW_NOE_add_to_depression = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	NOE_seize_assets = {
+		available = {
+			always = yes
+		}
+		fire_only_once = no
+		days_mission_timeout = 21
+		days_re_enable = 7
+		visible = {
+			always = yes
+		}
+		remove_effect = {
+			add_political_power = 50
+			GNW_NOE_add_to_depression = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	NOE_draft_men_into_army = {
+		available = {
+			always = yes
+		}
+		fire_only_once = no
+		days_mission_timeout = 21
+		days_re_enable = 7
+		visible = {
+			always = yes
+		}
+		remove_effect = {
+			add_manpower = 3500
+			GNW_NOE_add_to_depression = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	NOE_seize_civilian_trucks = {
+		available = {
+			always = yes
+		}
+		fire_only_once = no
+		days_mission_timeout = 21
+		days_re_enable = 7
+		visible = {
+			always = yes
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 125
+			}
+			GNW_NOE_add_to_depression = yes
 		}
 		ai_will_do = {
 			base = 1
