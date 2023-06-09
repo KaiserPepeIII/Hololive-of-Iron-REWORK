@@ -317,24 +317,57 @@ GNW_NOE_crushed_completely = {
 		add_ideas = NOE_treaty_of_gotland
 		set_stability = 0
 	}
-	KRO = {
-		transfer_state = 87
-		transfer_state = 98
-		transfer_state = 97
-		transfer_state = 807
-		transfer_state = 92
-		transfer_state = 10
-		transfer_state = 90
-		transfer_state = 88
-		transfer_state = 762
-		transfer_state = 86
-		transfer_state = 68
-		transfer_state = 66
-		transfer_state = 67
-		transfer_state = 762
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					var = FBK.gnw_kronii_concessions
+					value = 0
+					compare = equals
+				}
+			}
+		}
+		KRO = {
+			transfer_state = 87
+			transfer_state = 98
+			transfer_state = 97
+			transfer_state = 807
+			transfer_state = 92
+			transfer_state = 10
+			transfer_state = 90
+			transfer_state = 88
+			transfer_state = 762
+			transfer_state = 86
+			transfer_state = 68
+			transfer_state = 66
+			transfer_state = 67
+			transfer_state = 762
+		}
+		if = {
+			limit = {
+				KRO = {
+					owns_state = 397
+				}
+			}
+			FBK = {
+				transfer_state = 397
+			}
+			KRO = {
+				set_capital = {
+					state = 10
+				}
+			}
+		}
 	}
 	if = {
 		limit = {
+			NOT = {
+				check_variable = {
+					var = FBK.gnw_czechoslovakia_concessions
+					value = 0
+					compare = equals
+				}
+			}
 			NOE = {
 				owns_state = 72
 			}
@@ -345,17 +378,34 @@ GNW_NOE_crushed_completely = {
 	}
 	if = {
 		limit = {
-			KRO = {
-				owns_state = 397
+			check_variable = {
+				var = FBK.gnw_kiara_concessions
+				value = 4
+				compare = equals
 			}
 		}
-		FBK = {
-			transfer_state = 397
+		KIA = {
+			transfer_state = 67
+			transfer_state = 66
+			transfer_state = 68
+			transfer_state = 86
+			transfer_state = 63
+			transfer_state = 67
+			transfer_state = 85
+			transfer_state = 916
 		}
-		KRO = {
-			set_capital = {
-				state = 10
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_flare_concessions
+				value = 4
+				compare = greater_than_or_equals
 			}
+		}
+		FLA = {
+			transfer_state = 92
+			transfer_state = 97
 		}
 	}
 	set_global_flag = GNW_conflict_resolved
@@ -369,45 +419,63 @@ GNW_NOE_autonomous_baltics = {
 		add_ideas = NOE_treaty_of_gotland
 	}
 	set_stability = 0
-	KRO = {
-		transfer_state = 87
-		transfer_state = 98
-		transfer_state = 97
-		transfer_state = 807
-		transfer_state = 92
-		transfer_state = 10
-		transfer_state = 90
-		transfer_state = 88
-		transfer_state = 762
-		transfer_state = 86
-		transfer_state = 68
-		transfer_state = 66
-		transfer_state = 67
-		transfer_state = 762
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					var = FBK.gnw_kronii_concessions
+					value = 0
+					compare = equals
+				}
+			}
+		}
+		KRO = {
+			transfer_state = 87
+			transfer_state = 98
+			transfer_state = 97
+			transfer_state = 807
+			transfer_state = 92
+			transfer_state = 10
+			transfer_state = 90
+			transfer_state = 88
+			transfer_state = 762
+			transfer_state = 86
+			transfer_state = 68
+			transfer_state = 66
+			transfer_state = 67
+			transfer_state = 762
+		}
+		if = {
+			limit = {
+				KRO = {
+					owns_state = 397
+				}
+			}
+			FBK = {
+				transfer_state = 397
+			}
+			KRO = {
+				set_capital = {
+					state = 10
+				}
+			}
+		}
 	}
 	if = {
 		limit = {
+			NOT = {
+				check_variable = {
+					var = FBK.gnw_czechoslovakia_concessions
+					value = 0
+					compare = equals
+				}
+			}
 			NOE = {
 				owns_state = 72
 			}
 		}
-		KRO = {
+		CZE = {
 			transfer_state = 72
-		}
-	}
-	if = {
-		limit = {
-			KRO = {
-				owns_state = 397
-			}
-		}
-		FBK = {
-			transfer_state = 397
-		}
-		KRO = {
-			set_capital = {
-				state = 10
-			}
 		}
 	}
 	FBK = {
@@ -434,6 +502,38 @@ GNW_NOE_autonomous_baltics = {
 			}
 		}
 	}
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_kiara_concessions
+				value = 4
+				compare = equals
+			}
+		}
+		KIA = {
+			transfer_state = 67
+			transfer_state = 66
+			transfer_state = 68
+			transfer_state = 86
+			transfer_state = 63
+			transfer_state = 67
+			transfer_state = 85
+			transfer_state = 916
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_flare_concessions
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		FLA = {
+			transfer_state = 92
+			transfer_state = 97
+		}
+	}
 	set_global_flag = GNW_conflict_resolved
 }
 
@@ -445,51 +545,101 @@ GNW_NOE_independent_baltics = {
 		add_ideas = NOE_treaty_of_gotland
 	}
 	set_stability = 0
-	KRO = {
-		transfer_state = 87
-		transfer_state = 98
-		transfer_state = 97
-		transfer_state = 807
-		transfer_state = 92
-		transfer_state = 10
-		transfer_state = 90
-		transfer_state = 88
-		transfer_state = 762
-		transfer_state = 86
-		transfer_state = 68
-		transfer_state = 66
-		transfer_state = 67
-		transfer_state = 762
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					var = FBK.gnw_kronii_concessions
+					value = 0
+					compare = equals
+				}
+			}
+		}
+		KRO = {
+			transfer_state = 87
+			transfer_state = 98
+			transfer_state = 97
+			transfer_state = 807
+			transfer_state = 92
+			transfer_state = 10
+			transfer_state = 90
+			transfer_state = 88
+			transfer_state = 762
+			transfer_state = 86
+			transfer_state = 68
+			transfer_state = 66
+			transfer_state = 67
+			transfer_state = 762
+		}
+		if = {
+			limit = {
+				KRO = {
+					owns_state = 397
+				}
+			}
+			FBK = {
+				transfer_state = 397
+			}
+			KRO = {
+				set_capital = {
+					state = 10
+				}
+			}
+		}
 	}
 	if = {
 		limit = {
+			NOT = {
+				check_variable = {
+					var = FBK.gnw_czechoslovakia_concessions
+					value = 0
+					compare = equals
+				}
+			}
 			NOE = {
 				owns_state = 72
 			}
 		}
-		KRO = {
+		CZE = {
 			transfer_state = 72
-		}
-	}
-	if = {
-		limit = {
-			KRO = {
-				owns_state = 397
-			}
-		}
-		FBK = {
-			transfer_state = 397
-		}
-		KRO = {
-			set_capital = {
-				state = 10
-			}
 		}
 	}
 	FBK = {
 		release = EST
 		release = LIT
 		release = LAT
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_kiara_concessions
+				value = 4
+				compare = equals
+			}
+		}
+		KIA = {
+			transfer_state = 67
+			transfer_state = 66
+			transfer_state = 68
+			transfer_state = 86
+			transfer_state = 63
+			transfer_state = 67
+			transfer_state = 85
+			transfer_state = 916
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_flare_concessions
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		FLA = {
+			transfer_state = 92
+			transfer_state = 97
+		}
 	}
 	set_global_flag = GNW_conflict_resolved
 }
@@ -502,45 +652,63 @@ GNW_NOE_restore_kronii = {
 		add_ideas = NOE_treaty_of_gotland
 	}
 	set_stability = 0
-	KRO = {
-		transfer_state = 87
-		transfer_state = 98
-		transfer_state = 97
-		transfer_state = 807
-		transfer_state = 92
-		transfer_state = 10
-		transfer_state = 90
-		transfer_state = 88
-		transfer_state = 762
-		transfer_state = 86
-		transfer_state = 68
-		transfer_state = 66
-		transfer_state = 67
-		transfer_state = 762
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					var = FBK.gnw_kronii_concessions
+					value = 0
+					compare = equals
+				}
+			}
+		}
+		KRO = {
+			transfer_state = 87
+			transfer_state = 98
+			transfer_state = 97
+			transfer_state = 807
+			transfer_state = 92
+			transfer_state = 10
+			transfer_state = 90
+			transfer_state = 88
+			transfer_state = 762
+			transfer_state = 86
+			transfer_state = 68
+			transfer_state = 66
+			transfer_state = 67
+			transfer_state = 762
+		}
+		if = {
+			limit = {
+				KRO = {
+					owns_state = 397
+				}
+			}
+			FBK = {
+				transfer_state = 397
+			}
+			KRO = {
+				set_capital = {
+					state = 10
+				}
+			}
+		}
 	}
 	if = {
 		limit = {
+			NOT = {
+				check_variable = {
+					var = FBK.gnw_czechoslovakia_concessions
+					value = 0
+					compare = equals
+				}
+			}
 			NOE = {
 				owns_state = 72
 			}
 		}
-		KRO = {
+		CZE = {
 			transfer_state = 72
-		}
-	}
-	if = {
-		limit = {
-			KRO = {
-				owns_state = 397
-			}
-		}
-		FBK = {
-			transfer_state = 397
-		}
-		KRO = {
-			set_capital = {
-				state = 10
-			}
 		}
 	}
 	NOE = {
@@ -559,6 +727,38 @@ GNW_NOE_restore_kronii = {
 		transfer_state = 191
 		transfer_state = 965
 		transfer_state = 1000
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_kiara_concessions
+				value = 4
+				compare = equals
+			}
+		}
+		KIA = {
+			transfer_state = 67
+			transfer_state = 66
+			transfer_state = 68
+			transfer_state = 86
+			transfer_state = 63
+			transfer_state = 67
+			transfer_state = 85
+			transfer_state = 916
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_flare_concessions
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		FLA = {
+			transfer_state = 92
+			transfer_state = 97
+		}
 	}
 	set_global_flag = GNW_conflict_resolved
 }
@@ -918,6 +1118,16 @@ GNW_NOE_post_war_victory_setup = {
 		# }
 		add_dynamic_modifier = {
 			modifier = NOE_great_depression
+		}
+		hidden_effect = {
+			add_offsite_building = {
+				type = arms_factory
+				level = -100
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = -100
+			}
 		}
 	}
 }

@@ -81,4 +81,326 @@ MAR_pirating_settling_decisions = {
 			base = 5
 		}
 	}
+	#Balance of power to Pirateering
+	MAR_back_pirateering = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 20
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 50
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering
+				value = -0.1
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Pirateering Manpower
+	MAR_back_pirateering_manpower = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 75
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering
+				value = -0.05
+			}
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Pirateering Guns
+	MAR_back_pirateering_infantry_equpiment = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 50
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering
+				value = -0.05
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 500
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Pirateering Arty
+	MAR_back_pirateering_artillery = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 50
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering
+				value = -0.05
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 500
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Pirateering war goal GYA
+	MAR_back_pirateering_GYA_war = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 200
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering
+				value = -0.05
+			}
+			declare_war_on = {
+				target = GYA
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Pirateering equpiment conversion
+	MAR_back_pirateering_equipment_conversion_speed = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		days_remove = 30
+		cost = 200
+		modifier = {
+			equipment_conversion_speed = 0.1
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering
+				value = -0.05
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Balance of power to settling
+	MAR_back_settling = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 20
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 50
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_settling_down
+				value = 0.15
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#settling stability
+	MAR_back_settling_stability = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 20
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 50
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_settling_down
+				value = 0.05
+			}
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#settling motirized 
+	MAR_back_settling_motirized = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 20
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 50
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_settling_down
+				value = 0.05
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 1000
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#settling fighters 
+	MAR_back_settling_fighters = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 20
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 50
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_settling_down
+				value = 0.05
+			}
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe_0
+					version_name = "P-26A"
+					amount = 100
+				}
+				else = {
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_0
+						amount = 100
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#settling cas 
+	MAR_back_settling_cas = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 20
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		cost = 50
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_settling_down
+				value = 0.05
+			}
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe_0
+					version_name = "O2U"
+					amount = 100
+				}
+				else = {
+					add_equipment_to_stockpile = {
+						type = CAS_equipment
+						amount = 100
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#settling consumers goods 
+	MAR_back_settling_consumer_goods = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 20
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 60
+		cost = 100
+		modifier = {
+			consumer_goods_factor = 0.02
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_settling_down
+				value = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
 }

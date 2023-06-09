@@ -79,13 +79,237 @@ NOE_army_professionalization = {
 	}
 }
 
+NOE_great_depression = {
+	NOE_relief_programs = {
+		available = {
+			always = yes
+		}
+		fire_only_once = no
+		days_remove = 60
+		days_re_enable = 14
+		visible = {
+			always = yes
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = NOE.great_depression_modifier_a
+				value = -0.035
+				tooltip = NOE_depression_improve
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_b
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_c
+				value = 0.03
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_d
+				value = 0.02
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_e
+				value = 0.025
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_f
+				value = 0.075
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	NOE_ditch_the_gold_standard = {
+		available = {
+			always = yes
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 14
+		visible = {
+			always = yes
+		}
+		remove_effect = {
+			set_country_flag = NOE_ditched_gold_standard
+		}
+	}
+	NOE_public_works_program = {
+		available = {
+			has_country_flag = NOE_ditched_gold_standard
+		}
+		fire_only_once = no
+		days_remove = 60
+		days_re_enable = 14
+		visible = {
+			always = yes
+		}
+		modifier = {
+			production_speed_buildings_factor = 0.1
+			political_power_factor = -0.25
+			consumer_goods_factor = 0.05
+		}
+		remove_effect = {
+			one_random_civilian_factory = yes
+			add_to_variable = {
+				var = NOE.great_depression_modifier_a
+				value = -0.07
+				tooltip = NOE_depression_improve
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_b
+				value = 0.1
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_c
+				value = 0.06
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_d
+				value = 0.04
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_e
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_f
+				value = 0.15
+			}
+		}
+	}
+	NOE_fight_unemployment = {
+		available = {
+			has_country_flag = NOE_ditched_gold_standard
+		}
+		fire_only_once = no
+		days_remove = 60
+		days_re_enable = 14
+		visible = {
+			always = yes
+		}
+		modifier = {
+			master_ideology_drift = 0.01
+			political_power_factor = -0.25
+			consumer_goods_factor = 0.05
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = NOE.great_depression_modifier_a
+				value = -0.07
+				tooltip = NOE_depression_improve
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_b
+				value = 0.1
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_c
+				value = 0.06
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_d
+				value = 0.04
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_e
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_f
+				value = 0.15
+			}
+		}
+	}
+	NOE_support_bankrupt_landowners = {
+		available = {
+			has_country_flag = NOE_ditched_gold_standard
+		}
+		fire_only_once = no
+		days_remove = 60
+		days_re_enable = 14
+		visible = {
+			always = yes
+		}
+		modifier = {
+			consumer_goods_factor = 0.1
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = NOE.great_depression_modifier_a
+				value = -0.07
+				tooltip = NOE_depression_improve
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_b
+				value = 0.1
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_c
+				value = 0.06
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_d
+				value = 0.04
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_e
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_f
+				value = 0.15
+			}
+		}
+	}
+	NOE_establish_welfare_programs = {
+		available = {
+			has_country_flag = NOE_ditched_gold_standard
+		}
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			always = yes
+		}
+		remove_effect = {
+			add_ideas = NOE_welfare
+			add_to_variable = {
+				var = NOE.great_depression_modifier_a
+				value = -0.07
+				tooltip = NOE_depression_improve
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_b
+				value = 0.1
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_c
+				value = 0.06
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_d
+				value = 0.04
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_e
+				value = 0.05
+			}
+			add_to_variable = {
+				var = NOE.great_depression_modifier_f
+				value = 0.15
+			}
+		}
+	}
+}
+
 NOE_emergency_acts = {
 	NOE_emergency_conversions = {
 		available = {
 			always = yes
 		}
 		fire_only_once = no
-		days_mission_timeout = 21
+		days_remove = 21
 		days_re_enable = 7
 		visible = {
 			always = yes
@@ -113,7 +337,7 @@ NOE_emergency_acts = {
 			always = yes
 		}
 		fire_only_once = no
-		days_mission_timeout = 21
+		days_remove = 21
 		days_re_enable = 7
 		visible = {
 			always = yes
@@ -133,7 +357,7 @@ NOE_emergency_acts = {
 			always = yes
 		}
 		fire_only_once = no
-		days_mission_timeout = 21
+		days_remove = 21
 		days_re_enable = 7
 		visible = {
 			always = yes
@@ -151,7 +375,7 @@ NOE_emergency_acts = {
 			always = yes
 		}
 		fire_only_once = no
-		days_mission_timeout = 21
+		days_remove = 21
 		days_re_enable = 7
 		visible = {
 			always = yes
@@ -169,7 +393,7 @@ NOE_emergency_acts = {
 			always = yes
 		}
 		fire_only_once = no
-		days_mission_timeout = 21
+		days_remove = 21
 		days_re_enable = 7
 		visible = {
 			always = yes
