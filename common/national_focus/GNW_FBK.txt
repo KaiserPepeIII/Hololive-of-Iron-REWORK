@@ -1,0 +1,547 @@
+focus_tree = {
+	id = GNW_FBK
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = FBK
+		}
+	}
+	continuous_focus_position = {
+		x = 50
+		y = 5
+	}
+	default = no
+	focus = {
+		id = GNW_FBK_through_the_fire_and_flames
+		icon = GFX_goal_unknown
+		cost = 5
+		x = 12
+		y = 1
+		completion_reward = {
+			country_event = gnw_info.5
+		}
+	}
+	focus = {
+		id = GNW_FBK_fixing_our_military
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_through_the_fire_and_flames
+		}
+		completion_reward = {
+			country_event = gnw_info.6
+		}
+		x = 9
+		y = 2
+	}
+	focus = {
+		id = GNW_FBK_logistic_issses
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_fixing_our_military
+		}
+		completion_reward = {
+			set_country_flag = FBK_fixing_logistical_issues
+		}
+		x = 8
+		y = 3
+	}
+	focus = {
+		id = GNW_FBK_war_won_by_sea
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_logistic_issses
+		}
+		mutually_exclusive = {
+			focus = GNW_FBK_war_won_by_land
+		}
+		completion_reward = {
+			army_experience = 5
+			navy_experience = 25
+			add_doctrine_cost_reduction = {
+				name = GNW_FBK_war_won_by_sea_tech
+				category = naval_doctrine
+				cost_reduction = 0.8
+			}
+		}
+		x = 6
+		y = 4
+	}
+	focus = {
+		id = GNW_FBK_war_won_by_land
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_logistic_issses
+		}
+		mutually_exclusive = {
+			focus = GNW_FBK_war_won_by_sea
+		}
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				name = GNW_FBK_war_won_by_land_tech
+				category = artillery
+				bonus = 0.8
+				uses = 2
+			}
+		}
+		x = 8
+		y = 4
+	}
+	focus = {
+		id = GNW_FBK_lessons_from_courland
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_war_won_by_land
+		}
+		completion_reward = {
+			army_experience = 5
+			add_ideas = FBK_lessons_from_courland_idea
+		}
+		x = 8
+		y = 5
+	}
+	focus = {
+		id = GNW_FBK_improved_land_doctrine
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_lessons_from_courland
+		}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = GNW_FBK_improved_land_doctrine_tech
+				cost_reduction = 0.8
+				uses = 2
+				category = land_doctrine
+			}
+		}
+		x = 9
+		y = 6
+	}
+	focus = {
+		id = GNW_FBK_dealing_with_other_matters
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_through_the_fire_and_flames
+		}
+		completion_reward = {
+			country_event = gnw_info.7
+		}
+		x = 15
+		y = 2
+	}
+	focus = {
+		id = GNW_FBK_securing_our_borders
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_fixing_our_military
+		}
+		prerequisite = {
+			focus = GNW_FBK_dealing_with_other_matters
+		}
+		completion_reward = {
+			custom_effect_tooltip = GNW_FBK_securing_our_borders_tooltip
+			hidden_effect = {
+				206 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+					}
+				}
+				207 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+					}
+				}
+				210 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+					}
+				}
+				203 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+					}
+				}
+				264 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+					}
+				}
+			}
+		}
+		x = 12
+		y = 3
+	}
+	focus = {
+		id = GNW_FBK_secure_baltic_loyalty
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_securing_our_borders
+		}
+		completion_reward = {
+			country_event = FBK_gnw.53
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = LIT
+						is_core_of = EST
+						is_core_of = LAT
+					}
+				}
+				add_resistance = -0.2
+				add_compliance = 0.35
+			}
+		}
+		x = 10
+		y = 4
+	}
+	focus = {
+		id = GNW_FBK_secure_russian_loyalty
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_securing_our_borders
+		}
+		completion_reward = {
+			country_event = FBK_gnw.54
+			every_state = {
+				limit = {
+					is_core_of = RSR
+					is_owned_by = FBK
+				}
+				add_resistance = -0.2
+				add_compliance = 0.35
+			}
+		}
+		x = 12
+		y = 4
+	}
+	focus = {
+		id = GNW_FBK_secure_german_loyalty
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_securing_our_borders
+		}
+		completion_reward = {
+			country_event = FBK_gnw.55
+			every_state = {
+				limit = {
+					is_core_of = GER
+					is_owned_by = FBK
+				}
+				add_resistance = -0.2
+				add_compliance = 0.35
+			}
+		}
+		x = 14
+		y = 4
+	}
+	focus = {
+		id = GNW_FBK_increased_wfa_participation
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_secure_russian_loyalty
+		}
+		prerequisite = {
+			focus = GNW_FBK_secure_baltic_loyalty
+		}
+		prerequisite = {
+			focus = GNW_FBK_secure_german_loyalty
+		}
+		completion_reward = {
+			add_ideas = FBK_inceased_wfa_participation
+		}
+		x = 12
+		y = 5
+	}
+	focus = {
+		id = GNW_FBK_wf_jaeger_units
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_increased_wfa_participation
+		}
+		completion_reward = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"WF Jaeger Division 'Svensk'\" division_template = \"WF Jaegers\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = FBK
+				}
+				create_unit = {
+					division = "name = \"WF Jaeger Division 'Gepard'\" division_template = \"WF Jaegers\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = FBK
+				}
+			}
+		}
+		x = 12
+		y = 6
+	}
+	focus = {
+		id = GNW_FBK_our_war
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_dealing_with_other_matters
+		}
+		completion_reward = {
+			add_war_support = 0.1
+		}
+		x = 16
+		y = 3
+	}
+	focus = {
+		id = GNW_FBK_a_war_for_liberty
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_our_war
+		}
+		mutually_exclusive = {
+			focus = GNW_FBK_a_war_for_national_revival
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = FBK_a_war_for_liberty_idea
+		}
+		x = 16
+		y = 4
+	}
+	focus = {
+		id = GNW_FBK_renewed_conscription
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_a_war_for_liberty
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = limited_conscription
+				add_idea = extensive_conscription
+			}
+		}
+		x = 16
+		y = 5
+	}
+	focus = {
+		id = GNW_FBK_together_for_victory
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_renewed_conscription
+		}
+		completion_reward = {
+			add_ideas = FBK_together_for_victory_idea
+		}
+		x = 15
+		y = 6
+	}
+	focus = {
+		id = GNW_FBK_a_war_for_national_revival
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_our_war
+		}
+		mutually_exclusive = {
+			focus = GNW_FBK_a_war_for_liberty
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = FBK_a_war_for_national_revival_idea
+		}
+		x = 18
+		y = 4
+	}
+	focus = {
+		id = GNW_FBK_we_fight_or_die
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_a_war_for_national_revival
+		}
+		completion_reward = {
+			add_ideas = FBK_fight_or_die_idea
+		}
+		x = 18
+		y = 5
+	}
+	focus = {
+		id = GNW_FBK_increased_mobilisation
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_renewed_conscription
+			focus = GNW_FBK_we_fight_or_die
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = partial_economic_mobilisation
+				add_idea = war_economy
+			}
+		}
+		x = 17
+		y = 6
+	}
+	focus = {
+		id = GNW_FBK_common_cause
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_together_for_victory
+			focus = GNW_FBK_organised_resistance
+		}
+		completion_reward = {
+			add_ideas = FBK_common_cause_idea
+		}
+		x = 17
+		y = 7
+	}
+	focus = {
+		id = GNW_FBK_the_air_war
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_renewed_naval_landings
+			focus = GNW_FBK_improved_land_doctrine
+		}
+		completion_reward = {
+			air_experience = 5
+			add_tech_bonus = {
+				name = GNW_FBK_the_air_war_tech
+				category = air_equipment
+				bonus = 0.8
+				uses = 2
+			}
+		}
+		x = 7
+		y = 7
+	}
+	focus = {
+		id = GNW_FBK_lessons_from_konigsberg
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_war_won_by_sea
+		}
+		completion_reward = {
+			army_experience = 5
+			navy_experience = 15
+			swap_ideas = {
+				remove_idea = FBK_memories_of_konigsberg
+				add_idea = FBK_lessons_from_konigsberg_idea
+			}
+		}
+		x = 6
+		y = 5
+	}
+	focus = {
+		id = GNW_reexamine_tanks
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_lessons_from_konigsberg
+			focus = GNW_FBK_lessons_from_courland
+		}
+		completion_reward = {
+			country_event = FBK_gnw.52
+		}
+		x = 7
+		y = 6
+	}
+	focus = {
+		id = GNW_FBK_renewed_naval_landings
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_lessons_from_konigsberg
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GNW_FBK_renewed_naval_landings_tech
+				category = tp_tech
+				bonus = 1
+				uses = 3
+			}
+			swap_ideas = {
+				remove_idea = FBK_lessons_from_konigsberg_idea
+				add_idea = FBK_revenge_for_konigsberg_idea
+			}
+		}
+		x = 5
+		y = 6
+	}
+	focus = {
+		id = GNW_FBK_organised_resistance
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_we_fight_or_die
+		}
+		completion_reward = {
+			add_ideas = FBK_organised_resistance_idea
+		}
+		x = 19
+		y = 6
+	}
+	focus = {
+		id = GNW_FBK_for_victory
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = GNW_FBK_wf_jaeger_units
+			focus = GNW_FBK_the_air_war
+			focus = GNW_FBK_common_cause
+		}
+		completion_reward = {
+			add_war_support = 0.15
+			swap_ideas = {
+				remove_idea = FBK_defeatist_general_staff
+				add_idea = FBK_revitalized_general_staff
+			}
+		}
+		x = 12
+		y = 8
+	}
+}
+ 

@@ -1,0 +1,197 @@
+HTO_indonesian_conquest = {
+	HTO_strike_kobo = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1937.1.1
+				threat > 0.1
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = KRU
+				type = annex_everything
+			}
+			set_country_flag = HTO_conquest_1
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	HTO_strike_iofi = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1937.1.1
+				threat > 0.1
+			}
+			has_country_flag = HTO_conquest_1
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = IOF
+				type = annex_everything
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = HTO_conquest_2
+					}
+				}
+				set_country_flag = HTO_conquest_2
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = -10
+				country_exists = KRU
+				HTO = {
+					has_war_with = KRU
+				}
+			}
+		}
+	}
+	HTO_strike_anya = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1937.1.1
+				threat > 0.1
+			}
+			has_country_flag = HTO_conquest_1
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = ANY
+				type = annex_everything
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = HTO_conquest_2
+					}
+				}
+				set_country_flag = HTO_conquest_2
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = -10
+				AND = {
+					country_exists = KRU
+					HTO = {
+						has_war_with = KRU
+					}
+				}
+			}
+		}
+	}
+	HTO_strike_moona = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1937.1.1
+				threat > 0.1
+			}
+			has_country_flag = HTO_conquest_2
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = MOO
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = -10
+				OR = {
+					AND = {
+						country_exists = ANY
+						HTO = {
+							has_war_with = ANY
+						}
+					}
+					AND = {
+						country_exists = IOF
+						HTO = {
+							has_war_with = IOF
+						}
+					}
+				}
+			}
+		}
+	}
+	HTO_strike_risu = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1937.1.1
+				threat > 0.1
+			}
+			has_country_flag = HTO_conquest_2
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = RIS
+				type = annex_everything
+			}
+			set_country_flag = HTO_conquest_3
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	HTO_strike_chloe = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1937.1.1
+				threat > 0.1
+			}
+			has_country_flag = HTO_conquest_3
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = CLO
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 55
+			modifier = {
+				factor = -10
+				country_exists = RIS
+				HTO = {
+					has_war_with = RIS
+				}
+			}
+		}
+	}
+}

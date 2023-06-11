@@ -497,6 +497,101 @@ ideas = {
 		}
 	}
 	country = {
+		FBK_inceased_wfa_participation = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				non_core_manpower = 0.2
+			}
+		}
+		FBK_together_for_victory_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				resistance_damage_to_garrison = -0.25
+				resistance_growth = -0.12
+			}
+		}
+		FBK_fight_or_die_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.1
+			}
+		}
+		FBK_common_cause_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				stability_weekly_factor = 0.15
+				war_support_weekly_factor = 0.15
+			}
+		}
+		FBK_a_war_for_liberty_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			targeted_modifier = {
+				tag = NOE
+				attack_bonus_against = 0.15
+			}
+		}
+		FBK_a_war_for_national_revival_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			targeted_modifier = {
+				tag = NOE
+				defence_bonus_against = 0.15
+			}
+		}
+		FBK_lessons_from_courland_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				breakthrough_factor = 0.15
+			}
+		}
 		FBK_treaty_of_konigsberg = {
 			allowed = {
 				always = no
@@ -567,7 +662,7 @@ ideas = {
 				opinion_gain_monthly_factor = 10
 			}
 		}
-		defeatist_general_staff = {
+		FBK_defeatist_general_staff = {
 			allowed = {
 				always = no
 			}
@@ -581,6 +676,21 @@ ideas = {
 				army_morale_factor = -0.1
 				land_reinforce_rate = -0.05
 				planning_speed = -0.1
+			}
+		}
+		FBK_revitalized_general_staff = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+			modifier = {
+				army_org_factor = -0.05
+				army_morale_factor = -0.05
+				planning_speed = -0.05
 			}
 		}
 		legacy_of_the_great_northern_war = {
@@ -1222,8 +1332,6 @@ ideas = {
 					breakthrough = 0.1
 					maximum_speed = 0.1
 				}
-			}
-			equipment_bonus = {
 				mechanized_equipment = {
 					breakthrough = 0.1
 					maximum_speed = 0.1
@@ -1256,10 +1364,49 @@ ideas = {
 				always = yes
 			}
 			modifier = {
-				special_forces_attack_factor = 0.15
-				special_forces_defence_factor = 0.15
-				amphibious_invasion_defence = 0.15
-				special_forces_out_of_supply_factor = -0.1
+				naval_invasion_planning_bonus_speed = -1
+				naval_invasion_penalty = 0.75
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+		}
+		FBK_lessons_from_konigsberg_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				naval_invasion_planning_bonus_speed = -0.25
+				naval_invasion_penalty = 0.25
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+		}
+		FBK_revenge_for_konigsberg_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				naval_invasion_planning_bonus_speed = 0.25
+				naval_invasion_penalty = -0.3
+			}
+			picture = generic_war_preparation
+			removal_cost = -1
+		}
+		FBK_organised_resistance_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				resistance_growth_on_our_occupied_states = 0.2
 			}
 			picture = generic_war_preparation
 			removal_cost = -1

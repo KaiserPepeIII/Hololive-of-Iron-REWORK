@@ -2271,6 +2271,141 @@ country_event = {
 	}
 }
 
+#GNW-FBK Re-examine tanks
+country_event = {
+	id = FBK_gnw.52
+	title = FBK_gnw.52.t
+	desc = FBK_gnw.52.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We didn't invest enough in them
+	option = {
+		name = FBK_gnw.52.a
+		add_tech_bonus = {
+			name = GNW_FBK_re_examine_tanks_tech
+			category = armor
+			bonus = 1
+			uses = 2
+		}
+	}
+	#Our efforts should be focused on taking them down
+	option = {
+		name = FBK_gnw.52.b
+		add_tech_bonus = {
+			name = GNW_FBK_re_examine_tanks_tech
+			category = armor
+			bonus = 0.8
+			uses = 1
+		}
+		add_tech_bonus = {
+			name = GNW_FBK_re_examine_tanks_tech
+			category = cat_anti_air
+			bonus = 0.8
+			uses = 2
+		}
+		add_tech_bonus = {
+			name = GNW_FBK_re_examine_tanks_tech
+			category = cat_anti_tank
+			bonus = 0.8
+			uses = 2
+		}
+	}
+}
+
+#GNW-FBK Latgalian autonomy?
+country_event = {
+	id = FBK_gnw.53
+	title = FBK_gnw.53.t
+	desc = FBK_gnw.53.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yes
+	option = {
+		name = FBK_gnw.53.a
+		custom_effect_tooltip = FBK_baltic_strife_tooltip
+		set_country_flag = FBK_baltic_strife
+		959 = {
+			set_resistance = 0
+			set_compliance = 1
+			create_unit = {
+				division = "name = \"WF Latgalian Jaeger Division \" division_template = \"Infanteridivisionen\" start_experience_factor = 0.15 start_equipment_factor = 0.9 start_manpower_factor = 1"
+				owner = ROOT
+			}
+		}
+	}
+	#No
+	option = {
+		name = FBK_gnw.53.b
+		959 = {
+			add_resistance = 0.15
+		}
+	}
+}
+
+#GNW_FBK Russian territorial brigades
+country_event = {
+	id = FBK_gnw.54
+	title = FBK_gnw.54.t
+	desc = FBK_gnw.54.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yes
+	option = {
+		name = FBK_gnw.54.a
+		custom_effect_tooltip = GNW_FBK_russian_territorial_brigades_tooltip
+		every_state = {
+			limit = {
+				is_core_of = RSR
+				is_owned_by = FBK
+			}
+			add_resistance = 0.2
+			add_dynamic_modifier = {
+				modifier = FBK_russian_territorial_brigades
+			}
+		}
+	}
+	#No
+	option = {
+		name = FBK_gnw.54.b
+	}
+}
+
+#GNW_FBK Autonomy for Schleswig-Holstein
+country_event = {
+	id = FBK_gnw.55
+	title = FBK_gnw.55.t
+	desc = FBK_gnw.55.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Yes
+	option = {
+		name = FBK_gnw.55.a
+		custom_effect_tooltip = GNW_FBK_autonomy_schleswig_holstein_tooltip
+		58 = {
+			add_core_of = SHL
+		}
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			release_autonomy = {
+				target = SHL
+				autonomy_state = autonomy_integrated_puppet
+			}
+			else = {
+				release_puppet = SHL
+			}
+		}
+	}
+	#No
+	option = {
+		name = FBK_gnw.55.b
+		58 = {
+			add_resistance = 0.05
+		}
+	}
+}
+
 #Forest Brothers, Freikorps and Paramilitaries!
 country_event = {
 	id = FBK_post_gnw.1
