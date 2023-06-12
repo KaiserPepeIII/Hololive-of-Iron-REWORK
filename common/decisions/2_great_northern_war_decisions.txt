@@ -23,19 +23,17 @@ CAT_great_northern_war = {
 				}
 			}
 		}
-		visible = {
-			always = yes
-		}
 		available = {
 			always = no
 		}
+		selectable_mission = no
 		days_mission_timeout = 30
 		fire_only_once = no
 		is_good = no
 		timeout_effect = {
 			add_to_variable = {
 				var = global.great_northern_war_tension
-				value = 10
+				value = 0.33
 				tooltip = GNW_tension_raise_tooltip
 			}
 		}
@@ -71,20 +69,6 @@ CAT_great_northern_war = {
 					value = 75
 					compare = less_than
 				}
-				has_global_flag = GNW_gnw_launched
-				FBK = {
-					has_war_with = NOE
-				}
-			}
-		}
-		visible = {
-			tag = FBK
-			check_variable = {
-				var = global.great_northern_war_tension
-				value = 75
-				compare = greater_than_or_equals
-			}
-			NOT = {
 				has_global_flag = GNW_gnw_launched
 				FBK = {
 					has_war_with = NOE
@@ -540,20 +524,24 @@ CAT_great_northern_war = {
 				value = 75
 				compare = greater_than_or_equals
 			}
-		}
-		cancel_trigger = {
-			check_variable = {
-				var = global.great_northern_war_tension
-				value = 75
-				compare = less_than
+			NOT = {
+				has_global_flag = GNW_gnw_launched
+				FBK = {
+					has_war_with = NOE
+				}
 			}
 		}
-		visible = {
-			tag = NOE
-			check_variable = {
-				var = global.great_northern_war_tension
-				value = 75
-				compare = greater_than_or_equals
+		cancel_trigger = {
+			OR = {
+				check_variable = {
+					var = global.great_northern_war_tension
+					value = 75
+					compare = less_than
+				}
+				has_global_flag = GNW_gnw_launched
+				FBK = {
+					has_war_with = NOE
+				}
 			}
 		}
 		available = {
@@ -728,13 +716,13 @@ CAT_great_northern_war = {
 	NOE_negotiate_with_germany = {
 		available = {
 			tag = NOE
-			has_political_power > 25
+			has_political_power > 49
 			NOT = {
 				has_country_flag = GNW_diplomatic_cooldown
 			}
 		}
 		fire_only_once = yes
-		cost = 25
+		cost = 50
 		visible = {
 			tag = NOE
 			NOT = {
@@ -2386,106 +2374,22 @@ CAT_great_northern_war = {
 	#	YAG
 	#
 	#
-	YAG_negotiate_with_KRO = {
+	YAG_provide_legitimacy_to_fubuki = {
 		icon = GFX_decision_icon_default
 		available = {
 			tag = YAG
-			has_political_power > 29
+			has_political_power > 49
 		}
-		fire_only_once = yes
+		fire_only_once = no
+		days_re_enable = 35
 		visible = {
 			tag = YAG
 		}
-		cost = 30
+		cost = 50
 		complete_effect = {
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	YAG_negotiate_with_KIA = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = YAG
-			has_political_power > 29
-		}
-		fire_only_once = yes
-		visible = {
-			tag = YAG
-		}
-		cost = 30
-		complete_effect = {
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	YAG_negotiate_with_CZE = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = YAG
-			has_political_power > 29
-		}
-		fire_only_once = yes
-		visible = {
-			tag = YAG
-		}
-		cost = 30
-		complete_effect = {
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	YAG_negotiate_with_FLA = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = YAG
-			has_political_power > 29
-		}
-		fire_only_once = yes
-		visible = {
-			tag = YAG
-		}
-		cost = 30
-		complete_effect = {
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	YAG_negotiate_with_SUB = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = YAG
-			has_political_power > 29
-		}
-		fire_only_once = yes
-		visible = {
-			tag = YAG
-		}
-		cost = 30
-		complete_effect = {
-			SUB = {
-				country_event = SUB_gnw.2
+			FBK = {
+				country_event = FBK_gnw.62
 			}
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	YAG_negotiate_with_RUS = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = YAG
-			has_political_power > 29
-		}
-		fire_only_once = yes
-		visible = {
-			tag = YAG
-		}
-		cost = 30
-		complete_effect = {
 		}
 		ai_will_do = {
 			base = 5

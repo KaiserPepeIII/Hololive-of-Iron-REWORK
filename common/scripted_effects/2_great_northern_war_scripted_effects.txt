@@ -765,35 +765,35 @@ GNW_NOE_restore_kronii = {
 
 GNW_set_up_gnw_scripted_effect = {
 	#Subaru
-	# if = {
-	# 	limit = {
-	# 		check_variable = {
-	# 			var = FBK.gnw_subaru_concessions
-	# 			value = 1
-	# 			compare = greater_than_or_equals
-	# 		}
-	# 	}
-	# 	SUB = {
-	# 		leave_faction = yes
-	# 	}
-	# 	OSK = {
-	# 		leave_faction = yes
-	# 	}
-	# 	FBK = {
-	# 		add_to_faction = SUB
-	# 		add_to_faction = OSK
-	# 	}
-	# 	SUB = {
-	# 		declare_war_on = {
-	# 			target = NOE
-	# 		}
-	# 	}
-	# 	OSK = {
-	# 		declare_war_on = {
-	# 			target = NOE
-	# 		}
-	# 	}
-	# }
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.gnw_subaru_concessions
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		SUB = {
+			leave_faction = yes
+		}
+		OSK = {
+			leave_faction = yes
+		}
+		FBK = {
+			add_to_faction = SUB
+			add_to_faction = OSK
+		}
+		SUB = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+		OSK = {
+			declare_war_on = {
+				target = NOE
+			}
+		}
+	}
 	#Kronii
 	if = {
 		limit = {
@@ -988,12 +988,10 @@ GNW_set_up_gnw_scripted_effect = {
 	#Czecho
 	if = {
 		limit = {
-			OR = {
-				check_variable = {
-					var = FBK.gnw_czechoslovakia_concessions
-					value = 2
-					compare = equals
-				}
+			check_variable = {
+				var = FBK.gnw_czechoslovakia_concessions
+				value = 2
+				compare = equals
 			}
 		}
 		FBK = {

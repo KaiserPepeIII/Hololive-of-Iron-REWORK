@@ -512,27 +512,3 @@ noe_move_capital_to_berlin = {
 		}
 	}
 }
-
-noe_faction_anger = {
-	noe_appease_uradel = {
-		icon = GFX_decision_icon_default
-		complete_effect = {
-			add_to_variable = {
-				var = NOE.uradel_faction
-				value = -1
-			}
-		}
-		available = {
-			NOT = {
-				check_variable = {
-					var = NOE.uradel_faction
-					value = 0
-					compare = equals
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 5
-		}
-	}
-}

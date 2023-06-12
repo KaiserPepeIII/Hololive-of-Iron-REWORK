@@ -2287,6 +2287,19 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.1
 			country_event = aloe.43
+			hidden_effect = {
+				if = {
+					limit = {
+						has_government = pro_yagoo_monarchy
+						has_government = pro_resistance_monarchy
+						has_government = divine_mandate
+					}
+					news_event = global_holo.26
+					else = {
+						news_event = global_holo.25
+					}
+				}
+			}
 		}
 		search_filters = {
 			FOCUS_FILTER_POLITICAL

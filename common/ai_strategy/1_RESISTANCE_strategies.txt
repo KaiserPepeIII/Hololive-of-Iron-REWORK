@@ -69,7 +69,31 @@ RESISTANCE_members_like_militias = {
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = role_ratio
-		id = militia
+		id = militias
 		value = 15
+	}
+}
+
+RESISTANCE_support_noel_war = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		is_resistance_ideology = yes
+		FBK = {
+			has_war_with = NOE
+		}
+	}
+	abort = {
+		NOT = {
+			FBK = {
+				has_war_with = NOE
+			}
+		}
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = NOE
+		value = 25
 	}
 }

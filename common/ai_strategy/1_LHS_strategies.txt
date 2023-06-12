@@ -85,7 +85,7 @@ LHS_yagooist_way_of_war_high_industry = {
 	}
 	ai_strategy = {
 		type = template_prio
-		id = mechanised_infantry
+		id = mechanized
 		value = 10
 	}
 }
@@ -159,6 +159,40 @@ LHS_yagooists_are_sleeping_early_game = {
 	ai_strategy = {
 		type = building_target
 		id = industrial_complex
+		value = 25
+	}
+}
+
+LHS_support_fubuki_war = {
+	allowed = {
+		always = yes
+	}
+	enable = {
+		OR = {
+			is_in_array = {
+				array = global.lhs_member_flag
+				value = THIS.id
+			}
+			is_lhs_ideology = yes
+		}
+		NOT = {
+			has_government = divine_mandate
+			has_government = reactionary_nationalism
+		}
+		FBK = {
+			has_war_with = NOE
+		}
+	}
+	abort = {
+		NOT = {
+			FBK = {
+				has_war_with = NOE
+			}
+		}
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = FBK
 		value = 25
 	}
 }
