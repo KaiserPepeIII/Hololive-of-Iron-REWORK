@@ -1,0 +1,88 @@
+add_namespace = kronii
+#The Kronii Oblast
+country_event = {
+	id = kronii.1
+	title = kronii.1.t
+	desc = kronii.1.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Sure sounds great
+	option = {
+		name = kronii.1.a
+		custom_effect_tooltip = KRO_surrender_independence_tooltip
+		FBK = {
+			country_event = fubuki.35
+		}
+	}
+	#Nope/10
+	option = {
+		name = kronii.1.b
+		FBK = {
+			country_event = fubuki.36
+		}
+	}
+}
+
+#Fubuki gives us military package
+country_event = {
+	id = kronii.2
+	title = kronii.2.t
+	desc = kronii.2.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = kronii.2.a
+		army_experience = 15
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 250
+			producer = FBK
+		}
+	}
+}
+
+#Fubuki gives us economic aid
+country_event = {
+	id = kronii.3
+	title = kronii.3.t
+	desc = kronii.3.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = kronii.3.a
+		two_random_civilian_factory = yes
+	}
+}
+
+#Fubuki gives us manpower
+country_event = {
+	id = kronii.4
+	title = kronii.4.t
+	desc = kronii.4.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = kronii.4.a
+		add_manpower = 3500
+	}
+}
+
+#Fubuki gives us security training
+country_event = {
+	id = kronii.5
+	title = kronii.5.t
+	desc = kronii.5.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = kronii.4.a
+		add_timed_idea = {
+			idea = KRO_security_training
+			days = 120
+		}
+	}
+}

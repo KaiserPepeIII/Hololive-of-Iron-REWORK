@@ -1,44 +1,82 @@
-
-defined_text = { 
-    name = wfa_loyalty_loc
-    text = {
-        trigger = {
-            check_variable = {
-			var = WFA.loyalty_meter
-			value = 51
-			compare = greater_than_or_equals
+defined_text = {
+	name = wfa_loyalty_loc
+	text = {
+		trigger = {
+			check_variable = {
+				var = WFA.loyalty_meter
+				value = 51
+				compare = greater_than_or_equals
 			}
-        }
-        localization_key = wfa_loyalty_fubuki
-    }
-    text = {
-        trigger = {
-            check_variable = {
-			var = WFA.loyalty_meter
-			value = 49
-			compare = less_than_or_equals
+		}
+		localization_key = wfa_loyalty_fubuki
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = WFA.loyalty_meter
+				value = 49
+				compare = less_than_or_equals
 			}
-        }
-        localization_key = wfa_loyalty_wfa
-    }
-    text = {
-        localization_key = wfa_loyalty_neutral
-    }
+		}
+		localization_key = wfa_loyalty_wfa
+	}
+	text = {
+		localization_key = wfa_loyalty_neutral
+	}
 }
 
-defined_text = { 
-    name = FBK_army_units_not_guns_deficit_tooltip
-    text = {
-        trigger = {
-            check_variable = {
-			var = FBK.num_equipment@infantry_equipment
-			value = 0
-			compare = less_than_or_equals
+defined_text = {
+	name = FBK_defeatism_get_loc
+	text = {
+		trigger = {
+			check_variable = {
+				var = FBK.defeatism_level
+				value = 40
+				compare = less_than_or_equals
 			}
-        }
-        localization_key = FBK_army_units_not_guns_deficit_text
-    }
-    text = {
-        localization_key = ""
-    }
+		}
+		localization_key = FBK_defeatism_high
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = FBK.defeatism_level
+				value = 80
+				compare = less_than_or_equals
+			}
+			check_variable = {
+				var = FBK.defeatism_level
+				value = 40
+				compare = greater_than
+			}
+		}
+		localization_key = FBK_defeatism_moderate
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = FBK.defeatism_level
+				value = 80
+				compare = lgreater_than_or_equals
+			}
+		}
+		localization_key = FBK_defeatism_low
+	}
+}
+
+defined_text = {
+	name = FBK_army_units_not_guns_deficit_tooltip
+	text = {
+		trigger = {
+			check_variable = {
+				var = FBK.num_equipment@infantry_equipment
+				value = 0
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = FBK_army_units_not_guns_deficit_text
+	}
+	text = {
+		localization_key = ""
+	}
 }

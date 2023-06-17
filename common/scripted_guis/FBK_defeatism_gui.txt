@@ -1,0 +1,18 @@
+scripted_gui = {
+	FBK_defeatism_bar_gui = {
+		window_name = "FBK_defeatism_bar_window"
+		context_type = decision_category
+		parent_window_name = "FBK_defeatism_bar_category"
+		visible = {
+			NOT = {
+				has_global_flag = GNW_conflict_resolved
+				has_global_flag = GNW_peace_treaty
+			}
+		}
+		properties = {
+			FBK_defeatism_bar = {
+				frame = var:FBK.defeatism_level
+			}
+		}
+	}
+}

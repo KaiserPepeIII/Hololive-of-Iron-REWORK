@@ -38,6 +38,28 @@ on_actions = {
 				FBK_army_variables = yes
 				country_lock_all_division_template = yes
 			}
+			set_variable = {
+				var = FBK.defeatism_level 
+				value = 5
+			}
+			add_dynamic_modifier = {
+				modifier = FBK_defeatism_modifier
+			}
+			FBK_modified_defeatism = yes
+			every_state = {
+				limit = {
+					is_owned_by = FBK
+					NOT = {
+						is_core_of = FBK
+					}
+				}
+				set_compliance = 0
+				set_resistance = 40
+					
+				add_dynamic_modifier = {
+					modifier = FBK_russian_oblasts
+				}
+			}
 		}
 	}
 	on_declare_war = {

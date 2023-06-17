@@ -538,6 +538,22 @@ demobilization = {
 		activation = {
 			has_unsupported_economic_law = yes
 			has_war = no
+			NOT = {
+				OR = {
+					AND = {
+						tag = FBK
+						NOT = {
+							has_global_flag = GNW_conflict_resolved
+						}
+					}
+					AND = {
+						tag = NOE
+						NOT = {
+							has_global_flag = GNW_conflict_resolved
+						}
+					}
+				}
+			}
 		}
 		cost = 50
 		visible = {

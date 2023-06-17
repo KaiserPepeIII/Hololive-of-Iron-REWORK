@@ -86,6 +86,281 @@ FBK_post_gnw_chaos_lose = {
 	}
 }
 
+FBK_fixing_logistics_decisions = {
+	FBK_build_trust_in_baltics = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		cost = 15
+		days_re_enable = 30
+		fire_only_once = no
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = LIT
+						is_core_of = EST
+						is_core_of = LAT
+					}
+				}
+				add_resistance = -5
+				add_compliance = 5
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_build_up_baltic_ports = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		days_remove = 120
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			13 = {
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					instant_build = yes
+					province = 3152
+				}
+			}
+			961 = {
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					instant_build = yes
+					province = 9340
+				}
+			}
+			190 = {
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					instant_build = yes
+					province = 9262
+				}
+			}
+		}
+	}
+	FBK_reconnect_railways_1 = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		cost = 35
+		days_remove = 75
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			set_country_flag = FBK_reconnect_railways_1_flag
+			build_railway = {
+				level = 1
+				path = {
+					9340
+					265
+					530
+					6736
+					9483
+				}
+				start_province = 9340
+				target_province = 9483
+			}
+			build_railway = {
+				level = 1
+				path = {
+					310
+					11358
+					11226
+					11498
+					9404
+					6296
+				}
+				start_province = 310
+				target_province = 6296
+			}
+			build_railway = {
+				level = 1
+				path = {
+					3320
+					9904
+					6296
+				}
+				start_province = 3320
+				target_province = 6296
+			}
+			build_railway = {
+				level = 1
+				path = {
+					310
+					7482
+					10323
+					9340
+				}
+				start_province = 310
+				target_province = 9340
+			}
+		}
+	}
+	FBK_reconnect_railways_2 = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		cost = 35
+		days_remove = 75
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FBK_reconnect_railways_1_flag
+		}
+		complete_effect = {
+			clr_country_flag = FBK_reconnect_railways_1_flag
+			set_country_flag = FBK_reconnect_railways_2_flag
+			build_railway = {
+				level = 1
+				path = {
+					9340
+					265
+					530
+					6736
+					9483
+				}
+				start_province = 9340
+				target_province = 9483
+			}
+			build_railway = {
+				level = 1
+				path = {
+					310
+					11358
+					11226
+					11498
+					9404
+					6296
+				}
+				start_province = 310
+				target_province = 6296
+			}
+			build_railway = {
+				level = 1
+				path = {
+					3320
+					9904
+					6296
+				}
+				start_province = 3320
+				target_province = 6296
+			}
+			build_railway = {
+				level = 1
+				path = {
+					310
+					7482
+					10323
+					9340
+				}
+				start_province = 310
+				target_province = 9340
+			}
+		}
+	}
+	FBK_reconnect_railways_3 = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 35
+		}
+		cost = 35
+		days_remove = 75
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FBK_reconnect_railways_2_flag
+		}
+		complete_effect = {
+			clr_country_flag = FBK_reconnect_railways_2_flag
+			build_railway = {
+				level = 1
+				path = {
+					9340
+					265
+					530
+					6736
+					9483
+				}
+				start_province = 9340
+				target_province = 9483
+			}
+			build_railway = {
+				level = 1
+				path = {
+					310
+					11358
+					11226
+					11498
+					9404
+					6296
+				}
+				start_province = 310
+				target_province = 6296
+			}
+			build_railway = {
+				level = 1
+				path = {
+					3320
+					9904
+					6296
+				}
+				start_province = 3320
+				target_province = 6296
+			}
+			build_railway = {
+				level = 1
+				path = {
+					310
+					7482
+					10323
+					9340
+				}
+				start_province = 310
+				target_province = 9340
+			}
+		}
+	}
+	FBK_seize_civilian_trucks = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		cost = 45
+		days_re_enable = 60
+		fire_only_once = no
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_stability = -0.05
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 150
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+}
+
 FBK_plan_thor_decisions = {
 	FBK_plan_thor_tac = {
 		days_re_enable = 30
@@ -121,6 +396,188 @@ FBK_plan_thor_decisions = {
 		}
 		ai_will_do = {
 			factor = 5
+		}
+	}
+}
+
+FBK_oblasts_decisions = {
+	FBK_oblast_integration_results = {
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			has_country_flag = FBK_integrating_oblasts
+			has_completed_focus = FBK_russian_integration
+		}
+		selectable_mission = no
+		days_mission_timeout = 365
+		is_good = no
+		fire_only_once = yes
+		timeout_effect = {
+			country_event = fubuki.48
+		}
+	}
+	FBK_oblast_reforming_results = {
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			has_country_flag = FBK_reforming_oblasts
+			has_completed_focus = FBK_russian_integration
+		}
+		selectable_mission = no
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes
+		timeout_effect = {
+			country_event = fubuki.49
+		}
+	}
+	FBK_oblast_kronii_results = {
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			has_country_flag = FBK_kronii_oblasts
+			has_completed_focus = FBK_russian_integration
+		}
+		selectable_mission = no
+		days_mission_timeout = 120
+		is_good = no
+		fire_only_once = yes
+		timeout_effect = {
+			country_event = fubuki.50
+		}
+	}
+	FBK_fund_integration_process = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 34
+		}
+		cost = 35
+		days_re_enable = 28
+		fire_only_once = no
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = FBK_oblast_debate_bop
+				value = 0.1
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	#Integration decisions
+	#Reforming decisions
+	#Kronii oblast decisions
+	FBK_provide_kronii_military_package = {
+		icon = GFX_decision_icon_default
+		available = {
+			hidden_trigger = {
+				has_equipment = {
+					infantry_equipment > 249
+				}
+				has_army_experience > 14
+			}
+		}
+		custom_cost_text = HLOI_cost_250_guns
+		custom_cost_text = HLOI_cost_15_ae
+		custom_cost_trigger = {
+			always = yes
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FBK_kronii_oblasts
+		}
+		complete_effect = {
+			KRO = {
+				country_event = kronii.2
+			}
+			add_power_balance_value = {
+				id = FBK_oblast_debate_bop
+				value = 0.1
+			}
+			hidden_effect = {
+				army_experience = -15
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FBK_kronii_startup_funds = {
+		available = {
+			has_political_power > 74
+		}
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FBK_kronii_oblasts
+		}
+		complete_effect = {
+			KRO = {
+				country_event = kronii.3
+			}
+			add_power_balance_value = {
+				id = FBK_oblast_debate_bop
+				value = 0.1
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FBK_provide_kronii_manpower = {
+		available = {
+			has_manpower > 3499
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FBK_kronii_oblasts
+		}
+		complete_effect = {
+			KRO = {
+				country_event = kronii.4
+			}
+			add_power_balance_value = {
+				id = FBK_oblast_debate_bop
+				value = 0.1
+			}
+			hidden_effect = {
+				add_manpower = -3500
+			}
+		}
+	}
+	FBK_provide_kronii_security_training = {
+		available = {
+			command_power > 24
+		}
+		custom_cost_text = HLOI_cost_25_cp
+		custom_cost_trigger = {
+			always = yes
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FBK_kronii_oblasts
+		}
+		complete_effect = {
+			KRO = {
+				country_event = kronii.5
+			}
+			add_power_balance_value = {
+				id = FBK_oblast_debate_bop
+				value = 0.1
+			}
+			hidden_effect = {
+				add_command_power = -25
+			}
 		}
 	}
 }

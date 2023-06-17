@@ -1,8 +1,11 @@
 focus_tree = {
 	id = FBK
 	default = no
+	country = {
+		factor = 0
+	}
 	continuous_focus_position = {
-		x = 50 
+		x = 50
 		y = 20
 	}
 	focus = {
@@ -354,6 +357,9 @@ focus_tree = {
 			focus = FBK_purge_the_wfa
 			focus = FBK_end_the_purges
 		}
+		completion_reward = {
+			country_event = fubuki.34
+		}
 		x = 13
 		y = 4
 	}
@@ -367,6 +373,10 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_the_oblast_debate
 		}
+		completion_reward = {
+			#Autocompleted
+			add_political_power = 25
+		}
 		x = 11
 		y = 5
 	}
@@ -374,8 +384,14 @@ focus_tree = {
 		id = FBK_the_kronii_oblast
 		icon = GFX_focus_FBK_the_kronii_oblast
 		cost = 10
+		bypass = {
+		}
 		prerequisite = {
 			focus = FBK_the_oblast_debate
+		}
+		completion_reward = {
+			#Autocompleted
+			add_political_power = 25
 		}
 		x = 13
 		y = 5
@@ -390,17 +406,153 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_the_oblast_debate
 		}
+		completion_reward = {
+			#Autocompleted
+			add_political_power = 25
+		}
 		x = 15
 		y = 5
 	}
 	focus = {
 		id = FBK_russian_integration
 		icon = GFX_focus_FBK_russian_integration
-		cost = 10
+		cost = 15
 		prerequisite = {
 			focus = FBK_the_kronii_oblast
 			focus = FBK_end_the_oblasts
 			focus = FBK_reform_the_system
+		}
+		cancelable = no
+		select_effect = {
+			hidden_effect = {
+				####End the Oblast path
+				if = {
+					limit = {
+						has_country_flag = FBK_integrating_oblasts
+					}
+					#Russian officials protest
+					#Bribe or take hit
+					country_event = {
+						id = fubuki.37
+						days = 14
+					}
+					#Armed resistance grows
+					#Dispatch weapons or take hit
+					country_event = {
+						id = fubuki.38
+						days = 45
+					}
+					#Russian staff resign
+					#Lose command power, military experience or take hit
+					country_event = {
+						id = fubuki.39
+						days = 75
+					}
+					#Attack on base
+					#Manpower and weapons hit or take hit
+					country_event = {
+						id = fubuki.40
+						days = 90
+					}
+					#Settlers deal with resistance
+					#Resistance is lowered but take hit
+					#Stability and popularity hit
+					#Integration progresses at cost of manpower
+					country_event = {
+						id = fubuki.41
+						days = 145
+					}
+					#Territorials upset
+					#Take hit or get rid of territorials buff
+					if = {
+						limit = {
+							any_owned_state = {
+								has_dynamic_modifier = {
+									modifier = FBK_russian_territorial_brigades
+								}
+							}
+						}
+						country_event = {
+							id = fubuki.47
+							days = 180
+						}
+					}
+					#Peasantry demand support
+					#Pp cost for a while but increased integration
+					#take hit
+					country_event = {
+						id = fubuki.42
+						days = 200
+					}
+					#land reforms
+					#Increase integration
+					country_event = {
+						id = fubuki.43
+						days = 225
+					}
+					#Whistle stop tour 
+					#Increase integration
+					country_event = {
+						id = fubuki.44
+						days = 265
+					}
+					#Mandatory Swedish language
+					#Stability hit or integration hit
+					country_event = {
+						id = fubuki.45
+						days = 300
+					}
+					#Wrapping up integration
+					#increase integration by a bit
+					country_event = {
+						id = fubuki.46
+						days = 355
+					}
+				}
+				#####Reforming path
+				if = {
+					limit = {
+						has_country_flag = FBK_reforming_oblasts
+					}
+					#Armed resistance grows
+					#Dispatch weapons or take hit
+					country_event = {
+						id = fubuki.38
+						days = 20
+					}
+					#Attack on base
+					#Manpower and weapons hit or take hit
+					country_event = {
+						id = fubuki.40
+						days = 45
+					}
+					#Peasantry demand support
+					#Pp cost for a while but increased integration
+					#take hit
+					country_event = {
+						id = fubuki.42
+						days = 60
+					}
+					#Whistle stop tour 
+					#Increase integration
+					country_event = {
+						id = fubuki.44
+						days = 85
+					}
+					#Mandatory Swedish language
+					#Stability hit or integration hit
+					country_event = {
+						id = fubuki.45
+						days = 100
+					}
+					#Wrapping up integration
+					#increase integration by a bit
+					country_event = {
+						id = fubuki.46
+						days = 110
+					}
+				}
+			}
 		}
 		x = 13
 		y = 6
@@ -439,6 +591,29 @@ focus_tree = {
 			focus = FBK_crush_the_unrest
 			focus = FBK_slow_integration
 		}
+		completion_reward = {
+			add_research_slot = 1
+			if = {
+				limit = {
+					KRO = {
+						is_puppet_of = FBK
+					}
+				}
+				KRO = {
+					add_research_slot = 1
+				}
+			}
+			if = {
+				limit = {
+					NOV = {
+						is_puppet_of = FBK
+					}
+				}
+				NOV = {
+					add_research_slot = 1
+				}
+			}
+		}
 		x = 14
 		y = 8
 	}
@@ -449,6 +624,30 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_slow_integration
 			focus = FBK_crush_the_unrest
+		}
+		completion_reward = {
+			195 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+			209 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 4
+			}
 		}
 		x = 10
 		y = 8
@@ -461,6 +660,32 @@ focus_tree = {
 			focus = FBK_slow_integration
 			focus = FBK_crush_the_unrest
 		}
+		completion_reward = {
+			195 = {
+				add_building_construction = {
+					type = naval_base
+					level = 6
+					province = 3151
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 3
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			208 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					province = 104
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 3
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
 		x = 12
 		y = 8
 	}
@@ -471,6 +696,10 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_crush_the_unrest
 			focus = FBK_slow_integration
+		}
+		completion_reward = {
+			add_ideas = FBK_russian_vodka
+			one_random_civilian_factory = yes
 		}
 		x = 16
 		y = 8
@@ -490,6 +719,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = FBK_vodka
+		}
+		completion_reward = {
+			add_ideas = FBK_many_peoples_one_nation_idea
 		}
 		x = 13
 		y = 9

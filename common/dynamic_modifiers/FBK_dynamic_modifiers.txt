@@ -1,0 +1,38 @@
+FBK_russian_oblasts = {
+	enable = {
+		always = yes
+	}
+	remove_trigger = {
+		always = no
+	}
+	icon = GFX_FBK_russian_oblasts
+	local_non_core_manpower = -1
+}
+
+FBK_russian_territorial_brigades = {
+	enable = {
+		always = yes
+	}
+	remove_trigger = {
+		always = no
+	}
+	icon = GFX_FBK_russian_territorial_brigades
+	local_non_core_manpower = 0.5
+	compliance_growth = -0.1
+}
+
+FBK_defeatism_modifier = {
+	enable = {
+		always = yes
+	}
+	remove_trigger = {
+		OR = {
+			has_global_flag = GNW_peace_treaty
+			has_global_flag = GNW_conflict_resolved
+		}
+	}
+	icon = GFX_FBK_defeatism_modifier
+	army_attack_factor = FBK.defeatism_level_modifier
+	army_defence_factor = FBK.defeatism_level_modifier
+	army_org_factor = FBK.defeatism_level_modifier
+}

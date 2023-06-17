@@ -246,26 +246,96 @@ FBK_pro_yagoo_progressive_cabinet = {
 		FBK_janne_nilsson
 		FBK_aarne_sihvo
 		FBK_helge_stromback
+		FBK_herman_zetterberg
+		FBK_rudolf_holsti
+		FBK_ernst_von_born_pyp
 	}
 }
 
 FBK_pro_yagoo_monarchy_cabinet = {
 	add_ideas = {
+		FBK_carl_gustaf_emil_mannerheim
+		FBK_kaarlo_castren
+		FBK_nils_wohlin
+		FBK_rudolf_walden
+		FBK_carl_gustaf_emil_mannerheim_army
+		FBK_otto_lybeck
+		FBK_arthur_castren
+		FBK_carl_enckell
+		FBK_karl_soderholm
 	}
 }
 
 FBK_pro_resistance_revolutionary_cabinet = {
 	add_ideas = {
+		FBK_sven_linderot
+		FBK_olof_aschberg
+		FBK_eero_haapalainen
+		FBK_edvard_gylling
+		FBK_august_wesley
+		FBK_verner_lehtimaki
+		FBK_ture_nerman
+		FBK_zeth_hoglund
+		FBK_fritjof_lager
 	}
 }
 
 FBK_pro_resistance_nationalism_cabinet = {
 	add_ideas = {
+		FBK_herman_gummerus
+		FBK_otto_piisinen
+		FBK_carl_axel_johan_gadolin
+		FBK_antti_isotalon
+		FBK_paavo_susitalval
+		FBK_hjalmar_von_bonsdorff
+		FBK_elias_simojoki
+		FBK_reidar_hedman
+		FBK_hilja_riipinen
 	}
 }
 
-FBK_reactionary_monarchy_cabinet = {
-	add_ideas = {
+FBK_modified_defeatism = {
+	clamp_variable = {
+		var = FBK.defeatism_level
+		min = 0
+		max = 100
+	}
+	clear_variable = FBK.defeatism_calculator
+	clear_variable = FBK.defeatism_level_modifier
+	set_temp_variable = {
+		var = FBK.defeatism_calculator
+		value = FBK.defeatism_level
+	}
+	divide_temp_variable = {
+		var = FBK.defeatism_calculator
+		value = 100
+	}
+	subtract_from_temp_variable = {
+		var = FBK.defeatism_calculator
+		value = 0.75
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = FBK.defeatism_calculator
+				value = 0
+				compare = greater_than_or_equals
+			}
+		}
+		divide_temp_variable = {
+			var = FBK.defeatism_calculator
+			value = 5
+		}
+		else = {
+			divide_temp_variable = {
+				var = FBK.defeatism_calculator
+				value = 2
+			}
+		}
+	}
+	set_variable = {
+		var = FBK.defeatism_level_modifier
+		value = FBK.defeatism_calculator
 	}
 }
 
@@ -373,6 +443,34 @@ FBK_delete_na_divisions_effect = {
 		delete_unit_template_and_units = {
 			division_template = "Kungliga Pansarbrigaden"
 			disband = yes
+		}
+	}
+}
+
+FBK_trigger_russian_revolt = {
+	every_state = {
+		limit = {
+			is_owned_and_controlled_by = FBK
+			is_core_of = RSR
+			NOT = {
+				is_core_of = KRO
+			}
+		}
+		transfer_state_to = NOV
+	}
+	NOV = {
+		NOV_revolt_against_fubuki_oob = yes
+		two_random_militia = yes
+		two_random_militia = yes
+		two_random_militia = yes
+		two_random_militia = yes
+		two_random_militia = yes
+		two_random_militia = yes
+		two_random_militia = yes
+		two_random_militia = yes
+		declare_war_on = {
+			target = FBK
+			type = annex_everything
 		}
 	}
 }
