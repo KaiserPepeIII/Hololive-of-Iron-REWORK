@@ -262,6 +262,10 @@ GNW_FBK_crushed_completely = {
 		load_focus_tree = NOE
 		mark_focus_tree_layout_dirty = yes
 	}
+	FBK = {
+		load_focus_tree = GNW_tempend
+		mark_focus_tree_layout_dirty = yes
+	}
 }
 
 GNW_FBK_keeps_sweden_finland = {
@@ -359,6 +363,10 @@ GNW_FBK_keeps_sweden_finland = {
 		load_focus_tree = NOE
 		mark_focus_tree_layout_dirty = yes
 	}
+	FBK = {
+		load_focus_tree = GNW_tempend
+		mark_focus_tree_layout_dirty = yes
+	}
 }
 
 GNW_fubuki_light_peace = {
@@ -393,6 +401,10 @@ GNW_fubuki_light_peace = {
 	set_global_flag = GNW_conflict_resolved
 	NOE = {
 		load_focus_tree = NOE
+		mark_focus_tree_layout_dirty = yes
+	}
+	FBK = {
+		load_focus_tree = GNW_tempend
 		mark_focus_tree_layout_dirty = yes
 	}
 }
@@ -446,6 +458,27 @@ GNW_NOE_crushed_completely = {
 				}
 			}
 		}
+		else = {
+			POL = {
+				transfer_state = 87
+				transfer_state = 98
+				transfer_state = 97
+				transfer_state = 807
+				transfer_state = 92
+				transfer_state = 10
+				transfer_state = 90
+				transfer_state = 88
+				transfer_state = 762
+				transfer_state = 86
+				transfer_state = 68
+				transfer_state = 66
+				transfer_state = 67
+				transfer_state = 76
+				set_capital = {
+					state = 10
+				}
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -462,6 +495,25 @@ GNW_NOE_crushed_completely = {
 		}
 		CZE = {
 			transfer_state = 72
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = FBK.gnw_kronii_concessions
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+			}
+			KRO = {
+				transfer_state = 72
+			}
+		}
+		else = {
+			POL = {
+				transfer_state = 72
+			}
 		}
 	}
 	if = {
@@ -498,6 +550,10 @@ GNW_NOE_crushed_completely = {
 	}
 	FBK = {
 		load_focus_tree = FBK
+		mark_focus_tree_layout_dirty = yes
+	}
+	NOE = {
+		load_focus_tree = GNW_tempend
 		mark_focus_tree_layout_dirty = yes
 	}
 	set_global_flag = GNW_conflict_resolved
@@ -552,6 +608,27 @@ GNW_NOE_autonomous_baltics = {
 				}
 			}
 		}
+		else = {
+			POL = {
+				transfer_state = 87
+				transfer_state = 98
+				transfer_state = 97
+				transfer_state = 807
+				transfer_state = 92
+				transfer_state = 10
+				transfer_state = 90
+				transfer_state = 88
+				transfer_state = 762
+				transfer_state = 86
+				transfer_state = 68
+				transfer_state = 66
+				transfer_state = 67
+				transfer_state = 76
+				set_capital = {
+					state = 10
+				}
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -568,6 +645,25 @@ GNW_NOE_autonomous_baltics = {
 		}
 		CZE = {
 			transfer_state = 72
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = FBK.gnw_kronii_concessions
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+			}
+			KRO = {
+				transfer_state = 72
+			}
+		}
+		else = {
+			POL = {
+				transfer_state = 72
+			}
 		}
 	}
 	FBK = {
@@ -630,6 +726,10 @@ GNW_NOE_autonomous_baltics = {
 		load_focus_tree = FBK
 		mark_focus_tree_layout_dirty = yes
 	}
+	NOE = {
+		load_focus_tree = GNW_tempend
+		mark_focus_tree_layout_dirty = yes
+	}
 	set_global_flag = GNW_conflict_resolved
 }
 
@@ -682,6 +782,27 @@ GNW_NOE_independent_baltics = {
 				}
 			}
 		}
+		else = {
+			POL = {
+				transfer_state = 87
+				transfer_state = 98
+				transfer_state = 97
+				transfer_state = 807
+				transfer_state = 92
+				transfer_state = 10
+				transfer_state = 90
+				transfer_state = 88
+				transfer_state = 762
+				transfer_state = 86
+				transfer_state = 68
+				transfer_state = 66
+				transfer_state = 67
+				transfer_state = 76
+				set_capital = {
+					state = 10
+				}
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -698,6 +819,25 @@ GNW_NOE_independent_baltics = {
 		}
 		CZE = {
 			transfer_state = 72
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = FBK.gnw_kronii_concessions
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+			}
+			KRO = {
+				transfer_state = 72
+			}
+		}
+		else = {
+			POL = {
+				transfer_state = 72
+			}
 		}
 	}
 	FBK = {
@@ -741,9 +881,16 @@ GNW_NOE_independent_baltics = {
 		load_focus_tree = FBK
 		mark_focus_tree_layout_dirty = yes
 	}
+	NOE = {
+		load_focus_tree = GNW_tempend
+		mark_focus_tree_layout_dirty = yes
+	}
 	set_global_flag = GNW_conflict_resolved
 }
 
+#
+#	THIS DOUBLES AS POLISH INDEPENDENCE
+#
 GNW_NOE_restore_kronii = {
 	NOE = {
 		set_politics = {
@@ -793,6 +940,27 @@ GNW_NOE_restore_kronii = {
 				}
 			}
 		}
+		else = {
+			POL = {
+				transfer_state = 87
+				transfer_state = 98
+				transfer_state = 97
+				transfer_state = 807
+				transfer_state = 92
+				transfer_state = 10
+				transfer_state = 90
+				transfer_state = 88
+				transfer_state = 762
+				transfer_state = 86
+				transfer_state = 68
+				transfer_state = 66
+				transfer_state = 67
+				transfer_state = 76
+				set_capital = {
+					state = 10
+				}
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -809,6 +977,25 @@ GNW_NOE_restore_kronii = {
 		}
 		CZE = {
 			transfer_state = 72
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = FBK.gnw_kronii_concessions
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+			}
+			KRO = {
+				transfer_state = 72
+			}
+		}
+		else = {
+			POL = {
+				transfer_state = 72
+			}
 		}
 	}
 	NOE = {
@@ -862,6 +1049,10 @@ GNW_NOE_restore_kronii = {
 	}
 	FBK = {
 		load_focus_tree = FBK
+		mark_focus_tree_layout_dirty = yes
+	}
+	NOE = {
+		load_focus_tree = GNW_tempend
 		mark_focus_tree_layout_dirty = yes
 	}
 	set_global_flag = GNW_conflict_resolved

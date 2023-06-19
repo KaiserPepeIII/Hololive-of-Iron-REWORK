@@ -197,3 +197,42 @@ country_event = {
 		}
 	}
 }
+
+#Mel bends to our demands for Southern Bessarabia and Odessa
+country_event = {
+	id = rushia.7
+	title = rushia.7.t
+	desc = rushia.7.desc
+	picture = GFX_report_event_RUS_flare_accepts_neutral_constitution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#cool
+	option = {
+		name = rushia.7.a
+	}
+}
+
+#Mel does not bend to our demands for Southern Bessarabia and Odessa
+country_event = {
+	id = rushia.8
+	title = rushia.8.t
+	desc = rushia.8.desc
+	picture = GFX_report_event_RUS_flare_accepts_neutral_constitution
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Then war it is
+	option = {
+		name = rushia.8.a
+		declare_war_on = {
+			target = MEL
+			type = take_state
+		}
+	}
+	#I am a cuck
+	option = {
+		name = rushia.8.b
+		MEL = {
+			country_event = mel.12
+		}
+	}
+}

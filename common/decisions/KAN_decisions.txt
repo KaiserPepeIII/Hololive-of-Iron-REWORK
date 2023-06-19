@@ -234,3 +234,29 @@ KAN_reclaim_baja_california = {
 		}
 	}
 }
+
+KAN_reclaim_yucatan = {
+	KAN_war_with_lui = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1939.1.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_threat = 5
+			declare_war_on = {
+				target = LUI
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+}

@@ -1,0 +1,126 @@
+RUS_expansionism = {
+	RUS_strike_lamy = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1938.6.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_threat = 5
+			declare_war_on = {
+				target = LAM
+				type = annex_everything
+			}
+			set_country_flag = RUS_conquest1
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	RUS_demand_odessa = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1938.6.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = RUS_conquest1
+		}
+		complete_effect = {
+			add_threat = 5
+			MEL = {
+				country_event = mel.11
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = -15
+				has_war_with = LAM
+			}
+		}
+	}
+	RUS_strike_central_asia = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1938.6.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = RUS_conquest1
+		}
+		complete_effect = {
+			add_threat = 7.5
+			declare_war_on = {
+				target = KAZ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = TMS
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = KYR
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = UZB
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = SAN
+				type = annex_everything
+			}
+			set_country_flag = RUS_conquest2
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = -15
+				has_war_with = LAM
+			}
+			modifier = {
+				add = -15
+				has_war_with = MEL
+			}
+		}
+	}
+	RUS_strike_the_RSR = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1938.6.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = RUS_conquest2
+		}
+		complete_effect = {
+			add_threat = 5
+			declare_war_on = {
+				target = RSR
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			modifier = {
+				add = -15
+				has_war_with = MEL
+			}
+		}
+	}
+}

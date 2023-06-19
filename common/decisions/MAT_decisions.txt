@@ -17,3 +17,122 @@ MAT_demand_yagoo_withdrawl = {
 		}
 	}
 }
+
+MAT_reuniting_india = {
+	MAT_war_with_aki = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1938.6.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_threat = 5
+			declare_war_on = {
+				target = ROS
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MAT_war_with_okayu = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1938.6.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_threat = 5
+			declare_war_on = {
+				target = OKA
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = -15
+				ROS = {
+					exists = yes
+				}
+			}
+		}
+	}
+	MAT_war_with_burma = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1938.6.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_threat = 2.5
+			declare_war_on = {
+				target = BRM
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = -15
+				OR = {
+					ROS = {
+						exists = yes
+					}
+					has_war_with = OKA
+				}
+			}
+		}
+	}
+	MAT_war_with_watame = {
+		icon = GFX_decision_icon_default
+		available = {
+			OR = {
+				date > 1938.6.1
+				threat > 0.6
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_threat = 5
+			declare_war_on = {
+				target = WAT
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = -15
+				OR = {
+					ROS = {
+						exists = yes
+					}
+					has_war_with = OKA
+				}
+			}
+		}
+	}
+}

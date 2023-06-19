@@ -1015,6 +1015,12 @@ country_event = {
 	#Sure whatever
 	option = {
 		name = FBK_gnw.26.a
+		trigger = {
+			NOT = {
+				has_country_flag = FBK_promised_noel_germany
+			}
+		}
+		set_country_flag = FBK_promised_noel_germany
 		KIA = {
 			country_event = KIA_gnw.17
 		}
@@ -1306,6 +1312,12 @@ country_event = {
 	#help for land 
 	option = {
 		name = FBK_gnw.31.b
+		trigger = {
+			NOT = {
+				has_country_flag = FBK_promised_noel_germany
+			}
+		}
+		set_country_flag = FBK_promised_noel_germany
 		GER = {
 			country_event = GER_gnw.12
 		}
@@ -1781,6 +1793,23 @@ country_event = {
 				var = FBK.gnw_kronii_concessions
 				value = 1
 				compare = greater_than_or_equals
+			}
+		}
+		NOE = {
+			country_event = NOE_gnw.20
+		}
+	}
+	#Polish independence
+	option = {
+		name = FBK_gnw.40.d
+		trigger = {
+			KRO = {
+				NOT = {
+					is_in_array = {
+						array = global.gnw_fubuki_allies
+						value = THIS.id
+					}
+				}
 			}
 		}
 		NOE = {
