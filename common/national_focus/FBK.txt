@@ -52,16 +52,6 @@ focus_tree = {
 			}
 		}
 	}
-	# focus = {
-	# 	id = FBK_restart_great_northern_war
-	# 	icon = GFX_focus_FBK_restart_great_northern_war
-	# 	cost = 10
-	# 	x = 40
-	# 	y = 4
-	# 	completion_reward = {
-	# 		set_country_flag = restart_northern_war
-	# 	}
-	# }
 	focus = {
 		id = FBK_regionalism
 		icon = GFX_focus_FBK_regionalism
@@ -91,6 +81,9 @@ focus_tree = {
 		id = FBK_depoliticize_army
 		icon = GFX_focus_FBK_depoliticize_army
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		mutually_exclusive = {
 			focus = FBK_reinforce_wfa
 		}
@@ -118,6 +111,9 @@ focus_tree = {
 		id = FBK_reinforce_wfa
 		icon = GFX_focus_FBK_strengthen_the_wfa
 		cost = 10
+		available = {
+			has_completed_focus = FBK_end_the_purges
+		}
 		mutually_exclusive = {
 			focus = FBK_depoliticize_army
 		}
@@ -213,16 +209,35 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = FBK_purge_the_wfa_warning
+			subtract_from_variable = {
+				FBK.WFA_relationship_flat_var = -40
+			}
+			FBK_army_variables = yes
+			set_country_flag = FBK_purging_the_wfa
 		}
 		x = 11
 		y = 3
 	}
+	#The WFA should rebel after this focus
 	focus = {
 		id = FBK_rule_from_stockholm
 		icon = GFX_focus_FBK_rule_from_stockholm
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
+		available = {
+			has_country_flag = FBK_ended_purges
+		}
 		prerequisite = {
 			focus = FBK_purge_the_wfa
+		}
+		completion_reward = {
+			add_political_power = 125
+			subtract_from_variable = {
+				FBK.WFA_relationship_flat_var = -25
+			}
+			FBK_army_variables = yes
 		}
 		x = 5
 		y = 4
@@ -231,6 +246,9 @@ focus_tree = {
 		id = FBK_expand_cnsi
 		icon = GFX_focus_FBK_expand_cnsi
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_rule_from_stockholm
 		}
@@ -241,6 +259,9 @@ focus_tree = {
 		id = FBK_fubu_youth_corps
 		icon = GFX_focus_FBK_fubu_youth_corps
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_expand_cnsi
 		}
@@ -251,6 +272,9 @@ focus_tree = {
 		id = FBK_four_year_plan
 		icon = GFX_focus_FBK_four_year_plan
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_rule_from_stockholm
 		}
@@ -261,6 +285,9 @@ focus_tree = {
 		id = FBK_liberalize_markets
 		icon = GFX_focus_FBK_liberalize_markets
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_four_year_plan
 		}
@@ -274,6 +301,9 @@ focus_tree = {
 		id = FBK_expand_state_industry
 		icon = GFX_focus_FBK_expand_state_industry
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_expand_cnsi
 		}
@@ -290,6 +320,9 @@ focus_tree = {
 		id = FBK_liquidate_failing_assets
 		icon = GFX_focus_FBK_liquidate_failing_assets
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_liberalize_markets
 		}
@@ -300,6 +333,9 @@ focus_tree = {
 		id = FBK_shrink_military_complex
 		icon = GFX_focus_FBK_shrink_military_complex
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_liquidate_failing_assets
 		}
@@ -310,6 +346,9 @@ focus_tree = {
 		id = FBK_peasants_to_farmers
 		icon = GFX_focus_FBK_peasants_to_farmers
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_four_year_plan
 		}
@@ -320,6 +359,9 @@ focus_tree = {
 		id = FBK_improve_rural_infrastructure
 		icon = GFX_focus_FBK_improve_rural_infrastructure
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_peasants_to_farmers
 		}
@@ -330,6 +372,9 @@ focus_tree = {
 		id = FBK_encourage_lumber_industry
 		icon = GFX_focus_focus_FBK_encourage_lumber_industry
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_improve_rural_infrastructure
 		}
@@ -367,6 +412,9 @@ focus_tree = {
 		id = FBK_end_the_oblasts
 		icon = GFX_focus_FBK_end_the_oblasts
 		cost = 10
+		available = {
+			always = no
+		}
 		prerequisite = {
 			focus = FBK_purge_the_wfa
 		}
@@ -384,7 +432,8 @@ focus_tree = {
 		id = FBK_the_kronii_oblast
 		icon = GFX_focus_FBK_the_kronii_oblast
 		cost = 10
-		bypass = {
+		available = {
+			always = no
 		}
 		prerequisite = {
 			focus = FBK_the_oblast_debate
@@ -400,6 +449,9 @@ focus_tree = {
 		id = FBK_reform_the_system
 		icon = GFX_focus_FBK_reform_the_system
 		cost = 10
+		available = {
+			always = no
+		}
 		prerequisite = {
 			focus = FBK_end_the_purges
 		}
@@ -557,6 +609,7 @@ focus_tree = {
 		x = 13
 		y = 6
 	}
+	#AUTOCOMPLETED
 	focus = {
 		id = FBK_crush_the_unrest
 		icon = GFX_focus_FBK_crush_the_unrest
@@ -567,9 +620,13 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_slow_integration
 		}
+		completion_reward = {
+			custom_effect_tooltip = HLOI_focus_autocompleted
+		}
 		x = 15
 		y = 7
 	}
+	#AUTOCOMPLETED
 	focus = {
 		id = FBK_slow_integration
 		icon = GFX_focus_FBK_slow_integration
@@ -580,6 +637,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FBK_crush_the_unrest
 		}
+		completion_reward = {
+			custom_effect_tooltip = HLOI_focus_autocompleted
+		}
 		x = 11
 		y = 7
 	}
@@ -587,6 +647,11 @@ focus_tree = {
 		id = FBK_russian_minds
 		icon = GFX_focus_FBK_russian_minds
 		cost = 10
+		available = {
+			NOV = {
+				exists = no
+			}
+		}
 		prerequisite = {
 			focus = FBK_crush_the_unrest
 			focus = FBK_slow_integration
@@ -621,6 +686,11 @@ focus_tree = {
 		id = FBK_russian_industry
 		icon = GFX_focus_FBK_russian_industry
 		cost = 10
+		available = {
+			NOV = {
+				exists = no
+			}
+		}
 		prerequisite = {
 			focus = FBK_slow_integration
 			focus = FBK_crush_the_unrest
@@ -656,6 +726,11 @@ focus_tree = {
 		id = FBK_russian_ports
 		icon = GFX_focus_FBK_russian_ports
 		cost = 10
+		available = {
+			NOV = {
+				exists = no
+			}
+		}
 		prerequisite = {
 			focus = FBK_slow_integration
 			focus = FBK_crush_the_unrest
@@ -693,6 +768,11 @@ focus_tree = {
 		id = FBK_vodka
 		icon = GFX_focus_FBK_vodka
 		cost = 10
+		available = {
+			NOV = {
+				exists = no
+			}
+		}
 		prerequisite = {
 			focus = FBK_crush_the_unrest
 			focus = FBK_slow_integration
@@ -708,6 +788,11 @@ focus_tree = {
 		id = FBK_many_peoples_one_nation
 		icon = GFX_focus_FBK_many_peoples_one_nation
 		cost = 10
+		available = {
+			NOV = {
+				exists = no
+			}
+		}
 		prerequisite = {
 			focus = FBK_russian_ports
 		}
@@ -868,6 +953,9 @@ focus_tree = {
 		id = FBK_end_state_emergency
 		icon = GFX_focus_FBK_end_state_emergency
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_end_the_purges
 		}
@@ -896,6 +984,9 @@ focus_tree = {
 		id = FBK_restore_the_parliament
 		icon = GFX_focus_FBK_restore_the_parliament
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_end_state_emergency
 		}
@@ -906,6 +997,9 @@ focus_tree = {
 		id = FBK_strengthen_parliament
 		icon = GFX_focus_FBK_strengthen_parliament
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_restore_the_parliament
 		}
@@ -916,6 +1010,9 @@ focus_tree = {
 		id = FBK_reduce_state_influence
 		icon = GFX_focus_FBK_reduce_state_influence
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_strengthen_parliament
 		}
@@ -926,6 +1023,9 @@ focus_tree = {
 		id = FBK_increase_suffrage
 		icon = GFX_focus_FBK_increase_suffrage
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_restore_the_parliament
 		}
@@ -936,6 +1036,9 @@ focus_tree = {
 		id = FBK_restore_workers_rights
 		icon = GFX_focus_FBK_restore_workers_rights
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_increase_suffrage
 		}
@@ -946,6 +1049,9 @@ focus_tree = {
 		id = FBK_democratic_constitution
 		icon = GFX_focus_FBK_democratic_constitution
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_reduce_state_influence
 		}
@@ -959,6 +1065,9 @@ focus_tree = {
 		id = FBK_end_wfa
 		icon = GFX_focus_FBK_end_wfa
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_end_state_emergency
 		}
@@ -969,6 +1078,9 @@ focus_tree = {
 		id = FBK_privitise_economy
 		icon = GFX_focus_FBK_privitise_economy
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_end_state_emergency
 		}
@@ -979,6 +1091,9 @@ focus_tree = {
 		id = FBK_local_needs
 		icon = GFX_focus_FBK_local_needs
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_privitise_economy
 		}
@@ -992,6 +1107,9 @@ focus_tree = {
 		id = FBK_consumer_goods_focus
 		icon = GFX_focus_FBK_consumer_goods_focus
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_local_needs
 		}
@@ -1002,6 +1120,9 @@ focus_tree = {
 		id = FBK_convert_military_factories
 		icon = GFX_focus_FBK_convert_military_factories
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_local_needs
 		}
@@ -1012,6 +1133,9 @@ focus_tree = {
 		id = FBK_lumber_and_iron
 		icon = GFX_focus_FBK_lumber_and_iron
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_consumer_goods_focus
 		}
@@ -1025,6 +1149,9 @@ focus_tree = {
 		id = FBK_export_focus
 		icon = GFX_focus_FBK_export_focus
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_privitise_economy
 		}
@@ -1038,6 +1165,9 @@ focus_tree = {
 		id = FBK_mass_resource_extraction
 		icon = GFX_focus_FBK_mass_resource_extraction
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_export_focus
 		}
@@ -1048,6 +1178,9 @@ focus_tree = {
 		id = FBK_retain_military_economy
 		icon = GFX_focus_FBK_retain_military_economy
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_export_focus
 		}
@@ -1071,9 +1204,15 @@ focus_tree = {
 		id = FBK_brightest_minds
 		icon = GFX_focus_FBK_brightest_minds
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_lumber_and_iron
 			focus = FBK_steel_and_guns
+		}
+		completion_reward = {
+			add_research_slot = 1
 		}
 		x = 35
 		y = 9
@@ -1338,6 +1477,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_infantry_lessons_tech
 				bonus = 0.75
 				uses = 3
 				category = infantry_weapons
@@ -1459,6 +1599,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_artillery_lessons_tech
 				bonus = 1
 				uses = 2
 				category = artillery
@@ -1519,6 +1660,9 @@ focus_tree = {
 		id = FBK_surrounded_on_all_fronts
 		icon = GFX_focus_FBK_surrounded_on_all_fronts
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_deterrence
 		}
@@ -1529,6 +1673,9 @@ focus_tree = {
 		id = FBK_rework_conscription		# increased conscription and mobilization speed
 		icon = GFX_focus_FBK_rework_conscription
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_depoliticize_army
 		}
@@ -1591,6 +1738,9 @@ focus_tree = {
 		id = FBK_european_stronghold
 		icon = GFX_focus_FBK_european_stronghold
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_resistance_principles
 		}
@@ -1601,6 +1751,9 @@ focus_tree = {
 		id = FBK_states_army
 		icon = GFX_focus_FBK_states_army
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_rework_conscription
 		}
@@ -1636,6 +1789,9 @@ focus_tree = {
 		id = FBK_pick_up_scraps
 		icon = GFX_focus_FBK_pick_up_scraps
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_revitalize_national_army
 		}
@@ -1657,6 +1813,9 @@ focus_tree = {
 		id = FBK_wfa_integration
 		icon = GFX_focus_FBK_wfa_integration
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_revitalize_national_army
 		}
@@ -1739,6 +1898,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_submarine_designs_tech
 				bonus = 1
 				uses = 3
 				category = naval_equipment
@@ -1756,6 +1916,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_submarine_designs_tech
 				bonus = 3
 				uses = 1
 				category = ss_tech
@@ -1903,7 +2064,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_doctrine_cost_reduction = {
-				name = nav_doctrine_boost
+				name = FBK_nav_doctrine_boost
 				cost_reduction = 0.25
 				uses = 3
 				category = naval_doctrine
@@ -1959,6 +2120,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_strategic_bombers_tech
 				bonus = 2
 				uses = 1
 				category = cat_strategic_bomber
@@ -1976,6 +2138,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_tactical_bombers_tech
 				bonus = 1.5
 				uses = 1
 				category = tactical_bomber
@@ -2033,6 +2196,7 @@ focus_tree = {
 				}
 			}
 			add_tech_bonus = {
+				name = FBK_general_expansion_tech
 				bonus = 0.5
 				uses = 1
 				category = light_fighter
@@ -2051,6 +2215,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_fighter_modernisation_tech
 				bonus = 1.5
 				uses = 2
 				category = light_fighter
@@ -2083,6 +2248,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_naval_bombers_tech
 				bonus = 1.5
 				uses = 1
 				category = naval_bomber
@@ -2100,6 +2266,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_cas_tech
 				bonus = 1.5
 				uses = 1
 				category = cas_bomber
@@ -2162,6 +2329,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_tech_bonus = {
+				name = FBK_heavy_water_tech
 				bonus = 2
 				uses = 1
 				category = nuclear
@@ -2174,6 +2342,9 @@ focus_tree = {
 		id = FBK_nationalize_the_unions
 		icon = GFX_focus_FBK_nationalize_the_unions
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_expand_state_industry
 		}
@@ -2184,6 +2355,12 @@ focus_tree = {
 		id = FBK_everyone_a_friend
 		icon = GFX_focus_FBK_everyone_a_friend
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_fubu_youth_corps
 		}
@@ -2194,6 +2371,9 @@ focus_tree = {
 		id = FBK_further_urbanisation
 		icon = GFX_focus_FBK_further_urbanisation
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_nationalize_the_unions
 		}
@@ -2204,6 +2384,9 @@ focus_tree = {
 		id = FBK_tackle_the_depression
 		icon = GFX_focus_FBK_tackle_the_depression
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_further_urbanisation
 			focus = FBK_shrink_military_complex
@@ -2251,6 +2434,9 @@ focus_tree = {
 		id = FBK_new_elections
 		icon = GFX_focus_FBK_new_elections
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_democratic_constitution
 		}
@@ -2288,6 +2474,9 @@ focus_tree = {
 		id = FBK_popular_army
 		icon = GFX_focus_FBK_popular_army
 		cost = 10
+		cancel = {
+			has_government = pro_resistance_nationalism
+		}
 		prerequisite = {
 			focus = FBK_wfa_integration
 			focus = FBK_pick_up_scraps

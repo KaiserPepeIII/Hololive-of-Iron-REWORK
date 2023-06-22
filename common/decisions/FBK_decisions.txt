@@ -44,8 +44,88 @@ FBK_hostage_crisis = {
 	}
 }
 
+#fubuki forest brothers mission
 FBK_post_gnw_chaos_win = {
-	FBK_forest_brothers = {
+	FBK_forest_brothers_uprising = {
+		priority = 3
+		available = {
+			always = no
+		}
+		allowed = {
+			always = no
+		}
+		activation = {
+			always = no
+		}
+		visible = {
+			has_global_flag = GNW_peace_treaty
+		}
+		selectable_mission = no
+		days_mission_timeout = 100
+		is_good = no
+		fire_only_once = yes
+		timeout_effect = {
+			country_event = FBK_post_gnw.1
+		}
+	}
+	FBK_allocate_more_resources = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		custom_cost_trigger = {
+			always = yes
+		}
+		custom_cost_text = HLOI_cost_50_cp
+		complete_effect = {
+			add_political_power = 150
+		}
+	}
+	FBK_delay_speech = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		cost = 0
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = FBK_hold_speech
+				days = 15
+			}
+			add_to_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+		}
+	}
+	FBK_further_delay_speech = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			has_decision = FBK_delay_speech
+		}
+		fire_only_once = yes
+		cost = 0
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = FBK_hold_speech
+				days = 15
+			}
+			add_to_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+		}
+	}
+	FBK_hold_speech = {
+		priority = 2
 		allowed = {
 			tag = FBK
 		}
@@ -55,12 +135,743 @@ FBK_post_gnw_chaos_win = {
 		visible = {
 			has_global_flag = GNW_peace_treaty
 		}
+		available = {
+			core_compliance = {
+				occupied_country_tag = EST
+				value > 30
+			}
+			core_compliance = {
+				occupied_country_tag = LAT
+				value > 20
+			}
+			core_compliance = {
+				occupied_country_tag = LIT
+				value > 20
+			}
+			core_resistance = {
+				occupied_country_tag = EST
+				value < 10
+			}
+			core_resistance = {
+				occupied_country_tag = LAT
+				value < 10
+			}
+			core_resistance = {
+				occupied_country_tag = LIT
+				value < 10
+			}
+			has_decision = FBK_plant_informants
+			has_decision = FBK_replace_unloyal_officers
+			has_decision = FBK_increase_garrison
+		}
+		fire_only_once = yes
+		days_mission_timeout = 60
+		selectable_mission = yes
+		complete_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 2
+			}
+			country_event = FBK_post_gnw.6
+		}
+		timeout_effect = {
+			country_event = FBK_post_gnw.5
+			add_to_variable = {
+				var = FBK.revolt_power
+				value = 2
+			}
+		}
+	}
+	FBK_conduct_raids_in_estonia = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		days_re_enable = 20
+		days_remove = 5
+		fire_only_once = no
+		cost = 30
+		remove_effect = {
+			EST = {
+				every_core_state = {
+					add_resistance = -10
+				}
+				every_core_state = {
+					add_compliance = -3
+				}
+			}
+		}
+	}
+	FBK_conduct_raids_in_latvia = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		days_re_enable = 20
+		days_remove = 5
+		fire_only_once = no
+		cost = 30
+		remove_effect = {
+			LAT = {
+				every_core_state = {
+					add_resistance = -10
+				}
+				every_core_state = {
+					add_compliance = -3
+				}
+			}
+		}
+	}
+	FBK_conduct_raids_in_lithuania = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		days_re_enable = 20
+		days_remove = 5
+		fire_only_once = no
+		cost = 30
+		remove_effect = {
+			LIT = {
+				every_core_state = {
+					add_resistance = -10
+				}
+				every_core_state = {
+					add_compliance = -3
+				}
+			}
+		}
+	}
+	FBK_promise_autonomy = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			NOT = {
+				has_country_flag = FBK_centralized_baltics
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = FBK_centralized_baltics
+			}
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 2
+			}
+			EST = {
+				every_core_state = {
+					add_dynamic_modifier = {
+						modifier = FBK_autonomous
+					}
+				}
+			}
+			LAT = {
+				every_core_state = {
+					add_dynamic_modifier = {
+						modifier = FBK_autonomous
+					}
+				}
+			}
+			LIT = {
+				every_core_state = {
+					add_dynamic_modifier = {
+						modifier = FBK_autonomous
+					}
+				}
+			}
+			set_country_flag = FBK_autonomous_baltics
+		}
+	}
+	FBK_centralize_authority = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			NOT = {
+				has_country_flag = FBK_autonomous_baltics
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = FBK_autonomous_baltics
+			}
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+			LIT = {
+				every_core_state = {
+					add_resistance = -10
+					add_compliance = 3
+				}
+			}
+			LAT = {
+				every_core_state = {
+					add_resistance = -10
+					add_compliance = 3
+				}
+			}
+			EST = {
+				every_core_state = {
+					add_resistance = -10
+					add_compliance = 3
+				}
+			}
+			set_country_flag = FBK_centralized_baltics
+		}
+	}
+	FBK_replace_unloyal_officers = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		available = {
+			command_power > 25
+		}
+		fire_only_once = yes
+		custom_cost_trigger = {
+			always = yes
+		}
+		custom_cost_text = HLOI_cost_25_cp
+		complete_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+			hidden_effect = {
+				add_command_power = -25
+			}
+			army_experience = 10
+		}
+	}
+	FBK_plant_informants = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_remove = 20
+		cost = 30
+		remove_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+			add_political_power = 10
+			add_command_power = 20
+			hidden_effect = {
+				country_event = FBK_post_gnw.7
+			}
+		}
+	}
+	FBK_increase_garrison = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		custom_cost_trigger = {
+			always = yes
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 250
+			}
+		}
+		custom_cost_text = "250 guns"
+		complete_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+			add_manpower = -2000
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+					producer = FBK
+				}
+			}
+		}
+	}
+	FBK_invest_in_estonia = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_remove = 30
+		cost = 100
+		remove_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+			EST = {
+				every_core_state = {
+					add_compliance = 15
+				}
+			}
+			13 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			965 = {
+				add_building_construction = {
+					type = naval_base
+					level = 1
+					instant_build = yes
+					province = 185
+				}
+			}
+		}
+	}
+	FBK_invest_in_latvia = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_remove = 25
+		cost = 70
+		remove_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+			LAT = {
+				every_core_state = {
+					add_compliance = 10
+				}
+				961 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	FBK_invest_in_lithuania = {
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_remove = 25
+		cost = 70
+		remove_effect = {
+			subtract_from_variable = {
+				var = FBK.revolt_power
+				value = 1
+			}
+			LIT = {
+				every_core_state = {
+					add_compliance = 10
+				}
+			}
+			11 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FBK_solve_noel_issue = {
+		allowed = {
+			always = no
+		}
+		activation = {
+			always = no
+		}
+		visible = {
+			always = no
+		}
+		selectable_mission = yes
+		days_mission_timeout = 15
+		is_good = no
+		fire_only_once = yes
+		complete_effect = {
+			country_event = FBK_post_gnw.10
+		}
+		timeout_effect = {
+			country_event = FBK_post_gnw.13
+		}
+	}
+	FBK_incoming_forced_peace = {
+		priority = 3
+		available = {
+			always = no
+		}
+		allowed = {
+			always = no
+		}
+		activation = {
+			always = no
+		}
+		visible = {
+		}
 		selectable_mission = no
-		days_mission_timeout = 30
+		days_mission_timeout = 100
 		is_good = no
 		fire_only_once = yes
 		timeout_effect = {
-			country_event = FBK_post_gnw.1
+			set_temp_variable = {
+				var = FBK.baltic_peace
+				value = 0
+			}
+			if = {
+				limit = {
+					965 = {
+						is_controlled_by = FBK
+					}
+				}
+				add_to_temp_variable = {
+					var = FBK.baltic_peace
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					13 = {
+						is_controlled_by = FBK
+					}
+				}
+				add_to_temp_variable = {
+					var = FBK.baltic_peace
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					191 = {
+						is_controlled_by = FBK
+					}
+				}
+				add_to_temp_variable = {
+					var = FBK.baltic_peace
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					12 = {
+						is_controlled_by = FBK
+					}
+					959 = {
+						is_controlled_by = FBK
+					}
+				}
+				add_to_temp_variable = {
+					var = FBK.baltic_peace
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					961 = {
+						is_controlled_by = FBK
+					}
+					190 = {
+						is_controlled_by = FBK
+					}
+				}
+				add_to_temp_variable = {
+					var = FBK.baltic_peace
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					784 = {
+						is_controlled_by = FBK
+					}
+					189 = {
+						is_controlled_by = FBK
+					}
+				}
+				add_to_temp_variable = {
+					var = FBK.baltic_peace
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					11 = {
+						is_controlled_by = FBK
+					}
+					962 = {
+						is_controlled_by = FBK
+					}
+				}
+				add_to_temp_variable = {
+					var = FBK.baltic_peace
+					value = 1
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = FBK.baltic_peace
+						value = 0
+						compare = equals
+					}
+				}
+				EST = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+				LAT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+				LIT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						var = FBK.baltic_peace
+						value = 1
+						compare = equals
+					}
+				}
+				965 = {
+					transfer_state_to = FBK
+				}
+				13 = {
+					transfer_state_to = BGE
+				}
+				191 = {
+					transfer_state_to = BGE
+				}
+				1000 = {
+					transfer_state_to = BGE
+				}
+				LAT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+				LIT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						var = FBK.baltic_peace
+						value = 2
+						compare = equals
+					}
+				}
+				965 = {
+					transfer_state_to = FBK
+				}
+				13 = {
+					transfer_state_to = FBK
+				}
+				191 = {
+					transfer_state_to = BGE
+				}
+				1000 = {
+					transfer_state_to = BGE
+				}
+				LAT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+				LIT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						var = FBK.baltic_peace
+						value = 3
+						compare = equals
+					}
+				}
+				EST = {
+					every_core_state = {
+						transfer_state_to = FBK
+					}
+				}
+				LAT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+				LIT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						var = FBK.baltic_peace
+						value = 4
+						compare = equals
+					}
+				}
+				EST = {
+					every_core_state = {
+						transfer_state_to = FBK
+					}
+				}
+				12 = {
+					transfer_state_to = FBK
+				}
+				959 = {
+					transfer_state_to = FBK
+				}
+				960 = {
+					transfer_state_to = BGE
+				}
+				961 = {
+					transfer_state_to = BGE
+				}
+				190 = {
+					transfer_state_to = BGE
+				}
+				LIT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						var = FBK.baltic_peace
+						value = 5
+						compare = equals
+					}
+				}
+				EST = {
+					every_core_state = {
+						transfer_state_to = FBK
+					}
+				}
+				LAT = {
+					every_core_state = {
+						transfer_state_to = FBK
+					}
+				}
+				LIT = {
+					every_core_state = {
+						transfer_state_to = BGE
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						var = FBK.baltic_peace
+						value = 6
+						compare = equals
+					}
+				}
+				EST = {
+					every_core_state = {
+						transfer_state_to = FBK
+					}
+				}
+				LAT = {
+					every_core_state = {
+						transfer_state_to = FBK
+					}
+				}
+				189 = {
+					transfer_state_to = FBK
+				}
+				784 = {
+					transfer_state_to = FBK
+				}
+				964 = {
+					transfer_state_to = FBK
+				}
+				188 = {
+					transfer_state_to = BGE
+				}
+				962 = {
+					transfer_state_to = BGE
+				}
+				963 = {
+					transfer_state_to = BGE
+				}
+				11 = {
+					transfer_state_to = BGE
+				}
+			}
+			else = {
+				FBK = {
+					annex_country = {
+						target = BGE
+						transfer_troops = no
+					}
+				}
+			}
+			country_event = FBK_post_gnw.20
 		}
 	}
 }
@@ -794,11 +1605,221 @@ FBK_plan_valkyrie_decisions = {
 	}
 }
 
-FBK_army_balance_categories = {
-	FBK_show_armies = {
+FBK_purging_the_wfa_decisions = {
+	FBK_purge_hugo_osterman = {
 		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_mission_timeout = 14
+		selectable_mission = no
+		timeout_effect = {
+			country_event = fubuki.52
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_purge_axel_bredberg = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_mission_timeout = 28
+		selectable_mission = no
+		timeout_effect = {
+			country_event = fubuki.53
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_purge_karl_wilkama = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_mission_timeout = 45
+		selectable_mission = no
+		timeout_effect = {
+			country_event = fubuki.54
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_purge_aksel_airo = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_mission_timeout = 60
+		selectable_mission = no
+		timeout_effect = {
+			country_event = fubuki.55
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_purge_curt_goransson = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_mission_timeout = 74
+		selectable_mission = no
+		timeout_effect = {
+			country_event = fubuki.56
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_end_the_purges = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 14
+		}
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
 		complete_effect = {
-			set_country_flag = open_army_ratio_textbox
+			country_event = fubuki.57
+			hidden_effect = {
+				remove_mission = FBK_purge_hugo_osterman
+				remove_mission = FBK_purge_axel_bredberg
+				remove_mission = FBK_purge_karl_wilkama
+				remove_mission = FBK_purge_aksel_airo
+				remove_mission = FBK_purge_curt_goransson
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+FBK_army_balance_categories = {
+	#wfa revolt
+	FBK_the_wfa_revolution = {
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			OR = {
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 75
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = -75
+					compare = less_than_or_equals
+				}
+			}
+			has_completed_focus = FBK_purge_the_wfa
+		}
+		cancel_trigger = {
+			NOT = {
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 75
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = -75
+					compare = less_than_or_equals
+				}
+			}
+		}
+		selectable_mission = no
+		days_mission_timeout = 30
+		is_good = no
+		fire_only_once = no
+		timeout_effect = {
+			country_event = fubuki.59
+		}
+	}
+	#resets the gui thingamabob
+	FBK_the_wfa_coup = {
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			OR = {
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 75
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = -75
+					compare = less_than_or_equals
+				}
+			}
+			NOT = {
+				has_completed_focus = FBK_purge_the_wfa
+				has_completed_focus = FBK_end_the_purges
+			}
+		}
+		cancel_trigger = {
+			NOT = {
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = 75
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FBK.WFA_relationship_var
+					value = -75
+					compare = less_than_or_equals
+				}
+			}
+			has_completed_focus = FBK_purge_the_wfa
+			has_completed_focus = FBK_end_the_purges
+		}
+		selectable_mission = no
+		days_mission_timeout = 30
+		is_good = no
+		fire_only_once = no
+		timeout_effect = {
+			country_event = fubuki.51
+		}
+	}
+	FBK_wfa_inspections = {
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			NOT = {
+				has_country_flag = FBK_wfa_purge_successful
+				has_country_flag = FBK_wfa_revolt
+				has_country_flag = FBK_wfa_integration
+			}
+		}
+		cancel_trigger = {
+			has_country_flag = FBK_wfa_purge_successful
+			has_country_flag = FBK_wfa_revolt
+			has_country_flag = FBK_wfa_integration
+		}
+		selectable_mission = no
+		days_mission_timeout = 30
+		is_good = no
+		fire_only_once = no
+		timeout_effect = {
+			FBK_army_variables = yes
+			clr_country_flag = FBK_army_units_raised_flag
 		}
 	}
 	##WFA Division
@@ -828,7 +1849,7 @@ FBK_army_balance_categories = {
 				NOT = {
 					check_variable = {
 						var = FBK.num_equipment@infantry_equipment
-						value = 0
+						value = 800
 						compare = less_than_or_equals
 					}
 				}
@@ -848,6 +1869,19 @@ FBK_army_balance_categories = {
 		}
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				add = -2
+				has_equipment = {
+					infantry_equipment < 8000
+				}
+			}
+			modifier = {
+				add = -100
+				has_equipment = {
+					infantry_equipment < 8000
+				}
+				has_war = no
+			}
 		}
 	}
 	FBK_recruit_five_wfa = {
@@ -884,6 +1918,19 @@ FBK_army_balance_categories = {
 		}
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				add = -2
+				has_equipment = {
+					infantry_equipment < 40000
+				}
+			}
+			modifier = {
+				add = -100
+				has_equipment = {
+					infantry_equipment < 40000
+				}
+				has_war = no
+			}
 		}
 	}
 	FBK_recruit_ten_wfa = {
@@ -920,6 +1967,19 @@ FBK_army_balance_categories = {
 		}
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				add = -2
+				has_equipment = {
+					infantry_equipment < 80000
+				}
+			}
+			modifier = {
+				add = -100
+				has_equipment = {
+					infantry_equipment < 80000
+				}
+				has_war = no
+			}
 		}
 	}
 	FBK_recruit_a_na = {
@@ -956,6 +2016,19 @@ FBK_army_balance_categories = {
 		}
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				add = -2
+				has_equipment = {
+					infantry_equipment < 8000
+				}
+			}
+			modifier = {
+				add = -100
+				has_equipment = {
+					infantry_equipment < 8000
+				}
+				has_war = no
+			}
 		}
 	}
 	FBK_recruit_five_na = {
@@ -992,6 +2065,19 @@ FBK_army_balance_categories = {
 		}
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				add = -2
+				has_equipment = {
+					infantry_equipment < 40000
+				}
+			}
+			modifier = {
+				add = -100
+				has_equipment = {
+					infantry_equipment < 40000
+				}
+				has_war = no
+			}
 		}
 	}
 	FBK_recruit_ten_na = {
@@ -1028,6 +2114,19 @@ FBK_army_balance_categories = {
 		}
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				add = -2
+				has_equipment = {
+					infantry_equipment < 80000
+				}
+			}
+			modifier = {
+				add = -100
+				has_equipment = {
+					infantry_equipment < 80000
+				}
+				has_war = no
+			}
 		}
 	}
 }

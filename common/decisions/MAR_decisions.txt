@@ -187,7 +187,7 @@ MAR_pirating_settling_decisions = {
 		visible = {
 			always = yes
 		}
-		fire_only_once = no
+		fire_only_once = yes
 		days_re_enable = 60
 		cost = 200
 		complete_effect = {
@@ -197,6 +197,100 @@ MAR_pirating_settling_decisions = {
 			}
 			declare_war_on = {
 				target = GYA
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Pirateering war goal cuba
+	MAR_war_on_cuba = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+			add_power_balance_value = {
+				id = MAR_back_settling
+				value > -0.7
+			}
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_re_enable = 60
+		cost = 200
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering_settling_bop
+				value = -0.05
+			}
+			declare_war_on = {
+				target = CUB
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Piraterring War goal on aqua
+	MAR_war_on_cuba = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+			add_power_balance_value = {
+				id = MAR_back_settling
+				value > -0.8
+			}
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_re_enable = 60
+		cost = 200
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering_settling_bop
+				value = -0.05
+			}
+			declare_war_on = {
+				target = AQA
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Pirateering war goal Venezuela and Subatomo Kensetsu
+	MAR_war_on_cuba = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+			add_power_balance_value = {
+				id = MAR_back_settling
+				value > -0.7
+			}
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_re_enable = 60
+		cost = 200
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering_settling_bop
+				value = -0.05
+			}
+			declare_war_on = {
+				target = VEN
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = OSK
 				type = annex_everything
 			}
 		}
@@ -216,7 +310,7 @@ MAR_pirating_settling_decisions = {
 		fire_only_once = no
 		days_re_enable = 60
 		days_remove = 30
-		cost = 200
+		cost = 150
 		modifier = {
 			equipment_conversion_speed = 0.1
 		}
@@ -397,6 +491,121 @@ MAR_pirating_settling_decisions = {
 			add_power_balance_value = {
 				id = MAR_pirateering_settling_bop
 				value = 0.05
+				`
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Core On Panama
+	MAR_war_on_cuba = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+			owns_state = 304
+			owns_state = 949
+			add_power_balance_value = {
+				id = MAR_back_settling
+				value > 0.7
+			}
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_re_enable = 60
+		cost = 200
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering_settling_bop
+				value = 0.05
+			}
+			304 = {
+				add_core_of = MAR
+			}
+			949 = {
+				add_core_of = MAR
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Settling war for Central America
+	MAR_war_on_cuba = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+			add_power_balance_value = {
+				id = MAR_back_settling
+				value > 0.7
+			}
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_re_enable = 60
+		cost = 200
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering_settling_bop
+				value = 0.05
+			}
+			declare_war_on = {
+				target = PAN
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = HON
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = GUA
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = COS
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = NIC
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = ELS
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	#Settling war for Southeren states of america
+	MAR_war_on_cuba = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 100
+			add_power_balance_value = {
+				id = MAR_back_settling
+				value > 0.7
+			}
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		days_re_enable = 60
+		cost = 200
+		complete_effect = {
+			add_power_balance_value = {
+				id = MAR_pirateering_settling_bop
+				value = 0.05
+			}
+			declare_war_on = {
+				target = COC
+				type = annex_everything
 			}
 		}
 		ai_will_do = {

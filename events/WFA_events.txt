@@ -675,3 +675,68 @@ country_event = {
 		}
 	}
 }
+
+#wfs revolt
+country_event = {
+	id = wfa.24
+	title = wfa.24.t
+	desc = wfa.24.desc
+	picture = GFX_report_WFA_quisling_arrested
+	is_triggered_only = yes
+	#we gotta help!
+	option = {
+		name = wfa.24.a
+		hidden_effect = {
+			if = {
+				limit = {
+					WFA = {
+						is_puppet = yes
+					}
+				}
+				FBK = {
+					end_puppet = WFA
+				}
+			}
+		}
+		WFA = {
+			declare_war_on = {
+				target = FBK
+				type = annex_everything
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				add = 4
+				WFA = {
+					has_country_flag = WFS_strong_revolt
+				}
+			}
+			modifier = {
+				add = 2
+				WFA = {
+					has_country_flag = WFS_medium_revolt
+				}
+			}
+		}
+	}
+	#On our own terms
+	option = {
+		name = wfa.24.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				add = 1
+				WFA = {
+					has_country_flag = WFS_medium_revolt
+				}
+			}
+			modifier = {
+				add = 4
+				WFA = {
+					has_country_flag = WFS_weak_revolt
+				}
+			}
+		}
+	}
+}

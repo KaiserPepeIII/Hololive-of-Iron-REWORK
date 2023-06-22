@@ -1147,6 +1147,16 @@ country_event = {
 				autonomy_state = autonomy_integrated_puppet
 			}
 		}
+		every_state = {
+			limit = {
+				is_core_of = RSR
+				is_owned_by = FBK
+				NOT = {
+					is_core_of = FBK
+				}
+			}
+			transfer_state_to = KRO
+		}
 		add_power_balance_modifier = {
 			id = FBK_oblast_debate_bop
 			modifier = FBK_oblast_debate_kronii_modifier
@@ -1497,6 +1507,16 @@ country_event = {
 		remove_power_balance = {
 			id = FBK_oblast_debate_bop
 		}
+		every_state = {
+			limit = {
+				is_core_of = RSR
+				is_owned_by = FBK
+				NOT = {
+					is_core_of = FBK
+				}
+			}
+			add_core_of = FBK
+		}
 		complete_national_focus = FBK_slow_integration
 	}
 	#oh nyo
@@ -1525,6 +1545,21 @@ country_event = {
 				id = FBK_oblast_debate_bop
 				value > 0.7
 			}
+		}
+		every_state = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = FBK_russian_oblasts
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = FBK_russian_oblasts
+			}
+			remove_dynamic_modifier = {
+				modifier = FBK_russian_territorial_brigades
+			}
+			set_resistance = 0
+			set_compliance = 1
 		}
 		remove_power_balance = {
 			id = FBK_oblast_debate_bop
@@ -1558,6 +1593,16 @@ country_event = {
 				value > 0.7
 			}
 		}
+		every_state = {
+			limit = {
+				is_core_of = RSR
+				is_owned_by = FBK
+				NOT = {
+					is_core_of = FBK
+				}
+			}
+			add_core_of = KRO
+		}
 		remove_power_balance = {
 			id = FBK_oblast_debate_bop
 		}
@@ -1571,5 +1616,359 @@ country_event = {
 		}
 		FBK_trigger_russian_revolt = yes
 		complete_national_focus = FBK_crush_the_unrest
+	}
+}
+
+#The WFA coup!
+country_event = {
+	id = fubuki.51
+	title = fubuki.51.t
+	desc = fubuki.51.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#oh nyo
+	option = {
+		name = fubuki.51.a
+		set_stability = 0.15
+		set_politics = {
+			ruling_party = pro_resistance_nationalism
+		}
+		add_popularity = {
+			ideology = pro_resistance_nationalism
+			popularity = 0.05
+		}
+		FBK_pro_resistance_nationalism_cabinet = yes
+	}
+}
+
+#The trial of Hugo Osterman
+country_event = {
+	id = fubuki.52
+	title = fubuki.52.t
+	desc = fubuki.52.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Purge him
+	option = {
+		name = fubuki.52.a
+		FBK_hugo_osterman = {
+			retire = yes
+		}
+		FBK_hugo_osterman_char = {
+			retire = yes
+		}
+	}
+	#Spare him
+	option = {
+		name = fubuki.52.b
+		add_to_variable = {
+			var = FBK.wfa_pardon_count
+			value = 1
+		}
+	}
+}
+
+#The trial of Axel Bredberg
+country_event = {
+	id = fubuki.53
+	title = fubuki.53.t
+	desc = fubuki.53.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Purge him
+	option = {
+		name = fubuki.53.a
+		FBK_axel_bredberg = {
+			retire = yes
+		}
+	}
+	#Spare him
+	option = {
+		name = fubuki.53.b
+		add_to_variable = {
+			var = FBK.wfa_pardon_count
+			value = 1
+		}
+	}
+}
+
+#The trial of Karl Wilkama
+country_event = {
+	id = fubuki.54
+	title = fubuki.54.t
+	desc = fubuki.54.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Purge him
+	option = {
+		name = fubuki.54.a
+		FBK_karl_wilkama = {
+			retire = yes
+		}
+	}
+	#Spare him
+	option = {
+		name = fubuki.54.b
+		add_to_variable = {
+			var = FBK.wfa_pardon_count
+			value = 1
+		}
+	}
+}
+
+#The trial of Aksel Airo
+country_event = {
+	id = fubuki.55
+	title = fubuki.55.t
+	desc = fubuki.55.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Purge him
+	option = {
+		name = fubuki.55.a
+		FBK_aksel_airo = {
+			retire = yes
+		}
+	}
+	#Spare him
+	option = {
+		name = fubuki.55.b
+		add_to_variable = {
+			var = FBK.wfa_pardon_count
+			value = 1
+		}
+	}
+}
+
+#The trial of Curt Goransson
+country_event = {
+	id = fubuki.56
+	title = fubuki.56.t
+	desc = fubuki.56.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Purge him
+	option = {
+		name = fubuki.56.a
+		FBK_curt_goransson = {
+			retire = yes
+		}
+	}
+	#Spare him
+	option = {
+		name = fubuki.56.b
+		add_to_variable = {
+			var = FBK.wfa_pardon_count
+			value = 1
+		}
+	}
+}
+
+#The trial of Mannerheim
+country_event = {
+	id = fubuki.58
+	title = fubuki.58.t
+	desc = fubuki.58.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Purge him
+	option = {
+		name = fubuki.56.a
+		FBK_carl_mannerheim = {
+			retire = yes
+		}
+		FBK_carl_gustaf_emil_mannerheim_char = {
+			retire = yes
+		}
+	}
+	#Spare him
+	option = {
+		name = fubuki.58.b
+		add_to_variable = {
+			var = FBK.wfa_pardon_count
+			value = 1
+		}
+	}
+}
+
+#Result of the purges
+country_event = {
+	id = fubuki.57
+	title = fubuki.57.t
+	desc = fubuki.57.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#full_purge
+	option = {
+		name = fubuki.57.a
+		trigger = {
+			check_variable = {
+				var = FBK.wfa_pardon_count
+				value = 6
+				compare = equals
+			}
+		}
+		add_stability = -0.15
+		add_war_support = -0.2
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.1
+		}
+		add_to_variable = {
+			FBK.WFA_relationship_flat_var = -15
+		}
+		FBK_army_variables = yes
+		set_country_flag = FBK_full_purge
+		set_country_flag = FBK_ended_purges
+	}
+	#Large purge
+	option = {
+		name = fubuki.57.b
+		trigger = {
+			OR = {
+				check_variable = {
+					var = FBK.wfa_pardon_count
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = FBK.wfa_pardon_count
+					value = 4
+					compare = equals
+				}
+			}
+		}
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.05
+		}
+		add_to_variable = {
+			FBK.WFA_relationship_flat_var = -10
+		}
+		FBK_army_variables = yes
+		set_country_flag = FBK_large_purge
+		set_country_flag = FBK_ended_purges
+	}
+	#Lackluster purge
+	option = {
+		name = fubuki.57.c
+		trigger = {
+			check_variable = {
+				var = FBK.wfa_pardon_count
+				value = 4
+				compare = less_than
+			}
+		}
+		add_stability = 0.05
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = 0.1
+		}
+		add_to_variable = {
+			FBK.WFA_relationship_flat_var = 15
+		}
+		FBK_army_variables = yes
+		set_country_flag = FBK_lackluster_purge
+		set_country_flag = FBK_ended_purges
+	}
+}
+
+#The WFA revolution
+country_event = {
+	id = fubuki.59
+	title = fubuki.59.t
+	desc = fubuki.59.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Bring it on - strong revolt
+	option = {
+		name = fubuki.59.a
+		trigger = {
+			OR = {
+				NOT = {
+					has_completed_focus = FBK_rule_from_stockholm
+				}
+				has_country_flag = FBK_lackluster_purge
+			}
+		}
+		WFS_revolt_against_fubuki_strong_oob = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					WFA = {
+						NOT = {
+							has_country_flag = WFA_sided_pro_fbk
+						}
+					}
+				}
+				WFA = {
+					set_country_flag = {
+						flag = WFS_strong_revolt
+						days = 30
+					}
+					country_event = wfa.24
+				}
+			}
+		}
+	}
+	#Bring it on - MEDIUM revolt
+	option = {
+		name = fubuki.59.b
+		trigger = {
+			has_completed_focus = FBK_rule_from_stockholm
+			OR = {
+				has_country_flag = FBK_large_purge
+				has_country_flag = FBK_lackluster_purge
+			}
+		}
+		WFS_revolt_against_fubuki_medium_oob = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					WFA = {
+						NOT = {
+							has_country_flag = WFA_sided_pro_fbk
+						}
+					}
+				}
+				WFA = {
+					set_country_flag = {
+						flag = WFS_medium_revolt
+						days = 30
+					}
+					country_event = wfa.24
+				}
+			}
+		}
+	}
+	#Bring it on - WEAK revolt
+	option = {
+		name = fubuki.59.c
+		trigger = {
+			has_completed_focus = FBK_rule_from_stockholm
+			has_country_flag = FBK_full_purge
+		}
+		WFS_revolt_against_fubuki_weak_oob = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					WFA = {
+						NOT = {
+							has_country_flag = WFA_sided_pro_fbk
+						}
+					}
+				}
+				WFA = {
+					set_country_flag = {
+						flag = WFS_weak_revolt
+						days = 30
+					}
+					country_event = wfa.24
+				}
+			}
+		}
 	}
 }

@@ -188,6 +188,11 @@ GNW_FBK_crushed_completely = {
 				active = no
 			}
 		}
+		clear_variable = FBK.defeatism_level
+		clear_variable = FBK.defeatism_modifier
+		remove_dynamic_modifier = {
+			modifier = FBK_defeatism_modifier
+		}
 	}
 	if = {
 		limit = {
@@ -291,6 +296,11 @@ GNW_FBK_keeps_sweden_finland = {
 				active = no
 			}
 		}
+		clear_variable = FBK.defeatism_level
+		clear_variable = FBK.defeatism_modifier
+		remove_dynamic_modifier = {
+			modifier = FBK_defeatism_modifier
+		}
 	}
 	if = {
 		limit = {
@@ -375,6 +385,11 @@ GNW_fubuki_light_peace = {
 			ruling_party = mixed_ideology_democracy
 		}
 		add_ideas = FBK_treaty_of_konigsberg
+		clear_variable = FBK.defeatism_level
+		clear_variable = FBK.defeatism_modifier
+		remove_dynamic_modifier = {
+			modifier = FBK_defeatism_modifier
+		}
 	}
 	every_state = {
 		limit = {
@@ -416,6 +431,13 @@ GNW_NOE_crushed_completely = {
 		}
 		add_ideas = NOE_treaty_of_gotland
 		set_stability = 0
+	}
+	KRO = {
+		clear_variable = FBK.defeatism_level
+		clear_variable = FBK.defeatism_modifier
+		remove_dynamic_modifier = {
+			modifier = FBK_defeatism_modifier
+		}
 	}
 	if = {
 		limit = {
@@ -510,7 +532,12 @@ GNW_NOE_crushed_completely = {
 				transfer_state = 72
 			}
 		}
-		else = {
+		else_if = {
+			limit = {
+				POL = {
+					owns_state = 10
+				}
+			}
 			POL = {
 				transfer_state = 72
 			}
@@ -534,6 +561,25 @@ GNW_NOE_crushed_completely = {
 			transfer_state = 85
 			transfer_state = 916
 		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.gnw_germany_concessions
+					value = 2
+					compare = equals
+				}
+			}
+			GER = {
+				transfer_state = 67
+				transfer_state = 66
+				transfer_state = 68
+				transfer_state = 86
+				transfer_state = 63
+				transfer_state = 67
+				transfer_state = 85
+				transfer_state = 916
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -547,6 +593,17 @@ GNW_NOE_crushed_completely = {
 			transfer_state = 92
 			transfer_state = 97
 		}
+	}
+	every_state = {
+		limit = {
+			is_core_of = NOE
+			OR = {
+				is_core_of = LAT
+				is_core_of = LIT
+				is_core_of = EST
+			}
+		}
+		remove_core_of = NOE
 	}
 	FBK = {
 		load_focus_tree = FBK
@@ -565,6 +622,13 @@ GNW_NOE_autonomous_baltics = {
 			ruling_party = pro_yagoo_kleptocracy
 		}
 		add_ideas = NOE_treaty_of_gotland
+	}
+	KRO = {
+		clear_variable = FBK.defeatism_level
+		clear_variable = FBK.defeatism_modifier
+		remove_dynamic_modifier = {
+			modifier = FBK_defeatism_modifier
+		}
 	}
 	set_stability = 0
 	if = {
@@ -660,7 +724,12 @@ GNW_NOE_autonomous_baltics = {
 				transfer_state = 72
 			}
 		}
-		else = {
+		else_if = {
+			limit = {
+				POL = {
+					owns_state = 10
+				}
+			}
 			POL = {
 				transfer_state = 72
 			}
@@ -708,6 +777,25 @@ GNW_NOE_autonomous_baltics = {
 			transfer_state = 85
 			transfer_state = 916
 		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.gnw_germany_concessions
+					value = 2
+					compare = equals
+				}
+			}
+			GER = {
+				transfer_state = 67
+				transfer_state = 66
+				transfer_state = 68
+				transfer_state = 86
+				transfer_state = 63
+				transfer_state = 67
+				transfer_state = 85
+				transfer_state = 916
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -721,6 +809,17 @@ GNW_NOE_autonomous_baltics = {
 			transfer_state = 92
 			transfer_state = 97
 		}
+	}
+	every_state = {
+		limit = {
+			is_core_of = NOE
+			OR = {
+				is_core_of = LAT
+				is_core_of = LIT
+				is_core_of = EST
+			}
+		}
+		remove_core_of = NOE
 	}
 	FBK = {
 		load_focus_tree = FBK
@@ -739,6 +838,13 @@ GNW_NOE_independent_baltics = {
 			ruling_party = pro_yagoo_kleptocracy
 		}
 		add_ideas = NOE_treaty_of_gotland
+	}
+	KRO = {
+		clear_variable = FBK.defeatism_level
+		clear_variable = FBK.defeatism_modifier
+		remove_dynamic_modifier = {
+			modifier = FBK_defeatism_modifier
+		}
 	}
 	set_stability = 0
 	if = {
@@ -834,7 +940,12 @@ GNW_NOE_independent_baltics = {
 				transfer_state = 72
 			}
 		}
-		else = {
+		else_if = {
+			limit = {
+				POL = {
+					owns_state = 10
+				}
+			}
 			POL = {
 				transfer_state = 72
 			}
@@ -863,6 +974,36 @@ GNW_NOE_independent_baltics = {
 			transfer_state = 85
 			transfer_state = 916
 		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.gnw_germany_concessions
+					value = 2
+					compare = equals
+				}
+			}
+			GER = {
+				transfer_state = 67
+				transfer_state = 66
+				transfer_state = 68
+				transfer_state = 86
+				transfer_state = 63
+				transfer_state = 67
+				transfer_state = 85
+				transfer_state = 916
+			}
+		}
+	}
+	every_state = {
+		limit = {
+			is_core_of = NOE
+			OR = {
+				is_core_of = LAT
+				is_core_of = LIT
+				is_core_of = EST
+			}
+		}
+		remove_core_of = NOE
 	}
 	if = {
 		limit = {
@@ -898,6 +1039,13 @@ GNW_NOE_restore_kronii = {
 		}
 		add_ideas = NOE_treaty_of_gotland
 	}
+	KRO = {
+		clear_variable = FBK.defeatism_level
+		clear_variable = FBK.defeatism_modifier
+		remove_dynamic_modifier = {
+			modifier = FBK_defeatism_modifier
+		}
+	}
 	set_stability = 0
 	if = {
 		limit = {
@@ -992,7 +1140,12 @@ GNW_NOE_restore_kronii = {
 				transfer_state = 72
 			}
 		}
-		else = {
+		else_if = {
+			limit = {
+				POL = {
+					owns_state = 10
+				}
+			}
 			POL = {
 				transfer_state = 72
 			}
@@ -1033,6 +1186,25 @@ GNW_NOE_restore_kronii = {
 			transfer_state = 85
 			transfer_state = 916
 		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.gnw_germany_concessions
+					value = 2
+					compare = equals
+				}
+			}
+			GER = {
+				transfer_state = 67
+				transfer_state = 66
+				transfer_state = 68
+				transfer_state = 86
+				transfer_state = 63
+				transfer_state = 67
+				transfer_state = 85
+				transfer_state = 916
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -1046,6 +1218,17 @@ GNW_NOE_restore_kronii = {
 			transfer_state = 92
 			transfer_state = 97
 		}
+	}
+	every_state = {
+		limit = {
+			is_core_of = NOE
+			OR = {
+				is_core_of = LAT
+				is_core_of = LIT
+				is_core_of = EST
+			}
+		}
+		remove_core_of = NOE
 	}
 	FBK = {
 		load_focus_tree = FBK
@@ -1444,5 +1627,1019 @@ GNW_FBK_post_war_victory_setup = {
 		id = FBK_oblast_debate_bop
 		left_side = FBK_oblasts_failing
 		right_side = FBK_oblasts_reforming
+	}
+}
+
+FBK_baltic_revolt_very_weak = {
+	BGE = {
+		add_timed_idea = {
+			idea = GNW_BGE_no_surrender
+			days = 100
+		}
+		generic_revolt_setup = yes
+		division_template = {
+			name = "Forest Brothers Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Militia"
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 0
+					y = 1
+				}
+				militia = {
+					x = 0
+					y = 2
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 1
+				}
+				militia = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+	}
+	962 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Volounteer militia\" division_template = \"Forest Brothers Militia\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	189 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Volounteer militia\" division_template = \"Forest Brothers Militia\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	11 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Volounteer militia\" division_template = \"Forest Brothers Militia\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	962 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Volounteer militia\" division_template = \"Forest Brothers Militia\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	961 = {
+		add_core_of = BGE
+	}
+	13 = {
+		add_core_of = BGE
+	}
+	LIT = {
+		every_core_state = {
+			add_claim_by = BGE
+		}
+	}
+	LAT = {
+		every_core_state = {
+			add_claim_by = BGE
+		}
+	}
+	EST = {
+		every_core_state = {
+			add_claim_by = BGE
+		}
+	}
+	FBK = {
+		declare_war_on = {
+			target = BGE
+			type = annex_everything
+		}
+		activate_mission = FBK_incoming_forced_peace
+	}
+}
+
+FBK_baltic_revolt_weak = {
+	BGE = {
+		add_timed_idea = {
+			idea = GNW_BGE_bonus_against_fubuki_weak
+			days = 100
+		}
+		add_timed_idea = {
+			idea = GNW_BGE_no_surrender
+			days = 100
+		}
+		generic_revolt_setup = yes
+		division_template = {
+			name = "Forest Brothers Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Militia"
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 0
+					y = 1
+				}
+				militia = {
+					x = 0
+					y = 2
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 1
+				}
+				militia = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+	}
+	LIT = {
+		every_core_state = {
+			transfer_state_to = BGE
+			add_core_of = BGE
+			create_unit = {
+				division = "name = \"Volounteer militia\" division_template = \"Forest Brothers Militia\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+			create_unit = {
+				division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+				owner = BGE
+			}
+		}
+	}
+	961 = {
+		add_core_of = BGE
+	}
+	13 = {
+		add_core_of = BGE
+	}
+	LAT = {
+		every_core_state = {
+			add_claim_by = BGE
+		}
+	}
+	EST = {
+		every_core_state = {
+			add_claim_by = BGE
+		}
+	}
+	FBK = {
+		declare_war_on = {
+			target = BGE
+			type = annex_everything
+		}
+		activate_mission = FBK_incoming_forced_peace
+	}
+}
+
+FBK_baltic_revolt_weak_medium = {
+	BGE = {
+		add_timed_idea = {
+			idea = GNW_BGE_bonus_against_fubuki_weak_medium
+			days = 100
+		}
+		add_timed_idea = {
+			idea = GNW_BGE_no_surrender
+			days = 100
+		}
+		generic_revolt_setup = yes
+		division_template = {
+			name = "Forest Brothers Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Militia"
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 0
+					y = 1
+				}
+				militia = {
+					x = 0
+					y = 2
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 1
+				}
+				militia = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+	}
+	LIT = {
+		every_core_state = {
+			transfer_state_to = BGE
+			add_core_of = BGE
+			create_unit = {
+				division = "name = \"Volounteer militia\" division_template = \"Forest Brothers Militia\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+			create_unit = {
+				division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+				owner = BGE
+			}
+		}
+		13 = {
+			add_core_of = BGE
+		}
+		LAT = {
+			every_core_state = {
+				add_claim_by = BGE
+			}
+		}
+		EST = {
+			every_core_state = {
+				add_claim_by = BGE
+			}
+		}
+	}
+	961 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	960 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	959 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	FBK = {
+		declare_war_on = {
+			target = BGE
+			type = annex_everything
+		}
+		activate_mission = FBK_incoming_forced_peace
+	}
+}
+
+FBK_baltic_revolt_medium = {
+	BGE = {
+		add_timed_idea = {
+			idea = GNW_BGE_bonus_against_fubuki_medium
+			days = 100
+		}
+		add_timed_idea = {
+			idea = GNW_BGE_no_surrender
+			days = 100
+		}
+		generic_revolt_setup = yes
+		division_template = {
+			name = "Forest Brothers Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Militia"
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 0
+					y = 1
+				}
+				militia = {
+					x = 0
+					y = 2
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 1
+				}
+				militia = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Artillery Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+				infantry = {
+					x = 0
+					y = 3
+				}
+				artillery_brigade = {
+					x = 2
+					y = 0
+				}
+				artillery_brigade = {
+					x = 2
+					y = 1
+				}
+			}
+		}
+	}
+	LIT = {
+		every_core_state = {
+			transfer_state_to = BGE
+			add_core_of = BGE
+			create_unit = {
+				division = "name = \"Volounteer militia\" division_template = \"Forest Brothers Militia\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+			create_unit = {
+				division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+				owner = BGE
+			}
+		}
+	}
+	LAT = {
+		every_core_state = {
+			transfer_state_to = BGE
+			add_core_of = BGE
+			create_unit = {
+				division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+			create_unit = {
+				division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.75 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+		}
+	}
+	13 = {
+		add_core_of = BGE
+	}
+	EST = {
+		every_core_state = {
+			add_claim_by = BGE
+		}
+	}
+	FBK = {
+		declare_war_on = {
+			target = BGE
+			type = annex_everything
+		}
+		activate_mission = FBK_incoming_forced_peace
+	}
+}
+
+FBK_baltic_revolt_weak_strong = {
+	generic_revolt_setup = yes
+	BGE = {
+		add_timed_idea = {
+			idea = GNW_BGE_bonus_against_fubuki_weak_strong
+			days = 100
+		}
+		add_timed_idea = {
+			idea = GNW_BGE_no_surrender
+			days = 100
+		}
+		division_template = {
+			name = "Forest Brothers Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Militia"
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 0
+					y = 1
+				}
+				militia = {
+					x = 0
+					y = 2
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 1
+				}
+				militia = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Artillery Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+				infantry = {
+					x = 0
+					y = 3
+				}
+				artillery_brigade = {
+					x = 2
+					y = 0
+				}
+				artillery_brigade = {
+					x = 2
+					y = 1
+				}
+			}
+		}
+	}
+	LIT = {
+		every_core_state = {
+			transfer_state_to = BGE
+			add_core_of = BGE
+			create_unit = {
+				division = "name = \"Volounteer militia\" division_template = \"Forest Brothers Militia\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+			create_unit = {
+				division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+				owner = BGE
+			}
+		}
+	}
+	LAT = {
+		every_core_state = {
+			transfer_state_to = BGE
+			add_core_of = BGE
+			create_unit = {
+				division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+			create_unit = {
+				division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.75 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+		}
+	}
+	1000 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.75 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	191 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.75 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	13 = {
+		add_core_of = BGE
+	}
+	EST = {
+		every_core_state = {
+			add_claim_by = BGE
+		}
+	}
+	FBK = {
+		declare_war_on = {
+			target = BGE
+			type = annex_everything
+		}
+		activate_mission = FBK_incoming_forced_peace
+	}
+}
+
+FBK_baltic_revolt_strong = {
+	BGE = {
+		add_timed_idea = {
+			idea = GNW_BGE_bonus_against_fubuki_strong
+			days = 100
+		}
+		add_timed_idea = {
+			idea = GNW_BGE_no_surrender
+			days = 100
+		}
+		generic_revolt_setup = yes
+		division_template = {
+			name = "Forest Brothers Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Militia"
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 0
+					y = 1
+				}
+				militia = {
+					x = 0
+					y = 2
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 1
+				}
+				militia = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Artillery Corps"
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+				infantry = {
+					x = 0
+					y = 3
+				}
+				artillery_brigade = {
+					x = 2
+					y = 0
+				}
+				artillery_brigade = {
+					x = 2
+					y = 1
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Militia"
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 0
+					y = 1
+				}
+				militia = {
+					x = 0
+					y = 2
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 1
+				}
+				militia = {
+					x = 1
+					y = 2
+				}
+			}
+		}
+		division_template = {
+			name = "Forest Brothers Motorized Corps"
+			regiments = {
+				motorized = {
+					x = 0
+					y = 0
+				}
+				motorized = {
+					x = 0
+					y = 1
+				}
+				mot_artillery_brigade = {
+					x = 0
+					y = 2
+				}
+				motorized = {
+					x = 1
+					y = 0
+				}
+				motorized = {
+					x = 1
+					y = 1
+				}
+				motorized = {
+					x = 1
+					y = 2
+				}
+				motorized = {
+					x = 2
+					y = 0
+				}
+				motorized = {
+					x = 2
+					y = 1
+				}
+				mot_artillery_brigade = {
+					x = 2
+					y = 2
+				}
+			}
+			support = {
+				engineer = {
+					x = 0
+					y = 0
+				}
+			}
+			support = {
+				mot_recon = {
+					x = 0
+					y = 1
+				}
+			}
+			support = {
+				artillery = {
+					x = 0
+					y = 2
+				}
+			}
+		}
+	}
+	LIT = {
+		every_core_state = {
+			transfer_state_to = BGE
+			add_core_of = BGE
+			create_unit = {
+				division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
+				owner = BGE
+			}
+		}
+	}
+	11 = {
+		create_unit = {
+			division = "name = \"Forest Brothers Motorized Corps\" division_template = \"Forest Brothers Motorized Corps\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Motorized Corps\" division_template = \"Forest Brothers Motorized Corps\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	LAT = {
+		every_core_state = {
+			transfer_state_to = BGE
+			add_core_of = BGE
+			create_unit = {
+				division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+			create_unit = {
+				division = "name = \"Forest Brothers Corps\" division_template = \"Forest Brothers Corps\" start_experience_factor = 0.75 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = BGE
+			}
+		}
+	}
+	1000 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.75 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	191 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.75 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	13 = {
+		transfer_state_to = BGE
+		add_core_of = BGE
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+		create_unit = {
+			division = "name = \"Forest Brothers Artillery Corps\" division_template = \"Forest Brothers Artillery Corps\" start_experience_factor = 0.75 start_equipment_factor = 1 start_manpower_factor = 1"
+			owner = BGE
+		}
+	}
+	EST = {
+		every_core_state = {
+			add_claim_by = BGE
+		}
+	}
+	FBK = {
+		declare_war_on = {
+			target = BGE
+			type = annex_everything
+		}
+		activate_mission = FBK_incoming_forced_peace
 	}
 }
