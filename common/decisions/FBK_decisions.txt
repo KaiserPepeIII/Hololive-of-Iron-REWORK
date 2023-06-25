@@ -101,6 +101,7 @@ FBK_post_gnw_chaos_win = {
 			add_to_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_increase_rebel_strenght_lightly
 			}
 		}
 	}
@@ -121,6 +122,7 @@ FBK_post_gnw_chaos_win = {
 			add_to_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_increase_rebel_strenght_lightly
 			}
 		}
 	}
@@ -171,6 +173,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 2
+				tooltip = FBK_decrease_rebel_strenght_greatly
 			}
 			country_event = FBK_post_gnw.6
 		}
@@ -179,6 +182,7 @@ FBK_post_gnw_chaos_win = {
 			add_to_variable = {
 				var = FBK.revolt_power
 				value = 2
+				tooltip = FBK_increase_rebel_strenght_greatly
 			}
 		}
 	}
@@ -268,6 +272,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 2
+				tooltip = FBK_decrease_rebel_strenght_greatly
 			}
 			EST = {
 				every_core_state = {
@@ -313,6 +318,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_decrease_rebel_strenght_lightly
 			}
 			LIT = {
 				every_core_state = {
@@ -354,6 +360,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_decrease_rebel_strenght_lightly
 			}
 			hidden_effect = {
 				add_command_power = -25
@@ -375,6 +382,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_decrease_rebel_strenght_lightly
 			}
 			add_political_power = 10
 			add_command_power = 20
@@ -404,6 +412,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_decrease_rebel_strenght_lightly
 			}
 			add_manpower = -2000
 			hidden_effect = {
@@ -429,6 +438,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_decrease_rebel_strenght_lightly
 			}
 			EST = {
 				every_core_state = {
@@ -477,6 +487,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_decrease_rebel_strenght_lightly
 			}
 			LAT = {
 				every_core_state = {
@@ -507,6 +518,7 @@ FBK_post_gnw_chaos_win = {
 			subtract_from_variable = {
 				var = FBK.revolt_power
 				value = 1
+				tooltip = FBK_decrease_rebel_strenght_lightly
 			}
 			LIT = {
 				every_core_state = {
@@ -1164,6 +1176,118 @@ FBK_fixing_logistics_decisions = {
 			add_equipment_to_stockpile = {
 				type = motorized_equipment
 				amount = 150
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+}
+
+FBK_building_urban_support_decisions = {
+	FBK_speech_in_stockholm = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		cost = 100
+		fire_only_once = yes
+		days_remove = 30
+		visible = {
+			has_country_flag = FBK_building_urban_support_2_flag
+		}
+		complete_effect = {
+			country_event = fubuki.62
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_initial_popularity_push = {
+		available = {
+			check_variable = {
+				var = FBK.urban_popularity
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		allowed = {
+			tag = FBK
+		}
+		visible = {
+			has_country_flag = FBK_building_urban_support_flag
+		}
+		complete_effect = {
+			country_event = fubuki.61
+		}
+	}
+	FBK_grandiose_architecture = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		cost = 75
+		fire_only_once = no
+		days_re_enable = 24
+		visible = {
+			has_country_flag = FBK_building_urban_support_flag
+		}
+		complete_effect = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.05
+			}
+			add_to_variable = {
+				var = FBK.urban_popularity
+				value = 1
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_fund_welfare_programs = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 60
+		visible = {
+			has_country_flag = FBK_building_urban_support_flag
+		}
+		days_remove = 60
+		modifier = {
+			consumer_goods_factor = 0.05
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = FBK.urban_popularity
+				value = 1
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	FBK_expand_stockholm_boundaries = {
+		icon = GFX_decision_icon_default
+		available = {
+			always = yes
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 24
+		visible = {
+			has_country_flag = FBK_building_urban_support_flag
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = FBK.urban_popularity
+				value = 1
+			}
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
 			}
 		}
 		ai_will_do = {

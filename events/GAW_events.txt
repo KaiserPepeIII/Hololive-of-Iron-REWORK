@@ -1176,27 +1176,29 @@ country_event = {
 	#Let the free market be
 	option = {
 		name = gura.42.a
+		add_to_variable = {
+			var = GAW.council_support
+			value = -5
+			tooltip = GAW_council_support_decrease
+		}
 		add_political_power = 25
 		add_stability = 0.05
 		add_popularity = {
 			ideology = var:current_party_ideology_group
 			popularity = 0.05
 		}
-		add_to_variable = {
-			var = GAW.council_support
-			value = -5
-		}
 		GAW_reload_council = yes
 	}
 	#Everything under the state
 	option = {
 		name = gura.42.b
-		custom_effect_tooltip = GAW_corporatist_economics_tooltip
-		add_stability = -0.1
 		add_to_variable = {
 			var = GAW.council_support
 			value = 5
+			tooltip = GAW_council_support_increase
 		}
+		custom_effect_tooltip = GAW_corporatist_economics_tooltip
+		add_stability = -0.1
 		GAW_reload_council = yes
 		hidden_effect = {
 			if = {
@@ -1250,6 +1252,7 @@ country_event = {
 		add_to_variable = {
 			var = GAW.council_support
 			value = 5
+			tooltip = GAW_council_support_increase
 		}
 		GAW_reload_council = yes
 		add_ideas = GAW_cultural_assimilation
@@ -1280,16 +1283,22 @@ country_event = {
 	#We are a nation of peasants
 	option = {
 		name = gura.44.a
-		add_political_power = 75
 		add_to_variable = {
 			var = GAW.council_support
 			value = -5
+			tooltip = GAW_council_support_increase
 		}
+		add_political_power = 75
 		GAW_reload_council = yes
 	}
 	#The proletariat are a hotbead of revolution
 	option = {
 		name = gura.44.b
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+			tooltip = GAW_council_support_increase
+		}
 		custom_effect_tooltip = GAW_corporatist_economics_tooltip
 		add_political_power = -100
 		add_timed_idea = {
@@ -1324,10 +1333,6 @@ country_event = {
 				}
 			}
 		}
-		add_to_variable = {
-			var = GAW.council_support
-			value = 5
-		}
 		GAW_reload_council = yes
 	}
 	#We need to develop of cities
@@ -1353,11 +1358,12 @@ country_event = {
 	#Everything in the state
 	option = {
 		name = gura.45.a
-		add_ideas = GAW_centralized_state
 		add_to_variable = {
 			var = GAW.council_support
 			value = 5
+			tooltip = GAW_council_support_increase
 		}
+		add_ideas = GAW_centralized_state
 		GAW_reload_council = yes
 	}
 	#Local governors know best
@@ -1388,12 +1394,13 @@ country_event = {
 	#Nationalize, and keep
 	option = {
 		name = gura.46.b
-		custom_effect_tooltip = GAW_corporatist_economics_tooltip
-		set_country_flag = GAW_nationalized_foreign_assets
 		add_to_variable = {
 			var = GAW.council_support
 			value = 5
+			tooltip = GAW_council_support_increase
 		}
+		custom_effect_tooltip = GAW_corporatist_economics_tooltip
+		set_country_flag = GAW_nationalized_foreign_assets
 		GAW_reload_council = yes
 		hidden_effect = {
 			if = {
@@ -1460,16 +1467,17 @@ country_event = {
 	#hang the dogs
 	option = {
 		name = gura.47.b
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+			tooltip = GAW_council_support_increase
+		}
 		add_timed_idea = {
 			idea = GAW_purging_antis
 			days = 365
 		}
 		add_war_support = 0.05
 		add_stability = -0.1
-		add_to_variable = {
-			var = GAW.council_support
-			value = 5
-		}
 		GAW_reload_council = yes
 	}
 }
@@ -1484,37 +1492,40 @@ country_event = {
 	#Our priority is the Han people
 	option = {
 		name = gura.48.a
+		add_to_variable = {
+			var = GAW.council_support
+			value = 5
+			tooltip = GAW_council_support_increase
+		}
 		add_stability = 0.1
 		add_popularity = {
 			ideology = var:current_party_ideology_group
 			popularity = 0.15
 		}
 		add_ideas = GAW_han_focus
-		add_to_variable = {
-			var = GAW.council_support
-			value = 5
-		}
 		GAW_reload_council = yes
 	}
 	#The borders of the Qing dynasty
 	option = {
 		name = gura.48.b
-		add_war_support = 0.15
 		add_to_variable = {
 			var = GAW.council_support
 			value = 5
+			tooltip = GAW_council_support_increase
 		}
+		add_war_support = 0.15
 		GAW_reload_council = yes
 	}
 	#We should encourage imperialism
 	option = {
 		name = gura.48.c
-		custom_effect_tooltip = GAW_corporatist_economics_tooltip
-		add_ideas = GAW_imperalism
 		add_to_variable = {
 			var = GAW.council_support
 			value = 5
+			tooltip = GAW_council_support_increase
 		}
+		custom_effect_tooltip = GAW_corporatist_economics_tooltip
+		add_ideas = GAW_imperalism
 		GAW_reload_council = yes
 		hidden_effect = {
 			if = {
@@ -1576,23 +1587,24 @@ country_event = {
 	#Consolidate the unions
 	option = {
 		name = gura.49.b
-		add_political_power = -125
-		add_stability = -0.05
 		add_to_variable = {
-			var = GAW.council_support
+			var = GAW.GAW_council_support_increase
 			value = 5
 		}
+		add_political_power = -125
+		add_stability = -0.05
 		GAW_reload_council = yes
 	}
 	#Shut down the unions
 	option = {
 		name = gura.49.c
-		add_political_power = -75
-		add_ideas = GAW_unions_busted
 		add_to_variable = {
 			var = GAW.council_support
 			value = 2
+			tooltip = GAW_council_support_slight_increase
 		}
+		add_political_power = -75
+		add_ideas = GAW_unions_busted
 		GAW_reload_council = yes
 	}
 }

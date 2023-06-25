@@ -1972,3 +1972,135 @@ country_event = {
 		}
 	}
 }
+
+#Expansion of the CNSI
+country_event = {
+	id = fubuki.60
+	title = fubuki.60.t
+	desc = fubuki.60.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Military
+	option = {
+		name = fubuki.60.a
+		if = {
+			limit = {
+				has_dlc = "La Resistance"
+			}
+			add_ideas = FBK_military_cnsi_lar
+			else = {
+				add_ideas = FBK_military_cnsi_legacy
+			}
+		}
+	}
+	#Civilian
+	option = {
+		name = fubuki.60.b
+		add_ideas = FBK_civilian_cnsi
+	}
+}
+
+#Fubuki jeered in the streets
+country_event = {
+	id = fubuki.61
+	title = fubuki.61.t
+	desc = fubuki.61.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#I guess we have some work to do
+	option = {
+		name = fubuki.61.a
+		clr_country_flag = FBK_building_urban_support_flag
+		set_country_flag = FBK_building_urban_support_2_flag
+		effect_tooltip = {
+			FBK_shirakami_fubuki_democratic = {
+				swap_country_leader_traits = {
+					remove = FBK_shirakami_fubuki_trait
+					add = FBK_shirakami_fubuki_populist_trait
+				}
+			}
+		}
+		hidden_effect = {
+			every_character = {
+				limit = {
+					has_trait = FBK_shirakami_fubuki_trait
+				}
+				swap_country_leader_traits = {
+					remove = FBK_shirakami_fubuki_trait
+					add = FBK_shirakami_fubuki_populist_trait
+				}
+			}
+		}
+	}
+}
+
+#Fubuki meets a veteran
+country_event = {
+	id = fubuki.62
+	title = fubuki.62.t
+	desc = fubuki.62.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Why yes, I should pick up arms again
+	option = {
+		name = fubuki.62.a
+		clr_country_flag = FBK_building_urban_support_2_flag
+		effect_tooltip = {
+			FBK_shirakami_fubuki_democratic = {
+				swap_country_leader_traits = {
+					remove = FBK_shirakami_fubuki_populist_trait
+					add = FBK_shirakami_fubuki_legitimate_trait
+				}
+				add_corps_commander_role = {
+					skill = 7
+					attack_skill = 8
+					defense_skill = 5
+					planning_skill = 8
+					logistics_skill = 9
+				}
+			}
+		}
+		hidden_effect = {
+			every_character = {
+				limit = {
+					has_trait = FBK_shirakami_fubuki_populist_trait
+				}
+				swap_country_leader_traits = {
+					remove = FBK_shirakami_fubuki_trait
+					add = FBK_shirakami_fubuki_legitimate_trait
+				}
+				add_corps_commander_role = {
+					skill = 7
+					attack_skill = 8
+					defense_skill = 5
+					planning_skill = 8
+					logistics_skill = 9
+				}
+			}
+		}
+	}
+	#I belong with my people
+	option = {
+		name = fubuki.62.b
+		clr_country_flag = FBK_building_urban_support_2_flag
+		effect_tooltip = {
+			FBK_shirakami_fubuki_democratic = {
+				swap_country_leader_traits = {
+					remove = FBK_shirakami_fubuki_populist_trait
+					add = FBK_shirakami_fubuki_true_trait
+				}
+			}
+		}
+		hidden_effect = {
+			every_character = {
+				limit = {
+					has_trait = FBK_shirakami_fubuki_populist_trait
+				}
+				swap_country_leader_traits = {
+					remove = FBK_shirakami_fubuki_trait
+					add = FBK_shirakami_fubuki_true_trait
+				}
+			}
+		}
+	}
+}

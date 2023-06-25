@@ -252,6 +252,9 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_rule_from_stockholm
 		}
+		completion_reward = {
+			country_event = fubuki.60
+		}
 		x = 3
 		y = 5
 	}
@@ -264,6 +267,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = FBK_expand_cnsi
+		}
+		completion_reward = {
+			add_ideas = FBK_fubuki_youth_corps
 		}
 		x = 2
 		y = 6
@@ -423,7 +429,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			#Autocompleted
-			add_political_power = 25
+			custom_effect_tooltip = HLOI_focus_autocompleted
 		}
 		x = 11
 		y = 5
@@ -440,7 +446,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			#Autocompleted
-			add_political_power = 25
+			custom_effect_tooltip = HLOI_focus_autocompleted
 		}
 		x = 13
 		y = 5
@@ -460,7 +466,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			#Autocompleted
-			add_political_power = 25
+			custom_effect_tooltip = HLOI_focus_autocompleted
 		}
 		x = 15
 		y = 5
@@ -2364,6 +2370,12 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_fubu_youth_corps
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
 		x = 2
 		y = 7
 	}
@@ -2400,6 +2412,10 @@ focus_tree = {
 		cost = 10
 		prerequisite = {
 			focus = FBK_everyone_a_friend
+		}
+		completion_reward = {
+			set_country_flag = FBK_building_urban_support_flag
+			activate_mission = FBK_initial_popularity_push
 		}
 		x = 2
 		y = 8
