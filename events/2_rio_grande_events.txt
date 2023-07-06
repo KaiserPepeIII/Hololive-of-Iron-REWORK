@@ -1,0 +1,211 @@
+add_namespace = aqua_rgw
+############################################
+#
+#	AQA
+#
+#############################################
+#Aqua - we are defeated
+country_event = {
+	id = aqua_rgw.1
+	title = aqua_rgw.1.t
+	desc = aqua_rgw.1.desc
+	picture = GFX_report_event_sora_generic1
+	trigger = {
+		tag = AQA
+		AQA = {
+			surrender_progress > 0.9
+			has_war_with = AYA
+			NOT = {
+				has_country_flag = RGW_aqua_collapse
+			}
+		}
+		has_global_flag = RGW_war_begins
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#The war is lost
+	option = {
+		name = aqua_rgw.1.a
+		set_country_flag = RGW_aqua_collapse
+		AYA = {
+			white_peace = AQA
+			country_event = ayame_rgw.2
+		}
+	}
+}
+
+#AQUA - Ayame capitulates to us
+country_event = {
+	id = aqua_rgw.2
+	title = aqua_rgw.2.t
+	desc = aqua_rgw.2.desc
+	picture = GFX_report_event_sora_generic1
+	#Keep Ayame and Uruguay as a puppet state, Take Rio Grande do Sul
+	option = {
+		name = aqua_rgw.2.a
+		AYA = {
+			country_event = ayame_rgw.3
+		}
+		SHI = {
+			country_event = shion_rgw.1
+		}
+	}
+	#Keep Argentina and Uruguay as a puppet state, Take Rio Grande do Sul
+	option = {
+		name = aqua_rgw.2.b
+		RGW_ayame_defeat_peace_deal = yes
+		SHI = {
+			country_event = shion_rgw.1
+		}
+	}
+}
+
+#AQUA - Ayame refuses to be our puppet
+country_event = {
+	id = aqua_rgw.3
+	title = aqua_rgw.3.t
+	desc = aqua_rgw.3.desc
+	picture = GFX_report_event_sora_generic1
+	#Bruh
+	option = {
+		name = aqua_rgw.3.b
+		RGW_ayame_defeat_peace_deal = yes
+		SHI = {
+			country_event = shion_rgw.1
+		}
+	}
+}
+
+#AQUA - Ayame agrees to be our puppet
+country_event = {
+	id = aqua_rgw.4
+	title = aqua_rgw.4.t
+	desc = aqua_rgw.4.desc
+	picture = GFX_report_event_sora_generic1
+	#cool
+	option = {
+		name = aqua_rgw.4.b
+		RGW_ayame_defeat_peace_deal = yes
+		SHI = {
+			country_event = shion_rgw.1
+		}
+	}
+}
+
+############################################
+#
+#	AYA
+#
+#############################################
+#Ayame - we are defeated
+country_event = {
+	id = ayame_rgw.1
+	title = ayame_rgw.1.t
+	desc = ayame_rgw.1.desc
+	picture = GFX_report_event_sora_generic1
+	trigger = {
+		tag = AYA
+		AYA = {
+			surrender_progress > 0.9
+			has_war_with = AQA
+			NOT = {
+				has_country_flag = RGW_ayame_collapse
+			}
+		}
+		has_global_flag = RGW_war_begins
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#The war is lost
+	option = {
+		name = ayame_rgw.1.a
+		set_country_flag = RGW_ayame_collapse
+		AQA = {
+			white_peace = AYA
+			country_event = aqua_rgw.2
+		}
+	}
+}
+
+#Ayame - Aqua capitulates to us
+country_event = {
+	id = ayame_rgw.2
+	title = ayame_rgw.2.t
+	desc = ayame_rgw.2.desc
+	picture = GFX_report_event_sora_generic1
+	#Expand deeper into Brazil, leave the rest of Brazil as an LHS puppet. Annex Shion
+	option = {
+		name = ayame_rgw.2.a
+		RGW_aqua_defeat_peace_deal_expand_deeper = yes
+	}
+	#Leave Brazil as an LHS puppet, Annex Shion
+	option = {
+		name = ayame_rgw.2.b
+		RGW_aqua_defeat_peace_deal_annex_shion = yes
+	}
+	#Leave Brazil and Chile as a puppet
+	option = {
+		name = ayame_rgw.2.c
+		RGW_aqua_defeat_peace_deal_puppets = yes
+	}
+}
+
+#Ayame - Aqua wants to have us as a puppet
+country_event = {
+	id = ayame_rgw.3
+	title = ayame_rgw.3.t
+	desc = ayame_rgw.3.desc
+	picture = GFX_report_event_sora_generic1
+	#Hell no
+	option = {
+		name = ayame_rgw.3.a
+		AQA = {
+			country_event = aqua_rgw.3
+		}
+	}
+	#sure ig 
+	option = {
+		name = ayame_rgw.3.b
+		AQA = {
+			country_event = aqua_rgw.4
+		}
+	}
+}
+
+############################################
+#
+#	SHI
+#
+#############################################
+#Shion - spoils of war?
+country_event = {
+	id = shion_rgw.1
+	title = shion_rgw.1.t
+	desc = shion_rgw.1.desc
+	picture = GFX_report_event_sora_generic1
+	#Focus on land
+	option = {
+		name = shion_rgw.1.a
+		SHI = {
+			transfer_state = 1109
+			transfer_state = 508
+			transfer_state = 1111
+			transfer_state = 1110
+			transfer_state = 511
+			transfer_state = 1112
+			transfer_state = 1113
+			transfer_state = 512
+		}
+	}
+	#Focus on reparations
+	option = {
+		name = shion_rgw.1.b
+		add_political_power = 250
+		add_timed_idea = {
+			idea = RGW_shion_reparations
+			days = 1080
+		}
+	}
+}

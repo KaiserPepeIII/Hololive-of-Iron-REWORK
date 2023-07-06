@@ -1,21 +1,22 @@
 HOLOID_civil_war_category = {
 	YAG_arrange_talks = {
 		activation = {
+			tag = YAG
 			NOT = {
-			has_global_flag = INS_negotiations_ongoing
+				has_global_flag = INS_negotiations_ongoing
 			}
 		}
 		cancel_trigger = {
 			has_global_flag = INS_negotiations_ongoing
 		}
 		available = {
-			always = yes
+			tag = YAG
 		}
 		selectable_mission = yes
 		days_mission_timeout = 90
 		fire_only_once = yes
-		is_good = no 
-		complete_effect = { 
+		is_good = no
+		complete_effect = {
 			every_country = {
 				limit = {
 					is_in_array = {
@@ -26,7 +27,6 @@ HOLOID_civil_war_category = {
 				country_event = indonesia.1
 			}
 			set_global_flag = INS_negotiations_ongoing
-
 		}
 		timeout_effect = {
 			every_country = {

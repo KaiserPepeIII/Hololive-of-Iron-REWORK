@@ -1,0 +1,97 @@
+RGW_ayame_defeat_peace_deal = {
+	URG = {
+		transfer_state = 1114
+		transfer_state = 300
+	}
+	AQA = {
+		transfer_state = 503
+		transfer_state = 502
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			set_autonomy = {
+				target = URG
+				autonomy_state = autonomy_collaboration_government
+			}
+			set_autonomy = {
+				target = AYA
+				autonomy_state = autonomy_collaboration_government
+			}
+			else = {
+				puppet = AYA
+				puppet = URG
+			}
+		}
+	}
+}
+
+RGW_aqua_defeat_peace_deal_expand_deeper = {
+	AYA = {
+		transfer_state = 504
+		transfer_state = 505
+		transfer_state = 496
+		transfer_state = 501
+		transfer_state = 500
+		transfer_state = 1123
+	}
+	AYA = {
+		annex_country = {
+			target = SHI
+		}
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			set_autonomy = {
+				target = AQA
+				autonomy_state = autonomy_collaboration_government
+			}
+			else = {
+				puppet = AQA
+			}
+		}
+	}
+}
+
+RGW_aqua_defeat_peace_deal_annex_shion = {
+	AYA = {
+		annex_country = {
+			target = SHI
+		}
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			set_autonomy = {
+				target = AQA
+				autonomy_state = autonomy_collaboration_government
+			}
+			else = {
+				puppet = AQA
+			}
+		}
+	}
+}
+RGW_aqua_defeat_peace_deal_puppets = {
+	AYA = {
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			set_autonomy = {
+				target = AQA
+				autonomy_state = autonomy_collaboration_government
+			}
+			set_autonomy = {
+				target = SHI
+				autonomy_state = autonomy_collaboration_government
+			}
+			else = {
+				puppet = AQA
+				puppet = SHI
+			}
+		}
+	}
+
+}

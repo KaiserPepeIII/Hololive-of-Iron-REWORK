@@ -22,62 +22,6 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = FBK_make_friends
-		icon = GFX_focus_FBK_make_friends
-		cost = 10
-		x = 42
-		y = 4
-		completion_reward = {
-			every_country = {
-				limit = {
-					capital_scope = {
-						is_on_continent = europe
-					}
-					NOT = {
-						OR = {
-							tag = RUS
-							tag = NOE
-							tag = FLA
-						}
-					}
-				}
-				reverse_add_opinion_modifier = {
-					target = FBK
-					modifier = fbk_diplo
-				}
-				add_opinion_modifier = {
-					target = FBK
-					modifier = fbk_diplo
-				}
-			}
-		}
-	}
-	focus = {
-		id = FBK_regionalism
-		icon = GFX_focus_FBK_regionalism
-		cost = 10
-		mutually_exclusive = {
-			focus = FBK_internationalism
-		}
-		x = 48
-		y = 4
-	}
-	focus = {
-		id = FBK_internationalism
-		icon = GFX_focus_FBK_internationalism
-		cost = 10
-		mutually_exclusive = {
-			focus = FBK_regionalism
-		}
-		completion_reward = {
-			add_ideas = {
-				fbk_internationalism_idea
-			}
-		}
-		x = 52
-		y = 4
-	}
-	focus = {
 		id = FBK_depoliticize_army
 		icon = GFX_focus_FBK_depoliticize_army
 		cost = 10
@@ -284,6 +228,12 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_rule_from_stockholm
 		}
+		complete_effect = {
+			set_country_flag = FBK_4year_phase1
+			custom_effect_tooltip = FBK_unlock_4yearplan_tt
+			one_random_civilian_factory = yes
+			one_random_civilian_factory = yes
+		}
 		x = 7
 		y = 5
 	}
@@ -299,6 +249,13 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = FBK_expand_state_industry
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 2
+				category = industry
+			}
 		}
 		x = 6
 		y = 6
@@ -318,6 +275,20 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = FBK_liberalize_markets
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_tech_bonus = {
+					bonus = 0.5
+					uses = 1
+					category = industry
+				}
+			}
 		}
 		x = 4
 		y = 6
@@ -345,6 +316,50 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_liquidate_failing_assets
 		}
+		completion_reward = {
+			random_controlled_state = {
+				limit = {
+					arms_factory > 2
+				}
+				remove_building = {
+					type = arms_factory
+					level = 2
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					arms_factory > 2
+				}
+				remove_building = {
+					type = arms_factory
+					level = 2
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					arms_factory > 2
+				}
+				remove_building = {
+					type = arms_factory
+					level = 2
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
 		x = 6
 		y = 8
 	}
@@ -357,6 +372,13 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = FBK_four_year_plan
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = cat_production
+			}
 		}
 		x = 8
 		y = 6
@@ -371,6 +393,36 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_peasants_to_farmers
 		}
+		completion_reward = {
+			666 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			148 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			213 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			158 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
 		x = 8
 		y = 7
 	}
@@ -383,6 +435,13 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = FBK_improve_rural_infrastructure
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = construction_tech
+			}
 		}
 		x = 8
 		y = 8
@@ -1268,22 +1327,6 @@ focus_tree = {
 		y = 11
 	}
 	focus = {
-		id = FBK_suisei_friendship
-		icon = GFX_focus_FBK_suisei_friendship
-		cost = 10
-		prerequisite = {
-			focus = FBK_make_friends
-		}
-		completion_reward = {
-			country_event = {
-				days = 1
-				id = fubuki.1
-			}
-		}
-		x = 38
-		y = 5
-	}
-	focus = {
 		id = FBK_professional_army
 		icon = GFX_focus_FBK_professional_soldiers
 		cost = 10
@@ -1351,109 +1394,6 @@ focus_tree = {
 		}
 		x = 39
 		y = 13
-	}
-	focus = {
-		id = FBK_miko_friendship
-		icon = GFX_focus_FBK_miko_friendship
-		cost = 10
-		prerequisite = {
-			focus = FBK_make_friends
-		}
-		completion_reward = {
-			country_event = {
-				days = 1
-				id = fubuki.1
-			}
-		}
-		x = 40
-		y = 5
-	}
-	focus = {
-		id = FBK_pekora_friendhship
-		icon = GFX_focus_FBK_pekora_friendhship
-		cost = 10
-		prerequisite = {
-			focus = FBK_make_friends
-		}
-		completion_reward = {
-			country_event = {
-				days = 1
-				id = fubuki.1
-			}
-		}
-		x = 42
-		y = 5
-	}
-	focus = {
-		id = FBK_open_trade
-		icon = GFX_focus_FBK_open_trade
-		cost = 10
-		prerequisite = {
-			focus = FBK_miko_friendship
-		}
-		prerequisite = {
-			focus = FBK_pekora_friendhship
-		}
-		prerequisite = {
-			focus = FBK_suisei_friendship
-		}
-		completion_reward = {
-			set_country_flag = FBK_open_trade
-		}
-		x = 40
-		y = 6
-	}
-	focus = {
-		id = FBK_despotic_alliance
-		icon = GFX_focus_FBK_despotic_alliance
-		cost = 10
-		prerequisite = {
-			focus = FBK_open_trade
-		}
-		completion_reward = {
-			set_variable = {
-				var = fbk_black_alliance_votes
-				value = 0
-			}
-			NOE = {
-				country_event = {
-					days = 1
-					id = fubuki.2
-				}
-			}
-			RUS = {
-				country_event = {
-					days = 1
-					id = fubuki.2
-				}
-			}
-			FLA = {
-				country_event = {
-					days = 1
-					id = fubuki.2
-				}
-			}
-			SUI = {
-				country_event = {
-					days = 1
-					id = fubuki.2
-				}
-			}
-			MIK = {
-				country_event = {
-					days = 1
-					id = fubuki.2
-				}
-			}
-			PEK = {
-				country_event = {
-					days = 1
-					id = fubuki.2
-				}
-			}
-		}
-		x = 40
-		y = 7
 	}
 	focus = {
 		id = FBK_memories_of_konigsberg
@@ -1579,24 +1519,6 @@ focus_tree = {
 		y = 13
 	}
 	focus = {
-		id = FBK_treaties_eastward
-		icon = GFX_focus_FBK_treaties_eastward
-		cost = 10
-		prerequisite = {
-			focus = FBK_make_friends
-		}
-		completion_reward = {
-			RUS = {
-				country_event = {
-					days = 1
-					id = fubuki.3					#event asking for NAP lmao
-				}
-			}
-		}
-		x = 44
-		y = 5
-	}
-	focus = {
 		id = FBK_artillery_lessons		#arty tech
 		icon = GFX_focus_FBK_superior_firepower
 		cost = 10
@@ -1653,29 +1575,6 @@ focus_tree = {
 		y = 13
 	}
 	focus = {
-		id = FBK_deterrence
-		icon = GFX_focus_FBK_deterrence
-		cost = 10
-		prerequisite = {
-			focus = FBK_regionalism
-		}
-		x = 47
-		y = 5
-	}
-	focus = {
-		id = FBK_surrounded_on_all_fronts
-		icon = GFX_focus_FBK_surrounded_on_all_fronts
-		cost = 10
-		cancel = {
-			has_government = pro_resistance_nationalism
-		}
-		prerequisite = {
-			focus = FBK_deterrence
-		}
-		x = 47
-		y = 6
-	}
-	focus = {
 		id = FBK_rework_conscription		# increased conscription and mobilization speed
 		icon = GFX_focus_FBK_rework_conscription
 		cost = 10
@@ -1722,36 +1621,6 @@ focus_tree = {
 		}
 		x = 47
 		y = 11
-	}
-	focus = {
-		id = FBK_resistance_principles
-		icon = GFX_focus_FBK_resistance_principles
-		cost = 10
-		prerequisite = {
-			focus = FBK_regionalism
-			focus = FBK_internationalism
-		}
-		mutually_exclusive = {
-			focus = FBK_yagooist_principles
-		}
-		available = {
-			has_completed_focus = FBK_organs_of_the_state
-		}
-		x = 49
-		y = 5
-	}
-	focus = {
-		id = FBK_european_stronghold
-		icon = GFX_focus_FBK_european_stronghold
-		cost = 10
-		cancel = {
-			has_government = pro_resistance_nationalism
-		}
-		prerequisite = {
-			focus = FBK_resistance_principles
-		}
-		x = 49
-		y = 6
 	}
 	focus = {
 		id = FBK_states_army
@@ -1832,54 +1701,6 @@ focus_tree = {
 		y = 13
 	}
 	focus = {
-		id = FBK_yagooist_principles
-		icon = GFX_focus_FBK_yagooist_principles
-		cost = 10
-		prerequisite = {
-			focus = FBK_internationalism
-			focus = FBK_regionalism
-		}
-		mutually_exclusive = {
-			focus = FBK_resistance_principles
-		}
-		available = {
-			OR = {
-				has_completed_focus = FBK_end_state_emergency
-				has_completed_focus = FBK_rule_from_stockholm
-			}
-		}
-		x = 51
-		y = 5
-	}
-	focus = {
-		id = FBK_reconciliation_with_lhs
-		icon = GFX_focus_FBK_reconciliation_with_lhs
-		cost = 10
-		prerequisite = {
-			focus = FBK_yagooist_principles
-		}
-		completion_reward = {
-			add_ideas = {
-				lhs_defensive_union_gui
-			}
-			custom_effect_tooltip = fbk_join_lhs
-		}
-		x = 51
-		y = 6
-	}
-	focus = {
-		id = FBK_mission_to_uphold
-		icon = GFX_focus_FBK_mission_to_liberate
-		cost = 10
-		prerequisite = {
-			focus = FBK_surrounded_on_all_fronts
-			focus = FBK_european_stronghold
-			focus = FBK_reconciliation_with_lhs
-		}
-		x = 48
-		y = 7
-	}
-	focus = {
 		id = FBK_plan_hler
 		icon = GFX_focus_FBK_carrier_design
 		cost = 10
@@ -1930,55 +1751,6 @@ focus_tree = {
 		}
 		x = 51
 		y = 12
-	}
-	focus = {
-		id = FBK_volunteers_ethos
-		icon = GFX_focus_FBK_volunteers_ethos
-		cost = 10
-		prerequisite = {
-			focus = FBK_internationalism
-		}
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = fbk_internationalism_idea
-				add_idea = fbk_volunteer_ethos
-			}
-		}
-		x = 53
-		y = 5
-	}
-	focus = {
-		id = FBK_a_shining_beacon
-		icon = GFX_focus_FBK_a_shining_beacon
-		cost = 10
-		prerequisite = {
-			focus = FBK_volunteers_ethos
-		}
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = fbk_internationalism_idea
-				add_idea = FBK_a_shining_beacon
-			}
-		}
-		x = 53
-		y = 6
-	}
-	focus = {
-		id = FBK_mission_to_contain
-		icon = GFX_focus_FBK_mission_to_contain
-		cost = 10
-		prerequisite = {
-			focus = FBK_reconciliation_with_lhs
-			focus = FBK_a_shining_beacon
-			focus = FBK_european_stronghold
-		}
-		completion_reward = {
-			add_ideas = {
-				FBK_containment_idea
-			}
-		}
-		x = 52
-		y = 7
 	}
 	focus = {
 		id = FBK_naval_expansion_one
@@ -2354,6 +2126,16 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_expand_state_industry
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = -0.1
+			}
+		}
 		x = 4
 		y = 7
 	}
@@ -2389,6 +2171,36 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_nationalize_the_unions
 		}
+		completion_reward = {
+			861 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			195 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			111 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			138 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
 		x = 4
 		y = 8
 	}
@@ -2402,6 +2214,11 @@ focus_tree = {
 		prerequisite = {
 			focus = FBK_further_urbanisation
 			focus = FBK_shrink_military_complex
+		}
+		completion_reward = {
+			remove_idea = {
+				great_depression_fubuki
+			}
 		}
 		x = 5
 		y = 9

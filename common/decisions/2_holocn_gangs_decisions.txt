@@ -120,6 +120,7 @@ HOLOCN_gangs_category = {
 	HOLOCN_create_shadow_factory = {
 		icon = generic_prepare_civil_war
 		available = {
+			has_political_power > 49 
 			NOT = {
 				has_country_flag = HOLOCN_shadow_factory_built
 			}
@@ -132,12 +133,13 @@ HOLOCN_gangs_category = {
 		}
 		days_re_enable = 0
 		days_remove = 60
-		cost = 0
+		cost = 50
 		complete_effect = {
 			add_offsite_building = {
 				type = arms_factory
 				level = 1
 			}
+			set_country_flag = HOLOCN_shadow_factory_built
 		}
 		remove_effect = {
 			add_to_variable = {
@@ -188,6 +190,7 @@ HOLOCN_gangs_category = {
 				type = arms_factory
 				level = -1
 			}
+			clr_country_flag = HOLOCN_shadow_factory_built
 			custom_effect_tooltip = HOLOCN_resources_remove_10
 		}
 	}
@@ -309,6 +312,7 @@ HOLOCN_gangs_category = {
 		cost = 0
 		complete_effect = {
 			add_stability = 0.05
+			add_manpower = 500
 		}
 		remove_effect = {
 			add_to_variable = {

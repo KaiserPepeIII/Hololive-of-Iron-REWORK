@@ -87,4 +87,298 @@ on_actions = {
 			}
 		}
 	}
+	#To fix the political pie charts of countries when puppeted
+	on_puppet = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "Together for Victory"
+					}
+				}
+				#FROM is OVERLORD, ROOT is puppet
+				FROM = {
+					set_temp_variable = {
+						var = overlord_pyc
+						value = var:party_popularity@democratic
+					}
+					set_temp_variable = {
+						var = overlord_pyp
+						value = var:party_popularity@pro_yagoo_progressive
+					}
+					set_temp_variable = {
+						var = overlord_pym
+						value = var:party_popularity@pro_yagoo_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_pyk
+						value = var:party_popularity@pro_yagoo_kleptocracy
+					}
+					set_temp_variable = {
+						var = overlord_prr
+						value = var:party_popularity@communism
+					}
+					set_temp_variable = {
+						var = overlord_prn
+						value = var:party_popularity@pro_resistance_nationalism
+					}
+					set_temp_variable = {
+						var = overlord_prm
+						value = var:party_popularity@pro_resistance_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_prk
+						value = var:party_popularity@pro_resistance_kleptocracy
+					}
+					set_temp_variable = {
+						var = overlord_nn
+						value = var:party_popularity@fascism
+					}
+					set_temp_variable = {
+						var = overlord_lwr
+						value = var:party_popularity@left_wing_revolutionary
+					}
+					set_temp_variable = {
+						var = overlord_rm
+						value = var:party_popularity@reactionary_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_dr
+						value = var:party_popularity@democratic_revitalisation
+					}
+					set_temp_variable = {
+						var = overlord_kd
+						value = var:party_popularity@neutrality
+					}
+					set_temp_variable = {
+						var = overlord_rn
+						value = var:party_popularity@reactionary_nationalism
+					}
+					set_temp_variable = {
+						var = overlord_mid
+						value = var:party_popularity@mixed_ideology_democracy
+					}
+					set_temp_variable = {
+						var = overlord_dm
+						value = var:party_popularity@divine_mandate
+					}
+				}
+				ROOT = {
+					set_popularities = {
+						democratic = var:overlord_pyc
+						pro_yagoo_progressive = var:overlord_pyp
+						pro_yagoo_monarchy = var:overlord_pym
+						pro_yagoo_kleptocracy = var:overlord_pyk
+						communism = var:overlord_prr
+						pro_resistance_nationalism = var:overlord_prn
+						pro_resistance_monarchy = var:overlord_prm
+						pro_resistance_kleptocracy = var:overlord_prk
+						fascism = var:overlord_nn
+						left_wing_revolutionary = var:overlord_lwr
+						reactionary_monarchy = var:overlord_rm
+						democratic_revitalisation = var:overlord_dr
+						neutrality = var:overlord_kd
+						reactionary_nationalism = var:overlord_rn
+						mixed_ideology_democracy = var:overlord_mid
+						divine_mandate = var:overlord_dm
+					}
+				}
+			}
+		}
+	}
+	#To fix the political pie charts of countries when puppeted
+	on_release_as_puppet = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "Together for Victory"
+					}
+				}
+				#FROM is OVERLORD, ROOT is puppet
+				FROM = {
+					set_temp_variable = {
+						var = overlord_pyc
+						value = var:party_popularity@democratic
+					}
+					set_temp_variable = {
+						var = overlord_pyp
+						value = var:party_popularity@pro_yagoo_progressive
+					}
+					set_temp_variable = {
+						var = overlord_pym
+						value = var:party_popularity@pro_yagoo_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_pyk
+						value = var:party_popularity@pro_yagoo_kleptocracy
+					}
+					set_temp_variable = {
+						var = overlord_prr
+						value = var:party_popularity@communism
+					}
+					set_temp_variable = {
+						var = overlord_prn
+						value = var:party_popularity@pro_resistance_nationalism
+					}
+					set_temp_variable = {
+						var = overlord_prm
+						value = var:party_popularity@pro_resistance_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_prk
+						value = var:party_popularity@pro_resistance_kleptocracy
+					}
+					set_temp_variable = {
+						var = overlord_nn
+						value = var:party_popularity@fascism
+					}
+					set_temp_variable = {
+						var = overlord_lwr
+						value = var:party_popularity@left_wing_revolutionary
+					}
+					set_temp_variable = {
+						var = overlord_rm
+						value = var:party_popularity@reactionary_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_dr
+						value = var:party_popularity@democratic_revitalisation
+					}
+					set_temp_variable = {
+						var = overlord_kd
+						value = var:party_popularity@neutrality
+					}
+					set_temp_variable = {
+						var = overlord_rn
+						value = var:party_popularity@reactionary_nationalism
+					}
+					set_temp_variable = {
+						var = overlord_mid
+						value = var:party_popularity@mixed_ideology_democracy
+					}
+					set_temp_variable = {
+						var = overlord_dm
+						value = var:party_popularity@divine_mandate
+					}
+				}
+				ROOT = {
+					set_popularities = {
+						democratic = var:overlord_pyc
+						pro_yagoo_progressive = var:overlord_pyp
+						pro_yagoo_monarchy = var:overlord_pym
+						pro_yagoo_kleptocracy = var:overlord_pyk
+						communism = var:overlord_prr
+						pro_resistance_nationalism = var:overlord_prn
+						pro_resistance_monarchy = var:overlord_prm
+						pro_resistance_kleptocracy = var:overlord_prk
+						fascism = var:overlord_nn
+						left_wing_revolutionary = var:overlord_lwr
+						reactionary_monarchy = var:overlord_rm
+						democratic_revitalisation = var:overlord_dr
+						neutrality = var:overlord_kd
+						reactionary_nationalism = var:overlord_rn
+						mixed_ideology_democracy = var:overlord_mid
+						divine_mandate = var:overlord_dm
+					}
+				}
+			}
+		}
+	}
+	on_autonomy = {
+		effect = {
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				#FROM is OVERLORD, ROOT is puppet
+				FROM = {
+					set_temp_variable = {
+						var = overlord_pyc
+						value = var:party_popularity@democratic
+					}
+					set_temp_variable = {
+						var = overlord_pyp
+						value = var:party_popularity@pro_yagoo_progressive
+					}
+					set_temp_variable = {
+						var = overlord_pym
+						value = var:party_popularity@pro_yagoo_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_pyk
+						value = var:party_popularity@pro_yagoo_kleptocracy
+					}
+					set_temp_variable = {
+						var = overlord_prr
+						value = var:party_popularity@communism
+					}
+					set_temp_variable = {
+						var = overlord_prn
+						value = var:party_popularity@pro_resistance_nationalism
+					}
+					set_temp_variable = {
+						var = overlord_prm
+						value = var:party_popularity@pro_resistance_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_prk
+						value = var:party_popularity@pro_resistance_kleptocracy
+					}
+					set_temp_variable = {
+						var = overlord_nn
+						value = var:party_popularity@fascism
+					}
+					set_temp_variable = {
+						var = overlord_lwr
+						value = var:party_popularity@left_wing_revolutionary
+					}
+					set_temp_variable = {
+						var = overlord_rm
+						value = var:party_popularity@reactionary_monarchy
+					}
+					set_temp_variable = {
+						var = overlord_dr
+						value = var:party_popularity@democratic_revitalisation
+					}
+					set_temp_variable = {
+						var = overlord_kd
+						value = var:party_popularity@neutrality
+					}
+					set_temp_variable = {
+						var = overlord_rn
+						value = var:party_popularity@reactionary_nationalism
+					}
+					set_temp_variable = {
+						var = overlord_mid
+						value = var:party_popularity@mixed_ideology_democracy
+					}
+					set_temp_variable = {
+						var = overlord_dm
+						value = var:party_popularity@divine_mandate
+					}
+				}
+				ROOT = {
+					set_popularities = {
+						democratic = var:overlord_pyc
+						pro_yagoo_progressive = var:overlord_pyp
+						pro_yagoo_monarchy = var:overlord_pym
+						pro_yagoo_kleptocracy = var:overlord_pyk
+						communism = var:overlord_prr
+						pro_resistance_nationalism = var:overlord_prn
+						pro_resistance_monarchy = var:overlord_prm
+						pro_resistance_kleptocracy = var:overlord_prk
+						fascism = var:overlord_nn
+						left_wing_revolutionary = var:overlord_lwr
+						reactionary_monarchy = var:overlord_rm
+						democratic_revitalisation = var:overlord_dr
+						neutrality = var:overlord_kd
+						reactionary_nationalism = var:overlord_rn
+						mixed_ideology_democracy = var:overlord_mid
+						divine_mandate = var:overlord_dm
+					}
+				}
+			}
+		}
+	}
 }
