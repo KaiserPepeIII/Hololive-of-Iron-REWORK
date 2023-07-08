@@ -2393,7 +2393,7 @@ country_event = {
 			set_resistance = 0
 			set_compliance = 1
 			create_unit = {
-				division = "name = \"WF Latgalian Jaeger Division \" division_template = \"Infanteridivisionen\" start_experience_factor = 0.15 start_equipment_factor = 0.9 start_manpower_factor = 1"
+				division = "name = \"WF Latgalian Jaeger Division \" division_template = \"NF Infanteridivisionen\" start_experience_factor = 0.15 start_equipment_factor = 0.9 start_manpower_factor = 1"
 				owner = ROOT
 			}
 		}
@@ -2566,10 +2566,13 @@ country_event = {
 #Rumors of baltic rebellion
 country_event = {
 	id = FBK_post_gnw.4
+	title = FBK_post_gnw.4.t
+	desc = FBK_post_gnw.4.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
 	#Sounds dangerous
 	option = {
+		name = FBK_post_gnw.4.a
 		activate_mission = FBK_forest_brothers_uprising
 		activate_mission = FBK_hold_speech
 		set_variable = {
@@ -2582,64 +2585,76 @@ country_event = {
 #Sabotaged speech (fail)
 country_event = {
 	id = FBK_post_gnw.5
+	title = FBK_post_gnw.5.t
+	desc = FBK_post_gnw.5.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
 	#Fuck!
 	option = {
+		name = FBK_post_gnw.5.a
 		add_days_mission_timeout = {
 			mission = FBK_forest_brothers_uprising
 			days = -15
 		}
-		}
 	}
+}
+
 #succesfull  speech (:muscle:)
 country_event = {
 	id = FBK_post_gnw.6
+	title = FBK_post_gnw.6.t
+	desc = FBK_post_gnw.6.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
 	#As planned
 	option = {
+		name = FBK_post_gnw.6.a
 		subtract_from_variable = {
 			var = FBK.revolt_power
 			value = 2
 			tooltip = FBK_decrease_rebel_strenght_greatly
 		}
-		EST = { 
-			every_core_state = { 
+		EST = {
+			every_core_state = {
 				add_core_of = FBK
-		}
-		LAT = {
-			every_core_state = {
-				add_compliance = 10
 			}
-		}
-		LIT = {
-			every_core_state = {
-				add_compliance = 5
+			LAT = {
+				every_core_state = {
+					add_compliance = 10
+				}
+			}
+			LIT = {
+				every_core_state = {
+					add_compliance = 5
+				}
 			}
 		}
 	}
 }
-}
+
 #informants tell us about noel smuggling
 country_event = {
 	id = FBK_post_gnw.7
-	is_triggered_only = yes
-	title = "bla"
-	desc = "Temp"
+	title = FBK_post_gnw.7.t
+	desc = FBK_post_gnw.7.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
 	#we'll deal with it
-	option = { 
+	option = {
+		name = FBK_post_gnw.7.a
 		activate_mission = FBK_solve_noel_issue
 	}
 }
+
 #dealing with noel
 country_event = {
 	id = FBK_post_gnw.10
+	title = FBK_post_gnw.10.t
+	desc = FBK_post_gnw.10.desc
 	is_triggered_only = yes
 	#strike fast
 	option = {
+		name = FBK_post_gnw.10.a
 		NOE = {
 			country_event = FBK_post_gnw.14
 		}
@@ -2651,124 +2666,152 @@ country_event = {
 				on_win = FBK_post_gnw.8
 				on_lose = FBK_post_gnw.9
 				on_cancel = FBK_post_gnw.9
-				dig_in_factor = 0
-				terrain_factor = 0
-			}	
+			}
 			defender = {
 				state = 807
-				num_provinces = 3
-				dig_in_factor = 0
-				modifier = -0.15
 				on_win = FBK_post_gnw.11
 				on_lose = FBK_post_gnw.11
 				on_cancel = FBK_post_gnw.12
 			}
 		}
 	}
-#protest
-option = {
-	NOE = { 
-		country_event = FBK_post_gnw.15
+	#protest
+	option = {
+		name = FBK_post_gnw.10.b
+		NOE = {
+			country_event = FBK_post_gnw.15
+		}
 	}
-}
-#tighthen security yourself (does not decrease rebel weakness)
-option = {
-	add_timed_idea = {
-		idea = GNW_FBK_enhanced_border_protection
-		days = 100
+	#tighthen security yourself (does not decrease rebel weakness)
+	option = {
+		name = FBK_post_gnw.10.c
+		add_timed_idea = {
+			idea = GNW_FBK_enhanced_border_protection
+			days = 100
+		}
 	}
-}
 }
 
 #border conflict win - superiority estabilished and rebels crushed
 country_event = {
 	id = FBK_post_gnw.8
+	title = FBK_post_gnw.8.t
+	desc = FBK_post_gnw.8.desc
 	is_triggered_only = yes
-	option = { 
-			subtract_from_variable = {
-				var = FBK.revolt_power
-				value = 1
-				tooltip = FBK_decrease_rebel_strenght_lightly
-			}
+	option = {
+		name = FBK_post_gnw.8.a
+		subtract_from_variable = {
+			var = FBK.revolt_power
+			value = 1
+			tooltip = FBK_decrease_rebel_strenght_lightly
+		}
 	}
 }
+
 #border conflict lose  / draw - noel embarasses fubuki, rebels bring supplies
 country_event = {
 	id = FBK_post_gnw.9
+	title = FBK_post_gnw.9.t
+	desc = FBK_post_gnw.9.desc
 	is_triggered_only = yes
 	option = {
+		name = FBK_post_gnw.9.a
 		add_days_mission_timeout = {
 			mission = FBK_forest_brothers_uprising
 			days = -5
 		}
-	add_to_variable = {
+		add_to_variable = {
 			var = FBK.revolt_power
 			value = 1
 			tooltip = FBK_increase_rebel_strenght_lightly
-	}
+		}
 	}
 }
+
 #border conflict win/draw NOEL - battered but not completely defeated, rebels bring supplies
 country_event = {
 	id = FBK_post_gnw.11
+	title = FBK_post_gnw.11.t
+	desc = FBK_post_gnw.11.desc
 	is_triggered_only = yes
 	#get fucked!
 	option = {
+		name = FBK_post_gnw.11.a
 	}
 }
+
 #border conflict lose NOEL - curse u fubuki!! rebels crushed
 country_event = {
 	id = FBK_post_gnw.12
+	title = FBK_post_gnw.12.t
+	desc = FBK_post_gnw.12.desc
 	is_triggered_only = yes
 	#another loss
 	option = {
+		name = FBK_post_gnw.12.a
 	}
 }
 
 #ignored noel issue - rebels bring extra supplies
 country_event = {
 	id = FBK_post_gnw.13
+	title = FBK_post_gnw.13.t
+	desc = FBK_post_gnw.13.desc
 	is_triggered_only = yes
 	option = {
+		name = FBK_post_gnw.13.a
 		add_days_mission_timeout = {
 			mission = FBK_forest_brothers_uprising
 			days = -10
 		}
-			add_to_variable = {
-				var = FBK.revolt_power
-				value = 2
-				tooltip = FBK_increase_rebel_strenght_greatly
+		add_to_variable = {
+			var = FBK.revolt_power
+			value = 2
+			tooltip = FBK_increase_rebel_strenght_greatly
 		}
 	}
 }
+
 #NOE -  fubuki is trying to fuck us over rebels - surprise attack
 country_event = {
 	id = FBK_post_gnw.14
+	title = FBK_post_gnw.14.t
+	desc = FBK_post_gnw.14.desc
 	is_triggered_only = yes
 	#again?!
 	option = {
+		name = FBK_post_gnw.14.a
 	}
 }
+
 #NOE - fubuki is trying to fuck us over rebels - expected attack
 country_event = {
 	id = FBK_post_gnw.18
+	title = FBK_post_gnw.18.t
+	desc = FBK_post_gnw.18.desc
 	is_triggered_only = yes
 	#we saw it coming
 	option = {
+		name = FBK_post_gnw.18.a
 	}
 }
+
 #fubuki is protesting our inaction
 country_event = {
 	id = FBK_post_gnw.15
+	title = FBK_post_gnw.15.t
+	desc = FBK_post_gnw.15.desc
 	is_triggered_only = yes
 	#fuck off!
 	option = {
+		name = FBK_post_gnw.15.a
 		FBK = {
 			country_event = FBK_post_gnw.17
 		}
 	}
 	#we'll tighten security ( slight debuff)
 	option = {
+		name = FBK_post_gnw.15.b
 		add_timed_idea = {
 			idea = GNW_NOE_enhanced_border_protection
 			days = 100
@@ -2778,12 +2821,16 @@ country_event = {
 		}
 	}
 }
+
 #noel agreed to tighten security
 country_event = {
 	id = FBK_post_gnw.16
+	title = FBK_post_gnw.16.t
+	desc = FBK_post_gnw.16.desc
 	is_triggered_only = yes
 	#we win these 
 	option = {
+		name = FBK_post_gnw.16.a
 		subtract_from_variable = {
 			var = FBK.revolt_power
 			value = 1
@@ -2791,12 +2838,16 @@ country_event = {
 		}
 	}
 }
+
 #noel told us to fuck off
 country_event = {
 	id = FBK_post_gnw.17
+	title = FBK_post_gnw.17.t
+	desc = FBK_post_gnw.17.desc
 	is_triggered_only = yes
 	#how dare they? we'll do it for them 
 	option = {
+		name = FBK_post_gnw.17.a
 		NOE = {
 			country_event = FBK_post_gnw.18
 		}
@@ -2808,13 +2859,10 @@ country_event = {
 				on_win = FBK_post_gnw.8
 				on_lose = FBK_post_gnw.9
 				on_cancel = FBK_post_gnw.9
-				dig_in_factor = 0
-				terrain_factor = 0
-			}	
+			}
 			defender = {
 				state = 807
 				num_provinces = 3
-				dig_in_factor = 0.1
 				on_win = FBK_post_gnw.11
 				on_lose = FBK_post_gnw.11
 				on_cancel = FBK_post_gnw.12
@@ -2823,18 +2871,18 @@ country_event = {
 	}
 	#there's nothing we can do - rebels bring extra supplies
 	option = {
+		name = FBK_post_gnw.17.b
 		add_days_mission_timeout = {
 			mission = FBK_forest_brothers_uprising
 			days = -10
 		}
-			add_to_variable = {
-				var = FBK.revolt_power
-				value = 2
-				tooltip = FBK_increase_rebel_strenght_greatly
+		add_to_variable = {
+			var = FBK.revolt_power
+			value = 2
+			tooltip = FBK_increase_rebel_strenght_greatly
 		}
 	}
 }
-
 
 #Forest Brothers rise up!
 country_event = {
@@ -2859,110 +2907,441 @@ country_event = {
 		else_if = {
 			limit = {
 				check_variable = {
-				var = FBK.revolt_power
-				value = 8
-				compare = greater_than_or_equals
+					var = FBK.revolt_power
+					value = 8
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FBK.revolt_power
+					value = 9
+					compare = less_than_or_equals
+				}
 			}
-			check_variable = {
-				var = FBK.revolt_power
-				value = 9
-				compare = less_than_or_equals
+			FBK_baltic_revolt_weak_strong = yes
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.revolt_power
+					value = 6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FBK.revolt_power
+					value = 7
+					compare = less_than_or_equals
+				}
 			}
+			FBK_baltic_revolt_medium = yes
 		}
-		FBK_baltic_revolt_weak_strong = yes
-	}
-	else_if = {
-		limit = {
-			check_variable = {
-			var = FBK.revolt_power
-			value = 6
-			compare = greater_than_or_equals
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.revolt_power
+					value = 4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FBK.revolt_power
+					value = 5
+					compare = less_than_or_equals
+				}
+			}
+			FBK_baltic_revolt_weak_medium = yes
 		}
-		check_variable = {
-			var = FBK.revolt_power
-			value = 7
-			compare = less_than_or_equals
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.revolt_power
+					value = 2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = FBK.revolt_power
+					value = 3
+					compare = less_than_or_equals
+				}
+			}
+			FBK_baltic_revolt_weak = yes
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = FBK.revolt_power
+					compare = equals
+					value = 1
+				}
+			}
+			FBK_baltic_revolt_very_weak = yes
+		}
+		else = {
+			#no revolt
+			country_event = FBK_post_gnw.19
 		}
 	}
-	FBK_baltic_revolt_medium = yes
 }
-else_if = {
-	limit = {
-		check_variable = {
-		var = FBK.revolt_power
-		value = 4
-		compare = greater_than_or_equals
-	}
-	check_variable = {
-		var = FBK.revolt_power
-		value = 5
-		compare = less_than_or_equals
-	}
-}
-FBK_baltic_revolt_weak_medium = yes
-}
-else_if = {
-	limit = {
-		check_variable = {
-		var = FBK.revolt_power
-		value = 2
-		compare = greater_than_or_equals
-	}
-	check_variable = {
-		var = FBK.revolt_power
-		value = 3
-		compare = less_than_or_equals
-	}
-}
-FBK_baltic_revolt_weak = yes
-}
-else_if = {
-	limit = {
-		check_variable = {
-		var = FBK.revolt_power
-		compare = equals
-		value = 1
-	}
-}
-FBK_baltic_revolt_very_weak = yes
-}
-else = {
-	#no revolt
-country_event = FBK_post_gnw.19
-}
-	}
-}
+
 #we prevented the revolt
 country_event = {
 	id = FBK_post_gnw.19
+	title = FBK_post_gnw.19.t
+	desc = FBK_post_gnw.19.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
 	#Thanks
 	option = {
+		name = FBK_post_gnw.19.a
 		clear_variable = FBK.revolt_power
 	}
 }
+
 #end of revolt -  peace deal has been reached based on our controlled states
 country_event = {
 	id = FBK_post_gnw.20
+	title = FBK_post_gnw.20.t
+	desc = FBK_post_gnw.20.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
 	#That was bloody
 	option = {
+		name = FBK_post_gnw.20.a
 	}
 }
-#Aland Issue
+
+#Aland Issue --------------
 country_event = {
 	id = FBK_post_gnw.2
 	title = FBK_post_gnw.2.t
 	desc = FBK_post_gnw.2.desc
 	picture = GFX_report_event_sora_generic1
 	is_triggered_only = yes
-	#Stage Border Incident
+	#Start negotiations
 	option = {
 		name = FBK_post_gnw.2.a
 	}
-	#Our cause is lost
+}
+
+#negotiating with sweden over aland
+country_event = {
+	id = FBK_post_gnw.33
+	title = FBK_post_gnw.33.t
+	desc = FBK_post_gnw.33.desc
+	is_triggered_only = yes
+	#we will make it autonomous and offer factories
+	option = {
+		name = FBK_post_gnw.33.a
+		SWE = {
+			country_event = FBK_post_gnw.21
+		}
+	}
+	#we will make it autonomous
+	option = {
+		name = FBK_post_gnw.33.b
+		SWE = {
+			country_event = FBK_post_gnw.22
+		}
+	}
+	#we will offer factories
+	option = {
+		name = FBK_post_gnw.33.c
+		SWE = {
+			country_event = FBK_post_gnw.23
+		}
+	}
+	#we will just demand it (lol)
+	option = {
+		name = FBK_post_gnw.33.d
+		SWE = {
+			country_event = FBK_post_gnw.24
+		}
+	}
+}
+
+#swe - fubuki offers factories and autonomous
+country_event = {
+	id = FBK_post_gnw.21
+	title = FBK_post_gnw.21.t
+	desc = FBK_post_gnw.21.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = FBK_post_gnw.21.a
+		145 = {
+			transfer_state_to = FBK
+			add_dynamic_modifier = {
+				modifier = FBK_autonomous
+			}
+		}
+		FBK = {
+			add_timed_idea = {
+				idea = GNW_FBK_bought_aland
+				days = 365
+			}
+		}
+	}
+	#fuck off
+	option = {
+		name = FBK_post_gnw.21.b
+		FBK = {
+			set_country_flag = FBK_failed_aland_negotiation
+			country_event = FBK_post_gnw.32
+		}
+	}
+}
+
+#swe - fubuki offers to make it autonomous 
+country_event = {
+	id = FBK_post_gnw.22
+	title = FBK_post_gnw.22.t
+	desc = FBK_post_gnw.22.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = FBK_post_gnw.22.a
+		145 = {
+			transfer_state_to = FBK
+			add_dynamic_modifier = {
+				modifier = FBK_autonomous
+			}
+		}
+	}
+	#fuck off
+	option = {
+		name = FBK_post_gnw.22.b
+		FBK = {
+			set_country_flag = FBK_failed_aland_negotiation
+			country_event = FBK_post_gnw.32
+		}
+	}
+	#double it and give it to the next person ( ask for bigger one)
+	option = {
+		name = FBK_post_gnw.22.c
+		FBK = {
+			country_event = FBK_post_gnw.25
+		}
+	}
+}
+
+#swe - fubuki offers us factories
+country_event = {
+	id = FBK_post_gnw.23
+	title = FBK_post_gnw.23.t
+	desc = FBK_post_gnw.23.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = FBK_post_gnw.23.a
+		145 = {
+			transfer_state_to = FBK
+		}
+		FBK = {
+			add_timed_idea = {
+				idea = GNW_FBK_bought_aland
+				days = 365
+			}
+		}
+	}
+	#fuck off
+	option = {
+		name = FBK_post_gnw.23.b
+		FBK = {
+			set_country_flag = FBK_failed_aland_negotiation
+			country_event = FBK_post_gnw.32
+		}
+	}
+	#double it and give it to the next person ( ask for bigger one)
+	option = {
+		name = FBK_post_gnw.23.c
+		FBK = {
+			country_event = FBK_post_gnw.25
+		}
+	}
+}
+
+#swe - fubuki offers us nothing 
+country_event = {
+	id = FBK_post_gnw.24
+	title = FBK_post_gnw.24.t
+	desc = FBK_post_gnw.24.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = FBK_post_gnw.24.a
+		145 = {
+			transfer_state_to = FBK
+		}
+	}
+	#fuck off
+	option = {
+		name = FBK_post_gnw.24.b
+		FBK = {
+			set_country_flag = FBK_failed_aland_negotiation
+			country_event = FBK_post_gnw.32
+		}
+	}
+	#double it and give it to the next person ( ask for bigger one)
+	option = {
+		name = FBK_post_gnw.24.c
+		FBK = {
+			country_event = FBK_post_gnw.25
+		}
+	}
+}
+
+#sweden asks for heavier deal 
+country_event = {
+	id = FBK_post_gnw.25
+	title = FBK_post_gnw.25.t
+	desc = FBK_post_gnw.25.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = FBK_post_gnw.25.a
+		145 = {
+			transfer_state_to = FBK
+			add_dynamic_modifier = {
+				modifier = FBK_autonomous
+			}
+		}
+		FBK = {
+			add_timed_idea = {
+				idea = GNW_FBK_bought_aland
+				days = 365
+			}
+		}
+	}
+	#time for diplomacy is over
+	option = {
+		name = FBK_post_gnw.25.b
+		FBK = {
+			set_country_flag = FBK_failed_aland_negotiation
+		}
+	}
+}
+
+#our border skirmish has gone boom
+country_event = {
+	id = FBK_post_gnw.26
+	title = FBK_post_gnw.26.t
+	desc = FBK_post_gnw.26.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#demand aland as reparations!
+	option = {
+		name = FBK_post_gnw.26.a
+		SWE = {
+			country_event = FBK_post_gnw.27
+		}
+	}
+}
+
+#SWE - fubuki demands aland after border skirmish lest invasion
+country_event = {
+	id = FBK_post_gnw.27
+	title = FBK_post_gnw.27.t
+	desc = FBK_post_gnw.27.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#surrender
+	option = {
+		name = FBK_post_gnw.27.a
+		FBK = {
+			country_event = FBK_post_gnw.28
+		}
+	}
+	#kiss my ass 
+	option = {
+		name = FBK_post_gnw.27.b
+		FBK = {
+			country_event = FBK_post_gnw.29
+		}
+	}
+}
+
+#sweden surrenders 
+country_event = {
+	id = FBK_post_gnw.28
+	title = FBK_post_gnw.28.t
+	desc = FBK_post_gnw.28.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#ez w
+	option = {
+		name = FBK_post_gnw.28.a
+		145 = {
+			transfer_state_to = FBK
+		}
+	}
+}
+
+#sweden doesn't surrender
+country_event = {
+	id = FBK_post_gnw.29
+	title = FBK_post_gnw.29.t
+	desc = FBK_post_gnw.29.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#war it is 
+	option = {
+		name = FBK_post_gnw.29.a
+		declare_war_on = {
+			target = SWE
+			type = annex_everything
+		}
+	}
+	#back down (why)
+	option = {
+		name = FBK_post_gnw.29.b
+	}
+}
+
+#aland is lost forever (so sad)
+country_event = {
+	id = FBK_post_gnw.30
+	title = FBK_post_gnw.30.t
+	desc = FBK_post_gnw.30.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#dies
+	option = {
+		name = FBK_post_gnw.30.a
+		remove_state_claim = 145
+		white_peace = SWE
+	}
+}
+
+#sweden refused our negotiations
+country_event = {
+	id = FBK_post_gnw.32
+	title = FBK_post_gnw.32.t
+	desc = FBK_post_gnw.32.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#war soon :tm: (just info event )
+	option = {
+		name = FBK_post_gnw.32.a
+	}
+}
+
+#aland is ours again (epic gamer moment)
+country_event = {
+	id = FBK_post_gnw.31
+	title = FBK_post_gnw.31.t
+	desc = FBK_post_gnw.31.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yay!
+	option = {
+		name = FBK_post_gnw.31.a
+		white_peace = SWE
+		transfer_state = 145
+		add_state_core = 145
+	}
 }
 
 #Demobilization
@@ -4090,7 +4469,7 @@ country_event = {
 	}
 	#Bad deal for Noel - decline
 	option = {
-		name = NOE_gnw.29.ostrong
+		name = NOE_gnw.29.ostrongb
 		trigger = {
 			check_variable = {
 				var = FBK.gnw_negotiations_claim
@@ -4117,7 +4496,7 @@ country_event = {
 	}
 	#Meh deal for Noel - decline
 	option = {
-		name = NOE_gnw.29.omedium
+		name = NOE_gnw.29.omediumb
 		trigger = {
 			check_variable = {
 				var = FBK.gnw_negotiations_claim
@@ -4144,7 +4523,7 @@ country_event = {
 	}
 	#Relatively good deal for noel - decline
 	option = {
-		name = NOE_gnw.29.oweak
+		name = NOE_gnw.29.oweakb
 		trigger = {
 			check_variable = {
 				var = FBK.gnw_negotiations_claim
@@ -4848,18 +5227,6 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = NOE_gnw.53.a
-	}
-}
-
-#Suabru rejects
-country_event = {
-	id = NOE_gnw.54
-	title = NOE_gnw.54.t
-	desc = NOE_gnw.54.desc
-	picture = GFX_report_event_sora_generic1
-	is_triggered_only = yes
-	option = {
-		name = NOE_gnw.54.a
 	}
 }
 
@@ -6813,7 +7180,7 @@ country_event = {
 	option = {
 		name = SUB_gnw.10.a
 		NOE = {
-			country_event = NOE_gnw.54
+			country_event = NOE_gnw.24
 		}
 	}
 	#Perhaps we could come to an agreement

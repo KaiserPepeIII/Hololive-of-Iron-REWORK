@@ -101,6 +101,12 @@ scripted_gui = {
 			position1_lore_summary_button_right_click = {
 				tutorial_gui_clear_all = yes
 			}
+			position1_lore_next_page_click = {
+				tutorial_gui_next_page = yes
+			}
+			position1_lore_last_page_click = {
+				tutorial_gui_last_page = yes
+			}
 			position2_paths_summary_button_click = {
 				tutorial_gui_pos2 = yes
 			}
@@ -213,6 +219,7 @@ scripted_gui = {
 				has_country_flag = view_position2
 			}
 			############
+			#View page 1
 			lore_summary_content_visible = {
 				has_country_flag = view_lore_summary
 			}
@@ -220,6 +227,12 @@ scripted_gui = {
 				has_country_flag = view_lhs_summary
 			}
 			lhs_resistance_mechanic_explain_button_visible = {
+				has_country_flag = view_lhs_summary
+			}
+			lhs_resistance_summary_title_text_visible = {
+				has_country_flag = view_lhs_summary
+			}
+			lhs_resistance_mechanic_title_text_visible = {
 				has_country_flag = view_lhs_summary
 			}
 			lhs_resistance_summary_content_text_visible = {
@@ -258,9 +271,65 @@ scripted_gui = {
 			cabinet_gui_summary_content_text_visible = {
 				has_country_flag = view_cabinet_summary
 			}
+			tutorial_cabinet_visible = {
+				has_country_flag = view_cabinet_summary
+			}
+			tutorial_cabinet_tooltip_1_visible = {
+				has_country_flag = view_cabinet_summary
+			}
+			tutorial_cabinet_tooltip_2_visible = {
+				has_country_flag = view_cabinet_summary
+			}
+			tutorial_cabinet_tooltip_3_visible = {
+				has_country_flag = view_cabinet_summary
+			}
+			tutorial_cabinet_tooltip_4_visible = {
+				has_country_flag = view_cabinet_summary
+			}
+			tutorial_cabinet_tooltip_5_visible = {
+				has_country_flag = view_cabinet_summary
+			}
 			position1_lore_summary_content_text_visible = {
 				tutorial_gui_has_pos1_item = yes
+				has_country_flag = view_lore_summary_page1
+			}
+			position1_lore_summary_content_page_2_text_visible = {
+				tutorial_gui_has_pos1_item = yes
+				has_country_flag = view_lore_summary_page2
+			}
+			position1_lore_summary_content_page_3_text_visible = {
+				tutorial_gui_has_pos1_item = yes
+				has_country_flag = view_lore_summary_page3
+			}
+			position1_lore_summary_content_page_4_text_visible = {
+				tutorial_gui_has_pos1_item = yes
+				has_country_flag = view_lore_summary_page4
+			}
+			position1_lore_summary_content_page_5_text_visible = {
+				tutorial_gui_has_pos1_item = yes
+				has_country_flag = view_lore_summary_page5
+			}
+			position1_lore_next_page_visible = {
 				has_country_flag = view_position1
+			}
+			position1_lore_last_page_visible = {
+				has_country_flag = view_position1
+			}
+			position1_lore_next_page_click_enabled = {
+				OR = {
+					tutorial_lore_2_page = yes
+					tutorial_lore_3_page = yes
+					tutorial_lore_4_page = yes
+					tutorial_lore_5_page = yes
+				}
+				NOT = {
+					has_country_flag = view_lore_summary_page5
+				}
+			}
+			position1_lore_last_page_click_enabled = {
+				NOT = {
+					has_country_flag = view_lore_summary_page1
+				}
 			}
 			position2_paths_summary_content_text_visible = {
 				tutorial_gui_has_pos2_item = yes

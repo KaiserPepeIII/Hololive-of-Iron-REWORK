@@ -48,10 +48,9 @@ FBK_4year_category = {
 	FBK_4year_phase1 = {
 		allowed = {
 			tag = FBK
-			has_country_flag = FBK_4year_phase1_flag
 		}
 		visible = {
-			always = yes
+			has_country_flag = FBK_4year_phase1_flag
 		}
 		fire_only_once = yes
 		cost = 300
@@ -69,10 +68,9 @@ FBK_4year_category = {
 	FBK_4year_phase2 = {
 		allowed = {
 			tag = FBK
-			has_country_flag = FBK_4year_phase2_flag
 		}
 		visible = {
-			always = yes
+			has_country_flag = FBK_4year_phase2_flag
 		}
 		fire_only_once = yes
 		cost = 300
@@ -93,10 +91,9 @@ FBK_4year_category = {
 	FBK_4year_phase3 = {
 		allowed = {
 			tag = FBK
-			has_country_flag = FBK_4year_phase3_flag
 		}
 		visible = {
-			always = yes
+			has_country_flag = FBK_4year_phase3_flag
 		}
 		fire_only_once = yes
 		cost = 300
@@ -964,21 +961,60 @@ FBK_post_gnw_chaos_win = {
 
 FBK_post_gnw_chaos_lose = {
 	FBK_aland_issue = {
+		#we must control aland by the time the 50 days are over OR sweden must have 15% capitulation progress
 		allowed = {
 			tag = FBK
 		}
 		activation = {
-			has_country_flag = GNW_FBK_capitulated
+			always = no
+		}
+		available = {
+			OR = {
+				145 = {
+					is_controlled_by = FBK
+				}
+				SWE = {
+					surrender_progress > 0.2
+				}
+			}
 		}
 		visible = {
 			has_global_flag = GNW_peace_treaty
 		}
+		war_with_on_timeout = SWE
 		selectable_mission = no
-		days_mission_timeout = 30
+		days_mission_timeout = 50
 		is_good = no
 		fire_only_once = yes
+		complete_effect = {
+			country_event = FBK_post_gnw.31
+		}
 		timeout_effect = {
-			country_event = FBK_post_gnw.2
+			country_event = FBK_post_gnw.30
+		}
+	}
+	FBK_negotiate_with_finland = {
+		allowed = {
+			tag = FBK
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = GNW_FBK_capitulated
+		}
+		complete_effect = {
+			country_event = FBK_post_gnw.33
+		}
+	}
+	FBK_stage_border_conflict = {
+		allowed = {
+			tag = FBK
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FBK_failed_aland_negotiation
+		}
+		complete_effect = {
+			country_event = FBK_post_gnw.26
 		}
 	}
 }
@@ -1379,10 +1415,21 @@ FBK_plan_thor_decisions = {
 			has_tech = early_bomber
 		}
 		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = tac_bomber_equipment
-				amount = 75
-				producer = ROOT
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe_1
+					variant_name = "Vandrare-7"
+					amount = 200
+				}
+				else = {
+					add_equipment_to_stockpile = {
+						type = tac_bomber_equipment_0
+						amount = 200
+					}
+				}
 			}
 		}
 		ai_will_do = {
@@ -1397,10 +1444,21 @@ FBK_plan_thor_decisions = {
 			has_tech = strategic_bomber1
 		}
 		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = strat_bomber_equipment
-				amount = 50
-				producer = ROOT
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = large_plane_airframe_0
+					variant_name = "Djävulen-1c"
+					amount = 100
+				}
+				else = {
+					add_equipment_to_stockpile = {
+						type = strat_bomber_equipment_1
+						amount = 100
+					}
+				}
 			}
 		}
 		ai_will_do = {

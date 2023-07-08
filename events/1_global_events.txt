@@ -169,7 +169,24 @@ news_event = {
 news_event = {
 	id = global_holo.4
 	title = global_holo.4.t
-	desc = global_holo.4.desc
+	desc = {
+		trigger = {
+			has_country_flag = YAG_internationalism_flag
+		}
+		text = global_holo.4.international
+	}
+	desc = {
+		trigger = {
+			has_country_flag = YAG_regionalism_flag
+		}
+		text = global_holo.4.regional
+	}
+	desc = {
+		trigger = {
+			has_country_flag = YAG_nationalism_flag
+		}
+		text = global_holo.4.national
+	}
 	picture = GFX_global_yagoo_council_news_results
 	is_triggered_only = yes
 	major = yes
@@ -331,19 +348,6 @@ news_event = {
 				has_anti_ideology = yes
 			}
 		}
-	}
-}
-
-news_event = {
-	id = global_holo.5
-	title = global_holo.5.t
-	desc = global_holo.5.desc
-	picture = GFX_news_event_001
-	is_triggered_only = yes
-	major = yes
-	#lhs
-	option = {
-		name = global_holo.5.a
 	}
 }
 

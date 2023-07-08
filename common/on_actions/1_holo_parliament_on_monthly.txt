@@ -27,34 +27,36 @@ on_actions = {
 			###	PARLIAMENT COHESION DYNAMIC MODIFIER (COUNTRIES WITH POSITIVE STABILITY)
 			###
 			every_country = {
-				limit = {
-					has_dynamic_modifier = {
-						modifier = GEN_parliament_stability_dynamic_modifier
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = GEN_parliament_stability_dynamic_modifier
+						}
+						check_variable = {
+							var = ROOT.parliament_cohesion
+							value = 5
+							compare = greater_than
+						}
 					}
-					check_variable = {
-						var = ROOT.parliament_cohesion
-						value = 5
-						compare = greater_than
-					}
-				}
-				clear_variable = ROOT.parliament_cohesion_modifier
-				set_variable = {
-					var = ROOT.parliament_cohesion_modifier
-					value = 0.001
-				}
-				multiply_variable = {
-					var = ROOT.parliament_cohesion_modifier
-					value = ROOT.parliament_cohesion
-				}
-				else = {
 					clear_variable = ROOT.parliament_cohesion_modifier
 					set_variable = {
 						var = ROOT.parliament_cohesion_modifier
-						value = -0.001
+						value = 0.001
 					}
 					multiply_variable = {
 						var = ROOT.parliament_cohesion_modifier
 						value = ROOT.parliament_cohesion
+					}
+					else = {
+						clear_variable = ROOT.parliament_cohesion_modifier
+						set_variable = {
+							var = ROOT.parliament_cohesion_modifier
+							value = -0.001
+						}
+						multiply_variable = {
+							var = ROOT.parliament_cohesion_modifier
+							value = ROOT.parliament_cohesion
+						}
 					}
 				}
 			}

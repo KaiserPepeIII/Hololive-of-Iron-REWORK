@@ -128,6 +128,29 @@ scripted_gui = {
 		}
 		effects = {
 			#scripted effects/government_alignment_scripted_effects
+			government_alignment_notification_checkbox_click = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = cabinet_disable_notifications
+						}
+					}
+					set_country_flag = cabinet_disable_notifications
+					clear_variable = ROOT.checked_notifications_enabled
+					set_variable = {
+						var = ROOT.checked_notifications_enabled
+						value = 1
+					}
+					else = {
+						clr_country_flag = cabinet_disable_notifications
+						clear_variable = ROOT.checked_notifications_enabled
+						set_variable = {
+							var = ROOT.checked_notifications_enabled
+							value = 2
+						}
+					}
+				}
+			}
 			seiso_not_saeiso_button_minus_click = {
 				ROOT = {
 					seiso_minus_bar_scripted_effect = yes
@@ -265,6 +288,9 @@ scripted_gui = {
 			}
 		}
 		properties = {
+			government_alignment_notification_checkbox = {
+				frame = var:ROOT.checked_notifications_enabled
+			}
 			seiso_not_saeiso_bar = {
 				image = "[get_seiso_bar]"
 			}
