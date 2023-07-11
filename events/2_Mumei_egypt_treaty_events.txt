@@ -1,0 +1,1637 @@
+add_namespace = mumegypt
+#Watsons treaty
+country_event = {
+	id = mumegypt.1
+	title = mumegypt.1.t
+	desc = {
+		trigger = {
+			has_country_flag = MUM_watson_treaty_steward_canal
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_watson_treaty_decolonisation
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_watson_treaty_international_zone
+		}
+		text = a
+	}
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.1.a
+		if = {
+			limit = {
+				MUM = {
+					NOT = {
+						has_variable = MUM.egypt_treaty_acceptance
+					}
+				}
+			}
+			MUM = {
+				set_variable = {
+					var = MUM.egypt_treaty_acceptance
+					value = 0
+				}
+			}
+		}
+		MUM = {
+			add_to_variable = {
+				var = MUM.egypt_treaty_acceptance
+				value = 1
+			}
+		}
+		if= {
+			limit = {
+				tag = MUM
+			}
+			set_country_flag = MUM_accepted_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = PEK
+			}
+			set_country_flag = PEK_accepted_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = YAG
+			}
+			set_country_flag = YAG_accepted_egypt_treaty
+		}
+	}
+	#disagree
+	option = {
+		name = mumegypt.1.b
+		if= {
+			limit = {
+				tag = MUM
+			}
+			set_country_flag = MUM_denied_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = PEK
+			}
+			set_country_flag = PEK_denied_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = YAG
+			}
+			set_country_flag = YAG_denied_egypt_treaty
+		}
+	}
+}
+#Korones Treaty
+country_event = {
+	id = mumegypt.2
+	title = mumegypt.2.t
+	desc = {
+		trigger = {
+			has_country_flag = MUM_korone_treaty_steward
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_korone_treaty_arab_federation
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_korone_treaty_threaten_with_war
+		}
+		text = a
+	}
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.2.a
+		if = {
+			limit = {
+				MUM = {
+					NOT = {
+						has_variable = MUM.egypt_treaty_acceptance
+					}
+				}
+			}
+			MUM = {
+				set_variable = {
+					var = MUM.egypt_treaty_acceptance
+					value = 0
+				}
+			}
+		}
+		MUM = {
+			add_to_variable = {
+				var = MUM.egypt_treaty_acceptance
+				value = 1
+			}
+		}
+		if= {
+			limit = {
+				tag = MUM
+			}
+			set_country_flag = MUM_accepted_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = PEK
+			}
+			set_country_flag = PEK_accepted_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = YAG
+			}
+			set_country_flag = YAG_accepted_egypt_treaty
+		}
+	}
+	option = {
+		name = mumegypt.2.b
+	}
+}
+#Mikos Treaty
+country_event = {
+	id = mumegypt.3
+	title = mumegypt.3.t
+	desc = {
+		trigger = {
+			has_country_flag = MUM_miko_treaty_free_seas
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_miko_treaty_pan_arab
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_miko_treaty_self_determination
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_miko_treaty_pro_peko
+		}
+		text = a
+	}
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.3.a
+		if = {
+			limit = {
+				MUM = {
+					NOT = {
+						has_variable = MUM.egypt_treaty_acceptance
+					}
+				}
+			}
+			MUM = {
+				set_variable = {
+					var = MUM.egypt_treaty_acceptance
+					value = 0
+				}
+			}
+		}
+		MUM = {
+			add_to_variable = {
+				var = MUM.egypt_treaty_acceptance
+				value = 1
+			}
+		}
+		if= {
+			limit = {
+				tag = MUM
+			}
+			set_country_flag = MUM_accepted_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = PEK
+			}
+			set_country_flag = PEK_accepted_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = YAG
+			}
+			set_country_flag = YAG_accepted_egypt_treaty
+		}
+	}
+	#disagree
+	option = {
+		name = mumegypt.3.b
+		if= {
+			limit = {
+				tag = MUM
+			}
+			set_country_flag = MUM_denied_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = PEK
+			}
+			set_country_flag = PEK_denied_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = YAG
+			}
+			set_country_flag = YAG_denied_egypt_treaty
+		}
+	}
+}
+#Mios Treaty
+country_event = {
+	id = mumegypt.4
+	title = mumegypt.4.t
+	desc = {
+		trigger = {
+			has_country_flag = MUM_mio_treaty_pro_yagoo
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_mio_treaty_pure_neutral
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = MUM_mio_treaty_withdrawl
+		}
+		text = a
+	}
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.4.a
+		if = {
+			limit = {
+				MUM = {
+					NOT = {
+						has_variable = MUM.egypt_treaty_acceptance
+					}
+				}
+			}
+			MUM = {
+				set_variable = {
+					var = MUM.egypt_treaty_acceptance
+					value = 0
+				}
+			}
+		}
+		MUM = {
+			add_to_variable = {
+				var = MUM.egypt_treaty_acceptance
+				value = 1
+			}
+		}
+		if= {
+			limit = {
+				tag = MUM
+			}
+			set_country_flag = MUM_accepted_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = PEK
+			}
+			set_country_flag = PEK_accepted_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = YAG
+			}
+			set_country_flag = YAG_accepted_egypt_treaty
+		}
+	}
+	#disagree
+	option = {
+		name = mumegypt.4.b
+		if= {
+			limit = {
+				tag = MUM
+			}
+			set_country_flag = MUM_denied_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = PEK
+			}
+			set_country_flag = PEK_denied_egypt_treaty
+		}
+		if= {
+			limit = {
+				tag = YAG
+			}
+			set_country_flag = YAG_denied_egypt_treaty
+		}
+	}
+}
+# treaty failure
+country_event = {
+	id = mumegypt.5
+	title = mumegypt.5.t
+	desc = {
+		trigger = {
+			PEK = {
+				has_country_flag = PEK_accepted_egypt_treaty
+			}
+			YAG = {
+				has_country_flag = YAG_denied_egypt_treaty
+			}
+			MUM = {
+				has_country_flag = MUM_denied_egypt_treaty
+			}
+		}	
+		text = a
+	}
+	desc = {
+		trigger = {
+			PEK = {
+				has_country_flag = PEK_accepted_egypt_treaty
+			}
+			YAG = {
+				has_country_flag = YAG_accepted_egypt_treaty
+			}
+			MUM = {
+				has_country_flag = MUM_denied_egypt_treaty
+			}
+		}	
+		text = a
+	}
+	desc = {
+		trigger = {
+			PEK = {
+				has_country_flag = PEK_accepted_egypt_treaty
+			}
+			YAG = {
+				has_country_flag = YAG_denied_egypt_treaty
+			}
+			MUM = {
+				has_country_flag = MUM_accepted_egypt_treaty
+			}
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			PEK = {
+				has_country_flag = PEK_denied_egypt_treaty
+			}
+			YAG = {
+				has_country_flag = YAG_accepted_egypt_treaty
+			}
+			MUM = {
+				has_country_flag = MUM_accepted_egypt_treaty
+			}
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			PEK = {
+				has_country_flag = PEK_denied_egypt_treaty
+			}
+			YAG = {
+				has_country_flag = YAG_denied_egypt_treaty
+			}
+			MUM = {
+				has_country_flag = MUM_accepted_egypt_treaty
+			}
+		}	
+		text = a
+	}
+	desc = {
+		trigger = {
+			PEK = {
+				has_country_flag = PEK_denied_egypt_treaty
+			}
+			YAG = {
+				has_country_flag = YAG_accepted_egypt_treaty
+			}
+			MUM = {
+				has_country_flag = MUM_denied_egypt_treaty
+			}
+		}
+		text = a
+	}
+	desc = {
+		trigger = {
+			PEK = {
+				has_country_flag = PEK_denied_egypt_treaty
+			}
+			YAG = {
+				has_country_flag = YAG_denied_egypt_treaty
+			}
+			MUM = {
+				has_country_flag = MUM_denied_egypt_treaty
+			}
+		}
+		text = a
+	}
+	picture = GFX_report_event_MUM_mumei_found
+	trigger = {
+		AND = {
+			OR = {
+				AND = {
+					tag = PEK
+					OR = {
+						has_country_flag = PEK_accepted_egypt_treaty
+						has_country_flag - PEK_denied_egypt_treaty
+					}
+				}
+				AND = {
+					tag = MUM
+					OR = {
+						has_country_flag = MUM_accepted_egypt_treaty
+						has_country_flag = MUM_denied_egypt_treaty
+					}
+				}
+				AND = {
+					tag = YAG
+					OR = {
+						has_country_flag = YAG_accepted_egypt_treaty
+						has_country_flag = YAG_denied_egypt_treaty
+					}
+				}
+			}
+			check_variable = {
+				var = MUM.egypt_treaty_acceptance
+				value = 3
+				compare = less_than
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 15
+	}
+	#war looms
+	option = {
+		name = mumegypt.5.a
+		if = {
+			limit = {
+				tag = YAG
+				YAG = {
+					has_country_flag = YAG_denied_egypt_treaty
+				}
+			}
+			MUM = {
+				add_days_mission_timeout = {
+					mission = MUM_restoring_egypt_mission
+					days = -20
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = MUM
+				MUM = {
+					has_country_flag = MUM_denied_egypt_treaty
+				}
+			}
+			MUM = {
+				add_days_mission_timeout = {
+					mission = MUM_restoring_egypt_mission
+					days = -20
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = PEK
+				PEK = {
+					has_country_flag = PEK_denied_egypt_treaty
+				}
+			}
+			MUM = {
+				add_days_mission_timeout = {
+					mission = MUM_restoring_egypt_mission
+					days = -20
+				}
+			}
+		}
+		custom_effect_tooltip = reduce_20_per_disagree_tt
+	}
+}
+# treaty success
+country_event = {
+	id = mumegypt.6
+	title = mumegypt.6.t
+	desc = mumegypt.6.d
+	picture = GFX_report_event_MUM_mumei_found
+	trigger = {
+		AND = {
+			OR = {
+				tag = PEK
+				tag = MUM
+				tag = YAG
+			}
+			check_variable = {
+				var = MUM.egypt_treaty_acceptance
+				value = 3
+				compare = equals
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 15
+	}
+	#A great success 
+	option = {
+		name = mumegypt.6.a
+		trigger = {
+			tag = MUM
+		}
+		MUM = {
+			set_country_flag = MUM_egypt_peace_treaty
+		}
+		if = {
+			limit = {
+				MUM = {
+					has_country_flag = MUM_korone_devised_treaty
+				 }
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_korone_treaty_steward
+					}
+				}
+				PYW_KRN_steward = yes
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_korone_treaty_threaten_with_war
+					}
+				}
+				PYW_KRN_threaten = yes
+			}
+		}
+		else_if = {
+			limit = {
+				MUM = {
+					has_country_flag = MUM_watson_devised_treaty
+				 }
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_watson_treaty_decolonisation
+					}
+				}
+				PYW_WTS_decolonization = yes
+				
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_watson_treaty_international_zone
+					}
+				}
+				PYW_WTS_international_zone = yes
+				
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_watson_treaty_steward_canal
+					}
+				}
+				PYW_WTS_steward = yes
+			}
+		}
+		else_if = {
+			limit = {
+				MUM = {
+					has_country_flag = MUM_miko_devised_treaty
+				 }
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_miko_treaty_free_seas
+					}
+				}
+				PYW_MIK_free_seas = yes
+				
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_miko_treaty_self_determination
+					}
+				}
+				PYW_MIK_self_determination = yes
+				
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_miko_treaty_pan_arab
+					}
+				}
+				PYW_MIK_pan_arab_fed = yes
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_miko_treaty_pro_peko
+					}
+				}
+				PYW_MIK_pro_peko = yes
+			}
+		}
+		else_if = {
+			limit = {
+				MUM = {
+					has_country_flag = MUM_mio_devised_treaty
+				 }
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_mio_treaty_pro_yagoo
+					}
+				}
+				PYW_MIO_pro_yagoo = yes
+				
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_mio_treaty_pure_neutral
+					}
+				}
+				PYW_MIO_pure_neutral = yes
+				
+			}
+			if = {
+				limit = {
+					MUM = {
+						has_country_flag = MUM_mio_treaty_withdrawl
+					}
+				}
+				PYW_MIO_withdrawl_solution = yes
+			}
+		}
+		
+	}
+	#We avoided the brink
+	option = {
+		name = mumegypt.6.b
+		trigger = {
+			NOT = {
+				tag = MUM
+			}
+		}
+	}
+}
+#Miko - Decolonization?
+country_event = {
+	id = mumegypt.7
+	title = mumegypt.7.t
+	desc = mumegypt.7.d
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.7.a
+		297 = {
+			transfer_state_to = EQU
+		}
+		hidden_effect = {
+			297 = {
+				add_core_of  = EQU
+			}
+		}
+		699 = {
+			transfer_state_to = MRT
+		}
+		290 = {
+			transfer_state_to = MOR
+		}
+		783 = {
+			transfer_state_to = MOR
+		}
+		add_political_power = 25
+		add_stability = 0.025
+	}
+	#disagree
+	option = {
+		name = mumegypt.7.b
+		add_political_power = -25
+		add_stability = -0.025
+	}
+}
+#Suisei - Decolonization?
+country_event = {
+	id = mumegypt.8
+	title = mumegypt.8.t
+	desc = mumegypt.8.d
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.8.a
+		release = ALG 
+		772 = {
+			transfer_state_to = DRC
+		}
+		1087 = {
+			transfer_state_to = GAB
+		}
+		539 = {
+			transfer_state_to = GAB
+		}
+		1086 = {
+			transfer_state_to = DRC
+		}
+		1089 = {
+			transfer_state_to = BEN
+		}
+		776 = {
+			transfer_state_to = BEN
+		}
+		777 = {
+			transfer_state_to = TOG
+		}
+		780 = {
+			transfer_state_to = GUI
+		}
+		272 = {
+			transfer_state_to = SEN
+		}
+		hidden_effect = {
+			772 = {
+				add_core_of  = DRC
+			}
+			539 = {
+				add_core_of  = GAB
+			}
+			1086 = {
+				add_core_of  = DRC
+			}
+			1087 = {
+				add_core_of  = GAB
+			}
+			1089 = {
+				add_core_of  = BEN
+			}
+			776 = {
+				add_core_of  = BEN
+			}
+			777 = {
+				add_core_of  = TOG
+			}
+			780 = {
+				add_core_of  = GUI
+			}
+			272 = {
+				add_core_of  = SEN
+			}
+		}
+		add_political_power = 25
+		add_stability = 0.025
+	}
+	#disagree
+	option = {
+		name = mumegypt.8.b
+		add_political_power = -25
+		add_stability = -0.025
+	}
+}
+#Subaru - Decolonization?
+country_event = {
+	id = mumegypt.9
+	title = mumegypt.9.t
+	desc = mumegypt.9.d
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.9.a
+		hidden_effect = {
+			779 = {
+				add_core_of  = COT
+			}
+		}
+		779 = {
+			transfer_state_to = COT
+		}
+		OSK = {
+			every_owned_state = {
+				limit = {
+					NOT = 779
+				}
+				add_core_of  = DRC
+				transfer_state_to = DRC
+			}
+		}
+		297 = {
+			transfer_state_to = EQU
+		}
+		hidden_effect = {
+			297 = {
+				add_core_of  = EQU
+			}
+		}
+		699 = {
+			transfer_state_to = MRT
+		}
+		290 = {
+			transfer_state_to = MOR
+		}
+		783 = {
+			transfer_state_to = MOR
+		}
+		add_political_power = 25
+		add_stability = 0.025
+	}
+	#disagree
+	option = {
+		name = mumegypt.9.b
+		add_political_power = -25
+		add_stability = -0.025
+	}
+}
+#Portugal - Decolonization?
+country_event = {
+	id = mumegypt.10
+	title = mumegypt.10.t
+	desc = mumegypt.10.d
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.10.a
+		hidden_effect = {
+			296 = {
+				add_core_of  = GUI
+			}
+			1091 = {
+				add_core_of  = ANG
+			}
+			1092 = {
+				add_core_of  = ANG
+			}
+			540 = {
+				add_core_of  = ANG
+			}
+			1082 = {
+				add_core_of  = MOZ
+			}
+			544 = {
+				add_core_of  = MOZ
+			}
+			1093 = {
+				add_core_of  = MOZ
+			}
+			1095 = {
+				add_core_of  = MOZ
+			}
+			1094 = {
+				add_core_of  = MOZ
+			}
+		}
+		296 = {
+			transfer_state_to = GUI
+		}
+		1091 = {
+			transfer_state_to = ANG
+		}
+		1092 = {
+			transfer_state_to = ANG
+		}
+		540 = {
+			transfer_state_to = ANG
+		}
+		
+		1082 = {
+			transfer_state_to = MOZ
+		}
+		544 = {
+			transfer_state_to = MOZ
+		}
+		1093 = {
+			transfer_state_to = MOZ
+		}
+		1095 = {
+			transfer_state_to = MOZ
+		}
+		1094 = {
+			transfer_state_to = MOZ
+		}
+		add_political_power = 50
+		add_stability = 0.05
+	}
+	#disagree
+	option = {
+		name = mumegypt.10.b
+		add_political_power = -50
+		add_stability = -0.05
+	}
+}
+#Fubuki - Decolonization?
+country_event = {
+	id = mumegypt.11
+	title = mumegypt.11.t
+	desc = mumegypt.11.d
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.11.a
+		hidden_effect = {
+			274 = {
+				add_core_of  = GHA
+			}
+			1090 = {
+				add_core_of  = GHA
+			}
+		}
+		274 = {
+			transfer_state_to = GHA
+		}
+		1090 = {
+			transfer_state_to = GHA
+		}
+		add_political_power = 25
+		add_stability = 0.025
+	}
+	#disagree
+	option = {
+		name = mumegypt.11.b
+		add_political_power = -25
+		add_stability = -0.025
+	}
+}
+#Noel - Decolonization?
+country_event = {
+	id = mumegypt.12
+	title = mumegypt.12.t
+	desc = mumegypt.12.d
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#agree
+	option = {
+		name = mumegypt.12.a
+		hidden_effect = {
+			773 = {
+				add_core_of  = CAM
+			}
+			1088 = {
+				add_core_of  = CAM
+			}
+		}
+		773 = {
+			transfer_state_to = CAM
+		}
+		1088 = {
+			transfer_state_to = CAM
+		}
+		add_political_power = 25
+		add_stability = 0.025
+	}
+	#disagree
+	option = {
+		name = mumegypt.12.b
+		add_political_power = -25
+		add_stability = -0.025
+	}
+}
+#Yagoo Sends terms to Pekora(she lost)
+country_event = {
+	id = mumegypt.13
+	title = mumegypt.13.t
+	desc = mumegypt.13.d
+	picture = GFX_report_event_MUM_mumei_found
+	is_triggered_only = yes
+	#Yes :C
+	option = {
+		name = mumegypt.13.a
+		PYW_Mumei_restored_prewar_borders = yes
+		1140 = {
+			transfer_state_to = LIB
+		}
+		273 = {
+			transfer_state_to = LIB
+		}
+		663 = {
+			transfer_state_to = LIB
+		}
+		451 = {
+			transfer_state_to = LIB
+		}
+		450 = {
+			transfer_state_to = LIB
+		}
+		662 = {
+			transfer_state_to = LIB
+		}
+		449 = {
+			transfer_state_to = LIB
+		}
+		661 = {
+			transfer_state_to = LIB
+		}
+		448 = {
+			transfer_state_to = LIB
+		}
+		1140 = {
+			add_core_of  = LIB
+		}
+		273 = {
+			add_core_of  = LIB
+		}
+		663 = {
+			add_core_of  = LIB
+		}
+		451 = {
+			add_core_of  = LIB
+		}
+		450 = {
+			add_core_of  = LIB
+		}
+		662 = {
+			add_core_of  = LIB
+		}
+		449 = {
+			add_core_of  = LIB
+		}
+		661 = {
+			add_core_of  = LIB
+		}
+		448 = {
+			add_core_of  = LIB
+		}
+		458 = {
+			transfer_state_to = TUN
+		}
+		665 = {
+			transfer_state_to = TUN
+		}
+		550 = {
+			transfer_state_to = ROB
+		}
+		458 = {
+			add_core_of  = TUN
+		}
+		665 = {
+			add_core_of  = TUN
+		}
+		YAG = {
+			puppet = TUN
+			puppet = LIB
+			white_peace = PEK
+		}
+		
+	}
+	#no >:C
+	option = {
+		name = mumegypt.13.b
+		YAG = {
+			country_event = mumegypt.15
+		}
+		set_country_flag = PYG_refused_peace
+	}
+	#Pekora asks to surrender
+	country_event = {
+		id = mumegypt.14
+		title = mumegypt.14.t
+		desc = mumegypt.14.d
+		picture = GFX_report_event_MUM_mumei_found
+		is_triggered_only = yes
+		#Yes :)
+		option = {
+			name = mumegypt.14.a
+			PYW_Mumei_restored_prewar_borders = yes
+			1140 = {
+				transfer_state_to = LIB
+			}
+			273 = {
+				transfer_state_to = LIB
+			}
+			663 = {
+				transfer_state_to = LIB
+			}
+			451 = {
+				transfer_state_to = LIB
+			}
+			450 = {
+				transfer_state_to = LIB
+			}
+			662 = {
+				transfer_state_to = LIB
+			}
+			449 = {
+				transfer_state_to = LIB
+			}
+			661 = {
+				transfer_state_to = LIB
+			}
+			448 = {
+				transfer_state_to = LIB
+			}
+			1140 = {
+				add_core_of  = LIB
+			}
+			273 = {
+				add_core_of  = LIB
+			}
+			663 = {
+				add_core_of  = LIB
+			}
+			451 = {
+				add_core_of  = LIB
+			}
+			450 = {
+				add_core_of  = LIB
+			}
+			662 = {
+				add_core_of  = LIB
+			}
+			449 = {
+				add_core_of  = LIB
+			}
+			661 = {
+				add_core_of  = LIB
+			}
+			448 = {
+				add_core_of  = LIB
+			}
+			458 = {
+				transfer_state_to = TUN
+			}
+			665 = {
+				transfer_state_to = TUN
+			}
+			458 = {
+				add_core_of  = TUN
+			}
+			665 = {
+				add_core_of  = TUN
+			}
+			550 = {
+				transfer_state_to = ROB
+			}
+			YAG = {
+				puppet = TUN
+				puppet = LIB
+				white_peace = PEK
+			}
+			
+		}
+		#no >:)
+		option = {
+			name = mumegypt.14.b
+			PEK = {
+				country_event = mumegypt.16
+			}
+			set_country_flag = PYG_refused_peace
+		}
+	}
+		#Pekora refuses to surrender
+		country_event = {
+			id = mumegypt.15
+			title = mumegypt.15.t
+			desc = mumegypt.15.d
+			picture = GFX_report_event_MUM_mumei_found
+			is_triggered_only = yes
+			#Death war inbound!!!
+			option = {
+				name = mumegypt.15.a
+				
+			}
+		}
+	#Yagoo refuses to recognize pekoras surrender
+	country_event = {
+		id = mumegypt.16
+		title = mumegypt.16.t
+		desc = mumegypt.16.d
+		picture = GFX_report_event_MUM_mumei_found
+		is_triggered_only = yes
+		#Death war inbound!!!
+		option = {
+			name = mumegypt.16.a
+			
+		}
+	}
+	#Pekora sends terms to yagoo (he lost)
+	country_event = {
+		id = mumegypt.17
+		title = mumegypt.17.t
+		desc = mumegypt.17.d
+		picture = GFX_report_event_MUM_mumei_found
+		is_triggered_only = yes
+		#Yes :(
+		option = {
+			name = mumegypt.17.a
+			553 = {
+				transfer_state_to = LBN
+			}
+			454 = {
+				transfer_state_to = PAL
+			}
+			843 = {
+				transfer_state_to = PAL
+			}
+			PAL = {
+				add_state_core = 843
+				add_state_core = 454
+			}
+			LBN = {
+				add_state_core = 553
+			}
+			268 = {
+				transfer_state_to = PEK
+			}
+			PEK = {
+				country_event = mumegypt.21
+				puppet = PAL
+				puppet = LEB
+				white_peace = YAG
+			}
+			
+		}
+		#no >:(
+		option = {
+			name = mumegypt.17.b
+			PEK = {
+				country_event = mumegypt.19
+			}
+			set_country_flag = PYG_refused_peace
+		}
+	}
+	#Yagoo looks to surrender to pekora
+	country_event = {
+		id = mumegypt.18
+		title = mumegypt.18.t
+		desc = mumegypt.18.d
+		picture = GFX_report_event_MUM_mumei_found
+		is_triggered_only = yes
+		#Yes :)
+		option = {
+			name = mumegypt.18.a
+			553 = {
+				transfer_state_to = LBN
+			}
+			454 = {
+				transfer_state_to = PAL
+			}
+			843 = {
+				transfer_state_to = PAL
+			}
+			PAL = {
+				add_state_core = 843
+				add_state_core = 454
+			}
+			LBN = {
+				add_state_core = 553
+			}
+			268 = {
+				transfer_state_to = PEK
+			}
+			PEK = {
+				country_event = mumegypt.21
+				puppet = PAL
+				puppet = LEB
+				white_peace = YAG
+			}
+			
+		}
+		#no >:)
+		option = {
+			name = mumegypt.18.b
+			YAG = {
+				country_event = mumegypt.20
+			}
+			set_country_flag = PYG_refused_peace
+		}
+	}
+			#Yagoo refuses to surrender
+			country_event = {
+				id = mumegypt.19
+				title = mumegypt.19.t
+				desc = mumegypt.19.d
+				picture = GFX_report_event_MUM_mumei_found
+				is_triggered_only = yes
+				#Death war inbound!!!
+				option = {
+					name = mumegypt.19.a
+					
+				}
+			}
+		#Pekora refuses to recognize Yagoos surrender
+		country_event = {
+			id = mumegypt.20
+			title = mumegypt.20.t
+			desc = mumegypt.20.d
+			picture = GFX_report_event_MUM_mumei_found
+			is_triggered_only = yes
+			#Death war inbound!!!
+			option = {
+				name = mumegypt.20.a
+				
+			}
+		}
+		#Pekora wins!! what to do with egypt??
+		country_event = {
+			id = mumegypt.21
+			title = mumegypt.21.t
+			desc = mumegypt.21.d
+			picture = GFX_report_event_MUM_mumei_found
+			is_triggered_only = yes
+			#Annex all of Egypt
+			option = {
+				name = mumegypt.21.a
+				annex_country = {
+					target = MUM
+				}
+				948 = {
+					transfer_state_to = PEK
+				}
+				453 = {
+					transfer_state_to = PEK
+				}
+			}
+			#Annex all of Egypt
+			option = {
+				name = mumegypt.21.b
+				puppet = MUM
+				PYW_Mumei_restored_egypt = yes
+				948 = {
+					transfer_state_to = PEK
+				}
+				453 = {
+					transfer_state_to = MUM
+				}
+			}
+		}
+		#Pekora- Harsh treaty
+		country_event = {
+			id = mumegypt.22
+			title = mumegypt.22.t
+			desc = mumegypt.22.d
+			picture = GFX_report_event_MUM_mumei_found
+			is_triggered_only = yes
+			#make him suffer
+			option = {
+				name = mumegypt.22.a
+				553 = {
+					transfer_state_to = LBN
+				}
+				454 = {
+					transfer_state_to = PAL
+				}
+				843 = {
+					transfer_state_to = PAL
+				}
+				44 = {
+					transfer_state_to = PEK
+				}
+				105 = {
+					transfer_state_to = PEK
+				}
+				923 = {
+					transfer_state_to = PEK
+				}
+				163 = {
+					transfer_state_to = PEK
+				}
+				103 = {
+					transfer_state_to = PEK
+				}
+				736 = {
+					transfer_state_to = PEK
+				}
+				947 = {
+					transfer_state_to = PEK
+				}
+				182 = {
+					transfer_state_to = PEK
+				}
+				183 = {
+					transfer_state_to = PEK
+				}
+
+				804 = {
+					transfer_state_to = ACH
+					add_core_of = ACH
+				}
+				920 = {
+					transfer_state_to = ACH
+					add_core_of = ACH
+				}
+				104 = {
+					transfer_state_to = ACH
+					add_core_of = ACH
+				}
+				921 = {
+					transfer_state_to = ACH
+					add_core_of = ACH
+				}
+				922 = {
+					transfer_state_to = ACH
+					add_core_of = ACH
+				}
+				109 = {
+					transfer_state_to = ACH
+					add_core_of = ACH
+				}
+				102 = {
+					transfer_state_to = ACH
+					add_core_of = ACH
+				}
+
+				927 = {
+					transfer_state_to = HIT
+				}
+				929 = {
+					transfer_state_to = HIT
+				}
+				803 = {
+					transfer_state_to = HIT
+				}
+				48 = {
+					transfer_state_to = HIT
+				}
+				212 = {
+					transfer_state_to = HIT
+				}
+				930 = {
+					transfer_state_to = HIT
+				}
+				211 = {
+					transfer_state_to = HIT
+				}
+				931 = {
+					transfer_state_to = HIT
+				}
+				77 = {
+					transfer_state_to = HIT
+				}
+				932 = {
+					transfer_state_to = HIT
+				}
+
+				1025 = {
+					transfer_state_to = PEK
+				}
+
+				106 = {
+					transfer_state_to = SOR
+				}
+				928 = {
+					transfer_state_to = SOR
+				}
+				if = {
+					limit = {
+							country_exists = ALO
+					}
+					938
+					82
+				}
+				PAL = {
+					add_state_core = 843
+					add_state_core = 454
+				}
+				LBN = {
+					add_state_core = 553
+				}
+				YAG = { 
+					end_puppet = SOR
+				}
+				PEK = {
+					country_event = mumegypt.21
+					puppet = ACH
+					puppet = SOR
+					puppet = PAL
+					puppet = LEB
+					white_peace = YAG
+				}
+			}
+		}
+		#Yagoo- Harsh treaty
+		country_event = {
+			id = mumegypt.23
+			title = mumegypt.23.t
+			desc = mumegypt.23.d
+			picture = GFX_report_event_MUM_mumei_found
+			is_triggered_only = yes
+			#make her suffer
+			option = {
+				name = mumegypt.23.a
+				PYW_Mumei_restored_prewar_borders = yes
+			1140 = {
+				transfer_state_to = LIB
+			}
+			273 = {
+				transfer_state_to = LIB
+			}
+			663 = {
+				transfer_state_to = LIB
+			}
+			451 = {
+				transfer_state_to = LIB
+			}
+			450 = {
+				transfer_state_to = LIB
+			}
+			662 = {
+				transfer_state_to = LIB
+			}
+			449 = {
+				transfer_state_to = LIB
+			}
+			661 = {
+				transfer_state_to = LIB
+			}
+			448 = {
+				transfer_state_to = LIB
+			}
+			550 = {
+				transfer_state_to = ROB
+			}
+			1140 = {
+				add_core_of  = LIB
+			}
+			273 = {
+				add_core_of  = LIB
+			}
+			663 = {
+				add_core_of  = LIB
+			}
+			451 = {
+				add_core_of  = LIB
+			}
+			450 = {
+				add_core_of  = LIB
+			}
+			662 = {
+				add_core_of  = LIB
+			}
+			449 = {
+				add_core_of  = LIB
+			}
+			661 = {
+				add_core_of  = LIB
+			}
+			448 = {
+				add_core_of  = LIB
+			}
+			458 = {
+				transfer_state_to = TUN
+			}
+			665 = {
+				transfer_state_to = TUN
+			}
+			458 = {
+				add_core_of  = TUN
+			}
+			665 = {
+				add_core_of  = TUN
+			}
+			1020 = {
+				transfer_state_to = SOR
+			}
+			116 = {
+				transfer_state_to = YAG
+			}
+			114 = {
+				transfer_state_to = YAG
+			}
+			115 = {
+				transfer_state_to = YAG
+			}
+			1 = {
+				transfer_state_to = YAG
+			}
+			YAG = {
+				puppet = TUN
+				puppet = LIB
+				white_peace = PEK
+				puppet = PEK
+			}
+			}
+		}
+	}

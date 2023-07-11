@@ -8,14 +8,14 @@ MUM_finding_mumei = {
 		activation = {
 			tag = MUM
 			NOT = {
-				has_country_flag = MUM_found_mumei
+				has_country_flag = MUM_mumei_found
 			}
 		}
 		visible = {
 			TAG = MUM
 		}
 		available = {
-			has_country_flag = MUM_found_mumei_prior
+			has_country_flag = MUM_mumei_found_prior
 		}
 		cancel_trigger = {
 			always = no
@@ -37,14 +37,14 @@ MUM_finding_mumei = {
 	MUM_raise_the_reward = {
 		icon = GFX_decision_icon_default
 		available = {
-			has_political_power > 25
+			has_political_power > 50
 			MUM = {
 				NOT = {
-					has_country_flag = MUM_found_mumei
+					has_country_flag = MUM_mumei_found
 				}
 			}
 		}
-		cost = 25
+		cost = 50
 		fire_only_once = no
 		days_re_enable = 45
 		visible = {
@@ -52,14 +52,24 @@ MUM_finding_mumei = {
 		}
 		complete_effect = {
 			hidden_effect = {
-				random_list = {
-					#No results
-					80 = {
-						country_event = mumei.2
+				if = {
+					limit = {
+						has_country_flag = MUMsearch1
 					}
-					#Moomers found
-					20 = {
-						country_event = mumei.3
+					country_event = mumei.3
+				}
+				else = {
+					random_list = {
+						#No results
+						80 = {
+							country_event = mumei.2
+							set_country_flag = MUMsearch1
+						}
+						#Moomers found
+						20 = {
+							country_event = mumei.3
+							set_country_flag = MUMsearch1
+						}
 					}
 				}
 			}
@@ -71,15 +81,15 @@ MUM_finding_mumei = {
 	MUM_search_the_deserts = {
 		icon = GFX_decision_icon_default
 		available = {
-			has_political_power > 35
+			has_political_power > 60
 			has_manpower > 1000
 			MUM = {
 				NOT = {
-					has_country_flag = MUM_found_mumei
+					has_country_flag = MUM_mumei_found
 				}
 			}
 		}
-		cost = 35
+		cost = 60
 		fire_only_once = no
 		days_re_enable = 90
 		visible = {
@@ -88,14 +98,24 @@ MUM_finding_mumei = {
 		complete_effect = {
 			add_manpower = -1000
 			hidden_effect = {
-				random_list = {
-					#No results
-					70 = {
-						country_event = mumei.2
+				if = {
+					limit = {
+						has_country_flag = MUMsearch1
 					}
-					#Moomers found
-					30 = {
-						country_event = mumei.3
+					country_event = mumei.3
+				}
+				else = {
+					random_list = {
+						#No results
+						70 = {
+							country_event = mumei.2
+							set_country_flag = MUMsearch1
+						}
+						#Moomers found
+						30 = {
+							country_event = mumei.3
+							set_country_flag = MUMsearch1
+						}
 					}
 				}
 			}
@@ -108,6 +128,12 @@ MUM_finding_mumei = {
 		icon = GFX_decision_icon_default
 		available = {
 			has_political_power > 75
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = mumei_found_tt
+					has_country_flag = MUM_mumei_found_prior
+				}
+			}
 		}
 		cost = 75
 		fire_only_once = yes
@@ -144,11 +170,89 @@ MUM_restoring_egyptian_control = {
 			base = 5
 		}
 	}
+	MUM_restoring_egypt_mission = {
+		activation = {
+			OR = {
+				tag = MUM
+				tag = YAG
+				tag = PEK
+			}
+			NOT = {
+				has_country_flag = MUM_egypt_peace_treaty
+			}
+		}
+		available = {
+			has_country_flag = MUM_egypt_peace_treaty
+		}
+		cancel_trigger = {
+			always = no
+		}
+		is_good = no
+		days_mission_timeout = 210
+		selectable_mission = yes
+		complete_effect = {
+			PEK = {
+				add_stability = 0.05
+			}
+			MUM = {
+				add_stability = 0.05
+			}
+		}
+		timeout_effect = {
+			PEK = {
+				declare_war_on = {
+					target = MUM
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = YAG
+					type = annex_everything
+				}
+				MUM = {
+					give_military_access = YAG
+				}
+				YAG = {
+					give_military_access = MUM
+				}
+			}
+			if = {
+				limit = {
+					KRN = {
+						has_country_flag = KRN_team_mumei
+					}
+				}
+				PEK = {
+					declare_war_on = {
+						target = KRN
+						type = annex_everything
+					}
+				}
+				MUM = {
+					give_military_access = KRN
+				}
+				YAG = {
+					give_military_access = KRN
+				}
+				KRN = {
+					give_military_access = MUM
+					give_military_access = YAG
+				}
+			}
+			set_global_flag = egypt_war
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
 	MUM_council_of_cairo = {
 		icon = GFX_decision_icon_default
 		available = {
 			tag = MUM
 			has_political_power > 75
+			custom_trigger_tooltip = {
+				tooltip = mumei_found_tt
+				has_country_flag = MUM_mumei_found
+			}
 		}
 		cost = 75
 		fire_only_once = yes
@@ -170,6 +274,10 @@ MUM_restoring_egyptian_control = {
 		available = {
 			tag = MUM
 			has_political_power > 25
+			custom_trigger_tooltip = {
+				tooltip = mumei_found_tt
+				has_country_flag = MUM_mumei_found
+			}
 		}
 		visible = {
 			tag = MUM
@@ -195,83 +303,15 @@ MUM_restoring_egyptian_control = {
 			base = 5
 		}
 	}
-	MUM_accept_korone_settlement = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = MUM
-			has_country_flag = MUM_korone_devised_treaty
-		}
-		visible = {
-			tag = MUM
-			KRN = {
-				exists = yes
-			}
-			has_country_flag = MUM_korone_devised_treaty
-		}
-		fire_only_once = yes
-		complete_effect = {
-			if = {
-				limit = {
-					has_country_flag = MUM_korone_treaty_steward
-				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_korone_treaty_arab_federation
-					}
-				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_korone_treaty_threaten_with_war
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	MUM_disavow_korone = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = MUM
-			has_political_power > 25
-		}
-		visible = {
-			tag = MUM
-			KRN = {
-				exists = yes
-			}
-			has_variable = MUM.international_representative
-			check_variable = {
-				var = MUM.international_representative
-				value = KRN.id
-				compare = equals
-			}
-		}
-		cost = 25
-		targets = {
-			KRN
-		}
-		fire_only_once = yes
-		complete_effect = {
-			clear_variable = MUM.international_representative
-			set_variable = {
-				var = MUM.var:international_willing_negotiate
-				value = 5
-			}
-			KRN = {
-				country_event = korone.11
-			}
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
 	MUM_request_watson = {
 		icon = GFX_decision_icon_default
 		available = {
 			tag = MUM
 			has_political_power > 25
+			custom_trigger_tooltip = {
+				tooltip = mumei_found_tt
+				has_country_flag = MUM_mumei_found
+			}
 		}
 		visible = {
 			tag = MUM
@@ -297,83 +337,15 @@ MUM_restoring_egyptian_control = {
 			base = 5
 		}
 	}
-	MUM_accept_watson_settlement = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = MUM
-			has_country_flag = MUM_watson_devised_treaty
-		}
-		visible = {
-			tag = MUM
-			KRN = {
-				exists = yes
-			}
-			has_country_flag = MUM_watson_devised_treaty
-		}
-		fire_only_once = yes
-		complete_effect = {
-			if = {
-				limit = {
-					has_country_flag = MUM_watson_treaty_steward_canal
-				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_watson_treaty_decolonisation
-					}
-				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_watson_treaty_international_zone
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	MUM_disavow_watson = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = MUM
-			has_political_power > 25
-		}
-		visible = {
-			tag = MUM
-			WTS = {
-				exists = yes
-			}
-			has_variable = MUM.international_representative
-			check_variable = {
-				var = MUM.international_representative
-				value = WTS.id
-				compare = equals
-			}
-		}
-		cost = 25
-		targets = {
-			WTS
-		}
-		fire_only_once = yes
-		complete_effect = {
-			clear_variable = MUM.international_representative
-			set_variable = {
-				var = MUM.var:international_willing_negotiate
-				value = 5
-			}
-			WTS = {
-				country_event = watson.169
-			}
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
 	MUM_request_miko = {
 		icon = GFX_decision_icon_default
 		available = {
 			tag = MUM
 			has_political_power > 25
+			custom_trigger_tooltip = {
+				tooltip = mumei_found_tt
+				has_country_flag = MUM_mumei_found
+			}
 		}
 		visible = {
 			tag = MUM
@@ -399,88 +371,15 @@ MUM_restoring_egyptian_control = {
 			base = 5
 		}
 	}
-	MUM_accept_miko_settlement = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = MUM
-			has_country_flag = MUM_miko_devised_treaty
-		}
-		visible = {
-			tag = MUM
-			KRN = {
-				exists = yes
-			}
-			has_country_flag = MUM_miko_devised_treaty
-		}
-		fire_only_once = yes
-		complete_effect = {
-			if = {
-				limit = {
-					has_country_flag = MUM_miko_treaty_free_seas
-				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_miko_treaty_pan_arab
-					}
-				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_miko_treaty_self_determination
-					}
-				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_miko_treaty_pro_peko
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	MUM_disavow_miko = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = MUM
-			has_political_power > 25
-		}
-		visible = {
-			tag = MUM
-			MIK = {
-				exists = yes
-			}
-			has_variable = MUM.international_representative
-			check_variable = {
-				var = MUM.international_representative
-				value = MIK.id
-				compare = equals
-			}
-		}
-		cost = 25
-		targets = {
-			MIK
-		}
-		fire_only_once = yes
-		complete_effect = {
-			clear_variable = MUM.international_representative
-			set_variable = {
-				var = MUM.var:international_willing_negotiate
-				value = 5
-			}
-			MIK = {
-				country_event = miko.17
-			}
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
 	MUM_request_mio = {
 		icon = GFX_decision_icon_default
 		available = {
 			tag = MUM
 			has_political_power > 25
+			custom_trigger_tooltip = {
+				tooltip = mumei_found_tt
+				has_country_flag = MUM_mumei_found
+			}
 		}
 		visible = {
 			tag = MUM
@@ -506,189 +405,192 @@ MUM_restoring_egyptian_control = {
 			base = 5
 		}
 	}
-	MUM_accept_mio_settlement = {
+	MUM_YAG_short_peace_win = {
 		icon = GFX_decision_icon_default
 		available = {
-			tag = MUM
-			has_country_flag = MUM_mio_devised_treaty
-		}
-		visible = {
-			tag = MUM
-			KRN = {
-				exists = yes
+			tag = YAG
+			NOT = {
+				has_country_flag = PYG_refused_peace
 			}
-			has_country_flag = MUM_mio_devised_treaty
-		}
-		fire_only_once = yes
-		complete_effect = {
-			if = {
+			has_global_flag = egypt_war
+			has_war_with = PEK
+			all_state = {
 				limit = {
-					has_country_flag = MUM_mio_treaty_pro_yagoo
-				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_mio_treaty_pure_neutral
+					is_on_continent = africa
+					NOT = {
+						550
 					}
 				}
-				else_if = {
-					limit = {
-						has_country_flag = MUM_mio_treaty_withdrawl
-					}
+				NOT = {
+					is_fully_controlled_by = PEK
+				} 	
+			}
+		}
+		cost = 0
+		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
+		complete_effect = {
+			PEK = {
+				country_event = mumei.13
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_PEK_short_peace_lose = {
+		icon = GFX_decision_icon_default
+		available = {
+			NOT = {
+				has_country_flag = PYG_refused_peace
+			}
+			tag = PEK
+			has_global_flag = egypt_war
+			has_war_with = YAG
+		}
+		cost = 0
+		fire_only_once = yes
+		visible = {
+			tag = PEK
+		}
+		complete_effect = {
+			YAG = {
+				country_event = mumei.14
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	MUM_PEK_short_peace_win = {
+		icon = GFX_decision_icon_default
+		available = {
+			NOT = {
+				has_country_flag = PYG_refused_peace
+			}
+			tag = PEK
+			has_global_flag = egypt_war
+			has_war_with = YAG
+			NOT = {
+				453 = {
+					is_controlled_by = YAG
+				}
+				948 = {
+					is_controlled_by = YAG
+				}
+				843 = {
+					is_controlled_by = YAG
+				}
+				454 = {
+					is_controlled_by = YAG
+				}
+				553 = {
+					is_controlled_by = YAG
 				}
 			}
 		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	MUM_disavow_mio = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = MUM
-			has_political_power > 25
-		}
-		visible = {
-			tag = MUM
-			MIO = {
-				exists = yes
-			}
-			has_variable = MUM.international_representative
-			check_variable = {
-				var = MUM.international_representative
-				value = MIO.id
-				compare = equals
-			}
-		}
-		cost = 25
-		targets = {
-			MIO
-		}
+		cost = 0
 		fire_only_once = yes
+		visible = {
+			tag = PEK
+		}
 		complete_effect = {
-			clear_variable = MUM.international_representative
-			set_variable = {
-				var = MUM.var:international_willing_negotiate
-				value = 5
-			}
-			MIO = {
-				country_event = mio.2
+			YAG = {
+				country_event = mumei.17
 			}
 		}
 		ai_will_do = {
 			base = 5
 		}
 	}
-	MIO_devise_peace_proposal = {
+	MUM_YAG_short_peace_lose = {
 		icon = GFX_decision_icon_default
 		available = {
-			tag = MIO
-			has_political_power > 50
-		}
-		visible = {
-			tag = MIO
-			MIO = {
-				exists = yes
+			NOT = {
+				has_country_flag = PYG_refused_peace
 			}
-			check_variable = {
-				var = MUM.international_representative
-				value = MIO.id
-				compare = equals
+			tag = YAG
+			has_global_flag = egypt_war
+			has_war_with = PEK
+			NOT = {
+				453 = {
+					is_controlled_by = YAG
+				}
+				948 = {
+					is_controlled_by = YAG
+				}
+				843 = {
+					is_controlled_by = YAG
+				}
+				454 = {
+					is_controlled_by = YAG
+				}
+				553 = {
+					is_controlled_by = YAG
+				}
 			}
 		}
-		cost = 50
-		targets = {
-			MUM
-		}
+		cost = 0
 		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
 		complete_effect = {
-			country_event = mio.3
+			PEK = {
+				country_event = mumei.18
+			}
 		}
 		ai_will_do = {
 			base = 5
 		}
 	}
-	MIK_devise_peace_proposal = {
+	MUM_YAG_harsh_treaty= {
 		icon = GFX_decision_icon_default
 		available = {
-			tag = MIK
-			has_political_power > 50
-		}
-		visible = {
-			tag = MIK
-			MIK = {
-				exists = yes
-			}
-			check_variable = {
-				var = MUM.international_representative
-				value = MIK.id
-				compare = equals
+			has_country_flag = PYG_refused_peace
+			tag = YAG
+			has_global_flag = egypt_war
+			has_war_with = PEK
+			PEK = {
+				surrender_progress > 0.8
 			}
 		}
-		cost = 50
-		targets = {
-			MUM
-		}
+		cost = 0
 		fire_only_once = yes
+		visible = {
+			tag = YAG
+		}
 		complete_effect = {
-			country_event = miko.18
+			PEK = {
+				country_event = mumei.23
+			}
 		}
 		ai_will_do = {
 			base = 5
 		}
 	}
-	WTS_devise_peace_proposal = {
+	MUM_PEK_harsh_treaty= {
 		icon = GFX_decision_icon_default
 		available = {
-			tag = WTS
-			has_political_power > 50
-		}
-		visible = {
-			tag = WTS
-			WTS = {
-				exists = yes
-			}
-			check_variable = {
-				var = MUM.international_representative
-				value = WTS.id
-				compare = equals
+			has_country_flag = PYG_refused_peace
+			tag = PEK
+			has_global_flag = egypt_war
+			has_war_with = YAG
+			YAG = {
+				surrender_progress > 0.8
 			}
 		}
-		cost = 50
-		targets = {
-			MUM
-		}
+		cost = 0
 		fire_only_once = yes
-		complete_effect = {
-			country_event = watson.170
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	KRN_devise_peace_proposal = {
-		icon = GFX_decision_icon_default
-		available = {
-			tag = KRN
-			has_political_power > 50
-		}
 		visible = {
-			tag = KRN
-			KRN = {
-				exists = yes
-			}
-			check_variable = {
-				var = MUM.international_representative
-				value = KRN.id
-				compare = equals
-			}
+			tag = PEK
 		}
-		cost = 50
-		targets = {
-			MUM
-		}
-		fire_only_once = yes
 		complete_effect = {
-			country_event = korone.12
+			YAG = {
+				country_event = mumei.22
+			}
 		}
 		ai_will_do = {
 			base = 5

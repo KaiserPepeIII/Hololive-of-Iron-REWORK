@@ -206,19 +206,32 @@ country_event = {
 	#Plan A - Steward of the Region - Egypt, Sudan, Palestine and Lebanon become associated states of Korone. Korone adopts a policy of neutrality and leaves the LHS. The canal becomes an international zone.
 	option = {
 		name = korone.12.a
-		set_country_flag = MUM_korone_devised_treaty
-		set_country_flag = MUM_korone_treaty_steward
+		MUM = {
+			country_event = mumegypt.2
+			set_country_flag = MUM_korone_devised_treaty
+			set_country_flag = MUM_korone_treaty_steward
+		}
+		PEK = {
+			country_event = mumegypt.2
+		}
+		YAG = {
+			country_event = mumegypt.2
+		}
 	}
-	#Plan B - Arab Confederation - All Arab territories and Egypt will unite into one neutral confederation. The Suez Canal will become an international zone 
+	#Plan B - Threaten with War (Anti-Pekora) - Pekora withdraws from Egypt unconditionally or Korone will join to defeat her
 	option = {
 		name = korone.12.b
-		set_country_flag = MUM_korone_devised_treaty
-		set_country_flag = MUM_korone_treaty_arab_federation
-	}
-	#Plan C - Threaten with War (Anti-Pekora) - Pekora withdraws from Egypt unconditionally or Korone will join to defeat her
-	option = {
-		name = korone.12.c
-		set_country_flag = MUM_korone_devised_treaty
-		set_country_flag = MUM_korone_treaty_threaten_with_war
+		set_country_flag = KRN_team_mumei
+		MUM = {
+			country_event = mumegypt.2
+			set_country_flag = MUM_korone_devised_treaty
+			set_country_flag = MUM_korone_treaty_threaten_with_war
+		}
+		PEK = {
+			country_event = mumegypt.2
+		}
+		YAG = {
+			country_event = mumegypt.2
+		}
 	}
 }
