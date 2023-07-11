@@ -1,0 +1,44 @@
+HOLOID_initiate_civil_war = {
+	set_global_flag = HOLOID_civil_war_begin
+	every_country = {
+		limit = {
+			is_in_array = {
+				array = global.indonesia_players
+				value = THIS.id
+			}
+			NOT = {
+				tag = ROOT
+				tag = YAG
+				is_in_faction_with = ROOT
+			}
+		}
+		declare_war_on = {
+			target = MOO
+			type = annex_everything
+		}
+		declare_war_on = {
+			target = RIS
+			type = annex_everything
+		}
+		declare_war_on = {
+			target = IOF
+			type = annex_everything
+		}
+		declare_war_on = {
+			target = KRU
+			type = annex_everything
+		}
+		declare_war_on = {
+			target = PAV
+			type = annex_everything
+		}
+		declare_war_on = {
+			target = ANY
+			type = annex_everything
+		}
+		declare_war_on = {
+			target = ZTA
+			type = annex_everything
+		}
+	}
+}

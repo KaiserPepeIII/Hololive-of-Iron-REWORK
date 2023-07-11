@@ -802,6 +802,8 @@ country_event = {
 			ideology = divine_mandate
 			popularity = 0.05
 		}
+		GAW_clear_ministers = yes
+		GAW_pro_yagoo_monarchy_cabinet = yes
 	}
 }
 
@@ -816,13 +818,7 @@ country_event = {
 	#Yay
 	option = {
 		name = gura.32.a
-		set_politics = {
-			ruling_party = pro_yagoo_monarchy
-		}
-		add_popularity = {
-			ideology = pro_yagoo_monarchy
-			popularity = 0.05
-		}
+		add_stability = 0.1
 	}
 }
 
@@ -1219,7 +1215,7 @@ country_event = {
 					value = 0.02
 				}
 				set_variable = {
-					var = GAW.GAW.corporatist_economics_re
+					var = GAW.corporatist_economics_re
 					value = 0.05
 				}
 				add_dynamic_modifier = {
@@ -2144,6 +2140,23 @@ country_event = {
 	#Oh no
 	option = {
 		name = gura.70.a
+		custom_effect_tooltip = GAW_reclaim_legitimacy_and_mandate
+		hidden_effect = {
+			#This is so that you can recover you cores, Gura.87
+			every_state = {
+				limit = {
+					is_owned_by = GAW
+					is_core_of = GAW
+					NOT = {
+						is_capital = yes
+					}
+				}
+				add_to_array = {
+					array = GAW.gura_homelands
+					value = THIS.id
+				}
+			}
+		}
 		every_state = {
 			limit = {
 				is_owned_by = GAW
@@ -2692,6 +2705,47 @@ country_event = {
 		add_power_balance_value = {
 			id = GAW_holocns_gura_balance
 			value = 0.15
+		}
+	}
+}
+
+#Splendid recovery
+country_event = {
+	id = gura.87
+	title = gura.87.t
+	desc = gura.87.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	trigger = {
+		tag = GAW
+		check_variable = {
+			var = GAW.holocn_legitimacy
+			value = 0.3
+			compare = greater_than
+		}
+		GAW = {
+			has_dynamic_modifier = {
+				modifier = HOLOCN_mandate_of_heaven
+			}
+		}
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
+	option = {
+		every_state = {
+			limit = {
+				is_owned_by = GAW
+				is_in_array = {
+					array = GAW.gura_homelands
+					value = THIS.id
+				}
+				NOT = {
+					is_capital = yes
+				}
+			}
+			add_core_of = GAW
+			clear_array = GAW.gura_homelands
 		}
 	}
 }

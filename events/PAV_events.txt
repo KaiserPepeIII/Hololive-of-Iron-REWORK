@@ -1,0 +1,31 @@
+add_namespace = reine
+#Yagoo offers Malaysia
+country_event = {
+	id = reine.1
+	title = reine.1.t
+	desc = reine.1.d
+	picture = GFX_report_event_PLK_canada_plan
+	is_triggered_only = yes
+	#Sure 
+	option = {
+		name = reine.1.a
+		YAG = {
+			country_event = yagoo.28
+		}
+		every_state = {
+			limit = {
+				is_core_of = MAL
+			}
+			transfer_state_to = PAV
+			set_resistance = 0.25
+			set_compliance = 0.25
+		}
+	}
+	#NO
+	option = {
+		name = reine.1.b
+		YAG = {
+			country_event = yagoo.29
+		}
+	}
+}

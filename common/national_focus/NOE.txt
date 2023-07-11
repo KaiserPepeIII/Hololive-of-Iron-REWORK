@@ -23,21 +23,6 @@ focus_tree = {
 		y = 1
 	}
 	focus = {
-		id = NOE_surrounded_by_powers		#mild defense bonus 
-		icon = GFX_NOE_surrounded_by_powers
-		completion_reward = {
-			add_ideas = {
-				NOE_surrounded_by_powers				# this would be a flat defense bonus of id say 5%
-			}
-		}
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		cost = 5
-		x = 55
-		y = 6
-	}
-	focus = {
 		id = NOE_feudal_army		# improve army idea
 		icon = GFX_NOE_feudal_army
 		mutually_exclusive = {
@@ -53,7 +38,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 68
+		x = 58
 		y = 1
 	}
 	focus = {
@@ -76,7 +61,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 71
+		x = 66
 		y = 1
 	}
 	focus = {
@@ -89,7 +74,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 71
+		x = 58
 		y = 7
 	}
 	focus = {
@@ -1824,157 +1809,6 @@ focus_tree = {
 		y = 2
 	}
 	focus = {
-		id = NOE_fight_the_fox		#army xp, amphibious landings research buff
-		icon = GFX_NOE_fight_the_fox
-		prerequisite = {
-			focus = NOE_surrounded_by_powers
-		}
-		completion_reward = {
-			army_experience = 25
-			add_tech_bonus = {
-				name = NOE_fight_the_fox_tech
-				bonus = 1
-				uses = 2
-				category = tp_tech
-			}
-		}
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-			FOCUS_FILTER_RESEARCH
-		}
-		cost = 5
-		x = 51
-		y = 7
-	}
-	focus = {
-		id = NOE_sea_wall		#add a great big wall
-		icon = GFX_NOE_sea_wall
-		prerequisite = {
-			focus = NOE_fight_the_fox
-		}
-		completion_reward = {
-			hidden_effect = {
-				763 = {
-					add_building_construction = {
-						type = coastal_bunker
-						level = 3
-						instant_build = yes
-						province = 6332
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						instant_build = yes
-						province = 11265
-					}
-				}
-				63 = {
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						instant_build = yes
-						province = 6402
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 3
-						instant_build = yes
-						province = 6282
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						instant_build = yes
-						province = 6390
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						instant_build = yes
-						province = 6334
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 3
-						instant_build = yes
-						province = 11372
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						instant_build = yes
-						province = 11343
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						instant_build = yes
-						province = 9361
-					}
-				}
-			}
-			custom_effect_tooltip = sea_wall
-		}
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		cost = 5
-		x = 50
-		y = 8
-	}
-	focus = {
-		id = NOE_konigsberg_ports		# add ports
-		icon = GFX_NOE_konigsberg_ports
-		prerequisite = {
-			focus = NOE_sea_wall
-		}
-		completion_reward = {
-			63 = {
-				add_building_construction = {
-					type = naval_base
-					level = 3
-					instant_build = yes
-					province = 6402
-				}
-				add_building_construction = {
-					type = naval_base
-					level = 3
-					instant_build = yes
-					province = 6282
-				}
-			}
-		}
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		cost = 5
-		x = 48
-		y = 9
-	}
-	focus = {
-		id = NOE_danzig_ports		# add ports
-		icon = GFX_NOE_danzig_ports
-		prerequisite = {
-			focus = NOE_sea_wall
-		}
-		completion_reward = {
-			916 = {
-				add_building_construction = {
-					type = naval_base
-					level = 3
-					instant_build = yes
-					province = 362
-				}
-			}
-		}
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		cost = 5
-		x = 50
-		y = 9
-	}
-	focus = {
 		id = NOE_consumer_goods_focus		#minus consumer goods modifier smol
 		icon = GFX_NOE_consumer_focus
 		prerequisite = {
@@ -1991,112 +1825,6 @@ focus_tree = {
 		cost = 5
 		x = 52
 		y = 2
-	}
-	focus = {
-		id = NOE_lithuania_defense		#wall
-		icon = GFX_NOE_lithuenia_defence
-		prerequisite = {
-			focus = NOE_fight_the_fox
-		}
-		completion_reward = {
-			custom_effect_tooltip = NOE_lithuania_wall_tooltip
-			hidden_effect = {
-				862 = {
-					add_building_construction = {
-						type = bunker
-						level = 3
-						instant_build = yes
-						province = 348
-					}
-					add_building_construction = {
-						type = bunker
-						level = 3
-						instant_build = yes
-						province = 281
-					}
-				}
-				807 = {
-					add_building_construction = {
-						type = bunker
-						level = 3
-						instant_build = yes
-						province = 6407
-					}
-					add_building_construction = {
-						type = bunker
-						level = 3
-						instant_build = yes
-						province = 3272
-					}
-					add_building_construction = {
-						type = bunker
-						level = 3
-						instant_build = yes
-						province = 6281
-					}
-				}
-			}
-		}
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		cost = 5
-		x = 52
-		y = 8
-	}
-	focus = {
-		id = NOE_expand_levees		#manpower gain 
-		icon = GFX_NOE_expand_levees
-		prerequisite = {
-			focus = NOE_lithuania_defense
-		}
-		completion_reward = {
-			add_ideas = {
-				expand_the_levees
-			}
-		}
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		cost = 5
-		x = 52
-		y = 9
-	}
-	focus = {
-		id = NOE_warplan_yakineko		#bonuses against Ikubuf
-		icon = GFX_NOE_warplan_yakineko
-		prerequisite = {
-			focus = NOE_expand_levees
-		}
-		prerequisite = {
-			focus = NOE_danzig_ports
-		}
-		completion_reward = {
-			custom_effect_tooltip = NOE_unlock_fubuki_warplan
-			set_country_flag = NOE_warplan_Yakineko
-		}
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		cost = 5
-		x = 51
-		y = 10
-	}
-	focus = {
-		id = NOE_board_vs_boing		#add army xp 
-		icon = GFX_NOE_board_vs_boing
-		prerequisite = {
-			focus = NOE_surrounded_by_powers
-		}
-		completion_reward = {
-			army_experience = 25
-		}
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		cost = 5
-		x = 59
-		y = 7
 	}
 	focus = {
 		id = NOE_guard_infantry		#add idea
@@ -2116,7 +1844,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 64
+		x = 55
 		y = 2
 	}
 	focus = {
@@ -2135,7 +1863,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 64
+		x = 55
 		y = 3
 	}
 	focus = {
@@ -2203,7 +1931,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 63
+		x = 54
 		y = 4
 	}
 	focus = {
@@ -2222,7 +1950,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 63
+		x = 54
 		y = 5
 	}
 	focus = {
@@ -2240,7 +1968,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 65
+		x = 56
 		y = 4
 	}
 	focus = {
@@ -2258,7 +1986,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 65
+		x = 56
 		y = 5
 	}
 	focus = {
@@ -2284,7 +2012,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 64
+		x = 55
 		y = 6
 	}
 	focus = {
@@ -2309,7 +2037,7 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
-		x = 68
+		x = 55
 		y = 8
 	}
 	focus = {
@@ -2328,7 +2056,7 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
-		x = 66
+		x = 54
 		y = 9
 	}
 	focus = {
@@ -2351,7 +2079,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 68
+		x = 60
 		y = 2
 	}
 	focus = {
@@ -2369,7 +2097,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 67
+		x = 59
 		y = 3
 	}
 	focus = {
@@ -2389,7 +2117,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 69
+		x = 61
 		y = 4
 	}
 	focus = {
@@ -2410,7 +2138,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 68
+		x = 56
 		y = 9
 	}
 	focus = {
@@ -2432,7 +2160,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 67
+		x = 55
 		y = 10
 	}
 	focus = {
@@ -2450,7 +2178,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 69
+		x = 61
 		y = 3
 	}
 	focus = {
@@ -2469,7 +2197,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 67
+		x = 59
 		y = 4
 	}
 	focus = {
@@ -2490,7 +2218,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 68
+		x = 60
 		y = 5
 	}
 	focus = {
@@ -2513,7 +2241,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 71
+		x = 58
 		y = 9
 	}
 	focus = {
@@ -2536,7 +2264,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 71
+		x = 58
 		y = 10
 	}
 	focus = {
@@ -2565,7 +2293,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
-		x = 71
+		x = 66
 		y = 2
 	}
 	focus = {
@@ -2583,7 +2311,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 71
+		x = 65
 		y = 3
 	}
 	focus = {
@@ -2601,7 +2329,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 71
+		x = 65
 		y = 4
 	}
 	focus = {
@@ -2623,7 +2351,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
-		x = 74
+		x = 67
 		y = 3
 	}
 	focus = {
@@ -2648,7 +2376,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
-		x = 73
+		x = 67
 		y = 4
 	}
 	focus = {
@@ -2666,7 +2394,7 @@ focus_tree = {
 			FOCUS_FILTER_ARMY_XP
 		}
 		cost = 5
-		x = 75
+		x = 69
 		y = 4
 	}
 	focus = {
@@ -2693,7 +2421,7 @@ focus_tree = {
 			}
 		}
 		cost = 5
-		x = 72
+		x = 66
 		y = 5
 	}
 	focus = {
@@ -2709,7 +2437,7 @@ focus_tree = {
 			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
-		x = 78
+		x = 72
 		y = 2
 	}
 	focus = {
@@ -2724,7 +2452,7 @@ focus_tree = {
 			}
 		}
 		cost = 5
-		x = 77
+		x = 58
 		y = 3
 	}
 	focus = {
@@ -2767,7 +2495,7 @@ focus_tree = {
 			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
-		x = 77
+		x = 58
 		y = 4
 	}
 	focus = {
@@ -3336,24 +3064,6 @@ focus_tree = {
 		x = 36
 		y = 11
 	}
-	focus = {
-		id = NOE_winter_combat
-		icon = GFX_NOE_combat_combat
-		prerequisite = {
-			focus = NOE_lithuania_defense
-		}
-		completion_reward = {
-			add_ideas = {
-				NOE_winter_combat_idea				# winter atrition down
-			}
-		}
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		cost = 5
-		x = 54
-		y = 9
-	}
 	# focus = {
 	# 	id = NOE_revenge_for_northern_war		#get justification
 	# 	icon = GFX_NOE_revenge_for_northern_war
@@ -3370,46 +3080,6 @@ focus_tree = {
 	# 	x = 51
 	# 	y = 11
 	# }
-	focus = {
-		id = NOE_seek_lhs_support		#set flag or something 
-		icon = GFX_NOE_seek_lhs_support
-		prerequisite = {
-			focus = NOE_surrounded_by_powers
-		}
-		mutually_exclusive = {
-			focus = NOE_seek_resistance_support
-		}
-		completion_reward = {
-			set_country_flag = NOE_seek_lhs_support_flag
-			custom_effect_tooltip = NOE_seek_lhs_support_tooltip
-		}
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		cost = 5
-		x = 54
-		y = 8
-	}
-	focus = {
-		id = NOE_seek_resistance_support		#set flag or something 
-		icon = GFX_NOE_seek_resistance_support
-		prerequisite = {
-			focus = NOE_surrounded_by_powers
-		}
-		mutually_exclusive = {
-			focus = NOE_seek_lhs_support
-		}
-		completion_reward = {
-			set_country_flag = NOE_seek_resistance_support_flag
-			custom_effect_tooltip = NOE_seek_resistance_support_tooltip
-		}
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		cost = 5
-		x = 56
-		y = 8
-	}
 	focus = {
 		id = NOE_mass_assault_focus
 		icon = GFX_NOE_mass_assault_focus
@@ -3429,7 +3099,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
-		x = 68
+		x = 60
 		y = 6
 	}
 	focus = {
@@ -3446,7 +3116,7 @@ focus_tree = {
 			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
-		x = 79
+		x = 73
 		y = 3
 	}
 	focus = {
@@ -3464,7 +3134,7 @@ focus_tree = {
 			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
-		x = 79
+		x = 73
 		y = 4
 	}
 	focus = {
@@ -3488,7 +3158,7 @@ focus_tree = {
 			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
-		x = 76
+		x = 72
 		y = 5
 	}
 	focus = {
@@ -3513,7 +3183,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
-		x = 74
+		x = 70
 		y = 6
 	}
 	focus = {
@@ -3538,7 +3208,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
-		x = 74
+		x = 61
 		y = 8
 	}
 	focus = {
@@ -3556,7 +3226,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 74
+		x = 60
 		y = 9
 	}
 	focus = {
@@ -3578,7 +3248,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
-		x = 76
+		x = 62
 		y = 9
 	}
 	focus = {
@@ -3605,7 +3275,7 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		cost = 5
-		x = 75
+		x = 61
 		y = 10
 	}
 	focus = {
@@ -3624,7 +3294,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 71
+		x = 58
 		y = 11
 	}
 	focus = {
@@ -3641,7 +3311,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 71
+		x = 58
 		y = 12
 	}
 	focus = {
@@ -3659,7 +3329,7 @@ focus_tree = {
 			FOCUS_FILTER_NAVY_XP
 		}
 		cost = 5
-		x = 70
+		x = 57
 		y = 13
 	}
 	focus = {
@@ -3681,7 +3351,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		cost = 5
-		x = 72
+		x = 59
 		y = 13
 	}
 	focus = {
@@ -4446,10 +4116,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			set_politics = {
-				ruling_party = mixed_ideology_democracy
-				elections_allowed = no
+				ruling_party = democratic
 			}
-			#ADD FLAVOR EVENT LATER
+			NOE_clear_ministers = yes
+			NOE_pro_yagoo_conservative_cabinet = yes
 		}
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -4468,13 +4138,11 @@ focus_tree = {
 		completion_reward = {
 			hidden_effect = {
 				add_popularity = {
-					ideology = pro_yagoo_monarchy
-					popularity = 0.2
+					ideology = var:current_party_ideology_group
+					popularity = 0.4
 				}
-				add_popularity = {
-					ideology = pro_resistance_monarchy
-					popularity = 0.2
-				}
+				NOE_clear_ministers = yes
+				NOE_pro_resistance_monarchy_cabinet = yes
 			}
 			custom_effect_tooltip = NOE_political_shift
 		}

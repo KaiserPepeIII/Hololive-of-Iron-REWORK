@@ -606,6 +606,7 @@ focus_tree = {
 		completion_reward = {
 			every_state = {
 				limit = {
+					is_owned_by = GAW
 					NOT = {
 						infrastructure > 4
 					}
@@ -2212,6 +2213,15 @@ focus_tree = {
 			focus = GAW_expand_state_bureaucracy
 		}
 		completion_reward = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = GAW.gura_hinterlands
+						value = THIS.id
+					}
+				}
+				add_core_of = GAW
+			}
 			hidden_effect = {
 				if = {
 					limit = {
@@ -2244,7 +2254,7 @@ focus_tree = {
 			focus = GAW_form_royal_legislature
 		}
 		completion_reward = {
-			add_political_power = 25
+			add_ideas = GAW_court_advisory
 		}
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -2297,7 +2307,15 @@ focus_tree = {
 			focus = GAW_court_advisory
 		}
 		completion_reward = {
-			country_event = gura.66
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = GAW.gura_hinterlands
+						value = THIS.id
+					}
+				}
+				add_core_of = GAW
+			}
 		}
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -2804,9 +2822,6 @@ focus_tree = {
 		prerequisite = {
 			focus = GAW_american_trade_deals
 		}
-		mutually_exclusive = {
-			focus = GAW_judgement_partner
-		}
 		completion_reward = {
 			MRI = {
 				country_event = gura_diplo.3
@@ -2815,74 +2830,8 @@ focus_tree = {
 		ai_will_do = {
 			base = 3
 		}
-		x = 19
-		y = 16
-	}
-	focus = {
-		id = GAW_judgement_partner
-		icon = GFX_focus_GAW_judgement_partner
-		cost = 0
-		prerequisite = {
-			focus = GAW_american_trade_deals
-		}
-		mutually_exclusive = {
-			focus = GAW_a_deal_with_death
-		}
-		ai_will_do = {
-			base = 3
-		}
-		ai_will_do = {
-			base = 3
-		}
-		x = 21
-		y = 16
-	}
-	focus = {
-		id = GAW_dance_with_death
-		icon = GFX_focus_GAW_dance_with_death
-		cost = 8
-		prerequisite = {
-			focus = GAW_a_deal_with_death
-		}
-		completion_reward = {
-			MRI = {
-				country_event = gura_diplo.5
-			}
-		}
-		ai_will_do = {
-			base = 3
-		}
-		x = 19
-		y = 17
-	}
-	focus = {
-		id = GAW_asacoco_imports
-		icon = GFX_focus_GAW_asacoco_imports
-		cost = 0
-		prerequisite = {
-			focus = GAW_judgement_partner
-		}
-		ai_will_do = {
-			base = 3
-		}
-		x = 21
-		y = 17
-	}
-	focus = {
-		id = GAW_lend_lease_agreement
-		icon = GFX_focus_GAW_lend_lease_agreement
-		cost = 0
-		prerequisite = {
-			focus = GAW_asacoco_imports
-		}
-		prerequisite = {
-			focus = GAW_dance_with_death
-		}
-		ai_will_do = {
-			base = 3
-		}
 		x = 20
-		y = 18
+		y = 16
 	}
 	focus = {
 		id = GAW_shrimp_mobilization
@@ -3109,7 +3058,7 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = GAW_hammerhead_armoured_brigade_tech
-				category = mechanized_equipment
+				category = cat_mechanized_equipment
 				bonus = 0.75
 				uses = 2
 			}

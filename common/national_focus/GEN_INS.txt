@@ -12,6 +12,8 @@ focus_tree = {
 				tag = RIS
 				tag = MOO
 				tag = IOF
+				tag = ZTA
+				tag = KRU
 			}
 		}
 	}
@@ -37,6 +39,10 @@ focus_tree = {
 		allow_branch = {
 			tag = MOO
 		}
+		available = {
+			tag = MOO
+			has_country_flag = MOO_loyal_to_peko
+		}
 		prerequisite = {
 			focus = IND_seek_foreign_aid
 		}
@@ -54,8 +60,19 @@ focus_tree = {
 			focus = IND_seek_foreign_aid
 		}
 		available = {
-			NOT = {
+			OR = {
+				AND = {
+					tag = MOO
+					has_country_flag = MOO_loyal_to_resistance
+				}
+				tag = ANY
+				tag = PAV
+				tag = OLI
+				tag = RIS
 				tag = MOO
+				tag = IOF
+				tag = ZTA
+				tag = KRU
 			}
 		}
 		mutually_exclusive = {

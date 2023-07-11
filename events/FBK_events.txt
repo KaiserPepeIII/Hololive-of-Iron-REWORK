@@ -1773,7 +1773,7 @@ country_event = {
 	is_triggered_only = yes
 	#Purge him
 	option = {
-		name = fubuki.56.a
+		name = fubuki.58.a
 		FBK_carl_mannerheim = {
 			retire = yes
 		}
@@ -2102,5 +2102,206 @@ country_event = {
 				}
 			}
 		}
+	}
+}
+
+#THE Parliament walks out
+country_event = {
+	id = fubuki.63
+	title = fubuki.63.t
+	desc = fubuki.63.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#uh oh
+	option = {
+		name = fubuki.63.a
+		add_stability = -0.3
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.25
+		}
+		country_event = {
+			id = fubuki.64
+			days = 30
+		}
+	}
+}
+
+#King Gustav V returns
+country_event = {
+	id = fubuki.64
+	title = fubuki.64.t
+	desc = fubuki.64.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Someone please arrest him!
+	option = {
+		name = fubuki.64.a
+		activate_mission = FBK_gustavs_coup
+		set_country_flag = FBK_gustavs_coup
+	}
+}
+
+#Gustav's Coup
+country_event = {
+	id = fubuki.65
+	title = fubuki.65.t
+	desc = fubuki.65.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#THe bigger they are the harder they fall
+	option = {
+		name = fubuki.65.a
+		set_popularities = {
+			democratic_revitalisation = 65
+			mixed_ideology_democracy = 25
+			divine_mandate = 10
+		}
+		set_politics = {
+			ruling_party = democratic_revitalisation
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		FBK_clear_ministers = yes
+	}
+}
+
+#Gustav's March Squashed
+country_event = {
+	id = fubuki.66
+	title = fubuki.66.t
+	desc = fubuki.66.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#Yipeee
+	option = {
+		name = fubuki.66.a
+		complete_national_focus = FBK_purge_the_wfa
+		complete_national_focus = FBK_rule_from_stockholm
+		add_stability = 0.05
+		clr_country_flag = FBK_gustavs_coup
+	}
+}
+
+#Parliament satisfied with reforms
+country_event = {
+	id = fubuki.67
+	title = fubuki.67.t
+	desc = fubuki.67.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	option = {
+		name = fubuki.67.a
+		set_country_flag = FBK_parliament_satisfied
+	}
+}
+
+#SDs gain a majority
+country_event = {
+	id = fubuki.68
+	title = fubuki.68.t
+	desc = fubuki.68.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#o
+	option = {
+		name = fubuki.68.a
+		set_popularities = {
+			mixed_ideology_democracy = 65
+			democratic = 30
+			divine_mandate = 5
+		}
+		set_politics = {
+			ruling_party = mixed_ideology_democracy
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		FBK_clear_ministers = yes
+		FBK_pro_yagoo_progressive_cabinet = yes
+	}
+}
+
+#Conservatives gain a majority
+country_event = {
+	id = fubuki.69
+	title = fubuki.69.t
+	desc = fubuki.69.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = fubuki.69.a
+		set_popularities = {
+			democratic = 65
+			mixed_ideology_democracy = 30
+			divine_mandate = 5
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		FBK_clear_ministers = yes
+		FBK_pro_yagoo_conservative_cabinet = yes
+	}
+}
+
+#SDs and Conservatives tie - it's now up to us
+country_event = {
+	id = fubuki.70
+	title = fubuki.70.t
+	desc = fubuki.70.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	#The Conservatives
+	option = {
+		name = fubuki.70.a
+		add_stability = -0.1
+		set_popularities = {
+			democratic = 65
+			mixed_ideology_democracy = 30
+			divine_mandate = 5
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		FBK_clear_ministers = yes
+		FBK_pro_yagoo_conservative_cabinet = yes
+	}
+	#The SDs
+	option = {
+		name = fubuki.70.b
+		set_popularities = {
+			mixed_ideology_democracy = 65
+			democratic = 30
+			divine_mandate = 5
+		}
+		set_politics = {
+			ruling_party = mixed_ideology_democracy
+			elections_allowed = yes
+			election_frequency = 48
+		}
+		FBK_clear_ministers = yes
+		FBK_pro_yagoo_progressive_cabinet = yes
+	}
+}
+
+#Election decried as fraudulent
+country_event = {
+	id = fubuki.71
+	title = fubuki.71.t
+	desc = fubuki.71.desc
+	picture = GFX_report_event_FBK_wfa_coup
+	is_triggered_only = yes
+	option = {
+		name = fubuki.71.a
+		add_stability = -0.3
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.3
+		}
+		country_event = fubuki.64
 	}
 }

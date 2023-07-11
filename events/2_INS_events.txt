@@ -1,4 +1,15 @@
 add_namespace = indonesia
+add_namespace = YAG_indonesia
+add_namespace = IOF_indonesia
+add_namespace = MOO_indonesia
+add_namespace = KRU_indonesia
+add_namespace = PAV_indonesia
+add_namespace = ZTA_indonesia
+#
+#
+#	GEN
+#
+#
 #Do you want to join negotiations?
 country_event = {
 	id = indonesia.1
@@ -11,19 +22,33 @@ country_event = {
 		name = indonesia.1.a
 		ROOT = {
 			add_to_array = {
-				array = global.indonesia_negotiations
+				array = global.indonesia_negotiaters
 				value = THIS.id
 			}
 		}
+		add_to_variable = {
+			var = global.indonesia_negotiater_count
+			value = 1
+		}
 		FROM = {
-			country_event = indonesia.3
+			country_event = YAG_indonesia.1
 		}
 	}
 	#Fuck off
 	option = {
 		name = indonesia.1.b
+		ROOT = {
+			add_to_array = {
+				array = global.indonesia_detractors
+				value = THIS.id
+			}
+		}
+		add_to_variable = {
+			var = global.indonesia_negotiater_count
+			value = 1
+		}
 		FROM = {
-			country_event = indonesia.2
+			country_event = YAG_indonesia.2
 		}
 	}
 }
@@ -107,5 +132,679 @@ country_event = {
 	option = {
 		name = indonesia.6.a
 		add_political_power = 100
+	}
+}
+
+#	VOTING
+# Currency
+country_event = {
+	id = indonesia.8
+	title = indonesia.8.t
+	desc = indonesia.8.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Pro-Coalition stance
+	option = {
+		name = indonesia.8.a
+		add_to_variable = {
+			var = global.indonesia_coalition_vote
+			value = 2
+		}
+	}
+	#Anti-Coalition Stance
+	option = {
+		name = indonesia.8.b
+		add_to_variable = {
+			var = global.indonesia_coalition_vote
+			value = 1
+		}
+	}
+}
+
+#	VOTING
+# vote share
+country_event = {
+	id = indonesia.9
+	title = indonesia.9.t
+	desc = indonesia.9.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Pro-Coalition stance
+	option = {
+		name = indonesia.9.a
+		add_to_variable = {
+			var = global.indonesia_coalition_vote
+			value = 2
+		}
+	}
+	#Anti-Coalition Stance
+	option = {
+		name = indonesia.9.b
+		add_to_variable = {
+			var = global.indonesia_coalition_vote
+			value = 1
+		}
+	}
+}
+
+#	VOTING
+# centralized army
+country_event = {
+	id = indonesia.10
+	title = indonesia.10.t
+	desc = indonesia.10.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Pro-Coalition stance
+	option = {
+		name = indonesia.10.a
+		add_to_variable = {
+			var = global.indonesia_coalition_vote
+			value = 2
+		}
+	}
+	#Anti-Coalition Stance
+	option = {
+		name = indonesia.10.b
+		add_to_variable = {
+			var = global.indonesia_coalition_vote
+			value = 1
+		}
+	}
+}
+
+#	VOTING
+# centralization
+country_event = {
+	id = indonesia.11
+	title = indonesia.11.t
+	desc = indonesia.11.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Pro-Coalition stance
+	option = {
+		name = indonesia.11.a
+		add_to_variable = {
+			var = global.indonesia_coalition_vote
+			value = 2
+		}
+	}
+	#Anti-Coalition Stance
+	option = {
+		name = indonesia.11.b
+		add_to_variable = {
+			var = global.indonesia_coalition_vote
+			value = 1
+		}
+	}
+}
+
+#	VOTING
+# results
+country_event = {
+	id = indonesia.12
+	title = {
+		trigger = {
+			check_variable = {
+				var = global.indonesia_coalition_vote
+				value = global.indonesia_peace_threshold
+				compare = greater_than_or_equals
+			}
+		}
+		text = indonesia.12.indonesia_survive_title
+	}
+	title = {
+		trigger = {
+			check_variable = {
+				var = global.indonesia_coalition_vote
+				value = global.indonesia_peace_threshold
+				compare = less_than
+			}
+		}
+		text = indonesia.12.indonesia_dead_title
+	}
+	desc = {
+		trigger = {
+			check_variable = {
+				var = global.indonesia_coalition_vote
+				value = global.indonesia_peace_threshold
+				compare = greater_than_or_equals
+			}
+		}
+		text = indonesia.12.indonesia_survive_desc
+	}
+	desc = {
+		trigger = {
+			check_variable = {
+				var = global.indonesia_coalition_vote
+				value = global.indonesia_peace_threshold
+				compare = less_than
+			}
+		}
+		text = indonesia.12.indonesia_dead_desc
+	}
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Hurray
+	option = {
+		name = indonesia.12.indonesia_survive_option
+		trigger = {
+			check_variable = {
+				var = global.indonesia_coalition_vote
+				value = global.indonesia_peace_threshold
+				compare = greater_than_or_equals
+			}
+		}
+		effect_tooltip = {
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = YAG
+				}
+				RIS = {
+					create_faction = HOLOID_FEDERATION
+				}
+				every_country = {
+					limit = {
+						is_in_array = {
+							array = global.indonesia_negotiaters
+							value = THIS.id
+						}
+						NOT = {
+							tag = YAG
+						}
+					}
+					RIS = {
+						add_to_faction = THIS
+					}
+				}
+			}
+		}
+		clear_variable = global.indonesia_coalition_vote
+		clear_variable = global.indonesia_peace_threshold
+	}
+	#NOOOOOOOOOO
+	option = {
+		name = indonesia.12.indonesia_die_option
+		trigger = {
+			check_variable = {
+				var = global.indonesia_coalition_vote
+				value = global.indonesia_peace_threshold
+				compare = less_than
+			}
+		}
+		set_global_flag = HOLOID_negotiations_failed
+		YAG = {
+			set_country_flag = YAG_organize_indonesia_coalition
+		}
+		clear_variable = global.indonesia_coalition_vote
+		clear_variable = global.indonesia_peace_threshold
+		clear_variable = global.indonesia_negotiaters
+	}
+}
+
+#Leader of Pro-LHS Faction wants us to join it
+country_event = {
+	id = indonesia.13
+	title = indonesia.13.t
+	desc = indonesia.13.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#lOLWUT
+	option = {
+		name = indonesia.13.a
+		FROM = {
+			country_event = indonesia.14
+		}
+		ai_chance = {
+			base = 0
+			OR = {
+				tag = RIS
+				tag = MOO
+			}
+		}
+	}
+	#sURE
+	option = {
+		name = indonesia.13.b
+		FROM = {
+			country_event = indonesia.15
+			add_to_faction = ROOT
+		}
+	}
+}
+
+#X Country refuses to join pro-LHS faction
+country_event = {
+	id = indonesia.14
+	title = indonesia.14.t
+	desc = indonesia.14.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	option = {
+		name = indonesia.14.a
+	}
+}
+
+#X Country joins pro-LHS faction
+country_event = {
+	id = indonesia.15
+	title = indonesia.15.t
+	desc = indonesia.15.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	option = {
+		name = indonesia.15.a
+	}
+}
+
+#Yagoo sends us guns
+country_event = {
+	id = indonesia.16
+	title = indonesia.16.t
+	desc = indonesia.16.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	option = {
+		name = indonesia.16.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+		}
+	}
+}
+
+#
+#
+#	YAG
+#
+#
+#X nation accepts talks
+country_event = {
+	id = YAG_indonesia.1
+	title = YAG_indonesia.1.t
+	desc = YAG_indonesia.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = YAG_indonesia.1.a
+	}
+}
+
+#X nation refuses talks 
+country_event = {
+	id = YAG_indonesia.2
+	title = YAG_indonesia.2.t
+	desc = YAG_indonesia.2.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#bruh
+	option = {
+		name = indonesia.2.a
+	}
+}
+
+#Lacking members for treaty - YAG
+country_event = {
+	id = YAG_indonesia.3
+	title = YAG_indonesia.3.t
+	desc = YAG_indonesia.3.desc
+	picture = GFX_report_event_sora_generic1
+	fire_only_once = yes
+	trigger = {
+		tag = YAG
+		check_variable = {
+			var = global.indonesia_negotiaters^num
+			value = var:global.indonesia_detractors^num
+			compare = less_than_or_equals
+		}
+		check_variable = {
+			var = global.indonesia_negotiater_count
+			value = 8
+			compare = equals
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#damn
+	option = {
+		name = YAG_indonesia.3.a
+		set_country_flag = YAG_organize_indonesia_coalition
+	}
+}
+
+#Enough members for treaty - YAG
+country_event = {
+	id = YAG_indonesia.4
+	title = YAG_indonesia.4.t
+	desc = YAG_indonesia.4.desc
+	picture = GFX_report_event_sora_generic1
+	fire_only_once = yes
+	trigger = {
+		tag = YAG
+		check_variable = {
+			var = global.indonesia_negotiaters^num
+			value = var:global.indonesia_detractors^num
+			compare = greater_than
+		}
+		check_variable = {
+			var = global.indonesia_negotiater_count
+			value = 8
+			compare = equals
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	#Let's begin the talks 
+	option = {
+		name = YAG_indonesia.4.a
+		set_variable = {
+			var = global.indonesia_peace_threshold
+			value = var:global.indonesia_negotiaters^num
+		}
+		#
+		#	Half of the upper limit is defined by the divide_variable line
+		# multiply_variable = {
+		# 	var = global.indonesia_peace_threshold
+		# 	value = 2
+		# }
+		#
+		#Indicates the number of events that shows up for the holoid
+		multiply_variable = {
+			var = global.indonesia_peace_threshold
+			value = 4
+		}
+		multiply_variable = {
+			var = global.indonesia_peace_threshold
+			value = 0.85
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = global.indonesia_negotiaters
+					value = THIS.id
+				}
+			}
+			#Currency
+			country_event = {
+				id = indonesia.8
+				days = 7
+			}
+			#vote share
+			country_event = {
+				id = indonesia.9
+				days = 14
+			}
+			#centralized army
+			country_event = {
+				id = indonesia.10
+				days = 21
+			}
+			#centralization
+			country_event = {
+				id = indonesia.11
+				days = 28
+			}
+			#Results
+			country_event = {
+				id = indonesia.12
+				days = 35
+			}
+		}
+	}
+}
+
+#Select coalition leader
+country_event = {
+	id = YAG_indonesia.5
+	title = YAG_indonesia.5.t
+	desc = YAG_indonesia.5.desc
+	picture = GFX_report_event_sora_generic1
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Approach Iofifteen
+	option = {
+		name = YAG_indonesia.5.a
+		IOF = {
+			country_event = IOF_indonesia.1
+		}
+	}
+	#Approach Zeta
+	option = {
+		name = YAG_indonesia.5.b
+		ZTA = {
+			country_event = ZTA_indonesia.1
+		}
+	}
+	#Approach Reine
+	option = {
+		name = YAG_indonesia.5.c
+		PAV = {
+			country_event = PAV_indonesia.1
+		}
+	}
+	#Approach Kobo
+	option = {
+		name = YAG_indonesia.5.d
+		KRU = {
+			country_event = KRU_indonesia.1
+		}
+	}
+}
+
+#X HoloID says yes
+country_event = {
+	id = YAG_indonesia.6
+	title = YAG_indonesia.6.t
+	desc = YAG_indonesia.6.desc
+	picture = GFX_report_event_sora_generic1
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Yippee - IOF
+	option = {
+		name = YAG_indonesia.6.a
+		trigger = {
+			FROM = {
+				tag = IOF
+			}
+		}
+		clr_country_flag = YAG_organize_indonesia_coalition
+		set_country_flag = YAG_can_help_indonesia_coalition
+	}
+	#Yippee - ZTA
+	option = {
+		name = YAG_indonesia.6.b
+		trigger = {
+			FROM = {
+				tag = ZTA
+			}
+		}
+		clr_country_flag = YAG_organize_indonesia_coalition
+		set_country_flag = YAG_can_help_indonesia_coalition
+	}
+	#Yippee - PAV
+	option = {
+		name = YAG_indonesia.6.c
+		trigger = {
+			FROM = {
+				tag = PAV
+			}
+		}
+		clr_country_flag = YAG_organize_indonesia_coalition
+	}
+	#Yippee - KRU
+	option = {
+		name = YAG_indonesia.6.d
+		trigger = {
+			FROM = {
+				tag = KRU
+			}
+		}
+		clr_country_flag = YAG_organize_indonesia_coalition
+		set_country_flag = YAG_can_help_indonesia_coalition
+	}
+}
+
+#
+#
+#	IOF
+#
+#
+#
+#Yagoo wants us to lead pro-LHS ID coalition
+country_event = {
+	id = IOF_indonesia.1
+	title = IOF_indonesia.1.t
+	desc = IOF_indonesia.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = IOF_indonesia.1.a
+		create_faction = HOLOID_pro_yagooists
+		set_country_flag = HOLOID_pro_yagooist_leader
+		set_variable = {
+			var = global.HOLOID_pro_yagooist_leader
+			value = THIS.id
+		}
+		YAG = {
+			country_event = YAG_indonesia.6
+		}
+	}
+	#no
+	option = {
+		name = IOF_indonesia.1.b
+		YAG = {
+			country_event = YAG_indonesia.7
+		}
+	}
+}
+
+#
+#
+#	MOO
+#
+#
+#pEKORA gives us guns
+country_event = {
+	id = MOO_indonesia.1
+	title = MOO_indonesia.1.t
+	desc = MOO_indonesia.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#thanks 
+	option = {
+		name = MOO_indonesia.1.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+		}
+	}
+}
+
+#
+#
+#
+#	KRU
+#
+#
+#Yagoo wants us to lead pro-LHS ID coalition
+country_event = {
+	id = KRU_indonesia.1
+	title = KRU_indonesia.1.t
+	desc = KRU_indonesia.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = KRU_indonesia.1.a
+		create_faction = HOLOID_pro_yagooists
+		set_country_flag = HOLOID_pro_yagooist_leader
+		set_variable = {
+			var = global.HOLOID_pro_yagooist_leader
+			value = THIS.id
+		}
+		YAG = {
+			country_event = YAG_indonesia.6
+		}
+	}
+	#no
+	option = {
+		name = KRU_indonesia.1.b
+		YAG = {
+			country_event = YAG_indonesia.7
+		}
+	}
+}
+
+#
+#
+#	PAV
+#
+#
+#Yagoo wants us to lead pro-LHS ID coalition
+country_event = {
+	id = PAV_indonesia.1
+	title = PAV_indonesia.1.t
+	desc = PAV_indonesia.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = PAV_indonesia.1.a
+		create_faction = HOLOID_pro_yagooists
+		set_country_flag = HOLOID_pro_yagooist_leader
+		set_variable = {
+			var = global.HOLOID_pro_yagooist_leader
+			value = THIS.id
+		}
+		YAG = {
+			country_event = YAG_indonesia.6
+		}
+	}
+	#no
+	option = {
+		name = PAV_indonesia.1.b
+		YAG = {
+			country_event = YAG_indonesia.7
+		}
+	}
+}
+
+#
+#
+#	ZTA
+#
+#
+#Yagoo wants us to lead pro-LHS ID coalition
+country_event = {
+	id = ZTA_indonesia.1
+	title = ZTA_indonesia.1.t
+	desc = ZTA_indonesia.1.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#yes
+	option = {
+		name = ZTA_indonesia.1.a
+		create_faction = HOLOID_pro_yagooists
+		set_country_flag = HOLOID_pro_yagooist_leader
+		set_variable = {
+			var = global.HOLOID_pro_yagooist_leader
+			value = THIS.id
+		}
+		YAG = {
+			country_event = YAG_indonesia.6
+		}
+	}
+	#no
+	option = {
+		name = ZTA_indonesia.1.b
+		YAG = {
+			country_event = YAG_indonesia.7
+		}
 	}
 }

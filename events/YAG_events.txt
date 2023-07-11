@@ -951,3 +951,93 @@ country_event = {
 		}
 	}
 }
+
+#Malaysia Crisis
+country_event = {
+	id = yagoo.27
+	title = yagoo.27.t
+	desc = yagoo.27.desc
+	picture = GFX_report_event_YAG_aloe_civil_war_not_friends
+	is_triggered_only = yes
+	#We will try to wrestle control
+	option = {
+		name = yagoo.27.a
+		YAG = {
+			annex_country = {
+				target = MAL
+			}
+		}
+		every_state = {
+			limit = {
+				is_core_of = MAL
+			}
+			set_resistance = 0.65
+			set_compliance = 0
+		}
+	}
+	#Let's see if Reine wants it
+	option = {
+		name = yagoo.27.b
+		PAV = {
+			country_event = reine.1
+		}
+	}
+}
+
+#Reine accepts
+country_event = {
+	id = yagoo.28
+	title = yagoo.28.t
+	desc = yagoo.28.desc
+	picture = GFX_report_event_YAG_aloe_civil_war_not_friends
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = yagoo.28.a
+	}
+}
+
+#Reine refuses
+country_event = {
+	id = yagoo.29
+	title = yagoo.29.t
+	desc = yagoo.29.desc
+	picture = GFX_report_event_YAG_aloe_civil_war_not_friends
+	is_triggered_only = yes
+	#We'll take control then
+	option = {
+		name = yagoo.29.a
+		YAG = {
+			annex_country = {
+				target = MAL
+			}
+		}
+		every_state = {
+			limit = {
+				is_core_of = MAL
+			}
+			set_resistance = 0.75
+			set_compliance = 0
+		}
+	}
+	#abandon the colony
+	option = {
+		name = yagoo.29.b
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			YAG = {
+				set_autonomy = {
+					target = MAL
+					autonomy_state = autonomy_free
+				}
+			}
+			else = {
+				YAG = {
+					end_puppet = MAL
+				}
+			}
+		}
+	}
+}

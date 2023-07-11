@@ -1,4 +1,105 @@
 HOLOID_civil_war_category = {
+	HOLOID_civil_war_begins = {
+		activation = {
+			always = no
+		}
+		cancel_trigger = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		selectable_mission = no
+		days_mission_timeout = 180
+		fire_only_once = yes
+		is_good = no
+		complete_effect = {
+			HOLOID_initiate_civil_war = yes
+		}
+	}
+	#
+	#	pro-lhs coalition leader
+	#
+	HOLOID_invitations_to_everyone = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 10
+		}
+		fire_only_once = yes
+		visible = {
+			tag = var:global.HOLOID_pro_yagooist_leader
+		}
+		cost = 10
+		complete_effect = {
+			every_country = {
+				limit = {
+					is_in_array = {
+						array = global.indonesia_players
+						value = THIS.id
+					}
+					NOT = {
+						tag = YAG
+						tag = ROOT
+					}
+				}
+				country_event = indonesia.13
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	#
+	#	moo
+	#
+	MOO_proclaim_loyalty_to_peko = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 10
+		}
+		fire_only_once = yes
+		visible = {
+			tag = MOO
+		}
+		cost = 10
+		complete_effect = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.25
+			}
+			set_country_flag = MOO_loyal_to_peko
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	MOO_proclaim_affirm_the_resistance = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 10
+		}
+		fire_only_once = yes
+		visible = {
+			tag = MOO
+		}
+		cost = 10
+		complete_effect = {
+			set_politics = {
+				ruling_party = pro_resistance_nationalism
+			}
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.5
+			}
+			set_country_flag = MOO_loyal_to_resistance
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	#
+	#	yag
+	#
 	YAG_arrange_talks = {
 		activation = {
 			tag = YAG
@@ -23,8 +124,17 @@ HOLOID_civil_war_category = {
 						array = global.indonesia_players
 						value = THIS.id
 					}
+					NOT = {
+						tag = YAG
+					}
 				}
 				country_event = indonesia.1
+			}
+			ROOT = {
+				add_to_array = {
+					array = global.indonesia_negotiaters
+					value = THIS.id
+				}
 			}
 			set_global_flag = INS_negotiations_ongoing
 		}
@@ -35,10 +145,155 @@ HOLOID_civil_war_category = {
 						array = global.indonesia_players
 						value = THIS.id
 					}
+					NOT = {
+						tag = YAG
+					}
 				}
 				country_event = indonesia.1
 			}
+			ROOT = {
+				add_to_array = {
+					array = global.indonesia_negotiaters
+					value = THIS.id
+				}
+			}
 			set_global_flag = INS_negotiations_ongoing
+		}
+	}
+	YAG_select_coalition_leader = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 10
+		}
+		fire_only_once = no
+		visible = {
+			has_country_flag = YAG_organize_indonesia_coalition
+		}
+		cost = 10
+		complete_effect = {
+			country_event = YAG_indonesia.5
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	#
+	YAG_support_holoid_coalition_guns = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_equipment = {
+				infantry_equipment > 499
+			}
+		}
+		fire_only_once = no
+		visible = {
+			has_country_flag = YAG_can_help_indonesia_coalition
+		}
+		custom_cost_text = HLOI_cost_500_guns
+		custom_cost_trigger = {
+			always = yes
+		}
+		days_re_enable = 60
+		complete_effect = {
+			var:global.HOLOID_pro_yagooist_leader = {
+				country_event = indonesia.16
+			}
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	YAG_send_military_support = {
+		icon = GFX_decision_icon_default
+		available = {
+			command_power > 24
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = YAG_can_help_indonesia_coalition
+		}
+		custom_cost_text = HLOI_cost_25_cp
+		custom_cost_trigger = {
+			always = yes
+		}
+		complete_effect = {
+			every_country = {
+				limit = {
+					is_in_faction_with = var:global.HOLOID_pro_yagooist_leader
+				}
+				add_timed_idea = {
+					idea = HOLOID_lhs_military_advisors
+					days = 365
+				}
+			}
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	#
+	#	PEK
+	#
+	PEK_supply_moona = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_equipment = {
+				infantry_equipment > 499
+			}
+		}
+		fire_only_once = no
+		visible = {
+			tag = PEK
+			has_global_flag = HOLOID_negotiations_failed
+			MOO = {
+				has_country_flag = MOO_loyal_to_peko
+			}
+		}
+		custom_cost_text = HLOI_cost_500_guns
+		custom_cost_trigger = {
+			always = yes
+		}
+		days_re_enable = 15
+		complete_effect = {
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	PEK_volunteers_ideas = {
+		icon = GFX_decision_icon_default
+		available = {
+			command_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			tag = PEK
+			has_global_flag = HOLOID_negotiations_failed
+			MOO = {
+				has_country_flag = MOO_loyal_to_peko
+			}
+		}
+		custom_cost_text = HLOI_cost_25_cp
+		custom_cost_trigger = {
+			always = yes
+		}
+		complete_effect = {
+			add_ideas = GNW_volunteers_idea
 		}
 	}
 }
