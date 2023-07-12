@@ -1389,6 +1389,195 @@ FBK_post_gnw_chaos_win = {
 			country_event = FBK_post_gnw.20
 		}
 	}
+	# ----------------------------------------------------------------------------- KARELIA ----------------------------------------------------------------------------
+	FBK_karelia_issue = {
+		#we must deal with the influx of refugees one way or another 
+		# MAIN IDEA : BEING HOSTILE TO IMMIGRANTS WILL INCREASE PUBLIC ANGER AGAINST NOVGOROD JUSTIFYING TAKING MORE LAND, BUT BEING FRIENDLY TOWARDS THEM AND INTEGRATING THEM
+		# WILL ALLOW YOU TO TAKE LESS LANDS BUT WITH CORES
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			has_global_flag = GNW_peace_treaty
+		}
+		war_with_on_timeout = NOV
+		selectable_mission = no
+		days_mission_timeout = 100
+		is_good = no
+		fire_only_once = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = FBK.karelian_integration
+						value = 3
+						compare = equals
+					}
+				}
+				country_event = FBK_post_gnw.37
+			}
+			else = {
+				country_event = FBK_post_gnw.38
+			}
+		}
+	}
+	FBK_rapid_blitz = {
+		#take fubukistad within 15 days for a fast win and puppet
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			195 = {
+				is_controlled_by = FBK
+			}
+		}
+		visible = {
+			has_global_flag = GNW_peace_treaty
+		}
+		selectable_mission = no
+		days_mission_timeout = 15
+		is_good = no
+		fire_only_once = yes
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = fubuki_integrationist
+				}
+				hidden_effect = {
+					country_event = FBK_post_gnw.42
+				}
+			}
+			else = {
+				hidden_effect = {
+					country_event = FBK_post_gnw.47
+				}
+			}
+		}
+		timeout_effect = {
+			activate_mission = FBK_normal_war
+		}
+	}
+	FBK_normal_war = {
+		#take fubukistad within 15 days for a fast win and puppet
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			OR = {
+				195 = {
+					is_controlled_by = FBK
+				}
+				NOV = {
+					surrender_progress > 0.15
+				}
+			}
+		}
+		visible = {
+			has_global_flag = GNW_peace_treaty
+		}
+		selectable_mission = no
+		days_mission_timeout = 35
+		is_good = no
+		fire_only_once = yes
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = fubuki_integrationist
+				}
+				country_event = FBK_post_gnw.43
+			}
+			else = {
+				country_event = FBK_post_gnw.45
+			}
+		}
+		timeout_effect = {
+			country_event = FBK_post_gnw.44
+		}
+	}
+	FBK_our_stance_on_future_immigrants = {
+		allowed = {
+			tag = FBK
+		}
+		cost = 100
+		avaiable = {
+			has_political_power > 100
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = karelian_crisis
+		}
+		days_remove = 10
+		complete_effect = {
+		}
+		remove_effect = {
+			country_event = FBK_post_gnw.34
+		}
+	}
+	FBK_what_to_do_with_the_lucky_ones = {
+		allowed = {
+			tag = FBK
+		}
+		available = {
+			command_power > 25
+			has_manpower > 2000
+			has_equipment = {
+				infantry_equipment > 250
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 25
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = karelian_crisis
+		}
+		days_remove = 10
+		complete_effect = {
+			add_manpower = -2000
+			add_command_power = -25
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -250
+				producer = FBK
+			}
+		}
+		remove_effect = {
+			country_event = FBK_post_gnw.35
+		}
+	}
+	FBK_direct_funding = {
+		allowed = {
+			tag = FBK
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = karelian_crisis
+		}
+		days_remove = 10
+		complete_effect = {
+			add_timed_idea = {
+				idea = GNW_FBK_karelian_funding
+				days = 100
+			}
+		}
+		remove_effect = {
+			country_event = FBK_post_gnw.36
+		}
+	}
 }
 
 FBK_post_gnw_chaos_lose = {

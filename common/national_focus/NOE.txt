@@ -80,6 +80,13 @@ focus_tree = {
 	focus = {
 		id = NOE_depression_economic		#modify depression idea
 		icon = GFX_NOE_depression_economic
+		bypass = {
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = NOE_great_depression
+				}
+			}
+		}
 		completion_reward = {
 			custom_effect_tooltip = NOE_help_with_great_depression
 			subtract_from_variable = {
@@ -119,6 +126,13 @@ focus_tree = {
 		icon = GFX_NOE_bail_out_noblemen
 		mutually_exclusive = {
 			focus = NOE_bankruptcy_for_them
+		}
+		bypass = {
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = NOE_great_depression
+				}
+			}
 		}
 		completion_reward = {
 			custom_effect_tooltip = NOE_help_with_great_depression
@@ -163,6 +177,13 @@ focus_tree = {
 		icon = GFX_NOE_bankruptcy_for_them
 		mutually_exclusive = {
 			focus = NOE_bail_out_noblemen
+		}
+		bypass = {
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = NOE_great_depression
+				}
+			}
 		}
 		completion_reward = {
 			subtract_from_variable = {
@@ -1399,6 +1420,13 @@ focus_tree = {
 		prerequisite = {
 			focus = NOE_depression_economic
 		}
+		bypass = {
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = NOE_great_depression
+				}
+			}
+		}
 		completion_reward = {
 			custom_effect_tooltip = NOE_help_with_great_depression
 			subtract_from_variable = {
@@ -1438,6 +1466,13 @@ focus_tree = {
 		icon = GFX_NOE_deal_with_inflation
 		prerequisite = {
 			focus = NOE_spending_plan
+		}
+		bypass = {
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = NOE_great_depression
+				}
+			}
 		}
 		completion_reward = {
 			custom_effect_tooltip = NOE_help_with_great_depression
@@ -1745,27 +1780,27 @@ focus_tree = {
 			check_variable = {
 				var = NOE.great_depression_modifier_b
 				value = 0
-				compare = equals
+				compare = greater_than_or_equals
 			}
 			check_variable = {
 				var = NOE.great_depression_modifier_c
 				value = 0
-				compare = equals
+				compare = greater_than_or_equals
 			}
 			check_variable = {
 				var = NOE.great_depression_modifier_d
 				value = 0
-				compare = equals
+				compare = greater_than_or_equals
 			}
 			check_variable = {
 				var = NOE.great_depression_modifier_e
 				value = 0
-				compare = equals
+				compare = greater_than_or_equals
 			}
 			check_variable = {
 				var = NOE.great_depression_modifier_f
 				value = 0
-				compare = equals
+				compare = greater_than_or_equals
 			}
 		}
 		prerequisite = {

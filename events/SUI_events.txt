@@ -220,10 +220,7 @@ country_event = {
 			ideology = democratic
 			popularity = -0.03
 		}
-		add_timed_idea = {
-			idea = suisei_lhs_investment
-			days = 220
-		}
+		one_random_civilian_factory = yes
 	}
 	option = {
 		name = suisei.10.b
@@ -1109,7 +1106,20 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = suisei.32.a
-		add_ideas = suisei_enlightened_monarch
+		effect_tooltip = {
+			SUI_hoshimachi_suisei_democratic = {
+				add_country_leader_trait = SUI_enlightened_monarch_trait
+			}
+		}
+		hidden_effect = {
+			every_character = {
+				limit = {
+					tag = SUI
+					has_trait = hololive_leader
+				}
+				add_country_leader_trait = SUI_enlightened_monarch_trait
+			}
+		}
 		clr_country_flag = SUI_quell_resistance
 	}
 }
@@ -1125,10 +1135,26 @@ country_event = {
 		has_country_flag = suisei_down_opposition_three
 		has_country_flag = suisei_down_opposition_two
 	}
+	mean_time_to_happen = {
+		days = 2
+	}
 	fire_only_once = yes
 	option = {
 		name = suisei.35.a
-		add_ideas = suisei_the_autocrat
+		effect_tooltip = {
+			SUI_hoshimachi_suisei_democratic = {
+				add_country_leader_trait = SUI_the_autocrat_trait
+			}
+		}
+		hidden_effect = {
+			every_character = {
+				limit = {
+					tag = SUI
+					has_trait = hololive_leader
+				}
+				add_country_leader_trait = SUI_the_autocrat_trait
+			}
+		}
 		SUI = {
 			clr_country_flag = suisei_down_opposition_one
 			clr_country_flag = suisei_down_opposition_three
@@ -1546,13 +1572,8 @@ country_event = {
 		remove_ideas = {
 			suisei_urbanisation
 			suisei_urbanisation_two
-			SUI_modernization_methods
-			SUI_public_pensions
-			SUI_consumer_agri
-			SUI_breadbasket
 			suisei_industrial
 		}
-		add_ideas = sui_national_reforms_complete
 		clear_variable = SUI.efficiency_level
 		clear_variable = SUI.rural_level
 		clear_variable = SUI.government_level
@@ -1594,323 +1615,12 @@ country_event = {
 	}
 	option = {
 		name = suisei.50.a
-		remove_ideas = {
-			suisei_revolutionary_economics
-		}
-		add_ideas = sui_revolutionary_reforms_complete
 		clear_variable = SUI.industrialisation_level
 		clear_variable = SUI.unemployment_level
 		clear_variable = SUI.urbanisation_level
 		clear_variable = SUI.standard_of_living_rev
 	}
 }
-
-#colonial revolt
-#country_event = {
-#	id = suisei.51
-#	title = suisei.51.t
-#	desc = suisei.51.d
-#	picture = GFX_report_event_mio
-#
-#	trigger = {
-#		OR = {
-#				AND = {
-#					check_variable = {
-#						var = SUI.anti_aggression
-#						value = 60
-#						compare = greater_than_or_equals
-#					}
-#					has_stability < 0.2
-#					OR = {
-#						has_idea = sui_extreme_colonial_unrest
-#						has_idea = sui_major_colonial_unrest
-#						has_idea = sui_minor_colonial_unrest
-#					}
-#				}
-#				AND = {
-#				check_variable = {
-#					var = SUI.anti_aggression
-#					value = 40
-#					compare = greater_than_or_equals
-#				}
-#				OR = {
-#					has_idea = sui_extreme_colonial_unrest
-#					has_idea = sui_major_colonial_unrest
-#					has_idea = sui_minor_colonial_unrest
-#				}
-#				has_civil_war = yes
-#				}	
-#		}
-#	}
-#
-#	mean_time_to_happen = {
-#		days = 2
-#	}	
-#	option = {
-#		name = suisei.51.a  
-#		release = COG
-#		add_war_support = 0.05
-#		SUI = {
-#			declare_war_on = {
-#				target = COG
-#				type = annex_everything
-#			}
-#		}
-#	}
-#	option = {
-#		name = suisei.51.b  
-#		release = COG
-#		COG = {
-#			country_event = africa.1
-#		}
-#	}
-#}
-##Congo accepts
-#country_event = {
-#	id = suisei.52
-#	title = suisei.52.t
-#	desc = suisei.52.d
-#	picture = GFX_report_event_mio
-#
-#	is_triggered_only = yes
-#	
-#	option = {
-#		name = suisei.52.a  
-#		SUI = {
-#			white_peace = {
-#				tag = COG
-#				message = congo_suisei_treaty
-#			}
-#		}
-#		COG = {
-#			country_event = africa.2
-#		}
-#	}
-#}
-##We lose to congo 
-#country_event = {
-#	id = suisei.53
-#	title = suisei.53.t
-#	desc = suisei.53.d
-#	picture = GFX_report_event_mio
-#
-#	trigger = {
-#			COG = {
-#				controls_state = 973
-#		}
-#	}
-#	
-#	mean_time_to_happen = {
-# #	days = 200
-# #	}
-# #	
-# #	option = {
-# #		name = suisei.53.a  
-# #		SUI = {
-# #			white_peace = {
-# #				tag = COG
-# #				message = congo_suisei_treaty_2
-# #			}
-# #		}
-# #		COG = {
-# #			country_event = africa.3
-# #			add_state_core = 973
-# #			set_state_owner = 973
-# #		}
-# #	}
-# #}
-# # #Shipping Companies Start
-# # country_event = {
-# # 	id = suisei.54
-# # 	title = suisei.54.t
-# # 	desc = suisei.54.d
-# # 	picture = GFX_report_event_mio
-# # 	is_triggered_only = yes
-# # 	option = {
-# # 		name = suisei.54.a
-# # 		set_variable = {
-# # 			var = SUI.shipping_effective
-# # 			value = 0
-# # 		}
-# # 	}
-# # }
-
-# #Labour laws
-# country_event = {
-# 	id = suisei.55
-# 	title = suisei.55.t
-# 	desc = suisei.55.d
-# 	picture = GFX_report_event_mio
-# 	is_triggered_only = yes
-# 	#No exceptions shall be made
-# 	option = {
-# 		name = suisei.55.a
-# 		add_popularity = {
-# 			ideology = pro_yagoo_progressive
-# 			popularity = 0.01
-# 		}
-# 		SUI = {
-# 			country_event = suisei.56
-# 		}
-# 	}
-# 	#Make Compromises
-# 	option = {
-# 		name = suisei.55.b
-# 		add_to_variable = {
-# 			var = SUI.shipping_effective
-# 			value = 1
-# 		}
-# 		add_popularity = {
-# 			ideology = pro_yagoo_progressive
-# 			popularity = -0.01
-# 		}
-# 		SUI = {
-# 			country_event = suisei.56
-# 		}
-# 	}
-# }
-
-# #Taxes
-# country_event = {
-# 	id = suisei.56
-# 	title = suisei.56.t
-# 	desc = suisei.56.d
-# 	picture = GFX_report_event_mio
-# 	is_triggered_only = yes
-# 	#No exceptions shall be made
-# 	option = {
-# 		name = suisei.56.a
-# 		add_popularity = {
-# 			ideology = pro_yagoo_progressive
-# 			popularity = 0.01
-# 		}
-# 		SUI = {
-# 			country_event = suisei.57
-# 		}
-# 	}
-# 	#Make Compromises
-# 	option = {
-# 		name = suisei.56.b
-# 		add_to_variable = {
-# 			var = SUI.shipping_effective
-# 			value = 1
-# 		}
-# 		add_popularity = {
-# 			ideology = pro_yagoo_progressive
-# 			popularity = -0.01
-# 		}
-# 		SUI = {
-# 			country_event = suisei.57
-# 		}
-# 	}
-# }
-
-# #regulations
-# country_event = {
-# 	id = suisei.57
-# 	title = suisei.57.t
-# 	desc = suisei.57.d
-# 	picture = GFX_report_event_mio
-# 	is_triggered_only = yes
-# 	#No exceptions shall be made
-# 	option = {
-# 		name = suisei.57.a
-# 		add_popularity = {
-# 			ideology = pro_yagoo_progressive
-# 			popularity = 0.01
-# 		}
-# 		set_country_flag = SUI_dockyard_result
-# 	}
-# 	#Make Compromises
-# 	option = {
-# 		name = suisei.57.b
-# 		add_to_variable = {
-# 			var = SUI.shipping_effective
-# 			value = 1
-# 		}
-# 		add_popularity = {
-# 			ideology = pro_yagoo_progressive
-# 			popularity = -0.01
-# 		}
-# 		set_country_flag = SUI_dockyard_result
-# 	}
-# }
-
-# #Results
-# country_event = {
-# 	id = suisei.58
-# 	title = suisei.58.t
-# 	desc = suisei.58.d
-# 	picture = GFX_report_event_mio
-# 	trigger = {
-# 		SUI = {
-# 			has_country_flag = SUI_dockyard_result
-# 		}
-# 	}
-# 	mean_time_to_happen = {
-# 		days = 2
-# 	}
-# 	option = {
-# 		name = suisei.58.a
-# 		trigger = {
-# 			check_variable = {
-# 				var = SUI.shipping_effective
-# 				value = 0
-# 				compare = equals
-# 			}
-# 		}
-# 		add_ideas = SUI_failing_shipping_industry
-# 		clr_country_flag = SUI_dockyard_result
-# 		clear_variable = SUI.shipping_effective
-# 	}
-# 	option = {
-# 		name = suisei.58.b
-# 		trigger = {
-# 			check_variable = {
-# 				var = SUI.shipping_effective
-# 				value = 1
-# 				compare = equals
-# 			}
-# 		}
-# 		add_ideas = SUI_meh_shipping_industry
-# 		clr_country_flag = SUI_dockyard_result
-# 		clear_variable = SUI.shipping_effective
-# 	}
-# 	option = {
-# 		name = suisei.58.c
-# 		trigger = {
-# 			check_variable = {
-# 				var = SUI.shipping_effective
-# 				value = 2
-# 				compare = equals
-# 			}
-# 		}
-# 		add_ideas = SUI_good_shipping_industry
-# 		add_to_variable = {
-# 			var = GLOBAL.tropical_goods_market
-# 			value = 1
-# 		}
-# 		clr_country_flag = SUI_dockyard_result
-# 		clear_variable = SUI.shipping_effective
-# 	}
-# 	option = {
-# 		name = suisei.58.e
-# 		trigger = {
-# 			check_variable = {
-# 				var = SUI.shipping_effective
-# 				value = 3
-# 				compare = equals
-# 			}
-# 		}
-# 		add_ideas = SUI_superb_shipping_industry
-# 		add_to_variable = {
-# 			var = GLOBAL.tropical_goods_market
-# 			value = 2
-# 		}
-# 		clr_country_flag = SUI_dockyard_result
-# 		clear_variable = SUI.shipping_effective
-# 	}
-# }
 
 #Aloe says yes - independent
 country_event = {
@@ -2072,9 +1782,6 @@ country_event = {
 	#in the colonies?
 	option = {
 		name = suisei.78.a
-		add_ideas = {
-			SUI.colonial_business
-		}
 		subtract_from_variable = {
 			var = SUI.anti_aggression
 			value = 10
@@ -2328,482 +2035,475 @@ country_event = {
 	}
 }
 
-country_event = {
-	id = suisei.80
-	title = suisei.80.t
-	desc = suisei.80.d
-	picture = GFX_report_event_subaru
-	is_triggered_only = yes
-	option = {
-		name = suisei.80.a
-		if = {
-			limit = {
-				check_variable = {
-					var = SUI.rural_level
-					value = 25
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_rural_population_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.rural_level
-					value = 50
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_rural_population_level_2
-			}
-			remove_ideas = {
-				SUI_rural_population_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.rural_level
-					value = 75
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_rural_population_level_3
-			}
-			remove_ideas = {
-				SUI_rural_population_level_4
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.rural_level
-					value = 100
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_rural_population_level_4
-			}
-			remove_ideas = {
-				SUI_rural_population_level_3
-			}
-		}
-	}
-}
-
-country_event = {
-	id = suisei.81
-	title = suisei.81.t
-	desc = suisei.81.d
-	picture = GFX_report_event_subaru
-	is_triggered_only = yes
-	option = {
-		name = suisei.81.a
-		if = {
-			limit = {
-				check_variable = {
-					var = SUI.government_level
-					value = 25
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_government_employment_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.government_level
-					value = 50
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_government_employment_level_2
-			}
-			remove_ideas = {
-				SUI_government_employment_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.government_level
-					value = 75
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_government_employment_level_3
-			}
-			remove_ideas = {
-				SUI_government_employment_level_2
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.government_level
-					value = 100
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_government_employment_level_4
-			}
-			remove_ideas = {
-				SUI_government_employment_level_3
-			}
-		}
-	}
-}
-
-country_event = {
-	id = suisei.82
-	title = suisei.82.t
-	desc = suisei.82.d
-	picture = GFX_report_event_subaru
-	is_triggered_only = yes
-	option = {
-		name = suisei.81.a
-		if = {
-			limit = {
-				check_variable = {
-					var = SUI.standard_of_living_nat
-					value = 25
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_standard_of_living_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.standard_of_living_nat
-					value = 50
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_standard_of_living_level_2
-			}
-			remove_ideas = {
-				SUI_standard_of_living_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.standard_of_living_nat
-					value = 75
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_standard_of_living_level_3
-			}
-			remove_ideas = {
-				SUI_standard_of_living_level_2
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.standard_of_living_nat
-					value = 100
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_standard_of_living_level_4
-			}
-			remove_ideas = {
-				SUI_standard_of_living_level_3
-			}
-		}
-	}
-}
-
-country_event = {
-	id = suisei.83
-	title = suisei.83.t
-	desc = suisei.83.d
-	picture = GFX_report_event_subaru
-	is_triggered_only = yes
-	option = {
-		name = suisei.83.a
-		if = {
-			limit = {
-				check_variable = {
-					var = SUI.industrialisation_level
-					value = 25
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_industrialization_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.industrialisation_level
-					value = 50
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_industrialization_level_2
-			}
-			remove_ideas = {
-				SUI_industrialization_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.industrialisation_level
-					value = 75
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_industrialization_level_3
-			}
-			remove_ideas = {
-				SUI_industrialization_level_2
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.industrialisation_level
-					value = 100
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_industrialization_level_4
-			}
-			remove_ideas = {
-				SUI_industrialization_level_3
-			}
-		}
-	}
-}
-
-country_event = {
-	id = suisei.84
-	title = suisei.84.t
-	desc = suisei.84.d
-	picture = GFX_report_event_subaru
-	is_triggered_only = yes
-	option = {
-		name = suisei.84.a
-		if = {
-			limit = {
-				check_variable = {
-					var = SUI.unemployment_level
-					value = 25
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_unemployment_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.unemployment_level
-					value = 50
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_unemployment_level_2
-			}
-			remove_ideas = {
-				SUI_unemployment_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.unemployment_level
-					value = 75
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_unemployment_level_3
-			}
-			remove_ideas = {
-				SUI_unemployment_level_2
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.unemployment_level
-					value = 100
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_unemployment_level_4
-			}
-			remove_ideas = {
-				SUI_unemployment_level_3
-			}
-		}
-	}
-}
-
-country_event = {
-	id = suisei.85
-	title = suisei.85.t
-	desc = suisei.85.d
-	picture = GFX_report_event_subaru
-	is_triggered_only = yes
-	option = {
-		name = suisei.84.a
-		if = {
-			limit = {
-				check_variable = {
-					var = SUI.urbanisation_level
-					value = 25
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_urbanisation_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.urbanisation_level
-					value = 50
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_urbanisation_level_2
-			}
-			remove_ideas = {
-				SUI_standard_of_living_rev_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.urbanisation_level
-					value = 75
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_urbanisation_level_3
-			}
-			remove_ideas = {
-				SUI_standard_of_living_rev_level_2
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI.urbanisation_level
-					value = 100
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_urbanisation_level_4
-			}
-			remove_ideas = {
-				SUI_standard_of_living_rev_level_3
-			}
-		}
-	}
-}
-
-country_event = {
-	id = suisei.86
-	title = suisei.86.t
-	desc = suisei.86.d
-	picture = GFX_report_event_subaru
-	is_triggered_only = yes
-	option = {
-		name = suisei.84.a
-		if = {
-			limit = {
-				check_variable = {
-					var = SUI_standard_of_living_rev
-					value = 25
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_standard_of_living_rev_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI_standard_of_living_rev
-					value = 50
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_standard_of_living_rev_level_2
-			}
-			remove_ideas = {
-				SUI_standard_of_living_rev_level_1
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI_standard_of_living_rev
-					value = 75
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_standard_of_living_rev_level_3
-			}
-			remove_ideas = {
-				SUI_standard_of_living_rev_level_2
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					var = SUI_standard_of_living_rev
-					value = 100
-					compare = equals
-				}
-			}
-			add_ideas = {
-				SUI_standard_of_living_rev_level_4
-			}
-			remove_ideas = {
-				SUI_standard_of_living_rev_level_3
-			}
-		}
-	}
-}
-
+# country_event = {
+# 	id = suisei.80
+# 	title = suisei.80.t
+# 	desc = suisei.80.d
+# 	picture = GFX_report_event_subaru
+# 	is_triggered_only = yes
+# 	option = {
+# 		name = suisei.80.a
+# 		if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.rural_level
+# 					value = 25
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_rural_population_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.rural_level
+# 					value = 50
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_rural_population_level_2
+# 			}
+# 			remove_ideas = {
+# 				SUI_rural_population_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.rural_level
+# 					value = 75
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_rural_population_level_3
+# 			}
+# 			remove_ideas = {
+# 				SUI_rural_population_level_4
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.rural_level
+# 					value = 100
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_rural_population_level_4
+# 			}
+# 			remove_ideas = {
+# 				SUI_rural_population_level_3
+# 			}
+# 		}
+# 	}
+# }
+# country_event = {
+# 	id = suisei.81
+# 	title = suisei.81.t
+# 	desc = suisei.81.d
+# 	picture = GFX_report_event_subaru
+# 	is_triggered_only = yes
+# 	option = {
+# 		name = suisei.81.a
+# 		if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.government_level
+# 					value = 25
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_government_employment_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.government_level
+# 					value = 50
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_government_employment_level_2
+# 			}
+# 			remove_ideas = {
+# 				SUI_government_employment_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.government_level
+# 					value = 75
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_government_employment_level_3
+# 			}
+# 			remove_ideas = {
+# 				SUI_government_employment_level_2
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.government_level
+# 					value = 100
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_government_employment_level_4
+# 			}
+# 			remove_ideas = {
+# 				SUI_government_employment_level_3
+# 			}
+# 		}
+# 	}
+# }
+# country_event = {
+# 	id = suisei.82
+# 	title = suisei.82.t
+# 	desc = suisei.82.d
+# 	picture = GFX_report_event_subaru
+# 	is_triggered_only = yes
+# 	option = {
+# 		name = suisei.81.a
+# 		if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.standard_of_living_nat
+# 					value = 25
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_standard_of_living_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.standard_of_living_nat
+# 					value = 50
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_standard_of_living_level_2
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.standard_of_living_nat
+# 					value = 75
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_standard_of_living_level_3
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_level_2
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.standard_of_living_nat
+# 					value = 100
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_standard_of_living_level_4
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_level_3
+# 			}
+# 		}
+# 	}
+# }
+# country_event = {
+# 	id = suisei.83
+# 	title = suisei.83.t
+# 	desc = suisei.83.d
+# 	picture = GFX_report_event_subaru
+# 	is_triggered_only = yes
+# 	option = {
+# 		name = suisei.83.a
+# 		if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.industrialisation_level
+# 					value = 25
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_industrialization_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.industrialisation_level
+# 					value = 50
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_industrialization_level_2
+# 			}
+# 			remove_ideas = {
+# 				SUI_industrialization_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.industrialisation_level
+# 					value = 75
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_industrialization_level_3
+# 			}
+# 			remove_ideas = {
+# 				SUI_industrialization_level_2
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.industrialisation_level
+# 					value = 100
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_industrialization_level_4
+# 			}
+# 			remove_ideas = {
+# 				SUI_industrialization_level_3
+# 			}
+# 		}
+# 	}
+# }
+# country_event = {
+# 	id = suisei.84
+# 	title = suisei.84.t
+# 	desc = suisei.84.d
+# 	picture = GFX_report_event_subaru
+# 	is_triggered_only = yes
+# 	option = {
+# 		name = suisei.84.a
+# 		if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.unemployment_level
+# 					value = 25
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_unemployment_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.unemployment_level
+# 					value = 50
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_unemployment_level_2
+# 			}
+# 			remove_ideas = {
+# 				SUI_unemployment_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.unemployment_level
+# 					value = 75
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_unemployment_level_3
+# 			}
+# 			remove_ideas = {
+# 				SUI_unemployment_level_2
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.unemployment_level
+# 					value = 100
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_unemployment_level_4
+# 			}
+# 			remove_ideas = {
+# 				SUI_unemployment_level_3
+# 			}
+# 		}
+# 	}
+# }
+# country_event = {
+# 	id = suisei.85
+# 	title = suisei.85.t
+# 	desc = suisei.85.d
+# 	picture = GFX_report_event_subaru
+# 	is_triggered_only = yes
+# 	option = {
+# 		name = suisei.84.a
+# 		if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.urbanisation_level
+# 					value = 25
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_urbanisation_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.urbanisation_level
+# 					value = 50
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_urbanisation_level_2
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_rev_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.urbanisation_level
+# 					value = 75
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_urbanisation_level_3
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_rev_level_2
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI.urbanisation_level
+# 					value = 100
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_urbanisation_level_4
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_rev_level_3
+# 			}
+# 		}
+# 	}
+# }
+# country_event = {
+# 	id = suisei.86
+# 	title = suisei.86.t
+# 	desc = suisei.86.d
+# 	picture = GFX_report_event_subaru
+# 	is_triggered_only = yes
+# 	option = {
+# 		name = suisei.84.a
+# 		if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI_standard_of_living_rev
+# 					value = 25
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_standard_of_living_rev_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI_standard_of_living_rev
+# 					value = 50
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_standard_of_living_rev_level_2
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_rev_level_1
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI_standard_of_living_rev
+# 					value = 75
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_standard_of_living_rev_level_3
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_rev_level_2
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				check_variable = {
+# 					var = SUI_standard_of_living_rev
+# 					value = 100
+# 					compare = equals
+# 				}
+# 			}
+# 			add_ideas = {
+# 				SUI_standard_of_living_rev_level_4
+# 			}
+# 			remove_ideas = {
+# 				SUI_standard_of_living_rev_level_3
+# 			}
+# 		}
+# 	}
+# }
 #FBK offers us Ghana
 country_event = {
 	id = suisei.87

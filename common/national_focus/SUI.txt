@@ -221,20 +221,17 @@ focus_tree = {
 			Industry
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_idea = sui_extreme_colonial_unrest
-				}
-				swap_ideas = {
-					remove_idea = sui_extreme_colonial_unrest
-					add_idea = sui_major_colonial_unrest
-				}
+			add_to_variable = {
+				var = SUI.colonial_unrest_a
+				value = 0.02
 			}
-			else = {
-				swap_ideas = {
-					remove_idea = sui_major_colonial_unrest
-					add_idea = sui_minor_colonial_unrest
-				}
+			add_to_variable = {
+				var = SUI.colonial_unrest_b
+				value = -0.02
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest_c
+				value = 0.02
 			}
 			random_owned_state = {
 				limit = {
@@ -283,9 +280,17 @@ focus_tree = {
 			Political
 		}
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = sui_extreme_colonial_unrest
-				add_idea = sui_major_colonial_unrest
+			add_to_variable = {
+				var = SUI.colonial_unrest_a
+				value = 0.02
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest_b
+				value = -0.02
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest_c
+				value = 0.02
 			}
 			add_political_power = -125
 			add_stability = 0.05
@@ -627,9 +632,6 @@ focus_tree = {
 			focus = SUI_new_economic_plan
 		}
 		completion_reward = {
-			SUI = {
-				add_ideas = suisei_revolutionary_economics
-			}
 			set_variable = {
 				var = SUI.industrialisation_level
 				value = 22
@@ -735,7 +737,6 @@ focus_tree = {
 		completion_reward = {
 			SUI = {
 				add_ideas = {
-					suisei_nationalist_economics
 					suisei_urbanisation
 				}
 			}
@@ -806,7 +807,14 @@ focus_tree = {
 			focus = SUI_help_farmers
 		}
 		completion_reward = {
-			add_ideas = SUI_modernization_program_agricultture
+			two_random_civilian_factory = yes
+			two_random_civilian_factory = yes
+			add_tech_bonus = {
+				name = SUI_modernization_investments_tech
+				bonus = 1
+				uses = 1
+				category = industry
+			}
 		}
 		x = 21
 		y = 10
@@ -819,7 +827,9 @@ focus_tree = {
 			focus = SUI_modernization_program_agricultture
 		}
 		completion_reward = {
-			add_ideas = SUI_modernization_methods
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 4
+			}
 		}
 		x = 21
 		y = 11
@@ -852,6 +862,7 @@ focus_tree = {
 			focus = SUI_let_them_eat_yakiniku
 		}
 		completion_reward = {
+			add_political_power = -50
 			add_to_variable = {
 				var = SUI_standard_of_living_nat
 				value = 25
@@ -860,7 +871,6 @@ focus_tree = {
 				var = SUI.government_level
 				value = 10
 			}
-			add_ideas = SUI_public_pensions
 		}
 		x = 23
 		y = 11
@@ -877,7 +887,7 @@ focus_tree = {
 				var = SUI_standard_of_living_nat
 				value = 15
 			}
-			add_ideas = SUI_consumer_agri
+			one_random_civilian_factory = yes
 		}
 		x = 25
 		y = 10
@@ -898,7 +908,7 @@ focus_tree = {
 				var = SUI.rural_level
 				value = 3
 			}
-			add_ideas = SUI_breadbasket
+			two_random_civilian_factory = yes
 		}
 		x = 25
 		y = 11
@@ -1089,14 +1099,12 @@ focus_tree = {
 		completion_reward = {
 			add_popularity = {
 				ideology = pro_resistance_nationalism
-				popularity = -0.03
+				popularity = -0.15
 			}
 			add_popularity = {
 				ideology = communism
-				popularity = -0.05
+				popularity = -0.15
 			}
-			add_stability = -0.02
-			add_ideas = SUI_traditional_economics
 		}
 		x = 26
 		y = 13
@@ -1248,10 +1256,8 @@ focus_tree = {
 			focus = SUI_deal_with_depression
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_job_gacha
-				days = 720
-			}
+			two_random_arms_factory = yes
+			two_random_dockyards = yes
 		}
 		x = 33
 		y = 10
@@ -1381,7 +1387,24 @@ focus_tree = {
 			focus = SUI_export_music
 		}
 		completion_reward = {
-			add_ideas = SUI_hoshiyomi_migration
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_manpower = 33500
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_manpower = 33500
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_manpower = 33500
+			}
 		}
 		x = 38
 		y = 12
@@ -1403,11 +1426,9 @@ focus_tree = {
 		completion_reward = {
 			add_to_variable = {
 				var = SUI.anti_aggression
-				value = 10
+				value = -25
 				tooltip = GEN_change_in_anti_aggression
 			}
-			add_stability = 0.05
-			add_ideas = SUI_suicopath_policy
 		}
 		x = 41
 		y = 9
@@ -1427,10 +1448,9 @@ focus_tree = {
 			focus = SUI_suicopath_policy
 		}
 		completion_reward = {
-			add_stability = 0.05
 			add_popularity = {
 				ideology = var:current_party_ideology_group
-				popularity = 0.05
+				popularity = 0.15
 			}
 		}
 		x = 41
@@ -1451,10 +1471,7 @@ focus_tree = {
 			focus = SUI_suicopath_policy
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_ensemble_fans
-				days = 365
-			}
+			add_manpower = 25000
 		}
 		x = 43
 		y = 10
@@ -1478,10 +1495,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = SUI_youth_division
-			add_popularity = {
-				ideology = var:current_party_ideology_group
-				popularity = 0.05
-			}
 		}
 		x = 42
 		y = 11
@@ -1501,9 +1514,32 @@ focus_tree = {
 			focus = SUI_youth_division
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_radio_personality
-				days = 720
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+				}
 			}
 		}
 		x = 41
@@ -1524,10 +1560,8 @@ focus_tree = {
 			focus = SUI_youth_division
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_a_few_reasons_we_love_suisei
-				days = 365
-			}
+			add_political_power = 50
+			add_stability = 0.1
 		}
 		x = 43
 		y = 12
@@ -1714,7 +1748,14 @@ focus_tree = {
 			focus = SUI_annex_miko
 		}
 		completion_reward = {
-			add_ideas = SUI_anti_yagoo_bulwark
+			remove_ideas = {
+				seiso1
+				seiso2
+				seiso3
+				seiso4
+				seiso5
+			}
+			add_ideas = seiso5
 		}
 		x = 47
 		y = 4
@@ -1835,11 +1876,11 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = sui_indoctrination
-				days = 180
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
 			}
-			add_war_support = 0.05
+			add_war_support = 0.1
 		}
 		prerequisite = {
 			focus = SUI_suicopath_military
@@ -2576,7 +2617,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_ideas = SUI_chocolate_artisans
+			two_random_civilian_factory = yes
 		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_europe
@@ -2793,7 +2834,7 @@ focus_tree = {
 			focus = SUI_foreign_demand
 		}
 		completion_reward = {
-			add_ideas = SUI_local_demand
+			two_random_civilian_factory = yes
 		}
 		prerequisite = {
 			focus = SUI_expand_port_facilities
@@ -2840,7 +2881,39 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_ideas = SUI_renewed_efforts
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_on_continent = europe
+					}
+				}
+				add_resource = {
+					type = oil
+					amount = 16
+				}
+			}
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_on_continent = europe
+					}
+				}
+				add_resource = {
+					type = oil
+					amount = 16
+				}
+			}
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_on_continent = europe
+					}
+				}
+				add_resource = {
+					type = oil
+					amount = 16
+				}
+			}
 		}
 		prerequisite = {
 			focus = SUI_local_demand
@@ -3134,7 +3207,6 @@ focus_tree = {
 				uses = 2
 				category = cat_trade_interdiction
 			}
-			add_ideas = sui_scourge_med
 		}
 		prerequisite = {
 			focus = SUI_convoy_raiding
@@ -3416,29 +3488,17 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_idea = sui_major_colonial_unrest
-				}
-				swap_ideas = {
-					remove_idea = sui_major_colonial_unrest
-					add_idea = sui_minor_colonial_unrest
-				}
-				else_if = {
-					limit = {
-						has_idea = sui_extreme_colonial_unrest
-					}
-					swap_ideas = {
-						remove_idea = sui_extreme_colonial_unrest
-						add_idea = sui_major_colonial_unrest
-					}
-				}
-				else = {
-					swap_ideas = {
-						remove_idea = sui_minor_colonial_unrest
-						add_idea = sui_no_colonial_unrest
-					}
-				}
+			add_to_variable = {
+				var = SUI.colonial_unrest_a
+				value = 0.02
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest_b
+				value = -0.02
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest_c
+				value = 0.02
 			}
 		}
 		prerequisite = {
@@ -3660,11 +3720,14 @@ focus_tree = {
 			focus = SUI_tropical_goods_recovery_africa
 		}
 		completion_reward = {
-			add_stability = 0.01
-			add_political_power = 25
-			add_timed_idea = {
-				idea = SUI_protect_tade_routes_ideas
-				days = 720
+			add_stability = 0.1
+			every_owned_state = {
+				limit = {
+					NOT = {
+						is_core_of = SUI
+					}
+				}
+				add_compliance = 15
 			}
 		}
 		x = 61
@@ -3715,14 +3778,13 @@ focus_tree = {
 			focus = SUI_protect_tade_routes
 		}
 		completion_reward = {
-			add_ideas = SUI_modernization_methods
 			973 = {
 				add_building_construction = {
 					type = industrial_complex
 					instant_build = yes
-					level = 1
+					level = 2
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 4
 			}
 		}
 		x = 60
@@ -3767,8 +3829,29 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			SUI = {
-				add_ideas = suisei_colonial_plywood
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_on_continent = africa
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_on_continent = africa
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_on_continent = africa
+					}
+				}
+				add_extra_state_shared_building_slots = 3
 			}
 		}
 		prerequisite = {
@@ -4039,7 +4122,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_timed_idea = {
-				idea = suico_cheap_planes
+				idea = SUI_cheap_planes
 				days = 1080
 			}
 		}
@@ -4057,7 +4140,8 @@ focus_tree = {
 			focus = SUI_pro_yagoo_coalition_wins
 		}
 		completion_reward = {
-			add_stability = 0.05
+			one_random_civilian_factory = yes
+			one_random_dockyard = yes
 		}
 		x = 9
 		y = 7
@@ -4093,10 +4177,7 @@ focus_tree = {
 			focus = SUI_rejoin_lhs
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = suisei_lhs_investment
-				days = 720
-			}
+			two_random_civilian_factory = yes
 		}
 		x = 3
 		y = 9
@@ -4269,10 +4350,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			add_timed_idea = {
-				idea = suisei_civilian_factory
-				days = 260
-			}
 		}
 		x = 11
 		y = 9
@@ -4301,11 +4378,30 @@ focus_tree = {
 			focus = SUI_support_shipping_industry
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_colonial_boom
-				days = 180
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_core_of = SUI
+					}
+				}
+				add_compliance = 15
 			}
-			add_stability = 0.05
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_core_of = SUI
+					}
+				}
+				add_compliance = 15
+			}
+			random_owned_state = {
+				limit = {
+					NOT = {
+						is_core_of = SUI
+					}
+				}
+				add_compliance = 15
+			}
 		}
 		x = 9
 		y = 10
@@ -4349,10 +4445,6 @@ focus_tree = {
 			focus = SUI_restart_colonial_trade
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_final_industrial_push
-				days = 180
-			}
 			random_owned_state = {
 				limit = {
 					is_on_continent = europe
@@ -4434,7 +4526,10 @@ focus_tree = {
 			focus = SUI_full_depression_recovery
 		}
 		completion_reward = {
-			add_ideas = SUI_kyou_mo_kawaii
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.15
+			}
 		}
 		x = 9
 		y = 13
@@ -4509,7 +4604,7 @@ focus_tree = {
 			focus = SUI_expand_state_industry
 		}
 		completion_reward = {
-			add_ideas = SUI_nationalized_businesses
+			two_random_arms_factory = yes
 			subtract_from_variable = {
 				var = SUI.unemployment_level
 				value = 2
@@ -4573,10 +4668,7 @@ focus_tree = {
 			focus = SUI_nationalize_failing_businesses
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_nationalize_banks
-				days = 360
-			}
+			add_political_power = 150
 			add_stability = -0.05
 			subtract_from_variable = {
 				var = SUI.unemployment_level
@@ -4598,10 +4690,6 @@ focus_tree = {
 			focus = SUI_nationalize_banks
 		}
 		completion_reward = {
-			add_popularity = {
-				ideology = communism
-				popularity = 0.05
-			}
 			add_timed_idea = {
 				idea = SUI_peoples_car
 				days = 360
@@ -4618,20 +4706,11 @@ focus_tree = {
 			focus = SUI_nationalize_banks
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_modernization_investments
-				days = 360
-			}
-			random_owned_state = {
-				limit = {
-					is_on_continent = europe
-				}
-				add_building_construction = {
-					type = industrial_complex
-					instant_build = yes
-					level = 2
-				}
-				add_extra_state_shared_building_slots = 2
+			add_tech_bonus = {
+				name = SUI_modernization_investments_tech
+				bonus = 1
+				uses = 2
+				category = industry
 			}
 		}
 		x = 17
@@ -4645,7 +4724,6 @@ focus_tree = {
 			focus = SUI_nationalize_banks
 		}
 		completion_reward = {
-			add_ideas = SUI_work_lottery
 			random_owned_state = {
 				limit = {
 					is_on_continent = europe
@@ -4653,14 +4731,14 @@ focus_tree = {
 				add_building_construction = {
 					type = industrial_complex
 					instant_build = yes
-					level = 1
+					level = 2
 				}
 				add_building_construction = {
 					type = infrastructure
 					instant_build = yes
 					level = 2
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 			}
 			subtract_from_variable = {
 				var = SUI.unemployment_level
@@ -4684,10 +4762,6 @@ focus_tree = {
 			focus = SUI_peoples_car
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_expand_public_works
-				days = 360
-			}
 			random_owned_state = {
 				limit = {
 					is_on_continent = europe
@@ -4802,7 +4876,16 @@ focus_tree = {
 			focus = SUI_independent_market
 		}
 		completion_reward = {
-			add_ideas = SUI_self_sufficiency
+			random_owned_state = {
+				limit = {
+					is_on_continent = europe
+				}
+				add_resource = {
+					type = steel
+					amount = 32
+					state = THIS
+				}
+			}
 		}
 		x = 35
 		y = 11
@@ -4854,10 +4937,7 @@ focus_tree = {
 			focus = SUI_self_sufficiency
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SUI_suisei_of_many_talents
-				days = 365
-			}
+			add_political_power = 50
 		}
 		x = 35
 		y = 12

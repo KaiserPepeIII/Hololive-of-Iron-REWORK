@@ -2,6 +2,7 @@ add_namespace = indonesia
 add_namespace = YAG_indonesia
 add_namespace = IOF_indonesia
 add_namespace = MOO_indonesia
+add_namespace = OLI_indonesia
 add_namespace = KRU_indonesia
 add_namespace = PAV_indonesia
 add_namespace = ZTA_indonesia
@@ -415,6 +416,36 @@ country_event = {
 	}
 }
 
+#Ollie's war for independence
+country_event = {
+	id = indonesia.17
+	title = indonesia.17.t
+	desc = indonesia.17.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#damn 
+	option = {
+		name = indonesia.17.a
+		set_temp_variable = {
+			var = owner_of_malaysia
+			value = ROOT.id
+		}
+		every_state = {
+			limit = {
+				is_core_of = MAL
+			}
+			add_core_of = OLI
+			transfer_state_to = OLI
+		}
+		OLI = {
+			declare_war_on = {
+				target = var:owner_of_malaysia
+				type = annex_everything
+			}
+		}
+	}
+}
+
 #
 #
 #	YAG
@@ -706,6 +737,11 @@ country_event = {
 	}
 }
 
+#
+#
+#	OLI
+#
+#
 #
 #
 #

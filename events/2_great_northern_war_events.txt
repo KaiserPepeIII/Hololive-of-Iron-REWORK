@@ -3393,6 +3393,353 @@ country_event = {
 	}
 }
 
+#karelian immigration surge (50 days after aland) 
+country_event = {
+	id = FBK_post_gnw.49
+	title = FBK_post_gnw.49.t
+	desc = FBK_post_gnw.49.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Another crisis?
+	option = {
+		activate_mission = FBK_karelia_issue
+		set_variable = {
+			var = FBK.karelian_integration
+			value = 0
+		}
+		set_country_flag = karelian_crisis
+	}
+}
+
+#Our stance 
+country_event = {
+	id = FBK_post_gnw.34
+	title = FBK_post_gnw.34.t
+	desc = FBK_post_gnw.34.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We'll welcome them with open arms
+	option = {
+		add_to_variable = {
+			var = FBK.karelian_integration
+			value = 1
+		}
+	}
+	#We need to build a wall ( NOT LITERALLY)
+	option = {
+		add_days_mission_timeout = {
+			mission = FBK_karelia_issue
+			days = -20
+		}
+	}
+}
+
+#Our actions on the ones that passed
+country_event = {
+	id = FBK_post_gnw.35
+	title = FBK_post_gnw.35.t
+	desc = FBK_post_gnw.35.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Give them aid
+	option = {
+		add_to_variable = {
+			var = FBK.karelian_integration
+			value = 1
+		}
+	}
+	#Let them eat cake
+	option = {
+		add_days_mission_timeout = {
+			mission = FBK_karelia_issue
+			days = -20
+		}
+	}
+}
+
+#Where to direct funding
+country_event = {
+	id = FBK_post_gnw.36
+	title = FBK_post_gnw.36.t
+	desc = FBK_post_gnw.36.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Economic relief
+	option = {
+		add_to_variable = {
+			var = FBK.karelian_integration
+			value = 1
+		}
+	}
+	#Military and police efforts
+	option = {
+		add_days_mission_timeout = {
+			mission = FBK_karelia_issue
+			days = -20
+		}
+	}
+}
+
+#Time to demand land based on our approach - integration aproach
+country_event = {
+	id = FBK_post_gnw.37
+	title = FBK_post_gnw.37.t
+	desc = FBK_post_gnw.37.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Send our requests
+	option = {
+		set_country_flag = fubuki_integrationist
+		NOV = {
+			country_event = FBK_post_gnw.39
+		}
+		set_variable = {
+			var = FBK.karelian_integration
+			value = 0
+		}
+	}
+}
+
+#Time to demand land based on our approach - military approach
+country_event = {
+	id = FBK_post_gnw.38
+	title = FBK_post_gnw.38.t
+	desc = FBK_post_gnw.38.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Send our demands
+	option = {
+		NOV = {
+			country_event = FBK_post_gnw.40
+		}
+	}
+}
+
+#novgorod - fubuki demands border lands 
+country_event = {
+	id = FBK_post_gnw.39
+	title = FBK_post_gnw.39.t
+	desc = FBK_post_gnw.39.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#We can accept these terms
+	option = {
+		FBK = {
+			country_event = FBK_post_gnw.46
+		}
+	}
+	#Those lands are russian
+	option = {
+		FBK = {
+			country_event = FBK_post_gnw.41
+		}
+	}
+}
+
+#novgorod surrendered border lands
+country_event = {
+	id = FBK_post_gnw.46
+	title = FBK_post_gnw.46.t
+	desc = FBK_post_gnw.46.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Easier than expected
+	option = {
+		transfer_state = 213
+		transfer_state = 215
+		transfer_state = 146
+		transfer_state = 216
+		add_state_core = 213
+		add_state_core = 215
+		add_state_core = 146
+		add_state_core = 216
+	}
+	#demand fubukistad as well  (will lead to war) NOTE : YOU NEED TO ACTUALLY TAKE THE CITY IN THE WAR IF YOU WANT TO TAKE IT
+	option = {
+		NOV = {
+			country_event = FBK_post_gnw.40
+		}
+	}
+}
+
+#novgorod - fubuki demands a crippling amount of land (only war possible)
+country_event = {
+	id = FBK_post_gnw.40
+	title = FBK_post_gnw.40.t
+	desc = FBK_post_gnw.40.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Accepting would mean our end
+	option = {
+		FBK = {
+			country_event = FBK_post_gnw.41
+		}
+	}
+}
+
+#war it is 
+country_event = {
+	id = FBK_post_gnw.41
+	title = FBK_post_gnw.41.t
+	desc = FBK_post_gnw.41.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Declare war!
+	option = {
+		activate_mission = FBK_rapid_blitz
+		declare_war_on = {
+			target = NOV
+			type = annex_everything
+		}
+	}
+}
+
+#ez win - we took fubukistad so fast that novgorod government was captured and forced to surrender the country
+country_event = {
+	id = FBK_post_gnw.42
+	title = FBK_post_gnw.42.t
+	desc = FBK_post_gnw.42.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Amazing show of our might! This is a new start
+	option = {
+		transfer_state = 213
+		transfer_state = 215
+		transfer_state = 146
+		transfer_state = 216
+		add_state_core = 213
+		add_state_core = 215
+		add_state_core = 146
+		add_state_core = 216
+		transfer_state = 195
+		add_state_core = 195
+		puppet = {
+			target = NOV
+			end_wars = yes
+		}
+	}
+}
+
+#ez win - military path
+country_event = {
+	id = FBK_post_gnw.47
+	title = FBK_post_gnw.47.t
+	desc = FBK_post_gnw.47.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Amazing show of our might! We will make them pay
+	option = {
+		transfer_state = 213
+		transfer_state = 214
+		transfer_state = 262
+		transfer_state = 351
+		transfer_state = 400
+		transfer_state = 398
+		transfer_state = 215
+		transfer_state = 146
+		transfer_state = 216
+		transfer_state = 244
+		transfer_state = 264
+		transfer_state = 195
+		add_state_core = 195
+		puppet = {
+			target = NOV
+			end_wars = yes
+		}
+	}
+}
+
+#normal win -  integration path - After our frontwide advance we managed to capture enough land to force novgorod to admit defeat 
+country_event = {
+	id = FBK_post_gnw.43
+	title = FBK_post_gnw.43.t
+	desc = FBK_post_gnw.43.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#The expected result
+	option = {
+		transfer_state = 213
+		transfer_state = 215
+		transfer_state = 146
+		transfer_state = 216
+		add_state_core = 213
+		add_state_core = 215
+		add_state_core = 146
+		add_state_core = 216
+		white_peace = NOV
+	}
+}
+
+#normal win -  military path - After our frontwide advance we managed to capture enough land to force novgorod to admit defeat to our terms
+country_event = {
+	id = FBK_post_gnw.45
+	title = FBK_post_gnw.45.t
+	desc = FBK_post_gnw.45.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#The expected result
+	option = {
+		if = {
+			limit = {
+				has_country_flag = fubukistad_reclaimed
+			}
+			transfer_state = 213
+			transfer_state = 214
+			transfer_state = 262
+			transfer_state = 351
+			transfer_state = 400
+			transfer_state = 398
+			transfer_state = 215
+			transfer_state = 146
+			transfer_state = 216
+			transfer_state = 264
+			transfer_state = 244
+			white_peace = NOV
+		}
+		else = {
+			transfer_state = 213
+			transfer_state = 214
+			transfer_state = 262
+			transfer_state = 351
+			transfer_state = 400
+			transfer_state = 398
+			transfer_state = 215
+			transfer_state = 146
+			transfer_state = 216
+			white_peace = NOV
+		}
+	}
+}
+
+#lose
+country_event = {
+	id = FBK_post_gnw.44
+	title = FBK_post_gnw.44.t
+	desc = FBK_post_gnw.44.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#How did we fail so badly...
+	option = {
+		white_peace = NOV
+		add_war_support = -0.4
+	}
+}
+
+#take fubukistad (past the ez win)
+country_event = {
+	id = FBK_post_gnw.48
+	title = FBK_post_gnw.48.t
+	desc = FBK_post_gnw.48.desc
+	picture = GFX_report_event_sora_generic1
+	is_triggered_only = yes
+	#Our city is ours again
+	option = {
+		transfer_state = 195
+		add_state_core = 195
+		set_country_flag = fubukistad_reclaimed
+	}
+}
+
 #Demobilization
 country_event = {
 	id = FBK_post_gnw.3

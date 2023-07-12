@@ -414,16 +414,10 @@ MUM_restoring_egyptian_control = {
 			}
 			has_global_flag = egypt_war
 			has_war_with = PEK
-			all_state = {
-				limit = {
-					is_on_continent = africa
-					NOT = {
-						550
-					}
-				}
+			550 = {
 				NOT = {
 					is_fully_controlled_by = PEK
-				} 	
+				}
 			}
 		}
 		cost = 0
@@ -449,6 +443,11 @@ MUM_restoring_egyptian_control = {
 			tag = PEK
 			has_global_flag = egypt_war
 			has_war_with = YAG
+			550 = {
+				NOT = {
+					is_fully_controlled_by = PEK
+				}
+			}
 		}
 		cost = 0
 		fire_only_once = yes
@@ -457,7 +456,7 @@ MUM_restoring_egyptian_control = {
 		}
 		complete_effect = {
 			YAG = {
-				country_event = mumei.14
+				country_event = mumegypt.14
 			}
 		}
 		ai_will_do = {
@@ -490,6 +489,16 @@ MUM_restoring_egyptian_control = {
 					is_controlled_by = YAG
 				}
 			}
+			if = {
+				limit = {
+					PEK = {
+						has_war_with = KRN
+					}
+				}
+				KRN = {
+					surrender_progress > 0.1
+				}
+			}
 		}
 		cost = 0
 		fire_only_once = yes
@@ -498,7 +507,7 @@ MUM_restoring_egyptian_control = {
 		}
 		complete_effect = {
 			YAG = {
-				country_event = mumei.17
+				country_event = mumegypt.17
 			}
 		}
 		ai_will_do = {
@@ -531,6 +540,16 @@ MUM_restoring_egyptian_control = {
 					is_controlled_by = YAG
 				}
 			}
+			if = {
+				limit = {
+					PEK = {
+						has_war_with = KRN
+					}
+				}
+				KRN = {
+					surrender_progress > 0.1
+				}
+			}
 		}
 		cost = 0
 		fire_only_once = yes
@@ -539,14 +558,14 @@ MUM_restoring_egyptian_control = {
 		}
 		complete_effect = {
 			PEK = {
-				country_event = mumei.18
+				country_event = mumegypt.18
 			}
 		}
 		ai_will_do = {
 			base = 5
 		}
 	}
-	MUM_YAG_harsh_treaty= {
+	MUM_YAG_harsh_treaty = {
 		icon = GFX_decision_icon_default
 		available = {
 			has_country_flag = PYG_refused_peace
@@ -564,14 +583,14 @@ MUM_restoring_egyptian_control = {
 		}
 		complete_effect = {
 			PEK = {
-				country_event = mumei.23
+				country_event = mumegypt.23
 			}
 		}
 		ai_will_do = {
 			base = 5
 		}
 	}
-	MUM_PEK_harsh_treaty= {
+	MUM_PEK_harsh_treaty = {
 		icon = GFX_decision_icon_default
 		available = {
 			has_country_flag = PYG_refused_peace
@@ -581,6 +600,19 @@ MUM_restoring_egyptian_control = {
 			YAG = {
 				surrender_progress > 0.8
 			}
+			if = {
+				limit = {
+					PEK = {
+						has_war_with = KRN
+					}
+				}
+				KRN = {
+					OR = {
+						surrender_progress > 0.8
+						has_capitulated = yes
+					}
+				}
+			}
 		}
 		cost = 0
 		fire_only_once = yes
@@ -589,7 +621,7 @@ MUM_restoring_egyptian_control = {
 		}
 		complete_effect = {
 			YAG = {
-				country_event = mumei.22
+				country_event = mumegypt.22
 			}
 		}
 		ai_will_do = {
