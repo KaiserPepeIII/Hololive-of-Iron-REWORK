@@ -82,13 +82,21 @@ NOE_army_professionalization = {
 NOE_great_depression = {
 	NOE_relief_programs = {
 		available = {
-			always = yes
+			NOT = {
+				has_country_flag = NOE_great_depression_cooldown
+			}
 		}
 		fire_only_once = no
 		days_remove = 60
 		days_re_enable = 14
 		visible = {
 			always = yes
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = NOE_great_depression_cooldown
+				days = 30
+			}
 		}
 		remove_effect = {
 			add_to_variable = {
@@ -124,6 +132,9 @@ NOE_great_depression = {
 	NOE_ditch_the_gold_standard = {
 		available = {
 			always = yes
+			NOT = {
+				has_country_flag = NOE_great_depression_cooldown
+			}
 		}
 		cost = 50
 		fire_only_once = yes
@@ -138,12 +149,21 @@ NOE_great_depression = {
 	NOE_public_works_program = {
 		available = {
 			has_country_flag = NOE_ditched_gold_standard
+			NOT = {
+				has_country_flag = NOE_great_depression_cooldown
+			}
 		}
 		fire_only_once = no
 		days_remove = 60
 		days_re_enable = 14
 		visible = {
 			always = yes
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = NOE_great_depression_cooldown
+				days = 30
+			}
 		}
 		modifier = {
 			production_speed_buildings_factor = 0.1
@@ -182,6 +202,9 @@ NOE_great_depression = {
 	NOE_fight_unemployment = {
 		available = {
 			has_country_flag = NOE_ditched_gold_standard
+			NOT = {
+				has_country_flag = NOE_great_depression_cooldown
+			}
 		}
 		fire_only_once = no
 		days_remove = 60
@@ -193,6 +216,12 @@ NOE_great_depression = {
 			master_ideology_drift = 0.01
 			political_power_factor = -0.25
 			consumer_goods_factor = 0.05
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = NOE_great_depression_cooldown
+				days = 30
+			}
 		}
 		remove_effect = {
 			add_to_variable = {
@@ -225,6 +254,9 @@ NOE_great_depression = {
 	NOE_support_bankrupt_landowners = {
 		available = {
 			has_country_flag = NOE_ditched_gold_standard
+			NOT = {
+				has_country_flag = NOE_great_depression_cooldown
+			}
 		}
 		fire_only_once = no
 		days_remove = 60
@@ -234,6 +266,12 @@ NOE_great_depression = {
 		}
 		modifier = {
 			consumer_goods_factor = 0.1
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = NOE_great_depression_cooldown
+				days = 30
+			}
 		}
 		remove_effect = {
 			add_to_variable = {
@@ -266,11 +304,20 @@ NOE_great_depression = {
 	NOE_establish_welfare_programs = {
 		available = {
 			has_country_flag = NOE_ditched_gold_standard
+			NOT = {
+				has_country_flag = NOE_great_depression_cooldown
+			}
 		}
 		fire_only_once = yes
 		days_remove = 60
 		visible = {
 			always = yes
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = NOE_great_depression_cooldown
+				days = 30
+			}
 		}
 		remove_effect = {
 			add_ideas = NOE_welfare

@@ -8,21 +8,27 @@ MUM_finding_mumei = {
 		activation = {
 			tag = MUM
 			NOT = {
-				has_country_flag = MUM_mumei_found
+				custom_trigger_tooltip = {
+					tooltip = mumei_not_found_tt
+					has_country_flag = MUM_mumei_found
+				}
 			}
 		}
 		visible = {
 			TAG = MUM
 		}
 		available = {
-			has_country_flag = MUM_mumei_found_prior
+			custom_trigger_tooltip = {
+				tooltip = mumei_found_tt
+				has_country_flag = MUM_mumei_found_prior
+			}
 		}
 		cancel_trigger = {
 			always = no
 		}
 		is_good = yes
 		days_mission_timeout = 365
-		selectable_mission = yes
+		selectable_mission = no
 		complete_effect = {
 			MUM = {
 				country_event = mumei.1
@@ -38,11 +44,12 @@ MUM_finding_mumei = {
 		icon = GFX_decision_icon_default
 		available = {
 			has_political_power > 50
-			MUM = {
 				NOT = {
-					has_country_flag = MUM_mumei_found
+					custom_trigger_tooltip = {
+						tooltip = mumei_not_found_tt
+						has_country_flag = MUM_mumei_found_prior
+					}
 				}
-			}
 		}
 		cost = 50
 		fire_only_once = no
@@ -54,7 +61,7 @@ MUM_finding_mumei = {
 			hidden_effect = {
 				if = {
 					limit = {
-						has_country_flag = MUMsearch1
+						has_country_flag = MUMsearch3
 					}
 					country_event = mumei.3
 				}
@@ -63,12 +70,36 @@ MUM_finding_mumei = {
 						#No results
 						80 = {
 							country_event = mumei.2
-							set_country_flag = MUMsearch1
+							if = {
+								limit = {
+									NOT = {
+										has_country_flag = MUMsearch1
+									}
+								}
+								set_country_flag = MUMsearch1
+							}
+							else_if = {
+								limit = {
+									has_country_flag = MUMsearch1
+									NOT = {
+										has_country_flag = MUMsearch2
+									}
+								}
+								set_country_flag = MUMsearch2
+							}
+							else_if = {
+								limit = {
+									has_country_flag = MUMsearch2
+									NOT = {
+										has_country_flag = MUMsearch3
+									}
+								}
+								set_country_flag = MUMsearch3
+							}
 						}
 						#Moomers found
 						20 = {
 							country_event = mumei.3
-							set_country_flag = MUMsearch1
 						}
 					}
 				}
@@ -83,11 +114,12 @@ MUM_finding_mumei = {
 		available = {
 			has_political_power > 60
 			has_manpower > 1000
-			MUM = {
 				NOT = {
-					has_country_flag = MUM_mumei_found
+					custom_trigger_tooltip = {
+						tooltip = mumei_not_found_tt
+						has_country_flag = MUM_mumei_found_prior
+					}
 				}
-			}
 		}
 		cost = 60
 		fire_only_once = no
@@ -100,7 +132,7 @@ MUM_finding_mumei = {
 			hidden_effect = {
 				if = {
 					limit = {
-						has_country_flag = MUMsearch1
+						has_country_flag = MUMsearch3
 					}
 					country_event = mumei.3
 				}
@@ -109,12 +141,37 @@ MUM_finding_mumei = {
 						#No results
 						70 = {
 							country_event = mumei.2
-							set_country_flag = MUMsearch1
+							if = {
+								limit = {
+									NOT = {
+										has_country_flag = MUMsearch1
+									}
+								}
+								set_country_flag = MUMsearch1
+							}
+							else_if = {
+								limit = {
+									has_country_flag = MUMsearch1
+									NOT = {
+										has_country_flag = MUMsearch2
+									}
+								}
+								set_country_flag = MUMsearch2
+							}
+							else_if = {
+								limit = {
+									has_country_flag = MUMsearch2
+									NOT = {
+										has_country_flag = MUMsearch3
+									}
+								}
+								set_country_flag = MUMsearch3
+							}
+
 						}
 						#Moomers found
 						30 = {
 							country_event = mumei.3
-							set_country_flag = MUMsearch1
 						}
 					}
 				}
@@ -130,7 +187,7 @@ MUM_finding_mumei = {
 			has_political_power > 75
 			NOT = {
 				custom_trigger_tooltip = {
-					tooltip = mumei_found_tt
+					tooltip = mumei_not_found_tt
 					has_country_flag = MUM_mumei_found_prior
 				}
 			}
@@ -182,13 +239,16 @@ MUM_restoring_egyptian_control = {
 			}
 		}
 		available = {
-			has_country_flag = MUM_egypt_peace_treaty
+				custom_trigger_tooltip = {
+					tooltip = mumei_peace_tt
+					has_country_flag = MUM_egypt_peace_treaty
+				}
 		}
 		cancel_trigger = {
 			always = no
 		}
 		is_good = no
-		days_mission_timeout = 210
+		days_mission_timeout = 750
 		selectable_mission = yes
 		complete_effect = {
 			PEK = {
@@ -213,6 +273,7 @@ MUM_restoring_egyptian_control = {
 				}
 				YAG = {
 					give_military_access = MUM
+					add_to_faction = MUM
 				}
 			}
 			if = {
@@ -248,13 +309,13 @@ MUM_restoring_egyptian_control = {
 		icon = GFX_decision_icon_default
 		available = {
 			tag = MUM
-			has_political_power > 75
+			has_political_power > 50
 			custom_trigger_tooltip = {
 				tooltip = mumei_found_tt
 				has_country_flag = MUM_mumei_found
 			}
 		}
-		cost = 75
+		cost = 50
 		fire_only_once = yes
 		days_remove = 75
 		visible = {
@@ -263,6 +324,8 @@ MUM_restoring_egyptian_control = {
 		complete_effect = {
 			MUM = {
 				country_event = mumei.5
+				set_country_flag = council_of_cairo_flag
+				
 			}
 		}
 		ai_will_do = {
@@ -278,6 +341,7 @@ MUM_restoring_egyptian_control = {
 				tooltip = mumei_found_tt
 				has_country_flag = MUM_mumei_found
 			}
+			has_country_flag = council_of_cairo_flag
 		}
 		visible = {
 			tag = MUM
@@ -288,6 +352,7 @@ MUM_restoring_egyptian_control = {
 				has_country_flag = MUM_korone_refuses_to_help
 				has_variable = MUM.international_representative
 			}
+			has_country_flag = council_of_cairo_flag
 		}
 		cost = 25
 		targets = {
@@ -312,6 +377,7 @@ MUM_restoring_egyptian_control = {
 				tooltip = mumei_found_tt
 				has_country_flag = MUM_mumei_found
 			}
+			has_country_flag = council_of_cairo_flag
 		}
 		visible = {
 			tag = MUM
@@ -322,6 +388,7 @@ MUM_restoring_egyptian_control = {
 				has_country_flag = MUM_watson_refuses_to_help
 				has_variable = MUM.international_representative
 			}
+			has_country_flag = council_of_cairo_flag
 		}
 		cost = 25
 		targets = {
@@ -346,6 +413,7 @@ MUM_restoring_egyptian_control = {
 				tooltip = mumei_found_tt
 				has_country_flag = MUM_mumei_found
 			}
+has_country_flag = council_of_cairo_flag
 		}
 		visible = {
 			tag = MUM
@@ -356,6 +424,7 @@ MUM_restoring_egyptian_control = {
 				has_country_flag = MUM_miko_refuses_to_help
 				has_variable = MUM.international_representative
 			}
+			has_country_flag = council_of_cairo_flag
 		}
 		cost = 25
 		targets = {
@@ -380,6 +449,7 @@ MUM_restoring_egyptian_control = {
 				tooltip = mumei_found_tt
 				has_country_flag = MUM_mumei_found
 			}
+has_country_flag = council_of_cairo_flag
 		}
 		visible = {
 			tag = MUM
@@ -390,6 +460,7 @@ MUM_restoring_egyptian_control = {
 				has_country_flag = MUM_mio_refuses_to_help
 				has_variable = MUM.international_representative
 			}
+			has_country_flag = council_of_cairo_flag
 		}
 		cost = 25
 		targets = {
@@ -414,11 +485,149 @@ MUM_restoring_egyptian_control = {
 			}
 			has_global_flag = egypt_war
 			has_war_with = PEK
-			550 = {
-				NOT = {
-					is_fully_controlled_by = PEK
+			OR = {
+				PEK = {
+					surrender_progress = 0.2
+				}
+			custom_trigger_tooltip = {
+				tooltip = peko_out_yagooin_tt
+				447 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1027 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1028 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1029 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1030 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				456 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				457 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1031 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				452 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				552 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1032 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				948 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				553 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				454 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				843 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1140 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				273 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				663 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				451 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				450 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				662 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				449 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				661 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				448 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				665 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				458 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				453 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
 				}
 			}
+		}
 		}
 		cost = 0
 		fire_only_once = yes
@@ -443,11 +652,149 @@ MUM_restoring_egyptian_control = {
 			tag = PEK
 			has_global_flag = egypt_war
 			has_war_with = YAG
-			550 = {
-				NOT = {
-					is_fully_controlled_by = PEK
+			OR = {
+				PEK = {
+					surrender_progress = 0.2
+				}
+			custom_trigger_tooltip = {
+				tooltip = peko_out_yagooin_tt
+				447 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1027 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1028 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1029 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1030 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				456 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				457 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1031 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				452 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				552 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1032 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				948 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				553 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				454 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				843 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				1140 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				273 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				663 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				451 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				450 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				662 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				449 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				661 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				448 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				665 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				458 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
+				}
+				453 = {
+					NOT = {
+						is_fully_controlled_by = PEK
+					}
 				}
 			}
+		}
 		}
 		cost = 0
 		fire_only_once = yes
@@ -472,23 +819,149 @@ MUM_restoring_egyptian_control = {
 			tag = PEK
 			has_global_flag = egypt_war
 			has_war_with = YAG
-			NOT = {
-				453 = {
-					is_controlled_by = YAG
+			OR = {
+				YAG = {
+					surrender_progress = 0.2
+				}
+			custom_trigger_tooltip = {
+				tooltip = peko_in_yagooout_tt
+				447 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1027 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1028 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1029 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1030 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				456 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				457 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1031 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				452 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				552 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1032 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
 				}
 				948 = {
-					is_controlled_by = YAG
-				}
-				843 = {
-					is_controlled_by = YAG
-				}
-				454 = {
-					is_controlled_by = YAG
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
 				}
 				553 = {
-					is_controlled_by = YAG
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				454 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				843 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1140 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				273 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				663 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				451 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				450 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				662 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				449 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				661 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				448 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				665 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				458 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				453 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
 				}
 			}
+		}
 			if = {
 				limit = {
 					PEK = {
@@ -523,23 +996,149 @@ MUM_restoring_egyptian_control = {
 			tag = YAG
 			has_global_flag = egypt_war
 			has_war_with = PEK
-			NOT = {
-				453 = {
-					is_controlled_by = YAG
+			OR = {
+				YAG = {
+					surrender_progress = 0.2
+				}
+			custom_trigger_tooltip = {
+				tooltip = peko_in_yagooout_tt
+				447 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1027 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1028 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1029 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1030 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				456 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				457 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1031 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				452 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				552 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1032 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
 				}
 				948 = {
-					is_controlled_by = YAG
-				}
-				843 = {
-					is_controlled_by = YAG
-				}
-				454 = {
-					is_controlled_by = YAG
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
 				}
 				553 = {
-					is_controlled_by = YAG
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				454 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				843 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				1140 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				273 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				663 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				451 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				450 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				662 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				449 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				661 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				448 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				665 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				458 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
+				}
+				453 = {
+					NOT = {
+						is_fully_controlled_by = YAG
+					}
 				}
 			}
+		}
 			if = {
 				limit = {
 					PEK = {

@@ -9,7 +9,7 @@ country_event = {
 				has_country_flag = MUM_watson_treaty_steward_canal
 			}
 		}
-		text = a
+		text = watson_steward_desc
 	}
 	desc = {
 		trigger = {
@@ -17,7 +17,7 @@ country_event = {
 				has_country_flag = MUM_watson_treaty_decolonisation
 			}
 		}
-		text = a
+		text = watson_decolonization_desc
 	}
 	desc = {
 		trigger = {
@@ -25,7 +25,7 @@ country_event = {
 				has_country_flag = MUM_watson_treaty_international_zone
 			}
 		}
-		text = a
+		text = watson_international_desc
 	}
 	picture = GFX_report_event_MUM_mumei_found
 	is_triggered_only = yes
@@ -329,7 +329,7 @@ country_event = {
 				has_country_flag = MUM_korone_treaty_steward
 			}
 		}
-		text = a
+		text = korone_steward_desc
 	}
 	desc = {
 		trigger = {
@@ -337,7 +337,7 @@ country_event = {
 				has_country_flag = MUM_korone_treaty_threaten_with_war
 			}
 		}
-		text = a
+		text = korone_threat_desc
 	}
 	picture = GFX_report_event_MUM_mumei_found
 	is_triggered_only = yes
@@ -636,7 +636,7 @@ country_event = {
 				has_country_flag = MUM_miko_treaty_free_seas
 			}
 		}
-		text = a
+		text = miko_free_seas_desc
 	}
 	desc = {
 		trigger = {
@@ -644,7 +644,7 @@ country_event = {
 				has_country_flag = MUM_miko_treaty_pan_arab
 			}
 		}
-		text = a
+		text = miko_pan_arab_desc
 	}
 	desc = {
 		trigger = {
@@ -652,7 +652,7 @@ country_event = {
 				has_country_flag = MUM_miko_treaty_self_determination
 			}
 		}
-		text = a
+		text = miko_self_determination_desc
 	}
 	desc = {
 		trigger = {
@@ -660,7 +660,7 @@ country_event = {
 				has_country_flag = MUM_miko_treaty_pro_peko
 			}
 		}
-		text = a
+		text = miko_pro_peko_desc
 	}
 	picture = GFX_report_event_MUM_mumei_found
 	is_triggered_only = yes
@@ -1009,7 +1009,7 @@ country_event = {
 				has_country_flag = MUM_mio_treaty_pro_yagoo
 			}
 		}
-		text = a
+		text = mio_pro_yagoo_desc
 	}
 	desc = {
 		trigger = {
@@ -1017,7 +1017,7 @@ country_event = {
 				has_country_flag = MUM_mio_treaty_pure_neutral
 			}
 		}
-		text = a
+		text = mio_pure_neutral_desc
 	}
 	desc = {
 		trigger = {
@@ -1025,7 +1025,7 @@ country_event = {
 				has_country_flag = MUM_mio_treaty_withdrawl
 			}
 		}
-		text = a
+		text = mio_withdrawl_desc
 	}
 	picture = GFX_report_event_MUM_mumei_found
 	is_triggered_only = yes
@@ -1352,7 +1352,7 @@ country_event = {
 				has_country_flag = MUM_denied_egypt_treaty
 			}
 		}
-		text = a
+		text = PA_YD_MD_desc
 	}
 	desc = {
 		trigger = {
@@ -1366,7 +1366,7 @@ country_event = {
 				has_country_flag = MUM_denied_egypt_treaty
 			}
 		}
-		text = a
+		text = PA_YA_MD_desc
 	}
 	desc = {
 		trigger = {
@@ -1380,7 +1380,7 @@ country_event = {
 				has_country_flag = MUM_accepted_egypt_treaty
 			}
 		}
-		text = a
+		text = PA_YD_MA_desc
 	}
 	desc = {
 		trigger = {
@@ -1394,7 +1394,7 @@ country_event = {
 				has_country_flag = MUM_accepted_egypt_treaty
 			}
 		}
-		text = a
+		text = PD_YA_MA_desc
 	}
 	desc = {
 		trigger = {
@@ -1408,7 +1408,7 @@ country_event = {
 				has_country_flag = MUM_accepted_egypt_treaty
 			}
 		}
-		text = a
+		text = PD_YD_MA_desc
 	}
 	desc = {
 		trigger = {
@@ -1422,7 +1422,7 @@ country_event = {
 				has_country_flag = MUM_denied_egypt_treaty
 			}
 		}
-		text = a
+		text = PD_YA_MD_desc
 	}
 	desc = {
 		trigger = {
@@ -1436,7 +1436,7 @@ country_event = {
 				has_country_flag = MUM_denied_egypt_treaty
 			}
 		}
-		text = a
+		text = PD_YD_MD_desc
 	}
 	picture = GFX_report_event_MUM_mumei_found
 	trigger = {
@@ -1479,6 +1479,15 @@ country_event = {
 		name = mumegypt.5.a
 		if = {
 			limit = {
+				NOT = {
+					has_global_flag = cairo_conference_failure
+				}
+			}
+			news_event = global_holo.38
+			set_global_flag = cairo_conference_failure
+		}
+		if = {
+			limit = {
 				tag = YAG
 				YAG = {
 					has_country_flag = YAG_denied_egypt_treaty
@@ -1487,7 +1496,7 @@ country_event = {
 			MUM = {
 				add_days_mission_timeout = {
 					mission = MUM_restoring_egypt_mission
-					days = -20
+					days = -50
 				}
 			}
 		}
@@ -1501,7 +1510,7 @@ country_event = {
 			MUM = {
 				add_days_mission_timeout = {
 					mission = MUM_restoring_egypt_mission
-					days = -20
+					days = -50
 				}
 			}
 		}
@@ -1515,7 +1524,7 @@ country_event = {
 			MUM = {
 				add_days_mission_timeout = {
 					mission = MUM_restoring_egypt_mission
-					days = -20
+					days = -50
 				}
 			}
 		}
@@ -1552,6 +1561,7 @@ country_event = {
 		trigger = {
 			tag = MUM
 		}
+		news_event = global_holo.37
 		MUM = {
 			set_country_flag = MUM_egypt_peace_treaty
 		}
@@ -2096,6 +2106,9 @@ country_event = {
 			puppet = LIB
 			white_peace = PEK
 		}
+		MUM = {
+			leave_faction = yes
+		}
 	}
 	#no >:C
 	option = {
@@ -2192,6 +2205,9 @@ country_event = {
 			puppet = LIB
 			white_peace = PEK
 		}
+		MUM = {
+			leave_faction = yes
+		}
 	}
 	#no >:)
 	option = {
@@ -2261,7 +2277,7 @@ country_event = {
 		PEK = {
 			country_event = mumegypt.21
 			puppet = PAL
-			puppet = LEB
+			puppet = LBN
 			white_peace = YAG
 		}
 		if = {
@@ -2271,6 +2287,9 @@ country_event = {
 				}
 			}
 			white_peace = KRN
+		}
+		MUM = {
+			leave_faction = yes
 		}
 	}
 	#no >:(
@@ -2315,8 +2334,11 @@ country_event = {
 		PEK = {
 			country_event = mumegypt.21
 			puppet = PAL
-			puppet = LEB
+			puppet = LBN
 			white_peace = YAG
+		}
+		MUM = {
+			leave_faction = yes
 		}
 		if = {
 			limit = {
@@ -2383,10 +2405,13 @@ country_event = {
 			transfer_state_to = PEK
 		}
 	}
-	#Annex all of Egypt
+	#puppet egypt
 	option = {
 		name = mumegypt.21.b
 		puppet = MUM
+		MUM = {
+			set_cosmetic_tag = MUM_peko_mumei
+		}
 		PYW_Mumei_restored_egypt = yes
 		948 = {
 			transfer_state_to = PEK
@@ -2510,12 +2535,28 @@ country_event = {
 		928 = {
 			transfer_state_to = SOR
 		}
+		924 = {
+			transfer_state_to = ACH
+		}
+		802 = {
+			transfer_state_to = ACH
+		}
+		108 = {
+			transfer_state_to = ACH
+		}
+		801 = {
+			transfer_state_to = HIT
+		}
 		if = {
 			limit = {
 				country_exists = ALO
 			}
-			transfer_state = 938
-			transfer_state = 82
+			938 = {
+				transfer_state_to = ALO
+			 }
+			 82 = {
+				transfer_state_to = ALO
+			 }
 		}
 		PAL = {
 			add_state_core = 843
@@ -2527,12 +2568,15 @@ country_event = {
 		YAG = {
 			end_puppet = SOR
 		}
+		MUM = {
+			leave_faction = yes
+		}
 		PEK = {
 			country_event = mumegypt.21
 			puppet = ACH
 			puppet = SOR
 			puppet = PAL
-			puppet = LEB
+			puppet = lbn
 			puppet = HIT
 			puppet = YAG
 			white_peace = YAG
@@ -2545,16 +2589,49 @@ country_event = {
 			}
 			every_country = {
 				limit = {
-					is_subject_of = KRN
+					is_puppet_of = KRN
 				}
 				KRN = {
-					end_puppet = ROOT
+					end_puppet = THIS
 				}
 				PEK = {
-					puppet = ROOT
+					puppet = THIS
 				}
+				
 			}
-			white_peace = KRN
+			797 = {
+				transfer_state_to = SOR
+			}
+			819 = {
+				transfer_state_to = SOR
+			}
+			347 = {
+				transfer_state_to = SOR
+			}
+			865 = {
+				transfer_state_to = SOR
+			}
+			343 = {
+				transfer_state_to = SOR
+			}
+			342 = {
+				transfer_state_to = SOR
+			}
+			339 = {
+				transfer_state_to = SOR
+			}
+			340 = {
+				transfer_state_to = SOR
+			}
+			346 = {
+				transfer_state_to = SOR
+			}
+			345 = {
+				transfer_state_to = SOR
+			}
+			PEK = {
+				white_peace = KRN
+			}
 		}
 	}
 }

@@ -7,58 +7,6 @@ GEN_true_american_successor_state = {
 			ROOT = {
 				any_owned_state = {
 					any_neighbor_state = {
-						state = 379
-					}
-				}
-			}
-		}
-		visible = {
-			ROOT = {
-				any_owned_state = {
-					any_neighbor_state = {
-						state = 379
-					}
-				}
-				NOT = {
-					owns_state = 379
-				}
-			}
-		}
-		fire_only_once = yes
-		cost = 25
-		highlight_states = {
-			highlight_state_targets = {
-				state = 379
-			}
-		}
-		ai_will_do = {
-			base = 45
-			modifier = {
-				add = 15
-				tag = MRI
-			}
-		}
-		complete_effect = {
-			ROOT = {
-				add_threat = 1
-			}
-			country_event = america.1
-			custom_effect_tooltip = GEN_integrate_nevada_tooltip
-			add_to_variable = {
-				var = GLOBAL.america_tension
-				value = 1
-				tooltip = GEN_america_tension_increase_var_tooltip
-			}
-		}
-	}
-	#
-	#	Elko
-	# 
-	GEN_integrate_elko = {
-		available = {
-			ROOT = {
-				any_owned_state = {
-					any_neighbor_state = {
 						state = 1023
 					}
 				}
@@ -75,64 +23,17 @@ GEN_true_american_successor_state = {
 					owns_state = 1023
 				}
 			}
+			1023 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
 		highlight_states = {
 			highlight_state_targets = {
 				state = 1023
-			}
-		}
-		ai_will_do = {
-			base = 45
-			modifier = {
-				add = 25
-				tag = MRI
-			}
-		}
-		complete_effect = {
-			ROOT = {
-				add_threat = 1
-			}
-			country_event = america.17
-			custom_effect_tooltip = GEN_integrate_nevada_tooltip
-			add_to_variable = {
-				var = GLOBAL.america_tension
-				value = 1
-				tooltip = GEN_america_tension_increase_var_tooltip
-			}
-		}
-	}
-	#
-	#	Douglas
-	# 
-	GEN_integrate_douglas = {
-		available = {
-			ROOT = {
-				any_owned_state = {
-					any_neighbor_state = {
-						state = 1024
-					}
-				}
-			}
-		}
-		visible = {
-			ROOT = {
-				any_owned_state = {
-					any_neighbor_state = {
-						state = 1024
-					}
-				}
-				NOT = {
-					owns_state = 1024
-				}
-			}
-		}
-		fire_only_once = yes
-		cost = 25
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1024
 			}
 		}
 		ai_will_do = {
@@ -146,8 +47,11 @@ GEN_true_american_successor_state = {
 			ROOT = {
 				add_threat = 1
 			}
-			country_event = america.18
+			country_event = america.1
 			custom_effect_tooltip = GEN_integrate_nevada_tooltip
+			1023 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -155,6 +59,116 @@ GEN_true_american_successor_state = {
 			}
 		}
 	}
+	# #
+	# #	Elko
+	# # 
+	# GEN_integrate_elko = {
+	# 	available = {
+	# 		ROOT = {
+	# 			any_owned_state = {
+	# 				any_neighbor_state = {
+	# 					state = 1023
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	visible = {
+	# 		ROOT = {
+	# 			any_owned_state = {
+	# 				any_neighbor_state = {
+	# 					state = 1023
+	# 				}
+	# 			}
+	# 			NOT = {
+	# 				owns_state = 1023
+	# 			}
+	# 		}
+	# 	}
+	# 	fire_only_once = yes
+	# 	cost = 25
+	# 	highlight_states = {
+	# 		highlight_state_targets = {
+	# 			state = 1023
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 45
+	# 		modifier = {
+	# 			add = 25
+	# 			tag = MRI
+	# 		}
+	# 	}
+	# 	complete_effect = {
+	# 		ROOT = {
+	# 			add_threat = 1
+	# 		}
+	# 		country_event = america.17
+	# 		custom_effect_tooltip = GEN_integrate_nevada_tooltip
+	# 		1023 = {
+	# 			set_state_flag = AMERICA_already_occupied
+	# 		}
+	# 		add_to_variable = {
+	# 			var = GLOBAL.america_tension
+	# 			value = 1
+	# 			tooltip = GEN_america_tension_increase_var_tooltip
+	# 		}
+	# 	}
+	# }
+	# #
+	# #	Douglas
+	# # 
+	# GEN_integrate_douglas = {
+	# 	available = {
+	# 		ROOT = {
+	# 			any_owned_state = {
+	# 				any_neighbor_state = {
+	# 					state = 1024
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	visible = {
+	# 		ROOT = {
+	# 			any_owned_state = {
+	# 				any_neighbor_state = {
+	# 					state = 1024
+	# 				}
+	# 			}
+	# 			NOT = {
+	# 				owns_state = 1024
+	# 			}
+	# 		}
+	# 	}
+	# 	fire_only_once = yes
+	# 	cost = 25
+	# 	highlight_states = {
+	# 		highlight_state_targets = {
+	# 			state = 1024
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 45
+	# 		modifier = {
+	# 			add = 15
+	# 			tag = MRI
+	# 		}
+	# 	}
+	# 	complete_effect = {
+	# 		ROOT = {
+	# 			add_threat = 1
+	# 		}
+	# 		country_event = america.18
+	# 		custom_effect_tooltip = GEN_integrate_nevada_tooltip
+	# 		1024 = {
+	# 			set_state_flag = AMERICA_already_occupied
+	# 		}
+	# 		add_to_variable = {
+	# 			var = GLOBAL.america_tension
+	# 			value = 1
+	# 			tooltip = GEN_america_tension_increase_var_tooltip
+	# 		}
+	# 	}
+	# }
 	#
 	#	Idaho
 	#
@@ -177,6 +191,11 @@ GEN_true_american_successor_state = {
 				}
 				NOT = {
 					owns_state = 387
+				}
+			}
+			387 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
 				}
 			}
 		}
@@ -203,6 +222,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.2
 			custom_effect_tooltip = GEN_integrate_idaho_tooltip
+			387 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -234,6 +256,11 @@ GEN_true_american_successor_state = {
 					owns_state = 380
 				}
 			}
+			380 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -258,6 +285,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.3
 			custom_effect_tooltip = GEN_integrate_utah_tooltip
+			380 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -289,6 +319,11 @@ GEN_true_american_successor_state = {
 					owns_state = 388
 				}
 			}
+			388 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -310,6 +345,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.4
 			custom_effect_tooltip = GEN_integrate_montana_tooltip
+			388 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -341,6 +379,11 @@ GEN_true_american_successor_state = {
 					owns_state = 381
 				}
 			}
+			381 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -362,6 +405,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.5
 			custom_effect_tooltip = GEN_integrate_wyoming_tooltip
+			381 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -393,6 +439,11 @@ GEN_true_american_successor_state = {
 					owns_state = 382
 				}
 			}
+			382 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -414,6 +465,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.6
 			custom_effect_tooltip = GEN_integrate_colorado_tooltip
+			382 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -445,6 +499,11 @@ GEN_true_american_successor_state = {
 					owns_state = 389
 				}
 			}
+			389 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -466,6 +525,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.7
 			custom_effect_tooltip = GEN_integrate_north_dakota_tooltip
+			389 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -497,6 +559,11 @@ GEN_true_american_successor_state = {
 					owns_state = 390
 				}
 			}
+			390 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -518,6 +585,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.8
 			custom_effect_tooltip = GEN_integrate_south_dakota_tooltip
+			390 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -549,6 +619,11 @@ GEN_true_american_successor_state = {
 					owns_state = 384
 				}
 			}
+			384 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -570,6 +645,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.9
 			custom_effect_tooltip = GEN_integrate_nebraska_tooltip
+			384 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -601,6 +679,11 @@ GEN_true_american_successor_state = {
 					owns_state = 391
 				}
 			}
+			391 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -622,6 +705,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.10
 			custom_effect_tooltip = GEN_integrate_minessota_tooltip
+			391 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -653,6 +739,11 @@ GEN_true_american_successor_state = {
 					owns_state = 392
 				}
 			}
+			392 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -674,6 +765,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.11
 			custom_effect_tooltip = GEN_integrate_iowa_tooltip
+			392 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -705,6 +799,11 @@ GEN_true_american_successor_state = {
 					owns_state = 373
 				}
 			}
+			383 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -726,6 +825,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.12
 			custom_effect_tooltip = GEN_integrate_missouri_tooltip
+			373 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -757,6 +859,11 @@ GEN_true_american_successor_state = {
 					owns_state = 394
 				}
 			}
+			394 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -778,6 +885,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.13
 			custom_effect_tooltip = GEN_integrate_wisconsin_tooltip
+			394 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -809,6 +919,11 @@ GEN_true_american_successor_state = {
 					owns_state = 395
 				}
 			}
+			395 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -830,6 +945,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.14
 			custom_effect_tooltip = GEN_integrate_illinois_tooltip
+			395 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -861,6 +979,11 @@ GEN_true_american_successor_state = {
 					owns_state = 396
 				}
 			}
+			396 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -882,6 +1005,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.15
 			custom_effect_tooltip = GEN_integrate_indiana_tooltip
+			396 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1
@@ -913,6 +1039,11 @@ GEN_true_american_successor_state = {
 					owns_state = 817
 				}
 			}
+			817 = {
+				NOT = {
+					has_state_flag = AMERICA_already_occupied
+				}
+			}
 		}
 		fire_only_once = yes
 		cost = 25
@@ -934,6 +1065,9 @@ GEN_true_american_successor_state = {
 			}
 			country_event = america.16
 			custom_effect_tooltip = GEN_integrate_upper_peninsula_tooltip
+			817 = {
+				set_state_flag = AMERICA_already_occupied
+			}
 			add_to_variable = {
 				var = GLOBAL.america_tension
 				value = 1

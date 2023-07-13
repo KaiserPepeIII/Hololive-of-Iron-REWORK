@@ -50,7 +50,7 @@ MEL_aloe_civil_war_interactions = {
 			always = yes
 		}
 		complete_effect = {
-			add_threat = 3.5
+			add_threat = 1.5
 			leave_faction = yes
 			MEL = {
 				transfer_state = 76
@@ -87,27 +87,26 @@ MEL_demand_banat = {
 		}
 	}
 }
+
 MEL_scripted_peacedeal_aloe = {
 	MEL_peace_transylvania_decision = {
 		icon = GFX_decision_icon_default
 		available = {
 			MEL = {
 				surrender_progress < 0.7
-
 			}
 		}
 		fire_only_once = yes
 		visible = {
-				ALO = {
-					has_war_with = MEL
-				}
-				MEL = {
-					owns_state = 84
-				}
+			ALO = {
+				has_war_with = MEL
+			}
+			MEL = {
+				owns_state = 84
+			}
 		}
 		complete_effect = {
 			ALO = {
-				
 				country_event = aloe.50
 			}
 		}
