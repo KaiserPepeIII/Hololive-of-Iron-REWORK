@@ -27,7 +27,7 @@ country_event = {
 		}
 		text = watson_international_desc
 	}
-	picture = GFX_report_event_MUM_mumei_found
+	picture = GFX_report_event_mumegypt1_MUM_watsons_treaty
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -339,7 +339,7 @@ country_event = {
 		}
 		text = korone_threat_desc
 	}
-	picture = GFX_report_event_MUM_mumei_found
+	picture = GFX_report_event_mumegypt2_MUM_korones_treaty
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -662,7 +662,7 @@ country_event = {
 		}
 		text = miko_pro_peko_desc
 	}
-	picture = GFX_report_event_MUM_mumei_found
+	picture = GFX_report_event_mumegypt3_mikos_treaty
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -1027,7 +1027,7 @@ country_event = {
 		}
 		text = mio_withdrawl_desc
 	}
-	picture = GFX_report_event_MUM_mumei_found
+	picture = GFX_report_event_mumegypt4_MUM_mios_treaty
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -1438,7 +1438,7 @@ country_event = {
 		}
 		text = PD_YD_MD_desc
 	}
-	picture = GFX_report_event_MUM_mumei_found
+	picture = GFX_report_event_mumegypt5_MUM_treaty_failure
 	trigger = {
 		AND = {
 			OR = {
@@ -1448,6 +1448,9 @@ country_event = {
 						has_country_flag = PEK_accepted_egypt_treaty
 						has_country_flag = PEK_denied_egypt_treaty
 					}
+					NOT = {
+						has_country_flag = MUM_egypt_peace_treaty
+					}
 				}
 				AND = {
 					tag = MUM
@@ -1455,12 +1458,18 @@ country_event = {
 						has_country_flag = MUM_accepted_egypt_treaty
 						has_country_flag = MUM_denied_egypt_treaty
 					}
+					NOT = {
+						has_country_flag = MUM_egypt_peace_treaty
+					}
 				}
 				AND = {
 					tag = YAG
 					OR = {
 						has_country_flag = YAG_accepted_egypt_treaty
 						has_country_flag = YAG_denied_egypt_treaty
+					}
+					NOT = {
+						has_country_flag = MUM_egypt_peace_treaty
 					}
 				}
 			}
@@ -1477,6 +1486,7 @@ country_event = {
 	#war looms
 	option = {
 		name = mumegypt.5.a
+		set_country_flag = MUM_egypt_peace_treaty
 		if = {
 			limit = {
 				NOT = {
@@ -1485,6 +1495,9 @@ country_event = {
 			}
 			news_event = global_holo.38
 			set_global_flag = cairo_conference_failure
+		}
+		MUM = {
+			clr_country_flag = council_of_cairo_flag
 		}
 		if = {
 			limit = {
@@ -1536,14 +1549,29 @@ country_event = {
 country_event = {
 	id = mumegypt.6
 	title = mumegypt.6.t
-	desc = mumegypt.6.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.6.desc
+	picture = GFX_report_event_mumegypt6_MUM_treaty_success
 	trigger = {
 		AND = {
 			OR = {
-				tag = PEK
-				tag = MUM
-				tag = YAG
+				AND = {
+					tag = PEK
+					NOT = {
+						has_country_flag = MUM_egypt_peace_treaty
+					}
+				}
+				AND = {
+					tag = MUM
+					NOT = {
+						has_country_flag = MUM_egypt_peace_treaty
+					}
+				}
+				AND = {
+					tag = YAG
+					NOT = {
+						has_country_flag = MUM_egypt_peace_treaty
+					}
+				}
 			}
 			check_variable = {
 				var = MUM.egypt_treaty_acceptance
@@ -1562,6 +1590,9 @@ country_event = {
 			tag = MUM
 		}
 		news_event = global_holo.37
+		MUM = {
+			clr_country_flag = council_of_cairo_flag
+		}
 		MUM = {
 			set_country_flag = MUM_egypt_peace_treaty
 		}
@@ -1698,6 +1729,7 @@ country_event = {
 				tag = MUM
 			}
 		}
+		set_country_flag = MUM_egypt_peace_treaty
 	}
 }
 
@@ -1705,8 +1737,8 @@ country_event = {
 country_event = {
 	id = mumegypt.7
 	title = mumegypt.7.t
-	desc = mumegypt.7.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.7.desc
+	picture = GFX_report_event_mumegypt7_MUM_miko_decolonization
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -1743,8 +1775,8 @@ country_event = {
 country_event = {
 	id = mumegypt.8
 	title = mumegypt.8.t
-	desc = mumegypt.8.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.8.desc
+	picture = GFX_report_event_mumegypt8_MUM_suisei_decolonization
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -1821,8 +1853,8 @@ country_event = {
 country_event = {
 	id = mumegypt.9
 	title = mumegypt.9.t
-	desc = mumegypt.9.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.9.desc
+	picture = GFX_report_event_mumegypt9_MUM_subaru_decolonization
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -1878,8 +1910,8 @@ country_event = {
 country_event = {
 	id = mumegypt.10
 	title = mumegypt.10.t
-	desc = mumegypt.10.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.10.desc
+	picture = GFX_report_event_mumegypt10_MUM_portugal_decolonization
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -1955,8 +1987,8 @@ country_event = {
 country_event = {
 	id = mumegypt.11
 	title = mumegypt.11.t
-	desc = mumegypt.11.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.11.desc
+	picture = GFX_report_event_mumegypt11_MUM_fubuki_decolonization
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -1990,8 +2022,8 @@ country_event = {
 country_event = {
 	id = mumegypt.12
 	title = mumegypt.12.t
-	desc = mumegypt.12.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.12.desc
+	picture = GFX_report_event_mumegypt12_MUM_noel_decolonization
 	is_triggered_only = yes
 	#agree
 	option = {
@@ -2025,8 +2057,8 @@ country_event = {
 country_event = {
 	id = mumegypt.13
 	title = mumegypt.13.t
-	desc = mumegypt.13.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.13.desc
+	picture = GFX_report_event_mumegypt13_MUM_yagoo_sends_terms_pekora
 	is_triggered_only = yes
 	#Yes :C
 	option = {
@@ -2124,8 +2156,8 @@ country_event = {
 country_event = {
 	id = mumegypt.14
 	title = mumegypt.14.t
-	desc = mumegypt.14.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.14.desc
+	picture = GFX_report_eventmumegypt14_MUM_pekora_asks_surrender
 	is_triggered_only = yes
 	#Yes :)
 	option = {
@@ -2223,8 +2255,8 @@ country_event = {
 country_event = {
 	id = mumegypt.15
 	title = mumegypt.15.t
-	desc = mumegypt.15.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.15.desc
+	picture = GFX_report_event_mumegypt15_MUM_pekora_refuses_surrender
 	is_triggered_only = yes
 	#Death war inbound!!!
 	option = {
@@ -2236,8 +2268,8 @@ country_event = {
 country_event = {
 	id = mumegypt.16
 	title = mumegypt.16.t
-	desc = mumegypt.16.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.16.desc
+	picture = GFX_report_event_mumegypt16_MUM_yagoo_refuses_to_recognize_pekora_surrender
 	is_triggered_only = yes
 	#Death war inbound!!!
 	option = {
@@ -2249,8 +2281,8 @@ country_event = {
 country_event = {
 	id = mumegypt.17
 	title = mumegypt.17.t
-	desc = mumegypt.17.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.17.desc
+	picture = GFX_report_event_mumegypt17_MUM_pekora_sends_terms_to_yagoo
 	is_triggered_only = yes
 	#Yes :(
 	option = {
@@ -2306,8 +2338,8 @@ country_event = {
 country_event = {
 	id = mumegypt.18
 	title = mumegypt.18.t
-	desc = mumegypt.18.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.18.desc
+	picture = GFX_report_event_mumegypt18_MUM_yagoo_looks_to_surrender_to_pekora
 	is_triggered_only = yes
 	#Yes :)
 	option = {
@@ -2363,8 +2395,8 @@ country_event = {
 country_event = {
 	id = mumegypt.19
 	title = mumegypt.19.t
-	desc = mumegypt.19.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.19.desc
+	picture = GFX_report_event_mumegypt19_MUM_yagoo_refuses_surrender
 	is_triggered_only = yes
 	#Death war inbound!!!
 	option = {
@@ -2376,8 +2408,8 @@ country_event = {
 country_event = {
 	id = mumegypt.20
 	title = mumegypt.20.t
-	desc = mumegypt.20.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.20.desc
+	picture = GFX_report_event_mumegypt20_MUM_pekora_refuses_to_recognize_yagoos_surrender
 	is_triggered_only = yes
 	#Death war inbound!!!
 	option = {
@@ -2389,8 +2421,8 @@ country_event = {
 country_event = {
 	id = mumegypt.21
 	title = mumegypt.21.t
-	desc = mumegypt.21.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.21.desc
+	picture = GFX_report_event_mumegypt21_MUM_pekora_wins
 	is_triggered_only = yes
 	#Annex all of Egypt
 	option = {
@@ -2426,8 +2458,8 @@ country_event = {
 country_event = {
 	id = mumegypt.22
 	title = mumegypt.22.t
-	desc = mumegypt.22.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.22.desc
+	picture = GFX_report_event_mumegypt22_MUM_pekora_harsh_treaty
 	is_triggered_only = yes
 	#make him suffer
 	option = {
@@ -2553,10 +2585,10 @@ country_event = {
 			}
 			938 = {
 				transfer_state_to = ALO
-			 }
-			 82 = {
+			}
+			82 = {
 				transfer_state_to = ALO
-			 }
+			}
 		}
 		PAL = {
 			add_state_core = 843
@@ -2597,7 +2629,6 @@ country_event = {
 				PEK = {
 					puppet = THIS
 				}
-				
 			}
 			797 = {
 				transfer_state_to = SOR
@@ -2640,8 +2671,8 @@ country_event = {
 country_event = {
 	id = mumegypt.23
 	title = mumegypt.23.t
-	desc = mumegypt.23.d
-	picture = GFX_report_event_MUM_mumei_found
+	desc = mumegypt.23.desc
+	picture = GFX_report_event_mumegypt23_MUM_yagoo_harsh_treaty
 	is_triggered_only = yes
 	#make her suffer
 	option = {
