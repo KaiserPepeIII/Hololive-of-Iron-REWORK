@@ -768,13 +768,6 @@ country_event = {
 		FBK = {
 			end_puppet = WFA
 		}
-		WFA = {
-			declare_war_on = {
-				target = WFR
-				type = annex_everything
-			}
-		}
-		#
 		hidden_effect = {
 			news_event = global_holo.28
 			every_state = {
@@ -798,6 +791,13 @@ country_event = {
 				WFA_pro_wfa_setup = yes
 			}
 		}
+		WFA = {
+			declare_war_on = {
+				target = WFR
+				type = annex_everything
+			}
+		}
+		#
 	}
 }
 
@@ -1061,10 +1061,6 @@ country_event = {
 			end_puppet = WFA
 		}
 		WFA = {
-			declare_war_on = {
-				target = WFR
-				type = annex_everything
-			}
 			#
 			hidden_effect = {
 				news_event = global_holo.28
@@ -1091,6 +1087,10 @@ country_event = {
 				FBK = {
 					country_event = fubuki.33
 				}
+			} 
+			declare_war_on = {
+				target = WFR
+				type = annex_everything
 			}
 		}
 	}
@@ -1130,12 +1130,6 @@ country_event = {
 		set_country_flag = WFA_sided_pro_fbk
 		#
 		hidden_effect = {
-			WFR = {
-				declare_war_on = {
-					target = WFA
-					type = annex_everything
-				}
-			}
 			every_state = {
 				limit = {
 					is_core_of = WFA
@@ -1155,6 +1149,12 @@ country_event = {
 			}
 			WFA = {
 				WFA_pro_wfa_setup = yes
+			}
+			WFR = {
+				declare_war_on = {
+					target = WFA
+					type = annex_everything
+				}
 			}
 		}
 	}

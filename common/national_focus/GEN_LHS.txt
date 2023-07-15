@@ -47,6 +47,11 @@ focus_tree = {
 		id = GEN_rearmemants_program
 		icon = GFX_focus_GEN_rearmemants_program
 		cost = 8
+		available = {
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}
 		x = 15
 		y = 1
 		completion_reward = {
@@ -294,6 +299,7 @@ focus_tree = {
 		icon = GFX_focus_GEN_blitz_experiment
 		cost = 10
 		prerequisite = {
+			focus = GEN_defensive_ethos
 			focus = GEN_expansion_ethos
 		}
 		mutually_exclusive = {
@@ -382,6 +388,7 @@ focus_tree = {
 		icon = GFX_focus_GEN_mass_assault
 		cost = 10
 		prerequisite = {
+			focus = GEN_defensive_ethos
 			focus = GEN_expansion_ethos
 		}
 		mutually_exclusive = {
@@ -2072,11 +2079,7 @@ focus_tree = {
 		completion_reward = {
 			add_popularity = {
 				ideology = pro_resistance_monarchy
-				popularity = 0.08
-			}
-			add_popularity = {
-				ideology = divine_mandate
-				popularity = 0.08
+				popularity = 0.15
 			}
 		}
 		x = 80
@@ -2098,6 +2101,10 @@ focus_tree = {
 				ideology = pro_yagoo_progressive
 				popularity = -0.05
 			}
+			add_popularity = {
+				ideology = pro_yagoo_kleptocracy
+				popularity = -0.05
+			}
 		}
 		x = 78
 		y = 3
@@ -2110,6 +2117,7 @@ focus_tree = {
 			focus = GEN_faith_in_the_idol
 		}
 		completion_reward = {
+			add_war_support = 0.05
 			add_popularity = {
 				ideology = pro_resistance_monarchy
 				popularity = 0.05
@@ -2152,13 +2160,9 @@ focus_tree = {
 		icon = GFX_focus_GEN_abolish_parliament
 		cost = 8
 		prerequisite = {
-			focus = GEN_radicalize_supporters
-		}
-		prerequisite = {
 			focus = GEN_enlightened_rulership
-		}
-		prerequisite = {
 			focus = GEN_stir_up_anti_parliamentarianism
+			focus = GEN_radicalize_supporters
 		}
 		completion_reward = {
 			add_stability = -0.15
@@ -2186,6 +2190,10 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_abolish_parliament
 		}
+		completion_reward = {
+			add_political_power = 125
+			add_ideas = GEN_appoint_new_advisors
+		}
 		x = 79
 		y = 5
 	}
@@ -2195,6 +2203,12 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_abolish_parliament
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = 0.15
+			}
 		}
 		x = 81
 		y = 5
@@ -2206,6 +2220,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_appoint_new_advisors
 			focus = GEN_propaganda_campaigns
+		}
+		completion_reward = {
+			add_stability = 0.1
 		}
 		x = 80
 		y = 6
@@ -2220,6 +2237,17 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_faith_in_the_idol
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.1
+			}
+			add_stability = -0.05
+		}
 		x = 86
 		y = 2
 	}
@@ -2232,6 +2260,13 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = GEN_revolutionary_fervor
+		}
+		completion_reward = {
+			add_war_support = 0.15
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.15
+			}
 		}
 		x = 84
 		y = 3
@@ -2246,6 +2281,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_the_popular_uprising
 		}
+		completion_reward = {
+			two_random_arms_factory = yes
+		}
 		x = 84
 		y = 4
 	}
@@ -2255,6 +2293,10 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_promote_remilitarisation
+		}
+		completion_reward = {
+			two_random_militia = yes
+			two_random_militia = yes
 		}
 		x = 83
 		y = 5
@@ -2266,6 +2308,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_promote_remilitarisation
 		}
+		completion_reward = {
+			add_ideas = GEN_popular_army_idea
+		}
 		x = 85
 		y = 5
 	}
@@ -2273,11 +2318,20 @@ focus_tree = {
 		id = GEN_coup_detat
 		icon = GFX_focus_GEN_coup_detat
 		cost = 8
+		available = {
+			pro_resistance_nationalism > 0.35
+		}
 		prerequisite = {
 			focus = GEN_undermine_security_forces
 		}
 		prerequisite = {
 			focus = GEN_win_suport_army
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = pro_resistance_nationalism
+				elections_allowed = no
+			}
 		}
 		x = 84
 		y = 6
@@ -2286,9 +2340,29 @@ focus_tree = {
 		id = GEN_establish_full_support_resistance
 		icon = GFX_focus_GEN_officially_join_resistance_alliance
 		cost = 8
+		available = {
+			OR = {
+				has_government = pro_resistance_nationalism
+				has_completed_focus = GEN_consolidate_power
+			}
+		}
 		prerequisite = {
 			focus = GEN_coup_detat
 			focus = GEN_consolidate_power
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = GEN_coup_detat
+				}
+				add_stability = 0.15
+				else = {
+					set_politics = {
+						ruling_party = pro_resistance_monarchy
+						elections_allowed = no
+					}
+				}
+			}
 		}
 		x = 81
 		y = 7
@@ -2303,6 +2377,13 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_stir_nationalist_fervor
 		}
+		completion_reward = {
+			add_war_support = 0.15
+			add_popularity = {
+				ideology = communism
+				popularity = 0.15
+			}
+		}
 		x = 88
 		y = 3
 	}
@@ -2310,12 +2391,28 @@ focus_tree = {
 		id = GEN_the_popular_uprising
 		icon = GFX_focus_GEN_the_popular_uprising
 		cost = 8
+		available = {
+			communism > 0.4
+		}
 		prerequisite = {
 			focus = GEN_revolutionary_fervor
 			focus = GEN_stir_nationalist_fervor
 		}
 		mutually_exclusive = {
 			focus = GEN_promote_remilitarisation
+		}
+		completion_reward = {
+			start_civil_war = {
+				ruling_party = communism
+				ideology = pro_yagoo_kleptocracy
+				size = 0.2
+				keep_political_leader = yes
+				keep_political_party_members = yes
+				keep_unit_leaders_trigger = {
+					is_unit_leader = yes
+				}
+			}
+			two_random_militia = yes
 		}
 		x = 88
 		y = 4
@@ -2327,6 +2424,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_the_popular_uprising
 		}
+		completion_reward = {
+			add_ideas = GEN_international_supporters
+		}
 		x = 87
 		y = 5
 	}
@@ -2336,6 +2436,16 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_the_popular_uprising
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 150
+			}
 		}
 		x = 89
 		y = 5
@@ -2350,6 +2460,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_gather_arms
 		}
+		completion_reward = {
+			add_ideas = GEN_permanent_revolution
+		}
 		x = 88
 		y = 6
 	}
@@ -2359,6 +2472,13 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_begin_the_revolution
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_popularity = {
+				ideology = communism
+				popularity = 0.25
+			}
 		}
 		x = 88
 		y = 7
@@ -2374,6 +2494,13 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_lean_towards_aqua
 		}
+		completion_reward = {
+			add_ideas = GEN_pro_coco
+			add_opinion_modifier = {
+				target = COC
+				modifier = holo_friendly_ideologies
+			}
+		}
 		x = 84
 		y = 8
 	}
@@ -2388,6 +2515,13 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_lean_towards_coco
 		}
+		completion_reward = {
+			add_ideas = GEN_pro_aqua_idea
+			add_opinion_modifier = {
+				target = AQA
+				modifier = holo_friendly_ideologies
+			}
+		}
 		x = 86
 		y = 8
 	}
@@ -2399,6 +2533,9 @@ focus_tree = {
 			focus = GEN_lean_towards_aqua
 			focus = GEN_lean_towards_coco
 		}
+		completion_reward = {
+			add_ideas = GEN_unions_nationalized
+		}
 		x = 85
 		y = 9
 	}
@@ -2408,6 +2545,10 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_lean_towards_aqua
+		}
+		completion_reward = {
+			two_random_arms_factory = yes
+			two_random_civilian_factory = yes
 		}
 		x = 89
 		y = 9
@@ -2419,6 +2560,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_state_industry
 		}
+		completion_reward = {
+			two_random_militia = yes
+			two_random_militia = yes
+			two_random_militia = yes
+		}
 		x = 88
 		y = 10
 	}
@@ -2428,6 +2574,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_state_industry
+		}
+		completion_reward = {
+			add_ideas = GEN_revolutionary_education_idea
 		}
 		x = 90
 		y = 10
@@ -2441,6 +2590,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GEN_revolutionary_education
+		}
+		completion_reward = {
+			join_aqua_resistance = yes
 		}
 		x = 89
 		y = 11
@@ -2735,6 +2887,9 @@ focus_tree = {
 		id = GEN_corporate_research
 		icon = GFX_focus_GEN_corporate_research
 		cost = 10
+		available = {
+			num_of_factories > 50
+		}
 		prerequisite = {
 			focus = GEN_encourage_research
 		}
@@ -2771,6 +2926,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_progressive_reform
 		}
+		completion_reward = {
+			two_random_civilian_factories = yes
+		}
 		x = 67
 		y = 8
 	}
@@ -2780,6 +2938,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_provide_social_welfare
+		}
+		completion_reward = {
+			add_stability = 0.1
 		}
 		x = 67
 		y = 9
@@ -2791,6 +2952,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_encourage_free_thinking
 		}
+		completion_reward = {
+			add_research_slot = 1
+		}
 		x = 69
 		y = 9
 	}
@@ -2801,6 +2965,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_authoritarian_rule
 		}
+		completion_reward = {
+			add_ideas = GEN_youth_orgs_idea
+		}
 		x = 65
 		y = 9
 	}
@@ -2810,6 +2977,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_authoritarian_rule
+		}
+		completion_reward = {
+			add_war_support = 0.15
 		}
 		x = 63
 		y = 9
@@ -2826,6 +2996,9 @@ focus_tree = {
 			focus = GEN_promote_militarism
 			focus = GEN_consumer_economy
 		}
+		completion_reward = {
+			add_ideas = GEN_lhs_policing
+		}
 		x = 67
 		y = 10
 	}
@@ -2835,6 +3008,10 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_lhs_policing
+		}
+		completion_reward = {
+			add_stability = 0.1
+			join_lhs_development_union = yes
 		}
 		x = 64
 		y = 11
@@ -2846,6 +3023,10 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_lhs_policing
 		}
+		completion_reward = {
+			add_war_support = 0.1
+			join_lhs_defensive_union = yes
+		}
 		x = 70
 		y = 11
 	}
@@ -2855,6 +3036,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_lean_towards_coco
+		}
+		completion_reward = {
+			add_ideas = GEN_corporations
 		}
 		x = 81
 		y = 9
@@ -2866,6 +3050,10 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_nationalize_the_unions
 		}
+		completion_reward = {
+			two_random_civilian_factory = yes
+			two_random_civilian_factory = yes
+		}
 		x = 84
 		y = 10
 	}
@@ -2875,6 +3063,10 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_nationalize_the_unions
+		}
+		completion_reward = {
+			two_random_arms_factory = yes
+			two_random_arms_factory = yes
 		}
 		x = 86
 		y = 10
@@ -2886,6 +3078,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_establish_corporations
 		}
+		completion_reward = {
+			add_ideas = GEN_nationalistic_education_idea
+		}
 		x = 82
 		y = 10
 	}
@@ -2895,6 +3090,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_establish_corporations
+		}
+		completion_reward = {
+			add_war_support = 0.15
 		}
 		x = 80
 		y = 10
@@ -2909,6 +3107,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_condemn_the_bourgeois
 		}
+		completion_reward = {
+			add_ideas = GEN_invite_resistance_advisors_idea
+		}
 		x = 85
 		y = 11
 	}
@@ -2921,6 +3122,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GEN_nationalistic_education
+		}
+		completion_reward = {
+			join_coco_resistance = yes
 		}
 		x = 81
 		y = 11
@@ -2935,6 +3139,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_invite_resistance_advisorz
 		}
+		completion_reward = {
+			add_ideas = GEN_spread_resistance_abroad
+		}
 		x = 87
 		y = 12
 	}
@@ -2948,6 +3155,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_support_coco_rule
 		}
+		completion_reward = {
+			two_random_arms_factory = yes
+		}
 		x = 83
 		y = 12
 	}
@@ -2957,6 +3167,21 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_invite_resistance_advisorz
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = GEN_support_coco
+				}
+				COC = {
+					add_to_faction = ROOT
+				}
+				else = {
+					AQA = {
+						add_to_faction = ROOT
+					}
+				}
+			}
 		}
 		x = 85
 		y = 13

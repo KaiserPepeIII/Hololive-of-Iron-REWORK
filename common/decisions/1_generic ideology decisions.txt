@@ -2166,6 +2166,139 @@ democratic_revitalisation_category = {
 	}
 }
 
+kleptocratic_dictatorship_category = {
+	generic_distract_population = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 120
+		days_remove = 60
+		cost = 120
+		modifier = {
+			political_power_factor = -0.12
+			war_support_weekly = 0.01
+		}
+	}
+	generic_give_gifts_to_friends = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 120
+		days_remove = 60
+		cost = 120
+		modifier = {
+			trade_laws_cost_factor = -0.75
+			mobilization_laws_cost_factor = -0.75
+			political_advisor_cost_factor = -0.5
+			army_advisor_cost_factor = -0.5
+			navy_advisor_cost_factor = -0.5
+			air_advisor_cost_factor = -0.5
+			high_command_cost_factor = -0.5
+		}
+	}
+	generic_embezzle_funds = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 120
+		days_remove = 50
+		modifier = {
+			stability_weekly = -0.005
+		}
+		complete_effect = {
+			add_political_power = 150
+		}
+	}
+	generic_promote_stability = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		days_re_enable = 120
+		days_remove = 50
+		modifier = {
+			stability_weekly = 0.01
+		}
+	}
+	generic_bribe_supporters = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 125
+		days_re_enable = 120
+		days_remove = 50
+		modifier = {
+			stability_weekly = 0.01
+			master_ideology_drift = 0.05
+		}
+	}
+	generic_new_citizens_package = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 125
+		days_re_enable = 120
+		days_remove = 50
+		modifier = {
+			resistance_growth = -0.75
+			compliance_growth = 0.15
+		}
+	}
+	generic_run_factory_to_ground = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 120
+		complete_effect = {
+			add_political_power = 75
+			random_owned_state = {
+				limit = {
+					industrial_complex > 1
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+	}
+}
+
 reactionary_nationalism_category = {
 	generic_promote_nationalism = {
 		icon = generic_prepare_civil_war

@@ -29,6 +29,11 @@ focus_tree = {
 		id = GEN_naval_rearming_non
 		icon = GFX_focus_GEN_naval_rearming
 		cost = 8
+		available = {
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}
 		x = 34
 		y = 1
 		completion_reward = {
@@ -94,6 +99,7 @@ focus_tree = {
 			focus = GEN_armed_resistance_non
 		}
 		completion_reward = {
+			add_stability = 0.1
 		}
 		x = 70
 		y = 1
@@ -104,6 +110,9 @@ focus_tree = {
 		cost = 8
 		mutually_exclusive = {
 			focus = GEN_hololive_pandering_non
+		}
+		completion_reward = {
+			add_war_support = 0.15
 		}
 		x = 75
 		y = 1
@@ -242,6 +251,7 @@ focus_tree = {
 		icon = GFX_focus_GEN_blitz_experiment
 		cost = 10
 		prerequisite = {
+			focus = GEN_defensive_ethos_non
 			focus = GEN_expansion_ethos_non
 		}
 		mutually_exclusive = {
@@ -330,6 +340,7 @@ focus_tree = {
 		icon = GFX_focus_GEN_mass_assault
 		cost = 10
 		prerequisite = {
+			focus = GEN_defensive_ethos_non
 			focus = GEN_expansion_ethos_non
 		}
 		mutually_exclusive = {
@@ -1551,6 +1562,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = GEN_armed_neutrality_non
 		}
+		completion_reward = {
+			add_stability = 0.15
+		}
 		x = 63
 		y = 2
 	}
@@ -1560,6 +1574,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_ensure_lhs_recognition_non
+		}
+		completion_reward = {
+			add_ideas = GEN_regional_trade
 		}
 		x = 62
 		y = 3
@@ -1571,6 +1588,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_open_regional_trade_non
 		}
+		completion_reward = {
+			add_ideas = GEN_peaceful_image_idea
+		}
 		x = 62
 		y = 4
 	}
@@ -1580,6 +1600,11 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_secure_independence_diplomacy_non
+		}
+		completion_reward = {
+			add_ideas = export_focus
+			two_random_civilian_factory = yes
+			two_random_civilian_factory = yes
 		}
 		x = 61
 		y = 5
@@ -1591,6 +1616,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_ensure_lhs_recognition_non
 		}
+		completion_reward = {
+			two_random_civilian_factory = yes
+		}
 		x = 64
 		y = 3
 	}
@@ -1600,6 +1628,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_allow_holo_investment_non
+		}
+		completion_reward = {
+			two_random_civilian_factory = yes
 		}
 		x = 64
 		y = 4
@@ -1612,6 +1643,9 @@ focus_tree = {
 			focus = GEN_encourage_holo_companies_non
 			focus = GEN_secure_independence_diplomacy_non
 		}
+		completion_reward = {
+			join_the_lhs = yes
+		}
 		x = 63
 		y = 5
 	}
@@ -1622,6 +1656,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_encourage_holo_companies_non
 		}
+		completion_reward = {
+			add_ideas = GEN_lhs_indsutrial_advisors
+		}
 		x = 65
 		y = 5
 	}
@@ -1631,6 +1668,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_lhs_industrial_advisors_non
+		}
+		completion_reward = {
+			add_research_slot = 1
 		}
 		x = 65
 		y = 6
@@ -1766,13 +1806,11 @@ focus_tree = {
 			else_if = {
 				limit = {
 					NOT = {
-						OR = {
-							pro_resistance_nationalism > 0
-							communism > 0
-							pro_resistance_monarchy > 0
-							pro_resistance_kleptocracy > 0
-							left_wing_revolutionary > 0
-						}
+						pro_resistance_nationalism > 0
+						communism > 0
+						pro_resistance_monarchy > 0
+						pro_resistance_kleptocracy > 0
+						left_wing_revolutionary > 0
 					}
 				}
 				add_stability = 0.1
@@ -2730,6 +2768,10 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_revolutionary_guard_non
 		}
+		completion_reward = {
+			two_random_militia = yes
+			two_random_militia = yes
+		}
 		x = 79
 		y = 6
 	}
@@ -2900,7 +2942,7 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 5
 			add_doctrine_cost_reduction = {
-				name = generic_cost_reduction
+				name = GEN_shock_tech
 				cost_reduction = 0.5
 				uses = 2
 				category = cat_superior_firepower
@@ -3087,6 +3129,9 @@ focus_tree = {
 		id = GEN_corporate_research_non
 		icon = GFX_focus_GEN_corporate_research
 		cost = 10
+		available = {
+			num_of_factories > 50
+		}
 		prerequisite = {
 			focus = GEN_encourage_research_non
 		}
@@ -3103,6 +3148,8 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_lhs_customs_union_non
 		}
+		completion_reward = {
+		}
 		x = 63
 		y = 6
 	}
@@ -3112,6 +3159,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_encourage_globalism_non
+		}
+		completion_reward = {
+			two_random_civilian_factory = yes
 		}
 		x = 61
 		y = 6
@@ -3123,6 +3173,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_fully_acknowledge_past_treaties_non
 		}
+		completion_reward = {
+			join_lhs_development_union = yes
+		}
 		x = 63
 		y = 7
 	}
@@ -3132,6 +3185,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_prepare_resistance_cells_non
+		}
+		completion_reward = {
+			add_ideas = GEN_home_guard
 		}
 		x = 70
 		y = 7
@@ -3143,6 +3199,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_pacifist_outlook_non
 		}
+		completion_reward = {
+			two_random_arms_factory = yes
+		}
 		x = 68
 		y = 6
 	}
@@ -3152,6 +3211,11 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_seek_foreign_guarantees_non
+		}
+		completion_reward = {
+			two_random_militia = yes
+			two_random_militia = yes
+			two_random_militia = yes
 		}
 		x = 68
 		y = 7
@@ -3163,6 +3227,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_seek_foreign_guarantees_non
 		}
+		completion_reward = {
+			add_ideas = GEN_peaceful_image_idea
+		}
 		x = 66
 		y = 7
 	}
@@ -3172,6 +3239,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_revolutionary_guard_non
+		}
+		completion_reward = {
+			add_manpower = 30000
 		}
 		x = 77
 		y = 6
@@ -3185,6 +3255,10 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GEN_mass_conscription_non
+		}
+		completion_reward = {
+			two_random_militia = yes
+			two_random_militia = yes
 		}
 		x = 78
 		y = 7

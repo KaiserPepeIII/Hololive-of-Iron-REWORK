@@ -1389,7 +1389,68 @@ FBK_post_gnw_chaos_win = {
 			country_event = FBK_post_gnw.20
 		}
 	}
-	# ----------------------------------------------------------------------------- KARELIA ----------------------------------------------------------------------------
+}
+FBK_post_gnw_chaos_lose = {
+	FBK_aland_issue = {
+		#we must control aland by the time the 100 days are over OR sweden must have 15% capitulation progress
+		allowed = {
+			tag = FBK
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			OR = {
+				145 = {
+					is_controlled_by = FBK
+				}
+				SWE = {
+					surrender_progress > 0.2
+				}
+			}
+		}
+		visible = {
+			has_global_flag = GNW_peace_treaty
+		}
+		war_with_on_timeout = SWE
+		selectable_mission = no
+		days_mission_timeout = 100
+		is_good = no
+		fire_only_once = yes
+		complete_effect = {
+			country_event = FBK_post_gnw.31
+		}
+		timeout_effect = {
+			country_event = FBK_post_gnw.30
+		}
+	}
+	FBK_negotiate_with_sweden = {
+		allowed = {
+			tag = FBK
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = GNW_FBK_capitulated
+		}
+		complete_effect = {
+			country_event = FBK_post_gnw.33
+		}
+	}
+	FBK_stage_border_conflict = {
+		allowed = {
+			tag = FBK
+		}
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FBK_failed_aland_negotiation
+		}
+		complete_effect = {
+			country_event = FBK_post_gnw.26
+		}
+	}
+
+		# ----------------------------------------------------------------------------- KARELIA ----------------------------------------------------------------------------
+
 	FBK_karelia_issue = {
 		#we must deal with the influx of refugees one way or another 
 		# MAIN IDEA : BEING HOSTILE TO IMMIGRANTS WILL INCREASE PUBLIC ANGER AGAINST NOVGOROD JUSTIFYING TAKING MORE LAND, BUT BEING FRIENDLY TOWARDS THEM AND INTEGRATING THEM
@@ -1446,7 +1507,7 @@ FBK_post_gnw_chaos_win = {
 			has_global_flag = GNW_peace_treaty
 		}
 		selectable_mission = no
-		days_mission_timeout = 15
+		days_mission_timeout = 30
 		is_good = no
 		fire_only_once = yes
 		complete_effect = {
@@ -1490,7 +1551,7 @@ FBK_post_gnw_chaos_win = {
 			has_global_flag = GNW_peace_treaty
 		}
 		selectable_mission = no
-		days_mission_timeout = 35
+		days_mission_timeout = 70
 		is_good = no
 		fire_only_once = yes
 		complete_effect = {
@@ -1576,66 +1637,6 @@ FBK_post_gnw_chaos_win = {
 		}
 		remove_effect = {
 			country_event = FBK_post_gnw.36
-		}
-	}
-}
-
-FBK_post_gnw_chaos_lose = {
-	FBK_aland_issue = {
-		#we must control aland by the time the 50 days are over OR sweden must have 15% capitulation progress
-		allowed = {
-			tag = FBK
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			OR = {
-				145 = {
-					is_controlled_by = FBK
-				}
-				SWE = {
-					surrender_progress > 0.2
-				}
-			}
-		}
-		visible = {
-			has_global_flag = GNW_peace_treaty
-		}
-		war_with_on_timeout = SWE
-		selectable_mission = no
-		days_mission_timeout = 50
-		is_good = no
-		fire_only_once = yes
-		complete_effect = {
-			country_event = FBK_post_gnw.31
-		}
-		timeout_effect = {
-			country_event = FBK_post_gnw.30
-		}
-	}
-	FBK_negotiate_with_sweden = {
-		allowed = {
-			tag = FBK
-		}
-		fire_only_once = yes
-		visible = {
-			has_country_flag = GNW_FBK_capitulated
-		}
-		complete_effect = {
-			country_event = FBK_post_gnw.33
-		}
-	}
-	FBK_stage_border_conflict = {
-		allowed = {
-			tag = FBK
-		}
-		fire_only_once = yes
-		visible = {
-			has_country_flag = FBK_failed_aland_negotiation
-		}
-		complete_effect = {
-			country_event = FBK_post_gnw.26
 		}
 	}
 }

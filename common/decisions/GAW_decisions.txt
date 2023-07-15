@@ -19,26 +19,35 @@ GAW_great_wonders = {
 		}
 		days_remove = 180
 		remove_effect = {
-			if = {
-				limit = {
-					NOT = {
-						has_dynamic_modifier = {
-							modifier = GAW_great_trident
-						}
-					}
-				}
-				add_dynamic_modifier = {
-					modifier = GAW_great_trident
-				}
+			effect_tooltip = {
 				set_variable = {
 					var = GAW.great_trident_var
 					value = 0.05
 					tooltip = GAW_great_trident_tooltip
 				}
-				else = {
-					add_to_variable = {
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_dynamic_modifier = {
+								modifier = GAW_great_trident
+							}
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = GAW_great_trident
+					}
+					set_variable = {
 						var = GAW.great_trident_var
 						value = 0.05
+						tooltip = GAW_great_trident_tooltip
+					}
+					else = {
+						add_to_variable = {
+							var = GAW.great_trident_var
+							value = 0.05
+						}
 					}
 				}
 			}

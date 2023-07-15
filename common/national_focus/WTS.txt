@@ -1259,6 +1259,65 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = expand_guards_regiments
 			custom_effect_tooltip = WTS_expand_guards_regiments_focus
+			if = {
+				limit = {
+					NOT = {
+						has_template = "Guards Infantry Division"
+					}
+				}
+				division_template = {
+					name = "Guards Infantry Division"
+					division_names_group = WTS_INF_01
+					regiments = {
+						guards = {
+							x = 0
+							y = 0
+						}
+						guards = {
+							x = 0
+							y = 1
+						}
+						guards = {
+							x = 0
+							y = 2
+						}
+						guards = {
+							x = 1
+							y = 0
+						}
+						guards = {
+							x = 1
+							y = 1
+						}
+						guards = {
+							x = 1
+							y = 2
+						}
+						anti_air_brigade = {
+							x = 2
+							y = 0
+						}
+						artillery_brigade = {
+							x = 2
+							y = 1
+						}
+						artillery_brigade = {
+							x = 2
+							y = 2
+						}
+					}
+					support = {
+						engineer = {
+							x = 0
+							y = 0
+						}
+						recon = {
+							x = 0
+							y = 1
+						}
+					}
+				}
+			}
 			hidden_effect = {
 				load_oob = WTS_expand_guards_regiments
 			}
@@ -1934,7 +1993,7 @@ focus_tree = {
 				category = para_tech
 			}
 			hidden_effect = {
-				load_oob = "WTS_1936_royal_marines"
+				load_oob = "WTS_1936_royal_paratroopers"
 				271 = {
 					create_unit = {
 						division = "name = \"Royal Paratroopers\" division_template = \"Royal Paratroopers\" start_experience_factor = 0.5"
@@ -2039,16 +2098,35 @@ focus_tree = {
 		y = 7
 		completion_reward = {
 			hidden_effect = {
-				create_equipment_variant = {
-					name = "The Ground Pounder"
-					type = strat_bomber_equipment_3
-					upgrades = {
-						plane_tac_bomb_upgrade = 3
-						plane_range_upgrade = 3
-						plane_engine_upgrade = 3
-						plane_reliability_upgrade = 3
+				if = {
+					limit = {
+						NOT = {
+							has_dlc = "By Blood Alone"
+						}
 					}
-					obsolete = yes
+					create_equipment_variant = {
+						name = "The Ground Pounder"
+						type = strat_bomber_equipment_3
+						upgrades = {
+							plane_tac_bomb_upgrade = 3
+							plane_range_upgrade = 3
+							plane_engine_upgrade = 3
+							plane_reliability_upgrade = 3
+						}
+					}
+					else = {
+						create_equipment_variant = {
+							name = "The Ground Pounder"
+							type = large_plane_airframe_3
+							modules = {
+								fixed_main_weapon_slot = large_bomb_bay
+								fixed_auxiliary_weapon_slot_1 = empty
+								engine_type_slot = engine_2_4x
+								special_type_slot_1 = hmg_defense_turret
+								special_type_slot_2 = fuel_tanks_large
+							}
+						}
+					}
 				}
 			}
 			custom_effect_tooltip = WTS_ground_pounders_focus
@@ -2657,6 +2735,7 @@ focus_tree = {
 		x = 19
 		y = 11
 		completion_reward = {
+			add_stability = 0.1
 			set_cosmetic_tag = WTS_ABSOLUTIST
 		}
 		search_filters = {
@@ -2689,6 +2768,7 @@ focus_tree = {
 		x = 13
 		y = 11
 		completion_reward = {
+			add_stability = 0.1
 			set_cosmetic_tag = WTS_REPUBLIC
 		}
 		search_filters = {
@@ -2721,6 +2801,7 @@ focus_tree = {
 		x = 16
 		y = 11
 		completion_reward = {
+			add_stability = 0.1
 			set_cosmetic_tag = WTS_CONSTITUTIONAL
 		}
 		search_filters = {

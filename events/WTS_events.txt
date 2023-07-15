@@ -327,7 +327,7 @@ country_event = {
 country_event = {
 	id = watson.15
 	title = watson.15.t
-	desc = watson.15.d
+	desc = watson.15.desc
 	picture = GFX_report_event_WTS_pressure_emerald_isles
 	is_triggered_only = yes
 	option = {
@@ -2990,50 +2990,6 @@ country_event = {
 	}
 }
 
-###### PLACEHOLDER
-country_event = {
-	id = watson.118
-	title = watson.118.t
-	desc = watson.118.d
-	picture = GFX_King_George_V
-	is_triggered_only = yes
-	fire_only_once = yes
-	option = {
-		#PLACEHOLDER
-		name = watson.118.a
-	}
-	option = {
-		#PLACEHOLDER
-		name = watson.118.b
-	}
-	option = {
-		#PLACEHOLDER
-		name = watson.118.b
-	}
-}
-
-###### PLACEHOLDER
-country_event = {
-	id = watson.119
-	title = watson.119.t
-	desc = watson.119.d
-	picture = GFX_King_George_V
-	is_triggered_only = yes
-	fire_only_once = yes
-	option = {
-		#PLACEHOLDER
-		name = watson.119.a
-	}
-	option = {
-		#PLACEHOLDER
-		name = watson.119.b
-	}
-	option = {
-		#PLACEHOLDER
-		name = watson.119.b
-	}
-}
-
 ###### Announcement of the Westminster constitution 
 country_event = {
 	id = watson.120
@@ -3045,6 +3001,10 @@ country_event = {
 	option = {
 		#The Regent shall storm into parliament
 		name = watson.120.a
+		add_to_variable = {
+			var = WTS.executive_influence
+			value = 1
+		}
 		set_country_flag = WTS_westminster_constitution_calc
 		country_event = watson.35
 	}
@@ -3645,14 +3605,6 @@ country_event = {
 			modifier = WTS_polite
 		}
 	}
-	#Oh hell no
-	option = {
-		name = watson.141.b
-		create_wargoal = {
-			target = FROM
-			type = annex_everything
-		}
-	}
 }
 
 #Polka accepts 
@@ -3690,14 +3642,6 @@ country_event = {
 		add_opinion_modifier = {
 			target = FROM
 			modifier = WTS_polite
-		}
-	}
-	#Oh hell no
-	option = {
-		name = watson.143.b
-		create_wargoal = {
-			target = FROM
-			type = annex_everything
 		}
 	}
 }
@@ -3838,6 +3782,7 @@ country_event = {
 	}
 	#No lol
 	option = {
+		name = watson.148.b
 		FROM = {
 			country_event = watson.150
 		}
@@ -4671,7 +4616,7 @@ country_event = {
 	}
 	#Establish a Hololive republic with Watson at the healm 
 	option = {
-		name = watson.185.a
+		name = watson.185.b
 		trigger = {
 			OR = {
 				has_government = democratic
@@ -5196,7 +5141,7 @@ country_event = {
 	}
 	#For a brighter britain, under Watson
 	option = {
-		name = watson.202.b
+		name = watson.202.c
 		set_politics = {
 			ruling_party = pro_resistance_monarchy
 			elections_allowed = no

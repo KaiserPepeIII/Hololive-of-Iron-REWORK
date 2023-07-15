@@ -50,6 +50,11 @@ focus_tree = {
 		id = GEN_naval_rearming_two
 		icon = GFX_focus_GEN_naval_rearming
 		cost = 8
+		available = {
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}
 		x = 34
 		y = 1
 		completion_reward = {
@@ -306,6 +311,7 @@ focus_tree = {
 		icon = GFX_focus_GEN_blitz_experiment
 		cost = 10
 		prerequisite = {
+			focus = GEN_defensive_ethos_two
 			focus = GEN_expansion_ethos_two
 		}
 		mutually_exclusive = {
@@ -407,6 +413,7 @@ focus_tree = {
 		icon = GFX_focus_GEN_mass_assault
 		cost = 10
 		prerequisite = {
+			focus = GEN_defensive_ethos_two
 			focus = GEN_expansion_ethos_two
 		}
 		mutually_exclusive = {
@@ -2831,6 +2838,9 @@ focus_tree = {
 		id = GEN_corporate_research_two
 		icon = GFX_focus_GEN_corporate_research
 		cost = 10
+		available = {
+			num_of_factories > 50
+		}
 		prerequisite = {
 			focus = GEN_encourage_research_two
 		}
@@ -2889,6 +2899,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_strengthen_national_bonds
 		}
+		completion_reward = {
+			add_war_support = 0.15
+		}
 		x = 62
 		y = 8
 	}
@@ -2898,6 +2911,14 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_embrace_deterrance
+		}
+		completion_reward = {
+			add_stability = 0.15
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+			add_war_support = -0.1
 		}
 		x = 70
 		y = 8
