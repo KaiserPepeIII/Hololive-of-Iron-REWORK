@@ -18,7 +18,8 @@ france_bad_category = {
 		}
 		days_remove = 14
 		war_with_on_complete = FRA
-		complete_effect = {
+		remove_effect = {
+			set_country_flag = sui_france_SOLO
 			ROOT = {
 				declare_war_on = {
 					target = FRA
@@ -32,7 +33,7 @@ france_bad_category = {
 		available = {
 			check_variable = {
 				var = FRA.france_threat
-				value = 75
+				value = 80
 				compare = greater_than_or_equals
 			}
 		}
@@ -104,9 +105,6 @@ france_bad_category = {
 			27 = {
 				set_demilitarized_zone = no
 			}
-			SUI = {
-				country_event = suisei.88
-			}
 			SUB = {
 				country_event = subaru.6
 			}
@@ -127,7 +125,7 @@ france_bad_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 180
+		days_re_enable = 120
 		cost = 120
 		complete_effect = {
 			add_to_variable = {
@@ -149,11 +147,11 @@ france_bad_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 180
+		days_re_enable = 120
 		cost = 120
 		complete_effect = {
 			add_to_variable = {
-				var = SUB.france_threat
+				var = FRA.france_threat
 				value = 10
 				tooltip = FRA_add_france_threat_var_tooltip
 			}
@@ -174,7 +172,7 @@ france_bad_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 180
+		days_re_enable = 120
 		cost = 100
 		complete_effect = {
 			add_to_variable = {
@@ -200,6 +198,46 @@ france_bad_category = {
 					owner = ROOT
 				}
 			}
+		}
+	}
+	SUI_paris_war = {
+		#we must control paris and surrounding by the time the 100 days are over OR france must have 65% capitulation progress
+		allowed = {
+			tag = SUI
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			OR = {
+				AND = {
+				858 = {
+					is_controlled_by = SUI
+				}
+				1132 = {
+					is_controlled_by = SUI
+				}
+				945 = {
+					is_controlled_by = SUI
+				}
+			}
+				FRA = {
+					surrender_progress > 0.65
+				}
+			}
+		}
+		visible = {
+always = no
+		}
+		selectable_mission = no
+		days_mission_timeout = 100
+		is_good = no
+		fire_only_once = yes
+		complete_effect = {
+			country_event = suisei.120
+		}
+		timeout_effect = {
+			country_event = suisei.121
 		}
 	}
 }

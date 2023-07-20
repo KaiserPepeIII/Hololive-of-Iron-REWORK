@@ -2531,17 +2531,18 @@ country_event = {
 	}
 }
 
-#FRA marches into the occupation zones
+#FRA marches into the occupation zones -  subaru intervenes
 country_event = {
-	id = suisei.88
-	title = suisei.88.t
-	desc = suisei.88.desc
+	id = suisei.106
+	title = suisei.106.t
+	desc = suisei.106.desc
 	picture = GFX_report_SUI_commies_reunite_france
 	is_triggered_only = yes
 	#It's our time
 	option = {
-		name = suisei.88.a
+		name = suisei.106.a
 		add_war_support = 0.05
+		set_country_flag = sui_france_DUO
 		create_wargoal = {
 			target = FRA
 			type = annex_everything
@@ -2549,7 +2550,33 @@ country_event = {
 	}
 	#leave them
 	option = {
-		name = suisei.88.b
+		name = suisei.106.b
+		clr_country_flag = dealing_with_france
+		add_war_support = -0.15
+		add_stability = -0.1
+	}
+}
+
+#FRA marches into the occupation zones -  subaru doesn't intervene
+country_event = {
+	id = suisei.107
+	title = suisei.107.t
+	desc = suisei.107.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#It's our time
+	option = {
+		name = suisei.107.a
+		add_war_support = 0.05
+		set_country_flag = sui_france_SOLO
+		create_wargoal = {
+			target = FRA
+			type = annex_everything
+		}
+	}
+	#leave them
+	option = {
+		name = suisei.107.b
 		clr_country_flag = dealing_with_france
 		add_war_support = -0.15
 		add_stability = -0.1
@@ -2567,6 +2594,7 @@ country_event = {
 	option = {
 		name = suisei.89.a
 		add_stability = -0.1
+		set_country_flag = sui_france_SOLO
 		create_wargoal = {
 			target = FRA
 			type = annex_everything
@@ -2594,6 +2622,7 @@ country_event = {
 	#We must support our ally
 	option = {
 		name = suisei.90.a
+		set_country_flag = sui_france_DUO
 		create_wargoal = {
 			target = FRA
 			type = annex_everything
@@ -2871,5 +2900,379 @@ country_event = {
 		NOE = {
 			country_event = NOE_gnw.47
 		}
+	}
+}
+
+#france negotiation, we must argue against subaru how much land we deserve
+country_event = {
+	id = suisei.108
+	title = suisei.108.t
+	desc = suisei.108.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#All of france belongs to la reine!  - total war with subaru
+	option = {
+		name = suisei.108.a
+		add_war_support = 0.1
+		add_stability = -0.05
+		SUB = {
+			country_event = subaru.8
+		}
+	}
+	#Paris will either be suisei's or will not be at all! - partial war with subaru
+	option = {
+		name = suisei.108.b
+		SUB = {
+			country_event = subaru.11
+		}
+		add_war_support = 0.05
+	}
+	#We are content with the land we got
+	option = {
+		name = suisei.108.c
+		clr_country_flag = dealing_with_france
+		add_war_support = -0.1
+		add_stability = 0.05
+	}
+}
+
+#Subaru rejects our french annexation
+country_event = {
+	id = suisei.109
+	title = suisei.109.t
+	desc = suisei.109.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#We keep marching onwards then!
+	option = {
+		name = suisei.109.a
+		SUB = {
+			country_event = subaru.10
+		}
+		set_country_flag = Fuck_Subaru
+		clr_country_flag = sui_france_DUO
+		declare_war_on = {
+			target = FRA
+			type = annex_everything
+		}
+	}
+	#Fuck, let's back down
+	option = {
+		name = suisei.109.b
+		add_war_support = -0.1
+		add_stability = -0.05
+	}
+}
+
+#Subaru refuses to hand over paris
+country_event = {
+	id = suisei.110
+	title = suisei.110.t
+	desc = suisei.110.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#We keep marching onwards then!
+	option = {
+		name = suisei.110.a
+		SUB = {
+			country_event = subaru.10
+		}
+		activate_mission = SUI_paris_war
+		declare_war_on = {
+			target = FRA
+			type = annex_everything
+		}
+		hidden_effect = {
+		858 = {
+			create_unit = {
+				division = "name = \"Brigade d'Infanterie\" division_template = \"Brigade d'Infanterie\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+				owner = FRA
+			}
+			create_unit = {
+				division = "name = \"Brigade d'Infanterie\" division_template = \"Brigade d'Infanterie\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+				owner = FRA
+			}
+			create_unit = {
+				division = "name = \"Brigade d'Infanterie\" division_template = \"Brigade d'Infanterie\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+				owner = FRA
+			}
+		}
+		945 = {
+			create_unit = {
+				division = "name = \"Brigade d'Infanterie\" division_template = \"Brigade d'Infanterie\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+				owner = FRA
+			}
+			create_unit = {
+				division = "name = \"Brigade d'Infanterie\" division_template = \"Brigade d'Infanterie\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+				owner = FRA
+			}
+		}
+		1132 = {
+			create_unit = {
+				division = "name = \"Brigade d'Infanterie\" division_template = \"Brigade d'Infanterie\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+				owner = ROOT
+			}
+			create_unit = {
+				division = "name = \"Brigade d'Infanterie\" division_template = \"Brigade d'Infanterie\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+				owner = ROOT
+			}
+		}
+	}
+	}
+	#Fuck, let's back down
+	option = {
+		name = suisei.110.b
+		add_war_support = -0.05
+		add_stability = -0.1
+	}
+}
+
+#Subaru keeps fighting after france is dead
+country_event = {
+	id = suisei.111
+	title = suisei.111.t
+	desc = suisei.111.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#We'll take calais too then!
+	option = {
+		name = suisei.110.a
+		add_war_support = 0.1
+	}
+}
+
+#Subaru keeps fighting after calais is lost
+country_event = {
+	id = suisei.112
+	title = suisei.112.t
+	desc = suisei.112.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#Final push, then!
+	option = {
+		name = suisei.112.a
+		add_war_support = 0.2
+	}
+}
+
+#We have forced subaru to surrender and have obtained their colonies and all french land up to wallonia
+country_event = {
+	id = suisei.113
+	title = suisei.113.t
+	desc = suisei.113.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#A glorious victory for la reine!
+	option = {
+		name = suisei.113.a
+		add_war_support = 0.2
+		white_peace = {
+			tag = SUB
+			message = FRANCE_scripted_peace_6_loc #suisei FUCKED france and subaru together
+		}
+		SUB = {
+			country_event = subaru.14
+		}
+		annex_country = {
+			target = FRA
+			transfer_troops = no
+		}
+		annex_country = {
+			target = OSK
+			transfer_troops = no
+		}
+		transfer_state = 29
+		transfer_state = 34
+		transfer_state = 8
+		if =  {
+limit = {
+KIA = {
+	exists = yes
+}
+NOT = {
+	SUI = {
+		owns_state = 28
+	}
+}
+}
+KIA = {
+	transfer_state = 8
+}
+		}
+		if = {
+			limit = {
+			SUB = {
+				owns_state = 28
+			}
+		}
+		transfer_state = 28
+		}
+		if = {
+			limit = {
+			SUB = {
+				owns_state = 909
+			}
+		}
+		transfer_state = 909
+		}
+		if = {
+			limit = {
+			SUB = {
+				owns_state = 42
+			}
+		}
+		transfer_state = 42
+		}
+	}
+}
+
+#France has capitulated and we have annexed them - solo
+country_event = {
+	id = suisei.114
+	title = suisei.114.t
+	desc = suisei.114.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#Great news!
+	option = {
+		name = suisei.114.a
+		add_war_support = 0.1
+	}
+}
+
+#France has capitulated and subaru pulled out because we are pro yagoo
+country_event = {
+	id = suisei.115
+	title = suisei.115.t
+	desc = suisei.115.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#Great news!
+	option = {
+		name = suisei.110.a
+		add_war_support = 0.1
+	}
+}
+
+#Subaru has handed over paris to us 
+country_event = {
+	id = suisei.116
+	title = suisei.116.t
+	desc = suisei.116.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#Great news!
+	option = {
+		name = suisei.116.a
+		add_war_support = 0.1
+		transfer_state = 1132
+		transfer_state = 858
+		transfer_state = 945
+	}
+}
+
+#Subaru has decided to surrender france
+country_event = {
+	id = suisei.117
+	title = suisei.117.t
+	desc = suisei.117.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#Great news!
+	option = {
+		name = suisei.117.a
+		add_war_support = 0.1
+			annex_country = {
+				target = FRA
+				transfer_troops = no
+			}
+	}
+}
+
+#Subaru has decided to surrender france by force
+country_event = {
+	id = suisei.118
+	title = suisei.118.t
+	desc = suisei.118.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#Great news!
+	option = {
+		name = suisei.118.a
+		add_war_support = 0.15
+			annex_country = {
+				target = FRA
+				transfer_troops = no
+			}
+			white_peace = {
+				tag = SUB
+				message = FRANCE_scripted_peace_4_loc #Suisei annexed france after fighting subaru
+			}
+	}
+}
+
+#Subaru has decided to surrender france and calais by force
+country_event = {
+	id = suisei.119
+	title = suisei.119.t
+	desc = suisei.119.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#Great news!
+	option = {
+		name = suisei.119.a
+		add_war_support = 0.15
+			annex_country = {
+				target = FRA
+				transfer_troops = no
+			}
+			transfer_state = 29
+			white_peace = {
+				tag = SUB
+				message = FRANCE_scripted_peace_5_loc #Suisei annexed france and calais after fighting subaru
+			}
+	}
+}
+
+#We have forced subaru to give us paris
+country_event = {
+	id = suisei.120
+	title = suisei.120.t
+	desc = suisei.120.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#A big win 
+	option = {
+		name = suisei.120.a
+		add_war_support = 0.1
+			transfer_state = 858
+			transfer_state = 945
+			transfer_state = 1132
+			white_peace = {
+				tag = SUB
+				message = FRANCE_scripted_peace_7_loc #Suisei beat subaru in a skirmish over Paris 
+			}
+			SUB = {
+				country_event = subaru.15
+			}
+	}
+}
+
+#We failed to force subaru to give us paris 
+country_event = {
+	id = suisei.121
+	title = suisei.121.t
+	desc = suisei.121.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	#Ouch...
+	option = {
+		name = suisei.121.a
+		add_war_support = -0.2
+		add_stability = -0.1
+			white_peace = {
+				tag = SUB
+				message = FRANCE_scripted_peace_8_loc #Subaru beat Suisei in a skirmish over Paris
+			}
 	}
 }

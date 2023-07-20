@@ -835,8 +835,11 @@ pro_yagoo_kleptocracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
+		days_remove = 60
 		cost = 120
-		complete_effect = {
+		modifier = {
+			political_power_factor = -0.25
+			command_power_gain = 0.2
 		}
 	}
 	generic_expand_state_media = {
@@ -2276,6 +2279,11 @@ kleptocratic_dictatorship_category = {
 	}
 	generic_run_factory_to_ground = {
 		icon = generic_prepare_civil_war
+		available = {
+			any_owned_state = {
+				industrial_complex > 1
+			}
+		}
 		visible = {
 			always = yes
 		}
@@ -2357,7 +2365,7 @@ reactionary_nationalism_category = {
 		complete_effect = {
 			add_to_variable = {
 				var = root.anti_aggression
-				value = THIS.id
+				value = 5
 				tooltip = GEN_change_in_anti_aggression
 			}
 		}

@@ -17,6 +17,7 @@ set_technology = {
 	irregular_skirmishers = 1
 	guards_technology = 1
 	guards2 = 1
+	marines = 1
 	tech_support = 1
 }
 
@@ -159,9 +160,12 @@ set_popularities = {
 }
 
 ### Ship Variants ###
-
 if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
 	### Variants ###
 	# Submarines #
 	create_equipment_variant = {
@@ -291,7 +295,7 @@ if = {
 			tank_nsb_armor_upgrade = 1
 		}
 		icon = "GFX_ENG_basic_light_tank_medium"
-		obsolete = yes #used for oob
+		obsolete = yes		#used for oob
 	}
 	create_equipment_variant = {
 		name = "Light Tank Mk. VI"
@@ -312,7 +316,6 @@ if = {
 			tank_nsb_armor_upgrade = 2
 		}
 	}
-
 	create_equipment_variant = {
 		name = "Medium Mk. II"
 		type = medium_tank_chassis_0
@@ -331,7 +334,6 @@ if = {
 		}
 		icon = "GFX_ENG_basic_light_tank_medium"
 	}
-
 	create_equipment_variant = {
 		name = "Vickers 6 ton A"
 		type = light_tank_chassis_0
@@ -349,9 +351,8 @@ if = {
 			tank_nsb_engine_upgrade = 2
 		}
 		icon = "GFX_ENG_light_BAB_camo"
-		obsolete = yes #export only
+		obsolete = yes		#export only
 	}
-
 	create_equipment_variant = {
 		name = "Vickers 6 ton B"
 		type = light_tank_chassis_0
@@ -368,11 +369,14 @@ if = {
 			tank_nsb_engine_upgrade = 2
 		}
 		icon = "GFX_ENG_light_BAB_camo"
-		obsolete = yes #export only
+		obsolete = yes		#export only
 	}
 }
+
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = {
+		has_dlc = "Man the Guns"
+	}
 	### Variants ###
 	# Submarines #
 	create_equipment_variant = {
@@ -541,7 +545,7 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-		name = "Adventure Class"						# cruiser minelayer
+		name = "Adventure Class"		# cruiser minelayer
 		type = ship_hull_cruiser_1
 		name_group = ENG_MINELAYERS_HISTORICAL
 		parent_version = 0
@@ -559,24 +563,24 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-			name = "Town Class"
-			type = ship_hull_cruiser_2
-			name_group = ENG_CL_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_battery_slot = ship_light_medium_battery_2
-				fixed_ship_anti_air_slot = ship_anti_air_2
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = cruiser_ship_engine_2
-				fixed_ship_armor_slot = ship_armor_cruiser_2
-				fixed_ship_secondaries_slot = dp_ship_secondaries_2
-				front_1_custom_slot = ship_anti_air_2
-				mid_1_custom_slot = ship_torpedo_1
-				mid_2_custom_slot = ship_secondaries_2
-				rear_1_custom_slot = ship_light_medium_battery_2
-			}
+		name = "Town Class"
+		type = ship_hull_cruiser_2
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_secondaries_slot = dp_ship_secondaries_2
+			front_1_custom_slot = ship_anti_air_2
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_secondaries_2
+			rear_1_custom_slot = ship_light_medium_battery_2
 		}
+	}
 	# Heavy Cruisers #
 	create_equipment_variant = {
 		name = "County Class"
@@ -673,7 +677,6 @@ if = {
 			rear_1_custom_slot = ship_heavy_battery_1
 		}
 	}
-
 	create_equipment_variant = {
 		name = "G3 Design"
 		type = ship_hull_heavy_1
@@ -770,7 +773,6 @@ if = {
 		}
 		obsolete = yes
 	}
-	
 	create_equipment_variant = {
 		name = "Hermes Class"
 		type = ship_hull_carrier_conversion_ca
@@ -780,7 +782,7 @@ if = {
 			fixed_ship_deck_slot_1 = ship_deck_space
 			fixed_ship_deck_slot_2 = empty
 			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_radar_slot = empty 
+			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 		}
@@ -803,18 +805,18 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-			name = "Ark Royal Class"
-			type = ship_hull_carrier_1
-			name_group = ENG_CV_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_deck_slot_1 = ship_deck_space
-				fixed_ship_deck_slot_2 = ship_deck_space
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = carrier_ship_engine_2
-				fixed_ship_secondaries_slot = dp_ship_secondaries_2
-				front_1_custom_slot = ship_deck_space
-			}
+		name = "Ark Royal Class"
+		type = ship_hull_carrier_1
+		name_group = ENG_CV_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_2
+			fixed_ship_secondaries_slot = dp_ship_secondaries_2
+			front_1_custom_slot = ship_deck_space
 		}
 	}
+}

@@ -1948,7 +1948,15 @@ focus_tree = {
 			focus = ALO_destroyer_focus
 		}
 		completion_reward = {
-			add_ideas = ALO_submarine_bonus
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_ideas = ALO_submarine_bonus_mtg
+				else = {
+					add_ideas = ALO_submarine_bonus
+				}
+			}
 			add_tech_bonus = {
 				name = ALO_submarine_tech_bonus
 				bonus = 2
@@ -2518,6 +2526,7 @@ focus_tree = {
 				}
 				add_extra_state_shared_building_slots = 3
 			}
+			two_random_civilian_factory = yes
 		}
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
@@ -2585,6 +2594,7 @@ focus_tree = {
 				}
 				add_extra_state_shared_building_slots = 2
 			}
+			two_random_arms_factory = yes
 		}
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
@@ -2601,11 +2611,9 @@ focus_tree = {
 			focus = ALO_welfare_initiatives
 		}
 		completion_reward = {
-			hidden_effect = {
-				set_popularities = {
-					democratic = 65
-					pro_yagoo_progressive = 35
-				}
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.15
 			}
 		}
 		search_filters = {
@@ -3309,7 +3317,15 @@ focus_tree = {
 			focus = ALO_destroyer_focus
 		}
 		completion_reward = {
-			add_ideas = ALO_battleship_bonus
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_ideas = ALO_battleship_bonus_mtg
+				else = {
+					add_ideas = ALO_battleship_bonus
+				}
+			}
 			add_tech_bonus = {
 				name = ALO_battleship_tech_bonus
 				bonus = 2

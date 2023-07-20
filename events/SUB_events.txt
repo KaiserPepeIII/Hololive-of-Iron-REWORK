@@ -162,6 +162,9 @@ country_event = {
 		name = subaru.6.a
 		add_war_support = 0.05
 		set_global_flag = FRA_occupation_ended
+		SUI = {
+			country_event = suisei.106
+		}
 		create_wargoal = {
 			target = FRA
 			type = topple_government
@@ -170,6 +173,9 @@ country_event = {
 	#leave them
 	option = {
 		name = subaru.6.b
+		SUI = {
+			country_event = suisei.107
+		}
 		set_global_flag = FRA_occupation_ended
 		clr_country_flag = dealing_with_france
 		add_war_support = -0.05
@@ -207,5 +213,187 @@ country_event = {
 		SUI = {
 			country_event = suisei.90
 		}
+	}
+}
+
+#Suisei demands all of france
+country_event = {
+	id = subaru.8
+	title = subaru.8.t
+	desc = subaru.8.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#Eat shit
+	option = {
+		name = subaru.8.a
+		SUI = {
+			country_event = suisei.109
+		}
+	}
+	#Fine, we can't have another war
+	option = {
+		name = subaru.8.b
+		SUI = {
+			country_event = suisei.117
+		}
+	}
+}
+
+#Suisei demands Paris area
+country_event = {
+	id = subaru.9
+	title = subaru.9.t
+	desc = subaru.9.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#Eat shit
+	option = {
+		name = subaru.7.a
+		SUI = {
+			country_event = suisei.89
+		}
+	}
+	#Fine, we can't have another war
+	option = {
+		name = subaru.7.b
+		SUI = {
+			country_event = suisei.116
+		}
+	}
+}
+
+#Suisei Declared war on us over our rejection
+country_event = {
+	id = subaru.10
+	title = subaru.10.t
+	desc = subaru.10.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#More blood over france...
+	option = {
+		name = subaru.7.a
+	}
+}
+
+#Suisei demands paris area
+country_event = {
+	id = subaru.11
+	title = subaru.11.t
+	desc = subaru.11.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#Eat shit
+	option = {
+		name = subaru.11.a
+		SUI = {
+			country_event = suisei.110
+		}
+	}
+	#Fine, we can't have another war
+	option = {
+		name = subaru.11.b
+		SUI = {
+			country_event = suisei.116
+		}
+	}
+}
+
+#France is lost
+country_event = {
+	id = subaru.12
+	title = subaru.12.t
+	desc = subaru.12.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#Fight on, we can take it back!
+	fire_only_once = yes
+	option = {
+		name = subaru.12.a
+		SUI = {
+			country_event = suisei.111
+		}
+		add_war_support = -0.15
+		add_stability = -0.1
+	}
+	#Let's just let suisei have it...
+	option = {
+		name = subaru.12.b
+		SUI = {
+			country_event = suisei.118
+		}
+		add_war_support = -0.15
+	}
+}
+
+#Calais  is lost
+country_event = {
+	id = subaru.13
+	title = subaru.13.t
+	desc = subaru.13.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Fight on, we can take it back...?
+	option = {
+		name = subaru.13.a
+		SUI = {
+			country_event = suisei.112
+		}
+		add_war_support = -0.15
+		add_stability = -0.2
+	}
+	#Let's just let suisei have it...
+	option = {
+		name = subaru.13.b
+		SUI = {
+			country_event = suisei.119
+		}
+		add_war_support = -0.2
+		add_stability =  -0.05
+	}
+}
+
+#we have been annihilated by suisei
+country_event = {
+	id = subaru.14
+	title = subaru.14.t
+	desc = subaru.14.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#We got too close to the sun...
+	option = {
+		name = subaru.14.a
+		add_war_support = -0.5
+		add_stability = -0.3
+	}
+}
+
+#We have lost our paris skirmish with suisei
+country_event = {
+	id = subaru.15
+	title = subaru.15.t
+	desc = subaru.15.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#Ouch....
+	option = {
+		name = subaru.15.a
+		add_war_support = -0.1
+		add_stability = -0.1
+	}
+}
+
+#we have won our paris skirmish with suisei
+country_event = {
+	id = subaru.16
+	title = subaru.15.t
+	desc = subaru.15.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#And don't come back!
+	option = {
+		name = subaru.15.a
+		add_war_support = 0.1
+		add_stability = 0.1
 	}
 }

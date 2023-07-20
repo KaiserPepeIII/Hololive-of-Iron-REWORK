@@ -2078,7 +2078,15 @@ country_event = {
 	trigger = {
 		tag = FBK
 		FBK = {
-			surrender_progress > 0.4
+			OR = {
+				NOT = {
+					owns_state = 111
+					owns_state = 195
+					owns_state = 13
+					owns_state = 961
+				}
+				surrender_progress > 0.4
+			}
 			has_war_with = NOE
 			NOT = {
 				has_country_flag = GNW_FBK_capitulated
@@ -3362,11 +3370,11 @@ country_event = {
 		remove_state_claim = 145
 		white_peace = SWE
 		hidden_effect = {
-		country_event = {
-			id = FBK_post_gnw.49
-			days = 50
+			country_event = {
+				id = FBK_post_gnw.49
+				days = 50
+			}
 		}
-	}
 	}
 }
 
@@ -3397,11 +3405,11 @@ country_event = {
 		transfer_state = 145
 		add_state_core = 145
 		hidden_effect = {
-		country_event = {
-			id = FBK_post_gnw.49
-			days = 50
+			country_event = {
+				id = FBK_post_gnw.49
+				days = 50
+			}
 		}
-	}
 	}
 }
 

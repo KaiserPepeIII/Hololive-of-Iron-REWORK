@@ -29,7 +29,7 @@ CAT_great_northern_war = {
 			always = no
 		}
 		selectable_mission = no
-		days_mission_timeout = 30
+		days_mission_timeout = 15
 		fire_only_once = no
 		is_good = no
 		timeout_effect = {
@@ -2641,7 +2641,15 @@ CAT_great_northern_war_during_war = {
 			tag = NOE
 			has_political_power > 29
 			FBK = {
-				surrender_progress > 0.25
+				OR = {
+					NOT = {
+						owns_state = 961
+						owns_state = 13
+						owns_state = 11
+						owns_state = 195
+					}
+					surrender_progress > 0.2
+				}
 			}
 		}
 		fire_only_once = yes

@@ -1,3 +1,6 @@
+GAW_integrate_warlord_armies_cat = {
+}
+
 GAW_great_wonders = {
 	GAW_build_great_trident = {
 		available = {
@@ -20,7 +23,7 @@ GAW_great_wonders = {
 		days_remove = 180
 		remove_effect = {
 			effect_tooltip = {
-				set_variable = {
+				add_to_variable = {
 					var = GAW.great_trident_var
 					value = 0.05
 					tooltip = GAW_great_trident_tooltip
@@ -111,6 +114,124 @@ GAW_council_of_cocoism = {
 				else = {
 					country_event = gura.55
 				}
+			}
+		}
+	}
+}
+
+GAW_expanding_the_railways = {
+	GAW_xian_hunan = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 24
+		}
+		cost = 25
+		days_remove = 60
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			build_railway = {
+				level = 2
+				start_province = 7418
+				target_province = 7097
+			}
+		}
+	}
+	GAW_hunan_jiangxi = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 9
+		}
+		cost = 10
+		days_remove = 30
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			build_railway = {
+				level = 1
+				start_province = 7097
+				target_province = 3992
+			}
+			build_railway = {
+				level = 1
+				start_province = 7097
+				target_province = 7199
+			}
+		}
+	}
+	GAW_fujian_line = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 24
+		}
+		cost = 25
+		days_remove = 60
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			build_railway = {
+				level = 1
+				start_province = 9974
+				target_province = 10093
+			}
+		}
+	}
+	GAW_nanjing_jiangxi = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 24
+		}
+		cost = 25
+		days_remove = 60
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			build_railway = {
+				level = 1
+				start_province = 11913
+				target_province = 1628
+			}
+		}
+	}
+	GAW_expand_north_south_line = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_political_power > 49
+		}
+		cost = 50
+		days_remove = 60
+		fire_only_once = yes
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			build_railway = {
+				level = 2
+				start_province = 7199
+				target_province = 3992
+			}
+			build_railway = {
+				level = 2
+				start_province = 3992
+				target_province = 1628
+			}
+			build_railway = {
+				level = 2
+				start_province = 1628
+				target_province = 4619
+			}
+			build_railway = {
+				level = 2
+				start_province = 4619
+				target_province = 10364
 			}
 		}
 	}
