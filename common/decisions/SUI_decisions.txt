@@ -13,7 +13,7 @@ SUI_colonial_exploitation = {
 			always = yes
 		}
 		selectable_mission = no
-		days_mission_timeout = 60
+		days_mission_timeout = 30
 		is_good = no
 		fire_only_once = no
 		ai_will_do = {
@@ -26,49 +26,174 @@ SUI_colonial_exploitation = {
 					5 = {
 						country_event = suisei.97
 					}
-					#Mild increase - 2
+					#Mid increase - 2
 					2 = {
 						country_event = suisei.98
 					}
-					#decrease
+					#decrease - 1 
 					2 = {
 						country_event = suisei.100
 					}
-					#Mild increase - 1
+					#Heavy increase - 3
 					1 = {
 						country_event = suisei.99
 					}
 				}
 			}
-			SUI_calculate_dynamic_modifier_colonial = yes
+			if = {
+				limit = {
+					check_variable = {
+						var = SUI.colonial_unrest
+						value = 7
+						compare = greater_than_or_equals
+					}
+				}
+				activate_mission = SUI_scare_rebels_into_submission
+			}
 		}
 	}
+	SUI_scare_rebels_into_submission = {
+			allowed = {
+				always = no
+			}
+			available = {
+				OR = {
+					has_decision = SUI_connect_algeria_and_west_africa
+					has_decision = SUI_connect_togo_to_algeria
+					has_decision = SUI_conquer_nigeria
+					has_decision = SUI_cameroon_thorn_optional
+					has_decision = SUI_conquer_central_africa
+				}
+			}
+			visible = {
+				SUI = {
+					has_country_flag = SUI_monarchist_interest_grows
+				}
+			}
+			selectable_mission = no
+			days_mission_timeout = 70
+			is_good = no
+			ai_will_do = {
+				factor = 1
+			}
+			complete_effect = {
+				subtract_from_variable = {
+					var = SUI.colonial_unrest
+					value = 2
+				}
+			}
+			timeout_effect = {
+				country_event = suisei.122
+			}
+		}
+	SUI_declare_french_colonies_restored = {
+			icon = decision_generic_industry
+			available = {
+				tag = SUI
+				has_manpower > 300
+				command_power > 10
+			}
+			visible = {
+				check_variable = {
+					var = SUI.africans_killed
+					value = 7
+					compare = greater_than_or_equals
+				}
+			}
+			fire_only_once = yes
+			ai_will_do = {
+				factor = 4000
+			}
+			complete_effect = {
+				if = {
+					limit = {
+					check_variable = {
+						var = SUI.colonial_exploitation
+						value = 0.07
+						compare = greater_than_or_equals
+					}
+				}
+				every_state = {
+					limit = {
+						OR = {
+							has_dynamic_modifier = {
+								modifier = SUI_local_authority
+							}
+							has_dynamic_modifier = {
+								modifier = SUI_colonial_unrest
+							}
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = SUI_colonial_unrest
+					}
+					remove_dynamic_modifier = {
+						modifier = SUI_local_authority
+					}
+				}
+				add_to_variable = {
+					var = SUI.colonial_exploitation
+					value = 1
+				}
+				subtract_from_variable = {
+					var = SUI.colonial_exploitation_consumer_goods
+					value = -1
+				}
+				clamp_variable = {
+					var = SUI.colonial_exploitation_consumer_goods
+					min = -0.05
+					max = 0
+				}
+				clamp_variable = {
+					var = SUI.colonial_exploitation
+					min = 0
+					max = 0.15
+				}
+				country_event = suisei.124
+				}
+				else = {
+					every_state = {
+						limit = {
+							has_dynamic_modifier = {
+								modifier = SUI_colonial_unrest
+							}
+						}
+						add_dynamic_modifier = {
+							modifier = SUI_local_authority
+						}
+						remove_dynamic_modifier = {
+							modifier = SUI_colonial_unrest
+						}
+					}
+					set_variable = {
+						var = SUI.colonial_exploitation_consumer_goods
+						value = 0
+					}
+					set_variable = {
+						var = SUI.colonial_exploitation
+						value = 0
+					}
+					country_event = suisei.125
+				}
+			}
+		}
 	SUI_hard_rule = {
 		icon = decision_generic_industry
 		available = {
 			tag = SUI
 			has_manpower > 300
 			command_power > 10
-			SUI = {
-				any_occupied_country = {
-					divisions_in_state = {
-						size = 1
-						state = var:THIS.capital
-					}
-				}
-			}
-		}
-		visible = {
-			always = yes
+			has_poltical_power > 40
 		}
 		visible = {
 			tag = SUI
 		}
 		fire_only_once = no
-		days_re_enable = 30
+		days_re_enable = 120
 		ai_will_do = {
 			factor = 15
 		}
+		cost = 40
 		complete_effect = {
 			random_list = {
 				#Winwin
@@ -96,7 +221,7 @@ SUI_colonial_exploitation = {
 		}
 		cost = 75
 		fire_only_once = no
-		days_re_enable = 30
+		days_re_enable = 120
 		ai_will_do = {
 			factor = 15
 		}
@@ -169,7 +294,7 @@ SUI_colonial_exploitation = {
 		}
 		cost = 100
 		fire_only_once = no
-		days_re_enable = 30
+		days_re_enable = 120
 		ai_will_do = {
 			factor = 15
 		}
@@ -191,141 +316,316 @@ SUI_colonial_exploitation = {
 	}
 }
 
-SUI_an_african_sphere = {
-	SUI_the_african_congress = {
-		icon = decision_generic_industry
-		available = {
+SUI_reestablishing_colonial_rule = {
+	SUI_connect_algeria_and_west_africa = {
+		allowed = {
 			tag = SUI
-			has_political_power > 25
 		}
 		visible = {
-			tag = SUI
+			always = yes
 		}
+		available = {
+			has_political_power > 20
+		}
+		cost = 20
 		fire_only_once = yes
-		ai_will_do = {
-			factor = 15
-		}
-		cost = 25
-		complete_effect = {
-			set_country_flag = SUI_congress_africa
-			create_faction = SUI_congress_of_africa
-			hidden_effect = {
-				every_country = {
-					limit = {
-						OR = {
-							tag = MRT
-							tag = MLI
-							tag = VOL
-							tag = NGR
-							tag = CHA
-							tag = CAM
-							tag = CAR
-							tag = MOR
-							tag = ALG
-						}
-					}
-					country_event = africa.4
-				}
-			}
-		}
-	}
-	SUI_influence_our_allies = {
-		icon = decision_generic_industry
-		available = {
-			tag = SUI
-			has_political_power > 50
-		}
-		visible = {
-			tag = SUI
-		}
-		fire_only_once = no
-		days_re_enable = 180
-		ai_will_do = {
-			factor = 15
-		}
-		cost = 50
-		complete_effect = {
-			hidden_effect = {
-				every_country = {
-					limit = {
-						is_in_faction_with = SUI
-					}
-					if = {
-						limit = {
-							SUI = {
-								has_government = democratic
-							}
-						}
-						add_timed_idea = {
-							idea = ideology_promoted_pyc
-							days = 180
-						}
-					}
-					else_if = {
-						limit = {
-							SUI = {
-								has_government = pro_yagoo_progressive
-							}
-						}
-						add_timed_idea = {
-							idea = ideology_promoted_pyp
-							days = 180
-						}
-					}
-					else_if = {
-						limit = {
-							SUI = {
-								has_government = pro_resistance_nationalism
-							}
-						}
-						add_timed_idea = {
-							idea = ideology_promoted_prn
-							days = 180
-						}
-					}
-					else_if = {
-						limit = {
-							SUI = {
-								has_government = communism
-							}
-						}
-						add_timed_idea = {
-							idea = ideology_promoted_prr
-							days = 180
-						}
-					}
-				}
-			}
-		}
-	}
-	GEN_assert_our_independence = {
-		icon = decision_generic_industry
-		available = {
-			NOT = {
-				tag = SUI
-			}
-			has_anti_ideology = yes
-			has_political_power > 50
-		}
-		visible = {
-			NOT = {
-				tag = SUI
-			}
-		}
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 15
-		}
-		complete_effect = {
-			ROOT = {
-				leave_faction = yes
-			}
+		days_remove = 20
+		remove_effect = {
 			SUI = {
-				country_event = suisei.96
+				add_threat = 1
+			}
+			declare_war_on = {
+				target = MRT
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = MLI
+				type = annex_everything
+			}
+			set_variable = {
+				var = SUI.africans_killed
+				value = 0
+			}
+		}
+	}
+	SUI_connect_togo_to_algeria = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+		}
+		available = {
+			has_political_power > 20
+			check_variable = {
+				var = SUI.africans_killed
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 20
+		remove_effect = {
+			SUI = {
+				add_threat = 1
+			}
+			declare_war_on = {
+				target = VOL
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = NGR
+				type = annex_everything
+			}
+		}
+	}
+	SUI_irys_optional = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+		}
+		available = {
+			has_political_power > 20
+			check_variable = {
+				var = SUI.africans_killed
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 20
+		remove_effect = {
+			IRU = {
+				country_event = suisei.126
+			}
+		}
+	}
+	SUI_conquer_nigeria = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+		}
+		available = {
+			has_political_power > 20
+			check_variable = {
+				var = SUI.africans_killed
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 20
+		remove_effect = {
+			SUI = {
+				add_threat = 1
+			}
+			declare_war_on = {
+				target = NGA
+				type = annex_everything
+			}
+		}
+	}
+	SUI_cameroon_thorn_optional = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+		}
+		available = {
+			has_political_power > 20
+			check_variable = {
+				var = SUI.africans_killed
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 20
+		remove_effect = {
+			SUI = {
+				add_threat = 1
+			}
+		}
+	}
+	SUI_conquer_central_africa = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+		}
+		available = {
+			has_political_power > 20
+			check_variable = {
+				var = SUI.africans_killed
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 20
+		remove_effect = {
+			SUI = {
+				add_threat = 1
+			}
+			declare_war_on = {
+				target = CHA
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = CAR
+				type = annex_everything
 			}
 		}
 	}
 }
+
+
+#SUI_an_african_sphere = {
+#	SUI_the_african_congress = {
+#		icon = decision_generic_industry
+#		available = {
+#			tag = SUI
+#			has_political_power > 25
+#		}
+#		visible = {
+#			tag = SUI
+#		}
+#		fire_only_once = yes
+#		ai_will_do = {
+#			factor = 15
+#		}
+#		cost = 25
+#		complete_effect = {
+#			set_country_flag = SUI_congress_africa
+#			create_faction = SUI_congress_of_africa
+#			hidden_effect = {
+#				every_country = {
+#					limit = {
+#						OR = {
+#							tag = MRT
+#							tag = MLI
+#							tag = VOL
+#							tag = NGR
+#							tag = CHA
+#							tag = CAM
+#							tag = CAR
+#							tag = MOR
+#							tag = ALG
+#						}
+#					}
+#					country_event = africa.4
+#				}
+#			}
+#		}
+#	}
+#	SUI_influence_our_allies = {
+#		icon = decision_generic_industry
+#		available = {
+#			tag = SUI
+#			has_political_power > 50
+#		}
+#		visible = {
+#			tag = SUI
+#		}
+#		fire_only_once = no
+#		days_re_enable = 180
+#		ai_will_do = {
+#			factor = 15
+#		}
+#		cost = 50
+#		complete_effect = {
+#			hidden_effect = {
+#				every_country = {
+#					limit = {
+#						is_in_faction_with = SUI
+#					}
+#					if = {
+#						limit = {
+#							SUI = {
+#								has_government = democratic
+#							}
+#						}
+#						add_timed_idea = {
+#							idea = ideology_promoted_pyc
+#							days = 180
+#						}
+#					}
+#					else_if = {
+#						limit = {
+#							SUI = {
+#								has_government = pro_yagoo_progressive
+#							}
+#						}
+#						add_timed_idea = {
+#							idea = ideology_promoted_pyp
+#							days = 180
+#						}
+#					}
+#					else_if = {
+#						limit = {
+#							SUI = {
+#								has_government = pro_resistance_nationalism
+#							}
+#						}
+#						add_timed_idea = {
+#							idea = ideology_promoted_prn
+#							days = 180
+##						}
+#					}
+#					else_if = {
+#						limit = {
+#							SUI = {
+#								has_government = communism
+#							}
+#						}
+#						add_timed_idea = {
+#							idea = ideology_promoted_prr
+#							days = 180
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#	GEN_assert_our_independence = {
+#		icon = decision_generic_industry
+#		available = {
+#			NOT = {
+#				tag = SUI
+#			}
+#			has_anti_ideology = yes
+##			has_political_power > 50
+#		}
+##		visible = {
+#			NOT = {
+#				tag = SUI
+#			}
+#		}
+#		fire_only_once = yes
+#		ai_will_do = {
+#			factor = 15
+#		}
+#		complete_effect = {
+#			ROOT = {
+#				leave_faction = yes
+#			}
+#			SUI = {
+#				country_event = suisei.96
+#			}
+#		}
+#	}
+#}
 
 SUI_cores_on_france = {
 	SUI_get_cores_on_france = {
@@ -1541,51 +1841,6 @@ suisei_deal_with_strikes = {
 	}
 }
 
-SUI_reestablishing_colonial_rule = {
-	SUI_west_africa_conquest = {
-		allowed = {
-			tag = SUI
-		}
-		visible = {
-			always = yes
-		}
-		available = {
-			has_political_power > 150
-		}
-		cost = 150
-		fire_only_once = yes
-		complete_effect = {
-			SUI = {
-				add_threat = 5
-			}
-			create_wargoal = {
-				target = MRT
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = MLI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = VOL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = NGR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = CHA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = CAR
-				type = annex_everything
-			}
-		}
-	}
-}
-
 SUI_moroccan_rule = {
 	SUI_second_moroccon_war_negotiations = {
 		allowed = {
@@ -1603,4 +1858,171 @@ SUI_moroccan_rule = {
 			}
 		}
 	}
+}
+
+african_rebel_army_stuff = {
+	scavenge_equipment = {
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		complete_effect = {
+		random_list = {
+			#Mild increase - 1
+			5 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2000
+				}
+			}
+			#Mid increase - 2
+			2 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2500
+				}
+			}
+			#decrease - 1 
+			2 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1500
+				}
+			}
+			#Heavy increase - 3
+			1 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 3000
+				}
+			}
+		}
+	}
+	}
+	scavenge_more_equipment = {
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+	complete_effect = {
+		random_list = {
+			#Mild increase - 1
+			5 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2000
+				}
+			}
+			#Mid increase - 2
+			2 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2500
+				}
+			}
+			#decrease - 1 
+			2 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1500
+				}
+			}
+			#Heavy increase - 3
+			1 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 3000
+				}
+			}
+		}
+	}
+	}
+	recruit_more_rebels = {
+		available = {
+		has_equipment = {
+			infantry_equipment > 1000
+		}
+	}
+	visible = {
+		always = yes
+	}
+	days_re_enable = 50
+	fire_only_once = no
+	complete_effect = {
+		if = {
+			limit = {
+				NOT = {
+				has_template = "Rebels"
+				}
+			}
+			ROOT = {
+			division_template = {
+				name = "Rebels"
+				regiments = {
+					militia = {
+						x = 0
+						y = 0
+					}
+					militia = {
+						x = 0
+						y = 1
+					}
+					militia = {
+						x = 1
+						y = 0
+					}
+					militia = {
+						x = 1
+						y = 1
+					}
+				}
+				̂}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -1000
+				}
+			random_owned_state = {
+				create_unit = {
+					division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+					owner = ROOT
+				}
+			}
+		}
+	}
+	else = {
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+		}
+	random_owned_state = {
+		create_unit = {
+			division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+			owner = ROOT
+		}
+		create_unit = {
+			division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+			owner = ROOT
+		}
+		create_unit = {
+			division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+			owner = ROOT
+		}
+	}
+	}
+}
+}
 }
