@@ -165,10 +165,11 @@ country_event = {
 		SUI = {
 			country_event = suisei.106
 		}
-		create_wargoal = {
+		declare_war_on = {
 			target = FRA
 			type = topple_government
 		}
+		ai_chance = { base = 5 }
 	}
 	#leave them
 	option = {
@@ -204,7 +205,7 @@ country_event = {
 	option = {
 		name = subaru.7.b
 		set_global_flag = FRA_occupation_ended
-		create_wargoal = {
+		declare_war_on = {
 			target = FRA
 			type = topple_government
 		}
@@ -229,35 +230,15 @@ country_event = {
 		SUI = {
 			country_event = suisei.109
 		}
+		ai_chance  = { 
+			base = 2
+		}
 	}
 	#Fine, we can't have another war
 	option = {
 		name = subaru.8.b
 		SUI = {
 			country_event = suisei.117
-		}
-	}
-}
-
-#Suisei demands Paris area
-country_event = {
-	id = subaru.9
-	title = subaru.9.t
-	desc = subaru.9.d
-	picture = GFX_report_event_SUB_france_ends_occupation_peace
-	is_triggered_only = yes
-	#Eat shit
-	option = {
-		name = subaru.7.a
-		SUI = {
-			country_event = suisei.89
-		}
-	}
-	#Fine, we can't have another war
-	option = {
-		name = subaru.7.b
-		SUI = {
-			country_event = suisei.116
 		}
 	}
 }
@@ -314,6 +295,7 @@ country_event = {
 		}
 		add_war_support = -0.15
 		add_stability = -0.1
+		ai_chance = { base   = 2 }
 	}
 	#Let's just let suisei have it...
 	option = {
@@ -341,6 +323,7 @@ country_event = {
 		}
 		add_war_support = -0.15
 		add_stability = -0.2
+		ai_chance = { base   = 4 }
 	}
 	#Let's just let suisei have it...
 	option = {
@@ -386,8 +369,8 @@ country_event = {
 #we have won our paris skirmish with suisei
 country_event = {
 	id = subaru.16
-	title = subaru.15.t
-	desc = subaru.15.d
+	title = subaru.16.t
+	desc = subaru.16.d
 	picture = GFX_report_event_SUB_france_ends_occupation_peace
 	is_triggered_only = yes
 	#And don't come back!
@@ -395,5 +378,77 @@ country_event = {
 		name = subaru.15.a
 		add_war_support = 0.1
 		add_stability = 0.1
+	}
+}
+
+#Suisei has invaded france on her own!
+country_event = {
+	id = subaru.17
+	title = subaru.17.t
+	desc = subaru.17.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#We will invade as well! Don't let them have it all!
+	option = {
+		name = subaru.17.a
+		add_war_support = 0.1
+		add_stability = -0.05
+		SUI = {
+			clr_country_flag =  sui_france_SOLO
+			set_country_flag =  sui_france_DUO
+		}
+		ai_chance = { base   = 6  }
+		declare_war_on = {
+			target = FRA
+			type = topple_government
+		}
+	}
+	#Just ler her...
+		option = {
+			name = subaru.17.b
+			add_war_support = -0.05
+			add_stability = 0.05
+		}
+}
+
+#France begs for our help!
+country_event = {
+	id = subaru.18
+	title = subaru.18.t
+	desc = subaru.18.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#We must help them. Demand suisei stop the invasion!
+	option = {
+		name = subaru.18.a
+		SUI = {
+			clr_country_flag =  sui_france_SOLO
+			set_country_flag =  alt_negotiations
+			country_event = suisei.108
+		}
+	}
+}
+
+#Suisei demands Paris area
+country_event = {
+	id = subaru.9
+	title = subaru.9.t
+	desc = subaru.9.d
+	picture = GFX_report_event_SUB_france_ends_occupation_peace
+	is_triggered_only = yes
+	#Eat shit
+	option = {
+		name = subaru.7.a
+		SUI = {
+			country_event = suisei.89
+		}
+		ai_chance = { base   = 2 }
+	}
+	#Fine, we can't have another war
+	option = {
+		name = subaru.7.b
+		SUI = {
+			country_event = suisei.116
+		}
 	}
 }

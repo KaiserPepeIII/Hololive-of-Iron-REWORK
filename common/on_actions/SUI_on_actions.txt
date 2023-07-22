@@ -119,16 +119,25 @@ on_actions = {
 			}
 			set_variable = {
 				var = SUI.colonial_exploitation
-				value = 3
+				value = 0
+			}
+			set_variable = {
+				var = SUI.colonial_exploitation_consumer_goods
+				value = 0
+			}
+			clamp_variable = {
+				var = SUI.colonial_exploitation_consumer_goods
+				min = -0.05
+				max = 0
 			}
 			clamp_variable = {
 				var = SUI.colonial_exploitation
 				min = 0
-				max = 10
+				max = 0.15
 			}
 			set_variable = {
 				var = SUI.colonial_unrest
-				value = 6
+				value = 3
 			}
 			clamp_variable = {
 				var = SUI.colonial_unrest
@@ -185,18 +194,21 @@ on_actions = {
 					tag = FRA
 					SUI = {
 						has_country_flag = sui_france_SOLO
+						NOT = {
+							has_country_flag = Fuck_Subaru
+						}
 					}
 				}
 					SUI = {
+						white_peace = {
+							tag = FRA
+							message = FRANCE_scripted_peace_1_loc #full annex solo
+						}
 						annex_country = {
 							target = FRA
 							transfer_troops = no
 						}
 						country_event = suisei.114
-						white_peace = {
-							tag = FRA
-							message = FRANCE_scripted_peace_1_loc #full annex solo
-						}
 					}
 			}
 			else_if = {
@@ -204,6 +216,9 @@ on_actions = {
 					tag = FRA
 					SUI = {
 						has_country_flag = sui_france_DUO
+						NOT = {
+							has_country_flag = Fuck_Subaru
+						}
 					}
 				OR = {
 					SUI = {
@@ -221,15 +236,15 @@ on_actions = {
 				}
 		}
 		SUI = {
+			white_peace = {
+				tag = FRA
+				message = FRANCE_scripted_peace_2_loc #full annex duo pro yagoo
+			}
 			annex_country = {
 				target = FRA
 				transfer_troops = no
 			}
 			country_event = suisei.115
-			white_peace = {
-				tag = FRA
-				message = FRANCE_scripted_peace_2_loc #full annex duo pro yagoo
-			}
 		}
 	}
 	else_if = {
@@ -238,6 +253,7 @@ on_actions = {
 		SUI = {
 			has_country_flag = sui_france_DUO
 			NOT = {
+				has_country_flag = Fuck_Subaru
 				OR ={
 					has_government = pro_yagoo_kleptocracy
 					has_government = democratic
@@ -265,7 +281,23 @@ on_actions = {
 		puppet = FRA
 	}
 }
-else = {
+else_if = {
+	limit = {
+		tag = FRA
+		SUB = {
+			has_country_flag = subaru_france_solo
+		}
+	}
+		SUB = {
+			white_peace = {
+				tag = FRA
+				message = FRANCE_scripted_peace_9_loc #subaru puppets france alone
+			}
+			puppet = FRA
+		}
+
+}
+else_if = {
 	limit = {
 	tag = FRA 
 	SUI = {
@@ -276,7 +308,81 @@ SUB = {
 	country_event = subaru.12
 }
 }
+else = {
+
 }
+}
+}
+on_capitulation = {
+	effect = {
+		if = {
+			limit = {
+			tag = SUI
+			SUI = {
+				OR = {
+					has_country_flag = sui_france_SOLO
+					has_country_flag = sui_france_DUO
+				}
+				has_war_with = FRA
+			}
+		}
+		FRA = {
+			white_peace = {
+				tag = SUI
+				message = FRANCE_scripted_peace_10_loc #suisei died to france alone (lol)
+			}
+			annex_country = {
+				target = SUI
+				transfer_troops = no
+			}
+			SUI_died_to_france = yes
+		}
+		}
+		else_if = {
+			limit = {
+				tag = SUI
+				SUI = {
+					OR = {
+						has_country_flag = Fuck_Subaru
+					}
+					has_war_with = SUB
+				}
+			}
+			FRA = {
+				white_peace = {
+					tag = SUI
+					message = FRANCE_scripted_peace_11_loc #suisei died to france and subaru 
+				}
+				every_core_state = {
+					if = {
+						limit = {
+							is_owned_by = SUI
+						}
+						transfer_state_to = FRA
+					}
+				}
+			}
+			ALG = {
+				every_core_state = {
+					if = {
+						limit = {
+							is_owned_by = SUI
+						}
+						transfer_state_to = FRA
+					}
+				}
+			}
+			OSK = {
+				annex_country = {
+					target = SUI
+					transfer_troops = no
+				}
+			}
+		}
+		else = {
+			
+		}
+	}
 }
 on_state_control_changed = {
 	effect = {
@@ -315,5 +421,40 @@ on_state_control_changed = {
 			}
 		}
 	}
+}
+on_capitulation = {
+	effect = { 
+		if = {
+			limit = { 
+				OR = {
+					tag = MRT
+					tag = MLI
+					tag = VOL
+					tag = NGA
+					tag = NGR
+					tag = CHA
+					tag = CAR
+}
+SUI = {
+	has_offensive_war_with = ROOT
+}
+}
+SUI = {
+add_to_variable = {
+	var = SUI.africans_killed
+	value = 1
+}
+white_peace = {
+	tag = ROOT
+	message = SUI_expanding_colonies_loc #suisei is expanding colonies
+}
+annex_country = {
+	target = ROOT
+	transfer_troops = no
+}
+country_event = suisei.123
+}
+	}
+}
 }
 }
