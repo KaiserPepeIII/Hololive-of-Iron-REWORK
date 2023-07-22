@@ -2543,7 +2543,7 @@ country_event = {
 		name = suisei.106.a
 		add_war_support = 0.05
 		set_country_flag = sui_france_DUO
-		declare_war_on = {
+		create_wargoal = {
 			target = FRA
 			type = annex_everything
 		}
@@ -2554,9 +2554,6 @@ country_event = {
 		clr_country_flag = dealing_with_france
 		add_war_support = -0.15
 		add_stability = -0.1
-		SUB = {
-			set_country_flag = subaru_france_solo
-		}
 	}
 }
 
@@ -2572,7 +2569,7 @@ country_event = {
 		name = suisei.107.a
 		add_war_support = 0.05
 		set_country_flag = sui_france_SOLO
-		declare_war_on = {
+		create_wargoal = {
 			target = FRA
 			type = annex_everything
 		}
@@ -2598,14 +2595,10 @@ country_event = {
 		name = suisei.89.a
 		add_stability = -0.1
 		set_country_flag = sui_france_SOLO
-		declare_war_on = {
+		create_wargoal = {
 			target = FRA
 			type = annex_everything
 		}
-		FRA = {
-			set_country_flag = france_ask_help
-		}
-		ai_chance  = { base =  10 }
 	}
 	#We are cornered
 	option = {
@@ -2630,11 +2623,10 @@ country_event = {
 	option = {
 		name = suisei.90.a
 		set_country_flag = sui_france_DUO
-		declare_war_on = {
+		create_wargoal = {
 			target = FRA
 			type = annex_everything
 		}
-		ai_chance  = { base = 5 }
 	}
 	#We will not help
 	option = {
@@ -2645,9 +2637,6 @@ country_event = {
 			popularity = -0.1
 		}
 		clr_country_flag = dealing_with_france
-		SUB = {
-			set_country_flag = subaru_france_solo
-		}
 	}
 }
 
@@ -2693,7 +2682,6 @@ country_event = {
 		create_faction = suisei_monarchy_alliance
 		#France's Natural borders
 		SUI_france_natural_borders_core = yes
-		custom_effect_tooltip = cores_on_france_tt
 	}
 }
 
@@ -2802,7 +2790,7 @@ country_event = {
 	desc = suisei.100.desc
 	picture = GFX_report_event_mio
 	is_triggered_only = yes
-	#yaya
+	#uh oh 
 	option = {
 		name = suisei.100.a
 		add_to_variable = {
@@ -2930,7 +2918,6 @@ country_event = {
 		SUB = {
 			country_event = subaru.8
 		}
-		ai_chance  = { base = 10 }
 	}
 	#Paris will either be suisei's or will not be at all! - partial war with subaru
 	option = {
@@ -2939,26 +2926,13 @@ country_event = {
 			country_event = subaru.11
 		}
 		add_war_support = 0.05
-		ai_chance  = { base = 5 }
 	}
-	#We are content with everything below paris
+	#We are content with the land we got
 	option = {
 		name = suisei.108.c
 		clr_country_flag = dealing_with_france
 		add_war_support = -0.1
 		add_stability = 0.05
-		if = {
-			limit = {
-				has_country_flag = alt_negotiations
-			}
-			transfer_state = 27
-			transfer_state = 24
-			transfer_state = 942
-			transfer_state = 30
-			transfer_state = 14
-			transfer_state = 16
-			transfer_state = 15
-		}
 	}
 }
 
@@ -2981,7 +2955,6 @@ country_event = {
 			target = FRA
 			type = annex_everything
 		}
-		ai_chance  = { base = 10 }
 	}
 	#Fuck, let's back down
 	option = {
@@ -3045,7 +3018,6 @@ country_event = {
 			}
 		}
 	}
-	ai_chance  = { base = 10 }
 	}
 	#Fuck, let's back down
 	option = {
@@ -3093,8 +3065,6 @@ country_event = {
 	#A glorious victory for la reine!
 	option = {
 		name = suisei.113.a
-		clr_country_flag = dealing_with_france
-		clr_country_flag = Fuck_Subaru
 		add_war_support = 0.2
 		white_peace = {
 			tag = SUB
@@ -3167,7 +3137,6 @@ country_event = {
 	option = {
 		name = suisei.114.a
 		add_war_support = 0.1
-		clr_country_flag = dealing_with_france
 	}
 }
 
@@ -3182,7 +3151,6 @@ country_event = {
 	option = {
 		name = suisei.110.a
 		add_war_support = 0.1
-		clr_country_flag = dealing_with_france
 	}
 }
 
@@ -3200,7 +3168,6 @@ country_event = {
 		transfer_state = 1132
 		transfer_state = 858
 		transfer_state = 945
-		clr_country_flag = dealing_with_france
 	}
 }
 
@@ -3219,7 +3186,6 @@ country_event = {
 				target = FRA
 				transfer_troops = no
 			}
-			clr_country_flag = dealing_with_france
 	}
 }
 
@@ -3242,8 +3208,6 @@ country_event = {
 				tag = SUB
 				message = FRANCE_scripted_peace_4_loc #Suisei annexed france after fighting subaru
 			}
-			clr_country_flag = dealing_with_france
-			clr_country_flag = Fuck_Subaru
 	}
 }
 
@@ -3267,8 +3231,6 @@ country_event = {
 				tag = SUB
 				message = FRANCE_scripted_peace_5_loc #Suisei annexed france and calais after fighting subaru
 			}
-			clr_country_flag = dealing_with_france
-			clr_country_flag = Fuck_Subaru
 	}
 }
 
@@ -3293,8 +3255,6 @@ country_event = {
 			SUB = {
 				country_event = subaru.15
 			}
-			clr_country_flag = dealing_with_france
-			clr_country_flag = sui_france_DUO
 	}
 }
 
@@ -3314,159 +3274,5 @@ country_event = {
 				tag = SUB
 				message = FRANCE_scripted_peace_8_loc #Subaru beat Suisei in a skirmish over Paris
 			}
-			clr_country_flag = dealing_with_france
-			clr_country_flag = sui_france_DUO
 	}
-}
-
-#Our colonies have collapsed
-country_event = {
-	id = suisei.122
-	title = suisei.122.t
-	desc = suisei.122.desc
-	picture = GFX_report_SUI_commies_reunite_france
-	is_triggered_only = yes
-	#Damn it! Hold algeria at all costs!
-	option = {
-		name = suisei.122.a
-		add_war_support = -0.2
-		add_stability = -0.2
-		SUI_colonial_collapse_no_algeria = yes
-	}
-	#Damn it! Just let the savages have the land!
-	option = {
-		name = suisei.122.b
-		add_war_support = -0.2
-		add_stability = -0.15
-		SUI_colonial_collapse_algeria_war = yes
-	}
-}
-
-#we have conquered a new colony and must decide the administration
-country_event = {
-	id = suisei.123
-	title = suisei.123.t
-	desc = suisei.123.desc
-	picture = GFX_report_SUI_commies_reunite_france
-	is_triggered_only = yes
-	#Lenient colonial rule as to start good relations with natives 
-	option = {
-		name = suisei.123.a
-		FROM = {
-			every_core_state = {
-				add_dynamic_modifier = {
-					modifier = SUI_local_authority
-				}
-			}
-		}
-			}
-	#To hell with the natives, start mining!
-	option = {
-		name = suisei.123.b
-		FROM = {
-			every_core_state = {
-				add_dynamic_modifier = {
-					modifier = SUI_colonial_unrest
-				}
-			}
-		}
-		add_to_variable = {
-			var = SUI.colonial_unrest
-			value = 1
-		}
-		add_to_variable = {
-			var = SUI.colonial_exploitation
-			value = 0.02
-		}
-		subtract_from_variable = {
-			var = SUI.colonial_exploitation_consumer_goods
-			value = 0.1
-	}
-}
-}
-
-#Suisei finished african conquest - Rampant exploitation
-#In swift time, suisei has rapidly re-estabilished the french colonial empire
-#Colonies are brutally exploited for huge profit in the mainland,suisei troops act as excellent terror forces, it's clear these colonies are not made to last 
-#but simply to make as much of a profit as possible. 
-country_event = {
-	id = suisei.124
-	title = suisei.124.t
-	desc = suisei.124.desc
-	picture = GFX_report_SUI_commies_reunite_france
-	is_triggered_only = yes
-	#They will fear la Reine for centuries.
-	option = {
-		name = suisei.124.a
-			}
-}
-
-#Suisei finished african conquest - Overall local rule
-#In swift time, suisei has rapidly re-estabilished the french colonial empire 
-#However,instead of simply abusing the lands suisei has brought positive development to the lands and a new hope for the territory
-#It seems many people in these newly conquered lands adore la reine and these colonies are expected to be integrated into the new empire
-country_event = {
-	id = suisei.125
-	title = suisei.125.t
-	desc = suisei.125.desc
-	picture = GFX_report_SUI_commies_reunite_france
-	is_triggered_only = yes
-	#They will admire la Reine for centuries.
-	option = {
-		name = suisei.125.a
-			}
-}
-
-#Irys - suisei demands we surrender or face annexation
-country_event = {
-	id = suisei.126
-	title = suisei.126.t
-	desc = suisei.126.desc
-	picture = GFX_report_SUI_commies_reunite_france
-	is_triggered_only = yes
-	#Our hopes are crushed, fight to the death
-	option = {
-		name = suisei.126.a
-		SUI = {
-			country_event = suisei.128
-		}
-			}
-	#There's still hope even as puppets
-option = {
-	name = suisei.126.b
-	SUI = {
-		country_event = suisei.127
-	}
-}
-}
-
-#Irys has accepted our demands
-country_event = {
-	id = suisei.127
-	title = suisei.127.t
-	desc = suisei.127.desc
-	picture = GFX_report_SUI_commies_reunite_france
-	is_triggered_only = yes
-	#Smart choice
-	option = {
-		name = suisei.127.a
-		puppet = IRU
-			}
-}
-
-#Irys has refused our demands
-country_event = {
-	id = suisei.128
-	title = suisei.128.t
-	desc = suisei.128.desc
-	picture = GFX_report_SUI_commies_reunite_france
-	is_triggered_only = yes
-	#You have chosen death
-	option = {
-		name = suisei.128.a
-		declare_war_on = {
-			target = IRU
-			type = annex_everything
-		}
-		}
 }

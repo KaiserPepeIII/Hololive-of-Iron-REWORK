@@ -171,37 +171,15 @@ SUI_reestablishing_colonial_rule = {
 		tag = SUI
 	}
 	visible = {
-		always = yes
-	}
-}
-
-african_rebel_army_stuff = {
-	priority = 5
-	icon = GFX_decision_category_sui_reestablishing_colonial_rule
-	picture = GFX_decision_cat_sui_reestablishing_colonial_rule
-	visible_when_empty = yes
-	allowed = {
-        OR = {
-            tag = MRT
-			tag = GUI
-			tag = BEN
-			tag = VOL
-			tag = MLI
-			tag = NGA
-			tag = NGR
-			tag = GHA
-			tag = CHA
-			tag = CAR
-			tag = COT
-			tag = CAM
-			tag = DRC
-			tag = SEN
-			tag = TOG
-            tag = ALG
-        }
-	}
-	visible = {
-		always = yes
+		SUI = {
+			OR = {
+				has_government = pro_resistance_nationalism
+			}
+		}
+		NOT = {
+			is_puppet = yes
+			is_subject = yes
+		}
 	}
 }
 
@@ -250,7 +228,7 @@ suisei_revolutionary_economics_decision = {
 	}
 	visible = {
 		SUI = {
-			#has_idea = suisei_revolutionary_economics
+			has_idea = suisei_revolutionary_economics
 			has_government = communism
 		}
 		NOT = {
@@ -271,7 +249,7 @@ suisei_nationalist_economics_decision = {
 	}
 	visible = {
 		SUI = {
-		#	has_idea = suisei_nationalist_economics
+			has_idea = suisei_nationalist_economics
 			has_government = pro_resistance_nationalism
 		}
 		NOT = {
