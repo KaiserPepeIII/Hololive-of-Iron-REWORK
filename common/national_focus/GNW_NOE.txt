@@ -1090,6 +1090,24 @@ focus_tree = {
 			focus = GNW_NOE_operation_agrippa
 		}
 		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_tech = marines
+					}
+				}
+				set_technology = {
+					marines = 1
+				}
+				else_if = {
+					limit = {
+						has_tech = marines
+					}
+					set_technology = {
+						marines2 = 1
+					}
+				}
+			}
 			division_template = {
 				name = "Marines"
 				regiments = {
@@ -1121,11 +1139,11 @@ focus_tree = {
 			}
 			capital_scope = {
 				create_unit = {
-					division = "name = \"1st Marines\" division_template = \"Baltic Liberation Army\" start_experience_factor = 0.5 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					division = "name = \"1st Marines\" division_template = \"Marines\" start_experience_factor = 0.5 start_equipment_factor = 0.8 start_manpower_factor = 1"
 					owner = NOE
 				}
 				create_unit = {
-					division = "name = \"2nd Marines\" division_template = \"Baltic Liberation Army\" start_experience_factor = 0.5 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					division = "name = \"2nd Marines\" division_template = \"Marines\" start_experience_factor = 0.5 start_equipment_factor = 0.8 start_manpower_factor = 1"
 					owner = NOE
 				}
 			}

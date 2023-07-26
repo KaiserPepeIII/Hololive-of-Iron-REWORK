@@ -1,4 +1,147 @@
 GAW_integrate_warlord_armies_cat = {
+	GAW_canton_war = {
+		available = {
+			OR = {
+				GAW = {
+					controls_state = 603
+					controls_state = 599
+				}
+				GAW = {
+					controls_state = 593
+				}
+				RSA = {
+					surrender_progress > 0.45
+				}
+			}
+		}
+		activation = {
+			always = no
+		}
+		cancel_trigger = {
+			always = no
+		}
+		days_mission_timeout = 180
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+			GAW = {
+				country_event = gura.105
+			}
+			RSA = {
+				country_event = rosalyn.2
+			}
+			GAW = {
+				white_peace = RSA
+			}
+		}
+		timeout_effect = {
+			GAW = {
+				country_event = gura.106
+			}
+			RSA = {
+				country_event = rosalyn.3
+			}
+			GAW = {
+				white_peace = RSA
+			}
+		}
+	}
+	GAW_integrate_the_ma_family = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+			XSM = {
+				exists = yes
+				NOT = {
+					has_war = yes
+				}
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 7
+			modifier = {
+				add = -10
+				GAW = {
+					has_country_flag = GAW_dealing_with_warlord
+				}
+			}
+		}
+		complete_effect = {
+			XSM = {
+				country_event = ma_clique.1
+			}
+			set_country_flag = GAW_dealing_with_warlord
+		}
+	}
+	GAW_integrate_zhao_hengti = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 7
+			modifier = {
+				add = -10
+				GAW = {
+					has_country_flag = GAW_dealing_with_warlord
+				}
+			}
+		}
+		complete_effect = {
+			country_event = gura.90
+			set_country_flag = GAW_dealing_with_warlord
+		}
+	}
+	GAW_integrate_tang_zhengshi = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 7
+			modifier = {
+				add = -10
+				GAW = {
+					has_country_flag = GAW_dealing_with_warlord
+				}
+			}
+		}
+		complete_effect = {
+			country_event = gura.97
+			set_country_flag = GAW_dealing_with_warlord
+		}
+	}
+	GAW_integrate_feng_yuxiang = {
+		available = {
+			tag = GAW
+		}
+		visible = {
+			tag = GAW
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 7
+			modifier = {
+				add = -10
+				GAW = {
+					has_country_flag = GAW_dealing_with_warlord
+				}
+			}
+		}
+		complete_effect = {
+			country_event = gura.107
+			set_country_flag = GAW_dealing_with_warlord
+		}
+	}
 }
 
 GAW_great_wonders = {

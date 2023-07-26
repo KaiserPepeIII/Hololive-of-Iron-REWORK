@@ -1722,7 +1722,7 @@ focus_tree = {
 			}
 			add_timed_idea = {
 				idea = industrial_boom
-				days = 100
+				days = 180
 			}
 		}
 		search_filters = {
@@ -1909,7 +1909,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			division_template = {
-				name = "Imperial Gaurd"
+				name = "Imperial Guard"
 				is_locked = yes
 				division_names_group = USA_INF_01				#placeholder fix later
 				regiments = {
@@ -1959,6 +1959,16 @@ focus_tree = {
 						x = 0
 						y = 1
 					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1st Imperial Guard\" division_template = \"Imperial Guard\" start_experience_factor = 0.5 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
+				}
+				create_unit = {
+					division = "name = \"2nd Imperial Guard\" division_template = \"Imperial Guard\" start_experience_factor = 0.5 start_equipment_factor = 0.8 start_manpower_factor = 1"
+					owner = NOE
 				}
 			}
 		}
@@ -2013,8 +2023,11 @@ focus_tree = {
 			focus = NOE_royal_engineers
 		}
 		completion_reward = {
-			add_ideas = {
-				ritter_tactics				# artillery production is cheaper
+			add_tech_bonus = {
+				name = NOE_ritter_tactics_tech
+				category = cat_superior_firepower
+				uses = 2
+				bonus = 0.8
 			}
 		}
 		search_filters = {
@@ -2487,7 +2500,7 @@ focus_tree = {
 			}
 		}
 		cost = 5
-		x = 58
+		x = 71
 		y = 3
 	}
 	focus = {
@@ -2530,7 +2543,7 @@ focus_tree = {
 			FOCUS_FILTER_AIR_XP
 		}
 		cost = 5
-		x = 58
+		x = 71
 		y = 4
 	}
 	focus = {

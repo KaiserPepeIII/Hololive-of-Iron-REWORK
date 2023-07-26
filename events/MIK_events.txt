@@ -181,7 +181,8 @@ country_event = {
 				days = 5
 			}
 		}
-		ai_chance = { base = 99
+		ai_chance = {
+			base = 99
 		}
 	}
 }
@@ -279,8 +280,8 @@ country_event = {
 	option = {
 		name = miko.9.a
 		trigger = {
+			tag = SUI
 			check_variable = {
-				tag = SUI
 				var = SUI.morocco_negotiations_overextend
 				value = 3
 				compare = equals
@@ -304,8 +305,8 @@ country_event = {
 	option = {
 		name = miko.9.i
 		trigger = {
+			tag = MIK
 			check_variable = {
-				tag = MIK
 				var = SUI.morocco_negotiations_overextend
 				value = 3
 				compare = equals
@@ -677,7 +678,7 @@ country_event = {
 		YAG = {
 			country_event = mumegypt.3
 		}
-		ai_will_do = {
+		ai_chance = {
 			base = 1
 		}
 	}
@@ -727,7 +728,7 @@ country_event = {
 		SUI = {
 			country_event = suisei.149
 		}
-		}
+	}
 }
 
 #Our country is protesting our war heavily and our army is starting to desert...
@@ -744,7 +745,7 @@ country_event = {
 		SUI = {
 			country_event = suisei.147
 		}
-		}
+	}
 }
 
 #Suisei is forcing a very heavy peace deal on us
@@ -759,7 +760,7 @@ country_event = {
 	option = {
 		name = miko.21.a
 		SUI_morocco_win = yes
-		}
+	}
 }
 
 #Suisei forced out of morocco 
@@ -781,7 +782,7 @@ country_event = {
 		clr_country_flag = mik_take_bayonne
 		clr_country_flag = mik_take_toulouse_or_bordeaux
 		clr_country_flag = mik_take_fes
-		}
+	}
 }
 
 #Our country is protesting our war heavily and our army is starting to desert... everything seems to have been useless since morocco is still alive.
@@ -796,8 +797,8 @@ country_event = {
 	#Seriously, morocco won?!
 	option = {
 		name = miko.23.a
-		add_stability = -0.10
-		add_war_support = -0.20
+		add_stability = -0.1
+		add_war_support = -0.2
 		SUI = {
 			clr_country_flag = morocco_threesome
 			set_country_flag = SUI_morocco_solo
@@ -858,14 +859,14 @@ country_event = {
 		MIK = {
 			white_peace = {
 				tag = MOR
-				message = Morocco_scripted_peace_loc_5 #Morocco defeated Miko
+				message = Morocco_scripted_peace_loc_5				#Morocco defeated Miko
 			}
 			white_peace = {
 				tag = SUI
 			}
-	}
-	news_event = global_holo.39
 		}
+		news_event = global_holo.39
+	}
 }
 
 #Heavy anti war protests combined with the fact suisei was already forced out are forcing us to surrender to morocco
@@ -882,20 +883,20 @@ country_event = {
 		name = miko.24.a
 		white_peace = {
 			tag = MOR
-			message = Morocco_scripted_peace_loc_6 #Morocco won moroccan war
+			message = Morocco_scripted_peace_loc_6			#Morocco won moroccan war
 		}
-		add_stability = -0.10
-		add_war_support = -0.20
+		add_stability = -0.1
+		add_war_support = -0.2
 		clr_country_flag = MIK_morocco_solo
-			MOR = {
-				every_core_state = {
-					transfer_state_to = MOR
-				}
-			}
-			699 = {
+		MOR = {
+			every_core_state = {
 				transfer_state_to = MOR
 			}
 		}
+		699 = {
+			transfer_state_to = MOR
+		}
+	}
 }
 
 #We have narrowly won in morocco
@@ -910,5 +911,5 @@ country_event = {
 	option = {
 		name = miko.25.a
 		news_event = global_holo.41
-		}
+	}
 }

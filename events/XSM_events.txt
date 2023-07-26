@@ -1,0 +1,30 @@
+add_namespace = ma_clique
+#Gura demands our submission
+country_event = {
+	id = ma_clique.1
+	title = ma_clique.1.t
+	desc = ma_clique.1.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	#No
+	option = {
+		name = ma_clique.1.a
+		GAW = {
+			country_event = gura.89
+		}
+	}
+	#Yes
+	option = {
+		name = ma_clique.1.b
+		custom_effect_tooltip = HLOI_end_playthrough_warning
+		every_owned_state = {
+			add_core_of = GAW
+		}
+		GAW = {
+			annex_country = {
+				target = XSM
+				transfer_troops = yes
+			}
+			country_event = gura.88
+		}
+	}
+}

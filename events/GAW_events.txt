@@ -2750,3 +2750,606 @@ country_event = {
 		}
 	}
 }
+
+#Integrate Warlards - Ma Family integrates
+country_event = {
+	id = gura.88
+	title = gura.88.t
+	desc = gura.88.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#win win
+	option = {
+		name = gura.88.a
+		add_war_support = 0.05
+		army_experience = 7.5
+	}
+}
+
+#Integrate Warlards - Ma Family refuses to integrate
+country_event = {
+	id = gura.89
+	title = gura.89.t
+	desc = gura.89.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#damn. war
+	option = {
+		name = gura.89.a
+		GAW = {
+			create_wargoal = {
+				target = XSM
+				type = annex_everything
+			}
+		}
+	}
+	#damn...
+	option = {
+		name = gura.89.b
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.05
+		}
+		add_war_support = -0.05
+	}
+}
+
+#Integrate Warlards - Zhao Hengti?
+country_event = {
+	id = gura.90
+	title = gura.90.t
+	desc = gura.90.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#Offer him a cabinet position 
+	option = {
+		name = gura.90.a
+		trigger = {
+			NOT = {
+				has_completed_focus = GAW_form_new_dynasty
+			}
+		}
+		random_list = {
+			#accept
+			9 = {
+				country_event = gura.91
+			}
+			#refuse
+			1 = {
+				country_event = gura.92
+			}
+		}
+	}
+	#Demand his submission now
+	option = {
+		name = gura.90.b
+		random_list = {
+			#accept
+			4 = {
+				country_event = gura.93
+			}
+			#refuse
+			6 = {
+				country_event = gura.94
+			}
+		}
+	}
+	#Just request his loyalty to Gura
+	option = {
+		name = gura.90.c
+		random_list = {
+			#accept
+			8 = {
+				country_event = gura.95
+			}
+			#refuse
+			2 = {
+				country_event = gura.95
+			}
+		}
+	}
+}
+
+#Integrate Warlards - Zhao Hengti Accepts (Minister)
+country_event = {
+	id = gura.91
+	title = gura.91.t
+	desc = gura.91.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.91.a
+		GAW_switch_armaments_minister = yes
+		add_ideas = GAW_zhao_hengti
+		GAW_clear_zhao_hengti_warlord = yes
+	}
+}
+
+#Integrate Warlards - Zhao Hengti refuses (Minister)
+country_event = {
+	id = gura.92
+	title = gura.92.t
+	desc = gura.92.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#ok, by force it is
+	option = {
+		name = gura.92.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.05
+		}
+		add_war_support = -0.05
+		set_country_flag = GAW_integrating_zhao_hengti
+	}
+}
+
+#Integrate Warlards - Zhao Hengti Accepts 
+country_event = {
+	id = gura.93
+	title = gura.93.t
+	desc = gura.93.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.93.a
+		GAW_clear_zhao_hengti_warlord = yes
+	}
+}
+
+#Integrate Warlards - Zhao Hengti refuses 
+country_event = {
+	id = gura.94
+	title = gura.94.t
+	desc = gura.94.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#ok, by force it is
+	option = {
+		name = gura.94.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.05
+		}
+		add_war_support = -0.05
+		set_country_flag = GAW_integrating_zhao_hengti
+	}
+}
+
+#Integrate Warlards - Zhao Hengti Accepts (Loyalty)
+country_event = {
+	id = gura.95
+	title = gura.95.t
+	desc = gura.95.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.95.a
+		set_country_flag = GAW_integrating_zhao_hengti_easier
+	}
+}
+
+#Integrate Warlards - Zhao Hengti refuses (Loyalty)
+country_event = {
+	id = gura.96
+	title = gura.96.t
+	desc = gura.96.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#ok, by force it is
+	option = {
+		name = gura.96.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.1
+		}
+		add_war_support = -0.05
+		set_country_flag = GAW_integrating_zhao_hengti
+	}
+}
+
+#Integrate Warlards - Tang Zhengshi
+country_event = {
+	id = gura.97
+	title = gura.97.t
+	desc = gura.97.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#Offer promotions 
+	option = {
+		name = gura.97.a
+		trigger = {
+			NOT = {
+				has_completed_focus = GAW_form_new_dynasty
+			}
+		}
+		random_list = {
+			#accept
+			7 = {
+				country_event = gura.98
+			}
+			#refuse
+			3 = {
+				country_event = gura.99
+			}
+		}
+	}
+	#Demand his submission now
+	option = {
+		name = gura.97.b
+		random_list = {
+			#accept
+			2 = {
+				country_event = gura.100
+			}
+			#refuse
+			8 = {
+				country_event = gura.101
+			}
+		}
+	}
+	#Just request his loyalty to Gura
+	option = {
+		name = gura.97.c
+		random_list = {
+			#accept
+			5 = {
+				country_event = gura.102
+			}
+			#refuse
+			5 = {
+				country_event = gura.103
+			}
+		}
+	}
+}
+
+#Integrate Warlards - Tang Zhengshi Accepts (PROMOTIONS)
+country_event = {
+	id = gura.98
+	title = gura.98.t
+	desc = gura.98.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.98.a
+		GAW_clear_tang_shengxi_warlord = yes
+		add_command_power = -100
+		army_experience = -35
+		navy_experience = -35
+		air_experience = -35
+	}
+}
+
+#Integrate Warlards - Tang Zhengshi refuses (PROMOTIONS)
+country_event = {
+	id = gura.99
+	title = gura.99.t
+	desc = gura.99.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#ok, by force it is
+	option = {
+		name = gura.99.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.05
+		}
+		add_war_support = -0.05
+		hidden_effect = {
+			RSA = {
+				country_event = rosalyn.1
+			}
+		}
+	}
+}
+
+#Integrate Warlards - Tang Zhengshi Accepts 
+country_event = {
+	id = gura.100
+	title = gura.100.t
+	desc = gura.100.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.100.a
+		GAW_clear_tang_shengxi_warlord = yes
+	}
+}
+
+#Integrate Warlards - Tang Zhengshi refuses
+country_event = {
+	id = gura.101
+	title = gura.101.t
+	desc = gura.101.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#WTF
+	option = {
+		name = gura.101.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.05
+		}
+		add_war_support = -0.05
+		set_country_flag = GAW_integrating_tang_zhengshi
+		hidden_effect = {
+			RSA = {
+				country_event = rosalyn.1
+			}
+		}
+	}
+}
+
+#Integrate Warlards - Tang Zhengshi Accepts (Loyalty)
+country_event = {
+	id = gura.102
+	title = gura.102.t
+	desc = gura.102.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.102.a
+		set_country_flag = GAW_integrating_tang_zhengshi_easier
+	}
+}
+
+#Integrate Warlards - Tang Zhengshi refuses (Loyalty)
+country_event = {
+	id = gura.103
+	title = gura.103.t
+	desc = gura.103.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#ok, by force it is
+	option = {
+		name = gura.103.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.1
+		}
+		add_war_support = -0.05
+		hidden_effect = {
+			RSA = {
+				country_event = rosalyn.1
+			}
+		}
+	}
+}
+
+#Integrate Warlards - Tang Zhengshi defects to Rosalyn
+country_event = {
+	id = gura.104
+	title = gura.104.t
+	desc = gura.104.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#Then war it is
+	option = {
+		name = gura.104.a
+		activate_mission = GAW_canton_war
+		declare_war_on = {
+			target = RSA
+			type = take_core_state
+		}
+	}
+	#waaaah
+	option = {
+		name = gura.104.b
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.1
+		}
+		add_popularity = {
+			ideology = var:current_party_ideology_group
+			popularity = -0.05
+		}
+	}
+}
+
+#Integrate Warlards - Victory in the Canton War
+country_event = {
+	id = gura.105
+	title = gura.105.t
+	desc = gura.105.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#YAY
+	option = {
+		name = gura.105.a
+		add_political_power = 25
+		add_war_support = 0.05
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = 0.1
+		}
+		603 = {
+			transfer_state_to = GAW
+			add_core_of = GAW
+		}
+		599 = {
+			transfer_state_to = GAW
+			add_core_of = GAW
+		}
+	}
+}
+
+#Integrate Warlards - Failure in the Canton War
+country_event = {
+	id = gura.106
+	title = gura.106.t
+	desc = gura.106.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#oh nyo
+	option = {
+		name = gura.106.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.15
+		}
+		add_political_power = -25
+		add_war_support = -0.15
+	}
+}
+
+#Integrate Warlards - Feng Yuxiang?
+country_event = {
+	id = gura.107
+	title = gura.107.t
+	desc = gura.107.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#We're a progressive state aren't we?
+	option = {
+		name = gura.107.a
+		trigger = {
+			NOT = {
+				has_completed_focus = GAW_form_new_dynasty
+			}
+		}
+		random_list = {
+			#accept
+			8 = {
+				country_event = gura.108
+			}
+			#refuse
+			2 = {
+				country_event = gura.109
+			}
+		}
+	}
+	#Demand his submission now
+	option = {
+		name = gura.107.b
+		random_list = {
+			#accept
+			2 = {
+				country_event = gura.110
+			}
+			#refuse
+			8 = {
+				country_event = gura.111
+			}
+		}
+	}
+	#Just request his loyalty to Gura
+	option = {
+		name = gura.107.c
+		random_list = {
+			#accept
+			4 = {
+				country_event = gura.112
+			}
+			#refuse
+			6 = {
+				country_event = gura.113
+			}
+		}
+	}
+}
+
+#Integrate Warlards - Feng Yuxiang Accepts (PROGRESSIVE)
+country_event = {
+	id = gura.108
+	title = gura.108.t
+	desc = gura.108.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.108.a
+		GAW_clear_feng_yuxieng_warlord = yes
+	}
+}
+
+#Integrate Warlards - Feng Yuxiang refuses (PROGRESSIVE)
+country_event = {
+	id = gura.109
+	title = gura.109.t
+	desc = gura.109.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#ok, by force it is
+	option = {
+		name = gura.109.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.05
+		}
+		add_war_support = -0.05
+		GAW_feng_yuxieng_revolution = yes
+	}
+}
+
+#Integrate Warlards - Feng Yuxiang Accepts 
+country_event = {
+	id = gura.110
+	title = gura.110.t
+	desc = gura.110.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.110.a
+		GAW_clear_feng_yuxieng_warlord = yes
+	}
+}
+
+#Integrate Warlards - Feng Yuxiang refuses
+country_event = {
+	id = gura.111
+	title = gura.111.t
+	desc = gura.111.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#WTF
+	option = {
+		name = gura.111.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.05
+		}
+		add_war_support = -0.05
+		GAW_feng_yuxieng_revolution = yes
+	}
+}
+
+#Integrate Warlards - Feng Yuxiang Accepts (Loyalty)
+country_event = {
+	id = gura.112
+	title = gura.112.t
+	desc = gura.112.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#yay
+	option = {
+		name = gura.112.a
+		set_country_flag = GAW_integrating_feng_yuxiang_easier
+	}
+}
+
+#Integrate Warlards - Feng Yuxiang refuses (Loyalty)
+country_event = {
+	id = gura.113
+	title = gura.113.t
+	desc = gura.113.desc
+	picture = GFX_report_GAW_disaster_in_nanjing
+	is_triggered_only = yes
+	#ok, by force it is
+	option = {
+		name = gura.113.a
+		add_to_variable = {
+			var = GAW.holocn_legitimacy
+			value = -0.1
+		}
+		add_war_support = -0.05
+		GAW_feng_yuxieng_revolution = yes
+	}
+}

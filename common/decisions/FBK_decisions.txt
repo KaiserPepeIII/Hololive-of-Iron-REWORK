@@ -1390,6 +1390,7 @@ FBK_post_gnw_chaos_win = {
 		}
 	}
 }
+
 FBK_post_gnw_chaos_lose = {
 	FBK_aland_issue = {
 		#we must control aland by the time the 100 days are over OR sweden must have 15% capitulation progress
@@ -1448,9 +1449,7 @@ FBK_post_gnw_chaos_lose = {
 			country_event = FBK_post_gnw.26
 		}
 	}
-
-		# ----------------------------------------------------------------------------- KARELIA ----------------------------------------------------------------------------
-
+	# ----------------------------------------------------------------------------- KARELIA ----------------------------------------------------------------------------
 	FBK_karelia_issue = {
 		#we must deal with the influx of refugees one way or another 
 		# MAIN IDEA : BEING HOSTILE TO IMMIGRANTS WILL INCREASE PUBLIC ANGER AGAINST NOVGOROD JUSTIFYING TAKING MORE LAND, BUT BEING FRIENDLY TOWARDS THEM AND INTEGRATING THEM
@@ -2030,11 +2029,11 @@ FBK_building_urban_support_decisions = {
 
 FBK_plan_thor_decisions = {
 	FBK_plan_thor_tac = {
-		days_re_enable = 30
+		days_re_enable = 60
 		icon = GFX_decision_icon_default
-		cost = 150
+		cost = 50
 		available = {
-			has_tech = early_bomber
+			has_political_power > 49
 		}
 		complete_effect = {
 			if = {
@@ -2042,8 +2041,8 @@ FBK_plan_thor_decisions = {
 					has_dlc = "By Blood Alone"
 				}
 				add_equipment_to_stockpile = {
-					type = small_plane_airframe_1
-					variant_name = "Vandrare-7"
+					type = medium_plane_airframe_0
+					variant_name = "Thor-1b"
 					amount = 200
 				}
 				else = {
@@ -2059,11 +2058,11 @@ FBK_plan_thor_decisions = {
 		}
 	}
 	FBK_plan_thor_strat = {
-		days_re_enable = 30
+		days_re_enable = 60
 		icon = GFX_decision_icon_default
-		cost = 150
+		cost = 50
 		available = {
-			has_tech = strategic_bomber1
+			has_political_power > 49
 		}
 		complete_effect = {
 			if = {
@@ -2446,17 +2445,28 @@ FBK_colonial_policy_decisions = {
 
 FBK_plan_valkyrie_decisions = {
 	FBK_plan_valkyrie_fighthers = {
-		days_re_enable = 30
+		days_re_enable = 60
 		icon = GFX_decision_icon_default
-		cost = 150
+		cost = 50
 		available = {
-			has_tech = early_fighter
+			has_political_power > 49
 		}
 		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = fighter_equipment
-				amount = 100
-				producer = ROOT
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe_1
+					variant_name = "Viking-4"
+					amount = 200
+				}
+				else = {
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 200
+					}
+				}
 			}
 		}
 		ai_will_do = {
@@ -2464,17 +2474,28 @@ FBK_plan_valkyrie_decisions = {
 		}
 	}
 	FBK_plan_valkyrie_cas = {
-		days_re_enable = 30
+		days_re_enable = 60
 		icon = GFX_decision_icon_default
-		cost = 150
+		cost = 50
 		available = {
-			has_tech = CAS1
+			has_political_power > 49
 		}
 		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = CAS_equipment
-				amount = 100
-				producer = ROOT
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_cas_airframe_1
+					variant_name = "Vandrare-7"
+					amount = 200
+				}
+				else = {
+					add_equipment_to_stockpile = {
+						type = CAS_equipment_1
+						amount = 200
+					}
+				}
 			}
 		}
 		ai_will_do = {

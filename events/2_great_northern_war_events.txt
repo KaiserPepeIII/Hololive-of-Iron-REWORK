@@ -2492,6 +2492,9 @@ country_event = {
 			else = {
 				release_puppet = SHL
 			}
+			FBK = {
+				add_to_faction = SHL
+			}
 		}
 	}
 	#No
@@ -3770,6 +3773,17 @@ country_event = {
 	#Wow
 	option = {
 		name = FBK_post_gnw.3.a
+		if = {
+			limit = {
+				KRO = {
+					owns_state = 400
+				}
+			}
+			FBK = {
+				puppet = KRO
+				add_to_faction = KRO
+			}
+		}
 		GNW_FBK_post_war_victory_setup = yes
 	}
 }
@@ -4690,7 +4704,7 @@ country_event = {
 	trigger = {
 		tag = NOE
 		NOE = {
-			surrender_progress > 0.9
+			surrender_progress > 0.75
 			has_war_with = FBK
 			NOT = {
 				has_country_flag = GNW_NOE_capitulated
