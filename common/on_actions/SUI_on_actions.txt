@@ -116,6 +116,7 @@ on_actions = {
 				add_dynamic_modifier = {
 					modifier = SUI_colonial_exploitation
 				}
+				set_country_flag = SUI_dealing_with_colonies
 			}
 			set_variable = {
 				var = SUI.colonial_exploitation
@@ -210,6 +211,7 @@ on_actions = {
 						}
 						country_event = suisei.114
 					}
+					news_event = global_holo.47
 			}
 			else_if = {
 				limit = {
@@ -246,6 +248,7 @@ on_actions = {
 			}
 			country_event = suisei.115
 		}
+		news_event = global_holo.47
 	}
 	else_if = {
 		limit = {
@@ -337,6 +340,7 @@ on_capitulation = {
 			}
 			SUI_died_to_france = yes
 		}
+		news_event = global_holo.51
 		}
 		else_if = {
 			limit = {
@@ -378,6 +382,7 @@ on_capitulation = {
 					transfer_troops = no
 				}
 			}
+			news_event = global_holo.51
 		}
 		else = {
 			
@@ -437,12 +442,17 @@ on_capitulation = {
 }
 SUI = {
 	has_offensive_war_with = ROOT
+	has_country_flag = SUI_dealing_with_colonies
 }
 }
 SUI = {
 add_to_variable = {
 	var = SUI.africans_killed
 	value = 1
+}
+subtract_from_variable = {
+	var = SUI.colonial_unrest
+	value = 2
 }
 white_peace = {
 	tag = ROOT
@@ -455,6 +465,789 @@ annex_country = {
 country_event = suisei.123
 }
 	}
+}
+}
+on_capitulation = {
+	effect = { 
+		if = {
+			limit = { 
+				tag = IRU
+SUI = {
+	has_offensive_war_with = IRU
+	has_country_flag = kill_irys
+}
+}
+SUI = {
+white_peace = {
+	tag = IRU
+	message = SUI_expanding_colonies_irys_loc #suisei is expanding colonies
+}
+annex_country = {
+	target = IRU
+	transfer_troops = no
+}
+clr_country_flag = kill_irys
+}
+	}
+}
+}
+on_capitulation = {
+	effect = { 
+		if = {
+			limit = { 
+				tag = ALG
+SUI = {
+	has_offensive_war_with = ALG
+	NOT = {
+		has_country_flag = SUI_dealing_with_colonies
+	}
+}
+}
+SUI = {
+white_peace = {
+	tag = ALG
+	message = SUI_restoring_algeria_loc #suisei is expanding colonies
+}
+annex_country = {
+	target = IRU
+	transfer_troops = no
+}
+clr_country_flag = kill_irys
+}
+	}
+}
+}
+on_state_control_changed = {
+	effect = {
+		if = {
+			limit = {
+				tag = SUI
+				has_country_flag = morocco_threesome
+				has_country_flag = sui_take_casablanca
+				FROM = {
+					OR = {
+						tag = MOR
+						tag = MIK
+					}
+				}
+				FROM.FROM = {
+						state = 1169
+				}
+			}
+			SUI = {
+				add_days_mission_timeout = {
+					mission = SUI_miko_willingness_to_fight
+					days = -20
+			}
+			clr_country_flag = sui_take_casablanca
+		}
+			MIK = {
+				add_days_mission_timeout = {
+					mission = MIK_our_willingness_to_fight
+					days = -20
+			}
+			}
+		if = {
+			limit = {
+				MIK = {
+					NOT = {
+						has_country_flag = mik_take_casablanca
+					}
+				}
+			}
+			MIK = {
+				set_country_flag = mik_take_casablanca
+				add_days_mission_timeout = {
+					mission = MIK_suisei_willingness_to_fight
+					days = 20
+			}
+			}
+			SUI = {
+				add_days_mission_timeout = {
+					mission = SUI_our_willingness_to_fight
+					days = 20
+			}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			tag = SUI
+			has_country_flag = morocco_threesome
+			has_country_flag = sui_take_fes
+			FROM = {
+				OR = {
+					tag = MOR
+					tag = MIK
+				}
+			}
+			FROM.FROM = {
+					state = 461
+			}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_miko_willingness_to_fight
+				days = -20
+		}
+		clr_country_flag = sui_take_fes
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = -20
+	}
+	}
+	if = {
+		limit = {
+			MIK = {
+				NOT = {
+					has_country_flag = mik_take_fes
+				}
+			}
+		}
+		MIK = {
+			set_country_flag = mik_take_fes
+			add_days_mission_timeout = {
+				mission = MIK_suisei_willingness_to_fight
+				days = 20
+		}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_our_willingness_to_fight
+				days = 20
+		}
+		}
+	}
+	}
+	else_if = {
+		limit = {
+			tag = SUI
+			has_country_flag = morocco_threesome
+			has_country_flag = sui_take_marrakesh
+			FROM = {
+				OR = {
+					tag = MOR
+					tag = MIK
+				}
+			}
+			FROM.FROM = {
+					state = 462
+			}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_miko_willingness_to_fight
+				days = -20
+		}
+		clr_country_flag = sui_take_marrakesh
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = -20
+	}
+	}
+	if = {
+		limit = {
+			MIK = {
+				NOT = {
+					has_country_flag = mik_take_marrakesh
+				}
+			}
+		}
+		MIK = {
+			set_country_flag = mik_take_marrakesh
+			add_days_mission_timeout = {
+				mission = MIK_suisei_willingness_to_fight
+				days = 20
+		}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_our_willingness_to_fight
+				days = 20
+		}
+		}
+	}
+	}
+	else_if = {
+		limit = {
+			tag = SUI
+			has_country_flag = morocco_threesome
+			has_country_flag = sui_take_ceuta
+			FROM = {
+				OR = {
+					tag = MOR
+					tag = MIK
+				}
+			}
+			FROM.FROM = {
+					state = 290
+			}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_miko_willingness_to_fight
+				days = -20
+		}
+		clr_country_flag = sui_take_ceuta
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = -20
+	}
+	}
+	}
+	else_if = {
+		limit = {
+			tag = SUI
+			has_country_flag = morocco_threesome
+			has_country_flag = sui_take_sidi_ifni
+			FROM = {
+				OR = {
+					tag = MOR
+					tag = MIK
+				}
+			}
+			FROM.FROM = {
+					state = 783
+			}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_miko_willingness_to_fight
+				days = -20
+		}
+		clr_country_flag = sui_take_sidi_ifni
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = -20
+	}
+	}
+	}
+	else_if = {
+		limit = {
+			tag = SUI
+			has_country_flag = morocco_threesome
+			has_country_flag = sui_take_rio_de_oro
+			FROM = {
+				OR = {
+					tag = MOR
+					tag = MIK
+				}
+			}
+			FROM.FROM = {
+					state = 699
+			}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_miko_willingness_to_fight
+				days = -20
+		}
+		clr_country_flag = sui_take_rio_de_oro
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = -20
+	}
+	}
+	}
+	else_if = {
+		limit = {
+			tag = SUI
+			has_country_flag = morocco_threesome
+			has_country_flag = sui_take_canarias
+			FROM = {
+				OR = {
+					tag = MOR
+					tag = MIK
+				}
+			}
+			FROM.FROM = {
+					state = 178
+			}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_miko_willingness_to_fight
+				days = -20
+		}
+		clr_country_flag = sui_take_canarias
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = -20
+	}
+	}
+	}
+	else_if = {
+		limit = {
+			tag = SUI
+			has_country_flag = morocco_threesome
+			has_country_flag = sui_take_equatorial_guinea
+			FROM = {
+				OR = {
+					tag = MOR
+					tag = MIK
+				}
+			}
+			FROM.FROM = {
+					state = 297
+			}
+		}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_miko_willingness_to_fight
+				days = -20
+		}
+		clr_country_flag = sui_take_equatorial_guinea
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = -20
+	}
+	}
+	}
+	#-----------------------------------------------------------------------MIKO VPs------------------------------------------------------------- 
+	if = {
+		limit = {
+			tag = MIK
+			SUI = {
+				has_country_flag = morocco_threesome
+			}
+			has_country_flag = mik_take_casablanca
+			FROM = {
+				OR = {
+					tag = MOR
+					tag = SUI
+				}
+			}
+			FROM.FROM = {
+					state = 1169
+			}
+		}
+		MIK = {
+			add_days_mission_timeout = {
+				mission = MIK_suisei_willingness_to_fight
+				days = -20
+		}
+		clr_country_flag = mik_take_casablanca
+	}
+		SUI = {
+			add_days_mission_timeout = {
+				mission = SUI_our_willingness_to_fight
+				days = -20
+		}
+		}
+	if = {
+		limit = {
+			SUI = {
+				NOT = {
+					has_country_flag = sui_take_casablanca
+				}
+			}
+		}	
+		SUI = {
+			set_country_flag = sui_take_casablanca
+			add_days_mission_timeout = {
+				mission = SUI_miko_willingness_to_fight
+				days = 20
+		}
+		}
+		MIK = {
+			add_days_mission_timeout = {
+				mission = MIK_our_willingness_to_fight
+				days = 20
+		}
+		}
+	}
+}
+else_if = {
+	limit = {
+			tag = MIK
+			SUI = {
+				has_country_flag = morocco_threesome
+			}
+		has_country_flag = mik_take_fes
+		FROM = {
+			OR = {
+				tag = MOR
+				tag = SUI
+			}
+		}
+		FROM.FROM = {
+				state = 461
+		}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_suisei_willingness_to_fight
+			days = -20
+	}
+	clr_country_flag = mik_take_fes
+}
+SUI = {
+	add_days_mission_timeout = {
+		mission = SUI_our_willingness_to_fight
+		days = -20
+}
+}
+if = {
+	limit = {
+		SUI = {
+			NOT = {
+				has_country_flag = sui_take_fes
+			}
+		}
+	}	
+	SUI = {
+		set_country_flag = sui_take_fes
+		add_days_mission_timeout = {
+			mission = SUI_miko_willingness_to_fight
+			days = 20
+	}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = 20
+	}
+	}
+}
+}
+else_if = {
+	limit = {
+			tag = MIK
+			SUI = {
+				has_country_flag = morocco_threesome
+			}
+		has_country_flag = mik_take_marrakesh
+		FROM = {
+			OR = {
+				tag = MOR
+				tag = SUI
+			}
+		}
+		FROM.FROM = {
+				state = 462
+		}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_suisei_willingness_to_fight
+			days = -20
+	}
+	clr_country_flag = mik_take_marrakesh
+}
+SUI = {
+	add_days_mission_timeout = {
+		mission = SUI_our_willingness_to_fight
+		days = -20
+}
+}
+if = {
+	limit = {
+		SUI = {
+			NOT = {
+				has_country_flag = sui_take_marrakesh
+			}
+		}
+	}
+	SUI = {
+		set_country_flag = sui_take_marrakesh
+		add_days_mission_timeout = {
+			mission = SUI_miko_willingness_to_fight
+			days = 20
+	}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_our_willingness_to_fight
+			days = 20
+	}
+	}
+}
+}
+else_if = {
+	limit = {
+			tag = MIK
+			SUI = {
+				has_country_flag = morocco_threesome
+			}
+		has_country_flag = mik_take_congo
+		FROM = {
+			OR = {
+				tag = MOR
+				tag = SUI
+			}
+		}
+		FROM.FROM = {
+				state = 539
+		}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_suisei_willingness_to_fight
+			days = -20
+	}
+	clr_country_flag = mik_take_congo
+}
+SUI = {
+	add_days_mission_timeout = {
+		mission = SUI_our_willingness_to_fight
+		days = -20
+}
+}
+}
+else_if = {
+	limit = {
+			tag = MIK
+			SUI = {
+				has_country_flag = morocco_threesome
+			}
+		has_country_flag = mik_take_algiers
+		FROM = {
+			OR = {
+				tag = MOR
+				tag = MIK
+			}
+		}
+		FROM.FROM = {
+				state = 459
+		}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_suisei_willingness_to_fight
+			days = -20
+	}
+	clr_country_flag = mik_take_algiers
+}
+SUI = {
+	add_days_mission_timeout = {
+		mission = SUI_our_willingness_to_fight
+		days = -20
+}
+}
+}
+else_if = {
+	limit = {
+			tag = MIK
+			SUI = {
+				has_country_flag = morocco_threesome
+			}
+		has_country_flag = mik_take_constantine
+		FROM = {
+			OR = {
+				tag = MOR
+				tag = MIK
+			}
+		}
+		FROM.FROM = {
+				state = 460
+		}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_suisei_willingness_to_fight
+			days = -20
+	}
+	clr_country_flag = mik_take_constantine
+}
+SUI = {
+	add_days_mission_timeout = {
+		mission = SUI_our_willingness_to_fight
+		days = -20
+}
+}
+}
+else_if = {
+	limit = {
+			tag = MIK
+			SUI = {
+				has_country_flag = morocco_threesome
+			}
+		has_country_flag = mik_take_bayonne
+		FROM = {
+			OR = {
+				tag = MOR
+				tag = SUI
+			}
+		}
+		FROM.FROM = {
+				state = 806
+		}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_suisei_willingness_to_fight
+			days = -20
+	}
+	clr_country_flag = mik_take_bayonne
+}
+SUI = {
+	add_days_mission_timeout = {
+		mission = SUI_our_willingness_to_fight
+		days = -20
+}
+}
+}
+else_if = {
+	limit = {
+			tag = MIK
+			SUI = {
+				has_country_flag = morocco_threesome
+			}
+		has_country_flag = mik_take_toulouse_or_bordeaux
+		FROM = {
+			OR = {
+				tag = MOR
+				tag = SUI
+			}
+		}
+		FROM.FROM = {
+			OR = {
+				state = 1135
+				state = 19
+			}
+		}
+	}
+	MIK = {
+		add_days_mission_timeout = {
+			mission = MIK_suisei_willingness_to_fight
+			days = -20
+	}
+	clr_country_flag = mik_take_toulouse_or_bordeaux
+}
+SUI = {
+	add_days_mission_timeout = {
+		mission = SUI_our_willingness_to_fight
+		days = -20
+}
+}
+}
+else = {
+}
+	}
+}
+on_capitulation = {
+	effect = { 
+		if = {
+			limit = { 
+				tag = MOR
+SUI = {
+	has_country_flag = morocco_threesome
+}
+}
+SUI = {
+	white_peace = {
+		tag = MOR
+		message = Morocco_scripted_peace_loc_3 #morocco died lol but war keeps going
+	}
+}
+if = {
+		limit = {
+SUI  = {
+	NOT = {
+		has_country_flag = sui_take_marrakesh
+	}
+}
+		}
+		462 = {
+			transfer_state_to = SUI
+		}
+}
+else = {
+	462 = {
+		transfer_state_to = MIK
+	}
+}
+if = {
+	limit = {
+SUI = {
+	NOT = {
+		has_country_flag = sui_take_fes
+	}
+}
+	}
+	461 = {
+		transfer_state_to = SUI
+	}
+}
+else = {
+	461 = {
+		transfer_state_to = MIK
+	}
+}
+if = {
+	limit = {
+		SUI = {
+			NOT = {
+				has_country_flag = sui_take_casablanca
+			}
+		}
+	}
+	1169 = {
+		transfer_state_to = SUI
+	}
+}
+else = {
+	1169 = {
+		transfer_state_to = MIK
+	}
+}
+}
+else_if = {
+	limit = {
+		tag = MOR 
+		SUI = {
+			has_country_flag = SUI_morocco_solo
+		}
+	}
+	SUI ={
+		country_event = suisei.153
+		clr_country_flag = SUI_morocco_solo
+		white_peace = {
+			tag = MOR
+			message = Morocco_scripted_peace_loc_7 #Suisei phyrric victory in morocco war
+		}
+		annex_country = {
+			target = MOR
+			transfer_troops = no
+		}
+	}
+}
+else_if = {
+	limit = {
+		tag = MOR 
+		MIK = {
+			has_country_flag = MIK_morocco_solo
+		}
+	}
+	MIK = {
+		country_event = miko.25
+		clr_country_flag = MIK_morocco_solo
+		white_peace = {
+			tag = MOR
+			message = Morocco_scripted_peace_loc_8 #Miko phyrric victory in morocco war
+		}
+		annex_country = {
+			target = MOR
+			transfer_troops = no
+		}
+	}
+}
+else = {
+}
 }
 }
 }

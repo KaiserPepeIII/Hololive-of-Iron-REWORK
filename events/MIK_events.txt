@@ -181,8 +181,7 @@ country_event = {
 				days = 5
 			}
 		}
-		ai_chance = {
-			#always negotiate
+		ai_chance = { base = 99
 		}
 	}
 }
@@ -194,7 +193,7 @@ country_event = {
 	desc = miko.7.d
 	picture = GFX_report_event_MIK_suisei_negotiate_moroco
 	is_triggered_only = yes
-	#We want all of Morocco, and the Rif
+	#We want all of Morocco, and the Rif -  WARNING : THIS WILL LEAD TO WAR WITH MIKO
 	option = {
 		name = miko.7.a
 		add_to_variable = {
@@ -243,7 +242,7 @@ country_event = {
 			}
 		}
 	}
-	#We want all of Morocco
+	#We want all of Morocco 
 	option = {
 		name = miko.8.a
 		add_to_variable = {
@@ -276,11 +275,37 @@ country_event = {
 	desc = miko.9.d
 	picture = GFX_report_event_MIK_suisei_negotiate_moroco
 	is_triggered_only = yes
-	#Colliding Interests
+	#Colliding Interests  - Suisei  - Miko refuses to give up the rif!
 	option = {
 		name = miko.9.a
 		trigger = {
 			check_variable = {
+				tag = SUI
+				var = SUI.morocco_negotiations_overextend
+				value = 3
+				compare = equals
+			}
+			check_variable = {
+				var = MIK.morocco_negotiations_overextend
+				value = 3
+				compare = less_than_or_equals
+			}
+		}
+		add_political_power = -5
+		SUI = {
+			country_event = suisei.146
+		}
+		hidden_effect = {
+			clear_variable = SUI.morocco_negotiations_overextend
+			clear_variable = MIK.morocco_negotiations_overextend
+		}
+	}
+	#Colliding Interests  - They demanded the rif?!
+	option = {
+		name = miko.9.i
+		trigger = {
+			check_variable = {
+				tag = MIK
 				var = SUI.morocco_negotiations_overextend
 				value = 3
 				compare = equals
@@ -686,4 +711,204 @@ country_event = {
 			country_event = mumegypt.3
 		}
 	}
+}
+
+#Suisei's army begins deserting, we have won
+country_event = {
+	id = miko.19
+	title = miko.19.t
+	desc = miko.19.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Send our demands, seize all captured territory and take all of morocco!
+	option = {
+		name = miko.19.a
+		SUI = {
+			country_event = suisei.149
+		}
+		}
+}
+
+#Our country is protesting our war heavily and our army is starting to desert...
+country_event = {
+	id = miko.20
+	title = miko.20.t
+	desc = miko.20.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Cowards! Defend our lands!
+	option = {
+		name = miko.20.a
+		SUI = {
+			country_event = suisei.147
+		}
+		}
+}
+
+#Suisei is forcing a very heavy peace deal on us
+country_event = {
+	id = miko.21
+	title = miko.21.t
+	desc = miko.21.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	fire_only_once = yes
+	#There's no choice... sign it
+	option = {
+		name = miko.21.a
+		SUI_morocco_win = yes
+		}
+}
+
+#Suisei forced out of morocco 
+country_event = {
+	id = miko.22
+	title = miko.22.t
+	desc = miko.22.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	fire_only_once = yes
+	#What the hell, we're losing to morocco now?! Kill them already!
+	option = {
+		name = miko.22.a
+		clr_country_flag = mik_take_marrakesh
+		clr_country_flag = mik_take_casablanca
+		clr_country_flag = mik_take_congo
+		clr_country_flag = mik_take_algiers
+		clr_country_flag = mik_take_constantine
+		clr_country_flag = mik_take_bayonne
+		clr_country_flag = mik_take_toulouse_or_bordeaux
+		clr_country_flag = mik_take_fes
+		}
+}
+
+#Our country is protesting our war heavily and our army is starting to desert... everything seems to have been useless since morocco is still alive.
+#As we have been forced to hastily retreat, morocco and suisei have seized our moroccean states and western sahara has also fallen...
+country_event = {
+	id = miko.23
+	title = miko.23.t
+	desc = miko.23.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Seriously, morocco won?!
+	option = {
+		name = miko.23.a
+		add_stability = -0.10
+		add_war_support = -0.20
+		SUI = {
+			clr_country_flag = morocco_threesome
+			set_country_flag = SUI_morocco_solo
+		}
+		clr_country_flag = mik_take_marrakesh
+		clr_country_flag = mik_take_casablanca
+		clr_country_flag = mik_take_congo
+		clr_country_flag = mik_take_algiers
+		clr_country_flag = mik_take_constantine
+		clr_country_flag = mik_take_bayonne
+		clr_country_flag = mik_take_toulouse_or_bordeaux
+		clr_country_flag = mik_take_fes
+		if = {
+			limit = {
+				290 = {
+					is_controlled_by = SUI
+				}
+			}
+			290 = {
+				transfer_state_to = SUI
+			}
+		}
+		else = {
+			290 = {
+				transfer_state_to = MOR
+			}
+		}
+		if = {
+			limit = {
+				783 = {
+					is_controlled_by = SUI
+				}
+			}
+			783 = {
+				transfer_state_to = SUI
+			}
+		}
+		else = {
+			783 = {
+				transfer_state_to = MOR
+			}
+		}
+		if = {
+			limit = {
+				699 = {
+					is_controlled_by = SUI
+				}
+			}
+			699 = {
+				transfer_state_to = SUI
+			}
+		}
+		else = {
+			699 = {
+				transfer_state_to = MOR
+			}
+		}
+		MIK = {
+			white_peace = {
+				tag = MOR
+				message = Morocco_scripted_peace_loc_5 #Morocco defeated Miko
+			}
+			white_peace = {
+				tag = SUI
+			}
+	}
+	news_event = global_holo.39
+		}
+}
+
+#Heavy anti war protests combined with the fact suisei was already forced out are forcing us to surrender to morocco
+#As we have been forced to hastily sign this peace, the peace terms were very heavy on us and morocco has essentially reunited itself
+country_event = {
+	id = miko.24
+	title = miko.24.t
+	desc = miko.24.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Seriously, morocco won?!
+	option = {
+		name = miko.24.a
+		white_peace = {
+			tag = MOR
+			message = Morocco_scripted_peace_loc_6 #Morocco won moroccan war
+		}
+		add_stability = -0.10
+		add_war_support = -0.20
+		clr_country_flag = MIK_morocco_solo
+			MOR = {
+				every_core_state = {
+					transfer_state_to = MOR
+				}
+			}
+			699 = {
+				transfer_state_to = MOR
+			}
+		}
+}
+
+#We have narrowly won in morocco
+country_event = {
+	id = miko.25
+	title = miko.25.t
+	desc = miko.25.desc
+	picture = GFX_report_SUI_commies_reunite_france
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Not the great success we wanted but we'll take it
+	option = {
+		name = miko.25.a
+		news_event = global_holo.41
+		}
 }

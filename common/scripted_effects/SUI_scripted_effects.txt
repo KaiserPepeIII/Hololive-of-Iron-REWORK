@@ -655,3 +655,196 @@ SUI_colonial_collapse_algeria_war = {
 			}
 			
 		}
+		#suisei morocco win
+		SUI_morocco_win = {
+			MOR = {
+				every_core_state = {
+					transfer_state_to = SUI
+				}
+			}
+			if = {
+				limit = {
+					699 = {
+						is_controlled_by = SUI
+					}
+				}
+				699 = {
+					transfer_state_to = SUI
+				}
+			}
+			if = {
+				limit = {
+					178 = {
+						is_controlled_by = SUI
+					}
+				}
+				178 = {
+					transfer_state_to = SUI
+				}
+				
+			}
+			if = {
+				limit = {
+					297 = {
+						is_controlled_by = SUI
+					}
+				}
+				297 = {
+					transfer_state_to = SUI
+				}
+				
+			}
+			SUI = {
+				white_peace = {
+					tag = MIK
+					message = Morocco_scripted_peace_loc_1 #Suisei won in morocco
+				}
+				white_peace = {
+					tag = MOR
+				}
+				clr_country_flag = morocco_threesome
+				clr_country_flag = sui_take_marrakesh
+				clr_country_flag = sui_take_casablanca
+				clr_country_flag = sui_take_equatorial_guinea
+				clr_country_flag = sui_take_ceuta
+				clr_country_flag = sui_take_sidi_ifni
+				clr_country_flag = sui_take_rio_de_oro
+				clr_country_flag = sui_take_canarias
+				clr_country_flag = sui_take_fes
+				add_timed_idea = {
+					idea = miko_war_reparations
+					days = 365
+				}
+			}
+			MIK = {
+				add_timed_idea = {
+					idea = war_reparations_to_suisei
+					days = 365
+				}
+				clr_country_flag = mik_take_marrakesh
+				clr_country_flag = mik_take_casablanca
+				clr_country_flag = mik_take_congo
+				clr_country_flag = mik_take_algiers
+				clr_country_flag = mik_take_constantine
+				clr_country_flag = mik_take_bayonne
+				clr_country_flag = mik_take_toulouse_or_bordeaux
+				clr_country_flag = mik_take_fes
+			}
+			news_event = global_holo.40
+		}
+
+		#miko morocco win
+		MIK_morocco_win = {
+			MOR = {
+				every_core_state = {
+					transfer_state_to = MIK
+						}
+					}
+					if = {
+						limit = {
+							459 = {
+								is_controlled_by = MIK
+							}
+						}
+						459 = {
+							transfer_state_to = MIK
+						}
+					}
+					if = {
+						limit = {
+							460 = {
+								is_controlled_by = MIK
+							}
+						}
+						460 = {
+							transfer_state_to = MIK
+						}
+						513 = {
+							transfer_state_to = MIK
+						}
+					}
+					if = {
+						limit = {
+							539 = {
+								is_controlled_by = MIK
+							}
+						}
+						539 = {
+							transfer_state_to = MIK
+						}
+						1087 = {
+							transfer_state_to = MIK
+						}
+						772 = {
+							transfer_state_to = MIK
+						}
+						1086 = {
+							transfer_state_to = MIK
+						}
+					}
+					MIK = {
+						white_peace = {
+							tag = SUI
+							message = Morocco_scripted_peace_loc_2 #Miko won in morocco
+						}
+						white_peace = {
+							tag = MOR
+						}
+					}
+					if = {
+						limit = {
+							MIK = {
+								NOT = {
+									has_country_flag = mik_take_bayonne
+							}
+						}
+						}
+						806 = {
+							set_demilitarized_zone = yes
+						}
+						31 = {
+							set_demilitarized_zone = yes
+						}
+						1133 = {
+							set_demilitarized_zone = yes
+						}
+						if = {
+							MIK = {
+								NOT = {
+									has_country_flag = mik_take_toulouse_or_bordeaux
+							}
+						}
+							19 = {
+								set_demilitarized_zone = yes
+							}
+							1134 = {
+								set_demilitarized_zone = yes
+							}
+							1135 = {
+								set_demilitarized_zone = yes
+							}
+						}
+					}
+					MIK = {
+						clr_country_flag = mik_take_marrakesh
+						clr_country_flag = mik_take_casablanca
+						clr_country_flag = mik_take_congo
+						clr_country_flag = mik_take_algiers
+						clr_country_flag = mik_take_constantine
+						clr_country_flag = mik_take_bayonne
+						clr_country_flag = mik_take_toulouse_or_bordeaux
+						clr_country_flag = mik_take_fes
+					}
+					SUI = {
+						clr_country_flag = morocco_threesome
+						clr_country_flag = sui_take_marrakesh
+						clr_country_flag = sui_take_casablanca
+						clr_country_flag = sui_take_equatorial_guinea
+						clr_country_flag = sui_take_ceuta
+						clr_country_flag = sui_take_sidi_ifni
+						clr_country_flag = sui_take_rio_de_oro
+						clr_country_flag = sui_take_canarias
+						clr_country_flag = sui_take_fes
+					}
+					news_event = global_holo.41
+				}

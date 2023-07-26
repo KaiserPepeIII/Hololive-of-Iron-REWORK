@@ -2319,3 +2319,89 @@ country_event = {
 		}
 	}
 }
+
+#Suisei demands we hand over ghana
+country_event = {
+	id = fubuki.73
+	title = fubuki.73.t
+	desc = fubuki.73.d
+	picture = GFX_NOE_army
+	is_triggered_only = yes
+	#We just lost the war  badly, we can't afford resources...
+		option = {
+			name = fubuki.73.a
+			trigger = {
+				NOT = {
+					owns_state = 37
+				}
+			}
+			add_war_support = -0.05
+			SUI = {
+				country_event = suisei.135
+			}
+		}
+	#Come and take it 
+		option = {
+		name = fubuki.73.b
+		trigger = {
+			owns_state = 37
+		}
+		SUI = {
+			country_event = suisei.134
+		}
+	}
+	#It's not worth our relations 
+	option = {
+		name = fubuki.73.c
+		trigger = {
+			owns_state = 37
+	}
+	SUI = {
+		country_event = suisei.135
+	}
+	}
+}
+
+#Suisei fucked our colony in ghana
+country_event = {
+	id = fubuki.73
+	title = fubuki.73.t
+	desc = fubuki.73.d
+	picture = GFX_NOE_army
+	is_triggered_only = yes
+	#Damn it
+		option = {
+			name = fubuki.73.a
+			add_war_support = -0.05
+		}
+}
+
+#Suisei backed down in ghana
+country_event = {
+	id = fubuki.74
+	title = fubuki.74.t
+	desc = fubuki.74.d
+	picture = GFX_NOE_army
+	is_triggered_only = yes
+	#Ez
+		option = {
+			name = fubuki.74.a
+			add_war_support = 0.01
+		}
+}
+
+#Suisei was defeated in ghana
+country_event = {
+	id = fubuki.75
+	title = fubuki.75.t
+	desc = fubuki.75.d
+	picture = GFX_NOE_army
+	is_triggered_only = yes
+	#Great news. This will secure and solidify our colony.
+		option = {
+			name = fubuki.75.a
+			add_war_support = 0.05
+		}
+}
+
+

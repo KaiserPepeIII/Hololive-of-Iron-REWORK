@@ -1711,3 +1711,96 @@ country_event = {
 		name = noel.59.a
 	}
 }
+
+
+#Suisei demands we hand over cameroon
+country_event = {
+	id = noel.60
+	title = noel.60.t
+	desc = noel.60.d
+	picture = GFX_NOE_army
+	is_triggered_only = yes
+	#Strait's closed, just hand it to them peacefully
+		option = {
+			name = noel.60.a
+			trigger = {
+					has_war_with = FBK
+			}
+			add_war_support = -0.05
+			SUI = {
+				country_event = suisei.131
+			}
+		}
+	#Come and take it 
+		option = {
+		name = noel.60.b
+		trigger = {
+			NOT = {
+				NOE = {
+					has_war_with = FBK
+				}
+			}
+		}
+		SUI = {
+			country_event = suisei.130
+		}
+	}
+	#It's not worth our relations 
+	option = {
+		name = noel.60.c
+		trigger = {
+		NOT = {
+			NOE = {
+				has_war_with = FBK
+			}
+		}
+	}
+	SUI = {
+		country_event = suisei.131
+	}
+	}
+}
+
+#Suisei fucked our colony in cameroon
+country_event = {
+	id = noel.61
+	title = noel.61.t
+	desc = noel.61.d
+	picture = GFX_NOE_army
+	is_triggered_only = yes
+	#Damn it
+		option = {
+			name = noel.61.a
+			add_war_support = -0.05
+		}
+}
+
+#Suisei backed down in cameroon
+country_event = {
+	id = noel.62
+	title = noel.62.t
+	desc = noel.62.d
+	picture = GFX_NOE_army
+	is_triggered_only = yes
+	#Ez
+		option = {
+			name = noel.62.a
+			add_war_support = 0.01
+		}
+}
+
+#Suisei was defeated in cameroon
+country_event = {
+	id = noel.63
+	title = noel.63.t
+	desc = noel.63.d
+	picture = GFX_NOE_army
+	is_triggered_only = yes
+	#Great news. This will secure and solidify our colony.
+		option = {
+			name = noel.63.a
+			add_war_support = 0.05
+		}
+}
+
+
