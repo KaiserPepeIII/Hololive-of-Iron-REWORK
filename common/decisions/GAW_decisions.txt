@@ -98,6 +98,135 @@ GAW_integrate_warlord_armies_cat = {
 			set_country_flag = GAW_dealing_with_warlord
 		}
 	}
+	GAW_forceful_integration_zhao_hengti = {
+		available = {
+			tag = GAW
+			OR = {
+				AND = {
+					has_country_flag = GAW_integrating_zhao_hengti
+					command_power > 35
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 620
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 744
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 750
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 602
+					}
+				}
+				AND = {
+					has_country_flag = GAW_integrating_zhao_hengti_easier
+					command_power > 15
+					army_manpower_in_state = {
+						type = infantry
+						amount > 9000
+						state = 620
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 9000
+						state = 744
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 9000
+						state = 750
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 9000
+						state = 602
+					}
+				}
+			}
+		}
+		visible = {
+			tag = GAW
+			OR = {
+				has_country_flag = GAW_integrating_zhao_hengti
+				has_country_flag = GAW_integrating_zhao_hengti_easier
+			}
+		}
+		fire_only_once = yes
+		days_remove = 90
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					has_country_flag = GAW_integrating_zhao_hengti_easier
+					army_manpower_in_state = {
+						type = infantry
+						amount > 9000
+						state = 620
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 9000
+						state = 744
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 9000
+						state = 750
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 9000
+						state = 602
+					}
+				}
+				NOT = {
+					has_country_flag = GAW_integrating_zhao_hengti
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 620
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 744
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 750
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 602
+					}
+				}
+			}
+		}
+		remove_effect = {
+			GAW_clear_zhao_hengti_warlord = yes
+			if = {
+				limit = {
+					has_country_flag = GAW_integrating_zhao_hengti
+				}
+				clr_country_flag = GAW_integrating_zhao_hengti
+				else_if = {
+					limit = {
+						has_country_flag = GAW_integrating_zhao_hengti_easier
+					}
+					clr_country_flag = GAW_integrating_zhao_hengti_easier
+				}
+			}
+		}
+	}
 	GAW_integrate_tang_zhengshi = {
 		available = {
 			tag = GAW
@@ -118,6 +247,95 @@ GAW_integrate_warlord_armies_cat = {
 		complete_effect = {
 			country_event = gura.97
 			set_country_flag = GAW_dealing_with_warlord
+		}
+	}
+	GAW_forceful_integration_tang_zhengshi = {
+		available = {
+			tag = GAW
+			OR = {
+				AND = {
+					has_country_flag = GAW_integrating_tang_zhengshi
+					command_power > 35
+					army_manpower_in_state = {
+						type = infantry
+						amount > 36000
+						state = 603
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 36000
+						state = 599
+					}
+				}
+				AND = {
+					has_country_flag = GAW_integrating_tang_zhengshi_easier
+					command_power > 15
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 603
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 599
+					}
+				}
+			}
+		}
+		visible = {
+			tag = GAW
+			OR = {
+				has_country_flag = GAW_integrating_tang_zhengshi
+				has_country_flag = GAW_integrating_tang_zhengshi_easier
+			}
+		}
+		fire_only_once = yes
+		days_remove = 90
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					has_country_flag = GAW_integrating_tang_zhengshi_easier
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 603
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 18000
+						state = 599
+					}
+				}
+				NOT = {
+					has_country_flag = GAW_integrating_tang_zhengshi
+					army_manpower_in_state = {
+						type = infantry
+						amount > 36000
+						state = 603
+					}
+					army_manpower_in_state = {
+						type = infantry
+						amount > 36000
+						state = 599
+					}
+				}
+			}
+		}
+		remove_effect = {
+			GAW_clear_tang_shengxi_warlord = yes
+			if = {
+				limit = {
+					has_country_flag = GAW_integrating_tang_zhengshi
+				}
+				clr_country_flag = GAW_integrating_tang_zhengshi
+				else_if = {
+					limit = {
+						has_country_flag = GAW_integrating_tang_zhengshi_easier
+					}
+					clr_country_flag = GAW_integrating_tang_zhengshi_easier
+				}
+			}
 		}
 	}
 	GAW_integrate_feng_yuxiang = {
