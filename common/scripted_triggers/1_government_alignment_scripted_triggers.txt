@@ -1,65 +1,242 @@
 government_alignment_cooldown = {
-	NOT = {
-	has_country_flag = democratic_government_change_cooldown
-	has_country_flag = autocratic_government_change_cooldown
-	}
-}
-conservative_seiso_limits = {
-	has_government = democratic
-	NOT = {	
-		check_variable = {
-			var = ROOT.seiso_alignment
-			value = 3
-			compare = greater_than
+	ROOT = {
+		NOT = {
+			has_country_flag = democratic_government_change_cooldown
+			has_country_flag = autocratic_government_change_cooldown
 		}
 	}
 }
-yagoo_monarchy_seiso_limits = {
-	has_government = pro_yagoo_progressive
-	NOT = {	
-		check_variable = {
-			var = ROOT.seiso_alignment
-			value = 3
-			compare = greater_than
-		}
-	}
-}
-resistance_revolutionary_seiso_limits = {
+#
+#
+#
+#
+resistance_revolutionary_seiso_minus_limits = {
 	has_government = communism
-	NOT = {	
-		check_variable = {
-			var = ROOT.seiso_alignment
-			value = 2
-			compare = less_than
-		}
+	check_variable = {
+		var = ROOT.seiso_alignment
+		value = 3
+		compare = greater_than
 	}
 }
-resistance_nationalism_seiso_limits = {
+
+resistance_nationalism_seiso_minus_limits = {
 	has_government = pro_resistance_nationalism
-	NOT = {	
-		check_variable = {
-			var = ROOT.seiso_alignment
-			value = 3
-			compare = less_than
-		}
+	check_variable = {
+		var = ROOT.seiso_alignment
+		value = 3
+		compare = greater_than
 	}
 }
-resistance_monarchy_seiso_limits = {
+
+resistance_monarchy_seiso_minus_limits = {
 	has_government = pro_resistance_monarchy
-	NOT = {	
-		check_variable = {
-			var = ROOT.seiso_alignment
-			value = 3
-			compare = less_than
-		}
+	check_variable = {
+		var = ROOT.seiso_alignment
+		value = 2
+		compare = greater_than
 	}
 }
-seiso_government_alignment_limits = {	
+
+seiso_government_alignment_minus_limits = {
 	OR = {
-	conservative_seiso_limits = yes
-	yagoo_monarchy_seiso_limits = yes
-	resistance_revolutionary_seiso_limits = yes
-	resistance_nationalism_seiso_limits = yes
-	resistance_monarchy_seiso_limits = yes
+		resistance_revolutionary_seiso_minus_limits = yes
+		resistance_nationalism_seiso_minus_limits = yes
+		resistance_monarchy_seiso_minus_limits = yes
+	}
+}
+
+less_three_seiso_plus_limits = {
+	OR = {
+		has_government = democratic
+	}
+	check_variable = {
+		var = ROOT.seiso_alignment
+		value = 3
+		compare = less_than
+	}
+}
+
+less_four_seiso_plus_limits = {
+	OR = {
+		has_government = pro_yagoo_progressive
+		has_government = pro_yagoo_monarchy
+	}
+	check_variable = {
+		var = ROOT.seiso_alignment
+		value = 4
+		compare = less_than
+	}
+}
+
+seiso_government_alignment_plus_limits = {
+	OR = {
+		less_three_seiso_plus_limits = yes
+		less_four_seiso_plus_limits = yes
+	}
+}
+#
+#
+#
+#
+greater_two_authoritarian_minus_limits = {
+	OR = {
+		has_government = democratic
+		has_government = pro_yagoo_kleptocracy
+	}
+	check_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 2
+		compare = greater_than
+	}
+}
+greater_three_authoritarian_minus_limits = {
+	OR = {
+		has_government = pro_yagoo_progressive
+		has_government = mixed_ideology_democracy
+	}
+	check_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 3
+		compare = greater_than
+	}
+}
+
+authoritarian_government_alignment_minus_limits = {
+	OR = {
+		greater_four_authoritarian_minus_limits = yes
+		greater_three_group_authoritarian_minus_limits = yes
+	}
+}
+
+
+less_four_authoritarian_plus_limits = {
+	OR = {
+		has_government = communism
+		has_government = pro_resistance_kleptocracy
+		has_government = neutrality
+		has_government = pro_yagoo_monarchy
+	}
+	check_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 4
+		compare = less_than
+	}
+}
+
+less_three_group_authoritarian_plus_limits = {
+	OR = {
+		has_government = pro_resistance_nationalism
+		has_government = pro_resistance_monarchy
+		has_government = reactionary_monarchy
+		has_government = reactionary_nationalism
+		has_government = divine_mandate
+	}
+	check_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 3
+		compare = less_than
+	}
+}
+
+authoritarian_government_alignment_plus_limits = {
+	OR = {
+		less_four_authoritarian_plus_limits = yes
+		less_three_group_authoritarian_plus_limits = yes
+	}
+}
+#
+#
+#
+#
+less_four_reactionary_plus_limits = {
+	OR = {
+		has_government = democratic
+		has_government = pro_yagoo_progressive
+		has_government = reactionary_nationalism
+		has_government = pro_yagoo_monarchy
+		has_government = pro_resistance_monarchy
+		has_government = neutrality
+	}
+	check_variable = {
+		var = ROOT.reactionary_alignment
+		value = 4
+		compare = less_than
+	}
+}
+
+greater_two_reactionary_minus_limits = {
+	OR = {
+		has_government = pro_resistance_nationalism
+		has_government = pro_yagoo_progressive
+		has_government = fascism
+	}
+	check_variable = {
+		var = ROOT.reactionary_alignment
+		value = 2
+		compare = greater_than
+	}
+}
+
+greater_three_reactionary_minus_limits = {
+	OR = {
+		has_government = communism
+		has_government = left_wing_revolutionary
+	}
+	check_variable = {
+		var = ROOT.reactionary_alignment
+		value = 3
+		compare = greater_than
+	}
+}
+
+reactionary_government_alignment_minus_limits = {
+	OR = {
+		greater_two_reactionary_minus_limits = yes
+		greater_three_reactionary_minus_limits = yes
+	}
+}
+#
+#
+#
+#
+less_four_capitalism_plus_limits = {
+	OR = {
+		has_government = pro_yagoo_progressive
+		has_government = mixed_ideology_democracy
+		has_government = democratic
+	}
+	check_variable = {
+		var = ROOT.capitalism_alignment
+		value = 4
+		compare = less_than
+	}
+}
+greater_three_capitalism_minus_limits = {
+	OR = {
+		has_government = communism
+		has_government = left_wing_revolutionary
+	}
+	check_variable = {
+		var = ROOT.capitalism_alignment
+		value = 3
+		compare = greater_than
+	}
+}
+greater_two_capitalism_minus_limits = {
+	OR = {
+		has_government = fascism
+		has_government = pro_resistance_nationalism
+	}
+	check_variable = {
+		var = ROOT.capitalism_alignment
+		value = 2
+		compare = greater_than
+	}
+}
+
+capitalism_government_alignment_minus_limits = {
+	OR = {
+		greater_three_capitalism_minus_limits = yes
+		greater_two_capitalism_minus_limits = yes
 	}
 }

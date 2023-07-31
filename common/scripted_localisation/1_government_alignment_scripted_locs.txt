@@ -348,23 +348,25 @@ defined_text = {
 			ROOT = {
 				check_variable = {
 					var = ROOT.authoritarianism_alignment
+					value = 4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = ROOT.capitalism_alignment
 					value = 2
 					compare = less_than_or_equals
 				}
 				check_variable = {
-					var = ROOT.capitalism_alignment
-					value = 3
-					compare = less_than_or_equals
-				}
-				check_variable = {
 					var = ROOT.reactionary_alignment
-					value = 4
+					value = 2
 					compare = less_than_or_equals
 				}
-				check_variable = {
-					var = ROOT.seiso_alignment
-					value = 3
-					compare = less_than_or_equals
+				NOT = {
+					check_variable = {
+						var = ROOT.capitalism_alignment
+						value = 1
+						compare = equals
+					}
 				}
 			}
 		}
@@ -375,23 +377,23 @@ defined_text = {
 			ROOT = {
 				check_variable = {
 					var = ROOT.authoritarianism_alignment
-					value = 2
-					compare = less_than_or_equals
+					value = 4
+					compare = greater_than_or_equals
 				}
 				check_variable = {
 					var = ROOT.capitalism_alignment
+					value = 1
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.reactionary_alignment
 					value = 2
-					compare = less_than_or_equals
+					compare = greater_than_or_equals
 				}
 				check_variable = {
 					var = ROOT.reactionary_alignment
 					value = 4
-					compare = greater_than_or_equals
-				}
-				check_variable = {
-					var = ROOT.seiso_alignment
-					value = 4
-					compare = greater_than_or_equals
+					compare = less_than_or_equals
 				}
 			}
 		}
@@ -403,7 +405,7 @@ defined_text = {
 				check_variable = {
 					var = ROOT.authoritarianism_alignment
 					value = 3
-					compare = less_than_or_equals
+					compare = greater_than_or_equals
 				}
 				check_variable = {
 					var = ROOT.capitalism_alignment
@@ -412,11 +414,6 @@ defined_text = {
 				}
 				check_variable = {
 					var = ROOT.reactionary_alignment
-					value = 4
-					compare = greater_than_or_equals
-				}
-				check_variable = {
-					var = ROOT.seiso_alignment
 					value = 3
 					compare = greater_than_or_equals
 				}
@@ -429,18 +426,8 @@ defined_text = {
 			ROOT = {
 				check_variable = {
 					var = ROOT.authoritarianism_alignment
-					value = 5
+					value = 1
 					compare = equals
-				}
-				check_variable = {
-					var = ROOT.capitalism_alignment
-					value = 2
-					compare = greater_than_or_equals
-				}
-				check_variable = {
-					var = ROOT.capitalism_alignment
-					value = 4
-					compare = less_than_or_equals
 				}
 				check_variable = {
 					var = ROOT.reactionary_alignment
@@ -450,6 +437,74 @@ defined_text = {
 			}
 		}
 		localization_key = paternal_autocracy_loc
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 2
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 2
+					compare = less_than_or_equals
+				}
+			}
+		}
+		localization_key = aristocratic_republic_loc
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 1
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 5
+					compare = equals
+				}
+			}
+		}
+		localization_key = communism_loc
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 5
+					compare = equals
+				}
+			}
+		}
+		localization_key = anarchism_loc
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 2
+					compare = less_than_or_equals
+				}
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 4
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = rev_dictatorship_loc
 	}
 	text = {
 		localization_key = generic_government_loc
@@ -807,6 +862,18 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				government_alignment_cooldown = yes
+				NOT = {
+					check_variable = {
+						var = ROOT.seiso_alignment
+						value = 5
+						compare = equals
+					}
+					check_variable = {
+						var = ROOT.seiso_alignment
+						value = 5
+						compare = less_than
+					}
+				}
 			}
 		}
 		localization_key = government_alignment_cooldown_loc
@@ -843,6 +910,18 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				government_alignment_cooldown = yes
+				NOT = {
+					check_variable = {
+						var = ROOT.authoritarianism_alignment
+						value = 5
+						compare = equals
+					}
+					check_variable = {
+						var = ROOT.authoritarianism_alignment
+						value = 5
+						compare = less_than
+					}
+				}
 			}
 		}
 		localization_key = government_alignment_cooldown_loc
@@ -880,6 +959,18 @@ defined_text = {
 			ROOT = {
 				government_alignment_cooldown = yes
 			}
+			NOT = {
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 5
+					compare = less_than
+				}
+			}
 		}
 		localization_key = government_alignment_cooldown_loc
 	}
@@ -915,6 +1006,18 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				government_alignment_cooldown = yes
+			}
+			NOT = {
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 5
+					compare = less_than
+				}
 			}
 		}
 		localization_key = government_alignment_cooldown_loc
@@ -952,6 +1055,18 @@ defined_text = {
 			ROOT = {
 				government_alignment_cooldown = yes
 			}
+			NOT = {
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 5
+					compare = less_than
+				}
+			}
 		}
 		localization_key = government_alignment_cooldown_loc
 	}
@@ -987,6 +1102,18 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				government_alignment_cooldown = yes
+			}
+			NOT = {
+				check_variable = {
+					var = ROOT.seiso_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.seiso_alignment
+					value = 5
+					compare = less_than
+				}
 			}
 		}
 		localization_key = government_alignment_cooldown_loc
@@ -1024,6 +1151,18 @@ defined_text = {
 			ROOT = {
 				government_alignment_cooldown = yes
 			}
+			NOT = {
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.authoritarianism_alignment
+					value = 5
+					compare = less_than
+				}
+			}
 		}
 		localization_key = government_alignment_cooldown_loc
 	}
@@ -1059,6 +1198,18 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				government_alignment_cooldown = yes
+			}
+			NOT = {
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.reactionary_alignment
+					value = 5
+					compare = less_than
+				}
 			}
 		}
 		localization_key = government_alignment_cooldown_loc
@@ -1096,6 +1247,18 @@ defined_text = {
 			ROOT = {
 				government_alignment_cooldown = yes
 			}
+			NOT = {
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.isolationism_alignment
+					value = 5
+					compare = less_than
+				}
+			}
 		}
 		localization_key = government_alignment_cooldown_loc
 	}
@@ -1131,6 +1294,18 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				government_alignment_cooldown = yes
+			}
+			NOT = {
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 5
+					compare = equals
+				}
+				check_variable = {
+					var = ROOT.capitalism_alignment
+					value = 5
+					compare = less_than
+				}
 			}
 		}
 		localization_key = government_alignment_cooldown_loc
