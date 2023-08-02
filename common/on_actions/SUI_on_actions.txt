@@ -463,6 +463,16 @@ annex_country = {
 	transfer_troops = no
 }
 country_event = suisei.123
+if = {
+	limit = {
+		check_variable = {
+			var = SUI.africans_killed
+			value = 7
+			compare = greater_than_or_equals
+		}
+	}
+	country_event = suisei.154
+}
 }
 	}
 }
@@ -1154,26 +1164,31 @@ SUI = {
 		message = Morocco_scripted_peace_loc_3 #morocco died lol but war keeps going
 	}
 }
+MIK = {
+	white_peace = {
+		tag = MOR
+	}
+}
 if = {
 		limit = {
-SUI  = {
+MIK  = {
 	NOT = {
-		has_country_flag = sui_take_marrakesh
+		has_country_flag = mik_take_marrakesh
 	}
 }
 		}
 		462 = {
-			transfer_state_to = SUI
+			transfer_state_to = MIK
 		}
 }
 else = {
 	462 = {
-		transfer_state_to = MIK
+		transfer_state_to = SUI
 	}
 }
 if = {
 	limit = {
-SUI = {
+SUI  = {
 	NOT = {
 		has_country_flag = sui_take_fes
 	}

@@ -15,6 +15,13 @@ SUI_colonial_exploitation = {
 		visible = {
 			always = yes
 		}
+		cancel_trigger = { 
+			SUI = {
+				NOT = {
+					has_country_flag = SUI_dealing_with_colonies
+				}
+			}
+	}
 		selectable_mission = no
 		days_mission_timeout = 30
 		is_good = no
@@ -26,15 +33,15 @@ SUI_colonial_exploitation = {
 			hidden_effect = {
 				random_list = {
 					#Mild increase - 1
-					5 = {
+					10 = {
 						country_event = suisei.97
 					}
 					#Mid increase - 2
-					2 = {
+					5 = {
 						country_event = suisei.98
 					}
 					#decrease - 1 
-					2 = {
+					5 = {
 						country_event = suisei.100
 					}
 					#Heavy increase - 3
@@ -74,10 +81,17 @@ SUI_colonial_exploitation = {
 		cost = 100
 		days_remove = 100
 		remove_effect = {
-			add_to_variable = {
-				var = SUI.colonial_unrest
-				value = 1
-				tooltip = colonial_unrest_increase_light
+			if = {
+				limit = {
+					SUI = {
+						has_country_flag = SUI_dealing_with_colonies
+				}
+				}
+					add_to_variable = {
+						var = SUI.colonial_unrest
+						value = 1
+						tooltip = colonial_unrest_increase_light
+					}
 			}
 			add_resource = {
 				type = oil
@@ -96,28 +110,63 @@ SUI_colonial_exploitation = {
 			}
 		}
 	}
+	SUI_emergency_revolt_suppression = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_active_mission = SUI_scare_rebels_into_submission
+				has_political_power < 20
+		}
+		visible = {
+			tag = SUI
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 0
+		days_remove = 40
+		remove_effect = {
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
+			}
+		}
+	}
 	SUI_scare_rebels_into_submission = {
 			allowed = {
 				always = no
 			}
 			available = {
-				OR = {
-					has_decision = SUI_connect_algeria_and_west_africa
-					has_decision = SUI_connect_togo_to_algeria
-					has_decision = SUI_conquer_nigeria
-					has_decision = SUI_cameroon_thorn_optional
-					has_decision = SUI_conquer_central_africa
-					has_decision = SUI_take_yagoo_colonies_optional
-					has_decision = SUI_irys_optional
-				}
+				custom_trigger_tooltip = {
+					tooltip = scare_rebels	
+					OR = {
+						has_decision = SUI_connect_algeria_and_west_africa
+						has_decision = SUI_connect_togo_to_algeria
+						has_decision = SUI_conquer_nigeria
+						has_decision = SUI_cameroon_thorn_optional
+						has_decision = SUI_conquer_central_africa
+						has_decision = SUI_take_yagoo_colonies_optional
+						has_decision = SUI_irys_optional
+						has_decision = SUI_emergency_revolt_suppression
+						has_decision = SUI_ghana_optional
+						has_decision = SUI_kill_cameroon_optional
+					}
 			}
+		}
+			cancel_trigger = { 
+				SUI = {
+					NOT = {
+						has_country_flag = SUI_dealing_with_colonies
+					}
+				}
+		}
 			ai_will_do = {
 				factor = 50
 			}
 			visible = {
-				SUI = {
-					has_country_flag = SUI_monarchist_interest_grows
-				}
+				always = no
 			}
 			selectable_mission = no
 			days_mission_timeout = 70
@@ -245,7 +294,7 @@ SUI_colonial_exploitation = {
 			tag = SUI
 		}
 		fire_only_once = no
-		days_re_enable = 120
+		days_re_enable = 90
 		ai_will_do = {
 			factor = 15
 		}
@@ -277,7 +326,7 @@ SUI_colonial_exploitation = {
 		}
 		cost = 75
 		fire_only_once = no
-		days_re_enable = 120
+		days_re_enable = 90
 		ai_will_do = {
 			factor = 15
 		}
@@ -350,7 +399,7 @@ SUI_colonial_exploitation = {
 		}
 		cost = 100
 		fire_only_once = no
-		days_re_enable = 120
+		days_re_enable = 90
 		ai_will_do = {
 			factor = 15
 		}
@@ -470,7 +519,7 @@ SUI_reestablishing_colonial_rule = {
 					}
 				}
 			start_border_war = {
-				change_state_after_war = yes
+				change_state_after_war = no
 				attacker = {
 					state = 272
 					num_provinces = 2
@@ -494,7 +543,7 @@ SUI_reestablishing_colonial_rule = {
 					}
 				}
 			start_border_war = {
-				change_state_after_war = yes
+				change_state_after_war = no
 				attacker = {
 					state = 1086
 					num_provinces = 1
@@ -525,7 +574,7 @@ SUI_reestablishing_colonial_rule = {
 		}
 		cost = 20
 		fire_only_once = yes
-		days_remove = 40
+		days_remove = 20
 		war_with_on_remove = MLI
 		war_with_on_remove = MRT
 		ai_will_do = {
@@ -682,7 +731,9 @@ SUI_reestablishing_colonial_rule = {
 			tag = SUI
 		}
 		visible = {
-			always = yes
+			NOT = {
+				country_exists = CAM
+			}
 		}
 		ai_will_do = {
 			factor = 20
@@ -704,6 +755,35 @@ SUI_reestablishing_colonial_rule = {
 				country_event = noel.60
 		}
 	}
+}
+SUI_kill_cameroon_optional = {
+	allowed = {
+		tag = SUI
+	}
+	visible = {
+		country_exists = CAM
+	}
+	ai_will_do = {
+		factor = 20
+	}
+	available = {
+		has_political_power > 20
+		check_variable = {
+			var = SUI.africans_killed
+			value = 5
+			compare = greater_than_or_equals
+		}
+	}
+	cost = 20
+	fire_only_once = yes
+	days_remove = 20
+	war_with_on_remove = NOE
+	remove_effect = {
+		declare_war_on = {
+			target = CAM
+			type = annex_everything
+		}
+}
 }
 	SUI_conquer_central_africa = {
 		allowed = {
@@ -1985,11 +2065,11 @@ suisei_election_compromises = {
 		ai_will_do = {
 			factor = 10
 		}
-		cost = 50
+		cost = 25
 		complete_effect = {
 			SUI = {
 				set_country_flag = suisei_down_opposition_one
-				add_stability = -0.05
+				add_stability = -0.02
 			}
 		}
 	}
@@ -2009,11 +2089,11 @@ suisei_election_compromises = {
 		ai_will_do = {
 			factor = 10
 		}
-		cost = 50
+		cost = 25
 		complete_effect = {
 			SUI = {
 				set_country_flag = suisei_down_opposition_two
-				add_stability = -0.05
+				add_stability = -0.02
 			}
 		}
 	}
@@ -2033,11 +2113,11 @@ suisei_election_compromises = {
 		ai_will_do = {
 			factor = 10
 		}
-		cost = 50
+		cost = 25
 		complete_effect = {
 			SUI = {
 				set_country_flag = suisei_down_opposition_three
-				add_stability = -0.05
+				add_stability = -0.02
 			}
 		}
 	}
@@ -2384,7 +2464,11 @@ SUI_moroccan_rule = {
 			always = no
 		}
 		available = {
-			always = no
+			hidden_trigger = {
+				MIK = {
+					surrender_progress > 0.5
+				}
+			}
 		}
 		visible = {
 			always = no
@@ -2397,8 +2481,42 @@ SUI_moroccan_rule = {
 			factor = 1
 		}
 		timeout_effect = {
+			custom_effect_tooltip = morocco_war_start
 			hidden_effect = {
 				if = {
+					limit = {
+						MIK = {
+							surrender_progress > 0.5
+						}
+						MOR = {
+							exists = no
+						}
+					}
+					MIK = {
+						remove_mission = MIK_suisei_willingness_to_fight
+						remove_mission = MIK_our_willingness_to_fight
+						country_event = miko.26
+					}
+					remove_mission = SUI_our_willingness_to_fight
+					SUI_morocco_win_alt = yes
+				}
+				else_if = {
+					limit = {
+						MIK = {
+							surrender_progress > 0.5
+						}
+						MOR = {
+							exists = yes
+						}
+					}
+					MIK = {
+						remove_mission = MIK_suisei_willingness_to_fight
+						remove_mission = MIK_our_willingness_to_fight
+						country_event = miko.26
+					}
+					SUI_morocco_win_alt_no_morocco = yes
+				}
+				else_if = {
 					limit = {
 						MOR = {
 							exists = no

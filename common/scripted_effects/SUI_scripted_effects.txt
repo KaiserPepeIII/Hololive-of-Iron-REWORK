@@ -436,6 +436,8 @@ SUI_died_to_france = {
 		release_on_controlled = DRC
 		release_on_controlled = SEN
 		release_on_controlled = TOG
+		release_on_controlled = IRU
+		release_on_controlled = EQU
 	}
 }
 
@@ -457,6 +459,9 @@ SUI_colonial_collapse_no_algeria = {
 		release_on_controlled = DRC
 		release_on_controlled = SEN
 		release_on_controlled = TOG
+		release_on_controlled = IRU
+		release_on_controlled = MOR
+		release_on_controlled = EQU
 	}
 }
 
@@ -585,6 +590,9 @@ SUI_colonial_collapse_algeria_war = {
 		release_on_controlled = DRC
 		release_on_controlled = SEN
 		release_on_controlled = TOG
+		release_on_controlled = IRU
+		release_on_controlled = MOR
+		release_on_controlled = EQU
 		declare_war_on = {
 			target = ALG
 			type = annex_everything
@@ -729,6 +737,161 @@ SUI_morocco_win = {
 		clr_country_flag = mik_take_fes
 	}
 	news_event = global_holo.40
+}
+
+#suisei morocco win but capitulating miko and morocco is dead
+SUI_morocco_win_alt = {
+	MOR = {
+		every_core_state = {
+			transfer_state_to = SUI
+		}
+	}
+	SUI = {
+		transfer_state = 699
+		transfer_state = 178
+		transfer_state = 297
+	}
+	SUI = {
+		white_peace = {
+			tag = MIK
+			message = Morocco_scripted_peace_loc_1			#Suisei won in morocco
+		}
+		white_peace = {
+			tag = MOR
+		}
+		clr_country_flag = morocco_threesome
+		clr_country_flag = sui_take_marrakesh
+		clr_country_flag = sui_take_casablanca
+		clr_country_flag = sui_take_equatorial_guinea
+		clr_country_flag = sui_take_ceuta
+		clr_country_flag = sui_take_sidi_ifni
+		clr_country_flag = sui_take_rio_de_oro
+		clr_country_flag = sui_take_canarias
+		clr_country_flag = sui_take_fes
+		add_timed_idea = {
+			idea = miko_war_reparations
+			days = 365
+		}
+		add_timed_idea = {
+			idea = miko_war_too_costly
+			days = 365
+		}
+	}
+	MIK = {
+		add_timed_idea = {
+			idea = war_reparations_to_suisei
+			days = 365
+		}
+		clr_country_flag = mik_take_marrakesh
+		clr_country_flag = mik_take_casablanca
+		clr_country_flag = mik_take_congo
+		clr_country_flag = mik_take_algiers
+		clr_country_flag = mik_take_constantine
+		clr_country_flag = mik_take_bayonne
+		clr_country_flag = mik_take_toulouse_or_bordeaux
+		clr_country_flag = mik_take_fes
+	}
+	news_event = global_holo.55
+}
+
+#suisei morocco win but capitulating miko and morocco is alive
+SUI_morocco_win_alt_no_morocco = {
+	if = {
+		limit = {
+			290 = {
+				is_controlled_by = SUI
+			}
+		}
+		290 = {
+			transfer_state_to = SUI
+		}
+	}
+	else = {
+		290 = {
+			transfer_state_to = MOR
+		}
+	}
+	if = {
+		limit = {
+			783 = {
+				is_controlled_by = SUI
+			}
+		}
+		783 = {
+			transfer_state_to = SUI
+		}
+	}
+	else = {
+		783 = {
+			transfer_state_to = MOR
+		}
+	}
+	if = {
+		limit = {
+			699 = {
+				is_controlled_by = SUI
+			}
+		}
+		699 = {
+			transfer_state_to = SUI
+		}
+	}
+	else = {
+		699 = {
+			transfer_state_to = MOR
+		}
+	}
+	MIK = {
+		white_peace = {
+			tag = MOR
+			message = Morocco_scripted_peace_loc_5				#Morocco defeated Miko
+		}
+		white_peace = {
+			tag = SUI
+		}
+	}
+	news_event = global_holo.39
+	514 = {
+		transfer_state_to = SUI
+	}
+	SUI = {
+		transfer_state = 178
+		transfer_state = 297
+	}
+	SUI = {
+		clr_country_flag = morocco_threesome
+		clr_country_flag = sui_take_marrakesh
+		clr_country_flag = sui_take_casablanca
+		clr_country_flag = sui_take_equatorial_guinea
+		clr_country_flag = sui_take_ceuta
+		clr_country_flag = sui_take_sidi_ifni
+		clr_country_flag = sui_take_rio_de_oro
+		clr_country_flag = sui_take_canarias
+		clr_country_flag = sui_take_fes
+		add_timed_idea = {
+			idea = miko_war_reparations
+			days = 365
+		}
+		add_timed_idea = {
+			idea = miko_war_too_costly
+			days = 365
+		}
+	}
+	MIK = {
+		add_timed_idea = {
+			idea = war_reparations_to_suisei
+			days = 365
+		}
+		clr_country_flag = mik_take_marrakesh
+		clr_country_flag = mik_take_casablanca
+		clr_country_flag = mik_take_congo
+		clr_country_flag = mik_take_algiers
+		clr_country_flag = mik_take_constantine
+		clr_country_flag = mik_take_bayonne
+		clr_country_flag = mik_take_toulouse_or_bordeaux
+		clr_country_flag = mik_take_fes
+	}
+	news_event = global_holo.56
 }
 
 #miko morocco win
