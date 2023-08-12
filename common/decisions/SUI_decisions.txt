@@ -15,13 +15,13 @@ SUI_colonial_exploitation = {
 		visible = {
 			always = yes
 		}
-		cancel_trigger = { 
+		cancel_trigger = {
 			SUI = {
 				NOT = {
 					has_country_flag = SUI_dealing_with_colonies
 				}
 			}
-	}
+		}
 		selectable_mission = no
 		days_mission_timeout = 30
 		is_good = no
@@ -85,13 +85,13 @@ SUI_colonial_exploitation = {
 				limit = {
 					SUI = {
 						has_country_flag = SUI_dealing_with_colonies
-				}
-				}
-					add_to_variable = {
-						var = SUI.colonial_unrest
-						value = 1
-						tooltip = colonial_unrest_increase_light
 					}
+				}
+				add_to_variable = {
+					var = SUI.colonial_unrest
+					value = 1
+					tooltip = colonial_unrest_increase_light
+				}
 			}
 			add_resource = {
 				type = oil
@@ -115,7 +115,7 @@ SUI_colonial_exploitation = {
 		available = {
 			tag = SUI
 			has_active_mission = SUI_scare_rebels_into_submission
-				has_political_power < 20
+			has_political_power < 20
 		}
 		visible = {
 			tag = SUI
@@ -135,73 +135,73 @@ SUI_colonial_exploitation = {
 		}
 	}
 	SUI_scare_rebels_into_submission = {
-			allowed = {
-				always = no
-			}
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = scare_rebels	
-					OR = {
-						has_decision = SUI_connect_algeria_and_west_africa
-						has_decision = SUI_connect_togo_to_algeria
-						has_decision = SUI_conquer_nigeria
-						has_decision = SUI_cameroon_thorn_optional
-						has_decision = SUI_conquer_central_africa
-						has_decision = SUI_take_yagoo_colonies_optional
-						has_decision = SUI_irys_optional
-						has_decision = SUI_emergency_revolt_suppression
-						has_decision = SUI_ghana_optional
-						has_decision = SUI_kill_cameroon_optional
-					}
-			}
+		allowed = {
+			always = no
 		}
-			cancel_trigger = { 
-				SUI = {
-					NOT = {
-						has_country_flag = SUI_dealing_with_colonies
-					}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = scare_rebels
+				OR = {
+					has_decision = SUI_connect_algeria_and_west_africa
+					has_decision = SUI_connect_togo_to_algeria
+					has_decision = SUI_conquer_nigeria
+					has_decision = SUI_cameroon_thorn_optional
+					has_decision = SUI_conquer_central_africa
+					has_decision = SUI_take_yagoo_colonies_optional
+					has_decision = SUI_irys_optional
+					has_decision = SUI_emergency_revolt_suppression
+					has_decision = SUI_ghana_optional
+					has_decision = SUI_kill_cameroon_optional
 				}
-		}
-			ai_will_do = {
-				factor = 50
-			}
-			visible = {
-				always = no
-			}
-			selectable_mission = no
-			days_mission_timeout = 70
-			is_good = no
-			ai_will_do = {
-				factor = 1
-			}
-			complete_effect = {
-			}
-			timeout_effect = {
-				country_event = suisei.122
-				clr_country_flag = SUI_dealing_with_colonies
 			}
 		}
+		cancel_trigger = {
+			SUI = {
+				NOT = {
+					has_country_flag = SUI_dealing_with_colonies
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		visible = {
+			always = no
+		}
+		selectable_mission = no
+		days_mission_timeout = 70
+		is_good = no
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			country_event = suisei.122
+			clr_country_flag = SUI_dealing_with_colonies
+		}
+	}
 	SUI_declare_french_colonies_restored = {
-			icon = decision_generic_industry
-			available = {
-				tag = SUI
-				has_manpower > 300
-				command_power > 10
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_manpower > 300
+			command_power > 10
+		}
+		visible = {
+			check_variable = {
+				var = SUI.africans_killed
+				value = 7
+				compare = greater_than_or_equals
 			}
-			visible = {
-				check_variable = {
-					var = SUI.africans_killed
-					value = 7
-					compare = greater_than_or_equals
-				}
-			}
-			fire_only_once = yes
-			ai_will_do = {
-				factor = 4000
-			}
-			complete_effect = {
-				if = {
-					limit = {
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 4000
+		}
+		complete_effect = {
+			if = {
+				limit = {
 					check_variable = {
 						var = SUI.colonial_exploitation
 						value = 0.07
@@ -250,38 +250,38 @@ SUI_colonial_exploitation = {
 				}
 				clr_country_flag = SUI_dealing_with_colonies
 				country_event = suisei.124
-				}
-				else = {
-					every_state = {
-						limit = {
-							has_dynamic_modifier = {
-								modifier = SUI_colonial_unrest
-							}
-						}
-						add_dynamic_modifier = {
-							modifier = SUI_local_authority
-						}
-						remove_dynamic_modifier = {
+			}
+			else = {
+				every_state = {
+					limit = {
+						has_dynamic_modifier = {
 							modifier = SUI_colonial_unrest
 						}
 					}
-					set_variable = {
-						var = SUI.colonial_exploitation_consumer_goods
-						value = 0
+					add_dynamic_modifier = {
+						modifier = SUI_local_authority
 					}
-					set_variable = {
-						var = SUI.colonial_exploitation
-						value = 0
+					remove_dynamic_modifier = {
+						modifier = SUI_colonial_unrest
 					}
-					set_variable = {
-						var = SUI.africans_killed
-						value = 0
-					}
-					country_event = suisei.125
-					clr_country_flag = SUI_dealing_with_colonies
 				}
+				set_variable = {
+					var = SUI.colonial_exploitation_consumer_goods
+					value = 0
+				}
+				set_variable = {
+					var = SUI.colonial_exploitation
+					value = 0
+				}
+				set_variable = {
+					var = SUI.africans_killed
+					value = 0
+				}
+				country_event = suisei.125
+				clr_country_flag = SUI_dealing_with_colonies
 			}
 		}
+	}
 	SUI_hard_rule = {
 		icon = decision_generic_industry
 		available = {
@@ -509,7 +509,7 @@ SUI_reestablishing_colonial_rule = {
 		days_remove = 20
 		war_with_on_remove = YAG
 		remove_effect = {
-			YAG =  {
+			YAG = {
 				country_event = yagoo_borderwars.3
 			}
 			if = {
@@ -518,48 +518,48 @@ SUI_reestablishing_colonial_rule = {
 						is_controlled_by = SUI
 					}
 				}
-			start_border_war = {
-				change_state_after_war = no
-				attacker = {
-					state = 272
-					num_provinces = 2
-					on_win = suisei.138
-					on_lose = suisei.140
-					on_cancel = suisei.140
-				}
-				defender = {
-					state = 701
-					num_provinces = 2
-					on_win = yagoo_borderwars.6
-					on_lose = yagoo_borderwars.4
-					on_cancel = yagoo_borderwars.6
+				start_border_war = {
+					change_state_after_war = no
+					attacker = {
+						state = 272
+						num_provinces = 2
+						on_win = suisei.138
+						on_lose = suisei.140
+						on_cancel = suisei.140
+					}
+					defender = {
+						state = 701
+						num_provinces = 2
+						on_win = yagoo_borderwars.6
+						on_lose = yagoo_borderwars.4
+						on_cancel = yagoo_borderwars.6
+					}
 				}
 			}
-		}
 			if = {
 				limit = {
 					1086 = {
 						is_controlled_by = SUI
 					}
 				}
-			start_border_war = {
-				change_state_after_war = no
-				attacker = {
-					state = 1086
-					num_provinces = 1
-					on_win = suisei.139
-					on_lose = suisei.141
-					on_cancel = suisei.141
-				}
-				defender = {
-					state = 796
-					num_provinces = 1
-					on_win = yagoo_borderwars.7
-					on_lose = yagoo_borderwars.5
-					on_cancel = yagoo_borderwars.7
+				start_border_war = {
+					change_state_after_war = no
+					attacker = {
+						state = 1086
+						num_provinces = 1
+						on_win = suisei.139
+						on_lose = suisei.141
+						on_cancel = suisei.141
+					}
+					defender = {
+						state = 796
+						num_provinces = 1
+						on_win = yagoo_borderwars.7
+						on_lose = yagoo_borderwars.5
+						on_cancel = yagoo_borderwars.7
+					}
 				}
 			}
-		}
 		}
 	}
 	SUI_connect_algeria_and_west_africa = {
@@ -690,9 +690,9 @@ SUI_reestablishing_colonial_rule = {
 		remove_effect = {
 			FBK = {
 				country_event = fubuki.73
+			}
 		}
 	}
-}
 	SUI_conquer_nigeria = {
 		allowed = {
 			tag = SUI
@@ -753,38 +753,38 @@ SUI_reestablishing_colonial_rule = {
 		remove_effect = {
 			NOE = {
 				country_event = noel.60
+			}
 		}
 	}
-}
-SUI_kill_cameroon_optional = {
-	allowed = {
-		tag = SUI
-	}
-	visible = {
-		country_exists = CAM
-	}
-	ai_will_do = {
-		factor = 20
-	}
-	available = {
-		has_political_power > 20
-		check_variable = {
-			var = SUI.africans_killed
-			value = 5
-			compare = greater_than_or_equals
+	SUI_kill_cameroon_optional = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			country_exists = CAM
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		available = {
+			has_political_power > 20
+			check_variable = {
+				var = SUI.africans_killed
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 20
+		war_with_on_remove = NOE
+		remove_effect = {
+			declare_war_on = {
+				target = CAM
+				type = annex_everything
+			}
 		}
 	}
-	cost = 20
-	fire_only_once = yes
-	days_remove = 20
-	war_with_on_remove = NOE
-	remove_effect = {
-		declare_war_on = {
-			target = CAM
-			type = annex_everything
-		}
-}
-}
 	SUI_conquer_central_africa = {
 		allowed = {
 			tag = SUI
@@ -828,13 +828,13 @@ SUI_kill_cameroon_optional = {
 			tag = SUI
 		}
 		visible = {
-			708  = {
+			708 = {
 				is_owned_by = SUI
 			}
 		}
 		available = {
 			has_political_power > 20
-			708  = {
+			708 = {
 				is_owned_by = SUI
 			}
 		}
@@ -857,7 +857,7 @@ SUI_kill_cameroon_optional = {
 			tag = SUI
 		}
 		visible = {
-				has_country_flag = suisei_core_african_colonies
+			has_country_flag = suisei_core_african_colonies
 		}
 		available = {
 			has_political_power > 20
@@ -886,8 +886,8 @@ SUI_kill_cameroon_optional = {
 			tag = SUI
 		}
 		visible = {
-				has_country_flag = suisei_core_african_colonies
-			}
+			has_country_flag = suisei_core_african_colonies
+		}
 		available = {
 			has_political_power > 20
 			has_country_flag = suisei_core_african_colonies
@@ -960,7 +960,7 @@ SUI_kill_cameroon_optional = {
 			tag = SUI
 		}
 		visible = {
-				has_country_flag = suisei_core_african_colonies
+			has_country_flag = suisei_core_african_colonies
 		}
 		available = {
 			has_political_power > 20
@@ -998,8 +998,8 @@ SUI_kill_cameroon_optional = {
 			tag = SUI
 		}
 		visible = {
-				has_country_flag = suisei_core_african_colonies
-			}
+			has_country_flag = suisei_core_african_colonies
+		}
 		available = {
 			has_political_power > 20
 			has_country_flag = suisei_core_african_colonies
@@ -1021,12 +1021,12 @@ SUI_kill_cameroon_optional = {
 						is_owned_by = SUI
 					}
 				}
-					core_compliance = {
-						occupied_country_tag = CAM
-						value > 70
-					}
+				core_compliance = {
+					occupied_country_tag = CAM
+					value > 70
 				}
 			}
+		}
 		ai_will_do = {
 			factor = 20
 		}
@@ -1039,38 +1039,42 @@ SUI_kill_cameroon_optional = {
 					773 = {
 						is_owned_by = SUI
 					}
-				}
 					core_compliance = {
 						occupied_country_tag = CAM
 						value > 70
 					}
 				}
+				CAM = {
+					every_core_state = {
+						add_core_of = SUI
+					}
+				}
+			}
 			CAR = {
 				every_core_state = {
 					add_core_of = SUI
 				}
 			}
-			CHA  = {
+			CHA = {
 				every_core_state = {
 					add_core_of = SUI
 				}
 			}
 			539 = {
-					add_core_of = SUI
+				add_core_of = SUI
 			}
 			1087 = {
-					add_core_of = SUI
+				add_core_of = SUI
 			}
 			772 = {
-					add_core_of = SUI
+				add_core_of = SUI
 			}
 			1086 = {
-					add_core_of = SUI
+				add_core_of = SUI
 			}
 		}
 	}
 }
-
 
 #SUI_an_african_sphere = {
 #	SUI_the_african_congress = {
@@ -1207,7 +1211,6 @@ SUI_kill_cameroon_optional = {
 #		}
 #	}
 #}
-
 SUI_cores_on_france = {
 	SUI_get_cores_on_france = {
 		icon = decision_generic_industry
@@ -1414,8 +1417,8 @@ suisei_fix_army = {
 		icon = decision_generic_industry
 		available = {
 			tag = SUI
-			has_political_power > 75
-			has_army_experience > 10
+			has_political_power > 50
+			command_power > 25
 		}
 		visible = {
 			tag = SUI
@@ -1425,8 +1428,9 @@ suisei_fix_army = {
 		ai_will_do = {
 			factor = 10
 		}
-		cost = 75
+		cost = 50
 		complete_effect = {
+			add_command_power = -25
 			set_country_flag = SUI_last_push
 			swap_ideas = {
 				remove_idea = SUI_reforming_army
@@ -1438,7 +1442,7 @@ suisei_fix_army = {
 		icon = decision_generic_industry
 		available = {
 			tag = SUI
-			has_army_experience > 10
+			has_army_experience > 15
 		}
 		visible = {
 			tag = SUI
@@ -1449,7 +1453,7 @@ suisei_fix_army = {
 			factor = 10
 		}
 		complete_effect = {
-			army_experience = -10
+			army_experience = -15
 			clr_country_flag = SUI_last_push
 			clr_country_flag = SUI_reforming
 			clr_country_flag = suisei_fix_army
@@ -1708,9 +1712,6 @@ suisei_restoration_attempts = {
 		}
 		cost = 75
 		complete_effect = {
-			news_event = {
-				id = global_holonews.1
-			}
 			set_country_flag = SUI_hah_too_late_lol
 			clr_country_flag = SUI_resistance_monarchy_aim
 			clr_country_flag = SUI_yagoo_monarchy_aim
@@ -2444,7 +2445,7 @@ SUI_moroccan_rule = {
 			tag = SUI
 		}
 		visible = {
-		has_country_flag = SUI_allow_invade_morocco
+			has_country_flag = SUI_allow_invade_morocco
 		}
 		available = {
 			has_political_power > 50
@@ -2534,7 +2535,7 @@ SUI_moroccan_rule = {
 						remove_mission = MIK_suisei_willingness_to_fight
 						remove_mission = MIK_our_willingness_to_fight
 						country_event = miko.23
-				}
+					}
 				}
 			}
 		}
@@ -2600,15 +2601,15 @@ SUI_moroccan_rule = {
 						remove_mission = SUI_miko_willingness_to_fight
 						remove_mission = SUI_our_willingness_to_fight
 						country_event = suisei.148
-				}
-				remove_mission = MIK_our_willingness_to_fight
+					}
+					remove_mission = MIK_our_willingness_to_fight
 				}
 				else = {
 					SUI = {
 						remove_mission = SUI_miko_willingness_to_fight
 						remove_mission = SUI_our_willingness_to_fight
 						country_event = suisei.150
-				}
+					}
 				}
 			}
 		}
@@ -2653,41 +2654,41 @@ african_rebel_army_stuff = {
 			always = yes
 		}
 		fire_only_once = yes
-ai_will_do = {
-factor = 15
-}
+		ai_will_do = {
+			factor = 15
+		}
 		complete_effect = {
-		random_list = {
-			#Mild increase - 1
-			5 = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 1250
+			random_list = {
+				#Mild increase - 1
+				5 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1250
+					}
 				}
-			}
-			#Mid increase - 2
-			2 = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 1500
+				#Mid increase - 2
+				2 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1500
+					}
 				}
-			}
-			#decrease - 1 
-			2 = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 1000
+				#decrease - 1 
+				2 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1000
+					}
 				}
-			}
-			#Heavy increase - 3
-			1 = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 2000
+				#Heavy increase - 3
+				1 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 2000
+					}
 				}
 			}
 		}
-	}
 	}
 	scavenge_more_equipment = {
 		available = {
@@ -2698,130 +2699,130 @@ factor = 15
 		}
 		ai_will_do = {
 			factor = 15
-			}
+		}
 		fire_only_once = yes
-	complete_effect = {
-		random_list = {
-			#Mild increase - 1
-			5 = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 1250
+		complete_effect = {
+			random_list = {
+				#Mild increase - 1
+				5 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1250
+					}
 				}
-			}
-			#Mid increase - 2
-			2 = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 1500
+				#Mid increase - 2
+				2 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1500
+					}
 				}
-			}
-			#decrease - 1 
-			2 = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 1000
+				#decrease - 1 
+				2 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1000
+					}
 				}
-			}
-			#Heavy increase - 3
-			1 = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 2000
+				#Heavy increase - 3
+				1 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 2000
+					}
 				}
 			}
 		}
-	}
 	}
 	recruit_more_rebels = {
 		available = {
-		has_equipment = {
-			infantry_equipment > 1000
-		}
-	}
-	ai_will_do = {
-		factor = 15
-		}
-	visible = {
-		always = yes
-	}
-	days_re_enable = 60
-	fire_only_once = no
-	complete_effect = {
-		if = {
-			limit = {
-				NOT = {
-				has_template = "Rebels"
-				}
+			has_equipment = {
+				infantry_equipment > 1000
 			}
-			ROOT = {
-			division_template = {
-				name = "Rebels"
-				regiments = {
-					militia = {
-						x = 0
-						y = 0
-					}
-					militia = {
-						x = 0
-						y = 1
-					}
-					militia = {
-						x = 1
-						y = 0
-					}
-					militia = {
-						x = 1
-						y = 1
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		visible = {
+			always = yes
+		}
+		days_re_enable = 60
+		fire_only_once = no
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_template = "Rebels"
 					}
 				}
+				ROOT = {
+					division_template = {
+						name = "Rebels"
+						regiments = {
+							militia = {
+								x = 0
+								y = 0
+							}
+							militia = {
+								x = 0
+								y = 1
+							}
+							militia = {
+								x = 1
+								y = 0
+							}
+							militia = {
+								x = 1
+								y = 1
+							}
+						}
+					}
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -1000
+					}
+					random_owned_state = {
+						limit = {
+							impassable = no
+						}
+						create_unit = {
+							division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+							owner = ROOT
+						}
+						create_unit = {
+							division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+							owner = ROOT
+						}
+						create_unit = {
+							division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+							owner = ROOT
+						}
+					}
+				}
 			}
+			else = {
 				add_equipment_to_stockpile = {
 					type = infantry_equipment
 					amount = -1000
 				}
-			random_owned_state = {
-				limit = {
-					impassable = no
-				}
-				create_unit = {
-					division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
-					owner = ROOT
-				}
-				create_unit = {
-					division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
-					owner = ROOT
-				}
-				create_unit = {
-					division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
-					owner = ROOT
+				random_owned_state = {
+					limit = {
+						impassable = no
+					}
+					create_unit = {
+						division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
+						owner = ROOT
+					}
 				}
 			}
 		}
 	}
-	else = {
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = -1000
-		}
-	random_owned_state = {
-		limit = {
-			impassable = no
-		}
-		create_unit = {
-			division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
-			owner = ROOT
-		}
-		create_unit = {
-			division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
-			owner = ROOT
-		}
-		create_unit = {
-			division = "name = \"Rebels\" division_template = \"Rebels\" start_experience_factor = 0.2 start_equipment_factor = 0.2 start_manpower_factor = 1"
-			owner = ROOT
-		}
-	}
-	}
-}
-}
 }

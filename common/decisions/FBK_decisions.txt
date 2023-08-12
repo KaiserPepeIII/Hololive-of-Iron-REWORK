@@ -1573,7 +1573,7 @@ FBK_post_gnw_chaos_lose = {
 			tag = FBK
 		}
 		cost = 100
-		avaiable = {
+		available = {
 			has_political_power > 100
 		}
 		fire_only_once = yes
@@ -2615,17 +2615,16 @@ FBK_purging_the_wfa_decisions = {
 	}
 	FBK_end_the_purges = {
 		icon = GFX_decision_icon_default
-		available = {
-			has_political_power > 14
-		}
 		activation = {
 			has_country_flag = FBK_purging_the_wfa
 		}
+		available = {
+			has_political_power > 14
+		}
 		cost = 15
 		fire_only_once = yes
-		visible = {
-			always = yes
-		}
+		days_mission_timeout = 100
+		selectable_mission = yes
 		complete_effect = {
 			country_event = fubuki.57
 			hidden_effect = {
@@ -2637,7 +2636,7 @@ FBK_purging_the_wfa_decisions = {
 			}
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 	}
 }

@@ -1025,7 +1025,7 @@ focus_tree = {
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = WTS_combined_arms_doctrine
-				cost_reduction = 0.5
+				cost_reduction = 0.8
 				uses = 2
 				category = land_doctrine
 			}
@@ -1090,8 +1090,8 @@ focus_tree = {
 			add_ideas = speed_movement_bonus_buff
 			add_doctrine_cost_reduction = {
 				name = WTS_combined_arms_doctrine
-				cost_reduction = 0.5
-				uses = 1
+				cost_reduction = 0.8
+				uses = 2
 				category = land_doctrine
 			}
 		}
@@ -1105,7 +1105,8 @@ focus_tree = {
 		icon = GFX_focus_WTS_watson_concoction_x
 		cost = 8
 		prerequisite = {
-			focus = WTS_war_of_manouvre
+			focus = WTS_bring_generals_out_of_retirement
+			focus = WTS_homeland_renewal_act
 		}
 		completion_reward = {
 			set_country_flag = WTS_watson_concoction_x_flag
@@ -1114,7 +1115,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
-		x = 31
+		x = 33
 		y = 5
 	}
 	focus = {
@@ -1189,17 +1190,16 @@ focus_tree = {
 		icon = GFX_focus_WTS_rapid_army_expansion
 		cost = 8
 		prerequisite = {
-			focus = WTS_bring_generals_out_of_retirement
+			focus = WTS_watson_concoction_x
 		}
-		prerequisite = {
-			focus = WTS_homeland_renewal_act
+		mutually_exclusive = {
+			focus = WTS_infantry_focus
 		}
-		x = 33
-		y = 5
+		x = 32
+		y = 6
 		completion_reward = {
-			add_timed_idea = {
-				idea = rapid_army_expansion
-				days = 365
+			add_ideas = {
+				rapid_army_expansion
 			}
 		}
 		search_filters = {
@@ -1219,8 +1219,8 @@ focus_tree = {
 			add_ideas = breakthrough_bonus_buff
 			add_doctrine_cost_reduction = {
 				name = WTS_jfc_fullers_reforms
-				cost_reduction = 0.5
-				uses = 1
+				cost_reduction = 0.8
+				uses = 2
 				category = land_doctrine
 			}
 		}
@@ -1234,10 +1234,13 @@ focus_tree = {
 		icon = GFX_focus_WTS_infantry_focus
 		cost = 8
 		prerequisite = {
-			focus = WTS_overwhelming_force
+			focus = WTS_watson_concoction_x
 		}
-		x = 35
-		y = 5
+		mutually_exclusive = {
+			focus = WTS_rapid_army_expansion
+		}
+		x = 34
+		y = 6
 		completion_reward = {
 			add_ideas = infantry_push_bonus_buff
 		}
@@ -1251,11 +1254,10 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = WTS_rapid_army_expansion
-			focus = WTS_watson_concoction_x
 			focus = WTS_infantry_focus
 		}
 		x = 33
-		y = 6
+		y = 7
 		completion_reward = {
 			add_ideas = expand_guards_regiments
 			custom_effect_tooltip = WTS_expand_guards_regiments_focus
@@ -1345,7 +1347,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = armor_bonus
 				bonus = 1
-				uses = 1
+				uses = 2
 				category = armor
 			}
 		}
@@ -1566,23 +1568,36 @@ focus_tree = {
 		y = 5
 		completion_reward = {
 			navy_experience = 5
-			add_tech_bonus = {
-				name = WTS_light_cruiser_tech_loc
-				bonus = 1
-				uses = 1
-				category = cl_tech
-			}
-			add_tech_bonus = {
-				name = WTS_heavy_cruiser_tech_loc
-				bonus = 1
-				uses = 1
-				category = ca_tech
-			}
-			add_tech_bonus = {
-				name = WTS_battle_cruiser_tech_loc
-				bonus = 1
-				uses = 1
-				category = bc_tech
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus = {
+					name = WTS_heavy_cruiser_tech_loc
+					bonus = 1
+					uses = 2
+					category = ca_tech
+				}
+				else = {
+					add_tech_bonus = {
+						name = WTS_light_cruiser_tech_loc
+						bonus = 1
+						uses = 1
+						category = cl_tech
+					}
+					add_tech_bonus = {
+						name = WTS_heavy_cruiser_tech_loc
+						bonus = 1
+						uses = 1
+						category = ca_tech
+					}
+					add_tech_bonus = {
+						name = WTS_battle_cruiser_tech_loc
+						bonus = 1
+						uses = 1
+						category = bc_tech
+					}
+				}
 			}
 		}
 		search_filters = {
@@ -1601,17 +1616,30 @@ focus_tree = {
 		y = 5
 		completion_reward = {
 			navy_experience = 5
-			add_tech_bonus = {
-				name = WTS_battle_ship_tech_loc
-				bonus = 1
-				uses = 1
-				category = bb_tech
-			}
-			add_tech_bonus = {
-				name = WTS_heavy_battle_ship_tech_loc
-				bonus = 1
-				uses = 1
-				category = shbb_tech
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus = {
+					name = WTS_battle_ship_tech_loc
+					bonus = 1
+					uses = 1
+					category = bb_tech
+				}
+				else = {
+					add_tech_bonus = {
+						name = WTS_battle_ship_tech_loc
+						bonus = 1
+						uses = 1
+						category = bb_tech
+					}
+					add_tech_bonus = {
+						name = WTS_heavy_battle_ship_tech_loc
+						bonus = 1
+						uses = 1
+						category = shbb_tech
+					}
+				}
 			}
 		}
 		search_filters = {
@@ -1634,7 +1662,7 @@ focus_tree = {
 			add_doctrine_cost_reduction = {
 				name = WTS_naval_doctrine_tech_loc
 				cost_reduction = 1
-				uses = 1
+				uses = 2
 				category = naval_doctrine
 			}
 		}
@@ -1903,6 +1931,12 @@ focus_tree = {
 		x = 54
 		y = 5
 		completion_reward = {
+			add_tech_bonus = {
+				name = WTS_anti_air_tech
+				bonus = 1
+				uses = 2
+				category = cat_anti_air
+			}
 			random_owned_controlled_state = {
 				limit = {
 					is_core_of = WTS
@@ -1948,17 +1982,36 @@ focus_tree = {
 		x = 54
 		y = 6
 		completion_reward = {
-			add_tech_bonus = {
-				name = WTS_landing_craft_tech_loc
-				bonus = 1
-				uses = 1
-				category = cas_bomber
-			}
-			add_tech_bonus = {
-				name = WTS_landing_craft_tech_loc
-				bonus = 1
-				uses = 1
-				category = tactical_bomber
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_tech_bonus = {
+					name = WTS_landing_craft_tech_loc
+					bonus = 1
+					uses = 1
+					category = cat_air_bombs
+				}
+				add_tech_bonus = {
+					name = WTS_landing_craft_tech_loc
+					bonus = 1
+					uses = 1
+					category = medium_air
+				}
+				else = {
+					add_tech_bonus = {
+						name = WTS_landing_craft_tech_loc
+						bonus = 1
+						uses = 1
+						category = cas_bomber
+					}
+					add_tech_bonus = {
+						name = WTS_landing_craft_tech_loc
+						bonus = 1
+						uses = 1
+						category = tactical_bomber
+					}
+				}
 			}
 		}
 		search_filters = {
@@ -2076,8 +2129,31 @@ focus_tree = {
 		x = 58
 		y = 6
 		completion_reward = {
-			add_ideas = {
-				fighter_bonus
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				air_experience = 15
+				add_tech_bonus = {
+					name = WTS_landing_craft_tech_loc
+					bonus = 1
+					uses = 1
+					category = light_air
+				}
+				add_tech_bonus = {
+					name = WTS_landing_craft_tech_loc
+					bonus = 1
+					uses = 1
+					category = cat_air_engine
+				}
+				else = {
+					add_tech_bonus = {
+						name = WTS_landing_craft_tech_loc
+						bonus = 1
+						uses = 2
+						category = light_fighter
+					}
+				}
 			}
 		}
 		search_filters = {
@@ -2153,14 +2229,14 @@ focus_tree = {
 				name = WTS_anti_tank_methods
 				bonus = 1
 				ahead_reduction = 2
-				uses = 1
+				uses = 2
 				category = cat_anti_tank
 			}
 			add_tech_bonus = {
 				name = WTS_anti_tank_methods
 				bonus = 1
 				ahead_reduction = 2
-				uses = 1
+				uses = 2
 				category = cat_anti_air
 			}
 			add_ideas = hard_attack_bonus_buff
