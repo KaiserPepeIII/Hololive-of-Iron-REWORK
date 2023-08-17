@@ -14,6 +14,9 @@ LUN_rearmament_category = {
         complete_effect = {
             add_political_power = 100
         }
+        ai_will_do = {
+			base = 5
+		}
     }
     LUN_mobilize_lu_knights = {
         allowed = {
@@ -21,7 +24,6 @@ LUN_rearmament_category = {
         }
         available = {
             has_completed_focus = GEN_rearmemants_program_two
-            has_manpower < 100000
         }
         visible = {
             always = yes
@@ -29,12 +31,22 @@ LUN_rearmament_category = {
         cost = 100
         fire_only_once = no
         days_re_enable = 120
-    
+
         complete_effect = {
             add_manpower = 20000
         }
+        ai_will_do = {
+			base = 5
+            modifier = {
+                has_manpower > 1000000
+                factor = 0
+            }
+            modifier = {
+                has_manpower < 100000
+                add = 15
+            }
+		}
     }
-
     LUN_get_guns = {
         allowed = {
             always = yes
@@ -53,12 +65,27 @@ LUN_rearmament_category = {
             }
         }
         days_re_enable = 30
+        ai_will_do = {
+			base = 5
+            modifier = {
+                stockpile_ratio = {
+                    archetype = infantry_equipment
+                    ratio > 0.5
+                }
+                factor = 0
+            }
+            modifier = {
+                has_equipment = {
+                    infantry_equipment < 1
+                }
+                add = 15
+            }
+		}
     }
 }
 
 
 LUN_golden_horde_category = {
-    
     LUN_ancient_wisdom = {
         allowed = {
             tag = LUN
@@ -77,8 +104,10 @@ LUN_golden_horde_category = {
             add_research_slot = 1
             add_stability = 0.05       
         }
+        ai_will_do = {
+            base = 5
+        }
     }
-
     LUN_prepare_expansion = {
         allowed = {
             tag = LUN
@@ -88,13 +117,10 @@ LUN_golden_horde_category = {
         }
         cost = 10
         fire_only_once = yes
-
         days_remove = 70
-
         modifier = {
             war_support_weekly = 0.01
         }
-
         remove_effect = {
             set_country_flag = LUN_expansion_prepared_flag
             build_railway = {
@@ -111,9 +137,13 @@ LUN_golden_horde_category = {
                 }
                 target_province = 10627
             }
+            country_event = luna.2
+            
+        }
+        ai_will_do = {
+            base = 10
         }
     }
-
     LUN_russia_border_war = {
         allowed = {
             tag = LUN
@@ -125,10 +155,8 @@ LUN_golden_horde_category = {
                 NOT = {
                     has_war_with = LUN
                 }
-                OR = {
-                    owns_state = 654
-                    owns_state = 40
-                }
+                owns_state = 654
+                owns_state = 40
             }
         }
         available = {
@@ -137,7 +165,7 @@ LUN_golden_horde_category = {
             }
         }
         cost = 50
-
+        days_re_enable = 300
         complete_effect = {
             LUN = {
                 add_threat = 1.5
@@ -148,14 +176,25 @@ LUN_golden_horde_category = {
             }
             set_country_flag = LUN_russia_border_war_flag
         }
+        ai_will_do = {
+            base = 0
+            modifier = {
+                OR = {
+                    has_country_flag = LUN_russia_war_fail_flag
+                    has_country_flag = LUN_towa_war_fail_flag
+                }
+                factor = 0
+            }
+            modifier = {
+                owns_state = 618
+                owns_state = 760
+            
+                add = 5
+            }
+        }
     }
-
     LUN_russia_border_war_mission = {
         activation = {
-            tag = LUN
-            has_country_flag = LUN_russia_border_war_flag
-        }
-        visible = {
             tag = LUN
             has_country_flag = LUN_russia_border_war_flag
         }
@@ -182,24 +221,39 @@ LUN_golden_horde_category = {
         timeout_effect = {
             add_war_support = -0.1
             clr_country_flag = LUN_russia_border_war_flag
+            LUN = {
+                white_peace = RSR
+                country_event = luna.4
+            }
+            hidden_effect = { 
+                set_country_flag = LUN_russia_war_fail_flag
+            }
+        }
+        cancel_trigger = {
+            NOT = {
+                has_war_with = RSR
+            }
+        }
+        cancel_effect = {
+            clr_country_flag = LUN_russia_border_war_flag
+        }
+        ai_will_do = {
+            base = 100
         }
     }
-
     LUN_towa_border_war = {
         allowed = {
             tag = LUN
         }
         visible = {
-            has_country_flag = LUN_expansion_prepared
+            has_country_flag = LUN_expansion_prepared_flag
             TOW = {
                 exists = yes
                 NOT = {
                     has_war_with = LUN
                 }
-                OR = {
-                    owns_state = 618
-                    owns_state = 760
-                }
+                owns_state = 618
+                owns_state = 760
             }
         }
         available = {
@@ -208,6 +262,7 @@ LUN_golden_horde_category = {
             }
         }
         cost = 50
+        days_re_enable = 300
         complete_effect = {
             LUN = {
                 add_threat = 1.5
@@ -218,14 +273,16 @@ LUN_golden_horde_category = {
             }
             set_country_flag = LUN_towa_border_war_flag
         }
+        ai_will_do = {
+            base = 5
+            modifier = {
+                has_country_flag = LUN_towa_war_fail_flag
+                factor = 0
+            }
+        }
     }
-
     LUN_towa_border_war_mission = {
         activation = {
-            tag = LUN
-            has_country_flag = LUN_towa_border_war_flag
-        }
-        visible = {
             tag = LUN
             has_country_flag = LUN_towa_border_war_flag
         }
@@ -247,15 +304,36 @@ LUN_golden_horde_category = {
             LUN = {
                 white_peace = TOW
             }
-            clr_country_flag = LUN_towa_border_war_flag
+            hidden_effect = {
+                clr_country_flag = LUN_towa_border_war_flag
+            }
         }
         timeout_effect = {
             add_war_support = -0.1
             clr_country_flag = LUN_towa_border_war_flag
+            LUN = {
+                white_peace = TOW
+                country_event = luna.3
+            }
+            hidden_effect = { 
+                set_country_flag = LUN_towa_war_fail_flag
+                clr_country_flag = LUN_towa_border_war_flag
+            }
         }
-        
+        cancel_trigger = {
+            NOT = {
+                has_war_with = TOW
+            }
+        }
+        cancel_effect = {
+            hidden_effect = {
+                clr_country_flag = LUN_towa_border_war_flag
+            }
+        }
+        ai_will_do = {
+            base = 100
+        }
     }
-
     LUN_become_queen = {
         allowed = {
             always = yes
@@ -271,18 +349,21 @@ LUN_golden_horde_category = {
         }
         cost = 100
         fire_only_once = yes
-
         complete_effect = {
-            every_character = {
-                limit = {
-                    has_trait = LUN_himemori_luna_trait
-                }
-                swap_country_leader_traits = {
-                    remove = LUN_himemori_luna_trait
-                    add = LUN_queen_of_steppes_trait
+            hidden_effect = {
+                every_character = {
+                    limit = {
+                        has_trait = LUN_himemori_luna_trait
+                    }
+                    swap_country_leader_traits = {
+                        remove = LUN_himemori_luna_trait
+                        add = LUN_queen_of_steppes_trait
+                    }
                 }
             }
         }
-        
+        ai_will_do = {
+            base = 5
+        }
     }
 }
