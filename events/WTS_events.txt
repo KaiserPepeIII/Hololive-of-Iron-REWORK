@@ -269,7 +269,6 @@ country_event = {
 			add_core_of = ULS
 		}
 		release_puppet = ULS
-		set_country_flag = ira_dealt_with
 	}
 	option = {
 		#Northern ireland shall be free
@@ -281,7 +280,6 @@ country_event = {
 		1006 = {
 			add_core_of = ULS
 		}
-		set_country_flag = ira_dealt_with
 	}
 	option = {
 		#Northern ireland shall be a returned to ireland
@@ -309,16 +307,14 @@ country_event = {
 			FAU = {
 				transfer_state = 119
 			}
-			set_country_flag = ira_dealt_with
 		}
 		else_if = {
 			limit = {
 				country_exists = IRE
 			}
-			FAU = {
+			IRE = {
 				transfer_state = 119
 			}
-			set_country_flag = ira_dealt_with
 		}
 	}
 }
@@ -401,7 +397,7 @@ country_event = {
 	option = {
 		#they are unfriendly because anti
 		name = watson.20.a
-		set_country_flag = ira_established
+		set_country_flag = WTS_IRA_established
 	}
 }
 
@@ -457,7 +453,6 @@ country_event = {
 	option = {
 		#atleast its over
 		name = watson.23.a
-		set_country_flag = ira_dealt_with
 	}
 }
 
@@ -471,7 +466,6 @@ country_event = {
 	option = {
 		#Thank you nature woman
 		name = watson.24.a
-		set_country_flag = ira_dealt_with
 	}
 }
 
@@ -530,7 +524,6 @@ country_event = {
 	option = {
 		#Execute Operation Pound Grounder
 		name = watson.160.a
-		set_country_flag = ira_dealt_with
 	}
 }
 
@@ -670,7 +663,7 @@ country_event = {
 	}
 }
 
-#Easter Crisis 
+#Easter Crisis
 country_event = {
 	id = watson.29
 	title = watson.29.t
@@ -680,7 +673,7 @@ country_event = {
 	#A New Government 
 	option = {
 		name = watson.29.a
-		clr_country_flag = WTS_pre_easter_crisis
+		set_country_flag = WTS_easter_crisis_ongoing_flag
 		add_ideas = WTS_easter_crisis
 		complete_national_focus = WTS_the_easter_crisis
 		custom_effect_tooltip = WTS_easter_crisis_event_effect_tooltip1
@@ -712,7 +705,7 @@ country_event = {
 		name = watson.29.b
 		country_event = watson.161
 		set_country_flag = WTS_forced_through_budget
-		clr_country_flag = WTS_pre_easter_crisis
+		set_country_flag = WTS_easter_crisis_ongoing_flag
 		add_ideas = WTS_easter_crisis
 		complete_national_focus = WTS_the_easter_crisis
 		custom_effect_tooltip = WTS_easter_crisis_event_effect_tooltip2
@@ -746,10 +739,11 @@ country_event = {
 #	British Politics Broken
 #
 #
+
 country_event = {
 	id = watson.161
-	title = watson.30.t
-	desc = watson.30.d
+	title = watson.161.t
+	desc = watson.161.d
 	picture = GFX_report_event_WTS_dismiss_parliament
 	is_triggered_only = yes
 	#Oh dear
@@ -774,7 +768,6 @@ country_event = {
 	option = {
 		#Execute Operation Pound Grounder
 		name = watson.30.a
-		set_country_flag = ira_dealt_with
 		119 = {
 			add_core_of = WTS
 		}
@@ -975,6 +968,7 @@ country_event = {
 			WTS_easter_crisis_long
 		}
 		hidden_effect = {
+			clr_country_flag = WTS_easter_crisis_ongoing_flag
 			WTS_clear_ministers = yes
 			WTS_pro_yagoo_progressive_cabinet = yes
 		}
@@ -1004,6 +998,7 @@ country_event = {
 		}
 		custom_effect_tooltip = set_pro_yagoo_progressive_government
 		hidden_effect = {
+			clr_country_flag = WTS_easter_crisis_ongoing_flag
 			WTS_clear_ministers = yes
 			WTS_pro_yagoo_conservative_cabinet = yes
 		}
@@ -1627,16 +1622,6 @@ country_event = {
 			country_event = {
 				id = watson.71
 			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 10000
-				producer = YAG
-			}
-			add_equipment_to_stockpile = {
-				type = light_tank_equipment_1
-				amount = 2500
-				producer = YAG
-			}
 		}
 	}
 }
@@ -1649,10 +1634,30 @@ country_event = {
 	picture = GFX_report_event_WTS_yagoo_funds_us
 	is_triggered_only = yes
 	option = {
-		#thank you Yagoo-senpai
+		#thank you Yagoo-san
 		name = watson.70.a
 		custom_effect_tooltip = wts_yagoo_funded
 		add_war_support = 0.05
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 5000
+			producer = YAG
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 500
+			producer = YAG
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 500
+			producer = YAG
+		}
+		add_equipment_to_stockpile = {
+			type = light_tank_equipment_1
+			amount = 1000
+			producer = YAG
+		}
 	}
 }
 

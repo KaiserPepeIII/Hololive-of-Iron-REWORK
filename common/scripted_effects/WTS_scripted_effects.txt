@@ -890,3 +890,133 @@ WTS_integrate_the_empire = {
 		add_core_of = WTS
 	}
 }
+
+WTS_clear_insurgent_state_modifiers = {
+	remove_dynamic_modifier = {
+		modifier = WTS_ira_presence
+	}
+	remove_dynamic_modifier = {
+		modifier = WTS_english_antis_presence
+	}
+	remove_dynamic_modifier = {
+		modifier = WTS_national_protection_league
+	}
+	remove_dynamic_modifier = {
+		modifier = WTS_the_watch_wars
+	}
+	remove_dynamic_modifier = {
+		modifier = WTS_bgc_presence
+	}
+	remove_dynamic_modifier = {
+		modifier = WTS_riots_and_looting
+	}
+	remove_dynamic_modifier = {
+		modifier = WTS_successful_crackdown
+	}
+}
+
+###########################
+#
+#	Ceasefire effects
+#
+###########################
+
+WTS_ceasefire_success_effect = {
+	add_political_power = 100
+	add_stability = 0.1
+
+	set_temp_variable = {
+		var = pie_chart_change
+		value = 0.2
+	}
+
+	clr_country_flag = WTS_successful_negotiations
+	clr_country_flag = WTS_negotiating_ceasefire
+	clr_country_flag = WTS_recent_action
+}
+
+WTS_ceasefire_eased_tensions_effect = {
+	add_political_power = 50
+	add_stability = 0.05
+
+	set_temp_variable = {
+		var = pie_chart_change
+		value = 0.1
+	}
+
+	clr_country_flag = WTS_eased_tensions
+	clr_country_flag = WTS_negotiating_ceasefire
+	clr_country_flag = WTS_recent_action
+}
+
+WTS_ceasefire_failure_effect = {
+	add_stability = -0.01
+	set_temp_variable = {
+		var = pie_chart_change
+		value = 0.1
+	}
+
+	clr_country_flag = WTS_successful_negotiations
+	clr_country_flag = WTS_negotiating_ceasefire
+	clr_country_flag = WTS_recent_action
+}
+
+###########################
+#
+#	Crackdown on Armed Groups effects
+#
+###########################
+
+WTS_crackdown_success_effect = {
+	WTS = {
+		clr_country_flag = WTS_successful_negotiations
+		clr_country_flag = WTS_recent_action
+	
+		add_political_power = 60
+		add_stability = 0.1
+	}
+
+	set_temp_variable = {
+		var = pie_chart_change
+		value = 0.15
+	}
+
+	set_temp_variable = {
+		var = WTS_crackdown_modifier_duration_days
+		value = 90
+	}
+}
+
+WTS_crackdown_eased_tensions_effect = {
+	WTS = {
+		clr_country_flag = WTS_eased_tensions
+		clr_country_flag = WTS_recent_action
+	
+		add_political_power = 30
+		add_stability = 0.05
+	}
+
+	set_temp_variable = {
+		var = pie_chart_change
+		value = 0.1
+	}
+
+	set_temp_variable = {
+		var = WTS_crackdown_modifier_duration_days
+		value = 60
+	}
+}
+
+WTS_crackdown_failure_effect = {
+	WTS = {
+		clr_country_flag = WTS_critical_failure
+		clr_country_flag = WTS_recent_action
+	
+		add_stability = -0.05
+	}
+
+	set_temp_variable = {
+		var = WTS_crackdown_modifier_duration_days
+		value = 60
+	}
+}

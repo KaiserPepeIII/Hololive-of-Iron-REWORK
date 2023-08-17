@@ -698,16 +698,14 @@ WTS_insurgency_attacks = {
 		days_remove = 7
 		days_re_enable = 30
 		available = {
-			has_country_flag = ira_dealt_with
+			has_country_flag = WTS_dealt_with_insurgents_flag
 		}
 		fire_only_once = no
 		activation = {
 			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
+				has_country_flag = WTS_dealt_with_insurgents_flag
 			}
-		}
-		visible = {
-			always = yes
+			has_country_flag = WTS_IRA_established
 		}
 		complete_effect = {
 			add_stability = 0.15
@@ -742,16 +740,13 @@ WTS_insurgency_attacks = {
 		days_remove = 7
 		days_re_enable = 30
 		available = {
-			has_country_flag = ira_dealt_with
+			has_country_flag = WTS_dealt_with_insurgents_flag
 		}
 		fire_only_once = no
 		activation = {
 			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
+				has_country_flag = WTS_dealt_with_insurgents_flag
 			}
-		}
-		visible = {
-			always = yes
 		}
 		complete_effect = {
 			add_stability = 0.15
@@ -786,16 +781,13 @@ WTS_insurgency_attacks = {
 		days_remove = 7
 		days_re_enable = 30
 		available = {
-			has_country_flag = ira_dealt_with
+			has_country_flag = WTS_dealt_with_insurgents_flag
 		}
 		fire_only_once = no
 		activation = {
 			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
+				has_country_flag = WTS_dealt_with_insurgents_flag
 			}
-		}
-		visible = {
-			always = yes
 		}
 		complete_effect = {
 			add_stability = 0.15
@@ -830,16 +822,13 @@ WTS_insurgency_attacks = {
 		days_remove = 7
 		days_re_enable = 30
 		available = {
-			has_country_flag = ira_dealt_with
+			has_country_flag = WTS_dealt_with_insurgents_flag
 		}
 		fire_only_once = no
 		activation = {
 			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
+				has_country_flag = WTS_dealt_with_insurgents_flag
 			}
-		}
-		visible = {
-			always = yes
 		}
 		complete_effect = {
 			add_stability = 0.15
@@ -877,16 +866,14 @@ WTS_insurgency_gains = {
 		days_remove = 7
 		days_re_enable = 30
 		available = {
-			has_country_flag = ira_dealt_with
+			has_country_flag = WTS_dealt_with_insurgents_flag
 		}
 		fire_only_once = no
 		activation = {
 			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
+				has_country_flag = WTS_dealt_with_insurgents_flag
 			}
-		}
-		visible = {
-			always = yes
+			has_country_flag = WTS_IRA_established
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -904,16 +891,13 @@ WTS_insurgency_gains = {
 		days_re_enable = 30
 		days_remove = 7
 		available = {
-			has_country_flag = ira_dealt_with
+			has_country_flag = WTS_dealt_with_insurgents_flag
 		}
 		fire_only_once = no
 		activation = {
 			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
+				has_country_flag = WTS_dealt_with_insurgents_flag
 			}
-		}
-		visible = {
-			always = yes
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -931,16 +915,13 @@ WTS_insurgency_gains = {
 		days_remove = 7
 		days_re_enable = 30
 		available = {
-			has_country_flag = ira_dealt_with
+			has_country_flag = WTS_dealt_with_insurgents_flag
 		}
 		fire_only_once = no
 		activation = {
 			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
+				has_country_flag = WTS_dealt_with_insurgents_flag
 			}
-		}
-		visible = {
-			always = yes
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -958,16 +939,13 @@ WTS_insurgency_gains = {
 		days_re_enable = 30
 		days_remove = 7
 		available = {
-			has_country_flag = ira_dealt_with
+			has_country_flag = WTS_dealt_with_insurgents_flag
 		}
 		fire_only_once = no
 		activation = {
 			NOT = {
-				has_country_flag = WTS_dealt_with_insurgents
+				has_country_flag = WTS_dealt_with_insurgents_flag
 			}
-		}
-		visible = {
-			always = yes
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -3602,6 +3580,7 @@ WTS_watson_concoction_category = {
 				has_completed_focus = WTS_watson_concoction_x
 			}
 		}
+		days_re_enable = 90
 		cost = 75
 		complete_effect = {
 			add_timed_idea = {
@@ -3624,6 +3603,7 @@ WTS_watson_concoction_category = {
 			}
 		}
 		cost = 75
+		days_re_enable = 90
 		complete_effect = {
 			add_timed_idea = {
 				idea = WTS_watson_concoction_improved
@@ -3653,9 +3633,11 @@ WTS_watson_concoction_category = {
 			command_power > 15
 		}
 		visible = {
+			has_country_flag = WTS_finalized_watson_concoction
 			has_completed_focus = WTS_watson_concoction_x
 		}
 		cost = 75
+		days_re_enable = 90
 		complete_effect = {
 			add_timed_idea = {
 				idea = WTS_watson_concoction_finalized

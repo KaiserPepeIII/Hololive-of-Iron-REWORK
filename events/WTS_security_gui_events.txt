@@ -4191,7 +4191,7 @@ country_event = {
 country_event = {
 	id = watson_security.24
 	title = watson_security.24.t
-	desc = watson_security.24.d
+	desc = watson_security.24.desc
 	picture = GFX_report_event_WTS_watch_wars
 	trigger = {
 		original_tag = WTS
@@ -4202,8 +4202,6 @@ country_event = {
 	mean_time_to_happen = {
 		days = 2
 	}
-	is_triggered_only = no
-	fire_only_once = no
 	#South England
 	option = {
 		name = watson_security.24.a
@@ -4216,11 +4214,23 @@ country_event = {
 					compare = equals
 				}
 				NOT = {
-					has_country_flag = WTS_north_england_pacified
+					has_country_flag = WTS_south_england_pacified
 				}
 			}
 		}
 		set_country_flag = WTS_south_england_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_south_england_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
+
 	}
 	#East England
 	option = {
@@ -4239,6 +4249,17 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_east_england_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_east_england_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#London 
 	option = {
@@ -4257,10 +4278,21 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_london_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_london_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#West Midlands 
 	option = {
-		name = watson_security.24.e
+		name = watson_security.24.d
 		trigger = {
 			original_tag = WTS
 			WTS = {
@@ -4275,10 +4307,21 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_west_midlands_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_west_midlands_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#North England 
 	option = {
-		name = watson_security.24.f
+		name = watson_security.24.e
 		trigger = {
 			original_tag = WTS
 			WTS = {
@@ -4293,10 +4336,21 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_north_england_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_north_england_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#Wales 
 	option = {
-		name = watson_security.24.g
+		name = watson_security.24.f
 		trigger = {
 			original_tag = WTS
 			WTS = {
@@ -4311,10 +4365,21 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_wales_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_wales_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#Scotland 
 	option = {
-		name = watson_security.24.h
+		name = watson_security.24.g
 		trigger = {
 			original_tag = WTS
 			WTS = {
@@ -4329,10 +4394,21 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_scotland_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_scotland_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#N. Ireland 
 	option = {
-		name = watson_security.24.i
+		name = watson_security.24.h
 		trigger = {
 			original_tag = WTS
 			WTS = {
@@ -4347,10 +4423,21 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_northern_ireland_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_northern_ireland_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#NW Ireland 
 	option = {
-		name = watson_security.24.j
+		name = watson_security.24.i
 		trigger = {
 			original_tag = WTS
 			WTS = {
@@ -4365,10 +4452,21 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_northwest_ireland_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_northwest_ireland_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#Southwest Ireland 
 	option = {
-		name = watson_security.24.k
+		name = watson_security.24.j
 		trigger = {
 			original_tag = WTS
 			WTS = {
@@ -4383,10 +4481,21 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_southwest_ireland_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_southwest_ireland_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 	#Dublin 
 	option = {
-		name = watson_security.24.l
+		name = watson_security.24.k
 		trigger = {
 			original_tag = WTS
 			WTS = {
@@ -4401,6 +4510,17 @@ country_event = {
 			}
 		}
 		set_country_flag = WTS_dublin_pacified
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = WTS.counter_insurgency_dublin_array
+						value = THIS.id
+					}
+				}
+				WTS_clear_insurgent_state_modifiers = yes
+			}
+		}
 	}
 }
 
@@ -4482,7 +4602,7 @@ country_event = {
 	#Truly tiss
 	option = {
 		name = watson_security.26.a
-		set_country_flag = WTS_insurgency_quelled
+		set_country_flag = WTS_dealt_with_insurgents_flag
 		WTS_clear_security_gui = yes
 	}
 }
