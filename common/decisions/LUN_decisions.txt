@@ -1,5 +1,6 @@
 LUN_rearmament_category = {
     LUN_allocate_more_resources = {
+        icon = generic_propaganda
         allowed = {
             tag = LUN
         }
@@ -19,6 +20,7 @@ LUN_rearmament_category = {
         }
     }
     LUN_mobilize_lu_knights = {
+        icon = generic_civil_support
         allowed = {
             tag = LUN
         }
@@ -48,6 +50,7 @@ LUN_rearmament_category = {
         }
     }
     LUN_get_guns = {
+        icon = generic_prepare_civil_war
         allowed = {
             always = yes
         }
@@ -62,6 +65,10 @@ LUN_rearmament_category = {
             add_equipment_to_stockpile = {
                 amount = 500
                 type = infantry_equipment
+            }
+            add_equipment_to_stockpile = {
+                amount = 25
+                type = artillery_equipment
             }
         }
         days_re_enable = 30
@@ -84,9 +91,54 @@ LUN_rearmament_category = {
     }
 }
 
-
 LUN_golden_horde_category = {
+    LUN_become_queen = {
+        allowed = {
+            always = yes
+        }
+        visible = {
+            always = yes
+        }
+        available = {
+            owns_state = 330
+            owns_state = 618
+            owns_state = 760
+            owns_state = 654
+            owns_state = 40
+            owns_state = 586
+        }
+        cost = 100
+        fire_only_once = yes
+        complete_effect = {
+            effect_tooltip = {
+                random_character = {
+                    limit = {
+                        has_trait = LUN_himemori_luna_trait
+                    }
+                    swap_country_leader_traits = {
+                        remove = LUN_himemori_luna_trait
+                        add = LUN_queen_of_steppes_trait
+                    }
+                }
+            }
+            hidden_effect = {
+                every_character = {
+                    limit = {
+                        has_trait = LUN_himemori_luna_trait
+                    }
+                    swap_country_leader_traits = {
+                        remove = LUN_himemori_luna_trait
+                        add = LUN_queen_of_steppes_trait
+                    }
+                }
+            }
+        }
+        ai_will_do = {
+            base = 5
+        }
+    }
     LUN_ancient_wisdom = {
+        icon = generic_research
         allowed = {
             tag = LUN
         }
@@ -109,6 +161,7 @@ LUN_golden_horde_category = {
         }
     }
     LUN_prepare_expansion = {
+        icon = generic_industry
         allowed = {
             tag = LUN
         }
@@ -145,6 +198,7 @@ LUN_golden_horde_category = {
         }
     }
     LUN_russia_border_war = {
+        icon = generic_prepare_civil_war
         allowed = {
             tag = LUN
         }
@@ -241,6 +295,7 @@ LUN_golden_horde_category = {
         }
     }
     LUN_towa_border_war = {
+        icon = generic_prepare_civil_war
         allowed = {
             tag = LUN
         }
@@ -256,7 +311,7 @@ LUN_golden_horde_category = {
             }
         }
         available = {
-            NOT = { 
+            NOT = {
                 has_country_flag = LUN_russia_border_war_flag
             }
         }
@@ -333,42 +388,78 @@ LUN_golden_horde_category = {
             base = 100
         }
     }
-    LUN_become_queen = {
+    LUN_kazakh_question =  {
+        icon = generic_civil_support
         allowed = {
             always = yes
         }
         visible = {
-            always = yes
+            KAZ = {
+                exists = yes
+                is_neighbor_of = LUN
+            }
         }
         available = {
-            owns_state = 618
-            owns_state = 760
-            owns_state = 654
-            owns_state = 40
+            has_war = no
         }
         cost = 100
         fire_only_once = yes
         complete_effect = {
-            effect_tooltip = {
-                random_character = {
-                    limit = {
-                        has_trait = LUN_himemori_luna_trait
-                    }
-                    swap_country_leader_traits = {
-                        remove = LUN_himemori_luna_trait
-                        add = LUN_queen_of_steppes_trait
-                    }
+            KAZ = {
+                country_event = {
+                    id = KAZ.1
+                    hours = 24
+                }
+            }
+        }
+        ai_will_do = {
+            base = 5
+            modifier = {
+                factor = 0
+                OR = {
+                    has_country_flag = LUN_russia_war_fail_flag
+                    has_country_flag = LUN_towa_war_fail_flag
+                }
+            }
+        }
+    }
+    LUN_integrate_kazakhstan = {
+        icon = generic_propaganda
+        allowed = {
+            always = yes
+        }
+        visible = {
+            KAZ = {
+                exists = yes
+                is_subject_of = LUN
+            }
+        }
+        cost = 120
+        days_remove = 10 # TODO = 300
+        modifier = {
+            political_power_gain = -0.1
+        }
+        remove_effect = {
+            LUN = {
+                annex_country = { 
+                    target = KAZ
+                    transfer_troops = yes
                 }
             }
             hidden_effect = {
-                every_character = {
-                    limit = {
-                        has_trait = LUN_himemori_luna_trait
+                KAZ = {
+                    every_unit_leader = {
+                        set_nationality = LUN
                     }
-                    swap_country_leader_traits = {
-                        remove = LUN_himemori_luna_trait
-                        add = LUN_queen_of_steppes_trait
-                    }
+                }
+            }
+            
+        }
+        cancel_trigger = {
+            KAZ = {
+                NOT = {
+                    exists = yes
+                    is_subject_of = LUN
                 }
             }
         }

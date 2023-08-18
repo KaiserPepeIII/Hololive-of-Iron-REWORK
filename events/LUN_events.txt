@@ -45,7 +45,7 @@ country_event = {
 	title = luna.2.t
 	desc = luna.2.desc
 	is_triggered_only = yes
-	option= {
+	option = {
 		name = luna.2.a
 		618 = {
 			add_claim_by = LUN
@@ -70,7 +70,7 @@ country_event = {
 	title = luna.3.t
 	desc = luna.3.desc
 	is_triggered_only = yes
-	option= {
+	option = {
 		name = luna.3.a
 		ai_chance = {
 			base = 1
@@ -83,8 +83,46 @@ country_event = {
 	title = luna.4.t
 	desc = luna.4.desc
 	is_triggered_only = yes
-	option= {
+	option = {
 		name = luna.4.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Kazakhstan refuses puppet
+country_event = {
+	id = luna.5
+	title = luna.5.t
+	desc = luna.5.desc
+	is_triggered_only = yes
+	option = {
+		name = luna.5.a
+		create_wargoal = {
+			target = KAZ
+			type = annex_everything
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = luna.5.b
+		add_war_support = -0.05
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+#Kazakhstan agrees to puppet
+country_event = {
+	id = luna.6
+	title = luna.6.t
+	desc = luna.6.desc
+	is_triggered_only = yes
+	option = {
+		name = luna.6.a
+		add_war_support = 0.05
 		ai_chance = {
 			base = 1
 		}

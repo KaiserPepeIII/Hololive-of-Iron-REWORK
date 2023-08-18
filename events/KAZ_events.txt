@@ -1,0 +1,40 @@
+add_namespace = KAZ
+#Luna sends us demand to become puppet
+country_event = {
+	id = KAZ.1
+	title = KAZ.1.t
+	desc = KAZ.1.desc
+	is_triggered_only = yes
+	#No
+	option = {
+		name = KAZ.1.a
+		LUN = {
+			country_event = luna.5
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#Yes
+	option = {
+		name = KAZ.1.b
+		LUN = {
+			country_event = luna.6
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = KAZ
+					autonomy_state = autonomy_integrated_puppet
+				}
+				else = {
+					puppet = KAZ
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
