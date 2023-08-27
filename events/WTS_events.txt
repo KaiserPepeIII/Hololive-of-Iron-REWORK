@@ -901,7 +901,7 @@ country_event = {
 country_event = {
 	id = watson.38
 	title = watson.38.t
-	desc = watson.38.d
+	desc = watson.38.desc
 	picture = GFX_report_event_WTS_budget_event
 	is_triggered_only = yes
 	option = {
@@ -926,6 +926,7 @@ country_event = {
 			WTS_easter_crisis
 			WTS_easter_crisis_long
 		}
+		custom_effect_tooltip = set_pro_yagoo_progressive_government
 		hidden_effect = {
 			clr_country_flag = WTS_easter_crisis_ongoing_flag
 			WTS_clear_ministers = yes
@@ -955,7 +956,7 @@ country_event = {
 			WTS_easter_crisis
 			WTS_easter_crisis_long
 		}
-		custom_effect_tooltip = set_pro_yagoo_progressive_government
+		custom_effect_tooltip = set_pro_yagoo_conservative_government
 		hidden_effect = {
 			clr_country_flag = WTS_easter_crisis_ongoing_flag
 			WTS_clear_ministers = yes
@@ -2557,33 +2558,42 @@ country_event = {
 country_event = {
 	id = watson.106
 	title = watson.106.t
-	desc = watson.106.d
+	desc = watson.106.desc
 	picture = GFX_report_event_WTS_faction_lead
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
 		#Conservative faction
+		#For conservatives you need to win 80 Upper class, 60 Middle class, 20 lower class, 30 Ulster
 		name = watson.106.a
-		custom_effect_tooltip = WTS_leading_conservatives
-		set_country_flag = WTS_leading_conservatives		#For conservatives you need to win 80 Upper class, 60 Middle class, 20 lower class, 30 Ulster
+		custom_effect_tooltip = WTS_leading_conservatives_tooltip
 		set_politics = {
 			ruling_party = democratic
+		}
+		hidden_effect = {
+			set_country_flag = WTS_leading_conservatives
 		}
 	}
 	option = {
 		#Socialist faction
+		# for progressives you need to win 80 lower class, 40 middle class, 20 upper class, 50 ulster
 		name = watson.106.b
-		custom_effect_tooltip = WTS_leading_socialists
-		set_country_flag = WTS_leading_socialists		# for progressives you need to win 80 lower class, 40 middle class, 20 upper class, 50 ulster
+		custom_effect_tooltip = WTS_leading_socialists_tooltip
 		set_politics = {
 			ruling_party = pro_yagoo_progressive
+		}
+		hidden_effect = {
+			set_country_flag = WTS_leading_socialists
 		}
 	}
 	option = {
 		#teammate loyalist
-		name = watson.106.b
-		custom_effect_tooltip = WTS_leading_loyalists
-		set_country_flag = WTS_leading_loyalists		# For Loyalists you need to win 60 lower class, 50 middle class, 30 Ulster, 30 Upper Class
+		# For Loyalists you need to win 60 lower class, 50 middle class, 30 Ulster, 30 Upper Class
+		name = watson.106.c
+		custom_effect_tooltip = WTS_leading_loyalists_tooltip
+		hidden_effect = {
+			set_country_flag = WTS_leading_loyalists
+		}
 	}
 }
 
