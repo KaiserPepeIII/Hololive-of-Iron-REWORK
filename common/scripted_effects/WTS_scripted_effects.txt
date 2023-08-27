@@ -973,7 +973,7 @@ WTS_crackdown_success_effect = {
 		clr_country_flag = WTS_recent_action
 	
 		add_political_power = 60
-		add_stability = 0.1
+		add_stability = 0.05
 	}
 
 	set_temp_variable = {
@@ -993,7 +993,7 @@ WTS_crackdown_eased_tensions_effect = {
 		clr_country_flag = WTS_recent_action
 	
 		add_political_power = 30
-		add_stability = 0.05
+		add_stability = 0.01
 	}
 
 	set_temp_variable = {
@@ -1012,7 +1012,7 @@ WTS_crackdown_failure_effect = {
 		clr_country_flag = WTS_critical_failure
 		clr_country_flag = WTS_recent_action
 	
-		add_stability = -0.05
+		add_stability = -0.1
 	}
 
 	set_temp_variable = {
@@ -1032,6 +1032,8 @@ WTS_provocation_success_effect = {
 	clr_country_flag = WTS_recent_action
 
 	set_temp_variable = { pie_chart_change = 0.25 }
+	add_stability = 0.05
+	add_political_power = 100
 }
 
 WTS_provocation_eased_tensions_effect = {
@@ -1039,6 +1041,7 @@ WTS_provocation_eased_tensions_effect = {
 	clr_country_flag = WTS_recent_action
 
 	add_stability = -0.05
+	add_political_power = 35
 
 	set_temp_variable = { pie_chart_change = 0.1 }
 }
@@ -1100,4 +1103,34 @@ WTS_provocation_failure_state_effect = {
 		}
 		1 = {}
 	}
+}
+
+###########################
+#
+#	Rely on Teammates effects
+#
+###########################
+
+WTS_rely_on_teammates_success_effect = {
+	clr_country_flag = WTS_successful_negotiations
+	clr_country_flag = WTS_recent_action
+	add_stability = 0.1
+	add_war_support = 0.05
+	add_political_power = 30
+	set_temp_variable = { pie_chart_change = 0.2 }
+}
+
+WTS_rely_on_teammates_eased_tensions_effect = {
+	add_stability = 0.5
+	add_political_power = 15
+	clr_country_flag = WTS_eased_tensions
+	clr_country_flag = WTS_recent_action
+	set_temp_variable = { pie_chart_change = 0.1 }
+}
+
+WTS_rely_on_teammates_failure_effect = {
+	clr_country_flag = WTS_critical_failure
+	clr_country_flag = WTS_recent_action
+	add_war_support = -0.05
+	set_temp_variable = { pie_chart_change = 0.1 }
 }
