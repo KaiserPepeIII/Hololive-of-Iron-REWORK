@@ -598,12 +598,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_wales_adding_government = yes
 		every_state = {
 			limit = {
@@ -614,10 +609,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -625,8 +619,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_wales_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -636,10 +630,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -647,7 +640,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -657,10 +650,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -677,12 +669,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_dublin_adding_government = yes
 		every_state = {
 			limit = {
@@ -693,10 +680,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -704,8 +690,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_dublin_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -715,10 +701,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -726,7 +711,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -736,10 +721,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -756,12 +740,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_london_adding_government = yes
 		every_state = {
 			limit = {
@@ -772,10 +751,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -783,8 +761,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_london_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -794,10 +772,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -805,7 +782,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -815,10 +792,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -835,12 +811,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_west_midlands_adding_government = yes
 		every_state = {
 			limit = {
@@ -851,10 +822,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -862,8 +832,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_west_midlands_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -873,10 +843,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -884,7 +853,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -894,10 +863,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -914,12 +882,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_scotland_adding_government = yes
 		every_state = {
 			limit = {
@@ -930,10 +893,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -941,8 +903,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_scotland_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -952,10 +914,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -963,7 +924,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -973,10 +934,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -993,12 +953,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_east_england_adding_government = yes
 		every_state = {
 			limit = {
@@ -1009,10 +964,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -1020,8 +974,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_east_england_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1031,10 +985,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -1042,7 +995,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1052,10 +1005,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -1072,12 +1024,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_north_england_adding_government = yes
 		every_state = {
 			limit = {
@@ -1088,10 +1035,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -1099,8 +1045,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_north_england_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1110,10 +1056,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -1121,7 +1066,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1131,10 +1076,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -1151,12 +1095,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_south_england_adding_government = yes
 		every_state = {
 			limit = {
@@ -1167,10 +1106,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -1178,8 +1116,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_south_england_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1189,10 +1127,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -1200,7 +1137,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1210,10 +1147,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -1230,12 +1166,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_northern_ireland_adding_government = yes
 		every_state = {
 			limit = {
@@ -1246,10 +1177,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -1257,8 +1187,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_northern_ireland_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1268,10 +1198,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -1279,7 +1208,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1289,10 +1218,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -1309,12 +1237,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_northwest_ireland_adding_government = yes
 		every_state = {
 			limit = {
@@ -1325,10 +1248,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -1336,8 +1258,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_northwest_ireland_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1347,10 +1269,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_eased_tensions
 	}
 	#Critical Failure
 	option = {
@@ -1358,7 +1279,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1368,10 +1289,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 
@@ -1388,12 +1308,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_successful_negotiations
 		}
-		add_political_power = 75
-		add_stability = 0.1
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.1
-		}
+		WTS_crackdown_success_effect = yes
 		WTS_southwest_ireland_adding_government = yes
 		every_state = {
 			limit = {
@@ -1404,10 +1319,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_successful_negotiations
 	}
 	#Tension Eased
 	option = {
@@ -1415,8 +1329,8 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_eased_tensions
 		}
-		add_political_power = 75
-		add_stability = 0.05
+		WTS_crackdown_eased_tensions_effect = yes
+		WTS_southwest_ireland_adding_government = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1426,7 +1340,7 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_successful_crackdown
-				days = 60
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
 		clr_country_flag = WTS_eased_tensions
@@ -1437,7 +1351,7 @@ country_event = {
 		trigger = {
 			has_country_flag = WTS_critical_failure
 		}
-		add_stability = -0.05
+		WTS_crackdown_failure_effect = yes
 		every_state = {
 			limit = {
 				is_in_array = {
@@ -1447,10 +1361,9 @@ country_event = {
 			}
 			add_dynamic_modifier = {
 				modifier = WTS_riots_and_looting
-				days = 90
+				days = var:WTS_crackdown_modifier_duration_days
 			}
 		}
-		clr_country_flag = WTS_critical_failure
 	}
 }
 

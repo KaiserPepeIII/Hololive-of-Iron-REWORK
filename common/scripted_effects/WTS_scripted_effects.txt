@@ -914,3 +914,63 @@ WTS_clear_insurgent_state_modifiers = {
 		modifier = WTS_successful_crackdown
 	}
 }
+
+###########################
+#
+#	Crackdown on Armed Groups effects
+#
+###########################
+
+WTS_crackdown_success_effect = {
+	WTS = {
+		clr_country_flag = WTS_successful_negotiations
+		clr_country_flag = WTS_recent_action
+	
+		add_political_power = 60
+		add_stability = 0.1
+	}
+
+	set_temp_variable = {
+		var = pie_chart_change
+		value = 0.15
+	}
+
+	set_temp_variable = {
+		var = WTS_crackdown_modifier_duration_days
+		value = 90
+	}
+}
+
+WTS_crackdown_eased_tensions_effect = {
+	WTS = {
+		clr_country_flag = WTS_eased_tensions
+		clr_country_flag = WTS_recent_action
+	
+		add_political_power = 30
+		add_stability = 0.05
+	}
+
+	set_temp_variable = {
+		var = pie_chart_change
+		value = 0.1
+	}
+
+	set_temp_variable = {
+		var = WTS_crackdown_modifier_duration_days
+		value = 60
+	}
+}
+
+WTS_crackdown_failure_effect = {
+	WTS = {
+		clr_country_flag = WTS_critical_failure
+		clr_country_flag = WTS_recent_action
+	
+		add_stability = -0.05
+	}
+
+	set_temp_variable = {
+		var = WTS_crackdown_modifier_duration_days
+		value = 60
+	}
+}
