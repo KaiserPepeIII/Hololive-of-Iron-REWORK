@@ -171,385 +171,126 @@ WTS_all_regions_calculate_effect = {
 
 attempt_a_ceasefire_button_effect = {
 	add_political_power = -75
-	set_country_flag = {
-		flag = WTS_recent_action
-		days = 30
-		value = 1
+	set_country_flag = WTS_recent_action
+	set_country_flag = WTS_negotiating_ceasefire
+
+	set_temp_variable = {
+		var = wts_ceasefire_duration
+		value = 30
 	}
+
+	random_list = {
+		50 = {
+			set_country_flag = WTS_successful_negotiations
+		}
+		30 = {
+			set_country_flag = WTS_eased_tensions
+		}
+		20 = {
+			set_country_flag = WTS_critical_failure
+		}
+	}
+
 	if = {
 		limit = {
 			has_country_flag = WTS_wales_region_clicked
 		}
-		WTS = {
-			set_country_flag = WTS_negotiating_ceasefire
-		}
-		random_list = {
-			#Success!
-			3 = {
-				set_country_flag = WTS_successful_negotiations
-				country_event = {
-					id = watson_ceasefire.1
-					days = 30
-				}
-			}
-			#ease the tention
-			3 = {
-				set_country_flag = WTS_eased_tensions
-				country_event = {
-					id = watson_ceasefire.1
-					days = 30
-				}
-			}
-			#Critical Failure
-			1 = {
-				set_country_flag = WTS_critical_failure
-				country_event = {
-					id = watson_ceasefire.1
-					days = 30
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_dublin_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.2
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.2
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.2
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_london_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.3
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.3
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.3
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_west_midlands_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.4
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.4
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.4
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_scotland_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.5
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.5
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.5
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_east_england_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.6
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.6
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.6
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_north_england_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.7
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.7
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.7
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_south_england_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.8
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.8
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.8
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_northern_ireland_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.9
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.9
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.9
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_northwest_ireland_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.10
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.10
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.10
-						days = 30
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_southwest_ireland_region_clicked
-			}
-			WTS = {
-				set_country_flag = WTS_negotiating_ceasefire
-			}
-			random_list = {
-				#Success!
-				3 = {
-					set_country_flag = WTS_successful_negotiations
-					country_event = {
-						id = watson_ceasefire.11
-						days = 30
-					}
-				}
-				#ease the tention
-				3 = {
-					set_country_flag = WTS_eased_tensions
-					country_event = {
-						id = watson_ceasefire.11
-						days = 30
-					}
-				}
-				#Critical Failure
-				1 = {
-					set_country_flag = WTS_critical_failure
-					country_event = {
-						id = watson_ceasefire.11
-						days = 30
-					}
-				}
-			}
+		country_event = {
+			id = watson_ceasefire.1
+			days = var:wts_ceasefire_duration
 		}
 	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_dublin_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.2
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_london_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.3
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_west_midlands_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.4
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_scotland_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.5
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_east_england_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.6
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_north_england_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.7
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_south_england_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.8
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_northern_ireland_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.9
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_northwest_ireland_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.10
+			days = var:wts_ceasefire_duration
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_southwest_ireland_region_clicked
+		}
+		country_event = {
+			id = watson_ceasefire.11
+			days = var:wts_ceasefire_duration
+		}
+	}
+	
 }
 
 crackdown_on_armed_groups_button_effect = {
