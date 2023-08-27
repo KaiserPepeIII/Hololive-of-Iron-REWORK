@@ -1020,3 +1020,84 @@ WTS_crackdown_failure_effect = {
 		value = 60
 	}
 }
+
+###########################
+#
+#	Provocations effects
+#
+###########################
+
+WTS_provocation_success_effect = {
+	clr_country_flag = WTS_successful_negotiations
+	clr_country_flag = WTS_recent_action
+
+	set_temp_variable = { pie_chart_change = 0.25 }
+}
+
+WTS_provocation_eased_tensions_effect = {
+	clr_country_flag = WTS_eased_tensions
+	clr_country_flag = WTS_recent_action
+
+	add_stability = -0.05
+
+	set_temp_variable = { pie_chart_change = 0.1 }
+}
+
+WTS_provocation_eased_tension_state_effect = {
+	add_manpower = -500
+	random_list = {
+		30 = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		30 = {
+			damage_building = {
+				type = industrial_complex
+				damage = 1
+			}
+		}
+		30 = {
+			damage_building = {
+				type = arms_factory
+				damage = 1
+			}
+		}
+		10 = {}
+	}
+}
+
+WTS_provocation_failure_effect = {
+	clr_country_flag = WTS_critical_failure
+	clr_country_flag = WTS_recent_action
+
+	add_stability = -0.1
+
+	set_temp_variable = { pie_chart_change = 0.1 }
+}
+
+WTS_provocation_failure_state_effect = {
+	add_manpower = -1000
+	random_list = {
+		33 = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		33 = {
+			damage_building = {
+				type = industrial_complex
+				damage = 1
+			}
+		}
+		33 = {
+			damage_building = {
+				type = arms_factory
+				damage = 1
+			}
+		}
+		1 = {}
+	}
+}
