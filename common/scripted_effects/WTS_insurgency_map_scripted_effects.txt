@@ -415,6 +415,15 @@ crackdown_on_armed_groups_button_effect = {
 
 increase_police_presence_button_effect = {
 	add_political_power = -75
+	set_temp_variable = {
+		var = wts_police_presene_duration
+		value = 150
+	}
+	set_temp_variable = {
+		var = pie_chart_change
+		value = 0.2
+	}
+
 	if = {
 		limit = {
 			has_country_flag = WTS_wales_region_clicked
@@ -428,269 +437,203 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = 180
+				days = var:wts_police_presene_duration
 				value = 1
 			}
 		}
-		set_temp_variable = {
-			var = pie_chart_change
-			value = 0.15
-		}
 		WTS_wales_adding_government = yes
-		else_if = {
-			limit = {
-				has_country_flag = WTS_dublin_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_dublin_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_dublin_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_london_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_london_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_london_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_west_midlands_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_west_midlands_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_west_midlands_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_scotland_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_scotland_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_scotland_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_east_england_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_east_england_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_east_england_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_north_england_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_north_england_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_north_england_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_south_england_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_south_england_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_south_england_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_west_midlands_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_west_midlands_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_west_midlands_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_northern_ireland_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_northern_ireland_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_northern_ireland_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_northwest_ireland_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_northwest_ireland_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_northwest_ireland_adding_government = yes
-		}
-		else_if = {
-			limit = {
-				has_country_flag = WTS_southwest_ireland_region_clicked
-			}
-			every_state = {
-				limit = {
-					is_in_array = {
-						array = WTS.counter_insurgency_southwest_ireland_array
-						value = THIS.id
-					}
-				}
-				set_state_flag = {
-					flag = WTS_increased_police_presence
-					days = 180
-					value = 1
-				}
-			}
-			set_temp_variable = {
-				var = pie_chart_change
-				value = 0.15
-			}
-			WTS_southwest_ireland_adding_government = yes
-		}
 	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_dublin_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_dublin_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_dublin_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_london_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_london_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_london_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_west_midlands_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_west_midlands_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_west_midlands_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_scotland_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_scotland_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_scotland_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_east_england_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_east_england_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_east_england_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_north_england_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_north_england_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_north_england_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_south_england_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_south_england_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_south_england_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_northern_ireland_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northern_ireland_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_northern_ireland_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_northwest_ireland_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northwest_ireland_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_northwest_ireland_adding_government = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = WTS_southwest_ireland_region_clicked
+		}
+		every_state = {
+			limit = {
+				is_in_array = {
+					array = WTS.counter_insurgency_southwest_ireland_array
+					value = THIS.id
+				}
+			}
+			set_state_flag = {
+				flag = WTS_increased_police_presence
+				days = var:wts_police_presene_duration
+				value = 1
+			}
+		}
+		WTS_southwest_ireland_adding_government = yes
+	}
+	
 }
 
 martial_law_button_effect = {
