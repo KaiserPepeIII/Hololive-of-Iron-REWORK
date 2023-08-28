@@ -118,7 +118,9 @@ SUI_colonial_exploitation = {
 			has_political_power < 20
 		}
 		visible = {
-			tag = SUI
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+			}
 		}
 		fire_only_once = yes
 		ai_will_do = {
@@ -237,7 +239,7 @@ SUI_colonial_exploitation = {
 				clamp_variable = {
 					var = SUI.colonial_exploitation_consumer_goods
 					min = -0.05
-					max = 0
+					max = -0.05
 				}
 				clamp_variable = {
 					var = SUI.colonial_exploitation
@@ -291,7 +293,9 @@ SUI_colonial_exploitation = {
 			has_political_power > 40
 		}
 		visible = {
-			tag = SUI
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+			}
 		}
 		fire_only_once = no
 		days_re_enable = 90
@@ -319,10 +323,9 @@ SUI_colonial_exploitation = {
 			has_political_power > 75
 		}
 		visible = {
-			always = yes
-		}
-		visible = {
-			tag = SUI
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+			}
 		}
 		cost = 75
 		fire_only_once = no
@@ -392,10 +395,9 @@ SUI_colonial_exploitation = {
 			}
 		}
 		visible = {
-			always = yes
-		}
-		visible = {
-			tag = SUI
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+			}
 		}
 		cost = 100
 		fire_only_once = no
@@ -408,9 +410,7 @@ SUI_colonial_exploitation = {
 			country_event = suisei.101
 			every_owned_state = {
 				limit = {
-					has_dynamic_modifier = {
-						modifier = SUI_colonial_unrest
-					}
+					is_on_continent = africa
 				}
 				add_dynamic_modifier = {
 					modifier = SUI_colonial_settlements
@@ -496,9 +496,6 @@ SUI_reestablishing_colonial_rule = {
 				1086 = {
 					is_controlled_by = SUI
 				}
-			}
-			SUI = {
-				has_war = no
 			}
 		}
 		ai_will_do = {
@@ -1211,6 +1208,1141 @@ SUI_reestablishing_colonial_rule = {
 #		}
 #	}
 #}
+
+SUI_depression_recovery = {
+	SUI_subsidize_failing_businesses = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+			}
+		available = {
+			has_political_power > 50
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = SUI_subsidies_for_failing_businesses
+				days = 120
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_fund_construction_projects = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+			}
+		available = {
+			has_political_power > 80
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 80
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = SUI_funded_civilian_construction
+				days = 120
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_promote_military_complex_production = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+			}
+		available = {
+			has_political_power > 60
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 60
+		fire_only_once = yes
+		complete_effect = {
+			859 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			19 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_urbanize_rural_areas = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+			}
+		available = {
+			has_political_power > 40
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 40
+		fire_only_once = yes
+		complete_effect = {
+			SUI = {
+				every_core_state = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_set_limits_on_prices = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			always = yes
+			}
+		available = {
+			has_political_power > 30
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 30
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = SUI_price_limits
+				days = 360
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_fund_algerian_development = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			459 = {
+				is_owned_by = SUI
+			}
+			}
+		available = {
+			has_political_power > 100
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_resource = {
+				type = oil
+				amount = 10
+				state = 513
+			}
+			add_resource = {
+				type = oil
+				amount = 5
+				state = 459
+			}
+			add_resource = {
+				type = oil
+				amount = 5
+				state = 460
+			}
+			ALG = {
+				every_core_state = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			460 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+			if = {
+				limit = {
+					has_country_flag = SUI_dealing_with_colonies
+				}
+				add_to_variable = {
+					var = SUI.colonial_unrest
+					value = -1
+					tooltip = colonial_unrest_decrease_light
+				}
+			}
+		}
+	}
+	SUI_phase_2 = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase1
+			}
+		available = {
+			check_variable = {
+				var = SUI.depression_progress
+				value = 7
+				compare = greater_than_or_equals
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = yes
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = great_depression_suisei_one
+				add_idea = great_depression_suisei_two
+			}
+			set_country_flag = phase2
+			clr_country_flag = phase1
+			custom_effect_tooltip = SUI_improve_depression
+		}
+	}
+	SUI_found_suisei_construction_company = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase2
+			}
+		available = {
+			has_political_power > 100
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = SUI_star_inc
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_further_expand_civilian_construction = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase2
+			}
+		available = {
+			has_political_power > 80
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 80
+		fire_only_once = yes
+		complete_effect = {
+			1135 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+		859 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+		add_to_variable = {
+			var = SUI.depression_progress
+			value = 1
+		}
+		}
+	}
+	SUI_begin_construction_of_casinos = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase2
+			}
+		available = {
+			has_political_power > 40
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 40
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.05
+			production_speed_buildings_factor = 0.05
+		}
+		days_remove = 80
+		remove_effect = {
+			#timed decision that increases consumer goods for a while and decreases construction speed
+			add_stability = 0.05
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_improve_railway_networks = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase2
+			}
+		available = {
+			has_political_power > 20
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 20
+		fire_only_once = yes
+		complete_effect = {
+			build_railway = {
+				level = 1
+				path = {
+					11834
+					958
+					11713
+					762
+					780
+					3589
+					6613
+					11593
+					3594
+					9607
+					11576
+					6648
+					3621
+					620
+					3598
+					595
+					11582
+					6657
+				}
+				start_province = 11834
+				target_province = 6657
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_embargo_rival_french_goods = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase2
+			}
+		available = {
+			has_political_power > 100
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 100
+		days_remove = 80
+		fire_only_once = yes
+		remove_effect = {
+			add_political_power = 50
+			FRA = {
+				add_ideas = SUI_france_embargoed
+			}
+			add_stability = -0.05
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_phase_3 = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase2
+			}
+		available = {
+			check_variable = {
+				var = SUI.depression_progress
+				value = 12
+				compare = greater_than_or_equals
+			}
+			has_completed_focus = SUI_support_gambling
+			has_completed_focus = SUI_gacha_economics
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = yes
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = great_depression_suisei_two
+				add_idea = great_depression_suisei_three
+			}
+			clr_country_flag = phase2
+			set_country_flag = phase3
+		}
+	}
+	SUI_advertise_gambling_on_television = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase3
+			}
+		available = {
+			has_political_power > 50
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 50
+		fire_only_once = yes
+		modifier = {
+			production_speed_buildings_factor = 0.1
+			stability_factor = -0.05
+		}
+		days_remove = 100
+		remove_effect = {
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.1
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_advertisements_on_every_billboard = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase3
+			}
+		available = {
+			has_political_power > 60
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 60
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = SUI_gambling_frenzy
+				days = 360
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_gacha_system_for_concert_tickets = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase3
+			}
+		available = {
+			has_political_power > 20
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 60
+		modifier = {
+			production_speed_buildings_factor = 0.1
+			consumer_goods_factor = -0.02
+		}
+		remove_effect = {
+			add_political_power = 100
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_glorify_gambling_in_marseilles = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase3
+			}
+		available = {
+			has_political_power > 120
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 120
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.1
+			859 = {
+				add_dynamic_modifier = {
+					modifier = SUI_gambling_haven
+				}
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_tax_all_gambling_gains = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase3
+			}
+		available = {
+			has_political_power > 100
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = SUI_taxed_gambling_gains
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_plan_risky_luxurious_projects = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 80
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 80
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			swap_ideas = {
+			remove_idea = SUI_star_inc
+			add_idea = SUI_star_inc_1
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_last_phase = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase3
+			}
+		available = {
+			check_variable = {
+				var = SUI.depression_progress
+				value = 18
+				compare = greater_than_or_equals
+			}
+			has_completed_focus = SUI_amazing_depression_recovery
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = yes
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = great_depression_suisei_three
+				add_idea = great_depression_suisei_four
+			}
+			set_country_flag = phase4
+			clr_country_flag = phase3
+		}
+	}
+	SUI_bring_back_the_empire_style = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 120
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 120
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = -0.05
+			if = {
+				limit = {
+					has_idea = SUI_booming_tourism
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism
+					add_idea = SUI_booming_tourism_1
+			}
+		}
+			else_if = {
+				limit = {
+					has_idea = SUI_booming_tourism_1
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism_1
+					add_idea = SUI_booming_tourism_2
+			}
+			}
+			else_if = {
+				limit = {
+					has_idea = SUI_booming_tourism_2
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism_1
+					add_idea = SUI_booming_tourism_3
+			}
+			}
+			else = {
+				add_ideas = SUI_booming_tourism
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_the_biggest_stadium = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 100
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 100
+		days_remove = 90
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.05
+		}
+		remove_effect = {
+			add_stability = 0.05
+			if = {
+				limit = {
+					has_idea = SUI_booming_tourism
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism
+					add_idea = SUI_booming_tourism_1
+			}
+		}
+			else_if = {
+				limit = {
+					has_idea = SUI_booming_tourism_1
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism_1
+					add_idea = SUI_booming_tourism_2
+			}
+			}
+			else_if = {
+				limit = {
+					has_idea = SUI_booming_tourism_2
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism_1
+					add_idea = SUI_booming_tourism_3
+			}
+			}
+			else = {
+				add_ideas = SUI_booming_tourism
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_host_hololive_olympics = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 50
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			country_event = suisei.160
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_the_highest_tower = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 120
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 120
+		fire_only_once = yes
+		days_remove = 120
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = SUI_booming_tourism
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism
+					add_idea = SUI_booming_tourism_1
+			}
+		}
+			else_if = {
+				limit = {
+					has_idea = SUI_booming_tourism_1
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism_1
+					add_idea = SUI_booming_tourism_2
+			}
+			}
+			else_if = {
+				limit = {
+					has_idea = SUI_booming_tourism_2
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism_1
+					add_idea = SUI_booming_tourism_3
+			}
+			}
+			else = {
+				add_ideas = SUI_booming_tourism
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_versailles_question = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = suisei.161
+		}
+	}
+	SUI_embellish_Paris = {
+		allowed = {
+			tag = SUI
+			858 = {
+				is_owned_by  = SUI
+			}
+		}
+		visible = {
+			has_country_flag = phase4
+			has_country_flag = old_versailles
+			}
+		available = {
+			has_political_power > 150
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 150
+		days_remove = 365
+		fire_only_once = yes
+		remove_effect = {
+			country_event = suisei.162
+			set_capital = {
+				state = 858
+			}		
+			add_victory_points = {
+				province = 11506
+				value = 10
+			}
+			add_victory_points = {
+				province = 9523
+				value = 10
+			}
+			clr_country_flag = old_versailles
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_new_versailles = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			has_country_flag = new_versailles
+			}
+		available = {
+			has_political_power > 200
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 200
+		fire_only_once = yes
+		complete_effect = {
+			country_event = suisei.163
+			add_victory_points = {
+				province = 11834
+				value = 30
+			}
+			add_victory_points = {
+				province = 11849
+				value = 20
+			}
+			set_province_name = {
+				id = 11849
+				name = "Nouveau Versailles"
+			}
+			add_ideas = SUI_new_versailles
+			clr_country_flag = new_versailles
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_second_concert_of_toulouse = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 40
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 40
+		days_remove = 90
+		fire_only_once = yes
+		remove_effect = {
+			country_event = suisei.165
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_promote_extreme_technological_progress = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 150
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 150
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = SUI_extreme_technological_progress
+			add_research_slot = 1
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = radar_tech
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_atomic_research = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 160
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 160
+		fire_only_once = yes
+		complete_effect = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 3
+				category = nuclear
+				ahead_reduction =  0.1
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_promote_fancy_fashion = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+			has_political_power > 60
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 60
+		fire_only_once = yes
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = SUI_booming_tourism
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism
+					add_idea = SUI_booming_tourism_1
+			}
+		}
+			else_if = {
+				limit = {
+					has_idea = SUI_booming_tourism_1
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism_1
+					add_idea = SUI_booming_tourism_2
+			}
+			}
+			else_if = {
+				limit = {
+					has_idea = SUI_booming_tourism_2
+				}
+				swap_ideas = { 
+					remove_idea = SUI_booming_tourism_1
+					add_idea = SUI_booming_tourism_3
+			}
+			}
+			else = {
+				add_ideas = SUI_booming_tourism
+			}
+			add_to_variable = {
+				var = SUI.depression_progress
+				value = 1
+			}
+		}
+	}
+	SUI_the_new_las_vegas = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = phase4
+			}
+		available = {
+						check_variable = {
+				var = SUI.depression_progress
+				value = 28
+				compare = greater_than_or_equals
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = yes
+		complete_effect = {
+			clr_country_flag = phase4
+			swap_ideas = {
+				remove_idea = SUI_booming_tourism_3
+				add_idea = SUI_the_new_las_vegas
+			}
+			every_core_state = {
+				limit = {
+					is_on_continent = europe
+					is_ownedy_by = SUI
+				}
+				add_dynamic_modifier = {
+					modifier = SUI_gambling_haven
+				}
+			}
+				remove_ideas = great_depression_suisei_four
+			country_event = suisei.164
+		}
+	}
+	SUI_expand_our_policies_to_new_cores = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+				any_core_state = { 
+					limit = {
+						is_on_continent = europe
+						is_owned_by = SUI
+					}
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = SUI_gambling_haven
+						}
+					}
+				}
+				has_idea = SUI_the_new_las_vegas
+			}
+		available = {
+			any_core_state = { 
+				limit = {
+					is_on_continent = europe
+					is_owned_by = SUI
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = SUI_gambling_haven
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			every_core_state = {
+				limit = {
+					is_on_continent = europe
+					is_owned_by = SUI
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = SUI_gambling_haven
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = SUI_gambling_haven
+				}
+			}
+	}
+}
+}
+
 SUI_cores_on_france = {
 	SUI_get_cores_on_france = {
 		icon = decision_generic_industry
@@ -1257,6 +2389,141 @@ SUI_cores_on_france = {
 	}
 }
 
+SUI_aligning_miko = {
+	SUI_push_miko_to_take_full_control = {
+			icon = decision_generic_industry
+			available = {
+				tag = SUI
+				has_political_power > 50
+				MIK = {
+					has_government = divine_mandate
+				}
+			}
+			visible = {
+				tag = SUI
+			}
+			fire_only_once = yes
+			ai_will_do = {
+				factor = 15
+			}
+			cost = 50
+			days_remove = 70
+			complete_effect = {
+				MIK = {
+					country_event = miko.28
+				}
+			}
+	}
+	SUI_promote_monarchism_in_miko = {
+			icon = decision_generic_industry
+			available = {
+				tag = SUI
+				has_political_power > 50
+			}
+			visible = {
+				tag = SUI
+			}
+			fire_only_once = yes
+			ai_will_do = {
+				factor = 15
+			}
+			cost = 50
+			complete_effect = {
+				MIK = {
+					add_popularity = {
+						ideology = divine_mandate
+						popularity = 0.05
+					}
+				}
+			}
+	}
+	SUI_send_aid_to_miko = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 50
+		}
+		visible = {
+			tag = SUI
+			MIK = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 15
+		}
+		cost = 50
+		complete_effect = {
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 1000
+				target = MIK
+			}
+		}
+}
+SUI_send_troops_to_miko = {
+	icon = decision_generic_industry
+	available = {
+		tag = SUI
+		has_political_power > 50
+	}
+	visible = {
+		tag = SUI
+		MIK = {
+			has_civil_war = yes
+		}
+	}
+	fire_only_once = no
+	ai_will_do = {
+		factor = 15
+	}
+	cost = 50
+	complete_effect = {
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 1000
+			target = MIK
+		}
+	}
+}
+}
+
+SUI_our_conquest_of_iberia = {
+	SUI_force_a_surrender_out_of_miko = {
+			allowed = {
+				tag = SUI
+			}
+			activation = {
+				always = no
+			}
+			available = {
+				MIK = {
+					surrender_progress > 0.5
+				}
+			}
+			visible = {
+				SUI = {
+					
+				}
+			}
+			selectable_mission = yes
+			days_mission_timeout = 365
+			is_good = no
+			ai_will_do = {
+				factor = 15
+			}
+			complete_effect = {
+				MIK = {
+					country_event = miko.33
+				}
+				custom_effect_tooltip = SUI_mild_peace
+			}
+			timeout_effect = {
+				country_event = suisei.156
+			}
+	}
+}
 #suisei_revolutionary_economics_decision = {
 #	
 #}
@@ -1705,7 +2972,7 @@ suisei_restoration_attempts = {
 			}
 		}
 		selectable_mission = yes
-		days_mission_timeout = 60
+		days_mission_timeout = 80
 		is_good = no
 		ai_will_do = {
 			factor = 1
@@ -2181,93 +3448,17 @@ suisei_deal_with_strikes = {
 		complete_effect = {
 			custom_effect_tooltip = suisei_strike_tooltip
 			remove_ideas = suisei_strikes
-			SUI = {
-				if = {
-					limit = {
-						has_government = democratic
-					}
-					add_popularity = {
-						ideology = democratic
-						popularity = -0.1
-					}
-					add_stability = -0.1
-					country_event = {
-						id = suisei.15
-					}
-				}
-				else_if = {
-					limit = {
-						has_government = pro_yagoo_progressive
-					}
-					add_popularity = {
-						ideology = pro_yagoo_progressive
-						popularity = -0.15
-					}
-					add_stability = -0.15
-					country_event = suisei.15
-				}
-				else_if = {
-					limit = {
-						has_government = communism
-					}
-					add_popularity = {
-						ideology = communism
-						popularity = -0.15
-					}
-					add_stability = -0.15
-					country_event = {
-						id = suisei.15
-					}
-				}
-				else_if = {
-					limit = {
-						has_government = pro_resistance_nationalism
-					}
-					add_popularity = {
-						ideology = pro_resistance_nationalism
-						popularity = -0.1
-					}
-					add_stability = -0.1
-					country_event = {
-						id = suisei.15
-					}
-				}
-				else_if = {
-					limit = {
-						has_government = pro_yagoo_monarchy
-					}
-					add_popularity = {
-						ideology = pro_yagoo_monarchy
-						popularity = -0.1
-					}
-					add_stability = -0.1
-					country_event = {
-						id = suisei.15
-					}
-				}
-				else_if = {
-					limit = {
-						has_government = divine_mandate
-					}
-					add_popularity = {
-						ideology = divine_mandate
-						popularity = -0.15
-					}
-					add_stability = -0.1
-					country_event = {
-						id = suisei.15
-					}
-				}
-				else = {
-					add_popularity = {
-						ideology = pro_resistance_monarchy
-						popularity = -0.1
-					}
-					add_stability = -0.1
-					country_event = {
-						id = suisei.15
-					}
-				}
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.15
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.1
+			}
+			add_stability = -0.05
+			country_event = {
+				id = suisei.15
 			}
 		}
 	}
@@ -2277,24 +3468,26 @@ suisei_deal_with_strikes = {
 			tag = SUI
 			SUI = {
 				has_idea = suisei_strikes
-				NOT = {
-					has_country_flag = strike_remove_1
-				}
 			}
 		}
 		visible = {
 			tag = SUI
 			has_idea = suisei_strikes
-			NOT = {
-				has_country_flag = strike_remove_1
-			}
 		}
 		fire_only_once = yes
 		ai_will_do = {
 			factor = 10
 		}
-		cost = 120
+		cost = 60
 		complete_effect = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.05
+			}
 			country_event = suisei.11
 		}
 	}
@@ -2304,25 +3497,27 @@ suisei_deal_with_strikes = {
 			tag = SUI
 			has_idea = suisei_strikes
 			has_country_flag = strike_remove_1
-			NOT = {
-				has_country_flag = strike_remove_2
-			}
 		}
 		visible = {
 			tag = SUI
 			has_idea = suisei_strikes
 			has_country_flag = strike_remove_1
-			NOT = {
-				has_country_flag = strike_remove_2
-			}
 		}
 		fire_only_once = yes
 		ai_will_do = {
 			factor = 10
 		}
-		cost = 120
+		cost = 60
 		complete_effect = {
 			country_event = suisei.12
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.05
+			}
 		}
 	}
 	SUI_grant_union_protection = {
@@ -2331,27 +3526,29 @@ suisei_deal_with_strikes = {
 			tag = SUI
 			has_idea = suisei_strikes
 			has_country_flag = strike_remove_2
-			NOT = {
-				has_country_flag = strike_remove_3
-			}
 		}
 		visible = {
 			tag = SUI
 			SUI = {
 				has_idea = suisei_strikes
 				has_country_flag = strike_remove_2
-				NOT = {
-					has_country_flag = strike_remove_3
-				}
 			}
 		}
 		fire_only_once = yes
 		ai_will_do = {
 			factor = 10
 		}
-		cost = 150
+		cost = 60
 		complete_effect = {
 			country_event = suisei.13
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.05
+			}
 		}
 	}
 	SUI_put_down_looters = {
@@ -2432,8 +3629,12 @@ SUI_moroccan_rule = {
 			always = yes
 		}
 		available = {
-			has_political_power > 50
+			always = yes
 		}
+		ai_will_do = {
+			factor = 100000000000000
+		}
+		cost = 50
 		complete_effect = {
 			MIK = {
 				country_event = miko.6
@@ -2450,10 +3651,27 @@ SUI_moroccan_rule = {
 		available = {
 			has_political_power > 50
 		}
+		cost = 50
 		complete_effect = {
 			declare_war_on = {
 				target = MOR
 				type = annex_everything
+			}
+		}
+	}
+	SUI_rif_question = {
+		allowed = {
+			tag = SUI
+		}
+		visible = {
+			has_country_flag = SUI_allow_demand_rif
+		}
+		available = {
+			always = yes
+		}
+		complete_effect = {
+			MIK = {
+				country_event = miko.27
 			}
 		}
 	}

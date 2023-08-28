@@ -669,6 +669,39 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
+			modifier = {
+				drift_defence_factor = 0.3
+				divine_mandate_drift = 0.02
+			}
+			picture = SUI_idols
+			removal_cost = -1
+		}
+		SUI_export_music = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				trade_opinion_factor = 0.5
+				consumer_goods_factor = -0.02
+				political_power_gain = 0.2
+			}
+			picture = SUI_idols
+			removal_cost = -1
+		}
+		SUI_immigration_surge = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				weekly_manpower = 1000
+				monthly_population = 0.1
+			}
 			picture = SUI_idols
 			removal_cost = -1
 		}
@@ -741,6 +774,22 @@ ideas = {
 				army_defence_factor = 0.05
 			}
 		}
+		SUI_damage_control = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = SUI_great_depression_suisei
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.1
+				production_factory_max_efficiency_factor = 0.1
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
 		great_depression_suisei = {
 			allowed = {
 				always = no
@@ -751,7 +800,7 @@ ideas = {
 			picture = SUI_great_depression_suisei
 			removal_cost = -1
 			modifier = {
-				consumer_goods_factor = 0.35
+				consumer_goods_factor = 0.4
 				production_factory_max_efficiency_factor = -0.45
 				production_speed_buildings_factor = -0.45
 				industrial_capacity_factory = -0.35
@@ -768,11 +817,11 @@ ideas = {
 			picture = SUI_great_depression_suisei_one
 			removal_cost = -1
 			modifier = {
-				consumer_goods_factor = 0.25
-				production_factory_max_efficiency_factor = -0.25
+				consumer_goods_factor = 0.35
+				production_factory_max_efficiency_factor = -0.35
 				production_speed_buildings_factor = -0.4
 				industrial_capacity_factory = -0.3
-				drift_defence_factor = -0.25
+				drift_defence_factor = -0.3
 			}
 		}
 		great_depression_suisei_two = {
@@ -785,7 +834,7 @@ ideas = {
 			picture = SUI_great_depression_suisei_two
 			removal_cost = -1
 			modifier = {
-				consumer_goods_factor = 0.25
+				consumer_goods_factor = 0.2
 				production_factory_max_efficiency_factor = -0.15
 				production_speed_buildings_factor = -0.2
 				industrial_capacity_factory = -0.2
@@ -802,9 +851,9 @@ ideas = {
 			picture = SUI_great_depression_suisei_three
 			removal_cost = -1
 			modifier = {
-				consumer_goods_factor = 0.25
-				production_factory_max_efficiency_factor = -0.05
-				production_speed_buildings_factor = -0.1
+				consumer_goods_factor = 0.15
+				production_factory_max_efficiency_factor = -0.1
+				production_speed_buildings_factor = -0.15
 				industrial_capacity_factory = -0.1
 			}
 		}
@@ -819,10 +868,9 @@ ideas = {
 			removal_cost = -1
 			modifier = {
 				consumer_goods_factor = 0.1
-				production_factory_max_efficiency_factor = -0.15
-				production_speed_buildings_factor = -0.2
-				industrial_capacity_factory = -0.2
-				drift_defence_factor = -0.15
+				production_factory_max_efficiency_factor = -0.05
+				production_speed_buildings_factor = -0.1
+				industrial_capacity_factory = -0.05
 			}
 		}
 		suisei_strikes = {
@@ -840,12 +888,11 @@ ideas = {
 			picture = SUI_suisei_strikes
 			removal_cost = -1
 			modifier = {
-				stability_weekly = -0.01
-				pro_yagoo_progressive_drift = 0.005
-				communism_drift = 0.005
-				left_wing_revolutionary_drift = 0.005
-				production_speed_buildings_factor = -0.65
-				industrial_capacity_factory = -0.55
+				stability_weekly = -0.005
+				communism_drift = 0.05
+				pro_resistance_nationalism_drift = 0.05
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_factory = -0.20
 			}
 		}
 		suisei_strikes_compromises = {
@@ -856,13 +903,12 @@ ideas = {
 				always = yes
 			}
 			cancel = {
-				has_country_flag = strike_remove_1
-				has_country_flag = strike_remove_2
-				has_country_flag = strike_remove_3
 			}
 			picture = SUI_suisei_strikes_compromises
 			removal_cost = -1
 			modifier = {
+				communism_drift = 0.1
+				pro_resistance_nationalism_drift = 0.1
 				stability_factor = 0.05
 				production_speed_buildings_factor = -0.05
 				industrial_capacity_factory = -0.05
@@ -897,16 +943,12 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			cancel = {
-				has_country_flag = strike_remove_1
-				has_country_flag = strike_remove_2
-				has_country_flag = strike_remove_3
-			}
 			picture = SUI_legacy_of_strikes
 			removal_cost = -1
 			modifier = {
-				stability_weekly = -0.005
-				left_wing_revolutionary_drift = 0.01
+				stability_weekly = -0.0025
+				drift_defence_factor = -0.2
+				divine_mandate_drift = 0.15
 			}
 		}
 		suisei_crackdowns = {
@@ -1000,6 +1042,12 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
+			modifier = {
+				stability_factor = 0.05
+				democratic_drift = 0.1
+				pro_yagoo_progressive_drift = 0.1
+				production_factory_max_efficiency_factor = -0.05
+			}
 			picture = SUI_sui_businesses_bailed_out
 			removal_cost = -1
 		}
@@ -1013,8 +1061,10 @@ ideas = {
 			picture = SUI_sui_businesses_ignored
 			removal_cost = -1
 			modifier = {
-				democratic_drift = -0.01
-				pro_yagoo_progressive_drift = -0.01
+				consumer_goods_factor = -0.05
+				stability_factor = -0.05
+				democratic_drift = -0.05
+				pro_yagoo_progressive_drift = -0.05
 			}
 		}
 		SUI_deladier_plan = {
@@ -1184,6 +1234,9 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
+			modifier = {
+				conscription = 0.02
+			}
 			picture = SUI_youth_division
 			removal_cost = -1
 		}
@@ -1194,7 +1247,284 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.1 
+				industrial_capacity_factory = 0.1
+			}
 			picture = SUI_austerity
+			removal_cost = -1
+		}
+		SUI_buy_local = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+			}
+			picture = SUI_austerity
+			removal_cost = -1
+		}
+		SUI_hoshiyomi_unions = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_factory = 0.05
+				conscription_factor = 0.05
+			}
+			picture = SUI_austerity
+			removal_cost = -1
+		}
+		SUI_concert_recovery = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_factory = 0.1
+				production_speed_buildings_factor = 0.1
+			}
+			picture = SUI_austerity
+			removal_cost = -1
+		}
+		SUI_order_above_all = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				army_org_factor = 0.1
+				army_org_regain = 0.1
+				army_attack_factor = 0.05
+			}
+			picture = SUI_austerity
+			removal_cost = -1
+		}
+		SUI_subsidies_for_failing_businesses = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = 0.05
+				divine_mandate_drift = 0.1
+				production_factory_max_efficiency_factor = -0.05
+				consumer_goods_factor = 0.05
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_funded_civilian_construction = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_industrial_complex_factor = 0.15
+				consumer_goods_factor = 0.02
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_price_limits = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_factory = -0.1
+				consumer_goods_factor = 0.05
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_star_inc = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				consumer_goods_factor = -0.02
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_star_inc_1 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.15
+				consumer_goods_factor = -0.04
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_france_embargoed = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_factory_max_efficiency_factor = -0.1
+				production_speed_buildings_factor = -0.2
+				consumer_goods_factor = 0.1
+				stability_factor = -0.1
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_gambling_frenzy = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				consumer_goods_factor = -0.02
+				stability_factor = -0.05
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_taxed_gambling_gains = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				consumer_goods_factor = -0.02
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_booming_tourism = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				monthly_population = 0.1
+				industrial_capacity_factory = 0.01
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_booming_tourism_1 = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				monthly_population = 0.2
+				industrial_capacity_factory = 0.02
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_booming_tourism_2 = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				monthly_population = 0.3
+				industrial_capacity_factory = 0.03
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_booming_tourism_3 = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				monthly_population = 0.4
+				industrial_capacity_factory = 0.04
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_the_new_las_vegas = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				monthly_population = 0.5
+				industrial_capacity_factory = 0.05
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_new_versailles = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				monthly_population = 0.2
+				consumer_goods_factor = 0.02
+				war_support_factor = 0.05
+			}
+			picture = SUI_sui_businesses_bailed_out
+			removal_cost = -1
+		}
+		SUI_extreme_technological_progress = {
+			allowed = {
+				SUI = exists
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				consumer_goods_factor = 0.02
+				research_speed_factor = 0.1
+			}
+			picture = SUI_sui_businesses_bailed_out
 			removal_cost = -1
 		}
 	}

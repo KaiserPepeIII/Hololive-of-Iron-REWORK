@@ -283,6 +283,11 @@ on_actions = {
 				SUB = {
 					puppet = FRA
 				}
+				FRA = {
+					every_owned_state = {
+						set_state_controller_to = FRA
+					}
+				}
 			}
 			else_if = {
 				limit = {
@@ -297,6 +302,11 @@ on_actions = {
 						message = FRANCE_scripted_peace_9_loc						#subaru puppets france alone
 					}
 					puppet = FRA
+				}
+				FRA = {
+					every_owned_state = {
+						set_state_controller_to = FRA
+					}
 				}
 			}
 			else_if = {
@@ -516,10 +526,9 @@ on_actions = {
 						message = SUI_restoring_algeria_loc						#suisei is expanding colonies
 					}
 					annex_country = {
-						target = IRU
+						target = ALG
 						transfer_troops = no
 					}
-					clr_country_flag = kill_irys
 				}
 			}
 		}
@@ -1258,7 +1267,83 @@ on_actions = {
 					}
 				}
 			}
-			else = {
+			else_if = {
+				limit = {
+					tag = MOR
+					SUI = {
+						has_country_flag = SUI_allow_invade_morocco
+					}
+				}
+				SUI = {
+					clr_country_flag = SUI_allow_invade_morocco
+					set_country_flag = SUI_allow_demand_rif
+					white_peace = {
+						tag = MOR
+						message = Morocco_scripted_peace_loc_9						#Suisei snags morocco for free.
+					}
+					annex_country = {
+						target = MOR
+						transfer_troops = no
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					tag = MOR
+					SUI = {
+						has_country_flag = SUI_promised_miko_land
+				}
+				SUI = {
+					clr_country_flag = SUI_promised_miko_land
+					white_peace = {
+						tag = MOR
+						message = Morocco_scripted_peace_loc_10					#Morocco has been partitioned between miko and Suisei.
+					}
+					annex_country = {
+						target = MOR
+						transfer_troops = no
+					}
+				}
+				MIK = {
+					transfer_state = 1169
+				}
+			}
+		}
+		else = {
+			
+		}
+	}
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					tag = SUI
+					has_country_flag = SUI_conquering_iberia
+					FROM = {
+						tag = MIK
+					}
+					FROM.FROM = {
+						state = 165
+					}
+				}
+				SUI = {
+					country_event = suisei.157
+				}
+			}
+		}
+	}
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					tag = MIK
+					SUI = {
+						has_country_flag = SUI_conquering_iberia
+					}
+				}
+				SUI = {
+					country_event = suisei.159
+				}
 			}
 		}
 	}
