@@ -31,14 +31,9 @@ country_event = {
 				days = 720
 			}
 		}
-	}
-	option = {
-		name = miko.2.b
-		SUI = {
-			add_opinion_modifier = {
-				target = MIK
-				modifier = rejected_friendly_relations
-			}
+		add_popularity = {
+			ideology = divine_mandate
+			popularity = 0.10
 		}
 	}
 }
@@ -53,9 +48,15 @@ country_event = {
 	option = {
 		name = miko.3.a
 		SUI = {
+			create_faction =  "MiComet System"
 			add_to_faction = MIK
+			transfer_state = 165
+			transfer_state = 177
 		}
-	}
+			ai_chance = {
+				base = 10000000000
+			}
+		}
 	option = {
 		name = miko.3.b
 		SUI = {
@@ -113,6 +114,7 @@ country_event = {
 		name = miko.5.a
 		SUI = {
 			transfer_state = 165
+			transfer_state = 177
 		}
 	}
 	option = {
@@ -133,7 +135,7 @@ country_event = {
 			country_event = suisei.40
 		}
 		ai_chance = {
-			#more likely to refuse
+			base = 100000
 		}
 	}
 }
@@ -201,6 +203,7 @@ country_event = {
 			var = SUI.morocco_negotiations_overextend
 			value = 3
 		}
+		custom_effect_tooltip = SUI_morocco_warning
 	}
 	#We want all of Morocco
 	option = {
@@ -208,14 +211,6 @@ country_event = {
 		add_to_variable = {
 			var = SUI.morocco_negotiations_overextend
 			value = 2
-		}
-	}
-	#We only want a sphere of influence
-	option = {
-		name = miko.7.c
-		add_to_variable = {
-			var = SUI.morocco_negotiations_overextend
-			value = 1
 		}
 	}
 }
@@ -259,7 +254,7 @@ country_event = {
 			value = 2
 		}
 	}
-	#We only want a sphere of influence
+	#We will not interfere in Morocco.
 	option = {
 		name = miko.8.c
 		add_to_variable = {
@@ -327,6 +322,7 @@ country_event = {
 	option = {
 		name = miko.9.b
 		trigger = {
+			tag = MIK
 			check_variable = {
 				var = SUI.morocco_negotiations_overextend
 				value = 2
@@ -338,31 +334,87 @@ country_event = {
 				compare = equals
 			}
 		}
-		add_political_power = 5
-		if = {
-			limit = {
-				tag = MIK
-			}
-			MIK = {
-				add_political_power = 35
-			}
-		}
-		if = {
-			limit = {
-				tag = SUI
-			}
-			SUI = {
-				create_wargoal = {
-					target = MOR
-					type = annex_everything
-				}
-			}
-		}
+		add_political_power = 35
 		hidden_effect = {
 			clear_variable = SUI.morocco_negotiations_overextend
 			clear_variable = MIK.morocco_negotiations_overextend
 		}
 	}
+	#Agreement Reached - Strong Suisei - Suisei ver
+		option = {
+			name = miko.9.l
+			trigger = {
+				tag = SUI
+				check_variable = {
+					var = SUI.morocco_negotiations_overextend
+					value = 2
+					compare = equals
+				}
+				check_variable = {
+					var = MIK.morocco_negotiations_overextend
+					value = 1
+					compare = equals
+				}
+			}
+			add_political_power = 5
+					declare_war_on = {
+						target = MOR
+						type = annex_everything
+					}
+					set_country_flag = no_colonial_war
+			hidden_effect = {
+				clear_variable = SUI.morocco_negotiations_overextend
+				clear_variable = MIK.morocco_negotiations_overextend
+			}
+		}
+			#Disagreement - Miko has demanded all of Morocco - We will show them!
+			option = {
+				name = miko.9.m
+				trigger = {
+					tag = SUI
+					check_variable = {
+						var = SUI.morocco_negotiations_overextend
+						value = 2
+						compare = equals
+					}
+					check_variable = {
+						var = MIK.morocco_negotiations_overextend
+						value = 3
+						compare = equals
+					}
+				}
+				add_political_power = 5
+				add_political_power = -5
+				SUI = {
+					country_event = suisei.146
+				}
+				hidden_effect = {
+					clear_variable = SUI.morocco_negotiations_overextend
+					clear_variable = MIK.morocco_negotiations_overextend
+				}
+			}
+			#Disagreement - Miko has demanded all of Morocco - Miko version - After our disagreement, things seem tense...
+						option = {
+							name = miko.9.m
+							trigger = {
+								tag = MIK
+								check_variable = {
+									var = SUI.morocco_negotiations_overextend
+									value = 2
+									compare = equals
+								}
+								check_variable = {
+									var = MIK.morocco_negotiations_overextend
+									value = 3
+									compare = equals
+								}
+							}
+							add_political_power = -5
+							hidden_effect = {
+								clear_variable = SUI.morocco_negotiations_overextend
+								clear_variable = MIK.morocco_negotiations_overextend
+							}
+						}
 	#Agreement Reached - SUISEI - Concession to Miko? sure!
 	option = {
 		name = miko.9.c
@@ -383,6 +435,10 @@ country_event = {
 		set_country_flag = SUI_promised_miko_land
 		MIK = {
 			country_event = miko.10
+		}
+		declare_war_on = {
+			target = MOR
+			type = annex_everything
 		}
 		hidden_effect = {
 			clear_variable = SUI.morocco_negotiations_overextend
@@ -410,116 +466,61 @@ country_event = {
 			country_event = miko.11
 		}
 		SUI = {
-			country_event = miko.11
+			country_event = suisei.146
 		}
 		hidden_effect = {
 			clear_variable = SUI.morocco_negotiations_overextend
 			clear_variable = MIK.morocco_negotiations_overextend
 		}
 	}
-	#Agreement Reached - PARTITION MOROCCO - for miko*, Suisei gets an event with no effect
-	option = {
-		name = miko.9.e
-		trigger = {
-			tag = MIK
-			check_variable = {
-				var = SUI.morocco_negotiations_overextend
-				value = 1
-				compare = equals
-			}
-			check_variable = {
-				var = MIK.morocco_negotiations_overextend
-				value = 1
-				compare = equals
-			}
-		}
-		add_political_power = 25
-		MOR = {
-			country_event = morocco.1
-		}
-		hidden_effect = {
-			clear_variable = SUI.morocco_negotiations_overextend
-			clear_variable = MIK.morocco_negotiations_overextend
-		}
-	}
-	#No effect as seen above
-	option = {
-		name = miko.9.e_suisei
-		trigger = {
-			tag = SUI
-			check_variable = {
-				var = SUI.morocco_negotiations_overextend
-				value = 1
-				compare = equals
-			}
-			check_variable = {
-				var = MIK.morocco_negotiations_overextend
-				value = 1
-				compare = equals
-			}
-		}
-		add_political_power = 25
-	}
-	#Agreement Reached - Strong Miko - Conquest
-	option = {
-		name = miko.9.g
-		trigger = {
-			check_variable = {
-				var = SUI.morocco_negotiations_overextend
-				value = 1
-				compare = equals
-			}
-			check_variable = {
-				var = MIK.morocco_negotiations_overextend
-				value = 3
-				compare = equals
-			}
-		}
-		add_political_power = 25
-		if = {
-			limit = {
+		#Agreement Reached - Awaiting suisei response
+		option = {
+			name = miko.9.f
+			trigger = {
 				tag = MIK
-			}
-			MIK = {
-				create_wargoal = {
-					target = MOR
-					type = annex_everything
+				check_variable = {
+					var = SUI.morocco_negotiations_overextend
+					value = 2
+					compare = equals
+				}
+				check_variable = {
+					var = MIK.morocco_negotiations_overextend
+					value = 2
+					compare = equals
 				}
 			}
+			add_political_power = 5
+			hidden_effect = {
+				clear_variable = SUI.morocco_negotiations_overextend
+				clear_variable = MIK.morocco_negotiations_overextend
+			}
 		}
-		hidden_effect = {
-			clear_variable = SUI.morocco_negotiations_overextend
-			clear_variable = MIK.morocco_negotiations_overextend
-		}
-	}
-	#Agreement Reached - Strong Miko - Demand
+}
+
+
+#Suisei agrees to our partition
+country_event = {
+	id = miko.10
+	title = miko.10.t
+	desc = miko.10.d
+	picture = GFX_report_event_MIK_morocco_concessions
+	is_triggered_only = yes
+	#Nice!
 	option = {
-		name = miko.9.h
-		trigger = {
-			check_variable = {
-				var = SUI.morocco_negotiations_overextend
-				value = 1
-				compare = equals
-			}
-			check_variable = {
-				var = MIK.morocco_negotiations_overextend
-				value = 2
-				compare = equals
-			}
-		}
-		add_political_power = 25
-		if = {
-			limit = {
-				tag = MIK
-			}
-			MOR = {
-				country_event = morocco.2
-			}
-		}
-		hidden_effect = {
-			clear_variable = SUI.morocco_negotiations_overextend
-			clear_variable = MIK.morocco_negotiations_overextend
-		}
+		name = miko.10.a
+	}
+}
+
+#Suisei prepares for war
+country_event = {
+	id = miko.11
+	title = miko.11.t
+	desc = miko.11.d
+	picture = GFX_report_event_MIK_morocco_concessions
+	is_triggered_only = yes
+	#Not good...
+	option = {
+		name = miko.11.a
 	}
 }
 
@@ -802,6 +803,7 @@ country_event = {
 		SUI = {
 			clr_country_flag = morocco_threesome
 			set_country_flag = SUI_morocco_solo
+			country_event = suisei.151
 		}
 		clr_country_flag = mik_take_marrakesh
 		clr_country_flag = mik_take_casablanca
@@ -935,3 +937,217 @@ country_event = {
 	}
 }
 
+#Suisei demands the rif from us after we allowed them to take morocco
+country_event = {
+	id = miko.27
+	title = miko.27.t
+	desc = miko.27.desc
+	picture = GFX_report_miko21_MIK_suisei_forcing_heavy_peace_deal
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Nuh uh, no way!
+	option = {
+		name = miko.27.a
+		SUI = {
+			country_event = suisei.146
+		}
+	}
+}
+
+#Suisei is pushing us to take full power of the country
+country_event = {
+	id = miko.28
+	title = miko.28.t
+	desc = miko.28.desc
+	picture = GFX_report_miko21_MIK_suisei_forcing_heavy_peace_deal
+	is_triggered_only = yes
+	fire_only_once = yes
+	#I'm scared but I'll do it!
+	option = {
+		name = miko.28.a
+		set_politics = {
+			ruling_party = divine_mandate
+			elections_allowed = no
+		}
+		country_event = {
+			days = 10 
+			id = miko.29
+		}
+	}
+}
+
+#Heavy backlash from antis and conservatives!
+country_event = {
+	id = miko.29
+	title = miko.29.t
+	desc = miko.29.desc
+	picture = GFX_report_miko21_MIK_suisei_forcing_heavy_peace_deal
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Looks like it's gonna be a civil war
+	option = {
+		name = miko.29.a
+		start_civil_war = {
+			size = 0.5
+			capital = 169
+			keep_all_characters = yes
+			ideology = reactionary_nationalism
+			states = {
+176 791 790 174 171 788 902 903 175 170 789 169
+		}
+	}
+}
+}
+
+#After our loss of Catalonia, suisei has demanded the official transfer of it in exchange of Peace.
+country_event = {
+	id = miko.30
+	title = miko.30.t
+	desc = miko.30.desc
+	picture = GFX_report_miko21_MIK_suisei_forcing_heavy_peace_deal
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Fine... Let's cut our losses here.
+	option = {
+		name = miko.30.a
+		add_timed_idea = {
+			idea = war_reparations_to_suisei
+			days = 365
+		}
+		SUI = {
+			white_peace = {
+				tag = MIK
+				message = CATALONIA_scripted_peace_1_loc						#catalonia only peace
+			}
+			transfer_state = 165
+			clr_country_flag = SUI_conquering_iberia
+			remove_mission = SUI_force_a_surrender_out_of_miko
+			add_timed_idea = {
+				idea = miko_war_reparations
+				days = 365
+			}
+		}
+		ai_chance = {
+			base = 8
+		}
+}
+#No! Catalonia is Spanish! 
+option = {
+	name = miko.30.b
+	SUI = {
+		country_event = suisei.158
+	}
+	ai_chance = {
+		base =2
+	}
+}
+}
+
+#After our loss of Catalonia, suisei has demanded the official transfer of it as well as the balearics and Gibraltar, in exchange of Peace.
+country_event = {
+	id = miko.31
+	title = miko.31.t
+	desc = miko.31.desc
+	picture = GFX_report_miko21_MIK_suisei_forcing_heavy_peace_deal
+	is_triggered_only = yes
+	fire_only_once = yes
+	#It's a bit heavy but maybe it's best we cut our losses here
+	option = {
+		name = miko.31.a
+		add_timed_idea = {
+			idea = war_reparations_to_suisei
+			days = 365
+		}
+		SUI = {
+			white_peace = {
+				tag = MIK
+				message = CATALONIA_scripted_peace_2_loc						#catalonia + bases peace
+			}
+			transfer_state = 165
+			transfer_state = 177
+			transfer_state = 118
+			clr_country_flag = SUI_conquering_iberia
+			remove_mission = SUI_force_a_surrender_out_of_miko
+			add_timed_idea = {
+				idea = miko_war_reparations
+				days = 365
+			}
+		}
+		ai_chance = {
+			base = 4
+		}
+}
+#No! Catalonia is Spanish!
+option = {
+	name = miko.31.b
+	SUI = {
+		country_event = suisei.158
+	}
+	ai_chance = {
+		base = 6
+	}
+}
+}
+
+#After our loss of Catalonia, suisei has demanded the official transfer of all of Aragon as well as the balearics and Gibraltar! We can't accept this!
+country_event = {
+	id = miko.32
+	title = miko.32.t
+	desc = miko.32.desc
+	picture = GFX_report_miko21_MIK_suisei_forcing_heavy_peace_deal
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Absolutely not! These demands are outrageous!
+	option = {
+		name = miko.32.a
+		SUI = {
+			country_event = suisei.158
+		}
+}
+}
+
+#As our lines have been overwhelmed, suisei has offered us an heavy albeit acceptable peace deal for our current situation. It looks like we don't have much of a choice but to sign it...
+country_event = {
+	id = miko.33
+	title = miko.33.t
+	desc = miko.33.desc
+	picture = GFX_report_miko21_MIK_suisei_forcing_heavy_peace_deal
+	is_triggered_only = yes
+	fire_only_once = yes
+	#It's to prevent the collapse of Spain as a whole
+	option = {
+		name = miko.33.a
+				add_timed_idea = {
+			idea = war_reparations_to_suisei
+			days = 365
+		}
+		SUI = {
+			white_peace = {
+				tag = MIK
+				message = CATALONIA_scripted_peace_2_loc						#catalonia + bases peace
+			}
+			transfer_state = 165
+			transfer_state = 177
+			transfer_state = 118
+			clr_country_flag = SUI_conquering_iberia
+			add_timed_idea = {
+				idea = miko_war_reparations
+				days = 365
+			}
+		}
+}
+}
+
+#We have been forced to capitulate and Suisei has pushed an extremely heavy peace deal on us 
+country_event = {
+	id = miko.34
+	title = miko.34.t
+	desc = miko.34.desc
+	picture = GFX_report_miko21_MIK_suisei_forcing_heavy_peace_deal
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Damn her!!!
+	option = {
+		name = miko.34.a
+}
+}
