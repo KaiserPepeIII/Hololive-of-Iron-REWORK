@@ -1,16 +1,5 @@
 WTS_clear_security_gui = {
 	WTS_all_buttons_clicked_clear = yes
-	clear_array = WTS.counter_insurgency_south_england_array
-	clear_array = WTS.counter_insurgency_east_england_array
-	clear_array = WTS.counter_insurgency_london_array
-	clear_array = WTS.counter_insurgency_west_midlands_array
-	clear_array = WTS.counter_insurgency_north_england_array
-	clear_array = WTS.counter_insurgency_wales_array
-	clear_array = WTS.counter_insurgency_scotland_array
-	clear_array = WTS.counter_insurgency_northern_ireland_array
-	clear_array = WTS.counter_insurgency_northwest_ireland_array
-	clear_array = WTS.counter_insurgency_southwest_ireland_array
-	clear_array = WTS.counter_insurgency_dublin_array
 	clear_variable = WTS.counter_insurgency_south_england_frame
 	clear_variable = WTS.counter_insurgency_south_england_government
 	clear_variable = WTS.counter_insurgency_south_england_welsh
@@ -64,7 +53,7 @@ WTS_clear_security_gui = {
 	#tbd
 	every_state = {
 		limit = {
-			or = {
+			OR = {
 				is_in_array = {
 					array = WTS.counter_insurgency_east_england_array
 					value = this.ID
@@ -111,19 +100,21 @@ WTS_clear_security_gui = {
 				}
 			}
 		}
-		remove_dynamic_modifier = {
-			modifier = WTS_ira_presence
-		}
-		remove_dynamic_modifier = {
-			modifier = WTS_english_antis_presence
-		}
-		remove_dynamic_modifier = {
-			modifier = WTS_national_protection_league
-		}
-		remove_dynamic_modifier = {
-			modifier = WTS_the_watch_wars
-		}
+		WTS_clear_insurgent_state_modifiers = yes
 	}
+
+	#need to clear after state modifiers are removed
+	clear_array = WTS.counter_insurgency_south_england_array
+	clear_array = WTS.counter_insurgency_east_england_array
+	clear_array = WTS.counter_insurgency_london_array
+	clear_array = WTS.counter_insurgency_west_midlands_array
+	clear_array = WTS.counter_insurgency_north_england_array
+	clear_array = WTS.counter_insurgency_wales_array
+	clear_array = WTS.counter_insurgency_scotland_array
+	clear_array = WTS.counter_insurgency_northern_ireland_array
+	clear_array = WTS.counter_insurgency_northwest_ireland_array
+	clear_array = WTS.counter_insurgency_southwest_ireland_array
+	clear_array = WTS.counter_insurgency_dublin_array
 }
 
 WTS_create_insurgency_pie_charts = {

@@ -180,62 +180,175 @@ WTS_irish_initiation_trigger_removal = {
 }
 
 WTS_the_calm_trigger = {
-	OR = {
-		AND = {
+	set_temp_var = { wts_calm_threshold = 0.75 }
+	AND = {
+		OR = {
+			has_country_flag = WTS_south_england_pacified
 			check_variable = {
 				var = WTS.counter_insurgency_south_england_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_east_england_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_london_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_west_midlands_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_north_england_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_wales_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_scotland_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_northern_ireland_government
-				value = 0.75
+				value = var:wts_calm_threshold
 				compare = greater_than
 			}
 		}
-		AND = {
-			has_country_flag = WTS_north_england_pacified
+		OR = {
 			has_country_flag = WTS_east_england_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_east_england_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_london_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_london_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_west_midlands_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_west_midlands_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_north_england_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_north_england_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_wales_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_wales_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_scotland_pacified
-			has_country_flag = WTS_north_england_pacified
-			has_country_flag = WTS_northern_ireland_pacified
-			has_country_flag = WTS_northwest_ireland_pacified
-			has_country_flag = WTS_southwest_ireland_pacified
-			has_country_flag = WTS_dublin_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_scotland_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
+			AND = {
+				every_state = {
+					is_in_array = {
+						array = WTS.counter_insurgency_northern_ireland_array
+						value = THIS.id
+					}
+					is_owned_and_controlled_by = WTS
+				}
+				OR = {
+					has_country_flag = WTS_northern_ireland_pacified
+					check_variable = {
+						var = WTS.counter_insurgency_northern_ireland_government
+						value = var:wts_calm_threshold
+						compare = greater_than
+					}
+				}
+			}
+			any_state = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northern_ireland_array
+					value = THIS.id
+				}
+				owner = {
+					is_subject_of = WTS
+				}
+			}
+		}
+		OR = {
+			AND = {
+				every_state = {
+					is_in_array = {
+						array = WTS.counter_insurgency_northwest_ireland_array
+						value = THIS.id
+					}
+					is_owned_and_controlled_by = WTS
+				}
+				OR = {
+					has_country_flag = WTS_northwest_ireland_pacified
+					check_variable = {
+						var = WTS.counter_insurgency_northwest_ireland_government
+						value = var:wts_calm_threshold
+						compare = greater_than
+					}
+				}
+			}
+			any_state = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northwest_ireland_array
+					value = THIS.id
+				}
+				owner = {
+					is_subject_of = WTS
+				}
+			}
+		}
+		OR = {
+			AND = {
+				every_state = {
+					is_in_array = {
+						array = WTS.counter_insurgency_dublin_array
+						value = THIS.id
+					}
+					is_owned_and_controlled_by = WTS
+				}
+				OR = {
+					has_country_flag = WTS_dublin_pacified
+					check_variable = {
+						var = WTS.counter_insurgency_dublin_government
+						value = var:wts_calm_threshold
+						compare = greater_than
+					}
+				}
+			}
+			any_state = {
+				is_in_array = {
+					array = WTS.counter_insurgency_dublin_array
+					value = THIS.id
+				}
+				owner = {
+					is_subject_of = WTS
+				}
+			}
+		}
+		OR = {
+			AND = {
+				every_state = {
+					is_in_array = {
+						array = WTS.counter_insurgency_southwest_ireland_array
+						value = THIS.id
+					}
+					is_owned_and_controlled_by = WTS
+				}
+				OR = {
+					has_country_flag = WTS_southwest_ireland_pacified
+					check_variable = {
+						var = WTS.counter_insurgency_southwest_ireland_government
+						value = var:wts_calm_threshold
+						compare = greater_than
+					}
+				}
+			}
+			any_state = {
+				is_in_array = {
+					array = WTS.counter_insurgency_southwest_ireland_array
+					value = THIS.id
+				}
+				owner = {
+					is_subject_of = WTS
+				}
+			}
 		}
 	}
 }
