@@ -1843,19 +1843,32 @@ focus_tree = {
 	focus = {
 		id = GEN_legacy_of_brugg
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 2
+		completion_reward = {
+			country_event = generic_focus.1
+			hidden_effect = {
+				GEN_get_starting_ideology = yes
+			}
+		}
 		x = 66
 		y = 1
 	}
 	focus = {
 		id = GEN_status_quo
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_legacy_of_brugg
 		}
 		mutually_exclusive = {
 			focus = GEN_change_of_course
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 25
+		}
+		ai_will_do = {
+			base = 5
 		}
 		x = 64
 		y = 2
@@ -1891,7 +1904,7 @@ focus_tree = {
 		y = 3
 	}
 	focus = {
-		id = GEN_political_stability
+		id = GEN_stable_government
 		icon = GFX_goal_unknown
 		cost = 0
 		prerequisite = {
@@ -1903,12 +1916,26 @@ focus_tree = {
 	focus = {
 		id = GEN_change_of_course
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_legacy_of_brugg
 		}
 		mutually_exclusive = {
 			focus = GEN_status_quo
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = -0.05
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = -999
+				GEN_dont_switch_ideology = yes
+			}
 		}
 		x = 68
 		y = 2
@@ -1936,12 +1963,23 @@ focus_tree = {
 	focus = {
 		id = GEN_a_new_government
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 2
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GEN_needs_to_switch_ideology
+			}
+			hidden_trigger = {
+				GEN_tree_changed_ideology = yes
+			}
+		}
 		prerequisite = {
 			focus = GEN_change_of_course
 		}
 		completion_reward = {
 			mark_focus_tree_layout_dirty = yes
+		}
+		complete_tooltip = {
+			custom_effect_tooltip = GEN_unlock_focus_tree
 		}
 		x = 68
 		y = 5
@@ -1969,12 +2007,15 @@ focus_tree = {
 	focus = {
 		id = GEN_continuing_the_good_work
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 2
 		prerequisite = {
 			focus = GEN_status_quo
 		}
 		completion_reward = {
 			mark_focus_tree_layout_dirty = yes
+		}
+		complete_tooltip = {
+			custom_effect_tooltip = GEN_unlock_focus_tree
 		}
 		x = 64
 		y = 5
