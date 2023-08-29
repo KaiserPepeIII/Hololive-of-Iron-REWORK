@@ -1876,9 +1876,12 @@ focus_tree = {
 	focus = {
 		id = GEN_civic_duty
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = GEN_status_quo
+		}
+		completion_reward = {
+			add_war_support = 0.1
 		}
 		x = 63
 		y = 3
@@ -1886,9 +1889,15 @@ focus_tree = {
 	focus = {
 		id = GEN_economic_growth
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = GEN_civic_duty
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_economic_growth_idea
+				days = 180
+			}
 		}
 		x = 63
 		y = 4
@@ -1896,9 +1905,15 @@ focus_tree = {
 	focus = {
 		id = GEN_reinforce_establishment
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = GEN_status_quo
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
 		}
 		x = 65
 		y = 3
@@ -1906,9 +1921,12 @@ focus_tree = {
 	focus = {
 		id = GEN_stable_government
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = GEN_reinforce_establishment
+		}
+		completion_reward = {
+			add_stability = 0.15
 		}
 		x = 65
 		y = 4
@@ -1943,9 +1961,15 @@ focus_tree = {
 	focus = {
 		id = GEN_anti_establishment_rhetoric
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = GEN_change_of_course
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = -0.15
+			}
 		}
 		x = 67
 		y = 3
@@ -1953,9 +1977,15 @@ focus_tree = {
 	focus = {
 		id = GEN_reformism
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = GEN_anti_establishment_rhetoric
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GEN_anti_establishment_rhetoric_idea
+				days = 360
+			}
 		}
 		x = 67
 		y = 4
@@ -1987,9 +2017,13 @@ focus_tree = {
 	focus = {
 		id = GEN_push_political_pundits
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = GEN_change_of_course
+		}
+		completion_reward = {
+			add_political_power = 125
+			add_ideas = GEN_political_pundits_idea
 		}
 		x = 69
 		y = 3
@@ -1997,9 +2031,13 @@ focus_tree = {
 	focus = {
 		id = GEN_grassroots_movement
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 7
 		prerequisite = {
 			focus = GEN_push_political_pundits
+		}
+		completion_reward = {
+			add_political_power = 75
+			GEN_grassroots_movement_popularity = yes
 		}
 		x = 69
 		y = 4
@@ -3235,12 +3273,18 @@ focus_tree = {
 	focus = {
 		id = GEN_rn_dominance
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		allow_branch = {
 			has_government = reactionary_nationalism
 			OR = {
 				has_completed_focus = GEN_continuing_the_good_work
 				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
 			}
 		}
 		x = 66
@@ -3249,9 +3293,12 @@ focus_tree = {
 	focus = {
 		id = GEN_military_dictatorship
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_rn_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_military_dictatorship_idea
 		}
 		x = 64
 		y = 8
@@ -3259,9 +3306,13 @@ focus_tree = {
 	focus = {
 		id = GEN_expand_military_industrial_complex
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_rn_dominance
+		}
+		completion_reward = {
+			two_random_arms_factory = yes
+			two_random_arms_factory = yes
 		}
 		x = 66
 		y = 8
@@ -3269,9 +3320,13 @@ focus_tree = {
 	focus = {
 		id = GEN_universal_conscription
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_expand_military_industrial_complex
+		}
+		completion_reward = {
+			hloi_up_conscription_law = yes
+			add_ideas = GEN_universal_conscription_idea
 		}
 		x = 66
 		y = 9
@@ -3279,9 +3334,23 @@ focus_tree = {
 	focus = {
 		id = GEN_military_investments
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_universal_conscription
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_military_investments_tech
+				bonus = 2
+				uses = 2
+				category = infantry_tech
+			}
+			add_tech_bonus = {
+				name = GEN_military_investments_tech
+				bonus = 2
+				uses = 2
+				category = artillery
+			}
 		}
 		x = 65
 		y = 10
@@ -3289,9 +3358,12 @@ focus_tree = {
 	focus = {
 		id = GEN_security_state
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_universal_conscription
+		}
+		completion_reward = {
+			add_ideas = GEN_security_state_idea
 		}
 		x = 67
 		y = 10
@@ -3299,9 +3371,13 @@ focus_tree = {
 	focus = {
 		id = GEN_absolute_authority
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_rn_dominance
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
 		}
 		x = 68
 		y = 8
@@ -3309,9 +3385,21 @@ focus_tree = {
 	focus = {
 		id = GEN_all_resources_for_war
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_universal_conscription
+		}
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 12
+				state = capital
+			}
+			add_resource = {
+				type = aluminium
+				amount = 8
+				state = capital
+			}
 		}
 		x = 66
 		y = 11
@@ -3322,12 +3410,18 @@ focus_tree = {
 	focus = {
 		id = GEN_mid_dominance
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		allow_branch = {
 			has_government = mixed_ideology_democracy
 			OR = {
 				has_completed_focus = GEN_continuing_the_good_work
 				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
 			}
 		}
 		x = 66
@@ -3336,9 +3430,12 @@ focus_tree = {
 	focus = {
 		id = GEN_political_stability
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_mid_dominance
+		}
+		completion_reward = {
+			add_stability = 0.15
 		}
 		x = 66
 		y = 8
@@ -3346,9 +3443,12 @@ focus_tree = {
 	focus = {
 		id = GEN_cordon_sanitaire
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_political_stability
+		}
+		completion_reward = {
+			add_ideas = GEN_cordon_sanitaire_idea
 		}
 		x = 65
 		y = 9
@@ -3356,9 +3456,12 @@ focus_tree = {
 	focus = {
 		id = GEN_technocratic_expertise
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_political_stability
+		}
+		completion_reward = {
+			add_ideas = GEN_technocratic_expertise_idea
 		}
 		x = 67
 		y = 9
@@ -3366,12 +3469,15 @@ focus_tree = {
 	focus = {
 		id = GEN_extending_the_olive_branch
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_cordon_sanitaire
 		}
 		prerequisite = {
 			focus = GEN_technocratic_expertise
+		}
+		completion_reward = {
+			add_ideas = GEN_extending_the_olive_branch_idea
 		}
 		x = 66
 		y = 10
@@ -3379,9 +3485,12 @@ focus_tree = {
 	focus = {
 		id = GEN_proud_to_serve
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_extending_the_olive_branch
+		}
+		completion_reward = {
+			add_war_support = 0.15
 		}
 		x = 64
 		y = 11
@@ -3389,9 +3498,13 @@ focus_tree = {
 	focus = {
 		id = GEN_professional_army
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_extending_the_olive_branch
+		}
+		completion_reward = {
+			set_country_flag = GEN_professional_army_decisions_unlock
+			custom_effect_tooltip = GEN_professional_army_decisions_unlock_loc
 		}
 		x = 66
 		y = 11
@@ -3399,9 +3512,12 @@ focus_tree = {
 	focus = {
 		id = GEN_just_war
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_extending_the_olive_branch
+		}
+		completion_reward = {
+			add_ideas = GEN_just_war_idea
 		}
 		x = 68
 		y = 11
@@ -3412,12 +3528,18 @@ focus_tree = {
 	focus = {
 		id = GEN_dm_dominance
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		allow_branch = {
 			has_government = divine_mandate
 			OR = {
 				has_completed_focus = GEN_continuing_the_good_work
 				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
 			}
 		}
 		x = 66
@@ -3426,9 +3548,13 @@ focus_tree = {
 	focus = {
 		id = GEN_will_of_the_idol
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_dm_dominance
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.15
 		}
 		x = 65
 		y = 8
@@ -3436,9 +3562,12 @@ focus_tree = {
 	focus = {
 		id = GEN_no_other_oshi
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_dm_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_no_other_oshi_idea
 		}
 		x = 67
 		y = 8
@@ -3446,12 +3575,15 @@ focus_tree = {
 	focus = {
 		id = GEN_all_rallying_to_the_cause
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_will_of_the_idol
 		}
 		prerequisite = {
 			focus = GEN_no_other_oshi
+		}
+		completion_reward = {
+			add_ideas = GEN_all_rallying_to_the_cause_idea
 		}
 		x = 66
 		y = 9
@@ -3459,9 +3591,12 @@ focus_tree = {
 	focus = {
 		id = GEN_massive_constructions
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_all_rallying_to_the_cause
+		}
+		completion_reward = {
+			add_ideas = GEN_massive_constructions_idea
 		}
 		x = 64
 		y = 10
@@ -3469,9 +3604,20 @@ focus_tree = {
 	focus = {
 		id = GEN_crown_lands
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_all_rallying_to_the_cause
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
 		}
 		x = 66
 		y = 10
@@ -3479,9 +3625,56 @@ focus_tree = {
 	focus = {
 		id = GEN_the_most_devoted
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_all_rallying_to_the_cause
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_tech = guards_technology
+					}
+				}
+				set_technology = {
+					guards_technology = 1
+				}
+			}
+			division_template = {
+				name = "The Most Devoted"
+				regiments = {
+					guards = {
+						x = 0
+						y = 0
+					}
+					guards = {
+						x = 0
+						y = 1
+					}
+					guards = {
+						x = 0
+						y = 2
+					}
+					guards = {
+						x = 1
+						y = 0
+					}
+					guards = {
+						x = 1
+						y = 1
+					}
+					guards = {
+						x = 1
+						y = 2
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"The Most Devoted\" division_template = \"The Most Devoted\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+				}
+			}
 		}
 		x = 68
 		y = 10
@@ -3489,7 +3682,7 @@ focus_tree = {
 	focus = {
 		id = GEN_all_under_one_idol
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_crown_lands
 		}
@@ -3498,6 +3691,14 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GEN_the_most_devoted
+		}
+		completion_reward = {
+			random_neighbor_country = {
+				create_wargoal = {
+					target = THIS
+					type = annex_everything
+				}
+			}
 		}
 		x = 66
 		y = 11
