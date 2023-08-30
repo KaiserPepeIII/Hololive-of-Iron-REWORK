@@ -305,50 +305,38 @@ debug_decisions = {
 			base = 0
 		}
 	}
-	WTS_security_state_flip_test = {
+	WTS_security_Wales_flip_test = {
 		icon = generic_research
 		allowed = {
 			tag = WTS
 		}
 		visible = {
-			always = yes
+			tag = WTS
 		}
 		fire_only_once = no
 		cost = 0
 		complete_effect = {
-			add_to_variable = {
-				var = WTS.counter_insurgency_london_antis
-				value = var:WTS.counter_insurgency_london_government
-			}
-			subtract_from_variable = {
-				var = WTS.counter_insurgency_london_government
-				value = var:WTS.counter_insurgency_london_government
-			}
-			add_to_variable = {
-				var = WTS.counter_insurgency_london_antis
-				value = var:WTS.counter_insurgency_london_teammates
-			}
-			subtract_from_variable = {
-				var = WTS.counter_insurgency_london_teammates
-				value = var:WTS.counter_insurgency_london_teammates
-			}
-			add_to_variable = {
-				var = WTS.counter_insurgency_london_antis
-				value = var:WTS.counter_insurgency_london_irish
-			}
-			subtract_from_variable = {
-				var = WTS.counter_insurgency_london_irish
-				value = var:WTS.counter_insurgency_london_irish
-			}
-			add_to_variable = {
-				var = WTS.counter_insurgency_london_antis
-				value = var:WTS.counter_insurgency_london_welsh
-			}
-			subtract_from_variable = {
-				var = WTS.counter_insurgency_london_welsh
-				value = var:WTS.counter_insurgency_london_welsh
-			}
-			WTS_create_insurgency_pie_charts = yes
+			set_temp_variable = { pie_chart_change = 1 }
+			WTS_wales_adding_antis = yes
+			country_event = watson_security.6
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	WTS_security_norther_ireland_flip_test = {
+		icon = generic_research
+		allowed = {
+			tag = WTS
+		}
+		visible = {
+			tag = WTS
+		}
+		fire_only_once = no
+		cost = 0
+		complete_effect = {
+			set_temp_variable = { pie_chart_change = 1 }
+			WTS_northern_ireland_adding_irish = yes
 		}
 		ai_will_do = {
 			base = 0

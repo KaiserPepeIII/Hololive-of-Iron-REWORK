@@ -180,62 +180,175 @@ WTS_irish_initiation_trigger_removal = {
 }
 
 WTS_the_calm_trigger = {
-	OR = {
-		AND = {
+	set_temp_variable = { wts_calm_threshold = 0.75 }
+	AND = {
+		OR = {
+			has_country_flag = WTS_south_england_pacified
 			check_variable = {
 				var = WTS.counter_insurgency_south_england_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_east_england_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_london_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_west_midlands_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_north_england_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_wales_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_scotland_government
-				value = 0.75
-				compare = greater_than
-			}
-			check_variable = {
-				var = WTS.counter_insurgency_northern_ireland_government
-				value = 0.75
+				value = var:wts_calm_threshold
 				compare = greater_than
 			}
 		}
-		AND = {
-			has_country_flag = WTS_north_england_pacified
+		OR = {
 			has_country_flag = WTS_east_england_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_east_england_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_london_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_london_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_west_midlands_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_west_midlands_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_north_england_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_north_england_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_wales_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_wales_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
 			has_country_flag = WTS_scotland_pacified
-			has_country_flag = WTS_north_england_pacified
-			has_country_flag = WTS_northern_ireland_pacified
-			has_country_flag = WTS_northwest_ireland_pacified
-			has_country_flag = WTS_southwest_ireland_pacified
-			has_country_flag = WTS_dublin_pacified
+			check_variable = {
+				var = WTS.counter_insurgency_scotland_government
+				value = var:wts_calm_threshold
+				compare = greater_than
+			}
+		}
+		OR = {
+			AND = {
+				all_state = {
+					is_in_array = {
+						array = WTS.counter_insurgency_northern_ireland_array
+						value = THIS.id
+					}
+					is_owned_and_controlled_by = WTS
+				}
+				OR = {
+					has_country_flag = WTS_northern_ireland_pacified
+					check_variable = {
+						var = WTS.counter_insurgency_northern_ireland_government
+						value = var:wts_calm_threshold
+						compare = greater_than
+					}
+				}
+			}
+			any_state = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northern_ireland_array
+					value = THIS.id
+				}
+				owner = {
+					is_subject_of = WTS
+				}
+			}
+		}
+		OR = {
+			AND = {
+				all_state = {
+					is_in_array = {
+						array = WTS.counter_insurgency_northwest_ireland_array
+						value = THIS.id
+					}
+					is_owned_and_controlled_by = WTS
+				}
+				OR = {
+					has_country_flag = WTS_northwest_ireland_pacified
+					check_variable = {
+						var = WTS.counter_insurgency_northwest_ireland_government
+						value = var:wts_calm_threshold
+						compare = greater_than
+					}
+				}
+			}
+			any_state = {
+				is_in_array = {
+					array = WTS.counter_insurgency_northwest_ireland_array
+					value = THIS.id
+				}
+				owner = {
+					is_subject_of = WTS
+				}
+			}
+		}
+		OR = {
+			AND = {
+				all_state = {
+					is_in_array = {
+						array = WTS.counter_insurgency_dublin_array
+						value = THIS.id
+					}
+					is_owned_and_controlled_by = WTS
+				}
+				OR = {
+					has_country_flag = WTS_dublin_pacified
+					check_variable = {
+						var = WTS.counter_insurgency_dublin_government
+						value = var:wts_calm_threshold
+						compare = greater_than
+					}
+				}
+			}
+			any_state = {
+				is_in_array = {
+					array = WTS.counter_insurgency_dublin_array
+					value = THIS.id
+				}
+				owner = {
+					is_subject_of = WTS
+				}
+			}
+		}
+		OR = {
+			AND = {
+				all_state = {
+					is_in_array = {
+						array = WTS.counter_insurgency_southwest_ireland_array
+						value = THIS.id
+					}
+					is_owned_and_controlled_by = WTS
+				}
+				OR = {
+					has_country_flag = WTS_southwest_ireland_pacified
+					check_variable = {
+						var = WTS.counter_insurgency_southwest_ireland_government
+						value = var:wts_calm_threshold
+						compare = greater_than
+					}
+				}
+			}
+			any_state = {
+				is_in_array = {
+					array = WTS.counter_insurgency_southwest_ireland_array
+					value = THIS.id
+				}
+				owner = {
+					is_subject_of = WTS
+				}
+			}
 		}
 	}
 }
@@ -392,9 +505,11 @@ WTS_english_antis_south_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -419,9 +534,11 @@ WTS_english_antis_south_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -442,9 +559,11 @@ WTS_welsh_south_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -469,9 +588,11 @@ WTS_welsh_south_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -492,9 +613,11 @@ WTS_teammates_south_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -519,9 +642,11 @@ WTS_teammates_south_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -542,9 +667,11 @@ WTS_irish_south_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
@@ -566,9 +693,11 @@ WTS_irish_south_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -592,9 +721,11 @@ WTS_watch_wars_south_england_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -620,9 +751,11 @@ WTS_watch_wars_south_england_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -639,9 +772,11 @@ WTS_watch_wars_south_england_trigger_removal_lost_land = {
 			owns_state = 338
 			owns_state = 127
 		}
-		any_of = {
-			array = WTS.counter_insurgency_south_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_south_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -667,9 +802,11 @@ WTS_english_antis_east_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -694,9 +831,11 @@ WTS_english_antis_east_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -717,9 +856,11 @@ WTS_welsh_east_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -744,14 +885,16 @@ WTS_welsh_east_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
-				modifier = WTS_english_antis_presence
+				modifier = WTS_bgc_presence
 			}
 		}
-		has_country_flag = WTS_east_england_english_antis
+		has_country_flag = WTS_east_england_welsh
 	}
 }
 
@@ -767,9 +910,11 @@ WTS_teammates_east_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -794,9 +939,11 @@ WTS_teammates_east_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -817,9 +964,11 @@ WTS_irish_east_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
@@ -841,9 +990,11 @@ WTS_irish_east_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -867,9 +1018,11 @@ WTS_watch_wars_east_england_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -895,9 +1048,11 @@ WTS_watch_wars_east_england_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -914,9 +1069,11 @@ WTS_watch_wars_east_england_trigger_removal_lost_land = {
 			owns_state = 129
 			owns_state = 849
 		}
-		any_of = {
-			array = WTS.counter_insurgency_east_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_east_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -942,9 +1099,11 @@ WTS_english_antis_london_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -969,9 +1128,11 @@ WTS_english_antis_london_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -992,9 +1153,11 @@ WTS_welsh_london_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -1019,9 +1182,11 @@ WTS_welsh_london_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -1042,9 +1207,11 @@ WTS_teammates_london_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -1069,9 +1236,11 @@ WTS_teammates_london_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -1092,9 +1261,11 @@ WTS_irish_london_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
@@ -1116,9 +1287,11 @@ WTS_irish_london_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -1142,9 +1315,11 @@ WTS_watch_wars_london_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -1170,9 +1345,11 @@ WTS_watch_wars_london_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -1189,9 +1366,11 @@ WTS_watch_wars_london_trigger_removal_lost_land = {
 			owns_state = 845
 		}
 		has_country_flag = WTS_london_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_london_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_london_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -1217,9 +1396,11 @@ WTS_english_antis_west_midlands_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -1244,9 +1425,11 @@ WTS_english_antis_west_midlands_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -1267,9 +1450,11 @@ WTS_welsh_west_midlands_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -1294,9 +1479,11 @@ WTS_welsh_west_midlands_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -1319,9 +1506,11 @@ WTS_teammates_west_midlands_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -1346,9 +1535,11 @@ WTS_teammates_west_midlands_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -1369,9 +1560,11 @@ WTS_irish_west_midlands_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
@@ -1393,9 +1586,11 @@ WTS_irish_west_midlands_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -1419,9 +1614,11 @@ WTS_watch_wars_west_midlands_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -1447,9 +1644,11 @@ WTS_watch_wars_west_midlands_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -1466,9 +1665,11 @@ WTS_watch_wars_west_midlands_trigger_removal_lost_land = {
 			owns_state = 848
 		}
 		has_country_flag = WTS_west_midlands_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_west_midlands_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_west_midlands_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -1494,9 +1695,11 @@ WTS_english_antis_north_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -1521,9 +1724,11 @@ WTS_english_antis_north_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -1544,9 +1749,11 @@ WTS_welsh_north_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -1571,9 +1778,11 @@ WTS_welsh_north_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -1594,9 +1803,11 @@ WTS_teammates_north_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -1621,9 +1832,11 @@ WTS_teammates_north_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -1644,9 +1857,11 @@ WTS_irish_north_england_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
@@ -1668,9 +1883,11 @@ WTS_irish_north_england_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -1694,9 +1911,11 @@ WTS_watch_wars_north_england_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -1722,9 +1941,11 @@ WTS_watch_wars_north_england_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -1741,9 +1962,11 @@ WTS_watch_wars_north_england_trigger_removal_lost_land = {
 			owns_state = 132
 		}
 		has_country_flag = WTS_north_england_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_north_england_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_north_england_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -1769,9 +1992,11 @@ WTS_english_antis_wales_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -1796,9 +2021,11 @@ WTS_english_antis_wales_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -1819,9 +2046,11 @@ WTS_welsh_wales_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -1846,9 +2075,11 @@ WTS_welsh_wales_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -1869,9 +2100,11 @@ WTS_teammates_wales_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -1896,9 +2129,11 @@ WTS_teammates_wales_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -1919,9 +2154,11 @@ WTS_irish_wales_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
@@ -1943,9 +2180,11 @@ WTS_irish_wales_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -1969,9 +2208,11 @@ WTS_watch_wars_wales_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -1997,9 +2238,11 @@ WTS_watch_wars_wales_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -2016,9 +2259,11 @@ WTS_watch_wars_wales_trigger_removal_lost_land = {
 			owns_state = 918
 		}
 		has_country_flag = WTS_wales_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_wales_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_wales_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -2045,9 +2290,11 @@ WTS_english_antis_scotland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -2073,9 +2320,11 @@ WTS_english_antis_scotland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -2097,9 +2346,11 @@ WTS_welsh_scotland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -2125,9 +2376,11 @@ WTS_welsh_scotland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -2149,9 +2402,11 @@ WTS_teammates_scotland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -2177,9 +2432,11 @@ WTS_teammates_scotland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -2201,9 +2458,11 @@ WTS_irish_scotland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
@@ -2226,9 +2485,11 @@ WTS_irish_scotland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -2253,9 +2514,11 @@ WTS_watch_wars_scotland_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -2282,9 +2545,11 @@ WTS_watch_wars_scotland_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -2302,9 +2567,11 @@ WTS_watch_wars_scotland_trigger_removal_lost_land = {
 			owns_state = 133
 		}
 		has_country_flag = WTS_scotland_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_scotland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_scotland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -2329,9 +2596,11 @@ WTS_english_antis_northern_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -2355,9 +2624,11 @@ WTS_english_antis_northern_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -2377,9 +2648,11 @@ WTS_welsh_northern_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -2403,9 +2676,11 @@ WTS_welsh_northern_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -2425,9 +2700,11 @@ WTS_teammates_northern_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -2451,9 +2728,11 @@ WTS_teammates_northern_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -2473,9 +2752,11 @@ WTS_irish_northern_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
@@ -2499,9 +2780,11 @@ WTS_irish_northern_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -2524,9 +2807,11 @@ WTS_watch_wars_northern_ireland_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -2551,9 +2836,11 @@ WTS_watch_wars_northern_ireland_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -2569,9 +2856,11 @@ WTS_watch_wars_northern_ireland_trigger_removal_lost_land = {
 			owns_state = 1006
 		}
 		has_country_flag = WTS_northern_ireland_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_northern_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northern_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -2598,9 +2887,11 @@ WTS_english_antis_northwest_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -2626,9 +2917,11 @@ WTS_english_antis_northwest_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -2650,9 +2943,11 @@ WTS_welsh_northwest_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -2678,9 +2973,11 @@ WTS_welsh_northwest_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -2702,9 +2999,11 @@ WTS_teammates_northwest_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -2730,9 +3029,11 @@ WTS_teammates_northwest_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -2754,17 +3055,19 @@ WTS_irish_northwest_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
-					modifier = WTS_national_protection_league
+					modifier = WTS_ira_presence
 				}
 			}
 		}
 		NOT = {
-			has_country_flag = WTS_northwest_ireland_teammates
+			has_country_flag = WTS_northwest_ireland_irish
 		}
 	}
 }
@@ -2782,9 +3085,11 @@ WTS_irish_northwest_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -2809,9 +3114,11 @@ WTS_watch_wars_northwest_ireland_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -2838,9 +3145,11 @@ WTS_watch_wars_northwest_ireland_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -2858,9 +3167,11 @@ WTS_watch_wars_northwest_ireland_trigger_removal_lost_land = {
 			owns_state = 1008
 		}
 		has_country_flag = WTS_northwest_ireland_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_northwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_northwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -2888,9 +3199,11 @@ WTS_english_antis_southwest_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -2917,9 +3230,11 @@ WTS_english_antis_southwest_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -2942,9 +3257,11 @@ WTS_welsh_southwest_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -2971,9 +3288,11 @@ WTS_welsh_southwest_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -2996,9 +3315,11 @@ WTS_teammates_southwest_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -3025,9 +3346,11 @@ WTS_teammates_southwest_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -3050,14 +3373,19 @@ WTS_irish_southwest_ireland_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
 				}
 			}
+		}
+		NOT = {
+			has_country_flag = WTS_southwest_ireland_irish
 		}
 	}
 }
@@ -3076,9 +3404,11 @@ WTS_irish_southwest_ireland_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -3104,9 +3434,11 @@ WTS_watch_wars_southwest_ireland_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -3134,9 +3466,11 @@ WTS_watch_wars_southwest_ireland_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -3155,9 +3489,11 @@ WTS_watch_wars_southwest_ireland_trigger_removal_lost_land = {
 			owns_state = 1011
 		}
 		has_country_flag = WTS_southwest_ireland_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_southwest_ireland_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_southwest_ireland_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -3186,9 +3522,11 @@ WTS_english_antis_dublin_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_english_antis_presence
@@ -3216,9 +3554,11 @@ WTS_english_antis_dublin_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_english_antis_presence
 			}
@@ -3242,9 +3582,11 @@ WTS_welsh_dublin_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_bgc_presence
@@ -3272,9 +3614,11 @@ WTS_welsh_dublin_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_bgc_presence
 			}
@@ -3298,9 +3642,11 @@ WTS_teammates_dublin_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_national_protection_league
@@ -3328,9 +3674,11 @@ WTS_teammates_dublin_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_national_protection_league
 			}
@@ -3354,14 +3702,19 @@ WTS_irish_dublin_trigger = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_ira_presence
 				}
 			}
+		}
+		NOT = {
+			has_country_flag = WTS_dublin_irish
 		}
 	}
 }
@@ -3381,9 +3734,11 @@ WTS_irish_dublin_trigger_removal = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_ira_presence
 			}
@@ -3410,9 +3765,11 @@ WTS_watch_wars_dublin_trigger = {
 				compare = less_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			NOT = {
 				has_dynamic_modifier = {
 					modifier = WTS_the_watch_wars
@@ -3441,9 +3798,11 @@ WTS_watch_wars_dublin_trigger_removal = {
 				compare = greater_than
 			}
 		}
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}
@@ -3463,9 +3822,11 @@ WTS_watch_wars_dublin_trigger_removal_lost_land = {
 			owns_state = 1003
 		}
 		has_country_flag = WTS_dublin_watch_wars
-		any_of = {
-			array = WTS.counter_insurgency_dublin_array
-			value = THIS.id
+		any_state = {
+			is_in_array = {
+				array = WTS.counter_insurgency_dublin_array
+				value = THIS.id
+			}
 			has_dynamic_modifier = {
 				modifier = WTS_the_watch_wars
 			}

@@ -1,16 +1,5 @@
 WTS_clear_security_gui = {
 	WTS_all_buttons_clicked_clear = yes
-	clear_array = WTS.counter_insurgency_south_england_array
-	clear_array = WTS.counter_insurgency_east_england_array
-	clear_array = WTS.counter_insurgency_london_array
-	clear_array = WTS.counter_insurgency_west_midlands_array
-	clear_array = WTS.counter_insurgency_north_england_array
-	clear_array = WTS.counter_insurgency_wales_array
-	clear_array = WTS.counter_insurgency_scotland_array
-	clear_array = WTS.counter_insurgency_northern_ireland_array
-	clear_array = WTS.counter_insurgency_northwest_ireland_array
-	clear_array = WTS.counter_insurgency_southwest_ireland_array
-	clear_array = WTS.counter_insurgency_dublin_array
 	clear_variable = WTS.counter_insurgency_south_england_frame
 	clear_variable = WTS.counter_insurgency_south_england_government
 	clear_variable = WTS.counter_insurgency_south_england_welsh
@@ -64,7 +53,7 @@ WTS_clear_security_gui = {
 	#tbd
 	every_state = {
 		limit = {
-			or = {
+			OR = {
 				is_in_array = {
 					array = WTS.counter_insurgency_east_england_array
 					value = this.ID
@@ -111,19 +100,21 @@ WTS_clear_security_gui = {
 				}
 			}
 		}
-		remove_dynamic_modifier = {
-			modifier = WTS_ira_presence
-		}
-		remove_dynamic_modifier = {
-			modifier = WTS_english_antis_presence
-		}
-		remove_dynamic_modifier = {
-			modifier = WTS_national_protection_league
-		}
-		remove_dynamic_modifier = {
-			modifier = WTS_the_watch_wars
-		}
+		WTS_clear_insurgent_state_modifiers = yes
 	}
+
+	#need to clear after state modifiers are removed
+	clear_array = WTS.counter_insurgency_south_england_array
+	clear_array = WTS.counter_insurgency_east_england_array
+	clear_array = WTS.counter_insurgency_london_array
+	clear_array = WTS.counter_insurgency_west_midlands_array
+	clear_array = WTS.counter_insurgency_north_england_array
+	clear_array = WTS.counter_insurgency_wales_array
+	clear_array = WTS.counter_insurgency_scotland_array
+	clear_array = WTS.counter_insurgency_northern_ireland_array
+	clear_array = WTS.counter_insurgency_northwest_ireland_array
+	clear_array = WTS.counter_insurgency_southwest_ireland_array
+	clear_array = WTS.counter_insurgency_dublin_array
 }
 
 WTS_create_insurgency_pie_charts = {
@@ -415,14 +406,7 @@ crackdown_on_armed_groups_button_effect = {
 
 increase_police_presence_button_effect = {
 	add_political_power = -75
-	set_temp_variable = {
-		var = wts_police_presene_duration
-		value = 150
-	}
-	set_temp_variable = {
-		var = pie_chart_change
-		value = 0.2
-	}
+	set_temp_variable = { pie_chart_change = 0.2 }
 
 	if = {
 		limit = {
@@ -437,7 +421,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -456,7 +440,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -475,7 +459,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -494,7 +478,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -513,7 +497,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -532,7 +516,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -551,7 +535,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -570,7 +554,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -589,7 +573,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -608,7 +592,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -627,7 +611,7 @@ increase_police_presence_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_increased_police_presence
-				days = var:wts_police_presene_duration
+				days = 150 # WTS_police_presence_duration
 				value = 1
 			}
 		}
@@ -638,17 +622,10 @@ increase_police_presence_button_effect = {
 
 martial_law_button_effect = {
 	add_political_power = -75
-	set_temp_variable = {
-		var = wts_martial_law_duration
-		value = 120
-	}
-	set_temp_variable = {
-		var = pie_chart_change
-		value = 0.2
-	}
+	set_temp_variable = { pie_chart_change = 0.2 }
 	add_timed_idea = {
 		idea = WTS_martial_law
-		days = var:wts_martial_law_duration
+		days = 120 # WTS_martial_law_duration
 	}
 
 	if = {
@@ -664,7 +641,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -684,7 +661,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -703,7 +680,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -722,7 +699,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -741,7 +718,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -760,7 +737,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -779,7 +756,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -798,7 +775,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -817,7 +794,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -836,7 +813,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -855,7 +832,7 @@ martial_law_button_effect = {
 			}
 			set_state_flag = {
 				flag = WTS_martial_law
-				days = var:wts_martial_law_duration
+				days = 120 # WTS_martial_law_duration
 				value = 1
 			}
 		}
@@ -1324,51 +1301,51 @@ WTS_east_england_frame_effect = {
 WTS_north_england_frame_effect = {
 	if = {
 		limit = {
-			WTS_south_england_government_frame_trigger = yes
+			WTS_north_england_government_frame_trigger = yes
 		}
 		set_variable = {
-			var = WTS.counter_insurgency_south_england_frame
+			var = WTS.counter_insurgency_north_england_frame
 			value = 1
 		}
 		else_if = {
 			limit = {
-				WTS_south_england_antis_frame_trigger = yes
+				WTS_north_england_antis_frame_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_south_england_frame
+				var = WTS.counter_insurgency_north_england_frame
 				value = 2
 			}
 		}
 		else_if = {
 			limit = {
-				WTS_south_england_irish_frame_trigger = yes
+				WTS_north_england_irish_frame_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_south_england_frame
+				var = WTS.counter_insurgency_north_england_frame
 				value = 3
 			}
 		}
 		else_if = {
 			limit = {
-				WTS_south_england_teammates_frame_trigger = yes
+				WTS_north_england_teammates_frame_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_south_england_frame
+				var = WTS.counter_insurgency_north_england_frame
 				value = 4
 			}
 		}
 		else_if = {
 			limit = {
-				WTS_south_england_welsh_frame_trigger = yes
+				WTS_north_england_welsh_frame_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_south_england_frame
+				var = WTS.counter_insurgency_north_england_frame
 				value = 5
 			}
 		}
 		else = {
 			set_variable = {
-				var = WTS.counter_insurgency_south_england_frame
+				var = WTS.counter_insurgency_north_england_frame
 				value = 6
 			}
 		}
@@ -1651,7 +1628,7 @@ WTS_northwest_ireland_frame_effect = {
 			WTS_northwest_ireland_government_frame_trigger = yes
 		}
 		set_variable = {
-			var = WTS.counter_insurgency_northwest_frame
+			var = WTS.counter_insurgency_northwest_ireland_frame
 			value = 1
 		}
 		else_if = {
@@ -1659,7 +1636,7 @@ WTS_northwest_ireland_frame_effect = {
 				WTS_northwest_ireland_antis_frame_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_northwest_frame
+				var = WTS.counter_insurgency_northwest_ireland_frame
 				value = 2
 			}
 		}
@@ -1668,7 +1645,7 @@ WTS_northwest_ireland_frame_effect = {
 				WTS_northwest_ireland_irish_frame_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_northwest_frame
+				var = WTS.counter_insurgency_northwest_ireland_frame
 				value = 3
 			}
 		}
@@ -1677,7 +1654,7 @@ WTS_northwest_ireland_frame_effect = {
 				WTS_northwest_ireland_teammates_frame_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_northwest_frame
+				var = WTS.counter_insurgency_northwest_ireland_frame
 				value = 4
 			}
 		}
@@ -1686,13 +1663,13 @@ WTS_northwest_ireland_frame_effect = {
 				WTS_northwest_ireland_welsh_frame_trigger = yes
 			}
 			set_variable = {
-				var = WTS.counter_insurgency_northwest_frame
+				var = WTS.counter_insurgency_northwest_ireland_frame
 				value = 5
 			}
 		}
 		else = {
 			set_variable = {
-				var = WTS.counter_insurgency_northwest_frame
+				var = WTS.counter_insurgency_northwest_ireland_frame
 				value = 6
 			}
 		}
