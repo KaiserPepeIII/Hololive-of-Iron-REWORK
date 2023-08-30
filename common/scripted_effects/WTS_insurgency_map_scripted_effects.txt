@@ -1682,441 +1682,276 @@ WTS_irish_gains_scripted_effect = {
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_south_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_south_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_south_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_south_england_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_south_england_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_south_england_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 1
 			}
+			country_event = watson_insurgency.13
 		}
 		#London
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_london_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_london_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_london_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_london_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_london_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_london_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 2
 			}
+			country_event = watson_insurgency.13
 		}
 		#West Midlands
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_west_midlands_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_west_midlands_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_west_midlands_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_west_midlands_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_west_midlands_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_west_midlands_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 3
 			}
+			country_event = watson_insurgency.13
 		}
 		#East England
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_east_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_east_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_east_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_east_england_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_east_england_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_east_england_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 4
 			}
+			country_event = watson_insurgency.13
 		}
 		#North England
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_north_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_north_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_north_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_north_england_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_north_england_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_north_england_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 5
 			}
+			country_event = watson_insurgency.13
 		}
 		#Wales
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_wales_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_wales_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_wales_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_wales_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_wales_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_wales_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 6
 			}
+			country_event = watson_insurgency.13
 		}
 		#Scotland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_scotland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_scotland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_scotland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_scotland_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_scotland_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_scotland_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 7
 			}
+			country_event = watson_insurgency.13
 		}
 		#Northern Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_northern_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_northern_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_northern_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_northern_ireland_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_northern_ireland_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_northern_ireland_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 8
 			}
+			country_event = watson_insurgency.13
 		}
 		#Dublin
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_dublin_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_dublin_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_dublin_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_dublin_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_dublin_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_dublin_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 9
 			}
+			country_event = watson_insurgency.13
 		}
 		#Southwest Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_southwest_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_southwest_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_southwest_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_southwest_ireland_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_southwest_ireland_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_southwest_ireland_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 10
 			}
+			country_event = watson_insurgency.13
 		}
 		#Northwest Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_northwest_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_northwest_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_northwest_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_northwest_ireland_adding_irish = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_northwest_ireland_adding_irish = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_northwest_ireland_adding_irish = yes
-				}
+			set_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 11
 			}
+			country_event = watson_insurgency.13
 		}
 	}
 }
@@ -2127,441 +1962,276 @@ WTS_antis_gains_scripted_effect = {
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_south_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_south_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_south_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_south_england_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_south_england_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_south_england_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 1
 			}
+			country_event = watson_insurgency.14
 		}
 		#London
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_london_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_london_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_london_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_london_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_london_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_london_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 2
 			}
+			country_event = watson_insurgency.14
 		}
 		#West Midlands
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_west_midlands_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_west_midlands_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_west_midlands_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_west_midlands_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_west_midlands_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_west_midlands_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 3
 			}
+			country_event = watson_insurgency.14
 		}
 		#East England
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_east_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_east_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_east_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_east_england_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_east_england_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_east_england_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 4
 			}
+			country_event = watson_insurgency.14
 		}
 		#North England
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_north_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_north_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_north_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_north_england_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_north_england_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_north_england_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 5
 			}
+			country_event = watson_insurgency.14
 		}
 		#Wales
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_wales_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_wales_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_wales_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_wales_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_wales_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_wales_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 6
 			}
+			country_event = watson_insurgency.14
 		}
 		#Scotland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_scotland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_scotland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_scotland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_scotland_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_scotland_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_scotland_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 7
 			}
+			country_event = watson_insurgency.14
 		}
 		#Northern Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_northern_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_northern_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_northern_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_northern_ireland_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_northern_ireland_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_northern_ireland_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 8
 			}
+			country_event = watson_insurgency.14
 		}
 		#Dublin
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_dublin_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_dublin_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_dublin_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_dublin_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_dublin_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_dublin_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 9
 			}
+			country_event = watson_insurgency.14
 		}
 		#Southwest Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_southwest_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_southwest_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_southwest_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_southwest_ireland_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_southwest_ireland_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_southwest_ireland_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 10
 			}
+			country_event = watson_insurgency.14
 		}
 		#Northwest Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_northwest_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_northwest_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_northwest_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_northwest_ireland_adding_antis = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_northwest_ireland_adding_antis = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_northwest_ireland_adding_antis = yes
-				}
+			set_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 11
 			}
+			country_event = watson_insurgency.14
 		}
 	}
 }
@@ -2572,441 +2242,276 @@ WTS_teammates_gains_scripted_effect = {
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_south_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_south_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_south_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_south_england_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_south_england_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_south_england_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 1
 			}
+			country_event = watson_insurgency.15
 		}
 		#London
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_london_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_london_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_london_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_london_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_london_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_london_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 2
 			}
+			country_event = watson_insurgency.15
 		}
 		#West Midlands
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_west_midlands_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_west_midlands_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_west_midlands_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_west_midlands_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_west_midlands_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_west_midlands_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 3
 			}
+			country_event = watson_insurgency.15
 		}
 		#East England
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_east_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_east_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_east_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_east_england_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_east_england_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_east_england_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 4
 			}
+			country_event = watson_insurgency.15
 		}
 		#North England
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_north_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_north_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_north_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_north_england_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_north_england_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_north_england_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 5
 			}
+			country_event = watson_insurgency.15
 		}
 		#Wales
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_wales_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_wales_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_wales_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_wales_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_wales_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_wales_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 6
 			}
+			country_event = watson_insurgency.15
 		}
 		#Scotland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_scotland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_scotland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_scotland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_scotland_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_scotland_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_scotland_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 7
 			}
+			country_event = watson_insurgency.15
 		}
 		#Northern Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_northern_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_northern_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_northern_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_northern_ireland_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_northern_ireland_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_northern_ireland_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 8
 			}
+			country_event = watson_insurgency.15
 		}
 		#Dublin
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_dublin_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_dublin_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_dublin_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_dublin_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_dublin_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_dublin_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 9
 			}
+			country_event = watson_insurgency.15
 		}
 		#Southwest Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_southwest_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_southwest_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_southwest_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_southwest_ireland_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_southwest_ireland_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_southwest_ireland_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 10
 			}
+			country_event = watson_insurgency.15
 		}
 		#Northwest Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_northwest_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_northwest_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_northwest_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_northwest_ireland_adding_teammates = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_northwest_ireland_adding_teammates = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_northwest_ireland_adding_teammates = yes
-				}
+			set_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 11
 			}
+			country_event = watson_insurgency.15
 		}
 	}
 }
@@ -3017,441 +2522,276 @@ WTS_welsh_gains_scripted_effect = {
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_south_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_south_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_south_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_south_england_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_south_england_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_south_england_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 1
 			}
+			country_event = watson_insurgency.16
 		}
 		#London
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_london_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_london_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_london_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_london_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_london_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_london_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 2
 			}
+			country_event = watson_insurgency.16
 		}
 		#West Midlands
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_west_midlands_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_west_midlands_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_west_midlands_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_west_midlands_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_west_midlands_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_west_midlands_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 3
 			}
+			country_event = watson_insurgency.16
 		}
 		#East England
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_east_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_east_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_east_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_east_england_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_east_england_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_east_england_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 4
 			}
+			country_event = watson_insurgency.16
 		}
 		#North England
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_north_england_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_north_england_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_north_england_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_north_england_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_north_england_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_north_england_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 5
 			}
+			country_event = watson_insurgency.16
 		}
 		#Wales
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_wales_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_wales_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_wales_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_wales_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_wales_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_wales_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 6
 			}
+			country_event = watson_insurgency.16
 		}
 		#Scotland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_scotland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_scotland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_scotland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_scotland_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_scotland_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_scotland_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 7
 			}
+			country_event = watson_insurgency.16
 		}
 		#Northern Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_northern_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_northern_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_northern_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_northern_ireland_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_northern_ireland_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_northern_ireland_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 8
 			}
+			country_event = watson_insurgency.16
 		}
 		#Dublin
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_dublin_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_dublin_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_dublin_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_dublin_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_dublin_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_dublin_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 9
 			}
+			country_event = watson_insurgency.16
 		}
 		#Southwest Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_southwest_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_southwest_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_southwest_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_southwest_ireland_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_southwest_ireland_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_southwest_ireland_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 10
 			}
+			country_event = watson_insurgency.16
 		}
 		#Northwest Ireland
 		1 = {
 			modifier = {
 				factor = 0
-				any_of = {
-					array = WTS.counter_insurgency_northwest_ireland_array
-					value = THIS.id
-					NOT = {
-						is_controlled_by = WTS
-						has_state_flag = WTS_increased_police_presence
+				OR = {
+					has_country_flag = WTS_northwest_ireland_pacified
+					any_state = {
+						is_in_array = {
+							array = WTS.counter_insurgency_northwest_ireland_array
+							value = THIS.id
+						}
+						NOT = {
+							is_controlled_by = WTS
+							has_state_flag = WTS_increased_police_presence
+							has_state_flag = WTS_martial_law
+						}
 					}
 				}
 			}
-			random_list = {
-				40 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.05
-					}
-					WTS_northwest_ireland_adding_welsh = yes
-				}
-				30 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.1
-					}
-					WTS_northwest_ireland_adding_welsh = yes
-				}
-				1 = {
-					#No effect
-				}
-				10 = {
-					set_temp_variable = {
-						var = pie_chart_change
-						value = 0.15
-					}
-					WTS_northwest_ireland_adding_welsh = yes
-				}
+			set_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 11
 			}
+			country_event = watson_insurgency.16
 		}
 	}
 }

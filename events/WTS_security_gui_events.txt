@@ -4858,3 +4858,1952 @@ country_event = {
 		add_stability = -0.05
 	}
 }
+
+#BGC ATTACK - BOMBS INFRASTRUCTURE#
+country_event = {
+	id = watson_insurgency.4
+	title = watson_insurgency.4.t
+	desc = watson_insurgency.4.d
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.4.a
+		add_stability = -0.05
+		random_state = {
+			limit = {
+				is_owned_and_controlled_by = WTS
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+	}
+}
+
+#BGC ATTACK - KILLS LOCAL GARRISON
+country_event = {
+	id = watson_insurgency.5
+	title = watson_insurgency.5.t
+	desc = watson_insurgency.5.d
+	picture = GFX_report_event_WTS_insurgency_garrison_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.5.a
+		add_manpower = -100
+		add_stability = -0.05
+	}
+}
+
+#BGC ATTACKS - PLOT DISCOVERED
+country_event = {
+	id = watson_insurgency.6
+	title = watson_insurgency.6.t
+	desc = watson_insurgency.6.d
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.6.a
+		add_stability = 0.05
+	}
+}
+
+#ANTIS ATTACK - BOMBS INFRASTRUCTURE#
+country_event = {
+	id = watson_insurgency.7
+	title = watson_insurgency.7.t
+	desc = watson_insurgency.7.d
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.7.a
+		add_stability = -0.05
+		random_state = {
+			limit = {
+				is_owned_and_controlled_by = WTS
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+	}
+}
+
+#ANTIS ATTACK - KILLS LOCAL GARRISON
+country_event = {
+	id = watson_insurgency.8
+	title = watson_insurgency.8.t
+	desc = watson_insurgency.8.d
+	picture = GFX_report_event_WTS_insurgency_garrison_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.8.a
+		add_manpower = -100
+		add_stability = -0.05
+	}
+}
+
+#ANTIS ATTACKS - PLOT DISCOVERED
+country_event = {
+	id = watson_insurgency.9
+	title = watson_insurgency.9.t
+	desc = watson_insurgency.9.d
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.9.a
+		add_stability = 0.05
+	}
+}
+
+#TEAMMATES ATTACK - BOMBS INFRASTRUCTURE#
+country_event = {
+	id = watson_insurgency.10
+	title = watson_insurgency.10.t
+	desc = watson_insurgency.10.d
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.10.a
+		add_stability = -0.05
+		random_state = {
+			limit = {
+				is_owned_and_controlled_by = WTS
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+	}
+}
+
+#TEAMMATES ATTACK - KILLS LOCAL GARRISON
+country_event = {
+	id = watson_insurgency.11
+	title = watson_insurgency.11.t
+	desc = watson_insurgency.11.d
+	picture = GFX_report_event_WTS_insurgency_garrison_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.11.a
+		add_manpower = -100
+		add_stability = -0.05
+	}
+}
+
+#TEAMMATES ATTACKS - PLOT DISCOVERED
+country_event = {
+	id = watson_insurgency.12
+	title = watson_insurgency.12.t
+	desc = watson_insurgency.12.d
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+	option = {
+		name = watson_insurgency.12.a
+		add_stability = 0.05
+	}
+}
+
+######################
+#                    #
+#   Insurgent Gains  #
+#                    #
+######################
+
+#IRA Gains
+country_event = {
+	id = watson_insurgency.13
+	title = watson_insurgency.13.t
+	desc = watson_insurgency.13.desc
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+
+	# South England 1/a
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 1
+			}
+		}
+		name = watson_insurgency.13.a
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_south_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_south_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_south_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+
+	# London 2/b
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 2
+			}
+		}
+		name = watson_insurgency.13.b
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_london_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_london_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_london_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+
+	# West Midlands 3/c
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 3
+			}
+		}
+		name = watson_insurgency.13.c
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_west_midlands_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_west_midlands_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_west_midlands_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+
+	# East England 4/d
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 4
+			}
+		}
+		name = watson_insurgency.13.d
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_east_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_east_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_east_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+	
+	# North England 5/e
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 5
+			}
+		}
+		name = watson_insurgency.13.e
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_north_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_north_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_north_england_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+
+	# Wales 6/f
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 6
+			}
+		}
+		name = watson_insurgency.13.f
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_wales_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_wales_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_wales_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+
+	# Scotland 7/g
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 7
+			}
+		}
+		name = watson_insurgency.13.g
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_scotland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_scotland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_scotland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+
+	# Northern Ireland 8/h
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 8
+			}
+		}
+		name = watson_insurgency.13.h
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_northern_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_northern_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_northern_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+	
+	# Dublin 9/i
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 9
+			}
+		}
+		name = watson_insurgency.13.i
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_dublin_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_dublin_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_dublin_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+
+	# Southwest Ireland 10/j
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 10
+			}
+		}
+		name = watson_insurgency.13.j
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_southwest_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_southwest_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_southwest_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+
+	# Northwest Ireland 11/k
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_irish_gains_flag
+				value = 11
+			}
+		}
+		name = watson_insurgency.13.k
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_northwest_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_northwest_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_northwest_ireland_adding_irish = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_irish_gains_flag
+		}
+	}
+}
+
+#Antis Gains
+country_event = {
+	id = watson_insurgency.14
+	title = watson_insurgency.14.t
+	desc = watson_insurgency.14.desc
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+
+	# South England 1/a
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 1
+			}
+		}
+		name = watson_insurgency.14.a
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_south_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_south_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_south_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+
+	# London 2/b
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 2
+			}
+		}
+		name = watson_insurgency.14.b
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_london_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_london_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_london_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+
+	# West Midlands 3/c
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 3
+			}
+		}
+		name = watson_insurgency.14.c
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_west_midlands_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_west_midlands_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_west_midlands_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+
+	# East England 4/d
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 4
+			}
+		}
+		name = watson_insurgency.14.d
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_east_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_east_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_east_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+	
+	# North England 5/e
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 5
+			}
+		}
+		name = watson_insurgency.14.e
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_north_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_north_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_north_england_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+
+	# Wales 6/f
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 6
+			}
+		}
+		name = watson_insurgency.14.f
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_wales_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_wales_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_wales_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+
+	# Scotland 7/g
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 7
+			}
+		}
+		name = watson_insurgency.14.g
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_scotland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_scotland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_scotland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+
+	# Northern Ireland 8/h
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 8
+			}
+		}
+		name = watson_insurgency.14.h
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_northern_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_northern_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_northern_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+	
+	# Dublin 9/i
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 9
+			}
+		}
+		name = watson_insurgency.14.i
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_dublin_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_dublin_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_dublin_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+
+	# Southwest Ireland 10/j
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 10
+			}
+		}
+		name = watson_insurgency.14.j
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_southwest_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_southwest_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_southwest_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+
+	# Northwest Ireland 11/k
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_antis_gains_flag
+				value = 11
+			}
+		}
+		name = watson_insurgency.14.k
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_northwest_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_northwest_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_northwest_ireland_adding_antis = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_antis_gains_flag
+		}
+	}
+}
+
+#Teammates Gains
+country_event = {
+	id = watson_insurgency.15
+	title = watson_insurgency.15.t
+	desc = watson_insurgency.15.desc
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+
+	# South England 1/a
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 1
+			}
+		}
+		name = watson_insurgency.15.a
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_south_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_south_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_south_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+
+	# London 2/b
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 2
+			}
+		}
+		name = watson_insurgency.15.b
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_london_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_london_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_london_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+
+	# West Midlands 3/c
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 3
+			}
+		}
+		name = watson_insurgency.15.c
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_west_midlands_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_west_midlands_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_west_midlands_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+
+	# East England 4/d
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 4
+			}
+		}
+		name = watson_insurgency.15.d
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_east_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_east_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_east_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+	
+	# North England 5/e
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 5
+			}
+		}
+		name = watson_insurgency.15.e
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_north_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_north_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_north_england_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+
+	# Wales 6/f
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 6
+			}
+		}
+		name = watson_insurgency.15.f
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_wales_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_wales_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_wales_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+
+	# Scotland 7/g
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 7
+			}
+		}
+		name = watson_insurgency.15.g
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_scotland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_scotland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_scotland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+
+	# Northern Ireland 8/h
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 8
+			}
+		}
+		name = watson_insurgency.15.h
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_northern_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_northern_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_northern_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+	
+	# Dublin 9/i
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 9
+			}
+		}
+		name = watson_insurgency.15.i
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_dublin_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_dublin_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_dublin_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+
+	# Southwest Ireland 10/j
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 10
+			}
+		}
+		name = watson_insurgency.15.j
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_southwest_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_southwest_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_southwest_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+
+	# Northwest Ireland 11/k
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_teammates_gains_flag
+				value = 11
+			}
+		}
+		name = watson_insurgency.15.k
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_northwest_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_northwest_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_northwest_ireland_adding_teammates = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_teammates_gains_flag
+		}
+	}
+}
+
+#Welsh Gains
+country_event = {
+	id = watson_insurgency.16
+	title = watson_insurgency.16.t
+	desc = watson_insurgency.16.desc
+	picture = GFX_report_event_WTS_insurgency_attack
+	is_triggered_only = yes
+
+	# South England 1/a
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 1
+			}
+		}
+		name = watson_insurgency.16.a
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_south_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_south_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_south_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+
+	# London 2/b
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 2
+			}
+		}
+		name = watson_insurgency.16.b
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_london_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_london_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_london_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+
+	# West Midlands 3/c
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 3
+			}
+		}
+		name = watson_insurgency.16.c
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_west_midlands_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_west_midlands_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_west_midlands_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+
+	# East England 4/d
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 4
+			}
+		}
+		name = watson_insurgency.16.d
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_east_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_east_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_east_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+	
+	# North England 5/e
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 5
+			}
+		}
+		name = watson_insurgency.16.e
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_north_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_north_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_north_england_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+
+	# Wales 6/f
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 6
+			}
+		}
+		name = watson_insurgency.16.f
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_wales_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_wales_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_wales_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+
+	# Scotland 7/g
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 7
+			}
+		}
+		name = watson_insurgency.16.g
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_scotland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_scotland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_scotland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+
+	# Northern Ireland 8/h
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 8
+			}
+		}
+		name = watson_insurgency.16.h
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_northern_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_northern_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_northern_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+	
+	# Dublin 9/i
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 9
+			}
+		}
+		name = watson_insurgency.16.i
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_dublin_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_dublin_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_dublin_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+
+	# Southwest Ireland 10/j
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 10
+			}
+		}
+		name = watson_insurgency.16.j
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_southwest_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_southwest_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_southwest_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+
+	# Northwest Ireland 11/k
+	option = {
+		trigger = {
+			has_country_flag = {
+				flag = WTS_welsh_gains_flag
+				value = 11
+			}
+		}
+		name = watson_insurgency.16.k
+		random_list = {
+			60 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.05
+				}
+				WTS_northwest_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_small_tooltip
+			}
+			30 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.1
+				}
+				WTS_northwest_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_medium_tooltip
+			}
+			10 = {
+				set_temp_variable = {
+					var = pie_chart_change
+					value = 0.15
+				}
+				WTS_northwest_ireland_adding_welsh = yes
+				custom_effect_tooltip = WTS_insurgency_gains_large_tooltip
+			}
+		}
+		hidden_effect = {
+			clr_country_flag = WTS_welsh_gains_flag
+		}
+	}
+}
