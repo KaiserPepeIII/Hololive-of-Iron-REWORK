@@ -58,49 +58,54 @@ WTS_insurgency_oobs_ENG = {
 			}
 		}
 	}
-	every_state = {
-		limit = {
-			ROOT = {
-				is_capital = yes
-			}
-		}
+	capital_scope = {
 		create_unit = {
 			division = "name = \"1st Roundheads\" division_template = \"Roundhead Regiment\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"2nd Roundheads\" division_template = \"Roundhead Regiment\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"Free Corps Arthur\" division_template = \"Free Corps Brigade\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"Free Corps William\" division_template = \"Free Corps Brigade\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"Free Corps Cromwell\" division_template = \"Free Corps Brigade\" start_experience_factor = 0.55 start_equipment_factor = 0.75 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"Workers Brigade Alpha\" division_template = \"Worker Militia\" start_experience_factor = 0.15 start_equipment_factor = 0.3 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"Workers Brigade Beta\" division_template = \"Worker Militia\" start_experience_factor = 0.15 start_equipment_factor = 0.3 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"Workers Brigade Delta\" division_template = \"Worker Militia\" start_experience_factor = 0.15 start_equipment_factor = 0.3 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"Workers Brigade Echo\" division_template = \"Worker Militia\" start_experience_factor = 0.15 start_equipment_factor = 0.35 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 	}
+
 }
 
 WTS_insurgency_oobs_WLS = {
@@ -154,38 +159,38 @@ WTS_insurgency_oobs_WLS = {
 			}
 		}
 	}
-	every_state = {
-		limit = {
-			ROOT = {
-				is_capital = yes
-			}
-		}
+	capital_scope = {
 		create_unit = {
 			division = "name = \"1af 'Llywelyn' Brîgad\" division_template = \"Brigâd Gwirfoddolwyr Cymreig\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"2ail 'Dafydd' Brîgad\" division_template = \"Brigâd Gwirfoddolwyr Cymreig\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"3ydd 'Madoc' Brîgad\" division_template = \"Brigâd Gwirfoddolwyr Cymreig\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"4ydd 'Owain' Brîgad\" division_template = \"Brigâd Gwirfoddolwyr Cymreig\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
 			division = "name = \"1af 'Boudica' Marchogion\" division_template = \"Brigâd Rhyfelwyr\" start_experience_factor = 0.9 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 	}
 }
 
 WTS_insurgency_oobs_IRE = {
 	division_template = {
-		name = "PLACEHOLDER"
+		name = "Irish Liberation Brigade"
 		regiments = {
 			infantry = {
 				x = 0
@@ -214,7 +219,7 @@ WTS_insurgency_oobs_IRE = {
 		}
 	}
 	division_template = {
-		name = "PLACEHOLDER2"
+		name = "Guards Division"
 		regiments = {
 			guards = {
 				x = 0
@@ -229,40 +234,45 @@ WTS_insurgency_oobs_IRE = {
 				y = 2
 			}
 			guards = {
-				x = 0
+				x = 1
 				y = 0
+			}
+			guards = {
+				x = 1
+				y = 1
 			}
 		}
 	}
-	every_state = {
-		limit = {
-			ROOT = {
-				is_capital = yes
-			}
+	capital_scope = {
+		create_unit = {
+			division = "name = \"1st Liberation Brigade\" division_template = \"Irish Liberation Brigade\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
-			division = "name = \"1st Placeholder Divion\" division_template = \"Placeholder\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
-			owner = ROOT
+			division = "name = \"2nd Liberation Brigade\" division_template = \"Irish Liberation Brigade\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
-			division = "name = \"2nd Placeholder Divion\" division_template = \"Placeholder\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
-			owner = ROOT
+			division = "name = \"3rd Liberation Brigade\" division_template = \"Irish Liberation Brigade\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
-			division = "name = \"3rd Placeholder Divion\" division_template = \"Placeholder\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
-			owner = ROOT
+			division = "name = \"4th Liberation Brigade\" division_template = \"Irish Liberation Brigade\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
-			division = "name = \"4th Placeholder Divion\" division_template = \"Placeholder\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
-			owner = ROOT
+			division = "name = \"5th Liberation Brigade\" division_template = \"Irish Liberation Brigade\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 		create_unit = {
-			division = "name = \"5th Placeholder Divion\" division_template = \"Placeholder\" start_experience_factor = 0.4 start_equipment_factor = 0.7 start_manpower_factor = 1"
-			owner = ROOT
-		}
-		create_unit = {
-			division = "name = \"1th Placeholder Divion\" division_template = \"Placeholder2\" start_experience_factor = 0.6 start_equipment_factor = 0.8 start_manpower_factor = 1"
-			owner = ROOT
+			division = "name = \"1st Guards Division\" division_template = \"Guards Division\" start_experience_factor = 0.6 start_equipment_factor = 0.8 start_manpower_factor = 1"
+			owner = PREV
+			allow_spawning_on_enemy_provs = yes
 		}
 	}
 }
