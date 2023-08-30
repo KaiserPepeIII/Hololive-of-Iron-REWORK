@@ -3177,12 +3177,18 @@ focus_tree = {
 	focus = {
 		id = GEN_kd_dominance
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		allow_branch = {
 			has_government = neutrality
 			OR = {
 				has_completed_focus = GEN_continuing_the_good_work
 				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
 			}
 		}
 		x = 66
@@ -3191,9 +3197,12 @@ focus_tree = {
 	focus = {
 		id = GEN_lackies_in_office
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_kd_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_lackies_in_office_idea
 		}
 		x = 66
 		y = 8
@@ -3201,9 +3210,12 @@ focus_tree = {
 	focus = {
 		id = GEN_wealth_building
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_lackies_in_office
+		}
+		completion_reward = {
+			add_ideas = GEN_wealth_building_idea
 		}
 		x = 65
 		y = 9
@@ -3211,9 +3223,15 @@ focus_tree = {
 	focus = {
 		id = GEN_consolidating_power
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_lackies_in_office
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.15
+			}
 		}
 		x = 67
 		y = 9
@@ -3221,12 +3239,17 @@ focus_tree = {
 	focus = {
 		id = GEN_commercial_enterprise
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_wealth_building
 		}
 		prerequisite = {
 			focus = GEN_consolidating_power
+		}
+		completion_reward = {
+			two_random_civilian_factory = yes
+			two_random_civilian_factory = yes
+			two_random_civilian_factory = yes
 		}
 		x = 65
 		y = 10
@@ -3234,12 +3257,16 @@ focus_tree = {
 	focus = {
 		id = GEN_arms_dealing
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_wealth_building
 		}
 		prerequisite = {
 			focus = GEN_consolidating_power
+		}
+		completion_reward = {
+			two_random_arms_factory = yes
+			two_random_arms_factory = yes
 		}
 		x = 67
 		y = 10
@@ -3247,12 +3274,15 @@ focus_tree = {
 	focus = {
 		id = GEN_state_monopolies
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_commercial_enterprise
 		}
 		prerequisite = {
 			focus = GEN_arms_dealing
+		}
+		completion_reward = {
+			add_ideas = GEN_state_monopolies_idea
 		}
 		x = 66
 		y = 11
@@ -3260,9 +3290,17 @@ focus_tree = {
 	focus = {
 		id = GEN_wars_of_expansion
 		icon = GFX_goal_unknown
-		cost = 0
+		cost = 8
 		prerequisite = {
 			focus = GEN_state_monopolies
+		}
+		completion_reward = {
+			random_neighbor_country = {
+				create_wargoal = {
+					target = THIS
+					type = annex_everything
+				}
+			}
 		}
 		x = 66
 		y = 12
@@ -3503,8 +3541,7 @@ focus_tree = {
 			focus = GEN_extending_the_olive_branch
 		}
 		completion_reward = {
-			set_country_flag = GEN_professional_army_decisions_unlock
-			custom_effect_tooltip = GEN_professional_army_decisions_unlock_loc
+			army_experience = 25
 		}
 		x = 66
 		y = 11
