@@ -1,95 +1,345 @@
-one_random_militia = {
+GEN_get_starting_ideology = {
 	if = {
 		limit = {
-			NOT = {
-				has_template = "Nationalist Militia"
+			has_government = democratic
+		}
+		set_country_flag = GEN_pyc_start
+		else_if = {
+			limit = {
+				has_government = pro_yagoo_progressive
+			}
+			set_country_flag = GEN_pyp_start
+		}
+		else_if = {
+			limit = {
+				has_government = pro_yagoo_kleptocracy
+			}
+			set_country_flag = GEN_pyk_start
+		}
+		else_if = {
+			limit = {
+				has_government = pro_yagoo_monarchy
+			}
+			set_country_flag = GEN_pym_start
+		}
+		else_if = {
+			limit = {
+				has_government = communism
+			}
+			set_country_flag = GEN_prr_start
+		}
+		else_if = {
+			limit = {
+				has_government = pro_resistance_nationalism
+			}
+			set_country_flag = GEN_prn_start
+		}
+		else_if = {
+			limit = {
+				has_government = pro_resistance_kleptocracy
+			}
+			set_country_flag = GEN_prk_start
+		}
+		else_if = {
+			limit = {
+				has_government = pro_resistance_monarchy
+			}
+			set_country_flag = GEN_prm_start
+		}
+		else_if = {
+			limit = {
+				has_government = fascism
+			}
+			set_country_flag = GEN_nn_start
+		}
+		else_if = {
+			limit = {
+				has_government = left_wing_revolutionary
+			}
+			set_country_flag = GEN_lwr_start
+		}
+		else_if = {
+			limit = {
+				has_government = democratic_revitalisation
+			}
+			set_country_flag = GEN_dr_start
+		}
+		else_if = {
+			limit = {
+				has_government = reactionary_monarchy
+			}
+			set_country_flag = GEN_rm_start
+		}
+		else_if = {
+			limit = {
+				has_government = neutrality
+			}
+			set_country_flag = GEN_kd_start
+		}
+		else_if = {
+			limit = {
+				has_government = reactionary_nationalism
+			}
+			set_country_flag = GEN_rn_start
+		}
+		else_if = {
+			limit = {
+				has_government = mixed_ideology_democracy
+			}
+			set_country_flag = GEN_mid_start
+		}
+		else_if = {
+			limit = {
+				has_government = divine_mandate
+			}
+			set_country_flag = GEN_dm_start
+		}
+	}
+}
+
+GEN_grassroots_movement_popularity = {
+	if = {
+		limit = {
+			has_country_flag = pro_yagoo_conservative_discourse
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+		else_if = {
+			limit = {
+				has_country_flag = pro_yagoo_progressive_discourse
+			}
+			add_popularity = {
+				ideology = pro_yagoo_progressive
+				popularity = 0.1
 			}
 		}
-		division_template = {
-			name = "Nationalist Militia"
-			regiments = {
-				militia = {
-					x = 0
-					y = 0
-				}
-				militia = {
-					x = 0
-					y = 1
-				}
-				militia = {
-					x = 0
-					y = 2
-				}
-				militia = {
-					x = 0
-					y = 1
-				}
-				militia = {
-					x = 1
-					y = 1
-				}
-				militia = {
-					x = 2
-					y = 2
-				}
+		else_if = {
+			limit = {
+				has_country_flag = pro_yagoo_monarchy_discourse
+			}
+			add_popularity = {
+				ideology = pro_yagoo_monarchy
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = pro_yagoo_kleptocracy_discourse
+			}
+			add_popularity = {
+				ideology = pro_yagoo_kleptocracy
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = pro_resistance_revolutionary_discourse
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = pro_resistance_kleptocracy_discourse
+			}
+			add_popularity = {
+				ideology = pro_resistance_nationalism
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = pro_resistance_kleptocracy_discourse
+			}
+			add_popularity = {
+				ideology = pro_resistance_kleptocracy
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = pro_resistance_monarchy_discourse
+			}
+			add_popularity = {
+				ideology = pro_resistance_monarchy
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = new_nationalism_discourse
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = left_wing_revolutionary_discourse
+			}
+			add_popularity = {
+				ideology = left_wing_revolutionary
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = reactionary_monarchy_discourse
+			}
+			add_popularity = {
+				ideology = reactionary_monarchy
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = democratic_revitalisation_discourse
+			}
+			add_popularity = {
+				ideology = democratic_revitalisation
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = kleptocratic_dictatorship_discourse
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = reactionary_nationalism_discourse
+			}
+			add_popularity = {
+				ideology = reactionary_nationalism
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = mixed_ideology_democracy_discourse
+			}
+			add_popularity = {
+				ideology = mixed_ideology_democracy
+				popularity = 0.1
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = divine_mandate_discourse
+			}
+			add_popularity = {
+				ideology = divine_mandate
+				popularity = 0.1
 			}
 		}
 	}
-	capital_scope = {
-		create_unit = {
-			division = "name = \"Nationalist Militia\" division_template = \"Nationalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+}
+
+one_random_militia = {
+	THIS = {
+		if = {
+			limit = {
+				NOT = {
+					has_template = "Nationalist Militia"
+				}
+			}
+			division_template = {
+				name = "Nationalist Militia"
+				regiments = {
+					militia = {
+						x = 0
+						y = 0
+					}
+					militia = {
+						x = 0
+						y = 1
+					}
+					militia = {
+						x = 0
+						y = 2
+					}
+					militia = {
+						x = 0
+						y = 1
+					}
+					militia = {
+						x = 1
+						y = 1
+					}
+					militia = {
+						x = 2
+						y = 2
+					}
+				}
+			}
+		}
+		capital_scope = {
+			create_unit = {
+				division = "name = \"Nationalist Militia\" division_template = \"Nationalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = ROOT
+			}
 		}
 	}
 }
 
 two_random_militia = {
-	if = {
-		limit = {
-			NOT = {
-				has_template = "Nationalist Militia"
-			}
-		}
-		division_template = {
-			name = "Nationalist Militia"
-			regiments = {
-				militia = {
-					x = 0
-					y = 0
-				}
-				militia = {
-					x = 0
-					y = 1
-				}
-				militia = {
-					x = 0
-					y = 2
-				}
-				militia = {
-					x = 0
-					y = 1
-				}
-				militia = {
-					x = 1
-					y = 1
-				}
-				militia = {
-					x = 2
-					y = 2
+	THIS = {
+		if = {
+			limit = {
+				NOT = {
+					has_template = "Nationalist Militia"
 				}
 			}
+			division_template = {
+				name = "Nationalist Militia"
+				regiments = {
+					militia = {
+						x = 0
+						y = 0
+					}
+					militia = {
+						x = 0
+						y = 1
+					}
+					militia = {
+						x = 0
+						y = 2
+					}
+					militia = {
+						x = 0
+						y = 1
+					}
+					militia = {
+						x = 1
+						y = 1
+					}
+					militia = {
+						x = 2
+						y = 2
+					}
+				}
+			}
 		}
-	}
-	capital_scope = {
-		create_unit = {
-			division = "name = \"Nationalist Militia\" division_template = \"Nationalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+		capital_scope = {
+			create_unit = {
+				division = "name = \"Nationalist Militia\" division_template = \"Nationalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = ROOT
+			}
 		}
-	}
-	capital_scope = {
-		create_unit = {
-			division = "name = \"Nationalist Militia\" division_template = \"Nationalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-			owner = ROOT
+		capital_scope = {
+			create_unit = {
+				division = "name = \"Nationalist Militia\" division_template = \"Nationalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+				owner = ROOT
+			}
 		}
 	}
 }
@@ -382,6 +632,45 @@ two_random_dockyards = {
 			type = dockyard
 			level = 2
 			instant_build = yes
+		}
+	}
+}
+
+hloi_up_conscription_law = {
+	if = {
+		limit = {
+			has_idea = disarmed_nation
+		}
+		add_ideas = volunteer_only
+		else_if = {
+			limit = {
+				has_idea = volunteer_only
+			}
+			add_ideas = limited_conscription
+		}
+		else_if = {
+			limit = {
+				has_idea = limited_conscription
+			}
+			add_ideas = extensive_conscription
+		}
+		else_if = {
+			limit = {
+				has_idea = extensive_conscription
+			}
+			add_ideas = service_by_requirement
+		}
+		else_if = {
+			limit = {
+				has_idea = extensive_conscription
+			}
+			add_ideas = all_adults_serve
+		}
+		else_if = {
+			limit = {
+				has_idea = all_adults_serve
+			}
+			add_ideas = scraping_the_barrel
 		}
 	}
 }
