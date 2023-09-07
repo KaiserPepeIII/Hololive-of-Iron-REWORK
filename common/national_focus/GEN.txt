@@ -3296,10 +3296,14 @@ focus_tree = {
 		}
 		completion_reward = {
 			random_neighbor_country = {
-				create_wargoal = {
-					target = THIS
-					type = annex_everything
+				set_temp_variable = {
+					var = generic_tree_wargoal_target
+					value = THIS.id
 				}
+			}
+			create_wargoal = {
+				target = var:generic_tree_wargoal_target
+				type = annex_everything
 			}
 		}
 		x = 66
@@ -3515,7 +3519,8 @@ focus_tree = {
 			focus = GEN_technocratic_expertise
 		}
 		completion_reward = {
-			add_ideas = GEN_extending_the_olive_branch_idea
+			two_random_civilian_factory = yes
+			two_random_civilian_factory = yes
 		}
 		x = 66
 		y = 10
@@ -3554,7 +3559,7 @@ focus_tree = {
 			focus = GEN_extending_the_olive_branch
 		}
 		completion_reward = {
-			add_ideas = GEN_just_war_idea
+			add_ideas = GEN_resources_for_the_nation_idea
 		}
 		x = 68
 		y = 11
@@ -3704,11 +3709,23 @@ focus_tree = {
 						x = 1
 						y = 2
 					}
+					guards = {
+						x = 2
+						y = 0
+					}
+					guards = {
+						x = 2
+						y = 1
+					}
+					guards = {
+						x = 2
+						y = 2
+					}
 				}
 			}
 			capital_scope = {
 				create_unit = {
-					division = "name = \"The Most Devoted\" division_template = \"The Most Devoted\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
+					division = "name = \"The Most Devoted\" division_template = \"The Most Devoted\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
 					owner = ROOT
 				}
 			}
@@ -3731,10 +3748,14 @@ focus_tree = {
 		}
 		completion_reward = {
 			random_neighbor_country = {
-				create_wargoal = {
-					target = THIS
-					type = annex_everything
+				set_temp_variable = {
+					var = generic_tree_wargoal_target
+					value = THIS.id
 				}
+			}
+			create_wargoal = {
+				target = var:generic_tree_wargoal_target
+				type = annex_everything
 			}
 		}
 		x = 66
