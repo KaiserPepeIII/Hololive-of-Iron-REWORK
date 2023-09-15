@@ -897,20 +897,23 @@ country_event = {
 	option = {
 		name = suisei.32.a
 		effect_tooltip = {
-			SUI_hoshimachi_suisei_democratic = {
+			SUI_hoshimachi_suisei_divine_mandate = {
 				add_country_leader_trait = SUI_enlightened_monarch_trait
 			}
 		}
 		hidden_effect = {
-			every_character = {
-				limit = {
-					tag = SUI
-					has_trait = hololive_leader
+			SUI = {
+				every_character = {
+					limit = {
+						has_trait = hololive_leader
+					}
+					add_country_leader_trait = SUI_enlightened_monarch_trait
 				}
-				add_country_leader_trait = SUI_enlightened_monarch_trait
 			}
 		}
-		clr_country_flag = SUI_quell_resistance
+		SUI = {
+			clr_country_flag = SUI_quell_resistance
+		}
 	}
 }
 
@@ -932,17 +935,18 @@ country_event = {
 	option = {
 		name = suisei.35.a
 		effect_tooltip = {
-			SUI_hoshimachi_suisei_democratic = {
+			SUI_hoshimachi_suisei_divine_mandate = {
 				add_country_leader_trait = SUI_the_autocrat_trait
 			}
 		}
 		hidden_effect = {
-			every_character = {
-				limit = {
-					tag = SUI
-					has_trait = hololive_leader
+			SUI = {
+				every_character = {
+					limit = {
+						has_trait = hololive_leader
+					}
+					add_country_leader_trait = SUI_the_autocrat_trait
 				}
-				add_country_leader_trait = SUI_the_autocrat_trait
 			}
 		}
 		SUI = {
@@ -950,6 +954,7 @@ country_event = {
 			clr_country_flag = suisei_down_opposition_three
 			clr_country_flag = suisei_down_opposition_two
 			clr_country_flag = SUI_quell_resistance
+			set_country_flag = SUI_no_resistance
 		}
 	}
 }
