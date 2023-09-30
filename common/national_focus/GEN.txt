@@ -1920,7 +1920,7 @@ focus_tree = {
 	}
 	focus = {
 		id = GEN_stable_government
-		icon = GFX_focus_GEN_stable_gover
+		icon = GFX_focus_GEN_stable_government
 		cost = 7
 		prerequisite = {
 			focus = GEN_reinforce_establishment
@@ -2072,6 +2072,12 @@ focus_tree = {
 				has_completed_focus = GEN_a_new_government
 			}
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
 		x = 66
 		y = 6
 	}
@@ -2082,6 +2088,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_pyc_dominance
 		}
+		completion_reward = {
+			add_ideas = {
+				GEN_living_off_the_earth_idea
+			}
+		}
 		x = 63
 		y = 7
 	}
@@ -2091,6 +2102,11 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_pyc_dominance
+		}
+		completion_reward = {
+			add_ideas = {
+				GEN_pragmatic_spending_idea
+			}
 		}
 		x = 65
 		y = 7
@@ -2105,6 +2121,21 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_pragmatic_spending
 		}
+		completion_reward = {
+			add_ideas = {
+				GEN_resources_for_the_fatherland_idea
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 5
+				}
+				add_resource = {
+					type = aluminium
+					amount = 3
+				}
+			}
+		}
 		x = 64
 		y = 8
 	}
@@ -2115,6 +2146,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_pyc_dominance
 		}
+		completion_reward = {
+			add_ideas = {
+				GEN_family_focus_idea
+			}
+		}
 		x = 67
 		y = 7
 	}
@@ -2124,6 +2160,9 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_pyc_dominance
+		}
+		completion_reward = {
+			add_war_support = 0.15
 		}
 		x = 69
 		y = 7
@@ -2138,6 +2177,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_patriotism
 		}
+		completion_reward = {
+			add_ideas = {
+				GEN_knowing_the_land_idea
+			}
+		}
 		x = 68
 		y = 8
 	}
@@ -2150,6 +2194,13 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GEN_knowing_the_land
+		}
+		completion_reward = {
+			add_stability = 0.2
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.15
+			}
 		}
 		x = 66
 		y = 9
@@ -2168,6 +2219,12 @@ focus_tree = {
 				has_completed_focus = GEN_a_new_government
 			}
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
 		x = 66
 		y = 6
 	}
@@ -2177,6 +2234,11 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_pyp_dominance
+		}
+		completion_reward = {
+			add_ideas = {
+				GEN_benevolent_overlords_idea
+			}
 		}
 		x = 64
 		y = 7
@@ -2188,6 +2250,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_benevolent_overlords
 		}
+		completion_reward = {
+			add_ideas = {
+				GEN_world_policeman_idea
+			}
+		}
 		x = 64
 		y = 8
 	}
@@ -2198,6 +2265,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_pyp_dominance
 		}
+		completion_reward = {
+			add_ideas = {
+				GEN_research_progress_idea
+			}
+		}
 		x = 66
 		y = 7
 	}
@@ -2207,6 +2279,29 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_pyp_dominance
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 		x = 68
 		y = 7
@@ -2222,6 +2317,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_research_progress
 		}
+		completion_reward = {
+			add_ideas = {
+				GEN_women_work_idea
+			}
+		}
 		x = 66
 		y = 8
 	}
@@ -2231,6 +2331,17 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_infrastructure_development
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 3
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 3
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 3
+			}
 		}
 		x = 68
 		y = 8
@@ -2247,6 +2358,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GEN_we_must_build_higher
+		}
+		completion_reward = {
+			add_stability = 0.2
 		}
 		x = 66
 		y = 9
@@ -2265,6 +2379,12 @@ focus_tree = {
 				has_completed_focus = GEN_a_new_government
 			}
 		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
 		x = 66
 		y = 6
 	}
@@ -2274,6 +2394,11 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_pyk_dominance
+		}
+		completion_reward = {
+			add_ideas = {
+				GEN_exploit_resources_idea
+			}
 		}
 		x = 64
 		y = 7
@@ -2285,6 +2410,15 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_exploit_resources
 		}
+		completion_reward = {
+			add_political_power = 125
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
 		x = 62
 		y = 8
 	}
@@ -2294,6 +2428,12 @@ focus_tree = {
 		cost = 8
 		prerequisite = {
 			focus = GEN_exploit_resources
+		}
+		completion_reward = {
+			add_political_power = 125
+			add_ideas = {
+				GEN_work_with_foreign_companies_idea
+			}
 		}
 		x = 64
 		y = 8
@@ -2308,15 +2448,26 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_work_with_foreign_companies
 		}
+		completion_reward = {
+			add_political_power = 125
+			add_ideas = {
+				GEN_forced_labour_idea
+			}
+		}
 		x = 63
 		y = 9
 	}
 	focus = {
 		id = GEN_support_allies_abroad
-		icon = GFX_focus_GEN_support_allies_abroad
+		icon = GFX_focus_GEN_support_antis_abroad
 		cost = 8
 		prerequisite = {
 			focus = GEN_pyk_dominance
+		}
+		completion_reward = {
+			add_ideas = {
+				GEN_support_allies_abroad_idea
+			}
 		}
 		x = 66
 		y = 7
@@ -2328,6 +2479,50 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_support_allies_abroad
 		}
+		completion_reward = {
+			division_template = {
+				name = "Presidential Guards"
+				regiments = {
+					guards = {
+						x = 0
+						y = 0
+					}
+					guards = {
+						x = 0
+						y = 1
+					}
+					guards = {
+						x = 0
+						y = 2
+					}
+					guards = {
+						x = 1
+						y = 0
+					}
+					guards = {
+						x = 1
+						y = 1
+					}
+					guards = {
+						x = 1
+						y = 2
+					}
+				}
+				support = {
+					military_police = {
+						x = 0
+						y = 0
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Presidential Guards\" division_template = \"Presidential Guards\" start_experience_factor = 0.25 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = PREV
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
 		x = 66
 		y = 8
 	}
@@ -2338,6 +2533,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GEN_work_with_foreign_companies
 			focus = GEN_loyal_guard
+		}
+		completion_reward = {
+			add_ideas = {
+				GEN_iron_grip_idea
+			}
 		}
 		x = 65
 		y = 9
