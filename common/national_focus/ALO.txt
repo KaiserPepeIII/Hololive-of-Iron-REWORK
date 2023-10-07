@@ -2931,16 +2931,31 @@ focus_tree = {
 		cost = 8
 		bypass = {
 			OR = {
-				CZE = {
-					OR = {
-						is_puppet_of = ALO
-						is_subject_of = ALO
-						exists = no
+				AND = {
+					FUW = {
+						OR = {
+							is_puppet_of = ALO
+							is_subject_of = ALO
+							exists = no
+						}
+						has_war_with = ALO
 					}
-					has_war_with = ALO
+					ALO = {
+						has_wargoal_against = FUW
+					}
 				}
-				ALO = {
-					has_wargoal_against = CZE
+				AND = {
+					MOC = {
+						OR = {
+							is_puppet_of = ALO
+							is_subject_of = ALO
+							exists = no
+						}
+						has_war_with = ALO
+					}
+					ALO = {
+						has_wargoal_against = MOC
+					}
 				}
 			}
 		}
@@ -2949,7 +2964,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_threat = 1.5
-			CZE = {
+			FUW = {
+				country_event = czech.3
+			}
+			MOC = {
 				country_event = czech.3
 			}
 		}
