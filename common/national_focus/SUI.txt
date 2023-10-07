@@ -31,6 +31,12 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = suisei.95
+			hidden_effect = {
+				country_event = {
+				id = suisei.171
+				days = 20 
+			}
+		}
 			swap_ideas = {
 				remove_idea = great_depression_suisei
 				add_idea = great_depression_suisei_one
@@ -285,7 +291,7 @@ focus_tree = {
 				value = 3
 				tooltip = colonial_unrest_decrease_greatly
 			}
-			add_political_power = -100
+			add_political_power = -75
 			add_stability = 0.05
 		}
 		x = 11
@@ -1139,6 +1145,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			custom_effect_tooltip = SUI_fix_parliament
+			GEN_add_parliament_cohesion_two = yes
 			mark_focus_tree_layout_dirty  = yes 
 			add_popularity = {
 				ideology = var:current_party_ideology_group
@@ -5174,6 +5182,9 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_deal_with_depression
 		}
+		bypass = {
+			has_idea = limited_exports
+		}
 		completion_reward = {
 			remove_ideas = {
 				export_focus
@@ -5304,6 +5315,9 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			set_rule = {
+				can_not_declare_war = no
+			}
 			country_event = suisei.93
 			custom_effect_tooltip = cores_on_france
 			custom_effect_tooltip = SUI_temp_loc
@@ -5478,12 +5492,6 @@ focus_tree = {
 		}
 		bypass = {
 			OR = {
-				FRA = {
-					OR = {
-						exists = no
-						has_war_with = KIA
-					}
-				}
 				SUI = {
 					has_wargoal_against = KIA
 				}
