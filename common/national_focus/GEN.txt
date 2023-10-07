@@ -2006,6 +2006,7 @@ focus_tree = {
 			focus = GEN_change_of_course
 		}
 		completion_reward = {
+			custom_effect_tooltip = GEN_unlock_focus_tree
 			mark_focus_tree_layout_dirty = yes
 		}
 		complete_tooltip = {
@@ -2050,6 +2051,7 @@ focus_tree = {
 			focus = GEN_status_quo
 		}
 		completion_reward = {
+			custom_effect_tooltip = GEN_unlock_focus_tree
 			mark_focus_tree_layout_dirty = yes
 		}
 		complete_tooltip = {
@@ -2672,6 +2674,7 @@ focus_tree = {
 	focus = {
 		id = GEN_prr_dominance
 		icon = GFX_focus_GEN_prr_dominance
+<<<<<<< Updated upstream
 		cost = 8
 		allow_branch = {
 			has_government = communism
@@ -3803,6 +3806,1359 @@ focus_tree = {
 	focus = {
 		id = GEN_kd_dominance
 		icon = GFX_focus_GEN_kd_dominance
+=======
+>>>>>>> Stashed changes
+		cost = 8
+		allow_branch = {
+			has_government = communism
+			OR = {
+				has_completed_focus = GEN_continuing_the_good_work
+				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 66
+		y = 7
+	}
+	focus = {
+<<<<<<< Updated upstream
+		id = GEN_lackies_in_office
+		icon = GFX_focus_GEN_lackies_in_office
+=======
+		id = GEN_curtailing_local_counterrevolutionaries
+		icon = GFX_focus_GEN_curtailing_local_counterrevolutionaries
+>>>>>>> Stashed changes
+		cost = 8
+		prerequisite = {
+			focus = GEN_prr_dominance
+		}
+		completion_reward = {
+			custom_effect_tooltip = GEN_curtailing_local_counterrevolutionaries_tooltip
+			hidden_effect = {
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_yagoo_monarchy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_resistance_monarchy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = democratic_revitalisation
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = reactionary_monarchy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = mixed_ideology_democracy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = reactionary_nationalism
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = divine_mandate
+					popularity = -0.1
+				}
+			}
+		}
+		x = 64
+		y = 8
+	}
+	focus = {
+		id = GEN_backend_channels
+		icon = GFX_focus_GEN_backend_channels
+		cost = 8
+		prerequisite = {
+			focus = GEN_curtailing_local_counterrevolutionaries
+		}
+		completion_reward = {
+			custom_effect_tooltip = GEN_backend_channels_tooltip
+			set_country_flag = GEN_backend_channels_flag
+		}
+		x = 63
+		y = 9
+	}
+	focus = {
+		id = GEN_resistance_solidarity
+		icon = GFX_focus_GEN_resistance_solidarity
+		cost = 8
+		prerequisite = {
+			focus = GEN_prr_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_resistance_solidarity_idea
+		}
+		x = 66
+		y = 8
+	}
+	focus = {
+<<<<<<< Updated upstream
+		id = GEN_wealth_building
+		icon = GFX_focus_GEN_wealth_building
+=======
+		id = GEN_training_the_vanguard
+		icon = GFX_focus_GEN_training_the_vanguard
+>>>>>>> Stashed changes
+		cost = 8
+		prerequisite = {
+			focus = GEN_prr_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_training_the_vanguard_idea
+		}
+		x = 68
+		y = 8
+	}
+	focus = {
+		id = GEN_spreading_the_revolution
+		icon = GFX_focus_GEN_spreading_the_revolution
+		cost = 8
+		prerequisite = {
+			focus = GEN_resistance_solidarity
+		}
+		prerequisite = {
+			focus = GEN_curtailing_local_counterrevolutionaries
+		}
+		prerequisite = {
+			focus = GEN_training_the_vanguard
+		}
+		completion_reward = {
+			add_ideas = GEN_spreading_the_revolution_idea
+		}
+		x = 66
+		y = 9
+	}
+	focus = {
+<<<<<<< Updated upstream
+		id = GEN_consolidating_power
+		icon = GFX_focus_GEN_consolidating_power
+=======
+		id = GEN_waiting_out_the_yagooists
+		icon = GFX_focus_GEN_waiting_out_the_yagooists
+>>>>>>> Stashed changes
+		cost = 8
+		prerequisite = {
+			focus = GEN_spreading_the_revolution
+		}
+		completion_reward = {
+			add_stability = 0.15
+		}
+		x = 66
+		y = 10
+	}
+	focus = {
+		id = GEN_intelligence_agency
+		icon = GFX_focus_GEN_intelligence_agency
+		cost = 8
+		prerequisite = {
+			focus = GEN_training_the_vanguard
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_ideas = GEN_intelligence_agency_idea_lar
+				else = {
+					add_ideas = GEN_intelligence_agency_idea_legacy
+				}
+			}
+		}
+		x = 69
+		y = 9
+	}
+	###############
+	##############
+	##############
+	focus = {
+		id = GEN_prn_dominance
+		icon = GFX_focus_GEN_prn_dominance
+		cost = 8
+		allow_branch = {
+			has_government = pro_resistance_nationalism
+			OR = {
+				has_completed_focus = GEN_continuing_the_good_work
+				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 66
+		y = 7
+	}
+	focus = {
+		id = GEN_preparing_the_war_machine
+		icon = GFX_focus_GEN_preparing_the_war_machine
+		cost = 8
+		prerequisite = {
+			focus = GEN_prn_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_preparing_the_war_machine_idea
+		}
+		x = 65
+		y = 8
+	}
+	focus = {
+		id = GEN_factory_conversions
+		icon = GFX_focus_GEN_factory_conversions
+		cost = 8
+		prerequisite = {
+			focus = GEN_preparing_the_war_machine
+		}
+		completion_reward = {
+			add_ideas = GEN_factory_conversions_idea
+			two_converted_factories = yes
+		}
+		x = 64
+		y = 10
+	}
+	focus = {
+		id = GEN_all_men_for_the_army
+		icon = GFX_focus_GEN_all_men_for_the_army
+		cost = 8
+		prerequisite = {
+			focus = GEN_prn_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_all_men_for_the_army_idea
+		}
+		x = 67
+		y = 8
+	}
+	focus = {
+		id = GEN_conquer
+		icon = GFX_focus_GEN_conquer
+		cost = 8
+		prerequisite = {
+			focus = GEN_preparing_the_war_machine
+			focus = GEN_all_men_for_the_army
+		}
+		completion_reward = {
+			add_ideas = GEN_conquer_idea
+		}
+		x = 66
+		y = 9
+	}
+	focus = {
+<<<<<<< Updated upstream
+		id = GEN_commercial_enterprise
+		icon = GFX_focus_GEN_commercial_enterprise
+=======
+		id = GEN_local_collaboration
+		icon = GFX_focus_GEN_local_collaboration
+>>>>>>> Stashed changes
+		cost = 8
+		prerequisite = {
+			focus = GEN_conquer
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				add_resistance = -15
+				add_compliance = 5
+			}
+			add_ideas = GEN_local_collaboration_idea
+		}
+		x = 66
+		y = 10
+	}
+	focus = {
+		id = GEN_the_long_war
+		icon = GFX_focus_GEN_the_long_war
+		cost = 8
+		prerequisite = {
+			focus = GEN_all_men_for_the_army
+		}
+		completion_reward = {
+			add_ideas = GEN_the_long_war_idea
+		}
+		x = 68
+		y = 10
+	}
+	focus = {
+		id = GEN_continued_warfare
+		icon = GFX_focus_GEN_continued_warfare
+		cost = 8
+		prerequisite = {
+			focus = GEN_factory_conversions
+			focus = GEN_the_long_war
+		}
+		completion_reward = {
+			add_war_support = 0.25
+		}
+		x = 66
+		y = 11
+	}
+	###############
+	##############
+	##############
+	focus = {
+		id = GEN_prk_dominance
+		icon = GFX_focus_GEN_prk_dominance
+		cost = 8
+		allow_branch = {
+			has_government = pro_resistance_kleptocracy
+			OR = {
+				has_completed_focus = GEN_continuing_the_good_work
+				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 66
+		y = 7
+	}
+	focus = {
+		id = GEN_well_funded_agency
+		icon = GFX_focus_GEN_well_funded_agency
+		cost = 8
+		prerequisite = {
+			focus = GEN_prk_dominance
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_ideas = GEN_well_funded_agency_idea_lar
+				else = {
+					add_ideas = GEN_well_funded_agency_idea_legacy
+				}
+			}
+		}
+		x = 66
+		y = 8
+	}
+	focus = {
+		id = GEN_silent_observation
+		icon = GFX_focus_GEN_silent_observation
+		cost = 8
+		prerequisite = {
+			focus = GEN_well_funded_agency
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_ideas = GEN_silent_observation_idea_lar
+				else = {
+					add_ideas = GEN_silent_observation_idea_legacy
+				}
+			}
+		}
+		x = 65
+		y = 9
+	}
+	focus = {
+		id = GEN_battlefield_knowledge
+		icon = GFX_focus_GEN_battlefield_knowledge
+		cost = 8
+		prerequisite = {
+			focus = GEN_silent_observation
+		}
+		completion_reward = {
+			add_ideas = GEN_battlefield_knowledge_idea
+		}
+		x = 65
+		y = 10
+	}
+	focus = {
+<<<<<<< Updated upstream
+		id = GEN_arms_dealing
+		icon = GFX_focus_GEN_arms_dealing
+=======
+		id = GEN_subversion
+		icon = GFX_focus_GEN_subversion
+>>>>>>> Stashed changes
+		cost = 8
+		prerequisite = {
+			focus = GEN_keeping_the_peace
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_ideas = GEN_subversion_idea_lar
+				else = {
+					add_ideas = GEN_subversion_idea_legacy
+				}
+			}
+		}
+		x = 67
+		y = 10
+	}
+	focus = {
+<<<<<<< Updated upstream
+		id = GEN_state_monopolies
+		icon = GFX_focus_GEN_state_monopolies
+=======
+		id = GEN_keeping_the_peace
+		icon = GFX_focus_GEN_keeping_the_peace
+>>>>>>> Stashed changes
+		cost = 8
+		prerequisite = {
+			focus = GEN_well_funded_agency
+		}
+		completion_reward = {
+			add_ideas = GEN_keeping_the_peace_idea
+		}
+		x = 67
+		y = 9
+	}
+	focus = {
+		id = GEN_secret_service_divisions
+		icon = GFX_focus_GEN_secret_service_divisions
+		cost = 8
+		prerequisite = {
+			focus = GEN_battlefield_knowledge
+		}
+		prerequisite = {
+			focus = GEN_subversion
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_tech = tech_support
+					}
+				}
+				set_technology = {
+					tech_support = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_tech = tech_military_police
+					}
+				}
+				set_technology = {
+					tech_military_police = 1
+				}
+			}
+			division_template = {
+				name = "Secret Service Division"
+				regiments = {
+					guards = {
+						x = 0
+						y = 0
+					}
+					guards = {
+						x = 0
+						y = 1
+					}
+					guards = {
+						x = 0
+						y = 2
+					}
+					guards = {
+						x = 1
+						y = 0
+					}
+					guards = {
+						x = 1
+						y = 1
+					}
+					guards = {
+						x = 1
+						y = 2
+					}
+				}
+				support = {
+					military_police = {
+						x = 0
+						y = 0
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Secret Service Division\" division_template = \"Secret Service Division\" start_experience_factor = 0.25 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = PREV
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+		x = 66
+		y = 11
+	}
+	focus = {
+<<<<<<< Updated upstream
+		id = GEN_wars_of_expansion
+		icon = GFX_focus_GEN_wars_of_expansion
+=======
+		id = GEN_the_asacoco_trade
+		icon = GFX_focus_GEN_the_asacoco_trade
+>>>>>>> Stashed changes
+		cost = 8
+		prerequisite = {
+			focus = GEN_secret_service_divisions
+		}
+		completion_reward = {
+<<<<<<< Updated upstream
+			random_neighbor_country = {
+				set_temp_variable = {
+					var = generic_tree_wargoal_target
+					value = THIS.id
+				}
+			}
+			create_wargoal = {
+				target = var:generic_tree_wargoal_target
+				type = annex_everything
+			}
+=======
+			add_ideas = GEN_the_asacoco_trade_idea
+>>>>>>> Stashed changes
+		}
+		x = 66
+		y = 12
+	}
+	###############
+	##############
+	##############
+	focus = {
+		id = GEN_prm_dominance
+		icon = GFX_focus_GEN_prm_dominance
+		cost = 8
+		allow_branch = {
+			has_government = pro_resistance_monarchy
+			OR = {
+				has_completed_focus = GEN_continuing_the_good_work
+				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 66
+		y = 7
+	}
+	focus = {
+		id = GEN_military_industry_investments
+		icon = GFX_focus_GEN_military_industry_investments
+		cost = 8
+		prerequisite = {
+			focus = GEN_prm_dominance
+		}
+		completion_reward = {
+			two_random_arms_factory = yes
+			two_random_arms_factory = yes
+		}
+		x = 65
+		y = 8
+	}
+	focus = {
+		id = GEN_stockpiling_for_war
+		icon = GFX_focus_GEN_stockpiling_for_war
+		cost = 8
+		prerequisite = {
+			focus = GEN_military_industry_investments
+		}
+		completion_reward = {
+			add_ideas = GEN_stockpiling_for_war_idea
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = fuel_silo
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+		}
+		x = 64
+		y = 9
+	}
+	focus = {
+		id = GEN_providing_weaponry
+		icon = GFX_focus_GEN_providing_weaponry
+		cost = 8
+		prerequisite = {
+			focus = GEN_prm_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_providing_weaponry_idea
+		}
+		x = 67
+		y = 8
+	}
+	focus = {
+		id = GEN_royal_engineers
+		icon = GFX_focus_GEN_royal_engineers
+		cost = 8
+		prerequisite = {
+			focus = GEN_military_industry_investments
+		}
+		prerequisite = {
+			focus = GEN_providing_weaponry
+		}
+		completion_reward = {
+			add_ideas = GEN_royal_engineers_idea
+		}
+		x = 66
+		y = 9
+	}
+	focus = {
+		id = GEN_specialized_buildings
+		icon = GFX_focus_GEN_specialized_buildings
+		cost = 8
+		prerequisite = {
+			focus = GEN_providing_weaponry
+		}
+		completion_reward = {
+			add_ideas = GEN_specialized_buildings_idea
+		}
+		x = 68
+		y = 9
+	}
+	focus = {
+		id = GEN_resistance_guards
+		icon = GFX_focus_GEN_resistance_guards
+		cost = 8
+		prerequisite = {
+			focus = GEN_royal_engineers
+		}
+		prerequisite = {
+			focus = GEN_stockpiling_for_war
+		}
+		completion_reward = {
+			division_template = {
+				name = "Royal Guards"
+				regiments = {
+					guards = {
+						x = 0
+						y = 0
+					}
+					guards = {
+						x = 0
+						y = 1
+					}
+					guards = {
+						x = 0
+						y = 2
+					}
+					guards = {
+						x = 1
+						y = 0
+					}
+					guards = {
+						x = 1
+						y = 1
+					}
+					guards = {
+						x = 1
+						y = 2
+					}
+					cavalry = {
+						x = 2
+						y = 0
+					}
+					cavalry = {
+						x = 2
+						y = 1
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Royal Guards\" division_template = \"Royal Guards\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = PREV
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+		x = 64
+		y = 10
+	}
+	focus = {
+		id = GEN_fueling_the_war_effort
+		icon = GFX_focus_GEN_fueling_the_war_effort
+		cost = 8
+		prerequisite = {
+			focus = GEN_specialized_buildings
+		}
+		prerequisite = {
+			focus = GEN_royal_engineers
+		}
+		completion_reward = {
+			add_ideas = GEN_fueling_the_war_effort_idea
+		}
+		x = 68
+		y = 10
+	}
+	###############
+	##############
+	##############
+	focus = {
+		id = GEN_nn_dominance
+		icon = GFX_focus_GEN_nn_dominance
+		cost = 8
+		allow_branch = {
+			has_government = fascism
+			OR = {
+				has_completed_focus = GEN_continuing_the_good_work
+				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 66
+		y = 7
+	}
+	focus = {
+		id = GEN_land_appropriation
+		icon = GFX_focus_GEN_land_appropriation
+		cost = 8
+		prerequisite = {
+			focus = GEN_nn_dominance
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		x = 66
+		y = 8
+	}
+	focus = {
+		id = GEN_organize_paramilitaries
+		icon = GFX_focus_GEN_organize_paramilitaries
+		cost = 8
+		prerequisite = {
+			focus = GEN_land_appropriation
+		}
+		completion_reward = {
+			two_random_militia = yes
+			one_random_militia = yes
+		}
+		x = 64
+		y = 9
+	}
+	focus = {
+		id = GEN_autarky
+		icon = GFX_focus_GEN_autarky
+		cost = 8
+		prerequisite = {
+			focus = GEN_land_appropriation
+		}
+		completion_reward = {
+			add_ideas = GEN_autarky_idea
+		}
+		x = 66
+		y = 9
+	}
+	focus = {
+		id = GEN_ermergency_production
+		icon = GFX_focus_GEN_ermergency_production
+		cost = 8
+		prerequisite = {
+			focus = GEN_organize_paramilitaries
+			focus = GEN_autarky
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 600
+			}
+		}
+		x = 65
+		y = 10
+	}
+	focus = {
+		id = GEN_surrounded_by_all_sides
+		icon = GFX_focus_GEN_surrounded_by_all_sides
+		cost = 8
+		prerequisite = {
+			focus = GEN_land_appropriation
+		}
+		completion_reward = {
+		}
+		x = 68
+		y = 9
+	}
+	focus = {
+		id = GEN_propaganda
+		icon = GFX_focus_GEN_propaganda
+		cost = 8
+		prerequisite = {
+			focus = GEN_autarky
+			focus = GEN_surrounded_by_all_sides
+		}
+		completion_reward = {
+			add_war_support = 0.15
+		}
+		x = 67
+		y = 10
+	}
+	focus = {
+		id = GEN_protecting_the_fatherland
+		icon = GFX_focus_GEN_protecting_the_fatherland
+		cost = 8
+		prerequisite = {
+			focus = GEN_ermergency_production
+		}
+		prerequisite = {
+			focus = GEN_propaganda
+		}
+		completion_reward = {
+			add_ideas = GEN_protecting_the_fatherland_idea
+		}
+		x = 66
+		y = 11
+	}
+	###############
+	##############
+	##############
+	focus = {
+		id = GEN_lwr_dominance
+		icon = GFX_focus_GEN_lwr_dominance
+		cost = 8
+		allow_branch = {
+			has_government = left_wing_revolutionary
+			OR = {
+				has_completed_focus = GEN_continuing_the_good_work
+				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 66
+		y = 7
+	}
+	focus = {
+		id = GEN_foreign_volunteers
+		icon = GFX_focus_GEN_foreign_volunteers
+		cost = 8
+		prerequisite = {
+			focus = GEN_lwr_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_foreign_volunteers_idea
+		}
+		x = 64
+		y = 8
+	}
+	focus = {
+		id = GEN_revolutionary_fervour
+		icon = GFX_focus_GEN_revolutionary_fervor
+		cost = 8
+		prerequisite = {
+			focus = GEN_lwr_dominance
+		}
+		completion_reward = {
+			add_war_support = 0.15
+		}
+		x = 66
+		y = 8
+	}
+	focus = {
+		id = GEN_united_by_class
+		icon = GFX_focus_GEN_united_by_class
+		cost = 8
+		prerequisite = {
+			focus = GEN_lwr_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_united_by_class_idea
+		}
+		x = 68
+		y = 8
+	}
+	focus = {
+		id = GEN_progress_at_all_costs
+		icon = GFX_focus_GEN_progress_at_all_costs
+		cost = 8
+		prerequisite = {
+			focus = GEN_revolutionary_fervour
+		}
+		prerequisite = {
+			focus = GEN_foreign_volunteers
+		}
+		prerequisite = {
+			focus = GEN_united_by_class
+		}
+		completion_reward = {
+			add_ideas = GEN_progress_at_all_costs_idea
+		}
+		x = 66
+		y = 9
+	}
+	focus = {
+		id = GEN_fighting_oppression
+		icon = GFX_focus_GEN_fighting_oppression
+		cost = 8
+		prerequisite = {
+			focus = GEN_progress_at_all_costs
+		}
+		completion_reward = {
+			add_ideas = GEN_fighting_oppression_idea
+		}
+		x = 65
+		y = 10
+	}
+	focus = {
+		id = GEN_fighting_reactionaries
+		icon = GFX_focus_GEN_fighting_reactionaries
+		cost = 8
+		prerequisite = {
+			focus = GEN_progress_at_all_costs
+		}
+		completion_reward = {
+			custom_effect_tooltip = GEN_curtailing_local_counterrevolutionaries_tooltip
+			hidden_effect = {
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_yagoo_progressive
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_yagoo_monarchy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_resistance_monarchy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = democratic_revitalisation
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = reactionary_monarchy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = mixed_ideology_democracy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = reactionary_nationalism
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = divine_mandate
+					popularity = -0.1
+				}
+			}
+		}
+		x = 67
+		y = 10
+	}
+	focus = {
+		id = GEN_spread_revolution_abroad
+		icon = GFX_focus_GEN_spread_revolution_abroad
+		cost = 8
+		prerequisite = {
+			focus = GEN_fighting_oppression
+		}
+		prerequisite = {
+			focus = GEN_fighting_reactionaries
+		}
+		completion_reward = {
+			random_neighbor_country = {
+				set_temp_variable = {
+					var = generic_tree_wargoal_target
+					value = THIS.id
+				}
+			}
+			create_wargoal = {
+				target = var:generic_tree_wargoal_target
+				type = annex_everything
+			}
+		}
+		x = 66
+		y = 11
+	}
+	###############
+	##############
+	##############
+	focus = {
+		id = GEN_dr_dominance
+		icon = GFX_focus_GEN_dr_dominance
+		cost = 8
+		allow_branch = {
+			has_government = democratic_revitalisation
+			OR = {
+				has_completed_focus = GEN_continuing_the_good_work
+				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 66
+		y = 7
+	}
+	focus = {
+		id = GEN_liberating_our_homeland
+		icon = GFX_focus_GEN_liberating_our_homeland
+		cost = 8
+		prerequisite = {
+			focus = GEN_dr_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_liberating_our_homeland_idea
+		}
+		x = 65
+		y = 8
+	}
+	focus = {
+		id = GEN_citizens_army
+		icon = GFX_focus_GEN_citizens_army
+		cost = 8
+		prerequisite = {
+			focus = GEN_liberating_our_homeland
+		}
+		completion_reward = {
+			two_random_militia = yes
+			one_random_militia = yes
+			division_template = {
+				name = "Citizens Army"
+				regiments = {
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					infantry = {
+						x = 0
+						y = 2
+					}
+					infantry = {
+						x = 1
+						y = 0
+					}
+					infantry = {
+						x = 1
+						y = 1
+					}
+					infantry = {
+						x = 1
+						y = 2
+					}
+					artillery = {
+						x = 2
+						y = 0
+					}
+					artillery = {
+						x = 2
+						y = 1
+					}
+					infantry = {
+						x = 2
+						y = 2
+					}
+				}
+				support = {
+					engineer = {
+						x = 0
+						y = 0
+					}
+					artillery = {
+						x = 0
+						y = 1
+					}
+				}
+			}
+		}
+		x = 65
+		y = 9
+	}
+	focus = {
+		id = GEN_liberal_principals
+		icon = GFX_focus_GEN_liberal_principals
+		cost = 8
+		prerequisite = {
+			focus = GEN_dr_dominance
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic_revitalisation
+				popularity = 0.1
+			}
+			add_stability = 0.1
+		}
+		x = 67
+		y = 8
+	}
+	focus = {
+		id = GEN_welcome_to_all
+		icon = GFX_focus_GEN_welcome_to_all
+		cost = 8
+		prerequisite = {
+			focus = GEN_liberal_principals
+		}
+		completion_reward = {
+			add_ideas = GEN_welcome_to_all_idea
+		}
+		x = 67
+		y = 9
+	}
+	focus = {
+		id = GEN_spirit_of_debate
+		icon = GFX_focus_GEN_spirit_of_debate
+		cost = 8
+		prerequisite = {
+			focus = GEN_citizens_army
+		}
+		prerequisite = {
+			focus = GEN_welcome_to_all
+		}
+		completion_reward = {
+			add_ideas = GEN_spirit_of_debate_idea
+		}
+		x = 66
+		y = 10
+	}
+	focus = {
+		id = GEN_freedom_or_death
+		icon = GFX_focus_GEN_freedom_or_death
+		cost = 8
+		prerequisite = {
+			focus = GEN_spirit_of_debate
+		}
+		completion_reward = {
+			add_ideas = GEN_freedom_or_death_idea
+		}
+		x = 66
+		y = 11
+	}
+	focus = {
+		id = GEN_rule_of_law
+		icon = GFX_focus_GEN_rule_of_law
+		cost = 8
+		prerequisite = {
+			focus = GEN_spirit_of_debate
+		}
+		completion_reward = {
+			add_stability = 0.2
+		}
+		x = 66
+		y = 11
+	}
+	###############
+	##############
+	##############
+	focus = {
+		id = GEN_rn_dominance
+		icon = GFX_focus_GEN_rn_dominance
+		cost = 8
+		allow_branch = {
+			has_government = reactionary_nationalism
+			OR = {
+				has_completed_focus = GEN_continuing_the_good_work
+				has_completed_focus = GEN_a_new_government
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
+		}
+		x = 66
+		y = 7
+	}
+	focus = {
+		id = GEN_military_dictatorship
+		icon = GFX_focus_GEN_military_dictatorship
+		cost = 8
+		prerequisite = {
+			focus = GEN_rn_dominance
+		}
+		completion_reward = {
+			add_ideas = GEN_military_dictatorship_idea
+		}
+		x = 64
+		y = 8
+	}
+	focus = {
+		id = GEN_expand_military_industrial_complex
+		icon = GFX_focus_GEN_expand_military_industrial_complex
+		cost = 8
+		prerequisite = {
+			focus = GEN_rn_dominance
+		}
+		completion_reward = {
+			two_random_arms_factory = yes
+			two_random_arms_factory = yes
+		}
+		x = 66
+		y = 8
+	}
+	focus = {
+		id = GEN_universal_conscription
+		icon = GFX_focus_GEN_universal_conscription
+		cost = 8
+		prerequisite = {
+			focus = GEN_expand_military_industrial_complex
+		}
+		completion_reward = {
+			hloi_up_conscription_law = yes
+			add_ideas = GEN_universal_conscription_idea
+		}
+		x = 66
+		y = 9
+	}
+	focus = {
+		id = GEN_military_investments
+		icon = GFX_focus_GEN_military_investments
+		cost = 8
+		prerequisite = {
+			focus = GEN_universal_conscription
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GEN_military_investments_tech
+				bonus = 2
+				uses = 2
+				category = infantry_tech
+			}
+			add_tech_bonus = {
+				name = GEN_military_investments_tech
+				bonus = 2
+				uses = 2
+				category = artillery
+			}
+		}
+		x = 65
+		y = 10
+	}
+	focus = {
+		id = GEN_security_state
+		icon = GFX_focus_GEN_security_state
+		cost = 8
+		prerequisite = {
+			focus = GEN_universal_conscription
+		}
+		completion_reward = {
+			add_ideas = GEN_security_state_idea
+		}
+		x = 67
+		y = 10
+	}
+	focus = {
+		id = GEN_absolute_authority
+		icon = GFX_focus_GEN_absolute_authority
+		cost = 8
+		prerequisite = {
+			focus = GEN_rn_dominance
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		x = 68
+		y = 8
+	}
+	focus = {
+		id = GEN_all_resources_for_war
+		icon = GFX_focus_GEN_all_resources_for_war
+<<<<<<< Updated upstream
+=======
+		cost = 8
+		prerequisite = {
+			focus = GEN_universal_conscription
+		}
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 12
+				state = capital
+			}
+			add_resource = {
+				type = aluminium
+				amount = 8
+				state = capital
+			}
+		}
+		x = 66
+		y = 11
+	}
+	###############
+	##############
+	##############
+	focus = {
+		id = GEN_kd_dominance
+		icon = GFX_focus_GEN_kd_dominance
 		cost = 8
 		allow_branch = {
 			has_government = neutrality
@@ -4053,6 +5409,7 @@ focus_tree = {
 	focus = {
 		id = GEN_all_resources_for_war
 		icon = GFX_focus_GEN_all_resources_for_war
+>>>>>>> Stashed changes
 		cost = 8
 		prerequisite = {
 			focus = GEN_universal_conscription

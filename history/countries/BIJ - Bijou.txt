@@ -1,18 +1,31 @@
-﻿capital = 104
+﻿capital = 546
+oob = "BIJ_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "BIJ_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "BIJ_1936_air_legacy"
+}
+
 set_stability = 0.8
-set_war_support = 0.2
-set_research_slots = 3
+set_war_support = 0.5
+set_research_slots = 2
 set_technology = {
 	infantry_weapons = 1
 	infantry_weapons_emergency = 1
-	infantry_weapons1 = 1
+	irregular_tech = 1
+	irregular_tech2 = 1
 	tech_support = 1
-	tech_engineers = 1
-	tech_recon = 1
-	tech_mountaineers = 1
-	motorised_infantry = 1
 	gw_artillery = 1
-	interwar_antiair = 1
 	basic_train = 1
 }
 
@@ -22,10 +35,7 @@ if = {
 	}
 	set_technology = {
 		iw_small_airframe = 1
-		iw_medium_airframe = 1
 		aa_lmg = 1
-		early_bombs = 1
-		engines_1 = 1
 		aircraft_construction = 1
 	}
 }
@@ -38,23 +48,93 @@ if = {
 	}
 	set_technology = {
 		early_fighter = 1
-		naval_bomber1 = 1
-		cv_early_fighter = 1
 		early_bomber = 1
-		tactical_bomber1 = 1
-		CAS1 = 1
 	}
 }
 
 set_convoys = 50
+BIJ = {
+	set_variable = {
+		var = ROOT.anti_aggression
+		value = 30
+	}
+	clamp_variable = {
+		var = ROOT.anti_aggression
+		min = 0
+		max = 100
+	}
+	set_variable = {
+		var = ROOT.seiso_alignment
+		value = 3
+	}
+	clamp_variable = {
+		var = ROOT.seiso_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.reactionary_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.reactionary_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.authoritarianism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.capitalism_alignment
+		value = 4
+	}
+	clamp_variable = {
+		var = ROOT.capitalism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.isolationism_alignment
+		value = 1
+	}
+	clamp_variable = {
+		var = ROOT.isolationism_alignment
+		min = 1
+		max = 5
+	}
+	government_alignment_initiate = yes
+}
+
 set_politics = {
-	ruling_party = mixed_ideology_democracy
+	ruling_party = reactionary_nationalism
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
 
 set_popularities = {
-	mixed_ideology_democracy = 75
-	pro_yagoo_progressive = 25
+	pro_resistance_monarchy = 10
+	reactionary_nationalism = 50
+	left_wing_revolutionary = 40
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Hawker Fury"		#also covers Gloster Gauntlet, Hawker Demon
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
 }

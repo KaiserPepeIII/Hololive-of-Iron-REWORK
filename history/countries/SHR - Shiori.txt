@@ -1,6 +1,23 @@
 ﻿capital = 301
-set_stability = 0.8
-set_war_support = 0.2
+oob = "SHR_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "SHR_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "SHR_1936_air_legacy"
+}
+
+set_stability = 0.25
+set_war_support = 0.4
 set_research_slots = 2
 set_technology = {
 	infantry_weapons = 1
@@ -40,8 +57,81 @@ set_politics = {
 	elections_allowed = no
 }
 
+SHR = {
+	set_variable = {
+		var = ROOT.anti_aggression
+		value = 50
+	}
+	clamp_variable = {
+		var = ROOT.anti_aggression
+		min = 0
+		max = 100
+	}
+	set_variable = {
+		var = ROOT.seiso_alignment
+		value = 4
+	}
+	clamp_variable = {
+		var = ROOT.seiso_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.reactionary_alignment
+		value = 4
+	}
+	clamp_variable = {
+		var = ROOT.reactionary_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 1
+	}
+	clamp_variable = {
+		var = ROOT.authoritarianism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.capitalism_alignment
+		value = 4
+	}
+	clamp_variable = {
+		var = ROOT.capitalism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.isolationism_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.isolationism_alignment
+		min = 1
+		max = 5
+	}
+	government_alignment_initiate = yes
+}
+
 set_popularities = {
 	pro_resistance_nationalism = 60
 	communism = 20
 	democratic_revitalisation = 20
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "P-6"		#export models only
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
 }
