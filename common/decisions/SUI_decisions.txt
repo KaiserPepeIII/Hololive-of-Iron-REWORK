@@ -63,6 +63,18 @@ SUI_colonial_exploitation = {
 					country_event = suisei.129
 				}
 			}
+			if = {
+				limit = {
+					check_variable = {
+						var = SUI.colonial_unrest
+						value = 4
+						compare = greater_than_or_equals
+					}
+				}
+				hidden_effect = {
+					country_event = suisei.129
+				}
+			}
 		}
 	}
 	SUI_drill_for_algerian_oil = {
@@ -72,7 +84,7 @@ SUI_colonial_exploitation = {
 			has_political_power > 100
 		}
 		visible = {
-			tag = SUI
+			has_completed_focus = SUI_bail_out_colonies
 		}
 		fire_only_once = yes
 		ai_will_do = {
@@ -110,12 +122,78 @@ SUI_colonial_exploitation = {
 			}
 		}
 	}
+	SUI_embargo_african_economies = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 40
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 40
+		days_remove = 40
+		remove_effect = {
+			MRT = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			MLI = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			VOL = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			NGA = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			NGR = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			CHA = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			CAR = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
+			}
+		}
+	}
 	SUI_emergency_revolt_suppression = {
 		icon = decision_generic_industry
 		available = {
 			tag = SUI
 			has_active_mission = SUI_scare_rebels_into_submission
-			has_political_power < 20
 		}
 		visible = {
 			SUI = {
@@ -129,10 +207,38 @@ SUI_colonial_exploitation = {
 		cost = 0
 		days_remove = 40
 		remove_effect = {
+			set_country_flag = first_suppression
 			add_to_variable = {
 				var = SUI.colonial_unrest
 				value = 1
 				tooltip = colonial_unrest_increase_light
+			}
+		}
+	}
+	SUI_emergency_revolt_suppression_2 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_active_mission = SUI_scare_rebels_into_submission
+		}
+		visible = {
+			SUI = {
+				has_country_flag = first_suppression
+				has_country_flag = SUI_dealing_with_colonies
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 0
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = first_suppression
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 3
+				tooltip = colonial_unrest_increase_heavy
 			}
 		}
 	}
@@ -152,6 +258,7 @@ SUI_colonial_exploitation = {
 					has_decision = SUI_take_yagoo_colonies_optional
 					has_decision = SUI_irys_optional
 					has_decision = SUI_emergency_revolt_suppression
+					has_decision = SUI_emergency_revolt_suppression_2
 					has_decision = SUI_ghana_optional
 					has_decision = SUI_kill_cameroon_optional
 				}
@@ -250,6 +357,10 @@ SUI_colonial_exploitation = {
 					var = SUI.africans_killed
 					value = 0
 				}
+				set_variable = {
+					var = SUI.colonial_unrest
+					value = 0
+				}
 				clr_country_flag = SUI_dealing_with_colonies
 				country_event = suisei.124
 			}
@@ -277,6 +388,10 @@ SUI_colonial_exploitation = {
 				}
 				set_variable = {
 					var = SUI.africans_killed
+					value = 0
+				}
+				set_variable = {
+					var = SUI.colonial_unrest
 					value = 0
 				}
 				country_event = suisei.125
@@ -1852,6 +1967,7 @@ SUI_depression_recovery = {
 		cost = 120
 		fire_only_once = yes
 		complete_effect = {
+			set_country_flag = empire_style
 			add_stability = -0.05
 			if = {
 				limit = {
@@ -1897,6 +2013,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = empire_style
 			has_political_power > 100
 		}
 		ai_will_do = {
@@ -1909,6 +2026,7 @@ SUI_depression_recovery = {
 			consumer_goods_factor = 0.05
 		}
 		remove_effect = {
+			set_country_flag = stadium_built
 			add_stability = 0.05
 			if = {
 				limit = {
@@ -1954,6 +2072,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = stadium_built
 			has_political_power > 50
 		}
 		ai_will_do = {
@@ -1962,6 +2081,7 @@ SUI_depression_recovery = {
 		cost = 50
 		fire_only_once = yes
 		complete_effect = {
+			clr_country_flag = stadium_built
 			country_event = suisei.160
 			add_to_variable = {
 				var = SUI.depression_progress
@@ -1977,6 +2097,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = empire_style
 			has_political_power > 120
 		}
 		ai_will_do = {
@@ -2030,6 +2151,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = empire_style
 			always = yes
 		}
 		ai_will_do = {
@@ -2158,6 +2280,7 @@ SUI_depression_recovery = {
 		cost = 150
 		fire_only_once = yes
 		complete_effect = {
+			set_country_flag = allow_atomic_research
 			add_ideas = SUI_extreme_technological_progress
 			add_research_slot = 1
 			add_tech_bonus = {
@@ -2179,6 +2302,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = allow_atomic_research
 			has_political_power > 160
 		}
 		ai_will_do = {
@@ -2187,6 +2311,7 @@ SUI_depression_recovery = {
 		cost = 160
 		fire_only_once = yes
 		complete_effect = {
+			clr_country_flag = allow_atomic_research
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 3
@@ -2261,7 +2386,7 @@ SUI_depression_recovery = {
 		available = {
 						check_variable = {
 				var = SUI.depression_progress
-				value = 28
+				value = 27
 				compare = greater_than_or_equals
 			}
 		}
@@ -2270,6 +2395,7 @@ SUI_depression_recovery = {
 		}
 		fire_only_once = yes
 		complete_effect = {
+			clr_country_flag = empire_style
 			clr_country_flag = phase4
 			swap_ideas = {
 				remove_idea = SUI_booming_tourism_3
@@ -2278,7 +2404,7 @@ SUI_depression_recovery = {
 			every_core_state = {
 				limit = {
 					is_on_continent = europe
-					is_ownedy_by = SUI
+					is_owned_by = SUI
 				}
 				add_dynamic_modifier = {
 					modifier = SUI_gambling_haven
@@ -2323,7 +2449,7 @@ SUI_depression_recovery = {
 			factor = 20
 		}
 		cost = 50
-		fire_only_once = yes
+		fire_only_once = no
 		complete_effect = {
 			every_core_state = {
 				limit = {
@@ -2396,7 +2522,7 @@ SUI_aligning_miko = {
 				tag = SUI
 				has_political_power > 50
 				MIK = {
-					has_government = divine_mandate
+					divine_mandate > 0.5
 				}
 			}
 			visible = {
@@ -2408,7 +2534,7 @@ SUI_aligning_miko = {
 			}
 			cost = 50
 			days_remove = 70
-			complete_effect = {
+			remove_effect = {
 				MIK = {
 					country_event = miko.28
 				}
@@ -2421,13 +2547,18 @@ SUI_aligning_miko = {
 				has_political_power > 50
 			}
 			visible = {
-				tag = SUI
+				MIK = {
+					NOT = {
+						has_government = divine_mandate
+					}
+				}
 			}
-			fire_only_once = yes
+			fire_only_once = no
 			ai_will_do = {
 				factor = 15
 			}
 			cost = 50
+			days_re_enable = 30
 			complete_effect = {
 				MIK = {
 					add_popularity = {
@@ -2454,6 +2585,7 @@ SUI_aligning_miko = {
 			factor = 15
 		}
 		cost = 50
+		days_re_enable = 60
 		complete_effect = {
 			send_equipment = {
 				equipment = infantry_equipment
@@ -2474,17 +2606,13 @@ SUI_send_troops_to_miko = {
 			has_civil_war = yes
 		}
 	}
-	fire_only_once = no
+	fire_only_once = yes
 	ai_will_do = {
 		factor = 15
 	}
 	cost = 50
 	complete_effect = {
-		send_equipment = {
-			equipment = infantry_equipment
-			amount = 1000
-			target = MIK
-		}
+		add_ideas = SUI_sending_volunteers
 	}
 }
 }
@@ -3295,7 +3423,9 @@ suisei_election_compromises = {
 			tag = SUI
 		}
 		available = {
-			always = no
+			has_country_flag = suisei_down_opposition_one
+			has_country_flag = suisei_down_opposition_two
+			has_country_flag = suisei_down_opposition_three
 		}
 		activation = {
 			tag = SUI
@@ -3309,6 +3439,9 @@ suisei_election_compromises = {
 		days_mission_timeout = 80
 		is_good = yes
 		fire_only_once = yes
+		complete_effect = {
+			country_event = suisei.35
+		}
 		timeout_effect = {
 			SUI = {
 				country_event = {

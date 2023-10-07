@@ -591,6 +591,7 @@ country_event = {
 }
 
 #Monarchism return!??!?!
+#Monarchism return!??!?!
 country_event = {
 	id = suisei.25
 	title = suisei.25.t
@@ -603,6 +604,7 @@ country_event = {
 			ideology = divine_mandate
 			popularity = 0.01
 		}
+		custom_effect_tooltip = monarchism_return
 		SUI = {
 			set_country_flag = SUI_monarchist_interest_grows
 		}
@@ -895,22 +897,27 @@ country_event = {
 	picture = GFX_report_SUI_enlightened_monarch
 	is_triggered_only = yes
 	option = {
-		name = suisei.32.a
+		name = suisei.34.a
 		effect_tooltip = {
 			SUI_hoshimachi_suisei_democratic = {
 				add_country_leader_trait = SUI_enlightened_monarch_trait
 			}
 		}
 		hidden_effect = {
-			every_character = {
-				limit = {
-					tag = SUI
-					has_trait = hololive_leader
+			SUI = {
+				every_character = {
+					limit = {
+						tag = SUI
+						has_trait = SUI_hoshimachi_suisei_trait
+					}
+					add_country_leader_trait = SUI_enlightened_monarch_trait
 				}
-				add_country_leader_trait = SUI_enlightened_monarch_trait
 			}
 		}
 		clr_country_flag = SUI_quell_resistance
+		clr_country_flag = suisei_down_opposition_one
+		clr_country_flag = suisei_down_opposition_three
+		clr_country_flag = suisei_down_opposition_two
 	}
 }
 
@@ -920,29 +927,23 @@ country_event = {
 	title = suisei.35.t
 	desc = suisei.35.d
 	picture = GFX_report_SUI_rule_by_force
-	trigger = {
-		has_country_flag = suisei_down_opposition_one
-		has_country_flag = suisei_down_opposition_three
-		has_country_flag = suisei_down_opposition_two
-	}
-	mean_time_to_happen = {
-		days = 2
-	}
 	fire_only_once = yes
 	option = {
 		name = suisei.35.a
 		effect_tooltip = {
-			SUI_hoshimachi_suisei_democratic = {
-				add_country_leader_trait = SUI_the_autocrat_trait
+			SUI_hoshimachi_suisei_divine_mandate = {
+				add_country_leader_trait = SUI_white_terror_trait
 			}
 		}
 		hidden_effect = {
-			every_character = {
-				limit = {
-					tag = SUI
-					has_trait = hololive_leader
+			SUI = {
+				every_character = {
+					limit = {
+						tag = SUI
+						has_trait = SUI_hoshimachi_suisei_trait
+					}
+					add_country_leader_trait = SUI_white_terror_trait
 				}
-				add_country_leader_trait = SUI_the_autocrat_trait
 			}
 		}
 		SUI = {
@@ -3148,6 +3149,10 @@ country_event = {
 		SUI_colonial_collapse_algeria_war = yes
 		custom_effect_tooltip = colonial_efficency_fail
 		news_event = global_holo.42
+		ai_chance = {
+			base = 10000000000
+		}
+		clr_country_flag = SUI_killing_rebels
 	}
 	#Damn it! Just let the savages have the land!
 	option = {
@@ -3157,6 +3162,7 @@ country_event = {
 		SUI_colonial_collapse_no_algeria = yes
 		custom_effect_tooltip = colonial_efficency_fail
 		news_event = global_holo.42
+		clr_country_flag = SUI_killing_rebels
 	}
 }
 
@@ -3229,6 +3235,7 @@ country_event = {
 		name = suisei.124.a
 		custom_effect_tooltip = colonial_efficency_max
 		news_event = global_holo.43
+		clr_country_flag = SUI_killing_rebels
 	}
 }
 
@@ -3248,6 +3255,7 @@ country_event = {
 		custom_effect_tooltip = colonial_efficency_stop
 		set_country_flag = suisei_core_african_colonies
 		news_event = global_holo.44
+		clr_country_flag = SUI_killing_rebels
 	}
 }
 
@@ -3319,6 +3327,7 @@ country_event = {
 	option = {
 		name = suisei.129.a
 		custom_effect_tooltip = scare_rebels_endless
+		set_country_flag = SUI_killing_rebels
 	}
 }
 
@@ -3988,12 +3997,6 @@ country_event = {
 	option = {
 		name = suisei.159.a
 		clr_country_flag = SUI_conquering_iberia
-		hidden_effect = {
-		white_peace = {
-			tag = MIK
-			message = CATALONIA_scripted_peace_3_loc						#east spain + bases peace
-		}
-	}
 			transfer_state = 165
 			transfer_state = 177
 			transfer_state = 118
@@ -4193,7 +4196,7 @@ country_event = {
 	}
 }
 
-#During the rally, suisei has praised Miko citing her actions in morocco.
+#During the rally, suisei has praised Miko her cooperation in morocco.
 country_event = {
 	id = suisei.170
 	title = suisei.170.t
@@ -4205,5 +4208,25 @@ country_event = {
 	option = {
 		name = suisei.170.a
 		complete_national_focus = SUI_cooperate_with_miko
+	}
+}
+
+#Our african colonies
+country_event = {
+	id = suisei.171
+	title = suisei.171.t
+	desc = suisei.171.d
+	picture = GFX_report_suisei129_SUI_invade_former_french_colonies
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Oorah
+	option = {
+		name = suisei.171.a
+		SUI = {
+			add_dynamic_modifier = {
+				modifier = SUI_colonial_exploitation
+			}
+			set_country_flag = SUI_dealing_with_colonies
+		}
 	}
 }
