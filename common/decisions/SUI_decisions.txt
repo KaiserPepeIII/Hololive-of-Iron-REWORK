@@ -1377,7 +1377,7 @@ SUI_depression_recovery = {
 			}
 		}
 	}
-	SUI_promote_military_complex_production = {
+	SUI_promote_military_complex_construction = {
 		allowed = {
 			tag = SUI
 		}
@@ -2419,25 +2419,23 @@ SUI_depression_recovery = {
 			tag = SUI
 		}
 		visible = {
+			SUI = {
 				any_core_state = { 
-					limit = {
 						is_on_continent = europe
 						is_owned_by = SUI
-					}
 					NOT = {
 						has_dynamic_modifier = {
 							modifier = SUI_gambling_haven
 						}
 					}
 				}
+			}
 				has_idea = SUI_the_new_las_vegas
 			}
 		available = {
 			any_core_state = { 
-				limit = {
 					is_on_continent = europe
 					is_owned_by = SUI
-				}
 				NOT = {
 					has_dynamic_modifier = {
 						modifier = SUI_gambling_haven
@@ -2790,6 +2788,7 @@ suisei_fix_army = {
 		available = {
 			tag = SUI
 			has_political_power > 50
+			has_army_experience > 10
 		}
 		visible = {
 			tag = SUI
@@ -2799,7 +2798,9 @@ suisei_fix_army = {
 			factor = 10
 		}
 		cost = 50
-		complete_effect = {
+		days_remove = 50
+		remove_effect = {
+			army_experience = -10
 			army_experience = 5
 			set_country_flag = SUI_reforming
 			swap_ideas = {
@@ -2814,6 +2815,7 @@ suisei_fix_army = {
 			tag = SUI
 			has_political_power > 50
 			command_power > 25
+			has_army_experience > 25
 		}
 		visible = {
 			tag = SUI
@@ -2824,7 +2826,9 @@ suisei_fix_army = {
 			factor = 10
 		}
 		cost = 50
-		complete_effect = {
+		days_remove = 50
+		remove_effect = {
+			army_experience = -25
 			add_command_power = -25
 			set_country_flag = SUI_last_push
 			swap_ideas = {
@@ -2837,7 +2841,7 @@ suisei_fix_army = {
 		icon = decision_generic_industry
 		available = {
 			tag = SUI
-			has_army_experience > 15
+			has_army_experience > 50
 		}
 		visible = {
 			tag = SUI
@@ -2847,8 +2851,9 @@ suisei_fix_army = {
 		ai_will_do = {
 			factor = 10
 		}
-		complete_effect = {
-			army_experience = -15
+		days_remove = 50
+		remove_effect = {
+			army_experience = -50
 			clr_country_flag = SUI_last_push
 			clr_country_flag = SUI_reforming
 			clr_country_flag = suisei_fix_army
@@ -3435,19 +3440,15 @@ suisei_election_compromises = {
 			tag = SUI
 			has_country_flag = SUI_quell_resistance
 		}
-		selectable_mission = no
+		selectable_mission = yes
 		days_mission_timeout = 80
-		is_good = yes
+		is_good = no
 		fire_only_once = yes
 		complete_effect = {
 			country_event = suisei.35
 		}
 		timeout_effect = {
-			SUI = {
-				country_event = {
-					id = suisei.34
-				}
-			}
+			country_event = suisei.34
 		}
 	}
 	SUI_shut_down_opposition = {
