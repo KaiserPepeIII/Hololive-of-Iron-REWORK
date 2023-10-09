@@ -3331,6 +3331,7 @@ country_event = {
 		name = suisei.129.a
 		custom_effect_tooltip = scare_rebels_endless
 		set_country_flag = SUI_killing_rebels
+		mark_focus_tree_layout_dirty  = yes 
 	}
 }
 
@@ -4233,3 +4234,20 @@ country_event = {
 	}
 }
 
+#Our attempts to decrease unrest have greatly succeded 
+country_event = {
+	id = suisei.172
+	title = suisei.172.t
+	desc = suisei.172.d
+	picture = GFX_report_suisei129_SUI_invade_former_french_colonies
+	is_triggered_only = yes
+	#yaya
+	option = {
+		name = suisei.172.a
+		add_to_variable = {
+			var = SUI.colonial_unrest
+			value = -2
+			tooltip = colonial_unrest_decrease_mid_2
+		}
+	}
+}
