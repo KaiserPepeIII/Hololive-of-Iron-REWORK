@@ -896,6 +896,7 @@ country_event = {
 	desc = suisei.34.d
 	picture = GFX_report_SUI_enlightened_monarch
 	is_triggered_only = yes
+	fire_only_once = yes
 	option = {
 		name = suisei.34.a
 		effect_tooltip = {
@@ -907,19 +908,16 @@ country_event = {
 			SUI = {
 				every_character = {
 					limit = {
-						tag = SUI
 						has_trait = SUI_hoshimachi_suisei_trait
 					}
 					add_country_leader_trait = SUI_enlightened_monarch_trait
 				}
 			}
 		}
-
 		clr_country_flag = SUI_quell_resistance
 		clr_country_flag = suisei_down_opposition_one
 		clr_country_flag = suisei_down_opposition_three
 		clr_country_flag = suisei_down_opposition_two
-
 	}
 }
 
@@ -929,12 +927,12 @@ country_event = {
 	title = suisei.35.t
 	desc = suisei.35.d
 	picture = GFX_report_SUI_rule_by_force
+	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
 		name = suisei.35.a
 		effect_tooltip = {
 			SUI_hoshimachi_suisei_divine_mandate = {
-
 				add_country_leader_trait = SUI_white_terror_trait
 
 			}
@@ -943,12 +941,9 @@ country_event = {
 			SUI = {
 				every_character = {
 					limit = {
-
-						tag = SUI
 						has_trait = SUI_hoshimachi_suisei_trait
 					}
 					add_country_leader_trait = SUI_white_terror_trait
-
 				}
 			}
 		}
@@ -2679,50 +2674,50 @@ country_event = {
 }
 
 #Noel wants to buy cas
-country_event = {
-	id = suisei.104
-	title = suisei.104.t
-	desc = suisei.104.d
-	picture = GFX_report_event_mio
-	is_triggered_only = yes
-	option = {
-		name = suisei.104.a
-		NOE = {
-			country_event = NOE_gnw.48
-			set_country_flag = NOE_SUI_cas_sale
-		}
-	}
-	#Nope
-	option = {
-		name = suisei.104.b
-		NOE = {
-			country_event = NOE_gnw.47
-		}
-	}
-}
+#country_event = {
+#	id = suisei.104
+#	title = suisei.104.t
+#	desc = suisei.104.d
+#	picture = GFX_report_event_mio
+#	is_triggered_only = yes
+#	option = {
+#		name = suisei.104.a
+#		NOE = {
+#			country_event = NOE_gnw.48
+#			set_country_flag = NOE_SUI_cas_sale
+#		}
+#	}
+#	#Nope
+#	option = {
+#		name = suisei.104.b
+#		NOE = {
+#			country_event = NOE_gnw.47
+#		}
+#	}
+#}
 
 #Noel wants to buy naval bombers
-country_event = {
-	id = suisei.105
-	title = suisei.105.t
-	desc = suisei.105.d
-	picture = GFX_report_event_mio
-	is_triggered_only = yes
-	option = {
-		name = suisei.105.a
-		NOE = {
-			country_event = NOE_gnw.48
-			set_country_flag = NOE_SUI_naval_bomber_sale
-		}
-	}
-	#Nope
-	option = {
-		name = suisei.105.b
-		NOE = {
-			country_event = NOE_gnw.47
-		}
-	}
-}
+#country_event = {
+#	id = suisei.105
+#	title = suisei.105.t
+#	desc = suisei.105.d
+#	picture = GFX_report_event_mio
+#	is_triggered_only = yes
+#	option = {
+#		name = suisei.105.a
+#		NOE = {
+#			country_event = NOE_gnw.48
+#			set_country_flag = NOE_SUI_naval_bomber_sale
+#		}
+#	}
+#	#Nope
+#	option = {
+#		name = suisei.105.b
+#		NOE = {
+#			country_event = NOE_gnw.47
+#		}
+#	}
+#}
 
 #france negotiation, we must argue against subaru how much land we deserve after we invaded france
 # for context, subaru has created a puppet in north france which owns paris while the rest went to suisei
@@ -2915,7 +2910,7 @@ country_event = {
 		name = suisei.113.a
 		clr_country_flag = dealing_with_france
 		clr_country_flag = Fuck_Subaru
-		add_war_support = 0.2
+		add_war_support = -0.2
 		white_peace = {
 			tag = SUB
 			message = FRANCE_scripted_peace_6_loc			#suisei FUCKED france and subaru together
@@ -3208,6 +3203,7 @@ country_event = {
 		add_to_variable = {
 			var = SUI.colonial_exploitation
 			value = 0.02
+			tooltip = colonial_exploitation_up
 		}
 		subtract_from_variable = {
 			var = SUI.colonial_exploitation_consumer_goods
@@ -3335,6 +3331,7 @@ country_event = {
 		name = suisei.129.a
 		custom_effect_tooltip = scare_rebels_endless
 		set_country_flag = SUI_killing_rebels
+		mark_focus_tree_layout_dirty  = yes 
 	}
 }
 
@@ -4057,7 +4054,7 @@ country_event = {
 	}
 	#Marseilles has been very loyal to Suisei! It must be rewarded!
 	option = {
-		name = suisei.161.a
+		name = suisei.161.b
 		set_country_flag = new_versailles
 	}
 }
@@ -4237,3 +4234,20 @@ country_event = {
 	}
 }
 
+#Our attempts to decrease unrest have greatly succeded 
+country_event = {
+	id = suisei.172
+	title = suisei.172.t
+	desc = suisei.172.d
+	picture = GFX_report_suisei129_SUI_invade_former_french_colonies
+	is_triggered_only = yes
+	#yaya
+	option = {
+		name = suisei.172.a
+		add_to_variable = {
+			var = SUI.colonial_unrest
+			value = -2
+			tooltip = colonial_unrest_decrease_mid_2
+		}
+	}
+}

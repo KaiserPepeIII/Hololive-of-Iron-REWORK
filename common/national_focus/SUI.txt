@@ -178,9 +178,9 @@ focus_tree = {
 	focus = {
 		id = SUI_tropical_goods_recover_effort
 		icon = GFX_focus_SUI_tropical_goods_recover_effort
-		cost = 8
+		cost = 0
 		allow_branch = {
-			has_country_flag = SUI_had_elections
+			has_country_flag = SUI_killing_rebels
 		}
 		offset = {
 			x = -22
@@ -219,48 +219,20 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 		}
+		bypass = {
+			always = yes
+		}
 		available = {
-			has_country_flag = SUI_congress_africa
+			always = no
 		}
 		available_if_capitulated = yes
 		search_filters = {
 			Industry
 		}
 		completion_reward = {
-			add_to_variable = {
-				var = SUI.colonial_unrest_a
-				value = 0.02
-			}
-			add_to_variable = {
-				var = SUI.colonial_unrest_b
-				value = -0.02
-			}
-			add_to_variable = {
-				var = SUI.colonial_unrest_c
-				value = 0.02
-			}
-			random_owned_state = {
-				limit = {
-					is_on_continent = africa
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-				}
-				add_extra_state_shared_building_slots = 1
-			}
-			random_owned_state = {
-				limit = {
-					is_on_continent = africa
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-				}
-				add_extra_state_shared_building_slots = 1
-			}
+
 		}
-		x = 58
+		x = 56
 		y = 1
 	}
 	focus = {
@@ -2862,7 +2834,7 @@ focus_tree = {
 	focus = {
 		id = SUI_tropical_goods_recovery_europe
 		icon = GFX_focus_SUI_tropical_goods_recovery_europe
-		cost = 8
+		cost = 0
 		offset = {
 			x = -22
 			y = 0
@@ -2897,13 +2869,20 @@ focus_tree = {
 				has_government = communism
 			}
 		}
+		available = {
+			always = no
+		}
 		completion_reward = {
 			add_stability = 0.05
+			custom_effect_tooltip = SUI_wip
+		}
+		mutually_exclusive = {
+			focus = SUI_tropical_goods_recovery_africa
 		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recover_effort
 		}
-		x = 56
+		x = 52
 		y = 2
 	}
 	focus = {
@@ -2950,7 +2929,7 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_europe
 		}
-		x = 55
+		x = 51
 		y = 3
 	}
 	focus = {
@@ -2997,7 +2976,7 @@ focus_tree = {
 		completion_reward = {
 			country_event = suisei.67
 		}
-		x = 57
+		x = 53
 		y = 3
 	}
 	focus = {
@@ -3059,7 +3038,7 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_chocolate_artisans
 		}
-		x = 56
+		x = 52
 		y = 4
 	}
 	focus = {
@@ -3112,7 +3091,7 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_expand_port_facilities
 		}
-		x = 54
+		x = 52
 		y = 5
 	}
 	focus = {
@@ -3167,7 +3146,7 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_expand_port_facilities
 		}
-		x = 56
+		x = 54
 		y = 5
 	}
 	focus = {
@@ -3247,7 +3226,7 @@ focus_tree = {
 			focus = SUI_local_demand
 			focus = SUI_foreign_demand
 		}
-		x = 55
+		x = 53
 		y = 6
 	}
 	focus = {
@@ -3734,7 +3713,7 @@ focus_tree = {
 	focus = {
 		id = SUI_tropical_goods_recovery_africa
 		icon = GFX_focus_SUI_tropical_goods_recovery_africa
-		cost = 8
+		cost = 3
 		offset = {
 			x = -22
 			y = 0
@@ -3770,6 +3749,11 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			subtract_from_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_decrease_light
+			}
 		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recover_effort
@@ -3780,7 +3764,7 @@ focus_tree = {
 	focus = {
 		id = SUI_bolster_security
 		icon = GFX_focus_SUI_bolster_security
-		cost = 8
+		cost = 3
 		offset = {
 			x = -22
 			y = 0
@@ -3816,23 +3800,21 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			set_country_flag = lower_cooldown
+			custom_effect_tooltip = sui_lower_cost
 			add_to_variable = {
-				var = SUI.colonial_unrest_a
-				value = 0.02
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
 			}
-			add_to_variable = {
-				var = SUI.colonial_unrest_b
-				value = -0.02
-			}
-			add_to_variable = {
-				var = SUI.colonial_unrest_c
-				value = 0.02
-			}
+		}
+		mutually_exclusive = {
+			focus = SUI_protect_tade_routes
 		}
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_africa
 		}
-		x = 59
+		x = 58
 		y = 3
 	}
 	focus = {
@@ -4009,7 +3991,7 @@ focus_tree = {
 	focus = {
 		id = SUI_protect_tade_routes
 		icon = GFX_focus_SUI_protect_trade_routes
-		cost = 8
+		cost = 3
 		offset = {
 			x = -22
 			y = 0
@@ -4047,24 +4029,25 @@ focus_tree = {
 		prerequisite = {
 			focus = SUI_tropical_goods_recovery_africa
 		}
+		mutually_exclusive = {
+			focus = SUI_bolster_security
+		}
 		completion_reward = {
-			add_stability = 0.1
-			every_owned_state = {
-				limit = {
-					NOT = {
-						is_core_of = SUI
-					}
-				}
-				add_compliance = 15
+			custom_effect_tooltip = sui_higher_chance
+			set_country_flag = sui_higher_chance_decisions
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
 			}
 		}
-		x = 61
+		x = 62
 		y = 3
 	}
 	focus = {
 		id = SUI_goods_modern_methods
 		icon = GFX_focus_SUI_modern_methods
-		cost = 8
+		cost = 3
 		offset = {
 			x = -22
 			y = 0
@@ -4101,18 +4084,32 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SUI_bolster_security
-		}
-		prerequisite = {
 			focus = SUI_protect_tade_routes
 		}
 		completion_reward = {
-			973 = {
-				add_building_construction = {
-					type = industrial_complex
-					instant_build = yes
-					level = 2
-				}
-				add_extra_state_shared_building_slots = 4
+			add_to_variable = {
+				var = SUI.colonial_exploitation
+				value = 0.02
+				tooltip = colonial_exploitation_up
+			}
+			subtract_from_variable = {
+				var = SUI.colonial_exploitation_consumer_goods
+				value = 0.01
+			}
+			clamp_variable = {
+				var = SUI.colonial_exploitation_consumer_goods
+				min = -0.05
+				max = 0
+			}
+			clamp_variable = {
+				var = SUI.colonial_exploitation
+				min = 0
+				max = 0.15
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
 			}
 		}
 		x = 60
@@ -4121,7 +4118,7 @@ focus_tree = {
 	focus = {
 		id = SUI_quality_wood
 		icon = GFX_focus_SUI_quality_wood
-		cost = 8
+		cost = 3
 		offset = {
 			x = -22
 			y = 0
@@ -4157,29 +4154,34 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			random_owned_state = {
-				limit = {
-					NOT = {
-						is_on_continent = africa
-					}
-				}
+			859 = {
 				add_extra_state_shared_building_slots = 3
 			}
-			random_owned_state = {
-				limit = {
-					NOT = {
-						is_on_continent = africa
-					}
-				}
+			20 = {
 				add_extra_state_shared_building_slots = 3
 			}
-			random_owned_state = {
-				limit = {
-					NOT = {
-						is_on_continent = africa
-					}
-				}
+			19 = {
 				add_extra_state_shared_building_slots = 3
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
+			}
+			if = {
+				limit = {
+					has_idea = SUI_resource_exploitation_1
+				}
+				add_ideas = SUI_resource_exploitation_2
+			}
+			else_if = {
+				limit = {
+					has_idea = SUI_resource_exploitation_2
+				}
+				add_ideas = SUI_resource_exploitation_3
+			}
+			else = {
+				add_ideas = SUI_resource_exploitation_1
 			}
 		}
 		prerequisite = {
@@ -4191,7 +4193,7 @@ focus_tree = {
 	focus = {
 		id = SUI_palm_oil_plantations
 		icon = GFX_focus_SUI_palm_oil_plantations
-		cost = 8
+		cost = 3
 		offset = {
 			x = -22
 			y = 0
@@ -4227,16 +4229,38 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			set_country_flag = suisei_biofuels
 			add_resource = {
 				type = oil
-				amount = 2
+				amount = 6
 				state = 539
 			}
 			add_resource = {
 				type = oil
-				amount = 2
+				amount = 6
 				state = 973
 			}
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
+			}
+			if = {
+				limit = {
+					has_idea = SUI_resource_exploitation_1
+				}
+				add_ideas = SUI_resource_exploitation_2
+			}
+			else_if = {
+				limit = {
+					has_idea = SUI_resource_exploitation_2
+				}
+				add_ideas = SUI_resource_exploitation_3
+			}
+			else = {
+				add_ideas = SUI_resource_exploitation_1
+			}
+			custom_effect_tooltip = SUI_fuel_or_rubber
 		}
 		prerequisite = {
 			focus = SUI_goods_modern_methods
@@ -4247,7 +4271,7 @@ focus_tree = {
 	focus = {
 		id = SUI_quality_rubber
 		icon = GFX_focus_SUI_quality_rubber
-		cost = 8
+		cost = 3
 		offset = {
 			x = -22
 			y = 0
@@ -4292,8 +4316,34 @@ focus_tree = {
 			add_resource = {
 				type = rubber
 				amount = 6
-				state = 973
+				state = 772
 			}
+			add_resource = {
+				type = rubber
+				amount = 2
+				state = 1086
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
+			}
+			if = {
+				limit = {
+					has_idea = SUI_resource_exploitation_1
+				}
+				add_ideas = SUI_resource_exploitation_2
+			}
+			else_if = {
+				limit = {
+					has_idea = SUI_resource_exploitation_2
+				}
+				add_ideas = SUI_resource_exploitation_3
+			}
+			else = {
+				add_ideas = SUI_resource_exploitation_1
+			}
+			custom_effect_tooltip = SUI_fuel_or_rubber
 		}
 		prerequisite = {
 			focus = SUI_goods_modern_methods
@@ -4302,9 +4352,9 @@ focus_tree = {
 		y = 5
 	}
 	focus = {
-		id = SUI_support_colonial_ventures
-		icon = GFX_focus_SUI_support_colonial_ventures
-		cost = 8
+		id = SUI_cheap_field_labor
+		icon = GFX_focus_SUI_quality_rubber
+		cost = 3
 		offset = {
 			x = -22
 			y = 0
@@ -4340,20 +4390,146 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			set_country_flag = suisei_biofuels
-			add_war_support = 0.05
+			if = {
+				limit = {
+					has_country_flag = sui_higher_chance_decisions
+				}
+				set_country_flag = sui_higher_chance_decisions_2
+			}
+			else = {
+				set_country_flag = lower_cooldown_2
+				clr_country_flag = lower_cooldown
+			}
+			custom_effect_tooltip = SUI_upgrade_again
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
+			}
+		}
+		mutually_exclusive = {
+			focus = SUI_sell_lands_to_investors
+		}
+		prerequisite = {
+			focus = SUI_quality_wood
 		}
 		prerequisite = {
 			focus = SUI_palm_oil_plantations
+		}
+		x = 59
+		y = 6
+	}
+	focus = {
+		id = SUI_sell_lands_to_investors
+		icon = GFX_focus_SUI_quality_rubber
+		cost = 3
+		offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_royalists_win
+			}
+		}
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
+			}
+		}
+		offset = {
+			x = -10
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+				has_government = pro_resistance_nationalism
+			}
+		}
+		offset = {
+			x = -20
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+				has_government = communism
+			}
+		}
+		completion_reward = {
+			set_country_flag = SUI_slower_unrest
+			custom_effect_tooltip = SUI_perma_slow_unrest
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
+			}
+		}
+		mutually_exclusive = {
+			focus = SUI_cheap_field_labor
 		}
 		prerequisite = {
 			focus = SUI_quality_rubber
 		}
 		prerequisite = {
-			focus = SUI_quality_wood
+			focus = SUI_palm_oil_plantations
+		}
+		x = 61
+		y = 6
+	}
+	focus = {
+		id = SUI_support_colonial_ventures
+		icon = GFX_focus_SUI_support_colonial_ventures
+		cost = 4
+		offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_country_flag = SUI_royalists_win
+			}
+		}
+		offset = {
+			x = -30
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+				OR = {
+					has_government = democratic
+					has_government = pro_yagoo_progressive
+				}
+			}
+		}
+		offset = {
+			x = -10
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+				has_government = pro_resistance_nationalism
+			}
+		}
+		offset = {
+			x = -20
+			y = 0
+			trigger = {
+				has_country_flag = SUI_had_elections
+				has_government = communism
+			}
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			subtract_from_variable = {
+				var = SUI.colonial_unrest
+				value = 3
+				tooltip = colonial_unrest_decrease_greatly
+			}
+		}
+		prerequisite = {
+			focus = SUI_sell_lands_to_investors
+			focus = SUI_cheap_field_labor
 		}
 		x = 60
-		y = 6
+		y = 7
 	}
 	focus = {
 		id = SUI_aerial_dominance
