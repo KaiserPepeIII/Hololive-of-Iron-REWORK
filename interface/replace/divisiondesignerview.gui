@@ -210,16 +210,7 @@ guiTypes = {
 			name = "Background"		
 			spriteType ="GFX_division_designer_popup_bg"
 		}
-				buttonType = {
-			name = "close_button"
-			position = { x = -31 y = 7 }
-			quadTextureSprite ="GFX_closebutton"
-			buttonFont = "Main_14_black"
-			shortcut = "ESCAPE"
-			Orientation = "UPPER_RIGHT"
-			clicksound = click_close
-			pdx_tooltip = "CLOSE"
-		}	
+
 		iconType = {
 			name = "select_model"
 			position = { x=35 y=107 }	
@@ -884,6 +875,16 @@ guiTypes = {
 			}
 		}
 		
+		buttonType = {
+			name = "close_button"
+			position = { x = -44 y = 6 }
+			quadTextureSprite ="GFX_closebutton"
+			buttonFont = "Main_14_black"
+			shortcut = "ESCAPE"
+			Orientation = "UPPER_RIGHT"
+			clicksound = click_close
+			pdx_tooltip = "CLOSE"
+		}
 
 		instantTextboxType = {
 			name = "production_resources"
@@ -1195,8 +1196,16 @@ guiTypes = {
 		background = {
 			name = "Background"		
 			spriteType ="GFX_div_subunit_item_bg"
+			alwaystransparent = yes	
 		}
-		
+				iconType = {
+			name = "glowup"
+			quadTextureSprite = "GFX_bop_glow_effect"
+			position = {x=-4 y=16}
+			Orientation = CENTER_LOWER
+			scale = 1.0
+			hide = yes
+		}
 		instantTextboxType = {
 			name = "name"
 			position = { x = 3 y = 27 }
@@ -1216,6 +1225,12 @@ guiTypes = {
 			Orientation = CENTER_LOWER
 			scale = 0.8
 			clicksound = click_default
+
+			pdx_tooltip_anchor =
+			{
+				x = -254
+				y = -2
+			}
 		}	
 
 		buttonType = {
@@ -1394,19 +1409,6 @@ guiTypes = {
 		size = { width = 155 height = 20 }
 		clipping = no
 
-		instantTextboxType = {
-			name = "label"
-			position = { x = 10 y = 6}
-			textureFile = ""
-			font = "hoi_16mbs"
-			borderSize = { x = -5 y = 5 }
-			text = "Name"
-			maxWidth = 130
-			maxHeight = 15
-			format = left
-			multiline = no
-			fixedsize = yes
-		}
 	
 		instantTextboxType = {
 			name = "count"
@@ -1419,6 +1421,20 @@ guiTypes = {
 			maxHeight = 10
 			format = right
 			multiline = no
+		}
+
+		instantTextboxType = {
+			name = "label"
+			position = { x = 10 y = 6}
+			textureFile = ""
+			font = "hoi_16mbs"
+			borderSize = { x = -5 y = 5 }
+			text = "Name"
+			maxWidth = 130
+			maxHeight = 15
+			format = left
+			multiline = no
+			fixedsize = yes
 		}
 	}
 	

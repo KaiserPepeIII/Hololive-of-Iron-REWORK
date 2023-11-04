@@ -1336,6 +1336,110 @@ remove_any_country_role_from_character = {
 		}
 		remove_advisor_role = {
 			slot = political_advisor
+			get_current_ruling_party = {
+				set_variable = {
+					ROOT.ruling_ideology_before_change = ROOT.current_party_ideology_group
+				}
+			}
+			#Upgrades state cat to the next valid level. Called from state scope
+			increase_state_category = {
+				if = {
+					limit = {
+						has_state_category = tiny_island
+					}
+					set_state_category = small_island
+					effect_tooltip = {
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_state_category = wasteland
+							has_state_category = enclave
+						}
+					}
+					set_state_category = pastoral
+					effect_tooltip = {
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+				else_if = {
+					limit = {
+						has_state_category = pastoral
+					}
+					set_state_category = rural
+					effect_tooltip = {
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+				else_if = {
+					limit = {
+						has_state_category = rural
+					}
+					set_state_category = town
+					effect_tooltip = {
+						add_extra_state_shared_building_slots = 2
+					}
+				}
+				else_if = {
+					limit = {
+						has_state_category = town
+					}
+					set_state_category = large_town
+					effect_tooltip = {
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+				else_if = {
+					limit = {
+						has_state_category = large_town
+					}
+					set_state_category = city
+					effect_tooltip = {
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+				else_if = {
+					limit = {
+						has_state_category = city
+					}
+					set_state_category = metropolis
+					effect_tooltip = {
+						add_extra_state_shared_building_slots = 4
+					}
+				}
+				else_if = {
+					limit = {
+						has_state_category = metropolis
+					}
+					set_state_category = megalopolis
+					effect_tooltip = {
+						add_extra_state_shared_building_slots = 2
+					}
+				}
+			}
+		}
+	}
+}
+
+remove_potential_special_forces_tree = {
+	if = {
+		limit = { NOT = { has_variable = sf_trees } }
+		set_variable = { sf_trees = 0 }
+	}
+	else = {
+		subtract_from_variable = { sf_trees = 1 }
+	}
+}
+
+store_core_states_on_game_start = { #Should be called from history file
+	every_core_state = {
+		ROOT = {
+			add_to_array = {
+				array = core_states_at_game_start
+				value = PREV
+			}
 		}
 	}
 }
