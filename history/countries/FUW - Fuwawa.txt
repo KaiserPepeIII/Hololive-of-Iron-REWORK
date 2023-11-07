@@ -1,4 +1,38 @@
 ﻿capital = 9
+oob = "FUW_1936"
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "FUW_1936_air_bba"
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_air_oob = "FUW_1936_air_legacy"
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	FUW = {
+		set_autonomy = {
+			target = MOC
+			autonomous_state = autonomy_personal_union
+		}
+	}
+	else = {
+		FUW = {
+			puppet = MOC
+		}
+	}
+}
+
 set_stability = 0.8
 set_war_support = 0.2
 set_research_slots = 4
@@ -54,7 +88,171 @@ set_politics = {
 	elections_allowed = no
 }
 
+#LEADER GENERATION - Fuwawa 
+recruit_character = FUW_fuwawa_abyssgard_democratic
+recruit_character = FUW_fuwawa_abyssgard_progressive
+recruit_character = FUW_fuwawa_abyssgard_yagoo_monarchy
+recruit_character = FUW_fuwawa_abyssgard_yagoo_kleptocratic
+recruit_character = FUW_fuwawa_abyssgard_revolutionary
+recruit_character = FUW_fuwawa_abyssgard_nationalism
+recruit_character = FUW_fuwawa_abyssgard_resistance_monarchy
+recruit_character = FUW_fuwawa_abyssgard_resistance_kleptocracy
+recruit_character = FUW_fuwawa_abyssgard_neutral_kleptocratic
+recruit_character = FUW_fuwawa_abyssgard_reactionary_nationalism
+recruit_character = FUW_fuwawa_abyssgard_neutral_democracy
+recruit_character = FUW_fuwawa_abyssgard_divine_mandate
+BIJ = {
+	set_variable = {
+		var = ROOT.anti_aggression
+		value = 30
+	}
+	clamp_variable = {
+		var = ROOT.anti_aggression
+		min = 0
+		max = 100
+	}
+	set_variable = {
+		var = ROOT.seiso_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.seiso_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.reactionary_alignment
+		value = 3
+	}
+	clamp_variable = {
+		var = ROOT.reactionary_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.authoritarianism_alignment
+		value = 5
+	}
+	clamp_variable = {
+		var = ROOT.authoritarianism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.capitalism_alignment
+		value = 2
+	}
+	clamp_variable = {
+		var = ROOT.capitalism_alignment
+		min = 1
+		max = 5
+	}
+	set_variable = {
+		var = ROOT.isolationism_alignment
+		value = 1
+	}
+	clamp_variable = {
+		var = ROOT.isolationism_alignment
+		min = 1
+		max = 5
+	}
+	government_alignment_initiate = yes
+}
+
 set_popularities = {
-	mixed_ideology_democracy = 75
-	pro_yagoo_progressive = 25
+	pro_yagoo_progressive = 20
+	mixed_ideology_democracy = 55
+	fascism = 20
+	left_wing_revolutionary = 5
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Avia B.534"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Aero A.101"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			fixed_auxiliary_weapon_slot_1 = light_mg_2x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Letov S-16"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "Tancik vz. 33"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_fixed_superstructure_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_nsb_armor_upgrade = 1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "LT vz. 35"
+		type = light_tank_chassis_1
+		parent_version = 1
+		modules = {
+			main_armament_slot = tank_high_velocity_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "TNH"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_high_velocity_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 3
+		}
+	}
 }

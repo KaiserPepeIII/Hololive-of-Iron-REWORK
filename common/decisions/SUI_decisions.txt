@@ -7,6 +7,9 @@ SUI_colonial_exploitation = {
 			tag = SUI
 			SUI = {
 				has_country_flag = SUI_dealing_with_colonies
+				NOT = {
+					has_country_flag = SUI_slower_unrest
+				}
 			}
 		}
 		available = {
@@ -33,19 +36,19 @@ SUI_colonial_exploitation = {
 			hidden_effect = {
 				random_list = {
 					#Mild increase - 1
-					10 = {
+					5 = {
 						country_event = suisei.97
 					}
 					#Mid increase - 2
-					5 = {
+					10 = {
 						country_event = suisei.98
 					}
 					#decrease - 1 
-					5 = {
+					3 = {
 						country_event = suisei.100
 					}
 					#Heavy increase - 3
-					1 = {
+					3 = {
 						country_event = suisei.99
 					}
 				}
@@ -54,11 +57,102 @@ SUI_colonial_exploitation = {
 				limit = {
 					check_variable = {
 						var = SUI.colonial_unrest
-						value = 7
+						value = 8
 						compare = greater_than_or_equals
 					}
 				}
 				activate_mission = SUI_scare_rebels_into_submission
+				hidden_effect = {
+					country_event = suisei.129
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = SUI.colonial_unrest
+						value = 4
+						compare = greater_than_or_equals
+					}
+				}
+				hidden_effect = {
+					country_event = suisei.129
+				}
+			}
+		}
+	}
+	SUI_change_in_unrest_2 = {
+		allowed = {
+			tag = SUI
+		}
+		activation = {
+			tag = SUI
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = SUI_slower_unrest
+			}
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		cancel_trigger = {
+			SUI = {
+				NOT = {
+					has_country_flag = SUI_dealing_with_colonies
+				}
+			}
+		}
+		selectable_mission = no
+		days_mission_timeout = 50
+		is_good = no
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			hidden_effect = {
+				random_list = {
+					#Mild increase - 1
+					5 = {
+						country_event = suisei.97
+					}
+					#Mid increase - 2
+					10 = {
+						country_event = suisei.98
+					}
+					#decrease - 1 
+					3 = {
+						country_event = suisei.100
+					}
+					#Heavy increase - 3
+					3 = {
+						country_event = suisei.99
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = SUI.colonial_unrest
+						value = 8
+						compare = greater_than_or_equals
+					}
+				}
+				activate_mission = SUI_scare_rebels_into_submission
+				hidden_effect = {
+					country_event = suisei.129
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = SUI.colonial_unrest
+						value = 4
+						compare = greater_than_or_equals
+					}
+				}
 				hidden_effect = {
 					country_event = suisei.129
 				}
@@ -72,7 +166,7 @@ SUI_colonial_exploitation = {
 			has_political_power > 100
 		}
 		visible = {
-			tag = SUI
+			has_completed_focus = SUI_bail_out_colonies
 		}
 		fire_only_once = yes
 		ai_will_do = {
@@ -110,12 +204,78 @@ SUI_colonial_exploitation = {
 			}
 		}
 	}
+	SUI_embargo_african_economies = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 40
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 40
+		days_remove = 40
+		remove_effect = {
+			MRT = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			MLI = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			VOL = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			NGA = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			NGR = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			CHA = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			CAR = {
+				add_timed_idea = {
+					idea = SUI_resource_embargo
+					days = 400
+				}
+			}
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 1
+				tooltip = colonial_unrest_increase_light
+			}
+		}
+	}
 	SUI_emergency_revolt_suppression = {
 		icon = decision_generic_industry
 		available = {
 			tag = SUI
 			has_active_mission = SUI_scare_rebels_into_submission
-			has_political_power < 20
 		}
 		visible = {
 			SUI = {
@@ -129,10 +289,38 @@ SUI_colonial_exploitation = {
 		cost = 0
 		days_remove = 40
 		remove_effect = {
+			set_country_flag = first_suppression
 			add_to_variable = {
 				var = SUI.colonial_unrest
 				value = 1
 				tooltip = colonial_unrest_increase_light
+			}
+		}
+	}
+	SUI_emergency_revolt_suppression_2 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_active_mission = SUI_scare_rebels_into_submission
+		}
+		visible = {
+			SUI = {
+				has_country_flag = first_suppression
+				has_country_flag = SUI_dealing_with_colonies
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 0
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = first_suppression
+			add_to_variable = {
+				var = SUI.colonial_unrest
+				value = 3
+				tooltip = colonial_unrest_increase_heavy
 			}
 		}
 	}
@@ -152,6 +340,7 @@ SUI_colonial_exploitation = {
 					has_decision = SUI_take_yagoo_colonies_optional
 					has_decision = SUI_irys_optional
 					has_decision = SUI_emergency_revolt_suppression
+					has_decision = SUI_emergency_revolt_suppression_2
 					has_decision = SUI_ghana_optional
 					has_decision = SUI_kill_cameroon_optional
 				}
@@ -250,7 +439,16 @@ SUI_colonial_exploitation = {
 					var = SUI.africans_killed
 					value = 0
 				}
+				set_variable = {
+					var = SUI.colonial_unrest
+					value = 0
+				}
 				clr_country_flag = SUI_dealing_with_colonies
+				clr_country_flag = sui_higher_chance_decisions
+				clr_country_flag = lower_cooldown
+				clr_country_flag = sui_higher_chance_decisions_2
+				clr_country_flag = lower_cooldown_2
+				clr_country_flag = SUI_killing_rebels
 				country_event = suisei.124
 			}
 			else = {
@@ -279,8 +477,17 @@ SUI_colonial_exploitation = {
 					var = SUI.africans_killed
 					value = 0
 				}
+				set_variable = {
+					var = SUI.colonial_unrest
+					value = 0
+				}
 				country_event = suisei.125
 				clr_country_flag = SUI_dealing_with_colonies
+				clr_country_flag = sui_higher_chance_decisions
+				clr_country_flag = lower_cooldown
+				clr_country_flag = sui_higher_chance_decisions_2
+				clr_country_flag = lower_cooldown_2
+				clr_country_flag = SUI_killing_rebels
 			}
 		}
 	}
@@ -295,14 +502,22 @@ SUI_colonial_exploitation = {
 		visible = {
 			SUI = {
 				has_country_flag = SUI_dealing_with_colonies
+				NOT = {
+					OR = {
+						has_country_flag = sui_higher_chance_decisions
+						has_country_flag = lower_cooldown
+						has_country_flag = sui_higher_chance_decisions_2
+						has_country_flag = lower_cooldown_2
+					}
+				}
 			}
 		}
 		fire_only_once = no
-		days_re_enable = 90
 		ai_will_do = {
 			factor = 15
 		}
-		cost = 40
+			cost = 40
+			days_re_enable = 90
 		complete_effect = {
 			random_list = {
 				#Winwin
@@ -311,6 +526,144 @@ SUI_colonial_exploitation = {
 				}
 				#failure
 				4 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_hard_rule_1 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_manpower > 300
+			command_power > 10
+			has_political_power > 40
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = lower_cooldown
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 15
+		}
+			cost = 20
+			days_re_enable = 60
+		complete_effect = {
+			random_list = {
+				#Winwin
+				6 = {
+					country_event = suisei.101
+				}
+				#failure
+				4 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_hard_rule_2 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_manpower > 300
+			command_power > 10
+			has_political_power > 40
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = sui_higher_chance_decisions
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 15
+		}
+			cost = 40
+			days_re_enable = 90
+		complete_effect = {
+			random_list = {
+				#Winwin
+				7 = {
+					country_event = suisei.101
+				}
+				1 = {
+					country_event = suisei.172
+				}
+				#failure
+				2 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_hard_rule_3 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_manpower > 300
+			command_power > 10
+			has_political_power > 40
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = lower_cooldown_2
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 15
+		}
+			cost = 15
+			days_re_enable = 40
+		complete_effect = {
+			random_list = {
+				#Winwin
+				6 = {
+					country_event = suisei.101
+				}
+				#failure
+				4 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_hard_rule_4 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_manpower > 300
+			command_power > 10
+			has_political_power > 40
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = sui_higher_chance_decisions_2
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 15
+		}
+			cost = 40
+			days_re_enable = 90
+		complete_effect = {
+			random_list = {
+				#Winwin
+				5 = {
+					country_event = suisei.101
+				}
+				3 = {
+					country_event = suisei.172
+				}
+				#failure
+				2 = {
 					country_event = suisei.102
 				}
 			}
@@ -325,11 +678,19 @@ SUI_colonial_exploitation = {
 		visible = {
 			SUI = {
 				has_country_flag = SUI_dealing_with_colonies
+				NOT = {
+					OR = {
+						has_country_flag = sui_higher_chance_decisions
+						has_country_flag = lower_cooldown
+						has_country_flag = sui_higher_chance_decisions_2
+						has_country_flag = lower_cooldown_2
+					}
+				}
 			}
 		}
-		cost = 75
 		fire_only_once = no
-		days_re_enable = 90
+			cost = 75
+			days_re_enable = 90
 		ai_will_do = {
 			factor = 15
 		}
@@ -381,6 +742,276 @@ SUI_colonial_exploitation = {
 			}
 		}
 	}
+	SUI_invest_in_jobs_1 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 75
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = lower_cooldown
+			}
+		}
+		fire_only_once = no
+			cost = 55
+			days_re_enable = 60
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					is_on_continent = africa
+					is_owned_by = SUI
+				}
+				random_list = {
+					9 = {
+						if = {
+							limit = {
+								THIS = {
+									infrastructure < 5
+								}
+							}
+							add_building_construction = {
+								type = infrastructure
+								level = 1
+							}
+							else = {
+								add_building_construction = {
+									type = industrial_complex
+									level = 1
+								}
+								add_extra_state_shared_building_slots = 1
+							}
+						}
+					}
+					1 = {
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+						}
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+			}
+			random_list = {
+				#Winwin
+				8 = {
+					country_event = suisei.101
+				}
+				#failure
+				2 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_invest_in_jobs_2 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 75
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = sui_higher_chance_decisions
+			}
+		}
+		fire_only_once = no
+			cost = 75
+			days_re_enable = 90
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					is_on_continent = africa
+					is_owned_by = SUI
+				}
+				random_list = {
+					9 = {
+						if = {
+							limit = {
+								THIS = {
+									infrastructure < 5
+								}
+							}
+							add_building_construction = {
+								type = infrastructure
+								level = 1
+							}
+							else = {
+								add_building_construction = {
+									type = industrial_complex
+									level = 1
+								}
+								add_extra_state_shared_building_slots = 1
+							}
+						}
+					}
+					1 = {
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+						}
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+			}
+			random_list = {
+				#Winwin
+				7 = {
+					country_event = suisei.101
+				}
+				2 = {
+					country_event = suisei.172
+				}
+				#failure
+				1 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_invest_in_jobs_3 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 75
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = lower_cooldown_2
+			}
+		}
+		fire_only_once = no
+			cost = 35
+			days_re_enable = 40
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					is_on_continent = africa
+					is_owned_by = SUI
+				}
+				random_list = {
+					9 = {
+						if = {
+							limit = {
+								THIS = {
+									infrastructure < 5
+								}
+							}
+							add_building_construction = {
+								type = infrastructure
+								level = 1
+							}
+							else = {
+								add_building_construction = {
+									type = industrial_complex
+									level = 1
+								}
+								add_extra_state_shared_building_slots = 1
+							}
+						}
+					}
+					1 = {
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+						}
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+			}
+			random_list = {
+				#Winwin
+				8 = {
+					country_event = suisei.101
+				}
+				#failure
+				2 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
+	SUI_invest_in_jobs_4 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 75
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = sui_higher_chance_decisions_2
+			}
+		}
+		fire_only_once = no
+			cost = 75
+			days_re_enable = 90
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					is_on_continent = africa
+					is_owned_by = SUI
+				}
+				random_list = {
+					8 = {
+						if = {
+							limit = {
+								THIS = {
+									infrastructure < 5
+								}
+							}
+							add_building_construction = {
+								type = infrastructure
+								level = 1
+							}
+							else = {
+								add_building_construction = {
+									type = industrial_complex
+									level = 1
+								}
+								add_extra_state_shared_building_slots = 1
+							}
+						}
+					}
+					2 = {
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+						}
+						add_extra_state_shared_building_slots = 1
+					}
+				}
+			}
+			random_list = {
+				#Winwin
+				5 = {
+					country_event = suisei.101
+				}
+				4 = {
+					country_event = suisei.172
+				}
+				#failure
+				1 = {
+					country_event = suisei.102
+				}
+			}
+		}
+	}
 	SUI_negotiate_settlements = {
 		icon = decision_generic_industry
 		available = {
@@ -397,11 +1028,191 @@ SUI_colonial_exploitation = {
 		visible = {
 			SUI = {
 				has_country_flag = SUI_dealing_with_colonies
+				NOT = {
+					OR = {
+						has_country_flag = sui_higher_chance_decisions
+						has_country_flag = lower_cooldown
+						has_country_flag = sui_higher_chance_decisions_2
+						has_country_flag = lower_cooldown_2
+					}
+				}
 			}
 		}
-		cost = 100
 		fire_only_once = no
+		cost = 100
 		days_re_enable = 90
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			#Winwin
+			country_event = suisei.101
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_dynamic_modifier = {
+					modifier = SUI_colonial_settlements
+					days = 90
+				}
+			}
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_dynamic_modifier = {
+					modifier = SUI_colonial_settlements
+					days = 90
+				}
+			}
+		}
+	}
+	SUI_negotiate_settlements_1 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 100
+			NOT = {
+				any_owned_state = {
+					has_dynamic_modifier = {
+						modifier = SUI_colonial_settlements
+					}
+				}
+			}
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = lower_cooldown
+			}
+		}
+		fire_only_once = no
+		cost = 90
+		days_re_enable = 60
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			#Winwin
+			country_event = suisei.101
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_dynamic_modifier = {
+					modifier = SUI_colonial_settlements
+					days = 90
+				}
+			}
+		}
+	}
+	SUI_negotiate_settlements_2 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 100
+			NOT = {
+				any_owned_state = {
+					has_dynamic_modifier = {
+						modifier = SUI_colonial_settlements
+					}
+				}
+			}
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = sui_higher_chance_decisions
+			}
+		}
+		fire_only_once = no
+		cost = 100
+		days_re_enable = 90
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			#Winwin
+			country_event = suisei.101
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_dynamic_modifier = {
+					modifier = SUI_colonial_settlements
+					days = 90
+				}
+			}
+		}
+	}
+	SUI_negotiate_settlements_3 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 100
+			NOT = {
+				any_owned_state = {
+					has_dynamic_modifier = {
+						modifier = SUI_colonial_settlements
+					}
+				}
+			}
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = sui_higher_chance_decisions_2
+			}
+		}
+		fire_only_once = no
+		cost = 100
+		days_re_enable = 90
+		ai_will_do = {
+			factor = 15
+		}
+		complete_effect = {
+			random_list = {
+				#Winwin
+				4 = {
+					country_event = suisei.101
+				}
+				6 = {
+					country_event = suisei.172
+				}
+			}
+			every_owned_state = {
+				limit = {
+					is_on_continent = africa
+				}
+				add_dynamic_modifier = {
+					modifier = SUI_colonial_settlements
+					days = 90
+				}
+			}
+		}
+	}
+	SUI_negotiate_settlements_4 = {
+		icon = decision_generic_industry
+		available = {
+			tag = SUI
+			has_political_power > 100
+			NOT = {
+				any_owned_state = {
+					has_dynamic_modifier = {
+						modifier = SUI_colonial_settlements
+					}
+				}
+			}
+		}
+		visible = {
+			SUI = {
+				has_country_flag = SUI_dealing_with_colonies
+				has_country_flag = lower_cooldown_2
+			}
+		}
+		fire_only_once = no
+		cost = 70
+		days_re_enable = 40
 		ai_will_do = {
 			factor = 15
 		}
@@ -1262,7 +2073,7 @@ SUI_depression_recovery = {
 			}
 		}
 	}
-	SUI_promote_military_complex_production = {
+	SUI_promote_military_complex_construction = {
 		allowed = {
 			tag = SUI
 		}
@@ -1786,7 +2597,7 @@ SUI_depression_recovery = {
 			tag = SUI
 		}
 		visible = {
-			has_country_flag = phase4
+			has_country_flag = phase3
 			}
 		available = {
 			has_political_power > 80
@@ -1852,6 +2663,7 @@ SUI_depression_recovery = {
 		cost = 120
 		fire_only_once = yes
 		complete_effect = {
+			set_country_flag = empire_style
 			add_stability = -0.05
 			if = {
 				limit = {
@@ -1897,6 +2709,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = empire_style
 			has_political_power > 100
 		}
 		ai_will_do = {
@@ -1909,6 +2722,7 @@ SUI_depression_recovery = {
 			consumer_goods_factor = 0.05
 		}
 		remove_effect = {
+			set_country_flag = stadium_built
 			add_stability = 0.05
 			if = {
 				limit = {
@@ -1954,6 +2768,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = stadium_built
 			has_political_power > 50
 		}
 		ai_will_do = {
@@ -1962,6 +2777,7 @@ SUI_depression_recovery = {
 		cost = 50
 		fire_only_once = yes
 		complete_effect = {
+			clr_country_flag = stadium_built
 			country_event = suisei.160
 			add_to_variable = {
 				var = SUI.depression_progress
@@ -1977,6 +2793,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = empire_style
 			has_political_power > 120
 		}
 		ai_will_do = {
@@ -2030,6 +2847,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = empire_style
 			always = yes
 		}
 		ai_will_do = {
@@ -2158,6 +2976,7 @@ SUI_depression_recovery = {
 		cost = 150
 		fire_only_once = yes
 		complete_effect = {
+			set_country_flag = allow_atomic_research
 			add_ideas = SUI_extreme_technological_progress
 			add_research_slot = 1
 			add_tech_bonus = {
@@ -2179,6 +2998,7 @@ SUI_depression_recovery = {
 			has_country_flag = phase4
 			}
 		available = {
+			has_country_flag = allow_atomic_research
 			has_political_power > 160
 		}
 		ai_will_do = {
@@ -2187,6 +3007,7 @@ SUI_depression_recovery = {
 		cost = 160
 		fire_only_once = yes
 		complete_effect = {
+			clr_country_flag = allow_atomic_research
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 3
@@ -2261,7 +3082,7 @@ SUI_depression_recovery = {
 		available = {
 						check_variable = {
 				var = SUI.depression_progress
-				value = 28
+				value = 27
 				compare = greater_than_or_equals
 			}
 		}
@@ -2270,6 +3091,7 @@ SUI_depression_recovery = {
 		}
 		fire_only_once = yes
 		complete_effect = {
+			clr_country_flag = empire_style
 			clr_country_flag = phase4
 			swap_ideas = {
 				remove_idea = SUI_booming_tourism_3
@@ -2278,7 +3100,7 @@ SUI_depression_recovery = {
 			every_core_state = {
 				limit = {
 					is_on_continent = europe
-					is_ownedy_by = SUI
+					is_owned_by = SUI
 				}
 				add_dynamic_modifier = {
 					modifier = SUI_gambling_haven
@@ -2293,25 +3115,23 @@ SUI_depression_recovery = {
 			tag = SUI
 		}
 		visible = {
+			SUI = {
 				any_core_state = { 
-					limit = {
 						is_on_continent = europe
 						is_owned_by = SUI
-					}
 					NOT = {
 						has_dynamic_modifier = {
 							modifier = SUI_gambling_haven
 						}
 					}
 				}
+			}
 				has_idea = SUI_the_new_las_vegas
 			}
 		available = {
 			any_core_state = { 
-				limit = {
 					is_on_continent = europe
 					is_owned_by = SUI
-				}
 				NOT = {
 					has_dynamic_modifier = {
 						modifier = SUI_gambling_haven
@@ -2323,7 +3143,7 @@ SUI_depression_recovery = {
 			factor = 20
 		}
 		cost = 50
-		fire_only_once = yes
+		fire_only_once = no
 		complete_effect = {
 			every_core_state = {
 				limit = {
@@ -2396,7 +3216,7 @@ SUI_aligning_miko = {
 				tag = SUI
 				has_political_power > 50
 				MIK = {
-					has_government = divine_mandate
+					divine_mandate > 0.5
 				}
 			}
 			visible = {
@@ -2408,7 +3228,7 @@ SUI_aligning_miko = {
 			}
 			cost = 50
 			days_remove = 70
-			complete_effect = {
+			remove_effect = {
 				MIK = {
 					country_event = miko.28
 				}
@@ -2421,13 +3241,18 @@ SUI_aligning_miko = {
 				has_political_power > 50
 			}
 			visible = {
-				tag = SUI
+				MIK = {
+					NOT = {
+						has_government = divine_mandate
+					}
+				}
 			}
-			fire_only_once = yes
+			fire_only_once = no
 			ai_will_do = {
 				factor = 15
 			}
 			cost = 50
+			days_re_enable = 30
 			complete_effect = {
 				MIK = {
 					add_popularity = {
@@ -2454,6 +3279,7 @@ SUI_aligning_miko = {
 			factor = 15
 		}
 		cost = 50
+		days_re_enable = 60
 		complete_effect = {
 			send_equipment = {
 				equipment = infantry_equipment
@@ -2474,17 +3300,13 @@ SUI_send_troops_to_miko = {
 			has_civil_war = yes
 		}
 	}
-	fire_only_once = no
+	fire_only_once = yes
 	ai_will_do = {
 		factor = 15
 	}
 	cost = 50
 	complete_effect = {
-		send_equipment = {
-			equipment = infantry_equipment
-			amount = 1000
-			target = MIK
-		}
+		add_ideas = SUI_sending_volunteers
 	}
 }
 }
@@ -2662,6 +3484,7 @@ suisei_fix_army = {
 		available = {
 			tag = SUI
 			has_political_power > 50
+			has_army_experience > 10
 		}
 		visible = {
 			tag = SUI
@@ -2671,7 +3494,9 @@ suisei_fix_army = {
 			factor = 10
 		}
 		cost = 50
-		complete_effect = {
+		days_remove = 50
+		remove_effect = {
+			army_experience = -10
 			army_experience = 5
 			set_country_flag = SUI_reforming
 			swap_ideas = {
@@ -2686,6 +3511,7 @@ suisei_fix_army = {
 			tag = SUI
 			has_political_power > 50
 			command_power > 25
+			has_army_experience > 25
 		}
 		visible = {
 			tag = SUI
@@ -2696,7 +3522,9 @@ suisei_fix_army = {
 			factor = 10
 		}
 		cost = 50
-		complete_effect = {
+		days_remove = 50
+		remove_effect = {
+			army_experience = -25
 			add_command_power = -25
 			set_country_flag = SUI_last_push
 			swap_ideas = {
@@ -2709,7 +3537,7 @@ suisei_fix_army = {
 		icon = decision_generic_industry
 		available = {
 			tag = SUI
-			has_army_experience > 15
+			has_army_experience > 50
 		}
 		visible = {
 			tag = SUI
@@ -2719,8 +3547,9 @@ suisei_fix_army = {
 		ai_will_do = {
 			factor = 10
 		}
-		complete_effect = {
-			army_experience = -15
+		days_remove = 50
+		remove_effect = {
+			army_experience = -50
 			clr_country_flag = SUI_last_push
 			clr_country_flag = SUI_reforming
 			clr_country_flag = suisei_fix_army
@@ -3295,7 +4124,9 @@ suisei_election_compromises = {
 			tag = SUI
 		}
 		available = {
-			always = no
+			has_country_flag = suisei_down_opposition_one
+			has_country_flag = suisei_down_opposition_two
+			has_country_flag = suisei_down_opposition_three
 		}
 		activation = {
 			tag = SUI
@@ -3305,16 +4136,15 @@ suisei_election_compromises = {
 			tag = SUI
 			has_country_flag = SUI_quell_resistance
 		}
-		selectable_mission = no
+		selectable_mission = yes
 		days_mission_timeout = 80
-		is_good = yes
+		is_good = no
 		fire_only_once = yes
+		complete_effect = {
+			country_event = suisei.35
+		}
 		timeout_effect = {
-			SUI = {
-				country_event = {
-					id = suisei.34
-				}
-			}
+			country_event = suisei.34
 		}
 	}
 	SUI_shut_down_opposition = {

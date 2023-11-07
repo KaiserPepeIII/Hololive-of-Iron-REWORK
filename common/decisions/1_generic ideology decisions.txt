@@ -1,83 +1,57 @@
 pro_yagoo_conservative_category = {
-	generic_deregulate_economy = {
+	generic_pyc_status_quo = {
 		icon = generic_prepare_civil_war
-		available = {
-			NOT = {
-				has_idea = deregulating_economy
-				has_idea = small_economic_boom
-			}
-		}
 		visible = {
-			NOT = {
-				has_idea = deregulating_economy
-				has_idea = small_economic_boom
-			}
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_status_quo_idea
+		}
+	}
+	generic_pyc_popular_and_stable = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
 		}
 		fire_only_once = no
 		ai_will_do = {
 			factor = 5
 		}
 		days_re_enable = 180
+		days_remove = 140
+		cost = 100
+		modifier = {
+			democratic_drift = 0.05
+			stability_weekly = 0.01
+		}
+	}
+	generic_pyc_fuel_security = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
 		days_remove = 180
-		cost = 250
-		complete_effect = {
-			add_timed_idea = {
-				idea = deregulating_economy
-				days = 180
-			}
-		}
-		remove_effect = {
-			add_timed_idea = {
-				idea = small_economic_boom
-				days = 200
-			}
-		}
-	}
-	generic_encourage_traditional_family = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 100
-		cost = 10
-		complete_effect = {
-			add_timed_idea = {
-				idea = encourage_family_tradition
-				days = 100
-			}
-		}
-	}
-	generic_encourage_private_industry = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 50
+		cost = 125
 		complete_effect = {
 			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
+				add_resource = {
+					type = oil
+					amount = 2
 				}
-			}
-			add_timed_idea = {
-				idea = encourage_private_industry
-				days = 70
 			}
 		}
 	}
-	generic_encourage_private_infrastructure = {
+	generic_pyc_metals_independence = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -86,116 +60,23 @@ pro_yagoo_conservative_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 60
-		days_remove = 120
-		cost = 120
+		days_re_enable = 360
+		days_remove = 180
+		cost = 125
 		complete_effect = {
-			random_list = {
-				50 = {
-					add_timed_idea = {
-						idea = contracted_railroads_1
-						days = 121
-					}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 6
 				}
-				25 = {
-					add_timed_idea = {
-						idea = contracted_railroads_2
-						days = 121
-					}
-					add_political_power = -5
-				}
-				20 = {
-					add_timed_idea = {
-						idea = contracted_railroads_3
-						days = 121
-					}
-					add_political_power = -15
-				}
-				5 = {
-					add_timed_idea = {
-						idea = contracted_railroads_4
-						days = 121
-					}
-					add_political_power = -30
-				}
-			}
-		}
-		remove_effect = {
-			custom_effect_tooltip = "We will gain some infrastructure in our states depending on the quality of our contracted railroad company."
-			hidden_effect = {
-				if = {
-					limit = {
-						has_idea = contracted_railroads_1
-					}
-					random_owned_controlled_state = {
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				else_if = {
-					limit = {
-						has_idea = contracted_railroads_2
-					}
-					random_owned_controlled_state = {
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes
-						}
-					}
-					random_owned_controlled_state = {
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				else_if = {
-					limit = {
-						has_idea = contracted_railroads_3
-					}
-					random_owned_controlled_state = {
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-					}
-					random_owned_controlled_state = {
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				else_if = {
-					limit = {
-						has_idea = contracted_railroads_4
-					}
-					random_owned_controlled_state = {
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-					}
-					random_owned_controlled_state = {
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-					}
+				add_resource = {
+					type = aluminium
+					amount = 6
 				}
 			}
 		}
 	}
-	generic_attack_reformers = {
+	generic_pyc_industrial_independence = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -204,175 +85,32 @@ pro_yagoo_conservative_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 45
-		cost = 30
+		days_re_enable = 360
+		days_remove = 180
+		cost = 100
 		complete_effect = {
-			add_stability = -0.03
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.06
-			}
-		}
-	}
-	generic_promote_individualism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			NOT = {
-				has_idea = promote_individualism
-			}
-		}
-		available = {
-			NOT = {
-				has_idea = promote_individualism
-			}
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 45
-		cost = 50
-		complete_effect = {
-			add_timed_idea = {
-				idea = promote_individualism
-				days = 120
-			}
-		}
-	}
-	generic_promote_law_order = {
-		icon = generic_prepare_civil_war
-		visible = {
-			NOT = {
-				has_idea = law_and_order_conservatismpolicy
-			}
-		}
-		available = {
-			NOT = {
-				has_idea = law_and_order_conservatismpolicy
-				has_stability > 0.75
-			}
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 45
-		cost = 50
-		complete_effect = {
-			add_timed_idea = {
-				idea = law_and_order_conservatismpolicy
-				days = 35
-			}
-		}
-	}
-	generic_rally_for_interventionism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			NOT = {
-				has_idea = interventionism_rally
-			}
-		}
-		available = {
-			NOT = {
-				has_idea = interventionism_rally
-				has_war_support > 0.75
-			}
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 25
-		complete_effect = {
-			add_timed_idea = {
-				idea = interventionism_rally
-				days = 120
-			}
+			two_random_civilian_factory = yes
+			one_random_arms_factory = yes
 		}
 	}
 }
 
 pro_yagoo_progressive_category = {
-	adopt_interventionism_policies = {
+	generic_pyp_social_justice = {
 		icon = generic_prepare_civil_war
 		visible = {
-			has_idea = world_interventionism_idea
-			NOT = {
-				has_idea = world_interventionism_idea_2
-			}
+			always = yes
 		}
-		available = {
-			has_idea = world_interventionism_idea
-			NOT = {
-				has_idea = world_interventionism_idea_2
-			}
-			any_country = {
-				has_added_tension_amount > 10
-			}
-		}
-		fire_only_once = no
+		fire_only_once = yes
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 0
-		cost = 100
+		cost = 150
 		complete_effect = {
-			set_rule = {
-				can_send_volunteers = yes
-			}
-			swap_ideas = {
-				remove_idea = world_interventionism_idea
-				add_idea = world_interventionism_idea_2
-			}
+			add_ideas = GEN_social_justice_idea
 		}
 	}
-	generic_decrease_union_power = {
-		icon = generic_prepare_civil_war
-		visible = {
-			has_idea = increased_union_power
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 0
-		cost = 60
-		complete_effect = {
-			remove_ideas = increased_union_power
-			add_popularity = {
-				ideology = pro_yagoo_progressive
-				popularity = -0.05
-			}
-		}
-	}
-	generic_increase_union_power = {
-		icon = generic_prepare_civil_war
-		visible = {
-			NOT = {
-				has_idea = increased_union_power
-			}
-		}
-		available = {
-			NOT = {
-				has_idea = increased_union_power
-			}
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 0
-		cost = 40
-		complete_effect = {
-			add_ideas = increased_union_power
-			add_popularity = {
-				ideology = pro_yagoo_progressive
-				popularity = 0.03
-			}
-		}
-	}
-	generic_encourage_women_work = {
+	generic_pyp_coerce_the_workers = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -381,78 +119,15 @@ pro_yagoo_progressive_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			add_timed_idea = {
-				idea = encourage_women_work_idea
-				days = 90
-			}
+		days_re_enable = 360
+		days_remove = 140
+		modifier = {
+			stability_weekly = -0.01
+			industrial_capacity_factory = 0.1
+			production_speed_buildings_factor = 0.15
 		}
 	}
-	generic_expand_state_industry = {
-		icon = generic_prepare_civil_war
-		visible = {
-			NOT = {
-				has_idea = expanding_state_industry
-			}
-		}
-		available = {
-			NOT = {
-				has_idea = expanding_state_industry
-			}
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 60
-		days_remove = 70
-		cost = 70
-		complete_effect = {
-			add_timed_idea = {
-				idea = expanding_state_industry
-				days = 70
-			}
-		}
-		remove_effect = {
-			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-	generic_encourage_pacifism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			NOT = {
-				has_idea = pacifism_rally
-			}
-		}
-		available = {
-			NOT = {
-				has_idea = pacifism_rally
-			}
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 60
-		days_remove = 60
-		cost = 0
-		complete_effect = {
-			add_timed_idea = {
-				idea = pacifism_rally
-				days = 60
-			}
-		}
-	}
-	generic_expand_welfare = {
+	generic_pyp_coerce_businesses = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -461,23 +136,14 @@ pro_yagoo_progressive_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		days_remove = 90
-		cost = 120
-		complete_effect = {
-			add_timed_idea = {
-				idea = welfare_expansion
-				days = 90
-			}
-		}
-		remove_effect = {
-			add_popularity = {
-				ideology = pro_yagoo_progressive
-				popularity = 0.03
-			}
+		days_re_enable = 360
+		days_remove = 140
+		modifier = {
+			stability_weekly = -0.01
+			consumer_goods_factor = -0.075
 		}
 	}
-	generic_encourage_secular_science = {
+	generic_pyp_coerce_the_population_into_army = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -486,120 +152,47 @@ pro_yagoo_progressive_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 80
-		days_remove = 70
-		cost = 30
-		complete_effect = {
-			add_timed_idea = {
-				idea = secular_institutions
-				days = 70
-			}
+		days_re_enable = 360
+		days_remove = 140
+		modifier = {
+			stability_weekly = -0.01
+			conscription_factor = 0.07
 		}
 	}
-	generic_rally_for_world_policing = {
+	generic_pyp_coerce_politicians = {
 		icon = generic_prepare_civil_war
 		visible = {
-			NOT = {
-				has_idea = world_interventionism_idea
-				has_idea = world_interventionism_idea_2
-			}
-		}
-		available = {
-			NOT = {
-				has_idea = world_interventionism_idea
-				has_idea = world_interventionism_idea_2
-			}
+			always = yes
 		}
 		fire_only_once = no
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		cost = 50
-		complete_effect = {
-			add_timed_idea = {
-				idea = world_interventionism_idea
-				days = 130
-			}
+		days_re_enable = 360
+		days_remove = 140
+		modifier = {
+			stability_weekly = -0.01
+			pro_yagoo_progressive_drift = 0.05
 		}
-	}
-	bonus_against_warlike = {
-		icon = generic_prepare_civil_war
-		visible = {
-			has_idea = world_interventionism_idea_2
-		}
-		targets_dynamic = yes
-		target_trigger = {
-			FROM = {
-				has_added_tension_amount > 10
-			}
-		}
-		complete_effect = {
-			FROM = {
-				add_ideas = world_interventionism_bonus_idea
-			}
-		}
-		# targeted_modifier = {
-		# 	target = PREV
-		# 	targets_dynamic = yes
-		# 	attack_bonus_against = 0.05
-		# }
 	}
 }
 
 pro_yagoo_monarchy_category = {
-	generic_royal_industries = {
+	generic_pym_for_morals_and_monarchy = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
 		}
-		fire_only_once = no
+		fire_only_once = yes
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
 		cost = 150
 		complete_effect = {
-			random_list = {
-				55 = {
-					random_owned_controlled_state = {
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				35 = {
-					random_owned_controlled_state = {
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				10 = {
-					random_owned_controlled_state = {
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-			}
+			add_ideas = GEN_for_morals_and_monarchy_idea
 		}
 	}
-	generic_purge_opposition_factions = {
+	generic_pym_build_fortifications = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -608,49 +201,33 @@ pro_yagoo_monarchy_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		cost = 100
-		days_remove = 70
-		modifier = {
-			stability_weekly = 0.009
-		}
+		cost = 75
 		complete_effect = {
-			add_popularity = {
-				ideology = pro_yagoo_monarchy
-				popularity = 0.15
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
 			}
-			add_stability = -0.15
-		}
-		remove_effect = {
-			add_stability = 0.03
-		}
-	}
-	generic_promote_absolutism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			NOT = {
-				has_idea = absolutism_enforce
-			}
-		}
-		available = {
-			NOT = {
-				has_idea = absolutism_enforce
-			}
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 50
-		complete_effect = {
-			add_timed_idea = {
-				idea = absolutism_enforce
-				days = 120
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
 			}
 		}
 	}
-	generic_royal_research = {
+	generic_pym_guards_unit = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -659,68 +236,120 @@ pro_yagoo_monarchy_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		days_remove = 70
-		cost = 50
-		modifier = {
-			research_speed_factor = 0.05
-		}
-		complete_effect = {
-		}
-	}
-	generic_rally_loyalist_militia = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 50
+		cost = 75
 		complete_effect = {
 			if = {
 				limit = {
 					NOT = {
-						has_template = "Loyalist Militia"
+						has_template = "Royal Guards"
 					}
 				}
 				division_template = {
-					name = "Loyalist Militia"
-					priority = 1
+					name = "Royal Guards"
 					regiments = {
-						infantry = {
+						guards = {
 							x = 0
 							y = 0
 						}
-						infantry = {
+						guards = {
 							x = 0
 							y = 1
 						}
-						infantry = {
+						guards = {
+							x = 0
+							y = 2
+						}
+						guards = {
 							x = 1
 							y = 0
 						}
-						infantry = {
+						guards = {
 							x = 1
 							y = 1
 						}
-					}
-				}
-				random_owned_controlled_state = {
-					create_unit = {
-						division = "name = \"Loyalist Militia\" division_template = \"Loyalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-						owner = ROOT
+						guards = {
+							x = 1
+							y = 2
+						}
 					}
 				}
 			}
-			else = {
-				random_owned_controlled_state = {
-					create_unit = {
-						division = "name = \"Loyalist Militia\" division_template = \"Loyalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-						owner = ROOT
-					}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Royal Guards\" division_template = \"Royal Guards\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = PREV
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+	generic_pym_eternal_monarchy = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		complete_effect = {
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+	}
+	generic_pym_squash_dissenters = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		complete_effect = {
+			custom_effect_tooltip = GEN_pym_squash_dissenters_tooltip
+			hidden_effect = {
+				add_popularity = {
+					ideology = communism
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_resistance_monarchy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_resistance_kleptocracy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = pro_resistance_nationalism
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = left_wing_revolutionary
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = democratic_revitalisation
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = reactionary_monarchy
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = mixed_ideology_democracy
+					popularity = -0.1
 				}
 			}
 		}
@@ -728,7 +357,36 @@ pro_yagoo_monarchy_category = {
 }
 
 pro_yagoo_kleptocracy_category = {
-	generic_centralize_power = {
+	generic_pyk_maintaining_control = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_maintaining_control_idea
+		}
+	}
+	generic_pyk_bribe_international_industrialists = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 275
+		cost = 100
+		complete_effect = {
+			two_random_civilian_factory = yes
+		}
+	}
+	generic_pyk_bribe_opposition = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -738,193 +396,15 @@ pro_yagoo_kleptocracy_category = {
 			factor = 5
 		}
 		days_re_enable = 180
-		days_remove = 90
 		cost = 50
-		modifier = {
-			political_power_gain = 0.25
-			stability_weekly = -0.003
-		}
-		remove_effect = {
-			add_political_power = 50
-			add_stability = 0.03
-		}
-	}
-	generic_place_lackies_in_charge = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 180
-		days_remove = 120
-		cost = 0
-		modifier = {
-			political_advisor_cost_factor = -0.35
-			political_power_cost = 0.3
-			economy_cost_factor = 0.15
-			trade_laws_cost_factor = 0.15
-			mobilization_laws_cost_factor = 0.05
-			stability_factor = -0.05
-		}
 		complete_effect = {
-			add_command_power = -25
-		}
-		remove_effect = {
-			add_political_power = 200
 			add_popularity = {
-				ideology = pro_yagoo_kleptocracy
-				popularity = 0.05
-			}
-		}
-	}
-	generic_pay_off_political_opponents = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 50
-		modifier = {
-			pro_yagoo_kleptocracy_drift = 0.09
-			consumer_goods_factor = 0.05
-		}
-		complete_effect = {
-		}
-	}
-	generic_crack_down_on_opposition = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 70
-		cost = 70
-		modifier = {
-			stability_weekly = 0.007
-			pro_yagoo_kleptocracy_drift = 0.01
-		}
-		complete_effect = {
-			add_stability = -0.05
-		}
-		remove_effect = {
-			add_popularity = {
-				ideology = pro_yagoo_kleptocracy
+				ideology = var:current_party_ideology_group
 				popularity = 0.1
 			}
 		}
 	}
-	generic_expand_military_control = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_factor = -0.25
-			command_power_gain = 0.2
-		}
-	}
-	generic_expand_state_media = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 70
-		cost = 50
-		modifier = {
-			pro_yagoo_kleptocracy_drift = -0.01
-			stability_weekly = 0.005
-		}
-		remove_effect = {
-			add_popularity = {
-				ideology = pro_yagoo_kleptocracy
-				popularity = 0.05
-			}
-			add_stability = 0.02
-		}
-	}
-	generic_liquidate_disloyal_officers = {
-		icon = generic_prepare_civil_war
-		visible = {
-			NOT = {
-				has_war = yes
-			}
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 30
-		modifier = {
-			army_morale_factor = -0.1
-			army_org_factor = -0.05
-			command_power_gain_mult = -0.2
-			stability_factor = -0.05
-		}
-		complete_effect = {
-			add_command_power = -0.1
-		}
-		remove_effect = {
-			add_war_support = 0.05
-		}
-	}
-}
-
-pro_resistance_revolutionary_category = {
-	generic_purge_counter_revolutionaries = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			hidden_modifier = {
-				democratic_drift = -0.005
-				pro_yagoo_progressive_drift = -0.005
-				pro_yagoo_monarchy_drift = -0.005
-				reactionary_monarchy_drift = -0.005
-				democratic_revitalisation_drift = -0.005
-				reactionary_nationalism_drift = -0.005
-				mixed_ideology_democracy_drift = -0.005
-				divine_mandate_drift = -0.005
-			}
-			custom_modifier_tooltip = generic_purge_counter_revolutionaries_tooltip
-		}
-		complete_effect = {
-		}
-	}
-	generic_nationalize_private_busineses = {
+	generic_pyk_bribe_lhs_officials = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -934,1316 +414,13 @@ pro_resistance_revolutionary_category = {
 			factor = 5
 		}
 		days_re_enable = 180
-		days_remove = 60
-		cost = 120
-		modifier = {
-			industrial_factory_donations = 4
-		}
-		complete_effect = {
-			add_timed_idea = {
-				idea = GEN_nationalized_private_businesses
-				days = 180
-			}
-		}
-	}
-	generic_establish_national_conglomerates = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 180
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_gain = 0.1
-		}
-		complete_effect = {
-			add_timed_idea = {
-				idea = GEN_established_national_conglomerates
-				days = 180
-			}
-			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-	generic_push_infrastructure_campaign = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_gain = 0.1
-			consumer_goods_factor = 0.15
-		}
-		complete_effect = {
-			random_owned_controlled_state = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-	generic_push_for_workers_revolution = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			mobilization_speed = 0.2
-			army_attack_factor = 0.15
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_promote_collectivism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = 0.01
-			war_support_weekly = 0.01
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_agrarian_push = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			consumer_goods_factor = -0.15
-		}
-		complete_effect = {
-		}
-	}
-	generic_urbanisation_push = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-		}
-		complete_effect = {
-		}
-	}
-}
-
-pro_resistance_nationalism_category = {
-	generic_promote_party_loyalism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			pro_resistance_nationalism_drift = 0.01
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_jingoist_push = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 360
-		days_remove = 60
-		cost = 120
-		modifier = {
-			war_support_weekly = 0.02
-			mobilization_speed = 0.2
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_order_above_all = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = 0.02
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_mass_conscription_drive = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			mobilization_speed = 0.4
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_totalitarian_policies = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_gain = 0.5
-			resistance_growth_on_our_occupied_states = -0.2
-			compliance_growth_on_our_occupied_states = -0.2
-		}
-		complete_effect = {
-			add_popularity = {
-				ideology = pro_resistance_nationalism
-				popularity = -0.05
-			}
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 15
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_state_press = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = 0.01
-			war_support_weekly = 0.01
-			pro_resistance_nationalism_drift = 0.01
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 15
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_lower_consumer_good_prices = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			consumer_goods_factor = 0.15
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = -10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-}
-
-pro_resistance_monarchy_category = {
-	generic_rally_resistance_around_monarch = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			pro_resistance_monarchy_drift = 0.02
-			stability_weekly = 0.01
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_royal_industry_supervision = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 360
-		days_remove = 60
-		cost = 120
-		modifier = {
-			consumer_goods_factor = -0.05
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_push_for_expansionism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_gain = -0.1
-			war_support_weekly = 0.02
-			pro_resistance_monarchy_drift = 0.01
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-	generic_gather_fanatics = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			if = {
-				limit = {
-					NOT = {
-						has_template = "Loyalist Militia"
-					}
-				}
-				division_template = {
-					name = "Loyalist Militia"
-					priority = 1
-					regiments = {
-						infantry = {
-							x = 0
-							y = 0
-						}
-						infantry = {
-							x = 0
-							y = 1
-						}
-						infantry = {
-							x = 1
-							y = 0
-						}
-						infantry = {
-							x = 1
-							y = 1
-						}
-					}
-				}
-				random_owned_controlled_state = {
-					create_unit = {
-						division = "name = \"Loyalist Militia\" division_template = \"Loyalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-						owner = ROOT
-					}
-				}
-			}
-			else = {
-				random_owned_controlled_state = {
-					create_unit = {
-						division = "name = \"Loyalist Militia\" division_template = \"Loyalist Militia\" start_experience_factor = 0.85 start_equipment_factor = 1 start_manpower_factor = 1"
-						owner = ROOT
-					}
-				}
-			}
-		}
-	}
-	generic_encourage_resistance_sympathy = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_gain = -0.5
-			pro_resistance_monarchy_drift = 0.01
-			communism_acceptance = 35
-			pro_resistance_nationalism_acceptance = 35
-			pro_resistance_monarchy_acceptance = 35
-			pro_resistance_kleptocracy_acceptance = 35
-		}
-		complete_effect = {
-		}
-	}
-	generic_the_enlightened_monarch = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			research_speed_factor = 0.05
-			stability_weekly = 0.01
-			pro_resistance_monarchy_drift = -0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_promote_fanaticism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			war_support_weekly = 0.02
-		}
-		complete_effect = {
-			add_to_variable = {
-				var = ROOT.anti_aggression
-				value = 10
-				tooltip = GEN_change_in_anti_aggression
-			}
-		}
-	}
-}
-
-pro_resistance_kleptocracy_category = {
-	generic_bribe_resistance_officials = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_gain = -0.5
-			pro_resistance_kleptocracy_drift = 0.02
-			communism_acceptance = 35
-			pro_resistance_nationalism_acceptance = 35
-			pro_resistance_monarchy_acceptance = 35
-			pro_resistance_kleptocracy_acceptance = 35
-		}
-		complete_effect = {
-		}
-	}
-	generic_promote_resistance_ideology = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 360
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_gain = 0.15
-			pro_resistance_kleptocracy_drift = 0.02
-			communism_acceptance = 15
-			pro_resistance_nationalism_acceptance = 15
-			pro_resistance_monarchy_acceptance = 15
-			pro_resistance_kleptocracy_acceptance = 15
-		}
-		complete_effect = {
-		}
-	}
-	generic_embezzle_resistance_funds = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			communism_acceptance = -15
-			pro_resistance_nationalism_acceptance = -15
-			pro_resistance_monarchy_acceptance = -15
-			pro_resistance_kleptocracy_acceptance = -15
-		}
-		complete_effect = {
-			add_political_power = 75
-		}
-	}
-	generic_crush_supposed_counter_revolutionaries = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			pro_resistance_kleptocracy_drift = 0.01
-			stability_weekly = -0.005
-		}
-		complete_effect = {
-		}
-	}
-	generic_hand_out_government_contracts = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		remove_effect = {
-			one_random_civilian_factory = yes
-		}
-		complete_effect = {
-			add_stability = -0.02
-		}
-	}
-	generic_promote_cronyism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			add_stability = 0.05
-		}
-	}
-	generic_loyal_military = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			army_org_factor = -0.1
-		}
-		complete_effect = {
-			add_stability = 0.05
-			add_war_support = 0.05
-			add_popularity = {
-				ideology = pro_resistance_kleptocracy
-				popularity = 0.05
-			}
-		}
-	}
-	generic_secretly_negotiate_lhs = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			democratic_acceptance = 15
-			pro_yagoo_progressive_drift = 15
-			pro_yagoo_monarchy_acceptance = 15
-			pro_yagoo_kleptocracy_drift = 20
-		}
-		complete_effect = {
-		}
-	}
-}
-
-new_nationalism_category = {
-	generic_rally_nation_crusade = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			one_random_militia = yes
-			add_war_support = 0.05
-		}
-	}
-	generic_loyalty_to_state = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 360
-		days_remove = 60
-		cost = 120
-		modifier = {
-			fascism_drift = 0.01
-			stability_weekly = 0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_mass_industrialization = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			one_random_civilian_factory = yes
-			one_random_arms_factory = yes
-		}
-	}
-	generic_loosen_conscription_standards = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			recruitable_population_factor = 0.15
-			training_time_army_factor = -0.1
-		}
-		complete_effect = {
-		}
-	}
-	generic_purge_non_antis = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			fascism_drift = 0.02
-			stability_weekly = -0.01
-		}
-		complete_effect = {
-			add_stability = -0.05
-		}
-	}
-	generic_civilian_material_drive = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			local_resources_factor = 0.1
-		}
-		complete_effect = {
-		}
-	}
-	generic_make_emergency_drafts = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-			mobilization_laws_cost_factor = -0.25
-			mobilization_speed = 0.35
-		}
-		complete_effect = {
-		}
-	}
-}
-
-left_wing_revolutionary_category = {
-	generic_purge_non_socialists = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-			left_wing_revolutionary_drift = 0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_prepare_workers_revolution_abroad = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 360
-		days_remove = 60
-		cost = 120
-		modifier = {
-			justify_war_goal_time = -0.25
-			mobilization_speed = 0.25
-		}
-		complete_effect = {
-		}
-	}
-	generic_mass_urbanization = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-		}
-		complete_effect = {
-			one_random_civilian_factory = yes
-		}
-	}
-	generic_efficiency_push = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			production_factory_efficiency_gain_factor = 0.1
-			local_resources_factor = 0.15
-		}
-		complete_effect = {
-		}
-	}
-	generic_support_party_loyalists = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = 0.01
-			left_wing_revolutionary_drift = 0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_organize_peoples_brigades = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			two_random_militia = yes
-		}
-	}
-	generic_scientific_push = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			research_speed_factor = 0.05
-		}
-		complete_effect = {
-		}
-	}
-}
-
-reactionary_monarchy_category = {
-	generic_proclaim_true_rulership = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = 0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_decry_hololive_corruption = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 360
-		days_remove = 60
-		cost = 120
-		modifier = {
-			war_support_weekly = 0.01
-			reactionary_monarchy_drift = 0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_fight_to_last_man = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			army_defence_factor = 0.15
-		}
-		complete_effect = {
-		}
-	}
-	generic_strengthen_monarchs_control = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-			political_power_factor = 0.25
-			reactionary_monarchy_drift = 0.02
-		}
-		complete_effect = {
-		}
-	}
-	generic_raise_taxes = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-			reactionary_monarchy_drift = -0.01
-			consumer_goods_factor = -0.05
-		}
-		complete_effect = {
-		}
-	}
-	generic_anti_corruption_drive = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_gain = 0.5
-			production_factory_efficiency_gain_factor = -0.1
-			production_speed_buildings_factor = -0.1
-			stability_weekly = -0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_curtail_democracy = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			add_political_power = 35
-			add_stability = -0.05
-		}
-	}
-}
-
-democratic_revitalisation_category = {
-	generic_lower_taxes = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 360
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = 0.01
-			consumer_goods_factor = 0.05
-		}
-		complete_effect = {
-		}
-	}
-	generic_create_government_boogeyman = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_factor = -0.25
-			stability_weekly = -0.01
-			democratic_revitalisation_drift = 0.02
-		}
-		complete_effect = {
-		}
-	}
-	generic_hugely_deregulate_economy = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.02
-			production_factory_efficiency_gain_factor = 0.1
-			production_speed_buildings_factor = 0.1
-		}
-		complete_effect = {
-		}
-	}
-	generic_strengthen_local_power = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_factor = -0.25
-			stability_weekly = 0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_fighting_for_democracy = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			war_support_weekly = 0.01
-			recruitable_population_factor = 0.15
-		}
-		complete_effect = {
-		}
-	}
-	generic_support_gun_ownership = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			resistance_growth_on_our_occupied_states = 0.2
-		}
-		complete_effect = {
-		}
-	}
-	generic_privatize_economy = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-			political_power_factor = 0.15
-			consumer_goods_factor = -0.05
-		}
-		complete_effect = {
-		}
-	}
-}
-
-kleptocratic_dictatorship_category = {
-	generic_distract_population = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			political_power_factor = -0.12
-			war_support_weekly = 0.01
-		}
-	}
-	generic_give_gifts_to_friends = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			trade_laws_cost_factor = -0.75
-			mobilization_laws_cost_factor = -0.75
-			political_advisor_cost_factor = -0.5
-			army_advisor_cost_factor = -0.5
-			navy_advisor_cost_factor = -0.5
-			air_advisor_cost_factor = -0.5
-			high_command_cost_factor = -0.5
-		}
-	}
-	generic_embezzle_funds = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 50
-		modifier = {
-			stability_weekly = -0.005
-		}
-		complete_effect = {
-			add_political_power = 150
-		}
-	}
-	generic_promote_stability = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
+		days_remove = 140
 		cost = 50
-		days_re_enable = 120
-		days_remove = 50
 		modifier = {
 			stability_weekly = 0.01
 		}
 	}
-	generic_bribe_supporters = {
+	generic_pyk_extract_factory = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2252,49 +429,10 @@ kleptocratic_dictatorship_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		cost = 125
-		days_re_enable = 120
-		days_remove = 50
-		modifier = {
-			stability_weekly = 0.01
-			master_ideology_drift = 0.05
-		}
-	}
-	generic_new_citizens_package = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		cost = 125
-		days_re_enable = 120
-		days_remove = 50
-		modifier = {
-			resistance_growth = -0.75
-			compliance_growth = 0.15
-		}
-	}
-	generic_run_factory_to_ground = {
-		icon = generic_prepare_civil_war
-		available = {
-			any_owned_state = {
-				industrial_complex > 1
-			}
-		}
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
+		days_re_enable = 135
 		complete_effect = {
-			add_political_power = 75
-			random_owned_state = {
+			add_political_power = 200
+			random_owned_controlled_state = {
 				limit = {
 					industrial_complex > 1
 				}
@@ -2307,28 +445,84 @@ kleptocratic_dictatorship_category = {
 	}
 }
 
-reactionary_nationalism_category = {
-	generic_promote_nationalism = {
+pro_resistance_revolutionary_category = {
+	generic_prr_on_the_frontlines = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_on_the_frontlines_idea
+		}
+	}
+	generic_prr_backend_channels_flag = {
+		icon = generic_prepare_civil_war
+		visible = {
+			has_country_flag = GEN_backend_channels_flag
 		}
 		fire_only_once = no
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-			war_support_weekly = 0.01
-			reactionary_nationalism_drift = 0.02
-		}
+		days_re_enable = 270
+		days_remove = 90
 		complete_effect = {
+			if = {
+				limit = {
+					num_of_factories > 80
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 3000
+				}
+				else_if = {
+					limit = {
+						num_of_factories > 60
+						num_of_factories < 80
+					}
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 2500
+					}
+				}
+				else_if = {
+					limit = {
+						num_of_factories > 40
+						num_of_factories < 60
+					}
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 2000
+					}
+				}
+				else_if = {
+					limit = {
+						num_of_factories > 20
+						num_of_factories < 40
+					}
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1500
+					}
+				}
+				else_if = {
+					limit = {
+						num_of_factories < 20
+					}
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1000
+					}
+				}
+			}
 		}
 	}
-	generic_decry_pacifist_parties = {
+	generic_prr_commiting_to_production = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2338,15 +532,95 @@ reactionary_nationalism_category = {
 			factor = 5
 		}
 		days_re_enable = 360
-		days_remove = 60
-		cost = 120
+		days_remove = 180
+		modifier = {
+			consumer_goods_factor = 0.075
+			industrial_capacity_factory = 0.1
+		}
+	}
+	generic_prr_commiting_to_resources = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 180
+		modifier = {
+			consumer_goods_factor = 0.075
+			local_resources_factor = 0.15
+		}
+	}
+	generic_prr_commiting_to_training = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 180
+		modifier = {
+			consumer_goods_factor = 0.075
+			training_time_army_factor = -0.15
+			experience_gain_army_factor = 0.15
+		}
+	}
+	generic_prr_comiting_to_stability = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 140
+		modifier = {
+			consumer_goods_factor = 0.075
+			stability_weekly = 0.01
+		}
+	}
+}
+
+pro_resistance_nationalism_category = {
+	generic_prn_empire_building = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_empire_building_idea
+		}
+	}
+	generic_prn_push_for_war = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 140
+		days_remove = 70
+		cost = 75
 		modifier = {
 			war_support_weekly = 0.02
 		}
-		complete_effect = {
-		}
 	}
-	generic_strengthen_state = {
+	generic_prn_extract_resources = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2355,42 +629,146 @@ reactionary_nationalism_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
+		days_re_enable = 180
+		days_remove = 98
 		modifier = {
-			political_power_factor = 0.25
-			stability_weekly = -0.01
+			war_support_weekly = -0.01
+			local_resources_factor = 0.15
 		}
+	}
+	generic_prn_extract_labour = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 180
+		days_remove = 98
+		modifier = {
+			war_support_weekly = -0.01
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+	}
+	generic_prn_extract_wealth = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 180
+		days_remove = 98
+		modifier = {
+			war_support_weekly = -0.01
+			consumer_goods_factor = -0.1
+		}
+	}
+}
+
+pro_resistance_monarchy_category = {
+	generic_prm_backbone_of_the_resistance = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
 		complete_effect = {
-			add_to_variable = {
-				var = root.anti_aggression
-				value = 5
-				tooltip = GEN_change_in_anti_aggression
+			add_ideas = GEN_backbone_of_the_resistance_idea
+		}
+	}
+	generic_prm_rally_for_war = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		days_re_enable = 180
+		days_remove = 60
+		complete_effect = {
+			add_war_support = 0.1
+		}
+	}
+	generic_prm_rapid_conversions = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 15
+		days_re_enable = 180
+		complete_effect = {
+			two_converted_factories = yes
+			two_converted_factories = yes
+		}
+	}
+	generic_prm_royal_industry = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		days_re_enable = 360
+		days_remove = 90
+		complete_effect = {
+			two_random_arms_factory = yes
+		}
+	}
+	generic_prm_cheaper_production = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		complete_effect = {
+			add_timed_idea = {
+				idea = GEN_cheaper_production_idea
+				days = 180
 			}
 		}
 	}
-	generic_greatly_increase_conscription = {
+}
+
+pro_resistance_kleptocracy_category = {
+	generic_prk_supporting_revolutions_abroad = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
 		}
-		fire_only_once = no
+		fire_only_once = yes
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-			war_support_weekly = -0.01
-			recruitable_population_factor = 0.2
-		}
+		cost = 150
 		complete_effect = {
+			add_ideas = GEN_supporting_revolutions_abroad_idea
 		}
 	}
-	generic_mandatory_training = {
+	generic_prk_counterfeit_goods = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2399,17 +777,14 @@ reactionary_nationalism_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			army_org_factor = 0.05
-			training_time_army_factor = -0.15
-		}
+		cost = 75
+		days_re_enable = 360
+		days_remove = 90
 		complete_effect = {
+			two_random_civilian_factory = yes
 		}
 	}
-	generic_military_industry_complex = {
+	generic_prk_underground_factories = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2418,17 +793,246 @@ reactionary_nationalism_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
+		cost = 75
+		days_re_enable = 360
+		days_remove = 90
+		complete_effect = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+		}
+	}
+	generic_prk_gun_smuggling = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		days_re_enable = 360
+		days_remove = 90
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 750
+			}
+		}
+	}
+	generic_prk_bribes_from_interest_groups = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 280
+		days_remove = 70
 		modifier = {
-			stability_weekly = -0.01
+			pro_resistance_kleptocracy_drift = -0.01
+			political_power_gain = 0.3
+		}
+	}
+}
+
+new_nationalism_category = {
+	generic_nn_warrior_spirit = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_warrior_spirit_idea
+		}
+	}
+	generic_nn_second_wind = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 180
+		days_remove = 60
+		cost = 75
+		modifier = {
+			army_attack_factor = 0.1
+			breakthrough_factor = 0.15
+		}
+	}
+	generic_nn_defending_the_fatherland = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 180
+		days_remove = 60
+		cost = 75
+		modifier = {
+			army_defence_factor = 0.1
+			dig_in_speed_factor = 0.15
+		}
+	}
+	generic_nn_emergency_weapons = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		days_re_enable = 270
+		days_remove = 90
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0_emergency
+				amount = 750
+			}
+		}
+	}
+	generic_nn_drum_up_war_support = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 280
+		days_remove = 70
+		cost = 75
+		modifier = {
+			war_support_weekly = 0.02
+		}
+	}
+}
+
+left_wing_revolutionary_category = {
+	generic_lwr_popular_governors = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_popular_governors_idea
+		}
+	}
+	generic_lwr_revolution_fervour = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 280
+		days_remove = 175
+		cost = 75
+		modifier = {
+			war_support_weekly = 0.01
+		}
+	}
+	generic_lwr_secure_revolution = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 280
+		days_remove = 175
+		cost = 75
+		modifier = {
+			stability_weekly = 0.01
+		}
+	}
+	generic_lwr_seize_resourced = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		days_re_enable = 180
+		days_remove = 70
+		modifier = {
+			war_support_weekly = -0.02
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 2
+				}
+				add_resource = {
+					type = aluminium
+					amount = 2
+				}
+			}
+		}
+	}
+	generic_lwr_nationalize_factories = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		days_re_enable = 180
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_remove = 70
+		modifier = {
+			stability_weekly = -0.02
 		}
 		complete_effect = {
 			two_random_arms_factory = yes
 		}
 	}
-	generic_substitute_labour = {
+}
+
+reactionary_monarchy_category = {
+	generic_rm_men_for_the_monarchy = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_men_for_the_monarchy_idea
+		}
+	}
+	generic_rm_royal_investments = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2437,39 +1041,409 @@ reactionary_nationalism_category = {
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			consumer_goods_factor = -0.05
-		}
+		days_re_enable = 90
+		cost = 25
 		complete_effect = {
+			random_list = {
+				4 = {
+					one_random_civilian_factory = yes
+				}
+				4 = {
+					one_random_arms_factory = yes
+				}
+				1 = {
+					two_random_civilian_factory = yes
+				}
+				1 = {
+					two_random_arms_factory = yes
+				}
+			}
+		}
+	}
+	generic_rm_loyalist_brigades = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 90
+		cost = 25
+		complete_effect = {
+			random_list = {
+				4 = {
+					one_random_militia = yes
+				}
+				3 = {
+					two_random_militia = yes
+				}
+				2 = {
+					two_random_militia = yes
+					one_random_militia = yes
+				}
+				1 = {
+					two_random_militia = yes
+					two_random_militia = yes
+				}
+			}
+		}
+	}
+	generic_rm_make_a_speech = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 90
+		cost = 15
+		complete_effect = {
+			random_list = {
+				4 = {
+					add_stability = 0.02
+					add_war_support = 0.02
+				}
+				3 = {
+					add_stability = 0.05
+					add_war_support = 0.05
+				}
+				2 = {
+					add_stability = 0.075
+					add_war_support = 0.075
+				}
+				1 = {
+					add_stability = 0.1
+					add_war_support = 0.1
+				}
+			}
+		}
+	}
+	generic_rm_drum_up_public_support = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 90
+		cost = 15
+		complete_effect = {
+			random_list = {
+				4 = {
+					add_popularity = {
+						ideology = var:current_party_ideology_group
+						popularity = 0.02
+					}
+				}
+				3 = {
+					add_popularity = {
+						ideology = var:current_party_ideology_group
+						popularity = 0.05
+					}
+				}
+				2 = {
+					add_popularity = {
+						ideology = var:current_party_ideology_group
+						popularity = 0.1
+					}
+				}
+				1 = {
+					add_popularity = {
+						ideology = var:current_party_ideology_group
+						popularity = 0.15
+					}
+				}
+			}
+		}
+	}
+}
+
+democratic_revitalisation_category = {
+	generic_dr_spreading_freedom = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_spreading_freedom_idea
+		}
+	}
+	generic_dr_last_stand = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 180
+		cost = 75
+		modifier = {
+			dig_in_speed_factor = 0.15
+			army_core_defence_factor = 0.2
+		}
+	}
+	generic_dr_civilian_militia = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 180
+		days_remove = 30
+		cost = 75
+		complete_effect = {
+			two_random_militia = yes
+			two_random_militia = yes
+		}
+	}
+	generic_dr_freedom_fighters = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 250
+		days_remove = 70
+		cost = 75
+		modifier = {
+			weekly_manpower = 500
+		}
+	}
+	generic_dr_no_more_tyrants = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 180
+		cost = 75
+		modifier = {
+			democratic_drift = -0.05
+			pro_yagoo_progressive_drift = -0.05
+			pro_yagoo_monarchy_drift = -0.05
+			pro_yagoo_kleptocracy_drift = -0.05
+			communism_drift = -0.05
+			pro_resistance_nationalism_drift = -0.05
+			pro_resistance_monarchy_drift = -0.05
+			pro_resistance_kleptocracy_drift = -0.05
+			fascism_drift = -0.05
+			left_wing_revolutionary_drift = -0.05
+			reactionary_monarchy_drift = -0.05
+			neutrality_drift = -0.05
+			reactionary_nationalism_drift = -0.05
+			divine_mandate_drift = -0.05
+		}
+	}
+}
+
+kleptocratic_dictatorship_category = {
+	generic_kd_power_grab = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_power_grab_idea
+		}
+	}
+	generic_kd_raise_taxes = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 250
+		modifier = {
+			political_power_gain = -0.25
+			consumer_goods_factor = -0.1
+		}
+	}
+	generic_kd_construction_monopoly = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 250
+		modifier = {
+			political_power_gain = -0.25
+			production_speed_buildings_factor = -0.2
+		}
+	}
+	generic_kd_source_illegal_materials = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 250
+		modifier = {
+			political_power_gain = -0.25
+			local_resources_factor = 0.25
+		}
+	}
+	generic_kd_stack_advisors = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 250
+		modifier = {
+			political_power_gain = -0.25
+			political_advisor_cost_factor = -0.75
+			army_chief_cost_factor = -0.75
+			navy_chief_cost_factor = -0.75
+			air_chief_cost_factor = -0.75
+			high_command_cost_factor = -0.75
+			theorist_cost_factor = -0.75
+		}
+	}
+}
+
+reactionary_nationalism_category = {
+	generic_rn_life_of_struggle = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_life_of_struggle_idea
+		}
+	}
+	generic_rn_jingoistic_temperment = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 250
+		cost = 15
+		modifier = {
+			justify_war_goal_time = -0.75
+		}
+	}
+	generic_rn_rapid_deployment = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 360
+		days_remove = 260
+		cost = 75
+		modifier = {
+			training_time_army_factor = -0.25
+		}
+	}
+	generic_rn_create_arms_factories = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 90
+		cost = 50
+		complete_effect = {
+			one_random_arms_factory = yes
+		}
+	}
+	generic_rn_loyalty_to_state = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 90
+		cost = 75
+		complete_effect = {
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.1
+			}
 		}
 	}
 }
 
 mixed_ideology_democracy_category = {
-	generic_host_debates = {
+	generic_mid_refuge_for_scientists = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
 		}
-		fire_only_once = no
+		fire_only_once = yes
 		ai_will_do = {
 			factor = 5
 		}
-		days_re_enable = 360
-		days_remove = 60
-		cost = 120
-		modifier = {
-			economy_cost_factor = -0.35
-			trade_laws_cost_factor = -0.35
-			mixed_ideology_democracy_drift = -0.01
-		}
+		cost = 150
 		complete_effect = {
+			add_ideas = GEN_refuge_for_scientists_idea
 		}
 	}
-	generic_invest_in_education = {
+	generic_mid_defending_perfection = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2479,99 +1453,33 @@ mixed_ideology_democracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = 0.01
-			research_speed_factor = 0.05
-		}
-		complete_effect = {
-		}
-	}
-	generic_invest_in_healthcare = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 50
-		cost = 120
-		modifier = {
-			stability_weekly = 0.01
-			monthly_population = 0.02
-		}
-		complete_effect = {
-		}
-	}
-	generic_spread_democracy_abroad = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			random_neighbor_country = {
-				add_timed_idea = {
-					idea = GEN_democracy_spread
-					days = 180
-				}
-			}
-			random_neighbor_country = {
-				add_timed_idea = {
-					idea = GEN_democracy_spread
-					days = 180
-				}
-			}
-		}
-	}
-	generic_reject_radicalism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = 0.02
-			war_support_weekly = -0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_promote_home_defense = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
+		days_remove = 225
+		cost = 75
 		modifier = {
 			army_core_attack_factor = 0.15
 			army_core_defence_factor = 0.15
 		}
+	}
+	generic_mid_urban_development = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
 		complete_effect = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+			}
 		}
 	}
-	generic_compromise_with_unions = {
+	generic_mid_stable_homes = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2581,19 +1489,48 @@ mixed_ideology_democracy_category = {
 			factor = 5
 		}
 		days_re_enable = 120
-		days_remove = 60
-		cost = 120
+		days_remove = 300
+		cost = 75
 		modifier = {
-			stability_weekly = 0.02
-			production_factory_efficiency_gain_factor = -0.1
+			monthly_population = 0.02
 		}
+	}
+	generic_mid_pax_aeterna = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 100
 		complete_effect = {
+			add_stability = 0.1
+			add_popularity = {
+				ideology = var:current_party_ideology_group
+				popularity = 0.15
+			}
 		}
 	}
 }
 
 divine_mandate_category = {
-	generic_establish_youth_organizations = {
+	generic_dm_service_to_the_crown = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 150
+		complete_effect = {
+			add_ideas = GEN_service_to_the_crown_idea
+		}
+	}
+	generic_dm_infinite_monarchy = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
@@ -2603,138 +1540,114 @@ divine_mandate_category = {
 			factor = 5
 		}
 		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-		}
-	}
-	generic_build_temples = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 360
-		cost = 120
-		complete_effect = {
-		}
-	}
-	generic_encourage_fanaticism = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
+		days_remove = 70
+		cost = 75
 		modifier = {
-			army_attack_factor = 0.15
-			recruitable_population_factor = 0.1
-			war_support_weekly = 0.01
-		}
-		complete_effect = {
+			stability_weekly = 0.02
 		}
 	}
-	generic_proclaim_the_world_as_yours = {
+	generic_dm_peace_not_war = {
 		icon = generic_prepare_civil_war
 		visible = {
 			always = yes
+		}
+		target_trigger = {
+			is_neighbor_of = ROOT
 		}
 		fire_only_once = no
 		ai_will_do = {
 			factor = 5
 		}
 		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			justify_war_goal_time = -0.35
-			war_support_weekly = 0.01
-		}
+		cost = 75
 		complete_effect = {
-		}
-	}
-	generic_raid_non_royalist_parties = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			stability_weekly = -0.01
-			divine_mandate_drift = 0.02
-		}
-		complete_effect = {
-		}
-	}
-	generic_create_clergy = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-		}
-	}
-	generic_devotion_to_idol = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		days_remove = 60
-		cost = 120
-		modifier = {
-			army_core_attack_factor = 0.1
-			army_core_defence_factor = 0.1
-			divine_mandate_drift = 0.01
-		}
-		complete_effect = {
-		}
-	}
-	generic_spread_oshi_propaganda_abroad = {
-		icon = generic_prepare_civil_war
-		visible = {
-			always = yes
-		}
-		fire_only_once = no
-		ai_will_do = {
-			factor = 5
-		}
-		days_re_enable = 120
-		cost = 120
-		complete_effect = {
-			random_neighbor_country = {
-				add_timed_idea = {
-					idea = GEN_divine_mandate
-					days = 180
+			FROM = {
+				diplomatic_relation = {
+					country = THIS
+					relation = non_aggression_pact
+					active = yes
 				}
 			}
-			random_neighbor_country = {
-				add_timed_idea = {
-					idea = GEN_divine_mandate
-					days = 180
+		}
+	}
+	generic_dm_claim_the_land = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		target_trigger = {
+			is_neighbor_of = ROOT
+			NOT = {
+				any_owned_state = {
+					is_claimed_by = ROOT
+				}
+			}
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 120
+		cost = 15
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = FROM
+				}
+				add_claim_by = ROOT
+			}
+		}
+	}
+	generic_dm_gifts_for_the_oshi = {
+		icon = generic_prepare_civil_war
+		visible = {
+			always = yes
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 5
+		}
+		days_re_enable = 180
+		cost = 150
+		complete_effect = {
+			hidden_effect = {
+				random_list = {
+					20 = {
+						add_timed_idea = {
+							idea = GEN_researchers_for_the_oshi_idea
+							days = 360
+						}
+					}
+					20 = {
+						add_timed_idea = {
+							idea = GEN_men_for_the_oshi_idea
+							days = 360
+						}
+					}
+					20 = {
+						add_timed_idea = {
+							idea = GEN_money_for_the_oshi_idea
+							days = 360
+						}
+					}
+					10 = {
+						add_timed_idea = {
+							idea = GEN_work_for_the_oshi_idea
+							days = 360
+						}
+					}
+					9 = {
+						add_timed_idea = {
+							idea = GEN_soldiers_for_the_oshi_idea
+							days = 360
+						}
+					}
+					1 = {
+						add_timed_idea = {
+							idea = GEN_comet_for_the_oshi
+							days = 360
+						}
+					}
 				}
 			}
 		}
