@@ -946,7 +946,7 @@ guiTypes = {
 				clicksound = ui_doctrine_tab_naval
 			}
 			instantTextBoxType = {
-				name = "navy_doctrine_title"
+				name = "navy_doctrine_folder_title"
 				text = "naval_doctrine"
 				position = { x=60 y=18}
 				font = "hoi_20bs"
@@ -963,7 +963,7 @@ guiTypes = {
 				clicksound = ui_doctrine_tab_air
 			}
 			instantTextBoxType = {
-				name = "air_doctrine_title"
+				name = "air_doctrine_folder_title"
 				text = "air_doctrine"
 				position = { x=310 y=18}
 				font = "hoi_20bs"
@@ -972,6 +972,24 @@ guiTypes = {
 				format = center
 				alwaystransparent = "yes"
 			}			
+			buttonType = {
+				name = "special_forces_doctrine_folder_tab"
+				position = { x = 504 y = 0 }
+				quadTextureSprite = "GFX_specialforcesdoctrine_tab_large"
+				frame = 1
+				clicksound = ui_doctrine_tab_air
+			}
+			instantTextBoxType = {
+				name = "special_forces_doctrine_folder_title"
+				text = "special_forces"
+				position = { x=564 y=18}
+				font = "hoi_20bs"
+				maxWidth = 160
+				maxHeight = 20
+				format = center
+				alwaystransparent = "yes"
+			}
+		}
 		}
 
 		buttonType = {
@@ -1072,6 +1090,42 @@ guiTypes = {
 		iconType = {
 			name = "Icon"
 			position = { x=3 y=3 }
+			spriteType = "GFX_technology_medium"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "bonus_icon"
+			position = { x=-1 y=-22 }
+			spriteType = "GFX_tech_bonus"
+		}
+		
+		instantTextBoxType = {
+			name = "bonus"
+			position = { x = -1 y = -22 }
+			textureFile = ""
+			font = "hoi_16mbs"
+			borderSize = {x = 4 y = 4}
+			text = "lol boat"
+			maxWidth = 80
+			maxHeight = 20
+			format = center
+		}
+	}
+	
+	containerWindowType = {
+		name = "techtree_special_forces_doctrine_folder_item"
+		position = { x=0 y=5 }
+		size = { width = 72 height = 72 }
+		clipping = no
+
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_technology_unavailable_item_bg"
+		}
+
+		iconType = {
+			name = "Icon"
+			position = { x=0 y=3 }
 			spriteType = "GFX_technology_medium"
 			alwaystransparent = yes
 		}
